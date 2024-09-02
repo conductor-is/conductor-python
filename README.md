@@ -32,6 +32,11 @@ page = client.qbd.invoices.list(
 print(page.page)
 ```
 
+While you can provide a `bearer_token` keyword argument,
+we recommend using [python-dotenv](https://pypi.org/project/python-dotenv/)
+to add `CONDUCTOR_SECRET_KEY="My Bearer Token"` to your `.env` file
+so that your Bearer Token is not stored in source control.
+
 ## Async usage
 
 Simply import `AsyncConductor` instead of `Conductor` and use `await` with each API call:
