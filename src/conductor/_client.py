@@ -25,7 +25,7 @@ from ._utils import (
 )
 from ._version import __version__
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
-from ._exceptions import APIStatusError
+from ._exceptions import APIStatusError, ConductorError
 from ._base_client import (
     DEFAULT_MAX_RETRIES,
     SyncAPIClient,
@@ -49,15 +49,17 @@ class Conductor(SyncAPIClient):
     auth_sessions: resources.AuthSessionsResource
     end_users: resources.EndUsersResource
     integration_connections: resources.IntegrationConnectionsResource
-    quickbooks_desktop: resources.QuickbooksDesktopResource
+    qbd: resources.QbdResource
     with_raw_response: ConductorWithRawResponse
     with_streaming_response: ConductorWithStreamedResponse
 
     # client options
+    bearer_token: str
 
     def __init__(
         self,
         *,
+        bearer_token: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         max_retries: int = DEFAULT_MAX_RETRIES,
@@ -77,7 +79,18 @@ class Conductor(SyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new synchronous conductor client instance."""
+        """Construct a new synchronous conductor client instance.
+
+        This automatically infers the `bearer_token` argument from the `CONDUCTOR_SECRET_KEY` environment variable if it is not provided.
+        """
+        if bearer_token is None:
+            bearer_token = os.environ.get("CONDUCTOR_SECRET_KEY")
+        if bearer_token is None:
+            raise ConductorError(
+                "The bearer_token client option must be set either by passing bearer_token to the client or by setting the CONDUCTOR_SECRET_KEY environment variable"
+            )
+        self.bearer_token = bearer_token
+
         if base_url is None:
             base_url = os.environ.get("CONDUCTOR_BASE_URL")
         if base_url is None:
@@ -97,7 +110,7 @@ class Conductor(SyncAPIClient):
         self.auth_sessions = resources.AuthSessionsResource(self)
         self.end_users = resources.EndUsersResource(self)
         self.integration_connections = resources.IntegrationConnectionsResource(self)
-        self.quickbooks_desktop = resources.QuickbooksDesktopResource(self)
+        self.qbd = resources.QbdResource(self)
         self.with_raw_response = ConductorWithRawResponse(self)
         self.with_streaming_response = ConductorWithStreamedResponse(self)
 
@@ -105,6 +118,12 @@ class Conductor(SyncAPIClient):
     @override
     def qs(self) -> Querystring:
         return Querystring(array_format="comma")
+
+    @property
+    @override
+    def auth_headers(self) -> dict[str, str]:
+        bearer_token = self.bearer_token
+        return {"Authorization": f"Bearer {bearer_token}"}
 
     @property
     @override
@@ -118,6 +137,7 @@ class Conductor(SyncAPIClient):
     def copy(
         self,
         *,
+        bearer_token: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
         http_client: httpx.Client | None = None,
@@ -151,6 +171,7 @@ class Conductor(SyncAPIClient):
 
         http_client = http_client or self._client
         return self.__class__(
+            bearer_token=bearer_token or self.bearer_token,
             base_url=base_url or self.base_url,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
             http_client=http_client,
@@ -202,15 +223,17 @@ class AsyncConductor(AsyncAPIClient):
     auth_sessions: resources.AsyncAuthSessionsResource
     end_users: resources.AsyncEndUsersResource
     integration_connections: resources.AsyncIntegrationConnectionsResource
-    quickbooks_desktop: resources.AsyncQuickbooksDesktopResource
+    qbd: resources.AsyncQbdResource
     with_raw_response: AsyncConductorWithRawResponse
     with_streaming_response: AsyncConductorWithStreamedResponse
 
     # client options
+    bearer_token: str
 
     def __init__(
         self,
         *,
+        bearer_token: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         max_retries: int = DEFAULT_MAX_RETRIES,
@@ -230,7 +253,18 @@ class AsyncConductor(AsyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new async conductor client instance."""
+        """Construct a new async conductor client instance.
+
+        This automatically infers the `bearer_token` argument from the `CONDUCTOR_SECRET_KEY` environment variable if it is not provided.
+        """
+        if bearer_token is None:
+            bearer_token = os.environ.get("CONDUCTOR_SECRET_KEY")
+        if bearer_token is None:
+            raise ConductorError(
+                "The bearer_token client option must be set either by passing bearer_token to the client or by setting the CONDUCTOR_SECRET_KEY environment variable"
+            )
+        self.bearer_token = bearer_token
+
         if base_url is None:
             base_url = os.environ.get("CONDUCTOR_BASE_URL")
         if base_url is None:
@@ -250,7 +284,7 @@ class AsyncConductor(AsyncAPIClient):
         self.auth_sessions = resources.AsyncAuthSessionsResource(self)
         self.end_users = resources.AsyncEndUsersResource(self)
         self.integration_connections = resources.AsyncIntegrationConnectionsResource(self)
-        self.quickbooks_desktop = resources.AsyncQuickbooksDesktopResource(self)
+        self.qbd = resources.AsyncQbdResource(self)
         self.with_raw_response = AsyncConductorWithRawResponse(self)
         self.with_streaming_response = AsyncConductorWithStreamedResponse(self)
 
@@ -258,6 +292,12 @@ class AsyncConductor(AsyncAPIClient):
     @override
     def qs(self) -> Querystring:
         return Querystring(array_format="comma")
+
+    @property
+    @override
+    def auth_headers(self) -> dict[str, str]:
+        bearer_token = self.bearer_token
+        return {"Authorization": f"Bearer {bearer_token}"}
 
     @property
     @override
@@ -271,6 +311,7 @@ class AsyncConductor(AsyncAPIClient):
     def copy(
         self,
         *,
+        bearer_token: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
         http_client: httpx.AsyncClient | None = None,
@@ -304,6 +345,7 @@ class AsyncConductor(AsyncAPIClient):
 
         http_client = http_client or self._client
         return self.__class__(
+            bearer_token=bearer_token or self.bearer_token,
             base_url=base_url or self.base_url,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
             http_client=http_client,
@@ -358,7 +400,7 @@ class ConductorWithRawResponse:
         self.integration_connections = resources.IntegrationConnectionsResourceWithRawResponse(
             client.integration_connections
         )
-        self.quickbooks_desktop = resources.QuickbooksDesktopResourceWithRawResponse(client.quickbooks_desktop)
+        self.qbd = resources.QbdResourceWithRawResponse(client.qbd)
 
 
 class AsyncConductorWithRawResponse:
@@ -368,7 +410,7 @@ class AsyncConductorWithRawResponse:
         self.integration_connections = resources.AsyncIntegrationConnectionsResourceWithRawResponse(
             client.integration_connections
         )
-        self.quickbooks_desktop = resources.AsyncQuickbooksDesktopResourceWithRawResponse(client.quickbooks_desktop)
+        self.qbd = resources.AsyncQbdResourceWithRawResponse(client.qbd)
 
 
 class ConductorWithStreamedResponse:
@@ -378,7 +420,7 @@ class ConductorWithStreamedResponse:
         self.integration_connections = resources.IntegrationConnectionsResourceWithStreamingResponse(
             client.integration_connections
         )
-        self.quickbooks_desktop = resources.QuickbooksDesktopResourceWithStreamingResponse(client.quickbooks_desktop)
+        self.qbd = resources.QbdResourceWithStreamingResponse(client.qbd)
 
 
 class AsyncConductorWithStreamedResponse:
@@ -388,9 +430,7 @@ class AsyncConductorWithStreamedResponse:
         self.integration_connections = resources.AsyncIntegrationConnectionsResourceWithStreamingResponse(
             client.integration_connections
         )
-        self.quickbooks_desktop = resources.AsyncQuickbooksDesktopResourceWithStreamingResponse(
-            client.quickbooks_desktop
-        )
+        self.qbd = resources.AsyncQbdResourceWithStreamingResponse(client.qbd)
 
 
 Client = Conductor

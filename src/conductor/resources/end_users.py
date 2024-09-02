@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing_extensions import Literal
+
 import httpx
 
 from ..types import end_user_create_params, end_user_request_params
@@ -87,6 +89,7 @@ class EndUsersResource(SyncAPIResource):
 
     def retrieve(
         self,
+        id: str,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -95,9 +98,24 @@ class EndUsersResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> EndUser:
-        """Retrieves an EndUser object."""
+        """
+        Retrieves an EndUser object.
+
+        Args:
+          id: The ID of the EndUser to retrieve.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._get(
-            "/end-users/:id",
+            f"/end-users/{id}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -125,7 +143,9 @@ class EndUsersResource(SyncAPIResource):
 
     def ping(
         self,
+        integration_slug: Literal["quickbooks_desktop"],
         *,
+        id: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -137,9 +157,26 @@ class EndUsersResource(SyncAPIResource):
         Checks whether the specified IntegrationConnection can connect and process
         requests end-to-end. This is useful for showing a "connection status" indicator
         in your app.
+
+        Args:
+          id: The ID of the EndUser to ping.
+
+          integration_slug: The integration identifier for the EndUser's connection to ping.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        if not integration_slug:
+            raise ValueError(f"Expected a non-empty value for `integration_slug` but received {integration_slug!r}")
         return self._get(
-            "/end-users/:id/ping/:integrationSlug",
+            f"/end-users/{id}/ping/{integration_slug}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -148,7 +185,9 @@ class EndUsersResource(SyncAPIResource):
 
     def request(
         self,
+        integration_slug: Literal["quickbooks_desktop"],
         *,
+        id: str,
         body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -163,6 +202,10 @@ class EndUsersResource(SyncAPIResource):
         Desktop) on behalf of the end-user.
 
         Args:
+          id: The ID of the EndUser who owns the integration connection.
+
+          integration_slug: The integration identifier for the EndUser's connection.
+
           body: The request body to send to the integration connection.
 
           extra_headers: Send extra headers
@@ -173,8 +216,12 @@ class EndUsersResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        if not integration_slug:
+            raise ValueError(f"Expected a non-empty value for `integration_slug` but received {integration_slug!r}")
         return self._post(
-            "/end-users/:id/request/:integrationSlug",
+            f"/end-users/{id}/request/{integration_slug}",
             body=maybe_transform(body, end_user_request_params.EndUserRequestParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -244,6 +291,7 @@ class AsyncEndUsersResource(AsyncAPIResource):
 
     async def retrieve(
         self,
+        id: str,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -252,9 +300,24 @@ class AsyncEndUsersResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> EndUser:
-        """Retrieves an EndUser object."""
+        """
+        Retrieves an EndUser object.
+
+        Args:
+          id: The ID of the EndUser to retrieve.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._get(
-            "/end-users/:id",
+            f"/end-users/{id}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -282,7 +345,9 @@ class AsyncEndUsersResource(AsyncAPIResource):
 
     async def ping(
         self,
+        integration_slug: Literal["quickbooks_desktop"],
         *,
+        id: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -294,9 +359,26 @@ class AsyncEndUsersResource(AsyncAPIResource):
         Checks whether the specified IntegrationConnection can connect and process
         requests end-to-end. This is useful for showing a "connection status" indicator
         in your app.
+
+        Args:
+          id: The ID of the EndUser to ping.
+
+          integration_slug: The integration identifier for the EndUser's connection to ping.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        if not integration_slug:
+            raise ValueError(f"Expected a non-empty value for `integration_slug` but received {integration_slug!r}")
         return await self._get(
-            "/end-users/:id/ping/:integrationSlug",
+            f"/end-users/{id}/ping/{integration_slug}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -305,7 +387,9 @@ class AsyncEndUsersResource(AsyncAPIResource):
 
     async def request(
         self,
+        integration_slug: Literal["quickbooks_desktop"],
         *,
+        id: str,
         body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -320,6 +404,10 @@ class AsyncEndUsersResource(AsyncAPIResource):
         Desktop) on behalf of the end-user.
 
         Args:
+          id: The ID of the EndUser who owns the integration connection.
+
+          integration_slug: The integration identifier for the EndUser's connection.
+
           body: The request body to send to the integration connection.
 
           extra_headers: Send extra headers
@@ -330,8 +418,12 @@ class AsyncEndUsersResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        if not integration_slug:
+            raise ValueError(f"Expected a non-empty value for `integration_slug` but received {integration_slug!r}")
         return await self._post(
-            "/end-users/:id/request/:integrationSlug",
+            f"/end-users/{id}/request/{integration_slug}",
             body=await async_maybe_transform(body, end_user_request_params.EndUserRequestParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout

@@ -20,10 +20,10 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
-from ...types.quickbooks_desktop import vendor_list_params, vendor_create_params
-from ...types.quickbooks_desktop.qbd_vendor import QbdVendor
-from ...types.quickbooks_desktop.vendor_list_response import VendorListResponse
+from ...types.qbd import vendor_list_params, vendor_create_params
+from ...pagination import SyncMyCursorPage, AsyncMyCursorPage
+from ..._base_client import AsyncPaginator, make_request_options
+from ...types.qbd.qbd_vendor import QbdVendor
 
 __all__ = ["VendorsResource", "AsyncVendorsResource"]
 
@@ -307,7 +307,7 @@ class VendorsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> VendorListResponse:
+    ) -> SyncMyCursorPage[QbdVendor]:
         """
         Returns a list of vendors.
 
@@ -387,8 +387,9 @@ class VendorsResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
-        return self._get(
+        return self._get_api_list(
             "/quickbooks-desktop/vendors",
+            page=SyncMyCursorPage[QbdVendor],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -419,7 +420,7 @@ class VendorsResource(SyncAPIResource):
                     vendor_list_params.VendorListParams,
                 ),
             ),
-            cast_to=VendorListResponse,
+            model=QbdVendor,
         )
 
 
@@ -673,7 +674,7 @@ class AsyncVendorsResource(AsyncAPIResource):
             cast_to=QbdVendor,
         )
 
-    async def list(
+    def list(
         self,
         *,
         conductor_end_user_id: str,
@@ -702,7 +703,7 @@ class AsyncVendorsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> VendorListResponse:
+    ) -> AsyncPaginator[QbdVendor, AsyncMyCursorPage[QbdVendor]]:
         """
         Returns a list of vendors.
 
@@ -782,14 +783,15 @@ class AsyncVendorsResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
-        return await self._get(
+        return self._get_api_list(
             "/quickbooks-desktop/vendors",
+            page=AsyncMyCursorPage[QbdVendor],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "id": id,
                         "class_id": class_id,
@@ -814,7 +816,7 @@ class AsyncVendorsResource(AsyncAPIResource):
                     vendor_list_params.VendorListParams,
                 ),
             ),
-            cast_to=VendorListResponse,
+            model=QbdVendor,
         )
 
 

@@ -60,12 +60,16 @@ class TestEndUsers:
 
     @parametrize
     def test_method_retrieve(self, client: Conductor) -> None:
-        end_user = client.end_users.retrieve()
+        end_user = client.end_users.retrieve(
+            "end_usr_1234567abcdefg",
+        )
         assert_matches_type(EndUser, end_user, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Conductor) -> None:
-        response = client.end_users.with_raw_response.retrieve()
+        response = client.end_users.with_raw_response.retrieve(
+            "end_usr_1234567abcdefg",
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -74,7 +78,9 @@ class TestEndUsers:
 
     @parametrize
     def test_streaming_response_retrieve(self, client: Conductor) -> None:
-        with client.end_users.with_streaming_response.retrieve() as response:
+        with client.end_users.with_streaming_response.retrieve(
+            "end_usr_1234567abcdefg",
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -82,6 +88,13 @@ class TestEndUsers:
             assert_matches_type(EndUser, end_user, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_retrieve(self, client: Conductor) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            client.end_users.with_raw_response.retrieve(
+                "",
+            )
 
     @parametrize
     def test_method_list(self, client: Conductor) -> None:
@@ -110,12 +123,18 @@ class TestEndUsers:
 
     @parametrize
     def test_method_ping(self, client: Conductor) -> None:
-        end_user = client.end_users.ping()
+        end_user = client.end_users.ping(
+            integration_slug="quickbooks_desktop",
+            id="end_user_1234567abcdefg",
+        )
         assert_matches_type(EndUserPingResponse, end_user, path=["response"])
 
     @parametrize
     def test_raw_response_ping(self, client: Conductor) -> None:
-        response = client.end_users.with_raw_response.ping()
+        response = client.end_users.with_raw_response.ping(
+            integration_slug="quickbooks_desktop",
+            id="end_user_1234567abcdefg",
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -124,7 +143,10 @@ class TestEndUsers:
 
     @parametrize
     def test_streaming_response_ping(self, client: Conductor) -> None:
-        with client.end_users.with_streaming_response.ping() as response:
+        with client.end_users.with_streaming_response.ping(
+            integration_slug="quickbooks_desktop",
+            id="end_user_1234567abcdefg",
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -134,8 +156,18 @@ class TestEndUsers:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_path_params_ping(self, client: Conductor) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            client.end_users.with_raw_response.ping(
+                integration_slug="quickbooks_desktop",
+                id="",
+            )
+
+    @parametrize
     def test_method_request(self, client: Conductor) -> None:
         end_user = client.end_users.request(
+            integration_slug="quickbooks_desktop",
+            id="end_usr_1234567abcdefg",
             body={},
         )
         assert_matches_type(object, end_user, path=["response"])
@@ -143,6 +175,8 @@ class TestEndUsers:
     @parametrize
     def test_raw_response_request(self, client: Conductor) -> None:
         response = client.end_users.with_raw_response.request(
+            integration_slug="quickbooks_desktop",
+            id="end_usr_1234567abcdefg",
             body={},
         )
 
@@ -154,6 +188,8 @@ class TestEndUsers:
     @parametrize
     def test_streaming_response_request(self, client: Conductor) -> None:
         with client.end_users.with_streaming_response.request(
+            integration_slug="quickbooks_desktop",
+            id="end_usr_1234567abcdefg",
             body={},
         ) as response:
             assert not response.is_closed
@@ -163,6 +199,15 @@ class TestEndUsers:
             assert_matches_type(object, end_user, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_request(self, client: Conductor) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            client.end_users.with_raw_response.request(
+                integration_slug="quickbooks_desktop",
+                id="",
+                body={},
+            )
 
 
 class TestAsyncEndUsers:
@@ -207,12 +252,16 @@ class TestAsyncEndUsers:
 
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncConductor) -> None:
-        end_user = await async_client.end_users.retrieve()
+        end_user = await async_client.end_users.retrieve(
+            "end_usr_1234567abcdefg",
+        )
         assert_matches_type(EndUser, end_user, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncConductor) -> None:
-        response = await async_client.end_users.with_raw_response.retrieve()
+        response = await async_client.end_users.with_raw_response.retrieve(
+            "end_usr_1234567abcdefg",
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -221,7 +270,9 @@ class TestAsyncEndUsers:
 
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncConductor) -> None:
-        async with async_client.end_users.with_streaming_response.retrieve() as response:
+        async with async_client.end_users.with_streaming_response.retrieve(
+            "end_usr_1234567abcdefg",
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -229,6 +280,13 @@ class TestAsyncEndUsers:
             assert_matches_type(EndUser, end_user, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_retrieve(self, async_client: AsyncConductor) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            await async_client.end_users.with_raw_response.retrieve(
+                "",
+            )
 
     @parametrize
     async def test_method_list(self, async_client: AsyncConductor) -> None:
@@ -257,12 +315,18 @@ class TestAsyncEndUsers:
 
     @parametrize
     async def test_method_ping(self, async_client: AsyncConductor) -> None:
-        end_user = await async_client.end_users.ping()
+        end_user = await async_client.end_users.ping(
+            integration_slug="quickbooks_desktop",
+            id="end_user_1234567abcdefg",
+        )
         assert_matches_type(EndUserPingResponse, end_user, path=["response"])
 
     @parametrize
     async def test_raw_response_ping(self, async_client: AsyncConductor) -> None:
-        response = await async_client.end_users.with_raw_response.ping()
+        response = await async_client.end_users.with_raw_response.ping(
+            integration_slug="quickbooks_desktop",
+            id="end_user_1234567abcdefg",
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -271,7 +335,10 @@ class TestAsyncEndUsers:
 
     @parametrize
     async def test_streaming_response_ping(self, async_client: AsyncConductor) -> None:
-        async with async_client.end_users.with_streaming_response.ping() as response:
+        async with async_client.end_users.with_streaming_response.ping(
+            integration_slug="quickbooks_desktop",
+            id="end_user_1234567abcdefg",
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -281,8 +348,18 @@ class TestAsyncEndUsers:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    async def test_path_params_ping(self, async_client: AsyncConductor) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            await async_client.end_users.with_raw_response.ping(
+                integration_slug="quickbooks_desktop",
+                id="",
+            )
+
+    @parametrize
     async def test_method_request(self, async_client: AsyncConductor) -> None:
         end_user = await async_client.end_users.request(
+            integration_slug="quickbooks_desktop",
+            id="end_usr_1234567abcdefg",
             body={},
         )
         assert_matches_type(object, end_user, path=["response"])
@@ -290,6 +367,8 @@ class TestAsyncEndUsers:
     @parametrize
     async def test_raw_response_request(self, async_client: AsyncConductor) -> None:
         response = await async_client.end_users.with_raw_response.request(
+            integration_slug="quickbooks_desktop",
+            id="end_usr_1234567abcdefg",
             body={},
         )
 
@@ -301,6 +380,8 @@ class TestAsyncEndUsers:
     @parametrize
     async def test_streaming_response_request(self, async_client: AsyncConductor) -> None:
         async with async_client.end_users.with_streaming_response.request(
+            integration_slug="quickbooks_desktop",
+            id="end_usr_1234567abcdefg",
             body={},
         ) as response:
             assert not response.is_closed
@@ -310,3 +391,12 @@ class TestAsyncEndUsers:
             assert_matches_type(object, end_user, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_request(self, async_client: AsyncConductor) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            await async_client.end_users.with_raw_response.request(
+                integration_slug="quickbooks_desktop",
+                id="",
+                body={},
+            )

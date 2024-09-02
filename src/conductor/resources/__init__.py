@@ -1,5 +1,13 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+from .qbd import (
+    QbdResource,
+    AsyncQbdResource,
+    QbdResourceWithRawResponse,
+    AsyncQbdResourceWithRawResponse,
+    QbdResourceWithStreamingResponse,
+    AsyncQbdResourceWithStreamingResponse,
+)
 from .end_users import (
     EndUsersResource,
     AsyncEndUsersResource,
@@ -15,14 +23,6 @@ from .auth_sessions import (
     AsyncAuthSessionsResourceWithRawResponse,
     AuthSessionsResourceWithStreamingResponse,
     AsyncAuthSessionsResourceWithStreamingResponse,
-)
-from .quickbooks_desktop import (
-    QuickbooksDesktopResource,
-    AsyncQuickbooksDesktopResource,
-    QuickbooksDesktopResourceWithRawResponse,
-    AsyncQuickbooksDesktopResourceWithRawResponse,
-    QuickbooksDesktopResourceWithStreamingResponse,
-    AsyncQuickbooksDesktopResourceWithStreamingResponse,
 )
 from .integration_connections import (
     IntegrationConnectionsResource,
@@ -52,10 +52,10 @@ __all__ = [
     "AsyncIntegrationConnectionsResourceWithRawResponse",
     "IntegrationConnectionsResourceWithStreamingResponse",
     "AsyncIntegrationConnectionsResourceWithStreamingResponse",
-    "QuickbooksDesktopResource",
-    "AsyncQuickbooksDesktopResource",
-    "QuickbooksDesktopResourceWithRawResponse",
-    "AsyncQuickbooksDesktopResourceWithRawResponse",
-    "QuickbooksDesktopResourceWithStreamingResponse",
-    "AsyncQuickbooksDesktopResourceWithStreamingResponse",
+    "QbdResource",
+    "AsyncQbdResource",
+    "QbdResourceWithRawResponse",
+    "AsyncQbdResourceWithRawResponse",
+    "QbdResourceWithStreamingResponse",
+    "AsyncQbdResourceWithStreamingResponse",
 ]

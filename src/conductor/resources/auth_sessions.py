@@ -92,6 +92,7 @@ class AuthSessionsResource(SyncAPIResource):
 
     def retrieve(
         self,
+        id: str,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -100,9 +101,24 @@ class AuthSessionsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AuthSession:
-        """Retrieves the details of an AuthSession that has previously been created."""
+        """
+        Retrieves the details of an AuthSession that has previously been created.
+
+        Args:
+          id: The ID of the AuthSession to retrieve.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._get(
-            "/auth-sessions/:id",
+            f"/auth-sessions/{id}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -178,6 +194,7 @@ class AsyncAuthSessionsResource(AsyncAPIResource):
 
     async def retrieve(
         self,
+        id: str,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -186,9 +203,24 @@ class AsyncAuthSessionsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AuthSession:
-        """Retrieves the details of an AuthSession that has previously been created."""
+        """
+        Retrieves the details of an AuthSession that has previously been created.
+
+        Args:
+          id: The ID of the AuthSession to retrieve.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._get(
-            "/auth-sessions/:id",
+            f"/auth-sessions/{id}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

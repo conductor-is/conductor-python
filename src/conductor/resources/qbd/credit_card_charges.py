@@ -19,10 +19,10 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
-from ...types.quickbooks_desktop import credit_card_charge_list_params, credit_card_charge_create_params
-from ...types.quickbooks_desktop.qbd_credit_card_charge import QbdCreditCardCharge
-from ...types.quickbooks_desktop.credit_card_charge_list_response import CreditCardChargeListResponse
+from ...types.qbd import credit_card_charge_list_params, credit_card_charge_create_params
+from ...pagination import SyncMyCursorPage, AsyncMyCursorPage
+from ..._base_client import AsyncPaginator, make_request_options
+from ...types.qbd.qbd_credit_card_charge import QbdCreditCardCharge
 
 __all__ = ["CreditCardChargesResource", "AsyncCreditCardChargesResource"]
 
@@ -131,7 +131,7 @@ class CreditCardChargesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CreditCardChargeListResponse:
+    ) -> SyncMyCursorPage[QbdCreditCardCharge]:
         """
         Returns a list of credit card charges.
 
@@ -201,8 +201,9 @@ class CreditCardChargesResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
-        return self._get(
+        return self._get_api_list(
             "/quickbooks-desktop/credit-card-charges",
+            page=SyncMyCursorPage[QbdCreditCardCharge],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -230,7 +231,7 @@ class CreditCardChargesResource(SyncAPIResource):
                     credit_card_charge_list_params.CreditCardChargeListParams,
                 ),
             ),
-            cast_to=CreditCardChargeListResponse,
+            model=QbdCreditCardCharge,
         )
 
 
@@ -312,7 +313,7 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
             cast_to=QbdCreditCardCharge,
         )
 
-    async def list(
+    def list(
         self,
         *,
         conductor_end_user_id: str,
@@ -338,7 +339,7 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CreditCardChargeListResponse:
+    ) -> AsyncPaginator[QbdCreditCardCharge, AsyncMyCursorPage[QbdCreditCardCharge]]:
         """
         Returns a list of credit card charges.
 
@@ -408,14 +409,15 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
-        return await self._get(
+        return self._get_api_list(
             "/quickbooks-desktop/credit-card-charges",
+            page=AsyncMyCursorPage[QbdCreditCardCharge],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "id": id,
                         "account_id": account_id,
@@ -437,7 +439,7 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
                     credit_card_charge_list_params.CreditCardChargeListParams,
                 ),
             ),
-            cast_to=CreditCardChargeListResponse,
+            model=QbdCreditCardCharge,
         )
 
 

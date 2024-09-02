@@ -9,29 +9,28 @@ import pytest
 
 from conductor import Conductor, AsyncConductor
 from tests.utils import assert_matches_type
-from conductor.types.quickbooks_desktop import QbdBill, BillListResponse
+from conductor.types.qbd import QbdCreditCardCharge
+from conductor.pagination import SyncMyCursorPage, AsyncMyCursorPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
 
-class TestBills:
+class TestCreditCardCharges:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
     def test_method_create(self, client: Conductor) -> None:
-        bill = client.quickbooks_desktop.bills.create(
-            vendor_id="vendorId",
+        credit_card_charge = client.qbd.credit_card_charges.create(
+            account_id="accountId",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdBill, bill, path=["response"])
+        assert_matches_type(QbdCreditCardCharge, credit_card_charge, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Conductor) -> None:
-        bill = client.quickbooks_desktop.bills.create(
-            vendor_id="vendorId",
+        credit_card_charge = client.qbd.credit_card_charges.create(
+            account_id="accountId",
             conductor_end_user_id="end_usr_1234567abcdefg",
-            accounts_payable_account_id="accountsPayableAccountId",
-            due_date="dueDate",
             exchange_rate=0,
             expense_lines=[
                 {
@@ -313,71 +312,57 @@ class TestBills:
                     "unit_of_measure": "unitOfMeasure",
                 },
             ],
-            link_to_transaction_ids=["string", "string", "string"],
             memo="memo",
+            payee_id="payeeId",
             ref_number="CHARGE-1234",
             sales_tax_code_id="salesTaxCodeId",
-            terms_id="termsId",
             transaction_date="transactionDate",
-            vendor_address={
-                "city": "San Francisco",
-                "country": "United States",
-                "line1": "548 Market St.",
-                "line2": "Suite 100",
-                "line3": "line3",
-                "line4": "line4",
-                "line5": "line5",
-                "note": "Conductor HQ",
-                "postal_code": "94110",
-                "state": "CA",
-            },
         )
-        assert_matches_type(QbdBill, bill, path=["response"])
+        assert_matches_type(QbdCreditCardCharge, credit_card_charge, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: Conductor) -> None:
-        response = client.quickbooks_desktop.bills.with_raw_response.create(
-            vendor_id="vendorId",
+        response = client.qbd.credit_card_charges.with_raw_response.create(
+            account_id="accountId",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        bill = response.parse()
-        assert_matches_type(QbdBill, bill, path=["response"])
+        credit_card_charge = response.parse()
+        assert_matches_type(QbdCreditCardCharge, credit_card_charge, path=["response"])
 
     @parametrize
     def test_streaming_response_create(self, client: Conductor) -> None:
-        with client.quickbooks_desktop.bills.with_streaming_response.create(
-            vendor_id="vendorId",
+        with client.qbd.credit_card_charges.with_streaming_response.create(
+            account_id="accountId",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            bill = response.parse()
-            assert_matches_type(QbdBill, bill, path=["response"])
+            credit_card_charge = response.parse()
+            assert_matches_type(QbdCreditCardCharge, credit_card_charge, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_list(self, client: Conductor) -> None:
-        bill = client.quickbooks_desktop.bills.list(
+        credit_card_charge = client.qbd.credit_card_charges.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(BillListResponse, bill, path=["response"])
+        assert_matches_type(SyncMyCursorPage[QbdCreditCardCharge], credit_card_charge, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Conductor) -> None:
-        bill = client.quickbooks_desktop.bills.list(
+        credit_card_charge = client.qbd.credit_card_charges.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
             id="123ABC-1234567890",
-            account_id="80000001-1234567890",
+            account_id="string",
             cursor="12345678-abcd-abcd-example-1234567890ab",
             include_line_items=True,
-            include_linked_transactions=True,
             limit=1,
-            paid_status="all",
+            payee_id="string",
             ref_number="CHARGE-1234",
             ref_number_contains="CHARGE",
             ref_number_ends_with="1234",
@@ -388,53 +373,50 @@ class TestBills:
             transaction_date_to="transactionDateTo",
             updated_after="updatedAfter",
             updated_before="updatedBefore",
-            vendor_id="80000001-1234567890",
         )
-        assert_matches_type(BillListResponse, bill, path=["response"])
+        assert_matches_type(SyncMyCursorPage[QbdCreditCardCharge], credit_card_charge, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Conductor) -> None:
-        response = client.quickbooks_desktop.bills.with_raw_response.list(
+        response = client.qbd.credit_card_charges.with_raw_response.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        bill = response.parse()
-        assert_matches_type(BillListResponse, bill, path=["response"])
+        credit_card_charge = response.parse()
+        assert_matches_type(SyncMyCursorPage[QbdCreditCardCharge], credit_card_charge, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Conductor) -> None:
-        with client.quickbooks_desktop.bills.with_streaming_response.list(
+        with client.qbd.credit_card_charges.with_streaming_response.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            bill = response.parse()
-            assert_matches_type(BillListResponse, bill, path=["response"])
+            credit_card_charge = response.parse()
+            assert_matches_type(SyncMyCursorPage[QbdCreditCardCharge], credit_card_charge, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
 
-class TestAsyncBills:
+class TestAsyncCreditCardCharges:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
     async def test_method_create(self, async_client: AsyncConductor) -> None:
-        bill = await async_client.quickbooks_desktop.bills.create(
-            vendor_id="vendorId",
+        credit_card_charge = await async_client.qbd.credit_card_charges.create(
+            account_id="accountId",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdBill, bill, path=["response"])
+        assert_matches_type(QbdCreditCardCharge, credit_card_charge, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncConductor) -> None:
-        bill = await async_client.quickbooks_desktop.bills.create(
-            vendor_id="vendorId",
+        credit_card_charge = await async_client.qbd.credit_card_charges.create(
+            account_id="accountId",
             conductor_end_user_id="end_usr_1234567abcdefg",
-            accounts_payable_account_id="accountsPayableAccountId",
-            due_date="dueDate",
             exchange_rate=0,
             expense_lines=[
                 {
@@ -716,71 +698,57 @@ class TestAsyncBills:
                     "unit_of_measure": "unitOfMeasure",
                 },
             ],
-            link_to_transaction_ids=["string", "string", "string"],
             memo="memo",
+            payee_id="payeeId",
             ref_number="CHARGE-1234",
             sales_tax_code_id="salesTaxCodeId",
-            terms_id="termsId",
             transaction_date="transactionDate",
-            vendor_address={
-                "city": "San Francisco",
-                "country": "United States",
-                "line1": "548 Market St.",
-                "line2": "Suite 100",
-                "line3": "line3",
-                "line4": "line4",
-                "line5": "line5",
-                "note": "Conductor HQ",
-                "postal_code": "94110",
-                "state": "CA",
-            },
         )
-        assert_matches_type(QbdBill, bill, path=["response"])
+        assert_matches_type(QbdCreditCardCharge, credit_card_charge, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncConductor) -> None:
-        response = await async_client.quickbooks_desktop.bills.with_raw_response.create(
-            vendor_id="vendorId",
+        response = await async_client.qbd.credit_card_charges.with_raw_response.create(
+            account_id="accountId",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        bill = await response.parse()
-        assert_matches_type(QbdBill, bill, path=["response"])
+        credit_card_charge = await response.parse()
+        assert_matches_type(QbdCreditCardCharge, credit_card_charge, path=["response"])
 
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncConductor) -> None:
-        async with async_client.quickbooks_desktop.bills.with_streaming_response.create(
-            vendor_id="vendorId",
+        async with async_client.qbd.credit_card_charges.with_streaming_response.create(
+            account_id="accountId",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            bill = await response.parse()
-            assert_matches_type(QbdBill, bill, path=["response"])
+            credit_card_charge = await response.parse()
+            assert_matches_type(QbdCreditCardCharge, credit_card_charge, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_list(self, async_client: AsyncConductor) -> None:
-        bill = await async_client.quickbooks_desktop.bills.list(
+        credit_card_charge = await async_client.qbd.credit_card_charges.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(BillListResponse, bill, path=["response"])
+        assert_matches_type(AsyncMyCursorPage[QbdCreditCardCharge], credit_card_charge, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncConductor) -> None:
-        bill = await async_client.quickbooks_desktop.bills.list(
+        credit_card_charge = await async_client.qbd.credit_card_charges.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
             id="123ABC-1234567890",
-            account_id="80000001-1234567890",
+            account_id="string",
             cursor="12345678-abcd-abcd-example-1234567890ab",
             include_line_items=True,
-            include_linked_transactions=True,
             limit=1,
-            paid_status="all",
+            payee_id="string",
             ref_number="CHARGE-1234",
             ref_number_contains="CHARGE",
             ref_number_ends_with="1234",
@@ -791,30 +759,29 @@ class TestAsyncBills:
             transaction_date_to="transactionDateTo",
             updated_after="updatedAfter",
             updated_before="updatedBefore",
-            vendor_id="80000001-1234567890",
         )
-        assert_matches_type(BillListResponse, bill, path=["response"])
+        assert_matches_type(AsyncMyCursorPage[QbdCreditCardCharge], credit_card_charge, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncConductor) -> None:
-        response = await async_client.quickbooks_desktop.bills.with_raw_response.list(
+        response = await async_client.qbd.credit_card_charges.with_raw_response.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        bill = await response.parse()
-        assert_matches_type(BillListResponse, bill, path=["response"])
+        credit_card_charge = await response.parse()
+        assert_matches_type(AsyncMyCursorPage[QbdCreditCardCharge], credit_card_charge, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncConductor) -> None:
-        async with async_client.quickbooks_desktop.bills.with_streaming_response.list(
+        async with async_client.qbd.credit_card_charges.with_streaming_response.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            bill = await response.parse()
-            assert_matches_type(BillListResponse, bill, path=["response"])
+            credit_card_charge = await response.parse()
+            assert_matches_type(AsyncMyCursorPage[QbdCreditCardCharge], credit_card_charge, path=["response"])
 
         assert cast(Any, response.is_closed) is True

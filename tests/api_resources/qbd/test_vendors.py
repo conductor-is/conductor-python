@@ -9,29 +9,27 @@ import pytest
 
 from conductor import Conductor, AsyncConductor
 from tests.utils import assert_matches_type
-from conductor.types.quickbooks_desktop import (
-    QbdCustomer,
-    CustomerListResponse,
-)
+from conductor.types.qbd import QbdVendor
+from conductor.pagination import SyncMyCursorPage, AsyncMyCursorPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
 
-class TestCustomers:
+class TestVendors:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
     def test_method_create(self, client: Conductor) -> None:
-        customer = client.quickbooks_desktop.customers.create(
-            name="John Doe",
+        vendor = client.qbd.vendors.create(
+            name="Acme Inc.",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdCustomer, customer, path=["response"])
+        assert_matches_type(QbdVendor, vendor, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Conductor) -> None:
-        customer = client.quickbooks_desktop.customers.create(
-            name="John Doe",
+        vendor = client.qbd.vendors.create(
+            name="Acme Inc.",
             conductor_end_user_id="end_usr_1234567abcdefg",
             account_number="1234567890",
             additional_contacts=[
@@ -114,18 +112,12 @@ class TestCustomers:
                 "postal_code": "94110",
                 "state": "CA",
             },
+            billing_rate_id="80000001-1234567890",
             cc="hi@conductor.is",
+            check_name="Acme Inc.",
             class_id="80000001-1234567890",
             company_name="Acme Inc.",
             contact="John Doe",
-            credit_card={
-                "address": "1234 Main St, Anytown, USA, 12345",
-                "address_zip": "12345",
-                "expiration_month": 12,
-                "expiration_year": 2024,
-                "name": "John Doe",
-                "number": "xxxxxxxxxxxx1234",
-            },
             credit_limit="1000.00",
             currency_id="80000001-1234567890",
             custom_contact_fields=[
@@ -142,33 +134,28 @@ class TestCustomers:
                     "value": "555-555-5555",
                 },
             ],
-            customer_type_id="80000001-1234567890",
             email="hi@conductor.is",
             external_id="12345678-abcd-1234-abcd-1234567890ab",
             fax="555-555-5555",
             first_name="John",
             is_active=True,
-            item_sales_tax_id="80000001-1234567890",
-            job_description="Kitchen renovation project",
-            job_end_date="jobEndDate",
-            job_projected_end_date="jobProjectedEndDate",
-            job_start_date="jobStartDate",
-            job_status="Awarded",
+            is_eligible_for1099=True,
+            is_sales_tax_agency=True,
+            is_tax_on_tax=True,
+            is_tax_tracked_on_purchases=True,
+            is_tax_tracked_on_sales=True,
             job_title="CEO",
-            job_type_id="80000001-1234567890",
             last_name="Doe",
             middle_name="Q.",
+            note="Notes about this vendor.",
             open_balance="1000.00",
             open_balance_date="openBalanceDate",
-            parent_id="80000001-1234567890",
             phone="555-555-5555",
-            preferred_delivery_method="Email",
-            preferred_payment_method_id="80000001-1234567890",
-            price_level_id="80000001-1234567890",
-            resale_number="1234567890",
-            sales_representative_id="80000001-1234567890",
+            prefill_account_ids=["80000001-1234567890", "80000001-1234567891"],
+            reporting_period="Monthly",
             sales_tax_code_id="80000001-1234567890",
-            sales_tax_country="Australia",
+            sales_tax_country="australia",
+            sales_tax_return_id="80000001-1234567890",
             salutation="Mr.",
             shipping_address={
                 "city": "San Francisco",
@@ -182,91 +169,51 @@ class TestCustomers:
                 "postal_code": "94110",
                 "state": "CA",
             },
-            ship_to_addresses=[
-                {
-                    "name": "Acme Inc.",
-                    "city": "San Francisco",
-                    "country": "United States",
-                    "default_ship_to": True,
-                    "line1": "548 Market St.",
-                    "line2": "Suite 100",
-                    "line3": "line3",
-                    "line4": "line4",
-                    "line5": "line5",
-                    "note": "Conductor HQ",
-                    "postal_code": "94110",
-                    "state": "CA",
-                },
-                {
-                    "name": "Acme Inc.",
-                    "city": "San Francisco",
-                    "country": "United States",
-                    "default_ship_to": True,
-                    "line1": "548 Market St.",
-                    "line2": "Suite 100",
-                    "line3": "line3",
-                    "line4": "line4",
-                    "line5": "line5",
-                    "note": "Conductor HQ",
-                    "postal_code": "94110",
-                    "state": "CA",
-                },
-                {
-                    "name": "Acme Inc.",
-                    "city": "San Francisco",
-                    "country": "United States",
-                    "default_ship_to": True,
-                    "line1": "548 Market St.",
-                    "line2": "Suite 100",
-                    "line3": "line3",
-                    "line4": "line4",
-                    "line5": "line5",
-                    "note": "Conductor HQ",
-                    "postal_code": "94110",
-                    "state": "CA",
-                },
-            ],
+            tax_id="1234567890",
+            tax_on_purchases_account_id="80000001-1234567890",
+            tax_on_sales_account_id="80000001-1234567890",
             tax_registration_number="1234567890",
             terms_id="80000001-1234567890",
+            vendor_type_id="80000001-1234567890",
         )
-        assert_matches_type(QbdCustomer, customer, path=["response"])
+        assert_matches_type(QbdVendor, vendor, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: Conductor) -> None:
-        response = client.quickbooks_desktop.customers.with_raw_response.create(
-            name="John Doe",
+        response = client.qbd.vendors.with_raw_response.create(
+            name="Acme Inc.",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        customer = response.parse()
-        assert_matches_type(QbdCustomer, customer, path=["response"])
+        vendor = response.parse()
+        assert_matches_type(QbdVendor, vendor, path=["response"])
 
     @parametrize
     def test_streaming_response_create(self, client: Conductor) -> None:
-        with client.quickbooks_desktop.customers.with_streaming_response.create(
-            name="John Doe",
+        with client.qbd.vendors.with_streaming_response.create(
+            name="Acme Inc.",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            customer = response.parse()
-            assert_matches_type(QbdCustomer, customer, path=["response"])
+            vendor = response.parse()
+            assert_matches_type(QbdVendor, vendor, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_list(self, client: Conductor) -> None:
-        customer = client.quickbooks_desktop.customers.list(
+        vendor = client.qbd.vendors.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(CustomerListResponse, customer, path=["response"])
+        assert_matches_type(SyncMyCursorPage[QbdVendor], vendor, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Conductor) -> None:
-        customer = client.quickbooks_desktop.customers.list(
+        vendor = client.qbd.vendors.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
             id="80000001-1234567890",
             class_id="80000001-1234567890",
@@ -288,48 +235,48 @@ class TestCustomers:
             updated_after="updatedAfter",
             updated_before="updatedBefore",
         )
-        assert_matches_type(CustomerListResponse, customer, path=["response"])
+        assert_matches_type(SyncMyCursorPage[QbdVendor], vendor, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Conductor) -> None:
-        response = client.quickbooks_desktop.customers.with_raw_response.list(
+        response = client.qbd.vendors.with_raw_response.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        customer = response.parse()
-        assert_matches_type(CustomerListResponse, customer, path=["response"])
+        vendor = response.parse()
+        assert_matches_type(SyncMyCursorPage[QbdVendor], vendor, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Conductor) -> None:
-        with client.quickbooks_desktop.customers.with_streaming_response.list(
+        with client.qbd.vendors.with_streaming_response.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            customer = response.parse()
-            assert_matches_type(CustomerListResponse, customer, path=["response"])
+            vendor = response.parse()
+            assert_matches_type(SyncMyCursorPage[QbdVendor], vendor, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
 
-class TestAsyncCustomers:
+class TestAsyncVendors:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
     async def test_method_create(self, async_client: AsyncConductor) -> None:
-        customer = await async_client.quickbooks_desktop.customers.create(
-            name="John Doe",
+        vendor = await async_client.qbd.vendors.create(
+            name="Acme Inc.",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdCustomer, customer, path=["response"])
+        assert_matches_type(QbdVendor, vendor, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncConductor) -> None:
-        customer = await async_client.quickbooks_desktop.customers.create(
-            name="John Doe",
+        vendor = await async_client.qbd.vendors.create(
+            name="Acme Inc.",
             conductor_end_user_id="end_usr_1234567abcdefg",
             account_number="1234567890",
             additional_contacts=[
@@ -412,18 +359,12 @@ class TestAsyncCustomers:
                 "postal_code": "94110",
                 "state": "CA",
             },
+            billing_rate_id="80000001-1234567890",
             cc="hi@conductor.is",
+            check_name="Acme Inc.",
             class_id="80000001-1234567890",
             company_name="Acme Inc.",
             contact="John Doe",
-            credit_card={
-                "address": "1234 Main St, Anytown, USA, 12345",
-                "address_zip": "12345",
-                "expiration_month": 12,
-                "expiration_year": 2024,
-                "name": "John Doe",
-                "number": "xxxxxxxxxxxx1234",
-            },
             credit_limit="1000.00",
             currency_id="80000001-1234567890",
             custom_contact_fields=[
@@ -440,33 +381,28 @@ class TestAsyncCustomers:
                     "value": "555-555-5555",
                 },
             ],
-            customer_type_id="80000001-1234567890",
             email="hi@conductor.is",
             external_id="12345678-abcd-1234-abcd-1234567890ab",
             fax="555-555-5555",
             first_name="John",
             is_active=True,
-            item_sales_tax_id="80000001-1234567890",
-            job_description="Kitchen renovation project",
-            job_end_date="jobEndDate",
-            job_projected_end_date="jobProjectedEndDate",
-            job_start_date="jobStartDate",
-            job_status="Awarded",
+            is_eligible_for1099=True,
+            is_sales_tax_agency=True,
+            is_tax_on_tax=True,
+            is_tax_tracked_on_purchases=True,
+            is_tax_tracked_on_sales=True,
             job_title="CEO",
-            job_type_id="80000001-1234567890",
             last_name="Doe",
             middle_name="Q.",
+            note="Notes about this vendor.",
             open_balance="1000.00",
             open_balance_date="openBalanceDate",
-            parent_id="80000001-1234567890",
             phone="555-555-5555",
-            preferred_delivery_method="Email",
-            preferred_payment_method_id="80000001-1234567890",
-            price_level_id="80000001-1234567890",
-            resale_number="1234567890",
-            sales_representative_id="80000001-1234567890",
+            prefill_account_ids=["80000001-1234567890", "80000001-1234567891"],
+            reporting_period="Monthly",
             sales_tax_code_id="80000001-1234567890",
-            sales_tax_country="Australia",
+            sales_tax_country="australia",
+            sales_tax_return_id="80000001-1234567890",
             salutation="Mr.",
             shipping_address={
                 "city": "San Francisco",
@@ -480,91 +416,51 @@ class TestAsyncCustomers:
                 "postal_code": "94110",
                 "state": "CA",
             },
-            ship_to_addresses=[
-                {
-                    "name": "Acme Inc.",
-                    "city": "San Francisco",
-                    "country": "United States",
-                    "default_ship_to": True,
-                    "line1": "548 Market St.",
-                    "line2": "Suite 100",
-                    "line3": "line3",
-                    "line4": "line4",
-                    "line5": "line5",
-                    "note": "Conductor HQ",
-                    "postal_code": "94110",
-                    "state": "CA",
-                },
-                {
-                    "name": "Acme Inc.",
-                    "city": "San Francisco",
-                    "country": "United States",
-                    "default_ship_to": True,
-                    "line1": "548 Market St.",
-                    "line2": "Suite 100",
-                    "line3": "line3",
-                    "line4": "line4",
-                    "line5": "line5",
-                    "note": "Conductor HQ",
-                    "postal_code": "94110",
-                    "state": "CA",
-                },
-                {
-                    "name": "Acme Inc.",
-                    "city": "San Francisco",
-                    "country": "United States",
-                    "default_ship_to": True,
-                    "line1": "548 Market St.",
-                    "line2": "Suite 100",
-                    "line3": "line3",
-                    "line4": "line4",
-                    "line5": "line5",
-                    "note": "Conductor HQ",
-                    "postal_code": "94110",
-                    "state": "CA",
-                },
-            ],
+            tax_id="1234567890",
+            tax_on_purchases_account_id="80000001-1234567890",
+            tax_on_sales_account_id="80000001-1234567890",
             tax_registration_number="1234567890",
             terms_id="80000001-1234567890",
+            vendor_type_id="80000001-1234567890",
         )
-        assert_matches_type(QbdCustomer, customer, path=["response"])
+        assert_matches_type(QbdVendor, vendor, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncConductor) -> None:
-        response = await async_client.quickbooks_desktop.customers.with_raw_response.create(
-            name="John Doe",
+        response = await async_client.qbd.vendors.with_raw_response.create(
+            name="Acme Inc.",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        customer = await response.parse()
-        assert_matches_type(QbdCustomer, customer, path=["response"])
+        vendor = await response.parse()
+        assert_matches_type(QbdVendor, vendor, path=["response"])
 
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncConductor) -> None:
-        async with async_client.quickbooks_desktop.customers.with_streaming_response.create(
-            name="John Doe",
+        async with async_client.qbd.vendors.with_streaming_response.create(
+            name="Acme Inc.",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            customer = await response.parse()
-            assert_matches_type(QbdCustomer, customer, path=["response"])
+            vendor = await response.parse()
+            assert_matches_type(QbdVendor, vendor, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_list(self, async_client: AsyncConductor) -> None:
-        customer = await async_client.quickbooks_desktop.customers.list(
+        vendor = await async_client.qbd.vendors.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(CustomerListResponse, customer, path=["response"])
+        assert_matches_type(AsyncMyCursorPage[QbdVendor], vendor, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncConductor) -> None:
-        customer = await async_client.quickbooks_desktop.customers.list(
+        vendor = await async_client.qbd.vendors.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
             id="80000001-1234567890",
             class_id="80000001-1234567890",
@@ -586,28 +482,28 @@ class TestAsyncCustomers:
             updated_after="updatedAfter",
             updated_before="updatedBefore",
         )
-        assert_matches_type(CustomerListResponse, customer, path=["response"])
+        assert_matches_type(AsyncMyCursorPage[QbdVendor], vendor, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncConductor) -> None:
-        response = await async_client.quickbooks_desktop.customers.with_raw_response.list(
+        response = await async_client.qbd.vendors.with_raw_response.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        customer = await response.parse()
-        assert_matches_type(CustomerListResponse, customer, path=["response"])
+        vendor = await response.parse()
+        assert_matches_type(AsyncMyCursorPage[QbdVendor], vendor, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncConductor) -> None:
-        async with async_client.quickbooks_desktop.customers.with_streaming_response.list(
+        async with async_client.qbd.vendors.with_streaming_response.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            customer = await response.parse()
-            assert_matches_type(CustomerListResponse, customer, path=["response"])
+            vendor = await response.parse()
+            assert_matches_type(AsyncMyCursorPage[QbdVendor], vendor, path=["response"])
 
         assert cast(Any, response.is_closed) is True

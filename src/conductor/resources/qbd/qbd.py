@@ -61,10 +61,10 @@ from .credit_card_charges import (
     AsyncCreditCardChargesResourceWithStreamingResponse,
 )
 
-__all__ = ["QuickbooksDesktopResource", "AsyncQuickbooksDesktopResource"]
+__all__ = ["QbdResource", "AsyncQbdResource"]
 
 
-class QuickbooksDesktopResource(SyncAPIResource):
+class QbdResource(SyncAPIResource):
     @cached_property
     def accounts(self) -> AccountsResource:
         return AccountsResource(self._client)
@@ -94,15 +94,15 @@ class QuickbooksDesktopResource(SyncAPIResource):
         return VendorsResource(self._client)
 
     @cached_property
-    def with_raw_response(self) -> QuickbooksDesktopResourceWithRawResponse:
-        return QuickbooksDesktopResourceWithRawResponse(self)
+    def with_raw_response(self) -> QbdResourceWithRawResponse:
+        return QbdResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> QuickbooksDesktopResourceWithStreamingResponse:
-        return QuickbooksDesktopResourceWithStreamingResponse(self)
+    def with_streaming_response(self) -> QbdResourceWithStreamingResponse:
+        return QbdResourceWithStreamingResponse(self)
 
 
-class AsyncQuickbooksDesktopResource(AsyncAPIResource):
+class AsyncQbdResource(AsyncAPIResource):
     @cached_property
     def accounts(self) -> AsyncAccountsResource:
         return AsyncAccountsResource(self._client)
@@ -132,141 +132,141 @@ class AsyncQuickbooksDesktopResource(AsyncAPIResource):
         return AsyncVendorsResource(self._client)
 
     @cached_property
-    def with_raw_response(self) -> AsyncQuickbooksDesktopResourceWithRawResponse:
-        return AsyncQuickbooksDesktopResourceWithRawResponse(self)
+    def with_raw_response(self) -> AsyncQbdResourceWithRawResponse:
+        return AsyncQbdResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncQuickbooksDesktopResourceWithStreamingResponse:
-        return AsyncQuickbooksDesktopResourceWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncQbdResourceWithStreamingResponse:
+        return AsyncQbdResourceWithStreamingResponse(self)
 
 
-class QuickbooksDesktopResourceWithRawResponse:
-    def __init__(self, quickbooks_desktop: QuickbooksDesktopResource) -> None:
-        self._quickbooks_desktop = quickbooks_desktop
+class QbdResourceWithRawResponse:
+    def __init__(self, qbd: QbdResource) -> None:
+        self._qbd = qbd
 
     @cached_property
     def accounts(self) -> AccountsResourceWithRawResponse:
-        return AccountsResourceWithRawResponse(self._quickbooks_desktop.accounts)
+        return AccountsResourceWithRawResponse(self._qbd.accounts)
 
     @cached_property
     def bills(self) -> BillsResourceWithRawResponse:
-        return BillsResourceWithRawResponse(self._quickbooks_desktop.bills)
+        return BillsResourceWithRawResponse(self._qbd.bills)
 
     @cached_property
     def classes(self) -> ClassesResourceWithRawResponse:
-        return ClassesResourceWithRawResponse(self._quickbooks_desktop.classes)
+        return ClassesResourceWithRawResponse(self._qbd.classes)
 
     @cached_property
     def credit_card_charges(self) -> CreditCardChargesResourceWithRawResponse:
-        return CreditCardChargesResourceWithRawResponse(self._quickbooks_desktop.credit_card_charges)
+        return CreditCardChargesResourceWithRawResponse(self._qbd.credit_card_charges)
 
     @cached_property
     def customers(self) -> CustomersResourceWithRawResponse:
-        return CustomersResourceWithRawResponse(self._quickbooks_desktop.customers)
+        return CustomersResourceWithRawResponse(self._qbd.customers)
 
     @cached_property
     def invoices(self) -> InvoicesResourceWithRawResponse:
-        return InvoicesResourceWithRawResponse(self._quickbooks_desktop.invoices)
+        return InvoicesResourceWithRawResponse(self._qbd.invoices)
 
     @cached_property
     def vendors(self) -> VendorsResourceWithRawResponse:
-        return VendorsResourceWithRawResponse(self._quickbooks_desktop.vendors)
+        return VendorsResourceWithRawResponse(self._qbd.vendors)
 
 
-class AsyncQuickbooksDesktopResourceWithRawResponse:
-    def __init__(self, quickbooks_desktop: AsyncQuickbooksDesktopResource) -> None:
-        self._quickbooks_desktop = quickbooks_desktop
+class AsyncQbdResourceWithRawResponse:
+    def __init__(self, qbd: AsyncQbdResource) -> None:
+        self._qbd = qbd
 
     @cached_property
     def accounts(self) -> AsyncAccountsResourceWithRawResponse:
-        return AsyncAccountsResourceWithRawResponse(self._quickbooks_desktop.accounts)
+        return AsyncAccountsResourceWithRawResponse(self._qbd.accounts)
 
     @cached_property
     def bills(self) -> AsyncBillsResourceWithRawResponse:
-        return AsyncBillsResourceWithRawResponse(self._quickbooks_desktop.bills)
+        return AsyncBillsResourceWithRawResponse(self._qbd.bills)
 
     @cached_property
     def classes(self) -> AsyncClassesResourceWithRawResponse:
-        return AsyncClassesResourceWithRawResponse(self._quickbooks_desktop.classes)
+        return AsyncClassesResourceWithRawResponse(self._qbd.classes)
 
     @cached_property
     def credit_card_charges(self) -> AsyncCreditCardChargesResourceWithRawResponse:
-        return AsyncCreditCardChargesResourceWithRawResponse(self._quickbooks_desktop.credit_card_charges)
+        return AsyncCreditCardChargesResourceWithRawResponse(self._qbd.credit_card_charges)
 
     @cached_property
     def customers(self) -> AsyncCustomersResourceWithRawResponse:
-        return AsyncCustomersResourceWithRawResponse(self._quickbooks_desktop.customers)
+        return AsyncCustomersResourceWithRawResponse(self._qbd.customers)
 
     @cached_property
     def invoices(self) -> AsyncInvoicesResourceWithRawResponse:
-        return AsyncInvoicesResourceWithRawResponse(self._quickbooks_desktop.invoices)
+        return AsyncInvoicesResourceWithRawResponse(self._qbd.invoices)
 
     @cached_property
     def vendors(self) -> AsyncVendorsResourceWithRawResponse:
-        return AsyncVendorsResourceWithRawResponse(self._quickbooks_desktop.vendors)
+        return AsyncVendorsResourceWithRawResponse(self._qbd.vendors)
 
 
-class QuickbooksDesktopResourceWithStreamingResponse:
-    def __init__(self, quickbooks_desktop: QuickbooksDesktopResource) -> None:
-        self._quickbooks_desktop = quickbooks_desktop
+class QbdResourceWithStreamingResponse:
+    def __init__(self, qbd: QbdResource) -> None:
+        self._qbd = qbd
 
     @cached_property
     def accounts(self) -> AccountsResourceWithStreamingResponse:
-        return AccountsResourceWithStreamingResponse(self._quickbooks_desktop.accounts)
+        return AccountsResourceWithStreamingResponse(self._qbd.accounts)
 
     @cached_property
     def bills(self) -> BillsResourceWithStreamingResponse:
-        return BillsResourceWithStreamingResponse(self._quickbooks_desktop.bills)
+        return BillsResourceWithStreamingResponse(self._qbd.bills)
 
     @cached_property
     def classes(self) -> ClassesResourceWithStreamingResponse:
-        return ClassesResourceWithStreamingResponse(self._quickbooks_desktop.classes)
+        return ClassesResourceWithStreamingResponse(self._qbd.classes)
 
     @cached_property
     def credit_card_charges(self) -> CreditCardChargesResourceWithStreamingResponse:
-        return CreditCardChargesResourceWithStreamingResponse(self._quickbooks_desktop.credit_card_charges)
+        return CreditCardChargesResourceWithStreamingResponse(self._qbd.credit_card_charges)
 
     @cached_property
     def customers(self) -> CustomersResourceWithStreamingResponse:
-        return CustomersResourceWithStreamingResponse(self._quickbooks_desktop.customers)
+        return CustomersResourceWithStreamingResponse(self._qbd.customers)
 
     @cached_property
     def invoices(self) -> InvoicesResourceWithStreamingResponse:
-        return InvoicesResourceWithStreamingResponse(self._quickbooks_desktop.invoices)
+        return InvoicesResourceWithStreamingResponse(self._qbd.invoices)
 
     @cached_property
     def vendors(self) -> VendorsResourceWithStreamingResponse:
-        return VendorsResourceWithStreamingResponse(self._quickbooks_desktop.vendors)
+        return VendorsResourceWithStreamingResponse(self._qbd.vendors)
 
 
-class AsyncQuickbooksDesktopResourceWithStreamingResponse:
-    def __init__(self, quickbooks_desktop: AsyncQuickbooksDesktopResource) -> None:
-        self._quickbooks_desktop = quickbooks_desktop
+class AsyncQbdResourceWithStreamingResponse:
+    def __init__(self, qbd: AsyncQbdResource) -> None:
+        self._qbd = qbd
 
     @cached_property
     def accounts(self) -> AsyncAccountsResourceWithStreamingResponse:
-        return AsyncAccountsResourceWithStreamingResponse(self._quickbooks_desktop.accounts)
+        return AsyncAccountsResourceWithStreamingResponse(self._qbd.accounts)
 
     @cached_property
     def bills(self) -> AsyncBillsResourceWithStreamingResponse:
-        return AsyncBillsResourceWithStreamingResponse(self._quickbooks_desktop.bills)
+        return AsyncBillsResourceWithStreamingResponse(self._qbd.bills)
 
     @cached_property
     def classes(self) -> AsyncClassesResourceWithStreamingResponse:
-        return AsyncClassesResourceWithStreamingResponse(self._quickbooks_desktop.classes)
+        return AsyncClassesResourceWithStreamingResponse(self._qbd.classes)
 
     @cached_property
     def credit_card_charges(self) -> AsyncCreditCardChargesResourceWithStreamingResponse:
-        return AsyncCreditCardChargesResourceWithStreamingResponse(self._quickbooks_desktop.credit_card_charges)
+        return AsyncCreditCardChargesResourceWithStreamingResponse(self._qbd.credit_card_charges)
 
     @cached_property
     def customers(self) -> AsyncCustomersResourceWithStreamingResponse:
-        return AsyncCustomersResourceWithStreamingResponse(self._quickbooks_desktop.customers)
+        return AsyncCustomersResourceWithStreamingResponse(self._qbd.customers)
 
     @cached_property
     def invoices(self) -> AsyncInvoicesResourceWithStreamingResponse:
-        return AsyncInvoicesResourceWithStreamingResponse(self._quickbooks_desktop.invoices)
+        return AsyncInvoicesResourceWithStreamingResponse(self._qbd.invoices)
 
     @cached_property
     def vendors(self) -> AsyncVendorsResourceWithStreamingResponse:
-        return AsyncVendorsResourceWithStreamingResponse(self._quickbooks_desktop.vendors)
+        return AsyncVendorsResourceWithStreamingResponse(self._qbd.vendors)

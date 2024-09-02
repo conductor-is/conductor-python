@@ -63,12 +63,16 @@ class TestAuthSessions:
 
     @parametrize
     def test_method_retrieve(self, client: Conductor) -> None:
-        auth_session = client.auth_sessions.retrieve()
+        auth_session = client.auth_sessions.retrieve(
+            "auth_sess_1234567abcdefg",
+        )
         assert_matches_type(AuthSession, auth_session, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Conductor) -> None:
-        response = client.auth_sessions.with_raw_response.retrieve()
+        response = client.auth_sessions.with_raw_response.retrieve(
+            "auth_sess_1234567abcdefg",
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -77,7 +81,9 @@ class TestAuthSessions:
 
     @parametrize
     def test_streaming_response_retrieve(self, client: Conductor) -> None:
-        with client.auth_sessions.with_streaming_response.retrieve() as response:
+        with client.auth_sessions.with_streaming_response.retrieve(
+            "auth_sess_1234567abcdefg",
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -85,6 +91,13 @@ class TestAuthSessions:
             assert_matches_type(AuthSession, auth_session, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_retrieve(self, client: Conductor) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            client.auth_sessions.with_raw_response.retrieve(
+                "",
+            )
 
 
 class TestAsyncAuthSessions:
@@ -136,12 +149,16 @@ class TestAsyncAuthSessions:
 
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncConductor) -> None:
-        auth_session = await async_client.auth_sessions.retrieve()
+        auth_session = await async_client.auth_sessions.retrieve(
+            "auth_sess_1234567abcdefg",
+        )
         assert_matches_type(AuthSession, auth_session, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncConductor) -> None:
-        response = await async_client.auth_sessions.with_raw_response.retrieve()
+        response = await async_client.auth_sessions.with_raw_response.retrieve(
+            "auth_sess_1234567abcdefg",
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -150,7 +167,9 @@ class TestAsyncAuthSessions:
 
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncConductor) -> None:
-        async with async_client.auth_sessions.with_streaming_response.retrieve() as response:
+        async with async_client.auth_sessions.with_streaming_response.retrieve(
+            "auth_sess_1234567abcdefg",
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -158,3 +177,10 @@ class TestAsyncAuthSessions:
             assert_matches_type(AuthSession, auth_session, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_retrieve(self, async_client: AsyncConductor) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            await async_client.auth_sessions.with_raw_response.retrieve(
+                "",
+            )
