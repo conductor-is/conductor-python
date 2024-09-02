@@ -25,7 +25,7 @@ from ._utils import (
 )
 from ._version import __version__
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
-from ._exceptions import APIStatusError, ConductorError
+from ._exceptions import APIStatusError
 from ._base_client import (
     DEFAULT_MAX_RETRIES,
     SyncAPIClient,
@@ -54,12 +54,12 @@ class Conductor(SyncAPIClient):
     with_streaming_response: ConductorWithStreamedResponse
 
     # client options
-    bearer_token: str
+    object_object: str
 
     def __init__(
         self,
         *,
-        bearer_token: str | None = None,
+        object_object: str,
         base_url: str | httpx.URL | None = None,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         max_retries: int = DEFAULT_MAX_RETRIES,
@@ -79,17 +79,8 @@ class Conductor(SyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new synchronous conductor client instance.
-
-        This automatically infers the `bearer_token` argument from the `CONDUCTOR_SECRET_KEY` environment variable if it is not provided.
-        """
-        if bearer_token is None:
-            bearer_token = os.environ.get("CONDUCTOR_SECRET_KEY")
-        if bearer_token is None:
-            raise ConductorError(
-                "The bearer_token client option must be set either by passing bearer_token to the client or by setting the CONDUCTOR_SECRET_KEY environment variable"
-            )
-        self.bearer_token = bearer_token
+        """Construct a new synchronous conductor client instance."""
+        self.object_object = object_object
 
         if base_url is None:
             base_url = os.environ.get("CONDUCTOR_BASE_URL")
@@ -122,8 +113,8 @@ class Conductor(SyncAPIClient):
     @property
     @override
     def auth_headers(self) -> dict[str, str]:
-        bearer_token = self.bearer_token
-        return {"Authorization": f"Bearer {bearer_token}"}
+        object_object = self.object_object
+        return {"Authorization": f"Bearer {object_object}"}
 
     @property
     @override
@@ -137,7 +128,7 @@ class Conductor(SyncAPIClient):
     def copy(
         self,
         *,
-        bearer_token: str | None = None,
+        object_object: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
         http_client: httpx.Client | None = None,
@@ -171,7 +162,7 @@ class Conductor(SyncAPIClient):
 
         http_client = http_client or self._client
         return self.__class__(
-            bearer_token=bearer_token or self.bearer_token,
+            object_object=object_object or self.object_object,
             base_url=base_url or self.base_url,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
             http_client=http_client,
@@ -228,12 +219,12 @@ class AsyncConductor(AsyncAPIClient):
     with_streaming_response: AsyncConductorWithStreamedResponse
 
     # client options
-    bearer_token: str
+    object_object: str
 
     def __init__(
         self,
         *,
-        bearer_token: str | None = None,
+        object_object: str,
         base_url: str | httpx.URL | None = None,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         max_retries: int = DEFAULT_MAX_RETRIES,
@@ -253,17 +244,8 @@ class AsyncConductor(AsyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new async conductor client instance.
-
-        This automatically infers the `bearer_token` argument from the `CONDUCTOR_SECRET_KEY` environment variable if it is not provided.
-        """
-        if bearer_token is None:
-            bearer_token = os.environ.get("CONDUCTOR_SECRET_KEY")
-        if bearer_token is None:
-            raise ConductorError(
-                "The bearer_token client option must be set either by passing bearer_token to the client or by setting the CONDUCTOR_SECRET_KEY environment variable"
-            )
-        self.bearer_token = bearer_token
+        """Construct a new async conductor client instance."""
+        self.object_object = object_object
 
         if base_url is None:
             base_url = os.environ.get("CONDUCTOR_BASE_URL")
@@ -296,8 +278,8 @@ class AsyncConductor(AsyncAPIClient):
     @property
     @override
     def auth_headers(self) -> dict[str, str]:
-        bearer_token = self.bearer_token
-        return {"Authorization": f"Bearer {bearer_token}"}
+        object_object = self.object_object
+        return {"Authorization": f"Bearer {object_object}"}
 
     @property
     @override
@@ -311,7 +293,7 @@ class AsyncConductor(AsyncAPIClient):
     def copy(
         self,
         *,
-        bearer_token: str | None = None,
+        object_object: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
         http_client: httpx.AsyncClient | None = None,
@@ -345,7 +327,7 @@ class AsyncConductor(AsyncAPIClient):
 
         http_client = http_client or self._client
         return self.__class__(
-            bearer_token=bearer_token or self.bearer_token,
+            object_object=object_object or self.object_object,
             base_url=base_url or self.base_url,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
             http_client=http_client,
