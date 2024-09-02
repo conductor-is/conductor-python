@@ -20,10 +20,10 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
+from ...types.qbd import account_list_params, account_create_params
 from ..._base_client import make_request_options
-from ...types.quickbooks_desktop import account_list_params, account_create_params
-from ...types.quickbooks_desktop.qbd_account import QbdAccount
-from ...types.quickbooks_desktop.account_list_response import AccountListResponse
+from ...types.qbd.qbd_account import QbdAccount
+from ...types.qbd.account_list_response import AccountListResponse
 
 __all__ = ["AccountsResource", "AsyncAccountsResource"]
 

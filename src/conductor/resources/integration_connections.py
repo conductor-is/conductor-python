@@ -31,6 +31,7 @@ class IntegrationConnectionsResource(SyncAPIResource):
 
     def retrieve(
         self,
+        id: str,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -39,9 +40,24 @@ class IntegrationConnectionsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> IntegrationConnection:
-        """Retrieves an IntegrationConnection object."""
+        """
+        Retrieves an IntegrationConnection object.
+
+        Args:
+          id: The ID of the IntegrationConnection to retrieve.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._get(
-            "/integration-connections/:id",
+            f"/integration-connections/{id}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -79,6 +95,7 @@ class AsyncIntegrationConnectionsResource(AsyncAPIResource):
 
     async def retrieve(
         self,
+        id: str,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -87,9 +104,24 @@ class AsyncIntegrationConnectionsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> IntegrationConnection:
-        """Retrieves an IntegrationConnection object."""
+        """
+        Retrieves an IntegrationConnection object.
+
+        Args:
+          id: The ID of the IntegrationConnection to retrieve.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._get(
-            "/integration-connections/:id",
+            f"/integration-connections/{id}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

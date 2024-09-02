@@ -20,10 +20,10 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
-from ...types.quickbooks_desktop import customer_list_params, customer_create_params
-from ...types.quickbooks_desktop.qbd_customer import QbdCustomer
-from ...types.quickbooks_desktop.customer_list_response import CustomerListResponse
+from ...types.qbd import customer_list_params, customer_create_params
+from ...pagination import SyncMyCursorPage, AsyncMyCursorPage
+from ..._base_client import AsyncPaginator, make_request_options
+from ...types.qbd.qbd_customer import QbdCustomer
 
 __all__ = ["CustomersResource", "AsyncCustomersResource"]
 
@@ -305,7 +305,7 @@ class CustomersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CustomerListResponse:
+    ) -> SyncMyCursorPage[QbdCustomer]:
         """
         Returns a list of customers.
 
@@ -385,8 +385,9 @@ class CustomersResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
-        return self._get(
+        return self._get_api_list(
             "/quickbooks-desktop/customers",
+            page=SyncMyCursorPage[QbdCustomer],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -417,7 +418,7 @@ class CustomersResource(SyncAPIResource):
                     customer_list_params.CustomerListParams,
                 ),
             ),
-            cast_to=CustomerListResponse,
+            model=QbdCustomer,
         )
 
 
@@ -669,7 +670,7 @@ class AsyncCustomersResource(AsyncAPIResource):
             cast_to=QbdCustomer,
         )
 
-    async def list(
+    def list(
         self,
         *,
         conductor_end_user_id: str,
@@ -698,7 +699,7 @@ class AsyncCustomersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CustomerListResponse:
+    ) -> AsyncPaginator[QbdCustomer, AsyncMyCursorPage[QbdCustomer]]:
         """
         Returns a list of customers.
 
@@ -778,14 +779,15 @@ class AsyncCustomersResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
-        return await self._get(
+        return self._get_api_list(
             "/quickbooks-desktop/customers",
+            page=AsyncMyCursorPage[QbdCustomer],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "id": id,
                         "class_id": class_id,
@@ -810,7 +812,7 @@ class AsyncCustomersResource(AsyncAPIResource):
                     customer_list_params.CustomerListParams,
                 ),
             ),
-            cast_to=CustomerListResponse,
+            model=QbdCustomer,
         )
 
 

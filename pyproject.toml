@@ -5,7 +5,7 @@ description = "The official Python library for the conductor API"
 dynamic = ["readme"]
 license = "Apache-2.0"
 authors = [
-{ name = "Conductor", email = "dev-feedback@conductor.com" },
+{ name = "Conductor", email = "support@conductor.is" },
 ]
 dependencies = [
     "httpx>=0.23.0, <1",

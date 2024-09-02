@@ -20,10 +20,10 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
+from ...types.qbd import class_list_params, class_create_params
 from ..._base_client import make_request_options
-from ...types.quickbooks_desktop import class_list_params, class_create_params
-from ...types.quickbooks_desktop.qbd_class import QbdClass
-from ...types.quickbooks_desktop.class_list_response import ClassListResponse
+from ...types.qbd.qbd_class import QbdClass
+from ...types.qbd.class_list_response import ClassListResponse
 
 __all__ = ["ClassesResource", "AsyncClassesResource"]
 

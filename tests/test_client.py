@@ -18,8 +18,7 @@ from pydantic import ValidationError
 
 from conductor import Conductor, AsyncConductor, APIResponseValidationError
 from conductor._models import BaseModel, FinalRequestOptions
-from conductor._constants import RAW_RESPONSE_HEADER
-from conductor._exceptions import APIStatusError, APITimeoutError, APIResponseValidationError
+from conductor._exceptions import APIResponseValidationError
 from conductor._base_client import (
     DEFAULT_TIMEOUT,
     HTTPX_DEFAULT_TIMEOUT,
@@ -30,6 +29,7 @@ from conductor._base_client import (
 from .utils import update_env
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
+bearer_token = "My Bearer Token"
 
 
 def _get_params(client: BaseClient[Any, Any]) -> dict[str, str]:
@@ -42,16 +42,8 @@ def _low_retry_timeout(*_args: Any, **_kwargs: Any) -> float:
     return 0.1
 
 
-def _get_open_connections(client: Conductor | AsyncConductor) -> int:
-    transport = client._client._transport
-    assert isinstance(transport, httpx.HTTPTransport) or isinstance(transport, httpx.AsyncHTTPTransport)
-
-    pool = transport._pool
-    return len(pool._requests)
-
-
 class TestConductor:
-    client = Conductor(base_url=base_url, _strict_response_validation=True)
+    client = Conductor(base_url=base_url, bearer_token=bearer_token, _strict_response_validation=True)
 
     @pytest.mark.respx(base_url=base_url)
     def test_raw_response(self, respx_mock: MockRouter) -> None:
@@ -77,6 +69,10 @@ class TestConductor:
         copied = self.client.copy()
         assert id(copied) != id(self.client)
 
+        copied = self.client.copy(bearer_token="another My Bearer Token")
+        assert copied.bearer_token == "another My Bearer Token"
+        assert self.client.bearer_token == "My Bearer Token"
+
     def test_copy_default_options(self) -> None:
         # options that have a default are overridden correctly
         copied = self.client.copy(max_retries=7)
@@ -94,7 +90,12 @@ class TestConductor:
         assert isinstance(self.client.timeout, httpx.Timeout)
 
     def test_copy_default_headers(self) -> None:
-        client = Conductor(base_url=base_url, _strict_response_validation=True, default_headers={"X-Foo": "bar"})
+        client = Conductor(
+            base_url=base_url,
+            bearer_token=bearer_token,
+            _strict_response_validation=True,
+            default_headers={"X-Foo": "bar"},
+        )
         assert client.default_headers["X-Foo"] == "bar"
 
         # does not override the already given value when not specified
@@ -126,7 +127,9 @@ class TestConductor:
             client.copy(set_default_headers={}, default_headers={"X-Foo": "Bar"})
 
     def test_copy_default_query(self) -> None:
-        client = Conductor(base_url=base_url, _strict_response_validation=True, default_query={"foo": "bar"})
+        client = Conductor(
+            base_url=base_url, bearer_token=bearer_token, _strict_response_validation=True, default_query={"foo": "bar"}
+        )
         assert _get_params(client)["foo"] == "bar"
 
         # does not override the already given value when not specified
@@ -249,7 +252,9 @@ class TestConductor:
         assert timeout == httpx.Timeout(100.0)
 
     def test_client_timeout_option(self) -> None:
-        client = Conductor(base_url=base_url, _strict_response_validation=True, timeout=httpx.Timeout(0))
+        client = Conductor(
+            base_url=base_url, bearer_token=bearer_token, _strict_response_validation=True, timeout=httpx.Timeout(0)
+        )
 
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
         timeout = httpx.Timeout(**request.extensions["timeout"])  # type: ignore
@@ -258,7 +263,9 @@ class TestConductor:
     def test_http_client_timeout_option(self) -> None:
         # custom timeout given to the httpx client should be used
         with httpx.Client(timeout=None) as http_client:
-            client = Conductor(base_url=base_url, _strict_response_validation=True, http_client=http_client)
+            client = Conductor(
+                base_url=base_url, bearer_token=bearer_token, _strict_response_validation=True, http_client=http_client
+            )
 
             request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
             timeout = httpx.Timeout(**request.extensions["timeout"])  # type: ignore
@@ -266,7 +273,9 @@ class TestConductor:
 
         # no timeout given to the httpx client should not use the httpx default
         with httpx.Client() as http_client:
-            client = Conductor(base_url=base_url, _strict_response_validation=True, http_client=http_client)
+            client = Conductor(
+                base_url=base_url, bearer_token=bearer_token, _strict_response_validation=True, http_client=http_client
+            )
 
             request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
             timeout = httpx.Timeout(**request.extensions["timeout"])  # type: ignore
@@ -274,7 +283,9 @@ class TestConductor:
 
         # explicitly passing the default timeout currently results in it being ignored
         with httpx.Client(timeout=HTTPX_DEFAULT_TIMEOUT) as http_client:
-            client = Conductor(base_url=base_url, _strict_response_validation=True, http_client=http_client)
+            client = Conductor(
+                base_url=base_url, bearer_token=bearer_token, _strict_response_validation=True, http_client=http_client
+            )
 
             request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
             timeout = httpx.Timeout(**request.extensions["timeout"])  # type: ignore
@@ -283,16 +294,27 @@ class TestConductor:
     async def test_invalid_http_client(self) -> None:
         with pytest.raises(TypeError, match="Invalid `http_client` arg"):
             async with httpx.AsyncClient() as http_client:
-                Conductor(base_url=base_url, _strict_response_validation=True, http_client=cast(Any, http_client))
+                Conductor(
+                    base_url=base_url,
+                    bearer_token=bearer_token,
+                    _strict_response_validation=True,
+                    http_client=cast(Any, http_client),
+                )
 
     def test_default_headers_option(self) -> None:
-        client = Conductor(base_url=base_url, _strict_response_validation=True, default_headers={"X-Foo": "bar"})
+        client = Conductor(
+            base_url=base_url,
+            bearer_token=bearer_token,
+            _strict_response_validation=True,
+            default_headers={"X-Foo": "bar"},
+        )
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
         assert request.headers.get("x-foo") == "bar"
         assert request.headers.get("x-stainless-lang") == "python"
 
         client2 = Conductor(
             base_url=base_url,
+            bearer_token=bearer_token,
             _strict_response_validation=True,
             default_headers={
                 "X-Foo": "stainless",
@@ -304,7 +326,12 @@ class TestConductor:
         assert request.headers.get("x-stainless-lang") == "my-overriding-header"
 
     def test_default_query_option(self) -> None:
-        client = Conductor(base_url=base_url, _strict_response_validation=True, default_query={"query_param": "bar"})
+        client = Conductor(
+            base_url=base_url,
+            bearer_token=bearer_token,
+            _strict_response_validation=True,
+            default_query={"query_param": "bar"},
+        )
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
         url = httpx.URL(request.url)
         assert dict(url.params) == {"query_param": "bar"}
@@ -503,7 +530,9 @@ class TestConductor:
         assert response.foo == 2
 
     def test_base_url_setter(self) -> None:
-        client = Conductor(base_url="https://example.com/from_init", _strict_response_validation=True)
+        client = Conductor(
+            base_url="https://example.com/from_init", bearer_token=bearer_token, _strict_response_validation=True
+        )
         assert client.base_url == "https://example.com/from_init/"
 
         client.base_url = "https://example.com/from_setter"  # type: ignore[assignment]
@@ -512,15 +541,20 @@ class TestConductor:
 
     def test_base_url_env(self) -> None:
         with update_env(CONDUCTOR_BASE_URL="http://localhost:5000/from/env"):
-            client = Conductor(_strict_response_validation=True)
+            client = Conductor(bearer_token=bearer_token, _strict_response_validation=True)
             assert client.base_url == "http://localhost:5000/from/env/"
 
     @pytest.mark.parametrize(
         "client",
         [
-            Conductor(base_url="http://localhost:5000/custom/path/", _strict_response_validation=True),
             Conductor(
                 base_url="http://localhost:5000/custom/path/",
+                bearer_token=bearer_token,
+                _strict_response_validation=True,
+            ),
+            Conductor(
+                base_url="http://localhost:5000/custom/path/",
+                bearer_token=bearer_token,
                 _strict_response_validation=True,
                 http_client=httpx.Client(),
             ),
@@ -540,9 +574,14 @@ class TestConductor:
     @pytest.mark.parametrize(
         "client",
         [
-            Conductor(base_url="http://localhost:5000/custom/path/", _strict_response_validation=True),
             Conductor(
                 base_url="http://localhost:5000/custom/path/",
+                bearer_token=bearer_token,
+                _strict_response_validation=True,
+            ),
+            Conductor(
+                base_url="http://localhost:5000/custom/path/",
+                bearer_token=bearer_token,
                 _strict_response_validation=True,
                 http_client=httpx.Client(),
             ),
@@ -562,9 +601,14 @@ class TestConductor:
     @pytest.mark.parametrize(
         "client",
         [
-            Conductor(base_url="http://localhost:5000/custom/path/", _strict_response_validation=True),
             Conductor(
                 base_url="http://localhost:5000/custom/path/",
+                bearer_token=bearer_token,
+                _strict_response_validation=True,
+            ),
+            Conductor(
+                base_url="http://localhost:5000/custom/path/",
+                bearer_token=bearer_token,
                 _strict_response_validation=True,
                 http_client=httpx.Client(),
             ),
@@ -582,7 +626,7 @@ class TestConductor:
         assert request.url == "https://myapi.com/foo"
 
     def test_copied_client_does_not_close_http(self) -> None:
-        client = Conductor(base_url=base_url, _strict_response_validation=True)
+        client = Conductor(base_url=base_url, bearer_token=bearer_token, _strict_response_validation=True)
         assert not client.is_closed()
 
         copied = client.copy()
@@ -593,7 +637,7 @@ class TestConductor:
         assert not client.is_closed()
 
     def test_client_context_manager(self) -> None:
-        client = Conductor(base_url=base_url, _strict_response_validation=True)
+        client = Conductor(base_url=base_url, bearer_token=bearer_token, _strict_response_validation=True)
         with client as c2:
             assert c2 is client
             assert not c2.is_closed()
@@ -614,7 +658,12 @@ class TestConductor:
 
     def test_client_max_retries_validation(self) -> None:
         with pytest.raises(TypeError, match=r"max_retries cannot be None"):
-            Conductor(base_url=base_url, _strict_response_validation=True, max_retries=cast(Any, None))
+            Conductor(
+                base_url=base_url,
+                bearer_token=bearer_token,
+                _strict_response_validation=True,
+                max_retries=cast(Any, None),
+            )
 
     @pytest.mark.respx(base_url=base_url)
     def test_received_text_for_expected_json(self, respx_mock: MockRouter) -> None:
@@ -623,12 +672,12 @@ class TestConductor:
 
         respx_mock.get("/foo").mock(return_value=httpx.Response(200, text="my-custom-format"))
 
-        strict_client = Conductor(base_url=base_url, _strict_response_validation=True)
+        strict_client = Conductor(base_url=base_url, bearer_token=bearer_token, _strict_response_validation=True)
 
         with pytest.raises(APIResponseValidationError):
             strict_client.get("/foo", cast_to=Model)
 
-        client = Conductor(base_url=base_url, _strict_response_validation=False)
+        client = Conductor(base_url=base_url, bearer_token=bearer_token, _strict_response_validation=False)
 
         response = client.get("/foo", cast_to=Model)
         assert isinstance(response, str)  # type: ignore[unreachable]
@@ -655,42 +704,12 @@ class TestConductor:
     )
     @mock.patch("time.time", mock.MagicMock(return_value=1696004797))
     def test_parse_retry_after_header(self, remaining_retries: int, retry_after: str, timeout: float) -> None:
-        client = Conductor(base_url=base_url, _strict_response_validation=True)
+        client = Conductor(base_url=base_url, bearer_token=bearer_token, _strict_response_validation=True)
 
         headers = httpx.Headers({"retry-after": retry_after})
         options = FinalRequestOptions(method="get", url="/foo", max_retries=3)
         calculated = client._calculate_retry_timeout(remaining_retries, options, headers)
         assert calculated == pytest.approx(timeout, 0.5 * 0.875)  # pyright: ignore[reportUnknownMemberType]
-
-    @mock.patch("conductor._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
-    @pytest.mark.respx(base_url=base_url)
-    def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
-        respx_mock.post("/auth-sessions").mock(side_effect=httpx.TimeoutException("Test timeout error"))
-
-        with pytest.raises(APITimeoutError):
-            self.client.post(
-                "/auth-sessions",
-                body=cast(object, dict(end_user_id="REPLACE_ME", publishable_key="REPLACE_ME")),
-                cast_to=httpx.Response,
-                options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
-            )
-
-        assert _get_open_connections(self.client) == 0
-
-    @mock.patch("conductor._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
-    @pytest.mark.respx(base_url=base_url)
-    def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
-        respx_mock.post("/auth-sessions").mock(return_value=httpx.Response(500))
-
-        with pytest.raises(APIStatusError):
-            self.client.post(
-                "/auth-sessions",
-                body=cast(object, dict(end_user_id="REPLACE_ME", publishable_key="REPLACE_ME")),
-                cast_to=httpx.Response,
-                options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
-            )
-
-        assert _get_open_connections(self.client) == 0
 
     @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
     @mock.patch("conductor._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
@@ -707,17 +726,15 @@ class TestConductor:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.post("/auth-sessions").mock(side_effect=retry_handler)
+        respx_mock.get("/quickbooks-desktop/invoices").mock(side_effect=retry_handler)
 
-        response = client.auth_sessions.with_raw_response.create(
-            end_user_id="end_usr_1234567abcdefg", publishable_key="{{YOUR_PUBLISHABLE_KEY}}"
-        )
+        response = client.qbd.invoices.with_raw_response.list(conductor_end_user_id="end_usr_1234567abcdefg")
 
         assert response.retries_taken == failures_before_success
 
 
 class TestAsyncConductor:
-    client = AsyncConductor(base_url=base_url, _strict_response_validation=True)
+    client = AsyncConductor(base_url=base_url, bearer_token=bearer_token, _strict_response_validation=True)
 
     @pytest.mark.respx(base_url=base_url)
     @pytest.mark.asyncio
@@ -745,6 +762,10 @@ class TestAsyncConductor:
         copied = self.client.copy()
         assert id(copied) != id(self.client)
 
+        copied = self.client.copy(bearer_token="another My Bearer Token")
+        assert copied.bearer_token == "another My Bearer Token"
+        assert self.client.bearer_token == "My Bearer Token"
+
     def test_copy_default_options(self) -> None:
         # options that have a default are overridden correctly
         copied = self.client.copy(max_retries=7)
@@ -762,7 +783,12 @@ class TestAsyncConductor:
         assert isinstance(self.client.timeout, httpx.Timeout)
 
     def test_copy_default_headers(self) -> None:
-        client = AsyncConductor(base_url=base_url, _strict_response_validation=True, default_headers={"X-Foo": "bar"})
+        client = AsyncConductor(
+            base_url=base_url,
+            bearer_token=bearer_token,
+            _strict_response_validation=True,
+            default_headers={"X-Foo": "bar"},
+        )
         assert client.default_headers["X-Foo"] == "bar"
 
         # does not override the already given value when not specified
@@ -794,7 +820,9 @@ class TestAsyncConductor:
             client.copy(set_default_headers={}, default_headers={"X-Foo": "Bar"})
 
     def test_copy_default_query(self) -> None:
-        client = AsyncConductor(base_url=base_url, _strict_response_validation=True, default_query={"foo": "bar"})
+        client = AsyncConductor(
+            base_url=base_url, bearer_token=bearer_token, _strict_response_validation=True, default_query={"foo": "bar"}
+        )
         assert _get_params(client)["foo"] == "bar"
 
         # does not override the already given value when not specified
@@ -917,7 +945,9 @@ class TestAsyncConductor:
         assert timeout == httpx.Timeout(100.0)
 
     async def test_client_timeout_option(self) -> None:
-        client = AsyncConductor(base_url=base_url, _strict_response_validation=True, timeout=httpx.Timeout(0))
+        client = AsyncConductor(
+            base_url=base_url, bearer_token=bearer_token, _strict_response_validation=True, timeout=httpx.Timeout(0)
+        )
 
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
         timeout = httpx.Timeout(**request.extensions["timeout"])  # type: ignore
@@ -926,7 +956,9 @@ class TestAsyncConductor:
     async def test_http_client_timeout_option(self) -> None:
         # custom timeout given to the httpx client should be used
         async with httpx.AsyncClient(timeout=None) as http_client:
-            client = AsyncConductor(base_url=base_url, _strict_response_validation=True, http_client=http_client)
+            client = AsyncConductor(
+                base_url=base_url, bearer_token=bearer_token, _strict_response_validation=True, http_client=http_client
+            )
 
             request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
             timeout = httpx.Timeout(**request.extensions["timeout"])  # type: ignore
@@ -934,7 +966,9 @@ class TestAsyncConductor:
 
         # no timeout given to the httpx client should not use the httpx default
         async with httpx.AsyncClient() as http_client:
-            client = AsyncConductor(base_url=base_url, _strict_response_validation=True, http_client=http_client)
+            client = AsyncConductor(
+                base_url=base_url, bearer_token=bearer_token, _strict_response_validation=True, http_client=http_client
+            )
 
             request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
             timeout = httpx.Timeout(**request.extensions["timeout"])  # type: ignore
@@ -942,7 +976,9 @@ class TestAsyncConductor:
 
         # explicitly passing the default timeout currently results in it being ignored
         async with httpx.AsyncClient(timeout=HTTPX_DEFAULT_TIMEOUT) as http_client:
-            client = AsyncConductor(base_url=base_url, _strict_response_validation=True, http_client=http_client)
+            client = AsyncConductor(
+                base_url=base_url, bearer_token=bearer_token, _strict_response_validation=True, http_client=http_client
+            )
 
             request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
             timeout = httpx.Timeout(**request.extensions["timeout"])  # type: ignore
@@ -951,16 +987,27 @@ class TestAsyncConductor:
     def test_invalid_http_client(self) -> None:
         with pytest.raises(TypeError, match="Invalid `http_client` arg"):
             with httpx.Client() as http_client:
-                AsyncConductor(base_url=base_url, _strict_response_validation=True, http_client=cast(Any, http_client))
+                AsyncConductor(
+                    base_url=base_url,
+                    bearer_token=bearer_token,
+                    _strict_response_validation=True,
+                    http_client=cast(Any, http_client),
+                )
 
     def test_default_headers_option(self) -> None:
-        client = AsyncConductor(base_url=base_url, _strict_response_validation=True, default_headers={"X-Foo": "bar"})
+        client = AsyncConductor(
+            base_url=base_url,
+            bearer_token=bearer_token,
+            _strict_response_validation=True,
+            default_headers={"X-Foo": "bar"},
+        )
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
         assert request.headers.get("x-foo") == "bar"
         assert request.headers.get("x-stainless-lang") == "python"
 
         client2 = AsyncConductor(
             base_url=base_url,
+            bearer_token=bearer_token,
             _strict_response_validation=True,
             default_headers={
                 "X-Foo": "stainless",
@@ -973,7 +1020,10 @@ class TestAsyncConductor:
 
     def test_default_query_option(self) -> None:
         client = AsyncConductor(
-            base_url=base_url, _strict_response_validation=True, default_query={"query_param": "bar"}
+            base_url=base_url,
+            bearer_token=bearer_token,
+            _strict_response_validation=True,
+            default_query={"query_param": "bar"},
         )
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
         url = httpx.URL(request.url)
@@ -1173,7 +1223,9 @@ class TestAsyncConductor:
         assert response.foo == 2
 
     def test_base_url_setter(self) -> None:
-        client = AsyncConductor(base_url="https://example.com/from_init", _strict_response_validation=True)
+        client = AsyncConductor(
+            base_url="https://example.com/from_init", bearer_token=bearer_token, _strict_response_validation=True
+        )
         assert client.base_url == "https://example.com/from_init/"
 
         client.base_url = "https://example.com/from_setter"  # type: ignore[assignment]
@@ -1182,15 +1234,20 @@ class TestAsyncConductor:
 
     def test_base_url_env(self) -> None:
         with update_env(CONDUCTOR_BASE_URL="http://localhost:5000/from/env"):
-            client = AsyncConductor(_strict_response_validation=True)
+            client = AsyncConductor(bearer_token=bearer_token, _strict_response_validation=True)
             assert client.base_url == "http://localhost:5000/from/env/"
 
     @pytest.mark.parametrize(
         "client",
         [
-            AsyncConductor(base_url="http://localhost:5000/custom/path/", _strict_response_validation=True),
             AsyncConductor(
                 base_url="http://localhost:5000/custom/path/",
+                bearer_token=bearer_token,
+                _strict_response_validation=True,
+            ),
+            AsyncConductor(
+                base_url="http://localhost:5000/custom/path/",
+                bearer_token=bearer_token,
                 _strict_response_validation=True,
                 http_client=httpx.AsyncClient(),
             ),
@@ -1210,9 +1267,14 @@ class TestAsyncConductor:
     @pytest.mark.parametrize(
         "client",
         [
-            AsyncConductor(base_url="http://localhost:5000/custom/path/", _strict_response_validation=True),
             AsyncConductor(
                 base_url="http://localhost:5000/custom/path/",
+                bearer_token=bearer_token,
+                _strict_response_validation=True,
+            ),
+            AsyncConductor(
+                base_url="http://localhost:5000/custom/path/",
+                bearer_token=bearer_token,
                 _strict_response_validation=True,
                 http_client=httpx.AsyncClient(),
             ),
@@ -1232,9 +1294,14 @@ class TestAsyncConductor:
     @pytest.mark.parametrize(
         "client",
         [
-            AsyncConductor(base_url="http://localhost:5000/custom/path/", _strict_response_validation=True),
             AsyncConductor(
                 base_url="http://localhost:5000/custom/path/",
+                bearer_token=bearer_token,
+                _strict_response_validation=True,
+            ),
+            AsyncConductor(
+                base_url="http://localhost:5000/custom/path/",
+                bearer_token=bearer_token,
                 _strict_response_validation=True,
                 http_client=httpx.AsyncClient(),
             ),
@@ -1252,7 +1319,7 @@ class TestAsyncConductor:
         assert request.url == "https://myapi.com/foo"
 
     async def test_copied_client_does_not_close_http(self) -> None:
-        client = AsyncConductor(base_url=base_url, _strict_response_validation=True)
+        client = AsyncConductor(base_url=base_url, bearer_token=bearer_token, _strict_response_validation=True)
         assert not client.is_closed()
 
         copied = client.copy()
@@ -1264,7 +1331,7 @@ class TestAsyncConductor:
         assert not client.is_closed()
 
     async def test_client_context_manager(self) -> None:
-        client = AsyncConductor(base_url=base_url, _strict_response_validation=True)
+        client = AsyncConductor(base_url=base_url, bearer_token=bearer_token, _strict_response_validation=True)
         async with client as c2:
             assert c2 is client
             assert not c2.is_closed()
@@ -1286,7 +1353,12 @@ class TestAsyncConductor:
 
     async def test_client_max_retries_validation(self) -> None:
         with pytest.raises(TypeError, match=r"max_retries cannot be None"):
-            AsyncConductor(base_url=base_url, _strict_response_validation=True, max_retries=cast(Any, None))
+            AsyncConductor(
+                base_url=base_url,
+                bearer_token=bearer_token,
+                _strict_response_validation=True,
+                max_retries=cast(Any, None),
+            )
 
     @pytest.mark.respx(base_url=base_url)
     @pytest.mark.asyncio
@@ -1296,12 +1368,12 @@ class TestAsyncConductor:
 
         respx_mock.get("/foo").mock(return_value=httpx.Response(200, text="my-custom-format"))
 
-        strict_client = AsyncConductor(base_url=base_url, _strict_response_validation=True)
+        strict_client = AsyncConductor(base_url=base_url, bearer_token=bearer_token, _strict_response_validation=True)
 
         with pytest.raises(APIResponseValidationError):
             await strict_client.get("/foo", cast_to=Model)
 
-        client = AsyncConductor(base_url=base_url, _strict_response_validation=False)
+        client = AsyncConductor(base_url=base_url, bearer_token=bearer_token, _strict_response_validation=False)
 
         response = await client.get("/foo", cast_to=Model)
         assert isinstance(response, str)  # type: ignore[unreachable]
@@ -1329,42 +1401,12 @@ class TestAsyncConductor:
     @mock.patch("time.time", mock.MagicMock(return_value=1696004797))
     @pytest.mark.asyncio
     async def test_parse_retry_after_header(self, remaining_retries: int, retry_after: str, timeout: float) -> None:
-        client = AsyncConductor(base_url=base_url, _strict_response_validation=True)
+        client = AsyncConductor(base_url=base_url, bearer_token=bearer_token, _strict_response_validation=True)
 
         headers = httpx.Headers({"retry-after": retry_after})
         options = FinalRequestOptions(method="get", url="/foo", max_retries=3)
         calculated = client._calculate_retry_timeout(remaining_retries, options, headers)
         assert calculated == pytest.approx(timeout, 0.5 * 0.875)  # pyright: ignore[reportUnknownMemberType]
-
-    @mock.patch("conductor._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
-    @pytest.mark.respx(base_url=base_url)
-    async def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
-        respx_mock.post("/auth-sessions").mock(side_effect=httpx.TimeoutException("Test timeout error"))
-
-        with pytest.raises(APITimeoutError):
-            await self.client.post(
-                "/auth-sessions",
-                body=cast(object, dict(end_user_id="REPLACE_ME", publishable_key="REPLACE_ME")),
-                cast_to=httpx.Response,
-                options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
-            )
-
-        assert _get_open_connections(self.client) == 0
-
-    @mock.patch("conductor._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
-    @pytest.mark.respx(base_url=base_url)
-    async def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
-        respx_mock.post("/auth-sessions").mock(return_value=httpx.Response(500))
-
-        with pytest.raises(APIStatusError):
-            await self.client.post(
-                "/auth-sessions",
-                body=cast(object, dict(end_user_id="REPLACE_ME", publishable_key="REPLACE_ME")),
-                cast_to=httpx.Response,
-                options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
-            )
-
-        assert _get_open_connections(self.client) == 0
 
     @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
     @mock.patch("conductor._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
@@ -1384,10 +1426,8 @@ class TestAsyncConductor:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.post("/auth-sessions").mock(side_effect=retry_handler)
+        respx_mock.get("/quickbooks-desktop/invoices").mock(side_effect=retry_handler)
 
-        response = await client.auth_sessions.with_raw_response.create(
-            end_user_id="end_usr_1234567abcdefg", publishable_key="{{YOUR_PUBLISHABLE_KEY}}"
-        )
+        response = await client.qbd.invoices.with_raw_response.list(conductor_end_user_id="end_usr_1234567abcdefg")
 
         assert response.retries_taken == failures_before_success

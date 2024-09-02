@@ -10,7 +10,7 @@ It is generated with [Stainless](https://www.stainlessapi.com/).
 
 ## Documentation
 
-The REST API documentation can be found on [docs.conductor.com](https://docs.conductor.com). The full API of this library can be found in [api.md](api.md).
+The REST API documentation can be found on [docs.conductor.is](https://docs.conductor.is/). The full API of this library can be found in [api.md](api.md).
 
 ## Installation
 
@@ -31,12 +31,16 @@ from conductor import Conductor
 
 client = Conductor()
 
-auth_session = client.auth_sessions.create(
-    end_user_id="REPLACE_ME",
-    publishable_key="REPLACE_ME",
+page = client.qbd.invoices.list(
+    conductor_end_user_id="end_usr_1234567abcdefg",
 )
-print(auth_session.id)
+print(page.page)
 ```
+
+While you can provide a `bearer_token` keyword argument,
+we recommend using [python-dotenv](https://pypi.org/project/python-dotenv/)
+to add `CONDUCTOR_SECRET_KEY="My Bearer Token"` to your `.env` file
+so that your Bearer Token is not stored in source control.
 
 ## Async usage
 
@@ -50,11 +54,10 @@ client = AsyncConductor()
 
 
 async def main() -> None:
-    auth_session = await client.auth_sessions.create(
-        end_user_id="REPLACE_ME",
-        publishable_key="REPLACE_ME",
+    page = await client.qbd.invoices.list(
+        conductor_end_user_id="end_usr_1234567abcdefg",
     )
-    print(auth_session.id)
+    print(page.page)
 
 
 asyncio.run(main())
@@ -70,6 +73,77 @@ Nested request parameters are [TypedDicts](https://docs.python.org/3/library/typ
 - Converting to a dictionary, `model.to_dict()`
 
 Typed requests and responses provide autocomplete and documentation within your editor. If you would like to see type errors in VS Code to help catch bugs earlier, set `python.analysis.typeCheckingMode` to `basic`.
+
+## Pagination
+
+List methods in the Conductor API are paginated.
+
+This library provides auto-paginating iterators with each list response, so you do not have to request successive pages manually:
+
+```python
+from conductor import Conductor
+
+client = Conductor()
+
+all_invoices = []
+# Automatically fetches more pages as needed.
+for invoice in client.qbd.invoices.list(
+    conductor_end_user_id="end_usr_1234567abcdefg",
+):
+    # Do something with invoice here
+    all_invoices.append(invoice)
+print(all_invoices)
+```
+
+Or, asynchronously:
+
+```python
+import asyncio
+from conductor import AsyncConductor
+
+client = AsyncConductor()
+
+
+async def main() -> None:
+    all_invoices = []
+    # Iterate through items across all pages, issuing requests as needed.
+    async for invoice in client.qbd.invoices.list(
+        conductor_end_user_id="end_usr_1234567abcdefg",
+    ):
+        all_invoices.append(invoice)
+    print(all_invoices)
+
+
+asyncio.run(main())
+```
+
+Alternatively, you can use the `.has_next_page()`, `.next_page_info()`, or `.get_next_page()` methods for more granular control working with pages:
+
+```python
+first_page = await client.qbd.invoices.list(
+    conductor_end_user_id="end_usr_1234567abcdefg",
+)
+if first_page.has_next_page():
+    print(f"will fetch next page using these details: {first_page.next_page_info()}")
+    next_page = await first_page.get_next_page()
+    print(f"number of items we just fetched: {len(next_page.data)}")
+
+# Remove `await` for non-async usage.
+```
+
+Or just work directly with the returned data:
+
+```python
+first_page = await client.qbd.invoices.list(
+    conductor_end_user_id="end_usr_1234567abcdefg",
+)
+
+print(f"next page cursor: {first_page.next_cursor}")  # => "next page cursor: ..."
+for invoice in first_page.data:
+    print(invoice.id)
+
+# Remove `await` for non-async usage.
+```
 
 ## Handling errors
 
@@ -87,9 +161,8 @@ from conductor import Conductor
 client = Conductor()
 
 try:
-    client.auth_sessions.create(
-        end_user_id="REPLACE_ME",
-        publishable_key="REPLACE_ME",
+    client.qbd.invoices.list(
+        conductor_end_user_id="end_usr_1234567abcdefg",
     )
 except conductor.APIConnectionError as e:
     print("The server could not be reached")
@@ -133,9 +206,8 @@ client = Conductor(
 )
 
 # Or, configure per-request:
-client.with_options(max_retries=5).auth_sessions.create(
-    end_user_id="REPLACE_ME",
-    publishable_key="REPLACE_ME",
+client.with_options(max_retries=5).qbd.invoices.list(
+    conductor_end_user_id="end_usr_1234567abcdefg",
 )
 ```
 
@@ -159,9 +231,8 @@ client = Conductor(
 )
 
 # Override per-request:
-client.with_options(timeout=5.0).auth_sessions.create(
-    end_user_id="REPLACE_ME",
-    publishable_key="REPLACE_ME",
+client.with_options(timeout=5.0).qbd.invoices.list(
+    conductor_end_user_id="end_usr_1234567abcdefg",
 )
 ```
 
@@ -201,14 +272,13 @@ The "raw" Response object can be accessed by prefixing `.with_raw_response.` to 
 from conductor import Conductor
 
 client = Conductor()
-response = client.auth_sessions.with_raw_response.create(
-    end_user_id="REPLACE_ME",
-    publishable_key="REPLACE_ME",
+response = client.qbd.invoices.with_raw_response.list(
+    conductor_end_user_id="end_usr_1234567abcdefg",
 )
 print(response.headers.get('X-My-Header'))
 
-auth_session = response.parse()  # get the object that `auth_sessions.create()` would have returned
-print(auth_session.id)
+invoice = response.parse()  # get the object that `qbd.invoices.list()` would have returned
+print(invoice.id)
 ```
 
 These methods return an [`APIResponse`](https://github.com/stainless-sdks/conductor-python/tree/main/src/conductor/_response.py) object.
@@ -222,9 +292,8 @@ The above interface eagerly reads the full response body when you make the reque
 To stream the response body, use `.with_streaming_response` instead, which requires a context manager and only reads the response body once you call `.read()`, `.text()`, `.json()`, `.iter_bytes()`, `.iter_text()`, `.iter_lines()` or `.parse()`. In the async client, these are async methods.
 
 ```python
-with client.auth_sessions.with_streaming_response.create(
-    end_user_id="REPLACE_ME",
-    publishable_key="REPLACE_ME",
+with client.qbd.invoices.with_streaming_response.list(
+    conductor_end_user_id="end_usr_1234567abcdefg",
 ) as response:
     print(response.headers.get("X-My-Header"))
 

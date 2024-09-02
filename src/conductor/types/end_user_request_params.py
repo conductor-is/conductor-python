@@ -8,5 +8,8 @@ __all__ = ["EndUserRequestParams"]
 
 
 class EndUserRequestParams(TypedDict, total=False):
+    id: Required[str]
+    """The ID of the EndUser who owns the integration connection."""
+
     body: Required[object]
     """The request body to send to the integration connection."""

@@ -20,7 +20,7 @@ or products provided by Conductor please follow the respective company's securit
 
 ### Conductor Terms and Policies
 
-Please contact dev-feedback@conductor.com for any questions or concerns regarding security of our services.
+Please contact support@conductor.is for any questions or concerns regarding security of our services.
 
 ---
 

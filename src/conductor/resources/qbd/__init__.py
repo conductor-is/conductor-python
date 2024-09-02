@@ -1,5 +1,13 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+from .qbd import (
+    QbdResource,
+    AsyncQbdResource,
+    QbdResourceWithRawResponse,
+    AsyncQbdResourceWithRawResponse,
+    QbdResourceWithStreamingResponse,
+    AsyncQbdResourceWithStreamingResponse,
+)
 from .bills import (
     BillsResource,
     AsyncBillsResource,
@@ -47,14 +55,6 @@ from .customers import (
     AsyncCustomersResourceWithRawResponse,
     CustomersResourceWithStreamingResponse,
     AsyncCustomersResourceWithStreamingResponse,
-)
-from .quickbooks_desktop import (
-    QuickbooksDesktopResource,
-    AsyncQuickbooksDesktopResource,
-    QuickbooksDesktopResourceWithRawResponse,
-    AsyncQuickbooksDesktopResourceWithRawResponse,
-    QuickbooksDesktopResourceWithStreamingResponse,
-    AsyncQuickbooksDesktopResourceWithStreamingResponse,
 )
 from .credit_card_charges import (
     CreditCardChargesResource,
@@ -108,10 +108,10 @@ __all__ = [
     "AsyncVendorsResourceWithRawResponse",
     "VendorsResourceWithStreamingResponse",
     "AsyncVendorsResourceWithStreamingResponse",
-    "QuickbooksDesktopResource",
-    "AsyncQuickbooksDesktopResource",
-    "QuickbooksDesktopResourceWithRawResponse",
-    "AsyncQuickbooksDesktopResourceWithRawResponse",
-    "QuickbooksDesktopResourceWithStreamingResponse",
-    "AsyncQuickbooksDesktopResourceWithStreamingResponse",
+    "QbdResource",
+    "AsyncQbdResource",
+    "QbdResourceWithRawResponse",
+    "AsyncQbdResourceWithRawResponse",
+    "QbdResourceWithStreamingResponse",
+    "AsyncQbdResourceWithStreamingResponse",
 ]
