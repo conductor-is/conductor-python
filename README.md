@@ -1,6 +1,6 @@
 # Conductor Python API library
 
-[![PyPI version](https://img.shields.io/pypi/v/conductor.svg)](https://pypi.org/project/conductor/)
+[![PyPI version](https://img.shields.io/pypi/v/conductor-py.svg)](https://pypi.org/project/conductor-py/)
 
 The Conductor Python library provides convenient access to the Conductor REST API from any Python 3.7+
 application. The library includes type definitions for all request params and response fields,
@@ -15,12 +15,9 @@ The REST API documentation can be found on [docs.conductor.is](https://docs.cond
 ## Installation
 
 ```sh
-# install from the production repo
-pip install git+ssh://git@github.com/conductor-is/conductor-python.git
+# install from PyPI
+pip install --pre conductor-py
 ```
-
-> [!NOTE]
-> Once this package is [published to PyPI](https://app.stainlessapi.com/docs/guides/publish), this will become: `pip install --pre conductor`
 
 ## Usage
 
