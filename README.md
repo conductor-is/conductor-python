@@ -6,8 +6,6 @@ The Conductor Python library provides convenient access to the Conductor REST AP
 application. The library includes type definitions for all request params and response fields,
 and offers both synchronous and asynchronous clients powered by [httpx](https://github.com/encode/httpx).
 
-It is generated with [Stainless](https://www.stainlessapi.com/).
-
 ## Documentation
 
 The REST API documentation can be found on [docs.conductor.is](https://docs.conductor.is/). The full API of this library can be found in [api.md](api.md).
@@ -33,11 +31,6 @@ page = client.qbd.invoices.list(
 )
 print(page.page)
 ```
-
-While you can provide a `bearer_token` keyword argument,
-we recommend using [python-dotenv](https://pypi.org/project/python-dotenv/)
-to add `CONDUCTOR_SECRET_KEY="My Bearer Token"` to your `.env` file
-so that your Bearer Token is not stored in source control.
 
 ## Async usage
 
