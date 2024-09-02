@@ -1,12 +1,10 @@
 # Conductor Python API library
 
-[![PyPI version](https://img.shields.io/pypi/v/conductor.svg)](https://pypi.org/project/conductor/)
+[![PyPI version](https://img.shields.io/pypi/v/conductor-py.svg)](https://pypi.org/project/conductor-py/)
 
 The Conductor Python library provides convenient access to the Conductor REST API from any Python 3.7+
 application. The library includes type definitions for all request params and response fields,
 and offers both synchronous and asynchronous clients powered by [httpx](https://github.com/encode/httpx).
-
-It is generated with [Stainless](https://www.stainlessapi.com/).
 
 ## Documentation
 
@@ -15,12 +13,9 @@ The REST API documentation can be found on [docs.conductor.is](https://docs.cond
 ## Installation
 
 ```sh
-# install from this staging repo
-pip install git+ssh://git@github.com/stainless-sdks/conductor-python.git
+# install from PyPI
+pip install --pre conductor-py
 ```
-
-> [!NOTE]
-> Once this package is [published to PyPI](https://app.stainlessapi.com/docs/guides/publish), this will become: `pip install --pre conductor`
 
 ## Usage
 
@@ -281,9 +276,9 @@ invoice = response.parse()  # get the object that `qbd.invoices.list()` would ha
 print(invoice.id)
 ```
 
-These methods return an [`APIResponse`](https://github.com/stainless-sdks/conductor-python/tree/main/src/conductor/_response.py) object.
+These methods return an [`APIResponse`](https://github.com/conductor-is/conductor-python/tree/main/src/conductor/_response.py) object.
 
-The async client returns an [`AsyncAPIResponse`](https://github.com/stainless-sdks/conductor-python/tree/main/src/conductor/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
+The async client returns an [`AsyncAPIResponse`](https://github.com/conductor-is/conductor-python/tree/main/src/conductor/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
 
 #### `.with_streaming_response`
 
@@ -379,7 +374,7 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/conductor-python/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/conductor-is/conductor-python/issues) with questions, bugs, or suggestions.
 
 ## Requirements
 

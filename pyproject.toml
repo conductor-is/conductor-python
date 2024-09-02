@@ -1,6 +1,6 @@
 [project]
-name = "conductor"
-version = "0.0.1-alpha.0"
+name = "conductor-py"
+version = "0.1.0-alpha.1"
 description = "The official Python library for the conductor API"
 dynamic = ["readme"]
 license = "Apache-2.0"
@@ -39,8 +39,8 @@ classifiers = [
 
 
 [project.urls]
-Homepage = "https://github.com/stainless-sdks/conductor-python"
-Repository = "https://github.com/stainless-sdks/conductor-python"
+Homepage = "https://github.com/conductor-is/conductor-python"
+Repository = "https://github.com/conductor-is/conductor-python"
 
 
 
@@ -127,7 +127,7 @@ path = "README.md"
 [[tool.hatch.metadata.hooks.fancy-pypi-readme.substitutions]]
 # replace relative links with absolute links
 pattern = '\[(.+?)\]\(((?!https?://)\S+?)\)'
-replacement = '[\1](https://github.com/stainless-sdks/conductor-python/tree/main/\g<2>)'
+replacement = '[\1](https://github.com/conductor-is/conductor-python/tree/main/\g<2>)'
 
 [tool.black]
 line-length = 120
