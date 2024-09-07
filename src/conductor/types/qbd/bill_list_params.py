@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from typing import List, Union
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
@@ -17,24 +16,33 @@ class BillListParams(TypedDict, total=False):
     `"Conductor-End-User-Id: {{END_USER_ID}}"`).
     """
 
-    id: Union[str, List[str]]
-    """The QuickBooks-assigned unique identifier of the transaction to return.
+    account_ids: Annotated[str, PropertyInfo(alias="accountIds")]
+    """Filter for bills from this account or accounts.
 
-    You can provide one or multiple instances of this parameter to fetch specific
-    transactions.
+    Specify a single account ID or multiple using a comma-separated list (e.g.,
+    `accountIds=1,2,3`).
     """
 
-    account_id: Annotated[Union[str, List[str]], PropertyInfo(alias="accountId")]
-    """
-    Filter for bills from this account (e.g., accounts receivable, accounts
-    payable).
+    currency_ids: Annotated[str, PropertyInfo(alias="currencyIds")]
+    """Filter for bills in this currency or currencies.
+
+    Specify a single currency ID or multiple using a comma-separated list (e.g.,
+    `currencyIds=1,2,3`).
     """
 
     cursor: str
     """
-    The pagination token to use with the `cursor` request parameter to fetch the
-    next set of results. This value was returned in the `nextCursor` field of the
-    previous response when using the `limit` parameter.
+    The pagination token to fetch the next set of results when paginating with the
+    `limit` parameter. Retrieve this value from the `nextCursor` field in the
+    previous response. If omitted, the API returns the first page of results.
+    """
+
+    ids: str
+    """Filter for specific bills by their QuickBooks-assigned unique identifier(s).
+
+    Specify a single ID or multiple using a comma-separated list (e.g.,
+    `ids=1,2,3`). NOTE: If you include this parameter, all other query parameters
+    will be ignored.
     """
 
     include_line_items: Annotated[bool, PropertyInfo(alias="includeLineItems")]
@@ -43,27 +51,20 @@ class BillListParams(TypedDict, total=False):
     include_linked_transactions: Annotated[bool, PropertyInfo(alias="includeLinkedTransactions")]
     """Whether to include linked transactions in the response.
 
-    For example, a bill payment linked to a bill.
+    For example, a payment linked to the corresponding bill.
     """
 
     limit: int
     """The maximum number of objects to return, ranging from 1 to 500.
 
-    Defaults to 500. Include this parameter to paginate through the results. The
-    `nextCursor` field in the response will contain the value to use with the
-    `cursor` request parameter to fetch the next set of results.
+    Defaults to 500. Use this parameter in conjunction with the `cursor` parameter
+    to paginate through results. The response will include a `nextCursor` field,
+    which can be used as the `cursor` parameter value in subsequent requests to
+    fetch the next set of results.
     """
 
-    paid_status: Annotated[Literal["all", "paid", "not_paid"], PropertyInfo(alias="paidStatus")]
+    payment_status: Annotated[Literal["all", "paid", "not_paid"], PropertyInfo(alias="paymentStatus")]
     """Filter for transactions that are paid, not paid, or both."""
-
-    ref_number: Annotated[Union[str, List[str]], PropertyInfo(alias="refNumber")]
-    """The user-defined identifier for the transaction.
-
-    It is not required to be unique and can be arbitrarily changed by the QuickBooks
-    user. Case sensitive. You can provide one or multiple instances of this
-    parameter to fetch specific transactions.
-    """
 
     ref_number_contains: Annotated[str, PropertyInfo(alias="refNumberContains")]
     """Filter for transactions whose `refNumber` contains this substring.
@@ -86,6 +87,15 @@ class BillListParams(TypedDict, total=False):
     If omitted, the range will begin with the first number of the list. Uses a
     numerical comparison for values that contain only digits; otherwise, uses a
     lexicographical comparison.
+    """
+
+    ref_numbers: Annotated[str, PropertyInfo(alias="refNumbers")]
+    """Filter for specific bills by their ref-number(s), case-sensitive.
+
+    Specify a single ref-number or multiple using a comma-separated list (e.g.,
+    `refNumbers=1,2,3`). In QuickBooks, ref-numbers are not required to be unique
+    and can be arbitrarily changed by the QuickBooks user. NOTE: If you include this
+    parameter, all other query parameters will be ignored.
     """
 
     ref_number_starts_with: Annotated[str, PropertyInfo(alias="refNumberStartsWith")]
@@ -129,5 +139,9 @@ class BillListParams(TypedDict, total=False):
     assumed to be 23:59:59 of that day.
     """
 
-    vendor_id: Annotated[Union[str, List[str]], PropertyInfo(alias="vendorId")]
-    """Filter for bills from this vendor."""
+    vendor_ids: Annotated[str, PropertyInfo(alias="vendorIds")]
+    """Filter for bills from this vendor or vendors.
+
+    Specify a single vendor ID or multiple using a comma-separated list (e.g.,
+    `vendorIds=1,2,3`).
+    """

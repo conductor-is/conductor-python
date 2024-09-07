@@ -666,11 +666,13 @@ class QbdCustomer(BaseModel):
     """The customer's ship-to addresses."""
 
     sublevel: float
-    """The number of ancestors.
+    """The nesting level of this customer-job within the customer hierarchy.
 
-    For example, the customer-job with `name=Carpets` and
-    `fullName= Jones:Building2:Carpets` would have a sublevel of 2 because it has
-    two ancestors: `Jones` and `Building2`.
+    A top-level customer has a `sublevel` of 0, a direct sub-customer, which is
+    usually a job, has a `sublevel` of 1, and so on. Hence, when `sublevel` is 0,
+    you can assume it is a customer, and when `sublevel` is greater than 0, you can
+    assume it is a job. For example, a customer-job with a `fullName` of
+    `Jones:Kitchen:Carpets` and `name` of `Kitchen` would have a `sublevel` of 2.
     """
 
     tax_registration_number: Optional[str] = FieldInfo(alias="taxRegistrationNumber", default=None)

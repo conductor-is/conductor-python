@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from typing import List, Union
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
@@ -15,13 +14,6 @@ class AccountListParams(TypedDict, total=False):
     """
     The ID of the EndUser to receive this request (e.g.,
     `"Conductor-End-User-Id: {{END_USER_ID}}"`).
-    """
-
-    id: Union[str, List[str]]
-    """Filter for accounts with the specified QuickBooks-assigned unique identifier(s).
-
-    If your request includes this parameter, all other query parameters will be
-    ignored.
     """
 
     account_type: Annotated[
@@ -47,24 +39,39 @@ class AccountListParams(TypedDict, total=False):
     ]
     """Filter for accounts of this type."""
 
-    currency_id: Annotated[Union[str, List[str]], PropertyInfo(alias="currencyId")]
-    """Filter for accounts in this currency or currencies."""
+    currency_ids: Annotated[str, PropertyInfo(alias="currencyIds")]
+    """Filter for accounts in this currency or currencies.
 
-    full_name: Annotated[Union[str, List[str]], PropertyInfo(alias="fullName")]
-    """Filter for accounts with this full-name or full-names.
+    Specify a single currency ID or multiple using a comma-separated list (e.g.,
+    `currencyIds=1,2,3`).
+    """
 
-    Like `id`, a full-name is a unique identifier for an account, and is created by
-    prefixing the account's name with the names of each ancestor. If your request
-    includes this parameter, all other query parameters will be ignored.
+    full_names: Annotated[str, PropertyInfo(alias="fullNames")]
+    """Filter for specific accounts by their full-name(s).
+
+    Specify a single full-name or multiple using a comma-separated list (e.g.,
+    `fullNames=1,2,3`). Like `id`, a full-name is a unique identifier for an
+    account, and is created by prefixing the account's name with the names of each
+    ancestor. NOTE: If you include this parameter, all other query parameters will
+    be ignored.
+    """
+
+    ids: str
+    """Filter for specific accounts by their QuickBooks-assigned unique identifier(s).
+
+    Specify a single ID or multiple using a comma-separated list (e.g.,
+    `ids=1,2,3`). NOTE: If you include this parameter, all other query parameters
+    will be ignored.
     """
 
     limit: int
     """The maximum number of objects to return, ranging from 1 to 500.
 
     Defaults to 500. NOTE: QuickBooks Desktop does not support cursor-based
-    pagination for this endpoint. Hence, this parameter will limit the response
-    size, but you will not be able to fetch the next set of results. If you must
-    paginate through the results, try iterating via the date-range query parameters.
+    pagination for this object type. Hence, this parameter will limit the response
+    size, but you will not be able to fetch the next set of results. To paginate
+    through the results for this endpoint, try fetching batches via the date-range
+    query parameters.
     """
 
     name_contains: Annotated[str, PropertyInfo(alias="nameContains")]
