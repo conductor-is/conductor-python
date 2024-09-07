@@ -329,6 +329,48 @@ class TestInvoices:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_method_retrieve(self, client: Conductor) -> None:
+        invoice = client.qbd.invoices.retrieve(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+        assert_matches_type(QbdInvoice, invoice, path=["response"])
+
+    @parametrize
+    def test_raw_response_retrieve(self, client: Conductor) -> None:
+        response = client.qbd.invoices.with_raw_response.retrieve(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        invoice = response.parse()
+        assert_matches_type(QbdInvoice, invoice, path=["response"])
+
+    @parametrize
+    def test_streaming_response_retrieve(self, client: Conductor) -> None:
+        with client.qbd.invoices.with_streaming_response.retrieve(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            invoice = response.parse()
+            assert_matches_type(QbdInvoice, invoice, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_retrieve(self, client: Conductor) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            client.qbd.invoices.with_raw_response.retrieve(
+                id="",
+                conductor_end_user_id="end_usr_1234567abcdefg",
+            )
+
+    @parametrize
     def test_method_list(self, client: Conductor) -> None:
         invoice = client.qbd.invoices.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
@@ -339,18 +381,19 @@ class TestInvoices:
     def test_method_list_with_all_params(self, client: Conductor) -> None:
         invoice = client.qbd.invoices.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
-            id="123ABC-1234567890",
-            account_id="80000001-1234567890",
+            account_ids="80000001-1234567890",
+            currency_ids="80000001-1234567890",
             cursor="12345678-abcd-abcd-example-1234567890ab",
-            customer_id="80000001-1234567890",
+            customer_ids="80000001-1234567890",
+            ids="123ABC-1234567890",
             include_line_items=True,
             include_linked_transactions=True,
             limit=1,
-            paid_status="all",
-            ref_number="CHARGE-1234",
+            payment_status="all",
             ref_number_contains="CHARGE",
             ref_number_ends_with="1234",
             ref_number_from="CHARGE-0001",
+            ref_numbers="INVOICE-1234",
             ref_number_starts_with="SALE",
             ref_number_to="CHARGE-9999",
             transaction_date_from="transactionDateFrom",
@@ -699,6 +742,48 @@ class TestAsyncInvoices:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    async def test_method_retrieve(self, async_client: AsyncConductor) -> None:
+        invoice = await async_client.qbd.invoices.retrieve(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+        assert_matches_type(QbdInvoice, invoice, path=["response"])
+
+    @parametrize
+    async def test_raw_response_retrieve(self, async_client: AsyncConductor) -> None:
+        response = await async_client.qbd.invoices.with_raw_response.retrieve(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        invoice = await response.parse()
+        assert_matches_type(QbdInvoice, invoice, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_retrieve(self, async_client: AsyncConductor) -> None:
+        async with async_client.qbd.invoices.with_streaming_response.retrieve(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            invoice = await response.parse()
+            assert_matches_type(QbdInvoice, invoice, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_retrieve(self, async_client: AsyncConductor) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            await async_client.qbd.invoices.with_raw_response.retrieve(
+                id="",
+                conductor_end_user_id="end_usr_1234567abcdefg",
+            )
+
+    @parametrize
     async def test_method_list(self, async_client: AsyncConductor) -> None:
         invoice = await async_client.qbd.invoices.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
@@ -709,18 +794,19 @@ class TestAsyncInvoices:
     async def test_method_list_with_all_params(self, async_client: AsyncConductor) -> None:
         invoice = await async_client.qbd.invoices.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
-            id="123ABC-1234567890",
-            account_id="80000001-1234567890",
+            account_ids="80000001-1234567890",
+            currency_ids="80000001-1234567890",
             cursor="12345678-abcd-abcd-example-1234567890ab",
-            customer_id="80000001-1234567890",
+            customer_ids="80000001-1234567890",
+            ids="123ABC-1234567890",
             include_line_items=True,
             include_linked_transactions=True,
             limit=1,
-            paid_status="all",
-            ref_number="CHARGE-1234",
+            payment_status="all",
             ref_number_contains="CHARGE",
             ref_number_ends_with="1234",
             ref_number_from="CHARGE-0001",
+            ref_numbers="INVOICE-1234",
             ref_number_starts_with="SALE",
             ref_number_to="CHARGE-9999",
             transaction_date_from="transactionDateFrom",

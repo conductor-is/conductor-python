@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import List, Iterable
 from typing_extensions import Literal
 
 import httpx
@@ -276,15 +276,55 @@ class CustomersResource(SyncAPIResource):
             cast_to=QbdCustomer,
         )
 
+    def retrieve(
+        self,
+        id: str,
+        *,
+        conductor_end_user_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> QbdCustomer:
+        """
+        Retrieves a customer by ID.
+
+        Args:
+          id: The QuickBooks-assigned unique identifier of the customer to retrieve.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return self._get(
+            f"/quickbooks-desktop/customers/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=QbdCustomer,
+        )
+
     def list(
         self,
         *,
         conductor_end_user_id: str,
-        id: Union[str, List[str]] | NotGiven = NOT_GIVEN,
-        class_id: Union[str, List[str]] | NotGiven = NOT_GIVEN,
-        currency_id: Union[str, List[str]] | NotGiven = NOT_GIVEN,
+        class_ids: str | NotGiven = NOT_GIVEN,
+        currency_ids: str | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
-        full_name: Union[str, List[str]] | NotGiven = NOT_GIVEN,
+        full_names: str | NotGiven = NOT_GIVEN,
+        ids: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         name_contains: str | NotGiven = NOT_GIVEN,
         name_ends_with: str | NotGiven = NOT_GIVEN,
@@ -313,28 +353,33 @@ class CustomersResource(SyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          id: Filter for customers with the specified QuickBooks-assigned unique
-              identifier(s). If your request includes this parameter, all other query
-              parameters will be ignored.
+          class_ids: Filter for customers of this class or classes. Specify a single class ID or
+              multiple using a comma-separated list (e.g., `classIds=1,2,3`). A class is a way
+              end-users can categorize customers in QuickBooks.
 
-          class_id: Filter for customers of this class or classes. A class is a way end-users can
-              categorize customers in QuickBooks.
+          currency_ids: Filter for customers in this currency or currencies. Specify a single currency
+              ID or multiple using a comma-separated list (e.g., `currencyIds=1,2,3`).
 
-          currency_id: Filter for customers in this currency or currencies.
+          cursor: The pagination token to fetch the next set of results when paginating with the
+              `limit` parameter. Retrieve this value from the `nextCursor` field in the
+              previous response. If omitted, the API returns the first page of results.
 
-          cursor: The pagination token to use with the `cursor` request parameter to fetch the
-              next set of results. This value was returned in the `nextCursor` field of the
-              previous response when using the `limit` parameter.
-
-          full_name: Filter for customers with this full-name or full-names. Like `id`, a full-name
-              is a unique identifier for a customer, and is created by prefixing the
-              customer's name with the names of each ancestor. If your request includes this
+          full_names: Filter for specific customers by their full-name(s). Specify a single full-name
+              or multiple using a comma-separated list (e.g., `fullNames=1,2,3`). Like `id`, a
+              full-name is a unique identifier for a customer, and is created by prefixing the
+              customer's name with the names of each ancestor. NOTE: If you include this
               parameter, all other query parameters will be ignored.
 
+          ids: Filter for specific customers by their QuickBooks-assigned unique identifier(s).
+              Specify a single ID or multiple using a comma-separated list (e.g.,
+              `ids=1,2,3`). NOTE: If you include this parameter, all other query parameters
+              will be ignored.
+
           limit: The maximum number of objects to return, ranging from 1 to 500. Defaults to 500.
-              Include this parameter to paginate through the results. The `nextCursor` field
-              in the response will contain the value to use with the `cursor` request
-              parameter to fetch the next set of results.
+              Use this parameter in conjunction with the `cursor` parameter to paginate
+              through results. The response will include a `nextCursor` field, which can be
+              used as the `cursor` parameter value in subsequent requests to fetch the next
+              set of results.
 
           name_contains: Filter for objects whose `name` contains this substring. If you use this
               parameter, you cannot use `nameStartsWith` or `nameEndsWith`.
@@ -395,11 +440,11 @@ class CustomersResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "id": id,
-                        "class_id": class_id,
-                        "currency_id": currency_id,
+                        "class_ids": class_ids,
+                        "currency_ids": currency_ids,
                         "cursor": cursor,
-                        "full_name": full_name,
+                        "full_names": full_names,
+                        "ids": ids,
                         "limit": limit,
                         "name_contains": name_contains,
                         "name_ends_with": name_ends_with,
@@ -670,15 +715,55 @@ class AsyncCustomersResource(AsyncAPIResource):
             cast_to=QbdCustomer,
         )
 
+    async def retrieve(
+        self,
+        id: str,
+        *,
+        conductor_end_user_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> QbdCustomer:
+        """
+        Retrieves a customer by ID.
+
+        Args:
+          id: The QuickBooks-assigned unique identifier of the customer to retrieve.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return await self._get(
+            f"/quickbooks-desktop/customers/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=QbdCustomer,
+        )
+
     def list(
         self,
         *,
         conductor_end_user_id: str,
-        id: Union[str, List[str]] | NotGiven = NOT_GIVEN,
-        class_id: Union[str, List[str]] | NotGiven = NOT_GIVEN,
-        currency_id: Union[str, List[str]] | NotGiven = NOT_GIVEN,
+        class_ids: str | NotGiven = NOT_GIVEN,
+        currency_ids: str | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
-        full_name: Union[str, List[str]] | NotGiven = NOT_GIVEN,
+        full_names: str | NotGiven = NOT_GIVEN,
+        ids: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         name_contains: str | NotGiven = NOT_GIVEN,
         name_ends_with: str | NotGiven = NOT_GIVEN,
@@ -707,28 +792,33 @@ class AsyncCustomersResource(AsyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          id: Filter for customers with the specified QuickBooks-assigned unique
-              identifier(s). If your request includes this parameter, all other query
-              parameters will be ignored.
+          class_ids: Filter for customers of this class or classes. Specify a single class ID or
+              multiple using a comma-separated list (e.g., `classIds=1,2,3`). A class is a way
+              end-users can categorize customers in QuickBooks.
 
-          class_id: Filter for customers of this class or classes. A class is a way end-users can
-              categorize customers in QuickBooks.
+          currency_ids: Filter for customers in this currency or currencies. Specify a single currency
+              ID or multiple using a comma-separated list (e.g., `currencyIds=1,2,3`).
 
-          currency_id: Filter for customers in this currency or currencies.
+          cursor: The pagination token to fetch the next set of results when paginating with the
+              `limit` parameter. Retrieve this value from the `nextCursor` field in the
+              previous response. If omitted, the API returns the first page of results.
 
-          cursor: The pagination token to use with the `cursor` request parameter to fetch the
-              next set of results. This value was returned in the `nextCursor` field of the
-              previous response when using the `limit` parameter.
-
-          full_name: Filter for customers with this full-name or full-names. Like `id`, a full-name
-              is a unique identifier for a customer, and is created by prefixing the
-              customer's name with the names of each ancestor. If your request includes this
+          full_names: Filter for specific customers by their full-name(s). Specify a single full-name
+              or multiple using a comma-separated list (e.g., `fullNames=1,2,3`). Like `id`, a
+              full-name is a unique identifier for a customer, and is created by prefixing the
+              customer's name with the names of each ancestor. NOTE: If you include this
               parameter, all other query parameters will be ignored.
 
+          ids: Filter for specific customers by their QuickBooks-assigned unique identifier(s).
+              Specify a single ID or multiple using a comma-separated list (e.g.,
+              `ids=1,2,3`). NOTE: If you include this parameter, all other query parameters
+              will be ignored.
+
           limit: The maximum number of objects to return, ranging from 1 to 500. Defaults to 500.
-              Include this parameter to paginate through the results. The `nextCursor` field
-              in the response will contain the value to use with the `cursor` request
-              parameter to fetch the next set of results.
+              Use this parameter in conjunction with the `cursor` parameter to paginate
+              through results. The response will include a `nextCursor` field, which can be
+              used as the `cursor` parameter value in subsequent requests to fetch the next
+              set of results.
 
           name_contains: Filter for objects whose `name` contains this substring. If you use this
               parameter, you cannot use `nameStartsWith` or `nameEndsWith`.
@@ -789,11 +879,11 @@ class AsyncCustomersResource(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "id": id,
-                        "class_id": class_id,
-                        "currency_id": currency_id,
+                        "class_ids": class_ids,
+                        "currency_ids": currency_ids,
                         "cursor": cursor,
-                        "full_name": full_name,
+                        "full_names": full_names,
+                        "ids": ids,
                         "limit": limit,
                         "name_contains": name_contains,
                         "name_ends_with": name_ends_with,
@@ -823,6 +913,9 @@ class CustomersResourceWithRawResponse:
         self.create = to_raw_response_wrapper(
             customers.create,
         )
+        self.retrieve = to_raw_response_wrapper(
+            customers.retrieve,
+        )
         self.list = to_raw_response_wrapper(
             customers.list,
         )
@@ -834,6 +927,9 @@ class AsyncCustomersResourceWithRawResponse:
 
         self.create = async_to_raw_response_wrapper(
             customers.create,
+        )
+        self.retrieve = async_to_raw_response_wrapper(
+            customers.retrieve,
         )
         self.list = async_to_raw_response_wrapper(
             customers.list,
@@ -847,6 +943,9 @@ class CustomersResourceWithStreamingResponse:
         self.create = to_streamed_response_wrapper(
             customers.create,
         )
+        self.retrieve = to_streamed_response_wrapper(
+            customers.retrieve,
+        )
         self.list = to_streamed_response_wrapper(
             customers.list,
         )
@@ -858,6 +957,9 @@ class AsyncCustomersResourceWithStreamingResponse:
 
         self.create = async_to_streamed_response_wrapper(
             customers.create,
+        )
+        self.retrieve = async_to_streamed_response_wrapper(
+            customers.retrieve,
         )
         self.list = async_to_streamed_response_wrapper(
             customers.list,

@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from typing import List, Union
 from typing_extensions import Literal
 
 import httpx
@@ -123,11 +122,50 @@ class AccountsResource(SyncAPIResource):
             cast_to=QbdAccount,
         )
 
+    def retrieve(
+        self,
+        id: str,
+        *,
+        conductor_end_user_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> QbdAccount:
+        """
+        Retrieves an account by ID.
+
+        Args:
+          id: The QuickBooks-assigned unique identifier of the account to retrieve.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return self._get(
+            f"/quickbooks-desktop/accounts/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=QbdAccount,
+        )
+
     def list(
         self,
         *,
         conductor_end_user_id: str,
-        id: Union[str, List[str]] | NotGiven = NOT_GIVEN,
         account_type: Literal[
             "accounts_payable",
             "accounts_receivable",
@@ -147,8 +185,9 @@ class AccountsResource(SyncAPIResource):
             "other_income",
         ]
         | NotGiven = NOT_GIVEN,
-        currency_id: Union[str, List[str]] | NotGiven = NOT_GIVEN,
-        full_name: Union[str, List[str]] | NotGiven = NOT_GIVEN,
+        currency_ids: str | NotGiven = NOT_GIVEN,
+        full_names: str | NotGiven = NOT_GIVEN,
+        ids: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         name_contains: str | NotGiven = NOT_GIVEN,
         name_ends_with: str | NotGiven = NOT_GIVEN,
@@ -172,24 +211,27 @@ class AccountsResource(SyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          id: Filter for accounts with the specified QuickBooks-assigned unique identifier(s).
-              If your request includes this parameter, all other query parameters will be
-              ignored.
-
           account_type: Filter for accounts of this type.
 
-          currency_id: Filter for accounts in this currency or currencies.
+          currency_ids: Filter for accounts in this currency or currencies. Specify a single currency ID
+              or multiple using a comma-separated list (e.g., `currencyIds=1,2,3`).
 
-          full_name: Filter for accounts with this full-name or full-names. Like `id`, a full-name is
-              a unique identifier for an account, and is created by prefixing the account's
-              name with the names of each ancestor. If your request includes this parameter,
-              all other query parameters will be ignored.
+          full_names: Filter for specific accounts by their full-name(s). Specify a single full-name
+              or multiple using a comma-separated list (e.g., `fullNames=1,2,3`). Like `id`, a
+              full-name is a unique identifier for an account, and is created by prefixing the
+              account's name with the names of each ancestor. NOTE: If you include this
+              parameter, all other query parameters will be ignored.
+
+          ids: Filter for specific accounts by their QuickBooks-assigned unique identifier(s).
+              Specify a single ID or multiple using a comma-separated list (e.g.,
+              `ids=1,2,3`). NOTE: If you include this parameter, all other query parameters
+              will be ignored.
 
           limit: The maximum number of objects to return, ranging from 1 to 500. Defaults to 500.
               NOTE: QuickBooks Desktop does not support cursor-based pagination for this
-              endpoint. Hence, this parameter will limit the response size, but you will not
-              be able to fetch the next set of results. If you must paginate through the
-              results, try iterating via the date-range query parameters.
+              object type. Hence, this parameter will limit the response size, but you will
+              not be able to fetch the next set of results. To paginate through the results
+              for this endpoint, try fetching batches via the date-range query parameters.
 
           name_contains: Filter for objects whose `name` contains this substring. If you use this
               parameter, you cannot use `nameStartsWith` or `nameEndsWith`.
@@ -234,10 +276,10 @@ class AccountsResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "id": id,
                         "account_type": account_type,
-                        "currency_id": currency_id,
-                        "full_name": full_name,
+                        "currency_ids": currency_ids,
+                        "full_names": full_names,
+                        "ids": ids,
                         "limit": limit,
                         "name_contains": name_contains,
                         "name_ends_with": name_ends_with,
@@ -350,11 +392,50 @@ class AsyncAccountsResource(AsyncAPIResource):
             cast_to=QbdAccount,
         )
 
+    async def retrieve(
+        self,
+        id: str,
+        *,
+        conductor_end_user_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> QbdAccount:
+        """
+        Retrieves an account by ID.
+
+        Args:
+          id: The QuickBooks-assigned unique identifier of the account to retrieve.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return await self._get(
+            f"/quickbooks-desktop/accounts/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=QbdAccount,
+        )
+
     async def list(
         self,
         *,
         conductor_end_user_id: str,
-        id: Union[str, List[str]] | NotGiven = NOT_GIVEN,
         account_type: Literal[
             "accounts_payable",
             "accounts_receivable",
@@ -374,8 +455,9 @@ class AsyncAccountsResource(AsyncAPIResource):
             "other_income",
         ]
         | NotGiven = NOT_GIVEN,
-        currency_id: Union[str, List[str]] | NotGiven = NOT_GIVEN,
-        full_name: Union[str, List[str]] | NotGiven = NOT_GIVEN,
+        currency_ids: str | NotGiven = NOT_GIVEN,
+        full_names: str | NotGiven = NOT_GIVEN,
+        ids: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         name_contains: str | NotGiven = NOT_GIVEN,
         name_ends_with: str | NotGiven = NOT_GIVEN,
@@ -399,24 +481,27 @@ class AsyncAccountsResource(AsyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          id: Filter for accounts with the specified QuickBooks-assigned unique identifier(s).
-              If your request includes this parameter, all other query parameters will be
-              ignored.
-
           account_type: Filter for accounts of this type.
 
-          currency_id: Filter for accounts in this currency or currencies.
+          currency_ids: Filter for accounts in this currency or currencies. Specify a single currency ID
+              or multiple using a comma-separated list (e.g., `currencyIds=1,2,3`).
 
-          full_name: Filter for accounts with this full-name or full-names. Like `id`, a full-name is
-              a unique identifier for an account, and is created by prefixing the account's
-              name with the names of each ancestor. If your request includes this parameter,
-              all other query parameters will be ignored.
+          full_names: Filter for specific accounts by their full-name(s). Specify a single full-name
+              or multiple using a comma-separated list (e.g., `fullNames=1,2,3`). Like `id`, a
+              full-name is a unique identifier for an account, and is created by prefixing the
+              account's name with the names of each ancestor. NOTE: If you include this
+              parameter, all other query parameters will be ignored.
+
+          ids: Filter for specific accounts by their QuickBooks-assigned unique identifier(s).
+              Specify a single ID or multiple using a comma-separated list (e.g.,
+              `ids=1,2,3`). NOTE: If you include this parameter, all other query parameters
+              will be ignored.
 
           limit: The maximum number of objects to return, ranging from 1 to 500. Defaults to 500.
               NOTE: QuickBooks Desktop does not support cursor-based pagination for this
-              endpoint. Hence, this parameter will limit the response size, but you will not
-              be able to fetch the next set of results. If you must paginate through the
-              results, try iterating via the date-range query parameters.
+              object type. Hence, this parameter will limit the response size, but you will
+              not be able to fetch the next set of results. To paginate through the results
+              for this endpoint, try fetching batches via the date-range query parameters.
 
           name_contains: Filter for objects whose `name` contains this substring. If you use this
               parameter, you cannot use `nameStartsWith` or `nameEndsWith`.
@@ -461,10 +546,10 @@ class AsyncAccountsResource(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform(
                     {
-                        "id": id,
                         "account_type": account_type,
-                        "currency_id": currency_id,
-                        "full_name": full_name,
+                        "currency_ids": currency_ids,
+                        "full_names": full_names,
+                        "ids": ids,
                         "limit": limit,
                         "name_contains": name_contains,
                         "name_ends_with": name_ends_with,
@@ -489,6 +574,9 @@ class AccountsResourceWithRawResponse:
         self.create = to_raw_response_wrapper(
             accounts.create,
         )
+        self.retrieve = to_raw_response_wrapper(
+            accounts.retrieve,
+        )
         self.list = to_raw_response_wrapper(
             accounts.list,
         )
@@ -500,6 +588,9 @@ class AsyncAccountsResourceWithRawResponse:
 
         self.create = async_to_raw_response_wrapper(
             accounts.create,
+        )
+        self.retrieve = async_to_raw_response_wrapper(
+            accounts.retrieve,
         )
         self.list = async_to_raw_response_wrapper(
             accounts.list,
@@ -513,6 +604,9 @@ class AccountsResourceWithStreamingResponse:
         self.create = to_streamed_response_wrapper(
             accounts.create,
         )
+        self.retrieve = to_streamed_response_wrapper(
+            accounts.retrieve,
+        )
         self.list = to_streamed_response_wrapper(
             accounts.list,
         )
@@ -524,6 +618,9 @@ class AsyncAccountsResourceWithStreamingResponse:
 
         self.create = async_to_streamed_response_wrapper(
             accounts.create,
+        )
+        self.retrieve = async_to_streamed_response_wrapper(
+            accounts.retrieve,
         )
         self.list = async_to_streamed_response_wrapper(
             accounts.list,

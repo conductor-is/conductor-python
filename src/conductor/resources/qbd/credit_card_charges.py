@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Iterable
 
 import httpx
 
@@ -105,20 +105,61 @@ class CreditCardChargesResource(SyncAPIResource):
             cast_to=QbdCreditCardCharge,
         )
 
+    def retrieve(
+        self,
+        id: str,
+        *,
+        conductor_end_user_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> QbdCreditCardCharge:
+        """
+        Retrieves a credit card charge by ID.
+
+        Args:
+          id: The QuickBooks-assigned unique identifier of the credit card charge to retrieve.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return self._get(
+            f"/quickbooks-desktop/credit-card-charges/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=QbdCreditCardCharge,
+        )
+
     def list(
         self,
         *,
         conductor_end_user_id: str,
-        id: Union[str, List[str]] | NotGiven = NOT_GIVEN,
-        account_id: Union[str, List[str]] | NotGiven = NOT_GIVEN,
+        account_ids: str | NotGiven = NOT_GIVEN,
+        currency_ids: str | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
+        ids: str | NotGiven = NOT_GIVEN,
         include_line_items: bool | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
-        payee_id: Union[str, List[str]] | NotGiven = NOT_GIVEN,
-        ref_number: Union[str, List[str]] | NotGiven = NOT_GIVEN,
+        payee_ids: str | NotGiven = NOT_GIVEN,
         ref_number_contains: str | NotGiven = NOT_GIVEN,
         ref_number_ends_with: str | NotGiven = NOT_GIVEN,
         ref_number_from: str | NotGiven = NOT_GIVEN,
+        ref_numbers: str | NotGiven = NOT_GIVEN,
         ref_number_starts_with: str | NotGiven = NOT_GIVEN,
         ref_number_to: str | NotGiven = NOT_GIVEN,
         transaction_date_from: str | NotGiven = NOT_GIVEN,
@@ -139,25 +180,32 @@ class CreditCardChargesResource(SyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          id: The QuickBooks-assigned unique identifier of the transaction to return. You can
-              provide one or multiple instances of this parameter to fetch specific
-              transactions.
+          account_ids: Filter for credit card charges from this account or accounts. Specify a single
+              account ID or multiple using a comma-separated list (e.g., `accountIds=1,2,3`).
 
-          cursor: The pagination token to use with the `cursor` request parameter to fetch the
-              next set of results. This value was returned in the `nextCursor` field of the
-              previous response when using the `limit` parameter.
+          currency_ids: Filter for credit card charges in this currency or currencies. Specify a single
+              currency ID or multiple using a comma-separated list (e.g.,
+              `currencyIds=1,2,3`).
+
+          cursor: The pagination token to fetch the next set of results when paginating with the
+              `limit` parameter. Retrieve this value from the `nextCursor` field in the
+              previous response. If omitted, the API returns the first page of results.
+
+          ids: Filter for specific credit card charges by their QuickBooks-assigned unique
+              identifier(s). Specify a single ID or multiple using a comma-separated list
+              (e.g., `ids=1,2,3`). NOTE: If you include this parameter, all other query
+              parameters will be ignored.
 
           include_line_items: Whether to include line items in the response.
 
           limit: The maximum number of objects to return, ranging from 1 to 500. Defaults to 500.
-              Include this parameter to paginate through the results. The `nextCursor` field
-              in the response will contain the value to use with the `cursor` request
-              parameter to fetch the next set of results.
+              Use this parameter in conjunction with the `cursor` parameter to paginate
+              through results. The response will include a `nextCursor` field, which can be
+              used as the `cursor` parameter value in subsequent requests to fetch the next
+              set of results.
 
-          ref_number: The user-defined identifier for the transaction. It is not required to be unique
-              and can be arbitrarily changed by the QuickBooks user. Case sensitive. You can
-              provide one or multiple instances of this parameter to fetch specific
-              transactions.
+          payee_ids: Filter for credit card charges from this payee or payees. Specify a single payee
+              ID or multiple using a comma-separated list (e.g., `payeeIds=1,2,3`).
 
           ref_number_contains: Filter for transactions whose `refNumber` contains this substring. If you use
               this parameter, you cannot use `refNumberStartsWith` or `refNumberEndsWith`.
@@ -169,6 +217,12 @@ class CreditCardChargesResource(SyncAPIResource):
               value. If omitted, the range will begin with the first number of the list. Uses
               a numerical comparison for values that contain only digits; otherwise, uses a
               lexicographical comparison.
+
+          ref_numbers: Filter for specific credit card charges by their ref-number(s), case-sensitive.
+              Specify a single ref-number or multiple using a comma-separated list (e.g.,
+              `refNumbers=1,2,3`). In QuickBooks, ref-numbers are not required to be unique
+              and can be arbitrarily changed by the QuickBooks user. NOTE: If you include this
+              parameter, all other query parameters will be ignored.
 
           ref_number_starts_with: Filter for transactions whose `refNumber` starts with this substring. If you use
               this parameter, you cannot use `refNumberContains` or `refNumberEndsWith`.
@@ -211,16 +265,17 @@ class CreditCardChargesResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "id": id,
-                        "account_id": account_id,
+                        "account_ids": account_ids,
+                        "currency_ids": currency_ids,
                         "cursor": cursor,
+                        "ids": ids,
                         "include_line_items": include_line_items,
                         "limit": limit,
-                        "payee_id": payee_id,
-                        "ref_number": ref_number,
+                        "payee_ids": payee_ids,
                         "ref_number_contains": ref_number_contains,
                         "ref_number_ends_with": ref_number_ends_with,
                         "ref_number_from": ref_number_from,
+                        "ref_numbers": ref_numbers,
                         "ref_number_starts_with": ref_number_starts_with,
                         "ref_number_to": ref_number_to,
                         "transaction_date_from": transaction_date_from,
@@ -313,20 +368,61 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
             cast_to=QbdCreditCardCharge,
         )
 
+    async def retrieve(
+        self,
+        id: str,
+        *,
+        conductor_end_user_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> QbdCreditCardCharge:
+        """
+        Retrieves a credit card charge by ID.
+
+        Args:
+          id: The QuickBooks-assigned unique identifier of the credit card charge to retrieve.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return await self._get(
+            f"/quickbooks-desktop/credit-card-charges/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=QbdCreditCardCharge,
+        )
+
     def list(
         self,
         *,
         conductor_end_user_id: str,
-        id: Union[str, List[str]] | NotGiven = NOT_GIVEN,
-        account_id: Union[str, List[str]] | NotGiven = NOT_GIVEN,
+        account_ids: str | NotGiven = NOT_GIVEN,
+        currency_ids: str | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
+        ids: str | NotGiven = NOT_GIVEN,
         include_line_items: bool | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
-        payee_id: Union[str, List[str]] | NotGiven = NOT_GIVEN,
-        ref_number: Union[str, List[str]] | NotGiven = NOT_GIVEN,
+        payee_ids: str | NotGiven = NOT_GIVEN,
         ref_number_contains: str | NotGiven = NOT_GIVEN,
         ref_number_ends_with: str | NotGiven = NOT_GIVEN,
         ref_number_from: str | NotGiven = NOT_GIVEN,
+        ref_numbers: str | NotGiven = NOT_GIVEN,
         ref_number_starts_with: str | NotGiven = NOT_GIVEN,
         ref_number_to: str | NotGiven = NOT_GIVEN,
         transaction_date_from: str | NotGiven = NOT_GIVEN,
@@ -347,25 +443,32 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          id: The QuickBooks-assigned unique identifier of the transaction to return. You can
-              provide one or multiple instances of this parameter to fetch specific
-              transactions.
+          account_ids: Filter for credit card charges from this account or accounts. Specify a single
+              account ID or multiple using a comma-separated list (e.g., `accountIds=1,2,3`).
 
-          cursor: The pagination token to use with the `cursor` request parameter to fetch the
-              next set of results. This value was returned in the `nextCursor` field of the
-              previous response when using the `limit` parameter.
+          currency_ids: Filter for credit card charges in this currency or currencies. Specify a single
+              currency ID or multiple using a comma-separated list (e.g.,
+              `currencyIds=1,2,3`).
+
+          cursor: The pagination token to fetch the next set of results when paginating with the
+              `limit` parameter. Retrieve this value from the `nextCursor` field in the
+              previous response. If omitted, the API returns the first page of results.
+
+          ids: Filter for specific credit card charges by their QuickBooks-assigned unique
+              identifier(s). Specify a single ID or multiple using a comma-separated list
+              (e.g., `ids=1,2,3`). NOTE: If you include this parameter, all other query
+              parameters will be ignored.
 
           include_line_items: Whether to include line items in the response.
 
           limit: The maximum number of objects to return, ranging from 1 to 500. Defaults to 500.
-              Include this parameter to paginate through the results. The `nextCursor` field
-              in the response will contain the value to use with the `cursor` request
-              parameter to fetch the next set of results.
+              Use this parameter in conjunction with the `cursor` parameter to paginate
+              through results. The response will include a `nextCursor` field, which can be
+              used as the `cursor` parameter value in subsequent requests to fetch the next
+              set of results.
 
-          ref_number: The user-defined identifier for the transaction. It is not required to be unique
-              and can be arbitrarily changed by the QuickBooks user. Case sensitive. You can
-              provide one or multiple instances of this parameter to fetch specific
-              transactions.
+          payee_ids: Filter for credit card charges from this payee or payees. Specify a single payee
+              ID or multiple using a comma-separated list (e.g., `payeeIds=1,2,3`).
 
           ref_number_contains: Filter for transactions whose `refNumber` contains this substring. If you use
               this parameter, you cannot use `refNumberStartsWith` or `refNumberEndsWith`.
@@ -377,6 +480,12 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
               value. If omitted, the range will begin with the first number of the list. Uses
               a numerical comparison for values that contain only digits; otherwise, uses a
               lexicographical comparison.
+
+          ref_numbers: Filter for specific credit card charges by their ref-number(s), case-sensitive.
+              Specify a single ref-number or multiple using a comma-separated list (e.g.,
+              `refNumbers=1,2,3`). In QuickBooks, ref-numbers are not required to be unique
+              and can be arbitrarily changed by the QuickBooks user. NOTE: If you include this
+              parameter, all other query parameters will be ignored.
 
           ref_number_starts_with: Filter for transactions whose `refNumber` starts with this substring. If you use
               this parameter, you cannot use `refNumberContains` or `refNumberEndsWith`.
@@ -419,16 +528,17 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "id": id,
-                        "account_id": account_id,
+                        "account_ids": account_ids,
+                        "currency_ids": currency_ids,
                         "cursor": cursor,
+                        "ids": ids,
                         "include_line_items": include_line_items,
                         "limit": limit,
-                        "payee_id": payee_id,
-                        "ref_number": ref_number,
+                        "payee_ids": payee_ids,
                         "ref_number_contains": ref_number_contains,
                         "ref_number_ends_with": ref_number_ends_with,
                         "ref_number_from": ref_number_from,
+                        "ref_numbers": ref_numbers,
                         "ref_number_starts_with": ref_number_starts_with,
                         "ref_number_to": ref_number_to,
                         "transaction_date_from": transaction_date_from,
@@ -450,6 +560,9 @@ class CreditCardChargesResourceWithRawResponse:
         self.create = to_raw_response_wrapper(
             credit_card_charges.create,
         )
+        self.retrieve = to_raw_response_wrapper(
+            credit_card_charges.retrieve,
+        )
         self.list = to_raw_response_wrapper(
             credit_card_charges.list,
         )
@@ -461,6 +574,9 @@ class AsyncCreditCardChargesResourceWithRawResponse:
 
         self.create = async_to_raw_response_wrapper(
             credit_card_charges.create,
+        )
+        self.retrieve = async_to_raw_response_wrapper(
+            credit_card_charges.retrieve,
         )
         self.list = async_to_raw_response_wrapper(
             credit_card_charges.list,
@@ -474,6 +590,9 @@ class CreditCardChargesResourceWithStreamingResponse:
         self.create = to_streamed_response_wrapper(
             credit_card_charges.create,
         )
+        self.retrieve = to_streamed_response_wrapper(
+            credit_card_charges.retrieve,
+        )
         self.list = to_streamed_response_wrapper(
             credit_card_charges.list,
         )
@@ -485,6 +604,9 @@ class AsyncCreditCardChargesResourceWithStreamingResponse:
 
         self.create = async_to_streamed_response_wrapper(
             credit_card_charges.create,
+        )
+        self.retrieve = async_to_streamed_response_wrapper(
+            credit_card_charges.retrieve,
         )
         self.list = async_to_streamed_response_wrapper(
             credit_card_charges.list,
