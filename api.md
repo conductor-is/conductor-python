@@ -131,6 +131,19 @@ Methods:
 - <code title="get /quickbooks-desktop/invoices/{id}">client.qbd.invoices.<a href="./src/conductor/resources/qbd/invoices.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_invoice.py">QbdInvoice</a></code>
 - <code title="get /quickbooks-desktop/invoices">client.qbd.invoices.<a href="./src/conductor/resources/qbd/invoices.py">list</a>(\*\*<a href="src/conductor/types/qbd/invoice_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_invoice.py">SyncMyCursorPage[QbdInvoice]</a></code>
 
+## StandardTerms
+
+Types:
+
+```python
+from conductor.types.qbd import QbdStandardTerm, StandardTermListResponse
+```
+
+Methods:
+
+- <code title="get /quickbooks-desktop/standard-terms/{id}">client.qbd.standard_terms.<a href="./src/conductor/resources/qbd/standard_terms.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_standard_term.py">QbdStandardTerm</a></code>
+- <code title="get /quickbooks-desktop/standard-terms">client.qbd.standard_terms.<a href="./src/conductor/resources/qbd/standard_terms.py">list</a>(\*\*<a href="src/conductor/types/qbd/standard_term_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/standard_term_list_response.py">StandardTermListResponse</a></code>
+
 ## Vendors
 
 Types:
@@ -144,16 +157,3 @@ Methods:
 - <code title="post /quickbooks-desktop/vendors">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">create</a>(\*\*<a href="src/conductor/types/qbd/vendor_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_vendor.py">QbdVendor</a></code>
 - <code title="get /quickbooks-desktop/vendors/{id}">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_vendor.py">QbdVendor</a></code>
 - <code title="get /quickbooks-desktop/vendors">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">list</a>(\*\*<a href="src/conductor/types/qbd/vendor_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_vendor.py">SyncMyCursorPage[QbdVendor]</a></code>
-
-## StandardTerms
-
-Types:
-
-```python
-from conductor.types.qbd import QbdStandardTerm, StandardTermListResponse
-```
-
-Methods:
-
-- <code title="get /quickbooks-desktop/standard-terms/{id}">client.qbd.standard_terms.<a href="./src/conductor/resources/qbd/standard_terms.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_standard_term.py">QbdStandardTerm</a></code>
-- <code title="get /quickbooks-desktop/standard-terms">client.qbd.standard_terms.<a href="./src/conductor/resources/qbd/standard_terms.py">list</a>(\*\*<a href="src/conductor/types/qbd/standard_term_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/standard_term_list_response.py">StandardTermListResponse</a></code>
