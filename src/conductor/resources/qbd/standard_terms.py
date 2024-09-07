@@ -19,75 +19,22 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...types.qbd import class_list_params, class_create_params
+from ...types.qbd import standard_term_list_params
 from ..._base_client import make_request_options
-from ...types.qbd.qbd_class import QbdClass
-from ...types.qbd.class_list_response import ClassListResponse
+from ...types.qbd.qbd_standard_term import QbdStandardTerm
+from ...types.qbd.standard_term_list_response import StandardTermListResponse
 
-__all__ = ["ClassesResource", "AsyncClassesResource"]
+__all__ = ["StandardTermsResource", "AsyncStandardTermsResource"]
 
 
-class ClassesResource(SyncAPIResource):
+class StandardTermsResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> ClassesResourceWithRawResponse:
-        return ClassesResourceWithRawResponse(self)
+    def with_raw_response(self) -> StandardTermsResourceWithRawResponse:
+        return StandardTermsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> ClassesResourceWithStreamingResponse:
-        return ClassesResourceWithStreamingResponse(self)
-
-    def create(
-        self,
-        *,
-        name: str,
-        conductor_end_user_id: str,
-        is_active: bool | NotGiven = NOT_GIVEN,
-        parent_id: str | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdClass:
-        """Creates a class.
-
-        Args:
-          name: The case-insensitive name of the class.
-
-        Does not include the names of its
-              accentors like `fullName` does.
-
-          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
-              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
-
-          is_active: Whether this class is active. QuickBooks hides inactive objects from most views
-              and reports in the UI.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
-        return self._post(
-            "/quickbooks-desktop/classes",
-            body=maybe_transform(
-                {
-                    "name": name,
-                    "is_active": is_active,
-                    "parent_id": parent_id,
-                },
-                class_create_params.ClassCreateParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=QbdClass,
-        )
+    def with_streaming_response(self) -> StandardTermsResourceWithStreamingResponse:
+        return StandardTermsResourceWithStreamingResponse(self)
 
     def retrieve(
         self,
@@ -100,12 +47,12 @@ class ClassesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdClass:
+    ) -> QbdStandardTerm:
         """
-        Retrieves a class by ID.
+        Retrieves a standard-term by ID.
 
         Args:
-          id: The QuickBooks-assigned unique identifier of the class to retrieve.
+          id: The QuickBooks-assigned unique identifier of the standard-term to retrieve.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -122,11 +69,11 @@ class ClassesResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get(
-            f"/quickbooks-desktop/classes/{id}",
+            f"/quickbooks-desktop/standard-terms/{id}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdClass,
+            cast_to=QbdStandardTerm,
         )
 
     def list(
@@ -150,24 +97,24 @@ class ClassesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ClassListResponse:
+    ) -> StandardTermListResponse:
         """
-        Returns a list of classes.
+        Returns a list of standard-terms.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          full_names: Filter for specific classes by their full-name(s). Specify a single full-name or
-              multiple using a comma-separated list (e.g., `fullNames=1,2,3`). Like `id`, a
-              full-name is a unique identifier for a class, and is created by prefixing the
-              class's name with the names of each ancestor. NOTE: If you include this
-              parameter, all other query parameters will be ignored.
+          full_names: Filter for specific standard-terms by their full-name(s). Specify a single
+              full-name or multiple using a comma-separated list (e.g., `fullNames=1,2,3`).
+              Like `id`, a full-name is a unique identifier for a standard-term, and is
+              created by prefixing the standard-term's name with the names of each ancestor.
+              NOTE: If you include this parameter, all other query parameters will be ignored.
 
-          ids: Filter for specific classes by their QuickBooks-assigned unique identifier(s).
-              Specify a single ID or multiple using a comma-separated list (e.g.,
-              `ids=1,2,3`). NOTE: If you include this parameter, all other query parameters
-              will be ignored.
+          ids: Filter for specific standard-terms by their QuickBooks-assigned unique
+              identifier(s). Specify a single ID or multiple using a comma-separated list
+              (e.g., `ids=1,2,3`). NOTE: If you include this parameter, all other query
+              parameters will be ignored.
 
           limit: The maximum number of objects to return, ranging from 1 to 500. Defaults to 500.
               NOTE: QuickBooks Desktop does not support cursor-based pagination for this
@@ -210,7 +157,7 @@ class ClassesResource(SyncAPIResource):
         """
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get(
-            "/quickbooks-desktop/classes",
+            "/quickbooks-desktop/standard-terms",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -230,74 +177,21 @@ class ClassesResource(SyncAPIResource):
                         "updated_after": updated_after,
                         "updated_before": updated_before,
                     },
-                    class_list_params.ClassListParams,
+                    standard_term_list_params.StandardTermListParams,
                 ),
             ),
-            cast_to=ClassListResponse,
+            cast_to=StandardTermListResponse,
         )
 
 
-class AsyncClassesResource(AsyncAPIResource):
+class AsyncStandardTermsResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncClassesResourceWithRawResponse:
-        return AsyncClassesResourceWithRawResponse(self)
+    def with_raw_response(self) -> AsyncStandardTermsResourceWithRawResponse:
+        return AsyncStandardTermsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncClassesResourceWithStreamingResponse:
-        return AsyncClassesResourceWithStreamingResponse(self)
-
-    async def create(
-        self,
-        *,
-        name: str,
-        conductor_end_user_id: str,
-        is_active: bool | NotGiven = NOT_GIVEN,
-        parent_id: str | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdClass:
-        """Creates a class.
-
-        Args:
-          name: The case-insensitive name of the class.
-
-        Does not include the names of its
-              accentors like `fullName` does.
-
-          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
-              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
-
-          is_active: Whether this class is active. QuickBooks hides inactive objects from most views
-              and reports in the UI.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
-        return await self._post(
-            "/quickbooks-desktop/classes",
-            body=await async_maybe_transform(
-                {
-                    "name": name,
-                    "is_active": is_active,
-                    "parent_id": parent_id,
-                },
-                class_create_params.ClassCreateParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=QbdClass,
-        )
+    def with_streaming_response(self) -> AsyncStandardTermsResourceWithStreamingResponse:
+        return AsyncStandardTermsResourceWithStreamingResponse(self)
 
     async def retrieve(
         self,
@@ -310,12 +204,12 @@ class AsyncClassesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdClass:
+    ) -> QbdStandardTerm:
         """
-        Retrieves a class by ID.
+        Retrieves a standard-term by ID.
 
         Args:
-          id: The QuickBooks-assigned unique identifier of the class to retrieve.
+          id: The QuickBooks-assigned unique identifier of the standard-term to retrieve.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -332,11 +226,11 @@ class AsyncClassesResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return await self._get(
-            f"/quickbooks-desktop/classes/{id}",
+            f"/quickbooks-desktop/standard-terms/{id}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdClass,
+            cast_to=QbdStandardTerm,
         )
 
     async def list(
@@ -360,24 +254,24 @@ class AsyncClassesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ClassListResponse:
+    ) -> StandardTermListResponse:
         """
-        Returns a list of classes.
+        Returns a list of standard-terms.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          full_names: Filter for specific classes by their full-name(s). Specify a single full-name or
-              multiple using a comma-separated list (e.g., `fullNames=1,2,3`). Like `id`, a
-              full-name is a unique identifier for a class, and is created by prefixing the
-              class's name with the names of each ancestor. NOTE: If you include this
-              parameter, all other query parameters will be ignored.
+          full_names: Filter for specific standard-terms by their full-name(s). Specify a single
+              full-name or multiple using a comma-separated list (e.g., `fullNames=1,2,3`).
+              Like `id`, a full-name is a unique identifier for a standard-term, and is
+              created by prefixing the standard-term's name with the names of each ancestor.
+              NOTE: If you include this parameter, all other query parameters will be ignored.
 
-          ids: Filter for specific classes by their QuickBooks-assigned unique identifier(s).
-              Specify a single ID or multiple using a comma-separated list (e.g.,
-              `ids=1,2,3`). NOTE: If you include this parameter, all other query parameters
-              will be ignored.
+          ids: Filter for specific standard-terms by their QuickBooks-assigned unique
+              identifier(s). Specify a single ID or multiple using a comma-separated list
+              (e.g., `ids=1,2,3`). NOTE: If you include this parameter, all other query
+              parameters will be ignored.
 
           limit: The maximum number of objects to return, ranging from 1 to 500. Defaults to 500.
               NOTE: QuickBooks Desktop does not support cursor-based pagination for this
@@ -420,7 +314,7 @@ class AsyncClassesResource(AsyncAPIResource):
         """
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return await self._get(
-            "/quickbooks-desktop/classes",
+            "/quickbooks-desktop/standard-terms",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -440,68 +334,56 @@ class AsyncClassesResource(AsyncAPIResource):
                         "updated_after": updated_after,
                         "updated_before": updated_before,
                     },
-                    class_list_params.ClassListParams,
+                    standard_term_list_params.StandardTermListParams,
                 ),
             ),
-            cast_to=ClassListResponse,
+            cast_to=StandardTermListResponse,
         )
 
 
-class ClassesResourceWithRawResponse:
-    def __init__(self, classes: ClassesResource) -> None:
-        self._classes = classes
+class StandardTermsResourceWithRawResponse:
+    def __init__(self, standard_terms: StandardTermsResource) -> None:
+        self._standard_terms = standard_terms
 
-        self.create = to_raw_response_wrapper(
-            classes.create,
-        )
         self.retrieve = to_raw_response_wrapper(
-            classes.retrieve,
+            standard_terms.retrieve,
         )
         self.list = to_raw_response_wrapper(
-            classes.list,
+            standard_terms.list,
         )
 
 
-class AsyncClassesResourceWithRawResponse:
-    def __init__(self, classes: AsyncClassesResource) -> None:
-        self._classes = classes
+class AsyncStandardTermsResourceWithRawResponse:
+    def __init__(self, standard_terms: AsyncStandardTermsResource) -> None:
+        self._standard_terms = standard_terms
 
-        self.create = async_to_raw_response_wrapper(
-            classes.create,
-        )
         self.retrieve = async_to_raw_response_wrapper(
-            classes.retrieve,
+            standard_terms.retrieve,
         )
         self.list = async_to_raw_response_wrapper(
-            classes.list,
+            standard_terms.list,
         )
 
 
-class ClassesResourceWithStreamingResponse:
-    def __init__(self, classes: ClassesResource) -> None:
-        self._classes = classes
+class StandardTermsResourceWithStreamingResponse:
+    def __init__(self, standard_terms: StandardTermsResource) -> None:
+        self._standard_terms = standard_terms
 
-        self.create = to_streamed_response_wrapper(
-            classes.create,
-        )
         self.retrieve = to_streamed_response_wrapper(
-            classes.retrieve,
+            standard_terms.retrieve,
         )
         self.list = to_streamed_response_wrapper(
-            classes.list,
+            standard_terms.list,
         )
 
 
-class AsyncClassesResourceWithStreamingResponse:
-    def __init__(self, classes: AsyncClassesResource) -> None:
-        self._classes = classes
+class AsyncStandardTermsResourceWithStreamingResponse:
+    def __init__(self, standard_terms: AsyncStandardTermsResource) -> None:
+        self._standard_terms = standard_terms
 
-        self.create = async_to_streamed_response_wrapper(
-            classes.create,
-        )
         self.retrieve = async_to_streamed_response_wrapper(
-            classes.retrieve,
+            standard_terms.retrieve,
         )
         self.list = async_to_streamed_response_wrapper(
-            classes.list,
+            standard_terms.list,
         )

@@ -56,6 +56,14 @@ from .customers import (
     CustomersResourceWithStreamingResponse,
     AsyncCustomersResourceWithStreamingResponse,
 )
+from .standard_terms import (
+    StandardTermsResource,
+    AsyncStandardTermsResource,
+    StandardTermsResourceWithRawResponse,
+    AsyncStandardTermsResourceWithRawResponse,
+    StandardTermsResourceWithStreamingResponse,
+    AsyncStandardTermsResourceWithStreamingResponse,
+)
 from .credit_card_charges import (
     CreditCardChargesResource,
     AsyncCreditCardChargesResource,
@@ -108,6 +116,12 @@ __all__ = [
     "AsyncVendorsResourceWithRawResponse",
     "VendorsResourceWithStreamingResponse",
     "AsyncVendorsResourceWithStreamingResponse",
+    "StandardTermsResource",
+    "AsyncStandardTermsResource",
+    "StandardTermsResourceWithRawResponse",
+    "AsyncStandardTermsResourceWithRawResponse",
+    "StandardTermsResourceWithStreamingResponse",
+    "AsyncStandardTermsResourceWithStreamingResponse",
     "QbdResource",
     "AsyncQbdResource",
     "QbdResourceWithRawResponse",

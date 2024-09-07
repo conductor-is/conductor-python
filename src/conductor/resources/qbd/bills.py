@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import List, Iterable
 from typing_extensions import Literal
 
 import httpx
@@ -116,28 +116,69 @@ class BillsResource(SyncAPIResource):
             cast_to=QbdBill,
         )
 
+    def retrieve(
+        self,
+        id: str,
+        *,
+        conductor_end_user_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> QbdBill:
+        """
+        Retrieves a bill by ID.
+
+        Args:
+          id: The QuickBooks-assigned unique identifier of the bill to retrieve.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return self._get(
+            f"/quickbooks-desktop/bills/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=QbdBill,
+        )
+
     def list(
         self,
         *,
         conductor_end_user_id: str,
-        id: Union[str, List[str]] | NotGiven = NOT_GIVEN,
-        account_id: Union[str, List[str]] | NotGiven = NOT_GIVEN,
+        account_ids: str | NotGiven = NOT_GIVEN,
+        currency_ids: str | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
+        ids: str | NotGiven = NOT_GIVEN,
         include_line_items: bool | NotGiven = NOT_GIVEN,
         include_linked_transactions: bool | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
-        paid_status: Literal["all", "paid", "not_paid"] | NotGiven = NOT_GIVEN,
-        ref_number: Union[str, List[str]] | NotGiven = NOT_GIVEN,
+        payment_status: Literal["all", "paid", "not_paid"] | NotGiven = NOT_GIVEN,
         ref_number_contains: str | NotGiven = NOT_GIVEN,
         ref_number_ends_with: str | NotGiven = NOT_GIVEN,
         ref_number_from: str | NotGiven = NOT_GIVEN,
+        ref_numbers: str | NotGiven = NOT_GIVEN,
         ref_number_starts_with: str | NotGiven = NOT_GIVEN,
         ref_number_to: str | NotGiven = NOT_GIVEN,
         transaction_date_from: str | NotGiven = NOT_GIVEN,
         transaction_date_to: str | NotGiven = NOT_GIVEN,
         updated_after: str | NotGiven = NOT_GIVEN,
         updated_before: str | NotGiven = NOT_GIVEN,
-        vendor_id: Union[str, List[str]] | NotGiven = NOT_GIVEN,
+        vendor_ids: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -152,33 +193,33 @@ class BillsResource(SyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          id: The QuickBooks-assigned unique identifier of the transaction to return. You can
-              provide one or multiple instances of this parameter to fetch specific
-              transactions.
+          account_ids: Filter for bills from this account or accounts. Specify a single account ID or
+              multiple using a comma-separated list (e.g., `accountIds=1,2,3`).
 
-          account_id: Filter for bills from this account (e.g., accounts receivable, accounts
-              payable).
+          currency_ids: Filter for bills in this currency or currencies. Specify a single currency ID or
+              multiple using a comma-separated list (e.g., `currencyIds=1,2,3`).
 
-          cursor: The pagination token to use with the `cursor` request parameter to fetch the
-              next set of results. This value was returned in the `nextCursor` field of the
-              previous response when using the `limit` parameter.
+          cursor: The pagination token to fetch the next set of results when paginating with the
+              `limit` parameter. Retrieve this value from the `nextCursor` field in the
+              previous response. If omitted, the API returns the first page of results.
+
+          ids: Filter for specific bills by their QuickBooks-assigned unique identifier(s).
+              Specify a single ID or multiple using a comma-separated list (e.g.,
+              `ids=1,2,3`). NOTE: If you include this parameter, all other query parameters
+              will be ignored.
 
           include_line_items: Whether to include line items in the response.
 
-          include_linked_transactions: Whether to include linked transactions in the response. For example, a bill
-              payment linked to a bill.
+          include_linked_transactions: Whether to include linked transactions in the response. For example, a payment
+              linked to the corresponding bill.
 
           limit: The maximum number of objects to return, ranging from 1 to 500. Defaults to 500.
-              Include this parameter to paginate through the results. The `nextCursor` field
-              in the response will contain the value to use with the `cursor` request
-              parameter to fetch the next set of results.
+              Use this parameter in conjunction with the `cursor` parameter to paginate
+              through results. The response will include a `nextCursor` field, which can be
+              used as the `cursor` parameter value in subsequent requests to fetch the next
+              set of results.
 
-          paid_status: Filter for transactions that are paid, not paid, or both.
-
-          ref_number: The user-defined identifier for the transaction. It is not required to be unique
-              and can be arbitrarily changed by the QuickBooks user. Case sensitive. You can
-              provide one or multiple instances of this parameter to fetch specific
-              transactions.
+          payment_status: Filter for transactions that are paid, not paid, or both.
 
           ref_number_contains: Filter for transactions whose `refNumber` contains this substring. If you use
               this parameter, you cannot use `refNumberStartsWith` or `refNumberEndsWith`.
@@ -190,6 +231,12 @@ class BillsResource(SyncAPIResource):
               value. If omitted, the range will begin with the first number of the list. Uses
               a numerical comparison for values that contain only digits; otherwise, uses a
               lexicographical comparison.
+
+          ref_numbers: Filter for specific bills by their ref-number(s), case-sensitive. Specify a
+              single ref-number or multiple using a comma-separated list (e.g.,
+              `refNumbers=1,2,3`). In QuickBooks, ref-numbers are not required to be unique
+              and can be arbitrarily changed by the QuickBooks user. NOTE: If you include this
+              parameter, all other query parameters will be ignored.
 
           ref_number_starts_with: Filter for transactions whose `refNumber` starts with this substring. If you use
               this parameter, you cannot use `refNumberContains` or `refNumberEndsWith`.
@@ -213,7 +260,8 @@ class BillsResource(SyncAPIResource):
               (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the time is
               assumed to be 23:59:59 of that day.
 
-          vendor_id: Filter for bills from this vendor.
+          vendor_ids: Filter for bills from this vendor or vendors. Specify a single vendor ID or
+              multiple using a comma-separated list (e.g., `vendorIds=1,2,3`).
 
           extra_headers: Send extra headers
 
@@ -234,24 +282,25 @@ class BillsResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "id": id,
-                        "account_id": account_id,
+                        "account_ids": account_ids,
+                        "currency_ids": currency_ids,
                         "cursor": cursor,
+                        "ids": ids,
                         "include_line_items": include_line_items,
                         "include_linked_transactions": include_linked_transactions,
                         "limit": limit,
-                        "paid_status": paid_status,
-                        "ref_number": ref_number,
+                        "payment_status": payment_status,
                         "ref_number_contains": ref_number_contains,
                         "ref_number_ends_with": ref_number_ends_with,
                         "ref_number_from": ref_number_from,
+                        "ref_numbers": ref_numbers,
                         "ref_number_starts_with": ref_number_starts_with,
                         "ref_number_to": ref_number_to,
                         "transaction_date_from": transaction_date_from,
                         "transaction_date_to": transaction_date_to,
                         "updated_after": updated_after,
                         "updated_before": updated_before,
-                        "vendor_id": vendor_id,
+                        "vendor_ids": vendor_ids,
                     },
                     bill_list_params.BillListParams,
                 ),
@@ -348,28 +397,69 @@ class AsyncBillsResource(AsyncAPIResource):
             cast_to=QbdBill,
         )
 
+    async def retrieve(
+        self,
+        id: str,
+        *,
+        conductor_end_user_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> QbdBill:
+        """
+        Retrieves a bill by ID.
+
+        Args:
+          id: The QuickBooks-assigned unique identifier of the bill to retrieve.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return await self._get(
+            f"/quickbooks-desktop/bills/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=QbdBill,
+        )
+
     def list(
         self,
         *,
         conductor_end_user_id: str,
-        id: Union[str, List[str]] | NotGiven = NOT_GIVEN,
-        account_id: Union[str, List[str]] | NotGiven = NOT_GIVEN,
+        account_ids: str | NotGiven = NOT_GIVEN,
+        currency_ids: str | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
+        ids: str | NotGiven = NOT_GIVEN,
         include_line_items: bool | NotGiven = NOT_GIVEN,
         include_linked_transactions: bool | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
-        paid_status: Literal["all", "paid", "not_paid"] | NotGiven = NOT_GIVEN,
-        ref_number: Union[str, List[str]] | NotGiven = NOT_GIVEN,
+        payment_status: Literal["all", "paid", "not_paid"] | NotGiven = NOT_GIVEN,
         ref_number_contains: str | NotGiven = NOT_GIVEN,
         ref_number_ends_with: str | NotGiven = NOT_GIVEN,
         ref_number_from: str | NotGiven = NOT_GIVEN,
+        ref_numbers: str | NotGiven = NOT_GIVEN,
         ref_number_starts_with: str | NotGiven = NOT_GIVEN,
         ref_number_to: str | NotGiven = NOT_GIVEN,
         transaction_date_from: str | NotGiven = NOT_GIVEN,
         transaction_date_to: str | NotGiven = NOT_GIVEN,
         updated_after: str | NotGiven = NOT_GIVEN,
         updated_before: str | NotGiven = NOT_GIVEN,
-        vendor_id: Union[str, List[str]] | NotGiven = NOT_GIVEN,
+        vendor_ids: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -384,33 +474,33 @@ class AsyncBillsResource(AsyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          id: The QuickBooks-assigned unique identifier of the transaction to return. You can
-              provide one or multiple instances of this parameter to fetch specific
-              transactions.
+          account_ids: Filter for bills from this account or accounts. Specify a single account ID or
+              multiple using a comma-separated list (e.g., `accountIds=1,2,3`).
 
-          account_id: Filter for bills from this account (e.g., accounts receivable, accounts
-              payable).
+          currency_ids: Filter for bills in this currency or currencies. Specify a single currency ID or
+              multiple using a comma-separated list (e.g., `currencyIds=1,2,3`).
 
-          cursor: The pagination token to use with the `cursor` request parameter to fetch the
-              next set of results. This value was returned in the `nextCursor` field of the
-              previous response when using the `limit` parameter.
+          cursor: The pagination token to fetch the next set of results when paginating with the
+              `limit` parameter. Retrieve this value from the `nextCursor` field in the
+              previous response. If omitted, the API returns the first page of results.
+
+          ids: Filter for specific bills by their QuickBooks-assigned unique identifier(s).
+              Specify a single ID or multiple using a comma-separated list (e.g.,
+              `ids=1,2,3`). NOTE: If you include this parameter, all other query parameters
+              will be ignored.
 
           include_line_items: Whether to include line items in the response.
 
-          include_linked_transactions: Whether to include linked transactions in the response. For example, a bill
-              payment linked to a bill.
+          include_linked_transactions: Whether to include linked transactions in the response. For example, a payment
+              linked to the corresponding bill.
 
           limit: The maximum number of objects to return, ranging from 1 to 500. Defaults to 500.
-              Include this parameter to paginate through the results. The `nextCursor` field
-              in the response will contain the value to use with the `cursor` request
-              parameter to fetch the next set of results.
+              Use this parameter in conjunction with the `cursor` parameter to paginate
+              through results. The response will include a `nextCursor` field, which can be
+              used as the `cursor` parameter value in subsequent requests to fetch the next
+              set of results.
 
-          paid_status: Filter for transactions that are paid, not paid, or both.
-
-          ref_number: The user-defined identifier for the transaction. It is not required to be unique
-              and can be arbitrarily changed by the QuickBooks user. Case sensitive. You can
-              provide one or multiple instances of this parameter to fetch specific
-              transactions.
+          payment_status: Filter for transactions that are paid, not paid, or both.
 
           ref_number_contains: Filter for transactions whose `refNumber` contains this substring. If you use
               this parameter, you cannot use `refNumberStartsWith` or `refNumberEndsWith`.
@@ -422,6 +512,12 @@ class AsyncBillsResource(AsyncAPIResource):
               value. If omitted, the range will begin with the first number of the list. Uses
               a numerical comparison for values that contain only digits; otherwise, uses a
               lexicographical comparison.
+
+          ref_numbers: Filter for specific bills by their ref-number(s), case-sensitive. Specify a
+              single ref-number or multiple using a comma-separated list (e.g.,
+              `refNumbers=1,2,3`). In QuickBooks, ref-numbers are not required to be unique
+              and can be arbitrarily changed by the QuickBooks user. NOTE: If you include this
+              parameter, all other query parameters will be ignored.
 
           ref_number_starts_with: Filter for transactions whose `refNumber` starts with this substring. If you use
               this parameter, you cannot use `refNumberContains` or `refNumberEndsWith`.
@@ -445,7 +541,8 @@ class AsyncBillsResource(AsyncAPIResource):
               (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the time is
               assumed to be 23:59:59 of that day.
 
-          vendor_id: Filter for bills from this vendor.
+          vendor_ids: Filter for bills from this vendor or vendors. Specify a single vendor ID or
+              multiple using a comma-separated list (e.g., `vendorIds=1,2,3`).
 
           extra_headers: Send extra headers
 
@@ -466,24 +563,25 @@ class AsyncBillsResource(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "id": id,
-                        "account_id": account_id,
+                        "account_ids": account_ids,
+                        "currency_ids": currency_ids,
                         "cursor": cursor,
+                        "ids": ids,
                         "include_line_items": include_line_items,
                         "include_linked_transactions": include_linked_transactions,
                         "limit": limit,
-                        "paid_status": paid_status,
-                        "ref_number": ref_number,
+                        "payment_status": payment_status,
                         "ref_number_contains": ref_number_contains,
                         "ref_number_ends_with": ref_number_ends_with,
                         "ref_number_from": ref_number_from,
+                        "ref_numbers": ref_numbers,
                         "ref_number_starts_with": ref_number_starts_with,
                         "ref_number_to": ref_number_to,
                         "transaction_date_from": transaction_date_from,
                         "transaction_date_to": transaction_date_to,
                         "updated_after": updated_after,
                         "updated_before": updated_before,
-                        "vendor_id": vendor_id,
+                        "vendor_ids": vendor_ids,
                     },
                     bill_list_params.BillListParams,
                 ),
@@ -499,6 +597,9 @@ class BillsResourceWithRawResponse:
         self.create = to_raw_response_wrapper(
             bills.create,
         )
+        self.retrieve = to_raw_response_wrapper(
+            bills.retrieve,
+        )
         self.list = to_raw_response_wrapper(
             bills.list,
         )
@@ -510,6 +611,9 @@ class AsyncBillsResourceWithRawResponse:
 
         self.create = async_to_raw_response_wrapper(
             bills.create,
+        )
+        self.retrieve = async_to_raw_response_wrapper(
+            bills.retrieve,
         )
         self.list = async_to_raw_response_wrapper(
             bills.list,
@@ -523,6 +627,9 @@ class BillsResourceWithStreamingResponse:
         self.create = to_streamed_response_wrapper(
             bills.create,
         )
+        self.retrieve = to_streamed_response_wrapper(
+            bills.retrieve,
+        )
         self.list = to_streamed_response_wrapper(
             bills.list,
         )
@@ -534,6 +641,9 @@ class AsyncBillsResourceWithStreamingResponse:
 
         self.create = async_to_streamed_response_wrapper(
             bills.create,
+        )
+        self.retrieve = async_to_streamed_response_wrapper(
+            bills.retrieve,
         )
         self.list = async_to_streamed_response_wrapper(
             bills.list,

@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from typing import List, Union
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
@@ -17,43 +16,52 @@ class VendorListParams(TypedDict, total=False):
     `"Conductor-End-User-Id: {{END_USER_ID}}"`).
     """
 
-    id: Union[str, List[str]]
-    """Filter for vendors with the specified QuickBooks-assigned unique identifier(s).
-
-    If your request includes this parameter, all other query parameters will be
-    ignored.
-    """
-
-    class_id: Annotated[Union[str, List[str]], PropertyInfo(alias="classId")]
+    class_ids: Annotated[str, PropertyInfo(alias="classIds")]
     """Filter for vendors of this class or classes.
 
-    A class is a way end-users can categorize vendors in QuickBooks.
+    Specify a single class ID or multiple using a comma-separated list (e.g.,
+    `classIds=1,2,3`). A class is a way end-users can categorize vendors in
+    QuickBooks.
     """
 
-    currency_id: Annotated[Union[str, List[str]], PropertyInfo(alias="currencyId")]
-    """Filter for vendors in this currency or currencies."""
+    currency_ids: Annotated[str, PropertyInfo(alias="currencyIds")]
+    """Filter for vendors in this currency or currencies.
+
+    Specify a single currency ID or multiple using a comma-separated list (e.g.,
+    `currencyIds=1,2,3`).
+    """
 
     cursor: str
     """
-    The pagination token to use with the `cursor` request parameter to fetch the
-    next set of results. This value was returned in the `nextCursor` field of the
-    previous response when using the `limit` parameter.
+    The pagination token to fetch the next set of results when paginating with the
+    `limit` parameter. Retrieve this value from the `nextCursor` field in the
+    previous response. If omitted, the API returns the first page of results.
     """
 
-    full_name: Annotated[Union[str, List[str]], PropertyInfo(alias="fullName")]
-    """Filter for vendors with this full-name or full-names.
+    full_names: Annotated[str, PropertyInfo(alias="fullNames")]
+    """Filter for specific vendors by their full-name(s).
 
-    Like `id`, a full-name is a unique identifier for a vendor, and is created by
-    prefixing the vendor's name with the names of each ancestor. If your request
-    includes this parameter, all other query parameters will be ignored.
+    Specify a single full-name or multiple using a comma-separated list (e.g.,
+    `fullNames=1,2,3`). Like `id`, a full-name is a unique identifier for a vendor,
+    and is created by prefixing the vendor's name with the names of each ancestor.
+    NOTE: If you include this parameter, all other query parameters will be ignored.
+    """
+
+    ids: str
+    """Filter for specific vendors by their QuickBooks-assigned unique identifier(s).
+
+    Specify a single ID or multiple using a comma-separated list (e.g.,
+    `ids=1,2,3`). NOTE: If you include this parameter, all other query parameters
+    will be ignored.
     """
 
     limit: int
     """The maximum number of objects to return, ranging from 1 to 500.
 
-    Defaults to 500. Include this parameter to paginate through the results. The
-    `nextCursor` field in the response will contain the value to use with the
-    `cursor` request parameter to fetch the next set of results.
+    Defaults to 500. Use this parameter in conjunction with the `cursor` parameter
+    to paginate through results. The response will include a `nextCursor` field,
+    which can be used as the `cursor` parameter value in subsequent requests to
+    fetch the next set of results.
     """
 
     name_contains: Annotated[str, PropertyInfo(alias="nameContains")]
