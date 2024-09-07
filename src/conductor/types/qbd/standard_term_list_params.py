@@ -6,10 +6,10 @@ from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
-__all__ = ["ClassListParams"]
+__all__ = ["StandardTermListParams"]
 
 
-class ClassListParams(TypedDict, total=False):
+class StandardTermListParams(TypedDict, total=False):
     conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]
     """
     The ID of the EndUser to receive this request (e.g.,
@@ -17,20 +17,21 @@ class ClassListParams(TypedDict, total=False):
     """
 
     full_names: Annotated[str, PropertyInfo(alias="fullNames")]
-    """Filter for specific classes by their full-name(s).
+    """Filter for specific standard-terms by their full-name(s).
 
     Specify a single full-name or multiple using a comma-separated list (e.g.,
-    `fullNames=1,2,3`). Like `id`, a full-name is a unique identifier for a class,
-    and is created by prefixing the class's name with the names of each ancestor.
-    NOTE: If you include this parameter, all other query parameters will be ignored.
+    `fullNames=1,2,3`). Like `id`, a full-name is a unique identifier for a
+    standard-term, and is created by prefixing the standard-term's name with the
+    names of each ancestor. NOTE: If you include this parameter, all other query
+    parameters will be ignored.
     """
 
     ids: str
-    """Filter for specific classes by their QuickBooks-assigned unique identifier(s).
-
-    Specify a single ID or multiple using a comma-separated list (e.g.,
-    `ids=1,2,3`). NOTE: If you include this parameter, all other query parameters
-    will be ignored.
+    """
+    Filter for specific standard-terms by their QuickBooks-assigned unique
+    identifier(s). Specify a single ID or multiple using a comma-separated list
+    (e.g., `ids=1,2,3`). NOTE: If you include this parameter, all other query
+    parameters will be ignored.
     """
 
     limit: int

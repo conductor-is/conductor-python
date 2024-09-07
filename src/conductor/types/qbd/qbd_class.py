@@ -58,6 +58,13 @@ class QbdClass(BaseModel):
     parent: Optional[Parent] = None
 
     sublevel: float
+    """The nesting level of this class within the class hierarchy.
+
+    A top-level class has a `sublevel` of 0, a direct sub-class has a `sublevel` of
+    1, and so on. For example, a class with a `fullName` of
+    "Corporate:Sales:Marketing" and a `name` of "Marketing" would have a `sublevel`
+    of 2.
+    """
 
     updated_at: str = FieldInfo(alias="updatedAt")
     """
