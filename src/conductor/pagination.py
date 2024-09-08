@@ -7,12 +7,12 @@ from pydantic import Field as FieldInfo
 
 from ._base_client import BasePage, PageInfo, BaseSyncPage, BaseAsyncPage
 
-__all__ = ["SyncMyCursorPage", "AsyncMyCursorPage"]
+__all__ = ["SyncCursorPage", "AsyncCursorPage"]
 
 _T = TypeVar("_T")
 
 
-class SyncMyCursorPage(BaseSyncPage[_T], BasePage[_T], Generic[_T]):
+class SyncCursorPage(BaseSyncPage[_T], BasePage[_T], Generic[_T]):
     data: List[_T]
     next_cursor: Optional[str] = FieldInfo(alias="nextCursor", default=None)
 
@@ -32,7 +32,7 @@ class SyncMyCursorPage(BaseSyncPage[_T], BasePage[_T], Generic[_T]):
         return PageInfo(params={"cursor": next_cursor})
 
 
-class AsyncMyCursorPage(BaseAsyncPage[_T], BasePage[_T], Generic[_T]):
+class AsyncCursorPage(BaseAsyncPage[_T], BasePage[_T], Generic[_T]):
     data: List[_T]
     next_cursor: Optional[str] = FieldInfo(alias="nextCursor", default=None)
 

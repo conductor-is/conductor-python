@@ -21,7 +21,7 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ...types.qbd import vendor_list_params, vendor_create_params
-from ...pagination import SyncMyCursorPage, AsyncMyCursorPage
+from ...pagination import SyncCursorPage, AsyncCursorPage
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.qbd.qbd_vendor import QbdVendor
 
@@ -347,7 +347,7 @@ class VendorsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncMyCursorPage[QbdVendor]:
+    ) -> SyncCursorPage[QbdVendor]:
         """
         Returns a list of vendors.
 
@@ -434,7 +434,7 @@ class VendorsResource(SyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/vendors",
-            page=SyncMyCursorPage[QbdVendor],
+            page=SyncCursorPage[QbdVendor],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -788,7 +788,7 @@ class AsyncVendorsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[QbdVendor, AsyncMyCursorPage[QbdVendor]]:
+    ) -> AsyncPaginator[QbdVendor, AsyncCursorPage[QbdVendor]]:
         """
         Returns a list of vendors.
 
@@ -875,7 +875,7 @@ class AsyncVendorsResource(AsyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/vendors",
-            page=AsyncMyCursorPage[QbdVendor],
+            page=AsyncCursorPage[QbdVendor],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

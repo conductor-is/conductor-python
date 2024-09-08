@@ -20,7 +20,7 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ...types.qbd import credit_card_charge_list_params, credit_card_charge_create_params
-from ...pagination import SyncMyCursorPage, AsyncMyCursorPage
+from ...pagination import SyncCursorPage, AsyncCursorPage
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.qbd.qbd_credit_card_charge import QbdCreditCardCharge
 
@@ -172,7 +172,7 @@ class CreditCardChargesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncMyCursorPage[QbdCreditCardCharge]:
+    ) -> SyncCursorPage[QbdCreditCardCharge]:
         """
         Returns a list of credit card charges.
 
@@ -257,7 +257,7 @@ class CreditCardChargesResource(SyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/credit-card-charges",
-            page=SyncMyCursorPage[QbdCreditCardCharge],
+            page=SyncCursorPage[QbdCreditCardCharge],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -435,7 +435,7 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[QbdCreditCardCharge, AsyncMyCursorPage[QbdCreditCardCharge]]:
+    ) -> AsyncPaginator[QbdCreditCardCharge, AsyncCursorPage[QbdCreditCardCharge]]:
         """
         Returns a list of credit card charges.
 
@@ -520,7 +520,7 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/credit-card-charges",
-            page=AsyncMyCursorPage[QbdCreditCardCharge],
+            page=AsyncCursorPage[QbdCreditCardCharge],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

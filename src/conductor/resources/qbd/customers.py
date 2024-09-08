@@ -21,7 +21,7 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ...types.qbd import customer_list_params, customer_create_params
-from ...pagination import SyncMyCursorPage, AsyncMyCursorPage
+from ...pagination import SyncCursorPage, AsyncCursorPage
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.qbd.qbd_customer import QbdCustomer
 
@@ -345,7 +345,7 @@ class CustomersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncMyCursorPage[QbdCustomer]:
+    ) -> SyncCursorPage[QbdCustomer]:
         """
         Returns a list of customers.
 
@@ -432,7 +432,7 @@ class CustomersResource(SyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/customers",
-            page=SyncMyCursorPage[QbdCustomer],
+            page=SyncCursorPage[QbdCustomer],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -784,7 +784,7 @@ class AsyncCustomersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[QbdCustomer, AsyncMyCursorPage[QbdCustomer]]:
+    ) -> AsyncPaginator[QbdCustomer, AsyncCursorPage[QbdCustomer]]:
         """
         Returns a list of customers.
 
@@ -871,7 +871,7 @@ class AsyncCustomersResource(AsyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/customers",
-            page=AsyncMyCursorPage[QbdCustomer],
+            page=AsyncCursorPage[QbdCustomer],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

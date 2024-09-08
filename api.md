@@ -73,7 +73,7 @@ Methods:
 
 - <code title="post /quickbooks-desktop/bills">client.qbd.bills.<a href="./src/conductor/resources/qbd/bills.py">create</a>(\*\*<a href="src/conductor/types/qbd/bill_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_bill.py">QbdBill</a></code>
 - <code title="get /quickbooks-desktop/bills/{id}">client.qbd.bills.<a href="./src/conductor/resources/qbd/bills.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_bill.py">QbdBill</a></code>
-- <code title="get /quickbooks-desktop/bills">client.qbd.bills.<a href="./src/conductor/resources/qbd/bills.py">list</a>(\*\*<a href="src/conductor/types/qbd/bill_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_bill.py">SyncMyCursorPage[QbdBill]</a></code>
+- <code title="get /quickbooks-desktop/bills">client.qbd.bills.<a href="./src/conductor/resources/qbd/bills.py">list</a>(\*\*<a href="src/conductor/types/qbd/bill_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_bill.py">SyncCursorPage[QbdBill]</a></code>
 
 ## Classes
 
@@ -101,7 +101,7 @@ Methods:
 
 - <code title="post /quickbooks-desktop/credit-card-charges">client.qbd.credit_card_charges.<a href="./src/conductor/resources/qbd/credit_card_charges.py">create</a>(\*\*<a href="src/conductor/types/qbd/credit_card_charge_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_credit_card_charge.py">QbdCreditCardCharge</a></code>
 - <code title="get /quickbooks-desktop/credit-card-charges/{id}">client.qbd.credit_card_charges.<a href="./src/conductor/resources/qbd/credit_card_charges.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_credit_card_charge.py">QbdCreditCardCharge</a></code>
-- <code title="get /quickbooks-desktop/credit-card-charges">client.qbd.credit_card_charges.<a href="./src/conductor/resources/qbd/credit_card_charges.py">list</a>(\*\*<a href="src/conductor/types/qbd/credit_card_charge_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_credit_card_charge.py">SyncMyCursorPage[QbdCreditCardCharge]</a></code>
+- <code title="get /quickbooks-desktop/credit-card-charges">client.qbd.credit_card_charges.<a href="./src/conductor/resources/qbd/credit_card_charges.py">list</a>(\*\*<a href="src/conductor/types/qbd/credit_card_charge_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_credit_card_charge.py">SyncCursorPage[QbdCreditCardCharge]</a></code>
 
 ## Customers
 
@@ -115,7 +115,7 @@ Methods:
 
 - <code title="post /quickbooks-desktop/customers">client.qbd.customers.<a href="./src/conductor/resources/qbd/customers.py">create</a>(\*\*<a href="src/conductor/types/qbd/customer_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_customer.py">QbdCustomer</a></code>
 - <code title="get /quickbooks-desktop/customers/{id}">client.qbd.customers.<a href="./src/conductor/resources/qbd/customers.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_customer.py">QbdCustomer</a></code>
-- <code title="get /quickbooks-desktop/customers">client.qbd.customers.<a href="./src/conductor/resources/qbd/customers.py">list</a>(\*\*<a href="src/conductor/types/qbd/customer_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_customer.py">SyncMyCursorPage[QbdCustomer]</a></code>
+- <code title="get /quickbooks-desktop/customers">client.qbd.customers.<a href="./src/conductor/resources/qbd/customers.py">list</a>(\*\*<a href="src/conductor/types/qbd/customer_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_customer.py">SyncCursorPage[QbdCustomer]</a></code>
 
 ## Invoices
 
@@ -129,7 +129,7 @@ Methods:
 
 - <code title="post /quickbooks-desktop/invoices">client.qbd.invoices.<a href="./src/conductor/resources/qbd/invoices.py">create</a>(\*\*<a href="src/conductor/types/qbd/invoice_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_invoice.py">QbdInvoice</a></code>
 - <code title="get /quickbooks-desktop/invoices/{id}">client.qbd.invoices.<a href="./src/conductor/resources/qbd/invoices.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_invoice.py">QbdInvoice</a></code>
-- <code title="get /quickbooks-desktop/invoices">client.qbd.invoices.<a href="./src/conductor/resources/qbd/invoices.py">list</a>(\*\*<a href="src/conductor/types/qbd/invoice_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_invoice.py">SyncMyCursorPage[QbdInvoice]</a></code>
+- <code title="get /quickbooks-desktop/invoices">client.qbd.invoices.<a href="./src/conductor/resources/qbd/invoices.py">list</a>(\*\*<a href="src/conductor/types/qbd/invoice_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_invoice.py">SyncCursorPage[QbdInvoice]</a></code>
 
 ## StandardTerms
 
@@ -156,4 +156,4 @@ Methods:
 
 - <code title="post /quickbooks-desktop/vendors">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">create</a>(\*\*<a href="src/conductor/types/qbd/vendor_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_vendor.py">QbdVendor</a></code>
 - <code title="get /quickbooks-desktop/vendors/{id}">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_vendor.py">QbdVendor</a></code>
-- <code title="get /quickbooks-desktop/vendors">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">list</a>(\*\*<a href="src/conductor/types/qbd/vendor_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_vendor.py">SyncMyCursorPage[QbdVendor]</a></code>
+- <code title="get /quickbooks-desktop/vendors">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">list</a>(\*\*<a href="src/conductor/types/qbd/vendor_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_vendor.py">SyncCursorPage[QbdVendor]</a></code>
