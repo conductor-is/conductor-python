@@ -21,7 +21,7 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ...types.qbd import invoice_list_params, invoice_create_params
-from ...pagination import SyncMyCursorPage, AsyncMyCursorPage
+from ...pagination import SyncCursorPage, AsyncCursorPage
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.qbd.qbd_invoice import QbdInvoice
 
@@ -218,7 +218,7 @@ class InvoicesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncMyCursorPage[QbdInvoice]:
+    ) -> SyncCursorPage[QbdInvoice]:
         """
         Returns a list of invoices.
 
@@ -307,7 +307,7 @@ class InvoicesResource(SyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/invoices",
-            page=SyncMyCursorPage[QbdInvoice],
+            page=SyncCursorPage[QbdInvoice],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -532,7 +532,7 @@ class AsyncInvoicesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[QbdInvoice, AsyncMyCursorPage[QbdInvoice]]:
+    ) -> AsyncPaginator[QbdInvoice, AsyncCursorPage[QbdInvoice]]:
         """
         Returns a list of invoices.
 
@@ -621,7 +621,7 @@ class AsyncInvoicesResource(AsyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/invoices",
-            page=AsyncMyCursorPage[QbdInvoice],
+            page=AsyncCursorPage[QbdInvoice],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

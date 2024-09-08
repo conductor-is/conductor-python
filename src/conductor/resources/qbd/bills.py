@@ -21,7 +21,7 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ...types.qbd import bill_list_params, bill_create_params
-from ...pagination import SyncMyCursorPage, AsyncMyCursorPage
+from ...pagination import SyncCursorPage, AsyncCursorPage
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.qbd.qbd_bill import QbdBill
 
@@ -185,7 +185,7 @@ class BillsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncMyCursorPage[QbdBill]:
+    ) -> SyncCursorPage[QbdBill]:
         """
         Returns a list of bills.
 
@@ -274,7 +274,7 @@ class BillsResource(SyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/bills",
-            page=SyncMyCursorPage[QbdBill],
+            page=SyncCursorPage[QbdBill],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -466,7 +466,7 @@ class AsyncBillsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[QbdBill, AsyncMyCursorPage[QbdBill]]:
+    ) -> AsyncPaginator[QbdBill, AsyncCursorPage[QbdBill]]:
         """
         Returns a list of bills.
 
@@ -555,7 +555,7 @@ class AsyncBillsResource(AsyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/bills",
-            page=AsyncMyCursorPage[QbdBill],
+            page=AsyncCursorPage[QbdBill],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
