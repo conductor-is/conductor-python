@@ -27,10 +27,21 @@ __all__ = ["AuthSessionsResource", "AsyncAuthSessionsResource"]
 class AuthSessionsResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AuthSessionsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/conductor-is/conductor-python#accessing-raw-response-data-eg-headers
+        """
         return AuthSessionsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AuthSessionsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/conductor-is/conductor-python#with_streaming_response
+        """
         return AuthSessionsResourceWithStreamingResponse(self)
 
     def create(
@@ -129,10 +140,21 @@ class AuthSessionsResource(SyncAPIResource):
 class AsyncAuthSessionsResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncAuthSessionsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/conductor-is/conductor-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncAuthSessionsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncAuthSessionsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/conductor-is/conductor-python#with_streaming_response
+        """
         return AsyncAuthSessionsResourceWithStreamingResponse(self)
 
     async def create(

@@ -31,10 +31,21 @@ __all__ = ["InvoicesResource", "AsyncInvoicesResource"]
 class InvoicesResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> InvoicesResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/conductor-is/conductor-python#accessing-raw-response-data-eg-headers
+        """
         return InvoicesResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> InvoicesResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/conductor-is/conductor-python#with_streaming_response
+        """
         return InvoicesResourceWithStreamingResponse(self)
 
     def create(
@@ -345,10 +356,21 @@ class InvoicesResource(SyncAPIResource):
 class AsyncInvoicesResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncInvoicesResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/conductor-is/conductor-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncInvoicesResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncInvoicesResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/conductor-is/conductor-python#with_streaming_response
+        """
         return AsyncInvoicesResourceWithStreamingResponse(self)
 
     async def create(

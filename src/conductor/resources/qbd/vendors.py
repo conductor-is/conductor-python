@@ -31,10 +31,21 @@ __all__ = ["VendorsResource", "AsyncVendorsResource"]
 class VendorsResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> VendorsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/conductor-is/conductor-python#accessing-raw-response-data-eg-headers
+        """
         return VendorsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> VendorsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/conductor-is/conductor-python#with_streaming_response
+        """
         return VendorsResourceWithStreamingResponse(self)
 
     def create(
@@ -472,10 +483,21 @@ class VendorsResource(SyncAPIResource):
 class AsyncVendorsResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncVendorsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/conductor-is/conductor-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncVendorsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncVendorsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/conductor-is/conductor-python#with_streaming_response
+        """
         return AsyncVendorsResourceWithStreamingResponse(self)
 
     async def create(

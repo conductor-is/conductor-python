@@ -30,10 +30,21 @@ __all__ = ["CreditCardChargesResource", "AsyncCreditCardChargesResource"]
 class CreditCardChargesResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> CreditCardChargesResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/conductor-is/conductor-python#accessing-raw-response-data-eg-headers
+        """
         return CreditCardChargesResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> CreditCardChargesResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/conductor-is/conductor-python#with_streaming_response
+        """
         return CreditCardChargesResourceWithStreamingResponse(self)
 
     def create(
@@ -293,10 +304,21 @@ class CreditCardChargesResource(SyncAPIResource):
 class AsyncCreditCardChargesResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncCreditCardChargesResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/conductor-is/conductor-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncCreditCardChargesResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncCreditCardChargesResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/conductor-is/conductor-python#with_streaming_response
+        """
         return AsyncCreditCardChargesResourceWithStreamingResponse(self)
 
     async def create(
