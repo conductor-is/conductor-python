@@ -23,10 +23,21 @@ __all__ = ["IntegrationConnectionsResource", "AsyncIntegrationConnectionsResourc
 class IntegrationConnectionsResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> IntegrationConnectionsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/conductor-is/conductor-python#accessing-raw-response-data-eg-headers
+        """
         return IntegrationConnectionsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> IntegrationConnectionsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/conductor-is/conductor-python#with_streaming_response
+        """
         return IntegrationConnectionsResourceWithStreamingResponse(self)
 
     def retrieve(
@@ -87,10 +98,21 @@ class IntegrationConnectionsResource(SyncAPIResource):
 class AsyncIntegrationConnectionsResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncIntegrationConnectionsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/conductor-is/conductor-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncIntegrationConnectionsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncIntegrationConnectionsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/conductor-is/conductor-python#with_streaming_response
+        """
         return AsyncIntegrationConnectionsResourceWithStreamingResponse(self)
 
     async def retrieve(
