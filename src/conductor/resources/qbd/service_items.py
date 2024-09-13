@@ -7,10 +7,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from ..._utils import (
-    maybe_transform,
-    async_maybe_transform,
-)
+from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -19,33 +16,33 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...types.qbd import standard_term_list_params
-from ..._base_client import make_request_options
-from ...types.qbd.qbd_standard_term import QbdStandardTerm
-from ...types.qbd.standard_term_list_response import StandardTermListResponse
+from ...types.qbd import service_item_list_params
+from ...pagination import SyncCursorPage, AsyncCursorPage
+from ..._base_client import AsyncPaginator, make_request_options
+from ...types.qbd.service_item import ServiceItem
 
-__all__ = ["StandardTermsResource", "AsyncStandardTermsResource"]
+__all__ = ["ServiceItemsResource", "AsyncServiceItemsResource"]
 
 
-class StandardTermsResource(SyncAPIResource):
+class ServiceItemsResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> StandardTermsResourceWithRawResponse:
+    def with_raw_response(self) -> ServiceItemsResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return the
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/conductor-is/conductor-python#accessing-raw-response-data-eg-headers
         """
-        return StandardTermsResourceWithRawResponse(self)
+        return ServiceItemsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> StandardTermsResourceWithStreamingResponse:
+    def with_streaming_response(self) -> ServiceItemsResourceWithStreamingResponse:
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
         For more information, see https://www.github.com/conductor-is/conductor-python#with_streaming_response
         """
-        return StandardTermsResourceWithStreamingResponse(self)
+        return ServiceItemsResourceWithStreamingResponse(self)
 
     def retrieve(
         self,
@@ -58,12 +55,12 @@ class StandardTermsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdStandardTerm:
+    ) -> ServiceItem:
         """
-        Retrieves a standard-term by ID.
+        Retrieves a service-item by ID.
 
         Args:
-          id: The QuickBooks-assigned unique identifier of the standard-term to retrieve.
+          id: The QuickBooks-assigned unique identifier of the service-item to retrieve.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -80,17 +77,19 @@ class StandardTermsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get(
-            f"/quickbooks-desktop/standard-terms/{id}",
+            f"/quickbooks-desktop/service-items/{id}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdStandardTerm,
+            cast_to=ServiceItem,
         )
 
     def list(
         self,
         *,
         conductor_end_user_id: str,
+        class_ids: str | NotGiven = NOT_GIVEN,
+        cursor: str | NotGiven = NOT_GIVEN,
         full_names: str | NotGiven = NOT_GIVEN,
         ids: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
@@ -108,34 +107,42 @@ class StandardTermsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> StandardTermListResponse:
+    ) -> SyncCursorPage[ServiceItem]:
         """
-        Returns a list of standard-terms.
+        Returns a list of service-items.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          full_names: Filter for specific standard-terms by their full-name(s). Specify a single
-              full-name or multiple using a comma-separated list (e.g., `fullNames=1,2,3`).
-              Like `id`, a `fullName` is a unique identifier for a standard-term, and is
-              formed by by combining the names of its parent objects with its own `name`,
-              separated by colons. For example, if a standard-term is under 'Payment Terms'
-              and has the `name` 'Net 15', its `fullName` would be 'Payment Terms:Net 15'.
-              Unlike `name`, `fullName` is guaranteed to be unique across all standard-term
-              objects. NOTE: If you include this parameter, all other query parameters will be
-              ignored.
+          class_ids: Filter for service-items of this class or classes. Specify a single class ID or
+              multiple using a comma-separated list (e.g., `classIds=1,2,3`). A class is a way
+              end-users can categorize service-items in QuickBooks.
 
-          ids: Filter for specific standard-terms by their QuickBooks-assigned unique
+          cursor: The pagination token to fetch the next set of results when paginating with the
+              `limit` parameter. Retrieve this value from the `nextCursor` field in the
+              previous response. If omitted, the API returns the first page of results.
+
+          full_names: Filter for specific service-items by their full-name(s). Specify a single
+              full-name or multiple using a comma-separated list (e.g., `fullNames=1,2,3`).
+              Like `id`, a `fullName` is a unique identifier for a service-item, and is formed
+              by by combining the names of its parent objects with its own `name`, separated
+              by colons. For example, if a service-item is under 'Professional Services' and
+              has the `name` 'Consulting', its `fullName` would be 'Professional
+              Services:Consulting'. Unlike `name`, `fullName` is guaranteed to be unique
+              across all service-item objects. NOTE: If you include this parameter, all other
+              query parameters will be ignored.
+
+          ids: Filter for specific service-items by their QuickBooks-assigned unique
               identifier(s). Specify a single ID or multiple using a comma-separated list
               (e.g., `ids=1,2,3`). NOTE: If you include this parameter, all other query
               parameters will be ignored.
 
           limit: The maximum number of objects to return, ranging from 1 to 500. Defaults to 500.
-              NOTE: QuickBooks Desktop does not support cursor-based pagination for this
-              object type. Hence, this parameter will limit the response size, but you will
-              not be able to fetch the next set of results. To paginate through the results
-              for this endpoint, try fetching batches via the date-range query parameters.
+              Use this parameter in conjunction with the `cursor` parameter to paginate
+              through results. The response will include a `nextCursor` field, which can be
+              used as the `cursor` parameter value in subsequent requests to fetch the next
+              set of results.
 
           name_contains: Filter for objects whose `name` contains this substring. If you use this
               parameter, you cannot use `nameStartsWith` or `nameEndsWith`.
@@ -171,8 +178,9 @@ class StandardTermsResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
-        return self._get(
-            "/quickbooks-desktop/standard-terms",
+        return self._get_api_list(
+            "/quickbooks-desktop/service-items",
+            page=SyncCursorPage[ServiceItem],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -180,6 +188,8 @@ class StandardTermsResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "class_ids": class_ids,
+                        "cursor": cursor,
                         "full_names": full_names,
                         "ids": ids,
                         "limit": limit,
@@ -192,32 +202,32 @@ class StandardTermsResource(SyncAPIResource):
                         "updated_after": updated_after,
                         "updated_before": updated_before,
                     },
-                    standard_term_list_params.StandardTermListParams,
+                    service_item_list_params.ServiceItemListParams,
                 ),
             ),
-            cast_to=StandardTermListResponse,
+            model=ServiceItem,
         )
 
 
-class AsyncStandardTermsResource(AsyncAPIResource):
+class AsyncServiceItemsResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncStandardTermsResourceWithRawResponse:
+    def with_raw_response(self) -> AsyncServiceItemsResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return the
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/conductor-is/conductor-python#accessing-raw-response-data-eg-headers
         """
-        return AsyncStandardTermsResourceWithRawResponse(self)
+        return AsyncServiceItemsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncStandardTermsResourceWithStreamingResponse:
+    def with_streaming_response(self) -> AsyncServiceItemsResourceWithStreamingResponse:
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
         For more information, see https://www.github.com/conductor-is/conductor-python#with_streaming_response
         """
-        return AsyncStandardTermsResourceWithStreamingResponse(self)
+        return AsyncServiceItemsResourceWithStreamingResponse(self)
 
     async def retrieve(
         self,
@@ -230,12 +240,12 @@ class AsyncStandardTermsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdStandardTerm:
+    ) -> ServiceItem:
         """
-        Retrieves a standard-term by ID.
+        Retrieves a service-item by ID.
 
         Args:
-          id: The QuickBooks-assigned unique identifier of the standard-term to retrieve.
+          id: The QuickBooks-assigned unique identifier of the service-item to retrieve.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -252,17 +262,19 @@ class AsyncStandardTermsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return await self._get(
-            f"/quickbooks-desktop/standard-terms/{id}",
+            f"/quickbooks-desktop/service-items/{id}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdStandardTerm,
+            cast_to=ServiceItem,
         )
 
-    async def list(
+    def list(
         self,
         *,
         conductor_end_user_id: str,
+        class_ids: str | NotGiven = NOT_GIVEN,
+        cursor: str | NotGiven = NOT_GIVEN,
         full_names: str | NotGiven = NOT_GIVEN,
         ids: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
@@ -280,34 +292,42 @@ class AsyncStandardTermsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> StandardTermListResponse:
+    ) -> AsyncPaginator[ServiceItem, AsyncCursorPage[ServiceItem]]:
         """
-        Returns a list of standard-terms.
+        Returns a list of service-items.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          full_names: Filter for specific standard-terms by their full-name(s). Specify a single
-              full-name or multiple using a comma-separated list (e.g., `fullNames=1,2,3`).
-              Like `id`, a `fullName` is a unique identifier for a standard-term, and is
-              formed by by combining the names of its parent objects with its own `name`,
-              separated by colons. For example, if a standard-term is under 'Payment Terms'
-              and has the `name` 'Net 15', its `fullName` would be 'Payment Terms:Net 15'.
-              Unlike `name`, `fullName` is guaranteed to be unique across all standard-term
-              objects. NOTE: If you include this parameter, all other query parameters will be
-              ignored.
+          class_ids: Filter for service-items of this class or classes. Specify a single class ID or
+              multiple using a comma-separated list (e.g., `classIds=1,2,3`). A class is a way
+              end-users can categorize service-items in QuickBooks.
 
-          ids: Filter for specific standard-terms by their QuickBooks-assigned unique
+          cursor: The pagination token to fetch the next set of results when paginating with the
+              `limit` parameter. Retrieve this value from the `nextCursor` field in the
+              previous response. If omitted, the API returns the first page of results.
+
+          full_names: Filter for specific service-items by their full-name(s). Specify a single
+              full-name or multiple using a comma-separated list (e.g., `fullNames=1,2,3`).
+              Like `id`, a `fullName` is a unique identifier for a service-item, and is formed
+              by by combining the names of its parent objects with its own `name`, separated
+              by colons. For example, if a service-item is under 'Professional Services' and
+              has the `name` 'Consulting', its `fullName` would be 'Professional
+              Services:Consulting'. Unlike `name`, `fullName` is guaranteed to be unique
+              across all service-item objects. NOTE: If you include this parameter, all other
+              query parameters will be ignored.
+
+          ids: Filter for specific service-items by their QuickBooks-assigned unique
               identifier(s). Specify a single ID or multiple using a comma-separated list
               (e.g., `ids=1,2,3`). NOTE: If you include this parameter, all other query
               parameters will be ignored.
 
           limit: The maximum number of objects to return, ranging from 1 to 500. Defaults to 500.
-              NOTE: QuickBooks Desktop does not support cursor-based pagination for this
-              object type. Hence, this parameter will limit the response size, but you will
-              not be able to fetch the next set of results. To paginate through the results
-              for this endpoint, try fetching batches via the date-range query parameters.
+              Use this parameter in conjunction with the `cursor` parameter to paginate
+              through results. The response will include a `nextCursor` field, which can be
+              used as the `cursor` parameter value in subsequent requests to fetch the next
+              set of results.
 
           name_contains: Filter for objects whose `name` contains this substring. If you use this
               parameter, you cannot use `nameStartsWith` or `nameEndsWith`.
@@ -343,15 +363,18 @@ class AsyncStandardTermsResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
-        return await self._get(
-            "/quickbooks-desktop/standard-terms",
+        return self._get_api_list(
+            "/quickbooks-desktop/service-items",
+            page=AsyncCursorPage[ServiceItem],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
+                        "class_ids": class_ids,
+                        "cursor": cursor,
                         "full_names": full_names,
                         "ids": ids,
                         "limit": limit,
@@ -364,56 +387,56 @@ class AsyncStandardTermsResource(AsyncAPIResource):
                         "updated_after": updated_after,
                         "updated_before": updated_before,
                     },
-                    standard_term_list_params.StandardTermListParams,
+                    service_item_list_params.ServiceItemListParams,
                 ),
             ),
-            cast_to=StandardTermListResponse,
+            model=ServiceItem,
         )
 
 
-class StandardTermsResourceWithRawResponse:
-    def __init__(self, standard_terms: StandardTermsResource) -> None:
-        self._standard_terms = standard_terms
+class ServiceItemsResourceWithRawResponse:
+    def __init__(self, service_items: ServiceItemsResource) -> None:
+        self._service_items = service_items
 
         self.retrieve = to_raw_response_wrapper(
-            standard_terms.retrieve,
+            service_items.retrieve,
         )
         self.list = to_raw_response_wrapper(
-            standard_terms.list,
+            service_items.list,
         )
 
 
-class AsyncStandardTermsResourceWithRawResponse:
-    def __init__(self, standard_terms: AsyncStandardTermsResource) -> None:
-        self._standard_terms = standard_terms
+class AsyncServiceItemsResourceWithRawResponse:
+    def __init__(self, service_items: AsyncServiceItemsResource) -> None:
+        self._service_items = service_items
 
         self.retrieve = async_to_raw_response_wrapper(
-            standard_terms.retrieve,
+            service_items.retrieve,
         )
         self.list = async_to_raw_response_wrapper(
-            standard_terms.list,
+            service_items.list,
         )
 
 
-class StandardTermsResourceWithStreamingResponse:
-    def __init__(self, standard_terms: StandardTermsResource) -> None:
-        self._standard_terms = standard_terms
+class ServiceItemsResourceWithStreamingResponse:
+    def __init__(self, service_items: ServiceItemsResource) -> None:
+        self._service_items = service_items
 
         self.retrieve = to_streamed_response_wrapper(
-            standard_terms.retrieve,
+            service_items.retrieve,
         )
         self.list = to_streamed_response_wrapper(
-            standard_terms.list,
+            service_items.list,
         )
 
 
-class AsyncStandardTermsResourceWithStreamingResponse:
-    def __init__(self, standard_terms: AsyncStandardTermsResource) -> None:
-        self._standard_terms = standard_terms
+class AsyncServiceItemsResourceWithStreamingResponse:
+    def __init__(self, service_items: AsyncServiceItemsResource) -> None:
+        self._service_items = service_items
 
         self.retrieve = async_to_streamed_response_wrapper(
-            standard_terms.retrieve,
+            service_items.retrieve,
         )
         self.list = async_to_streamed_response_wrapper(
-            standard_terms.list,
+            service_items.list,
         )

@@ -12,14 +12,15 @@ __all__ = ["QbdStandardTerm"]
 
 class QbdStandardTerm(BaseModel):
     id: str
-    """
-    The QuickBooks-assigned identifier for this standard-term, unique across all
-    standard-terms.
+    """The unique identifier assigned by QuickBooks for this standard-term.
+
+    This ID is unique among all standard-terms but not across different object
+    types.
     """
 
     created_at: str = FieldInfo(alias="createdAt")
     """
-    The date and time when the object was created, in ISO 8601 format
+    The date and time when this standard-term was created, in ISO 8601 format
     (YYYY-MM-DDThh:mm:ss±hh:mm). The time zone is the same as the user's time zone
     in QuickBooks.
     """
@@ -32,22 +33,23 @@ class QbdStandardTerm(BaseModel):
 
     discount_percentage: Optional[str] = FieldInfo(alias="discountPercentage", default=None)
     """
-    The discount percentage applied to the payment if received within the discount
-    period defined by `discountDays`. The value is between 0 and 100.
+    The discount percentage applied to the payment if received within `discountDays`
+    number of days. The value is between 0 and 100.
     """
 
     due_days: Optional[float] = FieldInfo(alias="dueDays", default=None)
     """The number of days until payment is due."""
 
     is_active: bool = FieldInfo(alias="isActive")
-    """Whether this standard-term is active.
+    """Indicates whether this standard-term is active.
 
-    QuickBooks hides inactive objects from most views and reports in the UI.
+    Inactive objects are typically hidden from views and reports in QuickBooks
+    Desktop.
     """
 
     name: str
     """
-    The standard-term's case-insensitive unique name, unique across all
+    The case-insensitive unique name of this standard-term, unique across all
     standard-terms.
     """
 
@@ -56,15 +58,15 @@ class QbdStandardTerm(BaseModel):
 
     updated_at: str = FieldInfo(alias="updatedAt")
     """
-    The date and time when the object was last updated, in ISO 8601 format
+    The date and time when this standard-term was last updated, in ISO 8601 format
     (YYYY-MM-DDThh:mm:ss±hh:mm). The time zone is the same as the user's time zone
     in QuickBooks.
     """
 
     version: str
-    """The current version identifier of the object that changes with each
-    modification.
-
-    Provide this value when updating the object to verify you are working with the
-    latest version; mismatched values will fail.
+    """
+    A version identifier for this standard-term, which changes each time the object
+    is modified. When updating this object, you must provide the current `version`
+    to ensure you're working with the latest data; otherwise, the update will fail.
+    The `version` is an opaque value and should not be interpreted.
     """

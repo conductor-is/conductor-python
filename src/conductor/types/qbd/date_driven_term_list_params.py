@@ -6,10 +6,10 @@ from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
-__all__ = ["StandardTermListParams"]
+__all__ = ["DateDrivenTermListParams"]
 
 
-class StandardTermListParams(TypedDict, total=False):
+class DateDrivenTermListParams(TypedDict, total=False):
     conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]
     """
     The ID of the EndUser to receive this request (e.g.,
@@ -17,21 +17,21 @@ class StandardTermListParams(TypedDict, total=False):
     """
 
     full_names: Annotated[str, PropertyInfo(alias="fullNames")]
-    """Filter for specific standard-terms by their full-name(s).
+    """Filter for specific date-driven-terms by their full-name(s).
 
     Specify a single full-name or multiple using a comma-separated list (e.g.,
     `fullNames=1,2,3`). Like `id`, a `fullName` is a unique identifier for a
-    standard-term, and is formed by by combining the names of its parent objects
-    with its own `name`, separated by colons. For example, if a standard-term is
-    under 'Payment Terms' and has the `name` 'Net 15', its `fullName` would be
-    'Payment Terms:Net 15'. Unlike `name`, `fullName` is guaranteed to be unique
-    across all standard-term objects. NOTE: If you include this parameter, all other
+    date-driven-term, and is formed by by combining the names of its parent objects
+    with its own `name`, separated by colons. For example, if a date-driven-term is
+    under 'Net 30' and has the `name` '2% 10 Net 30', its `fullName` would be 'Net
+    30:2% 10 Net 30'. Unlike `name`, `fullName` is guaranteed to be unique across
+    all date-driven-term objects. NOTE: If you include this parameter, all other
     query parameters will be ignored.
     """
 
     ids: str
     """
-    Filter for specific standard-terms by their QuickBooks-assigned unique
+    Filter for specific date-driven-terms by their QuickBooks-assigned unique
     identifier(s). Specify a single ID or multiple using a comma-separated list
     (e.g., `ids=1,2,3`). NOTE: If you include this parameter, all other query
     parameters will be ignored.
