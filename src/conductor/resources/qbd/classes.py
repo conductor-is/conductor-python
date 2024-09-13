@@ -171,8 +171,11 @@ class ClassesResource(SyncAPIResource):
 
           full_names: Filter for specific classes by their full-name(s). Specify a single full-name or
               multiple using a comma-separated list (e.g., `fullNames=1,2,3`). Like `id`, a
-              full-name is a unique identifier for a class, and is created by prefixing the
-              class's name with the names of each ancestor. NOTE: If you include this
+              `fullName` is a unique identifier for a class, and is formed by by combining the
+              names of its parent objects with its own `name`, separated by colons. For
+              example, if a class is under 'Department' and has the `name` 'Marketing', its
+              `fullName` would be 'Department:Marketing'. Unlike `name`, `fullName` is
+              guaranteed to be unique across all class objects. NOTE: If you include this
               parameter, all other query parameters will be ignored.
 
           ids: Filter for specific classes by their QuickBooks-assigned unique identifier(s).
@@ -392,8 +395,11 @@ class AsyncClassesResource(AsyncAPIResource):
 
           full_names: Filter for specific classes by their full-name(s). Specify a single full-name or
               multiple using a comma-separated list (e.g., `fullNames=1,2,3`). Like `id`, a
-              full-name is a unique identifier for a class, and is created by prefixing the
-              class's name with the names of each ancestor. NOTE: If you include this
+              `fullName` is a unique identifier for a class, and is formed by by combining the
+              names of its parent objects with its own `name`, separated by colons. For
+              example, if a class is under 'Department' and has the `name` 'Marketing', its
+              `fullName` would be 'Department:Marketing'. Unlike `name`, `fullName` is
+              guaranteed to be unique across all class objects. NOTE: If you include this
               parameter, all other query parameters will be ignored.
 
           ids: Filter for specific classes by their QuickBooks-assigned unique identifier(s).

@@ -52,6 +52,14 @@ from .customers import (
     AsyncCustomersResourceWithStreamingResponse,
 )
 from ..._resource import SyncAPIResource, AsyncAPIResource
+from .service_items import (
+    ServiceItemsResource,
+    AsyncServiceItemsResource,
+    ServiceItemsResourceWithRawResponse,
+    AsyncServiceItemsResourceWithRawResponse,
+    ServiceItemsResourceWithStreamingResponse,
+    AsyncServiceItemsResourceWithStreamingResponse,
+)
 from .standard_terms import (
     StandardTermsResource,
     AsyncStandardTermsResource,
@@ -60,6 +68,30 @@ from .standard_terms import (
     StandardTermsResourceWithStreamingResponse,
     AsyncStandardTermsResourceWithStreamingResponse,
 )
+from .inventory_items import (
+    InventoryItemsResource,
+    AsyncInventoryItemsResource,
+    InventoryItemsResourceWithRawResponse,
+    AsyncInventoryItemsResourceWithRawResponse,
+    InventoryItemsResourceWithStreamingResponse,
+    AsyncInventoryItemsResourceWithStreamingResponse,
+)
+from .sales_tax_codes import (
+    SalesTaxCodesResource,
+    AsyncSalesTaxCodesResource,
+    SalesTaxCodesResourceWithRawResponse,
+    AsyncSalesTaxCodesResourceWithRawResponse,
+    SalesTaxCodesResourceWithStreamingResponse,
+    AsyncSalesTaxCodesResourceWithStreamingResponse,
+)
+from .date_driven_terms import (
+    DateDrivenTermsResource,
+    AsyncDateDrivenTermsResource,
+    DateDrivenTermsResourceWithRawResponse,
+    AsyncDateDrivenTermsResourceWithRawResponse,
+    DateDrivenTermsResourceWithStreamingResponse,
+    AsyncDateDrivenTermsResourceWithStreamingResponse,
+)
 from .credit_card_charges import (
     CreditCardChargesResource,
     AsyncCreditCardChargesResource,
@@ -67,6 +99,14 @@ from .credit_card_charges import (
     AsyncCreditCardChargesResourceWithRawResponse,
     CreditCardChargesResourceWithStreamingResponse,
     AsyncCreditCardChargesResourceWithStreamingResponse,
+)
+from .non_inventory_items import (
+    NonInventoryItemsResource,
+    AsyncNonInventoryItemsResource,
+    NonInventoryItemsResourceWithRawResponse,
+    AsyncNonInventoryItemsResourceWithRawResponse,
+    NonInventoryItemsResourceWithStreamingResponse,
+    AsyncNonInventoryItemsResourceWithStreamingResponse,
 )
 
 __all__ = ["QbdResource", "AsyncQbdResource"]
@@ -94,8 +134,28 @@ class QbdResource(SyncAPIResource):
         return CustomersResource(self._client)
 
     @cached_property
+    def date_driven_terms(self) -> DateDrivenTermsResource:
+        return DateDrivenTermsResource(self._client)
+
+    @cached_property
+    def inventory_items(self) -> InventoryItemsResource:
+        return InventoryItemsResource(self._client)
+
+    @cached_property
     def invoices(self) -> InvoicesResource:
         return InvoicesResource(self._client)
+
+    @cached_property
+    def non_inventory_items(self) -> NonInventoryItemsResource:
+        return NonInventoryItemsResource(self._client)
+
+    @cached_property
+    def sales_tax_codes(self) -> SalesTaxCodesResource:
+        return SalesTaxCodesResource(self._client)
+
+    @cached_property
+    def service_items(self) -> ServiceItemsResource:
+        return ServiceItemsResource(self._client)
 
     @cached_property
     def standard_terms(self) -> StandardTermsResource:
@@ -147,8 +207,28 @@ class AsyncQbdResource(AsyncAPIResource):
         return AsyncCustomersResource(self._client)
 
     @cached_property
+    def date_driven_terms(self) -> AsyncDateDrivenTermsResource:
+        return AsyncDateDrivenTermsResource(self._client)
+
+    @cached_property
+    def inventory_items(self) -> AsyncInventoryItemsResource:
+        return AsyncInventoryItemsResource(self._client)
+
+    @cached_property
     def invoices(self) -> AsyncInvoicesResource:
         return AsyncInvoicesResource(self._client)
+
+    @cached_property
+    def non_inventory_items(self) -> AsyncNonInventoryItemsResource:
+        return AsyncNonInventoryItemsResource(self._client)
+
+    @cached_property
+    def sales_tax_codes(self) -> AsyncSalesTaxCodesResource:
+        return AsyncSalesTaxCodesResource(self._client)
+
+    @cached_property
+    def service_items(self) -> AsyncServiceItemsResource:
+        return AsyncServiceItemsResource(self._client)
 
     @cached_property
     def standard_terms(self) -> AsyncStandardTermsResource:
@@ -203,8 +283,28 @@ class QbdResourceWithRawResponse:
         return CustomersResourceWithRawResponse(self._qbd.customers)
 
     @cached_property
+    def date_driven_terms(self) -> DateDrivenTermsResourceWithRawResponse:
+        return DateDrivenTermsResourceWithRawResponse(self._qbd.date_driven_terms)
+
+    @cached_property
+    def inventory_items(self) -> InventoryItemsResourceWithRawResponse:
+        return InventoryItemsResourceWithRawResponse(self._qbd.inventory_items)
+
+    @cached_property
     def invoices(self) -> InvoicesResourceWithRawResponse:
         return InvoicesResourceWithRawResponse(self._qbd.invoices)
+
+    @cached_property
+    def non_inventory_items(self) -> NonInventoryItemsResourceWithRawResponse:
+        return NonInventoryItemsResourceWithRawResponse(self._qbd.non_inventory_items)
+
+    @cached_property
+    def sales_tax_codes(self) -> SalesTaxCodesResourceWithRawResponse:
+        return SalesTaxCodesResourceWithRawResponse(self._qbd.sales_tax_codes)
+
+    @cached_property
+    def service_items(self) -> ServiceItemsResourceWithRawResponse:
+        return ServiceItemsResourceWithRawResponse(self._qbd.service_items)
 
     @cached_property
     def standard_terms(self) -> StandardTermsResourceWithRawResponse:
@@ -240,8 +340,28 @@ class AsyncQbdResourceWithRawResponse:
         return AsyncCustomersResourceWithRawResponse(self._qbd.customers)
 
     @cached_property
+    def date_driven_terms(self) -> AsyncDateDrivenTermsResourceWithRawResponse:
+        return AsyncDateDrivenTermsResourceWithRawResponse(self._qbd.date_driven_terms)
+
+    @cached_property
+    def inventory_items(self) -> AsyncInventoryItemsResourceWithRawResponse:
+        return AsyncInventoryItemsResourceWithRawResponse(self._qbd.inventory_items)
+
+    @cached_property
     def invoices(self) -> AsyncInvoicesResourceWithRawResponse:
         return AsyncInvoicesResourceWithRawResponse(self._qbd.invoices)
+
+    @cached_property
+    def non_inventory_items(self) -> AsyncNonInventoryItemsResourceWithRawResponse:
+        return AsyncNonInventoryItemsResourceWithRawResponse(self._qbd.non_inventory_items)
+
+    @cached_property
+    def sales_tax_codes(self) -> AsyncSalesTaxCodesResourceWithRawResponse:
+        return AsyncSalesTaxCodesResourceWithRawResponse(self._qbd.sales_tax_codes)
+
+    @cached_property
+    def service_items(self) -> AsyncServiceItemsResourceWithRawResponse:
+        return AsyncServiceItemsResourceWithRawResponse(self._qbd.service_items)
 
     @cached_property
     def standard_terms(self) -> AsyncStandardTermsResourceWithRawResponse:
@@ -277,8 +397,28 @@ class QbdResourceWithStreamingResponse:
         return CustomersResourceWithStreamingResponse(self._qbd.customers)
 
     @cached_property
+    def date_driven_terms(self) -> DateDrivenTermsResourceWithStreamingResponse:
+        return DateDrivenTermsResourceWithStreamingResponse(self._qbd.date_driven_terms)
+
+    @cached_property
+    def inventory_items(self) -> InventoryItemsResourceWithStreamingResponse:
+        return InventoryItemsResourceWithStreamingResponse(self._qbd.inventory_items)
+
+    @cached_property
     def invoices(self) -> InvoicesResourceWithStreamingResponse:
         return InvoicesResourceWithStreamingResponse(self._qbd.invoices)
+
+    @cached_property
+    def non_inventory_items(self) -> NonInventoryItemsResourceWithStreamingResponse:
+        return NonInventoryItemsResourceWithStreamingResponse(self._qbd.non_inventory_items)
+
+    @cached_property
+    def sales_tax_codes(self) -> SalesTaxCodesResourceWithStreamingResponse:
+        return SalesTaxCodesResourceWithStreamingResponse(self._qbd.sales_tax_codes)
+
+    @cached_property
+    def service_items(self) -> ServiceItemsResourceWithStreamingResponse:
+        return ServiceItemsResourceWithStreamingResponse(self._qbd.service_items)
 
     @cached_property
     def standard_terms(self) -> StandardTermsResourceWithStreamingResponse:
@@ -314,8 +454,28 @@ class AsyncQbdResourceWithStreamingResponse:
         return AsyncCustomersResourceWithStreamingResponse(self._qbd.customers)
 
     @cached_property
+    def date_driven_terms(self) -> AsyncDateDrivenTermsResourceWithStreamingResponse:
+        return AsyncDateDrivenTermsResourceWithStreamingResponse(self._qbd.date_driven_terms)
+
+    @cached_property
+    def inventory_items(self) -> AsyncInventoryItemsResourceWithStreamingResponse:
+        return AsyncInventoryItemsResourceWithStreamingResponse(self._qbd.inventory_items)
+
+    @cached_property
     def invoices(self) -> AsyncInvoicesResourceWithStreamingResponse:
         return AsyncInvoicesResourceWithStreamingResponse(self._qbd.invoices)
+
+    @cached_property
+    def non_inventory_items(self) -> AsyncNonInventoryItemsResourceWithStreamingResponse:
+        return AsyncNonInventoryItemsResourceWithStreamingResponse(self._qbd.non_inventory_items)
+
+    @cached_property
+    def sales_tax_codes(self) -> AsyncSalesTaxCodesResourceWithStreamingResponse:
+        return AsyncSalesTaxCodesResourceWithStreamingResponse(self._qbd.sales_tax_codes)
+
+    @cached_property
+    def service_items(self) -> AsyncServiceItemsResourceWithStreamingResponse:
+        return AsyncServiceItemsResourceWithStreamingResponse(self._qbd.service_items)
 
     @cached_property
     def standard_terms(self) -> AsyncStandardTermsResourceWithStreamingResponse:

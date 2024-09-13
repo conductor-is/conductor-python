@@ -21,62 +21,79 @@ class Parent(BaseModel):
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical name of this object, including its full path in the QuickBooks
-    list structure. Names are separated by colons (e.g., "Parent:Child:Grandchild").
-    This field is case-insensitive.
+    The hierarchical, case-insensitive name of this object, including its full path
+    in the QuickBooks list structure. Names are separated by colons (e.g.,
+    "Parent:Child:Grandchild").
     """
 
 
 class QbdClass(BaseModel):
     id: str
-    """The QuickBooks-assigned identifier for this class, unique across all classes."""
+    """The unique identifier assigned by QuickBooks for this class.
+
+    This ID is unique among all classes but not across different object types.
+    """
 
     created_at: str = FieldInfo(alias="createdAt")
     """
-    The date and time when the object was created, in ISO 8601 format
+    The date and time when this class was created, in ISO 8601 format
     (YYYY-MM-DDThh:mm:ss±hh:mm). The time zone is the same as the user's time zone
     in QuickBooks.
     """
 
     full_name: str = FieldInfo(alias="fullName")
+    """
+    The fully-qualified unique name for this class, formed by combining the names of
+    its parent objects with its own `name`, separated by colons. For example, if a
+    class is under 'Corporate:Sales' and has the `name` 'Marketing', its `fullName`
+    would be 'Corporate:Sales:Marketing'. Unlike `name`, `fullName` is guaranteed to
+    be unique across all class objects.
+    """
 
     is_active: bool = FieldInfo(alias="isActive")
-    """Whether this class is active.
+    """Indicates whether this class is active.
 
-    QuickBooks hides inactive objects from most views and reports in the UI.
+    Inactive objects are typically hidden from views and reports in QuickBooks
+    Desktop.
     """
 
     name: str
-    """The case-insensitive name of the class.
+    """The case-insensitive name of this class.
 
-    Does not include the names of its accentors like `fullName` does.
+    Not guaranteed to be unique because it does not include the names of its parent
+    objects like `fullName` does.
     """
 
     object_type: Literal["qbd_class"] = FieldInfo(alias="objectType")
     """The type of object. This value is always `"qbd_class"`."""
 
     parent: Optional[Parent] = None
+    """The parent class one level above this one in the hierarchy.
+
+    For example, if this class has a `fullName` of "Corporate:Sales:Marketing", its
+    parent has a `fullName` of "Corporate:Sales". If this class is at the top level,
+    `parent` will be `null`.
+    """
 
     sublevel: float
-    """The nesting level of this class within the class hierarchy.
+    """The depth level of this class in the hierarchy.
 
-    A top-level class has a `sublevel` of 0, a direct sub-class has a `sublevel` of
-    1, and so on. For example, a class with a `fullName` of
-    "Corporate:Sales:Marketing" and a `name` of "Marketing" would have a `sublevel`
-    of 2.
+    A top-level class has a `sublevel` of 0; each subsequent sublevel increases this
+    number by 1. For example, a class with a `fullName` of
+    "Corporate:Sales:Marketing" would have a `sublevel` of 2.
     """
 
     updated_at: str = FieldInfo(alias="updatedAt")
     """
-    The date and time when the object was last updated, in ISO 8601 format
+    The date and time when this class was last updated, in ISO 8601 format
     (YYYY-MM-DDThh:mm:ss±hh:mm). The time zone is the same as the user's time zone
     in QuickBooks.
     """
 
     version: str
-    """The current version identifier of the object that changes with each
-    modification.
-
-    Provide this value when updating the object to verify you are working with the
-    latest version; mismatched values will fail.
+    """
+    A version identifier for this class, which changes each time the object is
+    modified. When updating this object, you must provide the current `version` to
+    ensure you're working with the latest data; otherwise, the update will fail. The
+    `version` is an opaque value and should not be interpreted.
     """

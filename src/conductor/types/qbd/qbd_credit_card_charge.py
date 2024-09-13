@@ -58,9 +58,9 @@ class Account(BaseModel):
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical name of this object, including its full path in the QuickBooks
-    list structure. Names are separated by colons (e.g., "Parent:Child:Grandchild").
-    This field is case-insensitive.
+    The hierarchical, case-insensitive name of this object, including its full path
+    in the QuickBooks list structure. Names are separated by colons (e.g.,
+    "Parent:Child:Grandchild").
     """
 
 
@@ -75,9 +75,9 @@ class Currency(BaseModel):
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical name of this object, including its full path in the QuickBooks
-    list structure. Names are separated by colons (e.g., "Parent:Child:Grandchild").
-    This field is case-insensitive.
+    The hierarchical, case-insensitive name of this object, including its full path
+    in the QuickBooks list structure. Names are separated by colons (e.g.,
+    "Parent:Child:Grandchild").
     """
 
 
@@ -112,9 +112,9 @@ class ExpenseLineAccount(BaseModel):
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical name of this object, including its full path in the QuickBooks
-    list structure. Names are separated by colons (e.g., "Parent:Child:Grandchild").
-    This field is case-insensitive.
+    The hierarchical, case-insensitive name of this object, including its full path
+    in the QuickBooks list structure. Names are separated by colons (e.g.,
+    "Parent:Child:Grandchild").
     """
 
 
@@ -129,9 +129,9 @@ class ExpenseLineClass(BaseModel):
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical name of this object, including its full path in the QuickBooks
-    list structure. Names are separated by colons (e.g., "Parent:Child:Grandchild").
-    This field is case-insensitive.
+    The hierarchical, case-insensitive name of this object, including its full path
+    in the QuickBooks list structure. Names are separated by colons (e.g.,
+    "Parent:Child:Grandchild").
     """
 
 
@@ -146,9 +146,9 @@ class ExpenseLineCustomer(BaseModel):
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical name of this object, including its full path in the QuickBooks
-    list structure. Names are separated by colons (e.g., "Parent:Child:Grandchild").
-    This field is case-insensitive.
+    The hierarchical, case-insensitive name of this object, including its full path
+    in the QuickBooks list structure. Names are separated by colons (e.g.,
+    "Parent:Child:Grandchild").
     """
 
 
@@ -183,9 +183,9 @@ class ExpenseLineSalesRepresentative(BaseModel):
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical name of this object, including its full path in the QuickBooks
-    list structure. Names are separated by colons (e.g., "Parent:Child:Grandchild").
-    This field is case-insensitive.
+    The hierarchical, case-insensitive name of this object, including its full path
+    in the QuickBooks list structure. Names are separated by colons (e.g.,
+    "Parent:Child:Grandchild").
     """
 
 
@@ -200,9 +200,9 @@ class ExpenseLineSalesTaxCode(BaseModel):
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical name of this object, including its full path in the QuickBooks
-    list structure. Names are separated by colons (e.g., "Parent:Child:Grandchild").
-    This field is case-insensitive.
+    The hierarchical, case-insensitive name of this object, including its full path
+    in the QuickBooks list structure. Names are separated by colons (e.g.,
+    "Parent:Child:Grandchild").
     """
 
 
@@ -284,9 +284,9 @@ class ItemGroupLineItemGroup(BaseModel):
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical name of this object, including its full path in the QuickBooks
-    list structure. Names are separated by colons (e.g., "Parent:Child:Grandchild").
-    This field is case-insensitive.
+    The hierarchical, case-insensitive name of this object, including its full path
+    in the QuickBooks list structure. Names are separated by colons (e.g.,
+    "Parent:Child:Grandchild").
     """
 
 
@@ -301,9 +301,9 @@ class ItemGroupLineItemClass(BaseModel):
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical name of this object, including its full path in the QuickBooks
-    list structure. Names are separated by colons (e.g., "Parent:Child:Grandchild").
-    This field is case-insensitive.
+    The hierarchical, case-insensitive name of this object, including its full path
+    in the QuickBooks list structure. Names are separated by colons (e.g.,
+    "Parent:Child:Grandchild").
     """
 
 
@@ -318,9 +318,9 @@ class ItemGroupLineItemCustomer(BaseModel):
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical name of this object, including its full path in the QuickBooks
-    list structure. Names are separated by colons (e.g., "Parent:Child:Grandchild").
-    This field is case-insensitive.
+    The hierarchical, case-insensitive name of this object, including its full path
+    in the QuickBooks list structure. Names are separated by colons (e.g.,
+    "Parent:Child:Grandchild").
     """
 
 
@@ -355,9 +355,9 @@ class ItemGroupLineItemInventorySite(BaseModel):
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical name of this object, including its full path in the QuickBooks
-    list structure. Names are separated by colons (e.g., "Parent:Child:Grandchild").
-    This field is case-insensitive.
+    The hierarchical, case-insensitive name of this object, including its full path
+    in the QuickBooks list structure. Names are separated by colons (e.g.,
+    "Parent:Child:Grandchild").
     """
 
 
@@ -372,9 +372,9 @@ class ItemGroupLineItemInventorySiteLocation(BaseModel):
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical name of this object, including its full path in the QuickBooks
-    list structure. Names are separated by colons (e.g., "Parent:Child:Grandchild").
-    This field is case-insensitive.
+    The hierarchical, case-insensitive name of this object, including its full path
+    in the QuickBooks list structure. Names are separated by colons (e.g.,
+    "Parent:Child:Grandchild").
     """
 
 
@@ -389,9 +389,9 @@ class ItemGroupLineItemItem(BaseModel):
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical name of this object, including its full path in the QuickBooks
-    list structure. Names are separated by colons (e.g., "Parent:Child:Grandchild").
-    This field is case-insensitive.
+    The hierarchical, case-insensitive name of this object, including its full path
+    in the QuickBooks list structure. Names are separated by colons (e.g.,
+    "Parent:Child:Grandchild").
     """
 
 
@@ -406,9 +406,9 @@ class ItemGroupLineItemOverrideUnitOfMeasure(BaseModel):
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical name of this object, including its full path in the QuickBooks
-    list structure. Names are separated by colons (e.g., "Parent:Child:Grandchild").
-    This field is case-insensitive.
+    The hierarchical, case-insensitive name of this object, including its full path
+    in the QuickBooks list structure. Names are separated by colons (e.g.,
+    "Parent:Child:Grandchild").
     """
 
 
@@ -423,9 +423,9 @@ class ItemGroupLineItemSalesRepresentative(BaseModel):
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical name of this object, including its full path in the QuickBooks
-    list structure. Names are separated by colons (e.g., "Parent:Child:Grandchild").
-    This field is case-insensitive.
+    The hierarchical, case-insensitive name of this object, including its full path
+    in the QuickBooks list structure. Names are separated by colons (e.g.,
+    "Parent:Child:Grandchild").
     """
 
 
@@ -440,9 +440,9 @@ class ItemGroupLineItemSalesTaxCode(BaseModel):
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical name of this object, including its full path in the QuickBooks
-    list structure. Names are separated by colons (e.g., "Parent:Child:Grandchild").
-    This field is case-insensitive.
+    The hierarchical, case-insensitive name of this object, including its full path
+    in the QuickBooks list structure. Names are separated by colons (e.g.,
+    "Parent:Child:Grandchild").
     """
 
 
@@ -553,9 +553,9 @@ class ItemLineClass(BaseModel):
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical name of this object, including its full path in the QuickBooks
-    list structure. Names are separated by colons (e.g., "Parent:Child:Grandchild").
-    This field is case-insensitive.
+    The hierarchical, case-insensitive name of this object, including its full path
+    in the QuickBooks list structure. Names are separated by colons (e.g.,
+    "Parent:Child:Grandchild").
     """
 
 
@@ -570,9 +570,9 @@ class ItemLineCustomer(BaseModel):
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical name of this object, including its full path in the QuickBooks
-    list structure. Names are separated by colons (e.g., "Parent:Child:Grandchild").
-    This field is case-insensitive.
+    The hierarchical, case-insensitive name of this object, including its full path
+    in the QuickBooks list structure. Names are separated by colons (e.g.,
+    "Parent:Child:Grandchild").
     """
 
 
@@ -607,9 +607,9 @@ class ItemLineInventorySite(BaseModel):
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical name of this object, including its full path in the QuickBooks
-    list structure. Names are separated by colons (e.g., "Parent:Child:Grandchild").
-    This field is case-insensitive.
+    The hierarchical, case-insensitive name of this object, including its full path
+    in the QuickBooks list structure. Names are separated by colons (e.g.,
+    "Parent:Child:Grandchild").
     """
 
 
@@ -624,9 +624,9 @@ class ItemLineInventorySiteLocation(BaseModel):
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical name of this object, including its full path in the QuickBooks
-    list structure. Names are separated by colons (e.g., "Parent:Child:Grandchild").
-    This field is case-insensitive.
+    The hierarchical, case-insensitive name of this object, including its full path
+    in the QuickBooks list structure. Names are separated by colons (e.g.,
+    "Parent:Child:Grandchild").
     """
 
 
@@ -641,9 +641,9 @@ class ItemLineItem(BaseModel):
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical name of this object, including its full path in the QuickBooks
-    list structure. Names are separated by colons (e.g., "Parent:Child:Grandchild").
-    This field is case-insensitive.
+    The hierarchical, case-insensitive name of this object, including its full path
+    in the QuickBooks list structure. Names are separated by colons (e.g.,
+    "Parent:Child:Grandchild").
     """
 
 
@@ -658,9 +658,9 @@ class ItemLineOverrideUnitOfMeasure(BaseModel):
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical name of this object, including its full path in the QuickBooks
-    list structure. Names are separated by colons (e.g., "Parent:Child:Grandchild").
-    This field is case-insensitive.
+    The hierarchical, case-insensitive name of this object, including its full path
+    in the QuickBooks list structure. Names are separated by colons (e.g.,
+    "Parent:Child:Grandchild").
     """
 
 
@@ -675,9 +675,9 @@ class ItemLineSalesRepresentative(BaseModel):
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical name of this object, including its full path in the QuickBooks
-    list structure. Names are separated by colons (e.g., "Parent:Child:Grandchild").
-    This field is case-insensitive.
+    The hierarchical, case-insensitive name of this object, including its full path
+    in the QuickBooks list structure. Names are separated by colons (e.g.,
+    "Parent:Child:Grandchild").
     """
 
 
@@ -692,9 +692,9 @@ class ItemLineSalesTaxCode(BaseModel):
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical name of this object, including its full path in the QuickBooks
-    list structure. Names are separated by colons (e.g., "Parent:Child:Grandchild").
-    This field is case-insensitive.
+    The hierarchical, case-insensitive name of this object, including its full path
+    in the QuickBooks list structure. Names are separated by colons (e.g.,
+    "Parent:Child:Grandchild").
     """
 
 
@@ -777,9 +777,9 @@ class SalesTaxCode(BaseModel):
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical name of this object, including its full path in the QuickBooks
-    list structure. Names are separated by colons (e.g., "Parent:Child:Grandchild").
-    This field is case-insensitive.
+    The hierarchical, case-insensitive name of this object, including its full path
+    in the QuickBooks list structure. Names are separated by colons (e.g.,
+    "Parent:Child:Grandchild").
     """
 
 
@@ -794,9 +794,9 @@ class Vendor(BaseModel):
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical name of this object, including its full path in the QuickBooks
-    list structure. Names are separated by colons (e.g., "Parent:Child:Grandchild").
-    This field is case-insensitive.
+    The hierarchical, case-insensitive name of this object, including its full path
+    in the QuickBooks list structure. Names are separated by colons (e.g.,
+    "Parent:Child:Grandchild").
     """
 
 
