@@ -6,10 +6,10 @@ from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
-__all__ = ["VendorListParams"]
+__all__ = ["InventoryItemListParams"]
 
 
-class VendorListParams(TypedDict, total=False):
+class InventoryItemListParams(TypedDict, total=False):
     conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]
     """
     The ID of the EndUser to receive this request (e.g.,
@@ -17,18 +17,11 @@ class VendorListParams(TypedDict, total=False):
     """
 
     class_ids: Annotated[str, PropertyInfo(alias="classIds")]
-    """Filter for vendors of this class or classes.
+    """Filter for inventory-items of this class or classes.
 
     Specify a single class ID or multiple using a comma-separated list (e.g.,
-    `classIds=1,2,3`). A class is a way end-users can categorize vendors in
+    `classIds=1,2,3`). A class is a way end-users can categorize inventory-items in
     QuickBooks.
-    """
-
-    currency_ids: Annotated[str, PropertyInfo(alias="currencyIds")]
-    """Filter for vendors in this currency or currencies.
-
-    Specify a single currency ID or multiple using a comma-separated list (e.g.,
-    `currencyIds=1,2,3`).
     """
 
     cursor: str
@@ -39,24 +32,24 @@ class VendorListParams(TypedDict, total=False):
     """
 
     full_names: Annotated[str, PropertyInfo(alias="fullNames")]
-    """Filter for specific vendors by their full-name(s).
+    """Filter for specific inventory-items by their full-name(s).
 
     Specify a single full-name or multiple using a comma-separated list (e.g.,
-    `fullNames=1,2,3`). Like `id`, a `fullName` is a unique identifier for a vendor,
-    and is formed by by combining the names of its parent objects with its own
-    `name`, separated by colons. For example, if a vendor is under 'Suppliers' and
-    has the `name` 'ABC Office Supplies', its `fullName` would be 'Suppliers:ABC
-    Office Supplies'. Unlike `name`, `fullName` is guaranteed to be unique across
-    all vendor objects. NOTE: If you include this parameter, all other query
-    parameters will be ignored.
+    `fullNames=1,2,3`). Like `id`, a `fullName` is a unique identifier for an
+    inventory-item, and is formed by by combining the names of its parent objects
+    with its own `name`, separated by colons. For example, if an inventory-item is
+    under 'Furniture:Kitchen' and has the `name` 'Cabinet', its `fullName` would be
+    'Furniture:Kitchen:Cabinet'. Unlike `name`, `fullName` is guaranteed to be
+    unique across all inventory-item objects. NOTE: If you include this parameter,
+    all other query parameters will be ignored.
     """
 
     ids: str
-    """Filter for specific vendors by their QuickBooks-assigned unique identifier(s).
-
-    Specify a single ID or multiple using a comma-separated list (e.g.,
-    `ids=1,2,3`). NOTE: If you include this parameter, all other query parameters
-    will be ignored.
+    """
+    Filter for specific inventory-items by their QuickBooks-assigned unique
+    identifier(s). Specify a single ID or multiple using a comma-separated list
+    (e.g., `ids=1,2,3`). NOTE: If you include this parameter, all other query
+    parameters will be ignored.
     """
 
     limit: int
@@ -100,36 +93,6 @@ class VendorListParams(TypedDict, total=False):
 
     status: Literal["active", "all", "inactive"]
     """Filter for objects that are active, inactive, or both."""
-
-    total_balance: Annotated[str, PropertyInfo(alias="totalBalance")]
-    """Filter for vendors whose `totalBalance` equals this amount.
-
-    You can only use one total-balance filter at a time.
-    """
-
-    total_balance_gt: Annotated[str, PropertyInfo(alias="totalBalanceGt")]
-    """Filter for vendors whose `totalBalance` is greater than this amount.
-
-    You can only use one total-balance filter at a time.
-    """
-
-    total_balance_gte: Annotated[str, PropertyInfo(alias="totalBalanceGte")]
-    """Filter for vendors whose `totalBalance` is greater than or equal to this amount.
-
-    You can only use one total-balance filter at a time.
-    """
-
-    total_balance_lt: Annotated[str, PropertyInfo(alias="totalBalanceLt")]
-    """Filter for vendors whose `totalBalance` is less than this amount.
-
-    You can only use one total-balance filter at a time.
-    """
-
-    total_balance_lte: Annotated[str, PropertyInfo(alias="totalBalanceLte")]
-    """Filter for vendors whose `totalBalance` is less than or equal to this amount.
-
-    You can only use one total-balance filter at a time.
-    """
 
     updated_after: Annotated[str, PropertyInfo(alias="updatedAfter")]
     """

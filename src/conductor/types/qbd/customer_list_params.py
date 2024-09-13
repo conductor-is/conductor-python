@@ -42,10 +42,13 @@ class CustomerListParams(TypedDict, total=False):
     """Filter for specific customers by their full-name(s).
 
     Specify a single full-name or multiple using a comma-separated list (e.g.,
-    `fullNames=1,2,3`). Like `id`, a full-name is a unique identifier for a
-    customer, and is created by prefixing the customer's name with the names of each
-    ancestor. NOTE: If you include this parameter, all other query parameters will
-    be ignored.
+    `fullNames=1,2,3`). Like `id`, a `fullName` is a unique identifier for a
+    customer, and is formed by by combining the names of its parent objects with its
+    own `name`, separated by colons. For example, if a customer is under 'ABC
+    Corporation' and has the `name` 'Website Redesign Project', its `fullName` would
+    be 'ABC Corporation:Website Redesign Project'. Unlike `name`, `fullName` is
+    guaranteed to be unique across all customer objects. NOTE: If you include this
+    parameter, all other query parameters will be ignored.
     """
 
     ids: str
@@ -99,31 +102,31 @@ class CustomerListParams(TypedDict, total=False):
     """Filter for objects that are active, inactive, or both."""
 
     total_balance: Annotated[str, PropertyInfo(alias="totalBalance")]
-    """Filter for objects whose `totalBalance` equals this amount.
+    """Filter for customers whose `totalBalance` equals this amount.
 
     You can only use one total-balance filter at a time.
     """
 
     total_balance_gt: Annotated[str, PropertyInfo(alias="totalBalanceGt")]
-    """Filter for objects whose `totalBalance` is greater than this amount.
+    """Filter for customers whose `totalBalance` is greater than this amount.
 
     You can only use one total-balance filter at a time.
     """
 
     total_balance_gte: Annotated[str, PropertyInfo(alias="totalBalanceGte")]
-    """Filter for objects whose `totalBalance` is greater than or equal to this amount.
-
-    You can only use one total-balance filter at a time.
+    """
+    Filter for customers whose `totalBalance` is greater than or equal to this
+    amount. You can only use one total-balance filter at a time.
     """
 
     total_balance_lt: Annotated[str, PropertyInfo(alias="totalBalanceLt")]
-    """Filter for objects whose `totalBalance` is less than this amount.
+    """Filter for customers whose `totalBalance` is less than this amount.
 
     You can only use one total-balance filter at a time.
     """
 
     total_balance_lte: Annotated[str, PropertyInfo(alias="totalBalanceLte")]
-    """Filter for objects whose `totalBalance` is less than or equal to this amount.
+    """Filter for customers whose `totalBalance` is less than or equal to this amount.
 
     You can only use one total-balance filter at a time.
     """

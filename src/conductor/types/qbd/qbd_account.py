@@ -7,7 +7,7 @@ from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
 
-__all__ = ["QbdAccount", "Currency", "CustomField", "Parent", "SalesTaxCode", "TaxLineInfo"]
+__all__ = ["QbdAccount", "Currency", "CustomField", "Parent", "SalesTaxCode", "TaxLineDetails"]
 
 
 class Currency(BaseModel):
@@ -21,9 +21,9 @@ class Currency(BaseModel):
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical name of this object, including its full path in the QuickBooks
-    list structure. Names are separated by colons (e.g., "Parent:Child:Grandchild").
-    This field is case-insensitive.
+    The hierarchical, case-insensitive name of this object, including its full path
+    in the QuickBooks list structure. Names are separated by colons (e.g.,
+    "Parent:Child:Grandchild").
     """
 
 
@@ -58,9 +58,9 @@ class Parent(BaseModel):
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical name of this object, including its full path in the QuickBooks
-    list structure. Names are separated by colons (e.g., "Parent:Child:Grandchild").
-    This field is case-insensitive.
+    The hierarchical, case-insensitive name of this object, including its full path
+    in the QuickBooks list structure. Names are separated by colons (e.g.,
+    "Parent:Child:Grandchild").
     """
 
 
@@ -75,13 +75,13 @@ class SalesTaxCode(BaseModel):
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical name of this object, including its full path in the QuickBooks
-    list structure. Names are separated by colons (e.g., "Parent:Child:Grandchild").
-    This field is case-insensitive.
+    The hierarchical, case-insensitive name of this object, including its full path
+    in the QuickBooks list structure. Names are separated by colons (e.g.,
+    "Parent:Child:Grandchild").
     """
 
 
-class TaxLineInfo(BaseModel):
+class TaxLineDetails(BaseModel):
     tax_line_id: str = FieldInfo(alias="taxLineId")
 
     tax_line_name: Optional[str] = FieldInfo(alias="taxLineName", default=None)
@@ -89,11 +89,19 @@ class TaxLineInfo(BaseModel):
 
 class QbdAccount(BaseModel):
     id: str
-    """
-    The QuickBooks-assigned identifier for this account, unique across all accounts.
+    """The unique identifier assigned by QuickBooks for this account.
+
+    This ID is unique among all accounts but not across different object types.
     """
 
     account_number: Optional[str] = FieldInfo(alias="accountNumber", default=None)
+    """The account number assigned to this account in QuickBooks.
+
+    Account numbers appear in the chart of accounts, reports, and graphs. Note that
+    if the "Use Account Numbers" preference is turned off in QuickBooks, the account
+    number may not be visible in the user interface, but it can still be set and
+    retrieved through the API.
+    """
 
     account_type: Literal[
         "accounts_payable",
@@ -113,59 +121,100 @@ class QbdAccount(BaseModel):
         "other_expense",
         "other_income",
     ] = FieldInfo(alias="accountType")
-    """The type of QuickBooks account."""
+    """
+    The classification of this account, indicating its purpose within the chart of
+    accounts.
+    """
 
     balance: Optional[str] = None
+    """
+    The current balance of this account, excluding balances from any subordinate
+    accounts. Represented as a decimal string. Note that income accounts and balance
+    sheet accounts may not have balances.
+    """
 
-    bank_number: Optional[str] = FieldInfo(alias="bankNumber", default=None)
+    bank_account_number: Optional[str] = FieldInfo(alias="bankAccountNumber", default=None)
+    """The bank account number or identifying note for this account.
+
+    Access to this field may be restricted based on permissions.
+    """
 
     cash_flow_classification: Optional[Literal["financing", "investing", "none", "not_applicable", "operating"]] = (
         FieldInfo(alias="cashFlowClassification", default=None)
     )
-    """The account's classification for cash flow reporting."""
+    """Indicates how this account is classified for cash flow reporting.
+
+    If `none`, the account has not been classified. If `not_applicable`, the account
+    does not qualify to be classified (e.g., a bank account tracking cash
+    transactions is not part of a cash flow report).
+    """
 
     created_at: str = FieldInfo(alias="createdAt")
     """
-    The date and time when the object was created, in ISO 8601 format
+    The date and time when this account was created, in ISO 8601 format
     (YYYY-MM-DDThh:mm:ss±hh:mm). The time zone is the same as the user's time zone
     in QuickBooks.
     """
 
     currency: Optional[Currency] = None
-    """The account's currency."""
+    """The currency associated with this account.
+
+    For built-in currencies, the name and code are standard international values.
+    For user-defined currencies, all values are editable.
+    """
 
     custom_fields: List[CustomField] = FieldInfo(alias="customFields")
-    """The custom fields added by the user to QuickBooks object as a data extension.
+    """The custom fields added by the user to this account object as a data extension.
 
     These fields are not part of the standard QuickBooks object.
     """
 
     description: Optional[str] = None
+    """A longer explanation of the `name` of this account."""
 
     full_name: str = FieldInfo(alias="fullName")
+    """
+    The fully-qualified unique name for this account, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. For example, if
+    an account is under 'Corporate' and has the `name` 'Accounts Payable', its
+    `fullName` would be 'Corporate:Accounts Payable'. Unlike `name`, `fullName` is
+    guaranteed to be unique across all account objects.
+    """
 
     is_active: bool = FieldInfo(alias="isActive")
-    """Whether this account is active.
+    """Indicates whether this account is active.
 
-    QuickBooks hides inactive objects from most views and reports in the UI.
+    Inactive objects are typically hidden from views and reports in QuickBooks
+    Desktop.
     """
 
     is_tax_account: Optional[bool] = FieldInfo(alias="isTaxAccount", default=None)
-    """Whether this account is used for tax."""
+    """Indicates whether this account is used for tracking taxes."""
 
     name: str
+    """The case-insensitive name of this account.
+
+    Not guaranteed to be unique because it does not include the names of its parent
+    objects like `fullName` does.
+    """
 
     object_type: Literal["qbd_account"] = FieldInfo(alias="objectType")
     """The type of object. This value is always `"qbd_account"`."""
 
     parent: Optional[Parent] = None
+    """The parent account one level above this one in the hierarchy.
+
+    For example, if this account has a `fullName` of "Corporate:Accounts Payable",
+    its parent has a `fullName` of "Corporate". If this account is at the top level,
+    `parent` will be `null`.
+    """
 
     sales_tax_code: Optional[SalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)
-    """The sales tax code, indicating whether related items are taxable or non-taxable.
-
-    Two default codes are 'Non' (non-taxable) and 'Tax' (taxable). If QuickBooks is
-    not set up to charge sales tax, it will assign the default non-taxable code to
-    all sales.
+    """
+    The sales tax code associated with this account, indicating whether it is
+    taxable or non-taxable. Default codes include 'NON' (non-taxable) and 'TAX'
+    (taxable). If QuickBooks is not set up to charge sales tax, it will assign the
+    default non-taxable code to all sales.
     """
 
     special_account_type: Optional[
@@ -194,28 +243,42 @@ class QbdAccount(BaseModel):
         ]
     ] = FieldInfo(alias="specialAccountType", default=None)
     """
-    If specified, then QuickBooks automatically created this account when it was
-    needed. Some special accounts cannot be overridden, because QuickBooks uses them
-    exclusively for special purposes.
+    Indicates if this account is a special account automatically created by
+    QuickBooks for specific purposes.
     """
 
     sublevel: float
+    """The depth level of this account in the hierarchy.
 
-    tax_line_info: Optional[TaxLineInfo] = FieldInfo(alias="taxLineInfo", default=None)
+    A top-level account has a `sublevel` of 0; each subsequent sublevel increases
+    this number by 1. For example, a account with a `fullName` of
+    "Corporate:Accounts Payable" would have a `sublevel` of 1.
+    """
+
+    tax_line_details: Optional[TaxLineDetails] = FieldInfo(alias="taxLineDetails", default=None)
+    """
+    The tax line information associated with this account, used for tax reporting
+    purposes.
+    """
 
     total_balance: Optional[str] = FieldInfo(alias="totalBalance", default=None)
+    """The combined balance of this account and all its subordinate accounts.
+
+    Represented as a decimal string. If there are no subaccounts, `totalBalance` and
+    `balance` are the same.
+    """
 
     updated_at: str = FieldInfo(alias="updatedAt")
     """
-    The date and time when the object was last updated, in ISO 8601 format
+    The date and time when this account was last updated, in ISO 8601 format
     (YYYY-MM-DDThh:mm:ss±hh:mm). The time zone is the same as the user's time zone
     in QuickBooks.
     """
 
     version: str
-    """The current version identifier of the object that changes with each
-    modification.
-
-    Provide this value when updating the object to verify you are working with the
-    latest version; mismatched values will fail.
+    """
+    A version identifier for this account, which changes each time the object is
+    modified. When updating this object, you must provide the current `version` to
+    ensure you're working with the latest data; otherwise, the update will fail. The
+    `version` is an opaque value and should not be interpreted.
     """

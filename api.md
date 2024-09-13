@@ -117,6 +117,32 @@ Methods:
 - <code title="get /quickbooks-desktop/customers/{id}">client.qbd.customers.<a href="./src/conductor/resources/qbd/customers.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_customer.py">QbdCustomer</a></code>
 - <code title="get /quickbooks-desktop/customers">client.qbd.customers.<a href="./src/conductor/resources/qbd/customers.py">list</a>(\*\*<a href="src/conductor/types/qbd/customer_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_customer.py">SyncCursorPage[QbdCustomer]</a></code>
 
+## DateDrivenTerms
+
+Types:
+
+```python
+from conductor.types.qbd import DateDrivenTerm, DateDrivenTermListResponse
+```
+
+Methods:
+
+- <code title="get /quickbooks-desktop/date-driven-terms/{id}">client.qbd.date_driven_terms.<a href="./src/conductor/resources/qbd/date_driven_terms.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/date_driven_term.py">DateDrivenTerm</a></code>
+- <code title="get /quickbooks-desktop/date-driven-terms">client.qbd.date_driven_terms.<a href="./src/conductor/resources/qbd/date_driven_terms.py">list</a>(\*\*<a href="src/conductor/types/qbd/date_driven_term_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/date_driven_term_list_response.py">DateDrivenTermListResponse</a></code>
+
+## InventoryItems
+
+Types:
+
+```python
+from conductor.types.qbd import InventoryItem
+```
+
+Methods:
+
+- <code title="get /quickbooks-desktop/inventory-items/{id}">client.qbd.inventory_items.<a href="./src/conductor/resources/qbd/inventory_items.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/inventory_item.py">InventoryItem</a></code>
+- <code title="get /quickbooks-desktop/inventory-items">client.qbd.inventory_items.<a href="./src/conductor/resources/qbd/inventory_items.py">list</a>(\*\*<a href="src/conductor/types/qbd/inventory_item_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/inventory_item.py">SyncCursorPage[InventoryItem]</a></code>
+
 ## Invoices
 
 Types:
@@ -130,6 +156,45 @@ Methods:
 - <code title="post /quickbooks-desktop/invoices">client.qbd.invoices.<a href="./src/conductor/resources/qbd/invoices.py">create</a>(\*\*<a href="src/conductor/types/qbd/invoice_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_invoice.py">QbdInvoice</a></code>
 - <code title="get /quickbooks-desktop/invoices/{id}">client.qbd.invoices.<a href="./src/conductor/resources/qbd/invoices.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_invoice.py">QbdInvoice</a></code>
 - <code title="get /quickbooks-desktop/invoices">client.qbd.invoices.<a href="./src/conductor/resources/qbd/invoices.py">list</a>(\*\*<a href="src/conductor/types/qbd/invoice_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_invoice.py">SyncCursorPage[QbdInvoice]</a></code>
+
+## NonInventoryItems
+
+Types:
+
+```python
+from conductor.types.qbd import NonInventoryItem
+```
+
+Methods:
+
+- <code title="get /quickbooks-desktop/non-inventory-items/{id}">client.qbd.non_inventory_items.<a href="./src/conductor/resources/qbd/non_inventory_items.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/non_inventory_item.py">NonInventoryItem</a></code>
+- <code title="get /quickbooks-desktop/non-inventory-items">client.qbd.non_inventory_items.<a href="./src/conductor/resources/qbd/non_inventory_items.py">list</a>(\*\*<a href="src/conductor/types/qbd/non_inventory_item_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/non_inventory_item.py">SyncCursorPage[NonInventoryItem]</a></code>
+
+## SalesTaxCodes
+
+Types:
+
+```python
+from conductor.types.qbd import SalesTaxCode, SalesTaxCodeListResponse
+```
+
+Methods:
+
+- <code title="get /quickbooks-desktop/sales-tax-codes/{id}">client.qbd.sales_tax_codes.<a href="./src/conductor/resources/qbd/sales_tax_codes.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/sales_tax_code.py">SalesTaxCode</a></code>
+- <code title="get /quickbooks-desktop/sales-tax-codes">client.qbd.sales_tax_codes.<a href="./src/conductor/resources/qbd/sales_tax_codes.py">list</a>(\*\*<a href="src/conductor/types/qbd/sales_tax_code_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/sales_tax_code_list_response.py">SalesTaxCodeListResponse</a></code>
+
+## ServiceItems
+
+Types:
+
+```python
+from conductor.types.qbd import ServiceItem
+```
+
+Methods:
+
+- <code title="get /quickbooks-desktop/service-items/{id}">client.qbd.service_items.<a href="./src/conductor/resources/qbd/service_items.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/service_item.py">ServiceItem</a></code>
+- <code title="get /quickbooks-desktop/service-items">client.qbd.service_items.<a href="./src/conductor/resources/qbd/service_items.py">list</a>(\*\*<a href="src/conductor/types/qbd/service_item_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/service_item.py">SyncCursorPage[ServiceItem]</a></code>
 
 ## StandardTerms
 
