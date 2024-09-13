@@ -56,6 +56,14 @@ from .customers import (
     CustomersResourceWithStreamingResponse,
     AsyncCustomersResourceWithStreamingResponse,
 )
+from .service_items import (
+    ServiceItemsResource,
+    AsyncServiceItemsResource,
+    ServiceItemsResourceWithRawResponse,
+    AsyncServiceItemsResourceWithRawResponse,
+    ServiceItemsResourceWithStreamingResponse,
+    AsyncServiceItemsResourceWithStreamingResponse,
+)
 from .standard_terms import (
     StandardTermsResource,
     AsyncStandardTermsResource,
@@ -64,6 +72,30 @@ from .standard_terms import (
     StandardTermsResourceWithStreamingResponse,
     AsyncStandardTermsResourceWithStreamingResponse,
 )
+from .inventory_items import (
+    InventoryItemsResource,
+    AsyncInventoryItemsResource,
+    InventoryItemsResourceWithRawResponse,
+    AsyncInventoryItemsResourceWithRawResponse,
+    InventoryItemsResourceWithStreamingResponse,
+    AsyncInventoryItemsResourceWithStreamingResponse,
+)
+from .sales_tax_codes import (
+    SalesTaxCodesResource,
+    AsyncSalesTaxCodesResource,
+    SalesTaxCodesResourceWithRawResponse,
+    AsyncSalesTaxCodesResourceWithRawResponse,
+    SalesTaxCodesResourceWithStreamingResponse,
+    AsyncSalesTaxCodesResourceWithStreamingResponse,
+)
+from .date_driven_terms import (
+    DateDrivenTermsResource,
+    AsyncDateDrivenTermsResource,
+    DateDrivenTermsResourceWithRawResponse,
+    AsyncDateDrivenTermsResourceWithRawResponse,
+    DateDrivenTermsResourceWithStreamingResponse,
+    AsyncDateDrivenTermsResourceWithStreamingResponse,
+)
 from .credit_card_charges import (
     CreditCardChargesResource,
     AsyncCreditCardChargesResource,
@@ -71,6 +103,14 @@ from .credit_card_charges import (
     AsyncCreditCardChargesResourceWithRawResponse,
     CreditCardChargesResourceWithStreamingResponse,
     AsyncCreditCardChargesResourceWithStreamingResponse,
+)
+from .non_inventory_items import (
+    NonInventoryItemsResource,
+    AsyncNonInventoryItemsResource,
+    NonInventoryItemsResourceWithRawResponse,
+    AsyncNonInventoryItemsResourceWithRawResponse,
+    NonInventoryItemsResourceWithStreamingResponse,
+    AsyncNonInventoryItemsResourceWithStreamingResponse,
 )
 
 __all__ = [
@@ -104,12 +144,42 @@ __all__ = [
     "AsyncCustomersResourceWithRawResponse",
     "CustomersResourceWithStreamingResponse",
     "AsyncCustomersResourceWithStreamingResponse",
+    "DateDrivenTermsResource",
+    "AsyncDateDrivenTermsResource",
+    "DateDrivenTermsResourceWithRawResponse",
+    "AsyncDateDrivenTermsResourceWithRawResponse",
+    "DateDrivenTermsResourceWithStreamingResponse",
+    "AsyncDateDrivenTermsResourceWithStreamingResponse",
+    "InventoryItemsResource",
+    "AsyncInventoryItemsResource",
+    "InventoryItemsResourceWithRawResponse",
+    "AsyncInventoryItemsResourceWithRawResponse",
+    "InventoryItemsResourceWithStreamingResponse",
+    "AsyncInventoryItemsResourceWithStreamingResponse",
     "InvoicesResource",
     "AsyncInvoicesResource",
     "InvoicesResourceWithRawResponse",
     "AsyncInvoicesResourceWithRawResponse",
     "InvoicesResourceWithStreamingResponse",
     "AsyncInvoicesResourceWithStreamingResponse",
+    "NonInventoryItemsResource",
+    "AsyncNonInventoryItemsResource",
+    "NonInventoryItemsResourceWithRawResponse",
+    "AsyncNonInventoryItemsResourceWithRawResponse",
+    "NonInventoryItemsResourceWithStreamingResponse",
+    "AsyncNonInventoryItemsResourceWithStreamingResponse",
+    "SalesTaxCodesResource",
+    "AsyncSalesTaxCodesResource",
+    "SalesTaxCodesResourceWithRawResponse",
+    "AsyncSalesTaxCodesResourceWithRawResponse",
+    "SalesTaxCodesResourceWithStreamingResponse",
+    "AsyncSalesTaxCodesResourceWithStreamingResponse",
+    "ServiceItemsResource",
+    "AsyncServiceItemsResource",
+    "ServiceItemsResourceWithRawResponse",
+    "AsyncServiceItemsResourceWithRawResponse",
+    "ServiceItemsResourceWithStreamingResponse",
+    "AsyncServiceItemsResourceWithStreamingResponse",
     "StandardTermsResource",
     "AsyncStandardTermsResource",
     "StandardTermsResourceWithRawResponse",

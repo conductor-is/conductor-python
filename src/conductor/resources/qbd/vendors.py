@@ -379,9 +379,12 @@ class VendorsResource(SyncAPIResource):
 
           full_names: Filter for specific vendors by their full-name(s). Specify a single full-name or
               multiple using a comma-separated list (e.g., `fullNames=1,2,3`). Like `id`, a
-              full-name is a unique identifier for a vendor, and is created by prefixing the
-              vendor's name with the names of each ancestor. NOTE: If you include this
-              parameter, all other query parameters will be ignored.
+              `fullName` is a unique identifier for a vendor, and is formed by by combining
+              the names of its parent objects with its own `name`, separated by colons. For
+              example, if a vendor is under 'Suppliers' and has the `name` 'ABC Office
+              Supplies', its `fullName` would be 'Suppliers:ABC Office Supplies'. Unlike
+              `name`, `fullName` is guaranteed to be unique across all vendor objects. NOTE:
+              If you include this parameter, all other query parameters will be ignored.
 
           ids: Filter for specific vendors by their QuickBooks-assigned unique identifier(s).
               Specify a single ID or multiple using a comma-separated list (e.g.,
@@ -411,19 +414,19 @@ class VendorsResource(SyncAPIResource):
 
           status: Filter for objects that are active, inactive, or both.
 
-          total_balance: Filter for objects whose `totalBalance` equals this amount. You can only use one
+          total_balance: Filter for vendors whose `totalBalance` equals this amount. You can only use one
               total-balance filter at a time.
 
-          total_balance_gt: Filter for objects whose `totalBalance` is greater than this amount. You can
+          total_balance_gt: Filter for vendors whose `totalBalance` is greater than this amount. You can
               only use one total-balance filter at a time.
 
-          total_balance_gte: Filter for objects whose `totalBalance` is greater than or equal to this amount.
+          total_balance_gte: Filter for vendors whose `totalBalance` is greater than or equal to this amount.
               You can only use one total-balance filter at a time.
 
-          total_balance_lt: Filter for objects whose `totalBalance` is less than this amount. You can only
+          total_balance_lt: Filter for vendors whose `totalBalance` is less than this amount. You can only
               use one total-balance filter at a time.
 
-          total_balance_lte: Filter for objects whose `totalBalance` is less than or equal to this amount.
+          total_balance_lte: Filter for vendors whose `totalBalance` is less than or equal to this amount.
               You can only use one total-balance filter at a time.
 
           updated_after: Filter for objects updated on or after this date and time, in ISO 8601 format
@@ -831,9 +834,12 @@ class AsyncVendorsResource(AsyncAPIResource):
 
           full_names: Filter for specific vendors by their full-name(s). Specify a single full-name or
               multiple using a comma-separated list (e.g., `fullNames=1,2,3`). Like `id`, a
-              full-name is a unique identifier for a vendor, and is created by prefixing the
-              vendor's name with the names of each ancestor. NOTE: If you include this
-              parameter, all other query parameters will be ignored.
+              `fullName` is a unique identifier for a vendor, and is formed by by combining
+              the names of its parent objects with its own `name`, separated by colons. For
+              example, if a vendor is under 'Suppliers' and has the `name` 'ABC Office
+              Supplies', its `fullName` would be 'Suppliers:ABC Office Supplies'. Unlike
+              `name`, `fullName` is guaranteed to be unique across all vendor objects. NOTE:
+              If you include this parameter, all other query parameters will be ignored.
 
           ids: Filter for specific vendors by their QuickBooks-assigned unique identifier(s).
               Specify a single ID or multiple using a comma-separated list (e.g.,
@@ -863,19 +869,19 @@ class AsyncVendorsResource(AsyncAPIResource):
 
           status: Filter for objects that are active, inactive, or both.
 
-          total_balance: Filter for objects whose `totalBalance` equals this amount. You can only use one
+          total_balance: Filter for vendors whose `totalBalance` equals this amount. You can only use one
               total-balance filter at a time.
 
-          total_balance_gt: Filter for objects whose `totalBalance` is greater than this amount. You can
+          total_balance_gt: Filter for vendors whose `totalBalance` is greater than this amount. You can
               only use one total-balance filter at a time.
 
-          total_balance_gte: Filter for objects whose `totalBalance` is greater than or equal to this amount.
+          total_balance_gte: Filter for vendors whose `totalBalance` is greater than or equal to this amount.
               You can only use one total-balance filter at a time.
 
-          total_balance_lt: Filter for objects whose `totalBalance` is less than this amount. You can only
+          total_balance_lt: Filter for vendors whose `totalBalance` is less than this amount. You can only
               use one total-balance filter at a time.
 
-          total_balance_lte: Filter for objects whose `totalBalance` is less than or equal to this amount.
+          total_balance_lte: Filter for vendors whose `totalBalance` is less than or equal to this amount.
               You can only use one total-balance filter at a time.
 
           updated_after: Filter for objects updated on or after this date and time, in ISO 8601 format

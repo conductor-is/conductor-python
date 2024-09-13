@@ -19,33 +19,33 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...types.qbd import standard_term_list_params
+from ...types.qbd import sales_tax_code_list_params
 from ..._base_client import make_request_options
-from ...types.qbd.qbd_standard_term import QbdStandardTerm
-from ...types.qbd.standard_term_list_response import StandardTermListResponse
+from ...types.qbd.sales_tax_code import SalesTaxCode
+from ...types.qbd.sales_tax_code_list_response import SalesTaxCodeListResponse
 
-__all__ = ["StandardTermsResource", "AsyncStandardTermsResource"]
+__all__ = ["SalesTaxCodesResource", "AsyncSalesTaxCodesResource"]
 
 
-class StandardTermsResource(SyncAPIResource):
+class SalesTaxCodesResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> StandardTermsResourceWithRawResponse:
+    def with_raw_response(self) -> SalesTaxCodesResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return the
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/conductor-is/conductor-python#accessing-raw-response-data-eg-headers
         """
-        return StandardTermsResourceWithRawResponse(self)
+        return SalesTaxCodesResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> StandardTermsResourceWithStreamingResponse:
+    def with_streaming_response(self) -> SalesTaxCodesResourceWithStreamingResponse:
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
         For more information, see https://www.github.com/conductor-is/conductor-python#with_streaming_response
         """
-        return StandardTermsResourceWithStreamingResponse(self)
+        return SalesTaxCodesResourceWithStreamingResponse(self)
 
     def retrieve(
         self,
@@ -58,12 +58,12 @@ class StandardTermsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdStandardTerm:
+    ) -> SalesTaxCode:
         """
-        Retrieves a standard-term by ID.
+        Retrieves a sales-tax-code by ID.
 
         Args:
-          id: The QuickBooks-assigned unique identifier of the standard-term to retrieve.
+          id: The QuickBooks-assigned unique identifier of the sales-tax-code to retrieve.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -80,11 +80,11 @@ class StandardTermsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get(
-            f"/quickbooks-desktop/standard-terms/{id}",
+            f"/quickbooks-desktop/sales-tax-codes/{id}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdStandardTerm,
+            cast_to=SalesTaxCode,
         )
 
     def list(
@@ -108,25 +108,24 @@ class StandardTermsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> StandardTermListResponse:
+    ) -> SalesTaxCodeListResponse:
         """
-        Returns a list of standard-terms.
+        Returns a list of sales-tax-codes.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          full_names: Filter for specific standard-terms by their full-name(s). Specify a single
+          full_names: Filter for specific sales-tax-codes by their full-name(s). Specify a single
               full-name or multiple using a comma-separated list (e.g., `fullNames=1,2,3`).
-              Like `id`, a `fullName` is a unique identifier for a standard-term, and is
+              Like `id`, a `fullName` is a unique identifier for a sales-tax-code, and is
               formed by by combining the names of its parent objects with its own `name`,
-              separated by colons. For example, if a standard-term is under 'Payment Terms'
-              and has the `name` 'Net 15', its `fullName` would be 'Payment Terms:Net 15'.
-              Unlike `name`, `fullName` is guaranteed to be unique across all standard-term
-              objects. NOTE: If you include this parameter, all other query parameters will be
-              ignored.
+              separated by colons. For example, if a sales-tax-code is under 'State' and has
+              the `name` 'CA Sales Tax', its `fullName` would be 'State:CA Sales Tax'. Unlike
+              `name`, `fullName` is guaranteed to be unique across all sales-tax-code objects.
+              NOTE: If you include this parameter, all other query parameters will be ignored.
 
-          ids: Filter for specific standard-terms by their QuickBooks-assigned unique
+          ids: Filter for specific sales-tax-codes by their QuickBooks-assigned unique
               identifier(s). Specify a single ID or multiple using a comma-separated list
               (e.g., `ids=1,2,3`). NOTE: If you include this parameter, all other query
               parameters will be ignored.
@@ -172,7 +171,7 @@ class StandardTermsResource(SyncAPIResource):
         """
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get(
-            "/quickbooks-desktop/standard-terms",
+            "/quickbooks-desktop/sales-tax-codes",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -192,32 +191,32 @@ class StandardTermsResource(SyncAPIResource):
                         "updated_after": updated_after,
                         "updated_before": updated_before,
                     },
-                    standard_term_list_params.StandardTermListParams,
+                    sales_tax_code_list_params.SalesTaxCodeListParams,
                 ),
             ),
-            cast_to=StandardTermListResponse,
+            cast_to=SalesTaxCodeListResponse,
         )
 
 
-class AsyncStandardTermsResource(AsyncAPIResource):
+class AsyncSalesTaxCodesResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncStandardTermsResourceWithRawResponse:
+    def with_raw_response(self) -> AsyncSalesTaxCodesResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return the
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/conductor-is/conductor-python#accessing-raw-response-data-eg-headers
         """
-        return AsyncStandardTermsResourceWithRawResponse(self)
+        return AsyncSalesTaxCodesResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncStandardTermsResourceWithStreamingResponse:
+    def with_streaming_response(self) -> AsyncSalesTaxCodesResourceWithStreamingResponse:
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
         For more information, see https://www.github.com/conductor-is/conductor-python#with_streaming_response
         """
-        return AsyncStandardTermsResourceWithStreamingResponse(self)
+        return AsyncSalesTaxCodesResourceWithStreamingResponse(self)
 
     async def retrieve(
         self,
@@ -230,12 +229,12 @@ class AsyncStandardTermsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdStandardTerm:
+    ) -> SalesTaxCode:
         """
-        Retrieves a standard-term by ID.
+        Retrieves a sales-tax-code by ID.
 
         Args:
-          id: The QuickBooks-assigned unique identifier of the standard-term to retrieve.
+          id: The QuickBooks-assigned unique identifier of the sales-tax-code to retrieve.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -252,11 +251,11 @@ class AsyncStandardTermsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return await self._get(
-            f"/quickbooks-desktop/standard-terms/{id}",
+            f"/quickbooks-desktop/sales-tax-codes/{id}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdStandardTerm,
+            cast_to=SalesTaxCode,
         )
 
     async def list(
@@ -280,25 +279,24 @@ class AsyncStandardTermsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> StandardTermListResponse:
+    ) -> SalesTaxCodeListResponse:
         """
-        Returns a list of standard-terms.
+        Returns a list of sales-tax-codes.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          full_names: Filter for specific standard-terms by their full-name(s). Specify a single
+          full_names: Filter for specific sales-tax-codes by their full-name(s). Specify a single
               full-name or multiple using a comma-separated list (e.g., `fullNames=1,2,3`).
-              Like `id`, a `fullName` is a unique identifier for a standard-term, and is
+              Like `id`, a `fullName` is a unique identifier for a sales-tax-code, and is
               formed by by combining the names of its parent objects with its own `name`,
-              separated by colons. For example, if a standard-term is under 'Payment Terms'
-              and has the `name` 'Net 15', its `fullName` would be 'Payment Terms:Net 15'.
-              Unlike `name`, `fullName` is guaranteed to be unique across all standard-term
-              objects. NOTE: If you include this parameter, all other query parameters will be
-              ignored.
+              separated by colons. For example, if a sales-tax-code is under 'State' and has
+              the `name` 'CA Sales Tax', its `fullName` would be 'State:CA Sales Tax'. Unlike
+              `name`, `fullName` is guaranteed to be unique across all sales-tax-code objects.
+              NOTE: If you include this parameter, all other query parameters will be ignored.
 
-          ids: Filter for specific standard-terms by their QuickBooks-assigned unique
+          ids: Filter for specific sales-tax-codes by their QuickBooks-assigned unique
               identifier(s). Specify a single ID or multiple using a comma-separated list
               (e.g., `ids=1,2,3`). NOTE: If you include this parameter, all other query
               parameters will be ignored.
@@ -344,7 +342,7 @@ class AsyncStandardTermsResource(AsyncAPIResource):
         """
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return await self._get(
-            "/quickbooks-desktop/standard-terms",
+            "/quickbooks-desktop/sales-tax-codes",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -364,56 +362,56 @@ class AsyncStandardTermsResource(AsyncAPIResource):
                         "updated_after": updated_after,
                         "updated_before": updated_before,
                     },
-                    standard_term_list_params.StandardTermListParams,
+                    sales_tax_code_list_params.SalesTaxCodeListParams,
                 ),
             ),
-            cast_to=StandardTermListResponse,
+            cast_to=SalesTaxCodeListResponse,
         )
 
 
-class StandardTermsResourceWithRawResponse:
-    def __init__(self, standard_terms: StandardTermsResource) -> None:
-        self._standard_terms = standard_terms
+class SalesTaxCodesResourceWithRawResponse:
+    def __init__(self, sales_tax_codes: SalesTaxCodesResource) -> None:
+        self._sales_tax_codes = sales_tax_codes
 
         self.retrieve = to_raw_response_wrapper(
-            standard_terms.retrieve,
+            sales_tax_codes.retrieve,
         )
         self.list = to_raw_response_wrapper(
-            standard_terms.list,
+            sales_tax_codes.list,
         )
 
 
-class AsyncStandardTermsResourceWithRawResponse:
-    def __init__(self, standard_terms: AsyncStandardTermsResource) -> None:
-        self._standard_terms = standard_terms
+class AsyncSalesTaxCodesResourceWithRawResponse:
+    def __init__(self, sales_tax_codes: AsyncSalesTaxCodesResource) -> None:
+        self._sales_tax_codes = sales_tax_codes
 
         self.retrieve = async_to_raw_response_wrapper(
-            standard_terms.retrieve,
+            sales_tax_codes.retrieve,
         )
         self.list = async_to_raw_response_wrapper(
-            standard_terms.list,
+            sales_tax_codes.list,
         )
 
 
-class StandardTermsResourceWithStreamingResponse:
-    def __init__(self, standard_terms: StandardTermsResource) -> None:
-        self._standard_terms = standard_terms
+class SalesTaxCodesResourceWithStreamingResponse:
+    def __init__(self, sales_tax_codes: SalesTaxCodesResource) -> None:
+        self._sales_tax_codes = sales_tax_codes
 
         self.retrieve = to_streamed_response_wrapper(
-            standard_terms.retrieve,
+            sales_tax_codes.retrieve,
         )
         self.list = to_streamed_response_wrapper(
-            standard_terms.list,
+            sales_tax_codes.list,
         )
 
 
-class AsyncStandardTermsResourceWithStreamingResponse:
-    def __init__(self, standard_terms: AsyncStandardTermsResource) -> None:
-        self._standard_terms = standard_terms
+class AsyncSalesTaxCodesResourceWithStreamingResponse:
+    def __init__(self, sales_tax_codes: AsyncSalesTaxCodesResource) -> None:
+        self._sales_tax_codes = sales_tax_codes
 
         self.retrieve = async_to_streamed_response_wrapper(
-            standard_terms.retrieve,
+            sales_tax_codes.retrieve,
         )
         self.list = async_to_streamed_response_wrapper(
-            standard_terms.list,
+            sales_tax_codes.list,
         )
