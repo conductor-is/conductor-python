@@ -157,7 +157,7 @@ class QbdAccount(BaseModel):
     """
 
     currency: Optional[Currency] = None
-    """The currency associated with this account.
+    """The account's currency.
 
     For built-in currencies, the name and code are standard international values.
     For user-defined currencies, all values are editable.
@@ -277,8 +277,8 @@ class QbdAccount(BaseModel):
 
     version: str
     """
-    A version identifier for this account, which changes each time the object is
-    modified. When updating this object, you must provide the current `version` to
-    ensure you're working with the latest data; otherwise, the update will fail. The
-    `version` is an opaque value and should not be interpreted.
+    The current version identifier for this account, which changes each time the
+    object is modified. When updating this object, you must provide the most recent
+    `version` to ensure you're working with the latest data; otherwise, the update
+    will fail. This value is opaque and should not be interpreted.
     """

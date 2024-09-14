@@ -216,7 +216,9 @@ class CreditCardChargesResource(SyncAPIResource):
               set of results.
 
           payee_ids: Filter for credit card charges from this payee or payees. Specify a single payee
-              ID or multiple using a comma-separated list (e.g., `payeeIds=1,2,3`).
+              ID or multiple using a comma-separated list (e.g., `payeeIds=1,2,3`). These are
+              the vendors or companies from whom merchandise or services were purchased for
+              these credit card charges.
 
           ref_number_contains: Filter for transactions whose `refNumber` contains this substring. If you use
               this parameter, you cannot use `refNumberStartsWith` or `refNumberEndsWith`.
@@ -490,7 +492,9 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
               set of results.
 
           payee_ids: Filter for credit card charges from this payee or payees. Specify a single payee
-              ID or multiple using a comma-separated list (e.g., `payeeIds=1,2,3`).
+              ID or multiple using a comma-separated list (e.g., `payeeIds=1,2,3`). These are
+              the vendors or companies from whom merchandise or services were purchased for
+              these credit card charges.
 
           ref_number_contains: Filter for transactions whose `refNumber` contains this substring. If you use
               this parameter, you cannot use `refNumberStartsWith` or `refNumberEndsWith`.

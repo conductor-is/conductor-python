@@ -92,8 +92,8 @@ class QbdClass(BaseModel):
 
     version: str
     """
-    A version identifier for this class, which changes each time the object is
-    modified. When updating this object, you must provide the current `version` to
-    ensure you're working with the latest data; otherwise, the update will fail. The
-    `version` is an opaque value and should not be interpreted.
+    The current version identifier for this class, which changes each time the
+    object is modified. When updating this object, you must provide the most recent
+    `version` to ensure you're working with the latest data; otherwise, the update
+    will fail. This value is opaque and should not be interpreted.
     """

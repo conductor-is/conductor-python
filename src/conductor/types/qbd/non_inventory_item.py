@@ -271,31 +271,31 @@ class UnitOfMeasureSet(BaseModel):
 
 class NonInventoryItem(BaseModel):
     id: str
-    """The unique identifier assigned by QuickBooks for this non-inventory-item.
+    """The unique identifier assigned by QuickBooks for this non-inventory item.
 
-    This ID is unique among all non-inventory-items but not across different object
+    This ID is unique among all non-inventory items but not across different object
     types.
     """
 
     bar_code: Optional[str] = FieldInfo(alias="barCode", default=None)
-    """The barcode value associated with this non-inventory-item."""
+    """The barcode value for this non-inventory item."""
 
     class_: Optional[Class] = FieldInfo(alias="class", default=None)
     """
-    The class associated with this non-inventory-item, used to categorize objects or
-    transactions (e.g., by department, location, or type of work).
+    The non-inventory item's class, used to categorize objects or transactions
+    (e.g., by department, location, or type of work).
     """
 
     created_at: str = FieldInfo(alias="createdAt")
     """
-    The date and time when this non-inventory-item was created, in ISO 8601 format
+    The date and time when this non-inventory item was created, in ISO 8601 format
     (YYYY-MM-DDThh:mm:ss±hh:mm). The time zone is the same as the user's time zone
     in QuickBooks.
     """
 
     custom_fields: List[CustomField] = FieldInfo(alias="customFields")
     """
-    The custom fields added by the user to this non-inventory-item object as a data
+    The custom fields added by the user to this non-inventory item object as a data
     extension. These fields are not part of the standard QuickBooks object.
     """
 
@@ -308,26 +308,26 @@ class NonInventoryItem(BaseModel):
 
     full_name: str = FieldInfo(alias="fullName")
     """
-    The fully-qualified unique name for this non-inventory-item, formed by combining
+    The fully-qualified unique name for this non-inventory item, formed by combining
     the names of its parent objects with its own `name`, separated by colons. For
-    example, if a non-inventory-item is under 'Office Supplies' and has the `name`
+    example, if a non-inventory item is under 'Office Supplies' and has the `name`
     'Printer Ink Cartridge', its `fullName` would be 'Office Supplies:Printer Ink
     Cartridge'. Unlike `name`, `fullName` is guaranteed to be unique across all
-    non-inventory-item objects.
+    non-inventory item objects.
     """
 
     is_active: bool = FieldInfo(alias="isActive")
-    """Indicates whether this non-inventory-item is active.
+    """Indicates whether this non-inventory item is active.
 
     Inactive objects are typically hidden from views and reports in QuickBooks
     Desktop.
     """
 
     manufacturer_part_number: Optional[str] = FieldInfo(alias="manufacturerPartNumber", default=None)
-    """The manufacturer's part number for this non-inventory-item."""
+    """The manufacturer's part number for this non-inventory item."""
 
     name: str
-    """The case-insensitive name of this non-inventory-item.
+    """The case-insensitive name of this non-inventory item.
 
     Not guaranteed to be unique because it does not include the names of its parent
     objects like `fullName` does.
@@ -337,11 +337,11 @@ class NonInventoryItem(BaseModel):
     """The type of object. This value is always `"qbd_non_inventory_item"`."""
 
     parent: Optional[Parent] = None
-    """The parent non-inventory-item one level above this one in the hierarchy.
+    """The parent non-inventory item one level above this one in the hierarchy.
 
-    For example, if this non-inventory-item has a `fullName` of "Office
+    For example, if this non-inventory item has a `fullName` of "Office
     Supplies:Printer Ink Cartridge", its parent has a `fullName` of "Office
-    Supplies". If this non-inventory-item is at the top level, `parent` will be
+    Supplies". If this non-inventory item is at the top level, `parent` will be
     `null`.
     """
 
@@ -349,7 +349,7 @@ class NonInventoryItem(BaseModel):
         alias="salesAndPurchaseDetails", default=None
     )
     """
-    Details specific to non-inventory-items that are both purchased and sold by the
+    Details specific to non-inventory items that are both purchased and sold by the
     business. Used for items like inventory products (e.g., goods resold to
     customers) or reimbursable expenses.
     """
@@ -358,7 +358,7 @@ class NonInventoryItem(BaseModel):
         alias="salesOrPurchaseDetails", default=None
     )
     """
-    Details specific to non-inventory-items that are either purchased by the
+    Details specific to non-inventory items that are either purchased by the
     business or sold to customers, but not both. Used for items like services that
     are only sold (e.g., consulting services) or goods that are only purchased for
     internal use (e.g., office supplies).
@@ -366,37 +366,37 @@ class NonInventoryItem(BaseModel):
 
     sales_tax_code: Optional[SalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)
     """
-    The sales tax code associated with this non-inventory-item, indicating whether
+    The sales tax code associated with this non-inventory item, indicating whether
     it is taxable or non-taxable. Default codes include 'NON' (non-taxable) and
     'TAX' (taxable). If QuickBooks is not set up to charge sales tax, it will assign
     the default non-taxable code to all sales.
     """
 
     sublevel: float
-    """The depth level of this non-inventory-item in the hierarchy.
+    """The depth level of this non-inventory item in the hierarchy.
 
-    A top-level non-inventory-item has a `sublevel` of 0; each subsequent sublevel
-    increases this number by 1. For example, a non-inventory-item with a `fullName`
+    A top-level non-inventory item has a `sublevel` of 0; each subsequent sublevel
+    increases this number by 1. For example, a non-inventory item with a `fullName`
     of "Office Supplies:Printer Ink Cartridge" would have a `sublevel` of 1.
     """
 
     unit_of_measure_set: Optional[UnitOfMeasureSet] = FieldInfo(alias="unitOfMeasureSet", default=None)
     """
-    The unit of measure set associated with this non-inventory-item, which consists
+    The unit of measure set associated with this non-inventory item, which consists
     of a base unit and related units.
     """
 
     updated_at: str = FieldInfo(alias="updatedAt")
     """
-    The date and time when this non-inventory-item was last updated, in ISO 8601
+    The date and time when this non-inventory item was last updated, in ISO 8601
     format (YYYY-MM-DDThh:mm:ss±hh:mm). The time zone is the same as the user's time
     zone in QuickBooks.
     """
 
     version: str
     """
-    A version identifier for this non-inventory-item, which changes each time the
-    object is modified. When updating this object, you must provide the current
-    `version` to ensure you're working with the latest data; otherwise, the update
-    will fail. The `version` is an opaque value and should not be interpreted.
+    The current version identifier for this non-inventory item, which changes each
+    time the object is modified. When updating this object, you must provide the
+    most recent `version` to ensure you're working with the latest data; otherwise,
+    the update will fail. This value is opaque and should not be interpreted.
     """
