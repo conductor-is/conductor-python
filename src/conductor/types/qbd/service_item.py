@@ -271,27 +271,27 @@ class UnitOfMeasureSet(BaseModel):
 
 class ServiceItem(BaseModel):
     id: str
-    """The unique identifier assigned by QuickBooks for this service-item.
+    """The unique identifier assigned by QuickBooks for this service item.
 
-    This ID is unique among all service-items but not across different object types.
+    This ID is unique among all service items but not across different object types.
     """
 
     class_: Optional[Class] = FieldInfo(alias="class", default=None)
     """
-    The class associated with this service-item, used to categorize objects or
-    transactions (e.g., by department, location, or type of work).
+    The service item's class, used to categorize objects or transactions (e.g., by
+    department, location, or type of work).
     """
 
     created_at: str = FieldInfo(alias="createdAt")
     """
-    The date and time when this service-item was created, in ISO 8601 format
+    The date and time when this service item was created, in ISO 8601 format
     (YYYY-MM-DDThh:mm:ss±hh:mm). The time zone is the same as the user's time zone
     in QuickBooks.
     """
 
     custom_fields: List[CustomField] = FieldInfo(alias="customFields")
     """
-    The custom fields added by the user to this service-item object as a data
+    The custom fields added by the user to this service item object as a data
     extension. These fields are not part of the standard QuickBooks object.
     """
 
@@ -304,22 +304,22 @@ class ServiceItem(BaseModel):
 
     full_name: str = FieldInfo(alias="fullName")
     """
-    The fully-qualified unique name for this service-item, formed by combining the
+    The fully-qualified unique name for this service item, formed by combining the
     names of its parent objects with its own `name`, separated by colons. For
-    example, if a service-item is under 'Services:Consulting' and has the `name`
+    example, if a service item is under 'Services:Consulting' and has the `name`
     'Web Design', its `fullName` would be 'Services:Consulting:Web Design'. Unlike
-    `name`, `fullName` is guaranteed to be unique across all service-item objects.
+    `name`, `fullName` is guaranteed to be unique across all service item objects.
     """
 
     is_active: bool = FieldInfo(alias="isActive")
-    """Indicates whether this service-item is active.
+    """Indicates whether this service item is active.
 
     Inactive objects are typically hidden from views and reports in QuickBooks
     Desktop.
     """
 
     name: str
-    """The case-insensitive name of this service-item.
+    """The case-insensitive name of this service item.
 
     Not guaranteed to be unique because it does not include the names of its parent
     objects like `fullName` does.
@@ -329,18 +329,18 @@ class ServiceItem(BaseModel):
     """The type of object. This value is always `"qbd_service_item"`."""
 
     parent: Optional[Parent] = None
-    """The parent service-item one level above this one in the hierarchy.
+    """The parent service item one level above this one in the hierarchy.
 
-    For example, if this service-item has a `fullName` of "Services:Consulting:Web
-    Design", its parent has a `fullName` of "Services:Consulting". If this
-    service-item is at the top level, `parent` will be `null`.
+    For example, if this service item has a `fullName` of "Services:Consulting:Web
+    Design", its parent has a `fullName` of "Services:Consulting". If this service
+    item is at the top level, `parent` will be `null`.
     """
 
     sales_and_purchase_details: Optional[SalesAndPurchaseDetails] = FieldInfo(
         alias="salesAndPurchaseDetails", default=None
     )
     """
-    Details specific to service-items that are both purchased and sold by the
+    Details specific to service items that are both purchased and sold by the
     business. Used for items like inventory products (e.g., goods resold to
     customers) or reimbursable expenses.
     """
@@ -349,7 +349,7 @@ class ServiceItem(BaseModel):
         alias="salesOrPurchaseDetails", default=None
     )
     """
-    Details specific to service-items that are either purchased by the business or
+    Details specific to service items that are either purchased by the business or
     sold to customers, but not both. Used for items like services that are only sold
     (e.g., consulting services) or goods that are only purchased for internal use
     (e.g., office supplies).
@@ -357,37 +357,37 @@ class ServiceItem(BaseModel):
 
     sales_tax_code: Optional[SalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)
     """
-    The sales tax code associated with this service-item, indicating whether it is
+    The sales tax code associated with this service item, indicating whether it is
     taxable or non-taxable. Default codes include 'NON' (non-taxable) and 'TAX'
     (taxable). If QuickBooks is not set up to charge sales tax, it will assign the
     default non-taxable code to all sales.
     """
 
     sublevel: float
-    """The depth level of this service-item in the hierarchy.
+    """The depth level of this service item in the hierarchy.
 
-    A top-level service-item has a `sublevel` of 0; each subsequent sublevel
-    increases this number by 1. For example, a service-item with a `fullName` of
+    A top-level service item has a `sublevel` of 0; each subsequent sublevel
+    increases this number by 1. For example, a service item with a `fullName` of
     "Services:Consulting:Web Design" would have a `sublevel` of 2.
     """
 
     unit_of_measure_set: Optional[UnitOfMeasureSet] = FieldInfo(alias="unitOfMeasureSet", default=None)
     """
-    The unit of measure set associated with this service-item, which consists of a
+    The unit of measure set associated with this service item, which consists of a
     base unit and related units.
     """
 
     updated_at: str = FieldInfo(alias="updatedAt")
     """
-    The date and time when this service-item was last updated, in ISO 8601 format
+    The date and time when this service item was last updated, in ISO 8601 format
     (YYYY-MM-DDThh:mm:ss±hh:mm). The time zone is the same as the user's time zone
     in QuickBooks.
     """
 
     version: str
     """
-    A version identifier for this service-item, which changes each time the object
-    is modified. When updating this object, you must provide the current `version`
-    to ensure you're working with the latest data; otherwise, the update will fail.
-    The `version` is an opaque value and should not be interpreted.
+    The current version identifier for this service item, which changes each time
+    the object is modified. When updating this object, you must provide the most
+    recent `version` to ensure you're working with the latest data; otherwise, the
+    update will fail. This value is opaque and should not be interpreted.
     """

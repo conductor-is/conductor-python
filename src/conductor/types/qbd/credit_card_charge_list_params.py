@@ -61,7 +61,8 @@ class CreditCardChargeListParams(TypedDict, total=False):
     """Filter for credit card charges from this payee or payees.
 
     Specify a single payee ID or multiple using a comma-separated list (e.g.,
-    `payeeIds=1,2,3`).
+    `payeeIds=1,2,3`). These are the vendors or companies from whom merchandise or
+    services were purchased for these credit card charges.
     """
 
     ref_number_contains: Annotated[str, PropertyInfo(alias="refNumberContains")]
