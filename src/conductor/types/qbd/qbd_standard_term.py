@@ -12,15 +12,15 @@ __all__ = ["QbdStandardTerm"]
 
 class QbdStandardTerm(BaseModel):
     id: str
-    """The unique identifier assigned by QuickBooks for this standard-term.
+    """The unique identifier assigned by QuickBooks for this standard term.
 
-    This ID is unique among all standard-terms but not across different object
+    This ID is unique among all standard terms but not across different object
     types.
     """
 
     created_at: str = FieldInfo(alias="createdAt")
     """
-    The date and time when this standard-term was created, in ISO 8601 format
+    The date and time when this standard term was created, in ISO 8601 format
     (YYYY-MM-DDThh:mm:ss±hh:mm). The time zone is the same as the user's time zone
     in QuickBooks.
     """
@@ -41,7 +41,7 @@ class QbdStandardTerm(BaseModel):
     """The number of days until payment is due."""
 
     is_active: bool = FieldInfo(alias="isActive")
-    """Indicates whether this standard-term is active.
+    """Indicates whether this standard term is active.
 
     Inactive objects are typically hidden from views and reports in QuickBooks
     Desktop.
@@ -49,8 +49,8 @@ class QbdStandardTerm(BaseModel):
 
     name: str
     """
-    The case-insensitive unique name of this standard-term, unique across all
-    standard-terms.
+    The case-insensitive unique name of this standard term, unique across all
+    standard terms.
     """
 
     object_type: Literal["qbd_standard_term"] = FieldInfo(alias="objectType")
@@ -58,15 +58,15 @@ class QbdStandardTerm(BaseModel):
 
     updated_at: str = FieldInfo(alias="updatedAt")
     """
-    The date and time when this standard-term was last updated, in ISO 8601 format
+    The date and time when this standard term was last updated, in ISO 8601 format
     (YYYY-MM-DDThh:mm:ss±hh:mm). The time zone is the same as the user's time zone
     in QuickBooks.
     """
 
     version: str
     """
-    A version identifier for this standard-term, which changes each time the object
-    is modified. When updating this object, you must provide the current `version`
-    to ensure you're working with the latest data; otherwise, the update will fail.
-    The `version` is an opaque value and should not be interpreted.
+    The current version identifier for this standard term, which changes each time
+    the object is modified. When updating this object, you must provide the most
+    recent `version` to ensure you're working with the latest data; otherwise, the
+    update will fail. This value is opaque and should not be interpreted.
     """
