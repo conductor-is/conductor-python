@@ -12,15 +12,15 @@ __all__ = ["DateDrivenTerm"]
 
 class DateDrivenTerm(BaseModel):
     id: str
-    """The unique identifier assigned by QuickBooks for this date-driven-term.
+    """The unique identifier assigned by QuickBooks for this date-driven term.
 
-    This ID is unique among all date-driven-terms but not across different object
+    This ID is unique among all date-driven terms but not across different object
     types.
     """
 
     created_at: str = FieldInfo(alias="createdAt")
     """
-    The date and time when this date-driven-term was created, in ISO 8601 format
+    The date and time when this date-driven term was created, in ISO 8601 format
     (YYYY-MM-DDThh:mm:ss±hh:mm). The time zone is the same as the user's time zone
     in QuickBooks.
     """
@@ -50,7 +50,7 @@ class DateDrivenTerm(BaseModel):
     """
 
     is_active: bool = FieldInfo(alias="isActive")
-    """Indicates whether this date-driven-term is active.
+    """Indicates whether this date-driven term is active.
 
     Inactive objects are typically hidden from views and reports in QuickBooks
     Desktop.
@@ -58,8 +58,8 @@ class DateDrivenTerm(BaseModel):
 
     name: str
     """
-    The case-insensitive unique name of this date-driven-term, unique across all
-    date-driven-terms.
+    The case-insensitive unique name of this date-driven term, unique across all
+    date-driven terms.
     """
 
     object_type: Literal["qbd_date_driven_term"] = FieldInfo(alias="objectType")
@@ -67,15 +67,15 @@ class DateDrivenTerm(BaseModel):
 
     updated_at: str = FieldInfo(alias="updatedAt")
     """
-    The date and time when this date-driven-term was last updated, in ISO 8601
+    The date and time when this date-driven term was last updated, in ISO 8601
     format (YYYY-MM-DDThh:mm:ss±hh:mm). The time zone is the same as the user's time
     zone in QuickBooks.
     """
 
     version: str
     """
-    A version identifier for this date-driven-term, which changes each time the
-    object is modified. When updating this object, you must provide the current
-    `version` to ensure you're working with the latest data; otherwise, the update
-    will fail. The `version` is an opaque value and should not be interpreted.
+    The current version identifier for this date-driven term, which changes each
+    time the object is modified. When updating this object, you must provide the
+    most recent `version` to ensure you're working with the latest data; otherwise,
+    the update will fail. This value is opaque and should not be interpreted.
     """

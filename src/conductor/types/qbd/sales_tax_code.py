@@ -29,39 +29,39 @@ class ItemSalesTax(BaseModel):
 
 class SalesTaxCode(BaseModel):
     id: str
-    """The unique identifier assigned by QuickBooks for this sales-tax-code.
+    """The unique identifier assigned by QuickBooks for this sales tax code.
 
-    This ID is unique among all sales-tax-codes but not across different object
+    This ID is unique among all sales tax codes but not across different object
     types.
     """
 
     created_at: str = FieldInfo(alias="createdAt")
     """
-    The date and time when this sales-tax-code was created, in ISO 8601 format
+    The date and time when this sales tax code was created, in ISO 8601 format
     (YYYY-MM-DDThh:mm:ss±hh:mm). The time zone is the same as the user's time zone
     in QuickBooks.
     """
 
     description: Optional[str] = None
-    """A longer explanation of the `name` of this sales-tax-code."""
+    """A longer explanation of the `name` of this sales tax code."""
 
     is_active: bool = FieldInfo(alias="isActive")
-    """Indicates whether this sales-tax-code is active.
+    """Indicates whether this sales tax code is active.
 
     Inactive objects are typically hidden from views and reports in QuickBooks
     Desktop.
     """
 
     is_taxable: bool = FieldInfo(alias="isTaxable")
-    """Indicates whether this sales-tax-code is tracking taxable sales.
+    """Indicates whether this sales tax code is tracking taxable sales.
 
-    For any particular sales-tax-code, `isTaxable` cannot be modified once the
-    sales-tax-code has been used in a transaction. The default value depends on the
-    "Do You Charge Sales Tax?" preference in QuickBooks Desktop.
+    For any particular sales tax code, `isTaxable` cannot be modified once the sales
+    tax code has been used in a transaction. The default value depends on the "Do
+    You Charge Sales Tax?" preference in QuickBooks Desktop.
     """
 
     item_sales_tax: Optional[ItemSalesTax] = FieldInfo(alias="itemSalesTax", default=None)
-    """The sales-tax item associated with this sales-tax-code.
+    """The sales-tax item associated with this sales tax code.
 
     A sales-tax item represents a single sales tax that is collected at a specified
     rate and paid to a single agency.
@@ -69,8 +69,8 @@ class SalesTaxCode(BaseModel):
 
     name: str
     """
-    The case-insensitive unique name of this sales-tax-code, unique across all
-    sales-tax-codes.
+    The case-insensitive unique name of this sales tax code, unique across all sales
+    tax codes.
     """
 
     object_type: Literal["qbd_sales_tax_code"] = FieldInfo(alias="objectType")
@@ -78,15 +78,15 @@ class SalesTaxCode(BaseModel):
 
     updated_at: str = FieldInfo(alias="updatedAt")
     """
-    The date and time when this sales-tax-code was last updated, in ISO 8601 format
+    The date and time when this sales tax code was last updated, in ISO 8601 format
     (YYYY-MM-DDThh:mm:ss±hh:mm). The time zone is the same as the user's time zone
     in QuickBooks.
     """
 
     version: str
     """
-    A version identifier for this sales-tax-code, which changes each time the object
-    is modified. When updating this object, you must provide the current `version`
-    to ensure you're working with the latest data; otherwise, the update will fail.
-    The `version` is an opaque value and should not be interpreted.
+    The current version identifier for this sales tax code, which changes each time
+    the object is modified. When updating this object, you must provide the most
+    recent `version` to ensure you're working with the latest data; otherwise, the
+    update will fail. This value is opaque and should not be interpreted.
     """

@@ -1,6 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import List, Optional
+from datetime import date
 from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
@@ -42,8 +43,8 @@ __all__ = [
     "ItemLineOverrideUnitOfMeasure",
     "ItemLineSalesRepresentative",
     "ItemLineSalesTaxCode",
+    "Payee",
     "SalesTaxCode",
-    "Vendor",
 ]
 
 
@@ -766,7 +767,7 @@ class ItemLine(BaseModel):
     unit_of_measure: Optional[str] = FieldInfo(alias="unitOfMeasure", default=None)
 
 
-class SalesTaxCode(BaseModel):
+class Payee(BaseModel):
     id: Optional[str] = None
     """The QuickBooks-assigned unique identifier for this object.
 
@@ -783,7 +784,7 @@ class SalesTaxCode(BaseModel):
     """
 
 
-class Vendor(BaseModel):
+class SalesTaxCode(BaseModel):
     id: Optional[str] = None
     """The QuickBooks-assigned unique identifier for this object.
 
@@ -802,97 +803,123 @@ class Vendor(BaseModel):
 
 class QbdCreditCardCharge(BaseModel):
     id: str
-    """
-    The QuickBooks-assigned identifier for this transaction, unique across all
-    transactions.
+    """The unique identifier assigned by QuickBooks for this credit card charge.
+
+    This ID is unique among all transaction types.
     """
 
     account: Account
-    """The account for the bank or credit card company to whom money is owed."""
+    """
+    The bank account or credit card company to whom money is owed for this credit
+    card charge.
+    """
 
     amount: str
-    """The total monetary amount of the transaction, as a string-encoded decimal."""
+    """
+    The total monetary amount for this credit card charge, represented as a decimal
+    string. This equals the sum of the amounts in the credit card charge's expense
+    lines, item lines, and item group lines.
+    """
 
     amount_in_home_currency: Optional[str] = FieldInfo(alias="amountInHomeCurrency", default=None)
     """
-    The total monetary amount of the transaction converted to the account's base
-    currency, as a string-encoded decimal.
+    The total amount for this credit card charge converted to the home currency of
+    the QuickBooks company file. Represented as a decimal string.
     """
 
     created_at: str = FieldInfo(alias="createdAt")
     """
-    The date and time when the object was created, in ISO 8601 format
+    The date and time when this credit card charge was created, in ISO 8601 format
     (YYYY-MM-DDThh:mm:ss±hh:mm). The time zone is the same as the user's time zone
     in QuickBooks.
     """
 
     currency: Optional[Currency] = None
-    """The credit-card-charge's currency."""
+    """The credit card charge's currency.
+
+    For built-in currencies, the name and code are standard international values.
+    For user-defined currencies, all values are editable.
+    """
 
     custom_fields: List[CustomField] = FieldInfo(alias="customFields")
-    """The custom fields added by the user to QuickBooks object as a data extension.
-
-    These fields are not part of the standard QuickBooks object.
+    """
+    The custom fields added by the user to this credit card charge object as a data
+    extension. These fields are not part of the standard QuickBooks object.
     """
 
     exchange_rate: Optional[float] = FieldInfo(alias="exchangeRate", default=None)
     """
-    The exchange rate between this currency and the account's base currency at the
-    time of the transaction, expressed as a decimal value (e.g., `1.2345` for 1 EUR
-    = 1.2345 USD if USD is the base currency).
+    The market exchange rate between this credit card charge's currency and the home
+    currency in QuickBooks at the time of this transaction. Represented as a decimal
+    value (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
     """
 
     expense_lines: List[ExpenseLine] = FieldInfo(alias="expenseLines")
+    """
+    The credit card charge's expense lines, each representing an expense item or
+    account affected by this transaction.
+    """
 
     external_id: Optional[str] = FieldInfo(alias="externalId", default=None)
     """
-    An arbitrary globally unique identifier (GUID) the developer can provide to
-    track this object in their own system. This value must be formatted as a GUID;
-    otherwise, QuickBooks will return an error.
+    A developer-assigned globally unique identifier (GUID) for tracking this object
+    in external systems. Must be formatted as a valid GUID; otherwise, QuickBooks
+    will return an error.
     """
 
     item_group_lines: List[ItemGroupLine] = FieldInfo(alias="itemGroupLines")
+    """
+    The credit card charge's item-group lines, each representing a predefined group
+    of items purchased together.
+    """
 
     item_lines: List[ItemLine] = FieldInfo(alias="itemLines")
+    """
+    The credit card charge's item lines, each representing the purchase of a
+    specific item or service.
+    """
 
     memo: Optional[str] = None
-    """A note or description of the transaction, as entered by the user."""
+    """A memo or note for this credit card charge, as entered by the user."""
 
     object_type: Literal["qbd_credit_card_charge"] = FieldInfo(alias="objectType")
     """The type of object. This value is always `"qbd_credit_card_charge"`."""
 
-    ref_number: Optional[str] = FieldInfo(alias="refNumber", default=None)
-    """The user-defined identifier for the transaction.
+    payee: Optional[Payee] = None
+    """
+    The vendor or company from whom merchandise or services were purchased for this
+    credit card charge.
+    """
 
-    It is not required to be unique and can be arbitrarily changed by the QuickBooks
-    user. Case sensitive.
+    ref_number: Optional[str] = FieldInfo(alias="refNumber", default=None)
+    """
+    The user-defined reference number for this credit card charge, which can be used
+    to identify the transaction in QuickBooks. This value is not required to be
+    unique and can be arbitrarily changed by the QuickBooks user.
     """
 
     sales_tax_code: Optional[SalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)
-    """The sales tax code, indicating whether related items are taxable or non-taxable.
-
-    Two default codes are 'Non' (non-taxable) and 'Tax' (taxable). If QuickBooks is
-    not set up to charge sales tax, it will assign the default non-taxable code to
-    all sales.
+    """
+    The sales tax code associated with this credit card charge, indicating whether
+    it is taxable or non-taxable. Default codes include 'NON' (non-taxable) and
+    'TAX' (taxable). If QuickBooks is not set up to charge sales tax, it will assign
+    the default non-taxable code to all sales.
     """
 
-    transaction_date: str = FieldInfo(alias="transactionDate")
-    """The date of the charge, in ISO 8601 format (YYYY-MM-DD)."""
+    transaction_date: date = FieldInfo(alias="transactionDate")
+    """The date of this credit card charge, in ISO 8601 format (YYYY-MM-DD)."""
 
     updated_at: str = FieldInfo(alias="updatedAt")
     """
-    The date and time when the object was last updated, in ISO 8601 format
-    (YYYY-MM-DDThh:mm:ss±hh:mm). The time zone is the same as the user's time zone
-    in QuickBooks.
+    The date and time when this credit card charge was last updated, in ISO 8601
+    format (YYYY-MM-DDThh:mm:ss±hh:mm). The time zone is the same as the user's time
+    zone in QuickBooks.
     """
 
-    vendor: Optional[Vendor] = None
-    """The vendor or company from whom merchandise or services were purchased."""
-
     version: str
-    """The current version identifier of the object that changes with each
-    modification.
-
-    Provide this value when updating the object to verify you are working with the
-    latest version; mismatched values will fail.
+    """
+    The current version identifier for this credit card charge, which changes each
+    time the object is modified. When updating this object, you must provide the
+    most recent `version` to ensure you're working with the latest data; otherwise,
+    the update will fail. This value is opaque and should not be interpreted.
     """
