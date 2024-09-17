@@ -13,6 +13,7 @@ from conductor.types import (
     EndUser,
     EndUserListResponse,
     EndUserPingResponse,
+    EndUserRequestResponse,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -168,35 +169,35 @@ class TestEndUsers:
         end_user = client.end_users.request(
             integration_slug="quickbooks_desktop",
             id="end_usr_1234567abcdefg",
-            body={},
+            body={"foo": "bar"},
         )
-        assert_matches_type(object, end_user, path=["response"])
+        assert_matches_type(EndUserRequestResponse, end_user, path=["response"])
 
     @parametrize
     def test_raw_response_request(self, client: Conductor) -> None:
         response = client.end_users.with_raw_response.request(
             integration_slug="quickbooks_desktop",
             id="end_usr_1234567abcdefg",
-            body={},
+            body={"foo": "bar"},
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         end_user = response.parse()
-        assert_matches_type(object, end_user, path=["response"])
+        assert_matches_type(EndUserRequestResponse, end_user, path=["response"])
 
     @parametrize
     def test_streaming_response_request(self, client: Conductor) -> None:
         with client.end_users.with_streaming_response.request(
             integration_slug="quickbooks_desktop",
             id="end_usr_1234567abcdefg",
-            body={},
+            body={"foo": "bar"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             end_user = response.parse()
-            assert_matches_type(object, end_user, path=["response"])
+            assert_matches_type(EndUserRequestResponse, end_user, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -206,7 +207,7 @@ class TestEndUsers:
             client.end_users.with_raw_response.request(
                 integration_slug="quickbooks_desktop",
                 id="",
-                body={},
+                body={"foo": "bar"},
             )
 
 
@@ -360,35 +361,35 @@ class TestAsyncEndUsers:
         end_user = await async_client.end_users.request(
             integration_slug="quickbooks_desktop",
             id="end_usr_1234567abcdefg",
-            body={},
+            body={"foo": "bar"},
         )
-        assert_matches_type(object, end_user, path=["response"])
+        assert_matches_type(EndUserRequestResponse, end_user, path=["response"])
 
     @parametrize
     async def test_raw_response_request(self, async_client: AsyncConductor) -> None:
         response = await async_client.end_users.with_raw_response.request(
             integration_slug="quickbooks_desktop",
             id="end_usr_1234567abcdefg",
-            body={},
+            body={"foo": "bar"},
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         end_user = await response.parse()
-        assert_matches_type(object, end_user, path=["response"])
+        assert_matches_type(EndUserRequestResponse, end_user, path=["response"])
 
     @parametrize
     async def test_streaming_response_request(self, async_client: AsyncConductor) -> None:
         async with async_client.end_users.with_streaming_response.request(
             integration_slug="quickbooks_desktop",
             id="end_usr_1234567abcdefg",
-            body={},
+            body={"foo": "bar"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             end_user = await response.parse()
-            assert_matches_type(object, end_user, path=["response"])
+            assert_matches_type(EndUserRequestResponse, end_user, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -398,5 +399,5 @@ class TestAsyncEndUsers:
             await async_client.end_users.with_raw_response.request(
                 integration_slug="quickbooks_desktop",
                 id="",
-                body={},
+                body={"foo": "bar"},
             )
