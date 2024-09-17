@@ -220,8 +220,8 @@ class InventoryItem(BaseModel):
 
     class_: Optional[Class] = FieldInfo(alias="class", default=None)
     """
-    The inventory item's class, used to categorize objects or transactions (e.g., by
-    department, location, or type of work).
+    The inventory item's class, used for categorization (e.g., by department,
+    location, or type of work).
     """
 
     cogs_account: Optional[CogsAccount] = FieldInfo(alias="cogsAccount", default=None)
@@ -282,7 +282,9 @@ class InventoryItem(BaseModel):
     """The case-insensitive name of this inventory item.
 
     Not guaranteed to be unique because it does not include the names of its parent
-    objects like `fullName` does.
+    objects like `fullName` does. For example, two objects could both have the
+    `name` "Cabinet", but they could have unique `fullName` values, such as
+    "Kitchen:Cabinet" and "Garage:Cabinet".
     """
 
     object_type: Literal["qbd_inventory_item"] = FieldInfo(alias="objectType")

@@ -371,76 +371,91 @@ class VendorType(BaseModel):
 
 class QbdVendor(BaseModel):
     id: str
-    """The QuickBooks-assigned identifier for this vendor, unique across all vendors."""
+    """The unique identifier assigned by QuickBooks for this vendor.
+
+    This ID is unique among all vendors but not across different object types.
+    """
 
     account_number: Optional[str] = FieldInfo(alias="accountNumber", default=None)
-    """The vendor's account number."""
+    """The account number assigned to this vendor in QuickBooks.
+
+    Account numbers appear in the chart of accounts, reports, and graphs. Note that
+    if the "Use Account Numbers" preference is turned off in QuickBooks, the account
+    number may not be visible in the user interface, but it can still be set and
+    retrieved through the API.
+    """
 
     additional_contacts: List[AdditionalContact] = FieldInfo(alias="additionalContacts")
-    """Additional contacts."""
+    """Additional alternate contacts for this vendor."""
 
     additional_notes: List[AdditionalNote] = FieldInfo(alias="additionalNotes")
     """Additional notes about this vendor."""
 
     alternate_contact: Optional[str] = FieldInfo(alias="alternateContact", default=None)
-    """The vendor's alternate contact name."""
+    """The name of an alternate contact person for this vendor."""
 
     alternate_phone: Optional[str] = FieldInfo(alias="alternatePhone", default=None)
-    """The vendor's alternate phone number."""
+    """The vendor's alternate telephone number."""
 
     balance: Optional[str] = None
-    """The amount owed to this vendor."""
+    """The current balance owed to this vendor, represented as a decimal string.
+
+    A positive number indicates money that the vendor owes.
+    """
 
     billing_address: Optional[BillingAddress] = FieldInfo(alias="billingAddress", default=None)
     """The vendor's billing address."""
 
     billing_rate: Optional[BillingRate] = FieldInfo(alias="billingRate", default=None)
-    """The billing rate associated with this vendor.
-
-    Use this rate to override a service-item's rate when recording a time-tracking
-    transaction for this vendor.
+    """
+    The vendor's billing rate, used to override service item rates in time tracking
+    transactions.
     """
 
-    cc: Optional[str] = None
-    """The vendor's CC email address."""
-
-    check_name: Optional[str] = FieldInfo(alias="checkName", default=None)
-    """The vendor's name as it will appear on checks sent to the vendor."""
+    cc_email: Optional[str] = FieldInfo(alias="ccEmail", default=None)
+    """An email address to carbon copy (CC) on communications with this vendor."""
 
     class_: Optional[Class] = FieldInfo(alias="class", default=None)
-    """The class associated with this object.
-
-    Classes can be used to categorize objects or transactions by department,
-    location, or other meaningful segments.
+    """
+    The vendor's class, used for categorization (e.g., by department, location, or
+    type of work).
     """
 
     company_name: Optional[str] = FieldInfo(alias="companyName", default=None)
-    """The name of the vendor's business.
+    """The name of the company associated with this vendor, as specified in QuickBooks.
 
-    This is used on invoices, checks, and other forms.
+    This name is used on invoices, checks, and other forms.
     """
 
     contact: Optional[str] = None
-    """The vendor's contact name."""
+    """The name of the primary contact person for this vendor."""
 
     created_at: str = FieldInfo(alias="createdAt")
     """
-    The date and time when the object was created, in ISO 8601 format
+    The date and time when this vendor was created, in ISO 8601 format
     (YYYY-MM-DDThh:mm:ss±hh:mm). The time zone is the same as the user's time zone
     in QuickBooks.
     """
 
     credit_limit: Optional[str] = FieldInfo(alias="creditLimit", default=None)
-    """The vendor's credit limit."""
+    """The vendor's credit limit, represented as a decimal string.
+
+    This is the maximum amount of money that can be spent before being billed. If
+    `null`, there is no credit limit.
+    """
 
     currency: Optional[Currency] = None
-    """The vendor's currency."""
+    """The vendor's currency.
+
+    For built-in currencies, the name and code are standard international values.
+    For user-defined currencies, all values are editable.
+    """
 
     custom_contact_fields: List[CustomContactField] = FieldInfo(alias="customContactFields")
-    """Additional custom contact fields."""
+    """Additional custom contact fields for this vendor."""
 
     custom_fields: List[CustomField] = FieldInfo(alias="customFields")
-    """The custom fields added by the user to QuickBooks object as a data extension.
+    """The custom fields added by the user to this vendor object as a data extension.
 
     These fields are not part of the standard QuickBooks object.
     """
@@ -450,126 +465,150 @@ class QbdVendor(BaseModel):
 
     external_id: Optional[str] = FieldInfo(alias="externalId", default=None)
     """
-    An arbitrary globally unique identifier (GUID) the developer can provide to
-    track this object in their own system. This value must be formatted as a GUID;
-    otherwise, QuickBooks will return an error.
+    A developer-assigned globally unique identifier (GUID) for tracking this object
+    in external systems. Must be formatted as a valid GUID; otherwise, QuickBooks
+    will return an error.
     """
 
     fax: Optional[str] = None
     """The vendor's fax number."""
 
     first_name: Optional[str] = FieldInfo(alias="firstName", default=None)
-    """The vendor's first name."""
+    """The first name of the contact person for this vendor."""
 
     is_active: bool = FieldInfo(alias="isActive")
-    """Whether this vendor is active.
+    """Indicates whether this vendor is active.
 
-    QuickBooks hides inactive objects from most views and reports in the UI.
+    Inactive objects are typically hidden from views and reports in QuickBooks
+    Desktop.
     """
 
     is_eligible_for1099: Optional[bool] = FieldInfo(alias="isEligibleFor1099", default=None)
-    """Whether the vendor is eligible for 1099.
-
-    If `true`, then the fields `taxId` and `billingAddress` are required.
+    """
+    Indicates whether this vendor is eligible to receive a 1099 form for tax
+    reporting purposes.
     """
 
     is_sales_tax_agency: Optional[bool] = FieldInfo(alias="isSalesTaxAgency", default=None)
-    """Whether this vendor is a sales tax agency."""
+    """Indicates whether this vendor is a sales tax agency."""
 
     is_tax_on_tax: Optional[bool] = FieldInfo(alias="isTaxOnTax", default=None)
-    """Whether tax is charged on top of tax in Canada or the UK for this vendor."""
+    """
+    Indicates whether tax is charged on top of tax for this vendor, for use in
+    Canada and the UK.
+    """
 
     is_tax_tracked_on_purchases: Optional[bool] = FieldInfo(alias="isTaxTrackedOnPurchases", default=None)
-    """Whether tax is tracked on purchases in Canada or the UK for this vendor."""
+    """
+    Indicates whether tax is tracked on purchases for this vendor, for use in Canada
+    and the UK.
+    """
 
     is_tax_tracked_on_sales: Optional[bool] = FieldInfo(alias="isTaxTrackedOnSales", default=None)
-    """Whether tax is tracked on sales in Canada or the UK for this vendor."""
+    """
+    Indicates whether tax is tracked on sales for this vendor, for use in Canada and
+    the UK.
+    """
 
     job_title: Optional[str] = FieldInfo(alias="jobTitle", default=None)
-    """The vendor's job title."""
+    """The job title of the contact person for this vendor."""
 
     last_name: Optional[str] = FieldInfo(alias="lastName", default=None)
-    """The vendor's last name."""
+    """The last name of the contact person for this vendor."""
 
     middle_name: Optional[str] = FieldInfo(alias="middleName", default=None)
-    """The vendor's middle name."""
+    """The middle name of the contact person for this vendor."""
 
     name: str
-    """The vendor's case-insensitive unique name, unique across all vendors."""
+    """The case-insensitive unique name of this vendor, unique across all vendors."""
+
+    name_on_check: Optional[str] = FieldInfo(alias="nameOnCheck", default=None)
+    """The vendor's name as it should appear on checks issued to this vendor."""
 
     note: Optional[str] = None
-    """Additional information about this vendor."""
+    """Additional notes or comments about this vendor."""
 
     object_type: Literal["qbd_vendor"] = FieldInfo(alias="objectType")
     """The type of object. This value is always `"qbd_vendor"`."""
 
     phone: Optional[str] = None
-    """The vendor's phone number."""
+    """The vendor's primary telephone number."""
 
-    prefill_account: List[PrefillAccount] = FieldInfo(alias="prefillAccount")
-    """The expense account to prefill when entering bills for this vendor."""
+    prefill_accounts: List[PrefillAccount] = FieldInfo(alias="prefillAccounts")
+    """The expense accounts to prefill when entering bills for this vendor."""
 
     reporting_period: Optional[Literal["monthly", "quarterly"]] = FieldInfo(alias="reportingPeriod", default=None)
-    """The reporting period associated with this vendor in Canada or the UK."""
+    """The vendor's tax reporting period, for use in Canada and the UK."""
 
     sales_tax_code: Optional[SalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)
-    """The sales tax code, indicating whether related items are taxable or non-taxable.
-
-    Two default codes are 'Non' (non-taxable) and 'Tax' (taxable). If QuickBooks is
-    not set up to charge sales tax, it will assign the default non-taxable code to
-    all sales.
+    """
+    The sales tax code associated with this vendor, indicating whether it is taxable
+    or non-taxable. Default codes include 'NON' (non-taxable) and 'TAX' (taxable).
+    If QuickBooks is not set up to charge sales tax, it will assign the default
+    non-taxable code to all sales.
     """
 
     sales_tax_country: Optional[Literal["australia", "canada", "uk", "us"]] = FieldInfo(
         alias="salesTaxCountry", default=None
     )
-    """The country for which sales tax is collected."""
+    """The country for which sales tax is collected by this vendor."""
 
     sales_tax_return: Optional[SalesTaxReturn] = FieldInfo(alias="salesTaxReturn", default=None)
-    """The sales tax return associated with this vendor."""
+    """
+    The vendor's sales tax return information, used for tracking and reporting sales
+    tax liabilities.
+    """
 
     salutation: Optional[str] = None
-    """The vendor's formal salutation that precedes their name."""
+    """
+    The formal salutation title that precedes the name of the contact person for
+    this vendor, such as 'Mr.', 'Ms.', or 'Dr.'.
+    """
 
     shipping_address: Optional[ShippingAddress] = FieldInfo(alias="shippingAddress", default=None)
     """The vendor's shipping address."""
 
-    tax_id: Optional[str] = FieldInfo(alias="taxId", default=None)
-    """The vendor's tax ID."""
+    tax_identification_number: Optional[str] = FieldInfo(alias="taxIdentificationNumber", default=None)
+    """The vendor's tax identification number (e.g., EIN or SSN)."""
 
     tax_on_purchases_account: Optional[TaxOnPurchasesAccount] = FieldInfo(alias="taxOnPurchasesAccount", default=None)
-    """The account used for taxes on purchases in Canada or the UK for this vendor."""
+    """
+    The account used for tracking taxes on purchases for this vendor, for use in
+    Canada and the UK.
+    """
 
     tax_on_sales_account: Optional[TaxOnSalesAccount] = FieldInfo(alias="taxOnSalesAccount", default=None)
-    """The account used for taxes on sales in Canada or the UK for this vendor."""
+    """
+    The account used for tracking taxes on sales for this vendor, for use in Canada
+    and the UK.
+    """
 
     tax_registration_number: Optional[str] = FieldInfo(alias="taxRegistrationNumber", default=None)
-    """
-    The tax registration number associated with this vendor, for use in Canada or
-    the UK.
-    """
+    """The vendor's tax registration number, for use in Canada and the UK."""
 
     terms: Optional[Terms] = None
-    """The vendor's payment terms."""
+    """
+    The vendor's payment terms, defining when payment is due and any applicable
+    discounts.
+    """
 
     updated_at: str = FieldInfo(alias="updatedAt")
     """
-    The date and time when the object was last updated, in ISO 8601 format
+    The date and time when this vendor was last updated, in ISO 8601 format
     (YYYY-MM-DDThh:mm:ss±hh:mm). The time zone is the same as the user's time zone
     in QuickBooks.
     """
 
     vendor_type: Optional[VendorType] = FieldInfo(alias="vendorType", default=None)
-    """The vendor's type, used for categorization.
-
-    This can represent industry, location, or other business-specific
-    classifications.
+    """
+    The category or type assigned to this vendor, allowing for meaningful grouping
+    (e.g., by industry or region).
     """
 
     version: str
-    """The current version identifier of the object that changes with each
-    modification.
-
-    Provide this value when updating the object to verify you are working with the
-    latest version; mismatched values will fail.
+    """
+    The current version identifier for this vendor, which changes each time the
+    object is modified. When updating this object, you must provide the most recent
+    `version` to ensure you're working with the latest data; otherwise, the update
+    will fail. This value is opaque and should not be interpreted.
     """
