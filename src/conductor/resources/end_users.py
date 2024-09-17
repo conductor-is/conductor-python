@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from typing import Dict
 from typing_extensions import Literal
 
 import httpx
@@ -24,6 +25,7 @@ from .._base_client import make_request_options
 from ..types.end_user import EndUser
 from ..types.end_user_list_response import EndUserListResponse
 from ..types.end_user_ping_response import EndUserPingResponse
+from ..types.end_user_request_response import EndUserRequestResponse
 
 __all__ = ["EndUsersResource", "AsyncEndUsersResource"]
 
@@ -199,14 +201,14 @@ class EndUsersResource(SyncAPIResource):
         integration_slug: Literal["quickbooks_desktop"],
         *,
         id: str,
-        body: object,
+        body: Dict[str, object],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> EndUserRequestResponse:
         """Sends a request to the specified integration connection (e.g.
 
         QuickBooks
@@ -237,7 +239,7 @@ class EndUsersResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=object,
+            cast_to=EndUserRequestResponse,
         )
 
 
@@ -412,14 +414,14 @@ class AsyncEndUsersResource(AsyncAPIResource):
         integration_slug: Literal["quickbooks_desktop"],
         *,
         id: str,
-        body: object,
+        body: Dict[str, object],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> EndUserRequestResponse:
         """Sends a request to the specified integration connection (e.g.
 
         QuickBooks
@@ -450,7 +452,7 @@ class AsyncEndUsersResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=object,
+            cast_to=EndUserRequestResponse,
         )
 
 
