@@ -128,9 +128,10 @@ class QbdAccount(BaseModel):
 
     balance: Optional[str] = None
     """
-    The current balance of this account, excluding balances from any subordinate
-    accounts. Represented as a decimal string. Note that income accounts and balance
-    sheet accounts may not have balances.
+    The current balance of this account only, excluding balances from any
+    subordinate accounts, represented as a decimal string. Compare with
+    `totalBalance`. Note that income accounts and balance sheet accounts may not
+    have balances.
     """
 
     bank_account_number: Optional[str] = FieldInfo(alias="bankAccountNumber", default=None)
@@ -195,7 +196,9 @@ class QbdAccount(BaseModel):
     """The case-insensitive name of this account.
 
     Not guaranteed to be unique because it does not include the names of its parent
-    objects like `fullName` does.
+    objects like `fullName` does. For example, two objects could both have the
+    `name` "Accounts Payable", but they could have unique `fullName` values, such as
+    "Corporate:Accounts Payable" and "Finance:Accounts Payable".
     """
 
     object_type: Literal["qbd_account"] = FieldInfo(alias="objectType")
@@ -262,10 +265,12 @@ class QbdAccount(BaseModel):
     """
 
     total_balance: Optional[str] = FieldInfo(alias="totalBalance", default=None)
-    """The combined balance of this account and all its subordinate accounts.
-
-    Represented as a decimal string. If there are no subaccounts, `totalBalance` and
-    `balance` are the same.
+    """
+    The combined balance of this account and all its subordinate accounts,
+    represented as a decimal string. For example, the `totalBalance` for XYZ Bank
+    would be the total of the balances of all its sub-accounts (checking, savings,
+    and so on). If XYZ Bank did not have any sub-accounts, `totalBalance` and
+    `balance` would be the same.
     """
 
     updated_at: str = FieldInfo(alias="updatedAt")

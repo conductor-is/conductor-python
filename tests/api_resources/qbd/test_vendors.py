@@ -21,7 +21,7 @@ class TestVendors:
     @parametrize
     def test_method_create(self, client: Conductor) -> None:
         vendor = client.qbd.vendors.create(
-            name="Acme Inc.",
+            name="Acme Supplies Inc.",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(QbdVendor, vendor, path=["response"])
@@ -29,7 +29,7 @@ class TestVendors:
     @parametrize
     def test_method_create_with_all_params(self, client: Conductor) -> None:
         vendor = client.qbd.vendors.create(
-            name="Acme Inc.",
+            name="Acme Supplies Inc.",
             conductor_end_user_id="end_usr_1234567abcdefg",
             account_number="1234567890",
             additional_contacts=[
@@ -181,7 +181,7 @@ class TestVendors:
     @parametrize
     def test_raw_response_create(self, client: Conductor) -> None:
         response = client.qbd.vendors.with_raw_response.create(
-            name="Acme Inc.",
+            name="Acme Supplies Inc.",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -193,7 +193,7 @@ class TestVendors:
     @parametrize
     def test_streaming_response_create(self, client: Conductor) -> None:
         with client.qbd.vendors.with_streaming_response.create(
-            name="Acme Inc.",
+            name="Acme Supplies Inc.",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
@@ -310,7 +310,7 @@ class TestAsyncVendors:
     @parametrize
     async def test_method_create(self, async_client: AsyncConductor) -> None:
         vendor = await async_client.qbd.vendors.create(
-            name="Acme Inc.",
+            name="Acme Supplies Inc.",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(QbdVendor, vendor, path=["response"])
@@ -318,7 +318,7 @@ class TestAsyncVendors:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncConductor) -> None:
         vendor = await async_client.qbd.vendors.create(
-            name="Acme Inc.",
+            name="Acme Supplies Inc.",
             conductor_end_user_id="end_usr_1234567abcdefg",
             account_number="1234567890",
             additional_contacts=[
@@ -470,7 +470,7 @@ class TestAsyncVendors:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncConductor) -> None:
         response = await async_client.qbd.vendors.with_raw_response.create(
-            name="Acme Inc.",
+            name="Acme Supplies Inc.",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -482,7 +482,7 @@ class TestAsyncVendors:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncConductor) -> None:
         async with async_client.qbd.vendors.with_streaming_response.create(
-            name="Acme Inc.",
+            name="Acme Supplies Inc.",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed

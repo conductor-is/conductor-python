@@ -282,8 +282,8 @@ class NonInventoryItem(BaseModel):
 
     class_: Optional[Class] = FieldInfo(alias="class", default=None)
     """
-    The non-inventory item's class, used to categorize objects or transactions
-    (e.g., by department, location, or type of work).
+    The non-inventory item's class, used for categorization (e.g., by department,
+    location, or type of work).
     """
 
     created_at: str = FieldInfo(alias="createdAt")
@@ -330,7 +330,10 @@ class NonInventoryItem(BaseModel):
     """The case-insensitive name of this non-inventory item.
 
     Not guaranteed to be unique because it does not include the names of its parent
-    objects like `fullName` does.
+    objects like `fullName` does. For example, two objects could both have the
+    `name` "Printer Ink Cartridge", but they could have unique `fullName` values,
+    such as "Office Supplies:Printer Ink Cartridge" and "Miscellaneous:Printer Ink
+    Cartridge".
     """
 
     object_type: Literal["qbd_non_inventory_item"] = FieldInfo(alias="objectType")
