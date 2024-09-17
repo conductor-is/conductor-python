@@ -278,8 +278,8 @@ class ServiceItem(BaseModel):
 
     class_: Optional[Class] = FieldInfo(alias="class", default=None)
     """
-    The service item's class, used to categorize objects or transactions (e.g., by
-    department, location, or type of work).
+    The service item's class, used for categorization (e.g., by department,
+    location, or type of work).
     """
 
     created_at: str = FieldInfo(alias="createdAt")
@@ -322,7 +322,9 @@ class ServiceItem(BaseModel):
     """The case-insensitive name of this service item.
 
     Not guaranteed to be unique because it does not include the names of its parent
-    objects like `fullName` does.
+    objects like `fullName` does. For example, two objects could both have the
+    `name` "Web Design", but they could have unique `fullName` values, such as
+    "Consulting:Web Design" and "Contracting:Web Design".
     """
 
     object_type: Literal["qbd_service_item"] = FieldInfo(alias="objectType")
