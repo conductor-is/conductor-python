@@ -17,8 +17,9 @@ from respx import MockRouter
 from pydantic import ValidationError
 
 from conductor import Conductor, AsyncConductor, APIResponseValidationError
+from conductor._types import Omit
 from conductor._models import BaseModel, FinalRequestOptions
-from conductor._exceptions import APIResponseValidationError
+from conductor._exceptions import ConductorError, APIResponseValidationError
 from conductor._base_client import (
     DEFAULT_TIMEOUT,
     HTTPX_DEFAULT_TIMEOUT,
@@ -318,6 +319,16 @@ class TestConductor:
         request = client2._build_request(FinalRequestOptions(method="get", url="/foo"))
         assert request.headers.get("x-foo") == "stainless"
         assert request.headers.get("x-stainless-lang") == "my-overriding-header"
+
+    def test_validate_headers(self) -> None:
+        client = Conductor(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+        request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
+        assert request.headers.get("Authorization") == f"Bearer {api_key}"
+
+        with pytest.raises(ConductorError):
+            with update_env(**{"CONDUCTOR_SECRET_KEY": Omit()}):
+                client2 = Conductor(base_url=base_url, api_key=None, _strict_response_validation=True)
+            _ = client2
 
     def test_default_query_option(self) -> None:
         client = Conductor(
@@ -983,6 +994,16 @@ class TestAsyncConductor:
         request = client2._build_request(FinalRequestOptions(method="get", url="/foo"))
         assert request.headers.get("x-foo") == "stainless"
         assert request.headers.get("x-stainless-lang") == "my-overriding-header"
+
+    def test_validate_headers(self) -> None:
+        client = AsyncConductor(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+        request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
+        assert request.headers.get("Authorization") == f"Bearer {api_key}"
+
+        with pytest.raises(ConductorError):
+            with update_env(**{"CONDUCTOR_SECRET_KEY": Omit()}):
+                client2 = AsyncConductor(base_url=base_url, api_key=None, _strict_response_validation=True)
+            _ = client2
 
     def test_default_query_option(self) -> None:
         client = AsyncConductor(
