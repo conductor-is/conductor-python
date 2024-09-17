@@ -3,7 +3,9 @@
 from __future__ import annotations
 
 from typing import Dict
-from typing_extensions import Required, TypedDict
+from typing_extensions import Required, Annotated, TypedDict
+
+from .._utils import PropertyInfo
 
 __all__ = ["EndUserRequestParams"]
 
@@ -12,5 +14,5 @@ class EndUserRequestParams(TypedDict, total=False):
     id: Required[str]
     """The ID of the EndUser who owns the integration connection."""
 
-    body: Required[Dict[str, object]]
+    qbd_payload: Required[Annotated[Dict[str, object], PropertyInfo(alias="qbdPayload")]]
     """The request body to send to the integration connection."""
