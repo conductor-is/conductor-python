@@ -61,10 +61,12 @@ class SalesTaxCode(BaseModel):
     """
 
     item_sales_tax: Optional[ItemSalesTax] = FieldInfo(alias="itemSalesTax", default=None)
-    """The sales-tax item associated with this sales tax code.
+    """The sales tax item for items associated with this sales tax code.
 
     A sales-tax item represents a single sales tax that is collected at a specified
-    rate and paid to a single agency.
+    rate and paid to a single agency. For complex tax situations, a zero percent tax
+    item named "Tax Calculated On Invoice" may be used, indicating that taxes are
+    applied manually on the invoice.
     """
 
     name: str
