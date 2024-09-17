@@ -201,7 +201,7 @@ class EndUsersResource(SyncAPIResource):
         integration_slug: Literal["quickbooks_desktop"],
         *,
         id: str,
-        body: Dict[str, object],
+        qbd_payload: Dict[str, object],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -219,7 +219,7 @@ class EndUsersResource(SyncAPIResource):
 
           integration_slug: The integration identifier for the EndUser's connection.
 
-          body: The request body to send to the integration connection.
+          qbd_payload: The request body to send to the integration connection.
 
           extra_headers: Send extra headers
 
@@ -235,7 +235,7 @@ class EndUsersResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `integration_slug` but received {integration_slug!r}")
         return self._post(
             f"/end-users/{id}/request/{integration_slug}",
-            body=maybe_transform(body, end_user_request_params.EndUserRequestParams),
+            body=maybe_transform(qbd_payload, end_user_request_params.EndUserRequestParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -414,7 +414,7 @@ class AsyncEndUsersResource(AsyncAPIResource):
         integration_slug: Literal["quickbooks_desktop"],
         *,
         id: str,
-        body: Dict[str, object],
+        qbd_payload: Dict[str, object],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -432,7 +432,7 @@ class AsyncEndUsersResource(AsyncAPIResource):
 
           integration_slug: The integration identifier for the EndUser's connection.
 
-          body: The request body to send to the integration connection.
+          qbd_payload: The request body to send to the integration connection.
 
           extra_headers: Send extra headers
 
@@ -448,7 +448,7 @@ class AsyncEndUsersResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `integration_slug` but received {integration_slug!r}")
         return await self._post(
             f"/end-users/{id}/request/{integration_slug}",
-            body=await async_maybe_transform(body, end_user_request_params.EndUserRequestParams),
+            body=await async_maybe_transform(qbd_payload, end_user_request_params.EndUserRequestParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
