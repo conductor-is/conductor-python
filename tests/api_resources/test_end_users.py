@@ -169,7 +169,7 @@ class TestEndUsers:
         end_user = client.end_users.request(
             integration_slug="quickbooks_desktop",
             id="end_usr_1234567abcdefg",
-            body={"foo": "bar"},
+            qbd_payload={"foo": "bar"},
         )
         assert_matches_type(EndUserRequestResponse, end_user, path=["response"])
 
@@ -178,7 +178,7 @@ class TestEndUsers:
         response = client.end_users.with_raw_response.request(
             integration_slug="quickbooks_desktop",
             id="end_usr_1234567abcdefg",
-            body={"foo": "bar"},
+            qbd_payload={"foo": "bar"},
         )
 
         assert response.is_closed is True
@@ -191,7 +191,7 @@ class TestEndUsers:
         with client.end_users.with_streaming_response.request(
             integration_slug="quickbooks_desktop",
             id="end_usr_1234567abcdefg",
-            body={"foo": "bar"},
+            qbd_payload={"foo": "bar"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -207,7 +207,7 @@ class TestEndUsers:
             client.end_users.with_raw_response.request(
                 integration_slug="quickbooks_desktop",
                 id="",
-                body={"foo": "bar"},
+                qbd_payload={"foo": "bar"},
             )
 
 
@@ -361,7 +361,7 @@ class TestAsyncEndUsers:
         end_user = await async_client.end_users.request(
             integration_slug="quickbooks_desktop",
             id="end_usr_1234567abcdefg",
-            body={"foo": "bar"},
+            qbd_payload={"foo": "bar"},
         )
         assert_matches_type(EndUserRequestResponse, end_user, path=["response"])
 
@@ -370,7 +370,7 @@ class TestAsyncEndUsers:
         response = await async_client.end_users.with_raw_response.request(
             integration_slug="quickbooks_desktop",
             id="end_usr_1234567abcdefg",
-            body={"foo": "bar"},
+            qbd_payload={"foo": "bar"},
         )
 
         assert response.is_closed is True
@@ -383,7 +383,7 @@ class TestAsyncEndUsers:
         async with async_client.end_users.with_streaming_response.request(
             integration_slug="quickbooks_desktop",
             id="end_usr_1234567abcdefg",
-            body={"foo": "bar"},
+            qbd_payload={"foo": "bar"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -399,5 +399,5 @@ class TestAsyncEndUsers:
             await async_client.end_users.with_raw_response.request(
                 integration_slug="quickbooks_desktop",
                 id="",
-                body={"foo": "bar"},
+                qbd_payload={"foo": "bar"},
             )
