@@ -22,9 +22,13 @@ pip install --pre conductor-py
 The full API of this library can be found in [api.md](api.md).
 
 ```python
+import os
 from conductor import Conductor
 
-client = Conductor()
+client = Conductor(
+    # This is the default and can be omitted
+    api_key=os.environ.get("CONDUCTOR_SECRET_KEY"),
+)
 
 page = client.qbd.invoices.list(
     conductor_end_user_id="end_usr_1234567abcdefg",
@@ -42,10 +46,14 @@ so that your API Key is not stored in source control.
 Simply import `AsyncConductor` instead of `Conductor` and use `await` with each API call:
 
 ```python
+import os
 import asyncio
 from conductor import AsyncConductor
 
-client = AsyncConductor()
+client = AsyncConductor(
+    # This is the default and can be omitted
+    api_key=os.environ.get("CONDUCTOR_SECRET_KEY"),
+)
 
 
 async def main() -> None:
