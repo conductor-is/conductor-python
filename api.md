@@ -30,7 +30,7 @@ Methods:
 - <code title="get /end-users/{id}">client.end_users.<a href="./src/conductor/resources/end_users.py">retrieve</a>(id) -> <a href="./src/conductor/types/end_user.py">EndUser</a></code>
 - <code title="get /end-users">client.end_users.<a href="./src/conductor/resources/end_users.py">list</a>() -> <a href="./src/conductor/types/end_user_list_response.py">EndUserListResponse</a></code>
 - <code title="get /end-users/{id}/ping/{integrationSlug}">client.end_users.<a href="./src/conductor/resources/end_users.py">ping</a>(integration_slug, \*, id) -> <a href="./src/conductor/types/end_user_ping_response.py">EndUserPingResponse</a></code>
-- <code title="post /end-users/{id}/request/{integrationSlug}">client.end_users.<a href="./src/conductor/resources/end_users.py">request</a>(integration_slug, \*, id, \*\*<a href="src/conductor/types/end_user_request_params.py">params</a>) -> <a href="./src/conductor/types/end_user_request_response.py">object</a></code>
+- <code title="post /end-users/{id}/request/{integrationSlug}">client.end_users.<a href="./src/conductor/resources/end_users.py">request</a>(integration_slug, \*, id, \*\*<a href="src/conductor/types/end_user_request_params.py">params</a>) -> <a href="./src/conductor/types/end_user_request_response.py">EndUserRequestResponse</a></code>
 
 # IntegrationConnections
 
