@@ -20,7 +20,11 @@ or products provided by Conductor please follow the respective company's securit
 
 ### Conductor Terms and Policies
 
+Our Security Policy can be found at [Security Policy URL](https://conductor.is/privacy).
+
 Please contact support@conductor.is for any questions or concerns regarding security of our services.
+
+https://conductor.is/terms
 
 ---
 
