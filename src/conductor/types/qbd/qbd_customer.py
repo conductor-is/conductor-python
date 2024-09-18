@@ -113,7 +113,7 @@ class AlternateShippingAddress(BaseModel):
     """The country name of the address."""
 
     default_ship_to: Optional[bool] = FieldInfo(alias="defaultShipTo", default=None)
-    """Whether this address is the default ship-to address."""
+    """Whether this address is the default shipping address."""
 
     line1: Optional[str] = None
     """The first line of the address (e.g., street, PO Box, or company name)."""
@@ -134,7 +134,7 @@ class AlternateShippingAddress(BaseModel):
     """The fifth line of the address, if needed."""
 
     name: str
-    """The ship-to address's unique name."""
+    """The alternate shipping address's unique name."""
 
     note: Optional[str] = None
     """A note about the address for additional context."""

@@ -58,6 +58,7 @@ class CustomersResource(SyncAPIResource):
         additional_notes: List[str] | NotGiven = NOT_GIVEN,
         alternate_contact: str | NotGiven = NOT_GIVEN,
         alternate_phone: str | NotGiven = NOT_GIVEN,
+        alternate_shipping_addresses: Iterable[customer_create_params.AlternateShippingAddress] | NotGiven = NOT_GIVEN,
         billing_address: customer_create_params.BillingAddress | NotGiven = NOT_GIVEN,
         cc: str | NotGiven = NOT_GIVEN,
         class_id: str | NotGiven = NOT_GIVEN,
@@ -96,7 +97,6 @@ class CustomersResource(SyncAPIResource):
         sales_tax_country: Literal["Australia", "Canada", "UK", "US"] | NotGiven = NOT_GIVEN,
         salutation: str | NotGiven = NOT_GIVEN,
         shipping_address: customer_create_params.ShippingAddress | NotGiven = NOT_GIVEN,
-        ship_to_addresses: Iterable[customer_create_params.ShipToAddress] | NotGiven = NOT_GIVEN,
         tax_registration_number: str | NotGiven = NOT_GIVEN,
         terms_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -125,6 +125,8 @@ class CustomersResource(SyncAPIResource):
           alternate_contact: The customer's alternate contact name.
 
           alternate_phone: The customer's alternate phone number.
+
+          alternate_shipping_addresses: The customer's ship-to addresses.
 
           billing_address: The customer's billing address.
 
@@ -211,8 +213,6 @@ class CustomersResource(SyncAPIResource):
 
           shipping_address: The customer's shipping address.
 
-          ship_to_addresses: The customer's ship-to addresses.
-
           tax_registration_number: The tax registration number associated with this customer, for use in Canada or
               the UK.
 
@@ -237,6 +237,7 @@ class CustomersResource(SyncAPIResource):
                     "additional_notes": additional_notes,
                     "alternate_contact": alternate_contact,
                     "alternate_phone": alternate_phone,
+                    "alternate_shipping_addresses": alternate_shipping_addresses,
                     "billing_address": billing_address,
                     "cc": cc,
                     "class_id": class_id,
@@ -275,7 +276,6 @@ class CustomersResource(SyncAPIResource):
                     "sales_tax_country": sales_tax_country,
                     "salutation": salutation,
                     "shipping_address": shipping_address,
-                    "ship_to_addresses": ship_to_addresses,
                     "tax_registration_number": tax_registration_number,
                     "terms_id": terms_id,
                 },
@@ -512,6 +512,7 @@ class AsyncCustomersResource(AsyncAPIResource):
         additional_notes: List[str] | NotGiven = NOT_GIVEN,
         alternate_contact: str | NotGiven = NOT_GIVEN,
         alternate_phone: str | NotGiven = NOT_GIVEN,
+        alternate_shipping_addresses: Iterable[customer_create_params.AlternateShippingAddress] | NotGiven = NOT_GIVEN,
         billing_address: customer_create_params.BillingAddress | NotGiven = NOT_GIVEN,
         cc: str | NotGiven = NOT_GIVEN,
         class_id: str | NotGiven = NOT_GIVEN,
@@ -550,7 +551,6 @@ class AsyncCustomersResource(AsyncAPIResource):
         sales_tax_country: Literal["Australia", "Canada", "UK", "US"] | NotGiven = NOT_GIVEN,
         salutation: str | NotGiven = NOT_GIVEN,
         shipping_address: customer_create_params.ShippingAddress | NotGiven = NOT_GIVEN,
-        ship_to_addresses: Iterable[customer_create_params.ShipToAddress] | NotGiven = NOT_GIVEN,
         tax_registration_number: str | NotGiven = NOT_GIVEN,
         terms_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -579,6 +579,8 @@ class AsyncCustomersResource(AsyncAPIResource):
           alternate_contact: The customer's alternate contact name.
 
           alternate_phone: The customer's alternate phone number.
+
+          alternate_shipping_addresses: The customer's ship-to addresses.
 
           billing_address: The customer's billing address.
 
@@ -665,8 +667,6 @@ class AsyncCustomersResource(AsyncAPIResource):
 
           shipping_address: The customer's shipping address.
 
-          ship_to_addresses: The customer's ship-to addresses.
-
           tax_registration_number: The tax registration number associated with this customer, for use in Canada or
               the UK.
 
@@ -691,6 +691,7 @@ class AsyncCustomersResource(AsyncAPIResource):
                     "additional_notes": additional_notes,
                     "alternate_contact": alternate_contact,
                     "alternate_phone": alternate_phone,
+                    "alternate_shipping_addresses": alternate_shipping_addresses,
                     "billing_address": billing_address,
                     "cc": cc,
                     "class_id": class_id,
@@ -729,7 +730,6 @@ class AsyncCustomersResource(AsyncAPIResource):
                     "sales_tax_country": sales_tax_country,
                     "salutation": salutation,
                     "shipping_address": shipping_address,
-                    "ship_to_addresses": ship_to_addresses,
                     "tax_registration_number": tax_registration_number,
                     "terms_id": terms_id,
                 },
