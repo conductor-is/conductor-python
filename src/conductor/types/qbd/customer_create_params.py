@@ -11,11 +11,11 @@ __all__ = [
     "CustomerCreateParams",
     "AdditionalContact",
     "AdditionalContactCustomContactField",
+    "AlternateShippingAddress",
     "BillingAddress",
     "CreditCard",
     "CustomContactField",
     "ShippingAddress",
-    "ShipToAddress",
 ]
 
 
@@ -46,6 +46,11 @@ class CustomerCreateParams(TypedDict, total=False):
 
     alternate_phone: Annotated[str, PropertyInfo(alias="alternatePhone")]
     """The customer's alternate phone number."""
+
+    alternate_shipping_addresses: Annotated[
+        Iterable[AlternateShippingAddress], PropertyInfo(alias="alternateShippingAddresses")
+    ]
+    """The customer's ship-to addresses."""
 
     billing_address: Annotated[BillingAddress, PropertyInfo(alias="billingAddress")]
     """The customer's billing address."""
@@ -197,9 +202,6 @@ class CustomerCreateParams(TypedDict, total=False):
     shipping_address: Annotated[ShippingAddress, PropertyInfo(alias="shippingAddress")]
     """The customer's shipping address."""
 
-    ship_to_addresses: Annotated[Iterable[ShipToAddress], PropertyInfo(alias="shipToAddresses")]
-    """The customer's ship-to addresses."""
-
     tax_registration_number: Annotated[str, PropertyInfo(alias="taxRegistrationNumber")]
     """
     The tax registration number associated with this customer, for use in Canada or
@@ -238,6 +240,47 @@ class AdditionalContact(TypedDict, total=False):
 
     salutation: str
     """The contact's formal salutation that precedes their name."""
+
+
+class AlternateShippingAddress(TypedDict, total=False):
+    name: Required[str]
+    """The alternate shipping address's unique name."""
+
+    city: str
+    """The city, district, suburb, town, or village name of the address."""
+
+    country: str
+    """The country name of the address."""
+
+    default_ship_to: Annotated[bool, PropertyInfo(alias="defaultShipTo")]
+    """Whether this address is the default shipping address."""
+
+    line1: str
+    """The first line of the address (e.g., street, PO Box, or company name)."""
+
+    line2: str
+    """
+    The second line of the address, if needed (e.g., apartment, suite, unit, or
+    building).
+    """
+
+    line3: str
+    """The third line of the address, if needed."""
+
+    line4: str
+    """The fourth line of the address, if needed."""
+
+    line5: str
+    """The fifth line of the address, if needed."""
+
+    note: str
+    """A note about the address for additional context."""
+
+    postal_code: Annotated[str, PropertyInfo(alias="postalCode")]
+    """The postal code or ZIP code of the address."""
+
+    state: str
+    """The state, county, province, or region name of the address."""
 
 
 class BillingAddress(TypedDict, total=False):
@@ -309,47 +352,6 @@ class ShippingAddress(TypedDict, total=False):
 
     country: str
     """The country name of the address."""
-
-    line1: str
-    """The first line of the address (e.g., street, PO Box, or company name)."""
-
-    line2: str
-    """
-    The second line of the address, if needed (e.g., apartment, suite, unit, or
-    building).
-    """
-
-    line3: str
-    """The third line of the address, if needed."""
-
-    line4: str
-    """The fourth line of the address, if needed."""
-
-    line5: str
-    """The fifth line of the address, if needed."""
-
-    note: str
-    """A note about the address for additional context."""
-
-    postal_code: Annotated[str, PropertyInfo(alias="postalCode")]
-    """The postal code or ZIP code of the address."""
-
-    state: str
-    """The state, county, province, or region name of the address."""
-
-
-class ShipToAddress(TypedDict, total=False):
-    name: Required[str]
-    """The ship-to address's unique name."""
-
-    city: str
-    """The city, district, suburb, town, or village name of the address."""
-
-    country: str
-    """The country name of the address."""
-
-    default_ship_to: Annotated[bool, PropertyInfo(alias="defaultShipTo")]
-    """Whether this address is the default ship-to address."""
 
     line1: str
     """The first line of the address (e.g., street, PO Box, or company name)."""
