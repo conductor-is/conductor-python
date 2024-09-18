@@ -1,5 +1,32 @@
 # Changelog
 
+## 0.1.0-alpha.3 (2024-09-18)
+
+Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/conductor-is/conductor-python/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
+
+### Features
+
+* **api:** update via SDK Studio ([#16](https://github.com/conductor-is/conductor-python/issues/16)) ([db50bae](https://github.com/conductor-is/conductor-python/commit/db50bae0dcd000a0a4697a8042327ad9ad7f05b4))
+* **api:** update via SDK Studio ([#18](https://github.com/conductor-is/conductor-python/issues/18)) ([b18af59](https://github.com/conductor-is/conductor-python/commit/b18af595f682ccf653f82d3cba776b57171547e1))
+* **api:** update via SDK Studio ([#19](https://github.com/conductor-is/conductor-python/issues/19)) ([83aeedd](https://github.com/conductor-is/conductor-python/commit/83aeedd330ff2a890322e32b64a98862d6df0c9b))
+* **api:** update via SDK Studio ([#22](https://github.com/conductor-is/conductor-python/issues/22)) ([d820537](https://github.com/conductor-is/conductor-python/commit/d82053740ad57792048b477ee3b92dc78e1e7fc3))
+* **api:** update via SDK Studio ([#23](https://github.com/conductor-is/conductor-python/issues/23)) ([26f5d61](https://github.com/conductor-is/conductor-python/commit/26f5d61f657cddc5bb1d9ae386d7477872e73f32))
+* **api:** update via SDK Studio ([#24](https://github.com/conductor-is/conductor-python/issues/24)) ([820c8c3](https://github.com/conductor-is/conductor-python/commit/820c8c384286e3a7c79a40832a0426f7eb7302c4))
+* **api:** update via SDK Studio ([#25](https://github.com/conductor-is/conductor-python/issues/25)) ([d1fc04b](https://github.com/conductor-is/conductor-python/commit/d1fc04b036c23c03316cf91cdc4d897959458ca9))
+
+
+### Chores
+
+* add docstrings to raw response properties ([#13](https://github.com/conductor-is/conductor-python/issues/13)) ([6300c96](https://github.com/conductor-is/conductor-python/commit/6300c9613a7a056cc2ad21a401730a148a59da4a))
+* **internal:** bump pyright / mypy version ([#21](https://github.com/conductor-is/conductor-python/issues/21)) ([a6e8897](https://github.com/conductor-is/conductor-python/commit/a6e8897535da4f3a396badb4c3fe34455c32beb6))
+* **internal:** bump ruff ([#20](https://github.com/conductor-is/conductor-python/issues/20)) ([9e245df](https://github.com/conductor-is/conductor-python/commit/9e245df647a688ede26f8d79e3c42612cd5a8766))
+
+
+### Documentation
+
+* **readme:** add section on determining installed version ([#14](https://github.com/conductor-is/conductor-python/issues/14)) ([b7c9f8b](https://github.com/conductor-is/conductor-python/commit/b7c9f8bb1f96d2c256a229fd3321f4ce7def744e))
+* update CONTRIBUTING.md ([#17](https://github.com/conductor-is/conductor-python/issues/17)) ([96cb918](https://github.com/conductor-is/conductor-python/commit/96cb918d7393283736cd6e29b8b0b034cd81aece))
+
 ## 0.1.0-alpha.2 (2024-09-08)
 
 Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/conductor-is/conductor-python/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
