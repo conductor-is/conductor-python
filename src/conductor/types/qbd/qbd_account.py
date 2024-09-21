@@ -177,8 +177,8 @@ class QbdAccount(BaseModel):
     """
     The fully-qualified unique name for this account, formed by combining the names
     of its parent objects with its own `name`, separated by colons. For example, if
-    an account is under 'Corporate' and has the `name` 'Accounts Payable', its
-    `fullName` would be 'Corporate:Accounts Payable'. Unlike `name`, `fullName` is
+    an account is under 'Corporate' and has the `name` 'Accounts-Payable', its
+    `fullName` would be 'Corporate:Accounts-Payable'. Unlike `name`, `fullName` is
     guaranteed to be unique across all account objects.
     """
 
@@ -197,8 +197,8 @@ class QbdAccount(BaseModel):
 
     Not guaranteed to be unique because it does not include the names of its parent
     objects like `fullName` does. For example, two objects could both have the
-    `name` "Accounts Payable", but they could have unique `fullName` values, such as
-    "Corporate:Accounts Payable" and "Finance:Accounts Payable".
+    `name` "Accounts-Payable", but they could have unique `fullName` values, such as
+    "Corporate:Accounts-Payable" and "Finance:Accounts-Payable".
     """
 
     object_type: Literal["qbd_account"] = FieldInfo(alias="objectType")
@@ -207,7 +207,7 @@ class QbdAccount(BaseModel):
     parent: Optional[Parent] = None
     """The parent account one level above this one in the hierarchy.
 
-    For example, if this account has a `fullName` of "Corporate:Accounts Payable",
+    For example, if this account has a `fullName` of "Corporate:Accounts-Payable",
     its parent has a `fullName` of "Corporate". If this account is at the top level,
     `parent` will be `null`.
     """
@@ -255,14 +255,11 @@ class QbdAccount(BaseModel):
 
     A top-level account has a `sublevel` of 0; each subsequent sublevel increases
     this number by 1. For example, a account with a `fullName` of
-    "Corporate:Accounts Payable" would have a `sublevel` of 1.
+    "Corporate:Accounts-Payable" would have a `sublevel` of 1.
     """
 
     tax_line_details: Optional[TaxLineDetails] = FieldInfo(alias="taxLineDetails", default=None)
-    """
-    The tax line information associated with this account, used for tax reporting
-    purposes.
-    """
+    """The account's tax line details, used for tax reporting purposes."""
 
     total_balance: Optional[str] = FieldInfo(alias="totalBalance", default=None)
     """
