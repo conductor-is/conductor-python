@@ -714,6 +714,7 @@ class TestConductor:
         response = client.qbd.invoices.with_raw_response.list(conductor_end_user_id="end_usr_1234567abcdefg")
 
         assert response.retries_taken == failures_before_success
+        assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
 
 
 class TestAsyncConductor:
@@ -1406,3 +1407,4 @@ class TestAsyncConductor:
         response = await client.qbd.invoices.with_raw_response.list(conductor_end_user_id="end_usr_1234567abcdefg")
 
         assert response.retries_taken == failures_before_success
+        assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
