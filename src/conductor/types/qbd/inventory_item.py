@@ -260,10 +260,7 @@ class InventoryItem(BaseModel):
     """
 
     income_account: Optional[IncomeAccount] = FieldInfo(alias="incomeAccount", default=None)
-    """
-    The income account associated with this inventory item, used to track revenue
-    from sales.
-    """
+    """The inventory item's income account, used to track revenue from sales."""
 
     is_active: bool = FieldInfo(alias="isActive")
     """Indicates whether this inventory item is active.

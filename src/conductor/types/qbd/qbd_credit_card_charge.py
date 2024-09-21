@@ -209,48 +209,64 @@ class ExpenseLineSalesTaxCode(BaseModel):
 
 class ExpenseLine(BaseModel):
     id: str
-    """
-    The QuickBooks-assigned identifier for this transaction line, unique across all
-    transaction lines.
+    """The unique identifier assigned by QuickBooks for this expense line.
+
+    This ID is unique among all transaction line types.
     """
 
     account: Optional[ExpenseLineAccount] = None
+    """
+    For expense lines, this typically refers to the expense account being debited
+    (increased). The corresponding credit would usually be to a liability account
+    (e.g., Accounts Payable) or an asset account (e.g., Cash), depending on the
+    transaction type.
+    """
 
     amount: Optional[str] = None
+    """The monetary amount for this expense line, represented as a decimal string."""
 
     billable_status: Optional[Literal["billable", "has_been_billed", "not_billable"]] = FieldInfo(
         alias="billableStatus", default=None
     )
-    """The billable status of this line item."""
+    """The billing status of this expense line."""
 
     class_: Optional[ExpenseLineClass] = FieldInfo(alias="class", default=None)
-    """The class associated with this object.
-
-    Classes can be used to categorize objects or transactions by department,
-    location, or other meaningful segments.
+    """
+    The expense line's class, used for categorization (e.g., by department,
+    location, or type of work).
     """
 
     customer: Optional[ExpenseLineCustomer] = None
+    """
+    For expense lines, if `account` refers to an Accounts Payable (A/P) account,
+    `customer` refers to the expense's vendor (not the customer). If `account`
+    refers to any other type of account, `customer` refers to the expense's customer
+    (not the vendor).
+    """
 
     custom_fields: List[ExpenseLineCustomField] = FieldInfo(alias="customFields")
-    """The custom fields added by the user to QuickBooks object as a data extension.
-
-    These fields are not part of the standard QuickBooks object.
+    """
+    The custom fields added by the user to this expense line object as a data
+    extension. These fields are not part of the standard QuickBooks object.
     """
 
     memo: Optional[str] = None
+    """A memo or note for this expense line, as entered by the user."""
 
     sales_representative: Optional[ExpenseLineSalesRepresentative] = FieldInfo(
         alias="salesRepresentative", default=None
     )
-    """The expense's sales representative."""
+    """The expense line's sales representative.
+
+    Sales representatives can be employees, vendors, or other names in QuickBooks.
+    """
 
     sales_tax_code: Optional[ExpenseLineSalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)
-    """The sales tax code, indicating whether related items are taxable or non-taxable.
-
-    Two default codes are 'Non' (non-taxable) and 'Tax' (taxable). If QuickBooks is
-    not set up to charge sales tax, it will assign the default non-taxable code to
-    all sales.
+    """
+    The sales tax code associated with this expense line, indicating whether it is
+    taxable or non-taxable. Default codes include 'NON' (non-taxable) and 'TAX'
+    (taxable). If QuickBooks is not set up to charge sales tax, it will assign the
+    default non-taxable code to all sales.
     """
 
 

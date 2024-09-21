@@ -307,7 +307,7 @@ class ServiceItem(BaseModel):
     The fully-qualified unique name for this service item, formed by combining the
     names of its parent objects with its own `name`, separated by colons. For
     example, if a service item is under 'Services:Consulting' and has the `name`
-    'Web Design', its `fullName` would be 'Services:Consulting:Web Design'. Unlike
+    'Web-Design', its `fullName` would be 'Services:Consulting:Web-Design'. Unlike
     `name`, `fullName` is guaranteed to be unique across all service item objects.
     """
 
@@ -323,8 +323,8 @@ class ServiceItem(BaseModel):
 
     Not guaranteed to be unique because it does not include the names of its parent
     objects like `fullName` does. For example, two objects could both have the
-    `name` "Web Design", but they could have unique `fullName` values, such as
-    "Consulting:Web Design" and "Contracting:Web Design".
+    `name` "Web-Design", but they could have unique `fullName` values, such as
+    "Consulting:Web-Design" and "Contracting:Web-Design".
     """
 
     object_type: Literal["qbd_service_item"] = FieldInfo(alias="objectType")
@@ -333,9 +333,10 @@ class ServiceItem(BaseModel):
     parent: Optional[Parent] = None
     """The parent service item one level above this one in the hierarchy.
 
-    For example, if this service item has a `fullName` of "Services:Consulting:Web
-    Design", its parent has a `fullName` of "Services:Consulting". If this service
-    item is at the top level, `parent` will be `null`.
+    For example, if this service item has a `fullName` of
+    "Services:Consulting:Web-Design", its parent has a `fullName` of
+    "Services:Consulting". If this service item is at the top level, `parent` will
+    be `null`.
     """
 
     sales_and_purchase_details: Optional[SalesAndPurchaseDetails] = FieldInfo(
@@ -370,7 +371,7 @@ class ServiceItem(BaseModel):
 
     A top-level service item has a `sublevel` of 0; each subsequent sublevel
     increases this number by 1. For example, a service item with a `fullName` of
-    "Services:Consulting:Web Design" would have a `sublevel` of 2.
+    "Services:Consulting:Web-Design" would have a `sublevel` of 2.
     """
 
     unit_of_measure_set: Optional[UnitOfMeasureSet] = FieldInfo(alias="unitOfMeasureSet", default=None)
