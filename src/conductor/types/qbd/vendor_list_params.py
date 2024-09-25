@@ -47,8 +47,8 @@ class VendorListParams(TypedDict, total=False):
     `name`, separated by colons. For example, if a vendor is under 'Suppliers' and
     has the `name` 'ABC Office Supplies', its `fullName` would be 'Suppliers:ABC
     Office Supplies'. Unlike `name`, `fullName` is guaranteed to be unique across
-    all vendor objects. NOTE: If you include this parameter, all other query
-    parameters will be ignored.
+    all vendor objects. Not case-sensitive. NOTE: If you include this parameter, all
+    other query parameters will be ignored.
     """
 
     ids: str

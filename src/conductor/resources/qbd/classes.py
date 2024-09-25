@@ -175,8 +175,8 @@ class ClassesResource(SyncAPIResource):
               names of its parent objects with its own `name`, separated by colons. For
               example, if a class is under 'Department' and has the `name` 'Marketing', its
               `fullName` would be 'Department:Marketing'. Unlike `name`, `fullName` is
-              guaranteed to be unique across all class objects. NOTE: If you include this
-              parameter, all other query parameters will be ignored.
+              guaranteed to be unique across all class objects. Not case-sensitive. NOTE: If
+              you include this parameter, all other query parameters will be ignored.
 
           ids: Filter for specific classes by their QuickBooks-assigned unique identifier(s).
               Specify a single ID or multiple using a comma-separated list (e.g.,
@@ -399,8 +399,8 @@ class AsyncClassesResource(AsyncAPIResource):
               names of its parent objects with its own `name`, separated by colons. For
               example, if a class is under 'Department' and has the `name` 'Marketing', its
               `fullName` would be 'Department:Marketing'. Unlike `name`, `fullName` is
-              guaranteed to be unique across all class objects. NOTE: If you include this
-              parameter, all other query parameters will be ignored.
+              guaranteed to be unique across all class objects. Not case-sensitive. NOTE: If
+              you include this parameter, all other query parameters will be ignored.
 
           ids: Filter for specific classes by their QuickBooks-assigned unique identifier(s).
               Specify a single ID or multiple using a comma-separated list (e.g.,

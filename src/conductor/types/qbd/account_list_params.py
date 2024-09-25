@@ -55,8 +55,8 @@ class AccountListParams(TypedDict, total=False):
     own `name`, separated by colons. For example, if an account is under
     'Expenses:Utilities' and has the `name` 'Electricity', its `fullName` would be
     'Expenses:Utilities:Electricity'. Unlike `name`, `fullName` is guaranteed to be
-    unique across all account objects. NOTE: If you include this parameter, all
-    other query parameters will be ignored.
+    unique across all account objects. Not case-sensitive. NOTE: If you include this
+    parameter, all other query parameters will be ignored.
     """
 
     ids: str

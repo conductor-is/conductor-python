@@ -52,8 +52,7 @@ class DateDrivenTerm(BaseModel):
     is_active: bool = FieldInfo(alias="isActive")
     """Indicates whether this date-driven term is active.
 
-    Inactive objects are typically hidden from views and reports in QuickBooks
-    Desktop.
+    Inactive objects are typically hidden from views and reports in QuickBooks.
     """
 
     name: str

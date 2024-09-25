@@ -12,18 +12,17 @@ __all__ = ["SalesTaxCode", "ItemSalesTax"]
 
 class ItemSalesTax(BaseModel):
     id: Optional[str] = None
-    """The QuickBooks-assigned unique identifier for this object.
+    """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is not unique across _all_ object types in QuickBooks, but it is unique
-    for each particular object type. This ID is automatically generated when the
-    object is created in QuickBooks.
+    This ID is unique among all objects of the same type, but not across different
+    object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical, case-insensitive name of this object, including its full path
-    in the QuickBooks list structure. Names are separated by colons (e.g.,
-    "Parent:Child:Grandchild").
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
     """
 
 
@@ -43,13 +42,12 @@ class SalesTaxCode(BaseModel):
     """
 
     description: Optional[str] = None
-    """A longer explanation of the `name` of this sales tax code."""
+    """A description of this sales tax code."""
 
     is_active: bool = FieldInfo(alias="isActive")
     """Indicates whether this sales tax code is active.
 
-    Inactive objects are typically hidden from views and reports in QuickBooks
-    Desktop.
+    Inactive objects are typically hidden from views and reports in QuickBooks.
     """
 
     is_taxable: bool = FieldInfo(alias="isTaxable")
@@ -57,7 +55,7 @@ class SalesTaxCode(BaseModel):
 
     For any particular sales tax code, `isTaxable` cannot be modified once the sales
     tax code has been used in a transaction. The default value depends on the "Do
-    You Charge Sales Tax?" preference in QuickBooks Desktop.
+    You Charge Sales Tax?" preference in QuickBooks.
     """
 
     item_sales_tax: Optional[ItemSalesTax] = FieldInfo(alias="itemSalesTax", default=None)

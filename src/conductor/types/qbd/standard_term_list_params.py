@@ -25,8 +25,8 @@ class StandardTermListParams(TypedDict, total=False):
     with its own `name`, separated by colons. For example, if a standard-term is
     under 'Payment Terms' and has the `name` 'Net 15', its `fullName` would be
     'Payment Terms:Net 15'. Unlike `name`, `fullName` is guaranteed to be unique
-    across all standard-term objects. NOTE: If you include this parameter, all other
-    query parameters will be ignored.
+    across all standard-term objects. Not case-sensitive. NOTE: If you include this
+    parameter, all other query parameters will be ignored.
     """
 
     ids: str
