@@ -26,18 +26,17 @@ __all__ = [
 
 class Class(BaseModel):
     id: Optional[str] = None
-    """The QuickBooks-assigned unique identifier for this object.
+    """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is not unique across _all_ object types in QuickBooks, but it is unique
-    for each particular object type. This ID is automatically generated when the
-    object is created in QuickBooks.
+    This ID is unique among all objects of the same type, but not across different
+    object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical, case-insensitive name of this object, including its full path
-    in the QuickBooks list structure. Names are separated by colons (e.g.,
-    "Parent:Child:Grandchild").
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
     """
 
 
@@ -63,86 +62,81 @@ class CustomField(BaseModel):
 
 class Parent(BaseModel):
     id: Optional[str] = None
-    """The QuickBooks-assigned unique identifier for this object.
+    """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is not unique across _all_ object types in QuickBooks, but it is unique
-    for each particular object type. This ID is automatically generated when the
-    object is created in QuickBooks.
+    This ID is unique among all objects of the same type, but not across different
+    object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical, case-insensitive name of this object, including its full path
-    in the QuickBooks list structure. Names are separated by colons (e.g.,
-    "Parent:Child:Grandchild").
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
     """
 
 
 class SalesAndPurchaseDetailsExpenseAccount(BaseModel):
     id: Optional[str] = None
-    """The QuickBooks-assigned unique identifier for this object.
+    """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is not unique across _all_ object types in QuickBooks, but it is unique
-    for each particular object type. This ID is automatically generated when the
-    object is created in QuickBooks.
+    This ID is unique among all objects of the same type, but not across different
+    object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical, case-insensitive name of this object, including its full path
-    in the QuickBooks list structure. Names are separated by colons (e.g.,
-    "Parent:Child:Grandchild").
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
     """
 
 
 class SalesAndPurchaseDetailsIncomeAccount(BaseModel):
     id: Optional[str] = None
-    """The QuickBooks-assigned unique identifier for this object.
+    """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is not unique across _all_ object types in QuickBooks, but it is unique
-    for each particular object type. This ID is automatically generated when the
-    object is created in QuickBooks.
+    This ID is unique among all objects of the same type, but not across different
+    object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical, case-insensitive name of this object, including its full path
-    in the QuickBooks list structure. Names are separated by colons (e.g.,
-    "Parent:Child:Grandchild").
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
     """
 
 
 class SalesAndPurchaseDetailsPreferredVendor(BaseModel):
     id: Optional[str] = None
-    """The QuickBooks-assigned unique identifier for this object.
+    """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is not unique across _all_ object types in QuickBooks, but it is unique
-    for each particular object type. This ID is automatically generated when the
-    object is created in QuickBooks.
+    This ID is unique among all objects of the same type, but not across different
+    object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical, case-insensitive name of this object, including its full path
-    in the QuickBooks list structure. Names are separated by colons (e.g.,
-    "Parent:Child:Grandchild").
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
     """
 
 
 class SalesAndPurchaseDetailsPurchaseTaxCode(BaseModel):
     id: Optional[str] = None
-    """The QuickBooks-assigned unique identifier for this object.
+    """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is not unique across _all_ object types in QuickBooks, but it is unique
-    for each particular object type. This ID is automatically generated when the
-    object is created in QuickBooks.
+    This ID is unique among all objects of the same type, but not across different
+    object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical, case-insensitive name of this object, including its full path
-    in the QuickBooks list structure. Names are separated by colons (e.g.,
-    "Parent:Child:Grandchild").
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
     """
 
 
@@ -193,18 +187,17 @@ class SalesAndPurchaseDetails(BaseModel):
 
 class SalesOrPurchaseDetailsAccount(BaseModel):
     id: Optional[str] = None
-    """The QuickBooks-assigned unique identifier for this object.
+    """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is not unique across _all_ object types in QuickBooks, but it is unique
-    for each particular object type. This ID is automatically generated when the
-    object is created in QuickBooks.
+    This ID is unique among all objects of the same type, but not across different
+    object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical, case-insensitive name of this object, including its full path
-    in the QuickBooks list structure. Names are separated by colons (e.g.,
-    "Parent:Child:Grandchild").
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
     """
 
 
@@ -237,35 +230,33 @@ class SalesOrPurchaseDetails(BaseModel):
 
 class SalesTaxCode(BaseModel):
     id: Optional[str] = None
-    """The QuickBooks-assigned unique identifier for this object.
+    """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is not unique across _all_ object types in QuickBooks, but it is unique
-    for each particular object type. This ID is automatically generated when the
-    object is created in QuickBooks.
+    This ID is unique among all objects of the same type, but not across different
+    object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical, case-insensitive name of this object, including its full path
-    in the QuickBooks list structure. Names are separated by colons (e.g.,
-    "Parent:Child:Grandchild").
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
     """
 
 
 class UnitOfMeasureSet(BaseModel):
     id: Optional[str] = None
-    """The QuickBooks-assigned unique identifier for this object.
+    """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is not unique across _all_ object types in QuickBooks, but it is unique
-    for each particular object type. This ID is automatically generated when the
-    object is created in QuickBooks.
+    This ID is unique among all objects of the same type, but not across different
+    object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical, case-insensitive name of this object, including its full path
-    in the QuickBooks list structure. Names are separated by colons (e.g.,
-    "Parent:Child:Grandchild").
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
     """
 
 
@@ -313,14 +304,13 @@ class NonInventoryItem(BaseModel):
     example, if a non-inventory item is under 'Office-Supplies' and has the `name`
     'Printer Ink Cartridge', its `fullName` would be 'Office-Supplies:Printer Ink
     Cartridge'. Unlike `name`, `fullName` is guaranteed to be unique across all
-    non-inventory item objects.
+    non-inventory item objects. Not case-sensitive.
     """
 
     is_active: bool = FieldInfo(alias="isActive")
     """Indicates whether this non-inventory item is active.
 
-    Inactive objects are typically hidden from views and reports in QuickBooks
-    Desktop.
+    Inactive objects are typically hidden from views and reports in QuickBooks.
     """
 
     manufacturer_part_number: Optional[str] = FieldInfo(alias="manufacturerPartNumber", default=None)

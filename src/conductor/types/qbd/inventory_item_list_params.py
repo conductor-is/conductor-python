@@ -40,8 +40,8 @@ class InventoryItemListParams(TypedDict, total=False):
     with its own `name`, separated by colons. For example, if an inventory-item is
     under 'Furniture:Kitchen' and has the `name` 'Cabinet', its `fullName` would be
     'Furniture:Kitchen:Cabinet'. Unlike `name`, `fullName` is guaranteed to be
-    unique across all inventory-item objects. NOTE: If you include this parameter,
-    all other query parameters will be ignored.
+    unique across all inventory-item objects. Not case-sensitive. NOTE: If you
+    include this parameter, all other query parameters will be ignored.
     """
 
     ids: str

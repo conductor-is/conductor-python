@@ -123,7 +123,8 @@ class SalesTaxCodesResource(SyncAPIResource):
               separated by colons. For example, if a sales-tax-code is under 'State' and has
               the `name` 'CA Sales Tax', its `fullName` would be 'State:CA Sales Tax'. Unlike
               `name`, `fullName` is guaranteed to be unique across all sales-tax-code objects.
-              NOTE: If you include this parameter, all other query parameters will be ignored.
+              Not case-sensitive. NOTE: If you include this parameter, all other query
+              parameters will be ignored.
 
           ids: Filter for specific sales-tax-codes by their QuickBooks-assigned unique
               identifier(s). Specify a single ID or multiple using a comma-separated list
@@ -294,7 +295,8 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
               separated by colons. For example, if a sales-tax-code is under 'State' and has
               the `name` 'CA Sales Tax', its `fullName` would be 'State:CA Sales Tax'. Unlike
               `name`, `fullName` is guaranteed to be unique across all sales-tax-code objects.
-              NOTE: If you include this parameter, all other query parameters will be ignored.
+              Not case-sensitive. NOTE: If you include this parameter, all other query
+              parameters will be ignored.
 
           ids: Filter for specific sales-tax-codes by their QuickBooks-assigned unique
               identifier(s). Specify a single ID or multiple using a comma-separated list

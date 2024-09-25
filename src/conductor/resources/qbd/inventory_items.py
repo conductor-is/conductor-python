@@ -130,8 +130,8 @@ class InventoryItemsResource(SyncAPIResource):
               separated by colons. For example, if an inventory-item is under
               'Furniture:Kitchen' and has the `name` 'Cabinet', its `fullName` would be
               'Furniture:Kitchen:Cabinet'. Unlike `name`, `fullName` is guaranteed to be
-              unique across all inventory-item objects. NOTE: If you include this parameter,
-              all other query parameters will be ignored.
+              unique across all inventory-item objects. Not case-sensitive. NOTE: If you
+              include this parameter, all other query parameters will be ignored.
 
           ids: Filter for specific inventory-items by their QuickBooks-assigned unique
               identifier(s). Specify a single ID or multiple using a comma-separated list
@@ -315,8 +315,8 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
               separated by colons. For example, if an inventory-item is under
               'Furniture:Kitchen' and has the `name` 'Cabinet', its `fullName` would be
               'Furniture:Kitchen:Cabinet'. Unlike `name`, `fullName` is guaranteed to be
-              unique across all inventory-item objects. NOTE: If you include this parameter,
-              all other query parameters will be ignored.
+              unique across all inventory-item objects. Not case-sensitive. NOTE: If you
+              include this parameter, all other query parameters will be ignored.
 
           ids: Filter for specific inventory-items by their QuickBooks-assigned unique
               identifier(s). Specify a single ID or multiple using a comma-separated list
