@@ -12,18 +12,17 @@ __all__ = ["QbdAccount", "Currency", "CustomField", "Parent", "SalesTaxCode", "T
 
 class Currency(BaseModel):
     id: Optional[str] = None
-    """The QuickBooks-assigned unique identifier for this object.
+    """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is not unique across _all_ object types in QuickBooks, but it is unique
-    for each particular object type. This ID is automatically generated when the
-    object is created in QuickBooks.
+    This ID is unique among all objects of the same type, but not across different
+    object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical, case-insensitive name of this object, including its full path
-    in the QuickBooks list structure. Names are separated by colons (e.g.,
-    "Parent:Child:Grandchild").
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
     """
 
 
@@ -49,35 +48,33 @@ class CustomField(BaseModel):
 
 class Parent(BaseModel):
     id: Optional[str] = None
-    """The QuickBooks-assigned unique identifier for this object.
+    """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is not unique across _all_ object types in QuickBooks, but it is unique
-    for each particular object type. This ID is automatically generated when the
-    object is created in QuickBooks.
+    This ID is unique among all objects of the same type, but not across different
+    object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical, case-insensitive name of this object, including its full path
-    in the QuickBooks list structure. Names are separated by colons (e.g.,
-    "Parent:Child:Grandchild").
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
     """
 
 
 class SalesTaxCode(BaseModel):
     id: Optional[str] = None
-    """The QuickBooks-assigned unique identifier for this object.
+    """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is not unique across _all_ object types in QuickBooks, but it is unique
-    for each particular object type. This ID is automatically generated when the
-    object is created in QuickBooks.
+    This ID is unique among all objects of the same type, but not across different
+    object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical, case-insensitive name of this object, including its full path
-    in the QuickBooks list structure. Names are separated by colons (e.g.,
-    "Parent:Child:Grandchild").
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
     """
 
 
@@ -171,7 +168,7 @@ class QbdAccount(BaseModel):
     """
 
     description: Optional[str] = None
-    """A longer explanation of the `name` of this account."""
+    """A description of this account."""
 
     full_name: str = FieldInfo(alias="fullName")
     """
@@ -179,14 +176,13 @@ class QbdAccount(BaseModel):
     of its parent objects with its own `name`, separated by colons. For example, if
     an account is under 'Corporate' and has the `name` 'Accounts-Payable', its
     `fullName` would be 'Corporate:Accounts-Payable'. Unlike `name`, `fullName` is
-    guaranteed to be unique across all account objects.
+    guaranteed to be unique across all account objects. Not case-sensitive.
     """
 
     is_active: bool = FieldInfo(alias="isActive")
     """Indicates whether this account is active.
 
-    Inactive objects are typically hidden from views and reports in QuickBooks
-    Desktop.
+    Inactive objects are typically hidden from views and reports in QuickBooks.
     """
 
     is_tax_account: Optional[bool] = FieldInfo(alias="isTaxAccount", default=None)

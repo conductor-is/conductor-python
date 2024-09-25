@@ -123,8 +123,8 @@ class DateDrivenTermsResource(SyncAPIResource):
               separated by colons. For example, if a date-driven-term is under 'Net 30' and
               has the `name` '2% 10 Net 30', its `fullName` would be 'Net 30:2% 10 Net 30'.
               Unlike `name`, `fullName` is guaranteed to be unique across all date-driven-term
-              objects. NOTE: If you include this parameter, all other query parameters will be
-              ignored.
+              objects. Not case-sensitive. NOTE: If you include this parameter, all other
+              query parameters will be ignored.
 
           ids: Filter for specific date-driven-terms by their QuickBooks-assigned unique
               identifier(s). Specify a single ID or multiple using a comma-separated list
@@ -295,8 +295,8 @@ class AsyncDateDrivenTermsResource(AsyncAPIResource):
               separated by colons. For example, if a date-driven-term is under 'Net 30' and
               has the `name` '2% 10 Net 30', its `fullName` would be 'Net 30:2% 10 Net 30'.
               Unlike `name`, `fullName` is guaranteed to be unique across all date-driven-term
-              objects. NOTE: If you include this parameter, all other query parameters will be
-              ignored.
+              objects. Not case-sensitive. NOTE: If you include this parameter, all other
+              query parameters will be ignored.
 
           ids: Filter for specific date-driven-terms by their QuickBooks-assigned unique
               identifier(s). Specify a single ID or multiple using a comma-separated list

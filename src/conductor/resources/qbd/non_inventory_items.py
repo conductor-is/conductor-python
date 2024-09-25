@@ -130,8 +130,8 @@ class NonInventoryItemsResource(SyncAPIResource):
               separated by colons. For example, if a non-inventory-item is under 'Office
               Supplies' and has the `name` 'Printer Ink Cartridge', its `fullName` would be
               'Office Supplies:Printer Ink Cartridge'. Unlike `name`, `fullName` is guaranteed
-              to be unique across all non-inventory-item objects. NOTE: If you include this
-              parameter, all other query parameters will be ignored.
+              to be unique across all non-inventory-item objects. Not case-sensitive. NOTE: If
+              you include this parameter, all other query parameters will be ignored.
 
           ids: Filter for specific non-inventory-items by their QuickBooks-assigned unique
               identifier(s). Specify a single ID or multiple using a comma-separated list
@@ -315,8 +315,8 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
               separated by colons. For example, if a non-inventory-item is under 'Office
               Supplies' and has the `name` 'Printer Ink Cartridge', its `fullName` would be
               'Office Supplies:Printer Ink Cartridge'. Unlike `name`, `fullName` is guaranteed
-              to be unique across all non-inventory-item objects. NOTE: If you include this
-              parameter, all other query parameters will be ignored.
+              to be unique across all non-inventory-item objects. Not case-sensitive. NOTE: If
+              you include this parameter, all other query parameters will be ignored.
 
           ids: Filter for specific non-inventory-items by their QuickBooks-assigned unique
               identifier(s). Specify a single ID or multiple using a comma-separated list

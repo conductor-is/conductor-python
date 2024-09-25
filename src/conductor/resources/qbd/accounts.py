@@ -233,8 +233,9 @@ class AccountsResource(SyncAPIResource):
               the names of its parent objects with its own `name`, separated by colons. For
               example, if an account is under 'Expenses:Utilities' and has the `name`
               'Electricity', its `fullName` would be 'Expenses:Utilities:Electricity'. Unlike
-              `name`, `fullName` is guaranteed to be unique across all account objects. NOTE:
-              If you include this parameter, all other query parameters will be ignored.
+              `name`, `fullName` is guaranteed to be unique across all account objects. Not
+              case-sensitive. NOTE: If you include this parameter, all other query parameters
+              will be ignored.
 
           ids: Filter for specific accounts by their QuickBooks-assigned unique identifier(s).
               Specify a single ID or multiple using a comma-separated list (e.g.,
@@ -517,8 +518,9 @@ class AsyncAccountsResource(AsyncAPIResource):
               the names of its parent objects with its own `name`, separated by colons. For
               example, if an account is under 'Expenses:Utilities' and has the `name`
               'Electricity', its `fullName` would be 'Expenses:Utilities:Electricity'. Unlike
-              `name`, `fullName` is guaranteed to be unique across all account objects. NOTE:
-              If you include this parameter, all other query parameters will be ignored.
+              `name`, `fullName` is guaranteed to be unique across all account objects. Not
+              case-sensitive. NOTE: If you include this parameter, all other query parameters
+              will be ignored.
 
           ids: Filter for specific accounts by their QuickBooks-assigned unique identifier(s).
               Specify a single ID or multiple using a comma-separated list (e.g.,
