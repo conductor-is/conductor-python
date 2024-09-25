@@ -123,8 +123,8 @@ class StandardTermsResource(SyncAPIResource):
               separated by colons. For example, if a standard-term is under 'Payment Terms'
               and has the `name` 'Net 15', its `fullName` would be 'Payment Terms:Net 15'.
               Unlike `name`, `fullName` is guaranteed to be unique across all standard-term
-              objects. NOTE: If you include this parameter, all other query parameters will be
-              ignored.
+              objects. Not case-sensitive. NOTE: If you include this parameter, all other
+              query parameters will be ignored.
 
           ids: Filter for specific standard-terms by their QuickBooks-assigned unique
               identifier(s). Specify a single ID or multiple using a comma-separated list
@@ -295,8 +295,8 @@ class AsyncStandardTermsResource(AsyncAPIResource):
               separated by colons. For example, if a standard-term is under 'Payment Terms'
               and has the `name` 'Net 15', its `fullName` would be 'Payment Terms:Net 15'.
               Unlike `name`, `fullName` is guaranteed to be unique across all standard-term
-              objects. NOTE: If you include this parameter, all other query parameters will be
-              ignored.
+              objects. Not case-sensitive. NOTE: If you include this parameter, all other
+              query parameters will be ignored.
 
           ids: Filter for specific standard-terms by their QuickBooks-assigned unique
               identifier(s). Specify a single ID or multiple using a comma-separated list

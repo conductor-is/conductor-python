@@ -383,8 +383,9 @@ class VendorsResource(SyncAPIResource):
               the names of its parent objects with its own `name`, separated by colons. For
               example, if a vendor is under 'Suppliers' and has the `name` 'ABC Office
               Supplies', its `fullName` would be 'Suppliers:ABC Office Supplies'. Unlike
-              `name`, `fullName` is guaranteed to be unique across all vendor objects. NOTE:
-              If you include this parameter, all other query parameters will be ignored.
+              `name`, `fullName` is guaranteed to be unique across all vendor objects. Not
+              case-sensitive. NOTE: If you include this parameter, all other query parameters
+              will be ignored.
 
           ids: Filter for specific vendors by their QuickBooks-assigned unique identifier(s).
               Specify a single ID or multiple using a comma-separated list (e.g.,
@@ -838,8 +839,9 @@ class AsyncVendorsResource(AsyncAPIResource):
               the names of its parent objects with its own `name`, separated by colons. For
               example, if a vendor is under 'Suppliers' and has the `name` 'ABC Office
               Supplies', its `fullName` would be 'Suppliers:ABC Office Supplies'. Unlike
-              `name`, `fullName` is guaranteed to be unique across all vendor objects. NOTE:
-              If you include this parameter, all other query parameters will be ignored.
+              `name`, `fullName` is guaranteed to be unique across all vendor objects. Not
+              case-sensitive. NOTE: If you include this parameter, all other query parameters
+              will be ignored.
 
           ids: Filter for specific vendors by their QuickBooks-assigned unique identifier(s).
               Specify a single ID or multiple using a comma-separated list (e.g.,

@@ -47,8 +47,8 @@ class CustomerListParams(TypedDict, total=False):
     own `name`, separated by colons. For example, if a customer is under 'ABC
     Corporation' and has the `name` 'Website Redesign Project', its `fullName` would
     be 'ABC Corporation:Website Redesign Project'. Unlike `name`, `fullName` is
-    guaranteed to be unique across all customer objects. NOTE: If you include this
-    parameter, all other query parameters will be ignored.
+    guaranteed to be unique across all customer objects. Not case-sensitive. NOTE:
+    If you include this parameter, all other query parameters will be ignored.
     """
 
     ids: str

@@ -27,15 +27,17 @@ __all__ = [
     "InvoiceLineGroupInvoiceLineInventorySite",
     "InvoiceLineGroupInvoiceLineInventorySiteLocation",
     "InvoiceLineGroupInvoiceLineItem",
+    "InvoiceLineGroupInvoiceLineOverrideUnitOfMeasureSet",
     "InvoiceLineGroupInvoiceLineSalesTaxCode",
     "InvoiceLineGroupItemGroup",
-    "InvoiceLineGroupOverrideUnitOfMeasure",
+    "InvoiceLineGroupOverrideUnitOfMeasureSet",
     "InvoiceLine",
     "InvoiceLineClass",
     "InvoiceLineCustomField",
     "InvoiceLineInventorySite",
     "InvoiceLineInventorySiteLocation",
     "InvoiceLineItem",
+    "InvoiceLineOverrideUnitOfMeasureSet",
     "InvoiceLineSalesTaxCode",
     "ItemSalesTax",
     "LinkedTransaction",
@@ -48,18 +50,17 @@ __all__ = [
 
 class AccountsReceivableAccount(BaseModel):
     id: Optional[str] = None
-    """The QuickBooks-assigned unique identifier for this object.
+    """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is not unique across _all_ object types in QuickBooks, but it is unique
-    for each particular object type. This ID is automatically generated when the
-    object is created in QuickBooks.
+    This ID is unique among all objects of the same type, but not across different
+    object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical, case-insensitive name of this object, including its full path
-    in the QuickBooks list structure. Names are separated by colons (e.g.,
-    "Parent:Child:Grandchild").
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
     """
 
 
@@ -100,86 +101,81 @@ class BillingAddress(BaseModel):
 
 class Class(BaseModel):
     id: Optional[str] = None
-    """The QuickBooks-assigned unique identifier for this object.
+    """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is not unique across _all_ object types in QuickBooks, but it is unique
-    for each particular object type. This ID is automatically generated when the
-    object is created in QuickBooks.
+    This ID is unique among all objects of the same type, but not across different
+    object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical, case-insensitive name of this object, including its full path
-    in the QuickBooks list structure. Names are separated by colons (e.g.,
-    "Parent:Child:Grandchild").
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
     """
 
 
 class Currency(BaseModel):
     id: Optional[str] = None
-    """The QuickBooks-assigned unique identifier for this object.
+    """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is not unique across _all_ object types in QuickBooks, but it is unique
-    for each particular object type. This ID is automatically generated when the
-    object is created in QuickBooks.
+    This ID is unique among all objects of the same type, but not across different
+    object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical, case-insensitive name of this object, including its full path
-    in the QuickBooks list structure. Names are separated by colons (e.g.,
-    "Parent:Child:Grandchild").
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
     """
 
 
 class Customer(BaseModel):
     id: Optional[str] = None
-    """The QuickBooks-assigned unique identifier for this object.
+    """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is not unique across _all_ object types in QuickBooks, but it is unique
-    for each particular object type. This ID is automatically generated when the
-    object is created in QuickBooks.
+    This ID is unique among all objects of the same type, but not across different
+    object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical, case-insensitive name of this object, including its full path
-    in the QuickBooks list structure. Names are separated by colons (e.g.,
-    "Parent:Child:Grandchild").
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
     """
 
 
 class CustomerMessage(BaseModel):
     id: Optional[str] = None
-    """The QuickBooks-assigned unique identifier for this object.
+    """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is not unique across _all_ object types in QuickBooks, but it is unique
-    for each particular object type. This ID is automatically generated when the
-    object is created in QuickBooks.
+    This ID is unique among all objects of the same type, but not across different
+    object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical, case-insensitive name of this object, including its full path
-    in the QuickBooks list structure. Names are separated by colons (e.g.,
-    "Parent:Child:Grandchild").
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
     """
 
 
 class CustomerSalesTaxCode(BaseModel):
     id: Optional[str] = None
-    """The QuickBooks-assigned unique identifier for this object.
+    """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is not unique across _all_ object types in QuickBooks, but it is unique
-    for each particular object type. This ID is automatically generated when the
-    object is created in QuickBooks.
+    This ID is unique among all objects of the same type, but not across different
+    object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical, case-insensitive name of this object, including its full path
-    in the QuickBooks list structure. Names are separated by colons (e.g.,
-    "Parent:Child:Grandchild").
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
     """
 
 
@@ -205,18 +201,17 @@ class CustomField(BaseModel):
 
 class DocumentTemplate(BaseModel):
     id: Optional[str] = None
-    """The QuickBooks-assigned unique identifier for this object.
+    """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is not unique across _all_ object types in QuickBooks, but it is unique
-    for each particular object type. This ID is automatically generated when the
-    object is created in QuickBooks.
+    This ID is unique among all objects of the same type, but not across different
+    object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical, case-insensitive name of this object, including its full path
-    in the QuickBooks list structure. Names are separated by colons (e.g.,
-    "Parent:Child:Grandchild").
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
     """
 
 
@@ -242,18 +237,17 @@ class InvoiceLineGroupCustomField(BaseModel):
 
 class InvoiceLineGroupInvoiceLineClass(BaseModel):
     id: Optional[str] = None
-    """The QuickBooks-assigned unique identifier for this object.
+    """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is not unique across _all_ object types in QuickBooks, but it is unique
-    for each particular object type. This ID is automatically generated when the
-    object is created in QuickBooks.
+    This ID is unique among all objects of the same type, but not across different
+    object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical, case-insensitive name of this object, including its full path
-    in the QuickBooks list structure. Names are separated by colons (e.g.,
-    "Parent:Child:Grandchild").
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
     """
 
 
@@ -279,213 +273,333 @@ class InvoiceLineGroupInvoiceLineCustomField(BaseModel):
 
 class InvoiceLineGroupInvoiceLineInventorySite(BaseModel):
     id: Optional[str] = None
-    """The QuickBooks-assigned unique identifier for this object.
+    """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is not unique across _all_ object types in QuickBooks, but it is unique
-    for each particular object type. This ID is automatically generated when the
-    object is created in QuickBooks.
+    This ID is unique among all objects of the same type, but not across different
+    object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical, case-insensitive name of this object, including its full path
-    in the QuickBooks list structure. Names are separated by colons (e.g.,
-    "Parent:Child:Grandchild").
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
     """
 
 
 class InvoiceLineGroupInvoiceLineInventorySiteLocation(BaseModel):
     id: Optional[str] = None
-    """The QuickBooks-assigned unique identifier for this object.
+    """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is not unique across _all_ object types in QuickBooks, but it is unique
-    for each particular object type. This ID is automatically generated when the
-    object is created in QuickBooks.
+    This ID is unique among all objects of the same type, but not across different
+    object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical, case-insensitive name of this object, including its full path
-    in the QuickBooks list structure. Names are separated by colons (e.g.,
-    "Parent:Child:Grandchild").
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
     """
 
 
 class InvoiceLineGroupInvoiceLineItem(BaseModel):
     id: Optional[str] = None
-    """The QuickBooks-assigned unique identifier for this object.
+    """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is not unique across _all_ object types in QuickBooks, but it is unique
-    for each particular object type. This ID is automatically generated when the
-    object is created in QuickBooks.
+    This ID is unique among all objects of the same type, but not across different
+    object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical, case-insensitive name of this object, including its full path
-    in the QuickBooks list structure. Names are separated by colons (e.g.,
-    "Parent:Child:Grandchild").
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
+    """
+
+
+class InvoiceLineGroupInvoiceLineOverrideUnitOfMeasureSet(BaseModel):
+    id: Optional[str] = None
+    """The unique identifier assigned by QuickBooks for this object.
+
+    This ID is unique among all objects of the same type, but not across different
+    object types.
+    """
+
+    full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
+    """
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
     """
 
 
 class InvoiceLineGroupInvoiceLineSalesTaxCode(BaseModel):
     id: Optional[str] = None
-    """The QuickBooks-assigned unique identifier for this object.
+    """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is not unique across _all_ object types in QuickBooks, but it is unique
-    for each particular object type. This ID is automatically generated when the
-    object is created in QuickBooks.
+    This ID is unique among all objects of the same type, but not across different
+    object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical, case-insensitive name of this object, including its full path
-    in the QuickBooks list structure. Names are separated by colons (e.g.,
-    "Parent:Child:Grandchild").
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
     """
 
 
 class InvoiceLineGroupInvoiceLine(BaseModel):
     id: str
-    """
-    The QuickBooks-assigned identifier for this transaction line, unique across all
-    transaction lines.
+    """The unique identifier assigned by QuickBooks for this invoice line.
+
+    This ID is unique among all transaction line types.
     """
 
     amount: Optional[str] = None
+    """The monetary amount for this invoice line, represented as a decimal string."""
 
     class_: Optional[InvoiceLineGroupInvoiceLineClass] = FieldInfo(alias="class", default=None)
-    """The class associated with this object.
-
-    Classes can be used to categorize objects or transactions by department,
-    location, or other meaningful segments.
+    """
+    The invoice line's class, used for categorization (e.g., by department,
+    location, or type of work). If a class is specified for the entire invoice, it
+    will be automatically applied to all line items unless overridden here.
     """
 
     custom_fields: List[InvoiceLineGroupInvoiceLineCustomField] = FieldInfo(alias="customFields")
-    """The custom fields added by the user to QuickBooks object as a data extension.
-
-    These fields are not part of the standard QuickBooks object.
+    """
+    The custom fields added by the user to this invoice line object as a data
+    extension. These fields are not part of the standard QuickBooks object.
     """
 
     description: Optional[str] = None
+    """A description of this invoice line."""
 
-    expiration_date: Optional[str] = FieldInfo(alias="expirationDate", default=None)
+    expiration_date: Optional[date] = FieldInfo(alias="expirationDate", default=None)
+    """
+    The expiration date for the serial number or lot number of the item in this
+    invoice line, in ISO 8601 format (YYYY-MM-DD). This is particularly relevant for
+    perishable or time-sensitive inventory items.
+    """
 
     inventory_site: Optional[InvoiceLineGroupInvoiceLineInventorySite] = FieldInfo(alias="inventorySite", default=None)
+    """The site where inventory for the item in this invoice line is located."""
 
     inventory_site_location: Optional[InvoiceLineGroupInvoiceLineInventorySiteLocation] = FieldInfo(
         alias="inventorySiteLocation", default=None
     )
+    """
+    The specific location within the inventory site for the item in this invoice
+    line, such as a bin or shelf.
+    """
 
     item: Optional[InvoiceLineGroupInvoiceLineItem] = None
+    """The item associated with this invoice line.
+
+    This can refer to any item type such as a service item, inventory item, or
+    special calculation item like a discount item or sales-tax item.
+    """
 
     lot_number: Optional[str] = FieldInfo(alias="lotNumber", default=None)
+    """The lot number of the item in this invoice line.
 
-    other_field1: Optional[str] = FieldInfo(alias="otherField1", default=None)
+    Used for tracking groups of inventory items that are purchased or manufactured
+    together.
+    """
 
-    other_field2: Optional[str] = FieldInfo(alias="otherField2", default=None)
+    object_type: Literal["qbd_invoice_line"] = FieldInfo(alias="objectType")
+    """The type of object. This value is always `"qbd_invoice_line"`."""
+
+    other_custom_field1: Optional[str] = FieldInfo(alias="otherCustomField1", default=None)
+    """A built-in custom field for additional information specific to this invoice
+    line.
+
+    Unlike the user-defined fields in the `customFields` array, this is a standard
+    QuickBooks field that exists for all invoice lines for convenience. Developers
+    often use this field for tracking information that doesn't fit into other
+    standard QuickBooks fields. Hidden by default in the QuickBooks UI.
+    """
+
+    other_custom_field2: Optional[str] = FieldInfo(alias="otherCustomField2", default=None)
+    """
+    A second built-in custom field for additional information specific to this
+    invoice line. Unlike the user-defined fields in the `customFields` array, this
+    is a standard QuickBooks field that exists for all invoice lines for
+    convenience. Like `otherCustomField1`, developers often use this field for
+    tracking information that doesn't fit into other standard QuickBooks fields.
+    Hidden by default in the QuickBooks UI.
+    """
+
+    override_unit_of_measure_set: Optional[InvoiceLineGroupInvoiceLineOverrideUnitOfMeasureSet] = FieldInfo(
+        alias="overrideUnitOfMeasureSet", default=None
+    )
+    """
+    The unit of measure set to use for this invoice line, overriding the default set
+    for the item. This affects which specific units are available for selection.
+    """
 
     quantity: Optional[float] = None
+    """The quantity of the item in this invoice line.
+
+    If both `quantity` and `amount` are specified but not `rate`, QuickBooks will
+    calculate `rate`. If `quantity` and `rate` are specified but not `amount`,
+    QuickBooks will calculate `amount`.
+    """
 
     rate: Optional[str] = None
+    """The price per unit for this invoice line.
+
+    If both `rate` and `amount` are specified, `rate` will be ignored and
+    recalculated based on `quantity` and `amount`. Represented as a decimal string.
+    """
 
     rate_percent: Optional[str] = FieldInfo(alias="ratePercent", default=None)
+    """The price of this invoice line expressed as a percentage.
+
+    Typically used for discount or markup items.
+    """
 
     sales_tax_code: Optional[InvoiceLineGroupInvoiceLineSalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)
-    """The sales tax code, indicating whether related items are taxable or non-taxable.
-
-    Two default codes are 'Non' (non-taxable) and 'Tax' (taxable). If QuickBooks is
-    not set up to charge sales tax, it will assign the default non-taxable code to
-    all sales.
+    """
+    The sales tax code associated with this invoice line, indicating whether it is
+    taxable or non-taxable. Default codes include 'NON' (non-taxable) and 'TAX'
+    (taxable). If QuickBooks is not set up to charge sales tax, it will assign the
+    default non-taxable code to all sales.
     """
 
     serial_number: Optional[str] = FieldInfo(alias="serialNumber", default=None)
+    """The serial number of the item in this invoice line.
 
-    service_date: Optional[str] = FieldInfo(alias="serviceDate", default=None)
+    This is used for tracking individual units of serialized inventory items.
+    """
+
+    service_date: Optional[date] = FieldInfo(alias="serviceDate", default=None)
+    """
+    The date on which the service for this invoice line was or will be performed, in
+    ISO 8601 format (YYYY-MM-DD). This is particularly relevant for service items.
+    """
 
     unit_of_measure: Optional[str] = FieldInfo(alias="unitOfMeasure", default=None)
+    """The unit of measure used for the `quantity` in this invoice line.
+
+    Must be a valid unit within the item's available units of measure.
+    """
 
 
 class InvoiceLineGroupItemGroup(BaseModel):
     id: Optional[str] = None
-    """The QuickBooks-assigned unique identifier for this object.
+    """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is not unique across _all_ object types in QuickBooks, but it is unique
-    for each particular object type. This ID is automatically generated when the
-    object is created in QuickBooks.
+    This ID is unique among all objects of the same type, but not across different
+    object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical, case-insensitive name of this object, including its full path
-    in the QuickBooks list structure. Names are separated by colons (e.g.,
-    "Parent:Child:Grandchild").
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
     """
 
 
-class InvoiceLineGroupOverrideUnitOfMeasure(BaseModel):
+class InvoiceLineGroupOverrideUnitOfMeasureSet(BaseModel):
     id: Optional[str] = None
-    """The QuickBooks-assigned unique identifier for this object.
+    """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is not unique across _all_ object types in QuickBooks, but it is unique
-    for each particular object type. This ID is automatically generated when the
-    object is created in QuickBooks.
+    This ID is unique among all objects of the same type, but not across different
+    object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical, case-insensitive name of this object, including its full path
-    in the QuickBooks list structure. Names are separated by colons (e.g.,
-    "Parent:Child:Grandchild").
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
     """
 
 
 class InvoiceLineGroup(BaseModel):
     id: str
-    """
-    The QuickBooks-assigned identifier for this transaction line, unique across all
-    transaction lines.
+    """The unique identifier assigned by QuickBooks for this invoice line group.
+
+    This ID is unique among all transaction line types.
     """
 
     custom_fields: List[InvoiceLineGroupCustomField] = FieldInfo(alias="customFields")
-    """The custom fields added by the user to QuickBooks object as a data extension.
-
-    These fields are not part of the standard QuickBooks object.
+    """
+    The custom fields added by the user to this invoice line group object as a data
+    extension. These fields are not part of the standard QuickBooks object.
     """
 
     description: Optional[str] = None
+    """A description of this invoice line group."""
 
     invoice_lines: List[InvoiceLineGroupInvoiceLine] = FieldInfo(alias="invoiceLines")
+    """
+    The invoice line group's line items, each representing a single product or
+    service sold.
+    """
 
     is_print_items_in_group: bool = FieldInfo(alias="isPrintItemsInGroup")
+    """
+    Indicates whether a list of this invoice line group's individual items their
+    amounts will appear on printed forms.
+    """
 
     item_group: InvoiceLineGroupItemGroup = FieldInfo(alias="itemGroup")
+    """The item group associated with this invoice line group.
 
-    override_unit_of_measure: Optional[InvoiceLineGroupOverrideUnitOfMeasure] = FieldInfo(
-        alias="overrideUnitOfMeasure", default=None
+    Item groups represent items that are grouped together for fast entry.
+    """
+
+    object_type: Literal["qbd_invoice_line_group"] = FieldInfo(alias="objectType")
+    """The type of object. This value is always `"qbd_invoice_line_group"`."""
+
+    override_unit_of_measure_set: Optional[InvoiceLineGroupOverrideUnitOfMeasureSet] = FieldInfo(
+        alias="overrideUnitOfMeasureSet", default=None
     )
+    """
+    The unit of measure set to use for this invoice line group, overriding the
+    default set for the item. This affects which specific units are available for
+    selection.
+    """
 
     quantity: Optional[float] = None
+    """The quantity of the item in this invoice line group.
+
+    If both `quantity` and `amount` are specified but not `rate`, QuickBooks will
+    calculate `rate`. If `quantity` and `rate` are specified but not `amount`,
+    QuickBooks will calculate `amount`.
+    """
 
     total_amount: str = FieldInfo(alias="totalAmount")
+    """
+    The total monetary amount for this invoice line group, represented as a decimal
+    string.
+    """
 
     unit_of_measure: Optional[str] = FieldInfo(alias="unitOfMeasure", default=None)
+    """The unit of measure used for the `quantity` in this invoice line group.
+
+    Must be a valid unit within the item's available units of measure.
+    """
 
 
 class InvoiceLineClass(BaseModel):
     id: Optional[str] = None
-    """The QuickBooks-assigned unique identifier for this object.
+    """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is not unique across _all_ object types in QuickBooks, but it is unique
-    for each particular object type. This ID is automatically generated when the
-    object is created in QuickBooks.
+    This ID is unique among all objects of the same type, but not across different
+    object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical, case-insensitive name of this object, including its full path
-    in the QuickBooks list structure. Names are separated by colons (e.g.,
-    "Parent:Child:Grandchild").
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
     """
 
 
@@ -511,147 +625,234 @@ class InvoiceLineCustomField(BaseModel):
 
 class InvoiceLineInventorySite(BaseModel):
     id: Optional[str] = None
-    """The QuickBooks-assigned unique identifier for this object.
+    """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is not unique across _all_ object types in QuickBooks, but it is unique
-    for each particular object type. This ID is automatically generated when the
-    object is created in QuickBooks.
+    This ID is unique among all objects of the same type, but not across different
+    object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical, case-insensitive name of this object, including its full path
-    in the QuickBooks list structure. Names are separated by colons (e.g.,
-    "Parent:Child:Grandchild").
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
     """
 
 
 class InvoiceLineInventorySiteLocation(BaseModel):
     id: Optional[str] = None
-    """The QuickBooks-assigned unique identifier for this object.
+    """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is not unique across _all_ object types in QuickBooks, but it is unique
-    for each particular object type. This ID is automatically generated when the
-    object is created in QuickBooks.
+    This ID is unique among all objects of the same type, but not across different
+    object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical, case-insensitive name of this object, including its full path
-    in the QuickBooks list structure. Names are separated by colons (e.g.,
-    "Parent:Child:Grandchild").
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
     """
 
 
 class InvoiceLineItem(BaseModel):
     id: Optional[str] = None
-    """The QuickBooks-assigned unique identifier for this object.
+    """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is not unique across _all_ object types in QuickBooks, but it is unique
-    for each particular object type. This ID is automatically generated when the
-    object is created in QuickBooks.
+    This ID is unique among all objects of the same type, but not across different
+    object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical, case-insensitive name of this object, including its full path
-    in the QuickBooks list structure. Names are separated by colons (e.g.,
-    "Parent:Child:Grandchild").
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
+    """
+
+
+class InvoiceLineOverrideUnitOfMeasureSet(BaseModel):
+    id: Optional[str] = None
+    """The unique identifier assigned by QuickBooks for this object.
+
+    This ID is unique among all objects of the same type, but not across different
+    object types.
+    """
+
+    full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
+    """
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
     """
 
 
 class InvoiceLineSalesTaxCode(BaseModel):
     id: Optional[str] = None
-    """The QuickBooks-assigned unique identifier for this object.
+    """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is not unique across _all_ object types in QuickBooks, but it is unique
-    for each particular object type. This ID is automatically generated when the
-    object is created in QuickBooks.
+    This ID is unique among all objects of the same type, but not across different
+    object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical, case-insensitive name of this object, including its full path
-    in the QuickBooks list structure. Names are separated by colons (e.g.,
-    "Parent:Child:Grandchild").
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
     """
 
 
 class InvoiceLine(BaseModel):
     id: str
-    """
-    The QuickBooks-assigned identifier for this transaction line, unique across all
-    transaction lines.
+    """The unique identifier assigned by QuickBooks for this invoice line.
+
+    This ID is unique among all transaction line types.
     """
 
     amount: Optional[str] = None
+    """The monetary amount for this invoice line, represented as a decimal string."""
 
     class_: Optional[InvoiceLineClass] = FieldInfo(alias="class", default=None)
-    """The class associated with this object.
-
-    Classes can be used to categorize objects or transactions by department,
-    location, or other meaningful segments.
+    """
+    The invoice line's class, used for categorization (e.g., by department,
+    location, or type of work). If a class is specified for the entire invoice, it
+    will be automatically applied to all line items unless overridden here.
     """
 
     custom_fields: List[InvoiceLineCustomField] = FieldInfo(alias="customFields")
-    """The custom fields added by the user to QuickBooks object as a data extension.
-
-    These fields are not part of the standard QuickBooks object.
+    """
+    The custom fields added by the user to this invoice line object as a data
+    extension. These fields are not part of the standard QuickBooks object.
     """
 
     description: Optional[str] = None
+    """A description of this invoice line."""
 
-    expiration_date: Optional[str] = FieldInfo(alias="expirationDate", default=None)
+    expiration_date: Optional[date] = FieldInfo(alias="expirationDate", default=None)
+    """
+    The expiration date for the serial number or lot number of the item in this
+    invoice line, in ISO 8601 format (YYYY-MM-DD). This is particularly relevant for
+    perishable or time-sensitive inventory items.
+    """
 
     inventory_site: Optional[InvoiceLineInventorySite] = FieldInfo(alias="inventorySite", default=None)
+    """The site where inventory for the item in this invoice line is located."""
 
     inventory_site_location: Optional[InvoiceLineInventorySiteLocation] = FieldInfo(
         alias="inventorySiteLocation", default=None
     )
+    """
+    The specific location within the inventory site for the item in this invoice
+    line, such as a bin or shelf.
+    """
 
     item: Optional[InvoiceLineItem] = None
+    """The item associated with this invoice line.
+
+    This can refer to any item type such as a service item, inventory item, or
+    special calculation item like a discount item or sales-tax item.
+    """
 
     lot_number: Optional[str] = FieldInfo(alias="lotNumber", default=None)
+    """The lot number of the item in this invoice line.
 
-    other_field1: Optional[str] = FieldInfo(alias="otherField1", default=None)
+    Used for tracking groups of inventory items that are purchased or manufactured
+    together.
+    """
 
-    other_field2: Optional[str] = FieldInfo(alias="otherField2", default=None)
+    object_type: Literal["qbd_invoice_line"] = FieldInfo(alias="objectType")
+    """The type of object. This value is always `"qbd_invoice_line"`."""
+
+    other_custom_field1: Optional[str] = FieldInfo(alias="otherCustomField1", default=None)
+    """A built-in custom field for additional information specific to this invoice
+    line.
+
+    Unlike the user-defined fields in the `customFields` array, this is a standard
+    QuickBooks field that exists for all invoice lines for convenience. Developers
+    often use this field for tracking information that doesn't fit into other
+    standard QuickBooks fields. Hidden by default in the QuickBooks UI.
+    """
+
+    other_custom_field2: Optional[str] = FieldInfo(alias="otherCustomField2", default=None)
+    """
+    A second built-in custom field for additional information specific to this
+    invoice line. Unlike the user-defined fields in the `customFields` array, this
+    is a standard QuickBooks field that exists for all invoice lines for
+    convenience. Like `otherCustomField1`, developers often use this field for
+    tracking information that doesn't fit into other standard QuickBooks fields.
+    Hidden by default in the QuickBooks UI.
+    """
+
+    override_unit_of_measure_set: Optional[InvoiceLineOverrideUnitOfMeasureSet] = FieldInfo(
+        alias="overrideUnitOfMeasureSet", default=None
+    )
+    """
+    The unit of measure set to use for this invoice line, overriding the default set
+    for the item. This affects which specific units are available for selection.
+    """
 
     quantity: Optional[float] = None
+    """The quantity of the item in this invoice line.
+
+    If both `quantity` and `amount` are specified but not `rate`, QuickBooks will
+    calculate `rate`. If `quantity` and `rate` are specified but not `amount`,
+    QuickBooks will calculate `amount`.
+    """
 
     rate: Optional[str] = None
+    """The price per unit for this invoice line.
+
+    If both `rate` and `amount` are specified, `rate` will be ignored and
+    recalculated based on `quantity` and `amount`. Represented as a decimal string.
+    """
 
     rate_percent: Optional[str] = FieldInfo(alias="ratePercent", default=None)
+    """The price of this invoice line expressed as a percentage.
+
+    Typically used for discount or markup items.
+    """
 
     sales_tax_code: Optional[InvoiceLineSalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)
-    """The sales tax code, indicating whether related items are taxable or non-taxable.
-
-    Two default codes are 'Non' (non-taxable) and 'Tax' (taxable). If QuickBooks is
-    not set up to charge sales tax, it will assign the default non-taxable code to
-    all sales.
+    """
+    The sales tax code associated with this invoice line, indicating whether it is
+    taxable or non-taxable. Default codes include 'NON' (non-taxable) and 'TAX'
+    (taxable). If QuickBooks is not set up to charge sales tax, it will assign the
+    default non-taxable code to all sales.
     """
 
     serial_number: Optional[str] = FieldInfo(alias="serialNumber", default=None)
+    """The serial number of the item in this invoice line.
 
-    service_date: Optional[str] = FieldInfo(alias="serviceDate", default=None)
+    This is used for tracking individual units of serialized inventory items.
+    """
+
+    service_date: Optional[date] = FieldInfo(alias="serviceDate", default=None)
+    """
+    The date on which the service for this invoice line was or will be performed, in
+    ISO 8601 format (YYYY-MM-DD). This is particularly relevant for service items.
+    """
 
     unit_of_measure: Optional[str] = FieldInfo(alias="unitOfMeasure", default=None)
+    """The unit of measure used for the `quantity` in this invoice line.
+
+    Must be a valid unit within the item's available units of measure.
+    """
 
 
 class ItemSalesTax(BaseModel):
     id: Optional[str] = None
-    """The QuickBooks-assigned unique identifier for this object.
+    """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is not unique across _all_ object types in QuickBooks, but it is unique
-    for each particular object type. This ID is automatically generated when the
-    object is created in QuickBooks.
+    This ID is unique among all objects of the same type, but not across different
+    object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical, case-insensitive name of this object, including its full path
-    in the QuickBooks list structure. Names are separated by colons (e.g.,
-    "Parent:Child:Grandchild").
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
     """
 
 
@@ -713,18 +914,17 @@ class LinkedTransaction(BaseModel):
 
 class SalesRepresentative(BaseModel):
     id: Optional[str] = None
-    """The QuickBooks-assigned unique identifier for this object.
+    """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is not unique across _all_ object types in QuickBooks, but it is unique
-    for each particular object type. This ID is automatically generated when the
-    object is created in QuickBooks.
+    This ID is unique among all objects of the same type, but not across different
+    object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical, case-insensitive name of this object, including its full path
-    in the QuickBooks list structure. Names are separated by colons (e.g.,
-    "Parent:Child:Grandchild").
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
     """
 
 
@@ -765,35 +965,33 @@ class ShippingAddress(BaseModel):
 
 class ShippingMethod(BaseModel):
     id: Optional[str] = None
-    """The QuickBooks-assigned unique identifier for this object.
+    """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is not unique across _all_ object types in QuickBooks, but it is unique
-    for each particular object type. This ID is automatically generated when the
-    object is created in QuickBooks.
+    This ID is unique among all objects of the same type, but not across different
+    object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical, case-insensitive name of this object, including its full path
-    in the QuickBooks list structure. Names are separated by colons (e.g.,
-    "Parent:Child:Grandchild").
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
     """
 
 
 class Terms(BaseModel):
     id: Optional[str] = None
-    """The QuickBooks-assigned unique identifier for this object.
+    """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is not unique across _all_ object types in QuickBooks, but it is unique
-    for each particular object type. This ID is automatically generated when the
-    object is created in QuickBooks.
+    This ID is unique among all objects of the same type, but not across different
+    object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
     """
-    The hierarchical, case-insensitive name of this object, including its full path
-    in the QuickBooks list structure. Names are separated by colons (e.g.,
-    "Parent:Child:Grandchild").
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
     """
 
 
@@ -928,14 +1126,14 @@ class QbdInvoice(BaseModel):
     """Indicates whether this invoice is queued to be emailed to the customer.
 
     If set to `true`, the invoice will appear in the list of documents to be emailed
-    in QuickBooks Desktop.
+    in QuickBooks.
     """
 
     is_to_be_printed: Optional[bool] = FieldInfo(alias="isToBePrinted", default=None)
     """Indicates whether this invoice is queued for printing.
 
     If set to `true`, the invoice will appear in the list of documents to be printed
-    in QuickBooks Desktop.
+    in QuickBooks.
     """
 
     item_sales_tax: Optional[ItemSalesTax] = FieldInfo(alias="itemSalesTax", default=None)
@@ -963,14 +1161,14 @@ class QbdInvoice(BaseModel):
     """The type of object. This value is always `"qbd_invoice"`."""
 
     other_custom_field: Optional[str] = FieldInfo(alias="otherCustomField", default=None)
-    """A custom field for additional information associated with this invoice.
+    """A built-in custom field for additional information specific to this invoice.
 
-    Developers often use this field for tracking information that is not part of the
-    standard QuickBooks object model. The fields can be written to and modified, but
-    its visibility to the user in the QuickBooks UI depends on the transaction
-    template settings. Note that each of this invoice's line items have similar
-    fields available, `otherCustomField1` and `otherCustomField2`, but this field
-    specific to the invoice as a whole.
+    Unlike the user-defined fields in the `customFields` array, this is a standard
+    QuickBooks field that exists for all invoices for convenience. Developers often
+    use this field for tracking information that doesn't fit into other standard
+    QuickBooks fields. Unlike `otherCustomField1` and `otherCustomField2`, which are
+    line item fields, this exists at the transaction level. Hidden by default in the
+    QuickBooks UI.
     """
 
     purchase_order_number: Optional[str] = FieldInfo(alias="purchaseOrderNumber", default=None)
