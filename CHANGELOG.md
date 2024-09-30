@@ -1,5 +1,29 @@
 # Changelog
 
+## 0.1.0-alpha.4 (2024-09-30)
+
+Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/conductor-is/conductor-python/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
+
+### Features
+
+* **api:** update via SDK Studio ([#27](https://github.com/conductor-is/conductor-python/issues/27)) ([889eca4](https://github.com/conductor-is/conductor-python/commit/889eca4a6fc284f5ef954a972e88cd8640b82b22))
+* **api:** update via SDK Studio ([#29](https://github.com/conductor-is/conductor-python/issues/29)) ([1b59254](https://github.com/conductor-is/conductor-python/commit/1b592549e266594ca0abb7bcdb104be7f1cd7ebb))
+* **api:** update via SDK Studio ([#30](https://github.com/conductor-is/conductor-python/issues/30)) ([fa7c51a](https://github.com/conductor-is/conductor-python/commit/fa7c51ad61d34a2fe9e26925a1d7cf26990d41df))
+* **api:** update via SDK Studio ([#33](https://github.com/conductor-is/conductor-python/issues/33)) ([7f0f5ee](https://github.com/conductor-is/conductor-python/commit/7f0f5ee693cb0c0a90b652e8ed9a8e1228f147df))
+* **client:** send retry count header ([#32](https://github.com/conductor-is/conductor-python/issues/32)) ([10faf81](https://github.com/conductor-is/conductor-python/commit/10faf813124c37b08113d7de41f3920bd1886a0c))
+
+
+### Bug Fixes
+
+* **client:** handle domains with underscores ([#31](https://github.com/conductor-is/conductor-python/issues/31)) ([8e750e1](https://github.com/conductor-is/conductor-python/commit/8e750e1a6799fea10221d09e7fc38fb2bfe9163f))
+
+
+### Chores
+
+* **internal:** codegen related update ([#35](https://github.com/conductor-is/conductor-python/issues/35)) ([52c3970](https://github.com/conductor-is/conductor-python/commit/52c3970e956893a39e7bba9399538b7646901aca))
+* **internal:** codegen related update ([#36](https://github.com/conductor-is/conductor-python/issues/36)) ([31d4ef4](https://github.com/conductor-is/conductor-python/commit/31d4ef47f4da3f0f508d8f50a1b164ea1ce194d2))
+* **internal:** update pydantic v1 compat helpers ([#34](https://github.com/conductor-is/conductor-python/issues/34)) ([68fffdb](https://github.com/conductor-is/conductor-python/commit/68fffdb97d5f765d59df9588fcb1577fd569f608))
+
 ## 0.1.0-alpha.3 (2024-09-18)
 
 Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/conductor-is/conductor-python/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
