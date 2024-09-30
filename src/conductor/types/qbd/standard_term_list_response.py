@@ -13,7 +13,7 @@ __all__ = ["StandardTermListResponse"]
 
 class StandardTermListResponse(BaseModel):
     data: List[QbdStandardTerm]
-    """The array of standard-terms."""
+    """The array of standard terms."""
 
     has_more: bool = FieldInfo(alias="hasMore")
     """Indicates whether there are more objects to be fetched."""

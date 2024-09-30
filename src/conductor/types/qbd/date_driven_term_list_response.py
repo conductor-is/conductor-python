@@ -13,7 +13,7 @@ __all__ = ["DateDrivenTermListResponse"]
 
 class DateDrivenTermListResponse(BaseModel):
     data: List[DateDrivenTerm]
-    """The array of date-driven-terms."""
+    """The array of date-driven terms."""
 
     has_more: bool = FieldInfo(alias="hasMore")
     """Indicates whether there are more objects to be fetched."""
