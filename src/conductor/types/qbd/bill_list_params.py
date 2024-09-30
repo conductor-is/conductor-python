@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing import Union
+from datetime import date
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
@@ -113,13 +115,13 @@ class BillListParams(TypedDict, total=False):
     lexicographical comparison.
     """
 
-    transaction_date_from: Annotated[str, PropertyInfo(alias="transactionDateFrom")]
+    transaction_date_from: Annotated[Union[str, date], PropertyInfo(alias="transactionDateFrom", format="iso8601")]
     """
     Filter for transactions created on or after this date, in ISO 8601 format
     (YYYY-MM-DD).
     """
 
-    transaction_date_to: Annotated[str, PropertyInfo(alias="transactionDateTo")]
+    transaction_date_to: Annotated[Union[str, date], PropertyInfo(alias="transactionDateTo", format="iso8601")]
     """
     Filter for transactions created on or before this date, in ISO 8601 format
     (YYYY-MM-DD).

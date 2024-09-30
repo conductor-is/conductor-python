@@ -7,7 +7,10 @@ from typing_extensions import Literal
 import httpx
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from ..._utils import maybe_transform
+from ..._utils import (
+    maybe_transform,
+    async_maybe_transform,
+)
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -16,7 +19,7 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...types.qbd import non_inventory_item_list_params
+from ...types.qbd import non_inventory_item_list_params, non_inventory_item_create_params
 from ...pagination import SyncCursorPage, AsyncCursorPage
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.qbd.non_inventory_item import NonInventoryItem
@@ -44,6 +47,77 @@ class NonInventoryItemsResource(SyncAPIResource):
         """
         return NonInventoryItemsResourceWithStreamingResponse(self)
 
+    def create(
+        self,
+        *,
+        name: str,
+        conductor_end_user_id: str,
+        barcode: non_inventory_item_create_params.Barcode | NotGiven = NOT_GIVEN,
+        class_id: str | NotGiven = NOT_GIVEN,
+        external_id: str | NotGiven = NOT_GIVEN,
+        is_active: bool | NotGiven = NOT_GIVEN,
+        is_tax_included: bool | NotGiven = NOT_GIVEN,
+        manufacturer_part_number: str | NotGiven = NOT_GIVEN,
+        parent_id: str | NotGiven = NOT_GIVEN,
+        sales_and_purchase_details: non_inventory_item_create_params.SalesAndPurchaseDetails | NotGiven = NOT_GIVEN,
+        sales_or_purchase_details: non_inventory_item_create_params.SalesOrPurchaseDetails | NotGiven = NOT_GIVEN,
+        sales_tax_code_id: str | NotGiven = NOT_GIVEN,
+        unit_of_measure_set_id: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> NonInventoryItem:
+        """
+        Creates a non-inventory item.
+
+        Args:
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          class_id: The class associated with this object. Classes can be used to categorize objects
+              or transactions by department, location, or other meaningful segments.
+
+          external_id: An arbitrary globally unique identifier (GUID) the developer can provide to
+              track this object in their own system. This value must be formatted as a GUID;
+              otherwise, QuickBooks will return an error.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return self._post(
+            "/quickbooks-desktop/non-inventory-items",
+            body=maybe_transform(
+                {
+                    "name": name,
+                    "barcode": barcode,
+                    "class_id": class_id,
+                    "external_id": external_id,
+                    "is_active": is_active,
+                    "is_tax_included": is_tax_included,
+                    "manufacturer_part_number": manufacturer_part_number,
+                    "parent_id": parent_id,
+                    "sales_and_purchase_details": sales_and_purchase_details,
+                    "sales_or_purchase_details": sales_or_purchase_details,
+                    "sales_tax_code_id": sales_tax_code_id,
+                    "unit_of_measure_set_id": unit_of_measure_set_id,
+                },
+                non_inventory_item_create_params.NonInventoryItemCreateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NonInventoryItem,
+        )
+
     def retrieve(
         self,
         id: str,
@@ -57,10 +131,10 @@ class NonInventoryItemsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> NonInventoryItem:
         """
-        Retrieves a non-inventory-item by ID.
+        Retrieves a non-inventory item by ID.
 
         Args:
-          id: The QuickBooks-assigned unique identifier of the non-inventory-item to retrieve.
+          id: The QuickBooks-assigned unique identifier of the non-inventory item to retrieve.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -109,31 +183,31 @@ class NonInventoryItemsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SyncCursorPage[NonInventoryItem]:
         """
-        Returns a list of non-inventory-items.
+        Returns a list of non-inventory items.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          class_ids: Filter for non-inventory-items of this class or classes. Specify a single class
+          class_ids: Filter for non-inventory items of this class or classes. Specify a single class
               ID or multiple using a comma-separated list (e.g., `classIds=1,2,3`). A class is
-              a way end-users can categorize non-inventory-items in QuickBooks.
+              a way end-users can categorize non-inventory items in QuickBooks.
 
           cursor: The pagination token to fetch the next set of results when paginating with the
               `limit` parameter. Retrieve this value from the `nextCursor` field in the
               previous response. If omitted, the API returns the first page of results.
 
-          full_names: Filter for specific non-inventory-items by their full-name(s). Specify a single
+          full_names: Filter for specific non-inventory items by their full-name(s). Specify a single
               full-name or multiple using a comma-separated list (e.g., `fullNames=1,2,3`).
-              Like `id`, a `fullName` is a unique identifier for a non-inventory-item, and is
+              Like `id`, a `fullName` is a unique identifier for a non-inventory item, and is
               formed by by combining the names of its parent objects with its own `name`,
-              separated by colons. For example, if a non-inventory-item is under 'Office
+              separated by colons. For example, if a non-inventory item is under 'Office
               Supplies' and has the `name` 'Printer Ink Cartridge', its `fullName` would be
               'Office Supplies:Printer Ink Cartridge'. Unlike `name`, `fullName` is guaranteed
-              to be unique across all non-inventory-item objects. Not case-sensitive. NOTE: If
+              to be unique across all non-inventory item objects. Not case-sensitive. NOTE: If
               you include this parameter, all other query parameters will be ignored.
 
-          ids: Filter for specific non-inventory-items by their QuickBooks-assigned unique
+          ids: Filter for specific non-inventory items by their QuickBooks-assigned unique
               identifier(s). Specify a single ID or multiple using a comma-separated list
               (e.g., `ids=1,2,3`). NOTE: If you include this parameter, all other query
               parameters will be ignored.
@@ -229,6 +303,77 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
         """
         return AsyncNonInventoryItemsResourceWithStreamingResponse(self)
 
+    async def create(
+        self,
+        *,
+        name: str,
+        conductor_end_user_id: str,
+        barcode: non_inventory_item_create_params.Barcode | NotGiven = NOT_GIVEN,
+        class_id: str | NotGiven = NOT_GIVEN,
+        external_id: str | NotGiven = NOT_GIVEN,
+        is_active: bool | NotGiven = NOT_GIVEN,
+        is_tax_included: bool | NotGiven = NOT_GIVEN,
+        manufacturer_part_number: str | NotGiven = NOT_GIVEN,
+        parent_id: str | NotGiven = NOT_GIVEN,
+        sales_and_purchase_details: non_inventory_item_create_params.SalesAndPurchaseDetails | NotGiven = NOT_GIVEN,
+        sales_or_purchase_details: non_inventory_item_create_params.SalesOrPurchaseDetails | NotGiven = NOT_GIVEN,
+        sales_tax_code_id: str | NotGiven = NOT_GIVEN,
+        unit_of_measure_set_id: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> NonInventoryItem:
+        """
+        Creates a non-inventory item.
+
+        Args:
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          class_id: The class associated with this object. Classes can be used to categorize objects
+              or transactions by department, location, or other meaningful segments.
+
+          external_id: An arbitrary globally unique identifier (GUID) the developer can provide to
+              track this object in their own system. This value must be formatted as a GUID;
+              otherwise, QuickBooks will return an error.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return await self._post(
+            "/quickbooks-desktop/non-inventory-items",
+            body=await async_maybe_transform(
+                {
+                    "name": name,
+                    "barcode": barcode,
+                    "class_id": class_id,
+                    "external_id": external_id,
+                    "is_active": is_active,
+                    "is_tax_included": is_tax_included,
+                    "manufacturer_part_number": manufacturer_part_number,
+                    "parent_id": parent_id,
+                    "sales_and_purchase_details": sales_and_purchase_details,
+                    "sales_or_purchase_details": sales_or_purchase_details,
+                    "sales_tax_code_id": sales_tax_code_id,
+                    "unit_of_measure_set_id": unit_of_measure_set_id,
+                },
+                non_inventory_item_create_params.NonInventoryItemCreateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NonInventoryItem,
+        )
+
     async def retrieve(
         self,
         id: str,
@@ -242,10 +387,10 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> NonInventoryItem:
         """
-        Retrieves a non-inventory-item by ID.
+        Retrieves a non-inventory item by ID.
 
         Args:
-          id: The QuickBooks-assigned unique identifier of the non-inventory-item to retrieve.
+          id: The QuickBooks-assigned unique identifier of the non-inventory item to retrieve.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -294,31 +439,31 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AsyncPaginator[NonInventoryItem, AsyncCursorPage[NonInventoryItem]]:
         """
-        Returns a list of non-inventory-items.
+        Returns a list of non-inventory items.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          class_ids: Filter for non-inventory-items of this class or classes. Specify a single class
+          class_ids: Filter for non-inventory items of this class or classes. Specify a single class
               ID or multiple using a comma-separated list (e.g., `classIds=1,2,3`). A class is
-              a way end-users can categorize non-inventory-items in QuickBooks.
+              a way end-users can categorize non-inventory items in QuickBooks.
 
           cursor: The pagination token to fetch the next set of results when paginating with the
               `limit` parameter. Retrieve this value from the `nextCursor` field in the
               previous response. If omitted, the API returns the first page of results.
 
-          full_names: Filter for specific non-inventory-items by their full-name(s). Specify a single
+          full_names: Filter for specific non-inventory items by their full-name(s). Specify a single
               full-name or multiple using a comma-separated list (e.g., `fullNames=1,2,3`).
-              Like `id`, a `fullName` is a unique identifier for a non-inventory-item, and is
+              Like `id`, a `fullName` is a unique identifier for a non-inventory item, and is
               formed by by combining the names of its parent objects with its own `name`,
-              separated by colons. For example, if a non-inventory-item is under 'Office
+              separated by colons. For example, if a non-inventory item is under 'Office
               Supplies' and has the `name` 'Printer Ink Cartridge', its `fullName` would be
               'Office Supplies:Printer Ink Cartridge'. Unlike `name`, `fullName` is guaranteed
-              to be unique across all non-inventory-item objects. Not case-sensitive. NOTE: If
+              to be unique across all non-inventory item objects. Not case-sensitive. NOTE: If
               you include this parameter, all other query parameters will be ignored.
 
-          ids: Filter for specific non-inventory-items by their QuickBooks-assigned unique
+          ids: Filter for specific non-inventory items by their QuickBooks-assigned unique
               identifier(s). Specify a single ID or multiple using a comma-separated list
               (e.g., `ids=1,2,3`). NOTE: If you include this parameter, all other query
               parameters will be ignored.
@@ -398,6 +543,9 @@ class NonInventoryItemsResourceWithRawResponse:
     def __init__(self, non_inventory_items: NonInventoryItemsResource) -> None:
         self._non_inventory_items = non_inventory_items
 
+        self.create = to_raw_response_wrapper(
+            non_inventory_items.create,
+        )
         self.retrieve = to_raw_response_wrapper(
             non_inventory_items.retrieve,
         )
@@ -410,6 +558,9 @@ class AsyncNonInventoryItemsResourceWithRawResponse:
     def __init__(self, non_inventory_items: AsyncNonInventoryItemsResource) -> None:
         self._non_inventory_items = non_inventory_items
 
+        self.create = async_to_raw_response_wrapper(
+            non_inventory_items.create,
+        )
         self.retrieve = async_to_raw_response_wrapper(
             non_inventory_items.retrieve,
         )
@@ -422,6 +573,9 @@ class NonInventoryItemsResourceWithStreamingResponse:
     def __init__(self, non_inventory_items: NonInventoryItemsResource) -> None:
         self._non_inventory_items = non_inventory_items
 
+        self.create = to_streamed_response_wrapper(
+            non_inventory_items.create,
+        )
         self.retrieve = to_streamed_response_wrapper(
             non_inventory_items.retrieve,
         )
@@ -434,6 +588,9 @@ class AsyncNonInventoryItemsResourceWithStreamingResponse:
     def __init__(self, non_inventory_items: AsyncNonInventoryItemsResource) -> None:
         self._non_inventory_items = non_inventory_items
 
+        self.create = async_to_streamed_response_wrapper(
+            non_inventory_items.create,
+        )
         self.retrieve = async_to_streamed_response_wrapper(
             non_inventory_items.retrieve,
         )
