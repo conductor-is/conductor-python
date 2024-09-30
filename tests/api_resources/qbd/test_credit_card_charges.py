@@ -9,6 +9,7 @@ import pytest
 
 from conductor import Conductor, AsyncConductor
 from tests.utils import assert_matches_type
+from conductor._utils import parse_date
 from conductor.types.qbd import QbdCreditCardCharge
 from conductor.pagination import SyncCursorPage, AsyncCursorPage
 
@@ -412,8 +413,8 @@ class TestCreditCardCharges:
             ref_numbers="CREDIT CARD CHARGE-1234",
             ref_number_starts_with="SALE",
             ref_number_to="CHARGE-9999",
-            transaction_date_from="transactionDateFrom",
-            transaction_date_to="transactionDateTo",
+            transaction_date_from=parse_date("2019-12-27"),
+            transaction_date_to=parse_date("2019-12-27"),
             updated_after="updatedAfter",
             updated_before="updatedBefore",
         )
@@ -841,8 +842,8 @@ class TestAsyncCreditCardCharges:
             ref_numbers="CREDIT CARD CHARGE-1234",
             ref_number_starts_with="SALE",
             ref_number_to="CHARGE-9999",
-            transaction_date_from="transactionDateFrom",
-            transaction_date_to="transactionDateTo",
+            transaction_date_from=parse_date("2019-12-27"),
+            transaction_date_to=parse_date("2019-12-27"),
             updated_after="updatedAfter",
             updated_before="updatedBefore",
         )

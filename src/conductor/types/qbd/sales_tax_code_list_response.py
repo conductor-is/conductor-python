@@ -13,7 +13,7 @@ __all__ = ["SalesTaxCodeListResponse"]
 
 class SalesTaxCodeListResponse(BaseModel):
     data: List[SalesTaxCode]
-    """The array of sales-tax-codes."""
+    """The array of sales tax codes."""
 
     has_more: bool = FieldInfo(alias="hasMore")
     """Indicates whether there are more objects to be fetched."""

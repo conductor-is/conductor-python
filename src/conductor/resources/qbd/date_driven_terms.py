@@ -60,10 +60,10 @@ class DateDrivenTermsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> DateDrivenTerm:
         """
-        Retrieves a date-driven-term by ID.
+        Retrieves a date-driven term by ID.
 
         Args:
-          id: The QuickBooks-assigned unique identifier of the date-driven-term to retrieve.
+          id: The QuickBooks-assigned unique identifier of the date-driven term to retrieve.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -110,23 +110,23 @@ class DateDrivenTermsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> DateDrivenTermListResponse:
         """
-        Returns a list of date-driven-terms.
+        Returns a list of date-driven terms.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          full_names: Filter for specific date-driven-terms by their full-name(s). Specify a single
+          full_names: Filter for specific date-driven terms by their full-name(s). Specify a single
               full-name or multiple using a comma-separated list (e.g., `fullNames=1,2,3`).
-              Like `id`, a `fullName` is a unique identifier for a date-driven-term, and is
+              Like `id`, a `fullName` is a unique identifier for a date-driven term, and is
               formed by by combining the names of its parent objects with its own `name`,
-              separated by colons. For example, if a date-driven-term is under 'Net 30' and
+              separated by colons. For example, if a date-driven term is under 'Net 30' and
               has the `name` '2% 10 Net 30', its `fullName` would be 'Net 30:2% 10 Net 30'.
-              Unlike `name`, `fullName` is guaranteed to be unique across all date-driven-term
+              Unlike `name`, `fullName` is guaranteed to be unique across all date-driven term
               objects. Not case-sensitive. NOTE: If you include this parameter, all other
               query parameters will be ignored.
 
-          ids: Filter for specific date-driven-terms by their QuickBooks-assigned unique
+          ids: Filter for specific date-driven terms by their QuickBooks-assigned unique
               identifier(s). Specify a single ID or multiple using a comma-separated list
               (e.g., `ids=1,2,3`). NOTE: If you include this parameter, all other query
               parameters will be ignored.
@@ -232,10 +232,10 @@ class AsyncDateDrivenTermsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> DateDrivenTerm:
         """
-        Retrieves a date-driven-term by ID.
+        Retrieves a date-driven term by ID.
 
         Args:
-          id: The QuickBooks-assigned unique identifier of the date-driven-term to retrieve.
+          id: The QuickBooks-assigned unique identifier of the date-driven term to retrieve.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -282,23 +282,23 @@ class AsyncDateDrivenTermsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> DateDrivenTermListResponse:
         """
-        Returns a list of date-driven-terms.
+        Returns a list of date-driven terms.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          full_names: Filter for specific date-driven-terms by their full-name(s). Specify a single
+          full_names: Filter for specific date-driven terms by their full-name(s). Specify a single
               full-name or multiple using a comma-separated list (e.g., `fullNames=1,2,3`).
-              Like `id`, a `fullName` is a unique identifier for a date-driven-term, and is
+              Like `id`, a `fullName` is a unique identifier for a date-driven term, and is
               formed by by combining the names of its parent objects with its own `name`,
-              separated by colons. For example, if a date-driven-term is under 'Net 30' and
+              separated by colons. For example, if a date-driven term is under 'Net 30' and
               has the `name` '2% 10 Net 30', its `fullName` would be 'Net 30:2% 10 Net 30'.
-              Unlike `name`, `fullName` is guaranteed to be unique across all date-driven-term
+              Unlike `name`, `fullName` is guaranteed to be unique across all date-driven term
               objects. Not case-sensitive. NOTE: If you include this parameter, all other
               query parameters will be ignored.
 
-          ids: Filter for specific date-driven-terms by their QuickBooks-assigned unique
+          ids: Filter for specific date-driven terms by their QuickBooks-assigned unique
               identifier(s). Specify a single ID or multiple using a comma-separated list
               (e.g., `ids=1,2,3`). NOTE: If you include this parameter, all other query
               parameters will be ignored.

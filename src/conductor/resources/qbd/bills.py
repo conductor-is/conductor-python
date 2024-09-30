@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import List, Iterable
+from typing import List, Union, Iterable
+from datetime import date
 from typing_extensions import Literal
 
 import httpx
@@ -185,8 +186,8 @@ class BillsResource(SyncAPIResource):
         ref_numbers: str | NotGiven = NOT_GIVEN,
         ref_number_starts_with: str | NotGiven = NOT_GIVEN,
         ref_number_to: str | NotGiven = NOT_GIVEN,
-        transaction_date_from: str | NotGiven = NOT_GIVEN,
-        transaction_date_to: str | NotGiven = NOT_GIVEN,
+        transaction_date_from: Union[str, date] | NotGiven = NOT_GIVEN,
+        transaction_date_to: Union[str, date] | NotGiven = NOT_GIVEN,
         updated_after: str | NotGiven = NOT_GIVEN,
         updated_before: str | NotGiven = NOT_GIVEN,
         vendor_ids: str | NotGiven = NOT_GIVEN,
@@ -477,8 +478,8 @@ class AsyncBillsResource(AsyncAPIResource):
         ref_numbers: str | NotGiven = NOT_GIVEN,
         ref_number_starts_with: str | NotGiven = NOT_GIVEN,
         ref_number_to: str | NotGiven = NOT_GIVEN,
-        transaction_date_from: str | NotGiven = NOT_GIVEN,
-        transaction_date_to: str | NotGiven = NOT_GIVEN,
+        transaction_date_from: Union[str, date] | NotGiven = NOT_GIVEN,
+        transaction_date_to: Union[str, date] | NotGiven = NOT_GIVEN,
         updated_after: str | NotGiven = NOT_GIVEN,
         updated_before: str | NotGiven = NOT_GIVEN,
         vendor_ids: str | NotGiven = NOT_GIVEN,
