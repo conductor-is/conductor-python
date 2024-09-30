@@ -140,6 +140,7 @@ from conductor.types.qbd import InventoryItem
 
 Methods:
 
+- <code title="post /quickbooks-desktop/inventory-items">client.qbd.inventory_items.<a href="./src/conductor/resources/qbd/inventory_items.py">create</a>(\*\*<a href="src/conductor/types/qbd/inventory_item_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/inventory_item.py">InventoryItem</a></code>
 - <code title="get /quickbooks-desktop/inventory-items/{id}">client.qbd.inventory_items.<a href="./src/conductor/resources/qbd/inventory_items.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/inventory_item.py">InventoryItem</a></code>
 - <code title="get /quickbooks-desktop/inventory-items">client.qbd.inventory_items.<a href="./src/conductor/resources/qbd/inventory_items.py">list</a>(\*\*<a href="src/conductor/types/qbd/inventory_item_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/inventory_item.py">SyncCursorPage[InventoryItem]</a></code>
 
@@ -167,6 +168,7 @@ from conductor.types.qbd import NonInventoryItem
 
 Methods:
 
+- <code title="post /quickbooks-desktop/non-inventory-items">client.qbd.non_inventory_items.<a href="./src/conductor/resources/qbd/non_inventory_items.py">create</a>(\*\*<a href="src/conductor/types/qbd/non_inventory_item_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/non_inventory_item.py">NonInventoryItem</a></code>
 - <code title="get /quickbooks-desktop/non-inventory-items/{id}">client.qbd.non_inventory_items.<a href="./src/conductor/resources/qbd/non_inventory_items.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/non_inventory_item.py">NonInventoryItem</a></code>
 - <code title="get /quickbooks-desktop/non-inventory-items">client.qbd.non_inventory_items.<a href="./src/conductor/resources/qbd/non_inventory_items.py">list</a>(\*\*<a href="src/conductor/types/qbd/non_inventory_item_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/non_inventory_item.py">SyncCursorPage[NonInventoryItem]</a></code>
 
@@ -193,6 +195,7 @@ from conductor.types.qbd import ServiceItem
 
 Methods:
 
+- <code title="post /quickbooks-desktop/service-items">client.qbd.service_items.<a href="./src/conductor/resources/qbd/service_items.py">create</a>(\*\*<a href="src/conductor/types/qbd/service_item_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/service_item.py">ServiceItem</a></code>
 - <code title="get /quickbooks-desktop/service-items/{id}">client.qbd.service_items.<a href="./src/conductor/resources/qbd/service_items.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/service_item.py">ServiceItem</a></code>
 - <code title="get /quickbooks-desktop/service-items">client.qbd.service_items.<a href="./src/conductor/resources/qbd/service_items.py">list</a>(\*\*<a href="src/conductor/types/qbd/service_item_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/service_item.py">SyncCursorPage[ServiceItem]</a></code>
 

@@ -17,10 +17,10 @@ class InventoryItemListParams(TypedDict, total=False):
     """
 
     class_ids: Annotated[str, PropertyInfo(alias="classIds")]
-    """Filter for inventory-items of this class or classes.
+    """Filter for inventory items of this class or classes.
 
     Specify a single class ID or multiple using a comma-separated list (e.g.,
-    `classIds=1,2,3`). A class is a way end-users can categorize inventory-items in
+    `classIds=1,2,3`). A class is a way end-users can categorize inventory items in
     QuickBooks.
     """
 
@@ -32,21 +32,21 @@ class InventoryItemListParams(TypedDict, total=False):
     """
 
     full_names: Annotated[str, PropertyInfo(alias="fullNames")]
-    """Filter for specific inventory-items by their full-name(s).
+    """Filter for specific inventory items by their full-name(s).
 
     Specify a single full-name or multiple using a comma-separated list (e.g.,
     `fullNames=1,2,3`). Like `id`, a `fullName` is a unique identifier for an
-    inventory-item, and is formed by by combining the names of its parent objects
-    with its own `name`, separated by colons. For example, if an inventory-item is
+    inventory item, and is formed by by combining the names of its parent objects
+    with its own `name`, separated by colons. For example, if an inventory item is
     under 'Furniture:Kitchen' and has the `name` 'Cabinet', its `fullName` would be
     'Furniture:Kitchen:Cabinet'. Unlike `name`, `fullName` is guaranteed to be
-    unique across all inventory-item objects. Not case-sensitive. NOTE: If you
+    unique across all inventory item objects. Not case-sensitive. NOTE: If you
     include this parameter, all other query parameters will be ignored.
     """
 
     ids: str
     """
-    Filter for specific inventory-items by their QuickBooks-assigned unique
+    Filter for specific inventory items by their QuickBooks-assigned unique
     identifier(s). Specify a single ID or multiple using a comma-separated list
     (e.g., `ids=1,2,3`). NOTE: If you include this parameter, all other query
     parameters will be ignored.

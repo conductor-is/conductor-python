@@ -19,6 +19,75 @@ class TestInventoryItems:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
+    def test_method_create(self, client: Conductor) -> None:
+        inventory_item = client.qbd.inventory_items.create(
+            name="name",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+        assert_matches_type(InventoryItem, inventory_item, path=["response"])
+
+    @parametrize
+    def test_method_create_with_all_params(self, client: Conductor) -> None:
+        inventory_item = client.qbd.inventory_items.create(
+            name="name",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+            asset_account_id="assetAccountId",
+            barcode={
+                "allow_override": True,
+                "assign_even_if_used": True,
+                "bar_code_value": "BarCodeValue",
+            },
+            class_id="80000001-1234567890",
+            cogs_account_id="cogsAccountId",
+            external_id="12345678-abcd-1234-abcd-1234567890ab",
+            income_account_id="incomeAccountId",
+            inventory_date="inventoryDate",
+            is_active=True,
+            is_tax_included=True,
+            manufacturer_part_number="manufacturerPartNumber",
+            maximum_on_hand_quantity=0,
+            parent_id="parentId",
+            preferred_vendor_id="preferredVendorId",
+            purchase_cost="purchaseCost",
+            purchase_description="purchaseDescription",
+            purchase_tax_code_id="purchaseTaxCodeId",
+            quantity_on_hand=0,
+            reorder_point=0,
+            sales_description="salesDescription",
+            sales_price="salesPrice",
+            sales_tax_code_id="salesTaxCodeId",
+            total_value="totalValue",
+            unit_of_measure_set_id="unitOfMeasureSetId",
+        )
+        assert_matches_type(InventoryItem, inventory_item, path=["response"])
+
+    @parametrize
+    def test_raw_response_create(self, client: Conductor) -> None:
+        response = client.qbd.inventory_items.with_raw_response.create(
+            name="name",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        inventory_item = response.parse()
+        assert_matches_type(InventoryItem, inventory_item, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create(self, client: Conductor) -> None:
+        with client.qbd.inventory_items.with_streaming_response.create(
+            name="name",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            inventory_item = response.parse()
+            assert_matches_type(InventoryItem, inventory_item, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
     def test_method_retrieve(self, client: Conductor) -> None:
         inventory_item = client.qbd.inventory_items.retrieve(
             id="80000001-1234567890",
@@ -114,6 +183,75 @@ class TestInventoryItems:
 
 class TestAsyncInventoryItems:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+
+    @parametrize
+    async def test_method_create(self, async_client: AsyncConductor) -> None:
+        inventory_item = await async_client.qbd.inventory_items.create(
+            name="name",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+        assert_matches_type(InventoryItem, inventory_item, path=["response"])
+
+    @parametrize
+    async def test_method_create_with_all_params(self, async_client: AsyncConductor) -> None:
+        inventory_item = await async_client.qbd.inventory_items.create(
+            name="name",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+            asset_account_id="assetAccountId",
+            barcode={
+                "allow_override": True,
+                "assign_even_if_used": True,
+                "bar_code_value": "BarCodeValue",
+            },
+            class_id="80000001-1234567890",
+            cogs_account_id="cogsAccountId",
+            external_id="12345678-abcd-1234-abcd-1234567890ab",
+            income_account_id="incomeAccountId",
+            inventory_date="inventoryDate",
+            is_active=True,
+            is_tax_included=True,
+            manufacturer_part_number="manufacturerPartNumber",
+            maximum_on_hand_quantity=0,
+            parent_id="parentId",
+            preferred_vendor_id="preferredVendorId",
+            purchase_cost="purchaseCost",
+            purchase_description="purchaseDescription",
+            purchase_tax_code_id="purchaseTaxCodeId",
+            quantity_on_hand=0,
+            reorder_point=0,
+            sales_description="salesDescription",
+            sales_price="salesPrice",
+            sales_tax_code_id="salesTaxCodeId",
+            total_value="totalValue",
+            unit_of_measure_set_id="unitOfMeasureSetId",
+        )
+        assert_matches_type(InventoryItem, inventory_item, path=["response"])
+
+    @parametrize
+    async def test_raw_response_create(self, async_client: AsyncConductor) -> None:
+        response = await async_client.qbd.inventory_items.with_raw_response.create(
+            name="name",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        inventory_item = await response.parse()
+        assert_matches_type(InventoryItem, inventory_item, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create(self, async_client: AsyncConductor) -> None:
+        async with async_client.qbd.inventory_items.with_streaming_response.create(
+            name="name",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            inventory_item = await response.parse()
+            assert_matches_type(InventoryItem, inventory_item, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncConductor) -> None:

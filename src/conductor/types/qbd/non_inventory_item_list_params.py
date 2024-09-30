@@ -17,10 +17,10 @@ class NonInventoryItemListParams(TypedDict, total=False):
     """
 
     class_ids: Annotated[str, PropertyInfo(alias="classIds")]
-    """Filter for non-inventory-items of this class or classes.
+    """Filter for non-inventory items of this class or classes.
 
     Specify a single class ID or multiple using a comma-separated list (e.g.,
-    `classIds=1,2,3`). A class is a way end-users can categorize non-inventory-items
+    `classIds=1,2,3`). A class is a way end-users can categorize non-inventory items
     in QuickBooks.
     """
 
@@ -32,22 +32,22 @@ class NonInventoryItemListParams(TypedDict, total=False):
     """
 
     full_names: Annotated[str, PropertyInfo(alias="fullNames")]
-    """Filter for specific non-inventory-items by their full-name(s).
+    """Filter for specific non-inventory items by their full-name(s).
 
     Specify a single full-name or multiple using a comma-separated list (e.g.,
     `fullNames=1,2,3`). Like `id`, a `fullName` is a unique identifier for a
-    non-inventory-item, and is formed by by combining the names of its parent
+    non-inventory item, and is formed by by combining the names of its parent
     objects with its own `name`, separated by colons. For example, if a
-    non-inventory-item is under 'Office Supplies' and has the `name` 'Printer Ink
+    non-inventory item is under 'Office Supplies' and has the `name` 'Printer Ink
     Cartridge', its `fullName` would be 'Office Supplies:Printer Ink Cartridge'.
-    Unlike `name`, `fullName` is guaranteed to be unique across all
-    non-inventory-item objects. Not case-sensitive. NOTE: If you include this
-    parameter, all other query parameters will be ignored.
+    Unlike `name`, `fullName` is guaranteed to be unique across all non-inventory
+    item objects. Not case-sensitive. NOTE: If you include this parameter, all other
+    query parameters will be ignored.
     """
 
     ids: str
     """
-    Filter for specific non-inventory-items by their QuickBooks-assigned unique
+    Filter for specific non-inventory items by their QuickBooks-assigned unique
     identifier(s). Specify a single ID or multiple using a comma-separated list
     (e.g., `ids=1,2,3`). NOTE: If you include this parameter, all other query
     parameters will be ignored.
