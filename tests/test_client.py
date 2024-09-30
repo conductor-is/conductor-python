@@ -716,6 +716,56 @@ class TestConductor:
         assert response.retries_taken == failures_before_success
         assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
 
+    @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
+    @mock.patch("conductor._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @pytest.mark.respx(base_url=base_url)
+    def test_omit_retry_count_header(
+        self, client: Conductor, failures_before_success: int, respx_mock: MockRouter
+    ) -> None:
+        client = client.with_options(max_retries=4)
+
+        nb_retries = 0
+
+        def retry_handler(_request: httpx.Request) -> httpx.Response:
+            nonlocal nb_retries
+            if nb_retries < failures_before_success:
+                nb_retries += 1
+                return httpx.Response(500)
+            return httpx.Response(200)
+
+        respx_mock.get("/quickbooks-desktop/invoices").mock(side_effect=retry_handler)
+
+        response = client.qbd.invoices.with_raw_response.list(
+            conductor_end_user_id="end_usr_1234567abcdefg", extra_headers={"x-stainless-retry-count": Omit()}
+        )
+
+        assert len(response.http_request.headers.get_list("x-stainless-retry-count")) == 0
+
+    @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
+    @mock.patch("conductor._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @pytest.mark.respx(base_url=base_url)
+    def test_overwrite_retry_count_header(
+        self, client: Conductor, failures_before_success: int, respx_mock: MockRouter
+    ) -> None:
+        client = client.with_options(max_retries=4)
+
+        nb_retries = 0
+
+        def retry_handler(_request: httpx.Request) -> httpx.Response:
+            nonlocal nb_retries
+            if nb_retries < failures_before_success:
+                nb_retries += 1
+                return httpx.Response(500)
+            return httpx.Response(200)
+
+        respx_mock.get("/quickbooks-desktop/invoices").mock(side_effect=retry_handler)
+
+        response = client.qbd.invoices.with_raw_response.list(
+            conductor_end_user_id="end_usr_1234567abcdefg", extra_headers={"x-stainless-retry-count": "42"}
+        )
+
+        assert response.http_request.headers.get("x-stainless-retry-count") == "42"
+
 
 class TestAsyncConductor:
     client = AsyncConductor(base_url=base_url, api_key=api_key, _strict_response_validation=True)
@@ -1408,3 +1458,55 @@ class TestAsyncConductor:
 
         assert response.retries_taken == failures_before_success
         assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
+
+    @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
+    @mock.patch("conductor._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @pytest.mark.respx(base_url=base_url)
+    @pytest.mark.asyncio
+    async def test_omit_retry_count_header(
+        self, async_client: AsyncConductor, failures_before_success: int, respx_mock: MockRouter
+    ) -> None:
+        client = async_client.with_options(max_retries=4)
+
+        nb_retries = 0
+
+        def retry_handler(_request: httpx.Request) -> httpx.Response:
+            nonlocal nb_retries
+            if nb_retries < failures_before_success:
+                nb_retries += 1
+                return httpx.Response(500)
+            return httpx.Response(200)
+
+        respx_mock.get("/quickbooks-desktop/invoices").mock(side_effect=retry_handler)
+
+        response = await client.qbd.invoices.with_raw_response.list(
+            conductor_end_user_id="end_usr_1234567abcdefg", extra_headers={"x-stainless-retry-count": Omit()}
+        )
+
+        assert len(response.http_request.headers.get_list("x-stainless-retry-count")) == 0
+
+    @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
+    @mock.patch("conductor._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @pytest.mark.respx(base_url=base_url)
+    @pytest.mark.asyncio
+    async def test_overwrite_retry_count_header(
+        self, async_client: AsyncConductor, failures_before_success: int, respx_mock: MockRouter
+    ) -> None:
+        client = async_client.with_options(max_retries=4)
+
+        nb_retries = 0
+
+        def retry_handler(_request: httpx.Request) -> httpx.Response:
+            nonlocal nb_retries
+            if nb_retries < failures_before_success:
+                nb_retries += 1
+                return httpx.Response(500)
+            return httpx.Response(200)
+
+        respx_mock.get("/quickbooks-desktop/invoices").mock(side_effect=retry_handler)
+
+        response = await client.qbd.invoices.with_raw_response.list(
+            conductor_end_user_id="end_usr_1234567abcdefg", extra_headers={"x-stainless-retry-count": "42"}
+        )
+
+        assert response.http_request.headers.get("x-stainless-retry-count") == "42"
