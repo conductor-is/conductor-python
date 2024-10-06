@@ -88,6 +88,14 @@ from .sales_tax_codes import (
     SalesTaxCodesResourceWithStreamingResponse,
     AsyncSalesTaxCodesResourceWithStreamingResponse,
 )
+from .sales_tax_items import (
+    SalesTaxItemsResource,
+    AsyncSalesTaxItemsResource,
+    SalesTaxItemsResourceWithRawResponse,
+    AsyncSalesTaxItemsResourceWithRawResponse,
+    SalesTaxItemsResourceWithStreamingResponse,
+    AsyncSalesTaxItemsResourceWithStreamingResponse,
+)
 from .date_driven_terms import (
     DateDrivenTermsResource,
     AsyncDateDrivenTermsResource,
@@ -174,6 +182,12 @@ __all__ = [
     "AsyncSalesTaxCodesResourceWithRawResponse",
     "SalesTaxCodesResourceWithStreamingResponse",
     "AsyncSalesTaxCodesResourceWithStreamingResponse",
+    "SalesTaxItemsResource",
+    "AsyncSalesTaxItemsResource",
+    "SalesTaxItemsResourceWithRawResponse",
+    "AsyncSalesTaxItemsResourceWithRawResponse",
+    "SalesTaxItemsResourceWithStreamingResponse",
+    "AsyncSalesTaxItemsResourceWithStreamingResponse",
     "ServiceItemsResource",
     "AsyncServiceItemsResource",
     "ServiceItemsResourceWithRawResponse",

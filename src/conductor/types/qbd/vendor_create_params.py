@@ -11,6 +11,7 @@ __all__ = [
     "VendorCreateParams",
     "AdditionalContact",
     "AdditionalContactCustomContactField",
+    "AdditionalNote",
     "BillingAddress",
     "CustomContactField",
     "ShippingAddress",
@@ -33,7 +34,7 @@ class VendorCreateParams(TypedDict, total=False):
     additional_contacts: Annotated[Iterable[AdditionalContact], PropertyInfo(alias="additionalContacts")]
     """Additional contacts."""
 
-    additional_notes: Annotated[List[str], PropertyInfo(alias="additionalNotes")]
+    additional_notes: Annotated[Iterable[AdditionalNote], PropertyInfo(alias="additionalNotes")]
     """Additional notes about this vendor."""
 
     alternate_contact: Annotated[str, PropertyInfo(alias="alternateContact")]
@@ -214,7 +215,7 @@ class VendorCreateParams(TypedDict, total=False):
 
 class AdditionalContactCustomContactField(TypedDict, total=False):
     name: Required[str]
-    """The name of the custom contact field (e.g., phone number, email address)."""
+    """The name of the custom contact field (e.g., "old address", "secondary phone")."""
 
     value: Required[str]
     """The value of the custom contact field."""
@@ -240,6 +241,11 @@ class AdditionalContact(TypedDict, total=False):
 
     salutation: str
     """The contact's formal salutation that precedes their name."""
+
+
+class AdditionalNote(TypedDict, total=False):
+    note: Required[str]
+    """The note to add."""
 
 
 class BillingAddress(TypedDict, total=False):
@@ -279,7 +285,7 @@ class BillingAddress(TypedDict, total=False):
 
 class CustomContactField(TypedDict, total=False):
     name: Required[str]
-    """The name of the custom contact field (e.g., phone number, email address)."""
+    """The name of the custom contact field (e.g., "old address", "secondary phone")."""
 
     value: Required[str]
     """The value of the custom contact field."""

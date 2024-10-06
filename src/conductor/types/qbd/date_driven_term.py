@@ -14,8 +14,8 @@ class DateDrivenTerm(BaseModel):
     id: str
     """The unique identifier assigned by QuickBooks for this date-driven term.
 
-    This ID is unique among all date-driven terms but not across different object
-    types.
+    This ID is unique among all date-driven terms but not across different
+    QuickBooks object types.
     """
 
     created_at: str = FieldInfo(alias="createdAt")

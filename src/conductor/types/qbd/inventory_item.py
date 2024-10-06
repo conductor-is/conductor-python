@@ -27,7 +27,7 @@ class AssetAccount(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -43,7 +43,7 @@ class Class(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -59,7 +59,7 @@ class CogsAccount(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -95,7 +95,7 @@ class IncomeAccount(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -111,7 +111,7 @@ class Parent(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -127,7 +127,7 @@ class PreferredVendor(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -143,7 +143,7 @@ class PurchaseTaxCode(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -159,7 +159,7 @@ class SalesTaxCode(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -175,7 +175,7 @@ class UnitOfMeasureSet(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -190,8 +190,8 @@ class InventoryItem(BaseModel):
     id: str
     """The unique identifier assigned by QuickBooks for this inventory item.
 
-    This ID is unique among all inventory items but not across different object
-    types.
+    This ID is unique among all inventory items but not across different QuickBooks
+    object types.
     """
 
     asset_account: Optional[AssetAccount] = FieldInfo(alias="assetAccount", default=None)
@@ -270,8 +270,8 @@ class InventoryItem(BaseModel):
     """The case-insensitive name of this inventory item.
 
     Not guaranteed to be unique because it does not include the names of its parent
-    objects like `fullName` does. For example, two objects could both have the
-    `name` "Cabinet", but they could have unique `fullName` values, such as
+    objects like `fullName` does. For example, two inventory items could both have
+    the `name` "Cabinet", but they could have unique `fullName` values, such as
     "Kitchen:Cabinet" and "Garage:Cabinet".
     """
 
@@ -347,10 +347,12 @@ class InventoryItem(BaseModel):
 
     sales_tax_code: Optional[SalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)
     """
-    The sales tax code associated with this inventory item, indicating whether it is
-    taxable or non-taxable. Default codes include 'NON' (non-taxable) and 'TAX'
-    (taxable). If QuickBooks is not set up to charge sales tax, it will assign the
-    default non-taxable code to all sales.
+    The sales tax code associated with this inventory item, determining whether it
+    is taxable or non-taxable. It's used to assign a default tax status to all
+    transactions for this inventory item. Default codes include 'NON' (non-taxable)
+    and 'TAX' (taxable), but custom codes can also be created in QuickBooks. If
+    QuickBooks is not set up to charge sales tax, it will assign the default
+    non-taxable code to all sales.
     """
 
     sublevel: float
