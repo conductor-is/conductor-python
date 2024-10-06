@@ -15,7 +15,7 @@ class Currency(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -51,7 +51,7 @@ class Parent(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -67,7 +67,7 @@ class SalesTaxCode(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -88,16 +88,16 @@ class QbdAccount(BaseModel):
     id: str
     """The unique identifier assigned by QuickBooks for this account.
 
-    This ID is unique among all accounts but not across different object types.
+    This ID is unique among all accounts but not across different QuickBooks object
+    types.
     """
 
     account_number: Optional[str] = FieldInfo(alias="accountNumber", default=None)
-    """The account number assigned to this account in QuickBooks.
-
-    Account numbers appear in the chart of accounts, reports, and graphs. Note that
-    if the "Use Account Numbers" preference is turned off in QuickBooks, the account
-    number may not be visible in the user interface, but it can still be set and
-    retrieved through the API.
+    """
+    The account's account number, which appears in the QuickBooks chart of accounts,
+    reports, and graphs. Note that if the "Use Account Numbers" preference is turned
+    off in QuickBooks, the account number may not be visible in the user interface,
+    but it can still be set and retrieved through the API.
     """
 
     account_type: Literal[
@@ -192,7 +192,7 @@ class QbdAccount(BaseModel):
     """The case-insensitive name of this account.
 
     Not guaranteed to be unique because it does not include the names of its parent
-    objects like `fullName` does. For example, two objects could both have the
+    objects like `fullName` does. For example, two accounts could both have the
     `name` "Accounts-Payable", but they could have unique `fullName` values, such as
     "Corporate:Accounts-Payable" and "Finance:Accounts-Payable".
     """
@@ -210,10 +210,12 @@ class QbdAccount(BaseModel):
 
     sales_tax_code: Optional[SalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)
     """
-    The sales tax code associated with this account, indicating whether it is
-    taxable or non-taxable. Default codes include 'NON' (non-taxable) and 'TAX'
-    (taxable). If QuickBooks is not set up to charge sales tax, it will assign the
-    default non-taxable code to all sales.
+    The sales tax code associated with this account, determining whether it is
+    taxable or non-taxable. It's used to assign a default tax status to all
+    transactions for this account. Default codes include 'NON' (non-taxable) and
+    'TAX' (taxable), but custom codes can also be created in QuickBooks. If
+    QuickBooks is not set up to charge sales tax, it will assign the default
+    non-taxable code to all sales.
     """
 
     special_account_type: Optional[

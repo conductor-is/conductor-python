@@ -17,6 +17,7 @@ from .class_list_params import ClassListParams as ClassListParams
 from .qbd_standard_term import QbdStandardTerm as QbdStandardTerm
 from .bill_create_params import BillCreateParams as BillCreateParams
 from .non_inventory_item import NonInventoryItem as NonInventoryItem
+from .qbd_sales_tax_item import QbdSalesTaxItem as QbdSalesTaxItem
 from .vendor_list_params import VendorListParams as VendorListParams
 from .account_list_params import AccountListParams as AccountListParams
 from .class_create_params import ClassCreateParams as ClassCreateParams
@@ -33,11 +34,13 @@ from .service_item_list_params import ServiceItemListParams as ServiceItemListPa
 from .standard_term_list_params import StandardTermListParams as StandardTermListParams
 from .inventory_item_list_params import InventoryItemListParams as InventoryItemListParams
 from .sales_tax_code_list_params import SalesTaxCodeListParams as SalesTaxCodeListParams
+from .sales_tax_item_list_params import SalesTaxItemListParams as SalesTaxItemListParams
 from .service_item_create_params import ServiceItemCreateParams as ServiceItemCreateParams
 from .standard_term_list_response import StandardTermListResponse as StandardTermListResponse
 from .date_driven_term_list_params import DateDrivenTermListParams as DateDrivenTermListParams
 from .inventory_item_create_params import InventoryItemCreateParams as InventoryItemCreateParams
 from .sales_tax_code_list_response import SalesTaxCodeListResponse as SalesTaxCodeListResponse
+from .sales_tax_item_list_response import SalesTaxItemListResponse as SalesTaxItemListResponse
 from .credit_card_charge_list_params import CreditCardChargeListParams as CreditCardChargeListParams
 from .date_driven_term_list_response import DateDrivenTermListResponse as DateDrivenTermListResponse
 from .non_inventory_item_list_params import NonInventoryItemListParams as NonInventoryItemListParams

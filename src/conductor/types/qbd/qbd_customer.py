@@ -1,7 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import List, Optional
-from datetime import date
 from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
@@ -35,7 +34,7 @@ __all__ = [
 
 class AdditionalContactCustomContactField(BaseModel):
     name: str
-    """The name of the custom contact field (e.g., phone number, email address)."""
+    """The name of the custom contact field (e.g., "old address", "secondary phone")."""
 
     value: str
     """The value of the custom contact field."""
@@ -186,7 +185,7 @@ class Class(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -222,7 +221,7 @@ class Currency(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -235,7 +234,7 @@ class Currency(BaseModel):
 
 class CustomContactField(BaseModel):
     name: str
-    """The name of the custom contact field (e.g., phone number, email address)."""
+    """The name of the custom contact field (e.g., "old address", "secondary phone")."""
 
     value: str
     """The value of the custom contact field."""
@@ -246,7 +245,7 @@ class CustomerType(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -282,7 +281,7 @@ class ItemSalesTax(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -298,7 +297,7 @@ class JobType(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -314,7 +313,7 @@ class Parent(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -330,7 +329,7 @@ class PreferredPaymentMethod(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -346,7 +345,7 @@ class PriceLevel(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -362,7 +361,7 @@ class SalesRepresentative(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -378,7 +377,7 @@ class SalesTaxCode(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -429,7 +428,7 @@ class Terms(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -444,16 +443,16 @@ class QbdCustomer(BaseModel):
     id: str
     """The unique identifier assigned by QuickBooks for this customer.
 
-    This ID is unique among all customers but not across different object types.
+    This ID is unique among all customers but not across different QuickBooks object
+    types.
     """
 
     account_number: Optional[str] = FieldInfo(alias="accountNumber", default=None)
-    """The account number assigned to this customer in QuickBooks.
-
-    Account numbers appear in the chart of accounts, reports, and graphs. Note that
-    if the "Use Account Numbers" preference is turned off in QuickBooks, the account
-    number may not be visible in the user interface, but it can still be set and
-    retrieved through the API.
+    """
+    The customer's account number, which appears in the QuickBooks chart of
+    accounts, reports, and graphs. Note that if the "Use Account Numbers" preference
+    is turned off in QuickBooks, the account number may not be visible in the user
+    interface, but it can still be set and retrieved through the API.
     """
 
     additional_contacts: List[AdditionalContact] = FieldInfo(alias="additionalContacts")
@@ -469,9 +468,9 @@ class QbdCustomer(BaseModel):
     """The customer's alternate telephone number."""
 
     alternate_shipping_addresses: List[AlternateShippingAddress] = FieldInfo(alias="alternateShippingAddresses")
-    """
-    A list of additional shipping addresses for this customer, useful when the
-    customer has multiple shipping locations.
+    """A list of additional shipping addresses for this customer.
+
+    Useful when the customer has multiple shipping locations.
     """
 
     balance: Optional[str] = None
@@ -494,9 +493,9 @@ class QbdCustomer(BaseModel):
     """
 
     company_name: Optional[str] = FieldInfo(alias="companyName", default=None)
-    """
-    The name of the company associated with this customer, as specified in
-    QuickBooks. This name is used on invoices, checks, and other forms.
+    """The name of the company associated with this customer.
+
+    This name is used on invoices, checks, and other forms.
     """
 
     contact: Optional[str] = None
@@ -518,8 +517,8 @@ class QbdCustomer(BaseModel):
     credit_limit: Optional[str] = FieldInfo(alias="creditLimit", default=None)
     """The customer's credit limit, represented as a decimal string.
 
-    This is the maximum amount of money that can be spent before being billed. If
-    `null`, there is no credit limit.
+    This is the maximum amount of money this customer can spend before being billed.
+    If `null`, there is no credit limit.
     """
 
     currency: Optional[Currency] = None
@@ -578,12 +577,11 @@ class QbdCustomer(BaseModel):
     """
 
     item_sales_tax: Optional[ItemSalesTax] = FieldInfo(alias="itemSalesTax", default=None)
-    """The sales tax item for items associated with this customer.
-
-    A sales-tax item represents a single sales tax that is collected at a specified
-    rate and paid to a single agency. For complex tax situations, a zero percent tax
-    item named "Tax Calculated On Invoice" may be used, indicating that taxes are
-    applied manually on the invoice.
+    """
+    The specific sales tax item used to calculate the actual tax amount for this
+    customer's transactions. It represents a single tax rate collected for a single
+    tax agency. This is more specific than `salesTaxCode`, which only indicates
+    taxability, and is used for the actual tax calculation and reporting.
     """
 
     job_description: Optional[str] = FieldInfo(alias="jobDescription", default=None)
@@ -592,19 +590,19 @@ class QbdCustomer(BaseModel):
     sub-customer).
     """
 
-    job_end_date: Optional[date] = FieldInfo(alias="jobEndDate", default=None)
+    job_end_date: Optional[str] = FieldInfo(alias="jobEndDate", default=None)
     """
     The actual completion date of this customer's job, if applicable, in ISO 8601
     format (YYYY-MM-DD).
     """
 
-    job_projected_end_date: Optional[date] = FieldInfo(alias="jobProjectedEndDate", default=None)
+    job_projected_end_date: Optional[str] = FieldInfo(alias="jobProjectedEndDate", default=None)
     """
     The projected completion date for this customer's job, if applicable, in ISO
     8601 format (YYYY-MM-DD).
     """
 
-    job_start_date: Optional[date] = FieldInfo(alias="jobStartDate", default=None)
+    job_start_date: Optional[str] = FieldInfo(alias="jobStartDate", default=None)
     """
     The date when work on this customer's job began, if applicable, in ISO 8601
     format (YYYY-MM-DD).
@@ -637,7 +635,7 @@ class QbdCustomer(BaseModel):
     """The case-insensitive name of this customer.
 
     Not guaranteed to be unique because it does not include the names of its parent
-    objects like `fullName` does. For example, two objects could both have the
+    objects like `fullName` does. For example, two customers could both have the
     `name` "Kitchen-Renovation", but they could have unique `fullName` values, such
     as "Jones:Kitchen-Renovation" and "Baker:Kitchen-Renovation".
     """
@@ -674,8 +672,10 @@ class QbdCustomer(BaseModel):
     """
     The custom price level assigned to this customer, used to apply custom pricing
     in invoices, sales receipts, sales orders, or credit memos for that customer.
-    Notice that the affected sales transactions do not list the price level, but
-    instead list the rate for the item, which was set using the price level.
+    You can override this automatic feature, however, when you create the invoices,
+    sales receipts, etc. Notice that the affected sales transactions do not list the
+    price level, but instead list the rate for the item, which was set using the
+    price level.
     """
 
     resale_number: Optional[str] = FieldInfo(alias="resaleNumber", default=None)
@@ -693,16 +693,18 @@ class QbdCustomer(BaseModel):
 
     sales_tax_code: Optional[SalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)
     """
-    The sales tax code associated with this customer, indicating whether it is
-    taxable or non-taxable. Default codes include 'NON' (non-taxable) and 'TAX'
-    (taxable). If QuickBooks is not set up to charge sales tax, it will assign the
+    The sales tax code associated with this customer, determining whether items sold
+    to this customer are taxable or non-taxable. It's used to assign a default tax
+    status to all transactions for this customer. Default codes include 'NON'
+    (non-taxable) and 'TAX' (taxable), but custom codes can also be created in
+    QuickBooks. If QuickBooks is not set up to charge sales tax, it will assign the
     default non-taxable code to all sales.
     """
 
     sales_tax_country: Optional[Literal["australia", "canada", "uk", "us"]] = FieldInfo(
         alias="salesTaxCountry", default=None
     )
-    """The country for which sales tax is collected by this customer."""
+    """The country for which sales tax is collected for this customer."""
 
     salutation: Optional[str] = None
     """
@@ -724,7 +726,7 @@ class QbdCustomer(BaseModel):
     """
 
     tax_registration_number: Optional[str] = FieldInfo(alias="taxRegistrationNumber", default=None)
-    """The customer's tax registration number, for use in Canada and the UK."""
+    """The customer's tax registration number, for use in Canada or the UK."""
 
     terms: Optional[Terms] = None
     """

@@ -29,7 +29,7 @@ class Class(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -65,7 +65,7 @@ class Parent(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -81,7 +81,7 @@ class SalesAndPurchaseDetailsExpenseAccount(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -97,7 +97,7 @@ class SalesAndPurchaseDetailsIncomeAccount(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -113,7 +113,7 @@ class SalesAndPurchaseDetailsPreferredVendor(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -129,7 +129,7 @@ class SalesAndPurchaseDetailsPurchaseTaxCode(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -190,7 +190,7 @@ class SalesOrPurchaseDetailsAccount(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -233,7 +233,7 @@ class SalesTaxCode(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -249,7 +249,7 @@ class UnitOfMeasureSet(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -264,7 +264,8 @@ class ServiceItem(BaseModel):
     id: str
     """The unique identifier assigned by QuickBooks for this service item.
 
-    This ID is unique among all service items but not across different object types.
+    This ID is unique among all service items but not across different QuickBooks
+    object types.
     """
 
     class_: Optional[Class] = FieldInfo(alias="class", default=None)
@@ -313,7 +314,7 @@ class ServiceItem(BaseModel):
     """The case-insensitive name of this service item.
 
     Not guaranteed to be unique because it does not include the names of its parent
-    objects like `fullName` does. For example, two objects could both have the
+    objects like `fullName` does. For example, two service items could both have the
     `name` "Web-Design", but they could have unique `fullName` values, such as
     "Consulting:Web-Design" and "Contracting:Web-Design".
     """
@@ -351,10 +352,12 @@ class ServiceItem(BaseModel):
 
     sales_tax_code: Optional[SalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)
     """
-    The sales tax code associated with this service item, indicating whether it is
-    taxable or non-taxable. Default codes include 'NON' (non-taxable) and 'TAX'
-    (taxable). If QuickBooks is not set up to charge sales tax, it will assign the
-    default non-taxable code to all sales.
+    The sales tax code associated with this service item, determining whether it is
+    taxable or non-taxable. It's used to assign a default tax status to all
+    transactions for this service item. Default codes include 'NON' (non-taxable)
+    and 'TAX' (taxable), but custom codes can also be created in QuickBooks. If
+    QuickBooks is not set up to charge sales tax, it will assign the default
+    non-taxable code to all sales.
     """
 
     sublevel: float

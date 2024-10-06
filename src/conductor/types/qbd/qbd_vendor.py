@@ -31,7 +31,7 @@ __all__ = [
 
 class AdditionalContactCustomContactField(BaseModel):
     name: str
-    """The name of the custom contact field (e.g., phone number, email address)."""
+    """The name of the custom contact field (e.g., "old address", "secondary phone")."""
 
     value: str
     """The value of the custom contact field."""
@@ -141,7 +141,7 @@ class BillingRate(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -157,7 +157,7 @@ class Class(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -173,7 +173,7 @@ class Currency(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -186,7 +186,7 @@ class Currency(BaseModel):
 
 class CustomContactField(BaseModel):
     name: str
-    """The name of the custom contact field (e.g., phone number, email address)."""
+    """The name of the custom contact field (e.g., "old address", "secondary phone")."""
 
     value: str
     """The value of the custom contact field."""
@@ -217,7 +217,7 @@ class PrefillAccount(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -233,7 +233,7 @@ class SalesTaxCode(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -249,7 +249,7 @@ class SalesTaxReturn(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -300,7 +300,7 @@ class TaxOnPurchasesAccount(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -316,7 +316,7 @@ class TaxOnSalesAccount(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -332,7 +332,7 @@ class Terms(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -348,7 +348,7 @@ class VendorType(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -363,16 +363,16 @@ class QbdVendor(BaseModel):
     id: str
     """The unique identifier assigned by QuickBooks for this vendor.
 
-    This ID is unique among all vendors but not across different object types.
+    This ID is unique among all vendors but not across different QuickBooks object
+    types.
     """
 
     account_number: Optional[str] = FieldInfo(alias="accountNumber", default=None)
-    """The account number assigned to this vendor in QuickBooks.
-
-    Account numbers appear in the chart of accounts, reports, and graphs. Note that
-    if the "Use Account Numbers" preference is turned off in QuickBooks, the account
-    number may not be visible in the user interface, but it can still be set and
-    retrieved through the API.
+    """
+    The vendor's account number, which appears in the QuickBooks chart of accounts,
+    reports, and graphs. Note that if the "Use Account Numbers" preference is turned
+    off in QuickBooks, the account number may not be visible in the user interface,
+    but it can still be set and retrieved through the API.
     """
 
     additional_contacts: List[AdditionalContact] = FieldInfo(alias="additionalContacts")
@@ -412,7 +412,7 @@ class QbdVendor(BaseModel):
     """
 
     company_name: Optional[str] = FieldInfo(alias="companyName", default=None)
-    """The name of the company associated with this vendor, as specified in QuickBooks.
+    """The name of the company associated with this vendor.
 
     This name is used on invoices, checks, and other forms.
     """
@@ -430,8 +430,8 @@ class QbdVendor(BaseModel):
     credit_limit: Optional[str] = FieldInfo(alias="creditLimit", default=None)
     """The vendor's credit limit, represented as a decimal string.
 
-    This is the maximum amount of money that can be spent before being billed. If
-    `null`, there is no credit limit.
+    This is the maximum amount of money that can be spent being before billed by
+    this vendor. If `null`, there is no credit limit.
     """
 
     currency: Optional[Currency] = None
@@ -484,18 +484,18 @@ class QbdVendor(BaseModel):
     is_tax_on_tax: Optional[bool] = FieldInfo(alias="isTaxOnTax", default=None)
     """
     Indicates whether tax is charged on top of tax for this vendor, for use in
-    Canada and the UK.
+    Canada or the UK.
     """
 
     is_tax_tracked_on_purchases: Optional[bool] = FieldInfo(alias="isTaxTrackedOnPurchases", default=None)
     """
     Indicates whether tax is tracked on purchases for this vendor, for use in Canada
-    and the UK.
+    or the UK.
     """
 
     is_tax_tracked_on_sales: Optional[bool] = FieldInfo(alias="isTaxTrackedOnSales", default=None)
     """
-    Indicates whether tax is tracked on sales for this vendor, for use in Canada and
+    Indicates whether tax is tracked on sales for this vendor, for use in Canada or
     the UK.
     """
 
@@ -527,20 +527,22 @@ class QbdVendor(BaseModel):
     """The expense accounts to prefill when entering bills for this vendor."""
 
     reporting_period: Optional[Literal["monthly", "quarterly"]] = FieldInfo(alias="reportingPeriod", default=None)
-    """The vendor's tax reporting period, for use in Canada and the UK."""
+    """The vendor's tax reporting period, for use in Canada or the UK."""
 
     sales_tax_code: Optional[SalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)
     """
-    The sales tax code associated with this vendor, indicating whether it is taxable
-    or non-taxable. Default codes include 'NON' (non-taxable) and 'TAX' (taxable).
-    If QuickBooks is not set up to charge sales tax, it will assign the default
-    non-taxable code to all sales.
+    The sales tax code associated with this vendor, determining whether items bought
+    from this vendor are taxable or non-taxable. It's used to assign a default tax
+    status to all transactions for this vendor. Default codes include 'NON'
+    (non-taxable) and 'TAX' (taxable), but custom codes can also be created in
+    QuickBooks. If QuickBooks is not set up to charge sales tax, it will assign the
+    default non-taxable code to all sales.
     """
 
     sales_tax_country: Optional[Literal["australia", "canada", "uk", "us"]] = FieldInfo(
         alias="salesTaxCountry", default=None
     )
-    """The country for which sales tax is collected by this vendor."""
+    """The country for which sales tax is collected for this vendor."""
 
     sales_tax_return: Optional[SalesTaxReturn] = FieldInfo(alias="salesTaxReturn", default=None)
     """
@@ -563,17 +565,17 @@ class QbdVendor(BaseModel):
     tax_on_purchases_account: Optional[TaxOnPurchasesAccount] = FieldInfo(alias="taxOnPurchasesAccount", default=None)
     """
     The account used for tracking taxes on purchases for this vendor, for use in
-    Canada and the UK.
+    Canada or the UK.
     """
 
     tax_on_sales_account: Optional[TaxOnSalesAccount] = FieldInfo(alias="taxOnSalesAccount", default=None)
     """
     The account used for tracking taxes on sales for this vendor, for use in Canada
-    and the UK.
+    or the UK.
     """
 
     tax_registration_number: Optional[str] = FieldInfo(alias="taxRegistrationNumber", default=None)
-    """The vendor's tax registration number, for use in Canada and the UK."""
+    """The vendor's tax registration number, for use in Canada or the UK."""
 
     terms: Optional[Terms] = None
     """

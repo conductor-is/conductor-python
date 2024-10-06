@@ -97,7 +97,7 @@ class TestVendors:
                     "salutation": "Mr.",
                 },
             ],
-            additional_notes=["string", "string", "string"],
+            additional_notes=[{"note": "This is a note."}, {"note": "This is a note."}, {"note": "This is a note."}],
             alternate_contact="Jane Doe",
             alternate_phone="555-555-5555",
             billing_address={
@@ -386,7 +386,7 @@ class TestAsyncVendors:
                     "salutation": "Mr.",
                 },
             ],
-            additional_notes=["string", "string", "string"],
+            additional_notes=[{"note": "This is a note."}, {"note": "This is a note."}, {"note": "This is a note."}],
             alternate_contact="Jane Doe",
             alternate_phone="555-555-5555",
             billing_address={
