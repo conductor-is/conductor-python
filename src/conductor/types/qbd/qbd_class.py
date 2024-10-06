@@ -15,7 +15,7 @@ class Parent(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -30,7 +30,8 @@ class QbdClass(BaseModel):
     id: str
     """The unique identifier assigned by QuickBooks for this class.
 
-    This ID is unique among all classes but not across different object types.
+    This ID is unique among all classes but not across different QuickBooks object
+    types.
     """
 
     created_at: str = FieldInfo(alias="createdAt")
@@ -59,7 +60,7 @@ class QbdClass(BaseModel):
     """The case-insensitive name of this class.
 
     Not guaranteed to be unique because it does not include the names of its parent
-    objects like `fullName` does. For example, two objects could both have the
+    objects like `fullName` does. For example, two classes could both have the
     `name` "Marketing", but they could have unique `fullName` values, such as
     "Corporate:Marketing" and "Internal:Marketing".
     """

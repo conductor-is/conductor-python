@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import List, Iterable
+from typing import Union, Iterable
+from datetime import date
 from typing_extensions import Literal
 
 import httpx
@@ -54,16 +55,16 @@ class CustomersResource(SyncAPIResource):
         name: str,
         conductor_end_user_id: str,
         account_number: str | NotGiven = NOT_GIVEN,
-        additional_contacts: Iterable[customer_create_params.AdditionalContact] | NotGiven = NOT_GIVEN,
-        additional_notes: List[str] | NotGiven = NOT_GIVEN,
+        additional_notes: Iterable[customer_create_params.AdditionalNote] | NotGiven = NOT_GIVEN,
         alternate_contact: str | NotGiven = NOT_GIVEN,
         alternate_phone: str | NotGiven = NOT_GIVEN,
         alternate_shipping_addresses: Iterable[customer_create_params.AlternateShippingAddress] | NotGiven = NOT_GIVEN,
         billing_address: customer_create_params.BillingAddress | NotGiven = NOT_GIVEN,
-        cc: str | NotGiven = NOT_GIVEN,
+        cc_email: str | NotGiven = NOT_GIVEN,
         class_id: str | NotGiven = NOT_GIVEN,
         company_name: str | NotGiven = NOT_GIVEN,
         contact: str | NotGiven = NOT_GIVEN,
+        contacts: Iterable[customer_create_params.Contact] | NotGiven = NOT_GIVEN,
         credit_card: customer_create_params.CreditCard | NotGiven = NOT_GIVEN,
         credit_limit: str | NotGiven = NOT_GIVEN,
         currency_id: str | NotGiven = NOT_GIVEN,
@@ -76,25 +77,27 @@ class CustomersResource(SyncAPIResource):
         is_active: bool | NotGiven = NOT_GIVEN,
         item_sales_tax_id: str | NotGiven = NOT_GIVEN,
         job_description: str | NotGiven = NOT_GIVEN,
-        job_end_date: str | NotGiven = NOT_GIVEN,
-        job_projected_end_date: str | NotGiven = NOT_GIVEN,
-        job_start_date: str | NotGiven = NOT_GIVEN,
-        job_status: Literal["Awarded", "Closed", "InProgress", "None", "NotAwarded", "Pending"] | NotGiven = NOT_GIVEN,
+        job_end_date: Union[str, date] | NotGiven = NOT_GIVEN,
+        job_projected_end_date: Union[str, date] | NotGiven = NOT_GIVEN,
+        job_start_date: Union[str, date] | NotGiven = NOT_GIVEN,
+        job_status: Literal["awarded", "closed", "in_progress", "none", "not_awarded", "pending"]
+        | NotGiven = NOT_GIVEN,
         job_title: str | NotGiven = NOT_GIVEN,
         job_type_id: str | NotGiven = NOT_GIVEN,
         last_name: str | NotGiven = NOT_GIVEN,
         middle_name: str | NotGiven = NOT_GIVEN,
+        note: str | NotGiven = NOT_GIVEN,
         open_balance: str | NotGiven = NOT_GIVEN,
         open_balance_date: str | NotGiven = NOT_GIVEN,
         parent_id: str | NotGiven = NOT_GIVEN,
         phone: str | NotGiven = NOT_GIVEN,
-        preferred_delivery_method: Literal["Email", "Fax", "None"] | NotGiven = NOT_GIVEN,
+        preferred_delivery_method: Literal["email", "fax", "none"] | NotGiven = NOT_GIVEN,
         preferred_payment_method_id: str | NotGiven = NOT_GIVEN,
         price_level_id: str | NotGiven = NOT_GIVEN,
         resale_number: str | NotGiven = NOT_GIVEN,
         sales_representative_id: str | NotGiven = NOT_GIVEN,
         sales_tax_code_id: str | NotGiven = NOT_GIVEN,
-        sales_tax_country: Literal["Australia", "Canada", "UK", "US"] | NotGiven = NOT_GIVEN,
+        sales_tax_country: Literal["australia", "canada", "uk", "us"] | NotGiven = NOT_GIVEN,
         salutation: str | NotGiven = NOT_GIVEN,
         shipping_address: customer_create_params.ShippingAddress | NotGiven = NOT_GIVEN,
         tax_registration_number: str | NotGiven = NOT_GIVEN,
@@ -106,117 +109,157 @@ class CustomersResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> QbdCustomer:
-        """
-        Creates a customer.
+        """Creates a customer.
 
         Args:
-          name: The customer's case-insensitive unique name, unique across all customers.
+          name: The case-insensitive name of this customer.
+
+        Not guaranteed to be unique because
+              it does not include the names of its parent objects like `fullName` does. For
+              example, two customers could both have the `name` "Kitchen-Renovation", but they
+              could have unique `fullName` values, such as "Jones:Kitchen-Renovation" and
+              "Baker:Kitchen-Renovation".
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
           account_number: The customer's account number, which appears in the QuickBooks chart of
-              accounts, account fields, reports, and graphs.
+              accounts, reports, and graphs. Note that if the "Use Account Numbers" preference
+              is turned off in QuickBooks, the account number may not be visible in the user
+              interface, but it can still be set and retrieved through the API.
 
-          additional_contacts: Additional contacts.
+          additional_notes: Additional notes about this customer.
 
-          additional_notes: Additional information about this customer.
+          alternate_contact: The name of an alternate contact person for this customer.
 
-          alternate_contact: The customer's alternate contact name.
+          alternate_phone: The customer's alternate telephone number.
 
-          alternate_phone: The customer's alternate phone number.
-
-          alternate_shipping_addresses: The customer's ship-to addresses.
+          alternate_shipping_addresses: A list of additional shipping addresses for this customer. Useful when the
+              customer has multiple shipping locations.
 
           billing_address: The customer's billing address.
 
-          cc: The customer's CC email address.
+          cc_email: An email address to carbon copy (CC) on communications with this customer.
 
-          class_id: The class associated with this object. Classes can be used to categorize objects
-              or transactions by department, location, or other meaningful segments.
+          class_id: The customer's class, used for categorization (e.g., by department, location, or
+              type of work).
 
-          company_name: The name of the customer's business. This is used on invoices, checks, and other
-              forms.
+          company_name: The name of the company associated with this customer. This name is used on
+              invoices, checks, and other forms.
 
-          contact: The customer's contact name.
+          contact: The name of the primary contact person for this customer.
 
-          credit_card: The customer's credit card information.
+          contacts: Additional alternate contacts for this customer.
 
-          credit_limit: The customer's credit limit. This is the maximum amount of money that the
-              customer can spend before being billed. If undefined, there is no credit limit.
+          credit_card: The customer's credit card information, including card type, number, and
+              expiration date, used for processing credit card payments.
 
-          currency_id: The ID of the customer's currency.
+          credit_limit: The customer's credit limit, represented as a decimal string. This is the
+              maximum amount of money this customer can spend before being billed. If `null`,
+              there is no credit limit.
 
-          custom_contact_fields: Additional custom contact fields.
+          currency_id: The customer's currency. For built-in currencies, the name and code are standard
+              international values. For user-defined currencies, all values are editable.
 
-          customer_type_id: The ID of the customer type, used for categorizing customers (e.g., by industry
-              or region).
+          custom_contact_fields: Additional custom contact fields for this customer.
+
+          customer_type_id: The category or type assigned to this customer, allowing for meaningful grouping
+              and segmentation (e.g., by industry or region).
 
           email: The customer's email address.
 
-          external_id: An arbitrary globally unique identifier (GUID) the developer can provide to
-              track this object in their own system. This value must be formatted as a GUID;
-              otherwise, QuickBooks will return an error.
+          external_id: A developer-assigned globally unique identifier (GUID) for tracking this object
+              in external systems. Must be formatted as a valid GUID; otherwise, QuickBooks
+              will return an error.
 
           fax: The customer's fax number.
 
-          first_name: The customer's first name.
+          first_name: The first name of the contact person for this customer.
 
-          is_active: Whether this customer is active. QuickBooks hides inactive objects from most
-              views and reports in the UI.
+          is_active: Indicates whether this customer is active. Inactive objects are typically hidden
+              from views and reports in QuickBooks.
 
-          item_sales_tax_id: The ID of the item sales tax, used to calculate a single sales tax that is
-              collected at a specified rate and paid to a single agency.
+          item_sales_tax_id: The specific sales tax item used to calculate the actual tax amount for this
+              customer's transactions. It represents a single tax rate collected for a single
+              tax agency. This is more specific than `salesTaxCode`, which only indicates
+              taxability, and is used for the actual tax calculation and reporting.
 
-          job_description: The description of the job, if this is a job (i.e., sub-customer).
+          job_description: A brief description of this customer's job, if this object is a job (i.e.,
+              sub-customer).
 
-          job_end_date: The actual end date of the job, if applicable.
+          job_end_date: The actual completion date of this customer's job, if applicable, in ISO 8601
+              format (YYYY-MM-DD).
 
-          job_projected_end_date: The projected end date of the job, if applicable.
+          job_projected_end_date: The projected completion date for this customer's job, if applicable, in ISO
+              8601 format (YYYY-MM-DD).
 
-          job_start_date: The start date of the job, if applicable.
+          job_start_date: The date when work on this customer's job began, if applicable, in ISO 8601
+              format (YYYY-MM-DD).
 
-          job_title: The customer's job title.
+          job_status: The status of this customer's job, if this object is a job (i.e., sub-customer).
 
-          job_type_id: The ID of the job type, if this is a job (i.e., sub-customer).
+          job_title: The job title of the contact person for this customer.
 
-          last_name: The customer's last name.
+          job_type_id: The type or category of this customer's job, if this object is a job (i.e.,
+              sub-customer). Useful for classifying into meaningful segments (e.g., repair,
+              installation, consulting).
 
-          middle_name: The customer's middle name.
+          last_name: The last name of the contact person for this customer.
 
-          open_balance: The opening balance of this customer's account.
+          middle_name: The middle name of the contact person for this customer.
 
-          open_balance_date: The date of the opening balance for this customer.
+          note: Additional notes or comments about this customer.
 
-          parent_id: The ID of the parent customer or job.
+          open_balance: The opening balance for this customer's account, indicating the amount owed by
+              the customer, represented as a decimal string.
 
-          phone: The customer's phone number.
+          open_balance_date: The date of the opening balance for this customer, in ISO 8601 format
+              (YYYY-MM-DD).
 
-          preferred_payment_method_id: The ID of the customer's preferred payment method, if they have one.
+          parent_id: The parent customer one level above this one in the hierarchy. For example, if
+              this customer has a `fullName` of "Jones:Kitchen-Renovation", its parent has a
+              `fullName` of "Jones". If this customer is at the top level, `parent` will be
+              `null`.
 
-          price_level_id: The ID of the custom price level for this customer. QuickBooks will
-              automatically use the custom price in new invoices, sales receipts, sales
-              orders, or credit memos for that customer. You can override this automatic
-              feature, however, when you create the invoices, sales receipts, etc. Notice that
-              the affected sales transactions do not list the price level, but instead list
-              the rate for the item, which was set using the price level.
+          phone: The customer's primary telephone number.
 
-          resale_number: The customer's resale number, if they have one. This number will not affect
-              reports or sales tax calculations.
+          preferred_delivery_method: The preferred method for delivering invoices and other documents to this
+              customer.
 
-          sales_representative_id: The ID of the customer's sales representative.
+          preferred_payment_method_id: The customer's preferred payment method (e.g., cash, check, credit card).
 
-          sales_tax_code_id: The ID of the sales tax code, indicating whether related items are taxable or
-              non-taxable.
+          price_level_id: The custom price level assigned to this customer, used to apply custom pricing
+              in invoices, sales receipts, sales orders, or credit memos for that customer.
+              You can override this automatic feature, however, when you create the invoices,
+              sales receipts, etc. Notice that the affected sales transactions do not list the
+              price level, but instead list the rate for the item, which was set using the
+              price level.
 
-          salutation: The customer's formal salutation that precedes their name.
+          resale_number: The customer's resale number, used if the customer is purchasing items for
+              resale. This number does not affect sales tax calculations or reports in
+              QuickBooks.
+
+          sales_representative_id: The customer's sales representative. Sales representatives can be employees,
+              vendors, or other names in QuickBooks.
+
+          sales_tax_code_id: The sales tax code associated with this customer, determining whether items sold
+              to this customer are taxable or non-taxable. It's used to assign a default tax
+              status to all transactions for this customer. Default codes include 'NON'
+              (non-taxable) and 'TAX' (taxable), but custom codes can also be created in
+              QuickBooks. If QuickBooks is not set up to charge sales tax, it will assign the
+              default non-taxable code to all sales.
+
+          sales_tax_country: The country for which sales tax is collected for this customer.
+
+          salutation: The formal salutation title that precedes the name of the contact person for
+              this customer, such as 'Mr.', 'Ms.', or 'Dr.'.
 
           shipping_address: The customer's shipping address.
 
-          tax_registration_number: The tax registration number associated with this customer, for use in Canada or
-              the UK.
+          tax_registration_number: The customer's tax registration number, for use in Canada or the UK.
 
-          terms_id: The ID of the customer's payment terms.
+          terms_id: The customer's payment terms, defining when payment is due and any applicable
+              discounts.
 
           extra_headers: Send extra headers
 
@@ -233,16 +276,16 @@ class CustomersResource(SyncAPIResource):
                 {
                     "name": name,
                     "account_number": account_number,
-                    "additional_contacts": additional_contacts,
                     "additional_notes": additional_notes,
                     "alternate_contact": alternate_contact,
                     "alternate_phone": alternate_phone,
                     "alternate_shipping_addresses": alternate_shipping_addresses,
                     "billing_address": billing_address,
-                    "cc": cc,
+                    "cc_email": cc_email,
                     "class_id": class_id,
                     "company_name": company_name,
                     "contact": contact,
+                    "contacts": contacts,
                     "credit_card": credit_card,
                     "credit_limit": credit_limit,
                     "currency_id": currency_id,
@@ -263,6 +306,7 @@ class CustomersResource(SyncAPIResource):
                     "job_type_id": job_type_id,
                     "last_name": last_name,
                     "middle_name": middle_name,
+                    "note": note,
                     "open_balance": open_balance,
                     "open_balance_date": open_balance_date,
                     "parent_id": parent_id,
@@ -508,16 +552,16 @@ class AsyncCustomersResource(AsyncAPIResource):
         name: str,
         conductor_end_user_id: str,
         account_number: str | NotGiven = NOT_GIVEN,
-        additional_contacts: Iterable[customer_create_params.AdditionalContact] | NotGiven = NOT_GIVEN,
-        additional_notes: List[str] | NotGiven = NOT_GIVEN,
+        additional_notes: Iterable[customer_create_params.AdditionalNote] | NotGiven = NOT_GIVEN,
         alternate_contact: str | NotGiven = NOT_GIVEN,
         alternate_phone: str | NotGiven = NOT_GIVEN,
         alternate_shipping_addresses: Iterable[customer_create_params.AlternateShippingAddress] | NotGiven = NOT_GIVEN,
         billing_address: customer_create_params.BillingAddress | NotGiven = NOT_GIVEN,
-        cc: str | NotGiven = NOT_GIVEN,
+        cc_email: str | NotGiven = NOT_GIVEN,
         class_id: str | NotGiven = NOT_GIVEN,
         company_name: str | NotGiven = NOT_GIVEN,
         contact: str | NotGiven = NOT_GIVEN,
+        contacts: Iterable[customer_create_params.Contact] | NotGiven = NOT_GIVEN,
         credit_card: customer_create_params.CreditCard | NotGiven = NOT_GIVEN,
         credit_limit: str | NotGiven = NOT_GIVEN,
         currency_id: str | NotGiven = NOT_GIVEN,
@@ -530,25 +574,27 @@ class AsyncCustomersResource(AsyncAPIResource):
         is_active: bool | NotGiven = NOT_GIVEN,
         item_sales_tax_id: str | NotGiven = NOT_GIVEN,
         job_description: str | NotGiven = NOT_GIVEN,
-        job_end_date: str | NotGiven = NOT_GIVEN,
-        job_projected_end_date: str | NotGiven = NOT_GIVEN,
-        job_start_date: str | NotGiven = NOT_GIVEN,
-        job_status: Literal["Awarded", "Closed", "InProgress", "None", "NotAwarded", "Pending"] | NotGiven = NOT_GIVEN,
+        job_end_date: Union[str, date] | NotGiven = NOT_GIVEN,
+        job_projected_end_date: Union[str, date] | NotGiven = NOT_GIVEN,
+        job_start_date: Union[str, date] | NotGiven = NOT_GIVEN,
+        job_status: Literal["awarded", "closed", "in_progress", "none", "not_awarded", "pending"]
+        | NotGiven = NOT_GIVEN,
         job_title: str | NotGiven = NOT_GIVEN,
         job_type_id: str | NotGiven = NOT_GIVEN,
         last_name: str | NotGiven = NOT_GIVEN,
         middle_name: str | NotGiven = NOT_GIVEN,
+        note: str | NotGiven = NOT_GIVEN,
         open_balance: str | NotGiven = NOT_GIVEN,
         open_balance_date: str | NotGiven = NOT_GIVEN,
         parent_id: str | NotGiven = NOT_GIVEN,
         phone: str | NotGiven = NOT_GIVEN,
-        preferred_delivery_method: Literal["Email", "Fax", "None"] | NotGiven = NOT_GIVEN,
+        preferred_delivery_method: Literal["email", "fax", "none"] | NotGiven = NOT_GIVEN,
         preferred_payment_method_id: str | NotGiven = NOT_GIVEN,
         price_level_id: str | NotGiven = NOT_GIVEN,
         resale_number: str | NotGiven = NOT_GIVEN,
         sales_representative_id: str | NotGiven = NOT_GIVEN,
         sales_tax_code_id: str | NotGiven = NOT_GIVEN,
-        sales_tax_country: Literal["Australia", "Canada", "UK", "US"] | NotGiven = NOT_GIVEN,
+        sales_tax_country: Literal["australia", "canada", "uk", "us"] | NotGiven = NOT_GIVEN,
         salutation: str | NotGiven = NOT_GIVEN,
         shipping_address: customer_create_params.ShippingAddress | NotGiven = NOT_GIVEN,
         tax_registration_number: str | NotGiven = NOT_GIVEN,
@@ -560,117 +606,157 @@ class AsyncCustomersResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> QbdCustomer:
-        """
-        Creates a customer.
+        """Creates a customer.
 
         Args:
-          name: The customer's case-insensitive unique name, unique across all customers.
+          name: The case-insensitive name of this customer.
+
+        Not guaranteed to be unique because
+              it does not include the names of its parent objects like `fullName` does. For
+              example, two customers could both have the `name` "Kitchen-Renovation", but they
+              could have unique `fullName` values, such as "Jones:Kitchen-Renovation" and
+              "Baker:Kitchen-Renovation".
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
           account_number: The customer's account number, which appears in the QuickBooks chart of
-              accounts, account fields, reports, and graphs.
+              accounts, reports, and graphs. Note that if the "Use Account Numbers" preference
+              is turned off in QuickBooks, the account number may not be visible in the user
+              interface, but it can still be set and retrieved through the API.
 
-          additional_contacts: Additional contacts.
+          additional_notes: Additional notes about this customer.
 
-          additional_notes: Additional information about this customer.
+          alternate_contact: The name of an alternate contact person for this customer.
 
-          alternate_contact: The customer's alternate contact name.
+          alternate_phone: The customer's alternate telephone number.
 
-          alternate_phone: The customer's alternate phone number.
-
-          alternate_shipping_addresses: The customer's ship-to addresses.
+          alternate_shipping_addresses: A list of additional shipping addresses for this customer. Useful when the
+              customer has multiple shipping locations.
 
           billing_address: The customer's billing address.
 
-          cc: The customer's CC email address.
+          cc_email: An email address to carbon copy (CC) on communications with this customer.
 
-          class_id: The class associated with this object. Classes can be used to categorize objects
-              or transactions by department, location, or other meaningful segments.
+          class_id: The customer's class, used for categorization (e.g., by department, location, or
+              type of work).
 
-          company_name: The name of the customer's business. This is used on invoices, checks, and other
-              forms.
+          company_name: The name of the company associated with this customer. This name is used on
+              invoices, checks, and other forms.
 
-          contact: The customer's contact name.
+          contact: The name of the primary contact person for this customer.
 
-          credit_card: The customer's credit card information.
+          contacts: Additional alternate contacts for this customer.
 
-          credit_limit: The customer's credit limit. This is the maximum amount of money that the
-              customer can spend before being billed. If undefined, there is no credit limit.
+          credit_card: The customer's credit card information, including card type, number, and
+              expiration date, used for processing credit card payments.
 
-          currency_id: The ID of the customer's currency.
+          credit_limit: The customer's credit limit, represented as a decimal string. This is the
+              maximum amount of money this customer can spend before being billed. If `null`,
+              there is no credit limit.
 
-          custom_contact_fields: Additional custom contact fields.
+          currency_id: The customer's currency. For built-in currencies, the name and code are standard
+              international values. For user-defined currencies, all values are editable.
 
-          customer_type_id: The ID of the customer type, used for categorizing customers (e.g., by industry
-              or region).
+          custom_contact_fields: Additional custom contact fields for this customer.
+
+          customer_type_id: The category or type assigned to this customer, allowing for meaningful grouping
+              and segmentation (e.g., by industry or region).
 
           email: The customer's email address.
 
-          external_id: An arbitrary globally unique identifier (GUID) the developer can provide to
-              track this object in their own system. This value must be formatted as a GUID;
-              otherwise, QuickBooks will return an error.
+          external_id: A developer-assigned globally unique identifier (GUID) for tracking this object
+              in external systems. Must be formatted as a valid GUID; otherwise, QuickBooks
+              will return an error.
 
           fax: The customer's fax number.
 
-          first_name: The customer's first name.
+          first_name: The first name of the contact person for this customer.
 
-          is_active: Whether this customer is active. QuickBooks hides inactive objects from most
-              views and reports in the UI.
+          is_active: Indicates whether this customer is active. Inactive objects are typically hidden
+              from views and reports in QuickBooks.
 
-          item_sales_tax_id: The ID of the item sales tax, used to calculate a single sales tax that is
-              collected at a specified rate and paid to a single agency.
+          item_sales_tax_id: The specific sales tax item used to calculate the actual tax amount for this
+              customer's transactions. It represents a single tax rate collected for a single
+              tax agency. This is more specific than `salesTaxCode`, which only indicates
+              taxability, and is used for the actual tax calculation and reporting.
 
-          job_description: The description of the job, if this is a job (i.e., sub-customer).
+          job_description: A brief description of this customer's job, if this object is a job (i.e.,
+              sub-customer).
 
-          job_end_date: The actual end date of the job, if applicable.
+          job_end_date: The actual completion date of this customer's job, if applicable, in ISO 8601
+              format (YYYY-MM-DD).
 
-          job_projected_end_date: The projected end date of the job, if applicable.
+          job_projected_end_date: The projected completion date for this customer's job, if applicable, in ISO
+              8601 format (YYYY-MM-DD).
 
-          job_start_date: The start date of the job, if applicable.
+          job_start_date: The date when work on this customer's job began, if applicable, in ISO 8601
+              format (YYYY-MM-DD).
 
-          job_title: The customer's job title.
+          job_status: The status of this customer's job, if this object is a job (i.e., sub-customer).
 
-          job_type_id: The ID of the job type, if this is a job (i.e., sub-customer).
+          job_title: The job title of the contact person for this customer.
 
-          last_name: The customer's last name.
+          job_type_id: The type or category of this customer's job, if this object is a job (i.e.,
+              sub-customer). Useful for classifying into meaningful segments (e.g., repair,
+              installation, consulting).
 
-          middle_name: The customer's middle name.
+          last_name: The last name of the contact person for this customer.
 
-          open_balance: The opening balance of this customer's account.
+          middle_name: The middle name of the contact person for this customer.
 
-          open_balance_date: The date of the opening balance for this customer.
+          note: Additional notes or comments about this customer.
 
-          parent_id: The ID of the parent customer or job.
+          open_balance: The opening balance for this customer's account, indicating the amount owed by
+              the customer, represented as a decimal string.
 
-          phone: The customer's phone number.
+          open_balance_date: The date of the opening balance for this customer, in ISO 8601 format
+              (YYYY-MM-DD).
 
-          preferred_payment_method_id: The ID of the customer's preferred payment method, if they have one.
+          parent_id: The parent customer one level above this one in the hierarchy. For example, if
+              this customer has a `fullName` of "Jones:Kitchen-Renovation", its parent has a
+              `fullName` of "Jones". If this customer is at the top level, `parent` will be
+              `null`.
 
-          price_level_id: The ID of the custom price level for this customer. QuickBooks will
-              automatically use the custom price in new invoices, sales receipts, sales
-              orders, or credit memos for that customer. You can override this automatic
-              feature, however, when you create the invoices, sales receipts, etc. Notice that
-              the affected sales transactions do not list the price level, but instead list
-              the rate for the item, which was set using the price level.
+          phone: The customer's primary telephone number.
 
-          resale_number: The customer's resale number, if they have one. This number will not affect
-              reports or sales tax calculations.
+          preferred_delivery_method: The preferred method for delivering invoices and other documents to this
+              customer.
 
-          sales_representative_id: The ID of the customer's sales representative.
+          preferred_payment_method_id: The customer's preferred payment method (e.g., cash, check, credit card).
 
-          sales_tax_code_id: The ID of the sales tax code, indicating whether related items are taxable or
-              non-taxable.
+          price_level_id: The custom price level assigned to this customer, used to apply custom pricing
+              in invoices, sales receipts, sales orders, or credit memos for that customer.
+              You can override this automatic feature, however, when you create the invoices,
+              sales receipts, etc. Notice that the affected sales transactions do not list the
+              price level, but instead list the rate for the item, which was set using the
+              price level.
 
-          salutation: The customer's formal salutation that precedes their name.
+          resale_number: The customer's resale number, used if the customer is purchasing items for
+              resale. This number does not affect sales tax calculations or reports in
+              QuickBooks.
+
+          sales_representative_id: The customer's sales representative. Sales representatives can be employees,
+              vendors, or other names in QuickBooks.
+
+          sales_tax_code_id: The sales tax code associated with this customer, determining whether items sold
+              to this customer are taxable or non-taxable. It's used to assign a default tax
+              status to all transactions for this customer. Default codes include 'NON'
+              (non-taxable) and 'TAX' (taxable), but custom codes can also be created in
+              QuickBooks. If QuickBooks is not set up to charge sales tax, it will assign the
+              default non-taxable code to all sales.
+
+          sales_tax_country: The country for which sales tax is collected for this customer.
+
+          salutation: The formal salutation title that precedes the name of the contact person for
+              this customer, such as 'Mr.', 'Ms.', or 'Dr.'.
 
           shipping_address: The customer's shipping address.
 
-          tax_registration_number: The tax registration number associated with this customer, for use in Canada or
-              the UK.
+          tax_registration_number: The customer's tax registration number, for use in Canada or the UK.
 
-          terms_id: The ID of the customer's payment terms.
+          terms_id: The customer's payment terms, defining when payment is due and any applicable
+              discounts.
 
           extra_headers: Send extra headers
 
@@ -687,16 +773,16 @@ class AsyncCustomersResource(AsyncAPIResource):
                 {
                     "name": name,
                     "account_number": account_number,
-                    "additional_contacts": additional_contacts,
                     "additional_notes": additional_notes,
                     "alternate_contact": alternate_contact,
                     "alternate_phone": alternate_phone,
                     "alternate_shipping_addresses": alternate_shipping_addresses,
                     "billing_address": billing_address,
-                    "cc": cc,
+                    "cc_email": cc_email,
                     "class_id": class_id,
                     "company_name": company_name,
                     "contact": contact,
+                    "contacts": contacts,
                     "credit_card": credit_card,
                     "credit_limit": credit_limit,
                     "currency_id": currency_id,
@@ -717,6 +803,7 @@ class AsyncCustomersResource(AsyncAPIResource):
                     "job_type_id": job_type_id,
                     "last_name": last_name,
                     "middle_name": middle_name,
+                    "note": note,
                     "open_balance": open_balance,
                     "open_balance_date": open_balance_date,
                     "parent_id": parent_id,
