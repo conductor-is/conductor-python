@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.1.0-alpha.5 (2024-10-06)
+
+Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/conductor-is/conductor-python/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)
+
+### Features
+
+* **api:** update via SDK Studio ([#38](https://github.com/conductor-is/conductor-python/issues/38)) ([2ea197b](https://github.com/conductor-is/conductor-python/commit/2ea197ba93ee128b07697900af32d1eadd959fc9))
+
+
+### Chores
+
+* **internal:** add support for parsing bool response content ([#42](https://github.com/conductor-is/conductor-python/issues/42)) ([b59e831](https://github.com/conductor-is/conductor-python/commit/b59e831d1a32f4f23f392ec634f2154fba1c06b5))
+* **internal:** codegen related update ([#40](https://github.com/conductor-is/conductor-python/issues/40)) ([f759a7a](https://github.com/conductor-is/conductor-python/commit/f759a7a89512509169e0f8ded4bd7d2ce3e2d147))
+* **internal:** codegen related update ([#41](https://github.com/conductor-is/conductor-python/issues/41)) ([3e863ee](https://github.com/conductor-is/conductor-python/commit/3e863ee5cf5418a95ab884b17d5bc1cb511b6aa0))
+
 ## 0.1.0-alpha.4 (2024-09-30)
 
 Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/conductor-is/conductor-python/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
