@@ -14,8 +14,8 @@ class QbdStandardTerm(BaseModel):
     id: str
     """The unique identifier assigned by QuickBooks for this standard term.
 
-    This ID is unique among all standard terms but not across different object
-    types.
+    This ID is unique among all standard terms but not across different QuickBooks
+    object types.
     """
 
     created_at: str = FieldInfo(alias="createdAt")

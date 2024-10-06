@@ -53,7 +53,7 @@ class AccountsReceivableAccount(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -104,7 +104,7 @@ class Class(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -120,7 +120,7 @@ class Currency(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -136,7 +136,7 @@ class Customer(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -152,7 +152,7 @@ class CustomerMessage(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -168,7 +168,7 @@ class CustomerSalesTaxCode(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -204,7 +204,7 @@ class DocumentTemplate(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -240,7 +240,7 @@ class InvoiceLineGroupInvoiceLineClass(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -276,7 +276,7 @@ class InvoiceLineGroupInvoiceLineInventorySite(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -292,7 +292,7 @@ class InvoiceLineGroupInvoiceLineInventorySiteLocation(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -308,7 +308,7 @@ class InvoiceLineGroupInvoiceLineItem(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -324,7 +324,7 @@ class InvoiceLineGroupInvoiceLineOverrideUnitOfMeasureSet(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -340,7 +340,7 @@ class InvoiceLineGroupInvoiceLineSalesTaxCode(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -463,10 +463,12 @@ class InvoiceLineGroupInvoiceLine(BaseModel):
 
     sales_tax_code: Optional[InvoiceLineGroupInvoiceLineSalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)
     """
-    The sales tax code associated with this invoice line, indicating whether it is
-    taxable or non-taxable. Default codes include 'NON' (non-taxable) and 'TAX'
-    (taxable). If QuickBooks is not set up to charge sales tax, it will assign the
-    default non-taxable code to all sales.
+    The sales tax code associated with this invoice line, determining whether it is
+    taxable or non-taxable. It's used to assign a default tax status to all
+    transactions for this invoice line. Default codes include 'NON' (non-taxable)
+    and 'TAX' (taxable), but custom codes can also be created in QuickBooks. If
+    QuickBooks is not set up to charge sales tax, it will assign the default
+    non-taxable code to all sales.
     """
 
     serial_number: Optional[str] = FieldInfo(alias="serialNumber", default=None)
@@ -493,7 +495,7 @@ class InvoiceLineGroupItemGroup(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -509,7 +511,7 @@ class InvoiceLineGroupOverrideUnitOfMeasureSet(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -592,7 +594,7 @@ class InvoiceLineClass(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -628,7 +630,7 @@ class InvoiceLineInventorySite(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -644,7 +646,7 @@ class InvoiceLineInventorySiteLocation(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -660,7 +662,7 @@ class InvoiceLineItem(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -676,7 +678,7 @@ class InvoiceLineOverrideUnitOfMeasureSet(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -692,7 +694,7 @@ class InvoiceLineSalesTaxCode(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -815,10 +817,12 @@ class InvoiceLine(BaseModel):
 
     sales_tax_code: Optional[InvoiceLineSalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)
     """
-    The sales tax code associated with this invoice line, indicating whether it is
-    taxable or non-taxable. Default codes include 'NON' (non-taxable) and 'TAX'
-    (taxable). If QuickBooks is not set up to charge sales tax, it will assign the
-    default non-taxable code to all sales.
+    The sales tax code associated with this invoice line, determining whether it is
+    taxable or non-taxable. It's used to assign a default tax status to all
+    transactions for this invoice line. Default codes include 'NON' (non-taxable)
+    and 'TAX' (taxable), but custom codes can also be created in QuickBooks. If
+    QuickBooks is not set up to charge sales tax, it will assign the default
+    non-taxable code to all sales.
     """
 
     serial_number: Optional[str] = FieldInfo(alias="serialNumber", default=None)
@@ -845,7 +849,7 @@ class ItemSalesTax(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -917,7 +921,7 @@ class SalesRepresentative(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -968,7 +972,7 @@ class ShippingMethod(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -984,7 +988,7 @@ class Terms(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -1064,7 +1068,7 @@ class QbdInvoice(BaseModel):
 
     customer_sales_tax_code: Optional[CustomerSalesTaxCode] = FieldInfo(alias="customerSalesTaxCode", default=None)
     """
-    The sales-tax code for items sold to the `customer` of this invoice, indicating
+    The sales tax code for items sold to the `customer` of this invoice, determining
     whether items sold to this customer are taxable or non-taxable.
     """
 
@@ -1137,12 +1141,11 @@ class QbdInvoice(BaseModel):
     """
 
     item_sales_tax: Optional[ItemSalesTax] = FieldInfo(alias="itemSalesTax", default=None)
-    """The sales tax item for items associated with this invoice.
-
-    A sales-tax item represents a single sales tax that is collected at a specified
-    rate and paid to a single agency. For complex tax situations, a zero percent tax
-    item named "Tax Calculated On Invoice" may be used, indicating that taxes are
-    applied manually on the invoice.
+    """
+    The specific sales tax item used to calculate the actual tax amount for this
+    invoice's transactions. It represents a single tax rate collected for a single
+    tax agency. This is more specific than `salesTaxCode`, which only indicates
+    taxability, and is used for the actual tax calculation and reporting.
     """
 
     linked_transactions: List[LinkedTransaction] = FieldInfo(alias="linkedTransactions")

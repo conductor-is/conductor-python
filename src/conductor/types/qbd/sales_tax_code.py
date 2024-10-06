@@ -15,7 +15,7 @@ class ItemSalesTax(BaseModel):
     """The unique identifier assigned by QuickBooks for this object.
 
     This ID is unique among all objects of the same type, but not across different
-    object types.
+    QuickBooks object types.
     """
 
     full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
@@ -30,8 +30,8 @@ class SalesTaxCode(BaseModel):
     id: str
     """The unique identifier assigned by QuickBooks for this sales tax code.
 
-    This ID is unique among all sales tax codes but not across different object
-    types.
+    This ID is unique among all sales tax codes but not across different QuickBooks
+    object types.
     """
 
     created_at: str = FieldInfo(alias="createdAt")
@@ -59,12 +59,11 @@ class SalesTaxCode(BaseModel):
     """
 
     item_sales_tax: Optional[ItemSalesTax] = FieldInfo(alias="itemSalesTax", default=None)
-    """The sales tax item for items associated with this sales tax code.
-
-    A sales-tax item represents a single sales tax that is collected at a specified
-    rate and paid to a single agency. For complex tax situations, a zero percent tax
-    item named "Tax Calculated On Invoice" may be used, indicating that taxes are
-    applied manually on the invoice.
+    """
+    The specific sales tax item used to calculate the actual tax amount for this
+    sales tax code's transactions. It represents a single tax rate collected for a
+    single tax agency. This is more specific than `salesTaxCode`, which only
+    indicates taxability, and is used for the actual tax calculation and reporting.
     """
 
     name: str
