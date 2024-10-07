@@ -9,10 +9,10 @@ from ..._utils import PropertyInfo
 
 __all__ = [
     "VendorCreateParams",
-    "AdditionalContact",
-    "AdditionalContactCustomContactField",
     "AdditionalNote",
     "BillingAddress",
+    "Contact",
+    "ContactCustomContactField",
     "CustomContactField",
     "ShippingAddress",
 ]
@@ -20,7 +20,7 @@ __all__ = [
 
 class VendorCreateParams(TypedDict, total=False):
     name: Required[str]
-    """The vendor's case-insensitive unique name, unique across all vendors."""
+    """The case-insensitive unique name of this vendor, unique across all vendors."""
 
     conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]
     """
@@ -29,81 +29,87 @@ class VendorCreateParams(TypedDict, total=False):
     """
 
     account_number: Annotated[str, PropertyInfo(alias="accountNumber")]
-    """The vendor's account number."""
-
-    additional_contacts: Annotated[Iterable[AdditionalContact], PropertyInfo(alias="additionalContacts")]
-    """Additional contacts."""
+    """
+    The vendor's account number, which appears in the QuickBooks chart of accounts,
+    reports, and graphs. Note that if the "Use Account Numbers" preference is turned
+    off in QuickBooks, the account number may not be visible in the user interface,
+    but it can still be set and retrieved through the API.
+    """
 
     additional_notes: Annotated[Iterable[AdditionalNote], PropertyInfo(alias="additionalNotes")]
     """Additional notes about this vendor."""
 
     alternate_contact: Annotated[str, PropertyInfo(alias="alternateContact")]
-    """The vendor's alternate contact name."""
+    """The name of an alternate contact person for this vendor."""
 
     alternate_phone: Annotated[str, PropertyInfo(alias="alternatePhone")]
-    """The vendor's alternate phone number."""
+    """The vendor's alternate telephone number."""
 
     billing_address: Annotated[BillingAddress, PropertyInfo(alias="billingAddress")]
     """The vendor's billing address."""
 
     billing_rate_id: Annotated[str, PropertyInfo(alias="billingRateId")]
-    """The ID of the billing rate associated with this vendor.
-
-    Use this rate to override a service-item's rate when recording a time-tracking
-    transaction for this vendor.
+    """
+    The vendor's billing rate, used to override service item rates in time tracking
+    transactions.
     """
 
-    cc: str
-    """The vendor's CC email address."""
-
-    check_name: Annotated[str, PropertyInfo(alias="checkName")]
-    """The vendor's name as it will appear on checks sent to the vendor."""
+    cc_email: Annotated[str, PropertyInfo(alias="ccEmail")]
+    """An email address to carbon copy (CC) on communications with this vendor."""
 
     class_id: Annotated[str, PropertyInfo(alias="classId")]
-    """The class associated with this object.
+    """The vendor's class.
 
-    Classes can be used to categorize objects or transactions by department,
-    location, or other meaningful segments.
+    Classes can be used to categorize objects into meaningful segments, such as by
+    department, location, or type of work. In QuickBooks, class tracking is off by
+    default.
     """
 
     company_name: Annotated[str, PropertyInfo(alias="companyName")]
-    """The name of the vendor's business.
+    """The name of the company associated with this vendor.
 
-    This is used on invoices, checks, and other forms.
+    This name is used on invoices, checks, and other forms.
     """
 
     contact: str
-    """The vendor's contact name."""
+    """The name of the primary contact person for this vendor."""
+
+    contacts: Iterable[Contact]
+    """Additional alternate contacts for this vendor."""
 
     credit_limit: Annotated[str, PropertyInfo(alias="creditLimit")]
     """The vendor's credit limit."""
 
     currency_id: Annotated[str, PropertyInfo(alias="currencyId")]
-    """The ID of the currency associated with this vendor."""
+    """The vendor's currency.
+
+    For built-in currencies, the name and code are standard international values.
+    For user-defined currencies, all values are editable.
+    """
 
     custom_contact_fields: Annotated[Iterable[CustomContactField], PropertyInfo(alias="customContactFields")]
-    """Additional custom contact fields."""
+    """Additional custom contact fields for this vendor."""
 
     email: str
     """The vendor's email address."""
 
     external_id: Annotated[str, PropertyInfo(alias="externalId")]
     """
-    An arbitrary globally unique identifier (GUID) the developer can provide to
-    track this object in their own system. This value must be formatted as a GUID;
-    otherwise, QuickBooks will return an error.
+    A developer-assigned globally unique identifier (GUID) for tracking this object
+    in external systems. Must be formatted as a valid GUID; otherwise, QuickBooks
+    will return an error.
     """
 
     fax: str
     """The vendor's fax number."""
 
     first_name: Annotated[str, PropertyInfo(alias="firstName")]
-    """The vendor's first name."""
+    """The first name of the contact person for this vendor."""
 
     is_active: Annotated[bool, PropertyInfo(alias="isActive")]
-    """Whether this vendor is active.
+    """Indicates whether this vendor is active.
 
-    QuickBooks hides inactive objects from most views and reports in the UI.
+    Inactive objects are typically hidden from views and reports in QuickBooks.
     """
 
     is_eligible_for1099: Annotated[bool, PropertyInfo(alias="isEligibleFor1099")]
@@ -113,31 +119,40 @@ class VendorCreateParams(TypedDict, total=False):
     """
 
     is_sales_tax_agency: Annotated[bool, PropertyInfo(alias="isSalesTaxAgency")]
-    """Whether this vendor is a sales tax agency.
-
-    If true, the vendor is responsible for collecting and remitting sales tax.
-    """
+    """Indicates whether this vendor is a sales tax agency."""
 
     is_tax_on_tax: Annotated[bool, PropertyInfo(alias="isTaxOnTax")]
-    """Whether tax is charged on top of tax in Canada or the UK for this vendor."""
+    """
+    Indicates whether tax is charged on top of tax for this vendor, for use in
+    Canada or the UK.
+    """
 
     is_tax_tracked_on_purchases: Annotated[bool, PropertyInfo(alias="isTaxTrackedOnPurchases")]
-    """Whether tax is tracked on purchases in Canada or the UK for this vendor."""
+    """
+    Indicates whether tax is tracked on purchases for this vendor, for use in Canada
+    or the UK.
+    """
 
     is_tax_tracked_on_sales: Annotated[bool, PropertyInfo(alias="isTaxTrackedOnSales")]
-    """Whether tax is tracked on sales in Canada or the UK for this vendor."""
+    """
+    Indicates whether tax is tracked on sales for this vendor, for use in Canada or
+    the UK.
+    """
 
     job_title: Annotated[str, PropertyInfo(alias="jobTitle")]
-    """The vendor's job title."""
+    """The job title of the contact person for this vendor."""
 
     last_name: Annotated[str, PropertyInfo(alias="lastName")]
-    """The vendor's last name."""
+    """The last name of the contact person for this vendor."""
 
     middle_name: Annotated[str, PropertyInfo(alias="middleName")]
-    """The vendor's middle name."""
+    """The middle name of the contact person for this vendor."""
+
+    name_on_check: Annotated[str, PropertyInfo(alias="nameOnCheck")]
+    """The vendor's name as it should appear on checks issued to this vendor."""
 
     note: str
-    """Additional information about this vendor."""
+    """Additional notes or comments about this vendor."""
 
     open_balance: Annotated[str, PropertyInfo(alias="openBalance")]
     """The opening balance of this vendor's account.
@@ -152,55 +167,59 @@ class VendorCreateParams(TypedDict, total=False):
     """
 
     phone: str
-    """The vendor's phone number."""
+    """The vendor's primary telephone number."""
 
     prefill_account_ids: Annotated[List[str], PropertyInfo(alias="prefillAccountIds")]
-    """The IDs of the accounts to prefill when entering bills for this vendor."""
+    """The expense accounts to prefill when entering bills for this vendor."""
 
-    reporting_period: Annotated[Literal["Monthly", "Quarterly"], PropertyInfo(alias="reportingPeriod")]
+    reporting_period: Annotated[Literal["monthly", "quarterly"], PropertyInfo(alias="reportingPeriod")]
+    """The vendor's tax reporting period, for use in Canada or the UK."""
 
     sales_tax_code_id: Annotated[str, PropertyInfo(alias="salesTaxCodeId")]
-    """The ID of the sales tax code associated with this vendor.
-
-    Sales tax codes indicate whether items are taxable or non-taxable. Two default
-    codes are 'Non' (non-taxable) and 'Tax' (taxable). This code determines how
-    sales tax is applied to items related to this vendor. If QuickBooks is not set
-    up to charge sales tax, it will assign the default non-taxable code to all
-    sales.
+    """
+    The sales tax code associated with this vendor, determining whether items bought
+    from this vendor are taxable or non-taxable. It's used to assign a default tax
+    status to all transactions for this vendor. Default codes include 'NON'
+    (non-taxable) and 'TAX' (taxable), but custom codes can also be created in
+    QuickBooks. If QuickBooks is not set up to charge sales tax, it will assign the
+    default non-taxable code to all sales.
     """
 
     sales_tax_country: Annotated[Literal["australia", "canada", "uk", "us"], PropertyInfo(alias="salesTaxCountry")]
-    """The country for which sales tax is collected."""
+    """The country for which sales tax is collected for this vendor."""
 
     sales_tax_return_id: Annotated[str, PropertyInfo(alias="salesTaxReturnId")]
-    """The ID of the sales tax return associated with this vendor.
-
-    This is used to track sales tax returns for this vendor.
+    """
+    The vendor's sales tax return information, used for tracking and reporting sales
+    tax liabilities.
     """
 
     salutation: str
-    """The vendor's formal salutation that precedes their name."""
+    """
+    The formal salutation title that precedes the name of the contact person for
+    this vendor, such as 'Mr.', 'Ms.', or 'Dr.'.
+    """
 
     shipping_address: Annotated[ShippingAddress, PropertyInfo(alias="shippingAddress")]
     """The vendor's shipping address."""
 
     tax_id: Annotated[str, PropertyInfo(alias="taxId")]
-    """The vendor's tax ID."""
+    """The vendor's tax identification number (e.g., EIN or SSN)."""
 
     tax_on_purchases_account_id: Annotated[str, PropertyInfo(alias="taxOnPurchasesAccountId")]
     """
-    The ID of the account used for taxes on purchases in Canada or the UK for this
-    vendor.
+    The account used for tracking taxes on purchases for this vendor, for use in
+    Canada or the UK.
     """
 
     tax_on_sales_account_id: Annotated[str, PropertyInfo(alias="taxOnSalesAccountId")]
     """
-    The ID of the account used for taxes on sales in Canada or the UK for this
-    vendor.
+    The account used for tracking taxes on sales for this vendor, for use in Canada
+    or the UK.
     """
 
     tax_registration_number: Annotated[str, PropertyInfo(alias="taxRegistrationNumber")]
-    """The tax registration number associated with this vendor."""
+    """The vendor's tax registration number, for use in Canada or the UK."""
 
     terms_id: Annotated[str, PropertyInfo(alias="termsId")]
     """The ID of the vendor's payment terms, which define how the vendor is paid."""
@@ -211,36 +230,6 @@ class VendorCreateParams(TypedDict, total=False):
     This can represent industry, location, or other business-specific
     classifications.
     """
-
-
-class AdditionalContactCustomContactField(TypedDict, total=False):
-    name: Required[str]
-    """The name of the custom contact field (e.g., "old address", "secondary phone")."""
-
-    value: Required[str]
-    """The value of the custom contact field."""
-
-
-class AdditionalContact(TypedDict, total=False):
-    first_name: Required[Annotated[str, PropertyInfo(alias="firstName")]]
-    """The contact's first name."""
-
-    custom_contact_fields: Annotated[
-        Iterable[AdditionalContactCustomContactField], PropertyInfo(alias="customContactFields")
-    ]
-    """Additional custom contact fields, such as phone numbers or email addresses."""
-
-    job_title: Annotated[str, PropertyInfo(alias="jobTitle")]
-    """The contact's job title."""
-
-    last_name: Annotated[str, PropertyInfo(alias="lastName")]
-    """The contact's last name."""
-
-    middle_name: Annotated[str, PropertyInfo(alias="middleName")]
-    """The contact's middle name."""
-
-    salutation: str
-    """The contact's formal salutation that precedes their name."""
 
 
 class AdditionalNote(TypedDict, total=False):
@@ -281,6 +270,34 @@ class BillingAddress(TypedDict, total=False):
 
     state: str
     """The state, county, province, or region name of the address."""
+
+
+class ContactCustomContactField(TypedDict, total=False):
+    name: Required[str]
+    """The name of the custom contact field (e.g., "old address", "secondary phone")."""
+
+    value: Required[str]
+    """The value of the custom contact field."""
+
+
+class Contact(TypedDict, total=False):
+    first_name: Required[Annotated[str, PropertyInfo(alias="firstName")]]
+    """The contact's first name."""
+
+    custom_contact_fields: Annotated[Iterable[ContactCustomContactField], PropertyInfo(alias="customContactFields")]
+    """Additional custom contact fields, such as phone numbers or email addresses."""
+
+    job_title: Annotated[str, PropertyInfo(alias="jobTitle")]
+    """The contact's job title."""
+
+    last_name: Annotated[str, PropertyInfo(alias="lastName")]
+    """The contact's last name."""
+
+    middle_name: Annotated[str, PropertyInfo(alias="middleName")]
+    """The contact's middle name."""
+
+    salutation: str
+    """The contact's formal salutation that precedes their name."""
 
 
 class CustomContactField(TypedDict, total=False):

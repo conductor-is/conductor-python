@@ -90,9 +90,11 @@ class QbdSalesTaxItem(BaseModel):
     """The barcode value for this sales tax item."""
 
     class_: Optional[Class] = FieldInfo(alias="class", default=None)
-    """
-    The sales tax item's class, used for categorization (e.g., by department,
-    location, or type of work).
+    """The sales tax item's class.
+
+    Classes can be used to categorize objects into meaningful segments, such as by
+    department, location, or type of work. In QuickBooks, class tracking is off by
+    default.
     """
 
     created_at: str = FieldInfo(alias="createdAt")
