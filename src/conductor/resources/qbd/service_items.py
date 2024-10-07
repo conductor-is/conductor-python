@@ -52,7 +52,7 @@ class ServiceItemsResource(SyncAPIResource):
         *,
         name: str,
         conductor_end_user_id: str,
-        barcode: service_item_create_params.Barcode | NotGiven = NOT_GIVEN,
+        bar_code: service_item_create_params.BarCode | NotGiven = NOT_GIVEN,
         class_id: str | NotGiven = NOT_GIVEN,
         external_id: str | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
@@ -73,15 +73,45 @@ class ServiceItemsResource(SyncAPIResource):
         Creates a service item.
 
         Args:
+          name: The case-insensitive name of this service item. Not guaranteed to be unique
+              because it does not include the names of its parent objects like `fullName`
+              does. For example, two service items could both have the `name` "Web-Design",
+              but they could have unique `fullName` values, such as "Consulting:Web-Design"
+              and "Contracting:Web-Design".
+
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          class_id: The class associated with this object. Classes can be used to categorize objects
-              or transactions by department, location, or other meaningful segments.
+          bar_code: The service item's barcode.
 
-          external_id: An arbitrary globally unique identifier (GUID) the developer can provide to
-              track this object in their own system. This value must be formatted as a GUID;
-              otherwise, QuickBooks will return an error.
+          class_id: The service item's class. Classes can be used to categorize objects into
+              meaningful segments, such as department, location, or type of work. In
+              QuickBooks, class tracking is off by default.
+
+          external_id: A developer-assigned globally unique identifier (GUID) for tracking this object
+              in external systems. Must be formatted as a valid GUID; otherwise, QuickBooks
+              will return an error.
+
+          is_active: Indicates whether this service item is active. Inactive objects are typically
+              hidden from views and reports in QuickBooks.
+
+          is_tax_included: Indicates whether the price of this service item includes tax. This is primarily
+              used in international versions of QuickBooks.
+
+          parent_id: The parent service item one level above this one in the hierarchy. For example,
+              if this service item has a `fullName` of "Services:Consulting:Web-Design", its
+              parent has a `fullName` of "Services:Consulting". If this service item is at the
+              top level, `parent` will be `null`.
+
+          sales_tax_code_id: The sales tax code associated with this service item, determining whether it is
+              taxable or non-taxable. It's used to assign a default tax status to all
+              transactions for this service item. Default codes include 'NON' (non-taxable)
+              and 'TAX' (taxable), but custom codes can also be created in QuickBooks. If
+              QuickBooks is not set up to charge sales tax, it will assign the default
+              non-taxable code to all sales.
+
+          unit_of_measure_set_id: The unit of measure set associated with this service item, which consists of a
+              base unit and related units.
 
           extra_headers: Send extra headers
 
@@ -97,7 +127,7 @@ class ServiceItemsResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "name": name,
-                    "barcode": barcode,
+                    "bar_code": bar_code,
                     "class_id": class_id,
                     "external_id": external_id,
                     "is_active": is_active,
@@ -306,7 +336,7 @@ class AsyncServiceItemsResource(AsyncAPIResource):
         *,
         name: str,
         conductor_end_user_id: str,
-        barcode: service_item_create_params.Barcode | NotGiven = NOT_GIVEN,
+        bar_code: service_item_create_params.BarCode | NotGiven = NOT_GIVEN,
         class_id: str | NotGiven = NOT_GIVEN,
         external_id: str | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
@@ -327,15 +357,45 @@ class AsyncServiceItemsResource(AsyncAPIResource):
         Creates a service item.
 
         Args:
+          name: The case-insensitive name of this service item. Not guaranteed to be unique
+              because it does not include the names of its parent objects like `fullName`
+              does. For example, two service items could both have the `name` "Web-Design",
+              but they could have unique `fullName` values, such as "Consulting:Web-Design"
+              and "Contracting:Web-Design".
+
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          class_id: The class associated with this object. Classes can be used to categorize objects
-              or transactions by department, location, or other meaningful segments.
+          bar_code: The service item's barcode.
 
-          external_id: An arbitrary globally unique identifier (GUID) the developer can provide to
-              track this object in their own system. This value must be formatted as a GUID;
-              otherwise, QuickBooks will return an error.
+          class_id: The service item's class. Classes can be used to categorize objects into
+              meaningful segments, such as department, location, or type of work. In
+              QuickBooks, class tracking is off by default.
+
+          external_id: A developer-assigned globally unique identifier (GUID) for tracking this object
+              in external systems. Must be formatted as a valid GUID; otherwise, QuickBooks
+              will return an error.
+
+          is_active: Indicates whether this service item is active. Inactive objects are typically
+              hidden from views and reports in QuickBooks.
+
+          is_tax_included: Indicates whether the price of this service item includes tax. This is primarily
+              used in international versions of QuickBooks.
+
+          parent_id: The parent service item one level above this one in the hierarchy. For example,
+              if this service item has a `fullName` of "Services:Consulting:Web-Design", its
+              parent has a `fullName` of "Services:Consulting". If this service item is at the
+              top level, `parent` will be `null`.
+
+          sales_tax_code_id: The sales tax code associated with this service item, determining whether it is
+              taxable or non-taxable. It's used to assign a default tax status to all
+              transactions for this service item. Default codes include 'NON' (non-taxable)
+              and 'TAX' (taxable), but custom codes can also be created in QuickBooks. If
+              QuickBooks is not set up to charge sales tax, it will assign the default
+              non-taxable code to all sales.
+
+          unit_of_measure_set_id: The unit of measure set associated with this service item, which consists of a
+              base unit and related units.
 
           extra_headers: Send extra headers
 
@@ -351,7 +411,7 @@ class AsyncServiceItemsResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "name": name,
-                    "barcode": barcode,
+                    "bar_code": bar_code,
                     "class_id": class_id,
                     "external_id": external_id,
                     "is_active": is_active,

@@ -60,7 +60,7 @@ class VendorCreateParams(TypedDict, total=False):
     class_id: Annotated[str, PropertyInfo(alias="classId")]
     """The vendor's class.
 
-    Classes can be used to categorize objects into meaningful segments, such as by
+    Classes can be used to categorize objects into meaningful segments, such as
     department, location, or type of work. In QuickBooks, class tracking is off by
     default.
     """
@@ -78,7 +78,11 @@ class VendorCreateParams(TypedDict, total=False):
     """Additional alternate contacts for this vendor."""
 
     credit_limit: Annotated[str, PropertyInfo(alias="creditLimit")]
-    """The vendor's credit limit."""
+    """The vendor's credit limit, represented as a decimal string.
+
+    This is the maximum amount of money that can be spent being before billed by
+    this vendor. If `null`, there is no credit limit.
+    """
 
     currency_id: Annotated[str, PropertyInfo(alias="currencyId")]
     """The vendor's currency.
@@ -113,9 +117,10 @@ class VendorCreateParams(TypedDict, total=False):
     """
 
     is_eligible_for1099: Annotated[bool, PropertyInfo(alias="isEligibleFor1099")]
-    """Whether the vendor is eligible for 1099.
-
-    If `true`, then the fields `taxId` and `billingAddress` are required.
+    """
+    Indicates whether this vendor is eligible to receive a 1099 form for tax
+    reporting purposes. If `true`, then the fields `taxId` and `billingAddress` are
+    required.
     """
 
     is_sales_tax_agency: Annotated[bool, PropertyInfo(alias="isSalesTaxAgency")]
@@ -155,9 +160,9 @@ class VendorCreateParams(TypedDict, total=False):
     """Additional notes or comments about this vendor."""
 
     open_balance: Annotated[str, PropertyInfo(alias="openBalance")]
-    """The opening balance of this vendor's account.
-
-    A positive number indicates money owed to this vendor.
+    """
+    The opening balance for this vendor's account, indicating the amount owed to
+    this vendor, represented as a decimal string.
     """
 
     open_balance_date: Annotated[str, PropertyInfo(alias="openBalanceDate")]
@@ -203,7 +208,7 @@ class VendorCreateParams(TypedDict, total=False):
     shipping_address: Annotated[ShippingAddress, PropertyInfo(alias="shippingAddress")]
     """The vendor's shipping address."""
 
-    tax_id: Annotated[str, PropertyInfo(alias="taxId")]
+    tax_identification_number: Annotated[str, PropertyInfo(alias="taxIdentificationNumber")]
     """The vendor's tax identification number (e.g., EIN or SSN)."""
 
     tax_on_purchases_account_id: Annotated[str, PropertyInfo(alias="taxOnPurchasesAccountId")]
@@ -222,13 +227,15 @@ class VendorCreateParams(TypedDict, total=False):
     """The vendor's tax registration number, for use in Canada or the UK."""
 
     terms_id: Annotated[str, PropertyInfo(alias="termsId")]
-    """The ID of the vendor's payment terms, which define how the vendor is paid."""
+    """
+    The vendor's payment terms, defining when payment is due and any applicable
+    discounts.
+    """
 
     vendor_type_id: Annotated[str, PropertyInfo(alias="vendorTypeId")]
-    """The ID of the vendor's type, used for categorization.
-
-    This can represent industry, location, or other business-specific
-    classifications.
+    """
+    The vendor's type, used for categorizing vendors into meaningful segments, such
+    as industry or region.
     """
 
 

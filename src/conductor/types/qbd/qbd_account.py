@@ -261,11 +261,11 @@ class QbdAccount(BaseModel):
 
     total_balance: Optional[str] = FieldInfo(alias="totalBalance", default=None)
     """
-    The combined balance of this account and all its subordinate accounts,
-    represented as a decimal string. For example, the `totalBalance` for XYZ Bank
-    would be the total of the balances of all its sub-accounts (checking, savings,
-    and so on). If XYZ Bank did not have any sub-accounts, `totalBalance` and
-    `balance` would be the same.
+    The combined balance of this account and all its sub-accounts, represented as a
+    decimal string. For example, the `totalBalance` for XYZ Bank would be the total
+    of the balances of all its sub-accounts (checking, savings, and so on). If XYZ
+    Bank did not have any sub-accounts, `totalBalance` and `balance` would be the
+    same.
     """
 
     updated_at: str = FieldInfo(alias="updatedAt")
