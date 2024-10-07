@@ -362,10 +362,12 @@ class InvoiceLineGroupInvoiceLine(BaseModel):
     """The monetary amount for this invoice line, represented as a decimal string."""
 
     class_: Optional[InvoiceLineGroupInvoiceLineClass] = FieldInfo(alias="class", default=None)
-    """
-    The invoice line's class, used for categorization (e.g., by department,
-    location, or type of work). If a class is specified for the entire invoice, it
-    will be automatically applied to all line items unless overridden here.
+    """The invoice line's class.
+
+    Classes can be used to categorize objects into meaningful segments, such as by
+    department, location, or type of work. In QuickBooks, class tracking is off by
+    default. If a class is specified for the entire invoice, it will be
+    automatically applied to all line items unless overridden here.
     """
 
     custom_fields: List[InvoiceLineGroupInvoiceLineCustomField] = FieldInfo(alias="customFields")
@@ -716,10 +718,12 @@ class InvoiceLine(BaseModel):
     """The monetary amount for this invoice line, represented as a decimal string."""
 
     class_: Optional[InvoiceLineClass] = FieldInfo(alias="class", default=None)
-    """
-    The invoice line's class, used for categorization (e.g., by department,
-    location, or type of work). If a class is specified for the entire invoice, it
-    will be automatically applied to all line items unless overridden here.
+    """The invoice line's class.
+
+    Classes can be used to categorize objects into meaningful segments, such as by
+    department, location, or type of work. In QuickBooks, class tracking is off by
+    default. If a class is specified for the entire invoice, it will be
+    automatically applied to all line items unless overridden here.
     """
 
     custom_fields: List[InvoiceLineCustomField] = FieldInfo(alias="customFields")
@@ -1041,9 +1045,11 @@ class QbdInvoice(BaseModel):
     """The invoice's billing address."""
 
     class_: Optional[Class] = FieldInfo(alias="class", default=None)
-    """
-    The invoice's class, used for categorization (e.g., by department, location, or
-    type of work).
+    """The invoice's class.
+
+    Classes can be used to categorize objects into meaningful segments, such as by
+    department, location, or type of work. In QuickBooks, class tracking is off by
+    default.
     """
 
     created_at: str = FieldInfo(alias="createdAt")
