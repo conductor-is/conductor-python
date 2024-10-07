@@ -71,7 +71,7 @@ class CustomerCreateParams(TypedDict, total=False):
     class_id: Annotated[str, PropertyInfo(alias="classId")]
     """The customer's class.
 
-    Classes can be used to categorize objects into meaningful segments, such as by
+    Classes can be used to categorize objects into meaningful segments, such as
     department, location, or type of work. In QuickBooks, class tracking is off by
     default.
     """
@@ -113,8 +113,8 @@ class CustomerCreateParams(TypedDict, total=False):
 
     customer_type_id: Annotated[str, PropertyInfo(alias="customerTypeId")]
     """
-    The category or type assigned to this customer, allowing for meaningful grouping
-    and segmentation (e.g., by industry or region).
+    The customer's type, used for categorizing customers into meaningful segments,
+    such as industry or region.
     """
 
     email: str
@@ -200,7 +200,7 @@ class CustomerCreateParams(TypedDict, total=False):
     open_balance: Annotated[str, PropertyInfo(alias="openBalance")]
     """
     The opening balance for this customer's account, indicating the amount owed by
-    the customer, represented as a decimal string.
+    this customer, represented as a decimal string.
     """
 
     open_balance_date: Annotated[str, PropertyInfo(alias="openBalanceDate")]

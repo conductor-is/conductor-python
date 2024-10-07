@@ -207,12 +207,12 @@ class InventoryItem(BaseModel):
     """
 
     bar_code: Optional[str] = FieldInfo(alias="barCode", default=None)
-    """The barcode value for this inventory item."""
+    """The inventory item's barcode."""
 
     class_: Optional[Class] = FieldInfo(alias="class", default=None)
     """The inventory item's class.
 
-    Classes can be used to categorize objects into meaningful segments, such as by
+    Classes can be used to categorize objects into meaningful segments, such as
     department, location, or type of work. In QuickBooks, class tracking is off by
     default.
     """

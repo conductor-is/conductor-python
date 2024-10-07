@@ -92,7 +92,7 @@ class VendorsResource(SyncAPIResource):
         sales_tax_return_id: str | NotGiven = NOT_GIVEN,
         salutation: str | NotGiven = NOT_GIVEN,
         shipping_address: vendor_create_params.ShippingAddress | NotGiven = NOT_GIVEN,
-        tax_id: str | NotGiven = NOT_GIVEN,
+        tax_identification_number: str | NotGiven = NOT_GIVEN,
         tax_on_purchases_account_id: str | NotGiven = NOT_GIVEN,
         tax_on_sales_account_id: str | NotGiven = NOT_GIVEN,
         tax_registration_number: str | NotGiven = NOT_GIVEN,
@@ -133,7 +133,7 @@ class VendorsResource(SyncAPIResource):
           cc_email: An email address to carbon copy (CC) on communications with this vendor.
 
           class_id: The vendor's class. Classes can be used to categorize objects into meaningful
-              segments, such as by department, location, or type of work. In QuickBooks, class
+              segments, such as department, location, or type of work. In QuickBooks, class
               tracking is off by default.
 
           company_name: The name of the company associated with this vendor. This name is used on
@@ -143,7 +143,9 @@ class VendorsResource(SyncAPIResource):
 
           contacts: Additional alternate contacts for this vendor.
 
-          credit_limit: The vendor's credit limit.
+          credit_limit: The vendor's credit limit, represented as a decimal string. This is the maximum
+              amount of money that can be spent being before billed by this vendor. If `null`,
+              there is no credit limit.
 
           currency_id: The vendor's currency. For built-in currencies, the name and code are standard
               international values. For user-defined currencies, all values are editable.
@@ -163,8 +165,9 @@ class VendorsResource(SyncAPIResource):
           is_active: Indicates whether this vendor is active. Inactive objects are typically hidden
               from views and reports in QuickBooks.
 
-          is_eligible_for1099: Whether the vendor is eligible for 1099. If `true`, then the fields `taxId` and
-              `billingAddress` are required.
+          is_eligible_for1099: Indicates whether this vendor is eligible to receive a 1099 form for tax
+              reporting purposes. If `true`, then the fields `taxId` and `billingAddress` are
+              required.
 
           is_sales_tax_agency: Indicates whether this vendor is a sales tax agency.
 
@@ -187,8 +190,8 @@ class VendorsResource(SyncAPIResource):
 
           note: Additional notes or comments about this vendor.
 
-          open_balance: The opening balance of this vendor's account. A positive number indicates money
-              owed to this vendor.
+          open_balance: The opening balance for this vendor's account, indicating the amount owed to
+              this vendor, represented as a decimal string.
 
           open_balance_date: The date of the opening balance for this vendor, in ISO 8601 format
               (YYYY-MM-DD).
@@ -216,7 +219,7 @@ class VendorsResource(SyncAPIResource):
 
           shipping_address: The vendor's shipping address.
 
-          tax_id: The vendor's tax identification number (e.g., EIN or SSN).
+          tax_identification_number: The vendor's tax identification number (e.g., EIN or SSN).
 
           tax_on_purchases_account_id: The account used for tracking taxes on purchases for this vendor, for use in
               Canada or the UK.
@@ -226,10 +229,11 @@ class VendorsResource(SyncAPIResource):
 
           tax_registration_number: The vendor's tax registration number, for use in Canada or the UK.
 
-          terms_id: The ID of the vendor's payment terms, which define how the vendor is paid.
+          terms_id: The vendor's payment terms, defining when payment is due and any applicable
+              discounts.
 
-          vendor_type_id: The ID of the vendor's type, used for categorization. This can represent
-              industry, location, or other business-specific classifications.
+          vendor_type_id: The vendor's type, used for categorizing vendors into meaningful segments, such
+              as industry or region.
 
           extra_headers: Send extra headers
 
@@ -284,7 +288,7 @@ class VendorsResource(SyncAPIResource):
                     "sales_tax_return_id": sales_tax_return_id,
                     "salutation": salutation,
                     "shipping_address": shipping_address,
-                    "tax_id": tax_id,
+                    "tax_identification_number": tax_identification_number,
                     "tax_on_purchases_account_id": tax_on_purchases_account_id,
                     "tax_on_sales_account_id": tax_on_sales_account_id,
                     "tax_registration_number": tax_registration_number,
@@ -558,7 +562,7 @@ class AsyncVendorsResource(AsyncAPIResource):
         sales_tax_return_id: str | NotGiven = NOT_GIVEN,
         salutation: str | NotGiven = NOT_GIVEN,
         shipping_address: vendor_create_params.ShippingAddress | NotGiven = NOT_GIVEN,
-        tax_id: str | NotGiven = NOT_GIVEN,
+        tax_identification_number: str | NotGiven = NOT_GIVEN,
         tax_on_purchases_account_id: str | NotGiven = NOT_GIVEN,
         tax_on_sales_account_id: str | NotGiven = NOT_GIVEN,
         tax_registration_number: str | NotGiven = NOT_GIVEN,
@@ -599,7 +603,7 @@ class AsyncVendorsResource(AsyncAPIResource):
           cc_email: An email address to carbon copy (CC) on communications with this vendor.
 
           class_id: The vendor's class. Classes can be used to categorize objects into meaningful
-              segments, such as by department, location, or type of work. In QuickBooks, class
+              segments, such as department, location, or type of work. In QuickBooks, class
               tracking is off by default.
 
           company_name: The name of the company associated with this vendor. This name is used on
@@ -609,7 +613,9 @@ class AsyncVendorsResource(AsyncAPIResource):
 
           contacts: Additional alternate contacts for this vendor.
 
-          credit_limit: The vendor's credit limit.
+          credit_limit: The vendor's credit limit, represented as a decimal string. This is the maximum
+              amount of money that can be spent being before billed by this vendor. If `null`,
+              there is no credit limit.
 
           currency_id: The vendor's currency. For built-in currencies, the name and code are standard
               international values. For user-defined currencies, all values are editable.
@@ -629,8 +635,9 @@ class AsyncVendorsResource(AsyncAPIResource):
           is_active: Indicates whether this vendor is active. Inactive objects are typically hidden
               from views and reports in QuickBooks.
 
-          is_eligible_for1099: Whether the vendor is eligible for 1099. If `true`, then the fields `taxId` and
-              `billingAddress` are required.
+          is_eligible_for1099: Indicates whether this vendor is eligible to receive a 1099 form for tax
+              reporting purposes. If `true`, then the fields `taxId` and `billingAddress` are
+              required.
 
           is_sales_tax_agency: Indicates whether this vendor is a sales tax agency.
 
@@ -653,8 +660,8 @@ class AsyncVendorsResource(AsyncAPIResource):
 
           note: Additional notes or comments about this vendor.
 
-          open_balance: The opening balance of this vendor's account. A positive number indicates money
-              owed to this vendor.
+          open_balance: The opening balance for this vendor's account, indicating the amount owed to
+              this vendor, represented as a decimal string.
 
           open_balance_date: The date of the opening balance for this vendor, in ISO 8601 format
               (YYYY-MM-DD).
@@ -682,7 +689,7 @@ class AsyncVendorsResource(AsyncAPIResource):
 
           shipping_address: The vendor's shipping address.
 
-          tax_id: The vendor's tax identification number (e.g., EIN or SSN).
+          tax_identification_number: The vendor's tax identification number (e.g., EIN or SSN).
 
           tax_on_purchases_account_id: The account used for tracking taxes on purchases for this vendor, for use in
               Canada or the UK.
@@ -692,10 +699,11 @@ class AsyncVendorsResource(AsyncAPIResource):
 
           tax_registration_number: The vendor's tax registration number, for use in Canada or the UK.
 
-          terms_id: The ID of the vendor's payment terms, which define how the vendor is paid.
+          terms_id: The vendor's payment terms, defining when payment is due and any applicable
+              discounts.
 
-          vendor_type_id: The ID of the vendor's type, used for categorization. This can represent
-              industry, location, or other business-specific classifications.
+          vendor_type_id: The vendor's type, used for categorizing vendors into meaningful segments, such
+              as industry or region.
 
           extra_headers: Send extra headers
 
@@ -750,7 +758,7 @@ class AsyncVendorsResource(AsyncAPIResource):
                     "sales_tax_return_id": sales_tax_return_id,
                     "salutation": salutation,
                     "shipping_address": shipping_address,
-                    "tax_id": tax_id,
+                    "tax_identification_number": tax_identification_number,
                     "tax_on_purchases_account_id": tax_on_purchases_account_id,
                     "tax_on_sales_account_id": tax_on_sales_account_id,
                     "tax_registration_number": tax_registration_number,

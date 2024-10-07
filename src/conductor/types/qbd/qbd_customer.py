@@ -474,10 +474,10 @@ class QbdCustomer(BaseModel):
     """
 
     balance: Optional[str] = None
-    """The current balance owed by this customer, represented as a decimal string.
-
-    Compare with `totalBalance`. A positive number indicates money that the customer
-    owes.
+    """
+    The current balance owed by this customer, excluding balances from any jobs
+    (i.e., sub-customers), represented as a decimal string. Compare with
+    `totalBalance`. A positive number indicates money owed by the customer.
     """
 
     billing_address: Optional[BillingAddress] = FieldInfo(alias="billingAddress", default=None)
@@ -489,7 +489,7 @@ class QbdCustomer(BaseModel):
     class_: Optional[Class] = FieldInfo(alias="class", default=None)
     """The customer's class.
 
-    Classes can be used to categorize objects into meaningful segments, such as by
+    Classes can be used to categorize objects into meaningful segments, such as
     department, location, or type of work. In QuickBooks, class tracking is off by
     default.
     """
@@ -535,8 +535,8 @@ class QbdCustomer(BaseModel):
 
     customer_type: Optional[CustomerType] = FieldInfo(alias="customerType", default=None)
     """
-    The category or type assigned to this customer, allowing for meaningful grouping
-    and segmentation (e.g., by industry or region).
+    The customer's type, used for categorizing customers into meaningful segments,
+    such as industry or region.
     """
 
     custom_fields: List[CustomField] = FieldInfo(alias="customFields")
@@ -740,8 +740,8 @@ class QbdCustomer(BaseModel):
     """
     The combined balance of this customer and all of this customer's jobs (i.e.,
     sub-customers), represented as a decimal string. If there are no sub-customers,
-    `totalBalance` and `balance` are equal. A positive number indicates money that
-    the customer owes.
+    `totalBalance` and `balance` are equal. A positive number indicates money owed
+    by the customer.
     """
 
     updated_at: str = FieldInfo(alias="updatedAt")

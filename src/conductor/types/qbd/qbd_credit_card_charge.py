@@ -226,7 +226,7 @@ class ExpenseLine(BaseModel):
     class_: Optional[ExpenseLineClass] = FieldInfo(alias="class", default=None)
     """The expense line's class.
 
-    Classes can be used to categorize objects into meaningful segments, such as by
+    Classes can be used to categorize objects into meaningful segments, such as
     department, location, or type of work. In QuickBooks, class tracking is off by
     default.
     """
