@@ -142,7 +142,7 @@ class CustomersResource(SyncAPIResource):
           cc_email: An email address to carbon copy (CC) on communications with this customer.
 
           class_id: The customer's class. Classes can be used to categorize objects into meaningful
-              segments, such as by department, location, or type of work. In QuickBooks, class
+              segments, such as department, location, or type of work. In QuickBooks, class
               tracking is off by default.
 
           company_name: The name of the company associated with this customer. This name is used on
@@ -164,8 +164,8 @@ class CustomersResource(SyncAPIResource):
 
           custom_contact_fields: Additional custom contact fields for this customer.
 
-          customer_type_id: The category or type assigned to this customer, allowing for meaningful grouping
-              and segmentation (e.g., by industry or region).
+          customer_type_id: The customer's type, used for categorizing customers into meaningful segments,
+              such as industry or region.
 
           email: The customer's email address.
 
@@ -212,7 +212,7 @@ class CustomersResource(SyncAPIResource):
           note: Additional notes or comments about this customer.
 
           open_balance: The opening balance for this customer's account, indicating the amount owed by
-              the customer, represented as a decimal string.
+              this customer, represented as a decimal string.
 
           open_balance_date: The date of the opening balance for this customer, in ISO 8601 format
               (YYYY-MM-DD).
@@ -640,7 +640,7 @@ class AsyncCustomersResource(AsyncAPIResource):
           cc_email: An email address to carbon copy (CC) on communications with this customer.
 
           class_id: The customer's class. Classes can be used to categorize objects into meaningful
-              segments, such as by department, location, or type of work. In QuickBooks, class
+              segments, such as department, location, or type of work. In QuickBooks, class
               tracking is off by default.
 
           company_name: The name of the company associated with this customer. This name is used on
@@ -662,8 +662,8 @@ class AsyncCustomersResource(AsyncAPIResource):
 
           custom_contact_fields: Additional custom contact fields for this customer.
 
-          customer_type_id: The category or type assigned to this customer, allowing for meaningful grouping
-              and segmentation (e.g., by industry or region).
+          customer_type_id: The customer's type, used for categorizing customers into meaningful segments,
+              such as industry or region.
 
           email: The customer's email address.
 
@@ -710,7 +710,7 @@ class AsyncCustomersResource(AsyncAPIResource):
           note: Additional notes or comments about this customer.
 
           open_balance: The opening balance for this customer's account, indicating the amount owed by
-              the customer, represented as a decimal string.
+              this customer, represented as a decimal string.
 
           open_balance_date: The date of the opening balance for this customer, in ISO 8601 format
               (YYYY-MM-DD).
