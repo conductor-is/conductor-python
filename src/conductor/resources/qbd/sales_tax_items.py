@@ -7,7 +7,10 @@ from typing_extensions import Literal
 import httpx
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from ..._utils import maybe_transform
+from ..._utils import (
+    maybe_transform,
+    async_maybe_transform,
+)
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -17,9 +20,9 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ...types.qbd import sales_tax_item_list_params
-from ...pagination import SyncCursorPage, AsyncCursorPage
-from ..._base_client import AsyncPaginator, make_request_options
+from ..._base_client import make_request_options
 from ...types.qbd.qbd_sales_tax_item import QbdSalesTaxItem
+from ...types.qbd.sales_tax_item_list_response import SalesTaxItemListResponse
 
 __all__ = ["SalesTaxItemsResource", "AsyncSalesTaxItemsResource"]
 
@@ -89,7 +92,6 @@ class SalesTaxItemsResource(SyncAPIResource):
         *,
         conductor_end_user_id: str,
         class_ids: str | NotGiven = NOT_GIVEN,
-        cursor: str | NotGiven = NOT_GIVEN,
         full_names: str | NotGiven = NOT_GIVEN,
         ids: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
@@ -107,7 +109,7 @@ class SalesTaxItemsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursorPage[QbdSalesTaxItem]:
+    ) -> SalesTaxItemListResponse:
         """
         Returns a list of sales tax items.
 
@@ -118,10 +120,6 @@ class SalesTaxItemsResource(SyncAPIResource):
           class_ids: Filter for sales tax items of this class or classes. Specify a single class ID
               or multiple using a comma-separated list (e.g., `classIds=1,2,3`). A class is a
               way end-users can categorize sales tax items in QuickBooks.
-
-          cursor: The pagination token to fetch the next set of results when paginating with the
-              `limit` parameter. Retrieve this value from the `nextCursor` field in the
-              previous response. If omitted, the API returns the first page of results.
 
           full_names: Filter for specific sales tax items by their full-name(s). Specify a single
               full-name or multiple using a comma-separated list (e.g., `fullNames=1,2,3`).
@@ -139,10 +137,10 @@ class SalesTaxItemsResource(SyncAPIResource):
               parameters will be ignored.
 
           limit: The maximum number of objects to return, ranging from 1 to 500. Defaults to 500.
-              Use this parameter in conjunction with the `cursor` parameter to paginate
-              through results. The response will include a `nextCursor` field, which can be
-              used as the `cursor` parameter value in subsequent requests to fetch the next
-              set of results.
+              NOTE: QuickBooks Desktop does not support cursor-based pagination for this
+              object type. Hence, this parameter will limit the response size, but you will
+              not be able to fetch the next set of results. To paginate through the results
+              for this endpoint, try fetching batches via the date-range query parameters.
 
           name_contains: Filter for objects whose `name` contains this substring. If you use this
               parameter, you cannot use `nameStartsWith` or `nameEndsWith`.
@@ -178,9 +176,8 @@ class SalesTaxItemsResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
-        return self._get_api_list(
+        return self._get(
             "/quickbooks-desktop/sales-tax-items",
-            page=SyncCursorPage[QbdSalesTaxItem],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -189,7 +186,6 @@ class SalesTaxItemsResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "class_ids": class_ids,
-                        "cursor": cursor,
                         "full_names": full_names,
                         "ids": ids,
                         "limit": limit,
@@ -205,7 +201,7 @@ class SalesTaxItemsResource(SyncAPIResource):
                     sales_tax_item_list_params.SalesTaxItemListParams,
                 ),
             ),
-            model=QbdSalesTaxItem,
+            cast_to=SalesTaxItemListResponse,
         )
 
 
@@ -269,12 +265,11 @@ class AsyncSalesTaxItemsResource(AsyncAPIResource):
             cast_to=QbdSalesTaxItem,
         )
 
-    def list(
+    async def list(
         self,
         *,
         conductor_end_user_id: str,
         class_ids: str | NotGiven = NOT_GIVEN,
-        cursor: str | NotGiven = NOT_GIVEN,
         full_names: str | NotGiven = NOT_GIVEN,
         ids: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
@@ -292,7 +287,7 @@ class AsyncSalesTaxItemsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[QbdSalesTaxItem, AsyncCursorPage[QbdSalesTaxItem]]:
+    ) -> SalesTaxItemListResponse:
         """
         Returns a list of sales tax items.
 
@@ -303,10 +298,6 @@ class AsyncSalesTaxItemsResource(AsyncAPIResource):
           class_ids: Filter for sales tax items of this class or classes. Specify a single class ID
               or multiple using a comma-separated list (e.g., `classIds=1,2,3`). A class is a
               way end-users can categorize sales tax items in QuickBooks.
-
-          cursor: The pagination token to fetch the next set of results when paginating with the
-              `limit` parameter. Retrieve this value from the `nextCursor` field in the
-              previous response. If omitted, the API returns the first page of results.
 
           full_names: Filter for specific sales tax items by their full-name(s). Specify a single
               full-name or multiple using a comma-separated list (e.g., `fullNames=1,2,3`).
@@ -324,10 +315,10 @@ class AsyncSalesTaxItemsResource(AsyncAPIResource):
               parameters will be ignored.
 
           limit: The maximum number of objects to return, ranging from 1 to 500. Defaults to 500.
-              Use this parameter in conjunction with the `cursor` parameter to paginate
-              through results. The response will include a `nextCursor` field, which can be
-              used as the `cursor` parameter value in subsequent requests to fetch the next
-              set of results.
+              NOTE: QuickBooks Desktop does not support cursor-based pagination for this
+              object type. Hence, this parameter will limit the response size, but you will
+              not be able to fetch the next set of results. To paginate through the results
+              for this endpoint, try fetching batches via the date-range query parameters.
 
           name_contains: Filter for objects whose `name` contains this substring. If you use this
               parameter, you cannot use `nameStartsWith` or `nameEndsWith`.
@@ -363,18 +354,16 @@ class AsyncSalesTaxItemsResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
-        return self._get_api_list(
+        return await self._get(
             "/quickbooks-desktop/sales-tax-items",
-            page=AsyncCursorPage[QbdSalesTaxItem],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
+                query=await async_maybe_transform(
                     {
                         "class_ids": class_ids,
-                        "cursor": cursor,
                         "full_names": full_names,
                         "ids": ids,
                         "limit": limit,
@@ -390,7 +379,7 @@ class AsyncSalesTaxItemsResource(AsyncAPIResource):
                     sales_tax_item_list_params.SalesTaxItemListParams,
                 ),
             ),
-            model=QbdSalesTaxItem,
+            cast_to=SalesTaxItemListResponse,
         )
 
 

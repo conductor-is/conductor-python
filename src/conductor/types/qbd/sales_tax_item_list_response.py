@@ -6,14 +6,14 @@ from typing_extensions import Literal
 from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
-from .sales_tax_code import SalesTaxCode
+from .qbd_sales_tax_item import QbdSalesTaxItem
 
-__all__ = ["SalesTaxCodeListResponse"]
+__all__ = ["SalesTaxItemListResponse"]
 
 
-class SalesTaxCodeListResponse(BaseModel):
-    data: List[SalesTaxCode]
-    """The array of sales tax codes."""
+class SalesTaxItemListResponse(BaseModel):
+    data: List[QbdSalesTaxItem]
+    """The array of sales tax items."""
 
     has_more: bool = FieldInfo(alias="hasMore")
     """Indicates whether there are more objects to be fetched."""
