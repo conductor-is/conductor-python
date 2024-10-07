@@ -487,9 +487,11 @@ class QbdCustomer(BaseModel):
     """An email address to carbon copy (CC) on communications with this customer."""
 
     class_: Optional[Class] = FieldInfo(alias="class", default=None)
-    """
-    The customer's class, used for categorization (e.g., by department, location, or
-    type of work).
+    """The customer's class.
+
+    Classes can be used to categorize objects into meaningful segments, such as by
+    department, location, or type of work. In QuickBooks, class tracking is off by
+    default.
     """
 
     company_name: Optional[str] = FieldInfo(alias="companyName", default=None)

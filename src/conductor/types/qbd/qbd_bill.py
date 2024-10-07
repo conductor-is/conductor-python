@@ -227,9 +227,11 @@ class ExpenseLine(BaseModel):
     """The billing status of this expense line."""
 
     class_: Optional[ExpenseLineClass] = FieldInfo(alias="class", default=None)
-    """
-    The expense line's class, used for categorization (e.g., by department,
-    location, or type of work).
+    """The expense line's class.
+
+    Classes can be used to categorize objects into meaningful segments, such as by
+    department, location, or type of work. In QuickBooks, class tracking is off by
+    default.
     """
 
     customer: Optional[ExpenseLineCustomer] = None
