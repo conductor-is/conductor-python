@@ -141,8 +141,9 @@ class CustomersResource(SyncAPIResource):
 
           cc_email: An email address to carbon copy (CC) on communications with this customer.
 
-          class_id: The customer's class, used for categorization (e.g., by department, location, or
-              type of work).
+          class_id: The customer's class. Classes can be used to categorize objects into meaningful
+              segments, such as by department, location, or type of work. In QuickBooks, class
+              tracking is off by default.
 
           company_name: The name of the company associated with this customer. This name is used on
               invoices, checks, and other forms.
@@ -638,8 +639,9 @@ class AsyncCustomersResource(AsyncAPIResource):
 
           cc_email: An email address to carbon copy (CC) on communications with this customer.
 
-          class_id: The customer's class, used for categorization (e.g., by department, location, or
-              type of work).
+          class_id: The customer's class. Classes can be used to categorize objects into meaningful
+              segments, such as by department, location, or type of work. In QuickBooks, class
+              tracking is off by default.
 
           company_name: The name of the company associated with this customer. This name is used on
               invoices, checks, and other forms.

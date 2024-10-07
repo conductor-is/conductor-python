@@ -272,9 +272,11 @@ class NonInventoryItem(BaseModel):
     """The barcode value for this non-inventory item."""
 
     class_: Optional[Class] = FieldInfo(alias="class", default=None)
-    """
-    The non-inventory item's class, used for categorization (e.g., by department,
-    location, or type of work).
+    """The non-inventory item's class.
+
+    Classes can be used to categorize objects into meaningful segments, such as by
+    department, location, or type of work. In QuickBooks, class tracking is off by
+    default.
     """
 
     created_at: str = FieldInfo(alias="createdAt")

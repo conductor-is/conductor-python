@@ -69,9 +69,11 @@ class CustomerCreateParams(TypedDict, total=False):
     """An email address to carbon copy (CC) on communications with this customer."""
 
     class_id: Annotated[str, PropertyInfo(alias="classId")]
-    """
-    The customer's class, used for categorization (e.g., by department, location, or
-    type of work).
+    """The customer's class.
+
+    Classes can be used to categorize objects into meaningful segments, such as by
+    department, location, or type of work. In QuickBooks, class tracking is off by
+    default.
     """
 
     company_name: Annotated[str, PropertyInfo(alias="companyName")]
