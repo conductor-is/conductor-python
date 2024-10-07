@@ -390,7 +390,7 @@ class QbdVendor(BaseModel):
     balance: Optional[str] = None
     """The current balance owed to this vendor, represented as a decimal string.
 
-    A positive number indicates money that the vendor owes.
+    A positive number indicates money owed to the vendor.
     """
 
     billing_address: Optional[BillingAddress] = FieldInfo(alias="billingAddress", default=None)
@@ -408,7 +408,7 @@ class QbdVendor(BaseModel):
     class_: Optional[Class] = FieldInfo(alias="class", default=None)
     """The vendor's class.
 
-    Classes can be used to categorize objects into meaningful segments, such as by
+    Classes can be used to categorize objects into meaningful segments, such as
     department, location, or type of work. In QuickBooks, class tracking is off by
     default.
     """
@@ -477,7 +477,8 @@ class QbdVendor(BaseModel):
     is_eligible_for1099: Optional[bool] = FieldInfo(alias="isEligibleFor1099", default=None)
     """
     Indicates whether this vendor is eligible to receive a 1099 form for tax
-    reporting purposes.
+    reporting purposes. If `true`, then the fields `taxId` and `billingAddress` are
+    required.
     """
 
     is_sales_tax_agency: Optional[bool] = FieldInfo(alias="isSalesTaxAgency", default=None)
@@ -594,8 +595,8 @@ class QbdVendor(BaseModel):
 
     vendor_type: Optional[VendorType] = FieldInfo(alias="vendorType", default=None)
     """
-    The category or type assigned to this vendor, allowing for meaningful grouping
-    (e.g., by industry or region).
+    The vendor's type, used for categorizing vendors into meaningful segments, such
+    as industry or region.
     """
 
     version: str

@@ -117,7 +117,7 @@ class TestVendors:
                     "salutation": "Mr.",
                 },
             ],
-            credit_limit="1000.00",
+            credit_limit="5000.00",
             currency_id="80000012-1234567890",
             custom_contact_fields=[
                 {
@@ -169,12 +169,12 @@ class TestVendors:
                 "postal_code": "94110",
                 "state": "CA",
             },
-            tax_id="12-3456789",
+            tax_identification_number="12-3456789",
             tax_on_purchases_account_id="80000027-1234567890",
             tax_on_sales_account_id="80000028-1234567890",
             tax_registration_number="GB123456789",
-            terms_id="80000001-1234567890",
-            vendor_type_id="80000001-1234567890",
+            terms_id="80000013-1234567890",
+            vendor_type_id="80000025-1234567890",
         )
         assert_matches_type(QbdVendor, vendor, path=["response"])
 
@@ -406,7 +406,7 @@ class TestAsyncVendors:
                     "salutation": "Mr.",
                 },
             ],
-            credit_limit="1000.00",
+            credit_limit="5000.00",
             currency_id="80000012-1234567890",
             custom_contact_fields=[
                 {
@@ -458,12 +458,12 @@ class TestAsyncVendors:
                 "postal_code": "94110",
                 "state": "CA",
             },
-            tax_id="12-3456789",
+            tax_identification_number="12-3456789",
             tax_on_purchases_account_id="80000027-1234567890",
             tax_on_sales_account_id="80000028-1234567890",
             tax_registration_number="GB123456789",
-            terms_id="80000001-1234567890",
-            vendor_type_id="80000001-1234567890",
+            terms_id="80000013-1234567890",
+            vendor_type_id="80000025-1234567890",
         )
         assert_matches_type(QbdVendor, vendor, path=["response"])
 
