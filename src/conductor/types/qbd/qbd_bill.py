@@ -490,6 +490,10 @@ class ItemGroupLineItem(BaseModel):
 
     description: Optional[str] = None
 
+    expiration_date_for_serial_lot_number: Optional[str] = FieldInfo(
+        alias="expirationDateForSerialLotNumber", default=None
+    )
+
     inventory_site: Optional[ItemGroupLineItemInventorySite] = FieldInfo(alias="inventorySite", default=None)
     """The inventory site location where the item is stored."""
 
@@ -733,6 +737,10 @@ class ItemLine(BaseModel):
     """
 
     description: Optional[str] = None
+
+    expiration_date_for_serial_lot_number: Optional[str] = FieldInfo(
+        alias="expirationDateForSerialLotNumber", default=None
+    )
 
     inventory_site: Optional[ItemLineInventorySite] = FieldInfo(alias="inventorySite", default=None)
     """The inventory site location where the item is stored."""
@@ -1005,7 +1013,7 @@ class QbdBill(BaseModel):
     linked_transactions: List[LinkedTransaction] = FieldInfo(alias="linkedTransactions")
     """
     The bill's linked transactions, such as payments applied, credits used, or
-    linked purchase orders.
+    associated purchase orders.
     """
 
     memo: Optional[str] = None
