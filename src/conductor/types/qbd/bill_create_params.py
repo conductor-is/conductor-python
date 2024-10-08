@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import List, Iterable
+from typing import List, Union, Iterable
+from datetime import date
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
@@ -31,7 +32,7 @@ class BillCreateParams(TypedDict, total=False):
 
     accounts_payable_account_id: Annotated[str, PropertyInfo(alias="accountsPayableAccountId")]
 
-    due_date: Annotated[str, PropertyInfo(alias="dueDate")]
+    due_date: Annotated[Union[str, date], PropertyInfo(alias="dueDate", format="iso8601")]
     """The date when the payment is due, in ISO 8601 format (YYYY-MM-DD)."""
 
     exchange_rate: Annotated[float, PropertyInfo(alias="exchangeRate")]
@@ -64,7 +65,7 @@ class BillCreateParams(TypedDict, total=False):
 
     terms_id: Annotated[str, PropertyInfo(alias="termsId")]
 
-    transaction_date: Annotated[str, PropertyInfo(alias="transactionDate")]
+    transaction_date: Annotated[Union[str, date], PropertyInfo(alias="transactionDate", format="iso8601")]
 
     vendor_address: Annotated[VendorAddress, PropertyInfo(alias="vendorAddress")]
 
