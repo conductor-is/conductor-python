@@ -33,7 +33,7 @@ class TestBills:
             vendor_id="vendorId",
             conductor_end_user_id="end_usr_1234567abcdefg",
             accounts_payable_account_id="accountsPayableAccountId",
-            due_date="dueDate",
+            due_date=parse_date("2019-12-27"),
             exchange_rate=0,
             expense_lines=[
                 {
@@ -320,7 +320,7 @@ class TestBills:
             ref_number="CHARGE-1234",
             sales_tax_code_id="salesTaxCodeId",
             terms_id="termsId",
-            transaction_date="transactionDate",
+            transaction_date=parse_date("2019-12-27"),
             vendor_address={
                 "city": "San Francisco",
                 "country": "United States",
@@ -479,7 +479,7 @@ class TestAsyncBills:
             vendor_id="vendorId",
             conductor_end_user_id="end_usr_1234567abcdefg",
             accounts_payable_account_id="accountsPayableAccountId",
-            due_date="dueDate",
+            due_date=parse_date("2019-12-27"),
             exchange_rate=0,
             expense_lines=[
                 {
@@ -766,7 +766,7 @@ class TestAsyncBills:
             ref_number="CHARGE-1234",
             sales_tax_code_id="salesTaxCodeId",
             terms_id="termsId",
-            transaction_date="transactionDate",
+            transaction_date=parse_date("2019-12-27"),
             vendor_address={
                 "city": "San Francisco",
                 "country": "United States",

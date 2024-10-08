@@ -55,7 +55,7 @@ class BillsResource(SyncAPIResource):
         vendor_id: str,
         conductor_end_user_id: str,
         accounts_payable_account_id: str | NotGiven = NOT_GIVEN,
-        due_date: str | NotGiven = NOT_GIVEN,
+        due_date: Union[str, date] | NotGiven = NOT_GIVEN,
         exchange_rate: float | NotGiven = NOT_GIVEN,
         expense_lines: Iterable[bill_create_params.ExpenseLine] | NotGiven = NOT_GIVEN,
         external_id: str | NotGiven = NOT_GIVEN,
@@ -66,7 +66,7 @@ class BillsResource(SyncAPIResource):
         ref_number: str | NotGiven = NOT_GIVEN,
         sales_tax_code_id: str | NotGiven = NOT_GIVEN,
         terms_id: str | NotGiven = NOT_GIVEN,
-        transaction_date: str | NotGiven = NOT_GIVEN,
+        transaction_date: Union[str, date] | NotGiven = NOT_GIVEN,
         vendor_address: bill_create_params.VendorAddress | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -347,7 +347,7 @@ class AsyncBillsResource(AsyncAPIResource):
         vendor_id: str,
         conductor_end_user_id: str,
         accounts_payable_account_id: str | NotGiven = NOT_GIVEN,
-        due_date: str | NotGiven = NOT_GIVEN,
+        due_date: Union[str, date] | NotGiven = NOT_GIVEN,
         exchange_rate: float | NotGiven = NOT_GIVEN,
         expense_lines: Iterable[bill_create_params.ExpenseLine] | NotGiven = NOT_GIVEN,
         external_id: str | NotGiven = NOT_GIVEN,
@@ -358,7 +358,7 @@ class AsyncBillsResource(AsyncAPIResource):
         ref_number: str | NotGiven = NOT_GIVEN,
         sales_tax_code_id: str | NotGiven = NOT_GIVEN,
         terms_id: str | NotGiven = NOT_GIVEN,
-        transaction_date: str | NotGiven = NOT_GIVEN,
+        transaction_date: Union[str, date] | NotGiven = NOT_GIVEN,
         vendor_address: bill_create_params.VendorAddress | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
