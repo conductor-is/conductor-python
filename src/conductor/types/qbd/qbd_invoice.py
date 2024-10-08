@@ -383,7 +383,8 @@ class InvoiceLineGroupInvoiceLine(BaseModel):
     """
     The expiration date for the serial number or lot number of the item in this
     invoice line, in ISO 8601 format (YYYY-MM-DD). This is particularly relevant for
-    perishable or time-sensitive inventory items.
+    perishable or time-sensitive inventory items. Note that this field is only
+    supported on QuickBooks Desktop 2023 or later.
     """
 
     inventory_site: Optional[InvoiceLineGroupInvoiceLineInventorySite] = FieldInfo(alias="inventorySite", default=None)
@@ -739,7 +740,8 @@ class InvoiceLine(BaseModel):
     """
     The expiration date for the serial number or lot number of the item in this
     invoice line, in ISO 8601 format (YYYY-MM-DD). This is particularly relevant for
-    perishable or time-sensitive inventory items.
+    perishable or time-sensitive inventory items. Note that this field is only
+    supported on QuickBooks Desktop 2023 or later.
     """
 
     inventory_site: Optional[InvoiceLineInventorySite] = FieldInfo(alias="inventorySite", default=None)
@@ -1157,7 +1159,7 @@ class QbdInvoice(BaseModel):
     linked_transactions: List[LinkedTransaction] = FieldInfo(alias="linkedTransactions")
     """
     The invoice's linked transactions, such as payments applied, credits used, or
-    linked purchase orders.
+    associated purchase orders.
     """
 
     memo: Optional[str] = None
