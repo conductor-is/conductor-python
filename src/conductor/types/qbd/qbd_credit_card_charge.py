@@ -487,6 +487,10 @@ class ItemGroupLineItem(BaseModel):
 
     description: Optional[str] = None
 
+    expiration_date_for_serial_lot_number: Optional[str] = FieldInfo(
+        alias="expirationDateForSerialLotNumber", default=None
+    )
+
     inventory_site: Optional[ItemGroupLineItemInventorySite] = FieldInfo(alias="inventorySite", default=None)
     """The inventory site location where the item is stored."""
 
@@ -730,6 +734,10 @@ class ItemLine(BaseModel):
     """
 
     description: Optional[str] = None
+
+    expiration_date_for_serial_lot_number: Optional[str] = FieldInfo(
+        alias="expirationDateForSerialLotNumber", default=None
+    )
 
     inventory_site: Optional[ItemLineInventorySite] = FieldInfo(alias="inventorySite", default=None)
     """The inventory site location where the item is stored."""
