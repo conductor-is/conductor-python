@@ -305,8 +305,8 @@ class InventoryItemsResource(SyncAPIResource):
               Like `id`, a `fullName` is a unique identifier for an inventory item, and is
               formed by by combining the names of its parent objects with its own `name`,
               separated by colons. For example, if an inventory item is under
-              'Furniture:Kitchen' and has the `name` 'Cabinet', its `fullName` would be
-              'Furniture:Kitchen:Cabinet'. Unlike `name`, `fullName` is guaranteed to be
+              "Furniture:Kitchen" and has the `name` "Cabinet", its `fullName` would be
+              "Furniture:Kitchen:Cabinet". Unlike `name`, `fullName` is guaranteed to be
               unique across all inventory item objects. Not case-sensitive. NOTE: If you
               include this parameter, all other query parameters will be ignored.
 
@@ -662,8 +662,8 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
               Like `id`, a `fullName` is a unique identifier for an inventory item, and is
               formed by by combining the names of its parent objects with its own `name`,
               separated by colons. For example, if an inventory item is under
-              'Furniture:Kitchen' and has the `name` 'Cabinet', its `fullName` would be
-              'Furniture:Kitchen:Cabinet'. Unlike `name`, `fullName` is guaranteed to be
+              "Furniture:Kitchen" and has the `name` "Cabinet", its `fullName` would be
+              "Furniture:Kitchen:Cabinet". Unlike `name`, `fullName` is guaranteed to be
               unique across all inventory item objects. Not case-sensitive. NOTE: If you
               include this parameter, all other query parameters will be ignored.
 
