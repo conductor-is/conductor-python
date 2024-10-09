@@ -565,8 +565,8 @@ class QbdCustomer(BaseModel):
     """
     The fully-qualified unique name for this customer, formed by combining the names
     of its parent objects with its own `name`, separated by colons. For example, if
-    a customer is under 'Jones' and has the `name` 'Kitchen-Renovation', its
-    `fullName` would be 'Jones:Kitchen-Renovation'. Unlike `name`, `fullName` is
+    a customer is under "Jones" and has the `name` "Kitchen-Renovation", its
+    `fullName` would be "Jones:Kitchen-Renovation". Unlike `name`, `fullName` is
     guaranteed to be unique across all customer objects. Not case-sensitive. If this
     object is a job (i.e., a sub-customer), this value would likely be the job's
     `name` prefixed by the customer's `name`.
@@ -697,8 +697,8 @@ class QbdCustomer(BaseModel):
     """
     The sales tax code associated with this customer, determining whether items sold
     to this customer are taxable or non-taxable. It's used to assign a default tax
-    status to all transactions for this customer. Default codes include 'NON'
-    (non-taxable) and 'TAX' (taxable), but custom codes can also be created in
+    status to all transactions for this customer. Default codes include "NON"
+    (non-taxable) and "TAX" (taxable), but custom codes can also be created in
     QuickBooks. If QuickBooks is not set up to charge sales tax, it will assign the
     default non-taxable code to all sales.
     """
@@ -711,7 +711,7 @@ class QbdCustomer(BaseModel):
     salutation: Optional[str] = None
     """
     The formal salutation title that precedes the name of the contact person for
-    this customer, such as 'Mr.', 'Ms.', or 'Dr.'.
+    this customer, such as "Mr.", "Ms.", or "Dr.".
     """
 
     shipping_address: Optional[ShippingAddress] = FieldInfo(alias="shippingAddress", default=None)

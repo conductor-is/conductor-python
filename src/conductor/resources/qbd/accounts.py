@@ -135,7 +135,7 @@ class AccountsResource(SyncAPIResource):
           sales_tax_code_id: The sales tax code associated with this account, determining whether
               transactions in this account are taxable or non-taxable. It's used to assign a
               default tax status to all transactions for this account. Default codes include
-              'NON' (non-taxable) and 'TAX' (taxable), but custom codes can also be created in
+              "NON" (non-taxable) and "TAX" (taxable), but custom codes can also be created in
               QuickBooks. If QuickBooks is not set up to charge sales tax, it will assign the
               default non-taxable code to all sales.
 
@@ -462,7 +462,7 @@ class AsyncAccountsResource(AsyncAPIResource):
           sales_tax_code_id: The sales tax code associated with this account, determining whether
               transactions in this account are taxable or non-taxable. It's used to assign a
               default tax status to all transactions for this account. Default codes include
-              'NON' (non-taxable) and 'TAX' (taxable), but custom codes can also be created in
+              "NON" (non-taxable) and "TAX" (taxable), but custom codes can also be created in
               QuickBooks. If QuickBooks is not set up to charge sales tax, it will assign the
               default non-taxable code to all sales.
 
