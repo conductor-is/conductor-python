@@ -19,7 +19,7 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...types.qbd import standard_term_list_params
+from ...types.qbd import standard_term_list_params, standard_term_create_params
 from ..._base_client import make_request_options
 from ...types.qbd.qbd_standard_term import QbdStandardTerm
 from ...types.qbd.standard_term_list_response import StandardTermListResponse
@@ -46,6 +46,70 @@ class StandardTermsResource(SyncAPIResource):
         For more information, see https://www.github.com/conductor-is/conductor-python#with_streaming_response
         """
         return StandardTermsResourceWithStreamingResponse(self)
+
+    def create(
+        self,
+        *,
+        name: str,
+        conductor_end_user_id: str,
+        discount_days: float | NotGiven = NOT_GIVEN,
+        discount_percentage: str | NotGiven = NOT_GIVEN,
+        due_days: float | NotGiven = NOT_GIVEN,
+        is_active: bool | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> QbdStandardTerm:
+        """
+        Creates a standard term.
+
+        Args:
+          name: The case-insensitive unique name of this standard term, unique across all
+              standard terms.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          discount_days: The number of days within which payment must be received to qualify for the
+              discount specified by `discountPercentage`.
+
+          discount_percentage: The discount percentage applied to the payment if received within the number of
+              days specified by `discountDays`. The value is between 0 and 100.
+
+          due_days: The number of days until payment is due.
+
+          is_active: Indicates whether this standard term is active. Inactive objects are typically
+              hidden from views and reports in QuickBooks.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return self._post(
+            "/quickbooks-desktop/standard-terms",
+            body=maybe_transform(
+                {
+                    "name": name,
+                    "discount_days": discount_days,
+                    "discount_percentage": discount_percentage,
+                    "due_days": due_days,
+                    "is_active": is_active,
+                },
+                standard_term_create_params.StandardTermCreateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=QbdStandardTerm,
+        )
 
     def retrieve(
         self,
@@ -219,6 +283,70 @@ class AsyncStandardTermsResource(AsyncAPIResource):
         """
         return AsyncStandardTermsResourceWithStreamingResponse(self)
 
+    async def create(
+        self,
+        *,
+        name: str,
+        conductor_end_user_id: str,
+        discount_days: float | NotGiven = NOT_GIVEN,
+        discount_percentage: str | NotGiven = NOT_GIVEN,
+        due_days: float | NotGiven = NOT_GIVEN,
+        is_active: bool | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> QbdStandardTerm:
+        """
+        Creates a standard term.
+
+        Args:
+          name: The case-insensitive unique name of this standard term, unique across all
+              standard terms.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          discount_days: The number of days within which payment must be received to qualify for the
+              discount specified by `discountPercentage`.
+
+          discount_percentage: The discount percentage applied to the payment if received within the number of
+              days specified by `discountDays`. The value is between 0 and 100.
+
+          due_days: The number of days until payment is due.
+
+          is_active: Indicates whether this standard term is active. Inactive objects are typically
+              hidden from views and reports in QuickBooks.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return await self._post(
+            "/quickbooks-desktop/standard-terms",
+            body=await async_maybe_transform(
+                {
+                    "name": name,
+                    "discount_days": discount_days,
+                    "discount_percentage": discount_percentage,
+                    "due_days": due_days,
+                    "is_active": is_active,
+                },
+                standard_term_create_params.StandardTermCreateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=QbdStandardTerm,
+        )
+
     async def retrieve(
         self,
         id: str,
@@ -375,6 +503,9 @@ class StandardTermsResourceWithRawResponse:
     def __init__(self, standard_terms: StandardTermsResource) -> None:
         self._standard_terms = standard_terms
 
+        self.create = to_raw_response_wrapper(
+            standard_terms.create,
+        )
         self.retrieve = to_raw_response_wrapper(
             standard_terms.retrieve,
         )
@@ -387,6 +518,9 @@ class AsyncStandardTermsResourceWithRawResponse:
     def __init__(self, standard_terms: AsyncStandardTermsResource) -> None:
         self._standard_terms = standard_terms
 
+        self.create = async_to_raw_response_wrapper(
+            standard_terms.create,
+        )
         self.retrieve = async_to_raw_response_wrapper(
             standard_terms.retrieve,
         )
@@ -399,6 +533,9 @@ class StandardTermsResourceWithStreamingResponse:
     def __init__(self, standard_terms: StandardTermsResource) -> None:
         self._standard_terms = standard_terms
 
+        self.create = to_streamed_response_wrapper(
+            standard_terms.create,
+        )
         self.retrieve = to_streamed_response_wrapper(
             standard_terms.retrieve,
         )
@@ -411,6 +548,9 @@ class AsyncStandardTermsResourceWithStreamingResponse:
     def __init__(self, standard_terms: AsyncStandardTermsResource) -> None:
         self._standard_terms = standard_terms
 
+        self.create = async_to_streamed_response_wrapper(
+            standard_terms.create,
+        )
         self.retrieve = async_to_streamed_response_wrapper(
             standard_terms.retrieve,
         )
