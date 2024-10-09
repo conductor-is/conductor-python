@@ -53,8 +53,8 @@ class AccountListParams(TypedDict, total=False):
     `fullNames=1,2,3`). Like `id`, a `fullName` is a unique identifier for an
     account, and is formed by by combining the names of its parent objects with its
     own `name`, separated by colons. For example, if an account is under
-    'Expenses:Utilities' and has the `name` 'Electricity', its `fullName` would be
-    'Expenses:Utilities:Electricity'. Unlike `name`, `fullName` is guaranteed to be
+    "Expenses:Utilities" and has the `name` "Electricity", its `fullName` would be
+    "Expenses:Utilities:Electricity". Unlike `name`, `fullName` is guaranteed to be
     unique across all account objects. Not case-sensitive. NOTE: If you include this
     parameter, all other query parameters will be ignored.
     """

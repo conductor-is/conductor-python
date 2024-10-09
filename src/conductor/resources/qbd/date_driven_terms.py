@@ -192,8 +192,8 @@ class DateDrivenTermsResource(SyncAPIResource):
               full-name or multiple using a comma-separated list (e.g., `fullNames=1,2,3`).
               Like `id`, a `fullName` is a unique identifier for a date-driven term, and is
               formed by by combining the names of its parent objects with its own `name`,
-              separated by colons. For example, if a date-driven term is under 'Net 30' and
-              has the `name` '2% 10 Net 30', its `fullName` would be 'Net 30:2% 10 Net 30'.
+              separated by colons. For example, if a date-driven term is under "Net 30" and
+              has the `name` "2% 10 Net 30", its `fullName` would be "Net 30:2% 10 Net 30".
               Unlike `name`, `fullName` is guaranteed to be unique across all date-driven term
               objects. Not case-sensitive. NOTE: If you include this parameter, all other
               query parameters will be ignored.
@@ -436,8 +436,8 @@ class AsyncDateDrivenTermsResource(AsyncAPIResource):
               full-name or multiple using a comma-separated list (e.g., `fullNames=1,2,3`).
               Like `id`, a `fullName` is a unique identifier for a date-driven term, and is
               formed by by combining the names of its parent objects with its own `name`,
-              separated by colons. For example, if a date-driven term is under 'Net 30' and
-              has the `name` '2% 10 Net 30', its `fullName` would be 'Net 30:2% 10 Net 30'.
+              separated by colons. For example, if a date-driven term is under "Net 30" and
+              has the `name` "2% 10 Net 30", its `fullName` would be "Net 30:2% 10 Net 30".
               Unlike `name`, `fullName` is guaranteed to be unique across all date-driven term
               objects. Not case-sensitive. NOTE: If you include this parameter, all other
               query parameters will be ignored.
