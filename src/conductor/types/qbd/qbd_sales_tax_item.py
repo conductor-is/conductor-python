@@ -86,7 +86,7 @@ class QbdSalesTaxItem(BaseModel):
     object types.
     """
 
-    bar_code: Optional[str] = FieldInfo(alias="barCode", default=None)
+    barcode: Optional[str] = None
     """The sales tax item's barcode."""
 
     class_: Optional[Class] = FieldInfo(alias="class", default=None)

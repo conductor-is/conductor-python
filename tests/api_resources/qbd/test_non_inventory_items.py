@@ -21,7 +21,7 @@ class TestNonInventoryItems:
     @parametrize
     def test_method_create(self, client: Conductor) -> None:
         non_inventory_item = client.qbd.non_inventory_items.create(
-            name="name",
+            name="Printer Ink Cartridge",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(NonInventoryItem, non_inventory_item, path=["response"])
@@ -29,19 +29,19 @@ class TestNonInventoryItems:
     @parametrize
     def test_method_create_with_all_params(self, client: Conductor) -> None:
         non_inventory_item = client.qbd.non_inventory_items.create(
-            name="name",
+            name="Printer Ink Cartridge",
             conductor_end_user_id="end_usr_1234567abcdefg",
             barcode={
-                "allow_override": True,
-                "assign_even_if_used": True,
-                "bar_code_value": "BarCodeValue",
+                "allow_override": False,
+                "assign_even_if_used": False,
+                "bar_code_value": "1234567890",
             },
             class_id="80000001-1234567890",
             external_id="12345678-abcd-1234-abcd-1234567890ab",
             is_active=True,
-            is_tax_included=True,
-            manufacturer_part_number="manufacturerPartNumber",
-            parent_id="parentId",
+            is_tax_included=False,
+            manufacturer_part_number="MPN-123456",
+            parent_id="80000002-1234567890",
             sales_and_purchase_details={
                 "expense_account_id": "80000003-1234567890",
                 "income_account_id": "80000001-1234567890",
@@ -58,15 +58,15 @@ class TestNonInventoryItems:
                 "price": "150.00",
                 "price_percentage": "10.5",
             },
-            sales_tax_code_id="salesTaxCodeId",
-            unit_of_measure_set_id="unitOfMeasureSetId",
+            sales_tax_code_id="80000004-1234567890",
+            unit_of_measure_set_id="80000003-1234567890",
         )
         assert_matches_type(NonInventoryItem, non_inventory_item, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: Conductor) -> None:
         response = client.qbd.non_inventory_items.with_raw_response.create(
-            name="name",
+            name="Printer Ink Cartridge",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -78,7 +78,7 @@ class TestNonInventoryItems:
     @parametrize
     def test_streaming_response_create(self, client: Conductor) -> None:
         with client.qbd.non_inventory_items.with_streaming_response.create(
-            name="name",
+            name="Printer Ink Cartridge",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
@@ -189,7 +189,7 @@ class TestAsyncNonInventoryItems:
     @parametrize
     async def test_method_create(self, async_client: AsyncConductor) -> None:
         non_inventory_item = await async_client.qbd.non_inventory_items.create(
-            name="name",
+            name="Printer Ink Cartridge",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(NonInventoryItem, non_inventory_item, path=["response"])
@@ -197,19 +197,19 @@ class TestAsyncNonInventoryItems:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncConductor) -> None:
         non_inventory_item = await async_client.qbd.non_inventory_items.create(
-            name="name",
+            name="Printer Ink Cartridge",
             conductor_end_user_id="end_usr_1234567abcdefg",
             barcode={
-                "allow_override": True,
-                "assign_even_if_used": True,
-                "bar_code_value": "BarCodeValue",
+                "allow_override": False,
+                "assign_even_if_used": False,
+                "bar_code_value": "1234567890",
             },
             class_id="80000001-1234567890",
             external_id="12345678-abcd-1234-abcd-1234567890ab",
             is_active=True,
-            is_tax_included=True,
-            manufacturer_part_number="manufacturerPartNumber",
-            parent_id="parentId",
+            is_tax_included=False,
+            manufacturer_part_number="MPN-123456",
+            parent_id="80000002-1234567890",
             sales_and_purchase_details={
                 "expense_account_id": "80000003-1234567890",
                 "income_account_id": "80000001-1234567890",
@@ -226,15 +226,15 @@ class TestAsyncNonInventoryItems:
                 "price": "150.00",
                 "price_percentage": "10.5",
             },
-            sales_tax_code_id="salesTaxCodeId",
-            unit_of_measure_set_id="unitOfMeasureSetId",
+            sales_tax_code_id="80000004-1234567890",
+            unit_of_measure_set_id="80000003-1234567890",
         )
         assert_matches_type(NonInventoryItem, non_inventory_item, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncConductor) -> None:
         response = await async_client.qbd.non_inventory_items.with_raw_response.create(
-            name="name",
+            name="Printer Ink Cartridge",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -246,7 +246,7 @@ class TestAsyncNonInventoryItems:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncConductor) -> None:
         async with async_client.qbd.non_inventory_items.with_streaming_response.create(
-            name="name",
+            name="Printer Ink Cartridge",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed

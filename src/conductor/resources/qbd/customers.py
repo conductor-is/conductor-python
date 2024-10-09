@@ -87,8 +87,8 @@ class CustomersResource(SyncAPIResource):
         last_name: str | NotGiven = NOT_GIVEN,
         middle_name: str | NotGiven = NOT_GIVEN,
         note: str | NotGiven = NOT_GIVEN,
-        open_balance: str | NotGiven = NOT_GIVEN,
-        open_balance_date: str | NotGiven = NOT_GIVEN,
+        opening_balance: str | NotGiven = NOT_GIVEN,
+        opening_balance_date: str | NotGiven = NOT_GIVEN,
         parent_id: str | NotGiven = NOT_GIVEN,
         phone: str | NotGiven = NOT_GIVEN,
         preferred_delivery_method: Literal["email", "fax", "none"] | NotGiven = NOT_GIVEN,
@@ -211,10 +211,10 @@ class CustomersResource(SyncAPIResource):
 
           note: Additional notes or comments about this customer.
 
-          open_balance: The opening balance for this customer's account, indicating the amount owed by
+          opening_balance: The opening balance for this customer's account, indicating the amount owed by
               this customer, represented as a decimal string.
 
-          open_balance_date: The date of the opening balance for this customer, in ISO 8601 format
+          opening_balance_date: The date of the opening balance for this customer, in ISO 8601 format
               (YYYY-MM-DD).
 
           parent_id: The parent customer one level above this one in the hierarchy. For example, if
@@ -308,8 +308,8 @@ class CustomersResource(SyncAPIResource):
                     "last_name": last_name,
                     "middle_name": middle_name,
                     "note": note,
-                    "open_balance": open_balance,
-                    "open_balance_date": open_balance_date,
+                    "opening_balance": opening_balance,
+                    "opening_balance_date": opening_balance_date,
                     "parent_id": parent_id,
                     "phone": phone,
                     "preferred_delivery_method": preferred_delivery_method,
@@ -585,8 +585,8 @@ class AsyncCustomersResource(AsyncAPIResource):
         last_name: str | NotGiven = NOT_GIVEN,
         middle_name: str | NotGiven = NOT_GIVEN,
         note: str | NotGiven = NOT_GIVEN,
-        open_balance: str | NotGiven = NOT_GIVEN,
-        open_balance_date: str | NotGiven = NOT_GIVEN,
+        opening_balance: str | NotGiven = NOT_GIVEN,
+        opening_balance_date: str | NotGiven = NOT_GIVEN,
         parent_id: str | NotGiven = NOT_GIVEN,
         phone: str | NotGiven = NOT_GIVEN,
         preferred_delivery_method: Literal["email", "fax", "none"] | NotGiven = NOT_GIVEN,
@@ -709,10 +709,10 @@ class AsyncCustomersResource(AsyncAPIResource):
 
           note: Additional notes or comments about this customer.
 
-          open_balance: The opening balance for this customer's account, indicating the amount owed by
+          opening_balance: The opening balance for this customer's account, indicating the amount owed by
               this customer, represented as a decimal string.
 
-          open_balance_date: The date of the opening balance for this customer, in ISO 8601 format
+          opening_balance_date: The date of the opening balance for this customer, in ISO 8601 format
               (YYYY-MM-DD).
 
           parent_id: The parent customer one level above this one in the hierarchy. For example, if
@@ -806,8 +806,8 @@ class AsyncCustomersResource(AsyncAPIResource):
                     "last_name": last_name,
                     "middle_name": middle_name,
                     "note": note,
-                    "open_balance": open_balance,
-                    "open_balance_date": open_balance_date,
+                    "opening_balance": opening_balance,
+                    "opening_balance_date": opening_balance_date,
                     "parent_id": parent_id,
                     "phone": phone,
                     "preferred_delivery_method": preferred_delivery_method,

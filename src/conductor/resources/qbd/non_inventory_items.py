@@ -74,15 +74,48 @@ class NonInventoryItemsResource(SyncAPIResource):
         Creates a non-inventory item.
 
         Args:
+          name: The case-insensitive name of this non-inventory item. Not guaranteed to be
+              unique because it does not include the names of its parent objects like
+              `fullName` does. For example, two non-inventory items could both have the `name`
+              "Printer Ink Cartridge", but they could have unique `fullName` values, such as
+              "Office-Supplies:Printer Ink Cartridge" and "Miscellaneous:Printer Ink
+              Cartridge".
+
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          class_id: The class associated with this object. Classes can be used to categorize objects
-              or transactions by department, location, or other meaningful segments.
+          barcode: The non-inventory item's barcode.
 
-          external_id: An arbitrary globally unique identifier (GUID) the developer can provide to
-              track this object in their own system. This value must be formatted as a GUID;
-              otherwise, QuickBooks will return an error.
+          class_id: The non-inventory item's class. Classes can be used to categorize objects into
+              meaningful segments, such as department, location, or type of work. In
+              QuickBooks, class tracking is off by default.
+
+          external_id: A developer-assigned globally unique identifier (GUID) for tracking this object
+              in external systems. Must be formatted as a valid GUID; otherwise, QuickBooks
+              will return an error.
+
+          is_active: Indicates whether this non-inventory item is active. Inactive objects are
+              typically hidden from views and reports in QuickBooks.
+
+          is_tax_included: Indicates whether the price of this non-inventory item includes tax. This is
+              primarily used in international versions of QuickBooks.
+
+          manufacturer_part_number: The manufacturer's part number for this non-inventory item.
+
+          parent_id: The parent non-inventory item one level above this one in the hierarchy. For
+              example, if this non-inventory item has a `fullName` of "Office-Supplies:Printer
+              Ink Cartridge", its parent has a `fullName` of "Office-Supplies". If this
+              non-inventory item is at the top level, `parent` will be `null`.
+
+          sales_tax_code_id: The sales tax code associated with this non-inventory item, determining whether
+              it is taxable or non-taxable. It's used to assign a default tax status to all
+              transactions for this non-inventory item. Default codes include 'NON'
+              (non-taxable) and 'TAX' (taxable), but custom codes can also be created in
+              QuickBooks. If QuickBooks is not set up to charge sales tax, it will assign the
+              default non-taxable code to all sales.
+
+          unit_of_measure_set_id: The unit of measure set associated with this non-inventory item, which consists
+              of a base unit and related units.
 
           extra_headers: Send extra headers
 
@@ -330,15 +363,48 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
         Creates a non-inventory item.
 
         Args:
+          name: The case-insensitive name of this non-inventory item. Not guaranteed to be
+              unique because it does not include the names of its parent objects like
+              `fullName` does. For example, two non-inventory items could both have the `name`
+              "Printer Ink Cartridge", but they could have unique `fullName` values, such as
+              "Office-Supplies:Printer Ink Cartridge" and "Miscellaneous:Printer Ink
+              Cartridge".
+
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          class_id: The class associated with this object. Classes can be used to categorize objects
-              or transactions by department, location, or other meaningful segments.
+          barcode: The non-inventory item's barcode.
 
-          external_id: An arbitrary globally unique identifier (GUID) the developer can provide to
-              track this object in their own system. This value must be formatted as a GUID;
-              otherwise, QuickBooks will return an error.
+          class_id: The non-inventory item's class. Classes can be used to categorize objects into
+              meaningful segments, such as department, location, or type of work. In
+              QuickBooks, class tracking is off by default.
+
+          external_id: A developer-assigned globally unique identifier (GUID) for tracking this object
+              in external systems. Must be formatted as a valid GUID; otherwise, QuickBooks
+              will return an error.
+
+          is_active: Indicates whether this non-inventory item is active. Inactive objects are
+              typically hidden from views and reports in QuickBooks.
+
+          is_tax_included: Indicates whether the price of this non-inventory item includes tax. This is
+              primarily used in international versions of QuickBooks.
+
+          manufacturer_part_number: The manufacturer's part number for this non-inventory item.
+
+          parent_id: The parent non-inventory item one level above this one in the hierarchy. For
+              example, if this non-inventory item has a `fullName` of "Office-Supplies:Printer
+              Ink Cartridge", its parent has a `fullName` of "Office-Supplies". If this
+              non-inventory item is at the top level, `parent` will be `null`.
+
+          sales_tax_code_id: The sales tax code associated with this non-inventory item, determining whether
+              it is taxable or non-taxable. It's used to assign a default tax status to all
+              transactions for this non-inventory item. Default codes include 'NON'
+              (non-taxable) and 'TAX' (taxable), but custom codes can also be created in
+              QuickBooks. If QuickBooks is not set up to charge sales tax, it will assign the
+              default non-taxable code to all sales.
+
+          unit_of_measure_set_id: The unit of measure set associated with this non-inventory item, which consists
+              of a base unit and related units.
 
           extra_headers: Send extra headers
 
