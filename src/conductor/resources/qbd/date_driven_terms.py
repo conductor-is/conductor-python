@@ -19,7 +19,7 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...types.qbd import date_driven_term_list_params
+from ...types.qbd import date_driven_term_list_params, date_driven_term_create_params
 from ..._base_client import make_request_options
 from ...types.qbd.date_driven_term import DateDrivenTerm
 from ...types.qbd.date_driven_term_list_response import DateDrivenTermListResponse
@@ -46,6 +46,78 @@ class DateDrivenTermsResource(SyncAPIResource):
         For more information, see https://www.github.com/conductor-is/conductor-python#with_streaming_response
         """
         return DateDrivenTermsResourceWithStreamingResponse(self)
+
+    def create(
+        self,
+        *,
+        due_day_of_month: float,
+        name: str,
+        conductor_end_user_id: str,
+        discount_day_of_month: float | NotGiven = NOT_GIVEN,
+        discount_percentage: str | NotGiven = NOT_GIVEN,
+        grace_period_days: float | NotGiven = NOT_GIVEN,
+        is_active: bool | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> DateDrivenTerm:
+        """
+        Creates a date-driven term.
+
+        Args:
+          due_day_of_month: The day of the month when full payment is due without discount.
+
+          name: The case-insensitive unique name of this date-driven term, unique across all
+              date-driven terms.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          discount_day_of_month: The day of the month within which payment must be received to qualify for the
+              discount defined by `discountPercentage`.
+
+          discount_percentage: The discount percentage applied to the payment if received by the
+              `discountDayOfMonth`. The value is between 0 and 100.
+
+          grace_period_days: The number of days before `dueDayOfMonth` when an invoice or bill issued within
+              this threshold is considered due the following month. For example, with
+              `dueDayOfMonth` set to 15 and `gracePeriodDays` set to 2, an invoice issued on
+              the 13th would be due on the 15th of the next month, while an invoice issued on
+              the 12th would be due on the 15th of the current month.
+
+          is_active: Indicates whether this date-driven term is active. Inactive objects are
+              typically hidden from views and reports in QuickBooks.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return self._post(
+            "/quickbooks-desktop/date-driven-terms",
+            body=maybe_transform(
+                {
+                    "due_day_of_month": due_day_of_month,
+                    "name": name,
+                    "discount_day_of_month": discount_day_of_month,
+                    "discount_percentage": discount_percentage,
+                    "grace_period_days": grace_period_days,
+                    "is_active": is_active,
+                },
+                date_driven_term_create_params.DateDrivenTermCreateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=DateDrivenTerm,
+        )
 
     def retrieve(
         self,
@@ -219,6 +291,78 @@ class AsyncDateDrivenTermsResource(AsyncAPIResource):
         """
         return AsyncDateDrivenTermsResourceWithStreamingResponse(self)
 
+    async def create(
+        self,
+        *,
+        due_day_of_month: float,
+        name: str,
+        conductor_end_user_id: str,
+        discount_day_of_month: float | NotGiven = NOT_GIVEN,
+        discount_percentage: str | NotGiven = NOT_GIVEN,
+        grace_period_days: float | NotGiven = NOT_GIVEN,
+        is_active: bool | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> DateDrivenTerm:
+        """
+        Creates a date-driven term.
+
+        Args:
+          due_day_of_month: The day of the month when full payment is due without discount.
+
+          name: The case-insensitive unique name of this date-driven term, unique across all
+              date-driven terms.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          discount_day_of_month: The day of the month within which payment must be received to qualify for the
+              discount defined by `discountPercentage`.
+
+          discount_percentage: The discount percentage applied to the payment if received by the
+              `discountDayOfMonth`. The value is between 0 and 100.
+
+          grace_period_days: The number of days before `dueDayOfMonth` when an invoice or bill issued within
+              this threshold is considered due the following month. For example, with
+              `dueDayOfMonth` set to 15 and `gracePeriodDays` set to 2, an invoice issued on
+              the 13th would be due on the 15th of the next month, while an invoice issued on
+              the 12th would be due on the 15th of the current month.
+
+          is_active: Indicates whether this date-driven term is active. Inactive objects are
+              typically hidden from views and reports in QuickBooks.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return await self._post(
+            "/quickbooks-desktop/date-driven-terms",
+            body=await async_maybe_transform(
+                {
+                    "due_day_of_month": due_day_of_month,
+                    "name": name,
+                    "discount_day_of_month": discount_day_of_month,
+                    "discount_percentage": discount_percentage,
+                    "grace_period_days": grace_period_days,
+                    "is_active": is_active,
+                },
+                date_driven_term_create_params.DateDrivenTermCreateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=DateDrivenTerm,
+        )
+
     async def retrieve(
         self,
         id: str,
@@ -375,6 +519,9 @@ class DateDrivenTermsResourceWithRawResponse:
     def __init__(self, date_driven_terms: DateDrivenTermsResource) -> None:
         self._date_driven_terms = date_driven_terms
 
+        self.create = to_raw_response_wrapper(
+            date_driven_terms.create,
+        )
         self.retrieve = to_raw_response_wrapper(
             date_driven_terms.retrieve,
         )
@@ -387,6 +534,9 @@ class AsyncDateDrivenTermsResourceWithRawResponse:
     def __init__(self, date_driven_terms: AsyncDateDrivenTermsResource) -> None:
         self._date_driven_terms = date_driven_terms
 
+        self.create = async_to_raw_response_wrapper(
+            date_driven_terms.create,
+        )
         self.retrieve = async_to_raw_response_wrapper(
             date_driven_terms.retrieve,
         )
@@ -399,6 +549,9 @@ class DateDrivenTermsResourceWithStreamingResponse:
     def __init__(self, date_driven_terms: DateDrivenTermsResource) -> None:
         self._date_driven_terms = date_driven_terms
 
+        self.create = to_streamed_response_wrapper(
+            date_driven_terms.create,
+        )
         self.retrieve = to_streamed_response_wrapper(
             date_driven_terms.retrieve,
         )
@@ -411,6 +564,9 @@ class AsyncDateDrivenTermsResourceWithStreamingResponse:
     def __init__(self, date_driven_terms: AsyncDateDrivenTermsResource) -> None:
         self._date_driven_terms = date_driven_terms
 
+        self.create = async_to_streamed_response_wrapper(
+            date_driven_terms.create,
+        )
         self.retrieve = async_to_streamed_response_wrapper(
             date_driven_terms.retrieve,
         )
