@@ -223,6 +223,7 @@ from conductor.types.qbd import QbdStandardTerm, StandardTermListResponse
 
 Methods:
 
+- <code title="post /quickbooks-desktop/standard-terms">client.qbd.standard_terms.<a href="./src/conductor/resources/qbd/standard_terms.py">create</a>(\*\*<a href="src/conductor/types/qbd/standard_term_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_standard_term.py">QbdStandardTerm</a></code>
 - <code title="get /quickbooks-desktop/standard-terms/{id}">client.qbd.standard_terms.<a href="./src/conductor/resources/qbd/standard_terms.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_standard_term.py">QbdStandardTerm</a></code>
 - <code title="get /quickbooks-desktop/standard-terms">client.qbd.standard_terms.<a href="./src/conductor/resources/qbd/standard_terms.py">list</a>(\*\*<a href="src/conductor/types/qbd/standard_term_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/standard_term_list_response.py">StandardTermListResponse</a></code>
 
