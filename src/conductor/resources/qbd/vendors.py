@@ -82,8 +82,8 @@ class VendorsResource(SyncAPIResource):
         middle_name: str | NotGiven = NOT_GIVEN,
         name_on_check: str | NotGiven = NOT_GIVEN,
         note: str | NotGiven = NOT_GIVEN,
-        open_balance: str | NotGiven = NOT_GIVEN,
-        open_balance_date: str | NotGiven = NOT_GIVEN,
+        opening_balance: str | NotGiven = NOT_GIVEN,
+        opening_balance_date: str | NotGiven = NOT_GIVEN,
         phone: str | NotGiven = NOT_GIVEN,
         prefill_account_ids: List[str] | NotGiven = NOT_GIVEN,
         reporting_period: Literal["monthly", "quarterly"] | NotGiven = NOT_GIVEN,
@@ -190,10 +190,10 @@ class VendorsResource(SyncAPIResource):
 
           note: Additional notes or comments about this vendor.
 
-          open_balance: The opening balance for this vendor's account, indicating the amount owed to
+          opening_balance: The opening balance for this vendor's account, indicating the amount owed to
               this vendor, represented as a decimal string.
 
-          open_balance_date: The date of the opening balance for this vendor, in ISO 8601 format
+          opening_balance_date: The date of the opening balance for this vendor, in ISO 8601 format
               (YYYY-MM-DD).
 
           phone: The vendor's primary telephone number.
@@ -278,8 +278,8 @@ class VendorsResource(SyncAPIResource):
                     "middle_name": middle_name,
                     "name_on_check": name_on_check,
                     "note": note,
-                    "open_balance": open_balance,
-                    "open_balance_date": open_balance_date,
+                    "opening_balance": opening_balance,
+                    "opening_balance_date": opening_balance_date,
                     "phone": phone,
                     "prefill_account_ids": prefill_account_ids,
                     "reporting_period": reporting_period,
@@ -552,8 +552,8 @@ class AsyncVendorsResource(AsyncAPIResource):
         middle_name: str | NotGiven = NOT_GIVEN,
         name_on_check: str | NotGiven = NOT_GIVEN,
         note: str | NotGiven = NOT_GIVEN,
-        open_balance: str | NotGiven = NOT_GIVEN,
-        open_balance_date: str | NotGiven = NOT_GIVEN,
+        opening_balance: str | NotGiven = NOT_GIVEN,
+        opening_balance_date: str | NotGiven = NOT_GIVEN,
         phone: str | NotGiven = NOT_GIVEN,
         prefill_account_ids: List[str] | NotGiven = NOT_GIVEN,
         reporting_period: Literal["monthly", "quarterly"] | NotGiven = NOT_GIVEN,
@@ -660,10 +660,10 @@ class AsyncVendorsResource(AsyncAPIResource):
 
           note: Additional notes or comments about this vendor.
 
-          open_balance: The opening balance for this vendor's account, indicating the amount owed to
+          opening_balance: The opening balance for this vendor's account, indicating the amount owed to
               this vendor, represented as a decimal string.
 
-          open_balance_date: The date of the opening balance for this vendor, in ISO 8601 format
+          opening_balance_date: The date of the opening balance for this vendor, in ISO 8601 format
               (YYYY-MM-DD).
 
           phone: The vendor's primary telephone number.
@@ -748,8 +748,8 @@ class AsyncVendorsResource(AsyncAPIResource):
                     "middle_name": middle_name,
                     "name_on_check": name_on_check,
                     "note": note,
-                    "open_balance": open_balance,
-                    "open_balance_date": open_balance_date,
+                    "opening_balance": opening_balance,
+                    "opening_balance_date": opening_balance_date,
                     "phone": phone,
                     "prefill_account_ids": prefill_account_ids,
                     "reporting_period": reporting_period,

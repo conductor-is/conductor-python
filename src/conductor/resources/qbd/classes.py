@@ -64,16 +64,24 @@ class ClassesResource(SyncAPIResource):
         """Creates a class.
 
         Args:
-          name: The case-insensitive name of the class.
+          name: The case-insensitive name of this class.
 
-        Does not include the names of its
-              accentors like `fullName` does.
+        Not guaranteed to be unique because it
+              does not include the names of its parent objects like `fullName` does. For
+              example, two classes could both have the `name` "Marketing", but they could have
+              unique `fullName` values, such as "Corporate:Marketing" and
+              "Internal:Marketing".
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          is_active: Whether this class is active. QuickBooks hides inactive objects from most views
-              and reports in the UI.
+          is_active: Indicates whether this class is active. Inactive objects are typically hidden
+              from views and reports in QuickBooks.
+
+          parent_id: The parent class one level above this one in the hierarchy. For example, if this
+              class has a `fullName` of "Corporate:Sales:Marketing", its parent has a
+              `fullName` of "Corporate:Sales". If this class is at the top level, `parent`
+              will be `null`.
 
           extra_headers: Send extra headers
 
@@ -288,16 +296,24 @@ class AsyncClassesResource(AsyncAPIResource):
         """Creates a class.
 
         Args:
-          name: The case-insensitive name of the class.
+          name: The case-insensitive name of this class.
 
-        Does not include the names of its
-              accentors like `fullName` does.
+        Not guaranteed to be unique because it
+              does not include the names of its parent objects like `fullName` does. For
+              example, two classes could both have the `name` "Marketing", but they could have
+              unique `fullName` values, such as "Corporate:Marketing" and
+              "Internal:Marketing".
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          is_active: Whether this class is active. QuickBooks hides inactive objects from most views
-              and reports in the UI.
+          is_active: Indicates whether this class is active. Inactive objects are typically hidden
+              from views and reports in QuickBooks.
+
+          parent_id: The parent class one level above this one in the hierarchy. For example, if this
+              class has a `fullName` of "Corporate:Sales:Marketing", its parent has a
+              `fullName` of "Corporate:Sales". If this class is at the top level, `parent`
+              will be `null`.
 
           extra_headers: Send extra headers
 

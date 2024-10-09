@@ -52,7 +52,7 @@ class ServiceItemsResource(SyncAPIResource):
         *,
         name: str,
         conductor_end_user_id: str,
-        bar_code: service_item_create_params.BarCode | NotGiven = NOT_GIVEN,
+        barcode: service_item_create_params.Barcode | NotGiven = NOT_GIVEN,
         class_id: str | NotGiven = NOT_GIVEN,
         external_id: str | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
@@ -82,7 +82,7 @@ class ServiceItemsResource(SyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          bar_code: The service item's barcode.
+          barcode: The service item's barcode.
 
           class_id: The service item's class. Classes can be used to categorize objects into
               meaningful segments, such as department, location, or type of work. In
@@ -127,7 +127,7 @@ class ServiceItemsResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "name": name,
-                    "bar_code": bar_code,
+                    "barcode": barcode,
                     "class_id": class_id,
                     "external_id": external_id,
                     "is_active": is_active,
@@ -336,7 +336,7 @@ class AsyncServiceItemsResource(AsyncAPIResource):
         *,
         name: str,
         conductor_end_user_id: str,
-        bar_code: service_item_create_params.BarCode | NotGiven = NOT_GIVEN,
+        barcode: service_item_create_params.Barcode | NotGiven = NOT_GIVEN,
         class_id: str | NotGiven = NOT_GIVEN,
         external_id: str | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
@@ -366,7 +366,7 @@ class AsyncServiceItemsResource(AsyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          bar_code: The service item's barcode.
+          barcode: The service item's barcode.
 
           class_id: The service item's class. Classes can be used to categorize objects into
               meaningful segments, such as department, location, or type of work. In
@@ -411,7 +411,7 @@ class AsyncServiceItemsResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "name": name,
-                    "bar_code": bar_code,
+                    "barcode": barcode,
                     "class_id": class_id,
                     "external_id": external_id,
                     "is_active": is_active,

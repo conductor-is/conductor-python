@@ -71,7 +71,7 @@ class AccountsResource(SyncAPIResource):
         name: str,
         conductor_end_user_id: str,
         account_number: str | NotGiven = NOT_GIVEN,
-        bank_number: str | NotGiven = NOT_GIVEN,
+        bank_account_number: str | NotGiven = NOT_GIVEN,
         currency_id: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
@@ -79,7 +79,7 @@ class AccountsResource(SyncAPIResource):
         opening_balance_date: str | NotGiven = NOT_GIVEN,
         parent_id: str | NotGiven = NOT_GIVEN,
         sales_tax_code_id: str | NotGiven = NOT_GIVEN,
-        tax_line_id: int | NotGiven = NOT_GIVEN,
+        tax_line_id: float | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -91,13 +91,55 @@ class AccountsResource(SyncAPIResource):
         Creates a financial account.
 
         Args:
-          account_type: The type of QuickBooks account.
+          account_type: The classification of this account, indicating its purpose within the chart of
+              accounts. You cannot create an account of type "non_posting" through the API
+              because QuickBooks creates these accounts behind the scenes.
+
+          name: The case-insensitive name of this account. Not guaranteed to be unique because
+              it does not include the names of its parent objects like `fullName` does. For
+              example, two accounts could both have the `name` "Accounts-Payable", but they
+              could have unique `fullName` values, such as "Corporate:Accounts-Payable" and
+              "Finance:Accounts-Payable".
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          is_active: Whether this account is active. QuickBooks hides inactive objects from most
-              views and reports in the UI.
+          account_number: The account's account number, which appears in the QuickBooks chart of accounts,
+              reports, and graphs. Note that if the "Use Account Numbers" preference is turned
+              off in QuickBooks, the account number may not be visible in the user interface,
+              but it can still be set and retrieved through the API.
+
+          bank_account_number: The bank account number or identifying note for this account. Access to this
+              field may be restricted based on permissions.
+
+          currency_id: The account's currency. For built-in currencies, the name and code are standard
+              international values. For user-defined currencies, all values are editable.
+
+          description: A description of this account.
+
+          is_active: Indicates whether this account is active. Inactive objects are typically hidden
+              from views and reports in QuickBooks.
+
+          opening_balance: The amount of money in, or the value of, this account as of
+              `openingBalanceDate`. On a bank statement, this would be the amount of money in
+              the account at the beginning of the statement period.
+
+          opening_balance_date: The date of the opening balance for this account, in ISO 8601 format
+              (YYYY-MM-DD).
+
+          parent_id: The parent account one level above this one in the hierarchy. For example, if
+              this account has a `fullName` of "Corporate:Accounts-Payable", its parent has a
+              `fullName` of "Corporate". If this account is at the top level, `parent` will be
+              `null`.
+
+          sales_tax_code_id: The sales tax code associated with this account, determining whether
+              transactions in this account are taxable or non-taxable. It's used to assign a
+              default tax status to all transactions for this account. Default codes include
+              'NON' (non-taxable) and 'TAX' (taxable), but custom codes can also be created in
+              QuickBooks. If QuickBooks is not set up to charge sales tax, it will assign the
+              default non-taxable code to all sales.
+
+          tax_line_id: The ID of the federal tax line associated with this account.
 
           extra_headers: Send extra headers
 
@@ -115,7 +157,7 @@ class AccountsResource(SyncAPIResource):
                     "account_type": account_type,
                     "name": name,
                     "account_number": account_number,
-                    "bank_number": bank_number,
+                    "bank_account_number": bank_account_number,
                     "currency_id": currency_id,
                     "description": description,
                     "is_active": is_active,
@@ -356,7 +398,7 @@ class AsyncAccountsResource(AsyncAPIResource):
         name: str,
         conductor_end_user_id: str,
         account_number: str | NotGiven = NOT_GIVEN,
-        bank_number: str | NotGiven = NOT_GIVEN,
+        bank_account_number: str | NotGiven = NOT_GIVEN,
         currency_id: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
@@ -364,7 +406,7 @@ class AsyncAccountsResource(AsyncAPIResource):
         opening_balance_date: str | NotGiven = NOT_GIVEN,
         parent_id: str | NotGiven = NOT_GIVEN,
         sales_tax_code_id: str | NotGiven = NOT_GIVEN,
-        tax_line_id: int | NotGiven = NOT_GIVEN,
+        tax_line_id: float | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -376,13 +418,55 @@ class AsyncAccountsResource(AsyncAPIResource):
         Creates a financial account.
 
         Args:
-          account_type: The type of QuickBooks account.
+          account_type: The classification of this account, indicating its purpose within the chart of
+              accounts. You cannot create an account of type "non_posting" through the API
+              because QuickBooks creates these accounts behind the scenes.
+
+          name: The case-insensitive name of this account. Not guaranteed to be unique because
+              it does not include the names of its parent objects like `fullName` does. For
+              example, two accounts could both have the `name` "Accounts-Payable", but they
+              could have unique `fullName` values, such as "Corporate:Accounts-Payable" and
+              "Finance:Accounts-Payable".
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          is_active: Whether this account is active. QuickBooks hides inactive objects from most
-              views and reports in the UI.
+          account_number: The account's account number, which appears in the QuickBooks chart of accounts,
+              reports, and graphs. Note that if the "Use Account Numbers" preference is turned
+              off in QuickBooks, the account number may not be visible in the user interface,
+              but it can still be set and retrieved through the API.
+
+          bank_account_number: The bank account number or identifying note for this account. Access to this
+              field may be restricted based on permissions.
+
+          currency_id: The account's currency. For built-in currencies, the name and code are standard
+              international values. For user-defined currencies, all values are editable.
+
+          description: A description of this account.
+
+          is_active: Indicates whether this account is active. Inactive objects are typically hidden
+              from views and reports in QuickBooks.
+
+          opening_balance: The amount of money in, or the value of, this account as of
+              `openingBalanceDate`. On a bank statement, this would be the amount of money in
+              the account at the beginning of the statement period.
+
+          opening_balance_date: The date of the opening balance for this account, in ISO 8601 format
+              (YYYY-MM-DD).
+
+          parent_id: The parent account one level above this one in the hierarchy. For example, if
+              this account has a `fullName` of "Corporate:Accounts-Payable", its parent has a
+              `fullName` of "Corporate". If this account is at the top level, `parent` will be
+              `null`.
+
+          sales_tax_code_id: The sales tax code associated with this account, determining whether
+              transactions in this account are taxable or non-taxable. It's used to assign a
+              default tax status to all transactions for this account. Default codes include
+              'NON' (non-taxable) and 'TAX' (taxable), but custom codes can also be created in
+              QuickBooks. If QuickBooks is not set up to charge sales tax, it will assign the
+              default non-taxable code to all sales.
+
+          tax_line_id: The ID of the federal tax line associated with this account.
 
           extra_headers: Send extra headers
 
@@ -400,7 +484,7 @@ class AsyncAccountsResource(AsyncAPIResource):
                     "account_type": account_type,
                     "name": name,
                     "account_number": account_number,
-                    "bank_number": bank_number,
+                    "bank_account_number": bank_account_number,
                     "currency_id": currency_id,
                     "description": description,
                     "is_active": is_active,
