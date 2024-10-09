@@ -197,13 +197,13 @@ class CustomerCreateParams(TypedDict, total=False):
     note: str
     """Additional notes or comments about this customer."""
 
-    open_balance: Annotated[str, PropertyInfo(alias="openBalance")]
+    opening_balance: Annotated[str, PropertyInfo(alias="openingBalance")]
     """
     The opening balance for this customer's account, indicating the amount owed by
     this customer, represented as a decimal string.
     """
 
-    open_balance_date: Annotated[str, PropertyInfo(alias="openBalanceDate")]
+    opening_balance_date: Annotated[str, PropertyInfo(alias="openingBalanceDate")]
     """
     The date of the opening balance for this customer, in ISO 8601 format
     (YYYY-MM-DD).

@@ -33,9 +33,20 @@ class AccountCreateParams(TypedDict, total=False):
             PropertyInfo(alias="accountType"),
         ]
     ]
-    """The type of QuickBooks account."""
+    """
+    The classification of this account, indicating its purpose within the chart of
+    accounts. You cannot create an account of type "non_posting" through the API
+    because QuickBooks creates these accounts behind the scenes.
+    """
 
     name: Required[str]
+    """The case-insensitive name of this account.
+
+    Not guaranteed to be unique because it does not include the names of its parent
+    objects like `fullName` does. For example, two accounts could both have the
+    `name` "Accounts-Payable", but they could have unique `fullName` values, such as
+    "Corporate:Accounts-Payable" and "Finance:Accounts-Payable".
+    """
 
     conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]
     """
@@ -44,25 +55,66 @@ class AccountCreateParams(TypedDict, total=False):
     """
 
     account_number: Annotated[str, PropertyInfo(alias="accountNumber")]
+    """
+    The account's account number, which appears in the QuickBooks chart of accounts,
+    reports, and graphs. Note that if the "Use Account Numbers" preference is turned
+    off in QuickBooks, the account number may not be visible in the user interface,
+    but it can still be set and retrieved through the API.
+    """
 
-    bank_number: Annotated[str, PropertyInfo(alias="bankNumber")]
+    bank_account_number: Annotated[str, PropertyInfo(alias="bankAccountNumber")]
+    """The bank account number or identifying note for this account.
+
+    Access to this field may be restricted based on permissions.
+    """
 
     currency_id: Annotated[str, PropertyInfo(alias="currencyId")]
+    """The account's currency.
+
+    For built-in currencies, the name and code are standard international values.
+    For user-defined currencies, all values are editable.
+    """
 
     description: str
+    """A description of this account."""
 
     is_active: Annotated[bool, PropertyInfo(alias="isActive")]
-    """Whether this account is active.
+    """Indicates whether this account is active.
 
-    QuickBooks hides inactive objects from most views and reports in the UI.
+    Inactive objects are typically hidden from views and reports in QuickBooks.
     """
 
     opening_balance: Annotated[str, PropertyInfo(alias="openingBalance")]
+    """The amount of money in, or the value of, this account as of
+    `openingBalanceDate`.
+
+    On a bank statement, this would be the amount of money in the account at the
+    beginning of the statement period.
+    """
 
     opening_balance_date: Annotated[str, PropertyInfo(alias="openingBalanceDate")]
+    """
+    The date of the opening balance for this account, in ISO 8601 format
+    (YYYY-MM-DD).
+    """
 
     parent_id: Annotated[str, PropertyInfo(alias="parentId")]
+    """The parent account one level above this one in the hierarchy.
+
+    For example, if this account has a `fullName` of "Corporate:Accounts-Payable",
+    its parent has a `fullName` of "Corporate". If this account is at the top level,
+    `parent` will be `null`.
+    """
 
     sales_tax_code_id: Annotated[str, PropertyInfo(alias="salesTaxCodeId")]
+    """
+    The sales tax code associated with this account, determining whether
+    transactions in this account are taxable or non-taxable. It's used to assign a
+    default tax status to all transactions for this account. Default codes include
+    'NON' (non-taxable) and 'TAX' (taxable), but custom codes can also be created in
+    QuickBooks. If QuickBooks is not set up to charge sales tax, it will assign the
+    default non-taxable code to all sales.
+    """
 
-    tax_line_id: Annotated[int, PropertyInfo(alias="taxLineId")]
+    tax_line_id: Annotated[float, PropertyInfo(alias="taxLineId")]
+    """The ID of the federal tax line associated with this account."""

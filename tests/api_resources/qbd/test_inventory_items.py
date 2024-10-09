@@ -9,6 +9,7 @@ import pytest
 
 from conductor import Conductor, AsyncConductor
 from tests.utils import assert_matches_type
+from conductor._utils import parse_date
 from conductor.types.qbd import InventoryItem
 from conductor.pagination import SyncCursorPage, AsyncCursorPage
 
@@ -21,7 +22,7 @@ class TestInventoryItems:
     @parametrize
     def test_method_create(self, client: Conductor) -> None:
         inventory_item = client.qbd.inventory_items.create(
-            name="name",
+            name="Widget",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(InventoryItem, inventory_item, path=["response"])
@@ -29,42 +30,42 @@ class TestInventoryItems:
     @parametrize
     def test_method_create_with_all_params(self, client: Conductor) -> None:
         inventory_item = client.qbd.inventory_items.create(
-            name="name",
+            name="Widget",
             conductor_end_user_id="end_usr_1234567abcdefg",
-            asset_account_id="assetAccountId",
+            asset_account_id="80000009-1234567890",
             barcode={
-                "allow_override": True,
-                "assign_even_if_used": True,
-                "bar_code_value": "BarCodeValue",
+                "allow_override": False,
+                "assign_even_if_used": False,
+                "bar_code_value": "1234567890",
             },
             class_id="80000001-1234567890",
-            cogs_account_id="cogsAccountId",
+            cogs_account_id="80000007-1234567890",
             external_id="12345678-abcd-1234-abcd-1234567890ab",
-            income_account_id="incomeAccountId",
-            inventory_date="inventoryDate",
+            income_account_id="80000005-1234567890",
+            inventory_date=parse_date("2019-12-27"),
             is_active=True,
-            is_tax_included=True,
-            manufacturer_part_number="manufacturerPartNumber",
-            maximum_on_hand_quantity=0,
-            parent_id="parentId",
-            preferred_vendor_id="preferredVendorId",
-            purchase_cost="purchaseCost",
-            purchase_description="purchaseDescription",
-            purchase_tax_code_id="purchaseTaxCodeId",
-            quantity_on_hand=0,
-            reorder_point=0,
-            sales_description="salesDescription",
-            sales_price="salesPrice",
-            sales_tax_code_id="salesTaxCodeId",
-            total_value="totalValue",
-            unit_of_measure_set_id="unitOfMeasureSetId",
+            is_tax_included=False,
+            manufacturer_part_number="MPN-123456",
+            maximum_on_hand_quantity=200,
+            parent_id="80000002-1234567890",
+            preferred_vendor_id="80000008-1234567890",
+            purchase_cost="15.75",
+            purchase_description="Bulk purchase of steel bolts for inventory",
+            purchase_tax_code_id="80000006-1234567890",
+            quantity_on_hand=150,
+            reorder_point=50,
+            sales_description="High-quality steel bolts suitable for construction",
+            sales_price="19.99",
+            sales_tax_code_id="80000004-1234567890",
+            total_value="1500.00",
+            unit_of_measure_set_id="80000003-1234567890",
         )
         assert_matches_type(InventoryItem, inventory_item, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: Conductor) -> None:
         response = client.qbd.inventory_items.with_raw_response.create(
-            name="name",
+            name="Widget",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -76,7 +77,7 @@ class TestInventoryItems:
     @parametrize
     def test_streaming_response_create(self, client: Conductor) -> None:
         with client.qbd.inventory_items.with_streaming_response.create(
-            name="name",
+            name="Widget",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
@@ -187,7 +188,7 @@ class TestAsyncInventoryItems:
     @parametrize
     async def test_method_create(self, async_client: AsyncConductor) -> None:
         inventory_item = await async_client.qbd.inventory_items.create(
-            name="name",
+            name="Widget",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(InventoryItem, inventory_item, path=["response"])
@@ -195,42 +196,42 @@ class TestAsyncInventoryItems:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncConductor) -> None:
         inventory_item = await async_client.qbd.inventory_items.create(
-            name="name",
+            name="Widget",
             conductor_end_user_id="end_usr_1234567abcdefg",
-            asset_account_id="assetAccountId",
+            asset_account_id="80000009-1234567890",
             barcode={
-                "allow_override": True,
-                "assign_even_if_used": True,
-                "bar_code_value": "BarCodeValue",
+                "allow_override": False,
+                "assign_even_if_used": False,
+                "bar_code_value": "1234567890",
             },
             class_id="80000001-1234567890",
-            cogs_account_id="cogsAccountId",
+            cogs_account_id="80000007-1234567890",
             external_id="12345678-abcd-1234-abcd-1234567890ab",
-            income_account_id="incomeAccountId",
-            inventory_date="inventoryDate",
+            income_account_id="80000005-1234567890",
+            inventory_date=parse_date("2019-12-27"),
             is_active=True,
-            is_tax_included=True,
-            manufacturer_part_number="manufacturerPartNumber",
-            maximum_on_hand_quantity=0,
-            parent_id="parentId",
-            preferred_vendor_id="preferredVendorId",
-            purchase_cost="purchaseCost",
-            purchase_description="purchaseDescription",
-            purchase_tax_code_id="purchaseTaxCodeId",
-            quantity_on_hand=0,
-            reorder_point=0,
-            sales_description="salesDescription",
-            sales_price="salesPrice",
-            sales_tax_code_id="salesTaxCodeId",
-            total_value="totalValue",
-            unit_of_measure_set_id="unitOfMeasureSetId",
+            is_tax_included=False,
+            manufacturer_part_number="MPN-123456",
+            maximum_on_hand_quantity=200,
+            parent_id="80000002-1234567890",
+            preferred_vendor_id="80000008-1234567890",
+            purchase_cost="15.75",
+            purchase_description="Bulk purchase of steel bolts for inventory",
+            purchase_tax_code_id="80000006-1234567890",
+            quantity_on_hand=150,
+            reorder_point=50,
+            sales_description="High-quality steel bolts suitable for construction",
+            sales_price="19.99",
+            sales_tax_code_id="80000004-1234567890",
+            total_value="1500.00",
+            unit_of_measure_set_id="80000003-1234567890",
         )
         assert_matches_type(InventoryItem, inventory_item, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncConductor) -> None:
         response = await async_client.qbd.inventory_items.with_raw_response.create(
-            name="name",
+            name="Widget",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -242,7 +243,7 @@ class TestAsyncInventoryItems:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncConductor) -> None:
         async with async_client.qbd.inventory_items.with_streaming_response.create(
-            name="name",
+            name="Widget",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed

@@ -11,6 +11,14 @@ __all__ = ["NonInventoryItemCreateParams", "Barcode", "SalesAndPurchaseDetails",
 
 class NonInventoryItemCreateParams(TypedDict, total=False):
     name: Required[str]
+    """The case-insensitive name of this non-inventory item.
+
+    Not guaranteed to be unique because it does not include the names of its parent
+    objects like `fullName` does. For example, two non-inventory items could both
+    have the `name` "Printer Ink Cartridge", but they could have unique `fullName`
+    values, such as "Office-Supplies:Printer Ink Cartridge" and
+    "Miscellaneous:Printer Ink Cartridge".
+    """
 
     conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]
     """
@@ -19,44 +27,77 @@ class NonInventoryItemCreateParams(TypedDict, total=False):
     """
 
     barcode: Barcode
+    """The non-inventory item's barcode."""
 
     class_id: Annotated[str, PropertyInfo(alias="classId")]
-    """The class associated with this object.
+    """The non-inventory item's class.
 
-    Classes can be used to categorize objects or transactions by department,
-    location, or other meaningful segments.
+    Classes can be used to categorize objects into meaningful segments, such as
+    department, location, or type of work. In QuickBooks, class tracking is off by
+    default.
     """
 
     external_id: Annotated[str, PropertyInfo(alias="externalId")]
     """
-    An arbitrary globally unique identifier (GUID) the developer can provide to
-    track this object in their own system. This value must be formatted as a GUID;
-    otherwise, QuickBooks will return an error.
+    A developer-assigned globally unique identifier (GUID) for tracking this object
+    in external systems. Must be formatted as a valid GUID; otherwise, QuickBooks
+    will return an error.
     """
 
     is_active: Annotated[bool, PropertyInfo(alias="isActive")]
+    """Indicates whether this non-inventory item is active.
+
+    Inactive objects are typically hidden from views and reports in QuickBooks.
+    """
 
     is_tax_included: Annotated[bool, PropertyInfo(alias="isTaxIncluded")]
+    """Indicates whether the price of this non-inventory item includes tax.
+
+    This is primarily used in international versions of QuickBooks.
+    """
 
     manufacturer_part_number: Annotated[str, PropertyInfo(alias="manufacturerPartNumber")]
+    """The manufacturer's part number for this non-inventory item."""
 
     parent_id: Annotated[str, PropertyInfo(alias="parentId")]
+    """The parent non-inventory item one level above this one in the hierarchy.
+
+    For example, if this non-inventory item has a `fullName` of
+    "Office-Supplies:Printer Ink Cartridge", its parent has a `fullName` of
+    "Office-Supplies". If this non-inventory item is at the top level, `parent` will
+    be `null`.
+    """
 
     sales_and_purchase_details: Annotated[SalesAndPurchaseDetails, PropertyInfo(alias="salesAndPurchaseDetails")]
 
     sales_or_purchase_details: Annotated[SalesOrPurchaseDetails, PropertyInfo(alias="salesOrPurchaseDetails")]
 
     sales_tax_code_id: Annotated[str, PropertyInfo(alias="salesTaxCodeId")]
+    """
+    The sales tax code associated with this non-inventory item, determining whether
+    it is taxable or non-taxable. It's used to assign a default tax status to all
+    transactions for this non-inventory item. Default codes include 'NON'
+    (non-taxable) and 'TAX' (taxable), but custom codes can also be created in
+    QuickBooks. If QuickBooks is not set up to charge sales tax, it will assign the
+    default non-taxable code to all sales.
+    """
 
     unit_of_measure_set_id: Annotated[str, PropertyInfo(alias="unitOfMeasureSetId")]
+    """
+    The unit of measure set associated with this non-inventory item, which consists
+    of a base unit and related units.
+    """
 
 
 class Barcode(TypedDict, total=False):
-    allow_override: Annotated[bool, PropertyInfo(alias="AllowOverride")]
+    allow_override: Annotated[bool, PropertyInfo(alias="allowOverride")]
+    """Whether to allow the barcode to be overridden."""
 
-    assign_even_if_used: Annotated[bool, PropertyInfo(alias="AssignEvenIfUsed")]
+    assign_even_if_used: Annotated[bool, PropertyInfo(alias="assignEvenIfUsed")]
+    """Whether to assign the barcode even if it is already used."""
 
-    bar_code_value: Annotated[str, PropertyInfo(alias="BarCodeValue")]
+    bar_code_value: Annotated[str, PropertyInfo(alias="barCodeValue")]
+    """The item's barcode value."""
 
 
 class SalesAndPurchaseDetails(TypedDict, total=False):

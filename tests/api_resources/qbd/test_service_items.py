@@ -31,7 +31,7 @@ class TestServiceItems:
         service_item = client.qbd.service_items.create(
             name="Web-Design",
             conductor_end_user_id="end_usr_1234567abcdefg",
-            bar_code={
+            barcode={
                 "allow_override": False,
                 "assign_even_if_used": False,
                 "bar_code_value": "1234567890",
@@ -198,7 +198,7 @@ class TestAsyncServiceItems:
         service_item = await async_client.qbd.service_items.create(
             name="Web-Design",
             conductor_end_user_id="end_usr_1234567abcdefg",
-            bar_code={
+            barcode={
                 "allow_override": False,
                 "assign_even_if_used": False,
                 "bar_code_value": "1234567890",
