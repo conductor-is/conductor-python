@@ -206,7 +206,7 @@ class InventoryItem(BaseModel):
     string.
     """
 
-    bar_code: Optional[str] = FieldInfo(alias="barCode", default=None)
+    barcode: Optional[str] = None
     """The inventory item's barcode."""
 
     class_: Optional[Class] = FieldInfo(alias="class", default=None)
@@ -247,10 +247,10 @@ class InventoryItem(BaseModel):
     """
     The fully-qualified unique name for this inventory item, formed by combining the
     names of its parent objects with its own `name`, separated by colons. For
-    example, if an inventory item is under 'Furniture:Kitchen' and has the `name`
-    'Cabinet', its `fullName` would be 'Furniture:Kitchen:Cabinet'. Unlike `name`,
-    `fullName` is guaranteed to be unique across all inventory item objects. Not
-    case-sensitive.
+    example, if an inventory item is under 'Products:Electronics' and has the `name`
+    'Widgets', its `fullName` would be 'Products:Electronics:Widgets'. Unlike
+    `name`, `fullName` is guaranteed to be unique across all inventory item objects.
+    Not case-sensitive.
     """
 
     income_account: Optional[IncomeAccount] = FieldInfo(alias="incomeAccount", default=None)
@@ -273,8 +273,8 @@ class InventoryItem(BaseModel):
 
     Not guaranteed to be unique because it does not include the names of its parent
     objects like `fullName` does. For example, two inventory items could both have
-    the `name` "Cabinet", but they could have unique `fullName` values, such as
-    "Kitchen:Cabinet" and "Garage:Cabinet".
+    the `name` "Widget", but they could have unique `fullName` values, such as
+    "Products:Widget" and "Inventory:Widget".
     """
 
     object_type: Literal["qbd_inventory_item"] = FieldInfo(alias="objectType")
@@ -284,8 +284,9 @@ class InventoryItem(BaseModel):
     """The parent inventory item one level above this one in the hierarchy.
 
     For example, if this inventory item has a `fullName` of
-    "Furniture:Kitchen:Cabinet", its parent has a `fullName` of "Furniture:Kitchen".
-    If this inventory item is at the top level, `parent` will be `null`.
+    "Products:Electronics:Widgets", its parent has a `fullName` of
+    "Products:Electronics". If this inventory item is at the top level, `parent`
+    will be `null`.
     """
 
     preferred_vendor: Optional[PreferredVendor] = FieldInfo(alias="preferredVendor", default=None)
@@ -362,7 +363,7 @@ class InventoryItem(BaseModel):
 
     A top-level inventory item has a `sublevel` of 0; each subsequent sublevel
     increases this number by 1. For example, a inventory item with a `fullName` of
-    "Furniture:Kitchen:Cabinet" would have a `sublevel` of 2.
+    "Products:Electronics:Widgets" would have a `sublevel` of 2.
     """
 
     unit_of_measure_set: Optional[UnitOfMeasureSet] = FieldInfo(alias="unitOfMeasureSet", default=None)

@@ -6,7 +6,7 @@ from typing_extensions import Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
-__all__ = ["ServiceItemCreateParams", "BarCode", "SalesAndPurchaseDetails", "SalesOrPurchaseDetails"]
+__all__ = ["ServiceItemCreateParams", "Barcode", "SalesAndPurchaseDetails", "SalesOrPurchaseDetails"]
 
 
 class ServiceItemCreateParams(TypedDict, total=False):
@@ -25,7 +25,7 @@ class ServiceItemCreateParams(TypedDict, total=False):
     `"Conductor-End-User-Id: {{END_USER_ID}}"`).
     """
 
-    bar_code: Annotated[BarCode, PropertyInfo(alias="barCode")]
+    barcode: Barcode
     """The service item's barcode."""
 
     class_id: Annotated[str, PropertyInfo(alias="classId")]
@@ -85,7 +85,7 @@ class ServiceItemCreateParams(TypedDict, total=False):
     """
 
 
-class BarCode(TypedDict, total=False):
+class Barcode(TypedDict, total=False):
     allow_override: Annotated[bool, PropertyInfo(alias="allowOverride")]
     """Whether to allow the barcode to be overridden."""
 
