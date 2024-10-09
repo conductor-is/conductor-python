@@ -28,13 +28,13 @@ class DateDrivenTerm(BaseModel):
     discount_day_of_month: Optional[float] = FieldInfo(alias="discountDayOfMonth", default=None)
     """
     The day of the month within which payment must be received to qualify for the
-    discount defined by `discountPercentage`.
+    discount specified by `discountPercentage`.
     """
 
     discount_percentage: Optional[str] = FieldInfo(alias="discountPercentage", default=None)
     """
-    The discount percentage applied to the payment if received by the
-    `discountDayOfMonth`. The value is between 0 and 100.
+    The discount percentage applied to the payment if received on or before the
+    specified `discountDayOfMonth`. The value is between 0 and 100.
     """
 
     due_day_of_month: float = FieldInfo(alias="dueDayOfMonth")

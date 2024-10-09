@@ -77,10 +77,10 @@ class DateDrivenTermsResource(SyncAPIResource):
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
           discount_day_of_month: The day of the month within which payment must be received to qualify for the
-              discount defined by `discountPercentage`.
+              discount specified by `discountPercentage`.
 
-          discount_percentage: The discount percentage applied to the payment if received by the
-              `discountDayOfMonth`. The value is between 0 and 100.
+          discount_percentage: The discount percentage applied to the payment if received on or before the
+              specified `discountDayOfMonth`. The value is between 0 and 100.
 
           grace_period_days: The number of days before `dueDayOfMonth` when an invoice or bill issued within
               this threshold is considered due the following month. For example, with
@@ -321,10 +321,10 @@ class AsyncDateDrivenTermsResource(AsyncAPIResource):
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
           discount_day_of_month: The day of the month within which payment must be received to qualify for the
-              discount defined by `discountPercentage`.
+              discount specified by `discountPercentage`.
 
-          discount_percentage: The discount percentage applied to the payment if received by the
-              `discountDayOfMonth`. The value is between 0 and 100.
+          discount_percentage: The discount percentage applied to the payment if received on or before the
+              specified `discountDayOfMonth`. The value is between 0 and 100.
 
           grace_period_days: The number of days before `dueDayOfMonth` when an invoice or bill issued within
               this threshold is considered due the following month. For example, with
