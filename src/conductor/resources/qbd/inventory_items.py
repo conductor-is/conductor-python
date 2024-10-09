@@ -161,8 +161,8 @@ class InventoryItemsResource(SyncAPIResource):
 
           sales_tax_code_id: The sales tax code associated with this inventory item, determining whether it
               is taxable or non-taxable. It's used to assign a default tax status to all
-              transactions for this inventory item. Default codes include 'NON' (non-taxable)
-              and 'TAX' (taxable), but custom codes can also be created in QuickBooks. If
+              transactions for this inventory item. Default codes include "NON" (non-taxable)
+              and "TAX" (taxable), but custom codes can also be created in QuickBooks. If
               QuickBooks is not set up to charge sales tax, it will assign the default
               non-taxable code to all sales.
 
@@ -518,8 +518,8 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
 
           sales_tax_code_id: The sales tax code associated with this inventory item, determining whether it
               is taxable or non-taxable. It's used to assign a default tax status to all
-              transactions for this inventory item. Default codes include 'NON' (non-taxable)
-              and 'TAX' (taxable), but custom codes can also be created in QuickBooks. If
+              transactions for this inventory item. Default codes include "NON" (non-taxable)
+              and "TAX" (taxable), but custom codes can also be created in QuickBooks. If
               QuickBooks is not set up to charge sales tax, it will assign the default
               non-taxable code to all sales.
 

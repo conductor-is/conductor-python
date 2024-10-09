@@ -174,8 +174,8 @@ class QbdAccount(BaseModel):
     """
     The fully-qualified unique name for this account, formed by combining the names
     of its parent objects with its own `name`, separated by colons. For example, if
-    an account is under 'Corporate' and has the `name` 'Accounts-Payable', its
-    `fullName` would be 'Corporate:Accounts-Payable'. Unlike `name`, `fullName` is
+    an account is under "Corporate" and has the `name` "Accounts-Payable", its
+    `fullName` would be "Corporate:Accounts-Payable". Unlike `name`, `fullName` is
     guaranteed to be unique across all account objects. Not case-sensitive.
     """
 
@@ -212,8 +212,8 @@ class QbdAccount(BaseModel):
     """
     The sales tax code associated with this account, determining whether it is
     taxable or non-taxable. It's used to assign a default tax status to all
-    transactions for this account. Default codes include 'NON' (non-taxable) and
-    'TAX' (taxable), but custom codes can also be created in QuickBooks. If
+    transactions for this account. Default codes include "NON" (non-taxable) and
+    "TAX" (taxable), but custom codes can also be created in QuickBooks. If
     QuickBooks is not set up to charge sales tax, it will assign the default
     non-taxable code to all sales.
     """

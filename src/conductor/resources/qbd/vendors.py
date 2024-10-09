@@ -204,8 +204,8 @@ class VendorsResource(SyncAPIResource):
 
           sales_tax_code_id: The sales tax code associated with this vendor, determining whether items bought
               from this vendor are taxable or non-taxable. It's used to assign a default tax
-              status to all transactions for this vendor. Default codes include 'NON'
-              (non-taxable) and 'TAX' (taxable), but custom codes can also be created in
+              status to all transactions for this vendor. Default codes include "NON"
+              (non-taxable) and "TAX" (taxable), but custom codes can also be created in
               QuickBooks. If QuickBooks is not set up to charge sales tax, it will assign the
               default non-taxable code to all sales.
 
@@ -215,7 +215,7 @@ class VendorsResource(SyncAPIResource):
               tax liabilities.
 
           salutation: The formal salutation title that precedes the name of the contact person for
-              this vendor, such as 'Mr.', 'Ms.', or 'Dr.'.
+              this vendor, such as "Mr.", "Ms.", or "Dr.".
 
           shipping_address: The vendor's shipping address.
 
@@ -674,8 +674,8 @@ class AsyncVendorsResource(AsyncAPIResource):
 
           sales_tax_code_id: The sales tax code associated with this vendor, determining whether items bought
               from this vendor are taxable or non-taxable. It's used to assign a default tax
-              status to all transactions for this vendor. Default codes include 'NON'
-              (non-taxable) and 'TAX' (taxable), but custom codes can also be created in
+              status to all transactions for this vendor. Default codes include "NON"
+              (non-taxable) and "TAX" (taxable), but custom codes can also be created in
               QuickBooks. If QuickBooks is not set up to charge sales tax, it will assign the
               default non-taxable code to all sales.
 
@@ -685,7 +685,7 @@ class AsyncVendorsResource(AsyncAPIResource):
               tax liabilities.
 
           salutation: The formal salutation title that precedes the name of the contact person for
-              this vendor, such as 'Mr.', 'Ms.', or 'Dr.'.
+              this vendor, such as "Mr.", "Ms.", or "Dr.".
 
           shipping_address: The vendor's shipping address.
 

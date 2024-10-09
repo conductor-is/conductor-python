@@ -303,8 +303,8 @@ class ServiceItem(BaseModel):
     """
     The fully-qualified unique name for this service item, formed by combining the
     names of its parent objects with its own `name`, separated by colons. For
-    example, if a service item is under 'Services:Consulting' and has the `name`
-    'Web-Design', its `fullName` would be 'Services:Consulting:Web-Design'. Unlike
+    example, if a service item is under "Services:Consulting" and has the `name`
+    "Web-Design", its `fullName` would be "Services:Consulting:Web-Design". Unlike
     `name`, `fullName` is guaranteed to be unique across all service item objects.
     Not case-sensitive.
     """
@@ -359,8 +359,8 @@ class ServiceItem(BaseModel):
     """
     The sales tax code associated with this service item, determining whether it is
     taxable or non-taxable. It's used to assign a default tax status to all
-    transactions for this service item. Default codes include 'NON' (non-taxable)
-    and 'TAX' (taxable), but custom codes can also be created in QuickBooks. If
+    transactions for this service item. Default codes include "NON" (non-taxable)
+    and "TAX" (taxable), but custom codes can also be created in QuickBooks. If
     QuickBooks is not set up to charge sales tax, it will assign the default
     non-taxable code to all sales.
     """
