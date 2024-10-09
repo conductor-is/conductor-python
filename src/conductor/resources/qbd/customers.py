@@ -424,9 +424,9 @@ class CustomersResource(SyncAPIResource):
               or multiple using a comma-separated list (e.g., `fullNames=1,2,3`). Like `id`, a
               `fullName` is a unique identifier for a customer, and is formed by by combining
               the names of its parent objects with its own `name`, separated by colons. For
-              example, if a customer is under 'ABC Corporation' and has the `name` 'Website
-              Redesign Project', its `fullName` would be 'ABC Corporation:Website Redesign
-              Project'. Unlike `name`, `fullName` is guaranteed to be unique across all
+              example, if a customer is under "ABC Corporation" and has the `name` "Website
+              Redesign Project", its `fullName` would be "ABC Corporation:Website Redesign
+              Project". Unlike `name`, `fullName` is guaranteed to be unique across all
               customer objects. Not case-sensitive. NOTE: If you include this parameter, all
               other query parameters will be ignored.
 
@@ -922,9 +922,9 @@ class AsyncCustomersResource(AsyncAPIResource):
               or multiple using a comma-separated list (e.g., `fullNames=1,2,3`). Like `id`, a
               `fullName` is a unique identifier for a customer, and is formed by by combining
               the names of its parent objects with its own `name`, separated by colons. For
-              example, if a customer is under 'ABC Corporation' and has the `name` 'Website
-              Redesign Project', its `fullName` would be 'ABC Corporation:Website Redesign
-              Project'. Unlike `name`, `fullName` is guaranteed to be unique across all
+              example, if a customer is under "ABC Corporation" and has the `name` "Website
+              Redesign Project", its `fullName` would be "ABC Corporation:Website Redesign
+              Project". Unlike `name`, `fullName` is guaranteed to be unique across all
               customer objects. Not case-sensitive. NOTE: If you include this parameter, all
               other query parameters will be ignored.
 
