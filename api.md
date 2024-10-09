@@ -127,6 +127,7 @@ from conductor.types.qbd import DateDrivenTerm, DateDrivenTermListResponse
 
 Methods:
 
+- <code title="post /quickbooks-desktop/date-driven-terms">client.qbd.date_driven_terms.<a href="./src/conductor/resources/qbd/date_driven_terms.py">create</a>(\*\*<a href="src/conductor/types/qbd/date_driven_term_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/date_driven_term.py">DateDrivenTerm</a></code>
 - <code title="get /quickbooks-desktop/date-driven-terms/{id}">client.qbd.date_driven_terms.<a href="./src/conductor/resources/qbd/date_driven_terms.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/date_driven_term.py">DateDrivenTerm</a></code>
 - <code title="get /quickbooks-desktop/date-driven-terms">client.qbd.date_driven_terms.<a href="./src/conductor/resources/qbd/date_driven_terms.py">list</a>(\*\*<a href="src/conductor/types/qbd/date_driven_term_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/date_driven_term_list_response.py">DateDrivenTermListResponse</a></code>
 
