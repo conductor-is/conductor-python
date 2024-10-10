@@ -28,13 +28,13 @@ class QbdStandardTerm(BaseModel):
     discount_days: Optional[float] = FieldInfo(alias="discountDays", default=None)
     """
     The number of days within which payment must be received to qualify for the
-    discount defined by `discountPercentage`.
+    discount specified by `discountPercentage`.
     """
 
     discount_percentage: Optional[str] = FieldInfo(alias="discountPercentage", default=None)
     """
-    The discount percentage applied to the payment if received within `discountDays`
-    number of days. The value is between 0 and 100.
+    The discount percentage applied to the payment if received within the number of
+    days specified by `discountDays`. The value is between 0 and 100.
     """
 
     due_days: Optional[float] = FieldInfo(alias="dueDays", default=None)

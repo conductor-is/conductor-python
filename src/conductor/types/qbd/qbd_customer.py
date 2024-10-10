@@ -474,10 +474,10 @@ class QbdCustomer(BaseModel):
     """
 
     balance: Optional[str] = None
-    """The current balance owed by this customer, represented as a decimal string.
-
-    Compare with `totalBalance`. A positive number indicates money that the customer
-    owes.
+    """
+    The current balance owed by this customer, excluding balances from any jobs
+    (i.e., sub-customers), represented as a decimal string. Compare with
+    `totalBalance`. A positive number indicates money owed by the customer.
     """
 
     billing_address: Optional[BillingAddress] = FieldInfo(alias="billingAddress", default=None)
@@ -487,9 +487,11 @@ class QbdCustomer(BaseModel):
     """An email address to carbon copy (CC) on communications with this customer."""
 
     class_: Optional[Class] = FieldInfo(alias="class", default=None)
-    """
-    The customer's class, used for categorization (e.g., by department, location, or
-    type of work).
+    """The customer's class.
+
+    Classes can be used to categorize objects into meaningful segments, such as
+    department, location, or type of work. In QuickBooks, class tracking is off by
+    default.
     """
 
     company_name: Optional[str] = FieldInfo(alias="companyName", default=None)
@@ -533,8 +535,8 @@ class QbdCustomer(BaseModel):
 
     customer_type: Optional[CustomerType] = FieldInfo(alias="customerType", default=None)
     """
-    The category or type assigned to this customer, allowing for meaningful grouping
-    and segmentation (e.g., by industry or region).
+    The customer's type, used for categorizing customers into meaningful segments,
+    such as industry or region.
     """
 
     custom_fields: List[CustomField] = FieldInfo(alias="customFields")
@@ -563,8 +565,8 @@ class QbdCustomer(BaseModel):
     """
     The fully-qualified unique name for this customer, formed by combining the names
     of its parent objects with its own `name`, separated by colons. For example, if
-    a customer is under 'Jones' and has the `name` 'Kitchen-Renovation', its
-    `fullName` would be 'Jones:Kitchen-Renovation'. Unlike `name`, `fullName` is
+    a customer is under "Jones" and has the `name` "Kitchen-Renovation", its
+    `fullName` would be "Jones:Kitchen-Renovation". Unlike `name`, `fullName` is
     guaranteed to be unique across all customer objects. Not case-sensitive. If this
     object is a job (i.e., a sub-customer), this value would likely be the job's
     `name` prefixed by the customer's `name`.
@@ -695,8 +697,8 @@ class QbdCustomer(BaseModel):
     """
     The sales tax code associated with this customer, determining whether items sold
     to this customer are taxable or non-taxable. It's used to assign a default tax
-    status to all transactions for this customer. Default codes include 'NON'
-    (non-taxable) and 'TAX' (taxable), but custom codes can also be created in
+    status to all transactions for this customer. Default codes include "NON"
+    (non-taxable) and "TAX" (taxable), but custom codes can also be created in
     QuickBooks. If QuickBooks is not set up to charge sales tax, it will assign the
     default non-taxable code to all sales.
     """
@@ -709,7 +711,7 @@ class QbdCustomer(BaseModel):
     salutation: Optional[str] = None
     """
     The formal salutation title that precedes the name of the contact person for
-    this customer, such as 'Mr.', 'Ms.', or 'Dr.'.
+    this customer, such as "Mr.", "Ms.", or "Dr.".
     """
 
     shipping_address: Optional[ShippingAddress] = FieldInfo(alias="shippingAddress", default=None)
@@ -738,8 +740,8 @@ class QbdCustomer(BaseModel):
     """
     The combined balance of this customer and all of this customer's jobs (i.e.,
     sub-customers), represented as a decimal string. If there are no sub-customers,
-    `totalBalance` and `balance` are equal. A positive number indicates money that
-    the customer owes.
+    `totalBalance` and `balance` are equal. A positive number indicates money owed
+    by the customer.
     """
 
     updated_at: str = FieldInfo(alias="updatedAt")

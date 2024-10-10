@@ -11,9 +11,12 @@ __all__ = ["ClassCreateParams"]
 
 class ClassCreateParams(TypedDict, total=False):
     name: Required[str]
-    """The case-insensitive name of the class.
+    """The case-insensitive name of this class.
 
-    Does not include the names of its accentors like `fullName` does.
+    Not guaranteed to be unique because it does not include the names of its parent
+    objects like `fullName` does. For example, two classes could both have the
+    `name` "Marketing", but they could have unique `fullName` values, such as
+    "Corporate:Marketing" and "Internal:Marketing".
     """
 
     conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]
@@ -23,9 +26,15 @@ class ClassCreateParams(TypedDict, total=False):
     """
 
     is_active: Annotated[bool, PropertyInfo(alias="isActive")]
-    """Whether this class is active.
+    """Indicates whether this class is active.
 
-    QuickBooks hides inactive objects from most views and reports in the UI.
+    Inactive objects are typically hidden from views and reports in QuickBooks.
     """
 
     parent_id: Annotated[str, PropertyInfo(alias="parentId")]
+    """The parent class one level above this one in the hierarchy.
+
+    For example, if this class has a `fullName` of "Corporate:Sales:Marketing", its
+    parent has a `fullName` of "Corporate:Sales". If this class is at the top level,
+    `parent` will be `null`.
+    """

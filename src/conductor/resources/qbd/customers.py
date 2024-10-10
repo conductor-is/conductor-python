@@ -87,8 +87,8 @@ class CustomersResource(SyncAPIResource):
         last_name: str | NotGiven = NOT_GIVEN,
         middle_name: str | NotGiven = NOT_GIVEN,
         note: str | NotGiven = NOT_GIVEN,
-        open_balance: str | NotGiven = NOT_GIVEN,
-        open_balance_date: str | NotGiven = NOT_GIVEN,
+        opening_balance: str | NotGiven = NOT_GIVEN,
+        opening_balance_date: str | NotGiven = NOT_GIVEN,
         parent_id: str | NotGiven = NOT_GIVEN,
         phone: str | NotGiven = NOT_GIVEN,
         preferred_delivery_method: Literal["email", "fax", "none"] | NotGiven = NOT_GIVEN,
@@ -141,8 +141,9 @@ class CustomersResource(SyncAPIResource):
 
           cc_email: An email address to carbon copy (CC) on communications with this customer.
 
-          class_id: The customer's class, used for categorization (e.g., by department, location, or
-              type of work).
+          class_id: The customer's class. Classes can be used to categorize objects into meaningful
+              segments, such as department, location, or type of work. In QuickBooks, class
+              tracking is off by default.
 
           company_name: The name of the company associated with this customer. This name is used on
               invoices, checks, and other forms.
@@ -163,8 +164,8 @@ class CustomersResource(SyncAPIResource):
 
           custom_contact_fields: Additional custom contact fields for this customer.
 
-          customer_type_id: The category or type assigned to this customer, allowing for meaningful grouping
-              and segmentation (e.g., by industry or region).
+          customer_type_id: The customer's type, used for categorizing customers into meaningful segments,
+              such as industry or region.
 
           email: The customer's email address.
 
@@ -210,10 +211,10 @@ class CustomersResource(SyncAPIResource):
 
           note: Additional notes or comments about this customer.
 
-          open_balance: The opening balance for this customer's account, indicating the amount owed by
-              the customer, represented as a decimal string.
+          opening_balance: The opening balance for this customer's account, indicating the amount owed by
+              this customer, represented as a decimal string.
 
-          open_balance_date: The date of the opening balance for this customer, in ISO 8601 format
+          opening_balance_date: The date of the opening balance for this customer, in ISO 8601 format
               (YYYY-MM-DD).
 
           parent_id: The parent customer one level above this one in the hierarchy. For example, if
@@ -244,15 +245,15 @@ class CustomersResource(SyncAPIResource):
 
           sales_tax_code_id: The sales tax code associated with this customer, determining whether items sold
               to this customer are taxable or non-taxable. It's used to assign a default tax
-              status to all transactions for this customer. Default codes include 'NON'
-              (non-taxable) and 'TAX' (taxable), but custom codes can also be created in
+              status to all transactions for this customer. Default codes include "NON"
+              (non-taxable) and "TAX" (taxable), but custom codes can also be created in
               QuickBooks. If QuickBooks is not set up to charge sales tax, it will assign the
               default non-taxable code to all sales.
 
           sales_tax_country: The country for which sales tax is collected for this customer.
 
           salutation: The formal salutation title that precedes the name of the contact person for
-              this customer, such as 'Mr.', 'Ms.', or 'Dr.'.
+              this customer, such as "Mr.", "Ms.", or "Dr.".
 
           shipping_address: The customer's shipping address.
 
@@ -307,8 +308,8 @@ class CustomersResource(SyncAPIResource):
                     "last_name": last_name,
                     "middle_name": middle_name,
                     "note": note,
-                    "open_balance": open_balance,
-                    "open_balance_date": open_balance_date,
+                    "opening_balance": opening_balance,
+                    "opening_balance_date": opening_balance_date,
                     "parent_id": parent_id,
                     "phone": phone,
                     "preferred_delivery_method": preferred_delivery_method,
@@ -423,9 +424,9 @@ class CustomersResource(SyncAPIResource):
               or multiple using a comma-separated list (e.g., `fullNames=1,2,3`). Like `id`, a
               `fullName` is a unique identifier for a customer, and is formed by by combining
               the names of its parent objects with its own `name`, separated by colons. For
-              example, if a customer is under 'ABC Corporation' and has the `name` 'Website
-              Redesign Project', its `fullName` would be 'ABC Corporation:Website Redesign
-              Project'. Unlike `name`, `fullName` is guaranteed to be unique across all
+              example, if a customer is under "ABC Corporation" and has the `name` "Website
+              Redesign Project", its `fullName` would be "ABC Corporation:Website Redesign
+              Project". Unlike `name`, `fullName` is guaranteed to be unique across all
               customer objects. Not case-sensitive. NOTE: If you include this parameter, all
               other query parameters will be ignored.
 
@@ -584,8 +585,8 @@ class AsyncCustomersResource(AsyncAPIResource):
         last_name: str | NotGiven = NOT_GIVEN,
         middle_name: str | NotGiven = NOT_GIVEN,
         note: str | NotGiven = NOT_GIVEN,
-        open_balance: str | NotGiven = NOT_GIVEN,
-        open_balance_date: str | NotGiven = NOT_GIVEN,
+        opening_balance: str | NotGiven = NOT_GIVEN,
+        opening_balance_date: str | NotGiven = NOT_GIVEN,
         parent_id: str | NotGiven = NOT_GIVEN,
         phone: str | NotGiven = NOT_GIVEN,
         preferred_delivery_method: Literal["email", "fax", "none"] | NotGiven = NOT_GIVEN,
@@ -638,8 +639,9 @@ class AsyncCustomersResource(AsyncAPIResource):
 
           cc_email: An email address to carbon copy (CC) on communications with this customer.
 
-          class_id: The customer's class, used for categorization (e.g., by department, location, or
-              type of work).
+          class_id: The customer's class. Classes can be used to categorize objects into meaningful
+              segments, such as department, location, or type of work. In QuickBooks, class
+              tracking is off by default.
 
           company_name: The name of the company associated with this customer. This name is used on
               invoices, checks, and other forms.
@@ -660,8 +662,8 @@ class AsyncCustomersResource(AsyncAPIResource):
 
           custom_contact_fields: Additional custom contact fields for this customer.
 
-          customer_type_id: The category or type assigned to this customer, allowing for meaningful grouping
-              and segmentation (e.g., by industry or region).
+          customer_type_id: The customer's type, used for categorizing customers into meaningful segments,
+              such as industry or region.
 
           email: The customer's email address.
 
@@ -707,10 +709,10 @@ class AsyncCustomersResource(AsyncAPIResource):
 
           note: Additional notes or comments about this customer.
 
-          open_balance: The opening balance for this customer's account, indicating the amount owed by
-              the customer, represented as a decimal string.
+          opening_balance: The opening balance for this customer's account, indicating the amount owed by
+              this customer, represented as a decimal string.
 
-          open_balance_date: The date of the opening balance for this customer, in ISO 8601 format
+          opening_balance_date: The date of the opening balance for this customer, in ISO 8601 format
               (YYYY-MM-DD).
 
           parent_id: The parent customer one level above this one in the hierarchy. For example, if
@@ -741,15 +743,15 @@ class AsyncCustomersResource(AsyncAPIResource):
 
           sales_tax_code_id: The sales tax code associated with this customer, determining whether items sold
               to this customer are taxable or non-taxable. It's used to assign a default tax
-              status to all transactions for this customer. Default codes include 'NON'
-              (non-taxable) and 'TAX' (taxable), but custom codes can also be created in
+              status to all transactions for this customer. Default codes include "NON"
+              (non-taxable) and "TAX" (taxable), but custom codes can also be created in
               QuickBooks. If QuickBooks is not set up to charge sales tax, it will assign the
               default non-taxable code to all sales.
 
           sales_tax_country: The country for which sales tax is collected for this customer.
 
           salutation: The formal salutation title that precedes the name of the contact person for
-              this customer, such as 'Mr.', 'Ms.', or 'Dr.'.
+              this customer, such as "Mr.", "Ms.", or "Dr.".
 
           shipping_address: The customer's shipping address.
 
@@ -804,8 +806,8 @@ class AsyncCustomersResource(AsyncAPIResource):
                     "last_name": last_name,
                     "middle_name": middle_name,
                     "note": note,
-                    "open_balance": open_balance,
-                    "open_balance_date": open_balance_date,
+                    "opening_balance": opening_balance,
+                    "opening_balance_date": opening_balance_date,
                     "parent_id": parent_id,
                     "phone": phone,
                     "preferred_delivery_method": preferred_delivery_method,
@@ -920,9 +922,9 @@ class AsyncCustomersResource(AsyncAPIResource):
               or multiple using a comma-separated list (e.g., `fullNames=1,2,3`). Like `id`, a
               `fullName` is a unique identifier for a customer, and is formed by by combining
               the names of its parent objects with its own `name`, separated by colons. For
-              example, if a customer is under 'ABC Corporation' and has the `name` 'Website
-              Redesign Project', its `fullName` would be 'ABC Corporation:Website Redesign
-              Project'. Unlike `name`, `fullName` is guaranteed to be unique across all
+              example, if a customer is under "ABC Corporation" and has the `name` "Website
+              Redesign Project", its `fullName` would be "ABC Corporation:Website Redesign
+              Project". Unlike `name`, `fullName` is guaranteed to be unique across all
               customer objects. Not case-sensitive. NOTE: If you include this parameter, all
               other query parameters will be ignored.
 

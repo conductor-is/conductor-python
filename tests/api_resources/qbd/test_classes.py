@@ -31,7 +31,7 @@ class TestClasses:
             name="Marketing",
             conductor_end_user_id="end_usr_1234567abcdefg",
             is_active=True,
-            parent_id="parentId",
+            parent_id="80000002-1234567890",
         )
         assert_matches_type(QbdClass, class_, path=["response"])
 
@@ -170,7 +170,7 @@ class TestAsyncClasses:
             name="Marketing",
             conductor_end_user_id="end_usr_1234567abcdefg",
             is_active=True,
-            parent_id="parentId",
+            parent_id="80000002-1234567890",
         )
         assert_matches_type(QbdClass, class_, path=["response"])
 

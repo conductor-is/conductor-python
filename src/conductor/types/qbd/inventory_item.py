@@ -206,13 +206,15 @@ class InventoryItem(BaseModel):
     string.
     """
 
-    bar_code: Optional[str] = FieldInfo(alias="barCode", default=None)
-    """The barcode value for this inventory item."""
+    barcode: Optional[str] = None
+    """The inventory item's barcode."""
 
     class_: Optional[Class] = FieldInfo(alias="class", default=None)
-    """
-    The inventory item's class, used for categorization (e.g., by department,
-    location, or type of work).
+    """The inventory item's class.
+
+    Classes can be used to categorize objects into meaningful segments, such as
+    department, location, or type of work. In QuickBooks, class tracking is off by
+    default.
     """
 
     cogs_account: Optional[CogsAccount] = FieldInfo(alias="cogsAccount", default=None)
@@ -245,10 +247,10 @@ class InventoryItem(BaseModel):
     """
     The fully-qualified unique name for this inventory item, formed by combining the
     names of its parent objects with its own `name`, separated by colons. For
-    example, if an inventory item is under 'Furniture:Kitchen' and has the `name`
-    'Cabinet', its `fullName` would be 'Furniture:Kitchen:Cabinet'. Unlike `name`,
-    `fullName` is guaranteed to be unique across all inventory item objects. Not
-    case-sensitive.
+    example, if an inventory item is under "Products:Electronics" and has the `name`
+    "Widgets", its `fullName` would be "Products:Electronics:Widgets". Unlike
+    `name`, `fullName` is guaranteed to be unique across all inventory item objects.
+    Not case-sensitive.
     """
 
     income_account: Optional[IncomeAccount] = FieldInfo(alias="incomeAccount", default=None)
@@ -271,8 +273,8 @@ class InventoryItem(BaseModel):
 
     Not guaranteed to be unique because it does not include the names of its parent
     objects like `fullName` does. For example, two inventory items could both have
-    the `name` "Cabinet", but they could have unique `fullName` values, such as
-    "Kitchen:Cabinet" and "Garage:Cabinet".
+    the `name` "Widget", but they could have unique `fullName` values, such as
+    "Products:Widget" and "Inventory:Widget".
     """
 
     object_type: Literal["qbd_inventory_item"] = FieldInfo(alias="objectType")
@@ -282,8 +284,9 @@ class InventoryItem(BaseModel):
     """The parent inventory item one level above this one in the hierarchy.
 
     For example, if this inventory item has a `fullName` of
-    "Furniture:Kitchen:Cabinet", its parent has a `fullName` of "Furniture:Kitchen".
-    If this inventory item is at the top level, `parent` will be `null`.
+    "Products:Electronics:Widgets", its parent has a `fullName` of
+    "Products:Electronics". If this inventory item is at the top level, `parent`
+    will be `null`.
     """
 
     preferred_vendor: Optional[PreferredVendor] = FieldInfo(alias="preferredVendor", default=None)
@@ -349,8 +352,8 @@ class InventoryItem(BaseModel):
     """
     The sales tax code associated with this inventory item, determining whether it
     is taxable or non-taxable. It's used to assign a default tax status to all
-    transactions for this inventory item. Default codes include 'NON' (non-taxable)
-    and 'TAX' (taxable), but custom codes can also be created in QuickBooks. If
+    transactions for this inventory item. Default codes include "NON" (non-taxable)
+    and "TAX" (taxable), but custom codes can also be created in QuickBooks. If
     QuickBooks is not set up to charge sales tax, it will assign the default
     non-taxable code to all sales.
     """
@@ -360,7 +363,7 @@ class InventoryItem(BaseModel):
 
     A top-level inventory item has a `sublevel` of 0; each subsequent sublevel
     increases this number by 1. For example, a inventory item with a `fullName` of
-    "Furniture:Kitchen:Cabinet" would have a `sublevel` of 2.
+    "Products:Electronics:Widgets" would have a `sublevel` of 2.
     """
 
     unit_of_measure_set: Optional[UnitOfMeasureSet] = FieldInfo(alias="unitOfMeasureSet", default=None)

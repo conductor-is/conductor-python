@@ -21,7 +21,7 @@ class TestAccounts:
     def test_method_create(self, client: Conductor) -> None:
         account = client.qbd.accounts.create(
             account_type="accounts_payable",
-            name="name",
+            name="Accounts-Payable",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(QbdAccount, account, path=["response"])
@@ -30,18 +30,18 @@ class TestAccounts:
     def test_method_create_with_all_params(self, client: Conductor) -> None:
         account = client.qbd.accounts.create(
             account_type="accounts_payable",
-            name="name",
+            name="Accounts-Payable",
             conductor_end_user_id="end_usr_1234567abcdefg",
-            account_number="accountNumber",
-            bank_number="bankNumber",
-            currency_id="currencyId",
-            description="description",
+            account_number="1010",
+            bank_account_number="123456789",
+            currency_id="80000012-1234567890",
+            description="Accounts-payable are the amounts owed to suppliers for goods and services purchased on credit.",
             is_active=True,
-            opening_balance="openingBalance",
+            opening_balance="1000.00",
             opening_balance_date="openingBalanceDate",
-            parent_id="parentId",
-            sales_tax_code_id="salesTaxCodeId",
-            tax_line_id=1,
+            parent_id="80000002-1234567890",
+            sales_tax_code_id="80000004-1234567890",
+            tax_line_id=123,
         )
         assert_matches_type(QbdAccount, account, path=["response"])
 
@@ -49,7 +49,7 @@ class TestAccounts:
     def test_raw_response_create(self, client: Conductor) -> None:
         response = client.qbd.accounts.with_raw_response.create(
             account_type="accounts_payable",
-            name="name",
+            name="Accounts-Payable",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -62,7 +62,7 @@ class TestAccounts:
     def test_streaming_response_create(self, client: Conductor) -> None:
         with client.qbd.accounts.with_streaming_response.create(
             account_type="accounts_payable",
-            name="name",
+            name="Accounts-Payable",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
@@ -174,7 +174,7 @@ class TestAsyncAccounts:
     async def test_method_create(self, async_client: AsyncConductor) -> None:
         account = await async_client.qbd.accounts.create(
             account_type="accounts_payable",
-            name="name",
+            name="Accounts-Payable",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(QbdAccount, account, path=["response"])
@@ -183,18 +183,18 @@ class TestAsyncAccounts:
     async def test_method_create_with_all_params(self, async_client: AsyncConductor) -> None:
         account = await async_client.qbd.accounts.create(
             account_type="accounts_payable",
-            name="name",
+            name="Accounts-Payable",
             conductor_end_user_id="end_usr_1234567abcdefg",
-            account_number="accountNumber",
-            bank_number="bankNumber",
-            currency_id="currencyId",
-            description="description",
+            account_number="1010",
+            bank_account_number="123456789",
+            currency_id="80000012-1234567890",
+            description="Accounts-payable are the amounts owed to suppliers for goods and services purchased on credit.",
             is_active=True,
-            opening_balance="openingBalance",
+            opening_balance="1000.00",
             opening_balance_date="openingBalanceDate",
-            parent_id="parentId",
-            sales_tax_code_id="salesTaxCodeId",
-            tax_line_id=1,
+            parent_id="80000002-1234567890",
+            sales_tax_code_id="80000004-1234567890",
+            tax_line_id=123,
         )
         assert_matches_type(QbdAccount, account, path=["response"])
 
@@ -202,7 +202,7 @@ class TestAsyncAccounts:
     async def test_raw_response_create(self, async_client: AsyncConductor) -> None:
         response = await async_client.qbd.accounts.with_raw_response.create(
             account_type="accounts_payable",
-            name="name",
+            name="Accounts-Payable",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -215,7 +215,7 @@ class TestAsyncAccounts:
     async def test_streaming_response_create(self, async_client: AsyncConductor) -> None:
         async with async_client.qbd.accounts.with_streaming_response.create(
             account_type="accounts_payable",
-            name="name",
+            name="Accounts-Payable",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed

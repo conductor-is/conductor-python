@@ -69,9 +69,11 @@ class CustomerCreateParams(TypedDict, total=False):
     """An email address to carbon copy (CC) on communications with this customer."""
 
     class_id: Annotated[str, PropertyInfo(alias="classId")]
-    """
-    The customer's class, used for categorization (e.g., by department, location, or
-    type of work).
+    """The customer's class.
+
+    Classes can be used to categorize objects into meaningful segments, such as
+    department, location, or type of work. In QuickBooks, class tracking is off by
+    default.
     """
 
     company_name: Annotated[str, PropertyInfo(alias="companyName")]
@@ -111,8 +113,8 @@ class CustomerCreateParams(TypedDict, total=False):
 
     customer_type_id: Annotated[str, PropertyInfo(alias="customerTypeId")]
     """
-    The category or type assigned to this customer, allowing for meaningful grouping
-    and segmentation (e.g., by industry or region).
+    The customer's type, used for categorizing customers into meaningful segments,
+    such as industry or region.
     """
 
     email: str
@@ -195,13 +197,13 @@ class CustomerCreateParams(TypedDict, total=False):
     note: str
     """Additional notes or comments about this customer."""
 
-    open_balance: Annotated[str, PropertyInfo(alias="openBalance")]
+    opening_balance: Annotated[str, PropertyInfo(alias="openingBalance")]
     """
     The opening balance for this customer's account, indicating the amount owed by
-    the customer, represented as a decimal string.
+    this customer, represented as a decimal string.
     """
 
-    open_balance_date: Annotated[str, PropertyInfo(alias="openBalanceDate")]
+    opening_balance_date: Annotated[str, PropertyInfo(alias="openingBalanceDate")]
     """
     The date of the opening balance for this customer, in ISO 8601 format
     (YYYY-MM-DD).
@@ -254,8 +256,8 @@ class CustomerCreateParams(TypedDict, total=False):
     """
     The sales tax code associated with this customer, determining whether items sold
     to this customer are taxable or non-taxable. It's used to assign a default tax
-    status to all transactions for this customer. Default codes include 'NON'
-    (non-taxable) and 'TAX' (taxable), but custom codes can also be created in
+    status to all transactions for this customer. Default codes include "NON"
+    (non-taxable) and "TAX" (taxable), but custom codes can also be created in
     QuickBooks. If QuickBooks is not set up to charge sales tax, it will assign the
     default non-taxable code to all sales.
     """
@@ -266,7 +268,7 @@ class CustomerCreateParams(TypedDict, total=False):
     salutation: str
     """
     The formal salutation title that precedes the name of the contact person for
-    this customer, such as 'Mr.', 'Ms.', or 'Dr.'.
+    this customer, such as "Mr.", "Ms.", or "Dr.".
     """
 
     shipping_address: Annotated[ShippingAddress, PropertyInfo(alias="shippingAddress")]

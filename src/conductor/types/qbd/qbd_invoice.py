@@ -362,10 +362,13 @@ class InvoiceLineGroupInvoiceLine(BaseModel):
     """The monetary amount for this invoice line, represented as a decimal string."""
 
     class_: Optional[InvoiceLineGroupInvoiceLineClass] = FieldInfo(alias="class", default=None)
-    """
-    The invoice line's class, used for categorization (e.g., by department,
-    location, or type of work). If a class is specified for the entire invoice, it
-    will be automatically applied to all line items unless overridden here.
+    """The invoice line's class.
+
+    Classes can be used to categorize objects into meaningful segments, such as
+    department, location, or type of work. In QuickBooks, class tracking is off by
+    default. If a class is specified for the entire parent transaction, it is
+    automatically applied to all invoice lines unless overridden here, at the
+    transaction line level.
     """
 
     custom_fields: List[InvoiceLineGroupInvoiceLineCustomField] = FieldInfo(alias="customFields")
@@ -381,25 +384,26 @@ class InvoiceLineGroupInvoiceLine(BaseModel):
     """
     The expiration date for the serial number or lot number of the item in this
     invoice line, in ISO 8601 format (YYYY-MM-DD). This is particularly relevant for
-    perishable or time-sensitive inventory items.
+    perishable or time-sensitive inventory items. Note that this field is only
+    supported on QuickBooks Desktop 2023 or later.
     """
 
     inventory_site: Optional[InvoiceLineGroupInvoiceLineInventorySite] = FieldInfo(alias="inventorySite", default=None)
-    """The site where inventory for the item in this invoice line is located."""
+    """The site location where inventory for the item in this invoice line is stored."""
 
     inventory_site_location: Optional[InvoiceLineGroupInvoiceLineInventorySiteLocation] = FieldInfo(
         alias="inventorySiteLocation", default=None
     )
     """
-    The specific location within the inventory site for the item in this invoice
-    line, such as a bin or shelf.
+    The specific location within the inventory site where the item in this invoice
+    line is stored, such as a bin or shelf.
     """
 
     item: Optional[InvoiceLineGroupInvoiceLineItem] = None
     """The item associated with this invoice line.
 
     This can refer to any item type such as a service item, inventory item, or
-    special calculation item like a discount item or sales-tax item.
+    special calculation item like a discount item or sales tax item.
     """
 
     lot_number: Optional[str] = FieldInfo(alias="lotNumber", default=None)
@@ -465,8 +469,8 @@ class InvoiceLineGroupInvoiceLine(BaseModel):
     """
     The sales tax code associated with this invoice line, determining whether it is
     taxable or non-taxable. It's used to assign a default tax status to all
-    transactions for this invoice line. Default codes include 'NON' (non-taxable)
-    and 'TAX' (taxable), but custom codes can also be created in QuickBooks. If
+    transactions for this invoice line. Default codes include "NON" (non-taxable)
+    and "TAX" (taxable), but custom codes can also be created in QuickBooks. If
     QuickBooks is not set up to charge sales tax, it will assign the default
     non-taxable code to all sales.
     """
@@ -716,10 +720,13 @@ class InvoiceLine(BaseModel):
     """The monetary amount for this invoice line, represented as a decimal string."""
 
     class_: Optional[InvoiceLineClass] = FieldInfo(alias="class", default=None)
-    """
-    The invoice line's class, used for categorization (e.g., by department,
-    location, or type of work). If a class is specified for the entire invoice, it
-    will be automatically applied to all line items unless overridden here.
+    """The invoice line's class.
+
+    Classes can be used to categorize objects into meaningful segments, such as
+    department, location, or type of work. In QuickBooks, class tracking is off by
+    default. If a class is specified for the entire parent transaction, it is
+    automatically applied to all invoice lines unless overridden here, at the
+    transaction line level.
     """
 
     custom_fields: List[InvoiceLineCustomField] = FieldInfo(alias="customFields")
@@ -735,25 +742,26 @@ class InvoiceLine(BaseModel):
     """
     The expiration date for the serial number or lot number of the item in this
     invoice line, in ISO 8601 format (YYYY-MM-DD). This is particularly relevant for
-    perishable or time-sensitive inventory items.
+    perishable or time-sensitive inventory items. Note that this field is only
+    supported on QuickBooks Desktop 2023 or later.
     """
 
     inventory_site: Optional[InvoiceLineInventorySite] = FieldInfo(alias="inventorySite", default=None)
-    """The site where inventory for the item in this invoice line is located."""
+    """The site location where inventory for the item in this invoice line is stored."""
 
     inventory_site_location: Optional[InvoiceLineInventorySiteLocation] = FieldInfo(
         alias="inventorySiteLocation", default=None
     )
     """
-    The specific location within the inventory site for the item in this invoice
-    line, such as a bin or shelf.
+    The specific location within the inventory site where the item in this invoice
+    line is stored, such as a bin or shelf.
     """
 
     item: Optional[InvoiceLineItem] = None
     """The item associated with this invoice line.
 
     This can refer to any item type such as a service item, inventory item, or
-    special calculation item like a discount item or sales-tax item.
+    special calculation item like a discount item or sales tax item.
     """
 
     lot_number: Optional[str] = FieldInfo(alias="lotNumber", default=None)
@@ -819,8 +827,8 @@ class InvoiceLine(BaseModel):
     """
     The sales tax code associated with this invoice line, determining whether it is
     taxable or non-taxable. It's used to assign a default tax status to all
-    transactions for this invoice line. Default codes include 'NON' (non-taxable)
-    and 'TAX' (taxable), but custom codes can also be created in QuickBooks. If
+    transactions for this invoice line. Default codes include "NON" (non-taxable)
+    and "TAX" (taxable), but custom codes can also be created in QuickBooks. If
     QuickBooks is not set up to charge sales tax, it will assign the default
     non-taxable code to all sales.
     """
@@ -1041,9 +1049,11 @@ class QbdInvoice(BaseModel):
     """The invoice's billing address."""
 
     class_: Optional[Class] = FieldInfo(alias="class", default=None)
-    """
-    The invoice's class, used for categorization (e.g., by department, location, or
-    type of work).
+    """The invoice's class.
+
+    Classes can be used to categorize objects into meaningful segments, such as
+    department, location, or type of work. In QuickBooks, class tracking is off by
+    default.
     """
 
     created_at: str = FieldInfo(alias="createdAt")
@@ -1151,7 +1161,7 @@ class QbdInvoice(BaseModel):
     linked_transactions: List[LinkedTransaction] = FieldInfo(alias="linkedTransactions")
     """
     The invoice's linked transactions, such as payments applied, credits used, or
-    linked purchase orders.
+    associated purchase orders.
     """
 
     memo: Optional[str] = None

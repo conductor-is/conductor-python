@@ -127,6 +127,7 @@ from conductor.types.qbd import DateDrivenTerm, DateDrivenTermListResponse
 
 Methods:
 
+- <code title="post /quickbooks-desktop/date-driven-terms">client.qbd.date_driven_terms.<a href="./src/conductor/resources/qbd/date_driven_terms.py">create</a>(\*\*<a href="src/conductor/types/qbd/date_driven_term_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/date_driven_term.py">DateDrivenTerm</a></code>
 - <code title="get /quickbooks-desktop/date-driven-terms/{id}">client.qbd.date_driven_terms.<a href="./src/conductor/resources/qbd/date_driven_terms.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/date_driven_term.py">DateDrivenTerm</a></code>
 - <code title="get /quickbooks-desktop/date-driven-terms">client.qbd.date_driven_terms.<a href="./src/conductor/resources/qbd/date_driven_terms.py">list</a>(\*\*<a href="src/conductor/types/qbd/date_driven_term_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/date_driven_term_list_response.py">DateDrivenTermListResponse</a></code>
 
@@ -190,13 +191,13 @@ Methods:
 Types:
 
 ```python
-from conductor.types.qbd import QbdSalesTaxItem, SalesTaxItemListResponse
+from conductor.types.qbd import QbdSalesTaxItem
 ```
 
 Methods:
 
 - <code title="get /quickbooks-desktop/sales-tax-items/{id}">client.qbd.sales_tax_items.<a href="./src/conductor/resources/qbd/sales_tax_items.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_sales_tax_item.py">QbdSalesTaxItem</a></code>
-- <code title="get /quickbooks-desktop/sales-tax-items">client.qbd.sales_tax_items.<a href="./src/conductor/resources/qbd/sales_tax_items.py">list</a>(\*\*<a href="src/conductor/types/qbd/sales_tax_item_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/sales_tax_item_list_response.py">SalesTaxItemListResponse</a></code>
+- <code title="get /quickbooks-desktop/sales-tax-items">client.qbd.sales_tax_items.<a href="./src/conductor/resources/qbd/sales_tax_items.py">list</a>(\*\*<a href="src/conductor/types/qbd/sales_tax_item_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_sales_tax_item.py">SyncCursorPage[QbdSalesTaxItem]</a></code>
 
 ## ServiceItems
 
@@ -222,6 +223,7 @@ from conductor.types.qbd import QbdStandardTerm, StandardTermListResponse
 
 Methods:
 
+- <code title="post /quickbooks-desktop/standard-terms">client.qbd.standard_terms.<a href="./src/conductor/resources/qbd/standard_terms.py">create</a>(\*\*<a href="src/conductor/types/qbd/standard_term_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_standard_term.py">QbdStandardTerm</a></code>
 - <code title="get /quickbooks-desktop/standard-terms/{id}">client.qbd.standard_terms.<a href="./src/conductor/resources/qbd/standard_terms.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_standard_term.py">QbdStandardTerm</a></code>
 - <code title="get /quickbooks-desktop/standard-terms">client.qbd.standard_terms.<a href="./src/conductor/resources/qbd/standard_terms.py">list</a>(\*\*<a href="src/conductor/types/qbd/standard_term_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/standard_term_list_response.py">StandardTermListResponse</a></code>
 

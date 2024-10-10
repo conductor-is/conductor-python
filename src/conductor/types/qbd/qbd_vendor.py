@@ -390,7 +390,7 @@ class QbdVendor(BaseModel):
     balance: Optional[str] = None
     """The current balance owed to this vendor, represented as a decimal string.
 
-    A positive number indicates money that the vendor owes.
+    A positive number indicates money owed to the vendor.
     """
 
     billing_address: Optional[BillingAddress] = FieldInfo(alias="billingAddress", default=None)
@@ -406,9 +406,11 @@ class QbdVendor(BaseModel):
     """An email address to carbon copy (CC) on communications with this vendor."""
 
     class_: Optional[Class] = FieldInfo(alias="class", default=None)
-    """
-    The vendor's class, used for categorization (e.g., by department, location, or
-    type of work).
+    """The vendor's class.
+
+    Classes can be used to categorize objects into meaningful segments, such as
+    department, location, or type of work. In QuickBooks, class tracking is off by
+    default.
     """
 
     company_name: Optional[str] = FieldInfo(alias="companyName", default=None)
@@ -475,7 +477,8 @@ class QbdVendor(BaseModel):
     is_eligible_for1099: Optional[bool] = FieldInfo(alias="isEligibleFor1099", default=None)
     """
     Indicates whether this vendor is eligible to receive a 1099 form for tax
-    reporting purposes.
+    reporting purposes. If `true`, then the fields `taxId` and `billingAddress` are
+    required.
     """
 
     is_sales_tax_agency: Optional[bool] = FieldInfo(alias="isSalesTaxAgency", default=None)
@@ -533,8 +536,8 @@ class QbdVendor(BaseModel):
     """
     The sales tax code associated with this vendor, determining whether items bought
     from this vendor are taxable or non-taxable. It's used to assign a default tax
-    status to all transactions for this vendor. Default codes include 'NON'
-    (non-taxable) and 'TAX' (taxable), but custom codes can also be created in
+    status to all transactions for this vendor. Default codes include "NON"
+    (non-taxable) and "TAX" (taxable), but custom codes can also be created in
     QuickBooks. If QuickBooks is not set up to charge sales tax, it will assign the
     default non-taxable code to all sales.
     """
@@ -553,7 +556,7 @@ class QbdVendor(BaseModel):
     salutation: Optional[str] = None
     """
     The formal salutation title that precedes the name of the contact person for
-    this vendor, such as 'Mr.', 'Ms.', or 'Dr.'.
+    this vendor, such as "Mr.", "Ms.", or "Dr.".
     """
 
     shipping_address: Optional[ShippingAddress] = FieldInfo(alias="shippingAddress", default=None)
@@ -592,8 +595,8 @@ class QbdVendor(BaseModel):
 
     vendor_type: Optional[VendorType] = FieldInfo(alias="vendorType", default=None)
     """
-    The category or type assigned to this vendor, allowing for meaningful grouping
-    (e.g., by industry or region).
+    The vendor's type, used for categorizing vendors into meaningful segments, such
+    as industry or region.
     """
 
     version: str

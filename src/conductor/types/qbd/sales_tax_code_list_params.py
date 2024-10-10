@@ -23,8 +23,8 @@ class SalesTaxCodeListParams(TypedDict, total=False):
     `fullNames=1,2,3`). Like `id`, a `fullName` is a unique identifier for a sales
     tax code, and is formed by by combining the names of its parent objects with its
     own `name`, separated by colons. For example, if a sales tax code is under
-    'State' and has the `name` 'CA Sales Tax', its `fullName` would be 'State:CA
-    Sales Tax'. Unlike `name`, `fullName` is guaranteed to be unique across all
+    "State" and has the `name` "CA Sales Tax", its `fullName` would be "State:CA
+    Sales Tax". Unlike `name`, `fullName` is guaranteed to be unique across all
     sales tax code objects. Not case-sensitive. NOTE: If you include this parameter,
     all other query parameters will be ignored.
     """

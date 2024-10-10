@@ -38,8 +38,8 @@ class ServiceItemListParams(TypedDict, total=False):
     `fullNames=1,2,3`). Like `id`, a `fullName` is a unique identifier for a service
     item, and is formed by by combining the names of its parent objects with its own
     `name`, separated by colons. For example, if a service item is under
-    'Professional Services' and has the `name` 'Consulting', its `fullName` would be
-    'Professional Services:Consulting'. Unlike `name`, `fullName` is guaranteed to
+    "Professional Services" and has the `name` "Consulting", its `fullName` would be
+    "Professional Services:Consulting". Unlike `name`, `fullName` is guaranteed to
     be unique across all service item objects. Not case-sensitive. NOTE: If you
     include this parameter, all other query parameters will be ignored.
     """

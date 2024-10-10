@@ -64,16 +64,24 @@ class ClassesResource(SyncAPIResource):
         """Creates a class.
 
         Args:
-          name: The case-insensitive name of the class.
+          name: The case-insensitive name of this class.
 
-        Does not include the names of its
-              accentors like `fullName` does.
+        Not guaranteed to be unique because it
+              does not include the names of its parent objects like `fullName` does. For
+              example, two classes could both have the `name` "Marketing", but they could have
+              unique `fullName` values, such as "Corporate:Marketing" and
+              "Internal:Marketing".
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          is_active: Whether this class is active. QuickBooks hides inactive objects from most views
-              and reports in the UI.
+          is_active: Indicates whether this class is active. Inactive objects are typically hidden
+              from views and reports in QuickBooks.
+
+          parent_id: The parent class one level above this one in the hierarchy. For example, if this
+              class has a `fullName` of "Corporate:Sales:Marketing", its parent has a
+              `fullName` of "Corporate:Sales". If this class is at the top level, `parent`
+              will be `null`.
 
           extra_headers: Send extra headers
 
@@ -173,8 +181,8 @@ class ClassesResource(SyncAPIResource):
               multiple using a comma-separated list (e.g., `fullNames=1,2,3`). Like `id`, a
               `fullName` is a unique identifier for a class, and is formed by by combining the
               names of its parent objects with its own `name`, separated by colons. For
-              example, if a class is under 'Department' and has the `name` 'Marketing', its
-              `fullName` would be 'Department:Marketing'. Unlike `name`, `fullName` is
+              example, if a class is under "Department" and has the `name` "Marketing", its
+              `fullName` would be "Department:Marketing". Unlike `name`, `fullName` is
               guaranteed to be unique across all class objects. Not case-sensitive. NOTE: If
               you include this parameter, all other query parameters will be ignored.
 
@@ -288,16 +296,24 @@ class AsyncClassesResource(AsyncAPIResource):
         """Creates a class.
 
         Args:
-          name: The case-insensitive name of the class.
+          name: The case-insensitive name of this class.
 
-        Does not include the names of its
-              accentors like `fullName` does.
+        Not guaranteed to be unique because it
+              does not include the names of its parent objects like `fullName` does. For
+              example, two classes could both have the `name` "Marketing", but they could have
+              unique `fullName` values, such as "Corporate:Marketing" and
+              "Internal:Marketing".
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          is_active: Whether this class is active. QuickBooks hides inactive objects from most views
-              and reports in the UI.
+          is_active: Indicates whether this class is active. Inactive objects are typically hidden
+              from views and reports in QuickBooks.
+
+          parent_id: The parent class one level above this one in the hierarchy. For example, if this
+              class has a `fullName` of "Corporate:Sales:Marketing", its parent has a
+              `fullName` of "Corporate:Sales". If this class is at the top level, `parent`
+              will be `null`.
 
           extra_headers: Send extra headers
 
@@ -397,8 +413,8 @@ class AsyncClassesResource(AsyncAPIResource):
               multiple using a comma-separated list (e.g., `fullNames=1,2,3`). Like `id`, a
               `fullName` is a unique identifier for a class, and is formed by by combining the
               names of its parent objects with its own `name`, separated by colons. For
-              example, if a class is under 'Department' and has the `name` 'Marketing', its
-              `fullName` would be 'Department:Marketing'. Unlike `name`, `fullName` is
+              example, if a class is under "Department" and has the `name` "Marketing", its
+              `fullName` would be "Department:Marketing". Unlike `name`, `fullName` is
               guaranteed to be unique across all class objects. Not case-sensitive. NOTE: If
               you include this parameter, all other query parameters will be ignored.
 
