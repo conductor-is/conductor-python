@@ -30,7 +30,7 @@ __all__ = [
     "ItemGroupLineItemInventorySite",
     "ItemGroupLineItemInventorySiteLocation",
     "ItemGroupLineItemItem",
-    "ItemGroupLineItemOverrideUnitOfMeasure",
+    "ItemGroupLineItemOverrideUnitOfMeasureSet",
     "ItemGroupLineItemSalesRepresentative",
     "ItemGroupLineItemSalesTaxCode",
     "ItemLine",
@@ -40,7 +40,7 @@ __all__ = [
     "ItemLineInventorySite",
     "ItemLineInventorySiteLocation",
     "ItemLineItem",
-    "ItemLineOverrideUnitOfMeasure",
+    "ItemLineOverrideUnitOfMeasureSet",
     "ItemLineSalesRepresentative",
     "ItemLineSalesTaxCode",
     "LinkedTransaction",
@@ -221,8 +221,8 @@ class ExpenseLine(BaseModel):
     amount: Optional[str] = None
     """The monetary amount for this expense line, represented as a decimal string."""
 
-    billable_status: Optional[Literal["billable", "has_been_billed", "not_billable"]] = FieldInfo(
-        alias="billableStatus", default=None
+    billing_status: Optional[Literal["billable", "has_been_billed", "not_billable"]] = FieldInfo(
+        alias="billingStatus", default=None
     )
     """The billing status of this expense line."""
 
@@ -231,7 +231,9 @@ class ExpenseLine(BaseModel):
 
     Classes can be used to categorize objects into meaningful segments, such as
     department, location, or type of work. In QuickBooks, class tracking is off by
-    default.
+    default. If a class is specified for the entire parent transaction, it is
+    automatically applied to all expense lines unless overridden here, at the
+    transaction line level.
     """
 
     customer: Optional[ExpenseLineCustomer] = None
@@ -409,7 +411,7 @@ class ItemGroupLineItemItem(BaseModel):
     """
 
 
-class ItemGroupLineItemOverrideUnitOfMeasure(BaseModel):
+class ItemGroupLineItemOverrideUnitOfMeasureSet(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks for this object.
 
@@ -459,76 +461,131 @@ class ItemGroupLineItemSalesTaxCode(BaseModel):
 
 class ItemGroupLineItem(BaseModel):
     id: str
-    """
-    The QuickBooks-assigned identifier for this transaction line, unique across all
-    transaction lines.
+    """The unique identifier assigned by QuickBooks for this item line.
+
+    This ID is unique among all transaction line types.
     """
 
     amount: Optional[str] = None
+    """The monetary amount for this item line, represented as a decimal string."""
 
-    billable_status: Optional[Literal["billable", "has_been_billed", "not_billable"]] = FieldInfo(
-        alias="billableStatus", default=None
+    billing_status: Optional[Literal["billable", "has_been_billed", "not_billable"]] = FieldInfo(
+        alias="billingStatus", default=None
     )
-    """The billable status of this line item."""
+    """The billing status of this item line."""
 
     class_: Optional[ItemGroupLineItemClass] = FieldInfo(alias="class", default=None)
-    """The class associated with this object.
+    """The item line's class.
 
-    Classes can be used to categorize objects or transactions by department,
-    location, or other meaningful segments.
+    Classes can be used to categorize objects into meaningful segments, such as
+    department, location, or type of work. In QuickBooks, class tracking is off by
+    default. If a class is specified for the entire parent transaction, it is
+    automatically applied to all item lines unless overridden here, at the
+    transaction line level.
     """
 
     cost: Optional[str] = None
+    """The cost of this item line, represented as a decimal string.
+
+    If both `quantity` and `amount` are specified, QuickBooks will use them to
+    calculate `cost`. Likewise, if both `quantity` and `cost` are specified,
+    QuickBooks will use them to calculate the `amount`.
+    """
 
     customer: Optional[ItemGroupLineItemCustomer] = None
+    """The customer to whom the item line is billed."""
 
     custom_fields: List[ItemGroupLineItemCustomField] = FieldInfo(alias="customFields")
-    """The custom fields added by the user to QuickBooks object as a data extension.
+    """The custom fields added by the user to this item line object as a data
+    extension.
 
     These fields are not part of the standard QuickBooks object.
     """
 
     description: Optional[str] = None
+    """A description of this item line."""
 
-    expiration_date_for_serial_lot_number: Optional[str] = FieldInfo(
-        alias="expirationDateForSerialLotNumber", default=None
-    )
+    expiration_date: Optional[date] = FieldInfo(alias="expirationDate", default=None)
+    """
+    The expiration date for the serial number or lot number of the item in this item
+    line, in ISO 8601 format (YYYY-MM-DD). This is particularly relevant for
+    perishable or time-sensitive inventory items. Note that this field is only
+    supported on QuickBooks Desktop 2023 or later.
+    """
 
     inventory_site: Optional[ItemGroupLineItemInventorySite] = FieldInfo(alias="inventorySite", default=None)
-    """The inventory site location where the item is stored."""
+    """The site location where inventory for the item in this item line is stored."""
 
     inventory_site_location: Optional[ItemGroupLineItemInventorySiteLocation] = FieldInfo(
         alias="inventorySiteLocation", default=None
     )
-    """The location within the inventory site where the item is stored."""
+    """
+    The specific location within the inventory site where the item in this item line
+    is stored, such as a bin or shelf.
+    """
 
     item: Optional[ItemGroupLineItemItem] = None
+    """The item associated with this item line.
+
+    This can refer to any item type such as a service item, inventory item, or
+    special calculation item like a discount item or sales tax item.
+    """
 
     lot_number: Optional[str] = FieldInfo(alias="lotNumber", default=None)
+    """The lot number of the item in this item line.
 
-    override_unit_of_measure: Optional[ItemGroupLineItemOverrideUnitOfMeasure] = FieldInfo(
-        alias="overrideUnitOfMeasure", default=None
+    Used for tracking groups of inventory items that are purchased or manufactured
+    together.
+    """
+
+    object_type: Literal["qbd_item_line"] = FieldInfo(alias="objectType")
+    """The type of object. This value is always `"qbd_item_line"`."""
+
+    override_unit_of_measure_set: Optional[ItemGroupLineItemOverrideUnitOfMeasureSet] = FieldInfo(
+        alias="overrideUnitOfMeasureSet", default=None
     )
+    """
+    The unit of measure set to use for this item line, overriding the default set
+    for the item. This affects which specific units are available for selection.
+    """
 
     quantity: Optional[float] = None
+    """The quantity of the item in this item line.
+
+    If both `quantity` and `amount` are specified but not `rate`, QuickBooks will
+    calculate `rate`. If `quantity` and `rate` are specified but not `amount`,
+    QuickBooks will calculate `amount`.
+    """
 
     sales_representative: Optional[ItemGroupLineItemSalesRepresentative] = FieldInfo(
         alias="salesRepresentative", default=None
     )
-    """The item's sales representative."""
+    """The item line's sales representative.
+
+    Sales representatives can be employees, vendors, or other names in QuickBooks.
+    """
 
     sales_tax_code: Optional[ItemGroupLineItemSalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)
-    """The sales tax code, indicating whether related items are taxable or non-taxable.
-
-    Two default codes are 'Non' (non-taxable) and 'Tax' (taxable). If QuickBooks is
-    not set up to charge sales tax, it will assign the default non-taxable code to
-    all sales.
+    """
+    The sales tax code associated with this item line, determining whether it is
+    taxable or non-taxable. It's used to assign a default tax status to all
+    transactions for this item line. Default codes include "NON" (non-taxable) and
+    "TAX" (taxable), but custom codes can also be created in QuickBooks. If
+    QuickBooks is not set up to charge sales tax, it will assign the default
+    non-taxable code to all sales.
     """
 
     serial_number: Optional[str] = FieldInfo(alias="serialNumber", default=None)
-    """The serial number of the item."""
+    """The serial number of the item in this item line.
+
+    This is used for tracking individual units of serialized inventory items.
+    """
 
     unit_of_measure: Optional[str] = FieldInfo(alias="unitOfMeasure", default=None)
+    """The unit of measure used for the `quantity` in this item line.
+
+    Must be a valid unit within the item's available units of measure.
+    """
 
 
 class ItemGroupLine(BaseModel):
@@ -657,7 +714,7 @@ class ItemLineItem(BaseModel):
     """
 
 
-class ItemLineOverrideUnitOfMeasure(BaseModel):
+class ItemLineOverrideUnitOfMeasureSet(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks for this object.
 
@@ -707,74 +764,129 @@ class ItemLineSalesTaxCode(BaseModel):
 
 class ItemLine(BaseModel):
     id: str
-    """
-    The QuickBooks-assigned identifier for this transaction line, unique across all
-    transaction lines.
+    """The unique identifier assigned by QuickBooks for this item line.
+
+    This ID is unique among all transaction line types.
     """
 
     amount: Optional[str] = None
+    """The monetary amount for this item line, represented as a decimal string."""
 
-    billable_status: Optional[Literal["billable", "has_been_billed", "not_billable"]] = FieldInfo(
-        alias="billableStatus", default=None
+    billing_status: Optional[Literal["billable", "has_been_billed", "not_billable"]] = FieldInfo(
+        alias="billingStatus", default=None
     )
-    """The billable status of this line item."""
+    """The billing status of this item line."""
 
     class_: Optional[ItemLineClass] = FieldInfo(alias="class", default=None)
-    """The class associated with this object.
+    """The item line's class.
 
-    Classes can be used to categorize objects or transactions by department,
-    location, or other meaningful segments.
+    Classes can be used to categorize objects into meaningful segments, such as
+    department, location, or type of work. In QuickBooks, class tracking is off by
+    default. If a class is specified for the entire parent transaction, it is
+    automatically applied to all item lines unless overridden here, at the
+    transaction line level.
     """
 
     cost: Optional[str] = None
+    """The cost of this item line, represented as a decimal string.
+
+    If both `quantity` and `amount` are specified, QuickBooks will use them to
+    calculate `cost`. Likewise, if both `quantity` and `cost` are specified,
+    QuickBooks will use them to calculate the `amount`.
+    """
 
     customer: Optional[ItemLineCustomer] = None
+    """The customer to whom the item line is billed."""
 
     custom_fields: List[ItemLineCustomField] = FieldInfo(alias="customFields")
-    """The custom fields added by the user to QuickBooks object as a data extension.
+    """The custom fields added by the user to this item line object as a data
+    extension.
 
     These fields are not part of the standard QuickBooks object.
     """
 
     description: Optional[str] = None
+    """A description of this item line."""
 
-    expiration_date_for_serial_lot_number: Optional[str] = FieldInfo(
-        alias="expirationDateForSerialLotNumber", default=None
-    )
+    expiration_date: Optional[date] = FieldInfo(alias="expirationDate", default=None)
+    """
+    The expiration date for the serial number or lot number of the item in this item
+    line, in ISO 8601 format (YYYY-MM-DD). This is particularly relevant for
+    perishable or time-sensitive inventory items. Note that this field is only
+    supported on QuickBooks Desktop 2023 or later.
+    """
 
     inventory_site: Optional[ItemLineInventorySite] = FieldInfo(alias="inventorySite", default=None)
-    """The inventory site location where the item is stored."""
+    """The site location where inventory for the item in this item line is stored."""
 
     inventory_site_location: Optional[ItemLineInventorySiteLocation] = FieldInfo(
         alias="inventorySiteLocation", default=None
     )
-    """The location within the inventory site where the item is stored."""
+    """
+    The specific location within the inventory site where the item in this item line
+    is stored, such as a bin or shelf.
+    """
 
     item: Optional[ItemLineItem] = None
+    """The item associated with this item line.
+
+    This can refer to any item type such as a service item, inventory item, or
+    special calculation item like a discount item or sales tax item.
+    """
 
     lot_number: Optional[str] = FieldInfo(alias="lotNumber", default=None)
+    """The lot number of the item in this item line.
 
-    override_unit_of_measure: Optional[ItemLineOverrideUnitOfMeasure] = FieldInfo(
-        alias="overrideUnitOfMeasure", default=None
+    Used for tracking groups of inventory items that are purchased or manufactured
+    together.
+    """
+
+    object_type: Literal["qbd_item_line"] = FieldInfo(alias="objectType")
+    """The type of object. This value is always `"qbd_item_line"`."""
+
+    override_unit_of_measure_set: Optional[ItemLineOverrideUnitOfMeasureSet] = FieldInfo(
+        alias="overrideUnitOfMeasureSet", default=None
     )
+    """
+    The unit of measure set to use for this item line, overriding the default set
+    for the item. This affects which specific units are available for selection.
+    """
 
     quantity: Optional[float] = None
+    """The quantity of the item in this item line.
+
+    If both `quantity` and `amount` are specified but not `rate`, QuickBooks will
+    calculate `rate`. If `quantity` and `rate` are specified but not `amount`,
+    QuickBooks will calculate `amount`.
+    """
 
     sales_representative: Optional[ItemLineSalesRepresentative] = FieldInfo(alias="salesRepresentative", default=None)
-    """The item's sales representative."""
+    """The item line's sales representative.
+
+    Sales representatives can be employees, vendors, or other names in QuickBooks.
+    """
 
     sales_tax_code: Optional[ItemLineSalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)
-    """The sales tax code, indicating whether related items are taxable or non-taxable.
-
-    Two default codes are 'Non' (non-taxable) and 'Tax' (taxable). If QuickBooks is
-    not set up to charge sales tax, it will assign the default non-taxable code to
-    all sales.
+    """
+    The sales tax code associated with this item line, determining whether it is
+    taxable or non-taxable. It's used to assign a default tax status to all
+    transactions for this item line. Default codes include "NON" (non-taxable) and
+    "TAX" (taxable), but custom codes can also be created in QuickBooks. If
+    QuickBooks is not set up to charge sales tax, it will assign the default
+    non-taxable code to all sales.
     """
 
     serial_number: Optional[str] = FieldInfo(alias="serialNumber", default=None)
-    """The serial number of the item."""
+    """The serial number of the item in this item line.
+
+    This is used for tracking individual units of serialized inventory items.
+    """
 
     unit_of_measure: Optional[str] = FieldInfo(alias="unitOfMeasure", default=None)
+    """The unit of measure used for the `quantity` in this item line.
+
+    Must be a valid unit within the item's available units of measure.
+    """
 
 
 class LinkedTransaction(BaseModel):

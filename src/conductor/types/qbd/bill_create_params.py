@@ -86,7 +86,7 @@ class ExpenseLine(TypedDict, total=False):
     billable_status: Annotated[
         Literal["billable", "has_been_billed", "not_billable"], PropertyInfo(alias="billableStatus")
     ]
-    """The billable status of this line item."""
+    """The billing status of this line item."""
 
     class_id: Annotated[str, PropertyInfo(alias="classId")]
     """The class associated with this object.
@@ -148,7 +148,7 @@ class ItemLine(TypedDict, total=False):
     billable_status: Annotated[
         Literal["billable", "has_been_billed", "not_billable"], PropertyInfo(alias="billableStatus")
     ]
-    """The billable status of this line item."""
+    """The billing status of this line item."""
 
     class_id: Annotated[str, PropertyInfo(alias="classId")]
     """The class associated with this object.
