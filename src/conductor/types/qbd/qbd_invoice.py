@@ -366,8 +366,9 @@ class InvoiceLineGroupInvoiceLine(BaseModel):
 
     Classes can be used to categorize objects into meaningful segments, such as
     department, location, or type of work. In QuickBooks, class tracking is off by
-    default. If a class is specified for the entire invoice, it will be
-    automatically applied to all line items unless overridden here.
+    default. If a class is specified for the entire parent transaction, it is
+    automatically applied to all invoice lines unless overridden here, at the
+    transaction line level.
     """
 
     custom_fields: List[InvoiceLineGroupInvoiceLineCustomField] = FieldInfo(alias="customFields")
@@ -388,21 +389,21 @@ class InvoiceLineGroupInvoiceLine(BaseModel):
     """
 
     inventory_site: Optional[InvoiceLineGroupInvoiceLineInventorySite] = FieldInfo(alias="inventorySite", default=None)
-    """The site where inventory for the item in this invoice line is located."""
+    """The site location where inventory for the item in this invoice line is stored."""
 
     inventory_site_location: Optional[InvoiceLineGroupInvoiceLineInventorySiteLocation] = FieldInfo(
         alias="inventorySiteLocation", default=None
     )
     """
-    The specific location within the inventory site for the item in this invoice
-    line, such as a bin or shelf.
+    The specific location within the inventory site where the item in this invoice
+    line is stored, such as a bin or shelf.
     """
 
     item: Optional[InvoiceLineGroupInvoiceLineItem] = None
     """The item associated with this invoice line.
 
     This can refer to any item type such as a service item, inventory item, or
-    special calculation item like a discount item or sales-tax item.
+    special calculation item like a discount item or sales tax item.
     """
 
     lot_number: Optional[str] = FieldInfo(alias="lotNumber", default=None)
@@ -723,8 +724,9 @@ class InvoiceLine(BaseModel):
 
     Classes can be used to categorize objects into meaningful segments, such as
     department, location, or type of work. In QuickBooks, class tracking is off by
-    default. If a class is specified for the entire invoice, it will be
-    automatically applied to all line items unless overridden here.
+    default. If a class is specified for the entire parent transaction, it is
+    automatically applied to all invoice lines unless overridden here, at the
+    transaction line level.
     """
 
     custom_fields: List[InvoiceLineCustomField] = FieldInfo(alias="customFields")
@@ -745,21 +747,21 @@ class InvoiceLine(BaseModel):
     """
 
     inventory_site: Optional[InvoiceLineInventorySite] = FieldInfo(alias="inventorySite", default=None)
-    """The site where inventory for the item in this invoice line is located."""
+    """The site location where inventory for the item in this invoice line is stored."""
 
     inventory_site_location: Optional[InvoiceLineInventorySiteLocation] = FieldInfo(
         alias="inventorySiteLocation", default=None
     )
     """
-    The specific location within the inventory site for the item in this invoice
-    line, such as a bin or shelf.
+    The specific location within the inventory site where the item in this invoice
+    line is stored, such as a bin or shelf.
     """
 
     item: Optional[InvoiceLineItem] = None
     """The item associated with this invoice line.
 
     This can refer to any item type such as a service item, inventory item, or
-    special calculation item like a discount item or sales-tax item.
+    special calculation item like a discount item or sales tax item.
     """
 
     lot_number: Optional[str] = FieldInfo(alias="lotNumber", default=None)
