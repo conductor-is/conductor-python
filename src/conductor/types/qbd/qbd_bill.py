@@ -16,8 +16,8 @@ __all__ = [
     "ExpenseLine",
     "ExpenseLineAccount",
     "ExpenseLineClass",
-    "ExpenseLineCustomer",
     "ExpenseLineCustomField",
+    "ExpenseLinePayee",
     "ExpenseLineSalesRepresentative",
     "ExpenseLineSalesTaxCode",
     "ItemGroupLine",
@@ -135,22 +135,6 @@ class ExpenseLineClass(BaseModel):
     """
 
 
-class ExpenseLineCustomer(BaseModel):
-    id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks for this object.
-
-    This ID is unique among all objects of the same type, but not across different
-    QuickBooks object types.
-    """
-
-    full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
-    """
-    The fully-qualified unique name for this object, formed by combining the names
-    of its parent objects with its own `name`, separated by colons. Not
-    case-sensitive.
-    """
-
-
 class ExpenseLineCustomField(BaseModel):
     name: str
 
@@ -169,6 +153,22 @@ class ExpenseLineCustomField(BaseModel):
     """The custom field's data type, which corresponds to a QuickBooks data type."""
 
     value: str
+
+
+class ExpenseLinePayee(BaseModel):
+    id: Optional[str] = None
+    """The unique identifier assigned by QuickBooks for this object.
+
+    This ID is unique among all objects of the same type, but not across different
+    QuickBooks object types.
+    """
+
+    full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
+    """
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
+    """
 
 
 class ExpenseLineSalesRepresentative(BaseModel):
@@ -236,14 +236,6 @@ class ExpenseLine(BaseModel):
     transaction line level.
     """
 
-    customer: Optional[ExpenseLineCustomer] = None
-    """
-    For expense lines, if `account` refers to an Accounts Payable (A/P) account,
-    `customer` refers to the expense's vendor (not the customer). If `account`
-    refers to any other type of account, `customer` refers to the expense's customer
-    (not the vendor).
-    """
-
     custom_fields: List[ExpenseLineCustomField] = FieldInfo(alias="customFields")
     """
     The custom fields added by the user to this expense line object as a data
@@ -256,6 +248,13 @@ class ExpenseLine(BaseModel):
     object_type: Literal["qbd_expense_line"] = FieldInfo(alias="objectType")
     """The type of object. This value is always `"qbd_expense_line"`."""
 
+    payee: Optional[ExpenseLinePayee] = None
+    """
+    If `account` refers to an Accounts Payable (A/P) account, `payee` refers to the
+    expense's vendor (not the customer). If `account` refers to any other type of
+    account, `payee` refers to the expense's customer (not the vendor).
+    """
+
     sales_representative: Optional[ExpenseLineSalesRepresentative] = FieldInfo(
         alias="salesRepresentative", default=None
     )
@@ -266,12 +265,12 @@ class ExpenseLine(BaseModel):
 
     sales_tax_code: Optional[ExpenseLineSalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)
     """
-    The sales tax code associated with this expense line, determining whether it is
+    The sales-tax code associated with this expense line, determining whether it is
     taxable or non-taxable. It's used to assign a default tax status to all
     transactions for this expense line. Default codes include "NON" (non-taxable)
     and "TAX" (taxable), but custom codes can also be created in QuickBooks. If
-    QuickBooks is not set up to charge sales tax, it will assign the default
-    non-taxable code to all sales.
+    QuickBooks is not set up to charge sales tax (via the "Do You Charge Sales Tax?"
+    preference), it will assign the default non-taxable code to all sales.
     """
 
 
@@ -493,7 +492,7 @@ class ItemGroupLineItem(BaseModel):
     """
 
     customer: Optional[ItemGroupLineItemCustomer] = None
-    """The customer to whom the item line is billed."""
+    """The customer or customer-job associated with this item line."""
 
     custom_fields: List[ItemGroupLineItemCustomField] = FieldInfo(alias="customFields")
     """The custom fields added by the user to this item line object as a data
@@ -527,8 +526,9 @@ class ItemGroupLineItem(BaseModel):
     item: Optional[ItemGroupLineItemItem] = None
     """The item associated with this item line.
 
-    This can refer to any item type such as a service item, inventory item, or
-    special calculation item like a discount item or sales tax item.
+    This can refer to any good or service that the business buys or sells, including
+    item types such as a service item, inventory item, or special calculation item
+    like a discount item or sales-tax item.
     """
 
     lot_number: Optional[str] = FieldInfo(alias="lotNumber", default=None)
@@ -544,9 +544,14 @@ class ItemGroupLineItem(BaseModel):
     override_unit_of_measure_set: Optional[ItemGroupLineItemOverrideUnitOfMeasureSet] = FieldInfo(
         alias="overrideUnitOfMeasureSet", default=None
     )
-    """
-    The unit of measure set to use for this item line, overriding the default set
-    for the item. This affects which specific units are available for selection.
+    """Specifies an alternative unit of measure set for this specific item line.
+
+    This does not change the item's default unit of measure set (which is set on the
+    item itself rather than a transaction line), but allows selecting from a
+    different set of units for this particular line. For example, an item typically
+    measured in volume units could be sold using weight units in a specific
+    transaction. The actual unit selection (e.g., "pound" or "kilogram") is made
+    separately via the `unitOfMeasure` field.
     """
 
     quantity: Optional[float] = None
@@ -567,12 +572,12 @@ class ItemGroupLineItem(BaseModel):
 
     sales_tax_code: Optional[ItemGroupLineItemSalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)
     """
-    The sales tax code associated with this item line, determining whether it is
+    The sales-tax code associated with this item line, determining whether it is
     taxable or non-taxable. It's used to assign a default tax status to all
     transactions for this item line. Default codes include "NON" (non-taxable) and
     "TAX" (taxable), but custom codes can also be created in QuickBooks. If
-    QuickBooks is not set up to charge sales tax, it will assign the default
-    non-taxable code to all sales.
+    QuickBooks is not set up to charge sales tax (via the "Do You Charge Sales Tax?"
+    preference), it will assign the default non-taxable code to all sales.
     """
 
     serial_number: Optional[str] = FieldInfo(alias="serialNumber", default=None)
@@ -796,7 +801,7 @@ class ItemLine(BaseModel):
     """
 
     customer: Optional[ItemLineCustomer] = None
-    """The customer to whom the item line is billed."""
+    """The customer or customer-job associated with this item line."""
 
     custom_fields: List[ItemLineCustomField] = FieldInfo(alias="customFields")
     """The custom fields added by the user to this item line object as a data
@@ -830,8 +835,9 @@ class ItemLine(BaseModel):
     item: Optional[ItemLineItem] = None
     """The item associated with this item line.
 
-    This can refer to any item type such as a service item, inventory item, or
-    special calculation item like a discount item or sales tax item.
+    This can refer to any good or service that the business buys or sells, including
+    item types such as a service item, inventory item, or special calculation item
+    like a discount item or sales-tax item.
     """
 
     lot_number: Optional[str] = FieldInfo(alias="lotNumber", default=None)
@@ -847,9 +853,14 @@ class ItemLine(BaseModel):
     override_unit_of_measure_set: Optional[ItemLineOverrideUnitOfMeasureSet] = FieldInfo(
         alias="overrideUnitOfMeasureSet", default=None
     )
-    """
-    The unit of measure set to use for this item line, overriding the default set
-    for the item. This affects which specific units are available for selection.
+    """Specifies an alternative unit of measure set for this specific item line.
+
+    This does not change the item's default unit of measure set (which is set on the
+    item itself rather than a transaction line), but allows selecting from a
+    different set of units for this particular line. For example, an item typically
+    measured in volume units could be sold using weight units in a specific
+    transaction. The actual unit selection (e.g., "pound" or "kilogram") is made
+    separately via the `unitOfMeasure` field.
     """
 
     quantity: Optional[float] = None
@@ -868,12 +879,12 @@ class ItemLine(BaseModel):
 
     sales_tax_code: Optional[ItemLineSalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)
     """
-    The sales tax code associated with this item line, determining whether it is
+    The sales-tax code associated with this item line, determining whether it is
     taxable or non-taxable. It's used to assign a default tax status to all
     transactions for this item line. Default codes include "NON" (non-taxable) and
     "TAX" (taxable), but custom codes can also be created in QuickBooks. If
-    QuickBooks is not set up to charge sales tax, it will assign the default
-    non-taxable code to all sales.
+    QuickBooks is not set up to charge sales tax (via the "Do You Charge Sales Tax?"
+    preference), it will assign the default non-taxable code to all sales.
     """
 
     serial_number: Optional[str] = FieldInfo(alias="serialNumber", default=None)
@@ -1152,11 +1163,12 @@ class QbdBill(BaseModel):
 
     sales_tax_code: Optional[SalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)
     """
-    The sales tax code associated with this bill, determining whether it is taxable
+    The sales-tax code associated with this bill, determining whether it is taxable
     or non-taxable. It's used to assign a default tax status to all transactions for
     this bill. Default codes include "NON" (non-taxable) and "TAX" (taxable), but
     custom codes can also be created in QuickBooks. If QuickBooks is not set up to
-    charge sales tax, it will assign the default non-taxable code to all sales.
+    charge sales tax (via the "Do You Charge Sales Tax?" preference), it will assign
+    the default non-taxable code to all sales.
     """
 
     terms: Optional[Terms] = None

@@ -141,7 +141,7 @@ class CustomerCreateParams(TypedDict, total=False):
 
     item_sales_tax_id: Annotated[str, PropertyInfo(alias="itemSalesTaxId")]
     """
-    The specific sales tax item used to calculate the actual tax amount for this
+    The specific sales-tax item used to calculate the actual tax amount for this
     customer's transactions. It represents a single tax rate collected for a single
     tax agency. This is more specific than `salesTaxCode`, which only indicates
     taxability, and is used for the actual tax calculation and reporting.
@@ -254,12 +254,13 @@ class CustomerCreateParams(TypedDict, total=False):
 
     sales_tax_code_id: Annotated[str, PropertyInfo(alias="salesTaxCodeId")]
     """
-    The sales tax code associated with this customer, determining whether items sold
+    The sales-tax code associated with this customer, determining whether items sold
     to this customer are taxable or non-taxable. It's used to assign a default tax
     status to all transactions for this customer. Default codes include "NON"
     (non-taxable) and "TAX" (taxable), but custom codes can also be created in
-    QuickBooks. If QuickBooks is not set up to charge sales tax, it will assign the
-    default non-taxable code to all sales.
+    QuickBooks. If QuickBooks is not set up to charge sales tax (via the "Do You
+    Charge Sales Tax?" preference), it will assign the default non-taxable code to
+    all sales.
     """
 
     sales_tax_country: Annotated[Literal["australia", "canada", "uk", "us"], PropertyInfo(alias="salesTaxCountry")]

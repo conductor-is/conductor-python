@@ -56,7 +56,6 @@ class NonInventoryItemsResource(SyncAPIResource):
         class_id: str | NotGiven = NOT_GIVEN,
         external_id: str | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
-        is_tax_included: bool | NotGiven = NOT_GIVEN,
         manufacturer_part_number: str | NotGiven = NOT_GIVEN,
         parent_id: str | NotGiven = NOT_GIVEN,
         sales_and_purchase_details: non_inventory_item_create_params.SalesAndPurchaseDetails | NotGiven = NOT_GIVEN,
@@ -97,9 +96,6 @@ class NonInventoryItemsResource(SyncAPIResource):
           is_active: Indicates whether this non-inventory item is active. Inactive objects are
               typically hidden from views and reports in QuickBooks.
 
-          is_tax_included: Indicates whether the price of this non-inventory item includes tax. This is
-              primarily used in international versions of QuickBooks.
-
           manufacturer_part_number: The manufacturer's part number for this non-inventory item.
 
           parent_id: The parent non-inventory item one level above this one in the hierarchy. For
@@ -107,12 +103,13 @@ class NonInventoryItemsResource(SyncAPIResource):
               Ink Cartridge", its parent has a `fullName` of "Office-Supplies". If this
               non-inventory item is at the top level, `parent` will be `null`.
 
-          sales_tax_code_id: The sales tax code associated with this non-inventory item, determining whether
+          sales_tax_code_id: The sales-tax code associated with this non-inventory item, determining whether
               it is taxable or non-taxable. It's used to assign a default tax status to all
               transactions for this non-inventory item. Default codes include "NON"
               (non-taxable) and "TAX" (taxable), but custom codes can also be created in
-              QuickBooks. If QuickBooks is not set up to charge sales tax, it will assign the
-              default non-taxable code to all sales.
+              QuickBooks. If QuickBooks is not set up to charge sales tax (via the "Do You
+              Charge Sales Tax?" preference), it will assign the default non-taxable code to
+              all sales.
 
           unit_of_measure_set_id: The unit of measure set associated with this non-inventory item, which consists
               of a base unit and related units.
@@ -135,7 +132,6 @@ class NonInventoryItemsResource(SyncAPIResource):
                     "class_id": class_id,
                     "external_id": external_id,
                     "is_active": is_active,
-                    "is_tax_included": is_tax_included,
                     "manufacturer_part_number": manufacturer_part_number,
                     "parent_id": parent_id,
                     "sales_and_purchase_details": sales_and_purchase_details,
@@ -345,7 +341,6 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
         class_id: str | NotGiven = NOT_GIVEN,
         external_id: str | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
-        is_tax_included: bool | NotGiven = NOT_GIVEN,
         manufacturer_part_number: str | NotGiven = NOT_GIVEN,
         parent_id: str | NotGiven = NOT_GIVEN,
         sales_and_purchase_details: non_inventory_item_create_params.SalesAndPurchaseDetails | NotGiven = NOT_GIVEN,
@@ -386,9 +381,6 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
           is_active: Indicates whether this non-inventory item is active. Inactive objects are
               typically hidden from views and reports in QuickBooks.
 
-          is_tax_included: Indicates whether the price of this non-inventory item includes tax. This is
-              primarily used in international versions of QuickBooks.
-
           manufacturer_part_number: The manufacturer's part number for this non-inventory item.
 
           parent_id: The parent non-inventory item one level above this one in the hierarchy. For
@@ -396,12 +388,13 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
               Ink Cartridge", its parent has a `fullName` of "Office-Supplies". If this
               non-inventory item is at the top level, `parent` will be `null`.
 
-          sales_tax_code_id: The sales tax code associated with this non-inventory item, determining whether
+          sales_tax_code_id: The sales-tax code associated with this non-inventory item, determining whether
               it is taxable or non-taxable. It's used to assign a default tax status to all
               transactions for this non-inventory item. Default codes include "NON"
               (non-taxable) and "TAX" (taxable), but custom codes can also be created in
-              QuickBooks. If QuickBooks is not set up to charge sales tax, it will assign the
-              default non-taxable code to all sales.
+              QuickBooks. If QuickBooks is not set up to charge sales tax (via the "Do You
+              Charge Sales Tax?" preference), it will assign the default non-taxable code to
+              all sales.
 
           unit_of_measure_set_id: The unit of measure set associated with this non-inventory item, which consists
               of a base unit and related units.
@@ -424,7 +417,6 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
                     "class_id": class_id,
                     "external_id": external_id,
                     "is_active": is_active,
-                    "is_tax_included": is_tax_included,
                     "manufacturer_part_number": manufacturer_part_number,
                     "parent_id": parent_id,
                     "sales_and_purchase_details": sales_and_purchase_details,
