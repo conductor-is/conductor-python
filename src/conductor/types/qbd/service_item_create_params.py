@@ -49,12 +49,6 @@ class ServiceItemCreateParams(TypedDict, total=False):
     Inactive objects are typically hidden from views and reports in QuickBooks.
     """
 
-    is_tax_included: Annotated[bool, PropertyInfo(alias="isTaxIncluded")]
-    """Indicates whether the price of this service item includes tax.
-
-    This is primarily used in international versions of QuickBooks.
-    """
-
     parent_id: Annotated[str, PropertyInfo(alias="parentId")]
     """The parent service item one level above this one in the hierarchy.
 
@@ -70,12 +64,12 @@ class ServiceItemCreateParams(TypedDict, total=False):
 
     sales_tax_code_id: Annotated[str, PropertyInfo(alias="salesTaxCodeId")]
     """
-    The sales tax code associated with this service item, determining whether it is
+    The sales-tax code associated with this service item, determining whether it is
     taxable or non-taxable. It's used to assign a default tax status to all
     transactions for this service item. Default codes include "NON" (non-taxable)
     and "TAX" (taxable), but custom codes can also be created in QuickBooks. If
-    QuickBooks is not set up to charge sales tax, it will assign the default
-    non-taxable code to all sales.
+    QuickBooks is not set up to charge sales tax (via the "Do You Charge Sales Tax?"
+    preference), it will assign the default non-taxable code to all sales.
     """
 
     unit_of_measure_set_id: Annotated[str, PropertyInfo(alias="unitOfMeasureSetId")]

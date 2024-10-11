@@ -402,8 +402,9 @@ class InvoiceLineGroupInvoiceLine(BaseModel):
     item: Optional[InvoiceLineGroupInvoiceLineItem] = None
     """The item associated with this invoice line.
 
-    This can refer to any item type such as a service item, inventory item, or
-    special calculation item like a discount item or sales tax item.
+    This can refer to any good or service that the business buys or sells, including
+    item types such as a service item, inventory item, or special calculation item
+    like a discount item or sales-tax item.
     """
 
     lot_number: Optional[str] = FieldInfo(alias="lotNumber", default=None)
@@ -439,9 +440,14 @@ class InvoiceLineGroupInvoiceLine(BaseModel):
     override_unit_of_measure_set: Optional[InvoiceLineGroupInvoiceLineOverrideUnitOfMeasureSet] = FieldInfo(
         alias="overrideUnitOfMeasureSet", default=None
     )
-    """
-    The unit of measure set to use for this invoice line, overriding the default set
-    for the item. This affects which specific units are available for selection.
+    """Specifies an alternative unit of measure set for this specific invoice line.
+
+    This does not change the item's default unit of measure set (which is set on the
+    item itself rather than a transaction line), but allows selecting from a
+    different set of units for this particular line. For example, an item typically
+    measured in volume units could be sold using weight units in a specific
+    transaction. The actual unit selection (e.g., "pound" or "kilogram") is made
+    separately via the `unitOfMeasure` field.
     """
 
     quantity: Optional[float] = None
@@ -467,12 +473,12 @@ class InvoiceLineGroupInvoiceLine(BaseModel):
 
     sales_tax_code: Optional[InvoiceLineGroupInvoiceLineSalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)
     """
-    The sales tax code associated with this invoice line, determining whether it is
+    The sales-tax code associated with this invoice line, determining whether it is
     taxable or non-taxable. It's used to assign a default tax status to all
     transactions for this invoice line. Default codes include "NON" (non-taxable)
     and "TAX" (taxable), but custom codes can also be created in QuickBooks. If
-    QuickBooks is not set up to charge sales tax, it will assign the default
-    non-taxable code to all sales.
+    QuickBooks is not set up to charge sales tax (via the "Do You Charge Sales Tax?"
+    preference), it will assign the default non-taxable code to all sales.
     """
 
     serial_number: Optional[str] = FieldInfo(alias="serialNumber", default=None)
@@ -567,9 +573,13 @@ class InvoiceLineGroup(BaseModel):
         alias="overrideUnitOfMeasureSet", default=None
     )
     """
-    The unit of measure set to use for this invoice line group, overriding the
-    default set for the item. This affects which specific units are available for
-    selection.
+    Specifies an alternative unit of measure set for this specific invoice line
+    group. This does not change the item's default unit of measure set (which is set
+    on the item itself rather than a transaction line), but allows selecting from a
+    different set of units for this particular line. For example, an item typically
+    measured in volume units could be sold using weight units in a specific
+    transaction. The actual unit selection (e.g., "pound" or "kilogram") is made
+    separately via the `unitOfMeasure` field.
     """
 
     quantity: Optional[float] = None
@@ -760,8 +770,9 @@ class InvoiceLine(BaseModel):
     item: Optional[InvoiceLineItem] = None
     """The item associated with this invoice line.
 
-    This can refer to any item type such as a service item, inventory item, or
-    special calculation item like a discount item or sales tax item.
+    This can refer to any good or service that the business buys or sells, including
+    item types such as a service item, inventory item, or special calculation item
+    like a discount item or sales-tax item.
     """
 
     lot_number: Optional[str] = FieldInfo(alias="lotNumber", default=None)
@@ -797,9 +808,14 @@ class InvoiceLine(BaseModel):
     override_unit_of_measure_set: Optional[InvoiceLineOverrideUnitOfMeasureSet] = FieldInfo(
         alias="overrideUnitOfMeasureSet", default=None
     )
-    """
-    The unit of measure set to use for this invoice line, overriding the default set
-    for the item. This affects which specific units are available for selection.
+    """Specifies an alternative unit of measure set for this specific invoice line.
+
+    This does not change the item's default unit of measure set (which is set on the
+    item itself rather than a transaction line), but allows selecting from a
+    different set of units for this particular line. For example, an item typically
+    measured in volume units could be sold using weight units in a specific
+    transaction. The actual unit selection (e.g., "pound" or "kilogram") is made
+    separately via the `unitOfMeasure` field.
     """
 
     quantity: Optional[float] = None
@@ -825,12 +841,12 @@ class InvoiceLine(BaseModel):
 
     sales_tax_code: Optional[InvoiceLineSalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)
     """
-    The sales tax code associated with this invoice line, determining whether it is
+    The sales-tax code associated with this invoice line, determining whether it is
     taxable or non-taxable. It's used to assign a default tax status to all
     transactions for this invoice line. Default codes include "NON" (non-taxable)
     and "TAX" (taxable), but custom codes can also be created in QuickBooks. If
-    QuickBooks is not set up to charge sales tax, it will assign the default
-    non-taxable code to all sales.
+    QuickBooks is not set up to charge sales tax (via the "Do You Charge Sales Tax?"
+    preference), it will assign the default non-taxable code to all sales.
     """
 
     serial_number: Optional[str] = FieldInfo(alias="serialNumber", default=None)
@@ -1071,14 +1087,14 @@ class QbdInvoice(BaseModel):
     """
 
     customer: Customer
-    """The customer or customer job that this invoice is for."""
+    """The customer or customer-job associated with this invoice."""
 
     customer_message: Optional[CustomerMessage] = FieldInfo(alias="customerMessage", default=None)
     """The message to display to the customer on the invoice."""
 
     customer_sales_tax_code: Optional[CustomerSalesTaxCode] = FieldInfo(alias="customerSalesTaxCode", default=None)
     """
-    The sales tax code for items sold to the `customer` of this invoice, determining
+    The sales-tax code for items sold to the `customer` of this invoice, determining
     whether items sold to this customer are taxable or non-taxable.
     """
 
@@ -1152,7 +1168,7 @@ class QbdInvoice(BaseModel):
 
     item_sales_tax: Optional[ItemSalesTax] = FieldInfo(alias="itemSalesTax", default=None)
     """
-    The specific sales tax item used to calculate the actual tax amount for this
+    The specific sales-tax item used to calculate the actual tax amount for this
     invoice's transactions. It represents a single tax rate collected for a single
     tax agency. This is more specific than `salesTaxCode`, which only indicates
     taxability, and is used for the actual tax calculation and reporting.

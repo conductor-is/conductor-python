@@ -72,12 +72,6 @@ class InventoryItemCreateParams(TypedDict, total=False):
     Inactive objects are typically hidden from views and reports in QuickBooks.
     """
 
-    is_tax_included: Annotated[bool, PropertyInfo(alias="isTaxIncluded")]
-    """Indicates whether the price of this inventory item includes tax.
-
-    This is primarily used in international versions of QuickBooks.
-    """
-
     manufacturer_part_number: Annotated[str, PropertyInfo(alias="manufacturerPartNumber")]
     """The manufacturer's part number for this inventory item."""
 
@@ -142,12 +136,12 @@ class InventoryItemCreateParams(TypedDict, total=False):
 
     sales_tax_code_id: Annotated[str, PropertyInfo(alias="salesTaxCodeId")]
     """
-    The sales tax code associated with this inventory item, determining whether it
+    The sales-tax code associated with this inventory item, determining whether it
     is taxable or non-taxable. It's used to assign a default tax status to all
     transactions for this inventory item. Default codes include "NON" (non-taxable)
     and "TAX" (taxable), but custom codes can also be created in QuickBooks. If
-    QuickBooks is not set up to charge sales tax, it will assign the default
-    non-taxable code to all sales.
+    QuickBooks is not set up to charge sales tax (via the "Do You Charge Sales Tax?"
+    preference), it will assign the default non-taxable code to all sales.
     """
 
     total_value: Annotated[str, PropertyInfo(alias="totalValue")]

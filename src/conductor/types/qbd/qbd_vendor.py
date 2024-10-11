@@ -534,12 +534,13 @@ class QbdVendor(BaseModel):
 
     sales_tax_code: Optional[SalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)
     """
-    The sales tax code associated with this vendor, determining whether items bought
+    The sales-tax code associated with this vendor, determining whether items bought
     from this vendor are taxable or non-taxable. It's used to assign a default tax
     status to all transactions for this vendor. Default codes include "NON"
     (non-taxable) and "TAX" (taxable), but custom codes can also be created in
-    QuickBooks. If QuickBooks is not set up to charge sales tax, it will assign the
-    default non-taxable code to all sales.
+    QuickBooks. If QuickBooks is not set up to charge sales tax (via the "Do You
+    Charge Sales Tax?" preference), it will assign the default non-taxable code to
+    all sales.
     """
 
     sales_tax_country: Optional[Literal["australia", "canada", "uk", "us"]] = FieldInfo(
