@@ -39,7 +39,6 @@ class TestServiceItems:
             class_id="80000001-1234567890",
             external_id="12345678-abcd-1234-abcd-1234567890ab",
             is_active=True,
-            is_tax_included=False,
             parent_id="80000002-1234567890",
             sales_and_purchase_details={
                 "expense_account_id": "80000003-1234567890",
@@ -206,7 +205,6 @@ class TestAsyncServiceItems:
             class_id="80000001-1234567890",
             external_id="12345678-abcd-1234-abcd-1234567890ab",
             is_active=True,
-            is_tax_included=False,
             parent_id="80000002-1234567890",
             sales_and_purchase_details={
                 "expense_account_id": "80000003-1234567890",

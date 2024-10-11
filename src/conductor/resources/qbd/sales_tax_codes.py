@@ -19,7 +19,7 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...types.qbd import sales_tax_code_list_params
+from ...types.qbd import sales_tax_code_list_params, sales_tax_code_create_params
 from ..._base_client import make_request_options
 from ...types.qbd.sales_tax_code import SalesTaxCode
 from ...types.qbd.sales_tax_code_list_response import SalesTaxCodeListResponse
@@ -47,6 +47,74 @@ class SalesTaxCodesResource(SyncAPIResource):
         """
         return SalesTaxCodesResourceWithStreamingResponse(self)
 
+    def create(
+        self,
+        *,
+        is_taxable: bool,
+        name: str,
+        conductor_end_user_id: str,
+        description: str | NotGiven = NOT_GIVEN,
+        is_active: bool | NotGiven = NOT_GIVEN,
+        item_sales_tax_id: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> SalesTaxCode:
+        """
+        Creates a sales-tax code.
+
+        Args:
+          is_taxable: Indicates whether this sales-tax code is tracking taxable sales. For any
+              particular sales-tax code, `isTaxable` cannot be modified once the sales-tax
+              code has been used in a transaction. The default value depends on the "Do You
+              Charge Sales Tax?" preference in QuickBooks.
+
+          name: The case-insensitive unique name of this sales-tax code, unique across all
+              sales-tax codes.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          description: A description of this sales-tax code.
+
+          is_active: Indicates whether this sales-tax code is active. Inactive objects are typically
+              hidden from views and reports in QuickBooks.
+
+          item_sales_tax_id: The specific sales-tax item used to calculate the actual tax amount for this
+              sales-tax code's transactions. It represents a single tax rate collected for a
+              single tax agency. This is more specific than `salesTaxCode`, which only
+              indicates taxability, and is used for the actual tax calculation and reporting.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return self._post(
+            "/quickbooks-desktop/sales-tax-codes",
+            body=maybe_transform(
+                {
+                    "is_taxable": is_taxable,
+                    "name": name,
+                    "description": description,
+                    "is_active": is_active,
+                    "item_sales_tax_id": item_sales_tax_id,
+                },
+                sales_tax_code_create_params.SalesTaxCodeCreateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=SalesTaxCode,
+        )
+
     def retrieve(
         self,
         id: str,
@@ -60,10 +128,10 @@ class SalesTaxCodesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SalesTaxCode:
         """
-        Retrieves a sales tax code by ID.
+        Retrieves a sales-tax code by ID.
 
         Args:
-          id: The QuickBooks-assigned unique identifier of the sales tax code to retrieve.
+          id: The QuickBooks-assigned unique identifier of the sales-tax code to retrieve.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -110,23 +178,23 @@ class SalesTaxCodesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SalesTaxCodeListResponse:
         """
-        Returns a list of sales tax codes.
+        Returns a list of sales-tax codes.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          full_names: Filter for specific sales tax codes by their full-name(s). Specify a single
+          full_names: Filter for specific sales-tax codes by their full-name(s). Specify a single
               full-name or multiple using a comma-separated list (e.g., `fullNames=1,2,3`).
-              Like `id`, a `fullName` is a unique identifier for a sales tax code, and is
+              Like `id`, a `fullName` is a unique identifier for a sales-tax code, and is
               formed by by combining the names of its parent objects with its own `name`,
-              separated by colons. For example, if a sales tax code is under "State" and has
+              separated by colons. For example, if a sales-tax code is under "State" and has
               the `name` "CA Sales Tax", its `fullName` would be "State:CA Sales Tax". Unlike
-              `name`, `fullName` is guaranteed to be unique across all sales tax code objects.
+              `name`, `fullName` is guaranteed to be unique across all sales-tax code objects.
               Not case-sensitive. NOTE: If you include this parameter, all other query
               parameters will be ignored.
 
-          ids: Filter for specific sales tax codes by their QuickBooks-assigned unique
+          ids: Filter for specific sales-tax codes by their QuickBooks-assigned unique
               identifier(s). Specify a single ID or multiple using a comma-separated list
               (e.g., `ids=1,2,3`). NOTE: If you include this parameter, all other query
               parameters will be ignored.
@@ -219,6 +287,74 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
         """
         return AsyncSalesTaxCodesResourceWithStreamingResponse(self)
 
+    async def create(
+        self,
+        *,
+        is_taxable: bool,
+        name: str,
+        conductor_end_user_id: str,
+        description: str | NotGiven = NOT_GIVEN,
+        is_active: bool | NotGiven = NOT_GIVEN,
+        item_sales_tax_id: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> SalesTaxCode:
+        """
+        Creates a sales-tax code.
+
+        Args:
+          is_taxable: Indicates whether this sales-tax code is tracking taxable sales. For any
+              particular sales-tax code, `isTaxable` cannot be modified once the sales-tax
+              code has been used in a transaction. The default value depends on the "Do You
+              Charge Sales Tax?" preference in QuickBooks.
+
+          name: The case-insensitive unique name of this sales-tax code, unique across all
+              sales-tax codes.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          description: A description of this sales-tax code.
+
+          is_active: Indicates whether this sales-tax code is active. Inactive objects are typically
+              hidden from views and reports in QuickBooks.
+
+          item_sales_tax_id: The specific sales-tax item used to calculate the actual tax amount for this
+              sales-tax code's transactions. It represents a single tax rate collected for a
+              single tax agency. This is more specific than `salesTaxCode`, which only
+              indicates taxability, and is used for the actual tax calculation and reporting.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return await self._post(
+            "/quickbooks-desktop/sales-tax-codes",
+            body=await async_maybe_transform(
+                {
+                    "is_taxable": is_taxable,
+                    "name": name,
+                    "description": description,
+                    "is_active": is_active,
+                    "item_sales_tax_id": item_sales_tax_id,
+                },
+                sales_tax_code_create_params.SalesTaxCodeCreateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=SalesTaxCode,
+        )
+
     async def retrieve(
         self,
         id: str,
@@ -232,10 +368,10 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SalesTaxCode:
         """
-        Retrieves a sales tax code by ID.
+        Retrieves a sales-tax code by ID.
 
         Args:
-          id: The QuickBooks-assigned unique identifier of the sales tax code to retrieve.
+          id: The QuickBooks-assigned unique identifier of the sales-tax code to retrieve.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -282,23 +418,23 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SalesTaxCodeListResponse:
         """
-        Returns a list of sales tax codes.
+        Returns a list of sales-tax codes.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          full_names: Filter for specific sales tax codes by their full-name(s). Specify a single
+          full_names: Filter for specific sales-tax codes by their full-name(s). Specify a single
               full-name or multiple using a comma-separated list (e.g., `fullNames=1,2,3`).
-              Like `id`, a `fullName` is a unique identifier for a sales tax code, and is
+              Like `id`, a `fullName` is a unique identifier for a sales-tax code, and is
               formed by by combining the names of its parent objects with its own `name`,
-              separated by colons. For example, if a sales tax code is under "State" and has
+              separated by colons. For example, if a sales-tax code is under "State" and has
               the `name` "CA Sales Tax", its `fullName` would be "State:CA Sales Tax". Unlike
-              `name`, `fullName` is guaranteed to be unique across all sales tax code objects.
+              `name`, `fullName` is guaranteed to be unique across all sales-tax code objects.
               Not case-sensitive. NOTE: If you include this parameter, all other query
               parameters will be ignored.
 
-          ids: Filter for specific sales tax codes by their QuickBooks-assigned unique
+          ids: Filter for specific sales-tax codes by their QuickBooks-assigned unique
               identifier(s). Specify a single ID or multiple using a comma-separated list
               (e.g., `ids=1,2,3`). NOTE: If you include this parameter, all other query
               parameters will be ignored.
@@ -375,6 +511,9 @@ class SalesTaxCodesResourceWithRawResponse:
     def __init__(self, sales_tax_codes: SalesTaxCodesResource) -> None:
         self._sales_tax_codes = sales_tax_codes
 
+        self.create = to_raw_response_wrapper(
+            sales_tax_codes.create,
+        )
         self.retrieve = to_raw_response_wrapper(
             sales_tax_codes.retrieve,
         )
@@ -387,6 +526,9 @@ class AsyncSalesTaxCodesResourceWithRawResponse:
     def __init__(self, sales_tax_codes: AsyncSalesTaxCodesResource) -> None:
         self._sales_tax_codes = sales_tax_codes
 
+        self.create = async_to_raw_response_wrapper(
+            sales_tax_codes.create,
+        )
         self.retrieve = async_to_raw_response_wrapper(
             sales_tax_codes.retrieve,
         )
@@ -399,6 +541,9 @@ class SalesTaxCodesResourceWithStreamingResponse:
     def __init__(self, sales_tax_codes: SalesTaxCodesResource) -> None:
         self._sales_tax_codes = sales_tax_codes
 
+        self.create = to_streamed_response_wrapper(
+            sales_tax_codes.create,
+        )
         self.retrieve = to_streamed_response_wrapper(
             sales_tax_codes.retrieve,
         )
@@ -411,6 +556,9 @@ class AsyncSalesTaxCodesResourceWithStreamingResponse:
     def __init__(self, sales_tax_codes: AsyncSalesTaxCodesResource) -> None:
         self._sales_tax_codes = sales_tax_codes
 
+        self.create = async_to_streamed_response_wrapper(
+            sales_tax_codes.create,
+        )
         self.retrieve = async_to_streamed_response_wrapper(
             sales_tax_codes.retrieve,
         )

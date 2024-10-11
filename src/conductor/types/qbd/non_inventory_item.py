@@ -361,12 +361,13 @@ class NonInventoryItem(BaseModel):
 
     sales_tax_code: Optional[SalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)
     """
-    The sales tax code associated with this non-inventory item, determining whether
+    The sales-tax code associated with this non-inventory item, determining whether
     it is taxable or non-taxable. It's used to assign a default tax status to all
     transactions for this non-inventory item. Default codes include "NON"
     (non-taxable) and "TAX" (taxable), but custom codes can also be created in
-    QuickBooks. If QuickBooks is not set up to charge sales tax, it will assign the
-    default non-taxable code to all sales.
+    QuickBooks. If QuickBooks is not set up to charge sales tax (via the "Do You
+    Charge Sales Tax?" preference), it will assign the default non-taxable code to
+    all sales.
     """
 
     sublevel: float

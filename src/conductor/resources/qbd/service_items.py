@@ -56,7 +56,6 @@ class ServiceItemsResource(SyncAPIResource):
         class_id: str | NotGiven = NOT_GIVEN,
         external_id: str | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
-        is_tax_included: bool | NotGiven = NOT_GIVEN,
         parent_id: str | NotGiven = NOT_GIVEN,
         sales_and_purchase_details: service_item_create_params.SalesAndPurchaseDetails | NotGiven = NOT_GIVEN,
         sales_or_purchase_details: service_item_create_params.SalesOrPurchaseDetails | NotGiven = NOT_GIVEN,
@@ -95,20 +94,17 @@ class ServiceItemsResource(SyncAPIResource):
           is_active: Indicates whether this service item is active. Inactive objects are typically
               hidden from views and reports in QuickBooks.
 
-          is_tax_included: Indicates whether the price of this service item includes tax. This is primarily
-              used in international versions of QuickBooks.
-
           parent_id: The parent service item one level above this one in the hierarchy. For example,
               if this service item has a `fullName` of "Services:Consulting:Web-Design", its
               parent has a `fullName` of "Services:Consulting". If this service item is at the
               top level, `parent` will be `null`.
 
-          sales_tax_code_id: The sales tax code associated with this service item, determining whether it is
+          sales_tax_code_id: The sales-tax code associated with this service item, determining whether it is
               taxable or non-taxable. It's used to assign a default tax status to all
               transactions for this service item. Default codes include "NON" (non-taxable)
               and "TAX" (taxable), but custom codes can also be created in QuickBooks. If
-              QuickBooks is not set up to charge sales tax, it will assign the default
-              non-taxable code to all sales.
+              QuickBooks is not set up to charge sales tax (via the "Do You Charge Sales Tax?"
+              preference), it will assign the default non-taxable code to all sales.
 
           unit_of_measure_set_id: The unit of measure set associated with this service item, which consists of a
               base unit and related units.
@@ -131,7 +127,6 @@ class ServiceItemsResource(SyncAPIResource):
                     "class_id": class_id,
                     "external_id": external_id,
                     "is_active": is_active,
-                    "is_tax_included": is_tax_included,
                     "parent_id": parent_id,
                     "sales_and_purchase_details": sales_and_purchase_details,
                     "sales_or_purchase_details": sales_or_purchase_details,
@@ -340,7 +335,6 @@ class AsyncServiceItemsResource(AsyncAPIResource):
         class_id: str | NotGiven = NOT_GIVEN,
         external_id: str | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
-        is_tax_included: bool | NotGiven = NOT_GIVEN,
         parent_id: str | NotGiven = NOT_GIVEN,
         sales_and_purchase_details: service_item_create_params.SalesAndPurchaseDetails | NotGiven = NOT_GIVEN,
         sales_or_purchase_details: service_item_create_params.SalesOrPurchaseDetails | NotGiven = NOT_GIVEN,
@@ -379,20 +373,17 @@ class AsyncServiceItemsResource(AsyncAPIResource):
           is_active: Indicates whether this service item is active. Inactive objects are typically
               hidden from views and reports in QuickBooks.
 
-          is_tax_included: Indicates whether the price of this service item includes tax. This is primarily
-              used in international versions of QuickBooks.
-
           parent_id: The parent service item one level above this one in the hierarchy. For example,
               if this service item has a `fullName` of "Services:Consulting:Web-Design", its
               parent has a `fullName` of "Services:Consulting". If this service item is at the
               top level, `parent` will be `null`.
 
-          sales_tax_code_id: The sales tax code associated with this service item, determining whether it is
+          sales_tax_code_id: The sales-tax code associated with this service item, determining whether it is
               taxable or non-taxable. It's used to assign a default tax status to all
               transactions for this service item. Default codes include "NON" (non-taxable)
               and "TAX" (taxable), but custom codes can also be created in QuickBooks. If
-              QuickBooks is not set up to charge sales tax, it will assign the default
-              non-taxable code to all sales.
+              QuickBooks is not set up to charge sales tax (via the "Do You Charge Sales Tax?"
+              preference), it will assign the default non-taxable code to all sales.
 
           unit_of_measure_set_id: The unit of measure set associated with this service item, which consists of a
               base unit and related units.
@@ -415,7 +406,6 @@ class AsyncServiceItemsResource(AsyncAPIResource):
                     "class_id": class_id,
                     "external_id": external_id,
                     "is_active": is_active,
-                    "is_tax_included": is_tax_included,
                     "parent_id": parent_id,
                     "sales_and_purchase_details": sales_and_purchase_details,
                     "sales_or_purchase_details": sales_or_purchase_details,
