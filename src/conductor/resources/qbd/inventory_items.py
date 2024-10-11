@@ -62,7 +62,6 @@ class InventoryItemsResource(SyncAPIResource):
         income_account_id: str | NotGiven = NOT_GIVEN,
         inventory_date: Union[str, date] | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
-        is_tax_included: bool | NotGiven = NOT_GIVEN,
         manufacturer_part_number: str | NotGiven = NOT_GIVEN,
         maximum_on_hand_quantity: float | NotGiven = NOT_GIVEN,
         parent_id: str | NotGiven = NOT_GIVEN,
@@ -121,9 +120,6 @@ class InventoryItemsResource(SyncAPIResource):
           is_active: Indicates whether this inventory item is active. Inactive objects are typically
               hidden from views and reports in QuickBooks.
 
-          is_tax_included: Indicates whether the price of this inventory item includes tax. This is
-              primarily used in international versions of QuickBooks.
-
           manufacturer_part_number: The manufacturer's part number for this inventory item.
 
           maximum_on_hand_quantity: The maximum quantity of this inventory item desired in inventory.
@@ -159,12 +155,12 @@ class InventoryItemsResource(SyncAPIResource):
           sales_price: The price at which this inventory item is sold to customers, represented as a
               decimal string.
 
-          sales_tax_code_id: The sales tax code associated with this inventory item, determining whether it
+          sales_tax_code_id: The sales-tax code associated with this inventory item, determining whether it
               is taxable or non-taxable. It's used to assign a default tax status to all
               transactions for this inventory item. Default codes include "NON" (non-taxable)
               and "TAX" (taxable), but custom codes can also be created in QuickBooks. If
-              QuickBooks is not set up to charge sales tax, it will assign the default
-              non-taxable code to all sales.
+              QuickBooks is not set up to charge sales tax (via the "Do You Charge Sales Tax?"
+              preference), it will assign the default non-taxable code to all sales.
 
           total_value: The total value of this inventory item. If `totalValue` is provided,
               `quantityOnHand` must also be provided and must be greater than zero. If both
@@ -197,7 +193,6 @@ class InventoryItemsResource(SyncAPIResource):
                     "income_account_id": income_account_id,
                     "inventory_date": inventory_date,
                     "is_active": is_active,
-                    "is_tax_included": is_tax_included,
                     "manufacturer_part_number": manufacturer_part_number,
                     "maximum_on_hand_quantity": maximum_on_hand_quantity,
                     "parent_id": parent_id,
@@ -419,7 +414,6 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
         income_account_id: str | NotGiven = NOT_GIVEN,
         inventory_date: Union[str, date] | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
-        is_tax_included: bool | NotGiven = NOT_GIVEN,
         manufacturer_part_number: str | NotGiven = NOT_GIVEN,
         maximum_on_hand_quantity: float | NotGiven = NOT_GIVEN,
         parent_id: str | NotGiven = NOT_GIVEN,
@@ -478,9 +472,6 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
           is_active: Indicates whether this inventory item is active. Inactive objects are typically
               hidden from views and reports in QuickBooks.
 
-          is_tax_included: Indicates whether the price of this inventory item includes tax. This is
-              primarily used in international versions of QuickBooks.
-
           manufacturer_part_number: The manufacturer's part number for this inventory item.
 
           maximum_on_hand_quantity: The maximum quantity of this inventory item desired in inventory.
@@ -516,12 +507,12 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
           sales_price: The price at which this inventory item is sold to customers, represented as a
               decimal string.
 
-          sales_tax_code_id: The sales tax code associated with this inventory item, determining whether it
+          sales_tax_code_id: The sales-tax code associated with this inventory item, determining whether it
               is taxable or non-taxable. It's used to assign a default tax status to all
               transactions for this inventory item. Default codes include "NON" (non-taxable)
               and "TAX" (taxable), but custom codes can also be created in QuickBooks. If
-              QuickBooks is not set up to charge sales tax, it will assign the default
-              non-taxable code to all sales.
+              QuickBooks is not set up to charge sales tax (via the "Do You Charge Sales Tax?"
+              preference), it will assign the default non-taxable code to all sales.
 
           total_value: The total value of this inventory item. If `totalValue` is provided,
               `quantityOnHand` must also be provided and must be greater than zero. If both
@@ -554,7 +545,6 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
                     "income_account_id": income_account_id,
                     "inventory_date": inventory_date,
                     "is_active": is_active,
-                    "is_tax_included": is_tax_included,
                     "manufacturer_part_number": manufacturer_part_number,
                     "maximum_on_hand_quantity": maximum_on_hand_quantity,
                     "parent_id": parent_id,

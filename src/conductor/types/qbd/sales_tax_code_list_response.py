@@ -13,7 +13,7 @@ __all__ = ["SalesTaxCodeListResponse"]
 
 class SalesTaxCodeListResponse(BaseModel):
     data: List[SalesTaxCode]
-    """The array of sales tax codes."""
+    """The array of sales-tax codes."""
 
     object_type: Literal["list"] = FieldInfo(alias="objectType")
     """The type of object. This value is always `"list"`."""

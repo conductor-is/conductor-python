@@ -39,7 +39,6 @@ class TestNonInventoryItems:
             class_id="80000001-1234567890",
             external_id="12345678-abcd-1234-abcd-1234567890ab",
             is_active=True,
-            is_tax_included=False,
             manufacturer_part_number="MPN-123456",
             parent_id="80000002-1234567890",
             sales_and_purchase_details={
@@ -207,7 +206,6 @@ class TestAsyncNonInventoryItems:
             class_id="80000001-1234567890",
             external_id="12345678-abcd-1234-abcd-1234567890ab",
             is_active=True,
-            is_tax_included=False,
             manufacturer_part_number="MPN-123456",
             parent_id="80000002-1234567890",
             sales_and_purchase_details={

@@ -80,17 +80,17 @@ class TaxVendor(BaseModel):
 
 class QbdSalesTaxItem(BaseModel):
     id: str
-    """The unique identifier assigned by QuickBooks for this sales tax item.
+    """The unique identifier assigned by QuickBooks for this sales-tax item.
 
-    This ID is unique among all sales tax items but not across different QuickBooks
+    This ID is unique among all sales-tax items but not across different QuickBooks
     object types.
     """
 
     barcode: Optional[str] = None
-    """The sales tax item's barcode."""
+    """The sales-tax item's barcode."""
 
     class_: Optional[Class] = FieldInfo(alias="class", default=None)
-    """The sales tax item's class.
+    """The sales-tax item's class.
 
     Classes can be used to categorize objects into meaningful segments, such as
     department, location, or type of work. In QuickBooks, class tracking is off by
@@ -99,20 +99,20 @@ class QbdSalesTaxItem(BaseModel):
 
     created_at: str = FieldInfo(alias="createdAt")
     """
-    The date and time when this sales tax item was created, in ISO 8601 format
+    The date and time when this sales-tax item was created, in ISO 8601 format
     (YYYY-MM-DDThh:mm:ss±hh:mm). The time zone is the same as the user's time zone
     in QuickBooks.
     """
 
     custom_fields: List[CustomField] = FieldInfo(alias="customFields")
     """
-    The custom fields added by the user to this sales tax item object as a data
+    The custom fields added by the user to this sales-tax item object as a data
     extension. These fields are not part of the standard QuickBooks object.
     """
 
     description: Optional[str] = None
     """
-    The sales tax item's description that will appear on sales forms that include
+    The sales-tax item's description that will appear on sales forms that include
     this item.
     """
 
@@ -124,15 +124,15 @@ class QbdSalesTaxItem(BaseModel):
     """
 
     is_active: bool = FieldInfo(alias="isActive")
-    """Indicates whether this sales tax item is active.
+    """Indicates whether this sales-tax item is active.
 
     Inactive objects are typically hidden from views and reports in QuickBooks.
     """
 
     name: str
     """
-    The case-insensitive unique name of this sales tax item, unique across all sales
-    tax items.
+    The case-insensitive unique name of this sales-tax item, unique across all
+    sales-tax items.
     """
 
     object_type: Literal["qbd_sales_tax_item"] = FieldInfo(alias="objectType")
@@ -141,11 +141,11 @@ class QbdSalesTaxItem(BaseModel):
     sales_tax_return_line: Optional[SalesTaxReturnLine] = FieldInfo(alias="salesTaxReturnLine", default=None)
     """
     The specific line on the sales tax return form where the tax collected using
-    this sales tax item should be reported.
+    this sales-tax item should be reported.
     """
 
     tax_rate: Optional[str] = FieldInfo(alias="taxRate", default=None)
-    """The tax rate defined by this sales tax item, represented as a decimal string.
+    """The tax rate defined by this sales-tax item, represented as a decimal string.
 
     For example, "7.5" represents a 7.5% tax rate. If a non-zero `taxRate` is
     specified, the `taxVendor` field becomes required. This rate determines the
@@ -154,21 +154,22 @@ class QbdSalesTaxItem(BaseModel):
 
     tax_vendor: Optional[TaxVendor] = FieldInfo(alias="taxVendor", default=None)
     """
-    The tax agency (vendor) to whom collected sales taxes are owed for this sales
-    tax item. This field refers to a vendor in QuickBooks that represents the tax
-    authority. If a non-zero `taxRate` is specified, then `taxVendor` is required.
+    The tax agency (vendor) to whom collected sales taxes are owed for this
+    sales-tax item. This field refers to a vendor in QuickBooks that represents the
+    tax authority. If a non-zero `taxRate` is specified, then `taxVendor` is
+    required.
     """
 
     updated_at: str = FieldInfo(alias="updatedAt")
     """
-    The date and time when this sales tax item was last updated, in ISO 8601 format
+    The date and time when this sales-tax item was last updated, in ISO 8601 format
     (YYYY-MM-DDThh:mm:ss±hh:mm). The time zone is the same as the user's time zone
     in QuickBooks.
     """
 
     version: str
     """
-    The current version identifier for this sales tax item, which changes each time
+    The current version identifier for this sales-tax item, which changes each time
     the object is modified. When updating this object, you must provide the most
     recent `version` to ensure you're working with the latest data; otherwise, the
     update will fail. This value is opaque and should not be interpreted.
