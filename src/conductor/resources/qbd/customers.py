@@ -180,10 +180,10 @@ class CustomersResource(SyncAPIResource):
           is_active: Indicates whether this customer is active. Inactive objects are typically hidden
               from views and reports in QuickBooks.
 
-          item_sales_tax_id: The specific sales-tax item used to calculate the actual tax amount for this
-              customer's transactions. It represents a single tax rate collected for a single
-              tax agency. This is more specific than `salesTaxCode`, which only indicates
-              taxability, and is used for the actual tax calculation and reporting.
+          item_sales_tax_id: The sales-tax item used to calculate the actual tax amount for this customer's
+              transactions by applying a specific tax rate collected for a single tax agency.
+              Unlike `salesTaxCode`, which only indicates general taxability, this field
+              drives the actual tax calculation and reporting.
 
           job_description: A brief description of this customer's job, if this object is a job (i.e.,
               sub-customer).
@@ -679,10 +679,10 @@ class AsyncCustomersResource(AsyncAPIResource):
           is_active: Indicates whether this customer is active. Inactive objects are typically hidden
               from views and reports in QuickBooks.
 
-          item_sales_tax_id: The specific sales-tax item used to calculate the actual tax amount for this
-              customer's transactions. It represents a single tax rate collected for a single
-              tax agency. This is more specific than `salesTaxCode`, which only indicates
-              taxability, and is used for the actual tax calculation and reporting.
+          item_sales_tax_id: The sales-tax item used to calculate the actual tax amount for this customer's
+              transactions by applying a specific tax rate collected for a single tax agency.
+              Unlike `salesTaxCode`, which only indicates general taxability, this field
+              drives the actual tax calculation and reporting.
 
           job_description: A brief description of this customer's job, if this object is a job (i.e.,
               sub-customer).
