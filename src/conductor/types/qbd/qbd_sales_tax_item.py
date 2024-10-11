@@ -147,9 +147,9 @@ class QbdSalesTaxItem(BaseModel):
     tax_rate: Optional[str] = FieldInfo(alias="taxRate", default=None)
     """The tax rate defined by this sales-tax item, represented as a decimal string.
 
-    For example, "7.5" represents a 7.5% tax rate. If a non-zero `taxRate` is
-    specified, the `taxVendor` field becomes required. This rate determines the
-    amount of sales tax applied when this item is used in transactions.
+    For example, "7.5" represents a 7.5% tax rate. This rate determines the amount
+    of sales tax applied when this item is used in transactions. If a non-zero
+    `taxRate` is specified, then the `taxVendor` field is required.
     """
 
     tax_vendor: Optional[TaxVendor] = FieldInfo(alias="taxVendor", default=None)
