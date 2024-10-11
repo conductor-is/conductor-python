@@ -197,6 +197,7 @@ from conductor.types.qbd import QbdSalesTaxItem
 
 Methods:
 
+- <code title="post /quickbooks-desktop/sales-tax-items">client.qbd.sales_tax_items.<a href="./src/conductor/resources/qbd/sales_tax_items.py">create</a>(\*\*<a href="src/conductor/types/qbd/sales_tax_item_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_sales_tax_item.py">QbdSalesTaxItem</a></code>
 - <code title="get /quickbooks-desktop/sales-tax-items/{id}">client.qbd.sales_tax_items.<a href="./src/conductor/resources/qbd/sales_tax_items.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_sales_tax_item.py">QbdSalesTaxItem</a></code>
 - <code title="get /quickbooks-desktop/sales-tax-items">client.qbd.sales_tax_items.<a href="./src/conductor/resources/qbd/sales_tax_items.py">list</a>(\*\*<a href="src/conductor/types/qbd/sales_tax_item_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_sales_tax_item.py">SyncCursorPage[QbdSalesTaxItem]</a></code>
 
