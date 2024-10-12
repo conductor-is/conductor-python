@@ -264,8 +264,8 @@ class ExpenseLine(BaseModel):
     """
     The sales-tax code associated with this expense line, determining whether it is
     taxable or non-taxable. It's used to assign a default tax status to all
-    transactions for this expense line. Default codes include "NON" (non-taxable)
-    and "TAX" (taxable), but custom codes can also be created in QuickBooks. If
+    transactions for this expense line. Default codes include "Non" (non-taxable)
+    and "Tax" (taxable), but custom codes can also be created in QuickBooks. If
     QuickBooks is not set up to charge sales tax (via the "Do You Charge Sales Tax?"
     preference), it will assign the default non-taxable code to all sales.
     """
@@ -571,8 +571,8 @@ class ItemGroupLineItem(BaseModel):
     """
     The sales-tax code associated with this item line, determining whether it is
     taxable or non-taxable. It's used to assign a default tax status to all
-    transactions for this item line. Default codes include "NON" (non-taxable) and
-    "TAX" (taxable), but custom codes can also be created in QuickBooks. If
+    transactions for this item line. Default codes include "Non" (non-taxable) and
+    "Tax" (taxable), but custom codes can also be created in QuickBooks. If
     QuickBooks is not set up to charge sales tax (via the "Do You Charge Sales Tax?"
     preference), it will assign the default non-taxable code to all sales.
     """
@@ -878,8 +878,8 @@ class ItemLine(BaseModel):
     """
     The sales-tax code associated with this item line, determining whether it is
     taxable or non-taxable. It's used to assign a default tax status to all
-    transactions for this item line. Default codes include "NON" (non-taxable) and
-    "TAX" (taxable), but custom codes can also be created in QuickBooks. If
+    transactions for this item line. Default codes include "Non" (non-taxable) and
+    "Tax" (taxable), but custom codes can also be created in QuickBooks. If
     QuickBooks is not set up to charge sales tax (via the "Do You Charge Sales Tax?"
     preference), it will assign the default non-taxable code to all sales.
     """
@@ -1030,8 +1030,8 @@ class QbdCreditCardCharge(BaseModel):
     """
     The sales-tax code associated with this credit card charge, determining whether
     it is taxable or non-taxable. It's used to assign a default tax status to all
-    transactions for this credit card charge. Default codes include "NON"
-    (non-taxable) and "TAX" (taxable), but custom codes can also be created in
+    transactions for this credit card charge. Default codes include "Non"
+    (non-taxable) and "Tax" (taxable), but custom codes can also be created in
     QuickBooks. If QuickBooks is not set up to charge sales tax (via the "Do You
     Charge Sales Tax?" preference), it will assign the default non-taxable code to
     all sales.
