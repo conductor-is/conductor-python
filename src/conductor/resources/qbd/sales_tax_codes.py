@@ -67,10 +67,14 @@ class SalesTaxCodesResource(SyncAPIResource):
         Creates a sales-tax code.
 
         Args:
-          is_taxable: Indicates whether this sales-tax code is tracking taxable sales. For any
-              particular sales-tax code, `isTaxable` cannot be modified once the sales-tax
-              code has been used in a transaction. The default value depends on the "Do You
-              Charge Sales Tax?" preference in QuickBooks.
+          is_taxable: Indicates whether this sales-tax code is tracking taxable sales. This field
+              cannot be modified once the sales-tax code has been used in a transaction. For
+              the default built-in sales-tax codes, "Non" always has `isTaxable` as `false`,
+              while "Tax" always has it as `true`. Due to a bug in QuickBooks, for all other
+              (custom) sales-tax codes, the value of this field cannot be reliably retrieved
+              externally, resulting in `null` being returned. However, you can confidently set
+              the `isTaxable` value when creating a sales-tax code; the issue solely affects
+              the retrieval of the `isTaxable` value.
 
           name: The case-insensitive unique name of this sales-tax code, unique across all
               sales-tax codes.
@@ -307,10 +311,14 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
         Creates a sales-tax code.
 
         Args:
-          is_taxable: Indicates whether this sales-tax code is tracking taxable sales. For any
-              particular sales-tax code, `isTaxable` cannot be modified once the sales-tax
-              code has been used in a transaction. The default value depends on the "Do You
-              Charge Sales Tax?" preference in QuickBooks.
+          is_taxable: Indicates whether this sales-tax code is tracking taxable sales. This field
+              cannot be modified once the sales-tax code has been used in a transaction. For
+              the default built-in sales-tax codes, "Non" always has `isTaxable` as `false`,
+              while "Tax" always has it as `true`. Due to a bug in QuickBooks, for all other
+              (custom) sales-tax codes, the value of this field cannot be reliably retrieved
+              externally, resulting in `null` being returned. However, you can confidently set
+              the `isTaxable` value when creating a sales-tax code; the issue solely affects
+              the retrieval of the `isTaxable` value.
 
           name: The case-insensitive unique name of this sales-tax code, unique across all
               sales-tax codes.
