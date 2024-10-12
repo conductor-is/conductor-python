@@ -212,8 +212,8 @@ class QbdAccount(BaseModel):
     """
     The sales-tax code associated with this account, determining whether it is
     taxable or non-taxable. It's used to assign a default tax status to all
-    transactions for this account. Default codes include "NON" (non-taxable) and
-    "TAX" (taxable), but custom codes can also be created in QuickBooks. If
+    transactions for this account. Default codes include "Non" (non-taxable) and
+    "Tax" (taxable), but custom codes can also be created in QuickBooks. If
     QuickBooks is not set up to charge sales tax (via the "Do You Charge Sales Tax?"
     preference), it will assign the default non-taxable code to all sales.
     """
