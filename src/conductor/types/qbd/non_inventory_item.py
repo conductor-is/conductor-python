@@ -301,12 +301,12 @@ class NonInventoryItem(BaseModel):
 
     full_name: str = FieldInfo(alias="fullName")
     """
-    The fully-qualified unique name for this non-inventory item, formed by combining
-    the names of its parent objects with its own `name`, separated by colons. For
-    example, if a non-inventory item is under "Office-Supplies" and has the `name`
-    "Printer Ink Cartridge", its `fullName` would be "Office-Supplies:Printer Ink
-    Cartridge". Unlike `name`, `fullName` is guaranteed to be unique across all
-    non-inventory item objects. Not case-sensitive.
+    The case-insensitive fully-qualified unique name for this non-inventory item,
+    formed by combining the names of its parent objects with its own `name`,
+    separated by colons. For example, if a non-inventory item is under
+    "Office-Supplies" and has the `name` "Printer Ink Cartridge", its `fullName`
+    would be "Office-Supplies:Printer Ink Cartridge". Unlike `name`, `fullName` is
+    guaranteed to be unique across all non-inventory item objects.
     """
 
     is_active: bool = FieldInfo(alias="isActive")

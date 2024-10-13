@@ -172,11 +172,11 @@ class QbdAccount(BaseModel):
 
     full_name: str = FieldInfo(alias="fullName")
     """
-    The fully-qualified unique name for this account, formed by combining the names
-    of its parent objects with its own `name`, separated by colons. For example, if
-    an account is under "Corporate" and has the `name` "Accounts-Payable", its
-    `fullName` would be "Corporate:Accounts-Payable". Unlike `name`, `fullName` is
-    guaranteed to be unique across all account objects. Not case-sensitive.
+    The case-insensitive fully-qualified unique name for this account, formed by
+    combining the names of its parent objects with its own `name`, separated by
+    colons. For example, if an account is under "Corporate" and has the `name`
+    "Accounts-Payable", its `fullName` would be "Corporate:Accounts-Payable". Unlike
+    `name`, `fullName` is guaranteed to be unique across all account objects.
     """
 
     is_active: bool = FieldInfo(alias="isActive")
