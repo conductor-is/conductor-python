@@ -1188,13 +1188,10 @@ class QbdBill(BaseModel):
     """
 
     vendor: Vendor
-    """
-    The vendor or company from whom this bill is received for goods or services
-    purchased.
-    """
+    """The vendor who sent this bill for goods or services purchased."""
 
     vendor_address: Optional[VendorAddress] = FieldInfo(alias="vendorAddress", default=None)
-    """The address of the vendor associated with this bill."""
+    """The address of the vendor who sent this bill."""
 
     version: str
     """
