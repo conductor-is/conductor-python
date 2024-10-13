@@ -169,8 +169,8 @@ class CustomersResource(SyncAPIResource):
 
           email: The customer's email address.
 
-          external_id: A developer-assigned globally unique identifier (GUID) for tracking this object
-              in external systems. Must be formatted as a valid GUID; otherwise, QuickBooks
+          external_id: A globally unique identifier (GUID) you can provide for tracking this object in
+              your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
               will return an error.
 
           fax: The customer's fax number.
@@ -668,8 +668,8 @@ class AsyncCustomersResource(AsyncAPIResource):
 
           email: The customer's email address.
 
-          external_id: A developer-assigned globally unique identifier (GUID) for tracking this object
-              in external systems. Must be formatted as a valid GUID; otherwise, QuickBooks
+          external_id: A globally unique identifier (GUID) you can provide for tracking this object in
+              your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
               will return an error.
 
           fax: The customer's fax number.
