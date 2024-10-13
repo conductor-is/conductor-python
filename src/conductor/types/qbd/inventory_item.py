@@ -245,12 +245,12 @@ class InventoryItem(BaseModel):
 
     full_name: str = FieldInfo(alias="fullName")
     """
-    The fully-qualified unique name for this inventory item, formed by combining the
-    names of its parent objects with its own `name`, separated by colons. For
-    example, if an inventory item is under "Products:Electronics" and has the `name`
-    "Widgets", its `fullName` would be "Products:Electronics:Widgets". Unlike
-    `name`, `fullName` is guaranteed to be unique across all inventory item objects.
-    Not case-sensitive.
+    The case-insensitive fully-qualified unique name for this inventory item, formed
+    by combining the names of its parent objects with its own `name`, separated by
+    colons. For example, if an inventory item is under "Products:Electronics" and
+    has the `name` "Widgets", its `fullName` would be
+    "Products:Electronics:Widgets". Unlike `name`, `fullName` is guaranteed to be
+    unique across all inventory item objects.
     """
 
     income_account: Optional[IncomeAccount] = FieldInfo(alias="incomeAccount", default=None)

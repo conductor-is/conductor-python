@@ -43,11 +43,11 @@ class QbdClass(BaseModel):
 
     full_name: str = FieldInfo(alias="fullName")
     """
-    The fully-qualified unique name for this class, formed by combining the names of
-    its parent objects with its own `name`, separated by colons. For example, if a
-    class is under "Corporate:Sales" and has the `name` "Marketing", its `fullName`
-    would be "Corporate:Sales:Marketing". Unlike `name`, `fullName` is guaranteed to
-    be unique across all class objects. Not case-sensitive.
+    The case-insensitive fully-qualified unique name for this class, formed by
+    combining the names of its parent objects with its own `name`, separated by
+    colons. For example, if a class is under "Corporate:Sales" and has the `name`
+    "Marketing", its `fullName` would be "Corporate:Sales:Marketing". Unlike `name`,
+    `fullName` is guaranteed to be unique across all class objects.
     """
 
     is_active: bool = FieldInfo(alias="isActive")

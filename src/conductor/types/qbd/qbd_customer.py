@@ -1,6 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import List, Optional
+from datetime import date
 from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
@@ -563,13 +564,13 @@ class QbdCustomer(BaseModel):
 
     full_name: str = FieldInfo(alias="fullName")
     """
-    The fully-qualified unique name for this customer, formed by combining the names
-    of its parent objects with its own `name`, separated by colons. For example, if
-    a customer is under "Jones" and has the `name` "Kitchen-Renovation", its
-    `fullName` would be "Jones:Kitchen-Renovation". Unlike `name`, `fullName` is
-    guaranteed to be unique across all customer objects. Not case-sensitive. If this
-    object is a job (i.e., a sub-customer), this value would likely be the job's
-    `name` prefixed by the customer's `name`.
+    The case-insensitive fully-qualified unique name for this customer, formed by
+    combining the names of its parent objects with its own `name`, separated by
+    colons. For example, if a customer is under "Jones" and has the `name`
+    "Kitchen-Renovation", its `fullName` would be "Jones:Kitchen-Renovation". Unlike
+    `name`, `fullName` is guaranteed to be unique across all customer objects. If
+    this object is a job (i.e., a sub-customer), this value would likely be the
+    job's `name` prefixed by the customer's `name`.
     """
 
     is_active: bool = FieldInfo(alias="isActive")
@@ -592,19 +593,19 @@ class QbdCustomer(BaseModel):
     sub-customer).
     """
 
-    job_end_date: Optional[str] = FieldInfo(alias="jobEndDate", default=None)
+    job_end_date: Optional[date] = FieldInfo(alias="jobEndDate", default=None)
     """
     The actual completion date of this customer's job, if applicable, in ISO 8601
     format (YYYY-MM-DD).
     """
 
-    job_projected_end_date: Optional[str] = FieldInfo(alias="jobProjectedEndDate", default=None)
+    job_projected_end_date: Optional[date] = FieldInfo(alias="jobProjectedEndDate", default=None)
     """
     The projected completion date for this customer's job, if applicable, in ISO
     8601 format (YYYY-MM-DD).
     """
 
-    job_start_date: Optional[str] = FieldInfo(alias="jobStartDate", default=None)
+    job_start_date: Optional[date] = FieldInfo(alias="jobStartDate", default=None)
     """
     The date when work on this customer's job began, if applicable, in ISO 8601
     format (YYYY-MM-DD).
