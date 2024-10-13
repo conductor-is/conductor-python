@@ -556,7 +556,7 @@ class InvoiceLineGroup(BaseModel):
 
     is_print_items_in_group: bool = FieldInfo(alias="isPrintItemsInGroup")
     """
-    Indicates whether a list of this invoice line group's individual items their
+    Indicates whether the individual items in this invoice line group and their
     amounts will appear on printed forms.
     """
 
