@@ -984,14 +984,14 @@ class QbdCreditCardCharge(BaseModel):
 
     expense_lines: List[ExpenseLine] = FieldInfo(alias="expenseLines")
     """
-    The credit card charge's expense lines, each representing an expense item or
-    account affected by this transaction.
+    The credit card charge's expense lines, each representing one line in this
+    expense.
     """
 
     external_id: Optional[str] = FieldInfo(alias="externalId", default=None)
     """
-    A developer-assigned globally unique identifier (GUID) for tracking this object
-    in external systems. Must be formatted as a valid GUID; otherwise, QuickBooks
+    A globally unique identifier (GUID) you can provide for tracking this object in
+    your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
     will return an error.
     """
 

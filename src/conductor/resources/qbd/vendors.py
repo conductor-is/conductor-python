@@ -154,8 +154,8 @@ class VendorsResource(SyncAPIResource):
 
           email: The vendor's email address.
 
-          external_id: A developer-assigned globally unique identifier (GUID) for tracking this object
-              in external systems. Must be formatted as a valid GUID; otherwise, QuickBooks
+          external_id: A globally unique identifier (GUID) you can provide for tracking this object in
+              your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
               will return an error.
 
           fax: The vendor's fax number.
@@ -625,8 +625,8 @@ class AsyncVendorsResource(AsyncAPIResource):
 
           email: The vendor's email address.
 
-          external_id: A developer-assigned globally unique identifier (GUID) for tracking this object
-              in external systems. Must be formatted as a valid GUID; otherwise, QuickBooks
+          external_id: A globally unique identifier (GUID) you can provide for tracking this object in
+              your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
               will return an error.
 
           fax: The vendor's fax number.

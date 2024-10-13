@@ -96,11 +96,10 @@ class BillsResource(SyncAPIResource):
               QuickBooks at the time of this transaction. Represented as a decimal value
               (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
 
-          expense_lines: The bill's expense lines, each representing an expense item or account affected
-              by this transaction.
+          expense_lines: The bill's expense lines, each representing one line in this expense.
 
-          external_id: A developer-assigned globally unique identifier (GUID) for tracking this object
-              in external systems. Must be formatted as a valid GUID; otherwise, QuickBooks
+          external_id: A globally unique identifier (GUID) you can provide for tracking this object in
+              your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
               will return an error.
 
           item_group_lines: The bill's item-group lines, each representing a predefined group of items
@@ -114,7 +113,7 @@ class BillsResource(SyncAPIResource):
               links entire transactions, not individual lines. If you want to link individual
               lines in a transaction, use the field `linkToTransaction` on the transaction
               line instead. You can link both at the transaction level and at the transaction
-              line level in the same request so long as they do NOT link to the same
+              line level in the same request so long as they do _not_ link to the same
               transaction.
 
           memo: A memo or note for this bill, as entered by the user. Appears in the Accounts
@@ -433,11 +432,10 @@ class AsyncBillsResource(AsyncAPIResource):
               QuickBooks at the time of this transaction. Represented as a decimal value
               (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
 
-          expense_lines: The bill's expense lines, each representing an expense item or account affected
-              by this transaction.
+          expense_lines: The bill's expense lines, each representing one line in this expense.
 
-          external_id: A developer-assigned globally unique identifier (GUID) for tracking this object
-              in external systems. Must be formatted as a valid GUID; otherwise, QuickBooks
+          external_id: A globally unique identifier (GUID) you can provide for tracking this object in
+              your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
               will return an error.
 
           item_group_lines: The bill's item-group lines, each representing a predefined group of items
@@ -451,7 +449,7 @@ class AsyncBillsResource(AsyncAPIResource):
               links entire transactions, not individual lines. If you want to link individual
               lines in a transaction, use the field `linkToTransaction` on the transaction
               line instead. You can link both at the transaction level and at the transaction
-              line level in the same request so long as they do NOT link to the same
+              line level in the same request so long as they do _not_ link to the same
               transaction.
 
           memo: A memo or note for this bill, as entered by the user. Appears in the Accounts
