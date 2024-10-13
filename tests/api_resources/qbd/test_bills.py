@@ -22,7 +22,8 @@ class TestBills:
     @parametrize
     def test_method_create(self, client: Conductor) -> None:
         bill = client.qbd.bills.create(
-            vendor_id="vendorId",
+            transaction_date=parse_date("2019-12-27"),
+            vendor_id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(QbdBill, bill, path=["response"])
@@ -30,11 +31,12 @@ class TestBills:
     @parametrize
     def test_method_create_with_all_params(self, client: Conductor) -> None:
         bill = client.qbd.bills.create(
-            vendor_id="vendorId",
+            transaction_date=parse_date("2019-12-27"),
+            vendor_id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
-            accounts_payable_account_id="accountsPayableAccountId",
+            accounts_payable_account_id="80000002-1234567890",
             due_date=parse_date("2019-12-27"),
-            exchange_rate=0,
+            exchange_rate=1.2345,
             expense_lines=[
                 {
                     "account_id": "accountId",
@@ -316,11 +318,10 @@ class TestBills:
                 },
             ],
             link_to_transaction_ids=["string", "string", "string"],
-            memo="memo",
-            ref_number="CHARGE-1234",
-            sales_tax_code_id="salesTaxCodeId",
-            terms_id="termsId",
-            transaction_date=parse_date("2019-12-27"),
+            memo="Office supplies for September",
+            ref_number="BILL-1234",
+            sales_tax_code_id="80000004-1234567890",
+            terms_id="80000013-1234567890",
             vendor_address={
                 "city": "San Francisco",
                 "country": "United States",
@@ -339,7 +340,8 @@ class TestBills:
     @parametrize
     def test_raw_response_create(self, client: Conductor) -> None:
         response = client.qbd.bills.with_raw_response.create(
-            vendor_id="vendorId",
+            transaction_date=parse_date("2019-12-27"),
+            vendor_id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -351,7 +353,8 @@ class TestBills:
     @parametrize
     def test_streaming_response_create(self, client: Conductor) -> None:
         with client.qbd.bills.with_streaming_response.create(
-            vendor_id="vendorId",
+            transaction_date=parse_date("2019-12-27"),
+            vendor_id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
@@ -468,7 +471,8 @@ class TestAsyncBills:
     @parametrize
     async def test_method_create(self, async_client: AsyncConductor) -> None:
         bill = await async_client.qbd.bills.create(
-            vendor_id="vendorId",
+            transaction_date=parse_date("2019-12-27"),
+            vendor_id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(QbdBill, bill, path=["response"])
@@ -476,11 +480,12 @@ class TestAsyncBills:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncConductor) -> None:
         bill = await async_client.qbd.bills.create(
-            vendor_id="vendorId",
+            transaction_date=parse_date("2019-12-27"),
+            vendor_id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
-            accounts_payable_account_id="accountsPayableAccountId",
+            accounts_payable_account_id="80000002-1234567890",
             due_date=parse_date("2019-12-27"),
-            exchange_rate=0,
+            exchange_rate=1.2345,
             expense_lines=[
                 {
                     "account_id": "accountId",
@@ -762,11 +767,10 @@ class TestAsyncBills:
                 },
             ],
             link_to_transaction_ids=["string", "string", "string"],
-            memo="memo",
-            ref_number="CHARGE-1234",
-            sales_tax_code_id="salesTaxCodeId",
-            terms_id="termsId",
-            transaction_date=parse_date("2019-12-27"),
+            memo="Office supplies for September",
+            ref_number="BILL-1234",
+            sales_tax_code_id="80000004-1234567890",
+            terms_id="80000013-1234567890",
             vendor_address={
                 "city": "San Francisco",
                 "country": "United States",
@@ -785,7 +789,8 @@ class TestAsyncBills:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncConductor) -> None:
         response = await async_client.qbd.bills.with_raw_response.create(
-            vendor_id="vendorId",
+            transaction_date=parse_date("2019-12-27"),
+            vendor_id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -797,7 +802,8 @@ class TestAsyncBills:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncConductor) -> None:
         async with async_client.qbd.bills.with_streaming_response.create(
-            vendor_id="vendorId",
+            transaction_date=parse_date("2019-12-27"),
+            vendor_id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
