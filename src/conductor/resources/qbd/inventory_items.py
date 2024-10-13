@@ -108,8 +108,8 @@ class InventoryItemsResource(SyncAPIResource):
           cogs_account_id: The Cost of Goods Sold (COGS) account for this inventory item, tracking the
               original direct costs of producing goods sold.
 
-          external_id: A developer-assigned globally unique identifier (GUID) for tracking this object
-              in external systems. Must be formatted as a valid GUID; otherwise, QuickBooks
+          external_id: A globally unique identifier (GUID) you can provide for tracking this object in
+              your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
               will return an error.
 
           income_account_id: The inventory item's income account, used to track revenue from sales.
@@ -460,8 +460,8 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
           cogs_account_id: The Cost of Goods Sold (COGS) account for this inventory item, tracking the
               original direct costs of producing goods sold.
 
-          external_id: A developer-assigned globally unique identifier (GUID) for tracking this object
-              in external systems. Must be formatted as a valid GUID; otherwise, QuickBooks
+          external_id: A globally unique identifier (GUID) you can provide for tracking this object in
+              your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
               will return an error.
 
           income_account_id: The inventory item's income account, used to track revenue from sales.

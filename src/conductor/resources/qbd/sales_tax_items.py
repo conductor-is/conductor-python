@@ -86,8 +86,8 @@ class SalesTaxItemsResource(SyncAPIResource):
           description: The sales-tax item's description that will appear on sales forms that include
               this item.
 
-          external_id: A developer-assigned globally unique identifier (GUID) for tracking this object
-              in external systems. Must be formatted as a valid GUID; otherwise, QuickBooks
+          external_id: A globally unique identifier (GUID) you can provide for tracking this object in
+              your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
               will return an error.
 
           is_active: Indicates whether this sales-tax item is active. Inactive objects are typically
@@ -361,8 +361,8 @@ class AsyncSalesTaxItemsResource(AsyncAPIResource):
           description: The sales-tax item's description that will appear on sales forms that include
               this item.
 
-          external_id: A developer-assigned globally unique identifier (GUID) for tracking this object
-              in external systems. Must be formatted as a valid GUID; otherwise, QuickBooks
+          external_id: A globally unique identifier (GUID) you can provide for tracking this object in
+              your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
               will return an error.
 
           is_active: Indicates whether this sales-tax item is active. Inactive objects are typically

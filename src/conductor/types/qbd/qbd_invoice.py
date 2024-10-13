@@ -1122,8 +1122,8 @@ class QbdInvoice(BaseModel):
 
     external_id: Optional[str] = FieldInfo(alias="externalId", default=None)
     """
-    A developer-assigned globally unique identifier (GUID) for tracking this object
-    in external systems. Must be formatted as a valid GUID; otherwise, QuickBooks
+    A globally unique identifier (GUID) you can provide for tracking this object in
+    your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
     will return an error.
     """
 

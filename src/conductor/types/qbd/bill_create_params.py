@@ -52,15 +52,12 @@ class BillCreateParams(TypedDict, total=False):
     """
 
     expense_lines: Annotated[Iterable[ExpenseLine], PropertyInfo(alias="expenseLines")]
-    """
-    The bill's expense lines, each representing an expense item or account affected
-    by this transaction.
-    """
+    """The bill's expense lines, each representing one line in this expense."""
 
     external_id: Annotated[str, PropertyInfo(alias="externalId")]
     """
-    A developer-assigned globally unique identifier (GUID) for tracking this object
-    in external systems. Must be formatted as a valid GUID; otherwise, QuickBooks
+    A globally unique identifier (GUID) you can provide for tracking this object in
+    your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
     will return an error.
     """
 
@@ -83,7 +80,7 @@ class BillCreateParams(TypedDict, total=False):
     links entire transactions, not individual lines. If you want to link individual
     lines in a transaction, use the field `linkToTransaction` on the transaction
     line instead. You can link both at the transaction level and at the transaction
-    line level in the same request so long as they do NOT link to the same
+    line level in the same request so long as they do _not_ link to the same
     transaction.
     """
 
