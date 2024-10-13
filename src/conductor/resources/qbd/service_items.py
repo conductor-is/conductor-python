@@ -87,8 +87,8 @@ class ServiceItemsResource(SyncAPIResource):
               meaningful segments, such as department, location, or type of work. In
               QuickBooks, class tracking is off by default.
 
-          external_id: A developer-assigned globally unique identifier (GUID) for tracking this object
-              in external systems. Must be formatted as a valid GUID; otherwise, QuickBooks
+          external_id: A globally unique identifier (GUID) you can provide for tracking this object in
+              your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
               will return an error.
 
           is_active: Indicates whether this service item is active. Inactive objects are typically
@@ -366,8 +366,8 @@ class AsyncServiceItemsResource(AsyncAPIResource):
               meaningful segments, such as department, location, or type of work. In
               QuickBooks, class tracking is off by default.
 
-          external_id: A developer-assigned globally unique identifier (GUID) for tracking this object
-              in external systems. Must be formatted as a valid GUID; otherwise, QuickBooks
+          external_id: A globally unique identifier (GUID) you can provide for tracking this object in
+              your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
               will return an error.
 
           is_active: Indicates whether this service item is active. Inactive objects are typically
