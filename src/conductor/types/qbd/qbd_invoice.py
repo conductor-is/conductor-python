@@ -1209,9 +1209,9 @@ class QbdInvoice(BaseModel):
 
     ref_number: Optional[str] = FieldInfo(alias="refNumber", default=None)
     """
-    The user-defined reference number for this invoice, which can be used to
-    identify the transaction in QuickBooks. This value is not required to be unique
-    and can be arbitrarily changed by the QuickBooks user.
+    The case-sensitive user-defined reference number for this invoice, which can be
+    used to identify the transaction in QuickBooks. This value is not required to be
+    unique and can be arbitrarily changed by the QuickBooks user.
     """
 
     sales_representative: Optional[SalesRepresentative] = FieldInfo(alias="salesRepresentative", default=None)
