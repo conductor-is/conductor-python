@@ -22,7 +22,7 @@ class TestCreditCardCharges:
     @parametrize
     def test_method_create(self, client: Conductor) -> None:
         credit_card_charge = client.qbd.credit_card_charges.create(
-            account_id="80000002-1234567890",
+            account_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
@@ -31,7 +31,7 @@ class TestCreditCardCharges:
     @parametrize
     def test_method_create_with_all_params(self, client: Conductor) -> None:
         credit_card_charge = client.qbd.credit_card_charges.create(
-            account_id="80000002-1234567890",
+            account_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
             exchange_rate=1.2345,
@@ -325,7 +325,7 @@ class TestCreditCardCharges:
     @parametrize
     def test_raw_response_create(self, client: Conductor) -> None:
         response = client.qbd.credit_card_charges.with_raw_response.create(
-            account_id="80000002-1234567890",
+            account_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
@@ -338,7 +338,7 @@ class TestCreditCardCharges:
     @parametrize
     def test_streaming_response_create(self, client: Conductor) -> None:
         with client.qbd.credit_card_charges.with_streaming_response.create(
-            account_id="80000002-1234567890",
+            account_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
@@ -454,7 +454,7 @@ class TestAsyncCreditCardCharges:
     @parametrize
     async def test_method_create(self, async_client: AsyncConductor) -> None:
         credit_card_charge = await async_client.qbd.credit_card_charges.create(
-            account_id="80000002-1234567890",
+            account_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
@@ -463,7 +463,7 @@ class TestAsyncCreditCardCharges:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncConductor) -> None:
         credit_card_charge = await async_client.qbd.credit_card_charges.create(
-            account_id="80000002-1234567890",
+            account_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
             exchange_rate=1.2345,
@@ -757,7 +757,7 @@ class TestAsyncCreditCardCharges:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncConductor) -> None:
         response = await async_client.qbd.credit_card_charges.with_raw_response.create(
-            account_id="80000002-1234567890",
+            account_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
@@ -770,7 +770,7 @@ class TestAsyncCreditCardCharges:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncConductor) -> None:
         async with async_client.qbd.credit_card_charges.with_streaming_response.create(
-            account_id="80000002-1234567890",
+            account_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
