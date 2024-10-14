@@ -58,7 +58,7 @@ class InventoryItemCreateParams(TypedDict, total=False):
     """
 
     income_account_id: Annotated[str, PropertyInfo(alias="incomeAccountId")]
-    """The inventory item's income account, used to track revenue from sales."""
+    """The income account used to track revenue from sales of this inventory item."""
 
     inventory_date: Annotated[Union[str, date], PropertyInfo(alias="inventoryDate", format="iso8601")]
     """
@@ -99,7 +99,7 @@ class InventoryItemCreateParams(TypedDict, total=False):
     purchase_description: Annotated[str, PropertyInfo(alias="purchaseDescription")]
     """
     The description of this inventory item that appears on purchase forms (e.g.,
-    checks, bills, item receipts) when ordered or bought from vendors.
+    checks, bills, item receipts) when it is ordered or bought from vendors.
     """
 
     purchase_tax_code_id: Annotated[str, PropertyInfo(alias="purchaseTaxCodeId")]
@@ -124,8 +124,7 @@ class InventoryItemCreateParams(TypedDict, total=False):
     sales_description: Annotated[str, PropertyInfo(alias="salesDescription")]
     """
     The description of this inventory item that appears on sales forms (e.g.,
-    invoices, sales receipts) when sold to customers. For fixed assets, it details
-    the sale of the asset for accounting purposes.
+    invoices, sales receipts) when sold to customers.
     """
 
     sales_price: Annotated[str, PropertyInfo(alias="salesPrice")]
