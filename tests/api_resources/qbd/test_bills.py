@@ -42,7 +42,7 @@ class TestBills:
                     "account_id": "accountId",
                     "amount": "amount",
                     "billable_status": "billable",
-                    "class_id": "80000001-1234567890",
+                    "class_id": "classId",
                     "customer_id": "customerId",
                     "custom_fields": [
                         {
@@ -69,7 +69,7 @@ class TestBills:
                     "account_id": "accountId",
                     "amount": "amount",
                     "billable_status": "billable",
-                    "class_id": "80000001-1234567890",
+                    "class_id": "classId",
                     "customer_id": "customerId",
                     "custom_fields": [
                         {
@@ -96,7 +96,7 @@ class TestBills:
                     "account_id": "accountId",
                     "amount": "amount",
                     "billable_status": "billable",
-                    "class_id": "80000001-1234567890",
+                    "class_id": "classId",
                     "customer_id": "customerId",
                     "custom_fields": [
                         {
@@ -199,7 +199,7 @@ class TestBills:
                 {
                     "amount": "amount",
                     "billable_status": "billable",
-                    "class_id": "80000001-1234567890",
+                    "class_id": "classId",
                     "cost": "cost",
                     "customer_id": "customerId",
                     "custom_fields": [
@@ -239,7 +239,7 @@ class TestBills:
                 {
                     "amount": "amount",
                     "billable_status": "billable",
-                    "class_id": "80000001-1234567890",
+                    "class_id": "classId",
                     "cost": "cost",
                     "customer_id": "customerId",
                     "custom_fields": [
@@ -279,7 +279,7 @@ class TestBills:
                 {
                     "amount": "amount",
                     "billable_status": "billable",
-                    "class_id": "80000001-1234567890",
+                    "class_id": "classId",
                     "cost": "cost",
                     "customer_id": "customerId",
                     "custom_fields": [
@@ -491,7 +491,7 @@ class TestAsyncBills:
                     "account_id": "accountId",
                     "amount": "amount",
                     "billable_status": "billable",
-                    "class_id": "80000001-1234567890",
+                    "class_id": "classId",
                     "customer_id": "customerId",
                     "custom_fields": [
                         {
@@ -518,7 +518,7 @@ class TestAsyncBills:
                     "account_id": "accountId",
                     "amount": "amount",
                     "billable_status": "billable",
-                    "class_id": "80000001-1234567890",
+                    "class_id": "classId",
                     "customer_id": "customerId",
                     "custom_fields": [
                         {
@@ -545,7 +545,7 @@ class TestAsyncBills:
                     "account_id": "accountId",
                     "amount": "amount",
                     "billable_status": "billable",
-                    "class_id": "80000001-1234567890",
+                    "class_id": "classId",
                     "customer_id": "customerId",
                     "custom_fields": [
                         {
@@ -648,7 +648,7 @@ class TestAsyncBills:
                 {
                     "amount": "amount",
                     "billable_status": "billable",
-                    "class_id": "80000001-1234567890",
+                    "class_id": "classId",
                     "cost": "cost",
                     "customer_id": "customerId",
                     "custom_fields": [
@@ -688,7 +688,7 @@ class TestAsyncBills:
                 {
                     "amount": "amount",
                     "billable_status": "billable",
-                    "class_id": "80000001-1234567890",
+                    "class_id": "classId",
                     "cost": "cost",
                     "customer_id": "customerId",
                     "custom_fields": [
@@ -728,7 +728,7 @@ class TestAsyncBills:
                 {
                     "amount": "amount",
                     "billable_status": "billable",
-                    "class_id": "80000001-1234567890",
+                    "class_id": "classId",
                     "cost": "cost",
                     "customer_id": "customerId",
                     "custom_fields": [
