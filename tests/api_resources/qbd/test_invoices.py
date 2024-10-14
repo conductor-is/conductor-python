@@ -22,7 +22,8 @@ class TestInvoices:
     @parametrize
     def test_method_create(self, client: Conductor) -> None:
         invoice = client.qbd.invoices.create(
-            customer_id="customerId",
+            customer_id="80000001-1234567890",
+            transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(QbdInvoice, invoice, path=["response"])
@@ -30,9 +31,10 @@ class TestInvoices:
     @parametrize
     def test_method_create_with_all_params(self, client: Conductor) -> None:
         invoice = client.qbd.invoices.create(
-            customer_id="customerId",
+            customer_id="80000001-1234567890",
+            transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
-            accounts_receivable_account_id="accountsReceivableAccountId",
+            accounts_receivable_account_id="80000002-1234567890",
             billing_address={
                 "city": "San Francisco",
                 "country": "United States",
@@ -46,10 +48,11 @@ class TestInvoices:
                 "state": "CA",
             },
             class_id="80000001-1234567890",
-            customer_message_id="customerMessageId",
-            customer_sales_tax_code_id="customerSalesTaxCodeId",
-            due_date="dueDate",
-            exchange_rate=0,
+            customer_message_id="80000001-1234567890",
+            customer_sales_tax_code_id="80000004-1234567890",
+            document_template_id="80000001-1234567890",
+            due_date=parse_date("2019-12-27"),
+            exchange_rate=1.2345,
             external_id="12345678-abcd-1234-abcd-1234567890ab",
             invoice_line_groups=[
                 {
@@ -254,32 +257,31 @@ class TestInvoices:
                 },
             ],
             is_finance_charge=True,
-            is_pending=True,
-            is_tax_included=True,
+            is_pending=False,
             is_to_be_emailed=True,
             is_to_be_printed=True,
-            item_sales_tax_id="itemSalesTaxId",
+            item_sales_tax_id="80000010-1234567890",
             link_to_transaction_ids=["string", "string", "string"],
-            memo="memo",
-            other_field="otherField",
-            purchase_order_number="purchaseOrderNumber",
-            ref_number="CHARGE-1234",
-            sales_representative_id="salesRepresentativeId",
-            set_credit=[
+            memo="Customer requested rush delivery",
+            other_custom_field="Special handling required",
+            purchase_order_number="PO-1234",
+            ref_number="INV-1234",
+            sales_representative_id="80000030-1234567890",
+            set_credits=[
                 {
                     "applied_amount": "100.00",
                     "credit_id": "ABCDEF-1234567890",
-                    "override": True,
+                    "override": False,
                 },
                 {
                     "applied_amount": "100.00",
                     "credit_id": "ABCDEF-1234567890",
-                    "override": True,
+                    "override": False,
                 },
                 {
                     "applied_amount": "100.00",
                     "credit_id": "ABCDEF-1234567890",
-                    "override": True,
+                    "override": False,
                 },
             ],
             shipping_address={
@@ -294,19 +296,18 @@ class TestInvoices:
                 "postal_code": "94110",
                 "state": "CA",
             },
-            shipping_date="shippingDate",
-            shipping_method_id="shippingMethodId",
-            shipping_origin="shippingOrigin",
-            template_id="templateId",
-            terms_id="termsId",
-            transaction_date="transactionDate",
+            shipping_date=parse_date("2019-12-27"),
+            shipping_method_id="80000007-1234567890",
+            shipping_origin="San Francisco, CA",
+            terms_id="80000013-1234567890",
         )
         assert_matches_type(QbdInvoice, invoice, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: Conductor) -> None:
         response = client.qbd.invoices.with_raw_response.create(
-            customer_id="customerId",
+            customer_id="80000001-1234567890",
+            transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -318,7 +319,8 @@ class TestInvoices:
     @parametrize
     def test_streaming_response_create(self, client: Conductor) -> None:
         with client.qbd.invoices.with_streaming_response.create(
-            customer_id="customerId",
+            customer_id="80000001-1234567890",
+            transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
@@ -435,7 +437,8 @@ class TestAsyncInvoices:
     @parametrize
     async def test_method_create(self, async_client: AsyncConductor) -> None:
         invoice = await async_client.qbd.invoices.create(
-            customer_id="customerId",
+            customer_id="80000001-1234567890",
+            transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(QbdInvoice, invoice, path=["response"])
@@ -443,9 +446,10 @@ class TestAsyncInvoices:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncConductor) -> None:
         invoice = await async_client.qbd.invoices.create(
-            customer_id="customerId",
+            customer_id="80000001-1234567890",
+            transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
-            accounts_receivable_account_id="accountsReceivableAccountId",
+            accounts_receivable_account_id="80000002-1234567890",
             billing_address={
                 "city": "San Francisco",
                 "country": "United States",
@@ -459,10 +463,11 @@ class TestAsyncInvoices:
                 "state": "CA",
             },
             class_id="80000001-1234567890",
-            customer_message_id="customerMessageId",
-            customer_sales_tax_code_id="customerSalesTaxCodeId",
-            due_date="dueDate",
-            exchange_rate=0,
+            customer_message_id="80000001-1234567890",
+            customer_sales_tax_code_id="80000004-1234567890",
+            document_template_id="80000001-1234567890",
+            due_date=parse_date("2019-12-27"),
+            exchange_rate=1.2345,
             external_id="12345678-abcd-1234-abcd-1234567890ab",
             invoice_line_groups=[
                 {
@@ -667,32 +672,31 @@ class TestAsyncInvoices:
                 },
             ],
             is_finance_charge=True,
-            is_pending=True,
-            is_tax_included=True,
+            is_pending=False,
             is_to_be_emailed=True,
             is_to_be_printed=True,
-            item_sales_tax_id="itemSalesTaxId",
+            item_sales_tax_id="80000010-1234567890",
             link_to_transaction_ids=["string", "string", "string"],
-            memo="memo",
-            other_field="otherField",
-            purchase_order_number="purchaseOrderNumber",
-            ref_number="CHARGE-1234",
-            sales_representative_id="salesRepresentativeId",
-            set_credit=[
+            memo="Customer requested rush delivery",
+            other_custom_field="Special handling required",
+            purchase_order_number="PO-1234",
+            ref_number="INV-1234",
+            sales_representative_id="80000030-1234567890",
+            set_credits=[
                 {
                     "applied_amount": "100.00",
                     "credit_id": "ABCDEF-1234567890",
-                    "override": True,
+                    "override": False,
                 },
                 {
                     "applied_amount": "100.00",
                     "credit_id": "ABCDEF-1234567890",
-                    "override": True,
+                    "override": False,
                 },
                 {
                     "applied_amount": "100.00",
                     "credit_id": "ABCDEF-1234567890",
-                    "override": True,
+                    "override": False,
                 },
             ],
             shipping_address={
@@ -707,19 +711,18 @@ class TestAsyncInvoices:
                 "postal_code": "94110",
                 "state": "CA",
             },
-            shipping_date="shippingDate",
-            shipping_method_id="shippingMethodId",
-            shipping_origin="shippingOrigin",
-            template_id="templateId",
-            terms_id="termsId",
-            transaction_date="transactionDate",
+            shipping_date=parse_date("2019-12-27"),
+            shipping_method_id="80000007-1234567890",
+            shipping_origin="San Francisco, CA",
+            terms_id="80000013-1234567890",
         )
         assert_matches_type(QbdInvoice, invoice, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncConductor) -> None:
         response = await async_client.qbd.invoices.with_raw_response.create(
-            customer_id="customerId",
+            customer_id="80000001-1234567890",
+            transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -731,7 +734,8 @@ class TestAsyncInvoices:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncConductor) -> None:
         async with async_client.qbd.invoices.with_streaming_response.create(
-            customer_id="customerId",
+            customer_id="80000001-1234567890",
+            transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed

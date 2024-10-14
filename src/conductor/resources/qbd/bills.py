@@ -114,7 +114,12 @@ class BillsResource(SyncAPIResource):
               lines in a transaction, use the field `linkToTransaction` on the transaction
               line instead. You can link both at the transaction level and at the transaction
               line level in the same request so long as they do _not_ link to the same
-              transaction.
+              transaction. Note that QuickBooks will not return any information about these
+              links in this endpoint's response even though they are created. If you need to
+              retrieve which transactions were linked via this field, refetch the bill and
+              check the `linkedTransactions` field. If fetching a list of bills, you must also
+              specify the parameter `includeLinkedTransactions` to see the
+              `linkedTransactions` field.
 
           memo: A memo or note for this bill, as entered by the user. Appears in the Accounts
               Payable register and relevant reports.
@@ -450,7 +455,12 @@ class AsyncBillsResource(AsyncAPIResource):
               lines in a transaction, use the field `linkToTransaction` on the transaction
               line instead. You can link both at the transaction level and at the transaction
               line level in the same request so long as they do _not_ link to the same
-              transaction.
+              transaction. Note that QuickBooks will not return any information about these
+              links in this endpoint's response even though they are created. If you need to
+              retrieve which transactions were linked via this field, refetch the bill and
+              check the `linkedTransactions` field. If fetching a list of bills, you must also
+              specify the parameter `includeLinkedTransactions` to see the
+              `linkedTransactions` field.
 
           memo: A memo or note for this bill, as entered by the user. Appears in the Accounts
               Payable register and relevant reports.
