@@ -974,11 +974,6 @@ class LinkedTransaction(BaseModel):
     """
 
     ref_number: Optional[str] = FieldInfo(alias="refNumber", default=None)
-    """The user-defined identifier for the transaction.
-
-    It is not required to be unique and can be arbitrarily changed by the QuickBooks
-    user. Case sensitive.
-    """
 
     transaction_date: str = FieldInfo(alias="transactionDate")
 
