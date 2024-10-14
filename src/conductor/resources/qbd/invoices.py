@@ -59,7 +59,6 @@ class InvoicesResource(SyncAPIResource):
         billing_address: invoice_create_params.BillingAddress | NotGiven = NOT_GIVEN,
         class_id: str | NotGiven = NOT_GIVEN,
         customer_message_id: str | NotGiven = NOT_GIVEN,
-        customer_sales_tax_code_id: str | NotGiven = NOT_GIVEN,
         document_template_id: str | NotGiven = NOT_GIVEN,
         due_date: Union[str, date] | NotGiven = NOT_GIVEN,
         exchange_rate: float | NotGiven = NOT_GIVEN,
@@ -77,6 +76,7 @@ class InvoicesResource(SyncAPIResource):
         purchase_order_number: str | NotGiven = NOT_GIVEN,
         ref_number: str | NotGiven = NOT_GIVEN,
         sales_representative_id: str | NotGiven = NOT_GIVEN,
+        sales_tax_code_id: str | NotGiven = NOT_GIVEN,
         set_credits: Iterable[invoice_create_params.SetCredit] | NotGiven = NOT_GIVEN,
         shipping_address: invoice_create_params.ShippingAddress | NotGiven = NOT_GIVEN,
         shipping_date: Union[str, date] | NotGiven = NOT_GIVEN,
@@ -115,9 +115,6 @@ class InvoicesResource(SyncAPIResource):
               invoice's line items unless overridden at the line item level.
 
           customer_message_id: The message to display to the customer on the invoice.
-
-          customer_sales_tax_code_id: The sales-tax code for items sold to the `customer` of this invoice, determining
-              whether items sold to this customer are taxable or non-taxable.
 
           document_template_id: The predefined template in QuickBooks that determines the layout and formatting
               for this invoice when printed or displayed.
@@ -169,7 +166,8 @@ class InvoicesResource(SyncAPIResource):
               `linkedTransactions` field.
 
           memo: A memo or note for this invoice, as entered by the user. This appears in
-              reports, but not on the invoice.
+              reports, but not on the invoice. Use `customerMessage` to add a note to the
+              invoice.
 
           other_custom_field: A built-in custom field for additional information specific to this invoice.
               Unlike the user-defined fields in the `customFields` array, this is a standard
@@ -189,6 +187,13 @@ class InvoicesResource(SyncAPIResource):
 
           sales_representative_id: The invoice's sales representative. Sales representatives can be employees,
               vendors, or other names in QuickBooks.
+
+          sales_tax_code_id: The sales-tax code for items sold to the `customer` of this invoice, determining
+              whether items sold to this customer are taxable or non-taxable. Default codes
+              include "Non" (non-taxable) and "Tax" (taxable), but custom codes can also be
+              created in QuickBooks. If QuickBooks is not set up to charge sales tax (via the
+              "Do You Charge Sales Tax?" preference), it will assign the default non-taxable
+              code to all sales.
 
           set_credits: Credits to apply to this invoice. Applying a credit uses an available credit to
               reduce the balance of this invoice. This creates a link between this invoice and
@@ -210,7 +215,7 @@ class InvoicesResource(SyncAPIResource):
           shipping_origin: The point of origin from where the product associated with this invoice is
               shipped. This is the point at which ownership and liability for goods transfer
               from seller to buyer. Internally, QuickBooks uses the term "FOB" for this field,
-              which stands for "freight on board." This field is informational and has no
+              which stands for "freight on board". This field is informational and has no
               accounting implications.
 
           terms_id: The invoice's payment terms, defining when payment is due and any applicable
@@ -235,7 +240,6 @@ class InvoicesResource(SyncAPIResource):
                     "billing_address": billing_address,
                     "class_id": class_id,
                     "customer_message_id": customer_message_id,
-                    "customer_sales_tax_code_id": customer_sales_tax_code_id,
                     "document_template_id": document_template_id,
                     "due_date": due_date,
                     "exchange_rate": exchange_rate,
@@ -253,6 +257,7 @@ class InvoicesResource(SyncAPIResource):
                     "purchase_order_number": purchase_order_number,
                     "ref_number": ref_number,
                     "sales_representative_id": sales_representative_id,
+                    "sales_tax_code_id": sales_tax_code_id,
                     "set_credits": set_credits,
                     "shipping_address": shipping_address,
                     "shipping_date": shipping_date,
@@ -491,7 +496,6 @@ class AsyncInvoicesResource(AsyncAPIResource):
         billing_address: invoice_create_params.BillingAddress | NotGiven = NOT_GIVEN,
         class_id: str | NotGiven = NOT_GIVEN,
         customer_message_id: str | NotGiven = NOT_GIVEN,
-        customer_sales_tax_code_id: str | NotGiven = NOT_GIVEN,
         document_template_id: str | NotGiven = NOT_GIVEN,
         due_date: Union[str, date] | NotGiven = NOT_GIVEN,
         exchange_rate: float | NotGiven = NOT_GIVEN,
@@ -509,6 +513,7 @@ class AsyncInvoicesResource(AsyncAPIResource):
         purchase_order_number: str | NotGiven = NOT_GIVEN,
         ref_number: str | NotGiven = NOT_GIVEN,
         sales_representative_id: str | NotGiven = NOT_GIVEN,
+        sales_tax_code_id: str | NotGiven = NOT_GIVEN,
         set_credits: Iterable[invoice_create_params.SetCredit] | NotGiven = NOT_GIVEN,
         shipping_address: invoice_create_params.ShippingAddress | NotGiven = NOT_GIVEN,
         shipping_date: Union[str, date] | NotGiven = NOT_GIVEN,
@@ -547,9 +552,6 @@ class AsyncInvoicesResource(AsyncAPIResource):
               invoice's line items unless overridden at the line item level.
 
           customer_message_id: The message to display to the customer on the invoice.
-
-          customer_sales_tax_code_id: The sales-tax code for items sold to the `customer` of this invoice, determining
-              whether items sold to this customer are taxable or non-taxable.
 
           document_template_id: The predefined template in QuickBooks that determines the layout and formatting
               for this invoice when printed or displayed.
@@ -601,7 +603,8 @@ class AsyncInvoicesResource(AsyncAPIResource):
               `linkedTransactions` field.
 
           memo: A memo or note for this invoice, as entered by the user. This appears in
-              reports, but not on the invoice.
+              reports, but not on the invoice. Use `customerMessage` to add a note to the
+              invoice.
 
           other_custom_field: A built-in custom field for additional information specific to this invoice.
               Unlike the user-defined fields in the `customFields` array, this is a standard
@@ -621,6 +624,13 @@ class AsyncInvoicesResource(AsyncAPIResource):
 
           sales_representative_id: The invoice's sales representative. Sales representatives can be employees,
               vendors, or other names in QuickBooks.
+
+          sales_tax_code_id: The sales-tax code for items sold to the `customer` of this invoice, determining
+              whether items sold to this customer are taxable or non-taxable. Default codes
+              include "Non" (non-taxable) and "Tax" (taxable), but custom codes can also be
+              created in QuickBooks. If QuickBooks is not set up to charge sales tax (via the
+              "Do You Charge Sales Tax?" preference), it will assign the default non-taxable
+              code to all sales.
 
           set_credits: Credits to apply to this invoice. Applying a credit uses an available credit to
               reduce the balance of this invoice. This creates a link between this invoice and
@@ -642,7 +652,7 @@ class AsyncInvoicesResource(AsyncAPIResource):
           shipping_origin: The point of origin from where the product associated with this invoice is
               shipped. This is the point at which ownership and liability for goods transfer
               from seller to buyer. Internally, QuickBooks uses the term "FOB" for this field,
-              which stands for "freight on board." This field is informational and has no
+              which stands for "freight on board". This field is informational and has no
               accounting implications.
 
           terms_id: The invoice's payment terms, defining when payment is due and any applicable
@@ -667,7 +677,6 @@ class AsyncInvoicesResource(AsyncAPIResource):
                     "billing_address": billing_address,
                     "class_id": class_id,
                     "customer_message_id": customer_message_id,
-                    "customer_sales_tax_code_id": customer_sales_tax_code_id,
                     "document_template_id": document_template_id,
                     "due_date": due_date,
                     "exchange_rate": exchange_rate,
@@ -685,6 +694,7 @@ class AsyncInvoicesResource(AsyncAPIResource):
                     "purchase_order_number": purchase_order_number,
                     "ref_number": ref_number,
                     "sales_representative_id": sales_representative_id,
+                    "sales_tax_code_id": sales_tax_code_id,
                     "set_credits": set_credits,
                     "shipping_address": shipping_address,
                     "shipping_date": shipping_date,

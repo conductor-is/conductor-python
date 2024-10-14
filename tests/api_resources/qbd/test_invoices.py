@@ -49,7 +49,6 @@ class TestInvoices:
             },
             class_id="80000001-1234567890",
             customer_message_id="80000001-1234567890",
-            customer_sales_tax_code_id="80000004-1234567890",
             document_template_id="80000001-1234567890",
             due_date=parse_date("2019-12-27"),
             exchange_rate=1.2345,
@@ -267,6 +266,7 @@ class TestInvoices:
             purchase_order_number="PO-1234",
             ref_number="INV-1234",
             sales_representative_id="80000030-1234567890",
+            sales_tax_code_id="80000004-1234567890",
             set_credits=[
                 {
                     "applied_amount": "100.00",
@@ -464,7 +464,6 @@ class TestAsyncInvoices:
             },
             class_id="80000001-1234567890",
             customer_message_id="80000001-1234567890",
-            customer_sales_tax_code_id="80000004-1234567890",
             document_template_id="80000001-1234567890",
             due_date=parse_date("2019-12-27"),
             exchange_rate=1.2345,
@@ -682,6 +681,7 @@ class TestAsyncInvoices:
             purchase_order_number="PO-1234",
             ref_number="INV-1234",
             sales_representative_id="80000030-1234567890",
+            sales_tax_code_id="80000004-1234567890",
             set_credits=[
                 {
                     "applied_amount": "100.00",
