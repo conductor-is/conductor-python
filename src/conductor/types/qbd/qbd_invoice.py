@@ -1069,7 +1069,8 @@ class QbdInvoice(BaseModel):
 
     Classes can be used to categorize objects into meaningful segments, such as
     department, location, or type of work. In QuickBooks, class tracking is off by
-    default.
+    default. A class defined here is automatically used in this invoice's line items
+    unless overridden at the line item level.
     """
 
     created_at: str = FieldInfo(alias="createdAt")
