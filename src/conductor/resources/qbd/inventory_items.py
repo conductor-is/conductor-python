@@ -112,7 +112,7 @@ class InventoryItemsResource(SyncAPIResource):
               your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
               will return an error.
 
-          income_account_id: The inventory item's income account, used to track revenue from sales.
+          income_account_id: The income account used to track revenue from sales of this inventory item.
 
           inventory_date: The date when this inventory item was converted into an inventory item from some
               other type of item, in ISO 8601 format (YYYY-MM-DD).
@@ -136,7 +136,7 @@ class InventoryItemsResource(SyncAPIResource):
               a decimal string.
 
           purchase_description: The description of this inventory item that appears on purchase forms (e.g.,
-              checks, bills, item receipts) when ordered or bought from vendors.
+              checks, bills, item receipts) when it is ordered or bought from vendors.
 
           purchase_tax_code_id: The tax code applied to purchases of this inventory item. Applicable in regions
               where purchase taxes are used, such as Canada or the UK.
@@ -149,8 +149,7 @@ class InventoryItemsResource(SyncAPIResource):
               reordering.
 
           sales_description: The description of this inventory item that appears on sales forms (e.g.,
-              invoices, sales receipts) when sold to customers. For fixed assets, it details
-              the sale of the asset for accounting purposes.
+              invoices, sales receipts) when sold to customers.
 
           sales_price: The price at which this inventory item is sold to customers, represented as a
               decimal string.
@@ -464,7 +463,7 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
               your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
               will return an error.
 
-          income_account_id: The inventory item's income account, used to track revenue from sales.
+          income_account_id: The income account used to track revenue from sales of this inventory item.
 
           inventory_date: The date when this inventory item was converted into an inventory item from some
               other type of item, in ISO 8601 format (YYYY-MM-DD).
@@ -488,7 +487,7 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
               a decimal string.
 
           purchase_description: The description of this inventory item that appears on purchase forms (e.g.,
-              checks, bills, item receipts) when ordered or bought from vendors.
+              checks, bills, item receipts) when it is ordered or bought from vendors.
 
           purchase_tax_code_id: The tax code applied to purchases of this inventory item. Applicable in regions
               where purchase taxes are used, such as Canada or the UK.
@@ -501,8 +500,7 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
               reordering.
 
           sales_description: The description of this inventory item that appears on sales forms (e.g.,
-              invoices, sales receipts) when sold to customers. For fixed assets, it details
-              the sale of the asset for accounting purposes.
+              invoices, sales receipts) when sold to customers.
 
           sales_price: The price at which this inventory item is sold to customers, represented as a
               decimal string.
