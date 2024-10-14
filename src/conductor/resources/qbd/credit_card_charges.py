@@ -52,6 +52,7 @@ class CreditCardChargesResource(SyncAPIResource):
         self,
         *,
         account_id: str,
+        transaction_date: Union[str, date],
         conductor_end_user_id: str,
         exchange_rate: float | NotGiven = NOT_GIVEN,
         expense_lines: Iterable[credit_card_charge_create_params.ExpenseLine] | NotGiven = NOT_GIVEN,
@@ -62,7 +63,6 @@ class CreditCardChargesResource(SyncAPIResource):
         payee_id: str | NotGiven = NOT_GIVEN,
         ref_number: str | NotGiven = NOT_GIVEN,
         sales_tax_code_id: str | NotGiven = NOT_GIVEN,
-        transaction_date: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -74,15 +74,47 @@ class CreditCardChargesResource(SyncAPIResource):
         Creates a credit card charge for the specified account.
 
         Args:
+          account_id: The bank account or credit card company to whom money is owed for this credit
+              card charge.
+
+          transaction_date: The date of this credit card charge, in ISO 8601 format (YYYY-MM-DD).
+
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          external_id: An arbitrary globally unique identifier (GUID) the developer can provide to
-              track this object in their own system. This value must be formatted as a GUID;
-              otherwise, QuickBooks will return an error.
+          exchange_rate: The market exchange rate between this credit card charge's currency and the home
+              currency in QuickBooks at the time of this transaction. Represented as a decimal
+              value (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
 
-          ref_number: The user-defined identifier for the transaction. It is not required to be unique
-              and can be arbitrarily changed by the QuickBooks user. Case sensitive.
+          expense_lines: The credit card charge's expense lines, each representing one line in this
+              expense.
+
+          external_id: A globally unique identifier (GUID) you can provide for tracking this object in
+              your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
+              will return an error.
+
+          item_group_lines: The credit card charge's item-group lines, each representing a predefined group
+              of items purchased together.
+
+          item_lines: The credit card charge's item lines, each representing the purchase of a
+              specific item or service.
+
+          memo: A memo or note for this credit card charge, as entered by the user.
+
+          payee_id: The vendor or company from whom merchandise or services were purchased for this
+              credit card charge.
+
+          ref_number: The case-sensitive user-defined reference number for this credit card charge,
+              which can be used to identify the transaction in QuickBooks. This value is not
+              required to be unique and can be arbitrarily changed by the QuickBooks user.
+
+          sales_tax_code_id: The sales-tax code associated with this credit card charge, determining whether
+              it is taxable or non-taxable. It's used to assign a default tax status to all
+              transactions for this credit card charge. Default codes include "Non"
+              (non-taxable) and "Tax" (taxable), but custom codes can also be created in
+              QuickBooks. If QuickBooks is not set up to charge sales tax (via the "Do You
+              Charge Sales Tax?" preference), it will assign the default non-taxable code to
+              all sales.
 
           extra_headers: Send extra headers
 
@@ -98,6 +130,7 @@ class CreditCardChargesResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "account_id": account_id,
+                    "transaction_date": transaction_date,
                     "exchange_rate": exchange_rate,
                     "expense_lines": expense_lines,
                     "external_id": external_id,
@@ -107,7 +140,6 @@ class CreditCardChargesResource(SyncAPIResource):
                     "payee_id": payee_id,
                     "ref_number": ref_number,
                     "sales_tax_code_id": sales_tax_code_id,
-                    "transaction_date": transaction_date,
                 },
                 credit_card_charge_create_params.CreditCardChargeCreateParams,
             ),
@@ -328,6 +360,7 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
         self,
         *,
         account_id: str,
+        transaction_date: Union[str, date],
         conductor_end_user_id: str,
         exchange_rate: float | NotGiven = NOT_GIVEN,
         expense_lines: Iterable[credit_card_charge_create_params.ExpenseLine] | NotGiven = NOT_GIVEN,
@@ -338,7 +371,6 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
         payee_id: str | NotGiven = NOT_GIVEN,
         ref_number: str | NotGiven = NOT_GIVEN,
         sales_tax_code_id: str | NotGiven = NOT_GIVEN,
-        transaction_date: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -350,15 +382,47 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
         Creates a credit card charge for the specified account.
 
         Args:
+          account_id: The bank account or credit card company to whom money is owed for this credit
+              card charge.
+
+          transaction_date: The date of this credit card charge, in ISO 8601 format (YYYY-MM-DD).
+
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          external_id: An arbitrary globally unique identifier (GUID) the developer can provide to
-              track this object in their own system. This value must be formatted as a GUID;
-              otherwise, QuickBooks will return an error.
+          exchange_rate: The market exchange rate between this credit card charge's currency and the home
+              currency in QuickBooks at the time of this transaction. Represented as a decimal
+              value (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
 
-          ref_number: The user-defined identifier for the transaction. It is not required to be unique
-              and can be arbitrarily changed by the QuickBooks user. Case sensitive.
+          expense_lines: The credit card charge's expense lines, each representing one line in this
+              expense.
+
+          external_id: A globally unique identifier (GUID) you can provide for tracking this object in
+              your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
+              will return an error.
+
+          item_group_lines: The credit card charge's item-group lines, each representing a predefined group
+              of items purchased together.
+
+          item_lines: The credit card charge's item lines, each representing the purchase of a
+              specific item or service.
+
+          memo: A memo or note for this credit card charge, as entered by the user.
+
+          payee_id: The vendor or company from whom merchandise or services were purchased for this
+              credit card charge.
+
+          ref_number: The case-sensitive user-defined reference number for this credit card charge,
+              which can be used to identify the transaction in QuickBooks. This value is not
+              required to be unique and can be arbitrarily changed by the QuickBooks user.
+
+          sales_tax_code_id: The sales-tax code associated with this credit card charge, determining whether
+              it is taxable or non-taxable. It's used to assign a default tax status to all
+              transactions for this credit card charge. Default codes include "Non"
+              (non-taxable) and "Tax" (taxable), but custom codes can also be created in
+              QuickBooks. If QuickBooks is not set up to charge sales tax (via the "Do You
+              Charge Sales Tax?" preference), it will assign the default non-taxable code to
+              all sales.
 
           extra_headers: Send extra headers
 
@@ -374,6 +438,7 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "account_id": account_id,
+                    "transaction_date": transaction_date,
                     "exchange_rate": exchange_rate,
                     "expense_lines": expense_lines,
                     "external_id": external_id,
@@ -383,7 +448,6 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
                     "payee_id": payee_id,
                     "ref_number": ref_number,
                     "sales_tax_code_id": sales_tax_code_id,
-                    "transaction_date": transaction_date,
                 },
                 credit_card_charge_create_params.CreditCardChargeCreateParams,
             ),
