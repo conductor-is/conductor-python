@@ -22,7 +22,8 @@ class TestCreditCardCharges:
     @parametrize
     def test_method_create(self, client: Conductor) -> None:
         credit_card_charge = client.qbd.credit_card_charges.create(
-            account_id="accountId",
+            account_id="80000002-1234567890",
+            transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(QbdCreditCardCharge, credit_card_charge, path=["response"])
@@ -30,9 +31,10 @@ class TestCreditCardCharges:
     @parametrize
     def test_method_create_with_all_params(self, client: Conductor) -> None:
         credit_card_charge = client.qbd.credit_card_charges.create(
-            account_id="accountId",
+            account_id="80000002-1234567890",
+            transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
-            exchange_rate=0,
+            exchange_rate=1.2345,
             expense_lines=[
                 {
                     "account_id": "accountId",
@@ -313,18 +315,18 @@ class TestCreditCardCharges:
                     "unit_of_measure": "unitOfMeasure",
                 },
             ],
-            memo="memo",
-            payee_id="payeeId",
+            memo="Office supplies for Q3 marketing campaign",
+            payee_id="80000001-1234567890",
             ref_number="CHARGE-1234",
-            sales_tax_code_id="salesTaxCodeId",
-            transaction_date="transactionDate",
+            sales_tax_code_id="80000004-1234567890",
         )
         assert_matches_type(QbdCreditCardCharge, credit_card_charge, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: Conductor) -> None:
         response = client.qbd.credit_card_charges.with_raw_response.create(
-            account_id="accountId",
+            account_id="80000002-1234567890",
+            transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -336,7 +338,8 @@ class TestCreditCardCharges:
     @parametrize
     def test_streaming_response_create(self, client: Conductor) -> None:
         with client.qbd.credit_card_charges.with_streaming_response.create(
-            account_id="accountId",
+            account_id="80000002-1234567890",
+            transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
@@ -451,7 +454,8 @@ class TestAsyncCreditCardCharges:
     @parametrize
     async def test_method_create(self, async_client: AsyncConductor) -> None:
         credit_card_charge = await async_client.qbd.credit_card_charges.create(
-            account_id="accountId",
+            account_id="80000002-1234567890",
+            transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(QbdCreditCardCharge, credit_card_charge, path=["response"])
@@ -459,9 +463,10 @@ class TestAsyncCreditCardCharges:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncConductor) -> None:
         credit_card_charge = await async_client.qbd.credit_card_charges.create(
-            account_id="accountId",
+            account_id="80000002-1234567890",
+            transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
-            exchange_rate=0,
+            exchange_rate=1.2345,
             expense_lines=[
                 {
                     "account_id": "accountId",
@@ -742,18 +747,18 @@ class TestAsyncCreditCardCharges:
                     "unit_of_measure": "unitOfMeasure",
                 },
             ],
-            memo="memo",
-            payee_id="payeeId",
+            memo="Office supplies for Q3 marketing campaign",
+            payee_id="80000001-1234567890",
             ref_number="CHARGE-1234",
-            sales_tax_code_id="salesTaxCodeId",
-            transaction_date="transactionDate",
+            sales_tax_code_id="80000004-1234567890",
         )
         assert_matches_type(QbdCreditCardCharge, credit_card_charge, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncConductor) -> None:
         response = await async_client.qbd.credit_card_charges.with_raw_response.create(
-            account_id="accountId",
+            account_id="80000002-1234567890",
+            transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -765,7 +770,8 @@ class TestAsyncCreditCardCharges:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncConductor) -> None:
         async with async_client.qbd.credit_card_charges.with_streaming_response.create(
-            account_id="accountId",
+            account_id="80000002-1234567890",
+            transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
