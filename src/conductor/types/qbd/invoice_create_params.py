@@ -58,12 +58,6 @@ class InvoiceCreateParams(TypedDict, total=False):
     customer_message_id: Annotated[str, PropertyInfo(alias="customerMessageId")]
     """The message to display to the customer on the invoice."""
 
-    customer_sales_tax_code_id: Annotated[str, PropertyInfo(alias="customerSalesTaxCodeId")]
-    """
-    The sales-tax code for items sold to the `customer` of this invoice, determining
-    whether items sold to this customer are taxable or non-taxable.
-    """
-
     document_template_id: Annotated[str, PropertyInfo(alias="documentTemplateId")]
     """
     The predefined template in QuickBooks that determines the layout and formatting
@@ -149,7 +143,8 @@ class InvoiceCreateParams(TypedDict, total=False):
     memo: str
     """A memo or note for this invoice, as entered by the user.
 
-    This appears in reports, but not on the invoice.
+    This appears in reports, but not on the invoice. Use `customerMessage` to add a
+    note to the invoice.
     """
 
     other_custom_field: Annotated[str, PropertyInfo(alias="otherCustomField")]
@@ -181,6 +176,16 @@ class InvoiceCreateParams(TypedDict, total=False):
     """The invoice's sales representative.
 
     Sales representatives can be employees, vendors, or other names in QuickBooks.
+    """
+
+    sales_tax_code_id: Annotated[str, PropertyInfo(alias="salesTaxCodeId")]
+    """
+    The sales-tax code for items sold to the `customer` of this invoice, determining
+    whether items sold to this customer are taxable or non-taxable. Default codes
+    include "Non" (non-taxable) and "Tax" (taxable), but custom codes can also be
+    created in QuickBooks. If QuickBooks is not set up to charge sales tax (via the
+    "Do You Charge Sales Tax?" preference), it will assign the default non-taxable
+    code to all sales.
     """
 
     set_credits: Annotated[Iterable[SetCredit], PropertyInfo(alias="setCredits")]
@@ -216,7 +221,7 @@ class InvoiceCreateParams(TypedDict, total=False):
     The point of origin from where the product associated with this invoice is
     shipped. This is the point at which ownership and liability for goods transfer
     from seller to buyer. Internally, QuickBooks uses the term "FOB" for this field,
-    which stands for "freight on board." This field is informational and has no
+    which stands for "freight on board". This field is informational and has no
     accounting implications.
     """
 

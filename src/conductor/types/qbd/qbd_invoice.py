@@ -16,7 +16,6 @@ __all__ = [
     "Currency",
     "Customer",
     "CustomerMessage",
-    "CustomerSalesTaxCode",
     "CustomField",
     "DocumentTemplate",
     "InvoiceLineGroup",
@@ -42,6 +41,7 @@ __all__ = [
     "ItemSalesTax",
     "LinkedTransaction",
     "SalesRepresentative",
+    "SalesTaxCode",
     "ShippingAddress",
     "ShippingMethod",
     "Terms",
@@ -148,22 +148,6 @@ class Customer(BaseModel):
 
 
 class CustomerMessage(BaseModel):
-    id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks for this object.
-
-    This ID is unique among all objects of the same type, but not across different
-    QuickBooks object types.
-    """
-
-    full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
-    """
-    The fully-qualified unique name for this object, formed by combining the names
-    of its parent objects with its own `name`, separated by colons. Not
-    case-sensitive.
-    """
-
-
-class CustomerSalesTaxCode(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks for this object.
 
@@ -956,6 +940,22 @@ class SalesRepresentative(BaseModel):
     """
 
 
+class SalesTaxCode(BaseModel):
+    id: Optional[str] = None
+    """The unique identifier assigned by QuickBooks for this object.
+
+    This ID is unique among all objects of the same type, but not across different
+    QuickBooks object types.
+    """
+
+    full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
+    """
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
+    """
+
+
 class ShippingAddress(BaseModel):
     city: Optional[str] = None
     """The city, district, suburb, town, or village name of the address."""
@@ -1093,12 +1093,6 @@ class QbdInvoice(BaseModel):
     customer_message: Optional[CustomerMessage] = FieldInfo(alias="customerMessage", default=None)
     """The message to display to the customer on the invoice."""
 
-    customer_sales_tax_code: Optional[CustomerSalesTaxCode] = FieldInfo(alias="customerSalesTaxCode", default=None)
-    """
-    The sales-tax code for items sold to the `customer` of this invoice, determining
-    whether items sold to this customer are taxable or non-taxable.
-    """
-
     custom_fields: List[CustomField] = FieldInfo(alias="customFields")
     """The custom fields added by the user to this invoice object as a data extension.
 
@@ -1184,7 +1178,8 @@ class QbdInvoice(BaseModel):
     memo: Optional[str] = None
     """A memo or note for this invoice, as entered by the user.
 
-    This appears in reports, but not on the invoice.
+    This appears in reports, but not on the invoice. Use `customerMessage` to add a
+    note to the invoice.
     """
 
     object_type: Literal["qbd_invoice"] = FieldInfo(alias="objectType")
@@ -1221,6 +1216,16 @@ class QbdInvoice(BaseModel):
     Sales representatives can be employees, vendors, or other names in QuickBooks.
     """
 
+    sales_tax_code: Optional[SalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)
+    """
+    The sales-tax code for items sold to the `customer` of this invoice, determining
+    whether items sold to this customer are taxable or non-taxable. Default codes
+    include "Non" (non-taxable) and "Tax" (taxable), but custom codes can also be
+    created in QuickBooks. If QuickBooks is not set up to charge sales tax (via the
+    "Do You Charge Sales Tax?" preference), it will assign the default non-taxable
+    code to all sales.
+    """
+
     sales_tax_percentage: Optional[str] = FieldInfo(alias="salesTaxPercentage", default=None)
     """
     The sales tax percentage applied to this invoice, represented as a decimal
@@ -1253,7 +1258,7 @@ class QbdInvoice(BaseModel):
     The point of origin from where the product associated with this invoice is
     shipped. This is the point at which ownership and liability for goods transfer
     from seller to buyer. Internally, QuickBooks uses the term "FOB" for this field,
-    which stands for "freight on board." This field is informational and has no
+    which stands for "freight on board". This field is informational and has no
     accounting implications.
     """
 
