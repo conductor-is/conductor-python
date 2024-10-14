@@ -211,11 +211,11 @@ class ExpenseLine(BaseModel):
     """
 
     account: Optional[ExpenseLineAccount] = None
-    """
-    For expense lines, this typically refers to the expense account being debited
-    (increased). The corresponding credit would usually be to a liability account
-    (e.g., Accounts Payable) or an asset account (e.g., Cash), depending on the
-    transaction type.
+    """The expense account being debited (increased).
+
+    The corresponding account being credited is usually a liability account (e.g.,
+    Accounts Payable) or an asset account (e.g., Cash), depending on the transaction
+    type.
     """
 
     amount: Optional[str] = None
