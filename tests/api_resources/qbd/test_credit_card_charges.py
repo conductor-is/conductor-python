@@ -40,7 +40,7 @@ class TestCreditCardCharges:
                     "account_id": "accountId",
                     "amount": "amount",
                     "billable_status": "billable",
-                    "class_id": "80000001-1234567890",
+                    "class_id": "classId",
                     "customer_id": "customerId",
                     "custom_fields": [
                         {
@@ -67,7 +67,7 @@ class TestCreditCardCharges:
                     "account_id": "accountId",
                     "amount": "amount",
                     "billable_status": "billable",
-                    "class_id": "80000001-1234567890",
+                    "class_id": "classId",
                     "customer_id": "customerId",
                     "custom_fields": [
                         {
@@ -94,7 +94,7 @@ class TestCreditCardCharges:
                     "account_id": "accountId",
                     "amount": "amount",
                     "billable_status": "billable",
-                    "class_id": "80000001-1234567890",
+                    "class_id": "classId",
                     "customer_id": "customerId",
                     "custom_fields": [
                         {
@@ -197,7 +197,7 @@ class TestCreditCardCharges:
                 {
                     "amount": "amount",
                     "billable_status": "billable",
-                    "class_id": "80000001-1234567890",
+                    "class_id": "classId",
                     "cost": "cost",
                     "customer_id": "customerId",
                     "custom_fields": [
@@ -237,7 +237,7 @@ class TestCreditCardCharges:
                 {
                     "amount": "amount",
                     "billable_status": "billable",
-                    "class_id": "80000001-1234567890",
+                    "class_id": "classId",
                     "cost": "cost",
                     "customer_id": "customerId",
                     "custom_fields": [
@@ -277,7 +277,7 @@ class TestCreditCardCharges:
                 {
                     "amount": "amount",
                     "billable_status": "billable",
-                    "class_id": "80000001-1234567890",
+                    "class_id": "classId",
                     "cost": "cost",
                     "customer_id": "customerId",
                     "custom_fields": [
@@ -472,7 +472,7 @@ class TestAsyncCreditCardCharges:
                     "account_id": "accountId",
                     "amount": "amount",
                     "billable_status": "billable",
-                    "class_id": "80000001-1234567890",
+                    "class_id": "classId",
                     "customer_id": "customerId",
                     "custom_fields": [
                         {
@@ -499,7 +499,7 @@ class TestAsyncCreditCardCharges:
                     "account_id": "accountId",
                     "amount": "amount",
                     "billable_status": "billable",
-                    "class_id": "80000001-1234567890",
+                    "class_id": "classId",
                     "customer_id": "customerId",
                     "custom_fields": [
                         {
@@ -526,7 +526,7 @@ class TestAsyncCreditCardCharges:
                     "account_id": "accountId",
                     "amount": "amount",
                     "billable_status": "billable",
-                    "class_id": "80000001-1234567890",
+                    "class_id": "classId",
                     "customer_id": "customerId",
                     "custom_fields": [
                         {
@@ -629,7 +629,7 @@ class TestAsyncCreditCardCharges:
                 {
                     "amount": "amount",
                     "billable_status": "billable",
-                    "class_id": "80000001-1234567890",
+                    "class_id": "classId",
                     "cost": "cost",
                     "customer_id": "customerId",
                     "custom_fields": [
@@ -669,7 +669,7 @@ class TestAsyncCreditCardCharges:
                 {
                     "amount": "amount",
                     "billable_status": "billable",
-                    "class_id": "80000001-1234567890",
+                    "class_id": "classId",
                     "cost": "cost",
                     "customer_id": "customerId",
                     "custom_fields": [
@@ -709,7 +709,7 @@ class TestAsyncCreditCardCharges:
                 {
                     "amount": "amount",
                     "billable_status": "billable",
-                    "class_id": "80000001-1234567890",
+                    "class_id": "classId",
                     "cost": "cost",
                     "customer_id": "customerId",
                     "custom_fields": [

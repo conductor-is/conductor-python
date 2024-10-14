@@ -115,11 +115,6 @@ class ExpenseLine(TypedDict, total=False):
     """The billing status of this line item."""
 
     class_id: Annotated[str, PropertyInfo(alias="classId")]
-    """The class associated with this object.
-
-    Classes can be used to categorize objects or transactions by department,
-    location, or other meaningful segments.
-    """
 
     customer_id: Annotated[str, PropertyInfo(alias="customerId")]
 
@@ -177,11 +172,6 @@ class ItemLine(TypedDict, total=False):
     """The billing status of this line item."""
 
     class_id: Annotated[str, PropertyInfo(alias="classId")]
-    """The class associated with this object.
-
-    Classes can be used to categorize objects or transactions by department,
-    location, or other meaningful segments.
-    """
 
     cost: str
 
