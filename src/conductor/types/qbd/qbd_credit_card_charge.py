@@ -23,16 +23,17 @@ __all__ = [
     "ItemGroupLine",
     "ItemGroupLineCustomField",
     "ItemGroupLineItemGroup",
-    "ItemGroupLineItem",
-    "ItemGroupLineItemClass",
-    "ItemGroupLineItemCustomer",
-    "ItemGroupLineItemCustomField",
-    "ItemGroupLineItemInventorySite",
-    "ItemGroupLineItemInventorySiteLocation",
-    "ItemGroupLineItemItem",
-    "ItemGroupLineItemOverrideUnitOfMeasureSet",
-    "ItemGroupLineItemSalesRepresentative",
-    "ItemGroupLineItemSalesTaxCode",
+    "ItemGroupLineItemLine",
+    "ItemGroupLineItemLineClass",
+    "ItemGroupLineItemLineCustomer",
+    "ItemGroupLineItemLineCustomField",
+    "ItemGroupLineItemLineInventorySite",
+    "ItemGroupLineItemLineInventorySiteLocation",
+    "ItemGroupLineItemLineItem",
+    "ItemGroupLineItemLineOverrideUnitOfMeasureSet",
+    "ItemGroupLineItemLineSalesRepresentative",
+    "ItemGroupLineItemLineSalesTaxCode",
+    "ItemGroupLineOverrideUnitOfMeasureSet",
     "ItemLine",
     "ItemLineClass",
     "ItemLineCustomer",
@@ -307,7 +308,7 @@ class ItemGroupLineItemGroup(BaseModel):
     """
 
 
-class ItemGroupLineItemClass(BaseModel):
+class ItemGroupLineItemLineClass(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks for this object.
 
@@ -323,7 +324,7 @@ class ItemGroupLineItemClass(BaseModel):
     """
 
 
-class ItemGroupLineItemCustomer(BaseModel):
+class ItemGroupLineItemLineCustomer(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks for this object.
 
@@ -339,7 +340,7 @@ class ItemGroupLineItemCustomer(BaseModel):
     """
 
 
-class ItemGroupLineItemCustomField(BaseModel):
+class ItemGroupLineItemLineCustomField(BaseModel):
     name: str
 
     owner_id: Optional[str] = FieldInfo(alias="ownerId", default=None)
@@ -359,7 +360,7 @@ class ItemGroupLineItemCustomField(BaseModel):
     value: str
 
 
-class ItemGroupLineItemInventorySite(BaseModel):
+class ItemGroupLineItemLineInventorySite(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks for this object.
 
@@ -375,7 +376,7 @@ class ItemGroupLineItemInventorySite(BaseModel):
     """
 
 
-class ItemGroupLineItemInventorySiteLocation(BaseModel):
+class ItemGroupLineItemLineInventorySiteLocation(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks for this object.
 
@@ -391,7 +392,7 @@ class ItemGroupLineItemInventorySiteLocation(BaseModel):
     """
 
 
-class ItemGroupLineItemItem(BaseModel):
+class ItemGroupLineItemLineItem(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks for this object.
 
@@ -407,7 +408,7 @@ class ItemGroupLineItemItem(BaseModel):
     """
 
 
-class ItemGroupLineItemOverrideUnitOfMeasureSet(BaseModel):
+class ItemGroupLineItemLineOverrideUnitOfMeasureSet(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks for this object.
 
@@ -423,7 +424,7 @@ class ItemGroupLineItemOverrideUnitOfMeasureSet(BaseModel):
     """
 
 
-class ItemGroupLineItemSalesRepresentative(BaseModel):
+class ItemGroupLineItemLineSalesRepresentative(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks for this object.
 
@@ -439,7 +440,7 @@ class ItemGroupLineItemSalesRepresentative(BaseModel):
     """
 
 
-class ItemGroupLineItemSalesTaxCode(BaseModel):
+class ItemGroupLineItemLineSalesTaxCode(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks for this object.
 
@@ -455,7 +456,7 @@ class ItemGroupLineItemSalesTaxCode(BaseModel):
     """
 
 
-class ItemGroupLineItem(BaseModel):
+class ItemGroupLineItemLine(BaseModel):
     id: str
     """The unique identifier assigned by QuickBooks for this item line.
 
@@ -470,7 +471,7 @@ class ItemGroupLineItem(BaseModel):
     )
     """The billing status of this item line."""
 
-    class_: Optional[ItemGroupLineItemClass] = FieldInfo(alias="class", default=None)
+    class_: Optional[ItemGroupLineItemLineClass] = FieldInfo(alias="class", default=None)
     """The item line's class.
 
     Classes can be used to categorize objects into meaningful segments, such as
@@ -488,10 +489,10 @@ class ItemGroupLineItem(BaseModel):
     QuickBooks will use them to calculate the `amount`.
     """
 
-    customer: Optional[ItemGroupLineItemCustomer] = None
+    customer: Optional[ItemGroupLineItemLineCustomer] = None
     """The customer or customer-job associated with this item line."""
 
-    custom_fields: List[ItemGroupLineItemCustomField] = FieldInfo(alias="customFields")
+    custom_fields: List[ItemGroupLineItemLineCustomField] = FieldInfo(alias="customFields")
     """The custom fields added by the user to this item line object as a data
     extension.
 
@@ -509,10 +510,10 @@ class ItemGroupLineItem(BaseModel):
     supported on QuickBooks Desktop 2023 or later.
     """
 
-    inventory_site: Optional[ItemGroupLineItemInventorySite] = FieldInfo(alias="inventorySite", default=None)
+    inventory_site: Optional[ItemGroupLineItemLineInventorySite] = FieldInfo(alias="inventorySite", default=None)
     """The site location where inventory for the item in this item line is stored."""
 
-    inventory_site_location: Optional[ItemGroupLineItemInventorySiteLocation] = FieldInfo(
+    inventory_site_location: Optional[ItemGroupLineItemLineInventorySiteLocation] = FieldInfo(
         alias="inventorySiteLocation", default=None
     )
     """
@@ -520,7 +521,7 @@ class ItemGroupLineItem(BaseModel):
     is stored, such as a bin or shelf.
     """
 
-    item: Optional[ItemGroupLineItemItem] = None
+    item: Optional[ItemGroupLineItemLineItem] = None
     """The item associated with this item line.
 
     This can refer to any good or service that the business buys or sells, including
@@ -538,7 +539,7 @@ class ItemGroupLineItem(BaseModel):
     object_type: Literal["qbd_item_line"] = FieldInfo(alias="objectType")
     """The type of object. This value is always `"qbd_item_line"`."""
 
-    override_unit_of_measure_set: Optional[ItemGroupLineItemOverrideUnitOfMeasureSet] = FieldInfo(
+    override_unit_of_measure_set: Optional[ItemGroupLineItemLineOverrideUnitOfMeasureSet] = FieldInfo(
         alias="overrideUnitOfMeasureSet", default=None
     )
     """Specifies an alternative unit of measure set for this specific item line.
@@ -559,7 +560,7 @@ class ItemGroupLineItem(BaseModel):
     QuickBooks will calculate `amount`.
     """
 
-    sales_representative: Optional[ItemGroupLineItemSalesRepresentative] = FieldInfo(
+    sales_representative: Optional[ItemGroupLineItemLineSalesRepresentative] = FieldInfo(
         alias="salesRepresentative", default=None
     )
     """The item line's sales representative.
@@ -567,7 +568,7 @@ class ItemGroupLineItem(BaseModel):
     Sales representatives can be employees, vendors, or other names in QuickBooks.
     """
 
-    sales_tax_code: Optional[ItemGroupLineItemSalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)
+    sales_tax_code: Optional[ItemGroupLineItemLineSalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)
     """
     The sales-tax code associated with this item line, determining whether it is
     taxable or non-taxable. It's used to assign a default tax status to all
@@ -590,30 +591,85 @@ class ItemGroupLineItem(BaseModel):
     """
 
 
+class ItemGroupLineOverrideUnitOfMeasureSet(BaseModel):
+    id: Optional[str] = None
+    """The unique identifier assigned by QuickBooks for this object.
+
+    This ID is unique among all objects of the same type, but not across different
+    QuickBooks object types.
+    """
+
+    full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
+    """
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
+    """
+
+
 class ItemGroupLine(BaseModel):
     id: str
-    """
-    The QuickBooks-assigned identifier for this transaction line, unique across all
-    transaction lines.
+    """The unique identifier assigned by QuickBooks for this item group line.
+
+    This ID is unique among all transaction line types.
     """
 
     custom_fields: List[ItemGroupLineCustomField] = FieldInfo(alias="customFields")
-    """The custom fields added by the user to QuickBooks object as a data extension.
-
-    These fields are not part of the standard QuickBooks object.
+    """
+    The custom fields added by the user to this item group line object as a data
+    extension. These fields are not part of the standard QuickBooks object.
     """
 
     description: Optional[str] = None
+    """A description of this item group line."""
 
     item_group: ItemGroupLineItemGroup = FieldInfo(alias="itemGroup")
+    """The item group associated with this item group line.
 
-    items: List[ItemGroupLineItem]
+    Item groups represent items that are grouped together for fast entry.
+    """
+
+    item_lines: List[ItemGroupLineItemLine] = FieldInfo(alias="itemLines")
+    """
+    The item group line's item lines, each representing the purchase of a specific
+    item or service.
+    """
+
+    object_type: Literal["qbd_item_group_line"] = FieldInfo(alias="objectType")
+    """The type of object. This value is always `"qbd_item_group_line"`."""
+
+    override_unit_of_measure_set: Optional[ItemGroupLineOverrideUnitOfMeasureSet] = FieldInfo(
+        alias="overrideUnitOfMeasureSet", default=None
+    )
+    """Specifies an alternative unit of measure set for this specific item group line.
+
+    This does not change the item's default unit of measure set (which is set on the
+    item itself rather than a transaction line), but allows selecting from a
+    different set of units for this particular line. For example, an item typically
+    measured in volume units could be sold using weight units in a specific
+    transaction. The actual unit selection (e.g., "pound" or "kilogram") is made
+    separately via the `unitOfMeasure` field.
+    """
 
     quantity: Optional[float] = None
+    """The quantity of the item in this item group line.
+
+    If both `quantity` and `amount` are specified but not `rate`, QuickBooks will
+    calculate `rate`. If `quantity` and `rate` are specified but not `amount`,
+    QuickBooks will calculate `amount`.
+    """
 
     total_amount: str = FieldInfo(alias="totalAmount")
+    """
+    The total monetary amount for this item group line, represented as a decimal
+    string.
+    """
 
     unit_of_measure: Optional[str] = FieldInfo(alias="unitOfMeasure", default=None)
+    """The unit of measure used for the `quantity` in this item group line.
+
+    Must be a valid unit within the item's available units of measure.
+    """
 
 
 class ItemLineClass(BaseModel):
