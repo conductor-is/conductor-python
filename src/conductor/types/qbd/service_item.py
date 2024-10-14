@@ -210,21 +210,19 @@ class SalesOrPurchaseDetails(BaseModel):
     """
 
     description: Optional[str] = None
-    """
-    A description of the item that appears on sales or purchase forms, depending on
-    whether the item is being sold or purchased.
-    """
+    """A description of this item."""
 
     price: Optional[str] = None
     """
-    The purchase price or sales price of this item, represented as a decimal string.
+    The price at which this item is purchased or sold, represented as a decimal
+    string.
     """
 
     price_percentage: Optional[str] = FieldInfo(alias="pricePercentage", default=None)
     """
-    The price expressed as a percentage, used instead of `price` when the item's
-    cost is calculated as a percentage of another amount. For example, a service
-    item that costs a percentage of another item's price.
+    The price of this item expressed as a percentage, used instead of `price` when
+    the item's cost is calculated as a percentage of another amount. For example, a
+    service item that costs a percentage of another item's price.
     """
 
 
