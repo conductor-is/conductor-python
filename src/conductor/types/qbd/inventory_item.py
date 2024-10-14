@@ -254,7 +254,7 @@ class InventoryItem(BaseModel):
     """
 
     income_account: Optional[IncomeAccount] = FieldInfo(alias="incomeAccount", default=None)
-    """The inventory item's income account, used to track revenue from sales."""
+    """The income account used to track revenue from sales of this inventory item."""
 
     is_active: bool = FieldInfo(alias="isActive")
     """Indicates whether this inventory item is active.
@@ -301,7 +301,7 @@ class InventoryItem(BaseModel):
     purchase_description: Optional[str] = FieldInfo(alias="purchaseDescription", default=None)
     """
     The description of this inventory item that appears on purchase forms (e.g.,
-    checks, bills, item receipts) when ordered or bought from vendors.
+    checks, bills, item receipts) when it is ordered or bought from vendors.
     """
 
     purchase_tax_code: Optional[PurchaseTaxCode] = FieldInfo(alias="purchaseTaxCode", default=None)
@@ -338,8 +338,7 @@ class InventoryItem(BaseModel):
     sales_description: Optional[str] = FieldInfo(alias="salesDescription", default=None)
     """
     The description of this inventory item that appears on sales forms (e.g.,
-    invoices, sales receipts) when sold to customers. For fixed assets, it details
-    the sale of the asset for accounting purposes.
+    invoices, sales receipts) when sold to customers.
     """
 
     sales_price: Optional[str] = FieldInfo(alias="salesPrice", default=None)

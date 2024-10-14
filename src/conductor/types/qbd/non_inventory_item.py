@@ -142,47 +142,47 @@ class SalesAndPurchaseDetailsPurchaseTaxCode(BaseModel):
 
 class SalesAndPurchaseDetails(BaseModel):
     expense_account: Optional[SalesAndPurchaseDetailsExpenseAccount] = FieldInfo(alias="expenseAccount", default=None)
-    """The expense account to use when purchasing this item."""
+    """The expense account used to track expenses from purchases of this item."""
 
     income_account: Optional[SalesAndPurchaseDetailsIncomeAccount] = FieldInfo(alias="incomeAccount", default=None)
-    """The income account to use when selling this item."""
+    """The income account used to track revenue from sales of this item."""
 
     preferred_vendor: Optional[SalesAndPurchaseDetailsPreferredVendor] = FieldInfo(
         alias="preferredVendor", default=None
     )
-    """The preferred vendor for this item."""
+    """The preferred vendor from whom this item is typically purchased."""
 
     purchase_cost: Optional[str] = FieldInfo(alias="purchaseCost", default=None)
-    """The cost of this item when purchased, represented as a decimal string.
-
-    This is the amount the business expects to pay when ordering or buying this
-    item, or the amount that was actually paid.
+    """
+    The cost at which this item is purchased from vendors, represented as a decimal
+    string.
     """
 
     purchase_description: Optional[str] = FieldInfo(alias="purchaseDescription", default=None)
     """
-    The description that appears on purchase forms (e.g., checks, bills, item
-    receipts) when this item is bought. For fixed assets, this describes the item as
-    it was when purchased.
+    The description of this item that appears on purchase forms (e.g., checks,
+    bills, item receipts) when it is ordered or bought from vendors.
     """
 
     purchase_tax_code: Optional[SalesAndPurchaseDetailsPurchaseTaxCode] = FieldInfo(
         alias="purchaseTaxCode", default=None
     )
-    """The tax code to use when purchasing this item.
+    """The tax code applied to purchases of this item.
 
     Applicable in regions where purchase taxes are used, such as Canada or the UK.
     """
 
     sales_description: Optional[str] = FieldInfo(alias="salesDescription", default=None)
     """
-    The description that appears on sales forms (e.g., invoices, sales receipts)
-    when selling this item. For fixed assets, this describes the sale of the asset
-    for accounting purposes.
+    The description of this item that appears on sales forms (e.g., invoices, sales
+    receipts) when sold to customers.
     """
 
     sales_price: Optional[str] = FieldInfo(alias="salesPrice", default=None)
-    """The price to charge for this item, represented as a decimal string."""
+    """
+    The price at which this item is sold to customers, represented as a decimal
+    string.
+    """
 
 
 class SalesOrPurchaseDetailsAccount(BaseModel):
