@@ -118,4 +118,4 @@ class AccountCreateParams(TypedDict, total=False):
     """
 
     tax_line_id: Annotated[float, PropertyInfo(alias="taxLineId")]
-    """The ID of the federal tax line associated with this account."""
+    """The identifier of the federal tax line associated with this account."""
