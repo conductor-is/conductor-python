@@ -23,11 +23,14 @@ class AuthSession(BaseModel):
     client_secret: str = FieldInfo(alias="clientSecret")
     """The secret used in `authFlowUrl` to securely access the authentication flow."""
 
+    created_at: str = FieldInfo(alias="createdAt")
+    """The date and time when this object was created."""
+
     end_user_id: str = FieldInfo(alias="endUserId")
     """The ID of the EndUser for whom to create an IntegrationConnection."""
 
     expires_at: str = FieldInfo(alias="expiresAt")
-    """The time at which the AuthSession expires.
+    """The date and time when this AuthSession expires.
 
     By default, this value is 30 minutes from creation. You can extend this time by
     setting `linkExpiryMins` when

@@ -67,12 +67,12 @@ class EndUsersResource(SyncAPIResource):
         Creates an EndUser.
 
         Args:
-          company_name: Your end-user's company name that will be shown elsewhere in Conductor.
+          company_name: The end-user's company name that will be shown elsewhere in Conductor.
 
-          email: Your end-user's email address for identification purposes. Setting this field
+          email: The end-user's email address for identification purposes. Setting this field
               will not cause any emails to be sent.
 
-          source_id: A unique identifier for your end-user from your system. Maps users between your
+          source_id: The end-user's unique identifier from your system. Maps users between your
               database and Conductor. Must be unique for each user. If you have only one user,
               you may use any string value.
 
@@ -280,12 +280,12 @@ class AsyncEndUsersResource(AsyncAPIResource):
         Creates an EndUser.
 
         Args:
-          company_name: Your end-user's company name that will be shown elsewhere in Conductor.
+          company_name: The end-user's company name that will be shown elsewhere in Conductor.
 
-          email: Your end-user's email address for identification purposes. Setting this field
+          email: The end-user's email address for identification purposes. Setting this field
               will not cause any emails to be sent.
 
-          source_id: A unique identifier for your end-user from your system. Maps users between your
+          source_id: The end-user's unique identifier from your system. Maps users between your
               database and Conductor. Must be unique for each user. If you have only one user,
               you may use any string value.
 
