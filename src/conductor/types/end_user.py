@@ -1,10 +1,12 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+from typing import List
 from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
+from .integration_connection import IntegrationConnection
 
 __all__ = ["EndUser"]
 
@@ -18,19 +20,22 @@ class EndUser(BaseModel):
     """
 
     company_name: str = FieldInfo(alias="companyName")
-    """Your end-user's company name that will be shown elsewhere in Conductor."""
+    """The EndUser's company name that will be shown elsewhere in Conductor."""
 
     created_at: str = FieldInfo(alias="createdAt")
-    """The time at which the object was created."""
+    """The date and time when this object was created."""
 
     email: str
-    """Your end-user's email address for identification purposes."""
+    """The EndUser's email address for identification purposes."""
+
+    integration_connections: List[IntegrationConnection] = FieldInfo(alias="integrationConnections")
+    """The EndUser's IntegrationConnections."""
 
     object_type: Literal["end_user"] = FieldInfo(alias="objectType")
     """The type of object. This value is always `"end_user"`."""
 
     source_id: str = FieldInfo(alias="sourceId")
-    """Your end-user's unique ID from your system.
+    """The EndUser's unique identifier from your system.
 
     Maps users between your database and Conductor.
     """
