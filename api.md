@@ -42,7 +42,6 @@ from conductor.types import IntegrationConnection, IntegrationConnectionListResp
 
 Methods:
 
-- <code title="get /integration-connections/{id}">client.integration_connections.<a href="./src/conductor/resources/integration_connections.py">retrieve</a>(id) -> <a href="./src/conductor/types/integration_connection.py">IntegrationConnection</a></code>
 - <code title="get /integration-connections">client.integration_connections.<a href="./src/conductor/resources/integration_connections.py">list</a>() -> <a href="./src/conductor/types/integration_connection_list_response.py">IntegrationConnectionListResponse</a></code>
 
 # Qbd
