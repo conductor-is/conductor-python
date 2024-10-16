@@ -86,8 +86,21 @@ class Currency(BaseModel):
 
 class CustomField(BaseModel):
     name: str
+    """The name of the custom field, unique for the specified `ownerId`.
+
+    For public custom fields, this name is visible as a label in the QuickBooks UI.
+    """
 
     owner_id: Optional[str] = FieldInfo(alias="ownerId", default=None)
+    """
+    The identifier of the owner of the custom field, which QuickBooks internally
+    calls a "data extension". For public custom fields visible in the UI, such as
+    those added by the QuickBooks user, this is always "0". For private custom
+    fields that are only visible to the application that created them, this is a
+    valid GUID identifying the owning application. Internally, Conductor always
+    fetches all public custom fields (those with an `ownerId` of "0") for all
+    objects.
+    """
 
     type: Literal[
         "amount_type",
@@ -99,9 +112,13 @@ class CustomField(BaseModel):
         "string_1024_type",
         "string_255_type",
     ]
-    """The custom field's data type, which corresponds to a QuickBooks data type."""
+    """The data type of the custom field."""
 
     value: str
+    """The value of the custom field.
+
+    The maximum length depends on the field's data type.
+    """
 
 
 class ExpenseLineAccount(BaseModel):
@@ -138,8 +155,21 @@ class ExpenseLineClass(BaseModel):
 
 class ExpenseLineCustomField(BaseModel):
     name: str
+    """The name of the custom field, unique for the specified `ownerId`.
+
+    For public custom fields, this name is visible as a label in the QuickBooks UI.
+    """
 
     owner_id: Optional[str] = FieldInfo(alias="ownerId", default=None)
+    """
+    The identifier of the owner of the custom field, which QuickBooks internally
+    calls a "data extension". For public custom fields visible in the UI, such as
+    those added by the QuickBooks user, this is always "0". For private custom
+    fields that are only visible to the application that created them, this is a
+    valid GUID identifying the owning application. Internally, Conductor always
+    fetches all public custom fields (those with an `ownerId` of "0") for all
+    objects.
+    """
 
     type: Literal[
         "amount_type",
@@ -151,9 +181,13 @@ class ExpenseLineCustomField(BaseModel):
         "string_1024_type",
         "string_255_type",
     ]
-    """The custom field's data type, which corresponds to a QuickBooks data type."""
+    """The data type of the custom field."""
 
     value: str
+    """The value of the custom field.
+
+    The maximum length depends on the field's data type.
+    """
 
 
 class ExpenseLinePayee(BaseModel):
@@ -277,8 +311,21 @@ class ExpenseLine(BaseModel):
 
 class ItemGroupLineCustomField(BaseModel):
     name: str
+    """The name of the custom field, unique for the specified `ownerId`.
+
+    For public custom fields, this name is visible as a label in the QuickBooks UI.
+    """
 
     owner_id: Optional[str] = FieldInfo(alias="ownerId", default=None)
+    """
+    The identifier of the owner of the custom field, which QuickBooks internally
+    calls a "data extension". For public custom fields visible in the UI, such as
+    those added by the QuickBooks user, this is always "0". For private custom
+    fields that are only visible to the application that created them, this is a
+    valid GUID identifying the owning application. Internally, Conductor always
+    fetches all public custom fields (those with an `ownerId` of "0") for all
+    objects.
+    """
 
     type: Literal[
         "amount_type",
@@ -290,9 +337,13 @@ class ItemGroupLineCustomField(BaseModel):
         "string_1024_type",
         "string_255_type",
     ]
-    """The custom field's data type, which corresponds to a QuickBooks data type."""
+    """The data type of the custom field."""
 
     value: str
+    """The value of the custom field.
+
+    The maximum length depends on the field's data type.
+    """
 
 
 class ItemGroupLineItemGroup(BaseModel):
@@ -345,8 +396,21 @@ class ItemGroupLineItemLineCustomer(BaseModel):
 
 class ItemGroupLineItemLineCustomField(BaseModel):
     name: str
+    """The name of the custom field, unique for the specified `ownerId`.
+
+    For public custom fields, this name is visible as a label in the QuickBooks UI.
+    """
 
     owner_id: Optional[str] = FieldInfo(alias="ownerId", default=None)
+    """
+    The identifier of the owner of the custom field, which QuickBooks internally
+    calls a "data extension". For public custom fields visible in the UI, such as
+    those added by the QuickBooks user, this is always "0". For private custom
+    fields that are only visible to the application that created them, this is a
+    valid GUID identifying the owning application. Internally, Conductor always
+    fetches all public custom fields (those with an `ownerId` of "0") for all
+    objects.
+    """
 
     type: Literal[
         "amount_type",
@@ -358,9 +422,13 @@ class ItemGroupLineItemLineCustomField(BaseModel):
         "string_1024_type",
         "string_255_type",
     ]
-    """The custom field's data type, which corresponds to a QuickBooks data type."""
+    """The data type of the custom field."""
 
     value: str
+    """The value of the custom field.
+
+    The maximum length depends on the field's data type.
+    """
 
 
 class ItemGroupLineItemLineInventorySite(BaseModel):
@@ -709,8 +777,21 @@ class ItemLineCustomer(BaseModel):
 
 class ItemLineCustomField(BaseModel):
     name: str
+    """The name of the custom field, unique for the specified `ownerId`.
+
+    For public custom fields, this name is visible as a label in the QuickBooks UI.
+    """
 
     owner_id: Optional[str] = FieldInfo(alias="ownerId", default=None)
+    """
+    The identifier of the owner of the custom field, which QuickBooks internally
+    calls a "data extension". For public custom fields visible in the UI, such as
+    those added by the QuickBooks user, this is always "0". For private custom
+    fields that are only visible to the application that created them, this is a
+    valid GUID identifying the owning application. Internally, Conductor always
+    fetches all public custom fields (those with an `ownerId` of "0") for all
+    objects.
+    """
 
     type: Literal[
         "amount_type",
@@ -722,9 +803,13 @@ class ItemLineCustomField(BaseModel):
         "string_1024_type",
         "string_255_type",
     ]
-    """The custom field's data type, which corresponds to a QuickBooks data type."""
+    """The data type of the custom field."""
 
     value: str
+    """The value of the custom field.
+
+    The maximum length depends on the field's data type.
+    """
 
 
 class ItemLineInventorySite(BaseModel):
