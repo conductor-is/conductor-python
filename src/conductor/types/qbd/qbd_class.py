@@ -14,7 +14,7 @@ class Parent(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is unique among all objects of the same type, but not across different
+    This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
     """
 
@@ -30,7 +30,7 @@ class QbdClass(BaseModel):
     id: str
     """The unique identifier assigned by QuickBooks for this class.
 
-    This ID is unique among all classes but not across different QuickBooks object
+    This ID is unique across all classes but not across different QuickBooks object
     types.
     """
 

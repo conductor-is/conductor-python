@@ -140,7 +140,7 @@ class BillingRate(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is unique among all objects of the same type, but not across different
+    This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
     """
 
@@ -156,7 +156,7 @@ class Class(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is unique among all objects of the same type, but not across different
+    This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
     """
 
@@ -172,7 +172,7 @@ class Currency(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is unique among all objects of the same type, but not across different
+    This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
     """
 
@@ -233,7 +233,7 @@ class PrefillAccount(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is unique among all objects of the same type, but not across different
+    This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
     """
 
@@ -249,7 +249,7 @@ class SalesTaxCode(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is unique among all objects of the same type, but not across different
+    This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
     """
 
@@ -265,7 +265,7 @@ class SalesTaxReturn(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is unique among all objects of the same type, but not across different
+    This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
     """
 
@@ -316,7 +316,7 @@ class TaxOnPurchasesAccount(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is unique among all objects of the same type, but not across different
+    This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
     """
 
@@ -332,7 +332,7 @@ class TaxOnSalesAccount(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is unique among all objects of the same type, but not across different
+    This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
     """
 
@@ -348,7 +348,7 @@ class Terms(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is unique among all objects of the same type, but not across different
+    This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
     """
 
@@ -364,7 +364,7 @@ class VendorType(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is unique among all objects of the same type, but not across different
+    This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
     """
 
@@ -380,7 +380,7 @@ class QbdVendor(BaseModel):
     id: str
     """The unique identifier assigned by QuickBooks for this vendor.
 
-    This ID is unique among all vendors but not across different QuickBooks object
+    This ID is unique across all vendors but not across different QuickBooks object
     types.
     """
 
