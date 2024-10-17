@@ -130,8 +130,7 @@ class InvoicesResource(SyncAPIResource):
               will return an error.
 
           invoice_line_groups: The invoice's line item groups. Each group represents a predefined set of
-              related items, enabling organized presentation of multiple items within the
-              invoice.
+              related items.
 
           invoice_lines: The invoice's invoice lines, each representing a single product or service sold.
 
@@ -567,8 +566,7 @@ class AsyncInvoicesResource(AsyncAPIResource):
               will return an error.
 
           invoice_line_groups: The invoice's line item groups. Each group represents a predefined set of
-              related items, enabling organized presentation of multiple items within the
-              invoice.
+              related items.
 
           invoice_lines: The invoice's invoice lines, each representing a single product or service sold.
 
