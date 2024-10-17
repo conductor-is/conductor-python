@@ -109,7 +109,10 @@ class CustomerCreateParams(TypedDict, total=False):
     """
 
     custom_contact_fields: Annotated[Iterable[CustomContactField], PropertyInfo(alias="customContactFields")]
-    """Additional custom contact fields for this customer."""
+    """
+    Additional custom contact fields for this customer, such as phone numbers or
+    email addresses.
+    """
 
     customer_type_id: Annotated[str, PropertyInfo(alias="customerTypeId")]
     """
