@@ -140,7 +140,7 @@ class AccountsResource(SyncAPIResource):
               Charge Sales Tax?" preference), it will assign the default non-taxable code to
               all sales.
 
-          tax_line_id: The identifier of the federal tax line associated with this account.
+          tax_line_id: The identifier of the tax line associated with this account.
 
           extra_headers: Send extra headers
 
@@ -468,7 +468,7 @@ class AsyncAccountsResource(AsyncAPIResource):
               Charge Sales Tax?" preference), it will assign the default non-taxable code to
               all sales.
 
-          tax_line_id: The identifier of the federal tax line associated with this account.
+          tax_line_id: The identifier of the tax line associated with this account.
 
           extra_headers: Send extra headers
 
