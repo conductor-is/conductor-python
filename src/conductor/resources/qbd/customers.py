@@ -162,7 +162,8 @@ class CustomersResource(SyncAPIResource):
           currency_id: The customer's currency. For built-in currencies, the name and code are standard
               international values. For user-defined currencies, all values are editable.
 
-          custom_contact_fields: Additional custom contact fields for this customer.
+          custom_contact_fields: Additional custom contact fields for this customer, such as phone numbers or
+              email addresses.
 
           customer_type_id: The customer's type, used for categorizing customers into meaningful segments,
               such as industry or region.
@@ -661,7 +662,8 @@ class AsyncCustomersResource(AsyncAPIResource):
           currency_id: The customer's currency. For built-in currencies, the name and code are standard
               international values. For user-defined currencies, all values are editable.
 
-          custom_contact_fields: Additional custom contact fields for this customer.
+          custom_contact_fields: Additional custom contact fields for this customer, such as phone numbers or
+              email addresses.
 
           customer_type_id: The customer's type, used for categorizing customers into meaningful segments,
               such as industry or region.

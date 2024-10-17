@@ -150,7 +150,8 @@ class VendorsResource(SyncAPIResource):
           currency_id: The vendor's currency. For built-in currencies, the name and code are standard
               international values. For user-defined currencies, all values are editable.
 
-          custom_contact_fields: Additional custom contact fields for this vendor.
+          custom_contact_fields: Additional custom contact fields for this vendor, such as phone numbers or email
+              addresses.
 
           email: The vendor's email address.
 
@@ -621,7 +622,8 @@ class AsyncVendorsResource(AsyncAPIResource):
           currency_id: The vendor's currency. For built-in currencies, the name and code are standard
               international values. For user-defined currencies, all values are editable.
 
-          custom_contact_fields: Additional custom contact fields for this vendor.
+          custom_contact_fields: Additional custom contact fields for this vendor, such as phone numbers or email
+              addresses.
 
           email: The vendor's email address.
 

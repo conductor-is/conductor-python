@@ -43,19 +43,24 @@ class AdditionalContactCustomContactField(BaseModel):
 
 class AdditionalContact(BaseModel):
     id: str
-    """
-    The QuickBooks-assigned identifier for this contact, unique across all contacts.
+    """The unique identifier assigned by QuickBooks for this contact.
+
+    This ID is unique across all contacts but not across different QuickBooks object
+    types.
     """
 
     created_at: str = FieldInfo(alias="createdAt")
     """
-    The date and time when the object was created, in ISO 8601 format
+    The date and time when this contact was created, in ISO 8601 format
     (YYYY-MM-DDThh:mm:ss±hh:mm). The time zone is the same as the user's time zone
     in QuickBooks.
     """
 
     custom_contact_fields: List[AdditionalContactCustomContactField] = FieldInfo(alias="customContactFields")
-    """Additional custom contact fields, such as phone numbers or email addresses."""
+    """
+    Additional custom contact fields for this contact, such as phone numbers or
+    email addresses.
+    """
 
     first_name: Optional[str] = FieldInfo(alias="firstName", default=None)
     """The contact's first name."""
@@ -76,21 +81,24 @@ class AdditionalContact(BaseModel):
     """The type of object. This value is always `"qbd_contact"`."""
 
     salutation: Optional[str] = None
-    """The contact's formal salutation that precedes their name."""
+    """
+    The contact's formal salutation title that precedes their name, such as "Mr.",
+    "Ms.", or "Dr.".
+    """
 
     updated_at: str = FieldInfo(alias="updatedAt")
     """
-    The date and time when the object was last updated, in ISO 8601 format
+    The date and time when this contact was last updated, in ISO 8601 format
     (YYYY-MM-DDThh:mm:ss±hh:mm). The time zone is the same as the user's time zone
     in QuickBooks.
     """
 
     version: str
-    """The current version identifier of the object that changes with each
-    modification.
-
-    Provide this value when updating the object to verify you are working with the
-    latest version; mismatched values will fail.
+    """
+    The current version identifier for this contact, which changes each time the
+    object is modified. When updating this object, you must provide the most recent
+    `version` to ensure you're working with the latest data; otherwise, the update
+    will fail. This value is opaque and should not be interpreted.
     """
 
 
@@ -549,7 +557,10 @@ class QbdCustomer(BaseModel):
     """
 
     custom_contact_fields: List[CustomContactField] = FieldInfo(alias="customContactFields")
-    """Additional custom contact fields for this customer."""
+    """
+    Additional custom contact fields for this customer, such as phone numbers or
+    email addresses.
+    """
 
     customer_type: Optional[CustomerType] = FieldInfo(alias="customerType", default=None)
     """
