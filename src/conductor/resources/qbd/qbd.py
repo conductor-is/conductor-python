@@ -194,12 +194,12 @@ class QbdResource(SyncAPIResource):
         return StandardTermsResource(self._client)
 
     @cached_property
-    def vendors(self) -> VendorsResource:
-        return VendorsResource(self._client)
-
-    @cached_property
     def transfers(self) -> TransfersResource:
         return TransfersResource(self._client)
+
+    @cached_property
+    def vendors(self) -> VendorsResource:
+        return VendorsResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> QbdResourceWithRawResponse:
@@ -279,12 +279,12 @@ class AsyncQbdResource(AsyncAPIResource):
         return AsyncStandardTermsResource(self._client)
 
     @cached_property
-    def vendors(self) -> AsyncVendorsResource:
-        return AsyncVendorsResource(self._client)
-
-    @cached_property
     def transfers(self) -> AsyncTransfersResource:
         return AsyncTransfersResource(self._client)
+
+    @cached_property
+    def vendors(self) -> AsyncVendorsResource:
+        return AsyncVendorsResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncQbdResourceWithRawResponse:
@@ -367,12 +367,12 @@ class QbdResourceWithRawResponse:
         return StandardTermsResourceWithRawResponse(self._qbd.standard_terms)
 
     @cached_property
-    def vendors(self) -> VendorsResourceWithRawResponse:
-        return VendorsResourceWithRawResponse(self._qbd.vendors)
-
-    @cached_property
     def transfers(self) -> TransfersResourceWithRawResponse:
         return TransfersResourceWithRawResponse(self._qbd.transfers)
+
+    @cached_property
+    def vendors(self) -> VendorsResourceWithRawResponse:
+        return VendorsResourceWithRawResponse(self._qbd.vendors)
 
 
 class AsyncQbdResourceWithRawResponse:
@@ -436,12 +436,12 @@ class AsyncQbdResourceWithRawResponse:
         return AsyncStandardTermsResourceWithRawResponse(self._qbd.standard_terms)
 
     @cached_property
-    def vendors(self) -> AsyncVendorsResourceWithRawResponse:
-        return AsyncVendorsResourceWithRawResponse(self._qbd.vendors)
-
-    @cached_property
     def transfers(self) -> AsyncTransfersResourceWithRawResponse:
         return AsyncTransfersResourceWithRawResponse(self._qbd.transfers)
+
+    @cached_property
+    def vendors(self) -> AsyncVendorsResourceWithRawResponse:
+        return AsyncVendorsResourceWithRawResponse(self._qbd.vendors)
 
 
 class QbdResourceWithStreamingResponse:
@@ -505,12 +505,12 @@ class QbdResourceWithStreamingResponse:
         return StandardTermsResourceWithStreamingResponse(self._qbd.standard_terms)
 
     @cached_property
-    def vendors(self) -> VendorsResourceWithStreamingResponse:
-        return VendorsResourceWithStreamingResponse(self._qbd.vendors)
-
-    @cached_property
     def transfers(self) -> TransfersResourceWithStreamingResponse:
         return TransfersResourceWithStreamingResponse(self._qbd.transfers)
+
+    @cached_property
+    def vendors(self) -> VendorsResourceWithStreamingResponse:
+        return VendorsResourceWithStreamingResponse(self._qbd.vendors)
 
 
 class AsyncQbdResourceWithStreamingResponse:
@@ -574,9 +574,9 @@ class AsyncQbdResourceWithStreamingResponse:
         return AsyncStandardTermsResourceWithStreamingResponse(self._qbd.standard_terms)
 
     @cached_property
-    def vendors(self) -> AsyncVendorsResourceWithStreamingResponse:
-        return AsyncVendorsResourceWithStreamingResponse(self._qbd.vendors)
-
-    @cached_property
     def transfers(self) -> AsyncTransfersResourceWithStreamingResponse:
         return AsyncTransfersResourceWithStreamingResponse(self._qbd.transfers)
+
+    @cached_property
+    def vendors(self) -> AsyncVendorsResourceWithStreamingResponse:
+        return AsyncVendorsResourceWithStreamingResponse(self._qbd.vendors)
