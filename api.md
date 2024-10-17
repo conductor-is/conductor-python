@@ -255,3 +255,17 @@ Methods:
 - <code title="post /quickbooks-desktop/vendors">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">create</a>(\*\*<a href="src/conductor/types/qbd/vendor_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_vendor.py">QbdVendor</a></code>
 - <code title="get /quickbooks-desktop/vendors/{id}">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_vendor.py">QbdVendor</a></code>
 - <code title="get /quickbooks-desktop/vendors">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">list</a>(\*\*<a href="src/conductor/types/qbd/vendor_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_vendor.py">SyncCursorPage[QbdVendor]</a></code>
+
+## Transfers
+
+Types:
+
+```python
+from conductor.types.qbd import QbdTransfer
+```
+
+Methods:
+
+- <code title="post /quickbooks-desktop/transfers">client.qbd.transfers.<a href="./src/conductor/resources/qbd/transfers.py">create</a>(\*\*<a href="src/conductor/types/qbd/transfer_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_transfer.py">QbdTransfer</a></code>
+- <code title="get /quickbooks-desktop/transfers/{id}">client.qbd.transfers.<a href="./src/conductor/resources/qbd/transfers.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_transfer.py">QbdTransfer</a></code>
+- <code title="get /quickbooks-desktop/transfers">client.qbd.transfers.<a href="./src/conductor/resources/qbd/transfers.py">list</a>(\*\*<a href="src/conductor/types/qbd/transfer_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_transfer.py">SyncCursorPage[QbdTransfer]</a></code>
