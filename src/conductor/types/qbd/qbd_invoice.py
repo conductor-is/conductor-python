@@ -938,12 +938,16 @@ class ItemSalesTax(BaseModel):
 
 class LinkedTransaction(BaseModel):
     id: str
-    """
-    The QuickBooks-assigned identifier for this transaction, unique across all
-    transactions.
+    """The unique identifier assigned by QuickBooks for this linked transaction.
+
+    This ID is unique across all transaction types.
     """
 
     amount: str
+    """
+    The monetary amount for this linked transaction, represented as a decimal
+    string.
+    """
 
     link_type: Optional[Literal["amount", "quantity"]] = FieldInfo(alias="linkType", default=None)
     """
@@ -953,9 +957,18 @@ class LinkedTransaction(BaseModel):
     received).
     """
 
-    ref_number: Optional[str] = FieldInfo(alias="refNumber", default=None)
+    object_type: Literal["qbd_linked_transaction"] = FieldInfo(alias="objectType")
+    """The type of object. This value is always `"qbd_linked_transaction"`."""
 
-    transaction_date: str = FieldInfo(alias="transactionDate")
+    ref_number: Optional[str] = FieldInfo(alias="refNumber", default=None)
+    """
+    The case-sensitive user-defined reference number for this linked transaction,
+    which can be used to identify the transaction in QuickBooks. This value is not
+    required to be unique and can be arbitrarily changed by the QuickBooks user.
+    """
+
+    transaction_date: date = FieldInfo(alias="transactionDate")
+    """The date of this linked transaction, in ISO 8601 format (YYYY-MM-DD)."""
 
     transaction_type: Literal[
         "bill_payment_check",
@@ -984,7 +997,7 @@ class LinkedTransaction(BaseModel):
         "vendor_credit",
         "ytd_adjustment",
     ] = FieldInfo(alias="transactionType")
-    """The type of transaction."""
+    """The type of transaction for this linked transaction."""
 
 
 class SalesRepresentative(BaseModel):
@@ -1234,7 +1247,9 @@ class QbdInvoice(BaseModel):
     linked_transactions: List[LinkedTransaction] = FieldInfo(alias="linkedTransactions")
     """
     The invoice's linked transactions, such as payments applied, credits used, or
-    associated purchase orders.
+    associated purchase orders. You must specify the parameter
+    `includeLinkedTransactions` when fetching a list of invoices to receive this
+    field.
     """
 
     memo: Optional[str] = None
