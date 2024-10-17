@@ -108,6 +108,14 @@ from .credit_card_charges import (
     CreditCardChargesResourceWithStreamingResponse,
     AsyncCreditCardChargesResourceWithStreamingResponse,
 )
+from .credit_card_credits import (
+    CreditCardCreditsResource,
+    AsyncCreditCardCreditsResource,
+    CreditCardCreditsResourceWithRawResponse,
+    AsyncCreditCardCreditsResourceWithRawResponse,
+    CreditCardCreditsResourceWithStreamingResponse,
+    AsyncCreditCardCreditsResourceWithStreamingResponse,
+)
 from .non_inventory_items import (
     NonInventoryItemsResource,
     AsyncNonInventoryItemsResource,
@@ -176,6 +184,10 @@ class QbdResource(SyncAPIResource):
     @cached_property
     def vendors(self) -> VendorsResource:
         return VendorsResource(self._client)
+
+    @cached_property
+    def credit_card_credits(self) -> CreditCardCreditsResource:
+        return CreditCardCreditsResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> QbdResourceWithRawResponse:
@@ -253,6 +265,10 @@ class AsyncQbdResource(AsyncAPIResource):
     @cached_property
     def vendors(self) -> AsyncVendorsResource:
         return AsyncVendorsResource(self._client)
+
+    @cached_property
+    def credit_card_credits(self) -> AsyncCreditCardCreditsResource:
+        return AsyncCreditCardCreditsResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncQbdResourceWithRawResponse:
@@ -334,6 +350,10 @@ class QbdResourceWithRawResponse:
     def vendors(self) -> VendorsResourceWithRawResponse:
         return VendorsResourceWithRawResponse(self._qbd.vendors)
 
+    @cached_property
+    def credit_card_credits(self) -> CreditCardCreditsResourceWithRawResponse:
+        return CreditCardCreditsResourceWithRawResponse(self._qbd.credit_card_credits)
+
 
 class AsyncQbdResourceWithRawResponse:
     def __init__(self, qbd: AsyncQbdResource) -> None:
@@ -394,6 +414,10 @@ class AsyncQbdResourceWithRawResponse:
     @cached_property
     def vendors(self) -> AsyncVendorsResourceWithRawResponse:
         return AsyncVendorsResourceWithRawResponse(self._qbd.vendors)
+
+    @cached_property
+    def credit_card_credits(self) -> AsyncCreditCardCreditsResourceWithRawResponse:
+        return AsyncCreditCardCreditsResourceWithRawResponse(self._qbd.credit_card_credits)
 
 
 class QbdResourceWithStreamingResponse:
@@ -456,6 +480,10 @@ class QbdResourceWithStreamingResponse:
     def vendors(self) -> VendorsResourceWithStreamingResponse:
         return VendorsResourceWithStreamingResponse(self._qbd.vendors)
 
+    @cached_property
+    def credit_card_credits(self) -> CreditCardCreditsResourceWithStreamingResponse:
+        return CreditCardCreditsResourceWithStreamingResponse(self._qbd.credit_card_credits)
+
 
 class AsyncQbdResourceWithStreamingResponse:
     def __init__(self, qbd: AsyncQbdResource) -> None:
@@ -516,3 +544,7 @@ class AsyncQbdResourceWithStreamingResponse:
     @cached_property
     def vendors(self) -> AsyncVendorsResourceWithStreamingResponse:
         return AsyncVendorsResourceWithStreamingResponse(self._qbd.vendors)
+
+    @cached_property
+    def credit_card_credits(self) -> AsyncCreditCardCreditsResourceWithStreamingResponse:
+        return AsyncCreditCardCreditsResourceWithStreamingResponse(self._qbd.credit_card_credits)

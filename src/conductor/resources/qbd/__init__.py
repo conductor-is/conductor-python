@@ -112,6 +112,14 @@ from .credit_card_charges import (
     CreditCardChargesResourceWithStreamingResponse,
     AsyncCreditCardChargesResourceWithStreamingResponse,
 )
+from .credit_card_credits import (
+    CreditCardCreditsResource,
+    AsyncCreditCardCreditsResource,
+    CreditCardCreditsResourceWithRawResponse,
+    AsyncCreditCardCreditsResourceWithRawResponse,
+    CreditCardCreditsResourceWithStreamingResponse,
+    AsyncCreditCardCreditsResourceWithStreamingResponse,
+)
 from .non_inventory_items import (
     NonInventoryItemsResource,
     AsyncNonInventoryItemsResource,
@@ -206,6 +214,12 @@ __all__ = [
     "AsyncVendorsResourceWithRawResponse",
     "VendorsResourceWithStreamingResponse",
     "AsyncVendorsResourceWithStreamingResponse",
+    "CreditCardCreditsResource",
+    "AsyncCreditCardCreditsResource",
+    "CreditCardCreditsResourceWithRawResponse",
+    "AsyncCreditCardCreditsResourceWithRawResponse",
+    "CreditCardCreditsResourceWithStreamingResponse",
+    "AsyncCreditCardCreditsResourceWithStreamingResponse",
     "QbdResource",
     "AsyncQbdResource",
     "QbdResourceWithRawResponse",
