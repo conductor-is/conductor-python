@@ -92,7 +92,10 @@ class VendorCreateParams(TypedDict, total=False):
     """
 
     custom_contact_fields: Annotated[Iterable[CustomContactField], PropertyInfo(alias="customContactFields")]
-    """Additional custom contact fields for this vendor."""
+    """
+    Additional custom contact fields for this vendor, such as phone numbers or email
+    addresses.
+    """
 
     email: str
     """The vendor's email address."""
