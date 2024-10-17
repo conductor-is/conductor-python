@@ -97,8 +97,13 @@ class SalesTaxCode(BaseModel):
 
 class TaxLineDetails(BaseModel):
     tax_line_id: float = FieldInfo(alias="taxLineId")
+    """The identifier of the tax line associated with this account."""
 
     tax_line_name: Optional[str] = FieldInfo(alias="taxLineName", default=None)
+    """
+    The name of the tax line associated with this account, as it appears on the tax
+    form.
+    """
 
 
 class QbdAccount(BaseModel):
