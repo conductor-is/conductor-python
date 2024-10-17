@@ -51,6 +51,14 @@ from .customers import (
     CustomersResourceWithStreamingResponse,
     AsyncCustomersResourceWithStreamingResponse,
 )
+from .transfers import (
+    TransfersResource,
+    AsyncTransfersResource,
+    TransfersResourceWithRawResponse,
+    AsyncTransfersResourceWithRawResponse,
+    TransfersResourceWithStreamingResponse,
+    AsyncTransfersResourceWithStreamingResponse,
+)
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from .service_items import (
     ServiceItemsResource,
@@ -190,6 +198,10 @@ class QbdResource(SyncAPIResource):
         return VendorsResource(self._client)
 
     @cached_property
+    def transfers(self) -> TransfersResource:
+        return TransfersResource(self._client)
+
+    @cached_property
     def with_raw_response(self) -> QbdResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return the
@@ -269,6 +281,10 @@ class AsyncQbdResource(AsyncAPIResource):
     @cached_property
     def vendors(self) -> AsyncVendorsResource:
         return AsyncVendorsResource(self._client)
+
+    @cached_property
+    def transfers(self) -> AsyncTransfersResource:
+        return AsyncTransfersResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncQbdResourceWithRawResponse:
@@ -354,6 +370,10 @@ class QbdResourceWithRawResponse:
     def vendors(self) -> VendorsResourceWithRawResponse:
         return VendorsResourceWithRawResponse(self._qbd.vendors)
 
+    @cached_property
+    def transfers(self) -> TransfersResourceWithRawResponse:
+        return TransfersResourceWithRawResponse(self._qbd.transfers)
+
 
 class AsyncQbdResourceWithRawResponse:
     def __init__(self, qbd: AsyncQbdResource) -> None:
@@ -418,6 +438,10 @@ class AsyncQbdResourceWithRawResponse:
     @cached_property
     def vendors(self) -> AsyncVendorsResourceWithRawResponse:
         return AsyncVendorsResourceWithRawResponse(self._qbd.vendors)
+
+    @cached_property
+    def transfers(self) -> AsyncTransfersResourceWithRawResponse:
+        return AsyncTransfersResourceWithRawResponse(self._qbd.transfers)
 
 
 class QbdResourceWithStreamingResponse:
@@ -484,6 +508,10 @@ class QbdResourceWithStreamingResponse:
     def vendors(self) -> VendorsResourceWithStreamingResponse:
         return VendorsResourceWithStreamingResponse(self._qbd.vendors)
 
+    @cached_property
+    def transfers(self) -> TransfersResourceWithStreamingResponse:
+        return TransfersResourceWithStreamingResponse(self._qbd.transfers)
+
 
 class AsyncQbdResourceWithStreamingResponse:
     def __init__(self, qbd: AsyncQbdResource) -> None:
@@ -548,3 +576,7 @@ class AsyncQbdResourceWithStreamingResponse:
     @cached_property
     def vendors(self) -> AsyncVendorsResourceWithStreamingResponse:
         return AsyncVendorsResourceWithStreamingResponse(self._qbd.vendors)
+
+    @cached_property
+    def transfers(self) -> AsyncTransfersResourceWithStreamingResponse:
+        return AsyncTransfersResourceWithStreamingResponse(self._qbd.transfers)
