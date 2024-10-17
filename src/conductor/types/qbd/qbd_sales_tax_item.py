@@ -14,7 +14,7 @@ class Class(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is unique among all objects of the same type, but not across different
+    This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
     """
 
@@ -67,7 +67,7 @@ class SalesTaxReturnLine(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is unique among all objects of the same type, but not across different
+    This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
     """
 
@@ -83,7 +83,7 @@ class TaxVendor(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is unique among all objects of the same type, but not across different
+    This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
     """
 
@@ -99,7 +99,7 @@ class QbdSalesTaxItem(BaseModel):
     id: str
     """The unique identifier assigned by QuickBooks for this sales-tax item.
 
-    This ID is unique among all sales-tax items but not across different QuickBooks
+    This ID is unique across all sales-tax items but not across different QuickBooks
     object types.
     """
 
