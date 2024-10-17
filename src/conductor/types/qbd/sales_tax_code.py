@@ -14,7 +14,7 @@ class ItemSalesTax(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks for this object.
 
-    This ID is unique among all objects of the same type, but not across different
+    This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
     """
 
@@ -30,7 +30,7 @@ class SalesTaxCode(BaseModel):
     id: str
     """The unique identifier assigned by QuickBooks for this sales-tax code.
 
-    This ID is unique among all sales-tax codes but not across different QuickBooks
+    This ID is unique across all sales-tax codes but not across different QuickBooks
     object types.
     """
 

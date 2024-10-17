@@ -14,7 +14,7 @@ class QbdStandardTerm(BaseModel):
     id: str
     """The unique identifier assigned by QuickBooks for this standard term.
 
-    This ID is unique among all standard terms but not across different QuickBooks
+    This ID is unique across all standard terms but not across different QuickBooks
     object types.
     """
 
