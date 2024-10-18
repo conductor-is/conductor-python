@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.1.0-alpha.13 (2024-10-18)
+
+Full Changelog: [v0.1.0-alpha.12...v0.1.0-alpha.13](https://github.com/conductor-is/conductor-python/compare/v0.1.0-alpha.12...v0.1.0-alpha.13)
+
+### Features
+
+* **api:** api update ([#101](https://github.com/conductor-is/conductor-python/issues/101)) ([af68f23](https://github.com/conductor-is/conductor-python/commit/af68f238e90d7e404bfb33464ba842b627f91e69))
+* **api:** api update ([#103](https://github.com/conductor-is/conductor-python/issues/103)) ([47a729a](https://github.com/conductor-is/conductor-python/commit/47a729a7c462fb54f67a339e769c671cfcb27198))
+* **api:** api update ([#104](https://github.com/conductor-is/conductor-python/issues/104)) ([dcaa703](https://github.com/conductor-is/conductor-python/commit/dcaa70341afb31882d48f5f73e783af49427990d))
+* **api:** api update ([#105](https://github.com/conductor-is/conductor-python/issues/105)) ([1f77dd2](https://github.com/conductor-is/conductor-python/commit/1f77dd2649cc380b56e7985f96ab7c11bcfb5a26))
+* **api:** api update ([#106](https://github.com/conductor-is/conductor-python/issues/106)) ([96c29f8](https://github.com/conductor-is/conductor-python/commit/96c29f8db72b2f290ac5525268deb20147b08b10))
+
 ## 0.1.0-alpha.12 (2024-10-17)
 
 Full Changelog: [v0.1.0-alpha.11...v0.1.0-alpha.12](https://github.com/conductor-is/conductor-python/compare/v0.1.0-alpha.11...v0.1.0-alpha.12)
