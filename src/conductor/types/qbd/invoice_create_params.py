@@ -15,7 +15,7 @@ __all__ = [
     "InvoiceLineGroupCustomField",
     "InvoiceLine",
     "InvoiceLineCustomField",
-    "InvoiceLineLinkToTransactionLineItem",
+    "InvoiceLineLinkToTransactionLine",
     "SetCredit",
     "ShippingAddress",
 ]
@@ -127,15 +127,15 @@ class InvoiceCreateParams(TypedDict, total=False):
     """
     IDs of existing transactions that you wish to link to this invoice, such as
     payments applied, credits used, or associated purchase orders. Note that this
-    links entire transactions, not individual transaction line items. If you want to
-    link individual lines in a transaction, instead use the field
-    `linkToTransaction` on this invoice's line items, if available.
+    links entire transactions, not individual transaction lines. If you want to link
+    individual lines in a transaction, instead use the field `linkToTransactionLine`
+    on this invoice's lines, if available.
 
     You can use both `linkToTransactionIds` (on this invoice) and
-    `linkToTransaction` (on its line items) as long as they do NOT link to the same
-    transaction (otherwise, QuickBooks will return an error). QuickBooks will also
-    return an error if you attempt to link a transaction that is empty or already
-    closed.
+    `linkToTransactionLine` (on its transaction lines) as long as they do NOT link
+    to the same transaction (otherwise, QuickBooks will return an error). QuickBooks
+    will also return an error if you attempt to link a transaction that is empty or
+    already closed.
 
     Note that QuickBooks will not return any information about these links in this
     endpoint's response even though they are created. To see the transactions linked
@@ -197,12 +197,13 @@ class InvoiceCreateParams(TypedDict, total=False):
 
     Applying a credit uses an available credit to reduce the balance of this
     invoice. This creates a link between this invoice and the corresponding existing
-    credit memo. Note that QuickBooks will not return any information about these
-    links in this endpoint's response even though they are created. If you need to
-    retrieve which transactions were linked via this field, refetch the invoice and
-    check the `linkedTransactions` field. If fetching a list of invoices, you must
-    also specify the parameter `includeLinkedTransactions` to see the
-    `linkedTransactions` field.
+    credit memo.
+
+    Note that QuickBooks will not return any information about these links in this
+    endpoint's response even though they are created. To see the transactions linked
+    via this field, refetch the invoice and check the `linkedTransactions` field. If
+    fetching a list of invoices, you must also specify the parameter
+    `includeLinkedTransactions` to see the `linkedTransactions` field.
     """
 
     shipping_address: Annotated[ShippingAddress, PropertyInfo(alias="shippingAddress")]
@@ -301,7 +302,7 @@ class InvoiceLineCustomField(TypedDict, total=False):
     value: Required[str]
 
 
-class InvoiceLineLinkToTransactionLineItem(TypedDict, total=False):
+class InvoiceLineLinkToTransactionLine(TypedDict, total=False):
     transaction_id: Required[Annotated[str, PropertyInfo(alias="transactionId")]]
 
     transaction_line_id: Required[Annotated[str, PropertyInfo(alias="transactionLineId")]]
@@ -309,51 +310,173 @@ class InvoiceLineLinkToTransactionLineItem(TypedDict, total=False):
 
 class InvoiceLine(TypedDict, total=False):
     amount: str
+    """The monetary amount for this invoice line, represented as a decimal string."""
 
     class_id: Annotated[str, PropertyInfo(alias="classId")]
+    """The invoice line's class.
+
+    Classes can be used to categorize objects into meaningful segments, such as
+    department, location, or type of work. In QuickBooks, class tracking is off by
+    default. If a class is specified for the entire parent transaction, it is
+    automatically applied to all invoice lines unless overridden here, at the
+    transaction line level.
+    """
 
     custom_fields: Annotated[Iterable[InvoiceLineCustomField], PropertyInfo(alias="customFields")]
+    """
+    The custom fields for the invoice line object, added as user-defined data
+    extensions, not included in the standard QuickBooks object.
+    """
 
     description: str
+    """A description of this invoice line."""
 
     inventory_site_id: Annotated[str, PropertyInfo(alias="inventorySiteId")]
+    """The site location where inventory for the item in this invoice line is stored."""
 
     inventory_site_location_id: Annotated[str, PropertyInfo(alias="inventorySiteLocationId")]
+    """
+    The specific location within the inventory site where the item in this invoice
+    line is stored, such as a bin or shelf.
+    """
 
     item_id: Annotated[str, PropertyInfo(alias="itemId")]
+    """The item associated with this invoice line.
 
-    link_to_transaction_line_item: Annotated[
-        InvoiceLineLinkToTransactionLineItem, PropertyInfo(alias="linkToTransactionLineItem")
-    ]
+    This can refer to any good or service that the business buys or sells, including
+    item types such as a service item, inventory item, or special calculation item
+    like a discount item or sales-tax item.
+    """
+
+    link_to_transaction_line: Annotated[InvoiceLineLinkToTransactionLine, PropertyInfo(alias="linkToTransactionLine")]
+    """An existing transaction line that you wish to link to this invoice line.
+
+    Note that this only links to a single transaction line item, not an entire
+    transaction. If you want to link an entire transaction and bring in all its
+    lines, instead use the field `linkToTransactionIds` on the parent transaction,
+    if available. For invoice lines, you can only link to sales orders; QuickBooks
+    does not support linking invoice lines to other transaction types.
+
+    If you use `linkToTransactionLine` on this invoice line, you cannot use the
+    field `item` on this line (QuickBooks will return an error) because this field
+    brings in all of the item information you need. You can, however, specify
+    whatever `quantity` or `rate` that you want, or any other transaction line
+    element other than `item`.
+
+    If the parent transaction supports the `linkToTransactionIds` field, you can use
+    both `linkToTransactionLine` (on this invoice line) and `linkToTransactionIds`
+    (on its parent transaction) in the same request as long as they do NOT link to
+    the same transaction (otherwise, QuickBooks will return an error). QuickBooks
+    will also return an error if you attempt to link a transaction that is empty or
+    already closed.
+
+    Note that QuickBooks will not return any information about these links in this
+    endpoint's response even though they are created. To see the transaction lines
+    linked via this field, refetch the parent transaction and check the
+    `linkedTransactions` field. If fetching a list of transactions, you must also
+    specify the parameter `includeLinkedTransactions` to return the
+    `linkedTransactions` field.
+    """
 
     lot_number: Annotated[str, PropertyInfo(alias="lotNumber")]
+    """The lot number of the item in this invoice line.
 
-    other_field1: Annotated[str, PropertyInfo(alias="otherField1")]
+    Used for tracking groups of inventory items that are purchased or manufactured
+    together.
+    """
 
-    other_field2: Annotated[str, PropertyInfo(alias="otherField2")]
+    other_custom_field1: Annotated[str, PropertyInfo(alias="otherCustomField1")]
+    """A built-in custom field for additional information specific to this invoice
+    line.
+
+    Unlike the user-defined fields in the `customFields` array, this is a standard
+    QuickBooks field that exists for all invoice lines for convenience. Developers
+    often use this field for tracking information that doesn't fit into other
+    standard QuickBooks fields. Hidden by default in the QuickBooks UI.
+    """
+
+    other_custom_field2: Annotated[str, PropertyInfo(alias="otherCustomField2")]
+    """
+    A second built-in custom field for additional information specific to this
+    invoice line. Unlike the user-defined fields in the `customFields` array, this
+    is a standard QuickBooks field that exists for all invoice lines for
+    convenience. Like `otherCustomField1`, developers often use this field for
+    tracking information that doesn't fit into other standard QuickBooks fields.
+    Hidden by default in the QuickBooks UI.
+    """
 
     override_item_account_id: Annotated[str, PropertyInfo(alias="overrideItemAccountId")]
+    """
+    The account to use for this invoice line, overriding the default account
+    associated with the item.
+    """
 
     price_level_id: Annotated[str, PropertyInfo(alias="priceLevelId")]
+    """
+    The custom price level assigned to this invoice line, used to apply custom
+    pricing in invoices, sales receipts, sales orders, or credit memos for that
+    invoice line. You can override this automatic feature, however, when you create
+    the invoices, sales receipts, etc. Notice that the affected sales transactions
+    do not list the price level, but instead list the rate for the item, which was
+    set using the price level.
+    """
 
     price_rule_conflict_behavior: Annotated[
         Literal["base_price", "zero"], PropertyInfo(alias="priceRuleConflictBehavior")
     ]
-    """Specify how to handle price rule conflicts."""
+    """
+    Specifies how to resolve price rule conflicts when adding or modifying this
+    invoice line.
+    """
 
     quantity: float
+    """The quantity of the item in this invoice line.
+
+    If both `quantity` and `amount` are specified but not `rate`, QuickBooks will
+    calculate `rate`. If `quantity` and `rate` are specified but not `amount`,
+    QuickBooks will calculate `amount`.
+    """
 
     rate: str
+    """The price per unit for this invoice line.
+
+    If both `rate` and `amount` are specified, `rate` will be ignored and
+    recalculated based on `quantity` and `amount`. Represented as a decimal string.
+    """
 
     rate_percent: Annotated[str, PropertyInfo(alias="ratePercent")]
+    """The price of this invoice line expressed as a percentage.
+
+    Typically used for discount or markup items.
+    """
 
     sales_tax_code_id: Annotated[str, PropertyInfo(alias="salesTaxCodeId")]
+    """
+    The sales-tax code associated with this invoice line, determining whether it is
+    taxable or non-taxable. It's used to assign a default tax status to all
+    transactions for this invoice line. Default codes include "Non" (non-taxable)
+    and "Tax" (taxable), but custom codes can also be created in QuickBooks. If
+    QuickBooks is not set up to charge sales tax (via the "Do You Charge Sales Tax?"
+    preference), it will assign the default non-taxable code to all sales.
+    """
 
     serial_number: Annotated[str, PropertyInfo(alias="serialNumber")]
+    """The serial number of the item in this invoice line.
 
-    service_date: Annotated[str, PropertyInfo(alias="serviceDate")]
+    This is used for tracking individual units of serialized inventory items.
+    """
+
+    service_date: Annotated[Union[str, date], PropertyInfo(alias="serviceDate", format="iso8601")]
+    """
+    The date on which the service for this invoice line was or will be performed, in
+    ISO 8601 format (YYYY-MM-DD). This is particularly relevant for service items.
+    """
 
     unit_of_measure: Annotated[str, PropertyInfo(alias="unitOfMeasure")]
+    """The unit of measure used for the `quantity` in this invoice line.
+
+    Must be a valid unit within the item's available units of measure.
+    """
 
 
 class SetCredit(TypedDict, total=False):
