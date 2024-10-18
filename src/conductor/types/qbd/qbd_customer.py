@@ -222,7 +222,7 @@ class CreditCard(BaseModel):
     """The cardholder's name on the card."""
 
     number: Optional[str] = None
-    """The credit card number. Must be masked with lower case “x” and no dashes."""
+    """The credit card number. Must be masked with lower case "x" and no dashes."""
 
 
 class Currency(BaseModel):
