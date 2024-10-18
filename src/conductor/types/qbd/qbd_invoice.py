@@ -951,10 +951,10 @@ class LinkedTransaction(BaseModel):
 
     link_type: Optional[Literal["amount", "quantity"]] = FieldInfo(alias="linkType", default=None)
     """
-    Indicates how transactions are linked: "amount" denotes an amount-based link
-    (e.g., an invoice linked to a payment), and "quantity" denotes a quantity-based
-    link (e.g., an invoice created from a sales order based on the quantity of items
-    received).
+    Indicates the nature of the link between the transactions: "amount" denotes an
+    amount-based link (e.g., an invoice linked to a payment), and "quantity" denotes
+    a quantity-based link (e.g., an invoice created from a sales order based on the
+    quantity of items received).
     """
 
     object_type: Literal["qbd_linked_transaction"] = FieldInfo(alias="objectType")
@@ -1125,7 +1125,7 @@ class QbdInvoice(BaseModel):
     """
 
     balance_remaining: Optional[str] = FieldInfo(alias="balanceRemaining", default=None)
-    """The outstanding balance on this invoice after applying any credits or payments.
+    """The outstanding balance of this invoice after applying any credits or payments.
 
     Calculated as (`subtotal` + `salesTaxTotal`) - `appliedAmount`. Represented as a
     decimal string.
