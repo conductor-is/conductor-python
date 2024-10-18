@@ -414,7 +414,7 @@ class CreditCard(TypedDict, total=False):
     """The cardholder's name on the card."""
 
     number: str
-    """The credit card number. Must be masked with lower case “x” and no dashes."""
+    """The credit card number. Must be masked with lower case "x" and no dashes."""
 
 
 class CustomContactField(TypedDict, total=False):
