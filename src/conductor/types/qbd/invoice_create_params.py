@@ -274,10 +274,27 @@ class BillingAddress(TypedDict, total=False):
 
 class InvoiceLineGroupCustomField(TypedDict, total=False):
     name: Required[str]
+    """The name of the custom field, unique for the specified `ownerId`.
+
+    For public custom fields, this name is visible as a label in the QuickBooks UI.
+    """
 
     owner_id: Required[Annotated[str, PropertyInfo(alias="ownerId")]]
+    """
+    The identifier of the owner of the custom field, which QuickBooks internally
+    calls a "data extension". For public custom fields visible in the UI, such as
+    those added by the QuickBooks user, this is always "0". For private custom
+    fields that are only visible to the application that created them, this is a
+    valid GUID identifying the owning application. Internally, Conductor always
+    fetches all public custom fields (those with an `ownerId` of "0") for all
+    objects.
+    """
 
     value: Required[str]
+    """The value of the custom field.
+
+    The maximum length depends on the field's data type.
+    """
 
 
 class InvoiceLineGroup(TypedDict, total=False):
@@ -296,10 +313,27 @@ class InvoiceLineGroup(TypedDict, total=False):
 
 class InvoiceLineCustomField(TypedDict, total=False):
     name: Required[str]
+    """The name of the custom field, unique for the specified `ownerId`.
+
+    For public custom fields, this name is visible as a label in the QuickBooks UI.
+    """
 
     owner_id: Required[Annotated[str, PropertyInfo(alias="ownerId")]]
+    """
+    The identifier of the owner of the custom field, which QuickBooks internally
+    calls a "data extension". For public custom fields visible in the UI, such as
+    those added by the QuickBooks user, this is always "0". For private custom
+    fields that are only visible to the application that created them, this is a
+    valid GUID identifying the owning application. Internally, Conductor always
+    fetches all public custom fields (those with an `ownerId` of "0") for all
+    objects.
+    """
 
     value: Required[str]
+    """The value of the custom field.
+
+    The maximum length depends on the field's data type.
+    """
 
 
 class InvoiceLineLinkToTransactionLine(TypedDict, total=False):
