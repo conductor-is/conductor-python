@@ -97,43 +97,43 @@ class Barcode(TypedDict, total=False):
 
 class SalesAndPurchaseDetails(TypedDict, total=False):
     expense_account_id: Annotated[str, PropertyInfo(alias="expenseAccountId")]
-    """The expense account to use when purchasing this item."""
+    """The expense account used to track expenses from purchases of this item."""
 
     income_account_id: Annotated[str, PropertyInfo(alias="incomeAccountId")]
-    """The income account to use when selling this item."""
+    """The income account used to track revenue from sales of this item."""
 
     preferred_vendor_id: Annotated[str, PropertyInfo(alias="preferredVendorId")]
-    """The preferred vendor for this item."""
+    """The preferred vendor from whom this item is typically purchased."""
 
     purchase_cost: Annotated[str, PropertyInfo(alias="purchaseCost")]
-    """The cost of this item when purchased, represented as a decimal string.
-
-    This is the amount the business expects to pay when ordering or buying this
-    item, or the amount that was actually paid.
+    """
+    The cost at which this item is purchased from vendors, represented as a decimal
+    string.
     """
 
     purchase_description: Annotated[str, PropertyInfo(alias="purchaseDescription")]
     """
-    The description that appears on purchase forms (e.g., checks, bills, item
-    receipts) when this item is bought. For fixed assets, this describes the item as
-    it was when purchased.
+    The description of this item that appears on purchase forms (e.g., checks,
+    bills, item receipts) when it is ordered or bought from vendors.
     """
 
     purchase_tax_code_id: Annotated[str, PropertyInfo(alias="purchaseTaxCodeId")]
-    """The tax code to use when purchasing this item.
+    """The tax code applied to purchases of this item.
 
     Applicable in regions where purchase taxes are used, such as Canada or the UK.
     """
 
     sales_description: Annotated[str, PropertyInfo(alias="salesDescription")]
     """
-    The description that appears on sales forms (e.g., invoices, sales receipts)
-    when selling this item. For fixed assets, this describes the sale of the asset
-    for accounting purposes.
+    The description of this item that appears on sales forms (e.g., invoices, sales
+    receipts) when sold to customers.
     """
 
     sales_price: Annotated[str, PropertyInfo(alias="salesPrice")]
-    """The price to charge for this item, represented as a decimal string."""
+    """
+    The price at which this item is sold to customers, represented as a decimal
+    string.
+    """
 
 
 class SalesOrPurchaseDetails(TypedDict, total=False):
@@ -145,19 +145,17 @@ class SalesOrPurchaseDetails(TypedDict, total=False):
     """
 
     description: str
-    """
-    A description of the item that appears on sales or purchase forms, depending on
-    whether the item is being sold or purchased.
-    """
+    """A description of this item."""
 
     price: str
     """
-    The purchase price or sales price of this item, represented as a decimal string.
+    The price at which this item is purchased or sold, represented as a decimal
+    string.
     """
 
     price_percentage: Annotated[str, PropertyInfo(alias="pricePercentage")]
     """
-    The price expressed as a percentage, used instead of `price` when the item's
-    cost is calculated as a percentage of another amount. For example, a service
-    item that costs a percentage of another item's price.
+    The price of this item expressed as a percentage, used instead of `price` when
+    the item's cost is calculated as a percentage of another amount. For example, a
+    service item that costs a percentage of another item's price.
     """
