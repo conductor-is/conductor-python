@@ -123,8 +123,8 @@ class QbdSalesTaxItem(BaseModel):
 
     custom_fields: List[CustomField] = FieldInfo(alias="customFields")
     """
-    The custom fields added by the user to this sales-tax item object as a data
-    extension. These fields are not part of the standard QuickBooks object.
+    The custom fields for the sales-tax item object, added as user-defined data
+    extensions, not included in the standard QuickBooks object.
     """
 
     description: Optional[str] = None

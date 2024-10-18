@@ -303,8 +303,8 @@ class ServiceItem(BaseModel):
 
     custom_fields: List[CustomField] = FieldInfo(alias="customFields")
     """
-    The custom fields added by the user to this service item object as a data
-    extension. These fields are not part of the standard QuickBooks object.
+    The custom fields for the service item object, added as user-defined data
+    extensions, not included in the standard QuickBooks object.
     """
 
     external_id: Optional[str] = FieldInfo(alias="externalId", default=None)

@@ -569,9 +569,9 @@ class QbdCustomer(BaseModel):
     """
 
     custom_fields: List[CustomField] = FieldInfo(alias="customFields")
-    """The custom fields added by the user to this customer object as a data extension.
-
-    These fields are not part of the standard QuickBooks object.
+    """
+    The custom fields for the customer object, added as user-defined data
+    extensions, not included in the standard QuickBooks object.
     """
 
     email: Optional[str] = None
