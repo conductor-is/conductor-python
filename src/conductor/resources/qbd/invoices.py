@@ -153,16 +153,18 @@ class InvoicesResource(SyncAPIResource):
 
           link_to_transaction_ids: IDs of existing transactions that you wish to link to this invoice, such as
               payments applied, credits used, or associated purchase orders. Note that this
-              links entire transactions, not individual lines. If you want to link individual
-              lines in a transaction, use the field `linkToTransaction` on the transaction
-              line instead. You can link both at the transaction level and at the transaction
-              line level in the same request so long as they do _not_ link to the same
-              transaction. Note that QuickBooks will not return any information about these
-              links in this endpoint's response even though they are created. If you need to
-              retrieve which transactions were linked via this field, refetch the invoice and
-              check the `linkedTransactions` field. If fetching a list of invoices, you must
-              also specify the parameter `includeLinkedTransactions` to see the
-              `linkedTransactions` field.
+              links entire transactions, not individual transaction line items. If you want to
+              link individual lines in a transaction, instead use the field
+              `linkToTransaction` on this invoice's line items, if available. You can use both
+              `linkToTransactionIds` (on this invoice) and `linkToTransaction` (on one of its
+              transaction line items) as long as they do NOT link to the same transaction
+              (otherwise, QuickBooks will return an error). QuickBooks will also return an
+              error if you attempt to link a transaction is empty or already closed. Finally,
+              note that QuickBooks will not return any information about these links in this
+              endpoint's response even though they are created. To see the transactions linked
+              via this field, refetch the invoice and check the `linkedTransactions` field. If
+              fetching a list of invoices, you must also specify the parameter
+              `includeLinkedTransactions` to return the `linkedTransactions` field.
 
           memo: A memo or note for this invoice, as entered by the user. This appears in
               reports, but not on the invoice. Use `customerMessage` to add a note to the
@@ -589,16 +591,18 @@ class AsyncInvoicesResource(AsyncAPIResource):
 
           link_to_transaction_ids: IDs of existing transactions that you wish to link to this invoice, such as
               payments applied, credits used, or associated purchase orders. Note that this
-              links entire transactions, not individual lines. If you want to link individual
-              lines in a transaction, use the field `linkToTransaction` on the transaction
-              line instead. You can link both at the transaction level and at the transaction
-              line level in the same request so long as they do _not_ link to the same
-              transaction. Note that QuickBooks will not return any information about these
-              links in this endpoint's response even though they are created. If you need to
-              retrieve which transactions were linked via this field, refetch the invoice and
-              check the `linkedTransactions` field. If fetching a list of invoices, you must
-              also specify the parameter `includeLinkedTransactions` to see the
-              `linkedTransactions` field.
+              links entire transactions, not individual transaction line items. If you want to
+              link individual lines in a transaction, instead use the field
+              `linkToTransaction` on this invoice's line items, if available. You can use both
+              `linkToTransactionIds` (on this invoice) and `linkToTransaction` (on one of its
+              transaction line items) as long as they do NOT link to the same transaction
+              (otherwise, QuickBooks will return an error). QuickBooks will also return an
+              error if you attempt to link a transaction is empty or already closed. Finally,
+              note that QuickBooks will not return any information about these links in this
+              endpoint's response even though they are created. To see the transactions linked
+              via this field, refetch the invoice and check the `linkedTransactions` field. If
+              fetching a list of invoices, you must also specify the parameter
+              `includeLinkedTransactions` to return the `linkedTransactions` field.
 
           memo: A memo or note for this invoice, as entered by the user. This appears in
               reports, but not on the invoice. Use `customerMessage` to add a note to the
