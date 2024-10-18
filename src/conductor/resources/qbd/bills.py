@@ -110,14 +110,15 @@ class BillsResource(SyncAPIResource):
 
           link_to_transaction_ids: IDs of existing transactions that you wish to link to this bill, such as
               payments applied, credits used, or associated purchase orders. Note that this
-              links entire transactions, not individual transaction line items. If you want to
-              link individual lines in a transaction, instead use the field
-              `linkToTransaction` on this bill's line items, if available.
+              links entire transactions, not individual transaction lines. If you want to link
+              individual lines in a transaction, instead use the field `linkToTransactionLine`
+              on this bill's lines, if available.
 
-              You can use both `linkToTransactionIds` (on this bill) and `linkToTransaction`
-              (on its line items) as long as they do NOT link to the same transaction
-              (otherwise, QuickBooks will return an error). QuickBooks will also return an
-              error if you attempt to link a transaction that is empty or already closed.
+              You can use both `linkToTransactionIds` (on this bill) and
+              `linkToTransactionLine` (on its transaction lines) as long as they do NOT link
+              to the same transaction (otherwise, QuickBooks will return an error). QuickBooks
+              will also return an error if you attempt to link a transaction that is empty or
+              already closed.
 
               Note that QuickBooks will not return any information about these links in this
               endpoint's response even though they are created. To see the transactions linked
@@ -455,14 +456,15 @@ class AsyncBillsResource(AsyncAPIResource):
 
           link_to_transaction_ids: IDs of existing transactions that you wish to link to this bill, such as
               payments applied, credits used, or associated purchase orders. Note that this
-              links entire transactions, not individual transaction line items. If you want to
-              link individual lines in a transaction, instead use the field
-              `linkToTransaction` on this bill's line items, if available.
+              links entire transactions, not individual transaction lines. If you want to link
+              individual lines in a transaction, instead use the field `linkToTransactionLine`
+              on this bill's lines, if available.
 
-              You can use both `linkToTransactionIds` (on this bill) and `linkToTransaction`
-              (on its line items) as long as they do NOT link to the same transaction
-              (otherwise, QuickBooks will return an error). QuickBooks will also return an
-              error if you attempt to link a transaction that is empty or already closed.
+              You can use both `linkToTransactionIds` (on this bill) and
+              `linkToTransactionLine` (on its transaction lines) as long as they do NOT link
+              to the same transaction (otherwise, QuickBooks will return an error). QuickBooks
+              will also return an error if you attempt to link a transaction that is empty or
+              already closed.
 
               Note that QuickBooks will not return any information about these links in this
               endpoint's response even though they are created. To see the transactions linked
