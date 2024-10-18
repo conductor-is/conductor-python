@@ -408,8 +408,8 @@ class InvoiceLineGroupInvoiceLine(BaseModel):
 
     custom_fields: List[InvoiceLineGroupInvoiceLineCustomField] = FieldInfo(alias="customFields")
     """
-    The custom fields added by the user to this invoice line object as a data
-    extension. These fields are not part of the standard QuickBooks object.
+    The custom fields for the invoice line object, added as user-defined data
+    extensions, not included in the standard QuickBooks object.
     """
 
     description: Optional[str] = None
@@ -576,8 +576,8 @@ class InvoiceLineGroup(BaseModel):
 
     custom_fields: List[InvoiceLineGroupCustomField] = FieldInfo(alias="customFields")
     """
-    The custom fields added by the user to this invoice line group object as a data
-    extension. These fields are not part of the standard QuickBooks object.
+    The custom fields for the invoice line group object, added as user-defined data
+    extensions, not included in the standard QuickBooks object.
     """
 
     description: Optional[str] = None
@@ -793,8 +793,8 @@ class InvoiceLine(BaseModel):
 
     custom_fields: List[InvoiceLineCustomField] = FieldInfo(alias="customFields")
     """
-    The custom fields added by the user to this invoice line object as a data
-    extension. These fields are not part of the standard QuickBooks object.
+    The custom fields for the invoice line object, added as user-defined data
+    extensions, not included in the standard QuickBooks object.
     """
 
     description: Optional[str] = None
@@ -1170,9 +1170,9 @@ class QbdInvoice(BaseModel):
     """The message to display to the customer on the invoice."""
 
     custom_fields: List[CustomField] = FieldInfo(alias="customFields")
-    """The custom fields added by the user to this invoice object as a data extension.
-
-    These fields are not part of the standard QuickBooks object.
+    """
+    The custom fields for the invoice object, added as user-defined data extensions,
+    not included in the standard QuickBooks object.
     """
 
     document_template: Optional[DocumentTemplate] = FieldInfo(alias="documentTemplate", default=None)
