@@ -303,8 +303,8 @@ class NonInventoryItem(BaseModel):
 
     custom_fields: List[CustomField] = FieldInfo(alias="customFields")
     """
-    The custom fields added by the user to this non-inventory item object as a data
-    extension. These fields are not part of the standard QuickBooks object.
+    The custom fields for the non-inventory item object, added as user-defined data
+    extensions, not included in the standard QuickBooks object.
     """
 
     external_id: Optional[str] = FieldInfo(alias="externalId", default=None)

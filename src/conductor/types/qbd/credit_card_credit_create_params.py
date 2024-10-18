@@ -103,25 +103,62 @@ class ExpenseLineCustomField(TypedDict, total=False):
 
 class ExpenseLine(TypedDict, total=False):
     account_id: Annotated[str, PropertyInfo(alias="accountId")]
+    """The expense account being debited (increased).
+
+    The corresponding account being credited is usually a liability account (e.g.,
+    Accounts Payable) or an asset account (e.g., Cash), depending on the transaction
+    type.
+    """
 
     amount: str
+    """The monetary amount for this expense line, represented as a decimal string."""
 
-    billable_status: Annotated[
-        Literal["billable", "has_been_billed", "not_billable"], PropertyInfo(alias="billableStatus")
+    billing_status: Annotated[
+        Literal["billable", "has_been_billed", "not_billable"], PropertyInfo(alias="billingStatus")
     ]
-    """The billing status of this line item."""
+    """The billing status of this expense line."""
 
     class_id: Annotated[str, PropertyInfo(alias="classId")]
+    """The expense line's class.
 
-    customer_id: Annotated[str, PropertyInfo(alias="customerId")]
+    Classes can be used to categorize objects into meaningful segments, such as
+    department, location, or type of work. In QuickBooks, class tracking is off by
+    default. If a class is specified for the entire parent transaction, it is
+    automatically applied to all expense lines unless overridden here, at the
+    transaction line level.
+    """
 
     custom_fields: Annotated[Iterable[ExpenseLineCustomField], PropertyInfo(alias="customFields")]
+    """
+    The custom fields for the expense line object, added as user-defined data
+    extensions, not included in the standard QuickBooks object.
+    """
 
     memo: str
+    """A memo or note for this expense line, as entered by the user."""
+
+    payee_id: Annotated[str, PropertyInfo(alias="payeeId")]
+    """
+    If `account` refers to an Accounts Payable (A/P) account, `payee` refers to the
+    expense's vendor (not the customer). If `account` refers to any other type of
+    account, `payee` refers to the expense's customer (not the vendor).
+    """
 
     sales_representative_id: Annotated[str, PropertyInfo(alias="salesRepresentativeId")]
+    """The expense line's sales representative.
+
+    Sales representatives can be employees, vendors, or other names in QuickBooks.
+    """
 
     sales_tax_code_id: Annotated[str, PropertyInfo(alias="salesTaxCodeId")]
+    """
+    The sales-tax code associated with this expense line, determining whether it is
+    taxable or non-taxable. It's used to assign a default tax status to all
+    transactions for this expense line. Default codes include "Non" (non-taxable)
+    and "Tax" (taxable), but custom codes can also be created in QuickBooks. If
+    QuickBooks is not set up to charge sales tax (via the "Do You Charge Sales Tax?"
+    preference), it will assign the default non-taxable code to all sales.
+    """
 
 
 class ItemGroupLineCustomField(TypedDict, total=False):

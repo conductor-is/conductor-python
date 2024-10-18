@@ -273,8 +273,8 @@ class ExpenseLine(BaseModel):
 
     custom_fields: List[ExpenseLineCustomField] = FieldInfo(alias="customFields")
     """
-    The custom fields added by the user to this expense line object as a data
-    extension. These fields are not part of the standard QuickBooks object.
+    The custom fields for the expense line object, added as user-defined data
+    extensions, not included in the standard QuickBooks object.
     """
 
     memo: Optional[str] = None
@@ -564,10 +564,9 @@ class ItemGroupLineItemLine(BaseModel):
     """The customer or customer-job associated with this item line."""
 
     custom_fields: List[ItemGroupLineItemLineCustomField] = FieldInfo(alias="customFields")
-    """The custom fields added by the user to this item line object as a data
-    extension.
-
-    These fields are not part of the standard QuickBooks object.
+    """
+    The custom fields for the item line object, added as user-defined data
+    extensions, not included in the standard QuickBooks object.
     """
 
     description: Optional[str] = None
@@ -687,8 +686,8 @@ class ItemGroupLine(BaseModel):
 
     custom_fields: List[ItemGroupLineCustomField] = FieldInfo(alias="customFields")
     """
-    The custom fields added by the user to this item group line object as a data
-    extension. These fields are not part of the standard QuickBooks object.
+    The custom fields for the item group line object, added as user-defined data
+    extensions, not included in the standard QuickBooks object.
     """
 
     description: Optional[str] = None
@@ -945,10 +944,9 @@ class ItemLine(BaseModel):
     """The customer or customer-job associated with this item line."""
 
     custom_fields: List[ItemLineCustomField] = FieldInfo(alias="customFields")
-    """The custom fields added by the user to this item line object as a data
-    extension.
-
-    These fields are not part of the standard QuickBooks object.
+    """
+    The custom fields for the item line object, added as user-defined data
+    extensions, not included in the standard QuickBooks object.
     """
 
     description: Optional[str] = None
@@ -1230,9 +1228,9 @@ class QbdBill(BaseModel):
     """
 
     custom_fields: List[CustomField] = FieldInfo(alias="customFields")
-    """The custom fields added by the user to this bill object as a data extension.
-
-    These fields are not part of the standard QuickBooks object.
+    """
+    The custom fields for the bill object, added as user-defined data extensions,
+    not included in the standard QuickBooks object.
     """
 
     due_date: Optional[date] = FieldInfo(alias="dueDate", default=None)
