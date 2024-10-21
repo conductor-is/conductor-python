@@ -299,16 +299,43 @@ class InvoiceLineGroupCustomField(TypedDict, total=False):
 
 class InvoiceLineGroup(TypedDict, total=False):
     item_group_id: Required[Annotated[str, PropertyInfo(alias="itemGroupId")]]
+    """
+    The invoice line group's item-group, representing a predefined set of items
+    bundled because they are commonly purchased together or grouped for faster
+    entry.
+    """
 
     custom_fields: Annotated[Iterable[InvoiceLineGroupCustomField], PropertyInfo(alias="customFields")]
+    """
+    The custom fields for the invoice line group object, added as user-defined data
+    extensions, not included in the standard QuickBooks object.
+    """
 
     inventory_site_id: Annotated[str, PropertyInfo(alias="inventorySiteId")]
+    """
+    The site location where inventory for the item in this invoice line group is
+    stored.
+    """
 
     inventory_site_location_id: Annotated[str, PropertyInfo(alias="inventorySiteLocationId")]
+    """
+    The specific location within the inventory site where the item-group in this
+    invoice line group is stored, such as a bin or shelf.
+    """
 
     quantity: float
+    """The quantity of the item in this invoice line group.
+
+    If both `quantity` and `amount` are specified but not `rate`, QuickBooks will
+    calculate `rate`. If `quantity` and `rate` are specified but not `amount`,
+    QuickBooks will calculate `amount`.
+    """
 
     unit_of_measure: Annotated[str, PropertyInfo(alias="unitOfMeasure")]
+    """The unit of measure used for the `quantity` in this invoice line group.
+
+    Must be a valid unit within the item's available units of measure.
+    """
 
 
 class InvoiceLineCustomField(TypedDict, total=False):
