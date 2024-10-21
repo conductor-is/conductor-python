@@ -424,14 +424,17 @@ class InvoiceLineGroupInvoiceLine(BaseModel):
     """
 
     inventory_site: Optional[InvoiceLineGroupInvoiceLineInventorySite] = FieldInfo(alias="inventorySite", default=None)
-    """The site location where inventory for the item in this invoice line is stored."""
+    """
+    The site location where inventory for the item associated with this invoice line
+    is stored.
+    """
 
     inventory_site_location: Optional[InvoiceLineGroupInvoiceLineInventorySiteLocation] = FieldInfo(
         alias="inventorySiteLocation", default=None
     )
     """
-    The specific location within the inventory site where the item in this invoice
-    line is stored, such as a bin or shelf.
+    The specific location (e.g., bin or shelf) within the inventory site where the
+    item associated with this invoice line is stored.
     """
 
     item: Optional[InvoiceLineGroupInvoiceLineItem] = None
@@ -810,14 +813,17 @@ class InvoiceLine(BaseModel):
     """
 
     inventory_site: Optional[InvoiceLineInventorySite] = FieldInfo(alias="inventorySite", default=None)
-    """The site location where inventory for the item in this invoice line is stored."""
+    """
+    The site location where inventory for the item associated with this invoice line
+    is stored.
+    """
 
     inventory_site_location: Optional[InvoiceLineInventorySiteLocation] = FieldInfo(
         alias="inventorySiteLocation", default=None
     )
     """
-    The specific location within the inventory site where the item in this invoice
-    line is stored, such as a bin or shelf.
+    The specific location (e.g., bin or shelf) within the inventory site where the
+    item associated with this invoice line is stored.
     """
 
     item: Optional[InvoiceLineItem] = None
