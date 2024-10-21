@@ -16,7 +16,7 @@ __all__ = [
     "ItemGroupLineCustomField",
     "ItemLine",
     "ItemLineCustomField",
-    "ItemLineLinkToTransactionLineItem",
+    "ItemLineLinkToTransactionLine",
 ]
 
 
@@ -233,12 +233,7 @@ class ItemGroupLine(TypedDict, total=False):
     """
 
     quantity: float
-    """The quantity of the item in this item group line.
-
-    If both `quantity` and `amount` are specified but not `rate`, QuickBooks will
-    calculate `rate`. If `quantity` and `rate` are specified but not `amount`,
-    QuickBooks will calculate `amount`.
-    """
+    """The quantity of the item group associated with this item group line."""
 
     unit_of_measure: Annotated[str, PropertyInfo(alias="unitOfMeasure")]
     """The unit of measure used for the `quantity` in this item group line.
@@ -272,7 +267,7 @@ class ItemLineCustomField(TypedDict, total=False):
     """
 
 
-class ItemLineLinkToTransactionLineItem(TypedDict, total=False):
+class ItemLineLinkToTransactionLine(TypedDict, total=False):
     transaction_id: Required[Annotated[str, PropertyInfo(alias="transactionId")]]
 
     transaction_line_id: Required[Annotated[str, PropertyInfo(alias="transactionLineId")]]
@@ -280,47 +275,147 @@ class ItemLineLinkToTransactionLineItem(TypedDict, total=False):
 
 class ItemLine(TypedDict, total=False):
     amount: str
+    """The monetary amount for this item line, represented as a decimal string.
 
-    billable_status: Annotated[
-        Literal["billable", "has_been_billed", "not_billable"], PropertyInfo(alias="billableStatus")
+    If both `quantity` and `cost` are specified but not `amount`, QuickBooks will
+    use them to calculate `amount`. If `amount`, `cost`, and `quantity` are all
+    unspecified, then QuickBooks will calculate `amount` based on a `quantity` of 1
+    and the suggested `cost`.
+    """
+
+    billing_status: Annotated[
+        Literal["billable", "has_been_billed", "not_billable"], PropertyInfo(alias="billingStatus")
     ]
-    """The billing status of this line item."""
+    """The billing status of this item line."""
 
     class_id: Annotated[str, PropertyInfo(alias="classId")]
+    """The item line's class.
+
+    Classes can be used to categorize objects into meaningful segments, such as
+    department, location, or type of work. In QuickBooks, class tracking is off by
+    default. If a class is specified for the entire parent transaction, it is
+    automatically applied to all item lines unless overridden here, at the
+    transaction line level.
+    """
 
     cost: str
+    """The cost of this item line, represented as a decimal string.
+
+    If both `quantity` and `amount` are specified but not `cost`, QuickBooks will
+    use them to calculate `cost`.
+    """
 
     customer_id: Annotated[str, PropertyInfo(alias="customerId")]
+    """The customer or customer-job associated with this item line."""
 
     custom_fields: Annotated[Iterable[ItemLineCustomField], PropertyInfo(alias="customFields")]
+    """
+    The custom fields for the item line object, added as user-defined data
+    extensions, not included in the standard QuickBooks object.
+    """
 
     description: str
+    """A description of this item line."""
 
-    expiration_date: Annotated[str, PropertyInfo(alias="expirationDate")]
+    expiration_date: Annotated[Union[str, date], PropertyInfo(alias="expirationDate", format="iso8601")]
+    """
+    The expiration date for the serial number or lot number of the item associated
+    with this item line, in ISO 8601 format (YYYY-MM-DD). This is particularly
+    relevant for perishable or time-sensitive inventory items. Note that this field
+    is only supported on QuickBooks Desktop 2023 or later.
+    """
 
     inventory_site_id: Annotated[str, PropertyInfo(alias="inventorySiteId")]
-    """The ID of the inventory site where the item is stored."""
+    """
+    The site location where inventory for the item associated with this item line is
+    stored.
+    """
 
     inventory_site_location_id: Annotated[str, PropertyInfo(alias="inventorySiteLocationId")]
-    """The ID of the inventory site location where the item is stored."""
+    """
+    The specific location (e.g., bin or shelf) within the inventory site where the
+    item associated with this item line is stored.
+    """
 
     item_id: Annotated[str, PropertyInfo(alias="itemId")]
+    """The item associated with this item line.
 
-    link_to_transaction_line_item: Annotated[
-        ItemLineLinkToTransactionLineItem, PropertyInfo(alias="linkToTransactionLineItem")
-    ]
+    This can refer to any good or service that the business buys or sells, including
+    item types such as a service item, inventory item, or special calculation item
+    like a discount item or sales-tax item.
+    """
+
+    link_to_transaction_line: Annotated[ItemLineLinkToTransactionLine, PropertyInfo(alias="linkToTransactionLine")]
+    """An existing transaction line that you wish to link to this item line.
+
+    Note that this only links to a single transaction line item, not an entire
+    transaction. If you want to link an entire transaction and bring in all its
+    lines, instead use the field `linkToTransactionIds` on the parent transaction,
+    if available. If the parent transaction is a bill or an item receipt, you can
+    only link to purchase orders; QuickBooks does not support linking these
+    transactions to other transaction types.
+
+    If you use `linkToTransactionLine` on this item line, you cannot use the field
+    `item` on this line (QuickBooks will return an error) because this field brings
+    in all of the item information you need. You can, however, specify whatever
+    `quantity` or `rate` that you want, or any other transaction line element other
+    than `item`.
+
+    If the parent transaction supports the `linkToTransactionIds` field, you can use
+    both `linkToTransactionLine` (on this item line) and `linkToTransactionIds` (on
+    its parent transaction) in the same request as long as they do NOT link to the
+    same transaction (otherwise, QuickBooks will return an error). QuickBooks will
+    also return an error if you attempt to link a transaction that is empty or
+    already closed.
+
+    Note that QuickBooks will not return any information about these links in this
+    endpoint's response even though they are created. To see the transaction lines
+    linked via this field, refetch the parent transaction and check the
+    `linkedTransactions` field. If fetching a list of transactions, you must also
+    specify the parameter `includeLinkedTransactions` to return the
+    `linkedTransactions` field.
+    """
 
     lot_number: Annotated[str, PropertyInfo(alias="lotNumber")]
+    """The lot number of the item associated with this item line.
+
+    Used for tracking groups of inventory items that are purchased or manufactured
+    together.
+    """
 
     override_item_account_id: Annotated[str, PropertyInfo(alias="overrideItemAccountId")]
+    """
+    The account to use for this item line, overriding the default account associated
+    with the item.
+    """
 
     quantity: float
+    """The quantity of the item associated with this item line."""
 
     sales_representative_id: Annotated[str, PropertyInfo(alias="salesRepresentativeId")]
+    """The item line's sales representative.
+
+    Sales representatives can be employees, vendors, or other names in QuickBooks.
+    """
 
     sales_tax_code_id: Annotated[str, PropertyInfo(alias="salesTaxCodeId")]
+    """
+    The sales-tax code associated with this item line, determining whether it is
+    taxable or non-taxable. It's used to assign a default tax status to all
+    transactions for this item line. Default codes include "Non" (non-taxable) and
+    "Tax" (taxable), but custom codes can also be created in QuickBooks. If
+    QuickBooks is not set up to charge sales tax (via the "Do You Charge Sales Tax?"
+    preference), it will assign the default non-taxable code to all sales.
+    """
 
     serial_number: Annotated[str, PropertyInfo(alias="serialNumber")]
-    """The serial number of the item."""
+    """The serial number of the item associated with this item line.
+
+    This is used for tracking individual units of serialized inventory items.
+    """
 
     unit_of_measure: Annotated[str, PropertyInfo(alias="unitOfMeasure")]
+    """The unit of measure used for the `quantity` in this item line.
+
+    Must be a valid unit within the item's available units of measure.
+    """
