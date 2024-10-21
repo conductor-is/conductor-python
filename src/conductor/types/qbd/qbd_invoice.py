@@ -596,9 +596,10 @@ class InvoiceLineGroup(BaseModel):
     """
 
     item_group: InvoiceLineGroupItemGroup = FieldInfo(alias="itemGroup")
-    """The item group associated with this invoice line group.
-
-    Item groups represent items that are grouped together for fast entry.
+    """
+    The invoice line group's item-group, representing a predefined set of items
+    bundled because they are commonly purchased together or grouped for faster
+    entry.
     """
 
     object_type: Literal["qbd_invoice_line_group"] = FieldInfo(alias="objectType")

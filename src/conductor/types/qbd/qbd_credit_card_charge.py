@@ -691,9 +691,9 @@ class ItemGroupLine(BaseModel):
     """A description of this item group line."""
 
     item_group: ItemGroupLineItemGroup = FieldInfo(alias="itemGroup")
-    """The item group associated with this item group line.
-
-    Item groups represent items that are grouped together for fast entry.
+    """
+    The item group line's item-group, representing a predefined set of items bundled
+    because they are commonly purchased together or grouped for faster entry.
     """
 
     item_lines: List[ItemGroupLineItemLine] = FieldInfo(alias="itemLines")
@@ -1136,8 +1136,9 @@ class QbdCreditCardCharge(BaseModel):
 
     item_group_lines: List[ItemGroupLine] = FieldInfo(alias="itemGroupLines")
     """
-    The credit card charge's item-group lines, each representing a predefined group
-    of items purchased together.
+    The credit card charge's item-group lines, each representing a predefined set of
+    items bundled because they are commonly purchased together or grouped for faster
+    entry.
     """
 
     item_lines: List[ItemLine] = FieldInfo(alias="itemLines")
