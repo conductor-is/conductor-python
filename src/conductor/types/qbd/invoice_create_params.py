@@ -324,12 +324,7 @@ class InvoiceLineGroup(TypedDict, total=False):
     """
 
     quantity: float
-    """The quantity of the item in this invoice line group.
-
-    If both `quantity` and `amount` are specified but not `rate`, QuickBooks will
-    calculate `rate`. If `quantity` and `rate` are specified but not `amount`,
-    QuickBooks will calculate `amount`.
-    """
+    """The quantity of the item group associated with this invoice line group."""
 
     unit_of_measure: Annotated[str, PropertyInfo(alias="unitOfMeasure")]
     """The unit of measure used for the `quantity` in this invoice line group.
@@ -443,7 +438,7 @@ class InvoiceLine(TypedDict, total=False):
     """
 
     lot_number: Annotated[str, PropertyInfo(alias="lotNumber")]
-    """The lot number of the item in this invoice line.
+    """The lot number of the item associated with this invoice line.
 
     Used for tracking groups of inventory items that are purchased or manufactured
     together.
@@ -494,18 +489,15 @@ class InvoiceLine(TypedDict, total=False):
     """
 
     quantity: float
-    """The quantity of the item in this invoice line.
-
-    If both `quantity` and `amount` are specified but not `rate`, QuickBooks will
-    calculate `rate`. If `quantity` and `rate` are specified but not `amount`,
-    QuickBooks will calculate `amount`.
-    """
+    """The quantity of the item associated with this invoice line."""
 
     rate: str
     """The price per unit for this invoice line.
 
     If both `rate` and `amount` are specified, `rate` will be ignored and
-    recalculated based on `quantity` and `amount`. Represented as a decimal string.
+    recalculated based on `quantity` and `amount`. If `rate` is not specified,
+    QuickBooks will calculate it based on `quantity` and `amount`. Represented as a
+    decimal string.
     """
 
     rate_percent: Annotated[str, PropertyInfo(alias="ratePercent")]
@@ -525,7 +517,7 @@ class InvoiceLine(TypedDict, total=False):
     """
 
     serial_number: Annotated[str, PropertyInfo(alias="serialNumber")]
-    """The serial number of the item in this invoice line.
+    """The serial number of the item associated with this invoice line.
 
     This is used for tracking individual units of serialized inventory items.
     """
