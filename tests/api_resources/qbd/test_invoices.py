@@ -55,7 +55,7 @@ class TestInvoices:
             external_id="12345678-abcd-1234-abcd-1234567890ab",
             invoice_line_groups=[
                 {
-                    "item_group_id": "itemGroupId",
+                    "item_group_id": "80000011-1234567890",
                     "custom_fields": [
                         {
                             "name": "Customer Rating",
@@ -73,13 +73,13 @@ class TestInvoices:
                             "value": "Premium",
                         },
                     ],
-                    "inventory_site_id": "inventorySiteId",
-                    "inventory_site_location_id": "inventorySiteLocationId",
-                    "quantity": 0,
-                    "unit_of_measure": "unitOfMeasure",
+                    "inventory_site_id": "80000001-1234567890",
+                    "inventory_site_location_id": "80000002-1234567890",
+                    "quantity": 5,
+                    "unit_of_measure": "Each",
                 },
                 {
-                    "item_group_id": "itemGroupId",
+                    "item_group_id": "80000011-1234567890",
                     "custom_fields": [
                         {
                             "name": "Customer Rating",
@@ -97,13 +97,13 @@ class TestInvoices:
                             "value": "Premium",
                         },
                     ],
-                    "inventory_site_id": "inventorySiteId",
-                    "inventory_site_location_id": "inventorySiteLocationId",
-                    "quantity": 0,
-                    "unit_of_measure": "unitOfMeasure",
+                    "inventory_site_id": "80000001-1234567890",
+                    "inventory_site_location_id": "80000002-1234567890",
+                    "quantity": 5,
+                    "unit_of_measure": "Each",
                 },
                 {
-                    "item_group_id": "itemGroupId",
+                    "item_group_id": "80000011-1234567890",
                     "custom_fields": [
                         {
                             "name": "Customer Rating",
@@ -121,10 +121,10 @@ class TestInvoices:
                             "value": "Premium",
                         },
                     ],
-                    "inventory_site_id": "inventorySiteId",
-                    "inventory_site_location_id": "inventorySiteLocationId",
-                    "quantity": 0,
-                    "unit_of_measure": "unitOfMeasure",
+                    "inventory_site_id": "80000001-1234567890",
+                    "inventory_site_location_id": "80000002-1234567890",
+                    "quantity": 5,
+                    "unit_of_measure": "Each",
                 },
             ],
             invoice_lines=[
@@ -470,7 +470,7 @@ class TestAsyncInvoices:
             external_id="12345678-abcd-1234-abcd-1234567890ab",
             invoice_line_groups=[
                 {
-                    "item_group_id": "itemGroupId",
+                    "item_group_id": "80000011-1234567890",
                     "custom_fields": [
                         {
                             "name": "Customer Rating",
@@ -488,13 +488,13 @@ class TestAsyncInvoices:
                             "value": "Premium",
                         },
                     ],
-                    "inventory_site_id": "inventorySiteId",
-                    "inventory_site_location_id": "inventorySiteLocationId",
-                    "quantity": 0,
-                    "unit_of_measure": "unitOfMeasure",
+                    "inventory_site_id": "80000001-1234567890",
+                    "inventory_site_location_id": "80000002-1234567890",
+                    "quantity": 5,
+                    "unit_of_measure": "Each",
                 },
                 {
-                    "item_group_id": "itemGroupId",
+                    "item_group_id": "80000011-1234567890",
                     "custom_fields": [
                         {
                             "name": "Customer Rating",
@@ -512,13 +512,13 @@ class TestAsyncInvoices:
                             "value": "Premium",
                         },
                     ],
-                    "inventory_site_id": "inventorySiteId",
-                    "inventory_site_location_id": "inventorySiteLocationId",
-                    "quantity": 0,
-                    "unit_of_measure": "unitOfMeasure",
+                    "inventory_site_id": "80000001-1234567890",
+                    "inventory_site_location_id": "80000002-1234567890",
+                    "quantity": 5,
+                    "unit_of_measure": "Each",
                 },
                 {
-                    "item_group_id": "itemGroupId",
+                    "item_group_id": "80000011-1234567890",
                     "custom_fields": [
                         {
                             "name": "Customer Rating",
@@ -536,10 +536,10 @@ class TestAsyncInvoices:
                             "value": "Premium",
                         },
                     ],
-                    "inventory_site_id": "inventorySiteId",
-                    "inventory_site_location_id": "inventorySiteLocationId",
-                    "quantity": 0,
-                    "unit_of_measure": "unitOfMeasure",
+                    "inventory_site_id": "80000001-1234567890",
+                    "inventory_site_location_id": "80000002-1234567890",
+                    "quantity": 5,
+                    "unit_of_measure": "Each",
                 },
             ],
             invoice_lines=[
