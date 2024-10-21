@@ -581,14 +581,17 @@ class ItemGroupLineItemLine(BaseModel):
     """
 
     inventory_site: Optional[ItemGroupLineItemLineInventorySite] = FieldInfo(alias="inventorySite", default=None)
-    """The site location where inventory for the item in this item line is stored."""
+    """
+    The site location where inventory for the item associated with this item line is
+    stored.
+    """
 
     inventory_site_location: Optional[ItemGroupLineItemLineInventorySiteLocation] = FieldInfo(
         alias="inventorySiteLocation", default=None
     )
     """
-    The specific location within the inventory site where the item in this item line
-    is stored, such as a bin or shelf.
+    The specific location (e.g., bin or shelf) within the inventory site where the
+    item associated with this item line is stored.
     """
 
     item: Optional[ItemGroupLineItemLineItem] = None
@@ -961,14 +964,17 @@ class ItemLine(BaseModel):
     """
 
     inventory_site: Optional[ItemLineInventorySite] = FieldInfo(alias="inventorySite", default=None)
-    """The site location where inventory for the item in this item line is stored."""
+    """
+    The site location where inventory for the item associated with this item line is
+    stored.
+    """
 
     inventory_site_location: Optional[ItemLineInventorySiteLocation] = FieldInfo(
         alias="inventorySiteLocation", default=None
     )
     """
-    The specific location within the inventory site where the item in this item line
-    is stored, such as a bin or shelf.
+    The specific location (e.g., bin or shelf) within the inventory site where the
+    item associated with this item line is stored.
     """
 
     item: Optional[ItemLineItem] = None
