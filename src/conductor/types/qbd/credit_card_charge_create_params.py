@@ -222,14 +222,14 @@ class ItemGroupLine(TypedDict, total=False):
 
     inventory_site_id: Annotated[str, PropertyInfo(alias="inventorySiteId")]
     """
-    The site location where inventory for the item group in this item group line is
-    stored.
+    The site location where inventory for the item group associated with this item
+    group line is stored.
     """
 
     inventory_site_location_id: Annotated[str, PropertyInfo(alias="inventorySiteLocationId")]
     """
-    The specific location within the inventory site where the item group in this
-    item group line is stored, such as a bin or shelf.
+    The specific location (e.g., bin or shelf) within the inventory site where the
+    item group associated with this item group line is stored.
     """
 
     quantity: float
