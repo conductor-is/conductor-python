@@ -532,7 +532,13 @@ class ItemGroupLineItemLine(BaseModel):
     """
 
     amount: Optional[str] = None
-    """The monetary amount for this item line, represented as a decimal string."""
+    """The monetary amount for this item line, represented as a decimal string.
+
+    If both `quantity` and `cost` are specified but not `amount`, QuickBooks will
+    use them to calculate `amount`. If `amount`, `cost`, and `quantity` are all
+    unspecified, then QuickBooks will calculate `amount` based on a `quantity` of 1
+    and the suggested `cost`.
+    """
 
     billing_status: Optional[Literal["billable", "has_been_billed", "not_billable"]] = FieldInfo(
         alias="billingStatus", default=None
@@ -552,9 +558,8 @@ class ItemGroupLineItemLine(BaseModel):
     cost: Optional[str] = None
     """The cost of this item line, represented as a decimal string.
 
-    If both `quantity` and `amount` are specified, QuickBooks will use them to
-    calculate `cost`. Likewise, if both `quantity` and `cost` are specified,
-    QuickBooks will use them to calculate the `amount`.
+    If both `quantity` and `amount` are specified but not `cost`, QuickBooks will
+    use them to calculate `cost`.
     """
 
     customer: Optional[ItemGroupLineItemLineCustomer] = None
@@ -571,10 +576,10 @@ class ItemGroupLineItemLine(BaseModel):
 
     expiration_date: Optional[date] = FieldInfo(alias="expirationDate", default=None)
     """
-    The expiration date for the serial number or lot number of the item in this item
-    line, in ISO 8601 format (YYYY-MM-DD). This is particularly relevant for
-    perishable or time-sensitive inventory items. Note that this field is only
-    supported on QuickBooks Desktop 2023 or later.
+    The expiration date for the serial number or lot number of the item associated
+    with this item line, in ISO 8601 format (YYYY-MM-DD). This is particularly
+    relevant for perishable or time-sensitive inventory items. Note that this field
+    is only supported on QuickBooks Desktop 2023 or later.
     """
 
     inventory_site: Optional[ItemGroupLineItemLineInventorySite] = FieldInfo(alias="inventorySite", default=None)
@@ -600,7 +605,7 @@ class ItemGroupLineItemLine(BaseModel):
     """
 
     lot_number: Optional[str] = FieldInfo(alias="lotNumber", default=None)
-    """The lot number of the item in this item line.
+    """The lot number of the item associated with this item line.
 
     Used for tracking groups of inventory items that are purchased or manufactured
     together.
@@ -623,12 +628,7 @@ class ItemGroupLineItemLine(BaseModel):
     """
 
     quantity: Optional[float] = None
-    """The quantity of the item in this item line.
-
-    If both `quantity` and `amount` are specified but not `rate`, QuickBooks will
-    calculate `rate`. If `quantity` and `rate` are specified but not `amount`,
-    QuickBooks will calculate `amount`.
-    """
+    """The quantity of the item associated with this item line."""
 
     sales_representative: Optional[ItemGroupLineItemLineSalesRepresentative] = FieldInfo(
         alias="salesRepresentative", default=None
@@ -649,7 +649,7 @@ class ItemGroupLineItemLine(BaseModel):
     """
 
     serial_number: Optional[str] = FieldInfo(alias="serialNumber", default=None)
-    """The serial number of the item in this item line.
+    """The serial number of the item associated with this item line.
 
     This is used for tracking individual units of serialized inventory items.
     """
@@ -722,12 +722,7 @@ class ItemGroupLine(BaseModel):
     """
 
     quantity: Optional[float] = None
-    """The quantity of the item in this item group line.
-
-    If both `quantity` and `amount` are specified but not `rate`, QuickBooks will
-    calculate `rate`. If `quantity` and `rate` are specified but not `amount`,
-    QuickBooks will calculate `amount`.
-    """
+    """The quantity of the item group associated with this item group line."""
 
     total_amount: str = FieldInfo(alias="totalAmount")
     """
@@ -915,7 +910,13 @@ class ItemLine(BaseModel):
     """
 
     amount: Optional[str] = None
-    """The monetary amount for this item line, represented as a decimal string."""
+    """The monetary amount for this item line, represented as a decimal string.
+
+    If both `quantity` and `cost` are specified but not `amount`, QuickBooks will
+    use them to calculate `amount`. If `amount`, `cost`, and `quantity` are all
+    unspecified, then QuickBooks will calculate `amount` based on a `quantity` of 1
+    and the suggested `cost`.
+    """
 
     billing_status: Optional[Literal["billable", "has_been_billed", "not_billable"]] = FieldInfo(
         alias="billingStatus", default=None
@@ -935,9 +936,8 @@ class ItemLine(BaseModel):
     cost: Optional[str] = None
     """The cost of this item line, represented as a decimal string.
 
-    If both `quantity` and `amount` are specified, QuickBooks will use them to
-    calculate `cost`. Likewise, if both `quantity` and `cost` are specified,
-    QuickBooks will use them to calculate the `amount`.
+    If both `quantity` and `amount` are specified but not `cost`, QuickBooks will
+    use them to calculate `cost`.
     """
 
     customer: Optional[ItemLineCustomer] = None
@@ -954,10 +954,10 @@ class ItemLine(BaseModel):
 
     expiration_date: Optional[date] = FieldInfo(alias="expirationDate", default=None)
     """
-    The expiration date for the serial number or lot number of the item in this item
-    line, in ISO 8601 format (YYYY-MM-DD). This is particularly relevant for
-    perishable or time-sensitive inventory items. Note that this field is only
-    supported on QuickBooks Desktop 2023 or later.
+    The expiration date for the serial number or lot number of the item associated
+    with this item line, in ISO 8601 format (YYYY-MM-DD). This is particularly
+    relevant for perishable or time-sensitive inventory items. Note that this field
+    is only supported on QuickBooks Desktop 2023 or later.
     """
 
     inventory_site: Optional[ItemLineInventorySite] = FieldInfo(alias="inventorySite", default=None)
@@ -983,7 +983,7 @@ class ItemLine(BaseModel):
     """
 
     lot_number: Optional[str] = FieldInfo(alias="lotNumber", default=None)
-    """The lot number of the item in this item line.
+    """The lot number of the item associated with this item line.
 
     Used for tracking groups of inventory items that are purchased or manufactured
     together.
@@ -1006,12 +1006,7 @@ class ItemLine(BaseModel):
     """
 
     quantity: Optional[float] = None
-    """The quantity of the item in this item line.
-
-    If both `quantity` and `amount` are specified but not `rate`, QuickBooks will
-    calculate `rate`. If `quantity` and `rate` are specified but not `amount`,
-    QuickBooks will calculate `amount`.
-    """
+    """The quantity of the item associated with this item line."""
 
     sales_representative: Optional[ItemLineSalesRepresentative] = FieldInfo(alias="salesRepresentative", default=None)
     """The item line's sales representative.
@@ -1030,7 +1025,7 @@ class ItemLine(BaseModel):
     """
 
     serial_number: Optional[str] = FieldInfo(alias="serialNumber", default=None)
-    """The serial number of the item in this item line.
+    """The serial number of the item associated with this item line.
 
     This is used for tracking individual units of serialized inventory items.
     """

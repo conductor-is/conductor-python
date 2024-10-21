@@ -417,10 +417,10 @@ class InvoiceLineGroupInvoiceLine(BaseModel):
 
     expiration_date: Optional[date] = FieldInfo(alias="expirationDate", default=None)
     """
-    The expiration date for the serial number or lot number of the item in this
-    invoice line, in ISO 8601 format (YYYY-MM-DD). This is particularly relevant for
-    perishable or time-sensitive inventory items. Note that this field is only
-    supported on QuickBooks Desktop 2023 or later.
+    The expiration date for the serial number or lot number of the item associated
+    with this invoice line, in ISO 8601 format (YYYY-MM-DD). This is particularly
+    relevant for perishable or time-sensitive inventory items. Note that this field
+    is only supported on QuickBooks Desktop 2023 or later.
     """
 
     inventory_site: Optional[InvoiceLineGroupInvoiceLineInventorySite] = FieldInfo(alias="inventorySite", default=None)
@@ -446,7 +446,7 @@ class InvoiceLineGroupInvoiceLine(BaseModel):
     """
 
     lot_number: Optional[str] = FieldInfo(alias="lotNumber", default=None)
-    """The lot number of the item in this invoice line.
+    """The lot number of the item associated with this invoice line.
 
     Used for tracking groups of inventory items that are purchased or manufactured
     together.
@@ -489,18 +489,15 @@ class InvoiceLineGroupInvoiceLine(BaseModel):
     """
 
     quantity: Optional[float] = None
-    """The quantity of the item in this invoice line.
-
-    If both `quantity` and `amount` are specified but not `rate`, QuickBooks will
-    calculate `rate`. If `quantity` and `rate` are specified but not `amount`,
-    QuickBooks will calculate `amount`.
-    """
+    """The quantity of the item associated with this invoice line."""
 
     rate: Optional[str] = None
     """The price per unit for this invoice line.
 
     If both `rate` and `amount` are specified, `rate` will be ignored and
-    recalculated based on `quantity` and `amount`. Represented as a decimal string.
+    recalculated based on `quantity` and `amount`. If `rate` is not specified,
+    QuickBooks will calculate it based on `quantity` and `amount`. Represented as a
+    decimal string.
     """
 
     rate_percent: Optional[str] = FieldInfo(alias="ratePercent", default=None)
@@ -520,7 +517,7 @@ class InvoiceLineGroupInvoiceLine(BaseModel):
     """
 
     serial_number: Optional[str] = FieldInfo(alias="serialNumber", default=None)
-    """The serial number of the item in this invoice line.
+    """The serial number of the item associated with this invoice line.
 
     This is used for tracking individual units of serialized inventory items.
     """
@@ -622,12 +619,7 @@ class InvoiceLineGroup(BaseModel):
     """
 
     quantity: Optional[float] = None
-    """The quantity of the item in this invoice line group.
-
-    If both `quantity` and `amount` are specified but not `rate`, QuickBooks will
-    calculate `rate`. If `quantity` and `rate` are specified but not `amount`,
-    QuickBooks will calculate `amount`.
-    """
+    """The quantity of the item group associated with this invoice line group."""
 
     total_amount: str = FieldInfo(alias="totalAmount")
     """
@@ -806,10 +798,10 @@ class InvoiceLine(BaseModel):
 
     expiration_date: Optional[date] = FieldInfo(alias="expirationDate", default=None)
     """
-    The expiration date for the serial number or lot number of the item in this
-    invoice line, in ISO 8601 format (YYYY-MM-DD). This is particularly relevant for
-    perishable or time-sensitive inventory items. Note that this field is only
-    supported on QuickBooks Desktop 2023 or later.
+    The expiration date for the serial number or lot number of the item associated
+    with this invoice line, in ISO 8601 format (YYYY-MM-DD). This is particularly
+    relevant for perishable or time-sensitive inventory items. Note that this field
+    is only supported on QuickBooks Desktop 2023 or later.
     """
 
     inventory_site: Optional[InvoiceLineInventorySite] = FieldInfo(alias="inventorySite", default=None)
@@ -835,7 +827,7 @@ class InvoiceLine(BaseModel):
     """
 
     lot_number: Optional[str] = FieldInfo(alias="lotNumber", default=None)
-    """The lot number of the item in this invoice line.
+    """The lot number of the item associated with this invoice line.
 
     Used for tracking groups of inventory items that are purchased or manufactured
     together.
@@ -878,18 +870,15 @@ class InvoiceLine(BaseModel):
     """
 
     quantity: Optional[float] = None
-    """The quantity of the item in this invoice line.
-
-    If both `quantity` and `amount` are specified but not `rate`, QuickBooks will
-    calculate `rate`. If `quantity` and `rate` are specified but not `amount`,
-    QuickBooks will calculate `amount`.
-    """
+    """The quantity of the item associated with this invoice line."""
 
     rate: Optional[str] = None
     """The price per unit for this invoice line.
 
     If both `rate` and `amount` are specified, `rate` will be ignored and
-    recalculated based on `quantity` and `amount`. Represented as a decimal string.
+    recalculated based on `quantity` and `amount`. If `rate` is not specified,
+    QuickBooks will calculate it based on `quantity` and `amount`. Represented as a
+    decimal string.
     """
 
     rate_percent: Optional[str] = FieldInfo(alias="ratePercent", default=None)
@@ -909,7 +898,7 @@ class InvoiceLine(BaseModel):
     """
 
     serial_number: Optional[str] = FieldInfo(alias="serialNumber", default=None)
-    """The serial number of the item in this invoice line.
+    """The serial number of the item associated with this invoice line.
 
     This is used for tracking individual units of serialized inventory items.
     """
