@@ -55,8 +55,9 @@ class CreditCardCreditCreateParams(TypedDict, total=False):
 
     item_group_lines: Annotated[Iterable[ItemGroupLine], PropertyInfo(alias="itemGroupLines")]
     """
-    The credit card credit's item-group lines, each representing a predefined group
-    of items purchased together.
+    The credit card credit's item-group lines, each representing a predefined set of
+    items bundled because they are commonly purchased together or grouped for faster
+    entry.
     """
 
     item_lines: Annotated[Iterable[ItemLine], PropertyInfo(alias="itemLines")]
