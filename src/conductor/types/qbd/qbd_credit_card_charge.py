@@ -692,7 +692,7 @@ class ItemGroupLine(BaseModel):
 
     item_group: ItemGroupLineItemGroup = FieldInfo(alias="itemGroup")
     """
-    The item group line's item-group, representing a predefined set of items bundled
+    The item group line's item group, representing a predefined set of items bundled
     because they are commonly purchased together or grouped for faster entry.
     """
 
@@ -1136,7 +1136,7 @@ class QbdCreditCardCharge(BaseModel):
 
     item_group_lines: List[ItemGroupLine] = FieldInfo(alias="itemGroupLines")
     """
-    The credit card charge's item-group lines, each representing a predefined set of
+    The credit card charge's item group lines, each representing a predefined set of
     items bundled because they are commonly purchased together or grouped for faster
     entry.
     """

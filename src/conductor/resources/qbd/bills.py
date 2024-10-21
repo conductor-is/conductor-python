@@ -102,7 +102,7 @@ class BillsResource(SyncAPIResource):
               your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
               will return an error.
 
-          item_group_lines: The bill's item-group lines, each representing a predefined set of items bundled
+          item_group_lines: The bill's item group lines, each representing a predefined set of items bundled
               because they are commonly purchased together or grouped for faster entry.
 
           item_lines: The bill's item lines, each representing the purchase of a specific item or
@@ -448,7 +448,7 @@ class AsyncBillsResource(AsyncAPIResource):
               your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
               will return an error.
 
-          item_group_lines: The bill's item-group lines, each representing a predefined set of items bundled
+          item_group_lines: The bill's item group lines, each representing a predefined set of items bundled
               because they are commonly purchased together or grouped for faster entry.
 
           item_lines: The bill's item lines, each representing the purchase of a specific item or

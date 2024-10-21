@@ -63,7 +63,7 @@ class BillCreateParams(TypedDict, total=False):
 
     item_group_lines: Annotated[Iterable[ItemGroupLine], PropertyInfo(alias="itemGroupLines")]
     """
-    The bill's item-group lines, each representing a predefined set of items bundled
+    The bill's item group lines, each representing a predefined set of items bundled
     because they are commonly purchased together or grouped for faster entry.
     """
 
@@ -239,16 +239,42 @@ class ItemGroupLineCustomField(TypedDict, total=False):
 
 class ItemGroupLine(TypedDict, total=False):
     item_group_id: Required[Annotated[str, PropertyInfo(alias="itemGroupId")]]
+    """
+    The item group line's item group, representing a predefined set of items bundled
+    because they are commonly purchased together or grouped for faster entry.
+    """
 
     custom_fields: Annotated[Iterable[ItemGroupLineCustomField], PropertyInfo(alias="customFields")]
+    """
+    The custom fields for the item group line object, added as user-defined data
+    extensions, not included in the standard QuickBooks object.
+    """
 
     inventory_site_id: Annotated[str, PropertyInfo(alias="inventorySiteId")]
+    """
+    The site location where inventory for the item group in this item group line is
+    stored.
+    """
 
     inventory_site_location_id: Annotated[str, PropertyInfo(alias="inventorySiteLocationId")]
+    """
+    The specific location within the inventory site where the item group in this
+    item group line is stored, such as a bin or shelf.
+    """
 
     quantity: float
+    """The quantity of the item in this item group line.
+
+    If both `quantity` and `amount` are specified but not `rate`, QuickBooks will
+    calculate `rate`. If `quantity` and `rate` are specified but not `amount`,
+    QuickBooks will calculate `amount`.
+    """
 
     unit_of_measure: Annotated[str, PropertyInfo(alias="unitOfMeasure")]
+    """The unit of measure used for the `quantity` in this item group line.
+
+    Must be a valid unit within the item's available units of measure.
+    """
 
 
 class ItemLineCustomField(TypedDict, total=False):

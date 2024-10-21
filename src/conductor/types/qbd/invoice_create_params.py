@@ -300,7 +300,7 @@ class InvoiceLineGroupCustomField(TypedDict, total=False):
 class InvoiceLineGroup(TypedDict, total=False):
     item_group_id: Required[Annotated[str, PropertyInfo(alias="itemGroupId")]]
     """
-    The invoice line group's item-group, representing a predefined set of items
+    The invoice line group's item group, representing a predefined set of items
     bundled because they are commonly purchased together or grouped for faster
     entry.
     """
@@ -313,13 +313,13 @@ class InvoiceLineGroup(TypedDict, total=False):
 
     inventory_site_id: Annotated[str, PropertyInfo(alias="inventorySiteId")]
     """
-    The site location where inventory for the item in this invoice line group is
-    stored.
+    The site location where inventory for the item group in this invoice line group
+    is stored.
     """
 
     inventory_site_location_id: Annotated[str, PropertyInfo(alias="inventorySiteLocationId")]
     """
-    The specific location within the inventory site where the item-group in this
+    The specific location within the inventory site where the item group in this
     invoice line group is stored, such as a bin or shelf.
     """
 

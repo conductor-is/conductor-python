@@ -93,7 +93,7 @@ class CreditCardChargesResource(SyncAPIResource):
               your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
               will return an error.
 
-          item_group_lines: The credit card charge's item-group lines, each representing a predefined set of
+          item_group_lines: The credit card charge's item group lines, each representing a predefined set of
               items bundled because they are commonly purchased together or grouped for faster
               entry.
 
@@ -402,7 +402,7 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
               your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
               will return an error.
 
-          item_group_lines: The credit card charge's item-group lines, each representing a predefined set of
+          item_group_lines: The credit card charge's item group lines, each representing a predefined set of
               items bundled because they are commonly purchased together or grouped for faster
               entry.
 
