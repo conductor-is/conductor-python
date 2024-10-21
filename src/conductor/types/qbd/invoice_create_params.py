@@ -313,14 +313,14 @@ class InvoiceLineGroup(TypedDict, total=False):
 
     inventory_site_id: Annotated[str, PropertyInfo(alias="inventorySiteId")]
     """
-    The site location where inventory for the item group in this invoice line group
-    is stored.
+    The site location where inventory for the item group associated with this
+    invoice line group is stored.
     """
 
     inventory_site_location_id: Annotated[str, PropertyInfo(alias="inventorySiteLocationId")]
     """
-    The specific location within the inventory site where the item group in this
-    invoice line group is stored, such as a bin or shelf.
+    The specific location (e.g., bin or shelf) within the inventory site where the
+    item group associated with this invoice line group is stored.
     """
 
     quantity: float
@@ -393,12 +393,15 @@ class InvoiceLine(TypedDict, total=False):
     """A description of this invoice line."""
 
     inventory_site_id: Annotated[str, PropertyInfo(alias="inventorySiteId")]
-    """The site location where inventory for the item in this invoice line is stored."""
+    """
+    The site location where inventory for the item associated with this invoice line
+    is stored.
+    """
 
     inventory_site_location_id: Annotated[str, PropertyInfo(alias="inventorySiteLocationId")]
     """
-    The specific location within the inventory site where the item in this invoice
-    line is stored, such as a bin or shelf.
+    The specific location (e.g., bin or shelf) within the inventory site where the
+    item associated with this invoice line is stored.
     """
 
     item_id: Annotated[str, PropertyInfo(alias="itemId")]
