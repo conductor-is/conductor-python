@@ -597,7 +597,7 @@ class InvoiceLineGroup(BaseModel):
 
     item_group: InvoiceLineGroupItemGroup = FieldInfo(alias="itemGroup")
     """
-    The invoice line group's item-group, representing a predefined set of items
+    The invoice line group's item group, representing a predefined set of items
     bundled because they are commonly purchased together or grouped for faster
     entry.
     """
