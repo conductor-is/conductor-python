@@ -92,8 +92,9 @@ class CreditCardCreditsResource(SyncAPIResource):
               your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
               will return an error.
 
-          item_group_lines: The credit card credit's item-group lines, each representing a predefined group
-              of items purchased together.
+          item_group_lines: The credit card credit's item-group lines, each representing a predefined set of
+              items bundled because they are commonly purchased together or grouped for faster
+              entry.
 
           item_lines: The credit card credit's item lines, each representing the purchase of a
               specific item or service.
@@ -398,8 +399,9 @@ class AsyncCreditCardCreditsResource(AsyncAPIResource):
               your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
               will return an error.
 
-          item_group_lines: The credit card credit's item-group lines, each representing a predefined group
-              of items purchased together.
+          item_group_lines: The credit card credit's item-group lines, each representing a predefined set of
+              items bundled because they are commonly purchased together or grouped for faster
+              entry.
 
           item_lines: The credit card credit's item lines, each representing the purchase of a
               specific item or service.
