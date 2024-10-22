@@ -297,22 +297,22 @@ class AccountsResource(SyncAPIResource):
           name_ends_with: Filter for objects whose `name` ends with this substring. If you use this
               parameter, you cannot use `nameContains` or `nameStartsWith`.
 
-          name_from: Filter for objects whose `name` is alphabetically greater than or equal to this
+          name_from: Filter for accounts whose `name` is alphabetically greater than or equal to this
               value.
 
           name_starts_with: Filter for objects whose `name` starts with this substring. If you use this
               parameter, you cannot use `nameContains` or `nameEndsWith`.
 
-          name_to: Filter for objects whose `name` is alphabetically less than or equal to this
+          name_to: Filter for accounts whose `name` is alphabetically less than or equal to this
               value.
 
           status: Filter for objects that are active, inactive, or both.
 
-          updated_after: Filter for objects updated on or after this date and time, in ISO 8601 format
+          updated_after: Filter for accounts updated on or after this date and time, in ISO 8601 format
               (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the time is
               assumed to be 00:00:00 of that day.
 
-          updated_before: Filter for objects updated on or before this date and time, in ISO 8601 format
+          updated_before: Filter for accounts updated on or before this date and time, in ISO 8601 format
               (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the time is
               assumed to be 23:59:59 of that day.
 
@@ -625,22 +625,22 @@ class AsyncAccountsResource(AsyncAPIResource):
           name_ends_with: Filter for objects whose `name` ends with this substring. If you use this
               parameter, you cannot use `nameContains` or `nameStartsWith`.
 
-          name_from: Filter for objects whose `name` is alphabetically greater than or equal to this
+          name_from: Filter for accounts whose `name` is alphabetically greater than or equal to this
               value.
 
           name_starts_with: Filter for objects whose `name` starts with this substring. If you use this
               parameter, you cannot use `nameContains` or `nameEndsWith`.
 
-          name_to: Filter for objects whose `name` is alphabetically less than or equal to this
+          name_to: Filter for accounts whose `name` is alphabetically less than or equal to this
               value.
 
           status: Filter for objects that are active, inactive, or both.
 
-          updated_after: Filter for objects updated on or after this date and time, in ISO 8601 format
+          updated_after: Filter for accounts updated on or after this date and time, in ISO 8601 format
               (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the time is
               assumed to be 00:00:00 of that day.
 
-          updated_before: Filter for objects updated on or before this date and time, in ISO 8601 format
+          updated_before: Filter for accounts updated on or before this date and time, in ISO 8601 format
               (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the time is
               assumed to be 23:59:59 of that day.
 

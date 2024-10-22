@@ -194,17 +194,17 @@ class TransfersResource(SyncAPIResource):
               used as the `cursor` parameter value in subsequent requests to fetch the next
               set of results.
 
-          transaction_date_from: Filter for transactions created on or after this date, in ISO 8601 format
+          transaction_date_from: Filter for transfers created on or after this date, in ISO 8601 format
               (YYYY-MM-DD).
 
-          transaction_date_to: Filter for transactions created on or before this date, in ISO 8601 format
+          transaction_date_to: Filter for transfers created on or before this date, in ISO 8601 format
               (YYYY-MM-DD).
 
-          updated_after: Filter for objects updated on or after this date and time, in ISO 8601 format
+          updated_after: Filter for transfers updated on or after this date and time, in ISO 8601 format
               (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the time is
               assumed to be 00:00:00 of that day.
 
-          updated_before: Filter for objects updated on or before this date and time, in ISO 8601 format
+          updated_before: Filter for transfers updated on or before this date and time, in ISO 8601 format
               (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the time is
               assumed to be 23:59:59 of that day.
 
@@ -408,17 +408,17 @@ class AsyncTransfersResource(AsyncAPIResource):
               used as the `cursor` parameter value in subsequent requests to fetch the next
               set of results.
 
-          transaction_date_from: Filter for transactions created on or after this date, in ISO 8601 format
+          transaction_date_from: Filter for transfers created on or after this date, in ISO 8601 format
               (YYYY-MM-DD).
 
-          transaction_date_to: Filter for transactions created on or before this date, in ISO 8601 format
+          transaction_date_to: Filter for transfers created on or before this date, in ISO 8601 format
               (YYYY-MM-DD).
 
-          updated_after: Filter for objects updated on or after this date and time, in ISO 8601 format
+          updated_after: Filter for transfers updated on or after this date and time, in ISO 8601 format
               (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the time is
               assumed to be 00:00:00 of that day.
 
-          updated_before: Filter for objects updated on or before this date and time, in ISO 8601 format
+          updated_before: Filter for transfers updated on or before this date and time, in ISO 8601 format
               (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the time is
               assumed to be 23:59:59 of that day.
 
