@@ -295,7 +295,7 @@ class AdditionalNote(TypedDict, total=False):
 
 class AlternateShippingAddress(TypedDict, total=False):
     name: Required[str]
-    """The alternate shipping address's unique name."""
+    """The case-insensitive unique name of this address, unique across all addresses."""
 
     city: str
     """The city, district, suburb, town, or village name of the address."""
@@ -304,7 +304,7 @@ class AlternateShippingAddress(TypedDict, total=False):
     """The country name of the address."""
 
     default_ship_to: Annotated[bool, PropertyInfo(alias="defaultShipTo")]
-    """Whether this address is the default shipping address."""
+    """Indicates whether this address is the default shipping address."""
 
     line1: str
     """The first line of the address (e.g., street, PO Box, or company name)."""

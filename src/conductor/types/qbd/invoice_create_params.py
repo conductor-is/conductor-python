@@ -547,7 +547,7 @@ class SetCredit(TypedDict, total=False):
     """The unique identifier of the credit memo to apply to this transaction."""
 
     override: bool
-    """Whether to override the credit."""
+    """Indicates whether to override the credit."""
 
 
 class ShippingAddress(TypedDict, total=False):
