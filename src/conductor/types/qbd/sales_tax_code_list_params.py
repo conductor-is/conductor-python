@@ -61,8 +61,8 @@ class SalesTaxCodeListParams(TypedDict, total=False):
 
     name_from: Annotated[str, PropertyInfo(alias="nameFrom")]
     """
-    Filter for objects whose `name` is alphabetically greater than or equal to this
-    value.
+    Filter for sales-tax codes whose `name` is alphabetically greater than or equal
+    to this value.
     """
 
     name_starts_with: Annotated[str, PropertyInfo(alias="nameStartsWith")]
@@ -73,8 +73,8 @@ class SalesTaxCodeListParams(TypedDict, total=False):
 
     name_to: Annotated[str, PropertyInfo(alias="nameTo")]
     """
-    Filter for objects whose `name` is alphabetically less than or equal to this
-    value.
+    Filter for sales-tax codes whose `name` is alphabetically less than or equal to
+    this value.
     """
 
     status: Literal["active", "all", "inactive"]
@@ -82,14 +82,14 @@ class SalesTaxCodeListParams(TypedDict, total=False):
 
     updated_after: Annotated[str, PropertyInfo(alias="updatedAfter")]
     """
-    Filter for objects updated on or after this date and time, in ISO 8601 format
-    (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the time is
-    assumed to be 00:00:00 of that day.
+    Filter for sales-tax codes updated on or after this date and time, in ISO 8601
+    format (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the time
+    is assumed to be 00:00:00 of that day.
     """
 
     updated_before: Annotated[str, PropertyInfo(alias="updatedBefore")]
     """
-    Filter for objects updated on or before this date and time, in ISO 8601 format
-    (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the time is
-    assumed to be 23:59:59 of that day.
+    Filter for sales-tax codes updated on or before this date and time, in ISO 8601
+    format (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the time
+    is assumed to be 23:59:59 of that day.
     """

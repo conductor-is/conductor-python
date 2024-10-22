@@ -116,26 +116,26 @@ class CreditCardCreditListParams(TypedDict, total=False):
 
     transaction_date_from: Annotated[Union[str, date], PropertyInfo(alias="transactionDateFrom", format="iso8601")]
     """
-    Filter for transactions created on or after this date, in ISO 8601 format
+    Filter for credit card credits created on or after this date, in ISO 8601 format
     (YYYY-MM-DD).
     """
 
     transaction_date_to: Annotated[Union[str, date], PropertyInfo(alias="transactionDateTo", format="iso8601")]
     """
-    Filter for transactions created on or before this date, in ISO 8601 format
-    (YYYY-MM-DD).
+    Filter for credit card credits created on or before this date, in ISO 8601
+    format (YYYY-MM-DD).
     """
 
     updated_after: Annotated[str, PropertyInfo(alias="updatedAfter")]
     """
-    Filter for objects updated on or after this date and time, in ISO 8601 format
-    (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the time is
-    assumed to be 00:00:00 of that day.
+    Filter for credit card credits updated on or after this date and time, in ISO
+    8601 format (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the
+    time is assumed to be 00:00:00 of that day.
     """
 
     updated_before: Annotated[str, PropertyInfo(alias="updatedBefore")]
     """
-    Filter for objects updated on or before this date and time, in ISO 8601 format
-    (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the time is
-    assumed to be 23:59:59 of that day.
+    Filter for credit card credits updated on or before this date and time, in ISO
+    8601 format (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the
+    time is assumed to be 23:59:59 of that day.
     """
