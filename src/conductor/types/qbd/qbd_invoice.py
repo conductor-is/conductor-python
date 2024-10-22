@@ -1114,7 +1114,7 @@ class QbdInvoice(BaseModel):
     """
 
     applied_amount: Optional[str] = FieldInfo(alias="appliedAmount", default=None)
-    """The amount of credit or payment already applied to this invoice.
+    """The amount of credit applied to this invoice.
 
     This could include customer deposits, payments, or credits. Represented as a
     decimal string.
