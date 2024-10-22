@@ -167,7 +167,7 @@ class EndUsersResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> EndUserDeleteResponse:
         """
-        Deletes an EndUser object.
+        Permanently deletes an EndUser object and all of its connections.
 
         Args:
           id: The ID of the EndUser to delete.
@@ -415,7 +415,7 @@ class AsyncEndUsersResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> EndUserDeleteResponse:
         """
-        Deletes an EndUser object.
+        Permanently deletes an EndUser object and all of its connections.
 
         Args:
           id: The ID of the EndUser to delete.
