@@ -38,7 +38,7 @@ class TestCustomers:
             alternate_phone="+1-555-987-6543",
             alternate_shipping_addresses=[
                 {
-                    "name": "Acme Inc.",
+                    "name": "Alternate shipping address",
                     "city": "San Francisco",
                     "country": "United States",
                     "default_ship_to": True,
@@ -52,7 +52,7 @@ class TestCustomers:
                     "state": "CA",
                 },
                 {
-                    "name": "Acme Inc.",
+                    "name": "Alternate shipping address",
                     "city": "San Francisco",
                     "country": "United States",
                     "default_ship_to": True,
@@ -66,7 +66,7 @@ class TestCustomers:
                     "state": "CA",
                 },
                 {
-                    "name": "Acme Inc.",
+                    "name": "Alternate shipping address",
                     "city": "San Francisco",
                     "country": "United States",
                     "default_ship_to": True,
@@ -379,7 +379,7 @@ class TestAsyncCustomers:
             alternate_phone="+1-555-987-6543",
             alternate_shipping_addresses=[
                 {
-                    "name": "Acme Inc.",
+                    "name": "Alternate shipping address",
                     "city": "San Francisco",
                     "country": "United States",
                     "default_ship_to": True,
@@ -393,7 +393,7 @@ class TestAsyncCustomers:
                     "state": "CA",
                 },
                 {
-                    "name": "Acme Inc.",
+                    "name": "Alternate shipping address",
                     "city": "San Francisco",
                     "country": "United States",
                     "default_ship_to": True,
@@ -407,7 +407,7 @@ class TestAsyncCustomers:
                     "state": "CA",
                 },
                 {
-                    "name": "Acme Inc.",
+                    "name": "Alternate shipping address",
                     "city": "San Francisco",
                     "country": "United States",
                     "default_ship_to": True,
