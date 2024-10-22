@@ -279,19 +279,19 @@ class CreditCardChargesResource(SyncAPIResource):
               numerical comparison for values that contain only digits; otherwise, uses a
               lexicographical comparison.
 
-          transaction_date_from: Filter for transactions created on or after this date, in ISO 8601 format
+          transaction_date_from: Filter for credit card charges created on or after this date, in ISO 8601 format
               (YYYY-MM-DD).
 
-          transaction_date_to: Filter for transactions created on or before this date, in ISO 8601 format
-              (YYYY-MM-DD).
+          transaction_date_to: Filter for credit card charges created on or before this date, in ISO 8601
+              format (YYYY-MM-DD).
 
-          updated_after: Filter for objects updated on or after this date and time, in ISO 8601 format
-              (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the time is
-              assumed to be 00:00:00 of that day.
+          updated_after: Filter for credit card charges updated on or after this date and time, in ISO
+              8601 format (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the
+              time is assumed to be 00:00:00 of that day.
 
-          updated_before: Filter for objects updated on or before this date and time, in ISO 8601 format
-              (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the time is
-              assumed to be 23:59:59 of that day.
+          updated_before: Filter for credit card charges updated on or before this date and time, in ISO
+              8601 format (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the
+              time is assumed to be 23:59:59 of that day.
 
           extra_headers: Send extra headers
 
@@ -588,19 +588,19 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
               numerical comparison for values that contain only digits; otherwise, uses a
               lexicographical comparison.
 
-          transaction_date_from: Filter for transactions created on or after this date, in ISO 8601 format
+          transaction_date_from: Filter for credit card charges created on or after this date, in ISO 8601 format
               (YYYY-MM-DD).
 
-          transaction_date_to: Filter for transactions created on or before this date, in ISO 8601 format
-              (YYYY-MM-DD).
+          transaction_date_to: Filter for credit card charges created on or before this date, in ISO 8601
+              format (YYYY-MM-DD).
 
-          updated_after: Filter for objects updated on or after this date and time, in ISO 8601 format
-              (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the time is
-              assumed to be 00:00:00 of that day.
+          updated_after: Filter for credit card charges updated on or after this date and time, in ISO
+              8601 format (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the
+              time is assumed to be 00:00:00 of that day.
 
-          updated_before: Filter for objects updated on or before this date and time, in ISO 8601 format
-              (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the time is
-              assumed to be 23:59:59 of that day.
+          updated_before: Filter for credit card charges updated on or before this date and time, in ISO
+              8601 format (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the
+              time is assumed to be 23:59:59 of that day.
 
           extra_headers: Send extra headers
 

@@ -449,13 +449,13 @@ class CustomersResource(SyncAPIResource):
           name_ends_with: Filter for objects whose `name` ends with this substring. If you use this
               parameter, you cannot use `nameContains` or `nameStartsWith`.
 
-          name_from: Filter for objects whose `name` is alphabetically greater than or equal to this
-              value.
+          name_from: Filter for customers whose `name` is alphabetically greater than or equal to
+              this value.
 
           name_starts_with: Filter for objects whose `name` starts with this substring. If you use this
               parameter, you cannot use `nameContains` or `nameEndsWith`.
 
-          name_to: Filter for objects whose `name` is alphabetically less than or equal to this
+          name_to: Filter for customers whose `name` is alphabetically less than or equal to this
               value.
 
           status: Filter for objects that are active, inactive, or both.
@@ -475,11 +475,11 @@ class CustomersResource(SyncAPIResource):
           total_balance_lte: Filter for customers whose `totalBalance` is less than or equal to this amount.
               You can only use one total-balance filter at a time.
 
-          updated_after: Filter for objects updated on or after this date and time, in ISO 8601 format
+          updated_after: Filter for customers updated on or after this date and time, in ISO 8601 format
               (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the time is
               assumed to be 00:00:00 of that day.
 
-          updated_before: Filter for objects updated on or before this date and time, in ISO 8601 format
+          updated_before: Filter for customers updated on or before this date and time, in ISO 8601 format
               (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the time is
               assumed to be 23:59:59 of that day.
 
@@ -949,13 +949,13 @@ class AsyncCustomersResource(AsyncAPIResource):
           name_ends_with: Filter for objects whose `name` ends with this substring. If you use this
               parameter, you cannot use `nameContains` or `nameStartsWith`.
 
-          name_from: Filter for objects whose `name` is alphabetically greater than or equal to this
-              value.
+          name_from: Filter for customers whose `name` is alphabetically greater than or equal to
+              this value.
 
           name_starts_with: Filter for objects whose `name` starts with this substring. If you use this
               parameter, you cannot use `nameContains` or `nameEndsWith`.
 
-          name_to: Filter for objects whose `name` is alphabetically less than or equal to this
+          name_to: Filter for customers whose `name` is alphabetically less than or equal to this
               value.
 
           status: Filter for objects that are active, inactive, or both.
@@ -975,11 +975,11 @@ class AsyncCustomersResource(AsyncAPIResource):
           total_balance_lte: Filter for customers whose `totalBalance` is less than or equal to this amount.
               You can only use one total-balance filter at a time.
 
-          updated_after: Filter for objects updated on or after this date and time, in ISO 8601 format
+          updated_after: Filter for customers updated on or after this date and time, in ISO 8601 format
               (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the time is
               assumed to be 00:00:00 of that day.
 
-          updated_before: Filter for objects updated on or before this date and time, in ISO 8601 format
+          updated_before: Filter for customers updated on or before this date and time, in ISO 8601 format
               (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the time is
               assumed to be 23:59:59 of that day.
 
