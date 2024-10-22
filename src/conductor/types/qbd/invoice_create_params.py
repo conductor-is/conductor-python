@@ -537,10 +537,10 @@ class InvoiceLine(TypedDict, total=False):
 
 class SetCredit(TypedDict, total=False):
     applied_amount: Required[Annotated[str, PropertyInfo(alias="appliedAmount")]]
-    """The amount of credit applied to the transaction.
+    """The amount of credit applied to this transaction.
 
-    For invoices, this is the amount applied to the customer's invoice. For bills,
-    this is the amount applied to the vendor bill or credit.
+    This could include customer deposits, payments, or credits. Represented as a
+    decimal string.
     """
 
     credit_id: Required[Annotated[str, PropertyInfo(alias="creditId")]]
