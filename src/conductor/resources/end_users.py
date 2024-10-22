@@ -25,6 +25,7 @@ from .._base_client import make_request_options
 from ..types.end_user import EndUser
 from ..types.end_user_list_response import EndUserListResponse
 from ..types.end_user_ping_response import EndUserPingResponse
+from ..types.end_user_delete_response import EndUserDeleteResponse
 from ..types.end_user_request_response import EndUserRequestResponse
 
 __all__ = ["EndUsersResource", "AsyncEndUsersResource"]
@@ -152,6 +153,41 @@ class EndUsersResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=EndUserListResponse,
+        )
+
+    def delete(
+        self,
+        id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> EndUserDeleteResponse:
+        """
+        Deletes an EndUser object.
+
+        Args:
+          id: The ID of the EndUser to delete.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return self._delete(
+            f"/end-users/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=EndUserDeleteResponse,
         )
 
     def ping(
@@ -367,6 +403,41 @@ class AsyncEndUsersResource(AsyncAPIResource):
             cast_to=EndUserListResponse,
         )
 
+    async def delete(
+        self,
+        id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> EndUserDeleteResponse:
+        """
+        Deletes an EndUser object.
+
+        Args:
+          id: The ID of the EndUser to delete.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return await self._delete(
+            f"/end-users/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=EndUserDeleteResponse,
+        )
+
     async def ping(
         self,
         integration_slug: Literal["quickbooks_desktop"],
@@ -469,6 +540,9 @@ class EndUsersResourceWithRawResponse:
         self.list = to_raw_response_wrapper(
             end_users.list,
         )
+        self.delete = to_raw_response_wrapper(
+            end_users.delete,
+        )
         self.ping = to_raw_response_wrapper(
             end_users.ping,
         )
@@ -489,6 +563,9 @@ class AsyncEndUsersResourceWithRawResponse:
         )
         self.list = async_to_raw_response_wrapper(
             end_users.list,
+        )
+        self.delete = async_to_raw_response_wrapper(
+            end_users.delete,
         )
         self.ping = async_to_raw_response_wrapper(
             end_users.ping,
@@ -511,6 +588,9 @@ class EndUsersResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             end_users.list,
         )
+        self.delete = to_streamed_response_wrapper(
+            end_users.delete,
+        )
         self.ping = to_streamed_response_wrapper(
             end_users.ping,
         )
@@ -531,6 +611,9 @@ class AsyncEndUsersResourceWithStreamingResponse:
         )
         self.list = async_to_streamed_response_wrapper(
             end_users.list,
+        )
+        self.delete = async_to_streamed_response_wrapper(
+            end_users.delete,
         )
         self.ping = async_to_streamed_response_wrapper(
             end_users.ping,
