@@ -252,16 +252,17 @@ class CreditCardCreditsResource(SyncAPIResource):
               ID or multiple using a comma-separated list (e.g., `payeeIds=1,2,3`). These are
               the vendors or companies from whom the credits were received.
 
-          ref_number_contains: Filter for transactions whose `refNumber` contains this substring. If you use
-              this parameter, you cannot use `refNumberStartsWith` or `refNumberEndsWith`.
+          ref_number_contains: Filter for credit card credits whose `refNumber` contains this substring. If you
+              use this parameter, you cannot use `refNumberStartsWith` or `refNumberEndsWith`.
 
-          ref_number_ends_with: Filter for transactions whose `refNumber` ends with this substring. If you use
-              this parameter, you cannot use `refNumberContains` or `refNumberStartsWith`.
+          ref_number_ends_with: Filter for credit card credits whose `refNumber` ends with this substring. If
+              you use this parameter, you cannot use `refNumberContains` or
+              `refNumberStartsWith`.
 
-          ref_number_from: Filter for transactions whose `refNumber` is greater than or equal to this
-              value. If omitted, the range will begin with the first number of the list. Uses
-              a numerical comparison for values that contain only digits; otherwise, uses a
-              lexicographical comparison.
+          ref_number_from: Filter for credit card credits whose `refNumber` is greater than or equal to
+              this value. If omitted, the range will begin with the first number of the list.
+              Uses a numerical comparison for values that contain only digits; otherwise, uses
+              a lexicographical comparison.
 
           ref_numbers: Filter for specific credit card credits by their ref-number(s), case-sensitive.
               Specify a single ref-number or multiple using a comma-separated list (e.g.,
@@ -269,11 +270,12 @@ class CreditCardCreditsResource(SyncAPIResource):
               and can be arbitrarily changed by the QuickBooks user. NOTE: If you include this
               parameter, all other query parameters will be ignored.
 
-          ref_number_starts_with: Filter for transactions whose `refNumber` starts with this substring. If you use
-              this parameter, you cannot use `refNumberContains` or `refNumberEndsWith`.
+          ref_number_starts_with: Filter for credit card credits whose `refNumber` starts with this substring. If
+              you use this parameter, you cannot use `refNumberContains` or
+              `refNumberEndsWith`.
 
-          ref_number_to: Filter for transactions whose `refNumber` is less than or equal to this value.
-              If omitted, the range will end with the last number of the list. Uses a
+          ref_number_to: Filter for credit card credits whose `refNumber` is less than or equal to this
+              value. If omitted, the range will end with the last number of the list. Uses a
               numerical comparison for values that contain only digits; otherwise, uses a
               lexicographical comparison.
 
@@ -559,16 +561,17 @@ class AsyncCreditCardCreditsResource(AsyncAPIResource):
               ID or multiple using a comma-separated list (e.g., `payeeIds=1,2,3`). These are
               the vendors or companies from whom the credits were received.
 
-          ref_number_contains: Filter for transactions whose `refNumber` contains this substring. If you use
-              this parameter, you cannot use `refNumberStartsWith` or `refNumberEndsWith`.
+          ref_number_contains: Filter for credit card credits whose `refNumber` contains this substring. If you
+              use this parameter, you cannot use `refNumberStartsWith` or `refNumberEndsWith`.
 
-          ref_number_ends_with: Filter for transactions whose `refNumber` ends with this substring. If you use
-              this parameter, you cannot use `refNumberContains` or `refNumberStartsWith`.
+          ref_number_ends_with: Filter for credit card credits whose `refNumber` ends with this substring. If
+              you use this parameter, you cannot use `refNumberContains` or
+              `refNumberStartsWith`.
 
-          ref_number_from: Filter for transactions whose `refNumber` is greater than or equal to this
-              value. If omitted, the range will begin with the first number of the list. Uses
-              a numerical comparison for values that contain only digits; otherwise, uses a
-              lexicographical comparison.
+          ref_number_from: Filter for credit card credits whose `refNumber` is greater than or equal to
+              this value. If omitted, the range will begin with the first number of the list.
+              Uses a numerical comparison for values that contain only digits; otherwise, uses
+              a lexicographical comparison.
 
           ref_numbers: Filter for specific credit card credits by their ref-number(s), case-sensitive.
               Specify a single ref-number or multiple using a comma-separated list (e.g.,
@@ -576,11 +579,12 @@ class AsyncCreditCardCreditsResource(AsyncAPIResource):
               and can be arbitrarily changed by the QuickBooks user. NOTE: If you include this
               parameter, all other query parameters will be ignored.
 
-          ref_number_starts_with: Filter for transactions whose `refNumber` starts with this substring. If you use
-              this parameter, you cannot use `refNumberContains` or `refNumberEndsWith`.
+          ref_number_starts_with: Filter for credit card credits whose `refNumber` starts with this substring. If
+              you use this parameter, you cannot use `refNumberContains` or
+              `refNumberEndsWith`.
 
-          ref_number_to: Filter for transactions whose `refNumber` is less than or equal to this value.
-              If omitted, the range will end with the last number of the list. Uses a
+          ref_number_to: Filter for credit card credits whose `refNumber` is less than or equal to this
+              value. If omitted, the range will end with the last number of the list. Uses a
               numerical comparison for values that contain only digits; otherwise, uses a
               lexicographical comparison.
 

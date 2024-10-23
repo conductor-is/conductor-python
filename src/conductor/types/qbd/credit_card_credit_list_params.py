@@ -68,26 +68,25 @@ class CreditCardCreditListParams(TypedDict, total=False):
     """
 
     ref_number_contains: Annotated[str, PropertyInfo(alias="refNumberContains")]
-    """Filter for transactions whose `refNumber` contains this substring.
+    """Filter for credit card credits whose `refNumber` contains this substring.
 
     If you use this parameter, you cannot use `refNumberStartsWith` or
     `refNumberEndsWith`.
     """
 
     ref_number_ends_with: Annotated[str, PropertyInfo(alias="refNumberEndsWith")]
-    """Filter for transactions whose `refNumber` ends with this substring.
+    """Filter for credit card credits whose `refNumber` ends with this substring.
 
     If you use this parameter, you cannot use `refNumberContains` or
     `refNumberStartsWith`.
     """
 
     ref_number_from: Annotated[str, PropertyInfo(alias="refNumberFrom")]
-    """Filter for transactions whose `refNumber` is greater than or equal to this
-    value.
-
-    If omitted, the range will begin with the first number of the list. Uses a
-    numerical comparison for values that contain only digits; otherwise, uses a
-    lexicographical comparison.
+    """
+    Filter for credit card credits whose `refNumber` is greater than or equal to
+    this value. If omitted, the range will begin with the first number of the list.
+    Uses a numerical comparison for values that contain only digits; otherwise, uses
+    a lexicographical comparison.
     """
 
     ref_numbers: Annotated[str, PropertyInfo(alias="refNumbers")]
@@ -100,16 +99,16 @@ class CreditCardCreditListParams(TypedDict, total=False):
     """
 
     ref_number_starts_with: Annotated[str, PropertyInfo(alias="refNumberStartsWith")]
-    """Filter for transactions whose `refNumber` starts with this substring.
+    """Filter for credit card credits whose `refNumber` starts with this substring.
 
     If you use this parameter, you cannot use `refNumberContains` or
     `refNumberEndsWith`.
     """
 
     ref_number_to: Annotated[str, PropertyInfo(alias="refNumberTo")]
-    """Filter for transactions whose `refNumber` is less than or equal to this value.
-
-    If omitted, the range will end with the last number of the list. Uses a
+    """
+    Filter for credit card credits whose `refNumber` is less than or equal to this
+    value. If omitted, the range will end with the last number of the list. Uses a
     numerical comparison for values that contain only digits; otherwise, uses a
     lexicographical comparison.
     """
