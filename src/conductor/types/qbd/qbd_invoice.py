@@ -388,7 +388,7 @@ class InvoiceLineGroupInvoiceLineSalesTaxCode(BaseModel):
 
 class InvoiceLineGroupInvoiceLine(BaseModel):
     id: str
-    """The unique identifier assigned by QuickBooks for this invoice line.
+    """The unique identifier assigned by QuickBooks to this invoice line.
 
     This ID is unique across all transaction line types.
     """
@@ -569,7 +569,7 @@ class InvoiceLineGroupOverrideUnitOfMeasureSet(BaseModel):
 
 class InvoiceLineGroup(BaseModel):
     id: str
-    """The unique identifier assigned by QuickBooks for this invoice line group.
+    """The unique identifier assigned by QuickBooks to this invoice line group.
 
     This ID is unique across all transaction line types.
     """
@@ -769,7 +769,7 @@ class InvoiceLineSalesTaxCode(BaseModel):
 
 class InvoiceLine(BaseModel):
     id: str
-    """The unique identifier assigned by QuickBooks for this invoice line.
+    """The unique identifier assigned by QuickBooks to this invoice line.
 
     This ID is unique across all transaction line types.
     """
@@ -934,7 +934,7 @@ class ItemSalesTax(BaseModel):
 
 class LinkedTransaction(BaseModel):
     id: str
-    """The unique identifier assigned by QuickBooks for this linked transaction.
+    """The unique identifier assigned by QuickBooks to this linked transaction.
 
     This ID is unique across all transaction types.
     """
@@ -1097,7 +1097,7 @@ class Terms(BaseModel):
 
 class QbdInvoice(BaseModel):
     id: str
-    """The unique identifier assigned by QuickBooks for this invoice.
+    """The unique identifier assigned by QuickBooks to this invoice.
 
     This ID is unique across all transaction types.
     """

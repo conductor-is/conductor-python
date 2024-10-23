@@ -296,7 +296,10 @@ class Contact(TypedDict, total=False):
     """The contact's first name."""
 
     custom_contact_fields: Annotated[Iterable[ContactCustomContactField], PropertyInfo(alias="customContactFields")]
-    """Additional custom contact fields, such as phone numbers or email addresses."""
+    """
+    Additional custom contact fields for this contact, such as phone numbers or
+    email addresses.
+    """
 
     job_title: Annotated[str, PropertyInfo(alias="jobTitle")]
     """The contact's job title."""
@@ -308,7 +311,10 @@ class Contact(TypedDict, total=False):
     """The contact's middle name."""
 
     salutation: str
-    """The contact's formal salutation that precedes their name."""
+    """
+    The contact's formal salutation title that precedes their name, such as "Mr.",
+    "Ms.", or "Dr.".
+    """
 
 
 class CustomContactField(TypedDict, total=False):

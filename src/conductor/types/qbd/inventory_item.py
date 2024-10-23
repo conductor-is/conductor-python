@@ -205,7 +205,7 @@ class UnitOfMeasureSet(BaseModel):
 
 class InventoryItem(BaseModel):
     id: str
-    """The unique identifier assigned by QuickBooks for this inventory item.
+    """The unique identifier assigned by QuickBooks to this inventory item.
 
     This ID is unique across all inventory items but not across different QuickBooks
     object types.

@@ -12,7 +12,7 @@ __all__ = ["DateDrivenTerm"]
 
 class DateDrivenTerm(BaseModel):
     id: str
-    """The unique identifier assigned by QuickBooks for this date-driven term.
+    """The unique identifier assigned by QuickBooks to this date-driven term.
 
     This ID is unique across all date-driven terms but not across different
     QuickBooks object types.

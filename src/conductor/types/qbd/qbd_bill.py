@@ -240,7 +240,7 @@ class ExpenseLineSalesTaxCode(BaseModel):
 
 class ExpenseLine(BaseModel):
     id: str
-    """The unique identifier assigned by QuickBooks for this expense line.
+    """The unique identifier assigned by QuickBooks to this expense line.
 
     This ID is unique across all transaction line types.
     """
@@ -529,7 +529,7 @@ class ItemGroupLineItemLineSalesTaxCode(BaseModel):
 
 class ItemGroupLineItemLine(BaseModel):
     id: str
-    """The unique identifier assigned by QuickBooks for this item line.
+    """The unique identifier assigned by QuickBooks to this item line.
 
     This ID is unique across all transaction line types.
     """
@@ -682,7 +682,7 @@ class ItemGroupLineOverrideUnitOfMeasureSet(BaseModel):
 
 class ItemGroupLine(BaseModel):
     id: str
-    """The unique identifier assigned by QuickBooks for this item group line.
+    """The unique identifier assigned by QuickBooks to this item group line.
 
     This ID is unique across all transaction line types.
     """
@@ -907,7 +907,7 @@ class ItemLineSalesTaxCode(BaseModel):
 
 class ItemLine(BaseModel):
     id: str
-    """The unique identifier assigned by QuickBooks for this item line.
+    """The unique identifier assigned by QuickBooks to this item line.
 
     This ID is unique across all transaction line types.
     """
@@ -1042,7 +1042,7 @@ class ItemLine(BaseModel):
 
 class LinkedTransaction(BaseModel):
     id: str
-    """The unique identifier assigned by QuickBooks for this linked transaction.
+    """The unique identifier assigned by QuickBooks to this linked transaction.
 
     This ID is unique across all transaction types.
     """
@@ -1189,7 +1189,7 @@ class VendorAddress(BaseModel):
 
 class QbdBill(BaseModel):
     id: str
-    """The unique identifier assigned by QuickBooks for this bill.
+    """The unique identifier assigned by QuickBooks to this bill.
 
     This ID is unique across all transaction types.
     """

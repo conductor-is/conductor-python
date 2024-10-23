@@ -97,7 +97,7 @@ class TaxVendor(BaseModel):
 
 class QbdSalesTaxItem(BaseModel):
     id: str
-    """The unique identifier assigned by QuickBooks for this sales-tax item.
+    """The unique identifier assigned by QuickBooks to this sales-tax item.
 
     This ID is unique across all sales-tax items but not across different QuickBooks
     object types.
