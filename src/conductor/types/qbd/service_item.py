@@ -26,7 +26,7 @@ __all__ = [
 
 class Class(BaseModel):
     id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks for this object.
+    """The unique identifier assigned by QuickBooks to this object.
 
     This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
@@ -79,7 +79,7 @@ class CustomField(BaseModel):
 
 class Parent(BaseModel):
     id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks for this object.
+    """The unique identifier assigned by QuickBooks to this object.
 
     This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
@@ -95,7 +95,7 @@ class Parent(BaseModel):
 
 class SalesAndPurchaseDetailsExpenseAccount(BaseModel):
     id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks for this object.
+    """The unique identifier assigned by QuickBooks to this object.
 
     This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
@@ -111,7 +111,7 @@ class SalesAndPurchaseDetailsExpenseAccount(BaseModel):
 
 class SalesAndPurchaseDetailsIncomeAccount(BaseModel):
     id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks for this object.
+    """The unique identifier assigned by QuickBooks to this object.
 
     This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
@@ -127,7 +127,7 @@ class SalesAndPurchaseDetailsIncomeAccount(BaseModel):
 
 class SalesAndPurchaseDetailsPreferredVendor(BaseModel):
     id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks for this object.
+    """The unique identifier assigned by QuickBooks to this object.
 
     This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
@@ -143,7 +143,7 @@ class SalesAndPurchaseDetailsPreferredVendor(BaseModel):
 
 class SalesAndPurchaseDetailsPurchaseTaxCode(BaseModel):
     id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks for this object.
+    """The unique identifier assigned by QuickBooks to this object.
 
     This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
@@ -204,7 +204,7 @@ class SalesAndPurchaseDetails(BaseModel):
 
 class SalesOrPurchaseDetailsAccount(BaseModel):
     id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks for this object.
+    """The unique identifier assigned by QuickBooks to this object.
 
     This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
@@ -245,7 +245,7 @@ class SalesOrPurchaseDetails(BaseModel):
 
 class SalesTaxCode(BaseModel):
     id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks for this object.
+    """The unique identifier assigned by QuickBooks to this object.
 
     This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
@@ -261,7 +261,7 @@ class SalesTaxCode(BaseModel):
 
 class UnitOfMeasureSet(BaseModel):
     id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks for this object.
+    """The unique identifier assigned by QuickBooks to this object.
 
     This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
