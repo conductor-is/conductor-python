@@ -108,7 +108,7 @@ class TaxLineDetails(BaseModel):
 
 class QbdAccount(BaseModel):
     id: str
-    """The unique identifier assigned by QuickBooks for this account.
+    """The unique identifier assigned by QuickBooks to this account.
 
     This ID is unique across all accounts but not across different QuickBooks object
     types.
