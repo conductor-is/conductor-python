@@ -48,13 +48,13 @@ class ClassListParams(TypedDict, total=False):
     """
 
     name_contains: Annotated[str, PropertyInfo(alias="nameContains")]
-    """Filter for objects whose `name` contains this substring.
+    """Filter for classes whose `name` contains this substring.
 
     If you use this parameter, you cannot use `nameStartsWith` or `nameEndsWith`.
     """
 
     name_ends_with: Annotated[str, PropertyInfo(alias="nameEndsWith")]
-    """Filter for objects whose `name` ends with this substring.
+    """Filter for classes whose `name` ends with this substring.
 
     If you use this parameter, you cannot use `nameContains` or `nameStartsWith`.
     """
@@ -66,7 +66,7 @@ class ClassListParams(TypedDict, total=False):
     """
 
     name_starts_with: Annotated[str, PropertyInfo(alias="nameStartsWith")]
-    """Filter for objects whose `name` starts with this substring.
+    """Filter for classes whose `name` starts with this substring.
 
     If you use this parameter, you cannot use `nameContains` or `nameEndsWith`.
     """
@@ -78,7 +78,7 @@ class ClassListParams(TypedDict, total=False):
     """
 
     status: Literal["active", "all", "inactive"]
-    """Filter for objects that are active, inactive, or both."""
+    """Filter for classes that are active, inactive, or both."""
 
     updated_after: Annotated[str, PropertyInfo(alias="updatedAfter")]
     """

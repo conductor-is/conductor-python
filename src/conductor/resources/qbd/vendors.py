@@ -414,22 +414,22 @@ class VendorsResource(SyncAPIResource):
               used as the `cursor` parameter value in subsequent requests to fetch the next
               set of results.
 
-          name_contains: Filter for objects whose `name` contains this substring. If you use this
+          name_contains: Filter for vendors whose `name` contains this substring. If you use this
               parameter, you cannot use `nameStartsWith` or `nameEndsWith`.
 
-          name_ends_with: Filter for objects whose `name` ends with this substring. If you use this
+          name_ends_with: Filter for vendors whose `name` ends with this substring. If you use this
               parameter, you cannot use `nameContains` or `nameStartsWith`.
 
           name_from: Filter for vendors whose `name` is alphabetically greater than or equal to this
               value.
 
-          name_starts_with: Filter for objects whose `name` starts with this substring. If you use this
+          name_starts_with: Filter for vendors whose `name` starts with this substring. If you use this
               parameter, you cannot use `nameContains` or `nameEndsWith`.
 
           name_to: Filter for vendors whose `name` is alphabetically less than or equal to this
               value.
 
-          status: Filter for objects that are active, inactive, or both.
+          status: Filter for vendors that are active, inactive, or both.
 
           total_balance: Filter for vendors whose `totalBalance` equals this amount. You can only use one
               total-balance filter at a time.
@@ -886,22 +886,22 @@ class AsyncVendorsResource(AsyncAPIResource):
               used as the `cursor` parameter value in subsequent requests to fetch the next
               set of results.
 
-          name_contains: Filter for objects whose `name` contains this substring. If you use this
+          name_contains: Filter for vendors whose `name` contains this substring. If you use this
               parameter, you cannot use `nameStartsWith` or `nameEndsWith`.
 
-          name_ends_with: Filter for objects whose `name` ends with this substring. If you use this
+          name_ends_with: Filter for vendors whose `name` ends with this substring. If you use this
               parameter, you cannot use `nameContains` or `nameStartsWith`.
 
           name_from: Filter for vendors whose `name` is alphabetically greater than or equal to this
               value.
 
-          name_starts_with: Filter for objects whose `name` starts with this substring. If you use this
+          name_starts_with: Filter for vendors whose `name` starts with this substring. If you use this
               parameter, you cannot use `nameContains` or `nameEndsWith`.
 
           name_to: Filter for vendors whose `name` is alphabetically less than or equal to this
               value.
 
-          status: Filter for objects that are active, inactive, or both.
+          status: Filter for vendors that are active, inactive, or both.
 
           total_balance: Filter for vendors whose `totalBalance` equals this amount. You can only use one
               total-balance filter at a time.

@@ -384,17 +384,17 @@ class InvoicesResource(SyncAPIResource):
               used as the `cursor` parameter value in subsequent requests to fetch the next
               set of results.
 
-          payment_status: Filter for transactions that are paid, not paid, or both.
+          payment_status: Filter for invoices that are paid, not paid, or both.
 
-          ref_number_contains: Filter for transactions whose `refNumber` contains this substring. If you use
-              this parameter, you cannot use `refNumberStartsWith` or `refNumberEndsWith`.
+          ref_number_contains: Filter for invoices whose `refNumber` contains this substring. If you use this
+              parameter, you cannot use `refNumberStartsWith` or `refNumberEndsWith`.
 
-          ref_number_ends_with: Filter for transactions whose `refNumber` ends with this substring. If you use
-              this parameter, you cannot use `refNumberContains` or `refNumberStartsWith`.
+          ref_number_ends_with: Filter for invoices whose `refNumber` ends with this substring. If you use this
+              parameter, you cannot use `refNumberContains` or `refNumberStartsWith`.
 
-          ref_number_from: Filter for transactions whose `refNumber` is greater than or equal to this
-              value. If omitted, the range will begin with the first number of the list. Uses
-              a numerical comparison for values that contain only digits; otherwise, uses a
+          ref_number_from: Filter for invoices whose `refNumber` is greater than or equal to this value. If
+              omitted, the range will begin with the first number of the list. Uses a
+              numerical comparison for values that contain only digits; otherwise, uses a
               lexicographical comparison.
 
           ref_numbers: Filter for specific invoices by their ref-number(s), case-sensitive. Specify a
@@ -403,12 +403,12 @@ class InvoicesResource(SyncAPIResource):
               and can be arbitrarily changed by the QuickBooks user. NOTE: If you include this
               parameter, all other query parameters will be ignored.
 
-          ref_number_starts_with: Filter for transactions whose `refNumber` starts with this substring. If you use
+          ref_number_starts_with: Filter for invoices whose `refNumber` starts with this substring. If you use
               this parameter, you cannot use `refNumberContains` or `refNumberEndsWith`.
 
-          ref_number_to: Filter for transactions whose `refNumber` is less than or equal to this value.
-              If omitted, the range will end with the last number of the list. Uses a
-              numerical comparison for values that contain only digits; otherwise, uses a
+          ref_number_to: Filter for invoices whose `refNumber` is less than or equal to this value. If
+              omitted, the range will end with the last number of the list. Uses a numerical
+              comparison for values that contain only digits; otherwise, uses a
               lexicographical comparison.
 
           transaction_date_from: Filter for invoices created on or after this date, in ISO 8601 format
@@ -826,17 +826,17 @@ class AsyncInvoicesResource(AsyncAPIResource):
               used as the `cursor` parameter value in subsequent requests to fetch the next
               set of results.
 
-          payment_status: Filter for transactions that are paid, not paid, or both.
+          payment_status: Filter for invoices that are paid, not paid, or both.
 
-          ref_number_contains: Filter for transactions whose `refNumber` contains this substring. If you use
-              this parameter, you cannot use `refNumberStartsWith` or `refNumberEndsWith`.
+          ref_number_contains: Filter for invoices whose `refNumber` contains this substring. If you use this
+              parameter, you cannot use `refNumberStartsWith` or `refNumberEndsWith`.
 
-          ref_number_ends_with: Filter for transactions whose `refNumber` ends with this substring. If you use
-              this parameter, you cannot use `refNumberContains` or `refNumberStartsWith`.
+          ref_number_ends_with: Filter for invoices whose `refNumber` ends with this substring. If you use this
+              parameter, you cannot use `refNumberContains` or `refNumberStartsWith`.
 
-          ref_number_from: Filter for transactions whose `refNumber` is greater than or equal to this
-              value. If omitted, the range will begin with the first number of the list. Uses
-              a numerical comparison for values that contain only digits; otherwise, uses a
+          ref_number_from: Filter for invoices whose `refNumber` is greater than or equal to this value. If
+              omitted, the range will begin with the first number of the list. Uses a
+              numerical comparison for values that contain only digits; otherwise, uses a
               lexicographical comparison.
 
           ref_numbers: Filter for specific invoices by their ref-number(s), case-sensitive. Specify a
@@ -845,12 +845,12 @@ class AsyncInvoicesResource(AsyncAPIResource):
               and can be arbitrarily changed by the QuickBooks user. NOTE: If you include this
               parameter, all other query parameters will be ignored.
 
-          ref_number_starts_with: Filter for transactions whose `refNumber` starts with this substring. If you use
+          ref_number_starts_with: Filter for invoices whose `refNumber` starts with this substring. If you use
               this parameter, you cannot use `refNumberContains` or `refNumberEndsWith`.
 
-          ref_number_to: Filter for transactions whose `refNumber` is less than or equal to this value.
-              If omitted, the range will end with the last number of the list. Uses a
-              numerical comparison for values that contain only digits; otherwise, uses a
+          ref_number_to: Filter for invoices whose `refNumber` is less than or equal to this value. If
+              omitted, the range will end with the last number of the list. Uses a numerical
+              comparison for values that contain only digits; otherwise, uses a
               lexicographical comparison.
 
           transaction_date_from: Filter for invoices created on or after this date, in ISO 8601 format
