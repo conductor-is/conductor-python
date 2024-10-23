@@ -204,10 +204,10 @@ class SalesTaxCodesResource(SyncAPIResource):
               parameters will be ignored.
 
           limit: The maximum number of objects to return, ranging from 1 to 500. Defaults to 500.
-              NOTE: QuickBooks Desktop does not support cursor-based pagination for this
-              object type. Hence, this parameter will limit the response size, but you will
-              not be able to fetch the next set of results. To paginate through the results
-              for this endpoint, try fetching batches via the date-range query parameters.
+              NOTE: QuickBooks Desktop does not support cursor-based pagination for sales-tax
+              codes. Hence, this parameter will limit the response size, but you will not be
+              able to fetch the next set of results. To paginate through the results for this
+              endpoint, try fetching batches via the date-range query parameters.
 
           name_contains: Filter for objects whose `name` contains this substring. If you use this
               parameter, you cannot use `nameStartsWith` or `nameEndsWith`.
@@ -448,10 +448,10 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
               parameters will be ignored.
 
           limit: The maximum number of objects to return, ranging from 1 to 500. Defaults to 500.
-              NOTE: QuickBooks Desktop does not support cursor-based pagination for this
-              object type. Hence, this parameter will limit the response size, but you will
-              not be able to fetch the next set of results. To paginate through the results
-              for this endpoint, try fetching batches via the date-range query parameters.
+              NOTE: QuickBooks Desktop does not support cursor-based pagination for sales-tax
+              codes. Hence, this parameter will limit the response size, but you will not be
+              able to fetch the next set of results. To paginate through the results for this
+              endpoint, try fetching batches via the date-range query parameters.
 
           name_contains: Filter for objects whose `name` contains this substring. If you use this
               parameter, you cannot use `nameStartsWith` or `nameEndsWith`.
