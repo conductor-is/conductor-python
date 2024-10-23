@@ -33,7 +33,11 @@ class TestCustomers:
             name="Kitchen-Renovation",
             conductor_end_user_id="end_usr_1234567abcdefg",
             account_number="1010",
-            additional_notes=[{"note": "This is a note."}, {"note": "This is a note."}, {"note": "This is a note."}],
+            additional_notes=[
+                {"note": "This is a fun note."},
+                {"note": "This is a fun note."},
+                {"note": "This is a fun note."},
+            ],
             alternate_contact="Bob Johnson",
             alternate_phone="+1-555-987-6543",
             alternate_shipping_addresses=[
@@ -203,7 +207,7 @@ class TestCustomers:
             middle_name="A.",
             note="Our favorite customer.",
             opening_balance="1000.00",
-            opening_balance_date="openingBalanceDate",
+            opening_balance_date=parse_date("2019-12-27"),
             parent_id="80000002-1234567890",
             phone="+1-555-123-4567",
             preferred_delivery_method="email",
@@ -374,7 +378,11 @@ class TestAsyncCustomers:
             name="Kitchen-Renovation",
             conductor_end_user_id="end_usr_1234567abcdefg",
             account_number="1010",
-            additional_notes=[{"note": "This is a note."}, {"note": "This is a note."}, {"note": "This is a note."}],
+            additional_notes=[
+                {"note": "This is a fun note."},
+                {"note": "This is a fun note."},
+                {"note": "This is a fun note."},
+            ],
             alternate_contact="Bob Johnson",
             alternate_phone="+1-555-987-6543",
             alternate_shipping_addresses=[
@@ -544,7 +552,7 @@ class TestAsyncCustomers:
             middle_name="A.",
             note="Our favorite customer.",
             opening_balance="1000.00",
-            opening_balance_date="openingBalanceDate",
+            opening_balance_date=parse_date("2019-12-27"),
             parent_id="80000002-1234567890",
             phone="+1-555-123-4567",
             preferred_delivery_method="email",

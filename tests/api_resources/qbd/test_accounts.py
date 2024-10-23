@@ -9,6 +9,7 @@ import pytest
 
 from conductor import Conductor, AsyncConductor
 from tests.utils import assert_matches_type
+from conductor._utils import parse_date
 from conductor.types.qbd import QbdAccount, AccountListResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -38,7 +39,7 @@ class TestAccounts:
             description="Accounts-payable are the amounts owed to suppliers for goods and services purchased on credit.",
             is_active=True,
             opening_balance="1000.00",
-            opening_balance_date="openingBalanceDate",
+            opening_balance_date=parse_date("2019-12-27"),
             parent_id="80000002-1234567890",
             sales_tax_code_id="80000004-1234567890",
             tax_line_id=123,
@@ -191,7 +192,7 @@ class TestAsyncAccounts:
             description="Accounts-payable are the amounts owed to suppliers for goods and services purchased on credit.",
             is_active=True,
             opening_balance="1000.00",
-            opening_balance_date="openingBalanceDate",
+            opening_balance_date=parse_date("2019-12-27"),
             parent_id="80000002-1234567890",
             sales_tax_code_id="80000004-1234567890",
             tax_line_id=123,
