@@ -1178,7 +1178,10 @@ class VendorAddress(BaseModel):
     """The fifth line of the address, if needed."""
 
     note: Optional[str] = None
-    """A note about the address for additional context."""
+    """
+    A note written at the bottom of the address in the form in which it appears,
+    such as the invoice form.
+    """
 
     postal_code: Optional[str] = FieldInfo(alias="postalCode", default=None)
     """The postal code or ZIP code of the address."""
