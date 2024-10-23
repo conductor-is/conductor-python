@@ -9,6 +9,7 @@ import pytest
 
 from conductor import Conductor, AsyncConductor
 from tests.utils import assert_matches_type
+from conductor._utils import parse_date
 from conductor.types.qbd import QbdVendor
 from conductor.pagination import SyncCursorPage, AsyncCursorPage
 
@@ -32,7 +33,11 @@ class TestVendors:
             name="Acme Supplies Inc.",
             conductor_end_user_id="end_usr_1234567abcdefg",
             account_number="1010",
-            additional_notes=[{"note": "This is a note."}, {"note": "This is a note."}, {"note": "This is a note."}],
+            additional_notes=[
+                {"note": "This is a fun note."},
+                {"note": "This is a fun note."},
+                {"note": "This is a fun note."},
+            ],
             alternate_contact="Bob Johnson",
             alternate_phone="+1-555-987-6543",
             billing_address={
@@ -149,7 +154,7 @@ class TestVendors:
             name_on_check="Acme Supplies Ltd.",
             note="Preferred vendor for office supplies.",
             opening_balance="1000.00",
-            opening_balance_date="openingBalanceDate",
+            opening_balance_date=parse_date("2019-12-27"),
             phone="+1-555-123-4567",
             prefill_account_ids=["80000029-1234567890"],
             reporting_period="monthly",
@@ -321,7 +326,11 @@ class TestAsyncVendors:
             name="Acme Supplies Inc.",
             conductor_end_user_id="end_usr_1234567abcdefg",
             account_number="1010",
-            additional_notes=[{"note": "This is a note."}, {"note": "This is a note."}, {"note": "This is a note."}],
+            additional_notes=[
+                {"note": "This is a fun note."},
+                {"note": "This is a fun note."},
+                {"note": "This is a fun note."},
+            ],
             alternate_contact="Bob Johnson",
             alternate_phone="+1-555-987-6543",
             billing_address={
@@ -438,7 +447,7 @@ class TestAsyncVendors:
             name_on_check="Acme Supplies Ltd.",
             note="Preferred vendor for office supplies.",
             opening_balance="1000.00",
-            opening_balance_date="openingBalanceDate",
+            opening_balance_date=parse_date("2019-12-27"),
             phone="+1-555-123-4567",
             prefill_account_ids=["80000029-1234567890"],
             reporting_period="monthly",

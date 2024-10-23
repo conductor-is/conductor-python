@@ -206,7 +206,7 @@ class CustomerCreateParams(TypedDict, total=False):
     this customer, represented as a decimal string.
     """
 
-    opening_balance_date: Annotated[str, PropertyInfo(alias="openingBalanceDate")]
+    opening_balance_date: Annotated[Union[str, date], PropertyInfo(alias="openingBalanceDate", format="iso8601")]
     """
     The date of the opening balance for this customer, in ISO 8601 format
     (YYYY-MM-DD).
@@ -290,7 +290,7 @@ class CustomerCreateParams(TypedDict, total=False):
 
 class AdditionalNote(TypedDict, total=False):
     note: Required[str]
-    """The note to add."""
+    """The text of this note."""
 
 
 class AlternateShippingAddress(TypedDict, total=False):
@@ -325,7 +325,10 @@ class AlternateShippingAddress(TypedDict, total=False):
     """The fifth line of the address, if needed."""
 
     note: str
-    """A note about the address for additional context."""
+    """
+    A note written at the bottom of the address in the form in which it appears,
+    such as the invoice form.
+    """
 
     postal_code: Annotated[str, PropertyInfo(alias="postalCode")]
     """The postal code or ZIP code of the address."""
@@ -360,7 +363,10 @@ class BillingAddress(TypedDict, total=False):
     """The fifth line of the address, if needed."""
 
     note: str
-    """A note about the address for additional context."""
+    """
+    A note written at the bottom of the address in the form in which it appears,
+    such as the invoice form.
+    """
 
     postal_code: Annotated[str, PropertyInfo(alias="postalCode")]
     """The postal code or ZIP code of the address."""
@@ -457,7 +463,10 @@ class ShippingAddress(TypedDict, total=False):
     """The fifth line of the address, if needed."""
 
     note: str
-    """A note about the address for additional context."""
+    """
+    A note written at the bottom of the address in the form in which it appears,
+    such as the invoice form.
+    """
 
     postal_code: Annotated[str, PropertyInfo(alias="postalCode")]
     """The postal code or ZIP code of the address."""

@@ -477,7 +477,10 @@ class VendorAddress(TypedDict, total=False):
     """The fifth line of the address, if needed."""
 
     note: str
-    """A note about the address for additional context."""
+    """
+    A note written at the bottom of the address in the form in which it appears,
+    such as the invoice form.
+    """
 
     postal_code: Annotated[str, PropertyInfo(alias="postalCode")]
     """The postal code or ZIP code of the address."""
