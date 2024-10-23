@@ -277,7 +277,7 @@ class UnitOfMeasureSet(BaseModel):
 
 class ServiceItem(BaseModel):
     id: str
-    """The unique identifier assigned by QuickBooks for this service item.
+    """The unique identifier assigned by QuickBooks to this service item.
 
     This ID is unique across all service items but not across different QuickBooks
     object types.

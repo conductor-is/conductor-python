@@ -28,7 +28,7 @@ class ItemSalesTax(BaseModel):
 
 class SalesTaxCode(BaseModel):
     id: str
-    """The unique identifier assigned by QuickBooks for this sales-tax code.
+    """The unique identifier assigned by QuickBooks to this sales-tax code.
 
     This ID is unique across all sales-tax codes but not across different QuickBooks
     object types.

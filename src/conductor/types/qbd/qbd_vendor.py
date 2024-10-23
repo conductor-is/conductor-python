@@ -39,7 +39,7 @@ class AdditionalContactCustomContactField(BaseModel):
 
 class AdditionalContact(BaseModel):
     id: str
-    """The unique identifier assigned by QuickBooks for this contact.
+    """The unique identifier assigned by QuickBooks to this contact.
 
     This ID is unique across all contacts but not across different QuickBooks object
     types.
@@ -58,7 +58,7 @@ class AdditionalContact(BaseModel):
     email addresses.
     """
 
-    first_name: Optional[str] = FieldInfo(alias="firstName", default=None)
+    first_name: str = FieldInfo(alias="firstName")
     """The contact's first name."""
 
     job_title: Optional[str] = FieldInfo(alias="jobTitle", default=None)
@@ -100,7 +100,7 @@ class AdditionalContact(BaseModel):
 
 class AdditionalNote(BaseModel):
     id: float
-    """An auto-incrementing ID for the note."""
+    """The auto-incrementing identifier assigned by QuickBooks to this note."""
 
     date: str
     """The date the note was last updated, in ISO 8601 format (YYYY-MM-DD)."""
@@ -386,7 +386,7 @@ class VendorType(BaseModel):
 
 class QbdVendor(BaseModel):
     id: str
-    """The unique identifier assigned by QuickBooks for this vendor.
+    """The unique identifier assigned by QuickBooks to this vendor.
 
     This ID is unique across all vendors but not across different QuickBooks object
     types.

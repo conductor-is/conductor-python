@@ -277,7 +277,7 @@ class UnitOfMeasureSet(BaseModel):
 
 class NonInventoryItem(BaseModel):
     id: str
-    """The unique identifier assigned by QuickBooks for this non-inventory item.
+    """The unique identifier assigned by QuickBooks to this non-inventory item.
 
     This ID is unique across all non-inventory items but not across different
     QuickBooks object types.
