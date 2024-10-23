@@ -58,63 +58,63 @@ class TestVendors:
                     "custom_contact_fields": [
                         {
                             "name": "Main Phone",
-                            "value": "555-555-5555",
+                            "value": "555-123-4567",
                         },
                         {
                             "name": "Main Phone",
-                            "value": "555-555-5555",
+                            "value": "555-123-4567",
                         },
                         {
                             "name": "Main Phone",
-                            "value": "555-555-5555",
+                            "value": "555-123-4567",
                         },
                     ],
-                    "job_title": "CEO",
+                    "job_title": "Purchasing Manager",
                     "last_name": "Doe",
-                    "middle_name": "Q.",
-                    "salutation": "Mr.",
+                    "middle_name": "A.",
+                    "salutation": "Dr.",
                 },
                 {
                     "first_name": "John",
                     "custom_contact_fields": [
                         {
                             "name": "Main Phone",
-                            "value": "555-555-5555",
+                            "value": "555-123-4567",
                         },
                         {
                             "name": "Main Phone",
-                            "value": "555-555-5555",
+                            "value": "555-123-4567",
                         },
                         {
                             "name": "Main Phone",
-                            "value": "555-555-5555",
+                            "value": "555-123-4567",
                         },
                     ],
-                    "job_title": "CEO",
+                    "job_title": "Purchasing Manager",
                     "last_name": "Doe",
-                    "middle_name": "Q.",
-                    "salutation": "Mr.",
+                    "middle_name": "A.",
+                    "salutation": "Dr.",
                 },
                 {
                     "first_name": "John",
                     "custom_contact_fields": [
                         {
                             "name": "Main Phone",
-                            "value": "555-555-5555",
+                            "value": "555-123-4567",
                         },
                         {
                             "name": "Main Phone",
-                            "value": "555-555-5555",
+                            "value": "555-123-4567",
                         },
                         {
                             "name": "Main Phone",
-                            "value": "555-555-5555",
+                            "value": "555-123-4567",
                         },
                     ],
-                    "job_title": "CEO",
+                    "job_title": "Purchasing Manager",
                     "last_name": "Doe",
-                    "middle_name": "Q.",
-                    "salutation": "Mr.",
+                    "middle_name": "A.",
+                    "salutation": "Dr.",
                 },
             ],
             credit_limit="5000.00",
@@ -122,15 +122,15 @@ class TestVendors:
             custom_contact_fields=[
                 {
                     "name": "Main Phone",
-                    "value": "555-555-5555",
+                    "value": "555-123-4567",
                 },
                 {
                     "name": "Main Phone",
-                    "value": "555-555-5555",
+                    "value": "555-123-4567",
                 },
                 {
                     "name": "Main Phone",
-                    "value": "555-555-5555",
+                    "value": "555-123-4567",
                 },
             ],
             email="vendor@example.com",
@@ -347,63 +347,63 @@ class TestAsyncVendors:
                     "custom_contact_fields": [
                         {
                             "name": "Main Phone",
-                            "value": "555-555-5555",
+                            "value": "555-123-4567",
                         },
                         {
                             "name": "Main Phone",
-                            "value": "555-555-5555",
+                            "value": "555-123-4567",
                         },
                         {
                             "name": "Main Phone",
-                            "value": "555-555-5555",
+                            "value": "555-123-4567",
                         },
                     ],
-                    "job_title": "CEO",
+                    "job_title": "Purchasing Manager",
                     "last_name": "Doe",
-                    "middle_name": "Q.",
-                    "salutation": "Mr.",
+                    "middle_name": "A.",
+                    "salutation": "Dr.",
                 },
                 {
                     "first_name": "John",
                     "custom_contact_fields": [
                         {
                             "name": "Main Phone",
-                            "value": "555-555-5555",
+                            "value": "555-123-4567",
                         },
                         {
                             "name": "Main Phone",
-                            "value": "555-555-5555",
+                            "value": "555-123-4567",
                         },
                         {
                             "name": "Main Phone",
-                            "value": "555-555-5555",
+                            "value": "555-123-4567",
                         },
                     ],
-                    "job_title": "CEO",
+                    "job_title": "Purchasing Manager",
                     "last_name": "Doe",
-                    "middle_name": "Q.",
-                    "salutation": "Mr.",
+                    "middle_name": "A.",
+                    "salutation": "Dr.",
                 },
                 {
                     "first_name": "John",
                     "custom_contact_fields": [
                         {
                             "name": "Main Phone",
-                            "value": "555-555-5555",
+                            "value": "555-123-4567",
                         },
                         {
                             "name": "Main Phone",
-                            "value": "555-555-5555",
+                            "value": "555-123-4567",
                         },
                         {
                             "name": "Main Phone",
-                            "value": "555-555-5555",
+                            "value": "555-123-4567",
                         },
                     ],
-                    "job_title": "CEO",
+                    "job_title": "Purchasing Manager",
                     "last_name": "Doe",
-                    "middle_name": "Q.",
-                    "salutation": "Mr.",
+                    "middle_name": "A.",
+                    "salutation": "Dr.",
                 },
             ],
             credit_limit="5000.00",
@@ -411,15 +411,15 @@ class TestAsyncVendors:
             custom_contact_fields=[
                 {
                     "name": "Main Phone",
-                    "value": "555-555-5555",
+                    "value": "555-123-4567",
                 },
                 {
                     "name": "Main Phone",
-                    "value": "555-555-5555",
+                    "value": "555-123-4567",
                 },
                 {
                     "name": "Main Phone",
-                    "value": "555-555-5555",
+                    "value": "555-123-4567",
                 },
             ],
             email="vendor@example.com",

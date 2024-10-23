@@ -12,7 +12,7 @@ __all__ = ["QbdStandardTerm"]
 
 class QbdStandardTerm(BaseModel):
     id: str
-    """The unique identifier assigned by QuickBooks for this standard term.
+    """The unique identifier assigned by QuickBooks to this standard term.
 
     This ID is unique across all standard terms but not across different QuickBooks
     object types.

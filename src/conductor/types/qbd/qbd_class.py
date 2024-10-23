@@ -28,7 +28,7 @@ class Parent(BaseModel):
 
 class QbdClass(BaseModel):
     id: str
-    """The unique identifier assigned by QuickBooks for this class.
+    """The unique identifier assigned by QuickBooks to this class.
 
     This ID is unique across all classes but not across different QuickBooks object
     types.

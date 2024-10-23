@@ -61,7 +61,7 @@ class TransferToAccount(BaseModel):
 
 class QbdTransfer(BaseModel):
     id: str
-    """The unique identifier assigned by QuickBooks for this transfer.
+    """The unique identifier assigned by QuickBooks to this transfer.
 
     This ID is unique across all transaction types.
     """
