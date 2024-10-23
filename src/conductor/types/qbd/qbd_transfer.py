@@ -13,7 +13,7 @@ __all__ = ["QbdTransfer", "Class", "TransferFromAccount", "TransferToAccount"]
 
 class Class(BaseModel):
     id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks for this object.
+    """The unique identifier assigned by QuickBooks to this object.
 
     This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
@@ -29,7 +29,7 @@ class Class(BaseModel):
 
 class TransferFromAccount(BaseModel):
     id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks for this object.
+    """The unique identifier assigned by QuickBooks to this object.
 
     This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
@@ -45,7 +45,7 @@ class TransferFromAccount(BaseModel):
 
 class TransferToAccount(BaseModel):
     id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks for this object.
+    """The unique identifier assigned by QuickBooks to this object.
 
     This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
