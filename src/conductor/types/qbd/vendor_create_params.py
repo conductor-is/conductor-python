@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import List, Iterable
+from typing import List, Union, Iterable
+from datetime import date
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
@@ -168,7 +169,7 @@ class VendorCreateParams(TypedDict, total=False):
     this vendor, represented as a decimal string.
     """
 
-    opening_balance_date: Annotated[str, PropertyInfo(alias="openingBalanceDate")]
+    opening_balance_date: Annotated[Union[str, date], PropertyInfo(alias="openingBalanceDate", format="iso8601")]
     """
     The date of the opening balance for this vendor, in ISO 8601 format
     (YYYY-MM-DD).
@@ -245,7 +246,7 @@ class VendorCreateParams(TypedDict, total=False):
 
 class AdditionalNote(TypedDict, total=False):
     note: Required[str]
-    """The note to add."""
+    """The text of this note."""
 
 
 class BillingAddress(TypedDict, total=False):
@@ -274,7 +275,10 @@ class BillingAddress(TypedDict, total=False):
     """The fifth line of the address, if needed."""
 
     note: str
-    """A note about the address for additional context."""
+    """
+    A note written at the bottom of the address in the form in which it appears,
+    such as the invoice form.
+    """
 
     postal_code: Annotated[str, PropertyInfo(alias="postalCode")]
     """The postal code or ZIP code of the address."""
@@ -351,7 +355,10 @@ class ShippingAddress(TypedDict, total=False):
     """The fifth line of the address, if needed."""
 
     note: str
-    """A note about the address for additional context."""
+    """
+    A note written at the bottom of the address in the form in which it appears,
+    such as the invoice form.
+    """
 
     postal_code: Annotated[str, PropertyInfo(alias="postalCode")]
     """The postal code or ZIP code of the address."""

@@ -1,5 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+import datetime
 from typing import List, Optional
 from typing_extensions import Literal
 
@@ -102,11 +103,11 @@ class AdditionalNote(BaseModel):
     id: float
     """The auto-incrementing identifier assigned by QuickBooks to this note."""
 
-    date: str
-    """The date the note was last updated, in ISO 8601 format (YYYY-MM-DD)."""
+    date: datetime.date
+    """The date this note was last updated, in ISO 8601 format (YYYY-MM-DD)."""
 
     note: str
-    """The text of the note."""
+    """The text of this note."""
 
 
 class BillingAddress(BaseModel):
@@ -135,7 +136,10 @@ class BillingAddress(BaseModel):
     """The fifth line of the address, if needed."""
 
     note: Optional[str] = None
-    """A note about the address for additional context."""
+    """
+    A note written at the bottom of the address in the form in which it appears,
+    such as the invoice form.
+    """
 
     postal_code: Optional[str] = FieldInfo(alias="postalCode", default=None)
     """The postal code or ZIP code of the address."""
@@ -311,7 +315,10 @@ class ShippingAddress(BaseModel):
     """The fifth line of the address, if needed."""
 
     note: Optional[str] = None
-    """A note about the address for additional context."""
+    """
+    A note written at the bottom of the address in the form in which it appears,
+    such as the invoice form.
+    """
 
     postal_code: Optional[str] = FieldInfo(alias="postalCode", default=None)
     """The postal code or ZIP code of the address."""
