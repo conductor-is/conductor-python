@@ -51,7 +51,7 @@ __all__ = [
 
 class Account(BaseModel):
     id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks for this object.
+    """The unique identifier assigned by QuickBooks to this object.
 
     This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
@@ -67,7 +67,7 @@ class Account(BaseModel):
 
 class Currency(BaseModel):
     id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks for this object.
+    """The unique identifier assigned by QuickBooks to this object.
 
     This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
@@ -120,7 +120,7 @@ class CustomField(BaseModel):
 
 class ExpenseLineAccount(BaseModel):
     id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks for this object.
+    """The unique identifier assigned by QuickBooks to this object.
 
     This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
@@ -136,7 +136,7 @@ class ExpenseLineAccount(BaseModel):
 
 class ExpenseLineClass(BaseModel):
     id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks for this object.
+    """The unique identifier assigned by QuickBooks to this object.
 
     This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
@@ -189,7 +189,7 @@ class ExpenseLineCustomField(BaseModel):
 
 class ExpenseLinePayee(BaseModel):
     id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks for this object.
+    """The unique identifier assigned by QuickBooks to this object.
 
     This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
@@ -205,7 +205,7 @@ class ExpenseLinePayee(BaseModel):
 
 class ExpenseLineSalesRepresentative(BaseModel):
     id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks for this object.
+    """The unique identifier assigned by QuickBooks to this object.
 
     This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
@@ -221,7 +221,7 @@ class ExpenseLineSalesRepresentative(BaseModel):
 
 class ExpenseLineSalesTaxCode(BaseModel):
     id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks for this object.
+    """The unique identifier assigned by QuickBooks to this object.
 
     This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
@@ -345,7 +345,7 @@ class ItemGroupLineCustomField(BaseModel):
 
 class ItemGroupLineItemGroup(BaseModel):
     id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks for this object.
+    """The unique identifier assigned by QuickBooks to this object.
 
     This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
@@ -361,7 +361,7 @@ class ItemGroupLineItemGroup(BaseModel):
 
 class ItemGroupLineItemLineClass(BaseModel):
     id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks for this object.
+    """The unique identifier assigned by QuickBooks to this object.
 
     This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
@@ -377,7 +377,7 @@ class ItemGroupLineItemLineClass(BaseModel):
 
 class ItemGroupLineItemLineCustomer(BaseModel):
     id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks for this object.
+    """The unique identifier assigned by QuickBooks to this object.
 
     This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
@@ -430,7 +430,7 @@ class ItemGroupLineItemLineCustomField(BaseModel):
 
 class ItemGroupLineItemLineInventorySite(BaseModel):
     id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks for this object.
+    """The unique identifier assigned by QuickBooks to this object.
 
     This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
@@ -446,7 +446,7 @@ class ItemGroupLineItemLineInventorySite(BaseModel):
 
 class ItemGroupLineItemLineInventorySiteLocation(BaseModel):
     id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks for this object.
+    """The unique identifier assigned by QuickBooks to this object.
 
     This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
@@ -462,7 +462,7 @@ class ItemGroupLineItemLineInventorySiteLocation(BaseModel):
 
 class ItemGroupLineItemLineItem(BaseModel):
     id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks for this object.
+    """The unique identifier assigned by QuickBooks to this object.
 
     This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
@@ -478,7 +478,7 @@ class ItemGroupLineItemLineItem(BaseModel):
 
 class ItemGroupLineItemLineOverrideUnitOfMeasureSet(BaseModel):
     id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks for this object.
+    """The unique identifier assigned by QuickBooks to this object.
 
     This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
@@ -494,7 +494,7 @@ class ItemGroupLineItemLineOverrideUnitOfMeasureSet(BaseModel):
 
 class ItemGroupLineItemLineSalesRepresentative(BaseModel):
     id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks for this object.
+    """The unique identifier assigned by QuickBooks to this object.
 
     This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
@@ -510,7 +510,7 @@ class ItemGroupLineItemLineSalesRepresentative(BaseModel):
 
 class ItemGroupLineItemLineSalesTaxCode(BaseModel):
     id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks for this object.
+    """The unique identifier assigned by QuickBooks to this object.
 
     This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
@@ -663,7 +663,7 @@ class ItemGroupLineItemLine(BaseModel):
 
 class ItemGroupLineOverrideUnitOfMeasureSet(BaseModel):
     id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks for this object.
+    """The unique identifier assigned by QuickBooks to this object.
 
     This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
@@ -739,7 +739,7 @@ class ItemGroupLine(BaseModel):
 
 class ItemLineClass(BaseModel):
     id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks for this object.
+    """The unique identifier assigned by QuickBooks to this object.
 
     This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
@@ -755,7 +755,7 @@ class ItemLineClass(BaseModel):
 
 class ItemLineCustomer(BaseModel):
     id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks for this object.
+    """The unique identifier assigned by QuickBooks to this object.
 
     This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
@@ -808,7 +808,7 @@ class ItemLineCustomField(BaseModel):
 
 class ItemLineInventorySite(BaseModel):
     id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks for this object.
+    """The unique identifier assigned by QuickBooks to this object.
 
     This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
@@ -824,7 +824,7 @@ class ItemLineInventorySite(BaseModel):
 
 class ItemLineInventorySiteLocation(BaseModel):
     id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks for this object.
+    """The unique identifier assigned by QuickBooks to this object.
 
     This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
@@ -840,7 +840,7 @@ class ItemLineInventorySiteLocation(BaseModel):
 
 class ItemLineItem(BaseModel):
     id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks for this object.
+    """The unique identifier assigned by QuickBooks to this object.
 
     This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
@@ -856,7 +856,7 @@ class ItemLineItem(BaseModel):
 
 class ItemLineOverrideUnitOfMeasureSet(BaseModel):
     id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks for this object.
+    """The unique identifier assigned by QuickBooks to this object.
 
     This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
@@ -872,7 +872,7 @@ class ItemLineOverrideUnitOfMeasureSet(BaseModel):
 
 class ItemLineSalesRepresentative(BaseModel):
     id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks for this object.
+    """The unique identifier assigned by QuickBooks to this object.
 
     This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
@@ -888,7 +888,7 @@ class ItemLineSalesRepresentative(BaseModel):
 
 class ItemLineSalesTaxCode(BaseModel):
     id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks for this object.
+    """The unique identifier assigned by QuickBooks to this object.
 
     This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
@@ -1039,7 +1039,7 @@ class ItemLine(BaseModel):
 
 class Payee(BaseModel):
     id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks for this object.
+    """The unique identifier assigned by QuickBooks to this object.
 
     This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
@@ -1055,7 +1055,7 @@ class Payee(BaseModel):
 
 class SalesTaxCode(BaseModel):
     id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks for this object.
+    """The unique identifier assigned by QuickBooks to this object.
 
     This ID is unique across all objects of the same type, but not across different
     QuickBooks object types.
