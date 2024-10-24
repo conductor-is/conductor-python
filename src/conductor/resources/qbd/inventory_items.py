@@ -110,7 +110,8 @@ class InventoryItemsResource(SyncAPIResource):
 
           external_id: A globally unique identifier (GUID) you can provide for tracking this object in
               your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
-              will return an error.
+              will return an error. This field is immutable and can only be set during object
+              creation.
 
           income_account_id: The income account used to track revenue from sales of this inventory item.
 
@@ -473,7 +474,8 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
 
           external_id: A globally unique identifier (GUID) you can provide for tracking this object in
               your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
-              will return an error.
+              will return an error. This field is immutable and can only be set during object
+              creation.
 
           income_account_id: The income account used to track revenue from sales of this inventory item.
 
