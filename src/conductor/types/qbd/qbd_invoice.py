@@ -397,7 +397,7 @@ class InvoiceLineGroupInvoiceLine(BaseModel):
     """
 
     amount: Optional[str] = None
-    """The monetary amount for this invoice line, represented as a decimal string."""
+    """The monetary amount of this invoice line, represented as a decimal string."""
 
     class_: Optional[InvoiceLineGroupInvoiceLineClass] = FieldInfo(alias="class", default=None)
     """The invoice line's class.
@@ -626,7 +626,7 @@ class InvoiceLineGroup(BaseModel):
 
     total_amount: str = FieldInfo(alias="totalAmount")
     """
-    The total monetary amount for this invoice line group, represented as a decimal
+    The total monetary amount of this invoice line group, represented as a decimal
     string.
     """
 
@@ -778,7 +778,7 @@ class InvoiceLine(BaseModel):
     """
 
     amount: Optional[str] = None
-    """The monetary amount for this invoice line, represented as a decimal string."""
+    """The monetary amount of this invoice line, represented as a decimal string."""
 
     class_: Optional[InvoiceLineClass] = FieldInfo(alias="class", default=None)
     """The invoice line's class.
@@ -944,8 +944,7 @@ class LinkedTransaction(BaseModel):
 
     amount: str
     """
-    The monetary amount for this linked transaction, represented as a decimal
-    string.
+    The monetary amount of this linked transaction, represented as a decimal string.
     """
 
     link_type: Optional[Literal["amount", "quantity"]] = FieldInfo(alias="linkType", default=None)

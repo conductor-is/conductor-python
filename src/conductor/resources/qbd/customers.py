@@ -213,10 +213,10 @@ class CustomersResource(SyncAPIResource):
 
           note: Additional notes or comments about this customer.
 
-          opening_balance: The opening balance for this customer's account, indicating the amount owed by
+          opening_balance: The opening balance of this customer's account, indicating the amount owed by
               this customer, represented as a decimal string.
 
-          opening_balance_date: The date of the opening balance for this customer, in ISO 8601 format
+          opening_balance_date: The date of the opening balance of this customer, in ISO 8601 format
               (YYYY-MM-DD).
 
           parent_id: The parent customer one level above this one in the hierarchy. For example, if
@@ -717,10 +717,10 @@ class AsyncCustomersResource(AsyncAPIResource):
 
           note: Additional notes or comments about this customer.
 
-          opening_balance: The opening balance for this customer's account, indicating the amount owed by
+          opening_balance: The opening balance of this customer's account, indicating the amount owed by
               this customer, represented as a decimal string.
 
-          opening_balance_date: The date of the opening balance for this customer, in ISO 8601 format
+          opening_balance_date: The date of the opening balance of this customer, in ISO 8601 format
               (YYYY-MM-DD).
 
           parent_id: The parent customer one level above this one in the hierarchy. For example, if
