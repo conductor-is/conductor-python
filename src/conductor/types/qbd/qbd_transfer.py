@@ -67,7 +67,7 @@ class QbdTransfer(BaseModel):
     """
 
     amount: Optional[str] = None
-    """The monetary amount for this transfer, represented as a decimal string."""
+    """The monetary amount of this transfer, represented as a decimal string."""
 
     class_: Optional[Class] = FieldInfo(alias="class", default=None)
     """The transfer's class.

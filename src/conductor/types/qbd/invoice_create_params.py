@@ -372,7 +372,7 @@ class InvoiceLineLinkToTransactionLine(TypedDict, total=False):
 
 class InvoiceLine(TypedDict, total=False):
     amount: str
-    """The monetary amount for this invoice line, represented as a decimal string."""
+    """The monetary amount of this invoice line, represented as a decimal string."""
 
     class_id: Annotated[str, PropertyInfo(alias="classId")]
     """The invoice line's class.
