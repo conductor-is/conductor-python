@@ -95,7 +95,7 @@ class AdditionalContact(BaseModel):
 
     version: str
     """
-    The current version identifier for this contact, which changes each time the
+    The current version identifier of this contact, which changes each time the
     object is modified. When updating this object, you must provide the most recent
     `version` to ensure you're working with the latest data; otherwise, the update
     will fail. This value is opaque and should not be interpreted.
@@ -602,7 +602,7 @@ class QbdCustomer(BaseModel):
 
     full_name: str = FieldInfo(alias="fullName")
     """
-    The case-insensitive fully-qualified unique name for this customer, formed by
+    The case-insensitive fully-qualified unique name of this customer, formed by
     combining the names of its parent objects with its own `name`, separated by
     colons. For example, if a customer is under "Jones" and has the `name`
     "Kitchen-Renovation", its `fullName` would be "Jones:Kitchen-Renovation". Unlike
@@ -793,7 +793,7 @@ class QbdCustomer(BaseModel):
 
     version: str
     """
-    The current version identifier for this customer, which changes each time the
+    The current version identifier of this customer, which changes each time the
     object is modified. When updating this object, you must provide the most recent
     `version` to ensure you're working with the latest data; otherwise, the update
     will fail. This value is opaque and should not be interpreted.
