@@ -102,33 +102,36 @@ class CustomerListParams(TypedDict, total=False):
     """Filter for customers that are active, inactive, or both."""
 
     total_balance: Annotated[str, PropertyInfo(alias="totalBalance")]
-    """Filter for customers whose `totalBalance` equals this amount.
-
-    You can only use one total-balance filter at a time.
+    """
+    Filter for customers whose `totalBalance` equals this amount, represented as a
+    decimal string. You can only use one total-balance filter at a time.
     """
 
     total_balance_gt: Annotated[str, PropertyInfo(alias="totalBalanceGt")]
-    """Filter for customers whose `totalBalance` is greater than this amount.
-
-    You can only use one total-balance filter at a time.
+    """
+    Filter for customers whose `totalBalance` is greater than this amount,
+    represented as a decimal string. You can only use one total-balance filter at a
+    time.
     """
 
     total_balance_gte: Annotated[str, PropertyInfo(alias="totalBalanceGte")]
     """
     Filter for customers whose `totalBalance` is greater than or equal to this
-    amount. You can only use one total-balance filter at a time.
+    amount, represented as a decimal string. You can only use one total-balance
+    filter at a time.
     """
 
     total_balance_lt: Annotated[str, PropertyInfo(alias="totalBalanceLt")]
-    """Filter for customers whose `totalBalance` is less than this amount.
-
-    You can only use one total-balance filter at a time.
+    """
+    Filter for customers whose `totalBalance` is less than this amount, represented
+    as a decimal string. You can only use one total-balance filter at a time.
     """
 
     total_balance_lte: Annotated[str, PropertyInfo(alias="totalBalanceLte")]
-    """Filter for customers whose `totalBalance` is less than or equal to this amount.
-
-    You can only use one total-balance filter at a time.
+    """
+    Filter for customers whose `totalBalance` is less than or equal to this amount,
+    represented as a decimal string. You can only use one total-balance filter at a
+    time.
     """
 
     updated_after: Annotated[str, PropertyInfo(alias="updatedAfter")]

@@ -34,7 +34,7 @@ class TestServiceItems:
             barcode={
                 "allow_override": False,
                 "assign_even_if_used": False,
-                "bar_code_value": "1234567890",
+                "value": "012345678905",
             },
             class_id="80000001-1234567890",
             external_id="12345678-abcd-1234-abcd-1234567890ab",
@@ -200,7 +200,7 @@ class TestAsyncServiceItems:
             barcode={
                 "allow_override": False,
                 "assign_even_if_used": False,
-                "bar_code_value": "1234567890",
+                "value": "012345678905",
             },
             class_id="80000001-1234567890",
             external_id="12345678-abcd-1234-abcd-1234567890ab",

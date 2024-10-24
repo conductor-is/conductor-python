@@ -105,7 +105,8 @@ class VendorCreateParams(TypedDict, total=False):
     """
     A globally unique identifier (GUID) you can provide for tracking this object in
     your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
-    will return an error.
+    will return an error. This field is immutable and can only be set during object
+    creation.
     """
 
     fax: str
@@ -165,14 +166,13 @@ class VendorCreateParams(TypedDict, total=False):
 
     opening_balance: Annotated[str, PropertyInfo(alias="openingBalance")]
     """
-    The opening balance for this vendor's account, indicating the amount owed to
-    this vendor, represented as a decimal string.
+    The opening balance of this vendor's account, indicating the amount owed to this
+    vendor, represented as a decimal string.
     """
 
     opening_balance_date: Annotated[Union[str, date], PropertyInfo(alias="openingBalanceDate", format="iso8601")]
     """
-    The date of the opening balance for this vendor, in ISO 8601 format
-    (YYYY-MM-DD).
+    The date of the opening balance of this vendor, in ISO 8601 format (YYYY-MM-DD).
     """
 
     phone: str

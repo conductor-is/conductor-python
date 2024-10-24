@@ -64,7 +64,7 @@ class QbdStandardTerm(BaseModel):
 
     version: str
     """
-    The current version identifier for this standard term, which changes each time
+    The current version identifier of this standard term, which changes each time
     the object is modified. When updating this object, you must provide the most
     recent `version` to ensure you're working with the latest data; otherwise, the
     update will fail. This value is opaque and should not be interpreted.

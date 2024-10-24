@@ -74,7 +74,7 @@ class TransfersResource(SyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          amount: The monetary amount for this transfer, represented as a decimal string.
+          amount: The monetary amount of this transfer, represented as a decimal string.
 
           class_id: The transfer's class. Classes can be used to categorize objects into meaningful
               segments, such as department, location, or type of work. In QuickBooks, class
@@ -288,7 +288,7 @@ class AsyncTransfersResource(AsyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          amount: The monetary amount for this transfer, represented as a decimal string.
+          amount: The monetary amount of this transfer, represented as a decimal string.
 
           class_id: The transfer's class. Classes can be used to categorize objects into meaningful
               segments, such as department, location, or type of work. In QuickBooks, class

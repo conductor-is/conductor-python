@@ -194,7 +194,7 @@ class QbdAccount(BaseModel):
 
     full_name: str = FieldInfo(alias="fullName")
     """
-    The case-insensitive fully-qualified unique name for this account, formed by
+    The case-insensitive fully-qualified unique name of this account, formed by
     combining the names of its parent objects with its own `name`, separated by
     colons. For example, if an account is under "Corporate" and has the `name`
     "Accounts-Payable", its `fullName` would be "Corporate:Accounts-Payable". Unlike
@@ -299,7 +299,7 @@ class QbdAccount(BaseModel):
 
     version: str
     """
-    The current version identifier for this account, which changes each time the
+    The current version identifier of this account, which changes each time the
     object is modified. When updating this object, you must provide the most recent
     `version` to ensure you're working with the latest data; otherwise, the update
     will fail. This value is opaque and should not be interpreted.

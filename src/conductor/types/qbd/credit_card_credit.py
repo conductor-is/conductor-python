@@ -251,7 +251,7 @@ class ExpenseLine(BaseModel):
     """
 
     amount: Optional[str] = None
-    """The monetary amount for this expense line, represented as a decimal string."""
+    """The monetary amount of this expense line, represented as a decimal string."""
 
     billing_status: Optional[Literal["billable", "has_been_billed", "not_billable"]] = FieldInfo(
         alias="billingStatus", default=None
@@ -532,7 +532,7 @@ class ItemGroupLineItemLine(BaseModel):
     """
 
     amount: Optional[str] = None
-    """The monetary amount for this item line, represented as a decimal string.
+    """The monetary amount of this item line, represented as a decimal string.
 
     If both `quantity` and `cost` are specified but not `amount`, QuickBooks will
     use them to calculate `amount`. If `amount`, `cost`, and `quantity` are all
@@ -726,7 +726,7 @@ class ItemGroupLine(BaseModel):
 
     total_amount: str = FieldInfo(alias="totalAmount")
     """
-    The total monetary amount for this item group line, represented as a decimal
+    The total monetary amount of this item group line, represented as a decimal
     string.
     """
 
@@ -910,7 +910,7 @@ class ItemLine(BaseModel):
     """
 
     amount: Optional[str] = None
-    """The monetary amount for this item line, represented as a decimal string.
+    """The monetary amount of this item line, represented as a decimal string.
 
     If both `quantity` and `cost` are specified but not `amount`, QuickBooks will
     use them to calculate `amount`. If `amount`, `cost`, and `quantity` are all
@@ -1081,7 +1081,7 @@ class CreditCardCredit(BaseModel):
 
     amount: str
     """
-    The total monetary amount for this credit card credit, represented as a decimal
+    The total monetary amount of this credit card credit, represented as a decimal
     string. This equals the sum of the amounts in the credit card credit's expense
     lines, item lines, and item group lines.
     """
@@ -1129,7 +1129,8 @@ class CreditCardCredit(BaseModel):
     """
     A globally unique identifier (GUID) you can provide for tracking this object in
     your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
-    will return an error.
+    will return an error. This field is immutable and can only be set during object
+    creation.
     """
 
     item_group_lines: List[ItemGroupLine] = FieldInfo(alias="itemGroupLines")
@@ -1187,7 +1188,7 @@ class CreditCardCredit(BaseModel):
 
     version: str
     """
-    The current version identifier for this credit card credit, which changes each
+    The current version identifier of this credit card credit, which changes each
     time the object is modified. When updating this object, you must provide the
     most recent `version` to ensure you're working with the latest data; otherwise,
     the update will fail. This value is opaque and should not be interpreted.

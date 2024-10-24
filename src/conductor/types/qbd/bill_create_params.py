@@ -58,7 +58,8 @@ class BillCreateParams(TypedDict, total=False):
     """
     A globally unique identifier (GUID) you can provide for tracking this object in
     your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
-    will return an error.
+    will return an error. This field is immutable and can only be set during object
+    creation.
     """
 
     item_group_lines: Annotated[Iterable[ItemGroupLine], PropertyInfo(alias="itemGroupLines")]
@@ -162,7 +163,7 @@ class ExpenseLine(TypedDict, total=False):
     """
 
     amount: str
-    """The monetary amount for this expense line, represented as a decimal string."""
+    """The monetary amount of this expense line, represented as a decimal string."""
 
     billing_status: Annotated[
         Literal["billable", "has_been_billed", "not_billable"], PropertyInfo(alias="billingStatus")
@@ -299,13 +300,15 @@ class ItemLineCustomField(TypedDict, total=False):
 
 class ItemLineLinkToTransactionLine(TypedDict, total=False):
     transaction_id: Required[Annotated[str, PropertyInfo(alias="transactionId")]]
+    """The unique identifier of the transaction to link to."""
 
     transaction_line_id: Required[Annotated[str, PropertyInfo(alias="transactionLineId")]]
+    """The unique identifier of the transaction line to link to."""
 
 
 class ItemLine(TypedDict, total=False):
     amount: str
-    """The monetary amount for this item line, represented as a decimal string.
+    """The monetary amount of this item line, represented as a decimal string.
 
     If both `quantity` and `cost` are specified but not `amount`, QuickBooks will
     use them to calculate `amount`. If `amount`, `cost`, and `quantity` are all

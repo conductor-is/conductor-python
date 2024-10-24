@@ -78,7 +78,8 @@ class InvoiceCreateParams(TypedDict, total=False):
     """
     A globally unique identifier (GUID) you can provide for tracking this object in
     your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
-    will return an error.
+    will return an error. This field is immutable and can only be set during object
+    creation.
     """
 
     invoice_line_groups: Annotated[Iterable[InvoiceLineGroup], PropertyInfo(alias="invoiceLineGroups")]
@@ -363,13 +364,15 @@ class InvoiceLineCustomField(TypedDict, total=False):
 
 class InvoiceLineLinkToTransactionLine(TypedDict, total=False):
     transaction_id: Required[Annotated[str, PropertyInfo(alias="transactionId")]]
+    """The unique identifier of the transaction to link to."""
 
     transaction_line_id: Required[Annotated[str, PropertyInfo(alias="transactionLineId")]]
+    """The unique identifier of the transaction line to link to."""
 
 
 class InvoiceLine(TypedDict, total=False):
     amount: str
-    """The monetary amount for this invoice line, represented as a decimal string."""
+    """The monetary amount of this invoice line, represented as a decimal string."""
 
     class_id: Annotated[str, PropertyInfo(alias="classId")]
     """The invoice line's class.

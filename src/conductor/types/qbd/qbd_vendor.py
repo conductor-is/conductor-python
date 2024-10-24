@@ -92,7 +92,7 @@ class AdditionalContact(BaseModel):
 
     version: str
     """
-    The current version identifier for this contact, which changes each time the
+    The current version identifier of this contact, which changes each time the
     object is modified. When updating this object, you must provide the most recent
     `version` to ensure you're working with the latest data; otherwise, the update
     will fail. This value is opaque and should not be interpreted.
@@ -494,7 +494,8 @@ class QbdVendor(BaseModel):
     """
     A globally unique identifier (GUID) you can provide for tracking this object in
     your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
-    will return an error.
+    will return an error. This field is immutable and can only be set during object
+    creation.
     """
 
     fax: Optional[str] = None
@@ -637,7 +638,7 @@ class QbdVendor(BaseModel):
 
     version: str
     """
-    The current version identifier for this vendor, which changes each time the
+    The current version identifier of this vendor, which changes each time the
     object is modified. When updating this object, you must provide the most recent
     `version` to ensure you're working with the latest data; otherwise, the update
     will fail. This value is opaque and should not be interpreted.

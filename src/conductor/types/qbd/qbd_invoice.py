@@ -397,7 +397,7 @@ class InvoiceLineGroupInvoiceLine(BaseModel):
     """
 
     amount: Optional[str] = None
-    """The monetary amount for this invoice line, represented as a decimal string."""
+    """The monetary amount of this invoice line, represented as a decimal string."""
 
     class_: Optional[InvoiceLineGroupInvoiceLineClass] = FieldInfo(alias="class", default=None)
     """The invoice line's class.
@@ -626,7 +626,7 @@ class InvoiceLineGroup(BaseModel):
 
     total_amount: str = FieldInfo(alias="totalAmount")
     """
-    The total monetary amount for this invoice line group, represented as a decimal
+    The total monetary amount of this invoice line group, represented as a decimal
     string.
     """
 
@@ -778,7 +778,7 @@ class InvoiceLine(BaseModel):
     """
 
     amount: Optional[str] = None
-    """The monetary amount for this invoice line, represented as a decimal string."""
+    """The monetary amount of this invoice line, represented as a decimal string."""
 
     class_: Optional[InvoiceLineClass] = FieldInfo(alias="class", default=None)
     """The invoice line's class.
@@ -944,8 +944,7 @@ class LinkedTransaction(BaseModel):
 
     amount: str
     """
-    The monetary amount for this linked transaction, represented as a decimal
-    string.
+    The monetary amount of this linked transaction, represented as a decimal string.
     """
 
     link_type: Optional[Literal["amount", "quantity"]] = FieldInfo(alias="linkType", default=None)
@@ -1197,7 +1196,8 @@ class QbdInvoice(BaseModel):
     """
     A globally unique identifier (GUID) you can provide for tracking this object in
     your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
-    will return an error.
+    will return an error. This field is immutable and can only be set during object
+    creation.
     """
 
     invoice_line_groups: List[InvoiceLineGroup] = FieldInfo(alias="invoiceLineGroups")
@@ -1376,7 +1376,7 @@ class QbdInvoice(BaseModel):
 
     version: str
     """
-    The current version identifier for this invoice, which changes each time the
+    The current version identifier of this invoice, which changes each time the
     object is modified. When updating this object, you must provide the most recent
     `version` to ensure you're working with the latest data; otherwise, the update
     will fail. This value is opaque and should not be interpreted.

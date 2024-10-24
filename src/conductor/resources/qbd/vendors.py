@@ -158,7 +158,8 @@ class VendorsResource(SyncAPIResource):
 
           external_id: A globally unique identifier (GUID) you can provide for tracking this object in
               your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
-              will return an error.
+              will return an error. This field is immutable and can only be set during object
+              creation.
 
           fax: The vendor's fax number.
 
@@ -192,11 +193,10 @@ class VendorsResource(SyncAPIResource):
 
           note: Additional notes or comments about this vendor.
 
-          opening_balance: The opening balance for this vendor's account, indicating the amount owed to
-              this vendor, represented as a decimal string.
+          opening_balance: The opening balance of this vendor's account, indicating the amount owed to this
+              vendor, represented as a decimal string.
 
-          opening_balance_date: The date of the opening balance for this vendor, in ISO 8601 format
-              (YYYY-MM-DD).
+          opening_balance_date: The date of the opening balance of this vendor, in ISO 8601 format (YYYY-MM-DD).
 
           phone: The vendor's primary telephone number.
 
@@ -432,20 +432,22 @@ class VendorsResource(SyncAPIResource):
 
           status: Filter for vendors that are active, inactive, or both.
 
-          total_balance: Filter for vendors whose `totalBalance` equals this amount. You can only use one
-              total-balance filter at a time.
+          total_balance: Filter for vendors whose `totalBalance` equals this amount, represented as a
+              decimal string. You can only use one total-balance filter at a time.
 
-          total_balance_gt: Filter for vendors whose `totalBalance` is greater than this amount. You can
-              only use one total-balance filter at a time.
+          total_balance_gt: Filter for vendors whose `totalBalance` is greater than this amount, represented
+              as a decimal string. You can only use one total-balance filter at a time.
 
-          total_balance_gte: Filter for vendors whose `totalBalance` is greater than or equal to this amount.
-              You can only use one total-balance filter at a time.
+          total_balance_gte: Filter for vendors whose `totalBalance` is greater than or equal to this amount,
+              represented as a decimal string. You can only use one total-balance filter at a
+              time.
 
-          total_balance_lt: Filter for vendors whose `totalBalance` is less than this amount. You can only
-              use one total-balance filter at a time.
+          total_balance_lt: Filter for vendors whose `totalBalance` is less than this amount, represented as
+              a decimal string. You can only use one total-balance filter at a time.
 
-          total_balance_lte: Filter for vendors whose `totalBalance` is less than or equal to this amount.
-              You can only use one total-balance filter at a time.
+          total_balance_lte: Filter for vendors whose `totalBalance` is less than or equal to this amount,
+              represented as a decimal string. You can only use one total-balance filter at a
+              time.
 
           updated_after: Filter for vendors updated on or after this date and time, in ISO 8601 format
               (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the time is
@@ -630,7 +632,8 @@ class AsyncVendorsResource(AsyncAPIResource):
 
           external_id: A globally unique identifier (GUID) you can provide for tracking this object in
               your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
-              will return an error.
+              will return an error. This field is immutable and can only be set during object
+              creation.
 
           fax: The vendor's fax number.
 
@@ -664,11 +667,10 @@ class AsyncVendorsResource(AsyncAPIResource):
 
           note: Additional notes or comments about this vendor.
 
-          opening_balance: The opening balance for this vendor's account, indicating the amount owed to
-              this vendor, represented as a decimal string.
+          opening_balance: The opening balance of this vendor's account, indicating the amount owed to this
+              vendor, represented as a decimal string.
 
-          opening_balance_date: The date of the opening balance for this vendor, in ISO 8601 format
-              (YYYY-MM-DD).
+          opening_balance_date: The date of the opening balance of this vendor, in ISO 8601 format (YYYY-MM-DD).
 
           phone: The vendor's primary telephone number.
 
@@ -904,20 +906,22 @@ class AsyncVendorsResource(AsyncAPIResource):
 
           status: Filter for vendors that are active, inactive, or both.
 
-          total_balance: Filter for vendors whose `totalBalance` equals this amount. You can only use one
-              total-balance filter at a time.
+          total_balance: Filter for vendors whose `totalBalance` equals this amount, represented as a
+              decimal string. You can only use one total-balance filter at a time.
 
-          total_balance_gt: Filter for vendors whose `totalBalance` is greater than this amount. You can
-              only use one total-balance filter at a time.
+          total_balance_gt: Filter for vendors whose `totalBalance` is greater than this amount, represented
+              as a decimal string. You can only use one total-balance filter at a time.
 
-          total_balance_gte: Filter for vendors whose `totalBalance` is greater than or equal to this amount.
-              You can only use one total-balance filter at a time.
+          total_balance_gte: Filter for vendors whose `totalBalance` is greater than or equal to this amount,
+              represented as a decimal string. You can only use one total-balance filter at a
+              time.
 
-          total_balance_lt: Filter for vendors whose `totalBalance` is less than this amount. You can only
-              use one total-balance filter at a time.
+          total_balance_lt: Filter for vendors whose `totalBalance` is less than this amount, represented as
+              a decimal string. You can only use one total-balance filter at a time.
 
-          total_balance_lte: Filter for vendors whose `totalBalance` is less than or equal to this amount.
-              You can only use one total-balance filter at a time.
+          total_balance_lte: Filter for vendors whose `totalBalance` is less than or equal to this amount,
+              represented as a decimal string. You can only use one total-balance filter at a
+              time.
 
           updated_after: Filter for vendors updated on or after this date and time, in ISO 8601 format
               (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the time is

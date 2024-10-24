@@ -311,12 +311,13 @@ class NonInventoryItem(BaseModel):
     """
     A globally unique identifier (GUID) you can provide for tracking this object in
     your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
-    will return an error.
+    will return an error. This field is immutable and can only be set during object
+    creation.
     """
 
     full_name: str = FieldInfo(alias="fullName")
     """
-    The case-insensitive fully-qualified unique name for this non-inventory item,
+    The case-insensitive fully-qualified unique name of this non-inventory item,
     formed by combining the names of its parent objects with its own `name`,
     separated by colons. For example, if a non-inventory item is under
     "Office-Supplies" and has the `name` "Printer Ink Cartridge", its `fullName`
@@ -408,7 +409,7 @@ class NonInventoryItem(BaseModel):
 
     version: str
     """
-    The current version identifier for this non-inventory item, which changes each
+    The current version identifier of this non-inventory item, which changes each
     time the object is modified. When updating this object, you must provide the
     most recent `version` to ensure you're working with the latest data; otherwise,
     the update will fail. This value is opaque and should not be interpreted.

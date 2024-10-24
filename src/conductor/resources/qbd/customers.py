@@ -172,7 +172,8 @@ class CustomersResource(SyncAPIResource):
 
           external_id: A globally unique identifier (GUID) you can provide for tracking this object in
               your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
-              will return an error.
+              will return an error. This field is immutable and can only be set during object
+              creation.
 
           fax: The customer's fax number.
 
@@ -212,10 +213,10 @@ class CustomersResource(SyncAPIResource):
 
           note: Additional notes or comments about this customer.
 
-          opening_balance: The opening balance for this customer's account, indicating the amount owed by
+          opening_balance: The opening balance of this customer's account, indicating the amount owed by
               this customer, represented as a decimal string.
 
-          opening_balance_date: The date of the opening balance for this customer, in ISO 8601 format
+          opening_balance_date: The date of the opening balance of this customer, in ISO 8601 format
               (YYYY-MM-DD).
 
           parent_id: The parent customer one level above this one in the hierarchy. For example, if
@@ -460,20 +461,23 @@ class CustomersResource(SyncAPIResource):
 
           status: Filter for customers that are active, inactive, or both.
 
-          total_balance: Filter for customers whose `totalBalance` equals this amount. You can only use
-              one total-balance filter at a time.
+          total_balance: Filter for customers whose `totalBalance` equals this amount, represented as a
+              decimal string. You can only use one total-balance filter at a time.
 
-          total_balance_gt: Filter for customers whose `totalBalance` is greater than this amount. You can
-              only use one total-balance filter at a time.
+          total_balance_gt: Filter for customers whose `totalBalance` is greater than this amount,
+              represented as a decimal string. You can only use one total-balance filter at a
+              time.
 
           total_balance_gte: Filter for customers whose `totalBalance` is greater than or equal to this
-              amount. You can only use one total-balance filter at a time.
+              amount, represented as a decimal string. You can only use one total-balance
+              filter at a time.
 
-          total_balance_lt: Filter for customers whose `totalBalance` is less than this amount. You can only
-              use one total-balance filter at a time.
+          total_balance_lt: Filter for customers whose `totalBalance` is less than this amount, represented
+              as a decimal string. You can only use one total-balance filter at a time.
 
-          total_balance_lte: Filter for customers whose `totalBalance` is less than or equal to this amount.
-              You can only use one total-balance filter at a time.
+          total_balance_lte: Filter for customers whose `totalBalance` is less than or equal to this amount,
+              represented as a decimal string. You can only use one total-balance filter at a
+              time.
 
           updated_after: Filter for customers updated on or after this date and time, in ISO 8601 format
               (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the time is
@@ -672,7 +676,8 @@ class AsyncCustomersResource(AsyncAPIResource):
 
           external_id: A globally unique identifier (GUID) you can provide for tracking this object in
               your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
-              will return an error.
+              will return an error. This field is immutable and can only be set during object
+              creation.
 
           fax: The customer's fax number.
 
@@ -712,10 +717,10 @@ class AsyncCustomersResource(AsyncAPIResource):
 
           note: Additional notes or comments about this customer.
 
-          opening_balance: The opening balance for this customer's account, indicating the amount owed by
+          opening_balance: The opening balance of this customer's account, indicating the amount owed by
               this customer, represented as a decimal string.
 
-          opening_balance_date: The date of the opening balance for this customer, in ISO 8601 format
+          opening_balance_date: The date of the opening balance of this customer, in ISO 8601 format
               (YYYY-MM-DD).
 
           parent_id: The parent customer one level above this one in the hierarchy. For example, if
@@ -960,20 +965,23 @@ class AsyncCustomersResource(AsyncAPIResource):
 
           status: Filter for customers that are active, inactive, or both.
 
-          total_balance: Filter for customers whose `totalBalance` equals this amount. You can only use
-              one total-balance filter at a time.
+          total_balance: Filter for customers whose `totalBalance` equals this amount, represented as a
+              decimal string. You can only use one total-balance filter at a time.
 
-          total_balance_gt: Filter for customers whose `totalBalance` is greater than this amount. You can
-              only use one total-balance filter at a time.
+          total_balance_gt: Filter for customers whose `totalBalance` is greater than this amount,
+              represented as a decimal string. You can only use one total-balance filter at a
+              time.
 
           total_balance_gte: Filter for customers whose `totalBalance` is greater than or equal to this
-              amount. You can only use one total-balance filter at a time.
+              amount, represented as a decimal string. You can only use one total-balance
+              filter at a time.
 
-          total_balance_lt: Filter for customers whose `totalBalance` is less than this amount. You can only
-              use one total-balance filter at a time.
+          total_balance_lt: Filter for customers whose `totalBalance` is less than this amount, represented
+              as a decimal string. You can only use one total-balance filter at a time.
 
-          total_balance_lte: Filter for customers whose `totalBalance` is less than or equal to this amount.
-              You can only use one total-balance filter at a time.
+          total_balance_lte: Filter for customers whose `totalBalance` is less than or equal to this amount,
+              represented as a decimal string. You can only use one total-balance filter at a
+              time.
 
           updated_after: Filter for customers updated on or after this date and time, in ISO 8601 format
               (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the time is

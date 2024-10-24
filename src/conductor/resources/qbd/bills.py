@@ -100,7 +100,8 @@ class BillsResource(SyncAPIResource):
 
           external_id: A globally unique identifier (GUID) you can provide for tracking this object in
               your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
-              will return an error.
+              will return an error. This field is immutable and can only be set during object
+              creation.
 
           item_group_lines: The bill's item group lines, each representing a predefined set of items bundled
               because they are commonly purchased together or grouped for faster entry.
@@ -445,7 +446,8 @@ class AsyncBillsResource(AsyncAPIResource):
 
           external_id: A globally unique identifier (GUID) you can provide for tracking this object in
               your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
-              will return an error.
+              will return an error. This field is immutable and can only be set during object
+              creation.
 
           item_group_lines: The bill's item group lines, each representing a predefined set of items bundled
               because they are commonly purchased together or grouped for faster entry.

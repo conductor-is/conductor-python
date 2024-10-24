@@ -257,12 +257,13 @@ class InventoryItem(BaseModel):
     """
     A globally unique identifier (GUID) you can provide for tracking this object in
     your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
-    will return an error.
+    will return an error. This field is immutable and can only be set during object
+    creation.
     """
 
     full_name: str = FieldInfo(alias="fullName")
     """
-    The case-insensitive fully-qualified unique name for this inventory item, formed
+    The case-insensitive fully-qualified unique name of this inventory item, formed
     by combining the names of its parent objects with its own `name`, separated by
     colons. For example, if an inventory item is under "Products:Electronics" and
     has the `name` "Widgets", its `fullName` would be
@@ -282,7 +283,7 @@ class InventoryItem(BaseModel):
     manufacturer_part_number: Optional[str] = FieldInfo(alias="manufacturerPartNumber", default=None)
     """The manufacturer's part number for this inventory item."""
 
-    maximum_on_hand_quantity: Optional[float] = FieldInfo(alias="maximumOnHandQuantity", default=None)
+    maximum_quantity_on_hand: Optional[float] = FieldInfo(alias="maximumQuantityOnHand", default=None)
     """The maximum quantity of this inventory item desired in inventory."""
 
     name: str
@@ -397,7 +398,7 @@ class InventoryItem(BaseModel):
 
     version: str
     """
-    The current version identifier for this inventory item, which changes each time
+    The current version identifier of this inventory item, which changes each time
     the object is modified. When updating this object, you must provide the most
     recent `version` to ensure you're working with the latest data; otherwise, the
     update will fail. This value is opaque and should not be interpreted.

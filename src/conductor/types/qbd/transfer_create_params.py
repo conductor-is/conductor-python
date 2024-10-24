@@ -22,7 +22,7 @@ class TransferCreateParams(TypedDict, total=False):
     """
 
     amount: str
-    """The monetary amount for this transfer, represented as a decimal string."""
+    """The monetary amount of this transfer, represented as a decimal string."""
 
     class_id: Annotated[str, PropertyInfo(alias="classId")]
     """The transfer's class.

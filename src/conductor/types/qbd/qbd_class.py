@@ -43,7 +43,7 @@ class QbdClass(BaseModel):
 
     full_name: str = FieldInfo(alias="fullName")
     """
-    The case-insensitive fully-qualified unique name for this class, formed by
+    The case-insensitive fully-qualified unique name of this class, formed by
     combining the names of its parent objects with its own `name`, separated by
     colons. For example, if a class is under "Corporate:Sales" and has the `name`
     "Marketing", its `fullName` would be "Corporate:Sales:Marketing". Unlike `name`,
@@ -93,8 +93,8 @@ class QbdClass(BaseModel):
 
     version: str
     """
-    The current version identifier for this class, which changes each time the
-    object is modified. When updating this object, you must provide the most recent
+    The current version identifier of this class, which changes each time the object
+    is modified. When updating this object, you must provide the most recent
     `version` to ensure you're working with the latest data; otherwise, the update
     will fail. This value is opaque and should not be interpreted.
     """

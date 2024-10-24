@@ -54,7 +54,8 @@ class InventoryItemCreateParams(TypedDict, total=False):
     """
     A globally unique identifier (GUID) you can provide for tracking this object in
     your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
-    will return an error.
+    will return an error. This field is immutable and can only be set during object
+    creation.
     """
 
     income_account_id: Annotated[str, PropertyInfo(alias="incomeAccountId")]
@@ -75,7 +76,7 @@ class InventoryItemCreateParams(TypedDict, total=False):
     manufacturer_part_number: Annotated[str, PropertyInfo(alias="manufacturerPartNumber")]
     """The manufacturer's part number for this inventory item."""
 
-    maximum_on_hand_quantity: Annotated[float, PropertyInfo(alias="maximumOnHandQuantity")]
+    maximum_quantity_on_hand: Annotated[float, PropertyInfo(alias="maximumQuantityOnHand")]
     """The maximum quantity of this inventory item desired in inventory."""
 
     parent_id: Annotated[str, PropertyInfo(alias="parentId")]
@@ -161,10 +162,10 @@ class InventoryItemCreateParams(TypedDict, total=False):
 
 class Barcode(TypedDict, total=False):
     allow_override: Annotated[bool, PropertyInfo(alias="allowOverride")]
-    """Whether to allow the barcode to be overridden."""
+    """Indicates whether to allow the barcode to be overridden."""
 
     assign_even_if_used: Annotated[bool, PropertyInfo(alias="assignEvenIfUsed")]
-    """Whether to assign the barcode even if it is already used."""
+    """Indicates whether to assign the barcode even if it is already used."""
 
-    bar_code_value: Annotated[str, PropertyInfo(alias="barCodeValue")]
+    value: str
     """The item's barcode value."""

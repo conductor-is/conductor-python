@@ -126,7 +126,7 @@ class AccountsResource(SyncAPIResource):
               `openingBalanceDate`. On a bank statement, this would be the amount of money in
               the account at the beginning of the statement period.
 
-          opening_balance_date: The date of the opening balance for this account, in ISO 8601 format
+          opening_balance_date: The date of the opening balance of this account, in ISO 8601 format
               (YYYY-MM-DD).
 
           parent_id: The parent account one level above this one in the hierarchy. For example, if
@@ -454,7 +454,7 @@ class AsyncAccountsResource(AsyncAPIResource):
               `openingBalanceDate`. On a bank statement, this would be the amount of money in
               the account at the beginning of the statement period.
 
-          opening_balance_date: The date of the opening balance for this account, in ISO 8601 format
+          opening_balance_date: The date of the opening balance of this account, in ISO 8601 format
               (YYYY-MM-DD).
 
           parent_id: The parent account one level above this one in the hierarchy. For example, if

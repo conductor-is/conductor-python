@@ -67,7 +67,7 @@ class QbdTransfer(BaseModel):
     """
 
     amount: Optional[str] = None
-    """The monetary amount for this transfer, represented as a decimal string."""
+    """The monetary amount of this transfer, represented as a decimal string."""
 
     class_: Optional[Class] = FieldInfo(alias="class", default=None)
     """The transfer's class.
@@ -114,7 +114,7 @@ class QbdTransfer(BaseModel):
 
     version: str
     """
-    The current version identifier for this transfer, which changes each time the
+    The current version identifier of this transfer, which changes each time the
     object is modified. When updating this object, you must provide the most recent
     `version` to ensure you're working with the latest data; otherwise, the update
     will fail. This value is opaque and should not be interpreted.
