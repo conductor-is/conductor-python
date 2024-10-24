@@ -251,7 +251,7 @@ class ExpenseLine(BaseModel):
     """
 
     amount: Optional[str] = None
-    """The monetary amount for this expense line, represented as a decimal string."""
+    """The monetary amount of this expense line, represented as a decimal string."""
 
     billing_status: Optional[Literal["billable", "has_been_billed", "not_billable"]] = FieldInfo(
         alias="billingStatus", default=None
@@ -532,7 +532,7 @@ class ItemGroupLineItemLine(BaseModel):
     """
 
     amount: Optional[str] = None
-    """The monetary amount for this item line, represented as a decimal string.
+    """The monetary amount of this item line, represented as a decimal string.
 
     If both `quantity` and `cost` are specified but not `amount`, QuickBooks will
     use them to calculate `amount`. If `amount`, `cost`, and `quantity` are all
@@ -726,7 +726,7 @@ class ItemGroupLine(BaseModel):
 
     total_amount: str = FieldInfo(alias="totalAmount")
     """
-    The total monetary amount for this item group line, represented as a decimal
+    The total monetary amount of this item group line, represented as a decimal
     string.
     """
 
@@ -910,7 +910,7 @@ class ItemLine(BaseModel):
     """
 
     amount: Optional[str] = None
-    """The monetary amount for this item line, represented as a decimal string.
+    """The monetary amount of this item line, represented as a decimal string.
 
     If both `quantity` and `cost` are specified but not `amount`, QuickBooks will
     use them to calculate `amount`. If `amount`, `cost`, and `quantity` are all
@@ -1084,7 +1084,7 @@ class QbdCreditCardCharge(BaseModel):
 
     amount: str
     """
-    The total monetary amount for this credit card charge, represented as a decimal
+    The total monetary amount of this credit card charge, represented as a decimal
     string. This equals the sum of the amounts in the credit card charge's expense
     lines, item lines, and item group lines.
     """

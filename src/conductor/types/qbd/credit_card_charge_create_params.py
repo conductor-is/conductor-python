@@ -133,7 +133,7 @@ class ExpenseLine(TypedDict, total=False):
     """
 
     amount: str
-    """The monetary amount for this expense line, represented as a decimal string."""
+    """The monetary amount of this expense line, represented as a decimal string."""
 
     billing_status: Annotated[
         Literal["billable", "has_been_billed", "not_billable"], PropertyInfo(alias="billingStatus")
@@ -278,7 +278,7 @@ class ItemLineLinkToTransactionLine(TypedDict, total=False):
 
 class ItemLine(TypedDict, total=False):
     amount: str
-    """The monetary amount for this item line, represented as a decimal string.
+    """The monetary amount of this item line, represented as a decimal string.
 
     If both `quantity` and `cost` are specified but not `amount`, QuickBooks will
     use them to calculate `amount`. If `amount`, `cost`, and `quantity` are all

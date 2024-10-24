@@ -166,14 +166,13 @@ class VendorCreateParams(TypedDict, total=False):
 
     opening_balance: Annotated[str, PropertyInfo(alias="openingBalance")]
     """
-    The opening balance for this vendor's account, indicating the amount owed to
-    this vendor, represented as a decimal string.
+    The opening balance of this vendor's account, indicating the amount owed to this
+    vendor, represented as a decimal string.
     """
 
     opening_balance_date: Annotated[Union[str, date], PropertyInfo(alias="openingBalanceDate", format="iso8601")]
     """
-    The date of the opening balance for this vendor, in ISO 8601 format
-    (YYYY-MM-DD).
+    The date of the opening balance of this vendor, in ISO 8601 format (YYYY-MM-DD).
     """
 
     phone: str
