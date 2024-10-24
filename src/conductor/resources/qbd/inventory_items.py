@@ -63,7 +63,7 @@ class InventoryItemsResource(SyncAPIResource):
         inventory_date: Union[str, date] | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
         manufacturer_part_number: str | NotGiven = NOT_GIVEN,
-        maximum_on_hand_quantity: float | NotGiven = NOT_GIVEN,
+        maximum_quantity_on_hand: float | NotGiven = NOT_GIVEN,
         parent_id: str | NotGiven = NOT_GIVEN,
         preferred_vendor_id: str | NotGiven = NOT_GIVEN,
         purchase_cost: str | NotGiven = NOT_GIVEN,
@@ -122,7 +122,7 @@ class InventoryItemsResource(SyncAPIResource):
 
           manufacturer_part_number: The manufacturer's part number for this inventory item.
 
-          maximum_on_hand_quantity: The maximum quantity of this inventory item desired in inventory.
+          maximum_quantity_on_hand: The maximum quantity of this inventory item desired in inventory.
 
           parent_id: The parent inventory item one level above this one in the hierarchy. For
               example, if this inventory item has a `fullName` of
@@ -193,7 +193,7 @@ class InventoryItemsResource(SyncAPIResource):
                     "inventory_date": inventory_date,
                     "is_active": is_active,
                     "manufacturer_part_number": manufacturer_part_number,
-                    "maximum_on_hand_quantity": maximum_on_hand_quantity,
+                    "maximum_quantity_on_hand": maximum_quantity_on_hand,
                     "parent_id": parent_id,
                     "preferred_vendor_id": preferred_vendor_id,
                     "purchase_cost": purchase_cost,
@@ -426,7 +426,7 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
         inventory_date: Union[str, date] | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
         manufacturer_part_number: str | NotGiven = NOT_GIVEN,
-        maximum_on_hand_quantity: float | NotGiven = NOT_GIVEN,
+        maximum_quantity_on_hand: float | NotGiven = NOT_GIVEN,
         parent_id: str | NotGiven = NOT_GIVEN,
         preferred_vendor_id: str | NotGiven = NOT_GIVEN,
         purchase_cost: str | NotGiven = NOT_GIVEN,
@@ -485,7 +485,7 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
 
           manufacturer_part_number: The manufacturer's part number for this inventory item.
 
-          maximum_on_hand_quantity: The maximum quantity of this inventory item desired in inventory.
+          maximum_quantity_on_hand: The maximum quantity of this inventory item desired in inventory.
 
           parent_id: The parent inventory item one level above this one in the hierarchy. For
               example, if this inventory item has a `fullName` of
@@ -556,7 +556,7 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
                     "inventory_date": inventory_date,
                     "is_active": is_active,
                     "manufacturer_part_number": manufacturer_part_number,
-                    "maximum_on_hand_quantity": maximum_on_hand_quantity,
+                    "maximum_quantity_on_hand": maximum_quantity_on_hand,
                     "parent_id": parent_id,
                     "preferred_vendor_id": preferred_vendor_id,
                     "purchase_cost": purchase_cost,

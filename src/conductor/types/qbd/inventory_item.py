@@ -282,7 +282,7 @@ class InventoryItem(BaseModel):
     manufacturer_part_number: Optional[str] = FieldInfo(alias="manufacturerPartNumber", default=None)
     """The manufacturer's part number for this inventory item."""
 
-    maximum_on_hand_quantity: Optional[float] = FieldInfo(alias="maximumOnHandQuantity", default=None)
+    maximum_quantity_on_hand: Optional[float] = FieldInfo(alias="maximumQuantityOnHand", default=None)
     """The maximum quantity of this inventory item desired in inventory."""
 
     name: str
