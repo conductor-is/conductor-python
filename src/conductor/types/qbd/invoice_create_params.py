@@ -363,8 +363,10 @@ class InvoiceLineCustomField(TypedDict, total=False):
 
 class InvoiceLineLinkToTransactionLine(TypedDict, total=False):
     transaction_id: Required[Annotated[str, PropertyInfo(alias="transactionId")]]
+    """The unique identifier of the transaction to link to."""
 
     transaction_line_id: Required[Annotated[str, PropertyInfo(alias="transactionLineId")]]
+    """The unique identifier of the transaction line to link to."""
 
 
 class InvoiceLine(TypedDict, total=False):
