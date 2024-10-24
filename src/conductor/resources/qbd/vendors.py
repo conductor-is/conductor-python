@@ -193,11 +193,10 @@ class VendorsResource(SyncAPIResource):
 
           note: Additional notes or comments about this vendor.
 
-          opening_balance: The opening balance for this vendor's account, indicating the amount owed to
-              this vendor, represented as a decimal string.
+          opening_balance: The opening balance of this vendor's account, indicating the amount owed to this
+              vendor, represented as a decimal string.
 
-          opening_balance_date: The date of the opening balance for this vendor, in ISO 8601 format
-              (YYYY-MM-DD).
+          opening_balance_date: The date of the opening balance of this vendor, in ISO 8601 format (YYYY-MM-DD).
 
           phone: The vendor's primary telephone number.
 
@@ -668,11 +667,10 @@ class AsyncVendorsResource(AsyncAPIResource):
 
           note: Additional notes or comments about this vendor.
 
-          opening_balance: The opening balance for this vendor's account, indicating the amount owed to
-              this vendor, represented as a decimal string.
+          opening_balance: The opening balance of this vendor's account, indicating the amount owed to this
+              vendor, represented as a decimal string.
 
-          opening_balance_date: The date of the opening balance for this vendor, in ISO 8601 format
-              (YYYY-MM-DD).
+          opening_balance_date: The date of the opening balance of this vendor, in ISO 8601 format (YYYY-MM-DD).
 
           phone: The vendor's primary telephone number.
 

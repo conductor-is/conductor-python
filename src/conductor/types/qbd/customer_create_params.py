@@ -203,13 +203,13 @@ class CustomerCreateParams(TypedDict, total=False):
 
     opening_balance: Annotated[str, PropertyInfo(alias="openingBalance")]
     """
-    The opening balance for this customer's account, indicating the amount owed by
+    The opening balance of this customer's account, indicating the amount owed by
     this customer, represented as a decimal string.
     """
 
     opening_balance_date: Annotated[Union[str, date], PropertyInfo(alias="openingBalanceDate", format="iso8601")]
     """
-    The date of the opening balance for this customer, in ISO 8601 format
+    The date of the opening balance of this customer, in ISO 8601 format
     (YYYY-MM-DD).
     """
 
