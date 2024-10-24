@@ -81,12 +81,12 @@ class ServiceItemCreateParams(TypedDict, total=False):
 
 class Barcode(TypedDict, total=False):
     allow_override: Annotated[bool, PropertyInfo(alias="allowOverride")]
-    """Whether to allow the barcode to be overridden."""
+    """Indicates whether to allow the barcode to be overridden."""
 
     assign_even_if_used: Annotated[bool, PropertyInfo(alias="assignEvenIfUsed")]
-    """Whether to assign the barcode even if it is already used."""
+    """Indicates whether to assign the barcode even if it is already used."""
 
-    bar_code_value: Annotated[str, PropertyInfo(alias="barCodeValue")]
+    value: str
     """The item's barcode value."""
 
 
