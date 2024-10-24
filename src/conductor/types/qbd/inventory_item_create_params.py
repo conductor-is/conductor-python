@@ -75,7 +75,7 @@ class InventoryItemCreateParams(TypedDict, total=False):
     manufacturer_part_number: Annotated[str, PropertyInfo(alias="manufacturerPartNumber")]
     """The manufacturer's part number for this inventory item."""
 
-    maximum_on_hand_quantity: Annotated[float, PropertyInfo(alias="maximumOnHandQuantity")]
+    maximum_quantity_on_hand: Annotated[float, PropertyInfo(alias="maximumQuantityOnHand")]
     """The maximum quantity of this inventory item desired in inventory."""
 
     parent_id: Annotated[str, PropertyInfo(alias="parentId")]
