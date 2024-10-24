@@ -461,20 +461,23 @@ class CustomersResource(SyncAPIResource):
 
           status: Filter for customers that are active, inactive, or both.
 
-          total_balance: Filter for customers whose `totalBalance` equals this amount. You can only use
-              one total-balance filter at a time.
+          total_balance: Filter for customers whose `totalBalance` equals this amount, represented as a
+              decimal string. You can only use one total-balance filter at a time.
 
-          total_balance_gt: Filter for customers whose `totalBalance` is greater than this amount. You can
-              only use one total-balance filter at a time.
+          total_balance_gt: Filter for customers whose `totalBalance` is greater than this amount,
+              represented as a decimal string. You can only use one total-balance filter at a
+              time.
 
           total_balance_gte: Filter for customers whose `totalBalance` is greater than or equal to this
-              amount. You can only use one total-balance filter at a time.
+              amount, represented as a decimal string. You can only use one total-balance
+              filter at a time.
 
-          total_balance_lt: Filter for customers whose `totalBalance` is less than this amount. You can only
-              use one total-balance filter at a time.
+          total_balance_lt: Filter for customers whose `totalBalance` is less than this amount, represented
+              as a decimal string. You can only use one total-balance filter at a time.
 
-          total_balance_lte: Filter for customers whose `totalBalance` is less than or equal to this amount.
-              You can only use one total-balance filter at a time.
+          total_balance_lte: Filter for customers whose `totalBalance` is less than or equal to this amount,
+              represented as a decimal string. You can only use one total-balance filter at a
+              time.
 
           updated_after: Filter for customers updated on or after this date and time, in ISO 8601 format
               (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the time is
@@ -962,20 +965,23 @@ class AsyncCustomersResource(AsyncAPIResource):
 
           status: Filter for customers that are active, inactive, or both.
 
-          total_balance: Filter for customers whose `totalBalance` equals this amount. You can only use
-              one total-balance filter at a time.
+          total_balance: Filter for customers whose `totalBalance` equals this amount, represented as a
+              decimal string. You can only use one total-balance filter at a time.
 
-          total_balance_gt: Filter for customers whose `totalBalance` is greater than this amount. You can
-              only use one total-balance filter at a time.
+          total_balance_gt: Filter for customers whose `totalBalance` is greater than this amount,
+              represented as a decimal string. You can only use one total-balance filter at a
+              time.
 
           total_balance_gte: Filter for customers whose `totalBalance` is greater than or equal to this
-              amount. You can only use one total-balance filter at a time.
+              amount, represented as a decimal string. You can only use one total-balance
+              filter at a time.
 
-          total_balance_lt: Filter for customers whose `totalBalance` is less than this amount. You can only
-              use one total-balance filter at a time.
+          total_balance_lt: Filter for customers whose `totalBalance` is less than this amount, represented
+              as a decimal string. You can only use one total-balance filter at a time.
 
-          total_balance_lte: Filter for customers whose `totalBalance` is less than or equal to this amount.
-              You can only use one total-balance filter at a time.
+          total_balance_lte: Filter for customers whose `totalBalance` is less than or equal to this amount,
+              represented as a decimal string. You can only use one total-balance filter at a
+              time.
 
           updated_after: Filter for customers updated on or after this date and time, in ISO 8601 format
               (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the time is
