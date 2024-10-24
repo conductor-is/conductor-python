@@ -34,7 +34,7 @@ class TestSalesTaxItems:
             barcode={
                 "allow_override": False,
                 "assign_even_if_used": False,
-                "bar_code_value": "1234567890",
+                "value": "012345678905",
             },
             class_id="80000001-1234567890",
             description="Standard rate sales tax for California",
@@ -185,7 +185,7 @@ class TestAsyncSalesTaxItems:
             barcode={
                 "allow_override": False,
                 "assign_even_if_used": False,
-                "bar_code_value": "1234567890",
+                "value": "012345678905",
             },
             class_id="80000001-1234567890",
             description="Standard rate sales tax for California",
