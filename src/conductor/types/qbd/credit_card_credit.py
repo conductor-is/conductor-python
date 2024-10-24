@@ -1188,7 +1188,7 @@ class CreditCardCredit(BaseModel):
 
     version: str
     """
-    The current version identifier for this credit card credit, which changes each
+    The current version identifier of this credit card credit, which changes each
     time the object is modified. When updating this object, you must provide the
     most recent `version` to ensure you're working with the latest data; otherwise,
     the update will fail. This value is opaque and should not be interpreted.

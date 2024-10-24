@@ -317,8 +317,8 @@ class ServiceItem(BaseModel):
 
     full_name: str = FieldInfo(alias="fullName")
     """
-    The case-insensitive fully-qualified unique name for this service item, formed
-    by combining the names of its parent objects with its own `name`, separated by
+    The case-insensitive fully-qualified unique name of this service item, formed by
+    combining the names of its parent objects with its own `name`, separated by
     colons. For example, if a service item is under "Services:Consulting" and has
     the `name` "Web-Design", its `fullName` would be
     "Services:Consulting:Web-Design". Unlike `name`, `fullName` is guaranteed to be
@@ -404,8 +404,8 @@ class ServiceItem(BaseModel):
 
     version: str
     """
-    The current version identifier for this service item, which changes each time
-    the object is modified. When updating this object, you must provide the most
-    recent `version` to ensure you're working with the latest data; otherwise, the
-    update will fail. This value is opaque and should not be interpreted.
+    The current version identifier of this service item, which changes each time the
+    object is modified. When updating this object, you must provide the most recent
+    `version` to ensure you're working with the latest data; otherwise, the update
+    will fail. This value is opaque and should not be interpreted.
     """
