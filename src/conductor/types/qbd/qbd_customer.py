@@ -692,7 +692,7 @@ class QbdCustomer(BaseModel):
 
     For example, if this customer has a `fullName` of "Jones:Kitchen-Renovation",
     its parent has a `fullName` of "Jones". If this customer is at the top level,
-    `parent` will be `null`.
+    this field will be `null`.
     """
 
     phone: Optional[str] = None

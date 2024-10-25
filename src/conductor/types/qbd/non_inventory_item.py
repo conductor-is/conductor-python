@@ -355,8 +355,8 @@ class NonInventoryItem(BaseModel):
 
     For example, if this non-inventory item has a `fullName` of
     "Office-Supplies:Printer Ink Cartridge", its parent has a `fullName` of
-    "Office-Supplies". If this non-inventory item is at the top level, `parent` will
-    be `null`.
+    "Office-Supplies". If this non-inventory item is at the top level, this field
+    will be `null`.
     """
 
     sales_and_purchase_details: Optional[SalesAndPurchaseDetails] = FieldInfo(

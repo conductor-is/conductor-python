@@ -8,46 +8,15 @@ from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
-__all__ = ["AccountCreateParams"]
+__all__ = ["AccountUpdateParams"]
 
 
-class AccountCreateParams(TypedDict, total=False):
-    account_type: Required[
-        Annotated[
-            Literal[
-                "accounts_payable",
-                "accounts_receivable",
-                "bank",
-                "cost_of_goods_sold",
-                "credit_card",
-                "equity",
-                "expense",
-                "fixed_asset",
-                "income",
-                "long_term_liability",
-                "non_posting",
-                "other_asset",
-                "other_current_asset",
-                "other_current_liability",
-                "other_expense",
-                "other_income",
-            ],
-            PropertyInfo(alias="accountType"),
-        ]
-    ]
+class AccountUpdateParams(TypedDict, total=False):
+    version: Required[str]
     """
-    The classification of this account, indicating its purpose within the chart of
-    accounts. You cannot create an account of type "non_posting" through the API
-    because QuickBooks creates these accounts behind the scenes.
-    """
-
-    name: Required[str]
-    """The case-insensitive name of this account.
-
-    Not guaranteed to be unique because it does not include the names of its parent
-    objects like `fullName` does. For example, two accounts could both have the
-    `name` "Accounts-Payable", but they could have unique `fullName` values, such as
-    "Corporate:Accounts-Payable" and "Finance:Accounts-Payable".
+    The current version identifier of the account you are updating, which you can
+    get by fetching the object first. Provide the most recent `version` to ensure
+    you're working with the latest data; otherwise, the update will fail.
     """
 
     conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]
@@ -62,6 +31,33 @@ class AccountCreateParams(TypedDict, total=False):
     reports, and graphs. Note that if the "Use Account Numbers" preference is turned
     off in QuickBooks, the account number may not be visible in the user interface,
     but it can still be set and retrieved through the API.
+    """
+
+    account_type: Annotated[
+        Literal[
+            "accounts_payable",
+            "accounts_receivable",
+            "bank",
+            "cost_of_goods_sold",
+            "credit_card",
+            "equity",
+            "expense",
+            "fixed_asset",
+            "income",
+            "long_term_liability",
+            "non_posting",
+            "other_asset",
+            "other_current_asset",
+            "other_current_liability",
+            "other_expense",
+            "other_income",
+        ],
+        PropertyInfo(alias="accountType"),
+    ]
+    """
+    The classification of this account, indicating its purpose within the chart of
+    accounts. You cannot create an account of type "non_posting" through the API
+    because QuickBooks creates these accounts behind the scenes.
     """
 
     bank_account_number: Annotated[str, PropertyInfo(alias="bankAccountNumber")]
@@ -84,6 +80,15 @@ class AccountCreateParams(TypedDict, total=False):
     """Indicates whether this account is active.
 
     Inactive objects are typically hidden from views and reports in QuickBooks.
+    """
+
+    name: str
+    """The case-insensitive name of this account.
+
+    Not guaranteed to be unique because it does not include the names of its parent
+    objects like `fullName` does. For example, two accounts could both have the
+    `name` "Accounts-Payable", but they could have unique `fullName` values, such as
+    "Corporate:Accounts-Payable" and "Finance:Accounts-Payable".
     """
 
     opening_balance: Annotated[str, PropertyInfo(alias="openingBalance")]

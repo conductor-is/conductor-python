@@ -129,7 +129,7 @@ class InventoryItemsResource(SyncAPIResource):
           parent_id: The parent inventory item one level above this one in the hierarchy. For
               example, if this inventory item has a `fullName` of
               "Products:Electronics:Widgets", its parent has a `fullName` of
-              "Products:Electronics". If this inventory item is at the top level, `parent`
+              "Products:Electronics". If this inventory item is at the top level, this field
               will be `null`.
 
           preferred_vendor_id: The preferred vendor from whom this inventory item is typically purchased.
@@ -494,7 +494,7 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
           parent_id: The parent inventory item one level above this one in the hierarchy. For
               example, if this inventory item has a `fullName` of
               "Products:Electronics:Widgets", its parent has a `fullName` of
-              "Products:Electronics". If this inventory item is at the top level, `parent`
+              "Products:Electronics". If this inventory item is at the top level, this field
               will be `null`.
 
           preferred_vendor_id: The preferred vendor from whom this inventory item is typically purchased.

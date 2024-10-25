@@ -43,5 +43,5 @@ class ClassUpdateParams(TypedDict, total=False):
 
     For example, if this class has a `fullName` of "Corporate:Sales:Marketing", its
     parent has a `fullName` of "Corporate:Sales". If this class is at the top level,
-    `parent` will be `null`.
+    this field will be `null`.
     """

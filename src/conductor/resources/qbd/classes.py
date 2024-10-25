@@ -80,7 +80,7 @@ class ClassesResource(SyncAPIResource):
 
           parent_id: The parent class one level above this one in the hierarchy. For example, if this
               class has a `fullName` of "Corporate:Sales:Marketing", its parent has a
-              `fullName` of "Corporate:Sales". If this class is at the top level, `parent`
+              `fullName` of "Corporate:Sales". If this class is at the top level, this field
               will be `null`.
 
           extra_headers: Send extra headers
@@ -188,7 +188,7 @@ class ClassesResource(SyncAPIResource):
 
           parent_id: The parent class one level above this one in the hierarchy. For example, if this
               class has a `fullName` of "Corporate:Sales:Marketing", its parent has a
-              `fullName` of "Corporate:Sales". If this class is at the top level, `parent`
+              `fullName` of "Corporate:Sales". If this class is at the top level, this field
               will be `null`.
 
           extra_headers: Send extra headers
@@ -383,7 +383,7 @@ class AsyncClassesResource(AsyncAPIResource):
 
           parent_id: The parent class one level above this one in the hierarchy. For example, if this
               class has a `fullName` of "Corporate:Sales:Marketing", its parent has a
-              `fullName` of "Corporate:Sales". If this class is at the top level, `parent`
+              `fullName` of "Corporate:Sales". If this class is at the top level, this field
               will be `null`.
 
           extra_headers: Send extra headers
@@ -491,7 +491,7 @@ class AsyncClassesResource(AsyncAPIResource):
 
           parent_id: The parent class one level above this one in the hierarchy. For example, if this
               class has a `fullName` of "Corporate:Sales:Marketing", its parent has a
-              `fullName` of "Corporate:Sales". If this class is at the top level, `parent`
+              `fullName` of "Corporate:Sales". If this class is at the top level, this field
               will be `null`.
 
           extra_headers: Send extra headers
