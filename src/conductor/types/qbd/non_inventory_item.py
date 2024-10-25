@@ -332,7 +332,10 @@ class NonInventoryItem(BaseModel):
     """
 
     manufacturer_part_number: Optional[str] = FieldInfo(alias="manufacturerPartNumber", default=None)
-    """The manufacturer's part number for this non-inventory item."""
+    """
+    The manufacturer's part number for this non-inventory item, which is often the
+    stock keeping unit (SKU).
+    """
 
     name: str
     """The case-insensitive name of this non-inventory item.
