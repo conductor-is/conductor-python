@@ -306,7 +306,7 @@ class InventoryItem(BaseModel):
 
     For example, if this inventory item has a `fullName` of
     "Products:Electronics:Widgets", its parent has a `fullName` of
-    "Products:Electronics". If this inventory item is at the top level, `parent`
+    "Products:Electronics". If this inventory item is at the top level, this field
     will be `null`.
     """
 

@@ -103,7 +103,7 @@ class NonInventoryItemsResource(SyncAPIResource):
           parent_id: The parent non-inventory item one level above this one in the hierarchy. For
               example, if this non-inventory item has a `fullName` of "Office-Supplies:Printer
               Ink Cartridge", its parent has a `fullName` of "Office-Supplies". If this
-              non-inventory item is at the top level, `parent` will be `null`.
+              non-inventory item is at the top level, this field will be `null`.
 
           sales_tax_code_id: The sales-tax code associated with this non-inventory item, determining whether
               it is taxable or non-taxable. It's used to assign a default tax status to all
@@ -390,7 +390,7 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
           parent_id: The parent non-inventory item one level above this one in the hierarchy. For
               example, if this non-inventory item has a `fullName` of "Office-Supplies:Printer
               Ink Cartridge", its parent has a `fullName` of "Office-Supplies". If this
-              non-inventory item is at the top level, `parent` will be `null`.
+              non-inventory item is at the top level, this field will be `null`.
 
           sales_tax_code_id: The sales-tax code associated with this non-inventory item, determining whether
               it is taxable or non-taxable. It's used to assign a default tax status to all

@@ -60,6 +60,7 @@ Methods:
 
 - <code title="post /quickbooks-desktop/accounts">client.qbd.accounts.<a href="./src/conductor/resources/qbd/accounts.py">create</a>(\*\*<a href="src/conductor/types/qbd/account_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_account.py">QbdAccount</a></code>
 - <code title="get /quickbooks-desktop/accounts/{id}">client.qbd.accounts.<a href="./src/conductor/resources/qbd/accounts.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_account.py">QbdAccount</a></code>
+- <code title="post /quickbooks-desktop/accounts/{id}">client.qbd.accounts.<a href="./src/conductor/resources/qbd/accounts.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/account_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_account.py">QbdAccount</a></code>
 - <code title="get /quickbooks-desktop/accounts">client.qbd.accounts.<a href="./src/conductor/resources/qbd/accounts.py">list</a>(\*\*<a href="src/conductor/types/qbd/account_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/account_list_response.py">AccountListResponse</a></code>
 
 ## Bills

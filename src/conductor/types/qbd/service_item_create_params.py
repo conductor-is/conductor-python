@@ -55,7 +55,7 @@ class ServiceItemCreateParams(TypedDict, total=False):
 
     For example, if this service item has a `fullName` of
     "Services:Consulting:Web-Design", its parent has a `fullName` of
-    "Services:Consulting". If this service item is at the top level, `parent` will
+    "Services:Consulting". If this service item is at the top level, this field will
     be `null`.
     """
 

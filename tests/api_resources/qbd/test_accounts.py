@@ -10,7 +10,10 @@ import pytest
 from conductor import Conductor, AsyncConductor
 from tests.utils import assert_matches_type
 from conductor._utils import parse_date
-from conductor.types.qbd import QbdAccount, AccountListResponse
+from conductor.types.qbd import (
+    QbdAccount,
+    AccountListResponse,
+)
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -113,6 +116,73 @@ class TestAccounts:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.qbd.accounts.with_raw_response.retrieve(
                 id="",
+                conductor_end_user_id="end_usr_1234567abcdefg",
+            )
+
+    @parametrize
+    def test_method_update(self, client: Conductor) -> None:
+        account = client.qbd.accounts.update(
+            id="80000001-1234567890",
+            version="1721172183",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+        assert_matches_type(QbdAccount, account, path=["response"])
+
+    @parametrize
+    def test_method_update_with_all_params(self, client: Conductor) -> None:
+        account = client.qbd.accounts.update(
+            id="80000001-1234567890",
+            version="1721172183",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+            account_number="1010",
+            account_type="accounts_payable",
+            bank_account_number="123456789",
+            currency_id="80000012-1234567890",
+            description="Accounts-payable are the amounts owed to suppliers for goods and services purchased on credit.",
+            is_active=True,
+            name="Accounts-Payable",
+            opening_balance="1000.00",
+            opening_balance_date=parse_date("2019-12-27"),
+            parent_id="80000002-1234567890",
+            sales_tax_code_id="80000004-1234567890",
+            tax_line_id=123,
+        )
+        assert_matches_type(QbdAccount, account, path=["response"])
+
+    @parametrize
+    def test_raw_response_update(self, client: Conductor) -> None:
+        response = client.qbd.accounts.with_raw_response.update(
+            id="80000001-1234567890",
+            version="1721172183",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        account = response.parse()
+        assert_matches_type(QbdAccount, account, path=["response"])
+
+    @parametrize
+    def test_streaming_response_update(self, client: Conductor) -> None:
+        with client.qbd.accounts.with_streaming_response.update(
+            id="80000001-1234567890",
+            version="1721172183",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            account = response.parse()
+            assert_matches_type(QbdAccount, account, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_update(self, client: Conductor) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            client.qbd.accounts.with_raw_response.update(
+                id="",
+                version="1721172183",
                 conductor_end_user_id="end_usr_1234567abcdefg",
             )
 
@@ -266,6 +336,73 @@ class TestAsyncAccounts:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.qbd.accounts.with_raw_response.retrieve(
                 id="",
+                conductor_end_user_id="end_usr_1234567abcdefg",
+            )
+
+    @parametrize
+    async def test_method_update(self, async_client: AsyncConductor) -> None:
+        account = await async_client.qbd.accounts.update(
+            id="80000001-1234567890",
+            version="1721172183",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+        assert_matches_type(QbdAccount, account, path=["response"])
+
+    @parametrize
+    async def test_method_update_with_all_params(self, async_client: AsyncConductor) -> None:
+        account = await async_client.qbd.accounts.update(
+            id="80000001-1234567890",
+            version="1721172183",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+            account_number="1010",
+            account_type="accounts_payable",
+            bank_account_number="123456789",
+            currency_id="80000012-1234567890",
+            description="Accounts-payable are the amounts owed to suppliers for goods and services purchased on credit.",
+            is_active=True,
+            name="Accounts-Payable",
+            opening_balance="1000.00",
+            opening_balance_date=parse_date("2019-12-27"),
+            parent_id="80000002-1234567890",
+            sales_tax_code_id="80000004-1234567890",
+            tax_line_id=123,
+        )
+        assert_matches_type(QbdAccount, account, path=["response"])
+
+    @parametrize
+    async def test_raw_response_update(self, async_client: AsyncConductor) -> None:
+        response = await async_client.qbd.accounts.with_raw_response.update(
+            id="80000001-1234567890",
+            version="1721172183",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        account = await response.parse()
+        assert_matches_type(QbdAccount, account, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_update(self, async_client: AsyncConductor) -> None:
+        async with async_client.qbd.accounts.with_streaming_response.update(
+            id="80000001-1234567890",
+            version="1721172183",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            account = await response.parse()
+            assert_matches_type(QbdAccount, account, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_update(self, async_client: AsyncConductor) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            await async_client.qbd.accounts.with_raw_response.update(
+                id="",
+                version="1721172183",
                 conductor_end_user_id="end_usr_1234567abcdefg",
             )
 
