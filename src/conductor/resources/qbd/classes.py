@@ -19,7 +19,7 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...types.qbd import class_list_params, class_create_params
+from ...types.qbd import class_list_params, class_create_params, class_update_params
 from ..._base_client import make_request_options
 from ...types.qbd.qbd_class import QbdClass
 from ...types.qbd.class_list_response import ClassListResponse
@@ -142,6 +142,77 @@ class ClassesResource(SyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get(
             f"/quickbooks-desktop/classes/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=QbdClass,
+        )
+
+    def update(
+        self,
+        id: str,
+        *,
+        version: str,
+        conductor_end_user_id: str,
+        is_active: bool | NotGiven = NOT_GIVEN,
+        name: str | NotGiven = NOT_GIVEN,
+        parent_id: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> QbdClass:
+        """
+        Updates a class.
+
+        Args:
+          id: The QuickBooks-assigned unique identifier of the class to update.
+
+          version: The current version identifier of the class you are updating, which you can get
+              by fetching the object first. Provide the most recent `version` to ensure you're
+              working with the latest data; otherwise, the update will fail.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          is_active: Indicates whether this class is active. Inactive objects are typically hidden
+              from views and reports in QuickBooks.
+
+          name: The case-insensitive name of this class. Not guaranteed to be unique because it
+              does not include the names of its parent objects like `fullName` does. For
+              example, two classes could both have the `name` "Marketing", but they could have
+              unique `fullName` values, such as "Corporate:Marketing" and
+              "Internal:Marketing".
+
+          parent_id: The parent class one level above this one in the hierarchy. For example, if this
+              class has a `fullName` of "Corporate:Sales:Marketing", its parent has a
+              `fullName` of "Corporate:Sales". If this class is at the top level, `parent`
+              will be `null`.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return self._post(
+            f"/quickbooks-desktop/classes/{id}",
+            body=maybe_transform(
+                {
+                    "version": version,
+                    "is_active": is_active,
+                    "name": name,
+                    "parent_id": parent_id,
+                },
+                class_update_params.ClassUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -380,6 +451,77 @@ class AsyncClassesResource(AsyncAPIResource):
             cast_to=QbdClass,
         )
 
+    async def update(
+        self,
+        id: str,
+        *,
+        version: str,
+        conductor_end_user_id: str,
+        is_active: bool | NotGiven = NOT_GIVEN,
+        name: str | NotGiven = NOT_GIVEN,
+        parent_id: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> QbdClass:
+        """
+        Updates a class.
+
+        Args:
+          id: The QuickBooks-assigned unique identifier of the class to update.
+
+          version: The current version identifier of the class you are updating, which you can get
+              by fetching the object first. Provide the most recent `version` to ensure you're
+              working with the latest data; otherwise, the update will fail.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          is_active: Indicates whether this class is active. Inactive objects are typically hidden
+              from views and reports in QuickBooks.
+
+          name: The case-insensitive name of this class. Not guaranteed to be unique because it
+              does not include the names of its parent objects like `fullName` does. For
+              example, two classes could both have the `name` "Marketing", but they could have
+              unique `fullName` values, such as "Corporate:Marketing" and
+              "Internal:Marketing".
+
+          parent_id: The parent class one level above this one in the hierarchy. For example, if this
+              class has a `fullName` of "Corporate:Sales:Marketing", its parent has a
+              `fullName` of "Corporate:Sales". If this class is at the top level, `parent`
+              will be `null`.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return await self._post(
+            f"/quickbooks-desktop/classes/{id}",
+            body=await async_maybe_transform(
+                {
+                    "version": version,
+                    "is_active": is_active,
+                    "name": name,
+                    "parent_id": parent_id,
+                },
+                class_update_params.ClassUpdateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=QbdClass,
+        )
+
     async def list(
         self,
         *,
@@ -501,6 +643,9 @@ class ClassesResourceWithRawResponse:
         self.retrieve = to_raw_response_wrapper(
             classes.retrieve,
         )
+        self.update = to_raw_response_wrapper(
+            classes.update,
+        )
         self.list = to_raw_response_wrapper(
             classes.list,
         )
@@ -515,6 +660,9 @@ class AsyncClassesResourceWithRawResponse:
         )
         self.retrieve = async_to_raw_response_wrapper(
             classes.retrieve,
+        )
+        self.update = async_to_raw_response_wrapper(
+            classes.update,
         )
         self.list = async_to_raw_response_wrapper(
             classes.list,
@@ -531,6 +679,9 @@ class ClassesResourceWithStreamingResponse:
         self.retrieve = to_streamed_response_wrapper(
             classes.retrieve,
         )
+        self.update = to_streamed_response_wrapper(
+            classes.update,
+        )
         self.list = to_streamed_response_wrapper(
             classes.list,
         )
@@ -545,6 +696,9 @@ class AsyncClassesResourceWithStreamingResponse:
         )
         self.retrieve = async_to_streamed_response_wrapper(
             classes.retrieve,
+        )
+        self.update = async_to_streamed_response_wrapper(
+            classes.update,
         )
         self.list = async_to_streamed_response_wrapper(
             classes.list,
