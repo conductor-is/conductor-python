@@ -98,7 +98,7 @@ class ServiceItemsResource(SyncAPIResource):
           parent_id: The parent service item one level above this one in the hierarchy. For example,
               if this service item has a `fullName` of "Services:Consulting:Web-Design", its
               parent has a `fullName` of "Services:Consulting". If this service item is at the
-              top level, `parent` will be `null`.
+              top level, this field will be `null`.
 
           sales_tax_code_id: The sales-tax code associated with this service item, determining whether it is
               taxable or non-taxable. It's used to assign a default tax status to all
@@ -378,7 +378,7 @@ class AsyncServiceItemsResource(AsyncAPIResource):
           parent_id: The parent service item one level above this one in the hierarchy. For example,
               if this service item has a `fullName` of "Services:Consulting:Web-Design", its
               parent has a `fullName` of "Services:Consulting". If this service item is at the
-              top level, `parent` will be `null`.
+              top level, this field will be `null`.
 
           sales_tax_code_id: The sales-tax code associated with this service item, determining whether it is
               taxable or non-taxable. It's used to assign a default tax status to all

@@ -227,7 +227,7 @@ class QbdAccount(BaseModel):
 
     For example, if this account has a `fullName` of "Corporate:Accounts-Payable",
     its parent has a `fullName` of "Corporate". If this account is at the top level,
-    `parent` will be `null`.
+    this field will be `null`.
     """
 
     sales_tax_code: Optional[SalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)

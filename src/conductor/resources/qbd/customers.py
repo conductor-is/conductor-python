@@ -221,7 +221,7 @@ class CustomersResource(SyncAPIResource):
 
           parent_id: The parent customer one level above this one in the hierarchy. For example, if
               this customer has a `fullName` of "Jones:Kitchen-Renovation", its parent has a
-              `fullName` of "Jones". If this customer is at the top level, `parent` will be
+              `fullName` of "Jones". If this customer is at the top level, this field will be
               `null`.
 
           phone: The customer's primary telephone number.
@@ -540,7 +540,7 @@ class CustomersResource(SyncAPIResource):
 
           parent_id: The parent customer one level above this one in the hierarchy. For example, if
               this customer has a `fullName` of "Jones:Kitchen-Renovation", its parent has a
-              `fullName` of "Jones". If this customer is at the top level, `parent` will be
+              `fullName` of "Jones". If this customer is at the top level, this field will be
               `null`.
 
           phone: The customer's primary telephone number.
@@ -1004,7 +1004,7 @@ class AsyncCustomersResource(AsyncAPIResource):
 
           parent_id: The parent customer one level above this one in the hierarchy. For example, if
               this customer has a `fullName` of "Jones:Kitchen-Renovation", its parent has a
-              `fullName` of "Jones". If this customer is at the top level, `parent` will be
+              `fullName` of "Jones". If this customer is at the top level, this field will be
               `null`.
 
           phone: The customer's primary telephone number.
@@ -1323,7 +1323,7 @@ class AsyncCustomersResource(AsyncAPIResource):
 
           parent_id: The parent customer one level above this one in the hierarchy. For example, if
               this customer has a `fullName` of "Jones:Kitchen-Renovation", its parent has a
-              `fullName` of "Jones". If this customer is at the top level, `parent` will be
+              `fullName` of "Jones". If this customer is at the top level, this field will be
               `null`.
 
           phone: The customer's primary telephone number.
