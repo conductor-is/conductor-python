@@ -52,7 +52,10 @@ class NonInventoryItemCreateParams(TypedDict, total=False):
     """
 
     manufacturer_part_number: Annotated[str, PropertyInfo(alias="manufacturerPartNumber")]
-    """The manufacturer's part number for this non-inventory item."""
+    """
+    The manufacturer's part number for this non-inventory item, which is often the
+    stock keeping unit (SKU).
+    """
 
     parent_id: Annotated[str, PropertyInfo(alias="parentId")]
     """The parent non-inventory item one level above this one in the hierarchy.

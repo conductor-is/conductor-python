@@ -97,7 +97,8 @@ class NonInventoryItemsResource(SyncAPIResource):
           is_active: Indicates whether this non-inventory item is active. Inactive objects are
               typically hidden from views and reports in QuickBooks.
 
-          manufacturer_part_number: The manufacturer's part number for this non-inventory item.
+          manufacturer_part_number: The manufacturer's part number for this non-inventory item, which is often the
+              stock keeping unit (SKU).
 
           parent_id: The parent non-inventory item one level above this one in the hierarchy. For
               example, if this non-inventory item has a `fullName` of "Office-Supplies:Printer
@@ -383,7 +384,8 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
           is_active: Indicates whether this non-inventory item is active. Inactive objects are
               typically hidden from views and reports in QuickBooks.
 
-          manufacturer_part_number: The manufacturer's part number for this non-inventory item.
+          manufacturer_part_number: The manufacturer's part number for this non-inventory item, which is often the
+              stock keeping unit (SKU).
 
           parent_id: The parent non-inventory item one level above this one in the hierarchy. For
               example, if this non-inventory item has a `fullName` of "Office-Supplies:Printer

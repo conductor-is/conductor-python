@@ -121,7 +121,8 @@ class InventoryItemsResource(SyncAPIResource):
           is_active: Indicates whether this inventory item is active. Inactive objects are typically
               hidden from views and reports in QuickBooks.
 
-          manufacturer_part_number: The manufacturer's part number for this inventory item.
+          manufacturer_part_number: The manufacturer's part number for this inventory item, which is often the stock
+              keeping unit (SKU).
 
           maximum_quantity_on_hand: The maximum quantity of this inventory item desired in inventory.
 
@@ -485,7 +486,8 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
           is_active: Indicates whether this inventory item is active. Inactive objects are typically
               hidden from views and reports in QuickBooks.
 
-          manufacturer_part_number: The manufacturer's part number for this inventory item.
+          manufacturer_part_number: The manufacturer's part number for this inventory item, which is often the stock
+              keeping unit (SKU).
 
           maximum_quantity_on_hand: The maximum quantity of this inventory item desired in inventory.
 
