@@ -24,6 +24,7 @@ from .vendor_list_params import VendorListParams as VendorListParams
 from .account_list_params import AccountListParams as AccountListParams
 from .class_create_params import ClassCreateParams as ClassCreateParams
 from .class_list_response import ClassListResponse as ClassListResponse
+from .class_update_params import ClassUpdateParams as ClassUpdateParams
 from .invoice_list_params import InvoiceListParams as InvoiceListParams
 from .customer_list_params import CustomerListParams as CustomerListParams
 from .transfer_list_params import TransferListParams as TransferListParams
