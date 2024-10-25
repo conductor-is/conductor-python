@@ -88,6 +88,7 @@ Methods:
 
 - <code title="post /quickbooks-desktop/classes">client.qbd.classes.<a href="./src/conductor/resources/qbd/classes.py">create</a>(\*\*<a href="src/conductor/types/qbd/class_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_class.py">QbdClass</a></code>
 - <code title="get /quickbooks-desktop/classes/{id}">client.qbd.classes.<a href="./src/conductor/resources/qbd/classes.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_class.py">QbdClass</a></code>
+- <code title="post /quickbooks-desktop/classes/{id}">client.qbd.classes.<a href="./src/conductor/resources/qbd/classes.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/class_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_class.py">QbdClass</a></code>
 - <code title="get /quickbooks-desktop/classes">client.qbd.classes.<a href="./src/conductor/resources/qbd/classes.py">list</a>(\*\*<a href="src/conductor/types/qbd/class_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/class_list_response.py">ClassListResponse</a></code>
 
 ## CreditCardCharges
