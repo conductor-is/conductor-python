@@ -28,6 +28,7 @@ from .invoice_list_params import InvoiceListParams as InvoiceListParams
 from .customer_list_params import CustomerListParams as CustomerListParams
 from .transfer_list_params import TransferListParams as TransferListParams
 from .vendor_create_params import VendorCreateParams as VendorCreateParams
+from .vendor_update_params import VendorUpdateParams as VendorUpdateParams
 from .account_create_params import AccountCreateParams as AccountCreateParams
 from .account_list_response import AccountListResponse as AccountListResponse
 from .invoice_create_params import InvoiceCreateParams as InvoiceCreateParams
