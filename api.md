@@ -130,6 +130,7 @@ Methods:
 
 - <code title="post /quickbooks-desktop/customers">client.qbd.customers.<a href="./src/conductor/resources/qbd/customers.py">create</a>(\*\*<a href="src/conductor/types/qbd/customer_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_customer.py">QbdCustomer</a></code>
 - <code title="get /quickbooks-desktop/customers/{id}">client.qbd.customers.<a href="./src/conductor/resources/qbd/customers.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_customer.py">QbdCustomer</a></code>
+- <code title="post /quickbooks-desktop/customers/{id}">client.qbd.customers.<a href="./src/conductor/resources/qbd/customers.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/customer_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_customer.py">QbdCustomer</a></code>
 - <code title="get /quickbooks-desktop/customers">client.qbd.customers.<a href="./src/conductor/resources/qbd/customers.py">list</a>(\*\*<a href="src/conductor/types/qbd/customer_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_customer.py">SyncCursorPage[QbdCustomer]</a></code>
 
 ## DateDrivenTerms

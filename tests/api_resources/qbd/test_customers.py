@@ -304,6 +304,274 @@ class TestCustomers:
             )
 
     @parametrize
+    def test_method_update(self, client: Conductor) -> None:
+        customer = client.qbd.customers.update(
+            id="80000001-1234567890",
+            version="1721172183",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+        assert_matches_type(QbdCustomer, customer, path=["response"])
+
+    @parametrize
+    def test_method_update_with_all_params(self, client: Conductor) -> None:
+        customer = client.qbd.customers.update(
+            id="80000001-1234567890",
+            version="1721172183",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+            account_number="1010",
+            additional_notes_mod=[
+                {
+                    "id": 1,
+                    "note": "This is a fun note.",
+                },
+                {
+                    "id": 1,
+                    "note": "This is a fun note.",
+                },
+                {
+                    "id": 1,
+                    "note": "This is a fun note.",
+                },
+            ],
+            alternate_contact="Bob Johnson",
+            alternate_phone="+1-555-987-6543",
+            alternate_shipping_addresses=[
+                {
+                    "name": "Alternate shipping address",
+                    "city": "San Francisco",
+                    "country": "United States",
+                    "default_ship_to": True,
+                    "line1": "548 Market St.",
+                    "line2": "Suite 100",
+                    "line3": "line3",
+                    "line4": "line4",
+                    "line5": "line5",
+                    "note": "Conductor HQ",
+                    "postal_code": "94110",
+                    "state": "CA",
+                },
+                {
+                    "name": "Alternate shipping address",
+                    "city": "San Francisco",
+                    "country": "United States",
+                    "default_ship_to": True,
+                    "line1": "548 Market St.",
+                    "line2": "Suite 100",
+                    "line3": "line3",
+                    "line4": "line4",
+                    "line5": "line5",
+                    "note": "Conductor HQ",
+                    "postal_code": "94110",
+                    "state": "CA",
+                },
+                {
+                    "name": "Alternate shipping address",
+                    "city": "San Francisco",
+                    "country": "United States",
+                    "default_ship_to": True,
+                    "line1": "548 Market St.",
+                    "line2": "Suite 100",
+                    "line3": "line3",
+                    "line4": "line4",
+                    "line5": "line5",
+                    "note": "Conductor HQ",
+                    "postal_code": "94110",
+                    "state": "CA",
+                },
+            ],
+            billing_address={
+                "city": "San Francisco",
+                "country": "United States",
+                "line1": "548 Market St.",
+                "line2": "Suite 100",
+                "line3": "line3",
+                "line4": "line4",
+                "line5": "line5",
+                "note": "Conductor HQ",
+                "postal_code": "94110",
+                "state": "CA",
+            },
+            cc_email="manager@example.com",
+            class_id="80000001-1234567890",
+            company_name="Acme Corporation",
+            contact="Jane Smith",
+            contacts=[
+                {
+                    "id": "80000001-1234567890",
+                    "first_name": "John",
+                    "version": "1721172183",
+                    "custom_contact_fields": [
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                    ],
+                    "job_title": "Purchasing Manager",
+                    "last_name": "Doe",
+                    "middle_name": "A.",
+                    "salutation": "Dr.",
+                },
+                {
+                    "id": "80000001-1234567890",
+                    "first_name": "John",
+                    "version": "1721172183",
+                    "custom_contact_fields": [
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                    ],
+                    "job_title": "Purchasing Manager",
+                    "last_name": "Doe",
+                    "middle_name": "A.",
+                    "salutation": "Dr.",
+                },
+                {
+                    "id": "80000001-1234567890",
+                    "first_name": "John",
+                    "version": "1721172183",
+                    "custom_contact_fields": [
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                    ],
+                    "job_title": "Purchasing Manager",
+                    "last_name": "Doe",
+                    "middle_name": "A.",
+                    "salutation": "Dr.",
+                },
+            ],
+            credit_card={
+                "address": "1234 Main St, Anytown, USA, 12345",
+                "address_zip": "12345",
+                "expiration_month": 12,
+                "expiration_year": 2024,
+                "name": "John Doe",
+                "number": "xxxxxxxxxxxx1234",
+            },
+            credit_limit="5000.00",
+            currency_id="80000012-1234567890",
+            custom_contact_fields=[
+                {
+                    "name": "Main Phone",
+                    "value": "555-123-4567",
+                },
+                {
+                    "name": "Main Phone",
+                    "value": "555-123-4567",
+                },
+                {
+                    "name": "Main Phone",
+                    "value": "555-123-4567",
+                },
+            ],
+            customer_type_id="80000025-1234567890",
+            email="customer@example.com",
+            fax="+1-555-555-1212",
+            first_name="John",
+            is_active=True,
+            item_sales_tax_id="80000010-1234567890",
+            job_description="Kitchen renovation project for residential client.",
+            job_end_date=parse_date("2019-12-27"),
+            job_projected_end_date=parse_date("2019-12-27"),
+            job_start_date=parse_date("2019-12-27"),
+            job_status="awarded",
+            job_title="Purchasing Manager",
+            job_type_id="80000035-1234567890",
+            last_name="Doe",
+            middle_name="A.",
+            name="Kitchen-Renovation",
+            note="Our favorite customer.",
+            parent_id="80000002-1234567890",
+            phone="+1-555-123-4567",
+            preferred_delivery_method="email",
+            preferred_payment_method_id="80000014-1234567890",
+            price_level_id="80000040-1234567890",
+            resale_number="123456789",
+            sales_representative_id="80000030-1234567890",
+            sales_tax_code_id="80000004-1234567890",
+            sales_tax_country="australia",
+            salutation="Dr.",
+            shipping_address={
+                "city": "San Francisco",
+                "country": "United States",
+                "line1": "548 Market St.",
+                "line2": "Suite 100",
+                "line3": "line3",
+                "line4": "line4",
+                "line5": "line5",
+                "note": "Conductor HQ",
+                "postal_code": "94110",
+                "state": "CA",
+            },
+            tax_registration_number="GB123456789",
+            terms_id="80000013-1234567890",
+        )
+        assert_matches_type(QbdCustomer, customer, path=["response"])
+
+    @parametrize
+    def test_raw_response_update(self, client: Conductor) -> None:
+        response = client.qbd.customers.with_raw_response.update(
+            id="80000001-1234567890",
+            version="1721172183",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        customer = response.parse()
+        assert_matches_type(QbdCustomer, customer, path=["response"])
+
+    @parametrize
+    def test_streaming_response_update(self, client: Conductor) -> None:
+        with client.qbd.customers.with_streaming_response.update(
+            id="80000001-1234567890",
+            version="1721172183",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            customer = response.parse()
+            assert_matches_type(QbdCustomer, customer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_update(self, client: Conductor) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            client.qbd.customers.with_raw_response.update(
+                id="",
+                version="1721172183",
+                conductor_end_user_id="end_usr_1234567abcdefg",
+            )
+
+    @parametrize
     def test_method_list(self, client: Conductor) -> None:
         customer = client.qbd.customers.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
@@ -645,6 +913,274 @@ class TestAsyncCustomers:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.qbd.customers.with_raw_response.retrieve(
                 id="",
+                conductor_end_user_id="end_usr_1234567abcdefg",
+            )
+
+    @parametrize
+    async def test_method_update(self, async_client: AsyncConductor) -> None:
+        customer = await async_client.qbd.customers.update(
+            id="80000001-1234567890",
+            version="1721172183",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+        assert_matches_type(QbdCustomer, customer, path=["response"])
+
+    @parametrize
+    async def test_method_update_with_all_params(self, async_client: AsyncConductor) -> None:
+        customer = await async_client.qbd.customers.update(
+            id="80000001-1234567890",
+            version="1721172183",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+            account_number="1010",
+            additional_notes_mod=[
+                {
+                    "id": 1,
+                    "note": "This is a fun note.",
+                },
+                {
+                    "id": 1,
+                    "note": "This is a fun note.",
+                },
+                {
+                    "id": 1,
+                    "note": "This is a fun note.",
+                },
+            ],
+            alternate_contact="Bob Johnson",
+            alternate_phone="+1-555-987-6543",
+            alternate_shipping_addresses=[
+                {
+                    "name": "Alternate shipping address",
+                    "city": "San Francisco",
+                    "country": "United States",
+                    "default_ship_to": True,
+                    "line1": "548 Market St.",
+                    "line2": "Suite 100",
+                    "line3": "line3",
+                    "line4": "line4",
+                    "line5": "line5",
+                    "note": "Conductor HQ",
+                    "postal_code": "94110",
+                    "state": "CA",
+                },
+                {
+                    "name": "Alternate shipping address",
+                    "city": "San Francisco",
+                    "country": "United States",
+                    "default_ship_to": True,
+                    "line1": "548 Market St.",
+                    "line2": "Suite 100",
+                    "line3": "line3",
+                    "line4": "line4",
+                    "line5": "line5",
+                    "note": "Conductor HQ",
+                    "postal_code": "94110",
+                    "state": "CA",
+                },
+                {
+                    "name": "Alternate shipping address",
+                    "city": "San Francisco",
+                    "country": "United States",
+                    "default_ship_to": True,
+                    "line1": "548 Market St.",
+                    "line2": "Suite 100",
+                    "line3": "line3",
+                    "line4": "line4",
+                    "line5": "line5",
+                    "note": "Conductor HQ",
+                    "postal_code": "94110",
+                    "state": "CA",
+                },
+            ],
+            billing_address={
+                "city": "San Francisco",
+                "country": "United States",
+                "line1": "548 Market St.",
+                "line2": "Suite 100",
+                "line3": "line3",
+                "line4": "line4",
+                "line5": "line5",
+                "note": "Conductor HQ",
+                "postal_code": "94110",
+                "state": "CA",
+            },
+            cc_email="manager@example.com",
+            class_id="80000001-1234567890",
+            company_name="Acme Corporation",
+            contact="Jane Smith",
+            contacts=[
+                {
+                    "id": "80000001-1234567890",
+                    "first_name": "John",
+                    "version": "1721172183",
+                    "custom_contact_fields": [
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                    ],
+                    "job_title": "Purchasing Manager",
+                    "last_name": "Doe",
+                    "middle_name": "A.",
+                    "salutation": "Dr.",
+                },
+                {
+                    "id": "80000001-1234567890",
+                    "first_name": "John",
+                    "version": "1721172183",
+                    "custom_contact_fields": [
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                    ],
+                    "job_title": "Purchasing Manager",
+                    "last_name": "Doe",
+                    "middle_name": "A.",
+                    "salutation": "Dr.",
+                },
+                {
+                    "id": "80000001-1234567890",
+                    "first_name": "John",
+                    "version": "1721172183",
+                    "custom_contact_fields": [
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                    ],
+                    "job_title": "Purchasing Manager",
+                    "last_name": "Doe",
+                    "middle_name": "A.",
+                    "salutation": "Dr.",
+                },
+            ],
+            credit_card={
+                "address": "1234 Main St, Anytown, USA, 12345",
+                "address_zip": "12345",
+                "expiration_month": 12,
+                "expiration_year": 2024,
+                "name": "John Doe",
+                "number": "xxxxxxxxxxxx1234",
+            },
+            credit_limit="5000.00",
+            currency_id="80000012-1234567890",
+            custom_contact_fields=[
+                {
+                    "name": "Main Phone",
+                    "value": "555-123-4567",
+                },
+                {
+                    "name": "Main Phone",
+                    "value": "555-123-4567",
+                },
+                {
+                    "name": "Main Phone",
+                    "value": "555-123-4567",
+                },
+            ],
+            customer_type_id="80000025-1234567890",
+            email="customer@example.com",
+            fax="+1-555-555-1212",
+            first_name="John",
+            is_active=True,
+            item_sales_tax_id="80000010-1234567890",
+            job_description="Kitchen renovation project for residential client.",
+            job_end_date=parse_date("2019-12-27"),
+            job_projected_end_date=parse_date("2019-12-27"),
+            job_start_date=parse_date("2019-12-27"),
+            job_status="awarded",
+            job_title="Purchasing Manager",
+            job_type_id="80000035-1234567890",
+            last_name="Doe",
+            middle_name="A.",
+            name="Kitchen-Renovation",
+            note="Our favorite customer.",
+            parent_id="80000002-1234567890",
+            phone="+1-555-123-4567",
+            preferred_delivery_method="email",
+            preferred_payment_method_id="80000014-1234567890",
+            price_level_id="80000040-1234567890",
+            resale_number="123456789",
+            sales_representative_id="80000030-1234567890",
+            sales_tax_code_id="80000004-1234567890",
+            sales_tax_country="australia",
+            salutation="Dr.",
+            shipping_address={
+                "city": "San Francisco",
+                "country": "United States",
+                "line1": "548 Market St.",
+                "line2": "Suite 100",
+                "line3": "line3",
+                "line4": "line4",
+                "line5": "line5",
+                "note": "Conductor HQ",
+                "postal_code": "94110",
+                "state": "CA",
+            },
+            tax_registration_number="GB123456789",
+            terms_id="80000013-1234567890",
+        )
+        assert_matches_type(QbdCustomer, customer, path=["response"])
+
+    @parametrize
+    async def test_raw_response_update(self, async_client: AsyncConductor) -> None:
+        response = await async_client.qbd.customers.with_raw_response.update(
+            id="80000001-1234567890",
+            version="1721172183",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        customer = await response.parse()
+        assert_matches_type(QbdCustomer, customer, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_update(self, async_client: AsyncConductor) -> None:
+        async with async_client.qbd.customers.with_streaming_response.update(
+            id="80000001-1234567890",
+            version="1721172183",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            customer = await response.parse()
+            assert_matches_type(QbdCustomer, customer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_update(self, async_client: AsyncConductor) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            await async_client.qbd.customers.with_raw_response.update(
+                id="",
+                version="1721172183",
                 conductor_end_user_id="end_usr_1234567abcdefg",
             )
 
