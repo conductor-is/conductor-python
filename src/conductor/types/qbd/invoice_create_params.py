@@ -83,9 +83,9 @@ class InvoiceCreateParams(TypedDict, total=False):
     """
 
     invoice_line_groups: Annotated[Iterable[InvoiceLineGroup], PropertyInfo(alias="invoiceLineGroups")]
-    """The invoice's line item groups.
-
-    Each group represents a predefined set of related items.
+    """
+    The invoice's line item groups, each representing a predefined set of related
+    items.
     """
 
     invoice_lines: Annotated[Iterable[InvoiceLine], PropertyInfo(alias="invoiceLines")]

@@ -536,8 +536,8 @@ class ItemGroupLineItemLine(BaseModel):
 
     If both `quantity` and `cost` are specified but not `amount`, QuickBooks will
     use them to calculate `amount`. If `amount`, `cost`, and `quantity` are all
-    unspecified, then QuickBooks will calculate `amount` based on a `quantity` of 1
-    and the suggested `cost`.
+    unspecified, then QuickBooks will calculate `amount` based on a `quantity` of
+    `1` and the suggested `cost`.
     """
 
     billing_status: Optional[Literal["billable", "has_been_billed", "not_billable"]] = FieldInfo(
@@ -914,8 +914,8 @@ class ItemLine(BaseModel):
 
     If both `quantity` and `cost` are specified but not `amount`, QuickBooks will
     use them to calculate `amount`. If `amount`, `cost`, and `quantity` are all
-    unspecified, then QuickBooks will calculate `amount` based on a `quantity` of 1
-    and the suggested `cost`.
+    unspecified, then QuickBooks will calculate `amount` based on a `quantity` of
+    `1` and the suggested `cost`.
     """
 
     billing_status: Optional[Literal["billable", "has_been_billed", "not_billable"]] = FieldInfo(
@@ -1139,8 +1139,8 @@ class QbdCreditCardCharge(BaseModel):
     item_group_lines: List[ItemGroupLine] = FieldInfo(alias="itemGroupLines")
     """
     The credit card charge's item group lines, each representing a predefined set of
-    items bundled because they are commonly purchased together or grouped for faster
-    entry.
+    items bundled together because they are commonly purchased together or grouped
+    for faster entry.
     """
 
     item_lines: List[ItemLine] = FieldInfo(alias="itemLines")
