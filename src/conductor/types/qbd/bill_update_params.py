@@ -137,10 +137,9 @@ class BillUpdateParams(TypedDict, total=False):
 class ExpenseLine(TypedDict, total=False):
     id: Required[str]
     """
-    The QuickBooks-assigned unique identifier from an existing expense line (you
-    must include all expense lines you wish to keep, whether updating or not), or
-    set this value to`-1` if you are adding a new expense line to the parent
-    transaction.
+    The QuickBooks-assigned unique identifier from an existing expense lines you
+    wish to keep or update, or set this value to `-1` if you are adding a new
+    expense line to the parent transaction.
     """
 
     account_id: Annotated[str, PropertyInfo(alias="accountId")]
@@ -199,9 +198,9 @@ class ExpenseLine(TypedDict, total=False):
 class ItemGroupLineItemLine(TypedDict, total=False):
     id: Required[str]
     """
-    The QuickBooks-assigned unique identifier from an existing item line (you must
-    include all item lines you wish to keep, whether updating or not), or set this
-    value to`-1` if you are adding a new item line to the parent transaction.
+    The QuickBooks-assigned unique identifier from an existing item lines you wish
+    to keep or update, or set this value to `-1` if you are adding a new item line
+    to the parent transaction.
     """
 
     amount: str
@@ -328,10 +327,9 @@ class ItemGroupLineItemLine(TypedDict, total=False):
 class ItemGroupLine(TypedDict, total=False):
     id: Required[str]
     """
-    The QuickBooks-assigned unique identifier from an existing item group line (you
-    must include all item group lines you wish to keep, whether updating or not), or
-    set this value to`-1` if you are adding a new item group line to the parent
-    transaction.
+    The QuickBooks-assigned unique identifier from an existing item group lines you
+    wish to keep or update, or set this value to `-1` if you are adding a new item
+    group line to the parent transaction.
     """
 
     item_group_id: Annotated[str, PropertyInfo(alias="itemGroupId")]
@@ -378,9 +376,9 @@ class ItemGroupLine(TypedDict, total=False):
 class ItemLine(TypedDict, total=False):
     id: Required[str]
     """
-    The QuickBooks-assigned unique identifier from an existing item line (you must
-    include all item lines you wish to keep, whether updating or not), or set this
-    value to`-1` if you are adding a new item line to the parent transaction.
+    The QuickBooks-assigned unique identifier from an existing item lines you wish
+    to keep or update, or set this value to `-1` if you are adding a new item line
+    to the parent transaction.
     """
 
     amount: str
