@@ -120,6 +120,7 @@ Methods:
 
 - <code title="post /quickbooks-desktop/credit-card-credits">client.qbd.credit_card_credits.<a href="./src/conductor/resources/qbd/credit_card_credits.py">create</a>(\*\*<a href="src/conductor/types/qbd/credit_card_credit_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/credit_card_credit.py">CreditCardCredit</a></code>
 - <code title="get /quickbooks-desktop/credit-card-credits/{id}">client.qbd.credit_card_credits.<a href="./src/conductor/resources/qbd/credit_card_credits.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/credit_card_credit.py">CreditCardCredit</a></code>
+- <code title="post /quickbooks-desktop/credit-card-credits/{id}">client.qbd.credit_card_credits.<a href="./src/conductor/resources/qbd/credit_card_credits.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/credit_card_credit_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/credit_card_credit.py">CreditCardCredit</a></code>
 - <code title="get /quickbooks-desktop/credit-card-credits">client.qbd.credit_card_credits.<a href="./src/conductor/resources/qbd/credit_card_credits.py">list</a>(\*\*<a href="src/conductor/types/qbd/credit_card_credit_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/credit_card_credit.py">SyncCursorPage[CreditCardCredit]</a></code>
 
 ## Customers
