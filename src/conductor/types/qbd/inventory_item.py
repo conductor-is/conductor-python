@@ -382,7 +382,7 @@ class InventoryItem(BaseModel):
     """The depth level of this inventory item in the hierarchy.
 
     A top-level inventory item has a `sublevel` of 0; each subsequent sublevel
-    increases this number by 1. For example, a inventory item with a `fullName` of
+    increases this number by 1. For example, an inventory item with a `fullName` of
     "Products:Electronics:Widgets" would have a `sublevel` of 2.
     """
 
