@@ -130,8 +130,8 @@ class InvoicesResource(SyncAPIResource):
               will return an error. This field is immutable and can only be set during object
               creation.
 
-          invoice_line_groups: The invoice's line item groups. Each group represents a predefined set of
-              related items.
+          invoice_line_groups: The invoice's line item groups, each representing a predefined set of related
+              items.
 
           invoice_lines: The invoice's invoice lines, each representing a single product or service sold.
 
@@ -573,8 +573,8 @@ class AsyncInvoicesResource(AsyncAPIResource):
               will return an error. This field is immutable and can only be set during object
               creation.
 
-          invoice_line_groups: The invoice's line item groups. Each group represents a predefined set of
-              related items.
+          invoice_line_groups: The invoice's line item groups, each representing a predefined set of related
+              items.
 
           invoice_lines: The invoice's invoice lines, each representing a single product or service sold.
 

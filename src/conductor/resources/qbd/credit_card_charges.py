@@ -95,8 +95,8 @@ class CreditCardChargesResource(SyncAPIResource):
               creation.
 
           item_group_lines: The credit card charge's item group lines, each representing a predefined set of
-              items bundled because they are commonly purchased together or grouped for faster
-              entry.
+              items bundled together because they are commonly purchased together or grouped
+              for faster entry.
 
           item_lines: The credit card charge's item lines, each representing the purchase of a
               specific item or service.
@@ -407,8 +407,8 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
               creation.
 
           item_group_lines: The credit card charge's item group lines, each representing a predefined set of
-              items bundled because they are commonly purchased together or grouped for faster
-              entry.
+              items bundled together because they are commonly purchased together or grouped
+              for faster entry.
 
           item_lines: The credit card charge's item lines, each representing the purchase of a
               specific item or service.
