@@ -283,35 +283,35 @@ class BillsResource(SyncAPIResource):
 
           expense_lines: The bill's expense lines, each representing one line in this expense.
 
-              IMPORTANT: When updating a bill's expense lines, this array completely REPLACES
-              all existing expense lines for that bill. To retain any current expense lines,
-              you must include them in this array, even if they have not changed. Any expense
-              lines not included will be removed. To add a new expense line, include it with
-              its `id` set to `-1`. If you do not wish to modify, add, or remove any expense
-              lines for this bill, you can omit this field entirely to keep the existing
-              expense lines unchanged.
+              IMPORTANT: When updating a bill's expense lines, this array REPLACES all
+              existing expense lines for that bill. To retain any current expense lines, you
+              must include them in this array, even if they have not changed. Any expense
+              lines not included will be removed from the bill. To add a new expense line,
+              include it with its `id` set to `-1`. If you do not wish to modify, add, or
+              remove any expense lines for this bill, you can omit this field entirely to keep
+              the existing expense lines unchanged.
 
           item_group_lines: The bill's item group lines, each representing a predefined set of items bundled
               together because they are commonly purchased together or grouped for faster
               entry.
 
-              IMPORTANT: When updating a bill's item group lines, this array completely
-              REPLACES all existing item group lines for that bill. To retain any current item
-              group lines, you must include them in this array, even if they have not changed.
-              Any item group lines not included will be removed. To add a new item group line,
-              include it with its `id` set to `-1`. If you do not wish to modify, add, or
-              remove any item group lines for this bill, you can omit this field entirely to
-              keep the existing item group lines unchanged.
+              IMPORTANT: When updating a bill's item group lines, this array REPLACES all
+              existing item group lines for that bill. To retain any current item group lines,
+              you must include them in this array, even if they have not changed. Any item
+              group lines not included will be removed from the bill. To add a new item group
+              line, include it with its `id` set to `-1`. If you do not wish to modify, add,
+              or remove any item group lines for this bill, you can omit this field entirely
+              to keep the existing item group lines unchanged.
 
           item_lines: The bill's item lines, each representing the purchase of a specific item or
               service.
 
-              IMPORTANT: When updating a bill's item lines, this array completely REPLACES all
-              existing item lines for that bill. To retain any current item lines, you must
-              include them in this array, even if they have not changed. Any item lines not
-              included will be removed. To add a new item line, include it with its `id` set
-              to `-1`. If you do not wish to modify, add, or remove any item lines for this
-              bill, you can omit this field entirely to keep the existing item lines
+              IMPORTANT: When updating a bill's item lines, this array REPLACES all existing
+              item lines for that bill. To retain any current item lines, you must include
+              them in this array, even if they have not changed. Any item lines not included
+              will be removed from the bill. To add a new item line, include it with its `id`
+              set to `-1`. If you do not wish to modify, add, or remove any item lines for
+              this bill, you can omit this field entirely to keep the existing item lines
               unchanged.
 
           memo: A memo or note for this bill, as entered by the user. Appears in the Accounts
@@ -783,35 +783,35 @@ class AsyncBillsResource(AsyncAPIResource):
 
           expense_lines: The bill's expense lines, each representing one line in this expense.
 
-              IMPORTANT: When updating a bill's expense lines, this array completely REPLACES
-              all existing expense lines for that bill. To retain any current expense lines,
-              you must include them in this array, even if they have not changed. Any expense
-              lines not included will be removed. To add a new expense line, include it with
-              its `id` set to `-1`. If you do not wish to modify, add, or remove any expense
-              lines for this bill, you can omit this field entirely to keep the existing
-              expense lines unchanged.
+              IMPORTANT: When updating a bill's expense lines, this array REPLACES all
+              existing expense lines for that bill. To retain any current expense lines, you
+              must include them in this array, even if they have not changed. Any expense
+              lines not included will be removed from the bill. To add a new expense line,
+              include it with its `id` set to `-1`. If you do not wish to modify, add, or
+              remove any expense lines for this bill, you can omit this field entirely to keep
+              the existing expense lines unchanged.
 
           item_group_lines: The bill's item group lines, each representing a predefined set of items bundled
               together because they are commonly purchased together or grouped for faster
               entry.
 
-              IMPORTANT: When updating a bill's item group lines, this array completely
-              REPLACES all existing item group lines for that bill. To retain any current item
-              group lines, you must include them in this array, even if they have not changed.
-              Any item group lines not included will be removed. To add a new item group line,
-              include it with its `id` set to `-1`. If you do not wish to modify, add, or
-              remove any item group lines for this bill, you can omit this field entirely to
-              keep the existing item group lines unchanged.
+              IMPORTANT: When updating a bill's item group lines, this array REPLACES all
+              existing item group lines for that bill. To retain any current item group lines,
+              you must include them in this array, even if they have not changed. Any item
+              group lines not included will be removed from the bill. To add a new item group
+              line, include it with its `id` set to `-1`. If you do not wish to modify, add,
+              or remove any item group lines for this bill, you can omit this field entirely
+              to keep the existing item group lines unchanged.
 
           item_lines: The bill's item lines, each representing the purchase of a specific item or
               service.
 
-              IMPORTANT: When updating a bill's item lines, this array completely REPLACES all
-              existing item lines for that bill. To retain any current item lines, you must
-              include them in this array, even if they have not changed. Any item lines not
-              included will be removed. To add a new item line, include it with its `id` set
-              to `-1`. If you do not wish to modify, add, or remove any item lines for this
-              bill, you can omit this field entirely to keep the existing item lines
+              IMPORTANT: When updating a bill's item lines, this array REPLACES all existing
+              item lines for that bill. To retain any current item lines, you must include
+              them in this array, even if they have not changed. Any item lines not included
+              will be removed from the bill. To add a new item line, include it with its `id`
+              set to `-1`. If you do not wish to modify, add, or remove any item lines for
+              this bill, you can omit this field entirely to keep the existing item lines
               unchanged.
 
           memo: A memo or note for this bill, as entered by the user. Appears in the Accounts
