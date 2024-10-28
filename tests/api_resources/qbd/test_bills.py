@@ -411,7 +411,6 @@ class TestBills:
     def test_method_update(self, client: Conductor) -> None:
         bill = client.qbd.bills.update(
             id="123ABC-1234567890",
-            transaction_date=parse_date("2019-12-27"),
             version="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
@@ -421,7 +420,6 @@ class TestBills:
     def test_method_update_with_all_params(self, client: Conductor) -> None:
         bill = client.qbd.bills.update(
             id="123ABC-1234567890",
-            transaction_date=parse_date("2019-12-27"),
             version="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
             accounts_payable_account_id="80000002-1234567890",
@@ -751,6 +749,7 @@ class TestBills:
             ref_number="BILL-1234",
             sales_tax_code_id="80000004-1234567890",
             terms_id="80000013-1234567890",
+            transaction_date=parse_date("2019-12-27"),
             vendor_address={
                 "city": "San Francisco",
                 "country": "United States",
@@ -771,7 +770,6 @@ class TestBills:
     def test_raw_response_update(self, client: Conductor) -> None:
         response = client.qbd.bills.with_raw_response.update(
             id="123ABC-1234567890",
-            transaction_date=parse_date("2019-12-27"),
             version="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
@@ -785,7 +783,6 @@ class TestBills:
     def test_streaming_response_update(self, client: Conductor) -> None:
         with client.qbd.bills.with_streaming_response.update(
             id="123ABC-1234567890",
-            transaction_date=parse_date("2019-12-27"),
             version="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
@@ -802,7 +799,6 @@ class TestBills:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.qbd.bills.with_raw_response.update(
                 id="",
-                transaction_date=parse_date("2019-12-27"),
                 version="1721172183",
                 conductor_end_user_id="end_usr_1234567abcdefg",
             )
@@ -1260,7 +1256,6 @@ class TestAsyncBills:
     async def test_method_update(self, async_client: AsyncConductor) -> None:
         bill = await async_client.qbd.bills.update(
             id="123ABC-1234567890",
-            transaction_date=parse_date("2019-12-27"),
             version="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
@@ -1270,7 +1265,6 @@ class TestAsyncBills:
     async def test_method_update_with_all_params(self, async_client: AsyncConductor) -> None:
         bill = await async_client.qbd.bills.update(
             id="123ABC-1234567890",
-            transaction_date=parse_date("2019-12-27"),
             version="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
             accounts_payable_account_id="80000002-1234567890",
@@ -1600,6 +1594,7 @@ class TestAsyncBills:
             ref_number="BILL-1234",
             sales_tax_code_id="80000004-1234567890",
             terms_id="80000013-1234567890",
+            transaction_date=parse_date("2019-12-27"),
             vendor_address={
                 "city": "San Francisco",
                 "country": "United States",
@@ -1620,7 +1615,6 @@ class TestAsyncBills:
     async def test_raw_response_update(self, async_client: AsyncConductor) -> None:
         response = await async_client.qbd.bills.with_raw_response.update(
             id="123ABC-1234567890",
-            transaction_date=parse_date("2019-12-27"),
             version="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
@@ -1634,7 +1628,6 @@ class TestAsyncBills:
     async def test_streaming_response_update(self, async_client: AsyncConductor) -> None:
         async with async_client.qbd.bills.with_streaming_response.update(
             id="123ABC-1234567890",
-            transaction_date=parse_date("2019-12-27"),
             version="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
@@ -1651,7 +1644,6 @@ class TestAsyncBills:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.qbd.bills.with_raw_response.update(
                 id="",
-                transaction_date=parse_date("2019-12-27"),
                 version="1721172183",
                 conductor_end_user_id="end_usr_1234567abcdefg",
             )
