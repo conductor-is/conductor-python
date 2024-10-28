@@ -21,7 +21,7 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...types.qbd import bill_list_params, bill_create_params
+from ...types.qbd import bill_list_params, bill_create_params, bill_update_params
 from ...pagination import SyncCursorPage, AsyncCursorPage
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.qbd.qbd_bill import QbdBill
@@ -218,6 +218,154 @@ class BillsResource(SyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get(
             f"/quickbooks-desktop/bills/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=QbdBill,
+        )
+
+    def update(
+        self,
+        id: str,
+        *,
+        transaction_date: Union[str, date],
+        version: str,
+        conductor_end_user_id: str,
+        accounts_payable_account_id: str | NotGiven = NOT_GIVEN,
+        clear_expense_lines: bool | NotGiven = NOT_GIVEN,
+        clear_item_lines: bool | NotGiven = NOT_GIVEN,
+        due_date: Union[str, date] | NotGiven = NOT_GIVEN,
+        exchange_rate: float | NotGiven = NOT_GIVEN,
+        expense_lines: Iterable[bill_update_params.ExpenseLine] | NotGiven = NOT_GIVEN,
+        item_group_lines: Iterable[bill_update_params.ItemGroupLine] | NotGiven = NOT_GIVEN,
+        item_lines: Iterable[bill_update_params.ItemLine] | NotGiven = NOT_GIVEN,
+        memo: str | NotGiven = NOT_GIVEN,
+        ref_number: str | NotGiven = NOT_GIVEN,
+        sales_tax_code_id: str | NotGiven = NOT_GIVEN,
+        terms_id: str | NotGiven = NOT_GIVEN,
+        vendor_address: bill_update_params.VendorAddress | NotGiven = NOT_GIVEN,
+        vendor_id: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> QbdBill:
+        """
+        Updates a bill.
+
+        Args:
+          id: The QuickBooks-assigned unique identifier of the bill to update.
+
+          transaction_date: The date of this bill, in ISO 8601 format (YYYY-MM-DD).
+
+          version: The current version identifier of the bill you are updating, which you can get
+              by fetching the object first. Provide the most recent `version` to ensure you're
+              working with the latest data; otherwise, the update will fail.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          accounts_payable_account_id: The Accounts Payable account to which this bill is assigned, used to track the
+              amount owed. If not specified, the default Accounts Payable account in
+              QuickBooks is used.
+
+          clear_expense_lines: Indicates whether to clear all the expense lines of this bill. To modify
+              individual lines, use the field `expenseLines`.
+
+          clear_item_lines: Indicates whether to clear all the item lines of this bill. To modify individual
+              lines, use the field `itemLines`.
+
+          due_date: The date by which this bill must be paid, in ISO 8601 format (YYYY-MM-DD).
+
+          exchange_rate: The market exchange rate between this bill's currency and the home currency in
+              QuickBooks at the time of this transaction. Represented as a decimal value
+              (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
+
+          expense_lines: The bill's expense lines, each representing one line in this expense. To add a
+              new expense line to this bill, include it in this array with its `id` set to
+              `-1`. When updating this field, you must include all EXISTING expense lines in
+              this array, even if you are only adding or modifying some; otherwise, QuickBooks
+              removes the unspecified lines. Hence, to remove an existing expense line, omit
+              it from this array entirely and only include the lines you wish to keep. If you
+              are not modifying, adding, or removing any expense lines for this bill, you can
+              omit this field entirely.
+
+          item_group_lines: The bill's item group lines, each representing a predefined set of items bundled
+              together because they are commonly purchased together or grouped for faster
+              entry. To add a new item group line to this bill, include it in this array with
+              its `id` set to `-1`. When updating this field, you must include all EXISTING
+              item group lines in this array, even if you are only adding or modifying some;
+              otherwise, QuickBooks removes the unspecified lines. Hence, to remove an
+              existing item group line, omit it from this array entirely and only include the
+              lines you wish to keep. If you are not modifying, adding, or removing any item
+              group lines for this bill, you can omit this field entirely.
+
+          item_lines: The bill's item lines, each representing the purchase of a specific item or
+              service. To add a new item line to this bill, include it in this array with its
+              `id` set to `-1`. When updating this field, you must include all EXISTING item
+              lines in this array, even if you are only adding or modifying some; otherwise,
+              QuickBooks removes the unspecified lines. Hence, to remove an existing item
+              line, omit it from this array entirely and only include the lines you wish to
+              keep. If you are not modifying, adding, or removing any item lines for this
+              bill, you can omit this field entirely.
+
+          memo: A memo or note for this bill, as entered by the user. Appears in the Accounts
+              Payable register and relevant reports.
+
+          ref_number: The case-sensitive user-defined reference number for this bill, which can be
+              used to identify the transaction in QuickBooks. This value is not required to be
+              unique and can be arbitrarily changed by the QuickBooks user.
+
+          sales_tax_code_id: The sales-tax code associated with this bill, determining whether it is taxable
+              or non-taxable. It's used to assign a default tax status to all transactions for
+              this bill. Default codes include "Non" (non-taxable) and "Tax" (taxable), but
+              custom codes can also be created in QuickBooks. If QuickBooks is not set up to
+              charge sales tax (via the "Do You Charge Sales Tax?" preference), it will assign
+              the default non-taxable code to all sales.
+
+          terms_id: The bill's payment terms, defining when payment is due and any applicable
+              discounts.
+
+          vendor_address: The address of the vendor who sent this bill.
+
+          vendor_id: The vendor who sent this bill for goods or services purchased.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return self._post(
+            f"/quickbooks-desktop/bills/{id}",
+            body=maybe_transform(
+                {
+                    "transaction_date": transaction_date,
+                    "version": version,
+                    "accounts_payable_account_id": accounts_payable_account_id,
+                    "clear_expense_lines": clear_expense_lines,
+                    "clear_item_lines": clear_item_lines,
+                    "due_date": due_date,
+                    "exchange_rate": exchange_rate,
+                    "expense_lines": expense_lines,
+                    "item_group_lines": item_group_lines,
+                    "item_lines": item_lines,
+                    "memo": memo,
+                    "ref_number": ref_number,
+                    "sales_tax_code_id": sales_tax_code_id,
+                    "terms_id": terms_id,
+                    "vendor_address": vendor_address,
+                    "vendor_id": vendor_id,
+                },
+                bill_update_params.BillUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -571,6 +719,154 @@ class AsyncBillsResource(AsyncAPIResource):
             cast_to=QbdBill,
         )
 
+    async def update(
+        self,
+        id: str,
+        *,
+        transaction_date: Union[str, date],
+        version: str,
+        conductor_end_user_id: str,
+        accounts_payable_account_id: str | NotGiven = NOT_GIVEN,
+        clear_expense_lines: bool | NotGiven = NOT_GIVEN,
+        clear_item_lines: bool | NotGiven = NOT_GIVEN,
+        due_date: Union[str, date] | NotGiven = NOT_GIVEN,
+        exchange_rate: float | NotGiven = NOT_GIVEN,
+        expense_lines: Iterable[bill_update_params.ExpenseLine] | NotGiven = NOT_GIVEN,
+        item_group_lines: Iterable[bill_update_params.ItemGroupLine] | NotGiven = NOT_GIVEN,
+        item_lines: Iterable[bill_update_params.ItemLine] | NotGiven = NOT_GIVEN,
+        memo: str | NotGiven = NOT_GIVEN,
+        ref_number: str | NotGiven = NOT_GIVEN,
+        sales_tax_code_id: str | NotGiven = NOT_GIVEN,
+        terms_id: str | NotGiven = NOT_GIVEN,
+        vendor_address: bill_update_params.VendorAddress | NotGiven = NOT_GIVEN,
+        vendor_id: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> QbdBill:
+        """
+        Updates a bill.
+
+        Args:
+          id: The QuickBooks-assigned unique identifier of the bill to update.
+
+          transaction_date: The date of this bill, in ISO 8601 format (YYYY-MM-DD).
+
+          version: The current version identifier of the bill you are updating, which you can get
+              by fetching the object first. Provide the most recent `version` to ensure you're
+              working with the latest data; otherwise, the update will fail.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          accounts_payable_account_id: The Accounts Payable account to which this bill is assigned, used to track the
+              amount owed. If not specified, the default Accounts Payable account in
+              QuickBooks is used.
+
+          clear_expense_lines: Indicates whether to clear all the expense lines of this bill. To modify
+              individual lines, use the field `expenseLines`.
+
+          clear_item_lines: Indicates whether to clear all the item lines of this bill. To modify individual
+              lines, use the field `itemLines`.
+
+          due_date: The date by which this bill must be paid, in ISO 8601 format (YYYY-MM-DD).
+
+          exchange_rate: The market exchange rate between this bill's currency and the home currency in
+              QuickBooks at the time of this transaction. Represented as a decimal value
+              (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
+
+          expense_lines: The bill's expense lines, each representing one line in this expense. To add a
+              new expense line to this bill, include it in this array with its `id` set to
+              `-1`. When updating this field, you must include all EXISTING expense lines in
+              this array, even if you are only adding or modifying some; otherwise, QuickBooks
+              removes the unspecified lines. Hence, to remove an existing expense line, omit
+              it from this array entirely and only include the lines you wish to keep. If you
+              are not modifying, adding, or removing any expense lines for this bill, you can
+              omit this field entirely.
+
+          item_group_lines: The bill's item group lines, each representing a predefined set of items bundled
+              together because they are commonly purchased together or grouped for faster
+              entry. To add a new item group line to this bill, include it in this array with
+              its `id` set to `-1`. When updating this field, you must include all EXISTING
+              item group lines in this array, even if you are only adding or modifying some;
+              otherwise, QuickBooks removes the unspecified lines. Hence, to remove an
+              existing item group line, omit it from this array entirely and only include the
+              lines you wish to keep. If you are not modifying, adding, or removing any item
+              group lines for this bill, you can omit this field entirely.
+
+          item_lines: The bill's item lines, each representing the purchase of a specific item or
+              service. To add a new item line to this bill, include it in this array with its
+              `id` set to `-1`. When updating this field, you must include all EXISTING item
+              lines in this array, even if you are only adding or modifying some; otherwise,
+              QuickBooks removes the unspecified lines. Hence, to remove an existing item
+              line, omit it from this array entirely and only include the lines you wish to
+              keep. If you are not modifying, adding, or removing any item lines for this
+              bill, you can omit this field entirely.
+
+          memo: A memo or note for this bill, as entered by the user. Appears in the Accounts
+              Payable register and relevant reports.
+
+          ref_number: The case-sensitive user-defined reference number for this bill, which can be
+              used to identify the transaction in QuickBooks. This value is not required to be
+              unique and can be arbitrarily changed by the QuickBooks user.
+
+          sales_tax_code_id: The sales-tax code associated with this bill, determining whether it is taxable
+              or non-taxable. It's used to assign a default tax status to all transactions for
+              this bill. Default codes include "Non" (non-taxable) and "Tax" (taxable), but
+              custom codes can also be created in QuickBooks. If QuickBooks is not set up to
+              charge sales tax (via the "Do You Charge Sales Tax?" preference), it will assign
+              the default non-taxable code to all sales.
+
+          terms_id: The bill's payment terms, defining when payment is due and any applicable
+              discounts.
+
+          vendor_address: The address of the vendor who sent this bill.
+
+          vendor_id: The vendor who sent this bill for goods or services purchased.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return await self._post(
+            f"/quickbooks-desktop/bills/{id}",
+            body=await async_maybe_transform(
+                {
+                    "transaction_date": transaction_date,
+                    "version": version,
+                    "accounts_payable_account_id": accounts_payable_account_id,
+                    "clear_expense_lines": clear_expense_lines,
+                    "clear_item_lines": clear_item_lines,
+                    "due_date": due_date,
+                    "exchange_rate": exchange_rate,
+                    "expense_lines": expense_lines,
+                    "item_group_lines": item_group_lines,
+                    "item_lines": item_lines,
+                    "memo": memo,
+                    "ref_number": ref_number,
+                    "sales_tax_code_id": sales_tax_code_id,
+                    "terms_id": terms_id,
+                    "vendor_address": vendor_address,
+                    "vendor_id": vendor_id,
+                },
+                bill_update_params.BillUpdateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=QbdBill,
+        )
+
     def list(
         self,
         *,
@@ -733,6 +1029,9 @@ class BillsResourceWithRawResponse:
         self.retrieve = to_raw_response_wrapper(
             bills.retrieve,
         )
+        self.update = to_raw_response_wrapper(
+            bills.update,
+        )
         self.list = to_raw_response_wrapper(
             bills.list,
         )
@@ -747,6 +1046,9 @@ class AsyncBillsResourceWithRawResponse:
         )
         self.retrieve = async_to_raw_response_wrapper(
             bills.retrieve,
+        )
+        self.update = async_to_raw_response_wrapper(
+            bills.update,
         )
         self.list = async_to_raw_response_wrapper(
             bills.list,
@@ -763,6 +1065,9 @@ class BillsResourceWithStreamingResponse:
         self.retrieve = to_streamed_response_wrapper(
             bills.retrieve,
         )
+        self.update = to_streamed_response_wrapper(
+            bills.update,
+        )
         self.list = to_streamed_response_wrapper(
             bills.list,
         )
@@ -777,6 +1082,9 @@ class AsyncBillsResourceWithStreamingResponse:
         )
         self.retrieve = async_to_streamed_response_wrapper(
             bills.retrieve,
+        )
+        self.update = async_to_streamed_response_wrapper(
+            bills.update,
         )
         self.list = async_to_streamed_response_wrapper(
             bills.list,
