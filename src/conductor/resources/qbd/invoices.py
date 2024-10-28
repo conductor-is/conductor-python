@@ -133,7 +133,7 @@ class InvoicesResource(SyncAPIResource):
           invoice_line_groups: The invoice's line item groups, each representing a predefined set of related
               items.
 
-          invoice_lines: The invoice's invoice lines, each representing a single product or service sold.
+          invoice_lines: The invoice's line items, each representing a single product or service sold.
 
           is_finance_charge: Whether this invoice includes a finance charge.
 
@@ -576,7 +576,7 @@ class AsyncInvoicesResource(AsyncAPIResource):
           invoice_line_groups: The invoice's line item groups, each representing a predefined set of related
               items.
 
-          invoice_lines: The invoice's invoice lines, each representing a single product or service sold.
+          invoice_lines: The invoice's line items, each representing a single product or service sold.
 
           is_finance_charge: Whether this invoice includes a finance charge.
 
