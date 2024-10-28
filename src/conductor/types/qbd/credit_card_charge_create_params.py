@@ -60,8 +60,8 @@ class CreditCardChargeCreateParams(TypedDict, total=False):
     item_group_lines: Annotated[Iterable[ItemGroupLine], PropertyInfo(alias="itemGroupLines")]
     """
     The credit card charge's item group lines, each representing a predefined set of
-    items bundled because they are commonly purchased together or grouped for faster
-    entry.
+    items bundled together because they are commonly purchased together or grouped
+    for faster entry.
     """
 
     item_lines: Annotated[Iterable[ItemLine], PropertyInfo(alias="itemLines")]
@@ -282,8 +282,8 @@ class ItemLine(TypedDict, total=False):
 
     If both `quantity` and `cost` are specified but not `amount`, QuickBooks will
     use them to calculate `amount`. If `amount`, `cost`, and `quantity` are all
-    unspecified, then QuickBooks will calculate `amount` based on a `quantity` of 1
-    and the suggested `cost`.
+    unspecified, then QuickBooks will calculate `amount` based on a `quantity` of
+    `1` and the suggested `cost`.
     """
 
     billing_status: Annotated[
