@@ -105,6 +105,7 @@ Methods:
 
 - <code title="post /quickbooks-desktop/credit-card-charges">client.qbd.credit_card_charges.<a href="./src/conductor/resources/qbd/credit_card_charges.py">create</a>(\*\*<a href="src/conductor/types/qbd/credit_card_charge_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_credit_card_charge.py">QbdCreditCardCharge</a></code>
 - <code title="get /quickbooks-desktop/credit-card-charges/{id}">client.qbd.credit_card_charges.<a href="./src/conductor/resources/qbd/credit_card_charges.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_credit_card_charge.py">QbdCreditCardCharge</a></code>
+- <code title="post /quickbooks-desktop/credit-card-charges/{id}">client.qbd.credit_card_charges.<a href="./src/conductor/resources/qbd/credit_card_charges.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/credit_card_charge_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_credit_card_charge.py">QbdCreditCardCharge</a></code>
 - <code title="get /quickbooks-desktop/credit-card-charges">client.qbd.credit_card_charges.<a href="./src/conductor/resources/qbd/credit_card_charges.py">list</a>(\*\*<a href="src/conductor/types/qbd/credit_card_charge_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_credit_card_charge.py">SyncCursorPage[QbdCreditCardCharge]</a></code>
 
 ## CreditCardCredits
