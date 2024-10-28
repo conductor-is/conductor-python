@@ -435,7 +435,7 @@ class CustomersResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> QbdCustomer:
         """
-        Updates a customer.
+        Updates an existing customer.
 
         Args:
           id: The QuickBooks-assigned unique identifier of the customer to update.
@@ -1218,7 +1218,7 @@ class AsyncCustomersResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> QbdCustomer:
         """
-        Updates a customer.
+        Updates an existing customer.
 
         Args:
           id: The QuickBooks-assigned unique identifier of the customer to update.
