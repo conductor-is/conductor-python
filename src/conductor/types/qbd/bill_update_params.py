@@ -12,9 +12,6 @@ __all__ = ["BillUpdateParams", "ExpenseLine", "ItemGroupLine", "ItemGroupLineIte
 
 
 class BillUpdateParams(TypedDict, total=False):
-    transaction_date: Required[Annotated[Union[str, date], PropertyInfo(alias="transactionDate", format="iso8601")]]
-    """The date of this bill, in ISO 8601 format (YYYY-MM-DD)."""
-
     version: Required[str]
     """
     The current version identifier of the bill you are updating, which you can get
@@ -122,6 +119,9 @@ class BillUpdateParams(TypedDict, total=False):
     The bill's payment terms, defining when payment is due and any applicable
     discounts.
     """
+
+    transaction_date: Annotated[Union[str, date], PropertyInfo(alias="transactionDate", format="iso8601")]
+    """The date of this bill, in ISO 8601 format (YYYY-MM-DD)."""
 
     vendor_address: Annotated[VendorAddress, PropertyInfo(alias="vendorAddress")]
     """The address of the vendor who sent this bill."""

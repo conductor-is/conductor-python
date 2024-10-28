@@ -165,7 +165,7 @@ class ClassesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> QbdClass:
         """
-        Updates a class.
+        Updates an existing class.
 
         Args:
           id: The QuickBooks-assigned unique identifier of the class to update.
@@ -468,7 +468,7 @@ class AsyncClassesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> QbdClass:
         """
-        Updates a class.
+        Updates an existing class.
 
         Args:
           id: The QuickBooks-assigned unique identifier of the class to update.

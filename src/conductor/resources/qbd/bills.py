@@ -228,7 +228,6 @@ class BillsResource(SyncAPIResource):
         self,
         id: str,
         *,
-        transaction_date: Union[str, date],
         version: str,
         conductor_end_user_id: str,
         accounts_payable_account_id: str | NotGiven = NOT_GIVEN,
@@ -243,6 +242,7 @@ class BillsResource(SyncAPIResource):
         ref_number: str | NotGiven = NOT_GIVEN,
         sales_tax_code_id: str | NotGiven = NOT_GIVEN,
         terms_id: str | NotGiven = NOT_GIVEN,
+        transaction_date: Union[str, date] | NotGiven = NOT_GIVEN,
         vendor_address: bill_update_params.VendorAddress | NotGiven = NOT_GIVEN,
         vendor_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -253,12 +253,10 @@ class BillsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> QbdBill:
         """
-        Updates a bill.
+        Updates an existing bill.
 
         Args:
           id: The QuickBooks-assigned unique identifier of the bill to update.
-
-          transaction_date: The date of this bill, in ISO 8601 format (YYYY-MM-DD).
 
           version: The current version identifier of the bill you are updating, which you can get
               by fetching the object first. Provide the most recent `version` to ensure you're
@@ -328,6 +326,8 @@ class BillsResource(SyncAPIResource):
           terms_id: The bill's payment terms, defining when payment is due and any applicable
               discounts.
 
+          transaction_date: The date of this bill, in ISO 8601 format (YYYY-MM-DD).
+
           vendor_address: The address of the vendor who sent this bill.
 
           vendor_id: The vendor who sent this bill for goods or services purchased.
@@ -347,7 +347,6 @@ class BillsResource(SyncAPIResource):
             f"/quickbooks-desktop/bills/{id}",
             body=maybe_transform(
                 {
-                    "transaction_date": transaction_date,
                     "version": version,
                     "accounts_payable_account_id": accounts_payable_account_id,
                     "clear_expense_lines": clear_expense_lines,
@@ -361,6 +360,7 @@ class BillsResource(SyncAPIResource):
                     "ref_number": ref_number,
                     "sales_tax_code_id": sales_tax_code_id,
                     "terms_id": terms_id,
+                    "transaction_date": transaction_date,
                     "vendor_address": vendor_address,
                     "vendor_id": vendor_id,
                 },
@@ -723,7 +723,6 @@ class AsyncBillsResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        transaction_date: Union[str, date],
         version: str,
         conductor_end_user_id: str,
         accounts_payable_account_id: str | NotGiven = NOT_GIVEN,
@@ -738,6 +737,7 @@ class AsyncBillsResource(AsyncAPIResource):
         ref_number: str | NotGiven = NOT_GIVEN,
         sales_tax_code_id: str | NotGiven = NOT_GIVEN,
         terms_id: str | NotGiven = NOT_GIVEN,
+        transaction_date: Union[str, date] | NotGiven = NOT_GIVEN,
         vendor_address: bill_update_params.VendorAddress | NotGiven = NOT_GIVEN,
         vendor_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -748,12 +748,10 @@ class AsyncBillsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> QbdBill:
         """
-        Updates a bill.
+        Updates an existing bill.
 
         Args:
           id: The QuickBooks-assigned unique identifier of the bill to update.
-
-          transaction_date: The date of this bill, in ISO 8601 format (YYYY-MM-DD).
 
           version: The current version identifier of the bill you are updating, which you can get
               by fetching the object first. Provide the most recent `version` to ensure you're
@@ -823,6 +821,8 @@ class AsyncBillsResource(AsyncAPIResource):
           terms_id: The bill's payment terms, defining when payment is due and any applicable
               discounts.
 
+          transaction_date: The date of this bill, in ISO 8601 format (YYYY-MM-DD).
+
           vendor_address: The address of the vendor who sent this bill.
 
           vendor_id: The vendor who sent this bill for goods or services purchased.
@@ -842,7 +842,6 @@ class AsyncBillsResource(AsyncAPIResource):
             f"/quickbooks-desktop/bills/{id}",
             body=await async_maybe_transform(
                 {
-                    "transaction_date": transaction_date,
                     "version": version,
                     "accounts_payable_account_id": accounts_payable_account_id,
                     "clear_expense_lines": clear_expense_lines,
@@ -856,6 +855,7 @@ class AsyncBillsResource(AsyncAPIResource):
                     "ref_number": ref_number,
                     "sales_tax_code_id": sales_tax_code_id,
                     "terms_id": terms_id,
+                    "transaction_date": transaction_date,
                     "vendor_address": vendor_address,
                     "vendor_id": vendor_id,
                 },
