@@ -104,7 +104,8 @@ class BillsResource(SyncAPIResource):
               creation.
 
           item_group_lines: The bill's item group lines, each representing a predefined set of items bundled
-              because they are commonly purchased together or grouped for faster entry.
+              together because they are commonly purchased together or grouped for faster
+              entry.
 
           item_lines: The bill's item lines, each representing the purchase of a specific item or
               service.
@@ -450,7 +451,8 @@ class AsyncBillsResource(AsyncAPIResource):
               creation.
 
           item_group_lines: The bill's item group lines, each representing a predefined set of items bundled
-              because they are commonly purchased together or grouped for faster entry.
+              together because they are commonly purchased together or grouped for faster
+              entry.
 
           item_lines: The bill's item lines, each representing the purchase of a specific item or
               service.
