@@ -274,7 +274,7 @@ class QbdAccount(BaseModel):
     """The depth level of this account in the hierarchy.
 
     A top-level account has a `sublevel` of 0; each subsequent sublevel increases
-    this number by 1. For example, a account with a `fullName` of
+    this number by 1. For example, an account with a `fullName` of
     "Corporate:Accounts-Payable" would have a `sublevel` of 1.
     """
 

@@ -21,7 +21,7 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...types.qbd import inventory_item_list_params, inventory_item_create_params
+from ...types.qbd import inventory_item_list_params, inventory_item_create_params, inventory_item_update_params
 from ...pagination import SyncCursorPage, AsyncCursorPage
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.qbd.inventory_item import InventoryItem
@@ -251,6 +251,192 @@ class InventoryItemsResource(SyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get(
             f"/quickbooks-desktop/inventory-items/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=InventoryItem,
+        )
+
+    def update(
+        self,
+        id: str,
+        *,
+        version: str,
+        conductor_end_user_id: str,
+        apply_cogs_account_to_existing_transactions: bool | NotGiven = NOT_GIVEN,
+        apply_income_account_to_existing_transactions: bool | NotGiven = NOT_GIVEN,
+        asset_account_id: str | NotGiven = NOT_GIVEN,
+        barcode: inventory_item_update_params.Barcode | NotGiven = NOT_GIVEN,
+        class_id: str | NotGiven = NOT_GIVEN,
+        cogs_account_id: str | NotGiven = NOT_GIVEN,
+        force_unit_of_measure_change: bool | NotGiven = NOT_GIVEN,
+        income_account_id: str | NotGiven = NOT_GIVEN,
+        is_active: bool | NotGiven = NOT_GIVEN,
+        manufacturer_part_number: str | NotGiven = NOT_GIVEN,
+        maximum_quantity_on_hand: float | NotGiven = NOT_GIVEN,
+        name: str | NotGiven = NOT_GIVEN,
+        parent_id: str | NotGiven = NOT_GIVEN,
+        preferred_vendor_id: str | NotGiven = NOT_GIVEN,
+        purchase_cost: str | NotGiven = NOT_GIVEN,
+        purchase_description: str | NotGiven = NOT_GIVEN,
+        purchase_tax_code_id: str | NotGiven = NOT_GIVEN,
+        reorder_point: float | NotGiven = NOT_GIVEN,
+        sales_description: str | NotGiven = NOT_GIVEN,
+        sales_price: str | NotGiven = NOT_GIVEN,
+        sales_tax_code_id: str | NotGiven = NOT_GIVEN,
+        unit_of_measure_set_id: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> InventoryItem:
+        """
+        Updates an existing inventory item.
+
+        Args:
+          id: The QuickBooks-assigned unique identifier of the inventory item to update.
+
+          version: The current version identifier of the inventory item you are updating, which you
+              can get by fetching the object first. Provide the most recent `version` to
+              ensure you're working with the latest data; otherwise, the update will fail.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          apply_cogs_account_to_existing_transactions: Indicates whether to apply the new COGS account (specified by the
+              `cogsAccountId` field) to all existing transactions that use this inventory
+              item. If `true`, the COGS account will be updated in all historical transactions
+              where this inventory item appears. Be cautious with this setting as it modifies
+              historical data. The update will fail if any affected transactions fall within a
+              closed accounting period. If not specified, QuickBooks will prompt the user to
+              make this choice.
+
+          apply_income_account_to_existing_transactions: Indicates whether to apply the new income account (specified by the
+              `incomeAccountId` field) to all existing transactions that use this inventory
+              item. If `true`, the income account will be updated in all historical
+              transactions where this inventory item appears. Be cautious with this setting as
+              it modifies historical data. The update will fail if any affected transactions
+              fall within a closed accounting period. If not specified, QuickBooks will prompt
+              the user to make this choice.
+
+          asset_account_id: The asset account used to track the current value of this inventory item in
+              inventory.
+
+          barcode: The inventory item's barcode.
+
+          class_id: The inventory item's class. Classes can be used to categorize objects into
+              meaningful segments, such as department, location, or type of work. In
+              QuickBooks, class tracking is off by default.
+
+          cogs_account_id: The Cost of Goods Sold (COGS) account for this inventory item, tracking the
+              original direct costs of producing goods sold.
+
+          force_unit_of_measure_change: Indicates whether to allow changing the inventory item's Unit of Measure (UOM)
+              set (using the `unitOfMeasureSetId` field) when the base unit of the new UOM set
+              does not match that of the currently assigned UOM set. Without setting this
+              field to `true` in this scenario, the request will fail with an error; hence,
+              this field is equivalent to accepting the warning prompt in the QuickBooks UI.
+
+              Important: Changing the base unit requires you to update the item's
+              quantities-on-hand and cost to reflect the new unit; otherwise, these values
+              will be inaccurate. Alternatively, consider creating a new item with the desired
+              UOM set and deactivating the old item.
+
+          income_account_id: The income account used to track revenue from sales of this inventory item.
+
+          is_active: Indicates whether this inventory item is active. Inactive objects are typically
+              hidden from views and reports in QuickBooks.
+
+          manufacturer_part_number: The manufacturer's part number for this inventory item, which is often the stock
+              keeping unit (SKU).
+
+          maximum_quantity_on_hand: The maximum quantity of this inventory item desired in inventory.
+
+          name: The case-insensitive name of this inventory item. Not guaranteed to be unique
+              because it does not include the names of its parent objects like `fullName`
+              does. For example, two inventory items could both have the `name` "Widget", but
+              they could have unique `fullName` values, such as "Products:Widget" and
+              "Inventory:Widget".
+
+          parent_id: The parent inventory item one level above this one in the hierarchy. For
+              example, if this inventory item has a `fullName` of
+              "Products:Electronics:Widgets", its parent has a `fullName` of
+              "Products:Electronics". If this inventory item is at the top level, this field
+              will be `null`.
+
+          preferred_vendor_id: The preferred vendor from whom this inventory item is typically purchased.
+
+          purchase_cost: The cost at which this inventory item is purchased from vendors, represented as
+              a decimal string.
+
+          purchase_description: The description of this inventory item that appears on purchase forms (e.g.,
+              checks, bills, item receipts) when it is ordered or bought from vendors.
+
+          purchase_tax_code_id: The tax code applied to purchases of this inventory item. Applicable in regions
+              where purchase taxes are used, such as Canada or the UK.
+
+          reorder_point: The minimum quantity of this inventory item at which QuickBooks prompts for
+              reordering.
+
+          sales_description: The description of this inventory item that appears on sales forms (e.g.,
+              invoices, sales receipts) when sold to customers.
+
+          sales_price: The price at which this inventory item is sold to customers, represented as a
+              decimal string.
+
+          sales_tax_code_id: The sales-tax code associated with this inventory item, determining whether it
+              is taxable or non-taxable. It's used to assign a default tax status to all
+              transactions for this inventory item. Default codes include "Non" (non-taxable)
+              and "Tax" (taxable), but custom codes can also be created in QuickBooks. If
+              QuickBooks is not set up to charge sales tax (via the "Do You Charge Sales Tax?"
+              preference), it will assign the default non-taxable code to all sales.
+
+          unit_of_measure_set_id: The unit of measure set associated with this inventory item, which consists of a
+              base unit and related units.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return self._post(
+            f"/quickbooks-desktop/inventory-items/{id}",
+            body=maybe_transform(
+                {
+                    "version": version,
+                    "apply_cogs_account_to_existing_transactions": apply_cogs_account_to_existing_transactions,
+                    "apply_income_account_to_existing_transactions": apply_income_account_to_existing_transactions,
+                    "asset_account_id": asset_account_id,
+                    "barcode": barcode,
+                    "class_id": class_id,
+                    "cogs_account_id": cogs_account_id,
+                    "force_unit_of_measure_change": force_unit_of_measure_change,
+                    "income_account_id": income_account_id,
+                    "is_active": is_active,
+                    "manufacturer_part_number": manufacturer_part_number,
+                    "maximum_quantity_on_hand": maximum_quantity_on_hand,
+                    "name": name,
+                    "parent_id": parent_id,
+                    "preferred_vendor_id": preferred_vendor_id,
+                    "purchase_cost": purchase_cost,
+                    "purchase_description": purchase_description,
+                    "purchase_tax_code_id": purchase_tax_code_id,
+                    "reorder_point": reorder_point,
+                    "sales_description": sales_description,
+                    "sales_price": sales_price,
+                    "sales_tax_code_id": sales_tax_code_id,
+                    "unit_of_measure_set_id": unit_of_measure_set_id,
+                },
+                inventory_item_update_params.InventoryItemUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -622,6 +808,192 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
             cast_to=InventoryItem,
         )
 
+    async def update(
+        self,
+        id: str,
+        *,
+        version: str,
+        conductor_end_user_id: str,
+        apply_cogs_account_to_existing_transactions: bool | NotGiven = NOT_GIVEN,
+        apply_income_account_to_existing_transactions: bool | NotGiven = NOT_GIVEN,
+        asset_account_id: str | NotGiven = NOT_GIVEN,
+        barcode: inventory_item_update_params.Barcode | NotGiven = NOT_GIVEN,
+        class_id: str | NotGiven = NOT_GIVEN,
+        cogs_account_id: str | NotGiven = NOT_GIVEN,
+        force_unit_of_measure_change: bool | NotGiven = NOT_GIVEN,
+        income_account_id: str | NotGiven = NOT_GIVEN,
+        is_active: bool | NotGiven = NOT_GIVEN,
+        manufacturer_part_number: str | NotGiven = NOT_GIVEN,
+        maximum_quantity_on_hand: float | NotGiven = NOT_GIVEN,
+        name: str | NotGiven = NOT_GIVEN,
+        parent_id: str | NotGiven = NOT_GIVEN,
+        preferred_vendor_id: str | NotGiven = NOT_GIVEN,
+        purchase_cost: str | NotGiven = NOT_GIVEN,
+        purchase_description: str | NotGiven = NOT_GIVEN,
+        purchase_tax_code_id: str | NotGiven = NOT_GIVEN,
+        reorder_point: float | NotGiven = NOT_GIVEN,
+        sales_description: str | NotGiven = NOT_GIVEN,
+        sales_price: str | NotGiven = NOT_GIVEN,
+        sales_tax_code_id: str | NotGiven = NOT_GIVEN,
+        unit_of_measure_set_id: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> InventoryItem:
+        """
+        Updates an existing inventory item.
+
+        Args:
+          id: The QuickBooks-assigned unique identifier of the inventory item to update.
+
+          version: The current version identifier of the inventory item you are updating, which you
+              can get by fetching the object first. Provide the most recent `version` to
+              ensure you're working with the latest data; otherwise, the update will fail.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          apply_cogs_account_to_existing_transactions: Indicates whether to apply the new COGS account (specified by the
+              `cogsAccountId` field) to all existing transactions that use this inventory
+              item. If `true`, the COGS account will be updated in all historical transactions
+              where this inventory item appears. Be cautious with this setting as it modifies
+              historical data. The update will fail if any affected transactions fall within a
+              closed accounting period. If not specified, QuickBooks will prompt the user to
+              make this choice.
+
+          apply_income_account_to_existing_transactions: Indicates whether to apply the new income account (specified by the
+              `incomeAccountId` field) to all existing transactions that use this inventory
+              item. If `true`, the income account will be updated in all historical
+              transactions where this inventory item appears. Be cautious with this setting as
+              it modifies historical data. The update will fail if any affected transactions
+              fall within a closed accounting period. If not specified, QuickBooks will prompt
+              the user to make this choice.
+
+          asset_account_id: The asset account used to track the current value of this inventory item in
+              inventory.
+
+          barcode: The inventory item's barcode.
+
+          class_id: The inventory item's class. Classes can be used to categorize objects into
+              meaningful segments, such as department, location, or type of work. In
+              QuickBooks, class tracking is off by default.
+
+          cogs_account_id: The Cost of Goods Sold (COGS) account for this inventory item, tracking the
+              original direct costs of producing goods sold.
+
+          force_unit_of_measure_change: Indicates whether to allow changing the inventory item's Unit of Measure (UOM)
+              set (using the `unitOfMeasureSetId` field) when the base unit of the new UOM set
+              does not match that of the currently assigned UOM set. Without setting this
+              field to `true` in this scenario, the request will fail with an error; hence,
+              this field is equivalent to accepting the warning prompt in the QuickBooks UI.
+
+              Important: Changing the base unit requires you to update the item's
+              quantities-on-hand and cost to reflect the new unit; otherwise, these values
+              will be inaccurate. Alternatively, consider creating a new item with the desired
+              UOM set and deactivating the old item.
+
+          income_account_id: The income account used to track revenue from sales of this inventory item.
+
+          is_active: Indicates whether this inventory item is active. Inactive objects are typically
+              hidden from views and reports in QuickBooks.
+
+          manufacturer_part_number: The manufacturer's part number for this inventory item, which is often the stock
+              keeping unit (SKU).
+
+          maximum_quantity_on_hand: The maximum quantity of this inventory item desired in inventory.
+
+          name: The case-insensitive name of this inventory item. Not guaranteed to be unique
+              because it does not include the names of its parent objects like `fullName`
+              does. For example, two inventory items could both have the `name` "Widget", but
+              they could have unique `fullName` values, such as "Products:Widget" and
+              "Inventory:Widget".
+
+          parent_id: The parent inventory item one level above this one in the hierarchy. For
+              example, if this inventory item has a `fullName` of
+              "Products:Electronics:Widgets", its parent has a `fullName` of
+              "Products:Electronics". If this inventory item is at the top level, this field
+              will be `null`.
+
+          preferred_vendor_id: The preferred vendor from whom this inventory item is typically purchased.
+
+          purchase_cost: The cost at which this inventory item is purchased from vendors, represented as
+              a decimal string.
+
+          purchase_description: The description of this inventory item that appears on purchase forms (e.g.,
+              checks, bills, item receipts) when it is ordered or bought from vendors.
+
+          purchase_tax_code_id: The tax code applied to purchases of this inventory item. Applicable in regions
+              where purchase taxes are used, such as Canada or the UK.
+
+          reorder_point: The minimum quantity of this inventory item at which QuickBooks prompts for
+              reordering.
+
+          sales_description: The description of this inventory item that appears on sales forms (e.g.,
+              invoices, sales receipts) when sold to customers.
+
+          sales_price: The price at which this inventory item is sold to customers, represented as a
+              decimal string.
+
+          sales_tax_code_id: The sales-tax code associated with this inventory item, determining whether it
+              is taxable or non-taxable. It's used to assign a default tax status to all
+              transactions for this inventory item. Default codes include "Non" (non-taxable)
+              and "Tax" (taxable), but custom codes can also be created in QuickBooks. If
+              QuickBooks is not set up to charge sales tax (via the "Do You Charge Sales Tax?"
+              preference), it will assign the default non-taxable code to all sales.
+
+          unit_of_measure_set_id: The unit of measure set associated with this inventory item, which consists of a
+              base unit and related units.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return await self._post(
+            f"/quickbooks-desktop/inventory-items/{id}",
+            body=await async_maybe_transform(
+                {
+                    "version": version,
+                    "apply_cogs_account_to_existing_transactions": apply_cogs_account_to_existing_transactions,
+                    "apply_income_account_to_existing_transactions": apply_income_account_to_existing_transactions,
+                    "asset_account_id": asset_account_id,
+                    "barcode": barcode,
+                    "class_id": class_id,
+                    "cogs_account_id": cogs_account_id,
+                    "force_unit_of_measure_change": force_unit_of_measure_change,
+                    "income_account_id": income_account_id,
+                    "is_active": is_active,
+                    "manufacturer_part_number": manufacturer_part_number,
+                    "maximum_quantity_on_hand": maximum_quantity_on_hand,
+                    "name": name,
+                    "parent_id": parent_id,
+                    "preferred_vendor_id": preferred_vendor_id,
+                    "purchase_cost": purchase_cost,
+                    "purchase_description": purchase_description,
+                    "purchase_tax_code_id": purchase_tax_code_id,
+                    "reorder_point": reorder_point,
+                    "sales_description": sales_description,
+                    "sales_price": sales_price,
+                    "sales_tax_code_id": sales_tax_code_id,
+                    "unit_of_measure_set_id": unit_of_measure_set_id,
+                },
+                inventory_item_update_params.InventoryItemUpdateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=InventoryItem,
+        )
+
     def list(
         self,
         *,
@@ -769,6 +1141,9 @@ class InventoryItemsResourceWithRawResponse:
         self.retrieve = to_raw_response_wrapper(
             inventory_items.retrieve,
         )
+        self.update = to_raw_response_wrapper(
+            inventory_items.update,
+        )
         self.list = to_raw_response_wrapper(
             inventory_items.list,
         )
@@ -783,6 +1158,9 @@ class AsyncInventoryItemsResourceWithRawResponse:
         )
         self.retrieve = async_to_raw_response_wrapper(
             inventory_items.retrieve,
+        )
+        self.update = async_to_raw_response_wrapper(
+            inventory_items.update,
         )
         self.list = async_to_raw_response_wrapper(
             inventory_items.list,
@@ -799,6 +1177,9 @@ class InventoryItemsResourceWithStreamingResponse:
         self.retrieve = to_streamed_response_wrapper(
             inventory_items.retrieve,
         )
+        self.update = to_streamed_response_wrapper(
+            inventory_items.update,
+        )
         self.list = to_streamed_response_wrapper(
             inventory_items.list,
         )
@@ -813,6 +1194,9 @@ class AsyncInventoryItemsResourceWithStreamingResponse:
         )
         self.retrieve = async_to_streamed_response_wrapper(
             inventory_items.retrieve,
+        )
+        self.update = async_to_streamed_response_wrapper(
+            inventory_items.update,
         )
         self.list = async_to_streamed_response_wrapper(
             inventory_items.list,
