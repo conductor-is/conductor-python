@@ -89,9 +89,7 @@ class InvoiceCreateParams(TypedDict, total=False):
     """
 
     invoice_lines: Annotated[Iterable[InvoiceLine], PropertyInfo(alias="invoiceLines")]
-    """
-    The invoice's invoice lines, each representing a single product or service sold.
-    """
+    """The invoice's line items, each representing a single product or service sold."""
 
     is_finance_charge: Annotated[bool, PropertyInfo(alias="isFinanceCharge")]
     """Whether this invoice includes a finance charge."""

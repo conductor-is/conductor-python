@@ -588,7 +588,7 @@ class InvoiceLineGroup(BaseModel):
 
     invoice_lines: List[InvoiceLineGroupInvoiceLine] = FieldInfo(alias="invoiceLines")
     """
-    The invoice line group's invoice lines, each representing a single product or
+    The invoice line group's line items, each representing a single product or
     service sold.
     """
 
@@ -1207,9 +1207,7 @@ class QbdInvoice(BaseModel):
     """
 
     invoice_lines: List[InvoiceLine] = FieldInfo(alias="invoiceLines")
-    """
-    The invoice's invoice lines, each representing a single product or service sold.
-    """
+    """The invoice's line items, each representing a single product or service sold."""
 
     is_finance_charge: Optional[bool] = FieldInfo(alias="isFinanceCharge", default=None)
     """Whether this invoice includes a finance charge."""
