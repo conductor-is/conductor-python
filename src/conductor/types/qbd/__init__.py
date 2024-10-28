@@ -17,6 +17,7 @@ from .date_driven_term import DateDrivenTerm as DateDrivenTerm
 from .class_list_params import ClassListParams as ClassListParams
 from .qbd_standard_term import QbdStandardTerm as QbdStandardTerm
 from .bill_create_params import BillCreateParams as BillCreateParams
+from .bill_update_params import BillUpdateParams as BillUpdateParams
 from .credit_card_credit import CreditCardCredit as CreditCardCredit
 from .non_inventory_item import NonInventoryItem as NonInventoryItem
 from .qbd_sales_tax_item import QbdSalesTaxItem as QbdSalesTaxItem
