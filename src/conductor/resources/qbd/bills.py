@@ -281,33 +281,38 @@ class BillsResource(SyncAPIResource):
               QuickBooks at the time of this transaction. Represented as a decimal value
               (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
 
-          expense_lines: The bill's expense lines, each representing one line in this expense. To add a
-              new expense line to this bill, include it in this array with its `id` set to
-              `-1`. When updating this field, you must include all EXISTING expense lines in
-              this array, even if you are only adding or modifying some; otherwise, QuickBooks
-              removes the unspecified lines. Hence, to remove an existing expense line, omit
-              it from this array entirely and only include the lines you wish to keep. If you
-              are not modifying, adding, or removing any expense lines for this bill, you can
-              omit this field entirely.
+          expense_lines: The bill's expense lines, each representing one line in this expense.
+
+              IMPORTANT: When updating a bill's expense lines, this array completely REPLACES
+              all existing expense lines for that bill. To retain any current expense lines,
+              you must include them in this array, even if they have not changed. Any expense
+              lines not included will be removed. To add a new expense line, include it with
+              its `id` set to `-1`. If you do not wish to modify, add, or remove any expense
+              lines for this bill, you can omit this field entirely to keep the existing
+              expense lines unchanged.
 
           item_group_lines: The bill's item group lines, each representing a predefined set of items bundled
               together because they are commonly purchased together or grouped for faster
-              entry. To add a new item group line to this bill, include it in this array with
-              its `id` set to `-1`. When updating this field, you must include all EXISTING
-              item group lines in this array, even if you are only adding or modifying some;
-              otherwise, QuickBooks removes the unspecified lines. Hence, to remove an
-              existing item group line, omit it from this array entirely and only include the
-              lines you wish to keep. If you are not modifying, adding, or removing any item
-              group lines for this bill, you can omit this field entirely.
+              entry.
+
+              IMPORTANT: When updating a bill's item group lines, this array completely
+              REPLACES all existing item group lines for that bill. To retain any current item
+              group lines, you must include them in this array, even if they have not changed.
+              Any item group lines not included will be removed. To add a new item group line,
+              include it with its `id` set to `-1`. If you do not wish to modify, add, or
+              remove any item group lines for this bill, you can omit this field entirely to
+              keep the existing item group lines unchanged.
 
           item_lines: The bill's item lines, each representing the purchase of a specific item or
-              service. To add a new item line to this bill, include it in this array with its
-              `id` set to `-1`. When updating this field, you must include all EXISTING item
-              lines in this array, even if you are only adding or modifying some; otherwise,
-              QuickBooks removes the unspecified lines. Hence, to remove an existing item
-              line, omit it from this array entirely and only include the lines you wish to
-              keep. If you are not modifying, adding, or removing any item lines for this
-              bill, you can omit this field entirely.
+              service.
+
+              IMPORTANT: When updating a bill's item lines, this array completely REPLACES all
+              existing item lines for that bill. To retain any current item lines, you must
+              include them in this array, even if they have not changed. Any item lines not
+              included will be removed. To add a new item line, include it with its `id` set
+              to `-1`. If you do not wish to modify, add, or remove any item lines for this
+              bill, you can omit this field entirely to keep the existing item lines
+              unchanged.
 
           memo: A memo or note for this bill, as entered by the user. Appears in the Accounts
               Payable register and relevant reports.
@@ -776,33 +781,38 @@ class AsyncBillsResource(AsyncAPIResource):
               QuickBooks at the time of this transaction. Represented as a decimal value
               (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
 
-          expense_lines: The bill's expense lines, each representing one line in this expense. To add a
-              new expense line to this bill, include it in this array with its `id` set to
-              `-1`. When updating this field, you must include all EXISTING expense lines in
-              this array, even if you are only adding or modifying some; otherwise, QuickBooks
-              removes the unspecified lines. Hence, to remove an existing expense line, omit
-              it from this array entirely and only include the lines you wish to keep. If you
-              are not modifying, adding, or removing any expense lines for this bill, you can
-              omit this field entirely.
+          expense_lines: The bill's expense lines, each representing one line in this expense.
+
+              IMPORTANT: When updating a bill's expense lines, this array completely REPLACES
+              all existing expense lines for that bill. To retain any current expense lines,
+              you must include them in this array, even if they have not changed. Any expense
+              lines not included will be removed. To add a new expense line, include it with
+              its `id` set to `-1`. If you do not wish to modify, add, or remove any expense
+              lines for this bill, you can omit this field entirely to keep the existing
+              expense lines unchanged.
 
           item_group_lines: The bill's item group lines, each representing a predefined set of items bundled
               together because they are commonly purchased together or grouped for faster
-              entry. To add a new item group line to this bill, include it in this array with
-              its `id` set to `-1`. When updating this field, you must include all EXISTING
-              item group lines in this array, even if you are only adding or modifying some;
-              otherwise, QuickBooks removes the unspecified lines. Hence, to remove an
-              existing item group line, omit it from this array entirely and only include the
-              lines you wish to keep. If you are not modifying, adding, or removing any item
-              group lines for this bill, you can omit this field entirely.
+              entry.
+
+              IMPORTANT: When updating a bill's item group lines, this array completely
+              REPLACES all existing item group lines for that bill. To retain any current item
+              group lines, you must include them in this array, even if they have not changed.
+              Any item group lines not included will be removed. To add a new item group line,
+              include it with its `id` set to `-1`. If you do not wish to modify, add, or
+              remove any item group lines for this bill, you can omit this field entirely to
+              keep the existing item group lines unchanged.
 
           item_lines: The bill's item lines, each representing the purchase of a specific item or
-              service. To add a new item line to this bill, include it in this array with its
-              `id` set to `-1`. When updating this field, you must include all EXISTING item
-              lines in this array, even if you are only adding or modifying some; otherwise,
-              QuickBooks removes the unspecified lines. Hence, to remove an existing item
-              line, omit it from this array entirely and only include the lines you wish to
-              keep. If you are not modifying, adding, or removing any item lines for this
-              bill, you can omit this field entirely.
+              service.
+
+              IMPORTANT: When updating a bill's item lines, this array completely REPLACES all
+              existing item lines for that bill. To retain any current item lines, you must
+              include them in this array, even if they have not changed. Any item lines not
+              included will be removed. To add a new item line, include it with its `id` set
+              to `-1`. If you do not wish to modify, add, or remove any item lines for this
+              bill, you can omit this field entirely to keep the existing item lines
+              unchanged.
 
           memo: A memo or note for this bill, as entered by the user. Appears in the Accounts
               Payable register and relevant reports.
