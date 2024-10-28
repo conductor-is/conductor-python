@@ -57,13 +57,13 @@ class BillUpdateParams(TypedDict, total=False):
     expense_lines: Annotated[Iterable[ExpenseLine], PropertyInfo(alias="expenseLines")]
     """The bill's expense lines, each representing one line in this expense.
 
-    IMPORTANT: When updating a bill's expense lines, this array completely REPLACES
-    all existing expense lines for that bill. To retain any current expense lines,
-    you must include them in this array, even if they have not changed. Any expense
-    lines not included will be removed. To add a new expense line, include it with
-    its `id` set to `-1`. If you do not wish to modify, add, or remove any expense
-    lines for this bill, you can omit this field entirely to keep the existing
-    expense lines unchanged.
+    IMPORTANT: When updating a bill's expense lines, this array REPLACES all
+    existing expense lines for that bill. To retain any current expense lines, you
+    must include them in this array, even if they have not changed. Any expense
+    lines not included will be removed from the bill. To add a new expense line,
+    include it with its `id` set to `-1`. If you do not wish to modify, add, or
+    remove any expense lines for this bill, you can omit this field entirely to keep
+    the existing expense lines unchanged.
     """
 
     item_group_lines: Annotated[Iterable[ItemGroupLine], PropertyInfo(alias="itemGroupLines")]
@@ -72,13 +72,13 @@ class BillUpdateParams(TypedDict, total=False):
     together because they are commonly purchased together or grouped for faster
     entry.
 
-    IMPORTANT: When updating a bill's item group lines, this array completely
-    REPLACES all existing item group lines for that bill. To retain any current item
-    group lines, you must include them in this array, even if they have not changed.
-    Any item group lines not included will be removed. To add a new item group line,
-    include it with its `id` set to `-1`. If you do not wish to modify, add, or
-    remove any item group lines for this bill, you can omit this field entirely to
-    keep the existing item group lines unchanged.
+    IMPORTANT: When updating a bill's item group lines, this array REPLACES all
+    existing item group lines for that bill. To retain any current item group lines,
+    you must include them in this array, even if they have not changed. Any item
+    group lines not included will be removed from the bill. To add a new item group
+    line, include it with its `id` set to `-1`. If you do not wish to modify, add,
+    or remove any item group lines for this bill, you can omit this field entirely
+    to keep the existing item group lines unchanged.
     """
 
     item_lines: Annotated[Iterable[ItemLine], PropertyInfo(alias="itemLines")]
@@ -86,12 +86,12 @@ class BillUpdateParams(TypedDict, total=False):
     The bill's item lines, each representing the purchase of a specific item or
     service.
 
-    IMPORTANT: When updating a bill's item lines, this array completely REPLACES all
-    existing item lines for that bill. To retain any current item lines, you must
-    include them in this array, even if they have not changed. Any item lines not
-    included will be removed. To add a new item line, include it with its `id` set
-    to `-1`. If you do not wish to modify, add, or remove any item lines for this
-    bill, you can omit this field entirely to keep the existing item lines
+    IMPORTANT: When updating a bill's item lines, this array REPLACES all existing
+    item lines for that bill. To retain any current item lines, you must include
+    them in this array, even if they have not changed. Any item lines not included
+    will be removed from the bill. To add a new item line, include it with its `id`
+    set to `-1`. If you do not wish to modify, add, or remove any item lines for
+    this bill, you can omit this field entirely to keep the existing item lines
     unchanged.
     """
 
@@ -137,9 +137,9 @@ class BillUpdateParams(TypedDict, total=False):
 class ExpenseLine(TypedDict, total=False):
     id: Required[str]
     """
-    The QuickBooks-assigned unique identifier from an existing expense lines you
-    wish to keep or update, or set this value to `-1` if you are adding a new
-    expense line to the parent transaction.
+    The QuickBooks-assigned unique identifier of an existing expense line you wish
+    to retain or update. Set this field to `-1` for new expense lines you wish to
+    add to the parent transaction.
     """
 
     account_id: Annotated[str, PropertyInfo(alias="accountId")]
@@ -198,9 +198,9 @@ class ExpenseLine(TypedDict, total=False):
 class ItemGroupLineItemLine(TypedDict, total=False):
     id: Required[str]
     """
-    The QuickBooks-assigned unique identifier from an existing item lines you wish
-    to keep or update, or set this value to `-1` if you are adding a new item line
-    to the parent transaction.
+    The QuickBooks-assigned unique identifier of an existing item line you wish to
+    retain or update. Set this field to `-1` for new item lines you wish to add to
+    the parent transaction.
     """
 
     amount: str
@@ -327,9 +327,9 @@ class ItemGroupLineItemLine(TypedDict, total=False):
 class ItemGroupLine(TypedDict, total=False):
     id: Required[str]
     """
-    The QuickBooks-assigned unique identifier from an existing item group lines you
-    wish to keep or update, or set this value to `-1` if you are adding a new item
-    group line to the parent transaction.
+    The QuickBooks-assigned unique identifier of an existing item group line you
+    wish to retain or update. Set this field to `-1` for new item group lines you
+    wish to add to the parent transaction.
     """
 
     item_group_id: Annotated[str, PropertyInfo(alias="itemGroupId")]
@@ -343,13 +343,13 @@ class ItemGroupLine(TypedDict, total=False):
     The item group line's item lines, each representing the purchase of a specific
     item or service.
 
-    IMPORTANT: When updating an item group line's item lines, this array completely
-    REPLACES all existing item lines for that item group line. To retain any current
-    item lines, you must include them in this array, even if they have not changed.
-    Any item lines not included will be removed. To add a new item line, include it
-    with its `id` set to `-1`. If you do not wish to modify, add, or remove any item
-    lines for this item group line, you can omit this field entirely to keep the
-    existing item lines unchanged.
+    IMPORTANT: When updating an item group line's item lines, this array REPLACES
+    all existing item lines for that item group line. To retain any current item
+    lines, you must include them in this array, even if they have not changed. Any
+    item lines not included will be removed from the item group line. To add a new
+    item line, include it with its `id` set to `-1`. If you do not wish to modify,
+    add, or remove any item lines for this item group line, you can omit this field
+    entirely to keep the existing item lines unchanged.
     """
 
     override_unit_of_measure_set_id: Annotated[str, PropertyInfo(alias="overrideUnitOfMeasureSetId")]
@@ -376,9 +376,9 @@ class ItemGroupLine(TypedDict, total=False):
 class ItemLine(TypedDict, total=False):
     id: Required[str]
     """
-    The QuickBooks-assigned unique identifier from an existing item lines you wish
-    to keep or update, or set this value to `-1` if you are adding a new item line
-    to the parent transaction.
+    The QuickBooks-assigned unique identifier of an existing item line you wish to
+    retain or update. Set this field to `-1` for new item lines you wish to add to
+    the parent transaction.
     """
 
     amount: str
