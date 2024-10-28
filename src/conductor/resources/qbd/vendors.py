@@ -403,7 +403,7 @@ class VendorsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> QbdVendor:
         """
-        Updates a vendor.
+        Updates an existing vendor.
 
         Args:
           id: The QuickBooks-assigned unique identifier of the vendor to update.
@@ -1129,7 +1129,7 @@ class AsyncVendorsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> QbdVendor:
         """
-        Updates a vendor.
+        Updates an existing vendor.
 
         Args:
           id: The QuickBooks-assigned unique identifier of the vendor to update.
