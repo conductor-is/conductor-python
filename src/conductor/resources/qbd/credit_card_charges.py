@@ -20,7 +20,11 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...types.qbd import credit_card_charge_list_params, credit_card_charge_create_params
+from ...types.qbd import (
+    credit_card_charge_list_params,
+    credit_card_charge_create_params,
+    credit_card_charge_update_params,
+)
 from ...pagination import SyncCursorPage, AsyncCursorPage
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.qbd.qbd_credit_card_charge import QbdCreditCardCharge
@@ -185,6 +189,145 @@ class CreditCardChargesResource(SyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get(
             f"/quickbooks-desktop/credit-card-charges/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=QbdCreditCardCharge,
+        )
+
+    def update(
+        self,
+        id: str,
+        *,
+        version: str,
+        conductor_end_user_id: str,
+        account_id: str | NotGiven = NOT_GIVEN,
+        clear_expense_lines: bool | NotGiven = NOT_GIVEN,
+        clear_item_lines: bool | NotGiven = NOT_GIVEN,
+        exchange_rate: float | NotGiven = NOT_GIVEN,
+        expense_lines: Iterable[credit_card_charge_update_params.ExpenseLine] | NotGiven = NOT_GIVEN,
+        item_group_lines: Iterable[credit_card_charge_update_params.ItemGroupLine] | NotGiven = NOT_GIVEN,
+        item_lines: Iterable[credit_card_charge_update_params.ItemLine] | NotGiven = NOT_GIVEN,
+        memo: str | NotGiven = NOT_GIVEN,
+        payee_id: str | NotGiven = NOT_GIVEN,
+        ref_number: str | NotGiven = NOT_GIVEN,
+        sales_tax_code_id: str | NotGiven = NOT_GIVEN,
+        transaction_date: Union[str, date] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> QbdCreditCardCharge:
+        """
+        Updates an existing credit card charge.
+
+        Args:
+          id: The QuickBooks-assigned unique identifier of the credit card charge to update.
+
+          version: The current version identifier of the credit card charge you are updating, which
+              you can get by fetching the object first. Provide the most recent `version` to
+              ensure you're working with the latest data; otherwise, the update will fail.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          account_id: The bank account or credit card company to whom money is owed for this credit
+              card charge.
+
+          clear_expense_lines: Indicates whether to clear all the expense lines of this credit card charge. To
+              modify individual lines, use the field `expenseLines`.
+
+          clear_item_lines: Indicates whether to clear all the item lines of this credit card charge. To
+              modify individual lines, use the field `itemLines`.
+
+          exchange_rate: The market exchange rate between this credit card charge's currency and the home
+              currency in QuickBooks at the time of this transaction. Represented as a decimal
+              value (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
+
+          expense_lines: The credit card charge's expense lines, each representing one line in this
+              expense.
+
+              IMPORTANT: When updating a credit card charge's expense lines, this array
+              completely REPLACES all existing expense lines for that credit card charge. To
+              retain any current expense lines, include them in this array, even if they have
+              not changed. Any expense lines not included will be removed. To add a new
+              expense line, include it with its `id` set to `-1`. If you do not wish to modify
+              the expense lines, you can omit this field entirely to keep them unchanged.
+
+          item_group_lines: The credit card charge's item group lines, each representing a predefined set of
+              items bundled together because they are commonly purchased together or grouped
+              for faster entry.
+
+              IMPORTANT: When updating a credit card charge's item group lines, this array
+              completely REPLACES all existing item group lines for that credit card charge.
+              To retain any current item group lines, include them in this array, even if they
+              have not changed. Any item group lines not included will be removed. To add a
+              new item group line, include it with its `id` set to `-1`. If you do not wish to
+              modify the item group lines, you can omit this field entirely to keep them
+              unchanged.
+
+          item_lines: The credit card charge's item lines, each representing the purchase of a
+              specific item or service.
+
+              IMPORTANT: When updating a credit card charge's item lines, this array
+              completely REPLACES all existing item lines for that credit card charge. To
+              retain any current item lines, include them in this array, even if they have not
+              changed. Any item lines not included will be removed. To add a new item line,
+              include it with its `id` set to `-1`. If you do not wish to modify the item
+              lines, you can omit this field entirely to keep them unchanged.
+
+          memo: A memo or note for this credit card charge, as entered by the user.
+
+          payee_id: The vendor or company from whom merchandise or services were purchased for this
+              credit card charge.
+
+          ref_number: The case-sensitive user-defined reference number for this credit card charge,
+              which can be used to identify the transaction in QuickBooks. This value is not
+              required to be unique and can be arbitrarily changed by the QuickBooks user.
+
+          sales_tax_code_id: The sales-tax code associated with this credit card charge, determining whether
+              it is taxable or non-taxable. It's used to assign a default tax status to all
+              transactions for this credit card charge. Default codes include "Non"
+              (non-taxable) and "Tax" (taxable), but custom codes can also be created in
+              QuickBooks. If QuickBooks is not set up to charge sales tax (via the "Do You
+              Charge Sales Tax?" preference), it will assign the default non-taxable code to
+              all sales.
+
+          transaction_date: The date of this credit card charge, in ISO 8601 format (YYYY-MM-DD).
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return self._post(
+            f"/quickbooks-desktop/credit-card-charges/{id}",
+            body=maybe_transform(
+                {
+                    "version": version,
+                    "account_id": account_id,
+                    "clear_expense_lines": clear_expense_lines,
+                    "clear_item_lines": clear_item_lines,
+                    "exchange_rate": exchange_rate,
+                    "expense_lines": expense_lines,
+                    "item_group_lines": item_group_lines,
+                    "item_lines": item_lines,
+                    "memo": memo,
+                    "payee_id": payee_id,
+                    "ref_number": ref_number,
+                    "sales_tax_code_id": sales_tax_code_id,
+                    "transaction_date": transaction_date,
+                },
+                credit_card_charge_update_params.CreditCardChargeUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -503,6 +646,145 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
             cast_to=QbdCreditCardCharge,
         )
 
+    async def update(
+        self,
+        id: str,
+        *,
+        version: str,
+        conductor_end_user_id: str,
+        account_id: str | NotGiven = NOT_GIVEN,
+        clear_expense_lines: bool | NotGiven = NOT_GIVEN,
+        clear_item_lines: bool | NotGiven = NOT_GIVEN,
+        exchange_rate: float | NotGiven = NOT_GIVEN,
+        expense_lines: Iterable[credit_card_charge_update_params.ExpenseLine] | NotGiven = NOT_GIVEN,
+        item_group_lines: Iterable[credit_card_charge_update_params.ItemGroupLine] | NotGiven = NOT_GIVEN,
+        item_lines: Iterable[credit_card_charge_update_params.ItemLine] | NotGiven = NOT_GIVEN,
+        memo: str | NotGiven = NOT_GIVEN,
+        payee_id: str | NotGiven = NOT_GIVEN,
+        ref_number: str | NotGiven = NOT_GIVEN,
+        sales_tax_code_id: str | NotGiven = NOT_GIVEN,
+        transaction_date: Union[str, date] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> QbdCreditCardCharge:
+        """
+        Updates an existing credit card charge.
+
+        Args:
+          id: The QuickBooks-assigned unique identifier of the credit card charge to update.
+
+          version: The current version identifier of the credit card charge you are updating, which
+              you can get by fetching the object first. Provide the most recent `version` to
+              ensure you're working with the latest data; otherwise, the update will fail.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          account_id: The bank account or credit card company to whom money is owed for this credit
+              card charge.
+
+          clear_expense_lines: Indicates whether to clear all the expense lines of this credit card charge. To
+              modify individual lines, use the field `expenseLines`.
+
+          clear_item_lines: Indicates whether to clear all the item lines of this credit card charge. To
+              modify individual lines, use the field `itemLines`.
+
+          exchange_rate: The market exchange rate between this credit card charge's currency and the home
+              currency in QuickBooks at the time of this transaction. Represented as a decimal
+              value (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
+
+          expense_lines: The credit card charge's expense lines, each representing one line in this
+              expense.
+
+              IMPORTANT: When updating a credit card charge's expense lines, this array
+              completely REPLACES all existing expense lines for that credit card charge. To
+              retain any current expense lines, include them in this array, even if they have
+              not changed. Any expense lines not included will be removed. To add a new
+              expense line, include it with its `id` set to `-1`. If you do not wish to modify
+              the expense lines, you can omit this field entirely to keep them unchanged.
+
+          item_group_lines: The credit card charge's item group lines, each representing a predefined set of
+              items bundled together because they are commonly purchased together or grouped
+              for faster entry.
+
+              IMPORTANT: When updating a credit card charge's item group lines, this array
+              completely REPLACES all existing item group lines for that credit card charge.
+              To retain any current item group lines, include them in this array, even if they
+              have not changed. Any item group lines not included will be removed. To add a
+              new item group line, include it with its `id` set to `-1`. If you do not wish to
+              modify the item group lines, you can omit this field entirely to keep them
+              unchanged.
+
+          item_lines: The credit card charge's item lines, each representing the purchase of a
+              specific item or service.
+
+              IMPORTANT: When updating a credit card charge's item lines, this array
+              completely REPLACES all existing item lines for that credit card charge. To
+              retain any current item lines, include them in this array, even if they have not
+              changed. Any item lines not included will be removed. To add a new item line,
+              include it with its `id` set to `-1`. If you do not wish to modify the item
+              lines, you can omit this field entirely to keep them unchanged.
+
+          memo: A memo or note for this credit card charge, as entered by the user.
+
+          payee_id: The vendor or company from whom merchandise or services were purchased for this
+              credit card charge.
+
+          ref_number: The case-sensitive user-defined reference number for this credit card charge,
+              which can be used to identify the transaction in QuickBooks. This value is not
+              required to be unique and can be arbitrarily changed by the QuickBooks user.
+
+          sales_tax_code_id: The sales-tax code associated with this credit card charge, determining whether
+              it is taxable or non-taxable. It's used to assign a default tax status to all
+              transactions for this credit card charge. Default codes include "Non"
+              (non-taxable) and "Tax" (taxable), but custom codes can also be created in
+              QuickBooks. If QuickBooks is not set up to charge sales tax (via the "Do You
+              Charge Sales Tax?" preference), it will assign the default non-taxable code to
+              all sales.
+
+          transaction_date: The date of this credit card charge, in ISO 8601 format (YYYY-MM-DD).
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return await self._post(
+            f"/quickbooks-desktop/credit-card-charges/{id}",
+            body=await async_maybe_transform(
+                {
+                    "version": version,
+                    "account_id": account_id,
+                    "clear_expense_lines": clear_expense_lines,
+                    "clear_item_lines": clear_item_lines,
+                    "exchange_rate": exchange_rate,
+                    "expense_lines": expense_lines,
+                    "item_group_lines": item_group_lines,
+                    "item_lines": item_lines,
+                    "memo": memo,
+                    "payee_id": payee_id,
+                    "ref_number": ref_number,
+                    "sales_tax_code_id": sales_tax_code_id,
+                    "transaction_date": transaction_date,
+                },
+                credit_card_charge_update_params.CreditCardChargeUpdateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=QbdCreditCardCharge,
+        )
+
     def list(
         self,
         *,
@@ -662,6 +944,9 @@ class CreditCardChargesResourceWithRawResponse:
         self.retrieve = to_raw_response_wrapper(
             credit_card_charges.retrieve,
         )
+        self.update = to_raw_response_wrapper(
+            credit_card_charges.update,
+        )
         self.list = to_raw_response_wrapper(
             credit_card_charges.list,
         )
@@ -676,6 +961,9 @@ class AsyncCreditCardChargesResourceWithRawResponse:
         )
         self.retrieve = async_to_raw_response_wrapper(
             credit_card_charges.retrieve,
+        )
+        self.update = async_to_raw_response_wrapper(
+            credit_card_charges.update,
         )
         self.list = async_to_raw_response_wrapper(
             credit_card_charges.list,
@@ -692,6 +980,9 @@ class CreditCardChargesResourceWithStreamingResponse:
         self.retrieve = to_streamed_response_wrapper(
             credit_card_charges.retrieve,
         )
+        self.update = to_streamed_response_wrapper(
+            credit_card_charges.update,
+        )
         self.list = to_streamed_response_wrapper(
             credit_card_charges.list,
         )
@@ -706,6 +997,9 @@ class AsyncCreditCardChargesResourceWithStreamingResponse:
         )
         self.retrieve = async_to_streamed_response_wrapper(
             credit_card_charges.retrieve,
+        )
+        self.update = async_to_streamed_response_wrapper(
+            credit_card_charges.update,
         )
         self.list = async_to_streamed_response_wrapper(
             credit_card_charges.list,
