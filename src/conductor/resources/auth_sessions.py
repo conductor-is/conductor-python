@@ -59,9 +59,9 @@ class AuthSessionsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AuthSession:
         """
-        To launch the IntegrationConnection authentication flow, create an AuthSession.
-        Pass the returned session’s `authFlowUrl` to the client for your end-user to
-        launch the IntegrationConnection authentication flow.
+        To launch the authentication flow, create an AuthSession and pass the returned
+        session’s `authFlowUrl` to the client for your end-user to visit in their
+        browser.
 
         Args:
           end_user_id: The ID of the EndUser for whom to create the IntegrationConnection.
@@ -172,9 +172,9 @@ class AsyncAuthSessionsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AuthSession:
         """
-        To launch the IntegrationConnection authentication flow, create an AuthSession.
-        Pass the returned session’s `authFlowUrl` to the client for your end-user to
-        launch the IntegrationConnection authentication flow.
+        To launch the authentication flow, create an AuthSession and pass the returned
+        session’s `authFlowUrl` to the client for your end-user to visit in their
+        browser.
 
         Args:
           end_user_id: The ID of the EndUser for whom to create the IntegrationConnection.
