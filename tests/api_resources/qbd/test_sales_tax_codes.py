@@ -112,6 +112,66 @@ class TestSalesTaxCodes:
             )
 
     @parametrize
+    def test_method_update(self, client: Conductor) -> None:
+        sales_tax_code = client.qbd.sales_tax_codes.update(
+            id="80000001-1234567890",
+            version="1721172183",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+        assert_matches_type(SalesTaxCode, sales_tax_code, path=["response"])
+
+    @parametrize
+    def test_method_update_with_all_params(self, client: Conductor) -> None:
+        sales_tax_code = client.qbd.sales_tax_codes.update(
+            id="80000001-1234567890",
+            version="1721172183",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+            description="For items that are taxable at the standard rate in California.",
+            is_active=True,
+            is_taxable=True,
+            item_sales_tax_id="80000010-1234567890",
+            name="California Sales Tax",
+        )
+        assert_matches_type(SalesTaxCode, sales_tax_code, path=["response"])
+
+    @parametrize
+    def test_raw_response_update(self, client: Conductor) -> None:
+        response = client.qbd.sales_tax_codes.with_raw_response.update(
+            id="80000001-1234567890",
+            version="1721172183",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        sales_tax_code = response.parse()
+        assert_matches_type(SalesTaxCode, sales_tax_code, path=["response"])
+
+    @parametrize
+    def test_streaming_response_update(self, client: Conductor) -> None:
+        with client.qbd.sales_tax_codes.with_streaming_response.update(
+            id="80000001-1234567890",
+            version="1721172183",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            sales_tax_code = response.parse()
+            assert_matches_type(SalesTaxCode, sales_tax_code, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_update(self, client: Conductor) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            client.qbd.sales_tax_codes.with_raw_response.update(
+                id="",
+                version="1721172183",
+                conductor_end_user_id="end_usr_1234567abcdefg",
+            )
+
+    @parametrize
     def test_method_list(self, client: Conductor) -> None:
         sales_tax_code = client.qbd.sales_tax_codes.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
@@ -252,6 +312,66 @@ class TestAsyncSalesTaxCodes:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.qbd.sales_tax_codes.with_raw_response.retrieve(
                 id="",
+                conductor_end_user_id="end_usr_1234567abcdefg",
+            )
+
+    @parametrize
+    async def test_method_update(self, async_client: AsyncConductor) -> None:
+        sales_tax_code = await async_client.qbd.sales_tax_codes.update(
+            id="80000001-1234567890",
+            version="1721172183",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+        assert_matches_type(SalesTaxCode, sales_tax_code, path=["response"])
+
+    @parametrize
+    async def test_method_update_with_all_params(self, async_client: AsyncConductor) -> None:
+        sales_tax_code = await async_client.qbd.sales_tax_codes.update(
+            id="80000001-1234567890",
+            version="1721172183",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+            description="For items that are taxable at the standard rate in California.",
+            is_active=True,
+            is_taxable=True,
+            item_sales_tax_id="80000010-1234567890",
+            name="California Sales Tax",
+        )
+        assert_matches_type(SalesTaxCode, sales_tax_code, path=["response"])
+
+    @parametrize
+    async def test_raw_response_update(self, async_client: AsyncConductor) -> None:
+        response = await async_client.qbd.sales_tax_codes.with_raw_response.update(
+            id="80000001-1234567890",
+            version="1721172183",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        sales_tax_code = await response.parse()
+        assert_matches_type(SalesTaxCode, sales_tax_code, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_update(self, async_client: AsyncConductor) -> None:
+        async with async_client.qbd.sales_tax_codes.with_streaming_response.update(
+            id="80000001-1234567890",
+            version="1721172183",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            sales_tax_code = await response.parse()
+            assert_matches_type(SalesTaxCode, sales_tax_code, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_update(self, async_client: AsyncConductor) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            await async_client.qbd.sales_tax_codes.with_raw_response.update(
+                id="",
+                version="1721172183",
                 conductor_end_user_id="end_usr_1234567abcdefg",
             )
 

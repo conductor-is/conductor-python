@@ -25,7 +25,8 @@ class SalesTaxCodeCreateParams(TypedDict, total=False):
     name: Required[str]
     """
     The case-insensitive unique name of this sales-tax code, unique across all
-    sales-tax codes.
+    sales-tax codes. This short name will appear on sales forms to identify the tax
+    status of an item.
     """
 
     conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]
