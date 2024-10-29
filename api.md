@@ -238,6 +238,7 @@ Methods:
 
 - <code title="post /quickbooks-desktop/service-items">client.qbd.service_items.<a href="./src/conductor/resources/qbd/service_items.py">create</a>(\*\*<a href="src/conductor/types/qbd/service_item_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/service_item.py">ServiceItem</a></code>
 - <code title="get /quickbooks-desktop/service-items/{id}">client.qbd.service_items.<a href="./src/conductor/resources/qbd/service_items.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/service_item.py">ServiceItem</a></code>
+- <code title="post /quickbooks-desktop/service-items/{id}">client.qbd.service_items.<a href="./src/conductor/resources/qbd/service_items.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/service_item_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/service_item.py">ServiceItem</a></code>
 - <code title="get /quickbooks-desktop/service-items">client.qbd.service_items.<a href="./src/conductor/resources/qbd/service_items.py">list</a>(\*\*<a href="src/conductor/types/qbd/service_item_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/service_item.py">SyncCursorPage[ServiceItem]</a></code>
 
 ## StandardTerms
@@ -266,6 +267,7 @@ Methods:
 
 - <code title="post /quickbooks-desktop/transfers">client.qbd.transfers.<a href="./src/conductor/resources/qbd/transfers.py">create</a>(\*\*<a href="src/conductor/types/qbd/transfer_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_transfer.py">QbdTransfer</a></code>
 - <code title="get /quickbooks-desktop/transfers/{id}">client.qbd.transfers.<a href="./src/conductor/resources/qbd/transfers.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_transfer.py">QbdTransfer</a></code>
+- <code title="post /quickbooks-desktop/transfers/{id}">client.qbd.transfers.<a href="./src/conductor/resources/qbd/transfers.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/transfer_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_transfer.py">QbdTransfer</a></code>
 - <code title="get /quickbooks-desktop/transfers">client.qbd.transfers.<a href="./src/conductor/resources/qbd/transfers.py">list</a>(\*\*<a href="src/conductor/types/qbd/transfer_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_transfer.py">SyncCursorPage[QbdTransfer]</a></code>
 
 ## Vendors
