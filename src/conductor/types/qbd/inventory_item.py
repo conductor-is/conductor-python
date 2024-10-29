@@ -384,8 +384,8 @@ class InventoryItem(BaseModel):
 
     sku: Optional[str] = None
     """
-    The manufacturer's part number for this inventory item, which is often the stock
-    keeping unit (SKU).
+    The inventory item's stock keeping unit (SKU), which is sometimes the
+    manufacturer's part number.
     """
 
     sublevel: float

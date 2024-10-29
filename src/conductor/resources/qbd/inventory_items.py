@@ -160,8 +160,8 @@ class InventoryItemsResource(SyncAPIResource):
               QuickBooks is not set up to charge sales tax (via the "Do You Charge Sales Tax?"
               preference), it will assign the default non-taxable code to all sales.
 
-          sku: The manufacturer's part number for this inventory item, which is often the stock
-              keeping unit (SKU).
+          sku: The inventory item's stock keeping unit (SKU), which is sometimes the
+              manufacturer's part number.
 
           total_value: The total value of this inventory item. If `totalValue` is provided,
               `quantityOnHand` must also be provided and must be greater than zero. If both
@@ -376,8 +376,8 @@ class InventoryItemsResource(SyncAPIResource):
               QuickBooks is not set up to charge sales tax (via the "Do You Charge Sales Tax?"
               preference), it will assign the default non-taxable code to all sales.
 
-          sku: The manufacturer's part number for this inventory item, which is often the stock
-              keeping unit (SKU).
+          sku: The inventory item's stock keeping unit (SKU), which is sometimes the
+              manufacturer's part number.
 
           unit_of_measure_set_id: The unit-of-measure set associated with this inventory item, which consists of a
               base unit and related units.
@@ -713,8 +713,8 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
               QuickBooks is not set up to charge sales tax (via the "Do You Charge Sales Tax?"
               preference), it will assign the default non-taxable code to all sales.
 
-          sku: The manufacturer's part number for this inventory item, which is often the stock
-              keeping unit (SKU).
+          sku: The inventory item's stock keeping unit (SKU), which is sometimes the
+              manufacturer's part number.
 
           total_value: The total value of this inventory item. If `totalValue` is provided,
               `quantityOnHand` must also be provided and must be greater than zero. If both
@@ -929,8 +929,8 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
               QuickBooks is not set up to charge sales tax (via the "Do You Charge Sales Tax?"
               preference), it will assign the default non-taxable code to all sales.
 
-          sku: The manufacturer's part number for this inventory item, which is often the stock
-              keeping unit (SKU).
+          sku: The inventory item's stock keeping unit (SKU), which is sometimes the
+              manufacturer's part number.
 
           unit_of_measure_set_id: The unit-of-measure set associated with this inventory item, which consists of a
               base unit and related units.
