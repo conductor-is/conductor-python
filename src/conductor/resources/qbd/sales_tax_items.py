@@ -19,7 +19,7 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...types.qbd import sales_tax_item_list_params, sales_tax_item_create_params
+from ...types.qbd import sales_tax_item_list_params, sales_tax_item_create_params, sales_tax_item_update_params
 from ...pagination import SyncCursorPage, AsyncCursorPage
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.qbd.qbd_sales_tax_item import QbdSalesTaxItem
@@ -172,6 +172,108 @@ class SalesTaxItemsResource(SyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get(
             f"/quickbooks-desktop/sales-tax-items/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=QbdSalesTaxItem,
+        )
+
+    def update(
+        self,
+        id: str,
+        *,
+        version: str,
+        conductor_end_user_id: str,
+        barcode: sales_tax_item_update_params.Barcode | NotGiven = NOT_GIVEN,
+        class_id: str | NotGiven = NOT_GIVEN,
+        description: str | NotGiven = NOT_GIVEN,
+        external_id: str | NotGiven = NOT_GIVEN,
+        is_active: bool | NotGiven = NOT_GIVEN,
+        name: str | NotGiven = NOT_GIVEN,
+        sales_tax_return_line_id: str | NotGiven = NOT_GIVEN,
+        tax_rate: str | NotGiven = NOT_GIVEN,
+        tax_vendor_id: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> QbdSalesTaxItem:
+        """
+        Updates an existing sales-tax item.
+
+        Args:
+          id: The QuickBooks-assigned unique identifier of the sales-tax item to update.
+
+          version: The current version identifier of the sales-tax item you are updating, which you
+              can get by fetching the object first. Provide the most recent `version` to
+              ensure you're working with the latest data; otherwise, the update will fail.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          barcode: The sales-tax item's barcode.
+
+          class_id: The sales-tax item's class. Classes can be used to categorize objects into
+              meaningful segments, such as department, location, or type of work. In
+              QuickBooks, class tracking is off by default.
+
+          description: The sales-tax item's description that will appear on sales forms that include
+              this item.
+
+          external_id: A globally unique identifier (GUID) you can provide for tracking this object in
+              your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
+              will return an error. This field is immutable and can only be set during object
+              creation.
+
+          is_active: Indicates whether this sales-tax item is active. Inactive objects are typically
+              hidden from views and reports in QuickBooks.
+
+          name: The case-insensitive unique name of this sales-tax item, unique across all
+              sales-tax items.
+
+          sales_tax_return_line_id: The specific line on the sales tax return form where the tax collected using
+              this sales-tax item should be reported.
+
+          tax_rate: The tax rate defined by this sales-tax item, represented as a decimal string.
+              For example, "7.5" represents a 7.5% tax rate. This rate determines the amount
+              of sales tax applied when this item is used in transactions. If a non-zero
+              `taxRate` is specified, then the `taxVendor` field is required.
+
+          tax_vendor_id: The tax agency (vendor) to whom collected sales taxes are owed for this
+              sales-tax item. This field refers to a vendor in QuickBooks that represents the
+              tax authority. If a non-zero `taxRate` is specified, then `taxVendor` is
+              required.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return self._post(
+            f"/quickbooks-desktop/sales-tax-items/{id}",
+            body=maybe_transform(
+                {
+                    "version": version,
+                    "barcode": barcode,
+                    "class_id": class_id,
+                    "description": description,
+                    "external_id": external_id,
+                    "is_active": is_active,
+                    "name": name,
+                    "sales_tax_return_line_id": sales_tax_return_line_id,
+                    "tax_rate": tax_rate,
+                    "tax_vendor_id": tax_vendor_id,
+                },
+                sales_tax_item_update_params.SalesTaxItemUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -454,6 +556,108 @@ class AsyncSalesTaxItemsResource(AsyncAPIResource):
             cast_to=QbdSalesTaxItem,
         )
 
+    async def update(
+        self,
+        id: str,
+        *,
+        version: str,
+        conductor_end_user_id: str,
+        barcode: sales_tax_item_update_params.Barcode | NotGiven = NOT_GIVEN,
+        class_id: str | NotGiven = NOT_GIVEN,
+        description: str | NotGiven = NOT_GIVEN,
+        external_id: str | NotGiven = NOT_GIVEN,
+        is_active: bool | NotGiven = NOT_GIVEN,
+        name: str | NotGiven = NOT_GIVEN,
+        sales_tax_return_line_id: str | NotGiven = NOT_GIVEN,
+        tax_rate: str | NotGiven = NOT_GIVEN,
+        tax_vendor_id: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> QbdSalesTaxItem:
+        """
+        Updates an existing sales-tax item.
+
+        Args:
+          id: The QuickBooks-assigned unique identifier of the sales-tax item to update.
+
+          version: The current version identifier of the sales-tax item you are updating, which you
+              can get by fetching the object first. Provide the most recent `version` to
+              ensure you're working with the latest data; otherwise, the update will fail.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          barcode: The sales-tax item's barcode.
+
+          class_id: The sales-tax item's class. Classes can be used to categorize objects into
+              meaningful segments, such as department, location, or type of work. In
+              QuickBooks, class tracking is off by default.
+
+          description: The sales-tax item's description that will appear on sales forms that include
+              this item.
+
+          external_id: A globally unique identifier (GUID) you can provide for tracking this object in
+              your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
+              will return an error. This field is immutable and can only be set during object
+              creation.
+
+          is_active: Indicates whether this sales-tax item is active. Inactive objects are typically
+              hidden from views and reports in QuickBooks.
+
+          name: The case-insensitive unique name of this sales-tax item, unique across all
+              sales-tax items.
+
+          sales_tax_return_line_id: The specific line on the sales tax return form where the tax collected using
+              this sales-tax item should be reported.
+
+          tax_rate: The tax rate defined by this sales-tax item, represented as a decimal string.
+              For example, "7.5" represents a 7.5% tax rate. This rate determines the amount
+              of sales tax applied when this item is used in transactions. If a non-zero
+              `taxRate` is specified, then the `taxVendor` field is required.
+
+          tax_vendor_id: The tax agency (vendor) to whom collected sales taxes are owed for this
+              sales-tax item. This field refers to a vendor in QuickBooks that represents the
+              tax authority. If a non-zero `taxRate` is specified, then `taxVendor` is
+              required.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return await self._post(
+            f"/quickbooks-desktop/sales-tax-items/{id}",
+            body=await async_maybe_transform(
+                {
+                    "version": version,
+                    "barcode": barcode,
+                    "class_id": class_id,
+                    "description": description,
+                    "external_id": external_id,
+                    "is_active": is_active,
+                    "name": name,
+                    "sales_tax_return_line_id": sales_tax_return_line_id,
+                    "tax_rate": tax_rate,
+                    "tax_vendor_id": tax_vendor_id,
+                },
+                sales_tax_item_update_params.SalesTaxItemUpdateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=QbdSalesTaxItem,
+        )
+
     def list(
         self,
         *,
@@ -589,6 +793,9 @@ class SalesTaxItemsResourceWithRawResponse:
         self.retrieve = to_raw_response_wrapper(
             sales_tax_items.retrieve,
         )
+        self.update = to_raw_response_wrapper(
+            sales_tax_items.update,
+        )
         self.list = to_raw_response_wrapper(
             sales_tax_items.list,
         )
@@ -603,6 +810,9 @@ class AsyncSalesTaxItemsResourceWithRawResponse:
         )
         self.retrieve = async_to_raw_response_wrapper(
             sales_tax_items.retrieve,
+        )
+        self.update = async_to_raw_response_wrapper(
+            sales_tax_items.update,
         )
         self.list = async_to_raw_response_wrapper(
             sales_tax_items.list,
@@ -619,6 +829,9 @@ class SalesTaxItemsResourceWithStreamingResponse:
         self.retrieve = to_streamed_response_wrapper(
             sales_tax_items.retrieve,
         )
+        self.update = to_streamed_response_wrapper(
+            sales_tax_items.update,
+        )
         self.list = to_streamed_response_wrapper(
             sales_tax_items.list,
         )
@@ -633,6 +846,9 @@ class AsyncSalesTaxItemsResourceWithStreamingResponse:
         )
         self.retrieve = async_to_streamed_response_wrapper(
             sales_tax_items.retrieve,
+        )
+        self.update = async_to_streamed_response_wrapper(
+            sales_tax_items.update,
         )
         self.list = async_to_streamed_response_wrapper(
             sales_tax_items.list,
