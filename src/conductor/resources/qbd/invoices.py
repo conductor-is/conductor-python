@@ -55,6 +55,7 @@ class InvoicesResource(SyncAPIResource):
         customer_id: str,
         transaction_date: Union[str, date],
         conductor_end_user_id: str,
+        apply_credits: Iterable[invoice_create_params.ApplyCredit] | NotGiven = NOT_GIVEN,
         billing_address: invoice_create_params.BillingAddress | NotGiven = NOT_GIVEN,
         class_id: str | NotGiven = NOT_GIVEN,
         customer_message_id: str | NotGiven = NOT_GIVEN,
@@ -77,7 +78,6 @@ class InvoicesResource(SyncAPIResource):
         sales_representative_id: str | NotGiven = NOT_GIVEN,
         sales_tax_code_id: str | NotGiven = NOT_GIVEN,
         sales_tax_item_id: str | NotGiven = NOT_GIVEN,
-        set_credits: Iterable[invoice_create_params.SetCredit] | NotGiven = NOT_GIVEN,
         shipment_origin: str | NotGiven = NOT_GIVEN,
         shipping_address: invoice_create_params.ShippingAddress | NotGiven = NOT_GIVEN,
         shipping_date: Union[str, date] | NotGiven = NOT_GIVEN,
@@ -100,6 +100,16 @@ class InvoicesResource(SyncAPIResource):
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          apply_credits: Credits to apply to this invoice. Applying a credit uses an available credit to
+              reduce the balance of this invoice. This creates a link between this invoice and
+              the corresponding existing credit memo.
+
+              Note that QuickBooks will not return any information about these links in this
+              endpoint's response even though they are created. To see the transactions linked
+              via this field, refetch the invoice and check the `linkedTransactions` field. If
+              fetching a list of invoices, you must also specify the parameter
+              `includeLinkedTransactions` to see the `linkedTransactions` field.
 
           billing_address: The invoice's billing address.
 
@@ -204,16 +214,6 @@ class InvoicesResource(SyncAPIResource):
               Unlike `salesTaxCode`, which only indicates general taxability, this field
               drives the actual tax calculation and reporting.
 
-          set_credits: Credits to apply to this invoice. Applying a credit uses an available credit to
-              reduce the balance of this invoice. This creates a link between this invoice and
-              the corresponding existing credit memo.
-
-              Note that QuickBooks will not return any information about these links in this
-              endpoint's response even though they are created. To see the transactions linked
-              via this field, refetch the invoice and check the `linkedTransactions` field. If
-              fetching a list of invoices, you must also specify the parameter
-              `includeLinkedTransactions` to see the `linkedTransactions` field.
-
           shipment_origin: The origin location from where the product associated with this invoice is
               shipped. This is the point at which ownership and liability for goods transfer
               from seller to buyer. Internally, QuickBooks uses the term "FOB" for this field,
@@ -246,6 +246,7 @@ class InvoicesResource(SyncAPIResource):
                 {
                     "customer_id": customer_id,
                     "transaction_date": transaction_date,
+                    "apply_credits": apply_credits,
                     "billing_address": billing_address,
                     "class_id": class_id,
                     "customer_message_id": customer_message_id,
@@ -268,7 +269,6 @@ class InvoicesResource(SyncAPIResource):
                     "sales_representative_id": sales_representative_id,
                     "sales_tax_code_id": sales_tax_code_id,
                     "sales_tax_item_id": sales_tax_item_id,
-                    "set_credits": set_credits,
                     "shipment_origin": shipment_origin,
                     "shipping_address": shipping_address,
                     "shipping_date": shipping_date,
@@ -329,6 +329,7 @@ class InvoicesResource(SyncAPIResource):
         *,
         revision_number: str,
         conductor_end_user_id: str,
+        apply_credits: Iterable[invoice_update_params.ApplyCredit] | NotGiven = NOT_GIVEN,
         billing_address: invoice_update_params.BillingAddress | NotGiven = NOT_GIVEN,
         class_id: str | NotGiven = NOT_GIVEN,
         customer_id: str | NotGiven = NOT_GIVEN,
@@ -349,7 +350,6 @@ class InvoicesResource(SyncAPIResource):
         sales_representative_id: str | NotGiven = NOT_GIVEN,
         sales_tax_code_id: str | NotGiven = NOT_GIVEN,
         sales_tax_item_id: str | NotGiven = NOT_GIVEN,
-        set_credits: Iterable[invoice_update_params.SetCredit] | NotGiven = NOT_GIVEN,
         shipment_origin: str | NotGiven = NOT_GIVEN,
         shipping_address: invoice_update_params.ShippingAddress | NotGiven = NOT_GIVEN,
         shipping_date: Union[str, date] | NotGiven = NOT_GIVEN,
@@ -375,6 +375,16 @@ class InvoicesResource(SyncAPIResource):
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          apply_credits: Credits to apply to this invoice. Applying a credit uses an available credit to
+              reduce the balance of this invoice. This creates a link between this invoice and
+              the corresponding existing credit memo.
+
+              Note that QuickBooks will not return any information about these links in this
+              endpoint's response even though they are created. To see the transactions linked
+              via this field, refetch the invoice and check the `linkedTransactions` field. If
+              fetching a list of invoices, you must also specify the parameter
+              `includeLinkedTransactions` to see the `linkedTransactions` field.
 
           billing_address: The invoice's billing address.
 
@@ -466,16 +476,6 @@ class InvoicesResource(SyncAPIResource):
               Unlike `salesTaxCode`, which only indicates general taxability, this field
               drives the actual tax calculation and reporting.
 
-          set_credits: Credits to apply to this invoice. Applying a credit uses an available credit to
-              reduce the balance of this invoice. This creates a link between this invoice and
-              the corresponding existing credit memo.
-
-              Note that QuickBooks will not return any information about these links in this
-              endpoint's response even though they are created. To see the transactions linked
-              via this field, refetch the invoice and check the `linkedTransactions` field. If
-              fetching a list of invoices, you must also specify the parameter
-              `includeLinkedTransactions` to see the `linkedTransactions` field.
-
           shipment_origin: The origin location from where the product associated with this invoice is
               shipped. This is the point at which ownership and liability for goods transfer
               from seller to buyer. Internally, QuickBooks uses the term "FOB" for this field,
@@ -511,6 +511,7 @@ class InvoicesResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "revision_number": revision_number,
+                    "apply_credits": apply_credits,
                     "billing_address": billing_address,
                     "class_id": class_id,
                     "customer_id": customer_id,
@@ -531,7 +532,6 @@ class InvoicesResource(SyncAPIResource):
                     "sales_representative_id": sales_representative_id,
                     "sales_tax_code_id": sales_tax_code_id,
                     "sales_tax_item_id": sales_tax_item_id,
-                    "set_credits": set_credits,
                     "shipment_origin": shipment_origin,
                     "shipping_address": shipping_address,
                     "shipping_date": shipping_date,
@@ -726,6 +726,7 @@ class AsyncInvoicesResource(AsyncAPIResource):
         customer_id: str,
         transaction_date: Union[str, date],
         conductor_end_user_id: str,
+        apply_credits: Iterable[invoice_create_params.ApplyCredit] | NotGiven = NOT_GIVEN,
         billing_address: invoice_create_params.BillingAddress | NotGiven = NOT_GIVEN,
         class_id: str | NotGiven = NOT_GIVEN,
         customer_message_id: str | NotGiven = NOT_GIVEN,
@@ -748,7 +749,6 @@ class AsyncInvoicesResource(AsyncAPIResource):
         sales_representative_id: str | NotGiven = NOT_GIVEN,
         sales_tax_code_id: str | NotGiven = NOT_GIVEN,
         sales_tax_item_id: str | NotGiven = NOT_GIVEN,
-        set_credits: Iterable[invoice_create_params.SetCredit] | NotGiven = NOT_GIVEN,
         shipment_origin: str | NotGiven = NOT_GIVEN,
         shipping_address: invoice_create_params.ShippingAddress | NotGiven = NOT_GIVEN,
         shipping_date: Union[str, date] | NotGiven = NOT_GIVEN,
@@ -771,6 +771,16 @@ class AsyncInvoicesResource(AsyncAPIResource):
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          apply_credits: Credits to apply to this invoice. Applying a credit uses an available credit to
+              reduce the balance of this invoice. This creates a link between this invoice and
+              the corresponding existing credit memo.
+
+              Note that QuickBooks will not return any information about these links in this
+              endpoint's response even though they are created. To see the transactions linked
+              via this field, refetch the invoice and check the `linkedTransactions` field. If
+              fetching a list of invoices, you must also specify the parameter
+              `includeLinkedTransactions` to see the `linkedTransactions` field.
 
           billing_address: The invoice's billing address.
 
@@ -875,16 +885,6 @@ class AsyncInvoicesResource(AsyncAPIResource):
               Unlike `salesTaxCode`, which only indicates general taxability, this field
               drives the actual tax calculation and reporting.
 
-          set_credits: Credits to apply to this invoice. Applying a credit uses an available credit to
-              reduce the balance of this invoice. This creates a link between this invoice and
-              the corresponding existing credit memo.
-
-              Note that QuickBooks will not return any information about these links in this
-              endpoint's response even though they are created. To see the transactions linked
-              via this field, refetch the invoice and check the `linkedTransactions` field. If
-              fetching a list of invoices, you must also specify the parameter
-              `includeLinkedTransactions` to see the `linkedTransactions` field.
-
           shipment_origin: The origin location from where the product associated with this invoice is
               shipped. This is the point at which ownership and liability for goods transfer
               from seller to buyer. Internally, QuickBooks uses the term "FOB" for this field,
@@ -917,6 +917,7 @@ class AsyncInvoicesResource(AsyncAPIResource):
                 {
                     "customer_id": customer_id,
                     "transaction_date": transaction_date,
+                    "apply_credits": apply_credits,
                     "billing_address": billing_address,
                     "class_id": class_id,
                     "customer_message_id": customer_message_id,
@@ -939,7 +940,6 @@ class AsyncInvoicesResource(AsyncAPIResource):
                     "sales_representative_id": sales_representative_id,
                     "sales_tax_code_id": sales_tax_code_id,
                     "sales_tax_item_id": sales_tax_item_id,
-                    "set_credits": set_credits,
                     "shipment_origin": shipment_origin,
                     "shipping_address": shipping_address,
                     "shipping_date": shipping_date,
@@ -1000,6 +1000,7 @@ class AsyncInvoicesResource(AsyncAPIResource):
         *,
         revision_number: str,
         conductor_end_user_id: str,
+        apply_credits: Iterable[invoice_update_params.ApplyCredit] | NotGiven = NOT_GIVEN,
         billing_address: invoice_update_params.BillingAddress | NotGiven = NOT_GIVEN,
         class_id: str | NotGiven = NOT_GIVEN,
         customer_id: str | NotGiven = NOT_GIVEN,
@@ -1020,7 +1021,6 @@ class AsyncInvoicesResource(AsyncAPIResource):
         sales_representative_id: str | NotGiven = NOT_GIVEN,
         sales_tax_code_id: str | NotGiven = NOT_GIVEN,
         sales_tax_item_id: str | NotGiven = NOT_GIVEN,
-        set_credits: Iterable[invoice_update_params.SetCredit] | NotGiven = NOT_GIVEN,
         shipment_origin: str | NotGiven = NOT_GIVEN,
         shipping_address: invoice_update_params.ShippingAddress | NotGiven = NOT_GIVEN,
         shipping_date: Union[str, date] | NotGiven = NOT_GIVEN,
@@ -1046,6 +1046,16 @@ class AsyncInvoicesResource(AsyncAPIResource):
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          apply_credits: Credits to apply to this invoice. Applying a credit uses an available credit to
+              reduce the balance of this invoice. This creates a link between this invoice and
+              the corresponding existing credit memo.
+
+              Note that QuickBooks will not return any information about these links in this
+              endpoint's response even though they are created. To see the transactions linked
+              via this field, refetch the invoice and check the `linkedTransactions` field. If
+              fetching a list of invoices, you must also specify the parameter
+              `includeLinkedTransactions` to see the `linkedTransactions` field.
 
           billing_address: The invoice's billing address.
 
@@ -1137,16 +1147,6 @@ class AsyncInvoicesResource(AsyncAPIResource):
               Unlike `salesTaxCode`, which only indicates general taxability, this field
               drives the actual tax calculation and reporting.
 
-          set_credits: Credits to apply to this invoice. Applying a credit uses an available credit to
-              reduce the balance of this invoice. This creates a link between this invoice and
-              the corresponding existing credit memo.
-
-              Note that QuickBooks will not return any information about these links in this
-              endpoint's response even though they are created. To see the transactions linked
-              via this field, refetch the invoice and check the `linkedTransactions` field. If
-              fetching a list of invoices, you must also specify the parameter
-              `includeLinkedTransactions` to see the `linkedTransactions` field.
-
           shipment_origin: The origin location from where the product associated with this invoice is
               shipped. This is the point at which ownership and liability for goods transfer
               from seller to buyer. Internally, QuickBooks uses the term "FOB" for this field,
@@ -1182,6 +1182,7 @@ class AsyncInvoicesResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "revision_number": revision_number,
+                    "apply_credits": apply_credits,
                     "billing_address": billing_address,
                     "class_id": class_id,
                     "customer_id": customer_id,
@@ -1202,7 +1203,6 @@ class AsyncInvoicesResource(AsyncAPIResource):
                     "sales_representative_id": sales_representative_id,
                     "sales_tax_code_id": sales_tax_code_id,
                     "sales_tax_item_id": sales_tax_item_id,
-                    "set_credits": set_credits,
                     "shipment_origin": shipment_origin,
                     "shipping_address": shipping_address,
                     "shipping_date": shipping_date,
