@@ -36,17 +36,17 @@ class NonInventoryItemUpdateParams(TypedDict, total=False):
 
     force_unit_of_measure_change: Annotated[bool, PropertyInfo(alias="forceUnitOfMeasureChange")]
     """
-    Indicates whether to allow changing the non-inventory item's Unit of Measure
-    (UOM) set (using the `unitOfMeasureSetId` field) when the base unit of the new
-    UOM set does not match that of the currently assigned UOM set. Without setting
-    this field to `true` in this scenario, the request will fail with an error;
-    hence, this field is equivalent to accepting the warning prompt in the
+    Indicates whether to allow changing the non-inventory item's unit-of-measure set
+    (using the `unitOfMeasureSetId` field) when the base unit of the new
+    unit-of-measure set does not match that of the currently assigned set. Without
+    setting this field to `true` in this scenario, the request will fail with an
+    error; hence, this field is equivalent to accepting the warning prompt in the
     QuickBooks UI.
 
     Important: Changing the base unit requires you to update the item's
     quantities-on-hand and cost to reflect the new unit; otherwise, these values
     will be inaccurate. Alternatively, consider creating a new item with the desired
-    UOM set and deactivating the old item.
+    unit-of-measure set and deactivating the old item.
     """
 
     is_active: Annotated[bool, PropertyInfo(alias="isActive")]
@@ -110,7 +110,7 @@ class NonInventoryItemUpdateParams(TypedDict, total=False):
 
     unit_of_measure_set_id: Annotated[str, PropertyInfo(alias="unitOfMeasureSetId")]
     """
-    The unit of measure set associated with this non-inventory item, which consists
+    The unit-of-measure set associated with this non-inventory item, which consists
     of a base unit and related units.
     """
 

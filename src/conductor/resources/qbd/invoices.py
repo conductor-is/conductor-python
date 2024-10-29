@@ -21,7 +21,7 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...types.qbd import invoice_list_params, invoice_create_params
+from ...types.qbd import invoice_list_params, invoice_create_params, invoice_update_params
 from ...pagination import SyncCursorPage, AsyncCursorPage
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.qbd.qbd_invoice import QbdInvoice
@@ -135,7 +135,8 @@ class InvoicesResource(SyncAPIResource):
 
           invoice_lines: The invoice's line items, each representing a single product or service sold.
 
-          is_finance_charge: Whether this invoice includes a finance charge.
+          is_finance_charge: Whether this invoice includes a finance charge. This field is immutable and can
+              only be set during invoice creation.
 
           is_pending: Indicates whether this invoice is pending approval or completion. If `true`, the
               invoice is in a draft state and has not been finalized.
@@ -157,6 +158,9 @@ class InvoicesResource(SyncAPIResource):
               links entire transactions, not individual transaction lines. If you want to link
               individual lines in a transaction, instead use the field `linkToTransactionLine`
               on this invoice's lines, if available.
+
+              Transactions can only be linked when creating this invoice and cannot be
+              unlinked later.
 
               You can use both `linkToTransactionIds` (on this invoice) and
               `linkToTransactionLine` (on its transaction lines) as long as they do NOT link
@@ -313,6 +317,230 @@ class InvoicesResource(SyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get(
             f"/quickbooks-desktop/invoices/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=QbdInvoice,
+        )
+
+    def update(
+        self,
+        id: str,
+        *,
+        version: str,
+        conductor_end_user_id: str,
+        accounts_receivable_account_id: str | NotGiven = NOT_GIVEN,
+        billing_address: invoice_update_params.BillingAddress | NotGiven = NOT_GIVEN,
+        class_id: str | NotGiven = NOT_GIVEN,
+        customer_id: str | NotGiven = NOT_GIVEN,
+        customer_message_id: str | NotGiven = NOT_GIVEN,
+        document_template_id: str | NotGiven = NOT_GIVEN,
+        due_date: Union[str, date] | NotGiven = NOT_GIVEN,
+        exchange_rate: float | NotGiven = NOT_GIVEN,
+        invoice_line_groups: Iterable[invoice_update_params.InvoiceLineGroup] | NotGiven = NOT_GIVEN,
+        invoice_lines: Iterable[invoice_update_params.InvoiceLine] | NotGiven = NOT_GIVEN,
+        is_pending: bool | NotGiven = NOT_GIVEN,
+        is_to_be_emailed: bool | NotGiven = NOT_GIVEN,
+        is_to_be_printed: bool | NotGiven = NOT_GIVEN,
+        item_sales_tax_id: str | NotGiven = NOT_GIVEN,
+        memo: str | NotGiven = NOT_GIVEN,
+        other_custom_field: str | NotGiven = NOT_GIVEN,
+        purchase_order_number: str | NotGiven = NOT_GIVEN,
+        ref_number: str | NotGiven = NOT_GIVEN,
+        sales_representative_id: str | NotGiven = NOT_GIVEN,
+        sales_tax_code_id: str | NotGiven = NOT_GIVEN,
+        set_credits: Iterable[invoice_update_params.SetCredit] | NotGiven = NOT_GIVEN,
+        shipping_address: invoice_update_params.ShippingAddress | NotGiven = NOT_GIVEN,
+        shipping_date: Union[str, date] | NotGiven = NOT_GIVEN,
+        shipping_method_id: str | NotGiven = NOT_GIVEN,
+        shipping_origin: str | NotGiven = NOT_GIVEN,
+        terms_id: str | NotGiven = NOT_GIVEN,
+        transaction_date: Union[str, date] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> QbdInvoice:
+        """
+        Updates an existing invoice.
+
+        Args:
+          id: The QuickBooks-assigned unique identifier of the invoice to update.
+
+          version: The current version identifier of the invoice you are updating, which you can
+              get by fetching the object first. Provide the most recent `version` to ensure
+              you're working with the latest data; otherwise, the update will fail.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          accounts_receivable_account_id: The Accounts Receivable account to which this invoice is assigned, used to track
+              the amount owed. If not specified, the default Accounts Receivable account in
+              QuickBooks is used. If this invoice is linked to other transactions, make sure
+              this `accountsReceivableAccount` matches the `accountsReceivableAccount` used in
+              the other transactions.
+
+          billing_address: The invoice's billing address.
+
+          class_id: The invoice's class. Classes can be used to categorize objects into meaningful
+              segments, such as department, location, or type of work. In QuickBooks, class
+              tracking is off by default. A class defined here is automatically used in this
+              invoice's line items unless overridden at the line item level.
+
+          customer_id: The customer or customer-job associated with this invoice.
+
+          customer_message_id: The message to display to the customer on the invoice.
+
+          document_template_id: The predefined template in QuickBooks that determines the layout and formatting
+              for this invoice when printed or displayed.
+
+          due_date: The date by which this invoice must be paid, in ISO 8601 format (YYYY-MM-DD).
+
+          exchange_rate: The market exchange rate between this invoice's currency and the home currency
+              in QuickBooks at the time of this transaction. Represented as a decimal value
+              (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
+
+          invoice_line_groups: The invoice's line item groups, each representing a predefined set of related
+              items.
+
+              IMPORTANT: When updating an invoice's line item groups, this array completely
+              REPLACES all existing line item groups for that invoice. To retain any current
+              line item groups, include them in this array, even if they have not changed. Any
+              line item groups not included will be removed. To add a new line item group,
+              include it with its `id` set to `-1`. If you do not wish to modify the line item
+              groups, you can omit this field entirely to keep them unchanged.
+
+          invoice_lines: The invoice's line items, each representing a single product or service sold.
+
+              IMPORTANT: When updating an invoice's line items, this array completely REPLACES
+              all existing line items for that invoice. To retain any current line items,
+              include them in this array, even if they have not changed. Any line items not
+              included will be removed. To add a new line item, include it with its `id` set
+              to `-1`. If you do not wish to modify the line items, you can omit this field
+              entirely to keep them unchanged.
+
+          is_pending: Indicates whether this invoice is pending approval or completion. If `true`, the
+              invoice is in a draft state and has not been finalized.
+
+          is_to_be_emailed: Indicates whether this invoice is queued to be emailed to the customer. If set
+              to `true`, the invoice will appear in the list of documents to be emailed in
+              QuickBooks.
+
+          is_to_be_printed: Indicates whether this invoice is queued for printing. If set to `true`, the
+              invoice will appear in the list of documents to be printed in QuickBooks.
+
+          item_sales_tax_id: The sales-tax item used to calculate the actual tax amount for this invoice's
+              transactions by applying a specific tax rate collected for a single tax agency.
+              Unlike `salesTaxCode`, which only indicates general taxability, this field
+              drives the actual tax calculation and reporting.
+
+          memo: A memo or note for this invoice, as entered by the user. This appears in
+              reports, but not on the invoice. Use `customerMessage` to add a note to the
+              invoice.
+
+          other_custom_field: A built-in custom field for additional information specific to this invoice.
+              Unlike the user-defined fields in the `customFields` array, this is a standard
+              QuickBooks field that exists for all invoices for convenience. Developers often
+              use this field for tracking information that doesn't fit into other standard
+              QuickBooks fields. Unlike `otherCustomField1` and `otherCustomField2`, which are
+              line item fields, this exists at the transaction level. Hidden by default in the
+              QuickBooks UI.
+
+          purchase_order_number: The customer's Purchase Order (PO) number associated with this invoice. This
+              field is often used to cross-reference the invoice with the customer's
+              purchasing system.
+
+          ref_number: The case-sensitive user-defined reference number for this invoice, which can be
+              used to identify the transaction in QuickBooks. This value is not required to be
+              unique and can be arbitrarily changed by the QuickBooks user.
+
+          sales_representative_id: The invoice's sales representative. Sales representatives can be employees,
+              vendors, or other names in QuickBooks.
+
+          sales_tax_code_id: The sales-tax code for items sold to the `customer` of this invoice, determining
+              whether items sold to this customer are taxable or non-taxable. Default codes
+              include "Non" (non-taxable) and "Tax" (taxable), but custom codes can also be
+              created in QuickBooks. If QuickBooks is not set up to charge sales tax (via the
+              "Do You Charge Sales Tax?" preference), it will assign the default non-taxable
+              code to all sales.
+
+          set_credits: Credits to apply to this invoice. Applying a credit uses an available credit to
+              reduce the balance of this invoice. This creates a link between this invoice and
+              the corresponding existing credit memo.
+
+              Note that QuickBooks will not return any information about these links in this
+              endpoint's response even though they are created. To see the transactions linked
+              via this field, refetch the invoice and check the `linkedTransactions` field. If
+              fetching a list of invoices, you must also specify the parameter
+              `includeLinkedTransactions` to see the `linkedTransactions` field.
+
+          shipping_address: The invoice's shipping address.
+
+          shipping_date: The date when the products or services for this invoice were shipped or are
+              expected to be shipped, in ISO 8601 format (YYYY-MM-DD).
+
+          shipping_method_id: The shipping method used for this invoice, such as standard mail or overnight
+              delivery.
+
+          shipping_origin: The point of origin from where the product associated with this invoice is
+              shipped. This is the point at which ownership and liability for goods transfer
+              from seller to buyer. Internally, QuickBooks uses the term "FOB" for this field,
+              which stands for "freight on board". This field is informational and has no
+              accounting implications.
+
+          terms_id: The invoice's payment terms, defining when payment is due and any applicable
+              discounts.
+
+          transaction_date: The date of this invoice, in ISO 8601 format (YYYY-MM-DD).
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return self._post(
+            f"/quickbooks-desktop/invoices/{id}",
+            body=maybe_transform(
+                {
+                    "version": version,
+                    "accounts_receivable_account_id": accounts_receivable_account_id,
+                    "billing_address": billing_address,
+                    "class_id": class_id,
+                    "customer_id": customer_id,
+                    "customer_message_id": customer_message_id,
+                    "document_template_id": document_template_id,
+                    "due_date": due_date,
+                    "exchange_rate": exchange_rate,
+                    "invoice_line_groups": invoice_line_groups,
+                    "invoice_lines": invoice_lines,
+                    "is_pending": is_pending,
+                    "is_to_be_emailed": is_to_be_emailed,
+                    "is_to_be_printed": is_to_be_printed,
+                    "item_sales_tax_id": item_sales_tax_id,
+                    "memo": memo,
+                    "other_custom_field": other_custom_field,
+                    "purchase_order_number": purchase_order_number,
+                    "ref_number": ref_number,
+                    "sales_representative_id": sales_representative_id,
+                    "sales_tax_code_id": sales_tax_code_id,
+                    "set_credits": set_credits,
+                    "shipping_address": shipping_address,
+                    "shipping_date": shipping_date,
+                    "shipping_method_id": shipping_method_id,
+                    "shipping_origin": shipping_origin,
+                    "terms_id": terms_id,
+                    "transaction_date": transaction_date,
+                },
+                invoice_update_params.InvoiceUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -578,7 +806,8 @@ class AsyncInvoicesResource(AsyncAPIResource):
 
           invoice_lines: The invoice's line items, each representing a single product or service sold.
 
-          is_finance_charge: Whether this invoice includes a finance charge.
+          is_finance_charge: Whether this invoice includes a finance charge. This field is immutable and can
+              only be set during invoice creation.
 
           is_pending: Indicates whether this invoice is pending approval or completion. If `true`, the
               invoice is in a draft state and has not been finalized.
@@ -600,6 +829,9 @@ class AsyncInvoicesResource(AsyncAPIResource):
               links entire transactions, not individual transaction lines. If you want to link
               individual lines in a transaction, instead use the field `linkToTransactionLine`
               on this invoice's lines, if available.
+
+              Transactions can only be linked when creating this invoice and cannot be
+              unlinked later.
 
               You can use both `linkToTransactionIds` (on this invoice) and
               `linkToTransactionLine` (on its transaction lines) as long as they do NOT link
@@ -756,6 +988,230 @@ class AsyncInvoicesResource(AsyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return await self._get(
             f"/quickbooks-desktop/invoices/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=QbdInvoice,
+        )
+
+    async def update(
+        self,
+        id: str,
+        *,
+        version: str,
+        conductor_end_user_id: str,
+        accounts_receivable_account_id: str | NotGiven = NOT_GIVEN,
+        billing_address: invoice_update_params.BillingAddress | NotGiven = NOT_GIVEN,
+        class_id: str | NotGiven = NOT_GIVEN,
+        customer_id: str | NotGiven = NOT_GIVEN,
+        customer_message_id: str | NotGiven = NOT_GIVEN,
+        document_template_id: str | NotGiven = NOT_GIVEN,
+        due_date: Union[str, date] | NotGiven = NOT_GIVEN,
+        exchange_rate: float | NotGiven = NOT_GIVEN,
+        invoice_line_groups: Iterable[invoice_update_params.InvoiceLineGroup] | NotGiven = NOT_GIVEN,
+        invoice_lines: Iterable[invoice_update_params.InvoiceLine] | NotGiven = NOT_GIVEN,
+        is_pending: bool | NotGiven = NOT_GIVEN,
+        is_to_be_emailed: bool | NotGiven = NOT_GIVEN,
+        is_to_be_printed: bool | NotGiven = NOT_GIVEN,
+        item_sales_tax_id: str | NotGiven = NOT_GIVEN,
+        memo: str | NotGiven = NOT_GIVEN,
+        other_custom_field: str | NotGiven = NOT_GIVEN,
+        purchase_order_number: str | NotGiven = NOT_GIVEN,
+        ref_number: str | NotGiven = NOT_GIVEN,
+        sales_representative_id: str | NotGiven = NOT_GIVEN,
+        sales_tax_code_id: str | NotGiven = NOT_GIVEN,
+        set_credits: Iterable[invoice_update_params.SetCredit] | NotGiven = NOT_GIVEN,
+        shipping_address: invoice_update_params.ShippingAddress | NotGiven = NOT_GIVEN,
+        shipping_date: Union[str, date] | NotGiven = NOT_GIVEN,
+        shipping_method_id: str | NotGiven = NOT_GIVEN,
+        shipping_origin: str | NotGiven = NOT_GIVEN,
+        terms_id: str | NotGiven = NOT_GIVEN,
+        transaction_date: Union[str, date] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> QbdInvoice:
+        """
+        Updates an existing invoice.
+
+        Args:
+          id: The QuickBooks-assigned unique identifier of the invoice to update.
+
+          version: The current version identifier of the invoice you are updating, which you can
+              get by fetching the object first. Provide the most recent `version` to ensure
+              you're working with the latest data; otherwise, the update will fail.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          accounts_receivable_account_id: The Accounts Receivable account to which this invoice is assigned, used to track
+              the amount owed. If not specified, the default Accounts Receivable account in
+              QuickBooks is used. If this invoice is linked to other transactions, make sure
+              this `accountsReceivableAccount` matches the `accountsReceivableAccount` used in
+              the other transactions.
+
+          billing_address: The invoice's billing address.
+
+          class_id: The invoice's class. Classes can be used to categorize objects into meaningful
+              segments, such as department, location, or type of work. In QuickBooks, class
+              tracking is off by default. A class defined here is automatically used in this
+              invoice's line items unless overridden at the line item level.
+
+          customer_id: The customer or customer-job associated with this invoice.
+
+          customer_message_id: The message to display to the customer on the invoice.
+
+          document_template_id: The predefined template in QuickBooks that determines the layout and formatting
+              for this invoice when printed or displayed.
+
+          due_date: The date by which this invoice must be paid, in ISO 8601 format (YYYY-MM-DD).
+
+          exchange_rate: The market exchange rate between this invoice's currency and the home currency
+              in QuickBooks at the time of this transaction. Represented as a decimal value
+              (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
+
+          invoice_line_groups: The invoice's line item groups, each representing a predefined set of related
+              items.
+
+              IMPORTANT: When updating an invoice's line item groups, this array completely
+              REPLACES all existing line item groups for that invoice. To retain any current
+              line item groups, include them in this array, even if they have not changed. Any
+              line item groups not included will be removed. To add a new line item group,
+              include it with its `id` set to `-1`. If you do not wish to modify the line item
+              groups, you can omit this field entirely to keep them unchanged.
+
+          invoice_lines: The invoice's line items, each representing a single product or service sold.
+
+              IMPORTANT: When updating an invoice's line items, this array completely REPLACES
+              all existing line items for that invoice. To retain any current line items,
+              include them in this array, even if they have not changed. Any line items not
+              included will be removed. To add a new line item, include it with its `id` set
+              to `-1`. If you do not wish to modify the line items, you can omit this field
+              entirely to keep them unchanged.
+
+          is_pending: Indicates whether this invoice is pending approval or completion. If `true`, the
+              invoice is in a draft state and has not been finalized.
+
+          is_to_be_emailed: Indicates whether this invoice is queued to be emailed to the customer. If set
+              to `true`, the invoice will appear in the list of documents to be emailed in
+              QuickBooks.
+
+          is_to_be_printed: Indicates whether this invoice is queued for printing. If set to `true`, the
+              invoice will appear in the list of documents to be printed in QuickBooks.
+
+          item_sales_tax_id: The sales-tax item used to calculate the actual tax amount for this invoice's
+              transactions by applying a specific tax rate collected for a single tax agency.
+              Unlike `salesTaxCode`, which only indicates general taxability, this field
+              drives the actual tax calculation and reporting.
+
+          memo: A memo or note for this invoice, as entered by the user. This appears in
+              reports, but not on the invoice. Use `customerMessage` to add a note to the
+              invoice.
+
+          other_custom_field: A built-in custom field for additional information specific to this invoice.
+              Unlike the user-defined fields in the `customFields` array, this is a standard
+              QuickBooks field that exists for all invoices for convenience. Developers often
+              use this field for tracking information that doesn't fit into other standard
+              QuickBooks fields. Unlike `otherCustomField1` and `otherCustomField2`, which are
+              line item fields, this exists at the transaction level. Hidden by default in the
+              QuickBooks UI.
+
+          purchase_order_number: The customer's Purchase Order (PO) number associated with this invoice. This
+              field is often used to cross-reference the invoice with the customer's
+              purchasing system.
+
+          ref_number: The case-sensitive user-defined reference number for this invoice, which can be
+              used to identify the transaction in QuickBooks. This value is not required to be
+              unique and can be arbitrarily changed by the QuickBooks user.
+
+          sales_representative_id: The invoice's sales representative. Sales representatives can be employees,
+              vendors, or other names in QuickBooks.
+
+          sales_tax_code_id: The sales-tax code for items sold to the `customer` of this invoice, determining
+              whether items sold to this customer are taxable or non-taxable. Default codes
+              include "Non" (non-taxable) and "Tax" (taxable), but custom codes can also be
+              created in QuickBooks. If QuickBooks is not set up to charge sales tax (via the
+              "Do You Charge Sales Tax?" preference), it will assign the default non-taxable
+              code to all sales.
+
+          set_credits: Credits to apply to this invoice. Applying a credit uses an available credit to
+              reduce the balance of this invoice. This creates a link between this invoice and
+              the corresponding existing credit memo.
+
+              Note that QuickBooks will not return any information about these links in this
+              endpoint's response even though they are created. To see the transactions linked
+              via this field, refetch the invoice and check the `linkedTransactions` field. If
+              fetching a list of invoices, you must also specify the parameter
+              `includeLinkedTransactions` to see the `linkedTransactions` field.
+
+          shipping_address: The invoice's shipping address.
+
+          shipping_date: The date when the products or services for this invoice were shipped or are
+              expected to be shipped, in ISO 8601 format (YYYY-MM-DD).
+
+          shipping_method_id: The shipping method used for this invoice, such as standard mail or overnight
+              delivery.
+
+          shipping_origin: The point of origin from where the product associated with this invoice is
+              shipped. This is the point at which ownership and liability for goods transfer
+              from seller to buyer. Internally, QuickBooks uses the term "FOB" for this field,
+              which stands for "freight on board". This field is informational and has no
+              accounting implications.
+
+          terms_id: The invoice's payment terms, defining when payment is due and any applicable
+              discounts.
+
+          transaction_date: The date of this invoice, in ISO 8601 format (YYYY-MM-DD).
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return await self._post(
+            f"/quickbooks-desktop/invoices/{id}",
+            body=await async_maybe_transform(
+                {
+                    "version": version,
+                    "accounts_receivable_account_id": accounts_receivable_account_id,
+                    "billing_address": billing_address,
+                    "class_id": class_id,
+                    "customer_id": customer_id,
+                    "customer_message_id": customer_message_id,
+                    "document_template_id": document_template_id,
+                    "due_date": due_date,
+                    "exchange_rate": exchange_rate,
+                    "invoice_line_groups": invoice_line_groups,
+                    "invoice_lines": invoice_lines,
+                    "is_pending": is_pending,
+                    "is_to_be_emailed": is_to_be_emailed,
+                    "is_to_be_printed": is_to_be_printed,
+                    "item_sales_tax_id": item_sales_tax_id,
+                    "memo": memo,
+                    "other_custom_field": other_custom_field,
+                    "purchase_order_number": purchase_order_number,
+                    "ref_number": ref_number,
+                    "sales_representative_id": sales_representative_id,
+                    "sales_tax_code_id": sales_tax_code_id,
+                    "set_credits": set_credits,
+                    "shipping_address": shipping_address,
+                    "shipping_date": shipping_date,
+                    "shipping_method_id": shipping_method_id,
+                    "shipping_origin": shipping_origin,
+                    "terms_id": terms_id,
+                    "transaction_date": transaction_date,
+                },
+                invoice_update_params.InvoiceUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -925,6 +1381,9 @@ class InvoicesResourceWithRawResponse:
         self.retrieve = to_raw_response_wrapper(
             invoices.retrieve,
         )
+        self.update = to_raw_response_wrapper(
+            invoices.update,
+        )
         self.list = to_raw_response_wrapper(
             invoices.list,
         )
@@ -939,6 +1398,9 @@ class AsyncInvoicesResourceWithRawResponse:
         )
         self.retrieve = async_to_raw_response_wrapper(
             invoices.retrieve,
+        )
+        self.update = async_to_raw_response_wrapper(
+            invoices.update,
         )
         self.list = async_to_raw_response_wrapper(
             invoices.list,
@@ -955,6 +1417,9 @@ class InvoicesResourceWithStreamingResponse:
         self.retrieve = to_streamed_response_wrapper(
             invoices.retrieve,
         )
+        self.update = to_streamed_response_wrapper(
+            invoices.update,
+        )
         self.list = to_streamed_response_wrapper(
             invoices.list,
         )
@@ -969,6 +1434,9 @@ class AsyncInvoicesResourceWithStreamingResponse:
         )
         self.retrieve = async_to_streamed_response_wrapper(
             invoices.retrieve,
+        )
+        self.update = async_to_streamed_response_wrapper(
+            invoices.update,
         )
         self.list = async_to_streamed_response_wrapper(
             invoices.list,

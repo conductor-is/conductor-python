@@ -35,6 +35,7 @@ from .account_create_params import AccountCreateParams as AccountCreateParams
 from .account_list_response import AccountListResponse as AccountListResponse
 from .account_update_params import AccountUpdateParams as AccountUpdateParams
 from .invoice_create_params import InvoiceCreateParams as InvoiceCreateParams
+from .invoice_update_params import InvoiceUpdateParams as InvoiceUpdateParams
 from .customer_create_params import CustomerCreateParams as CustomerCreateParams
 from .customer_update_params import CustomerUpdateParams as CustomerUpdateParams
 from .qbd_credit_card_charge import QbdCreditCardCharge as QbdCreditCardCharge

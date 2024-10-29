@@ -393,7 +393,7 @@ class ServiceItem(BaseModel):
 
     unit_of_measure_set: Optional[UnitOfMeasureSet] = FieldInfo(alias="unitOfMeasureSet", default=None)
     """
-    The unit of measure set associated with this service item, which consists of a
+    The unit-of-measure set associated with this service item, which consists of a
     base unit and related units.
     """
 

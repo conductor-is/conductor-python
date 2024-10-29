@@ -2,31 +2,30 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import date
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
 __all__ = [
-    "InvoiceCreateParams",
+    "InvoiceUpdateParams",
     "BillingAddress",
     "InvoiceLineGroup",
-    "InvoiceLineGroupCustomField",
+    "InvoiceLineGroupInvoiceLine",
     "InvoiceLine",
-    "InvoiceLineCustomField",
-    "InvoiceLineLinkToTransactionLine",
     "SetCredit",
     "ShippingAddress",
 ]
 
 
-class InvoiceCreateParams(TypedDict, total=False):
-    customer_id: Required[Annotated[str, PropertyInfo(alias="customerId")]]
-    """The customer or customer-job associated with this invoice."""
-
-    transaction_date: Required[Annotated[Union[str, date], PropertyInfo(alias="transactionDate", format="iso8601")]]
-    """The date of this invoice, in ISO 8601 format (YYYY-MM-DD)."""
+class InvoiceUpdateParams(TypedDict, total=False):
+    version: Required[str]
+    """
+    The current version identifier of the invoice you are updating, which you can
+    get by fetching the object first. Provide the most recent `version` to ensure
+    you're working with the latest data; otherwise, the update will fail.
+    """
 
     conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]
     """
@@ -55,6 +54,9 @@ class InvoiceCreateParams(TypedDict, total=False):
     unless overridden at the line item level.
     """
 
+    customer_id: Annotated[str, PropertyInfo(alias="customerId")]
+    """The customer or customer-job associated with this invoice."""
+
     customer_message_id: Annotated[str, PropertyInfo(alias="customerMessageId")]
     """The message to display to the customer on the invoice."""
 
@@ -74,27 +76,28 @@ class InvoiceCreateParams(TypedDict, total=False):
     (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
     """
 
-    external_id: Annotated[str, PropertyInfo(alias="externalId")]
-    """
-    A globally unique identifier (GUID) you can provide for tracking this object in
-    your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
-    will return an error. This field is immutable and can only be set during object
-    creation.
-    """
-
     invoice_line_groups: Annotated[Iterable[InvoiceLineGroup], PropertyInfo(alias="invoiceLineGroups")]
     """
     The invoice's line item groups, each representing a predefined set of related
     items.
+
+    IMPORTANT: When updating an invoice's line item groups, this array completely
+    REPLACES all existing line item groups for that invoice. To retain any current
+    line item groups, include them in this array, even if they have not changed. Any
+    line item groups not included will be removed. To add a new line item group,
+    include it with its `id` set to `-1`. If you do not wish to modify the line item
+    groups, you can omit this field entirely to keep them unchanged.
     """
 
     invoice_lines: Annotated[Iterable[InvoiceLine], PropertyInfo(alias="invoiceLines")]
-    """The invoice's line items, each representing a single product or service sold."""
+    """The invoice's line items, each representing a single product or service sold.
 
-    is_finance_charge: Annotated[bool, PropertyInfo(alias="isFinanceCharge")]
-    """Whether this invoice includes a finance charge.
-
-    This field is immutable and can only be set during invoice creation.
+    IMPORTANT: When updating an invoice's line items, this array completely REPLACES
+    all existing line items for that invoice. To retain any current line items,
+    include them in this array, even if they have not changed. Any line items not
+    included will be removed. To add a new line item, include it with its `id` set
+    to `-1`. If you do not wish to modify the line items, you can omit this field
+    entirely to keep them unchanged.
     """
 
     is_pending: Annotated[bool, PropertyInfo(alias="isPending")]
@@ -123,30 +126,6 @@ class InvoiceCreateParams(TypedDict, total=False):
     transactions by applying a specific tax rate collected for a single tax agency.
     Unlike `salesTaxCode`, which only indicates general taxability, this field
     drives the actual tax calculation and reporting.
-    """
-
-    link_to_transaction_ids: Annotated[List[str], PropertyInfo(alias="linkToTransactionIds")]
-    """
-    IDs of existing transactions that you wish to link to this invoice, such as
-    payments applied, credits used, or associated purchase orders. Note that this
-    links entire transactions, not individual transaction lines. If you want to link
-    individual lines in a transaction, instead use the field `linkToTransactionLine`
-    on this invoice's lines, if available.
-
-    Transactions can only be linked when creating this invoice and cannot be
-    unlinked later.
-
-    You can use both `linkToTransactionIds` (on this invoice) and
-    `linkToTransactionLine` (on its transaction lines) as long as they do NOT link
-    to the same transaction (otherwise, QuickBooks will return an error). QuickBooks
-    will also return an error if you attempt to link a transaction that is empty or
-    already closed.
-
-    Note that QuickBooks will not return any information about these links in this
-    endpoint's response even though they are created. To see the transactions linked
-    via this field, refetch the invoice and check the `linkedTransactions` field. If
-    fetching a list of invoices, you must also specify the parameter
-    `includeLinkedTransactions` to return the `linkedTransactions` field.
     """
 
     memo: str
@@ -241,6 +220,9 @@ class InvoiceCreateParams(TypedDict, total=False):
     discounts.
     """
 
+    transaction_date: Annotated[Union[str, date], PropertyInfo(alias="transactionDate", format="iso8601")]
+    """The date of this invoice, in ISO 8601 format (YYYY-MM-DD)."""
+
 
 class BillingAddress(TypedDict, total=False):
     city: str
@@ -280,101 +262,14 @@ class BillingAddress(TypedDict, total=False):
     """The state, county, province, or region name of the address."""
 
 
-class InvoiceLineGroupCustomField(TypedDict, total=False):
-    name: Required[str]
-    """The name of the custom field, unique for the specified `ownerId`.
-
-    For public custom fields, this name is visible as a label in the QuickBooks UI.
+class InvoiceLineGroupInvoiceLine(TypedDict, total=False):
+    id: Required[str]
+    """
+    The QuickBooks-assigned unique identifier of an existing invoice line you wish
+    to retain or update. Set this field to `-1` for new invoice lines you wish to
+    add.
     """
 
-    owner_id: Required[Annotated[str, PropertyInfo(alias="ownerId")]]
-    """
-    The identifier of the owner of the custom field, which QuickBooks internally
-    calls a "data extension". For public custom fields visible in the UI, such as
-    those added by the QuickBooks user, this is always "0". For private custom
-    fields that are only visible to the application that created them, this is a
-    valid GUID identifying the owning application. Internally, Conductor always
-    fetches all public custom fields (those with an `ownerId` of "0") for all
-    objects.
-    """
-
-    value: Required[str]
-    """The value of the custom field.
-
-    The maximum length depends on the field's data type.
-    """
-
-
-class InvoiceLineGroup(TypedDict, total=False):
-    item_group_id: Required[Annotated[str, PropertyInfo(alias="itemGroupId")]]
-    """
-    The invoice line group's item group, representing a predefined set of items
-    bundled because they are commonly purchased together or grouped for faster
-    entry.
-    """
-
-    custom_fields: Annotated[Iterable[InvoiceLineGroupCustomField], PropertyInfo(alias="customFields")]
-    """
-    The custom fields for the invoice line group object, added as user-defined data
-    extensions, not included in the standard QuickBooks object.
-    """
-
-    inventory_site_id: Annotated[str, PropertyInfo(alias="inventorySiteId")]
-    """
-    The site location where inventory for the item group associated with this
-    invoice line group is stored.
-    """
-
-    inventory_site_location_id: Annotated[str, PropertyInfo(alias="inventorySiteLocationId")]
-    """
-    The specific location (e.g., bin or shelf) within the inventory site where the
-    item group associated with this invoice line group is stored.
-    """
-
-    quantity: float
-    """The quantity of the item group associated with this invoice line group."""
-
-    unit_of_measure: Annotated[str, PropertyInfo(alias="unitOfMeasure")]
-    """The unit-of-measure used for the `quantity` in this invoice line group.
-
-    Must be a valid unit within the item's available units of measure.
-    """
-
-
-class InvoiceLineCustomField(TypedDict, total=False):
-    name: Required[str]
-    """The name of the custom field, unique for the specified `ownerId`.
-
-    For public custom fields, this name is visible as a label in the QuickBooks UI.
-    """
-
-    owner_id: Required[Annotated[str, PropertyInfo(alias="ownerId")]]
-    """
-    The identifier of the owner of the custom field, which QuickBooks internally
-    calls a "data extension". For public custom fields visible in the UI, such as
-    those added by the QuickBooks user, this is always "0". For private custom
-    fields that are only visible to the application that created them, this is a
-    valid GUID identifying the owning application. Internally, Conductor always
-    fetches all public custom fields (those with an `ownerId` of "0") for all
-    objects.
-    """
-
-    value: Required[str]
-    """The value of the custom field.
-
-    The maximum length depends on the field's data type.
-    """
-
-
-class InvoiceLineLinkToTransactionLine(TypedDict, total=False):
-    transaction_id: Required[Annotated[str, PropertyInfo(alias="transactionId")]]
-    """The unique identifier of the transaction to link to."""
-
-    transaction_line_id: Required[Annotated[str, PropertyInfo(alias="transactionLineId")]]
-    """The unique identifier of the transaction line to link to."""
-
-
-class InvoiceLine(TypedDict, total=False):
     amount: str
     """The monetary amount of this invoice line, represented as a decimal string."""
 
@@ -386,12 +281,6 @@ class InvoiceLine(TypedDict, total=False):
     default. If a class is specified for the entire parent transaction, it is
     automatically applied to all invoice lines unless overridden here, at the
     transaction line level.
-    """
-
-    custom_fields: Annotated[Iterable[InvoiceLineCustomField], PropertyInfo(alias="customFields")]
-    """
-    The custom fields for the invoice line object, added as user-defined data
-    extensions, not included in the standard QuickBooks object.
     """
 
     description: str
@@ -415,39 +304,6 @@ class InvoiceLine(TypedDict, total=False):
     This can refer to any good or service that the business buys or sells, including
     item types such as a service item, inventory item, or special calculation item
     like a discount item or sales-tax item.
-    """
-
-    link_to_transaction_line: Annotated[InvoiceLineLinkToTransactionLine, PropertyInfo(alias="linkToTransactionLine")]
-    """An existing transaction line that you wish to link to this invoice line.
-
-    Note that this only links to a single transaction line item, not an entire
-    transaction. If you want to link an entire transaction and bring in all its
-    lines, instead use the field `linkToTransactionIds` on the parent transaction,
-    if available. For invoice lines, you can only link to sales orders; QuickBooks
-    does not support linking invoice lines to other transaction types.
-
-    Transaction lines can only be linked when creating this invoice line and cannot
-    be unlinked later.
-
-    If you use `linkToTransactionLine` on this invoice line, you cannot use the
-    field `item` on this line (QuickBooks will return an error) because this field
-    brings in all of the item information you need. You can, however, specify
-    whatever `quantity` or `rate` that you want, or any other transaction line
-    element other than `item`.
-
-    If the parent transaction supports the `linkToTransactionIds` field, you can use
-    both `linkToTransactionLine` (on this invoice line) and `linkToTransactionIds`
-    (on its parent transaction) in the same request as long as they do NOT link to
-    the same transaction (otherwise, QuickBooks will return an error). QuickBooks
-    will also return an error if you attempt to link a transaction that is empty or
-    already closed.
-
-    Note that QuickBooks will not return any information about these links in this
-    endpoint's response even though they are created. To see the transaction lines
-    linked via this field, refetch the parent transaction and check the
-    `linkedTransactions` field. If fetching a list of transactions, you must also
-    specify the parameter `includeLinkedTransactions` to return the
-    `linkedTransactions` field.
     """
 
     lot_number: Annotated[str, PropertyInfo(alias="lotNumber")]
@@ -481,6 +337,219 @@ class InvoiceLine(TypedDict, total=False):
     """
     The account to use for this invoice line, overriding the default account
     associated with the item.
+    """
+
+    override_unit_of_measure_set_id: Annotated[str, PropertyInfo(alias="overrideUnitOfMeasureSetId")]
+    """
+    Specifies an alternative unit-of-measure set when updating this invoice line's
+    `unitOfMeasure` field (e.g., "pound" or "kilogram"). This allows you to select
+    units from a different set than the item's default unit-of-measure set, which
+    remains unchanged on the item itself. The override applies only to this specific
+    line. For example, you can sell an item typically measured in volume units using
+    weight units in a specific transaction by specifying a different unit-of-measure
+    set with this field.
+    """
+
+    price_level_id: Annotated[str, PropertyInfo(alias="priceLevelId")]
+    """
+    The custom price level assigned to this invoice line, used to apply custom
+    pricing in invoices, sales receipts, sales orders, or credit memos for that
+    invoice line. You can override this automatic feature, however, when you create
+    the invoices, sales receipts, etc. Notice that the affected sales transactions
+    do not list the price level, but instead list the rate for the item, which was
+    set using the price level.
+    """
+
+    price_rule_conflict_behavior: Annotated[
+        Literal["base_price", "zero"], PropertyInfo(alias="priceRuleConflictBehavior")
+    ]
+    """
+    Specifies how to resolve price rule conflicts when adding or modifying this
+    invoice line.
+    """
+
+    quantity: float
+    """The quantity of the item associated with this invoice line."""
+
+    rate: str
+    """The price per unit for this invoice line.
+
+    If both `rate` and `amount` are specified, `rate` will be ignored and
+    recalculated based on `quantity` and `amount`. If `rate` is not specified,
+    QuickBooks will calculate it based on `quantity` and `amount`. Represented as a
+    decimal string.
+    """
+
+    rate_percent: Annotated[str, PropertyInfo(alias="ratePercent")]
+    """The price of this invoice line expressed as a percentage.
+
+    Typically used for discount or markup items.
+    """
+
+    sales_tax_code_id: Annotated[str, PropertyInfo(alias="salesTaxCodeId")]
+    """
+    The sales-tax code associated with this invoice line, determining whether it is
+    taxable or non-taxable. It's used to assign a default tax status to all
+    transactions for this invoice line. Default codes include "Non" (non-taxable)
+    and "Tax" (taxable), but custom codes can also be created in QuickBooks. If
+    QuickBooks is not set up to charge sales tax (via the "Do You Charge Sales Tax?"
+    preference), it will assign the default non-taxable code to all sales.
+    """
+
+    serial_number: Annotated[str, PropertyInfo(alias="serialNumber")]
+    """The serial number of the item associated with this invoice line.
+
+    This is used for tracking individual units of serialized inventory items.
+    """
+
+    service_date: Annotated[Union[str, date], PropertyInfo(alias="serviceDate", format="iso8601")]
+    """
+    The date on which the service for this invoice line was or will be performed, in
+    ISO 8601 format (YYYY-MM-DD). This is particularly relevant for service items.
+    """
+
+    unit_of_measure: Annotated[str, PropertyInfo(alias="unitOfMeasure")]
+    """The unit-of-measure used for the `quantity` in this invoice line.
+
+    Must be a valid unit within the item's available units of measure.
+    """
+
+
+class InvoiceLineGroup(TypedDict, total=False):
+    id: Required[str]
+    """
+    The QuickBooks-assigned unique identifier of an existing invoice line group you
+    wish to retain or update. Set this field to `-1` for new invoice line groups you
+    wish to add.
+    """
+
+    invoice_lines: Annotated[Iterable[InvoiceLineGroupInvoiceLine], PropertyInfo(alias="invoiceLines")]
+    """
+    The invoice line group's line items, each representing a single product or
+    service sold.
+
+    IMPORTANT: When updating an invoice line group's line items, this array
+    completely REPLACES all existing line items for that invoice line group. To
+    retain any current line items, include them in this array, even if they have not
+    changed. Any line items not included will be removed. To add a new line item,
+    include it with its `id` set to `-1`. If you do not wish to modify the line
+    items, you can omit this field entirely to keep them unchanged.
+    """
+
+    item_group_id: Annotated[str, PropertyInfo(alias="itemGroupId")]
+    """
+    The invoice line group's item group, representing a predefined set of items
+    bundled because they are commonly purchased together or grouped for faster
+    entry.
+    """
+
+    override_unit_of_measure_set_id: Annotated[str, PropertyInfo(alias="overrideUnitOfMeasureSetId")]
+    """
+    Specifies an alternative unit-of-measure set when updating this invoice line
+    group's `unitOfMeasure` field (e.g., "pound" or "kilogram"). This allows you to
+    select units from a different set than the item's default unit-of-measure set,
+    which remains unchanged on the item itself. The override applies only to this
+    specific line. For example, you can sell an item typically measured in volume
+    units using weight units in a specific transaction by specifying a different
+    unit-of-measure set with this field.
+    """
+
+    quantity: float
+    """The quantity of the item group associated with this invoice line group."""
+
+    unit_of_measure: Annotated[str, PropertyInfo(alias="unitOfMeasure")]
+    """The unit-of-measure used for the `quantity` in this invoice line group.
+
+    Must be a valid unit within the item's available units of measure.
+    """
+
+
+class InvoiceLine(TypedDict, total=False):
+    id: Required[str]
+    """
+    The QuickBooks-assigned unique identifier of an existing invoice line you wish
+    to retain or update. Set this field to `-1` for new invoice lines you wish to
+    add.
+    """
+
+    amount: str
+    """The monetary amount of this invoice line, represented as a decimal string."""
+
+    class_id: Annotated[str, PropertyInfo(alias="classId")]
+    """The invoice line's class.
+
+    Classes can be used to categorize objects into meaningful segments, such as
+    department, location, or type of work. In QuickBooks, class tracking is off by
+    default. If a class is specified for the entire parent transaction, it is
+    automatically applied to all invoice lines unless overridden here, at the
+    transaction line level.
+    """
+
+    description: str
+    """A description of this invoice line."""
+
+    inventory_site_id: Annotated[str, PropertyInfo(alias="inventorySiteId")]
+    """
+    The site location where inventory for the item associated with this invoice line
+    is stored.
+    """
+
+    inventory_site_location_id: Annotated[str, PropertyInfo(alias="inventorySiteLocationId")]
+    """
+    The specific location (e.g., bin or shelf) within the inventory site where the
+    item associated with this invoice line is stored.
+    """
+
+    item_id: Annotated[str, PropertyInfo(alias="itemId")]
+    """The item associated with this invoice line.
+
+    This can refer to any good or service that the business buys or sells, including
+    item types such as a service item, inventory item, or special calculation item
+    like a discount item or sales-tax item.
+    """
+
+    lot_number: Annotated[str, PropertyInfo(alias="lotNumber")]
+    """The lot number of the item associated with this invoice line.
+
+    Used for tracking groups of inventory items that are purchased or manufactured
+    together.
+    """
+
+    other_custom_field1: Annotated[str, PropertyInfo(alias="otherCustomField1")]
+    """A built-in custom field for additional information specific to this invoice
+    line.
+
+    Unlike the user-defined fields in the `customFields` array, this is a standard
+    QuickBooks field that exists for all invoice lines for convenience. Developers
+    often use this field for tracking information that doesn't fit into other
+    standard QuickBooks fields. Hidden by default in the QuickBooks UI.
+    """
+
+    other_custom_field2: Annotated[str, PropertyInfo(alias="otherCustomField2")]
+    """
+    A second built-in custom field for additional information specific to this
+    invoice line. Unlike the user-defined fields in the `customFields` array, this
+    is a standard QuickBooks field that exists for all invoice lines for
+    convenience. Like `otherCustomField1`, developers often use this field for
+    tracking information that doesn't fit into other standard QuickBooks fields.
+    Hidden by default in the QuickBooks UI.
+    """
+
+    override_item_account_id: Annotated[str, PropertyInfo(alias="overrideItemAccountId")]
+    """
+    The account to use for this invoice line, overriding the default account
+    associated with the item.
+    """
+
+    override_unit_of_measure_set_id: Annotated[str, PropertyInfo(alias="overrideUnitOfMeasureSetId")]
+    """
+    Specifies an alternative unit-of-measure set when updating this invoice line's
+    `unitOfMeasure` field (e.g., "pound" or "kilogram"). This allows you to select
+    units from a different set than the item's default unit-of-measure set, which
+    remains unchanged on the item itself. The override applies only to this specific
+    line. For example, you can sell an item typically measured in volume units using
+    weight units in a specific transaction by specifying a different unit-of-measure
+    set with this field.
     """
 
     price_level_id: Annotated[str, PropertyInfo(alias="priceLevelId")]
