@@ -401,7 +401,7 @@ class NonInventoryItem(BaseModel):
 
     unit_of_measure_set: Optional[UnitOfMeasureSet] = FieldInfo(alias="unitOfMeasureSet", default=None)
     """
-    The unit of measure set associated with this non-inventory item, which consists
+    The unit-of-measure set associated with this non-inventory item, which consists
     of a base unit and related units.
     """
 

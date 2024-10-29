@@ -481,14 +481,14 @@ class InvoiceLineGroupInvoiceLine(BaseModel):
     override_unit_of_measure_set: Optional[InvoiceLineGroupInvoiceLineOverrideUnitOfMeasureSet] = FieldInfo(
         alias="overrideUnitOfMeasureSet", default=None
     )
-    """Specifies an alternative unit of measure set for this specific invoice line.
-
-    This does not change the item's default unit of measure set (which is set on the
-    item itself rather than a transaction line), but allows selecting from a
-    different set of units for this particular line. For example, an item typically
-    measured in volume units could be sold using weight units in a specific
-    transaction. The actual unit selection (e.g., "pound" or "kilogram") is made
-    separately via the `unitOfMeasure` field.
+    """
+    Specifies an alternative unit-of-measure set when updating this invoice line's
+    `unitOfMeasure` field (e.g., "pound" or "kilogram"). This allows you to select
+    units from a different set than the item's default unit-of-measure set, which
+    remains unchanged on the item itself. The override applies only to this specific
+    line. For example, you can sell an item typically measured in volume units using
+    weight units in a specific transaction by specifying a different unit-of-measure
+    set with this field.
     """
 
     quantity: Optional[float] = None
@@ -532,7 +532,7 @@ class InvoiceLineGroupInvoiceLine(BaseModel):
     """
 
     unit_of_measure: Optional[str] = FieldInfo(alias="unitOfMeasure", default=None)
-    """The unit of measure used for the `quantity` in this invoice line.
+    """The unit-of-measure used for the `quantity` in this invoice line.
 
     Must be a valid unit within the item's available units of measure.
     """
@@ -612,13 +612,13 @@ class InvoiceLineGroup(BaseModel):
         alias="overrideUnitOfMeasureSet", default=None
     )
     """
-    Specifies an alternative unit of measure set for this specific invoice line
-    group. This does not change the item's default unit of measure set (which is set
-    on the item itself rather than a transaction line), but allows selecting from a
-    different set of units for this particular line. For example, an item typically
-    measured in volume units could be sold using weight units in a specific
-    transaction. The actual unit selection (e.g., "pound" or "kilogram") is made
-    separately via the `unitOfMeasure` field.
+    Specifies an alternative unit-of-measure set when updating this invoice line
+    group's `unitOfMeasure` field (e.g., "pound" or "kilogram"). This allows you to
+    select units from a different set than the item's default unit-of-measure set,
+    which remains unchanged on the item itself. The override applies only to this
+    specific line. For example, you can sell an item typically measured in volume
+    units using weight units in a specific transaction by specifying a different
+    unit-of-measure set with this field.
     """
 
     quantity: Optional[float] = None
@@ -631,7 +631,7 @@ class InvoiceLineGroup(BaseModel):
     """
 
     unit_of_measure: Optional[str] = FieldInfo(alias="unitOfMeasure", default=None)
-    """The unit of measure used for the `quantity` in this invoice line group.
+    """The unit-of-measure used for the `quantity` in this invoice line group.
 
     Must be a valid unit within the item's available units of measure.
     """
@@ -862,14 +862,14 @@ class InvoiceLine(BaseModel):
     override_unit_of_measure_set: Optional[InvoiceLineOverrideUnitOfMeasureSet] = FieldInfo(
         alias="overrideUnitOfMeasureSet", default=None
     )
-    """Specifies an alternative unit of measure set for this specific invoice line.
-
-    This does not change the item's default unit of measure set (which is set on the
-    item itself rather than a transaction line), but allows selecting from a
-    different set of units for this particular line. For example, an item typically
-    measured in volume units could be sold using weight units in a specific
-    transaction. The actual unit selection (e.g., "pound" or "kilogram") is made
-    separately via the `unitOfMeasure` field.
+    """
+    Specifies an alternative unit-of-measure set when updating this invoice line's
+    `unitOfMeasure` field (e.g., "pound" or "kilogram"). This allows you to select
+    units from a different set than the item's default unit-of-measure set, which
+    remains unchanged on the item itself. The override applies only to this specific
+    line. For example, you can sell an item typically measured in volume units using
+    weight units in a specific transaction by specifying a different unit-of-measure
+    set with this field.
     """
 
     quantity: Optional[float] = None
@@ -913,7 +913,7 @@ class InvoiceLine(BaseModel):
     """
 
     unit_of_measure: Optional[str] = FieldInfo(alias="unitOfMeasure", default=None)
-    """The unit of measure used for the `quantity` in this invoice line.
+    """The unit-of-measure used for the `quantity` in this invoice line.
 
     Must be a valid unit within the item's available units of measure.
     """
@@ -1210,7 +1210,10 @@ class QbdInvoice(BaseModel):
     """The invoice's line items, each representing a single product or service sold."""
 
     is_finance_charge: Optional[bool] = FieldInfo(alias="isFinanceCharge", default=None)
-    """Whether this invoice includes a finance charge."""
+    """Whether this invoice includes a finance charge.
+
+    This field is immutable and can only be set during invoice creation.
+    """
 
     is_paid: Optional[bool] = FieldInfo(alias="isPaid", default=None)
     """Indicates whether this invoice has been paid in full.

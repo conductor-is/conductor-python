@@ -266,14 +266,14 @@ class ItemGroupLineItemLine(TypedDict, total=False):
     """
 
     override_unit_of_measure_set_id: Annotated[str, PropertyInfo(alias="overrideUnitOfMeasureSetId")]
-    """Specifies an alternative unit of measure set for this specific item line.
-
-    This does not change the item's default unit of measure set (which is set on the
-    item itself rather than a transaction line), but allows selecting from a
-    different set of units for this particular line. For example, an item typically
-    measured in volume units could be sold using weight units in a specific
-    transaction. The actual unit selection (e.g., "pound" or "kilogram") is made
-    separately via the `unitOfMeasure` field.
+    """
+    Specifies an alternative unit-of-measure set when updating this item line's
+    `unitOfMeasure` field (e.g., "pound" or "kilogram"). This allows you to select
+    units from a different set than the item's default unit-of-measure set, which
+    remains unchanged on the item itself. The override applies only to this specific
+    line. For example, you can sell an item typically measured in volume units using
+    weight units in a specific transaction by specifying a different unit-of-measure
+    set with this field.
     """
 
     quantity: float
@@ -302,7 +302,7 @@ class ItemGroupLineItemLine(TypedDict, total=False):
     """
 
     unit_of_measure: Annotated[str, PropertyInfo(alias="unitOfMeasure")]
-    """The unit of measure used for the `quantity` in this item line.
+    """The unit-of-measure used for the `quantity` in this item line.
 
     Must be a valid unit within the item's available units of measure.
     """
@@ -336,21 +336,21 @@ class ItemGroupLine(TypedDict, total=False):
     """
 
     override_unit_of_measure_set_id: Annotated[str, PropertyInfo(alias="overrideUnitOfMeasureSetId")]
-    """Specifies an alternative unit of measure set for this specific item group line.
-
-    This does not change the item's default unit of measure set (which is set on the
-    item itself rather than a transaction line), but allows selecting from a
-    different set of units for this particular line. For example, an item typically
-    measured in volume units could be sold using weight units in a specific
-    transaction. The actual unit selection (e.g., "pound" or "kilogram") is made
-    separately via the `unitOfMeasure` field.
+    """
+    Specifies an alternative unit-of-measure set when updating this item group
+    line's `unitOfMeasure` field (e.g., "pound" or "kilogram"). This allows you to
+    select units from a different set than the item's default unit-of-measure set,
+    which remains unchanged on the item itself. The override applies only to this
+    specific line. For example, you can sell an item typically measured in volume
+    units using weight units in a specific transaction by specifying a different
+    unit-of-measure set with this field.
     """
 
     quantity: float
     """The quantity of the item group associated with this item group line."""
 
     unit_of_measure: Annotated[str, PropertyInfo(alias="unitOfMeasure")]
-    """The unit of measure used for the `quantity` in this item group line.
+    """The unit-of-measure used for the `quantity` in this item group line.
 
     Must be a valid unit within the item's available units of measure.
     """
@@ -442,14 +442,14 @@ class ItemLine(TypedDict, total=False):
     """
 
     override_unit_of_measure_set_id: Annotated[str, PropertyInfo(alias="overrideUnitOfMeasureSetId")]
-    """Specifies an alternative unit of measure set for this specific item line.
-
-    This does not change the item's default unit of measure set (which is set on the
-    item itself rather than a transaction line), but allows selecting from a
-    different set of units for this particular line. For example, an item typically
-    measured in volume units could be sold using weight units in a specific
-    transaction. The actual unit selection (e.g., "pound" or "kilogram") is made
-    separately via the `unitOfMeasure` field.
+    """
+    Specifies an alternative unit-of-measure set when updating this item line's
+    `unitOfMeasure` field (e.g., "pound" or "kilogram"). This allows you to select
+    units from a different set than the item's default unit-of-measure set, which
+    remains unchanged on the item itself. The override applies only to this specific
+    line. For example, you can sell an item typically measured in volume units using
+    weight units in a specific transaction by specifying a different unit-of-measure
+    set with this field.
     """
 
     quantity: float
@@ -478,7 +478,7 @@ class ItemLine(TypedDict, total=False):
     """
 
     unit_of_measure: Annotated[str, PropertyInfo(alias="unitOfMeasure")]
-    """The unit of measure used for the `quantity` in this item line.
+    """The unit-of-measure used for the `quantity` in this item line.
 
     Must be a valid unit within the item's available units of measure.
     """
