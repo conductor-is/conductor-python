@@ -294,7 +294,7 @@ class AlternateShippingAddress(TypedDict, total=False):
     country: str
     """The country name of the address."""
 
-    default_ship_to: Annotated[bool, PropertyInfo(alias="defaultShipTo")]
+    is_default_address: Annotated[bool, PropertyInfo(alias="isDefaultAddress")]
     """Indicates whether this address is the default shipping address."""
 
     line1: str
