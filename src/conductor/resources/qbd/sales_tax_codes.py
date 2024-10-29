@@ -19,7 +19,7 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...types.qbd import sales_tax_code_list_params, sales_tax_code_create_params
+from ...types.qbd import sales_tax_code_list_params, sales_tax_code_create_params, sales_tax_code_update_params
 from ..._base_client import make_request_options
 from ...types.qbd.sales_tax_code import SalesTaxCode
 from ...types.qbd.sales_tax_code_list_response import SalesTaxCodeListResponse
@@ -77,7 +77,8 @@ class SalesTaxCodesResource(SyncAPIResource):
               the retrieval of the `isTaxable` value.
 
           name: The case-insensitive unique name of this sales-tax code, unique across all
-              sales-tax codes.
+              sales-tax codes. This short name will appear on sales forms to identify the tax
+              status of an item.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -153,6 +154,90 @@ class SalesTaxCodesResource(SyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get(
             f"/quickbooks-desktop/sales-tax-codes/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=SalesTaxCode,
+        )
+
+    def update(
+        self,
+        id: str,
+        *,
+        version: str,
+        conductor_end_user_id: str,
+        description: str | NotGiven = NOT_GIVEN,
+        is_active: bool | NotGiven = NOT_GIVEN,
+        is_taxable: bool | NotGiven = NOT_GIVEN,
+        item_sales_tax_id: str | NotGiven = NOT_GIVEN,
+        name: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> SalesTaxCode:
+        """
+        Updates an existing sales-tax code.
+
+        Args:
+          id: The QuickBooks-assigned unique identifier of the sales-tax code to update.
+
+          version: The current version identifier of the sales-tax code you are updating, which you
+              can get by fetching the object first. Provide the most recent `version` to
+              ensure you're working with the latest data; otherwise, the update will fail.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          description: A description of this sales-tax code.
+
+          is_active: Indicates whether this sales-tax code is active. Inactive objects are typically
+              hidden from views and reports in QuickBooks.
+
+          is_taxable: Indicates whether this sales-tax code is tracking taxable sales. This field
+              cannot be modified once the sales-tax code has been used in a transaction. For
+              the default built-in sales-tax codes, "Non" always has `isTaxable` as `false`,
+              while "Tax" always has it as `true`. Due to a bug in QuickBooks, for all other
+              (custom) sales-tax codes, the value of this field cannot be reliably retrieved
+              externally, resulting in `null` being returned. However, you can confidently set
+              the `isTaxable` value when creating a sales-tax code; the issue solely affects
+              the retrieval of the `isTaxable` value.
+
+          item_sales_tax_id: The sales-tax item used to calculate the actual tax amount for this sales-tax
+              code's transactions by applying a specific tax rate collected for a single tax
+              agency. Unlike `salesTaxCode`, which only indicates general taxability, this
+              field drives the actual tax calculation and reporting.
+
+          name: The case-insensitive unique name of this sales-tax code, unique across all
+              sales-tax codes. This short name will appear on sales forms to identify the tax
+              status of an item.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return self._post(
+            f"/quickbooks-desktop/sales-tax-codes/{id}",
+            body=maybe_transform(
+                {
+                    "version": version,
+                    "description": description,
+                    "is_active": is_active,
+                    "is_taxable": is_taxable,
+                    "item_sales_tax_id": item_sales_tax_id,
+                    "name": name,
+                },
+                sales_tax_code_update_params.SalesTaxCodeUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -321,7 +406,8 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
               the retrieval of the `isTaxable` value.
 
           name: The case-insensitive unique name of this sales-tax code, unique across all
-              sales-tax codes.
+              sales-tax codes. This short name will appear on sales forms to identify the tax
+              status of an item.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -397,6 +483,90 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return await self._get(
             f"/quickbooks-desktop/sales-tax-codes/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=SalesTaxCode,
+        )
+
+    async def update(
+        self,
+        id: str,
+        *,
+        version: str,
+        conductor_end_user_id: str,
+        description: str | NotGiven = NOT_GIVEN,
+        is_active: bool | NotGiven = NOT_GIVEN,
+        is_taxable: bool | NotGiven = NOT_GIVEN,
+        item_sales_tax_id: str | NotGiven = NOT_GIVEN,
+        name: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> SalesTaxCode:
+        """
+        Updates an existing sales-tax code.
+
+        Args:
+          id: The QuickBooks-assigned unique identifier of the sales-tax code to update.
+
+          version: The current version identifier of the sales-tax code you are updating, which you
+              can get by fetching the object first. Provide the most recent `version` to
+              ensure you're working with the latest data; otherwise, the update will fail.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          description: A description of this sales-tax code.
+
+          is_active: Indicates whether this sales-tax code is active. Inactive objects are typically
+              hidden from views and reports in QuickBooks.
+
+          is_taxable: Indicates whether this sales-tax code is tracking taxable sales. This field
+              cannot be modified once the sales-tax code has been used in a transaction. For
+              the default built-in sales-tax codes, "Non" always has `isTaxable` as `false`,
+              while "Tax" always has it as `true`. Due to a bug in QuickBooks, for all other
+              (custom) sales-tax codes, the value of this field cannot be reliably retrieved
+              externally, resulting in `null` being returned. However, you can confidently set
+              the `isTaxable` value when creating a sales-tax code; the issue solely affects
+              the retrieval of the `isTaxable` value.
+
+          item_sales_tax_id: The sales-tax item used to calculate the actual tax amount for this sales-tax
+              code's transactions by applying a specific tax rate collected for a single tax
+              agency. Unlike `salesTaxCode`, which only indicates general taxability, this
+              field drives the actual tax calculation and reporting.
+
+          name: The case-insensitive unique name of this sales-tax code, unique across all
+              sales-tax codes. This short name will appear on sales forms to identify the tax
+              status of an item.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return await self._post(
+            f"/quickbooks-desktop/sales-tax-codes/{id}",
+            body=await async_maybe_transform(
+                {
+                    "version": version,
+                    "description": description,
+                    "is_active": is_active,
+                    "is_taxable": is_taxable,
+                    "item_sales_tax_id": item_sales_tax_id,
+                    "name": name,
+                },
+                sales_tax_code_update_params.SalesTaxCodeUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -525,6 +695,9 @@ class SalesTaxCodesResourceWithRawResponse:
         self.retrieve = to_raw_response_wrapper(
             sales_tax_codes.retrieve,
         )
+        self.update = to_raw_response_wrapper(
+            sales_tax_codes.update,
+        )
         self.list = to_raw_response_wrapper(
             sales_tax_codes.list,
         )
@@ -539,6 +712,9 @@ class AsyncSalesTaxCodesResourceWithRawResponse:
         )
         self.retrieve = async_to_raw_response_wrapper(
             sales_tax_codes.retrieve,
+        )
+        self.update = async_to_raw_response_wrapper(
+            sales_tax_codes.update,
         )
         self.list = async_to_raw_response_wrapper(
             sales_tax_codes.list,
@@ -555,6 +731,9 @@ class SalesTaxCodesResourceWithStreamingResponse:
         self.retrieve = to_streamed_response_wrapper(
             sales_tax_codes.retrieve,
         )
+        self.update = to_streamed_response_wrapper(
+            sales_tax_codes.update,
+        )
         self.list = to_streamed_response_wrapper(
             sales_tax_codes.list,
         )
@@ -569,6 +748,9 @@ class AsyncSalesTaxCodesResourceWithStreamingResponse:
         )
         self.retrieve = async_to_streamed_response_wrapper(
             sales_tax_codes.retrieve,
+        )
+        self.update = async_to_streamed_response_wrapper(
+            sales_tax_codes.update,
         )
         self.list = async_to_streamed_response_wrapper(
             sales_tax_codes.list,

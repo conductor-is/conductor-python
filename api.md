@@ -208,6 +208,7 @@ Methods:
 
 - <code title="post /quickbooks-desktop/sales-tax-codes">client.qbd.sales_tax_codes.<a href="./src/conductor/resources/qbd/sales_tax_codes.py">create</a>(\*\*<a href="src/conductor/types/qbd/sales_tax_code_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/sales_tax_code.py">SalesTaxCode</a></code>
 - <code title="get /quickbooks-desktop/sales-tax-codes/{id}">client.qbd.sales_tax_codes.<a href="./src/conductor/resources/qbd/sales_tax_codes.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/sales_tax_code.py">SalesTaxCode</a></code>
+- <code title="post /quickbooks-desktop/sales-tax-codes/{id}">client.qbd.sales_tax_codes.<a href="./src/conductor/resources/qbd/sales_tax_codes.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/sales_tax_code_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/sales_tax_code.py">SalesTaxCode</a></code>
 - <code title="get /quickbooks-desktop/sales-tax-codes">client.qbd.sales_tax_codes.<a href="./src/conductor/resources/qbd/sales_tax_codes.py">list</a>(\*\*<a href="src/conductor/types/qbd/sales_tax_code_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/sales_tax_code_list_response.py">SalesTaxCodeListResponse</a></code>
 
 ## SalesTaxItems
