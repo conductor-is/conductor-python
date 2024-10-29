@@ -187,7 +187,6 @@ class SalesTaxItemsResource(SyncAPIResource):
         barcode: sales_tax_item_update_params.Barcode | NotGiven = NOT_GIVEN,
         class_id: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
-        external_id: str | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
         sales_tax_return_line_id: str | NotGiven = NOT_GIVEN,
@@ -221,11 +220,6 @@ class SalesTaxItemsResource(SyncAPIResource):
 
           description: The sales-tax item's description that will appear on sales forms that include
               this item.
-
-          external_id: A globally unique identifier (GUID) you can provide for tracking this object in
-              your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
-              will return an error. This field is immutable and can only be set during object
-              creation.
 
           is_active: Indicates whether this sales-tax item is active. Inactive objects are typically
               hidden from views and reports in QuickBooks.
@@ -265,7 +259,6 @@ class SalesTaxItemsResource(SyncAPIResource):
                     "barcode": barcode,
                     "class_id": class_id,
                     "description": description,
-                    "external_id": external_id,
                     "is_active": is_active,
                     "name": name,
                     "sales_tax_return_line_id": sales_tax_return_line_id,
@@ -565,7 +558,6 @@ class AsyncSalesTaxItemsResource(AsyncAPIResource):
         barcode: sales_tax_item_update_params.Barcode | NotGiven = NOT_GIVEN,
         class_id: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
-        external_id: str | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
         sales_tax_return_line_id: str | NotGiven = NOT_GIVEN,
@@ -599,11 +591,6 @@ class AsyncSalesTaxItemsResource(AsyncAPIResource):
 
           description: The sales-tax item's description that will appear on sales forms that include
               this item.
-
-          external_id: A globally unique identifier (GUID) you can provide for tracking this object in
-              your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
-              will return an error. This field is immutable and can only be set during object
-              creation.
 
           is_active: Indicates whether this sales-tax item is active. Inactive objects are typically
               hidden from views and reports in QuickBooks.
@@ -643,7 +630,6 @@ class AsyncSalesTaxItemsResource(AsyncAPIResource):
                     "barcode": barcode,
                     "class_id": class_id,
                     "description": description,
-                    "external_id": external_id,
                     "is_active": is_active,
                     "name": name,
                     "sales_tax_return_line_id": sales_tax_return_line_id,
