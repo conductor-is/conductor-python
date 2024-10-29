@@ -19,7 +19,11 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...types.qbd import non_inventory_item_list_params, non_inventory_item_create_params
+from ...types.qbd import (
+    non_inventory_item_list_params,
+    non_inventory_item_create_params,
+    non_inventory_item_update_params,
+)
 from ...pagination import SyncCursorPage, AsyncCursorPage
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.qbd.non_inventory_item import NonInventoryItem
@@ -183,6 +187,137 @@ class NonInventoryItemsResource(SyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get(
             f"/quickbooks-desktop/non-inventory-items/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NonInventoryItem,
+        )
+
+    def update(
+        self,
+        id: str,
+        *,
+        version: str,
+        conductor_end_user_id: str,
+        barcode: non_inventory_item_update_params.Barcode | NotGiven = NOT_GIVEN,
+        class_id: str | NotGiven = NOT_GIVEN,
+        force_unit_of_measure_change: bool | NotGiven = NOT_GIVEN,
+        is_active: bool | NotGiven = NOT_GIVEN,
+        manufacturer_part_number: str | NotGiven = NOT_GIVEN,
+        name: str | NotGiven = NOT_GIVEN,
+        parent_id: str | NotGiven = NOT_GIVEN,
+        sales_and_purchase_details: non_inventory_item_update_params.SalesAndPurchaseDetails | NotGiven = NOT_GIVEN,
+        sales_or_purchase_details: non_inventory_item_update_params.SalesOrPurchaseDetails | NotGiven = NOT_GIVEN,
+        sales_tax_code_id: str | NotGiven = NOT_GIVEN,
+        unit_of_measure_set_id: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> NonInventoryItem:
+        """
+        Updates an existing non-inventory item.
+
+        Args:
+          id: The QuickBooks-assigned unique identifier of the non-inventory item to update.
+
+          version: The current version identifier of the non-inventory item you are updating, which
+              you can get by fetching the object first. Provide the most recent `version` to
+              ensure you're working with the latest data; otherwise, the update will fail.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          barcode: The non-inventory item's barcode.
+
+          class_id: The non-inventory item's class. Classes can be used to categorize objects into
+              meaningful segments, such as department, location, or type of work. In
+              QuickBooks, class tracking is off by default.
+
+          force_unit_of_measure_change: Indicates whether to allow changing the non-inventory item's Unit of Measure
+              (UOM) set (using the `unitOfMeasureSetId` field) when the base unit of the new
+              UOM set does not match that of the currently assigned UOM set. Without setting
+              this field to `true` in this scenario, the request will fail with an error;
+              hence, this field is equivalent to accepting the warning prompt in the
+              QuickBooks UI.
+
+              Important: Changing the base unit requires you to update the item's
+              quantities-on-hand and cost to reflect the new unit; otherwise, these values
+              will be inaccurate. Alternatively, consider creating a new item with the desired
+              UOM set and deactivating the old item.
+
+          is_active: Indicates whether this non-inventory item is active. Inactive objects are
+              typically hidden from views and reports in QuickBooks.
+
+          manufacturer_part_number: The manufacturer's part number for this non-inventory item, which is often the
+              stock keeping unit (SKU).
+
+          name: The case-insensitive name of this non-inventory item. Not guaranteed to be
+              unique because it does not include the names of its parent objects like
+              `fullName` does. For example, two non-inventory items could both have the `name`
+              "Printer Ink Cartridge", but they could have unique `fullName` values, such as
+              "Office-Supplies:Printer Ink Cartridge" and "Miscellaneous:Printer Ink
+              Cartridge".
+
+          parent_id: The parent non-inventory item one level above this one in the hierarchy. For
+              example, if this non-inventory item has a `fullName` of "Office-Supplies:Printer
+              Ink Cartridge", its parent has a `fullName` of "Office-Supplies". If this
+              non-inventory item is at the top level, this field will be `null`.
+
+          sales_and_purchase_details: Details for non-inventory items that are both purchased and sold, such as
+              reimbursable expenses or inventory items that are bought from vendors and sold
+              to customers. Do not use this field alongside `salesOrPurchaseDetails` because
+              an item cannot have both configurations.
+
+          sales_or_purchase_details: Details for non-inventory items that are exclusively sold or exclusively
+              purchased, but not both. This typically applies to non-inventory items (like a
+              purchased office supply that isn't resold) or service items (like consulting
+              services that are sold but not purchased). Do not use this field alongside
+              `salesAndPurchaseDetails` because an item cannot have both configurations.
+
+          sales_tax_code_id: The sales-tax code associated with this non-inventory item, determining whether
+              it is taxable or non-taxable. It's used to assign a default tax status to all
+              transactions for this non-inventory item. Default codes include "Non"
+              (non-taxable) and "Tax" (taxable), but custom codes can also be created in
+              QuickBooks. If QuickBooks is not set up to charge sales tax (via the "Do You
+              Charge Sales Tax?" preference), it will assign the default non-taxable code to
+              all sales.
+
+          unit_of_measure_set_id: The unit of measure set associated with this non-inventory item, which consists
+              of a base unit and related units.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return self._post(
+            f"/quickbooks-desktop/non-inventory-items/{id}",
+            body=maybe_transform(
+                {
+                    "version": version,
+                    "barcode": barcode,
+                    "class_id": class_id,
+                    "force_unit_of_measure_change": force_unit_of_measure_change,
+                    "is_active": is_active,
+                    "manufacturer_part_number": manufacturer_part_number,
+                    "name": name,
+                    "parent_id": parent_id,
+                    "sales_and_purchase_details": sales_and_purchase_details,
+                    "sales_or_purchase_details": sales_or_purchase_details,
+                    "sales_tax_code_id": sales_tax_code_id,
+                    "unit_of_measure_set_id": unit_of_measure_set_id,
+                },
+                non_inventory_item_update_params.NonInventoryItemUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -476,6 +611,137 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
             cast_to=NonInventoryItem,
         )
 
+    async def update(
+        self,
+        id: str,
+        *,
+        version: str,
+        conductor_end_user_id: str,
+        barcode: non_inventory_item_update_params.Barcode | NotGiven = NOT_GIVEN,
+        class_id: str | NotGiven = NOT_GIVEN,
+        force_unit_of_measure_change: bool | NotGiven = NOT_GIVEN,
+        is_active: bool | NotGiven = NOT_GIVEN,
+        manufacturer_part_number: str | NotGiven = NOT_GIVEN,
+        name: str | NotGiven = NOT_GIVEN,
+        parent_id: str | NotGiven = NOT_GIVEN,
+        sales_and_purchase_details: non_inventory_item_update_params.SalesAndPurchaseDetails | NotGiven = NOT_GIVEN,
+        sales_or_purchase_details: non_inventory_item_update_params.SalesOrPurchaseDetails | NotGiven = NOT_GIVEN,
+        sales_tax_code_id: str | NotGiven = NOT_GIVEN,
+        unit_of_measure_set_id: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> NonInventoryItem:
+        """
+        Updates an existing non-inventory item.
+
+        Args:
+          id: The QuickBooks-assigned unique identifier of the non-inventory item to update.
+
+          version: The current version identifier of the non-inventory item you are updating, which
+              you can get by fetching the object first. Provide the most recent `version` to
+              ensure you're working with the latest data; otherwise, the update will fail.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          barcode: The non-inventory item's barcode.
+
+          class_id: The non-inventory item's class. Classes can be used to categorize objects into
+              meaningful segments, such as department, location, or type of work. In
+              QuickBooks, class tracking is off by default.
+
+          force_unit_of_measure_change: Indicates whether to allow changing the non-inventory item's Unit of Measure
+              (UOM) set (using the `unitOfMeasureSetId` field) when the base unit of the new
+              UOM set does not match that of the currently assigned UOM set. Without setting
+              this field to `true` in this scenario, the request will fail with an error;
+              hence, this field is equivalent to accepting the warning prompt in the
+              QuickBooks UI.
+
+              Important: Changing the base unit requires you to update the item's
+              quantities-on-hand and cost to reflect the new unit; otherwise, these values
+              will be inaccurate. Alternatively, consider creating a new item with the desired
+              UOM set and deactivating the old item.
+
+          is_active: Indicates whether this non-inventory item is active. Inactive objects are
+              typically hidden from views and reports in QuickBooks.
+
+          manufacturer_part_number: The manufacturer's part number for this non-inventory item, which is often the
+              stock keeping unit (SKU).
+
+          name: The case-insensitive name of this non-inventory item. Not guaranteed to be
+              unique because it does not include the names of its parent objects like
+              `fullName` does. For example, two non-inventory items could both have the `name`
+              "Printer Ink Cartridge", but they could have unique `fullName` values, such as
+              "Office-Supplies:Printer Ink Cartridge" and "Miscellaneous:Printer Ink
+              Cartridge".
+
+          parent_id: The parent non-inventory item one level above this one in the hierarchy. For
+              example, if this non-inventory item has a `fullName` of "Office-Supplies:Printer
+              Ink Cartridge", its parent has a `fullName` of "Office-Supplies". If this
+              non-inventory item is at the top level, this field will be `null`.
+
+          sales_and_purchase_details: Details for non-inventory items that are both purchased and sold, such as
+              reimbursable expenses or inventory items that are bought from vendors and sold
+              to customers. Do not use this field alongside `salesOrPurchaseDetails` because
+              an item cannot have both configurations.
+
+          sales_or_purchase_details: Details for non-inventory items that are exclusively sold or exclusively
+              purchased, but not both. This typically applies to non-inventory items (like a
+              purchased office supply that isn't resold) or service items (like consulting
+              services that are sold but not purchased). Do not use this field alongside
+              `salesAndPurchaseDetails` because an item cannot have both configurations.
+
+          sales_tax_code_id: The sales-tax code associated with this non-inventory item, determining whether
+              it is taxable or non-taxable. It's used to assign a default tax status to all
+              transactions for this non-inventory item. Default codes include "Non"
+              (non-taxable) and "Tax" (taxable), but custom codes can also be created in
+              QuickBooks. If QuickBooks is not set up to charge sales tax (via the "Do You
+              Charge Sales Tax?" preference), it will assign the default non-taxable code to
+              all sales.
+
+          unit_of_measure_set_id: The unit of measure set associated with this non-inventory item, which consists
+              of a base unit and related units.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return await self._post(
+            f"/quickbooks-desktop/non-inventory-items/{id}",
+            body=await async_maybe_transform(
+                {
+                    "version": version,
+                    "barcode": barcode,
+                    "class_id": class_id,
+                    "force_unit_of_measure_change": force_unit_of_measure_change,
+                    "is_active": is_active,
+                    "manufacturer_part_number": manufacturer_part_number,
+                    "name": name,
+                    "parent_id": parent_id,
+                    "sales_and_purchase_details": sales_and_purchase_details,
+                    "sales_or_purchase_details": sales_or_purchase_details,
+                    "sales_tax_code_id": sales_tax_code_id,
+                    "unit_of_measure_set_id": unit_of_measure_set_id,
+                },
+                non_inventory_item_update_params.NonInventoryItemUpdateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NonInventoryItem,
+        )
+
     def list(
         self,
         *,
@@ -611,6 +877,9 @@ class NonInventoryItemsResourceWithRawResponse:
         self.retrieve = to_raw_response_wrapper(
             non_inventory_items.retrieve,
         )
+        self.update = to_raw_response_wrapper(
+            non_inventory_items.update,
+        )
         self.list = to_raw_response_wrapper(
             non_inventory_items.list,
         )
@@ -625,6 +894,9 @@ class AsyncNonInventoryItemsResourceWithRawResponse:
         )
         self.retrieve = async_to_raw_response_wrapper(
             non_inventory_items.retrieve,
+        )
+        self.update = async_to_raw_response_wrapper(
+            non_inventory_items.update,
         )
         self.list = async_to_raw_response_wrapper(
             non_inventory_items.list,
@@ -641,6 +913,9 @@ class NonInventoryItemsResourceWithStreamingResponse:
         self.retrieve = to_streamed_response_wrapper(
             non_inventory_items.retrieve,
         )
+        self.update = to_streamed_response_wrapper(
+            non_inventory_items.update,
+        )
         self.list = to_streamed_response_wrapper(
             non_inventory_items.list,
         )
@@ -655,6 +930,9 @@ class AsyncNonInventoryItemsResourceWithStreamingResponse:
         )
         self.retrieve = async_to_streamed_response_wrapper(
             non_inventory_items.retrieve,
+        )
+        self.update = async_to_streamed_response_wrapper(
+            non_inventory_items.update,
         )
         self.list = async_to_streamed_response_wrapper(
             non_inventory_items.list,
