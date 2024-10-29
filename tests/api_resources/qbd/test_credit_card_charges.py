@@ -398,7 +398,7 @@ class TestCreditCardCharges:
     def test_method_update(self, client: Conductor) -> None:
         credit_card_charge = client.qbd.credit_card_charges.update(
             id="123ABC-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(QbdCreditCardCharge, credit_card_charge, path=["response"])
@@ -407,7 +407,7 @@ class TestCreditCardCharges:
     def test_method_update_with_all_params(self, client: Conductor) -> None:
         credit_card_charge = client.qbd.credit_card_charges.update(
             id="123ABC-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
             account_id="80000001-1234567890",
             clear_expense_lines=False,
@@ -743,7 +743,7 @@ class TestCreditCardCharges:
     def test_raw_response_update(self, client: Conductor) -> None:
         response = client.qbd.credit_card_charges.with_raw_response.update(
             id="123ABC-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -756,7 +756,7 @@ class TestCreditCardCharges:
     def test_streaming_response_update(self, client: Conductor) -> None:
         with client.qbd.credit_card_charges.with_streaming_response.update(
             id="123ABC-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
@@ -772,7 +772,7 @@ class TestCreditCardCharges:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.qbd.credit_card_charges.with_raw_response.update(
                 id="",
-                version="1721172183",
+                revision_number="1721172183",
                 conductor_end_user_id="end_usr_1234567abcdefg",
             )
 
@@ -1212,7 +1212,7 @@ class TestAsyncCreditCardCharges:
     async def test_method_update(self, async_client: AsyncConductor) -> None:
         credit_card_charge = await async_client.qbd.credit_card_charges.update(
             id="123ABC-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(QbdCreditCardCharge, credit_card_charge, path=["response"])
@@ -1221,7 +1221,7 @@ class TestAsyncCreditCardCharges:
     async def test_method_update_with_all_params(self, async_client: AsyncConductor) -> None:
         credit_card_charge = await async_client.qbd.credit_card_charges.update(
             id="123ABC-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
             account_id="80000001-1234567890",
             clear_expense_lines=False,
@@ -1557,7 +1557,7 @@ class TestAsyncCreditCardCharges:
     async def test_raw_response_update(self, async_client: AsyncConductor) -> None:
         response = await async_client.qbd.credit_card_charges.with_raw_response.update(
             id="123ABC-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -1570,7 +1570,7 @@ class TestAsyncCreditCardCharges:
     async def test_streaming_response_update(self, async_client: AsyncConductor) -> None:
         async with async_client.qbd.credit_card_charges.with_streaming_response.update(
             id="123ABC-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
@@ -1586,7 +1586,7 @@ class TestAsyncCreditCardCharges:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.qbd.credit_card_charges.with_raw_response.update(
                 id="",
-                version="1721172183",
+                revision_number="1721172183",
                 conductor_end_user_id="end_usr_1234567abcdefg",
             )
 

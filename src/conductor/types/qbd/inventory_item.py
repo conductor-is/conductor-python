@@ -11,7 +11,7 @@ __all__ = [
     "InventoryItem",
     "AssetAccount",
     "Class",
-    "CogsAccount",
+    "CostOfGoodsSoldAccount",
     "CustomField",
     "IncomeAccount",
     "Parent",
@@ -54,7 +54,7 @@ class Class(BaseModel):
     """
 
 
-class CogsAccount(BaseModel):
+class CostOfGoodsSoldAccount(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks to this object.
 
@@ -234,7 +234,9 @@ class InventoryItem(BaseModel):
     default.
     """
 
-    cogs_account: Optional[CogsAccount] = FieldInfo(alias="cogsAccount", default=None)
+    cost_of_goods_sold_account: Optional[CostOfGoodsSoldAccount] = FieldInfo(
+        alias="costOfGoodsSoldAccount", default=None
+    )
     """
     The Cost of Goods Sold (COGS) account for this inventory item, tracking the
     original direct costs of producing goods sold.
@@ -278,12 +280,6 @@ class InventoryItem(BaseModel):
     """Indicates whether this inventory item is active.
 
     Inactive objects are typically hidden from views and reports in QuickBooks.
-    """
-
-    manufacturer_part_number: Optional[str] = FieldInfo(alias="manufacturerPartNumber", default=None)
-    """
-    The manufacturer's part number for this inventory item, which is often the stock
-    keeping unit (SKU).
     """
 
     maximum_quantity_on_hand: Optional[float] = FieldInfo(alias="maximumQuantityOnHand", default=None)
@@ -356,6 +352,14 @@ class InventoryItem(BaseModel):
     reordering.
     """
 
+    revision_number: str = FieldInfo(alias="revisionNumber")
+    """
+    The current revision number of this inventory item, which changes each time the
+    object is modified. When updating this object, you must provide the most recent
+    `revisionNumber` to ensure you're working with the latest data; otherwise, the
+    update will return an error.
+    """
+
     sales_description: Optional[str] = FieldInfo(alias="salesDescription", default=None)
     """
     The description of this inventory item that appears on sales forms (e.g.,
@@ -378,6 +382,12 @@ class InventoryItem(BaseModel):
     preference), it will assign the default non-taxable code to all sales.
     """
 
+    sku: Optional[str] = None
+    """
+    The manufacturer's part number for this inventory item, which is often the stock
+    keeping unit (SKU).
+    """
+
     sublevel: float
     """The depth level of this inventory item in the hierarchy.
 
@@ -397,12 +407,4 @@ class InventoryItem(BaseModel):
     The date and time when this inventory item was last updated, in ISO 8601 format
     (YYYY-MM-DDThh:mm:ss±hh:mm). The time zone is the same as the user's time zone
     in QuickBooks.
-    """
-
-    version: str
-    """
-    The current version identifier of this inventory item, which changes each time
-    the object is modified. When updating this object, you must provide the most
-    recent `version` to ensure you're working with the latest data; otherwise, the
-    update will fail. This value is opaque and should not be interpreted.
     """

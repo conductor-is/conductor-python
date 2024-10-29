@@ -33,6 +33,71 @@ class TestCustomers:
             name="Kitchen-Renovation",
             conductor_end_user_id="end_usr_1234567abcdefg",
             account_number="1010",
+            additional_contacts=[
+                {
+                    "first_name": "John",
+                    "custom_contact_fields": [
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                    ],
+                    "job_title": "Purchasing Manager",
+                    "last_name": "Doe",
+                    "middle_name": "A.",
+                    "salutation": "Dr.",
+                },
+                {
+                    "first_name": "John",
+                    "custom_contact_fields": [
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                    ],
+                    "job_title": "Purchasing Manager",
+                    "last_name": "Doe",
+                    "middle_name": "A.",
+                    "salutation": "Dr.",
+                },
+                {
+                    "first_name": "John",
+                    "custom_contact_fields": [
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                    ],
+                    "job_title": "Purchasing Manager",
+                    "last_name": "Doe",
+                    "middle_name": "A.",
+                    "salutation": "Dr.",
+                },
+            ],
             additional_notes=[
                 {"note": "This is a fun note."},
                 {"note": "This is a fun note."},
@@ -45,7 +110,7 @@ class TestCustomers:
                     "name": "Alternate shipping address",
                     "city": "San Francisco",
                     "country": "United States",
-                    "is_default_address": True,
+                    "is_default_shipping_address": True,
                     "line1": "548 Market St.",
                     "line2": "Suite 100",
                     "line3": "line3",
@@ -59,7 +124,7 @@ class TestCustomers:
                     "name": "Alternate shipping address",
                     "city": "San Francisco",
                     "country": "United States",
-                    "is_default_address": True,
+                    "is_default_shipping_address": True,
                     "line1": "548 Market St.",
                     "line2": "Suite 100",
                     "line3": "line3",
@@ -73,7 +138,7 @@ class TestCustomers:
                     "name": "Alternate shipping address",
                     "city": "San Francisco",
                     "country": "United States",
-                    "is_default_address": True,
+                    "is_default_shipping_address": True,
                     "line1": "548 Market St.",
                     "line2": "Suite 100",
                     "line3": "line3",
@@ -100,78 +165,13 @@ class TestCustomers:
             class_id="80000001-1234567890",
             company_name="Acme Corporation",
             contact="Jane Smith",
-            contacts=[
-                {
-                    "first_name": "John",
-                    "custom_contact_fields": [
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                    ],
-                    "job_title": "Purchasing Manager",
-                    "last_name": "Doe",
-                    "middle_name": "A.",
-                    "salutation": "Dr.",
-                },
-                {
-                    "first_name": "John",
-                    "custom_contact_fields": [
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                    ],
-                    "job_title": "Purchasing Manager",
-                    "last_name": "Doe",
-                    "middle_name": "A.",
-                    "salutation": "Dr.",
-                },
-                {
-                    "first_name": "John",
-                    "custom_contact_fields": [
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                    ],
-                    "job_title": "Purchasing Manager",
-                    "last_name": "Doe",
-                    "middle_name": "A.",
-                    "salutation": "Dr.",
-                },
-            ],
             credit_card={
                 "address": "1234 Main St, Anytown, USA, 12345",
-                "address_zip": "12345",
                 "expiration_month": 12,
                 "expiration_year": 2024,
                 "name": "John Doe",
                 "number": "xxxxxxxxxxxx1234",
+                "postal_code": "12345",
             },
             credit_limit="5000.00",
             currency_id="80000012-1234567890",
@@ -195,7 +195,6 @@ class TestCustomers:
             fax="+1-555-555-1212",
             first_name="John",
             is_active=True,
-            item_sales_tax_id="80000010-1234567890",
             job_description="Kitchen renovation project for residential client.",
             job_end_date=parse_date("2019-12-27"),
             job_projected_end_date=parse_date("2019-12-27"),
@@ -217,6 +216,7 @@ class TestCustomers:
             sales_representative_id="80000030-1234567890",
             sales_tax_code_id="80000004-1234567890",
             sales_tax_country="australia",
+            sales_tax_item_id="80000010-1234567890",
             salutation="Dr.",
             shipping_address={
                 "city": "San Francisco",
@@ -307,7 +307,7 @@ class TestCustomers:
     def test_method_update(self, client: Conductor) -> None:
         customer = client.qbd.customers.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(QbdCustomer, customer, path=["response"])
@@ -316,10 +316,81 @@ class TestCustomers:
     def test_method_update_with_all_params(self, client: Conductor) -> None:
         customer = client.qbd.customers.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
             account_number="1010",
-            additional_notes_mod=[
+            additional_contacts=[
+                {
+                    "id": "80000001-1234567890",
+                    "first_name": "John",
+                    "revision_number": "1721172183",
+                    "custom_contact_fields": [
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                    ],
+                    "job_title": "Purchasing Manager",
+                    "last_name": "Doe",
+                    "middle_name": "A.",
+                    "salutation": "Dr.",
+                },
+                {
+                    "id": "80000001-1234567890",
+                    "first_name": "John",
+                    "revision_number": "1721172183",
+                    "custom_contact_fields": [
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                    ],
+                    "job_title": "Purchasing Manager",
+                    "last_name": "Doe",
+                    "middle_name": "A.",
+                    "salutation": "Dr.",
+                },
+                {
+                    "id": "80000001-1234567890",
+                    "first_name": "John",
+                    "revision_number": "1721172183",
+                    "custom_contact_fields": [
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                    ],
+                    "job_title": "Purchasing Manager",
+                    "last_name": "Doe",
+                    "middle_name": "A.",
+                    "salutation": "Dr.",
+                },
+            ],
+            additional_notes=[
                 {
                     "id": 1,
                     "note": "This is a fun note.",
@@ -340,7 +411,7 @@ class TestCustomers:
                     "name": "Alternate shipping address",
                     "city": "San Francisco",
                     "country": "United States",
-                    "is_default_address": True,
+                    "is_default_shipping_address": True,
                     "line1": "548 Market St.",
                     "line2": "Suite 100",
                     "line3": "line3",
@@ -354,7 +425,7 @@ class TestCustomers:
                     "name": "Alternate shipping address",
                     "city": "San Francisco",
                     "country": "United States",
-                    "is_default_address": True,
+                    "is_default_shipping_address": True,
                     "line1": "548 Market St.",
                     "line2": "Suite 100",
                     "line3": "line3",
@@ -368,7 +439,7 @@ class TestCustomers:
                     "name": "Alternate shipping address",
                     "city": "San Francisco",
                     "country": "United States",
-                    "is_default_address": True,
+                    "is_default_shipping_address": True,
                     "line1": "548 Market St.",
                     "line2": "Suite 100",
                     "line3": "line3",
@@ -395,84 +466,13 @@ class TestCustomers:
             class_id="80000001-1234567890",
             company_name="Acme Corporation",
             contact="Jane Smith",
-            contacts=[
-                {
-                    "id": "80000001-1234567890",
-                    "first_name": "John",
-                    "version": "1721172183",
-                    "custom_contact_fields": [
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                    ],
-                    "job_title": "Purchasing Manager",
-                    "last_name": "Doe",
-                    "middle_name": "A.",
-                    "salutation": "Dr.",
-                },
-                {
-                    "id": "80000001-1234567890",
-                    "first_name": "John",
-                    "version": "1721172183",
-                    "custom_contact_fields": [
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                    ],
-                    "job_title": "Purchasing Manager",
-                    "last_name": "Doe",
-                    "middle_name": "A.",
-                    "salutation": "Dr.",
-                },
-                {
-                    "id": "80000001-1234567890",
-                    "first_name": "John",
-                    "version": "1721172183",
-                    "custom_contact_fields": [
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                    ],
-                    "job_title": "Purchasing Manager",
-                    "last_name": "Doe",
-                    "middle_name": "A.",
-                    "salutation": "Dr.",
-                },
-            ],
             credit_card={
                 "address": "1234 Main St, Anytown, USA, 12345",
-                "address_zip": "12345",
                 "expiration_month": 12,
                 "expiration_year": 2024,
                 "name": "John Doe",
                 "number": "xxxxxxxxxxxx1234",
+                "postal_code": "12345",
             },
             credit_limit="5000.00",
             currency_id="80000012-1234567890",
@@ -495,7 +495,6 @@ class TestCustomers:
             fax="+1-555-555-1212",
             first_name="John",
             is_active=True,
-            item_sales_tax_id="80000010-1234567890",
             job_description="Kitchen renovation project for residential client.",
             job_end_date=parse_date("2019-12-27"),
             job_projected_end_date=parse_date("2019-12-27"),
@@ -516,6 +515,7 @@ class TestCustomers:
             sales_representative_id="80000030-1234567890",
             sales_tax_code_id="80000004-1234567890",
             sales_tax_country="australia",
+            sales_tax_item_id="80000010-1234567890",
             salutation="Dr.",
             shipping_address={
                 "city": "San Francisco",
@@ -538,7 +538,7 @@ class TestCustomers:
     def test_raw_response_update(self, client: Conductor) -> None:
         response = client.qbd.customers.with_raw_response.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -551,7 +551,7 @@ class TestCustomers:
     def test_streaming_response_update(self, client: Conductor) -> None:
         with client.qbd.customers.with_streaming_response.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
@@ -567,7 +567,7 @@ class TestCustomers:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.qbd.customers.with_raw_response.update(
                 id="",
-                version="1721172183",
+                revision_number="1721172183",
                 conductor_end_user_id="end_usr_1234567abcdefg",
             )
 
@@ -646,6 +646,71 @@ class TestAsyncCustomers:
             name="Kitchen-Renovation",
             conductor_end_user_id="end_usr_1234567abcdefg",
             account_number="1010",
+            additional_contacts=[
+                {
+                    "first_name": "John",
+                    "custom_contact_fields": [
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                    ],
+                    "job_title": "Purchasing Manager",
+                    "last_name": "Doe",
+                    "middle_name": "A.",
+                    "salutation": "Dr.",
+                },
+                {
+                    "first_name": "John",
+                    "custom_contact_fields": [
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                    ],
+                    "job_title": "Purchasing Manager",
+                    "last_name": "Doe",
+                    "middle_name": "A.",
+                    "salutation": "Dr.",
+                },
+                {
+                    "first_name": "John",
+                    "custom_contact_fields": [
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                    ],
+                    "job_title": "Purchasing Manager",
+                    "last_name": "Doe",
+                    "middle_name": "A.",
+                    "salutation": "Dr.",
+                },
+            ],
             additional_notes=[
                 {"note": "This is a fun note."},
                 {"note": "This is a fun note."},
@@ -658,7 +723,7 @@ class TestAsyncCustomers:
                     "name": "Alternate shipping address",
                     "city": "San Francisco",
                     "country": "United States",
-                    "is_default_address": True,
+                    "is_default_shipping_address": True,
                     "line1": "548 Market St.",
                     "line2": "Suite 100",
                     "line3": "line3",
@@ -672,7 +737,7 @@ class TestAsyncCustomers:
                     "name": "Alternate shipping address",
                     "city": "San Francisco",
                     "country": "United States",
-                    "is_default_address": True,
+                    "is_default_shipping_address": True,
                     "line1": "548 Market St.",
                     "line2": "Suite 100",
                     "line3": "line3",
@@ -686,7 +751,7 @@ class TestAsyncCustomers:
                     "name": "Alternate shipping address",
                     "city": "San Francisco",
                     "country": "United States",
-                    "is_default_address": True,
+                    "is_default_shipping_address": True,
                     "line1": "548 Market St.",
                     "line2": "Suite 100",
                     "line3": "line3",
@@ -713,78 +778,13 @@ class TestAsyncCustomers:
             class_id="80000001-1234567890",
             company_name="Acme Corporation",
             contact="Jane Smith",
-            contacts=[
-                {
-                    "first_name": "John",
-                    "custom_contact_fields": [
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                    ],
-                    "job_title": "Purchasing Manager",
-                    "last_name": "Doe",
-                    "middle_name": "A.",
-                    "salutation": "Dr.",
-                },
-                {
-                    "first_name": "John",
-                    "custom_contact_fields": [
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                    ],
-                    "job_title": "Purchasing Manager",
-                    "last_name": "Doe",
-                    "middle_name": "A.",
-                    "salutation": "Dr.",
-                },
-                {
-                    "first_name": "John",
-                    "custom_contact_fields": [
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                    ],
-                    "job_title": "Purchasing Manager",
-                    "last_name": "Doe",
-                    "middle_name": "A.",
-                    "salutation": "Dr.",
-                },
-            ],
             credit_card={
                 "address": "1234 Main St, Anytown, USA, 12345",
-                "address_zip": "12345",
                 "expiration_month": 12,
                 "expiration_year": 2024,
                 "name": "John Doe",
                 "number": "xxxxxxxxxxxx1234",
+                "postal_code": "12345",
             },
             credit_limit="5000.00",
             currency_id="80000012-1234567890",
@@ -808,7 +808,6 @@ class TestAsyncCustomers:
             fax="+1-555-555-1212",
             first_name="John",
             is_active=True,
-            item_sales_tax_id="80000010-1234567890",
             job_description="Kitchen renovation project for residential client.",
             job_end_date=parse_date("2019-12-27"),
             job_projected_end_date=parse_date("2019-12-27"),
@@ -830,6 +829,7 @@ class TestAsyncCustomers:
             sales_representative_id="80000030-1234567890",
             sales_tax_code_id="80000004-1234567890",
             sales_tax_country="australia",
+            sales_tax_item_id="80000010-1234567890",
             salutation="Dr.",
             shipping_address={
                 "city": "San Francisco",
@@ -920,7 +920,7 @@ class TestAsyncCustomers:
     async def test_method_update(self, async_client: AsyncConductor) -> None:
         customer = await async_client.qbd.customers.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(QbdCustomer, customer, path=["response"])
@@ -929,10 +929,81 @@ class TestAsyncCustomers:
     async def test_method_update_with_all_params(self, async_client: AsyncConductor) -> None:
         customer = await async_client.qbd.customers.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
             account_number="1010",
-            additional_notes_mod=[
+            additional_contacts=[
+                {
+                    "id": "80000001-1234567890",
+                    "first_name": "John",
+                    "revision_number": "1721172183",
+                    "custom_contact_fields": [
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                    ],
+                    "job_title": "Purchasing Manager",
+                    "last_name": "Doe",
+                    "middle_name": "A.",
+                    "salutation": "Dr.",
+                },
+                {
+                    "id": "80000001-1234567890",
+                    "first_name": "John",
+                    "revision_number": "1721172183",
+                    "custom_contact_fields": [
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                    ],
+                    "job_title": "Purchasing Manager",
+                    "last_name": "Doe",
+                    "middle_name": "A.",
+                    "salutation": "Dr.",
+                },
+                {
+                    "id": "80000001-1234567890",
+                    "first_name": "John",
+                    "revision_number": "1721172183",
+                    "custom_contact_fields": [
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                    ],
+                    "job_title": "Purchasing Manager",
+                    "last_name": "Doe",
+                    "middle_name": "A.",
+                    "salutation": "Dr.",
+                },
+            ],
+            additional_notes=[
                 {
                     "id": 1,
                     "note": "This is a fun note.",
@@ -953,7 +1024,7 @@ class TestAsyncCustomers:
                     "name": "Alternate shipping address",
                     "city": "San Francisco",
                     "country": "United States",
-                    "is_default_address": True,
+                    "is_default_shipping_address": True,
                     "line1": "548 Market St.",
                     "line2": "Suite 100",
                     "line3": "line3",
@@ -967,7 +1038,7 @@ class TestAsyncCustomers:
                     "name": "Alternate shipping address",
                     "city": "San Francisco",
                     "country": "United States",
-                    "is_default_address": True,
+                    "is_default_shipping_address": True,
                     "line1": "548 Market St.",
                     "line2": "Suite 100",
                     "line3": "line3",
@@ -981,7 +1052,7 @@ class TestAsyncCustomers:
                     "name": "Alternate shipping address",
                     "city": "San Francisco",
                     "country": "United States",
-                    "is_default_address": True,
+                    "is_default_shipping_address": True,
                     "line1": "548 Market St.",
                     "line2": "Suite 100",
                     "line3": "line3",
@@ -1008,84 +1079,13 @@ class TestAsyncCustomers:
             class_id="80000001-1234567890",
             company_name="Acme Corporation",
             contact="Jane Smith",
-            contacts=[
-                {
-                    "id": "80000001-1234567890",
-                    "first_name": "John",
-                    "version": "1721172183",
-                    "custom_contact_fields": [
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                    ],
-                    "job_title": "Purchasing Manager",
-                    "last_name": "Doe",
-                    "middle_name": "A.",
-                    "salutation": "Dr.",
-                },
-                {
-                    "id": "80000001-1234567890",
-                    "first_name": "John",
-                    "version": "1721172183",
-                    "custom_contact_fields": [
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                    ],
-                    "job_title": "Purchasing Manager",
-                    "last_name": "Doe",
-                    "middle_name": "A.",
-                    "salutation": "Dr.",
-                },
-                {
-                    "id": "80000001-1234567890",
-                    "first_name": "John",
-                    "version": "1721172183",
-                    "custom_contact_fields": [
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                    ],
-                    "job_title": "Purchasing Manager",
-                    "last_name": "Doe",
-                    "middle_name": "A.",
-                    "salutation": "Dr.",
-                },
-            ],
             credit_card={
                 "address": "1234 Main St, Anytown, USA, 12345",
-                "address_zip": "12345",
                 "expiration_month": 12,
                 "expiration_year": 2024,
                 "name": "John Doe",
                 "number": "xxxxxxxxxxxx1234",
+                "postal_code": "12345",
             },
             credit_limit="5000.00",
             currency_id="80000012-1234567890",
@@ -1108,7 +1108,6 @@ class TestAsyncCustomers:
             fax="+1-555-555-1212",
             first_name="John",
             is_active=True,
-            item_sales_tax_id="80000010-1234567890",
             job_description="Kitchen renovation project for residential client.",
             job_end_date=parse_date("2019-12-27"),
             job_projected_end_date=parse_date("2019-12-27"),
@@ -1129,6 +1128,7 @@ class TestAsyncCustomers:
             sales_representative_id="80000030-1234567890",
             sales_tax_code_id="80000004-1234567890",
             sales_tax_country="australia",
+            sales_tax_item_id="80000010-1234567890",
             salutation="Dr.",
             shipping_address={
                 "city": "San Francisco",
@@ -1151,7 +1151,7 @@ class TestAsyncCustomers:
     async def test_raw_response_update(self, async_client: AsyncConductor) -> None:
         response = await async_client.qbd.customers.with_raw_response.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -1164,7 +1164,7 @@ class TestAsyncCustomers:
     async def test_streaming_response_update(self, async_client: AsyncConductor) -> None:
         async with async_client.qbd.customers.with_streaming_response.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
@@ -1180,7 +1180,7 @@ class TestAsyncCustomers:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.qbd.customers.with_raw_response.update(
                 id="",
-                version="1721172183",
+                revision_number="1721172183",
                 conductor_end_user_id="end_usr_1234567abcdefg",
             )
 

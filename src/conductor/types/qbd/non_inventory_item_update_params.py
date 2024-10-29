@@ -10,11 +10,12 @@ __all__ = ["NonInventoryItemUpdateParams", "Barcode", "SalesAndPurchaseDetails",
 
 
 class NonInventoryItemUpdateParams(TypedDict, total=False):
-    version: Required[str]
+    revision_number: Required[Annotated[str, PropertyInfo(alias="revisionNumber")]]
     """
-    The current version identifier of the non-inventory item you are updating, which
-    you can get by fetching the object first. Provide the most recent `version` to
-    ensure you're working with the latest data; otherwise, the update will fail.
+    The current revision number of the non-inventory item you are updating, which
+    you can get by fetching the object first. Provide the most recent
+    `revisionNumber` to ensure you're working with the latest data; otherwise, the
+    update will return an error.
     """
 
     conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]
@@ -53,12 +54,6 @@ class NonInventoryItemUpdateParams(TypedDict, total=False):
     """Indicates whether this non-inventory item is active.
 
     Inactive objects are typically hidden from views and reports in QuickBooks.
-    """
-
-    manufacturer_part_number: Annotated[str, PropertyInfo(alias="manufacturerPartNumber")]
-    """
-    The manufacturer's part number for this non-inventory item, which is often the
-    stock keeping unit (SKU).
     """
 
     name: str
@@ -108,6 +103,12 @@ class NonInventoryItemUpdateParams(TypedDict, total=False):
     all sales.
     """
 
+    sku: str
+    """
+    The manufacturer's part number for this non-inventory item, which is often the
+    stock keeping unit (SKU).
+    """
+
     unit_of_measure_set_id: Annotated[str, PropertyInfo(alias="unitOfMeasureSetId")]
     """
     The unit-of-measure set associated with this non-inventory item, which consists
@@ -127,32 +128,6 @@ class Barcode(TypedDict, total=False):
 
 
 class SalesAndPurchaseDetails(TypedDict, total=False):
-    apply_expense_account_to_existing_transactions: Annotated[
-        bool, PropertyInfo(alias="applyExpenseAccountToExistingTransactions")
-    ]
-    """
-    Indicates whether to apply the new expense account (specified by the
-    `expenseAccountId` field) to all existing transactions that use this item. If
-    `true`, the expense account will be updated in all historical transactions where
-    this item appears. Be cautious with this setting as it modifies historical data.
-    The update will fail if any affected transactions fall within a closed
-    accounting period. If not specified, QuickBooks will prompt the user to make
-    this choice.
-    """
-
-    apply_income_account_to_existing_transactions: Annotated[
-        bool, PropertyInfo(alias="applyIncomeAccountToExistingTransactions")
-    ]
-    """
-    Indicates whether to apply the new income account (specified by the
-    `incomeAccountId` field) to all existing transactions that use this item. If
-    `true`, the income account will be updated in all historical transactions where
-    this item appears. Be cautious with this setting as it modifies historical data.
-    The update will fail if any affected transactions fall within a closed
-    accounting period. If not specified, QuickBooks will prompt the user to make
-    this choice.
-    """
-
     expense_account_id: Annotated[str, PropertyInfo(alias="expenseAccountId")]
     """The expense account used to track expenses from purchases of this item."""
 
@@ -192,6 +167,32 @@ class SalesAndPurchaseDetails(TypedDict, total=False):
     string.
     """
 
+    update_existing_transactions_expense_account: Annotated[
+        bool, PropertyInfo(alias="updateExistingTransactionsExpenseAccount")
+    ]
+    """
+    Indicates whether to apply the new expense account (specified by the
+    `expenseAccountId` field) to all existing transactions that use this item. If
+    `true`, the expense account will be updated in all historical transactions where
+    this item appears. Be cautious with this setting as it modifies historical data.
+    The update will fail if any affected transactions fall within a closed
+    accounting period. If not specified, QuickBooks will prompt the user to make
+    this choice.
+    """
+
+    update_existing_transactions_income_account: Annotated[
+        bool, PropertyInfo(alias="updateExistingTransactionsIncomeAccount")
+    ]
+    """
+    Indicates whether to apply the new income account (specified by the
+    `incomeAccountId` field) to all existing transactions that use this item. If
+    `true`, the income account will be updated in all historical transactions where
+    this item appears. Be cautious with this setting as it modifies historical data.
+    The update will fail if any affected transactions fall within a closed
+    accounting period. If not specified, QuickBooks will prompt the user to make
+    this choice.
+    """
+
 
 class SalesOrPurchaseDetails(TypedDict, total=False):
     account_id: Annotated[str, PropertyInfo(alias="accountId")]
@@ -199,16 +200,6 @@ class SalesOrPurchaseDetails(TypedDict, total=False):
     The account associated with this item, used when recording transactions
     involving this item. This could be an income account when selling or an expense
     account when purchasing.
-    """
-
-    apply_account_to_existing_transactions: Annotated[bool, PropertyInfo(alias="applyAccountToExistingTransactions")]
-    """
-    Indicates whether to apply the new account (specified by the `accountId` field)
-    to all existing transactions that use this item. If `true`, the account will be
-    updated in all historical transactions where this item appears. Be cautious with
-    this setting as it modifies historical data. The update will fail if any
-    affected transactions fall within a closed accounting period. If not specified,
-    QuickBooks will prompt the user to make this choice.
     """
 
     description: str
@@ -225,4 +216,14 @@ class SalesOrPurchaseDetails(TypedDict, total=False):
     The price of this item expressed as a percentage, used instead of `price` when
     the item's cost is calculated as a percentage of another amount. For example, a
     service item that costs a percentage of another item's price.
+    """
+
+    update_existing_transactions_account: Annotated[bool, PropertyInfo(alias="updateExistingTransactionsAccount")]
+    """
+    Indicates whether to apply the new account (specified by the `accountId` field)
+    to all existing transactions that use this item. If `true`, the account will be
+    updated in all historical transactions where this item appears. Be cautious with
+    this setting as it modifies historical data. The update will fail if any
+    affected transactions fall within a closed accounting period. If not specified,
+    QuickBooks will prompt the user to make this choice.
     """

@@ -41,7 +41,6 @@ class TestNonInventoryItems:
             class_id="80000001-1234567890",
             external_id="12345678-abcd-1234-abcd-1234567890ab",
             is_active=True,
-            manufacturer_part_number="MPN-123456",
             parent_id="80000002-1234567890",
             sales_and_purchase_details={
                 "expense_account_id": "80000006-1234567890",
@@ -60,6 +59,7 @@ class TestNonInventoryItems:
                 "price_percentage": "10.5",
             },
             sales_tax_code_id="80000004-1234567890",
+            sku="MPN-123456",
             unit_of_measure_set_id="80000003-1234567890",
         )
         assert_matches_type(NonInventoryItem, non_inventory_item, path=["response"])
@@ -136,7 +136,7 @@ class TestNonInventoryItems:
     def test_method_update(self, client: Conductor) -> None:
         non_inventory_item = client.qbd.non_inventory_items.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(NonInventoryItem, non_inventory_item, path=["response"])
@@ -145,7 +145,7 @@ class TestNonInventoryItems:
     def test_method_update_with_all_params(self, client: Conductor) -> None:
         non_inventory_item = client.qbd.non_inventory_items.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
             barcode={
                 "allow_override": False,
@@ -155,12 +155,9 @@ class TestNonInventoryItems:
             class_id="80000001-1234567890",
             force_unit_of_measure_change=False,
             is_active=True,
-            manufacturer_part_number="MPN-123456",
             name="Printer Ink Cartridge",
             parent_id="80000002-1234567890",
             sales_and_purchase_details={
-                "apply_expense_account_to_existing_transactions": False,
-                "apply_income_account_to_existing_transactions": False,
                 "expense_account_id": "80000006-1234567890",
                 "income_account_id": "80000005-1234567890",
                 "preferred_vendor_id": "80000008-1234567890",
@@ -169,15 +166,18 @@ class TestNonInventoryItems:
                 "purchase_tax_code_id": "80000006-1234567890",
                 "sales_description": "High-quality steel bolts suitable for construction",
                 "sales_price": "19.99",
+                "update_existing_transactions_expense_account": False,
+                "update_existing_transactions_income_account": False,
             },
             sales_or_purchase_details={
                 "account_id": "80000001-1234567890",
-                "apply_account_to_existing_transactions": False,
                 "description": "Hourly Consulting Service",
                 "price": "19.99",
                 "price_percentage": "10.5",
+                "update_existing_transactions_account": False,
             },
             sales_tax_code_id="80000004-1234567890",
+            sku="MPN-123456",
             unit_of_measure_set_id="80000003-1234567890",
         )
         assert_matches_type(NonInventoryItem, non_inventory_item, path=["response"])
@@ -186,7 +186,7 @@ class TestNonInventoryItems:
     def test_raw_response_update(self, client: Conductor) -> None:
         response = client.qbd.non_inventory_items.with_raw_response.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -199,7 +199,7 @@ class TestNonInventoryItems:
     def test_streaming_response_update(self, client: Conductor) -> None:
         with client.qbd.non_inventory_items.with_streaming_response.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
@@ -215,7 +215,7 @@ class TestNonInventoryItems:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.qbd.non_inventory_items.with_raw_response.update(
                 id="",
-                version="1721172183",
+                revision_number="1721172183",
                 conductor_end_user_id="end_usr_1234567abcdefg",
             )
 
@@ -295,7 +295,6 @@ class TestAsyncNonInventoryItems:
             class_id="80000001-1234567890",
             external_id="12345678-abcd-1234-abcd-1234567890ab",
             is_active=True,
-            manufacturer_part_number="MPN-123456",
             parent_id="80000002-1234567890",
             sales_and_purchase_details={
                 "expense_account_id": "80000006-1234567890",
@@ -314,6 +313,7 @@ class TestAsyncNonInventoryItems:
                 "price_percentage": "10.5",
             },
             sales_tax_code_id="80000004-1234567890",
+            sku="MPN-123456",
             unit_of_measure_set_id="80000003-1234567890",
         )
         assert_matches_type(NonInventoryItem, non_inventory_item, path=["response"])
@@ -390,7 +390,7 @@ class TestAsyncNonInventoryItems:
     async def test_method_update(self, async_client: AsyncConductor) -> None:
         non_inventory_item = await async_client.qbd.non_inventory_items.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(NonInventoryItem, non_inventory_item, path=["response"])
@@ -399,7 +399,7 @@ class TestAsyncNonInventoryItems:
     async def test_method_update_with_all_params(self, async_client: AsyncConductor) -> None:
         non_inventory_item = await async_client.qbd.non_inventory_items.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
             barcode={
                 "allow_override": False,
@@ -409,12 +409,9 @@ class TestAsyncNonInventoryItems:
             class_id="80000001-1234567890",
             force_unit_of_measure_change=False,
             is_active=True,
-            manufacturer_part_number="MPN-123456",
             name="Printer Ink Cartridge",
             parent_id="80000002-1234567890",
             sales_and_purchase_details={
-                "apply_expense_account_to_existing_transactions": False,
-                "apply_income_account_to_existing_transactions": False,
                 "expense_account_id": "80000006-1234567890",
                 "income_account_id": "80000005-1234567890",
                 "preferred_vendor_id": "80000008-1234567890",
@@ -423,15 +420,18 @@ class TestAsyncNonInventoryItems:
                 "purchase_tax_code_id": "80000006-1234567890",
                 "sales_description": "High-quality steel bolts suitable for construction",
                 "sales_price": "19.99",
+                "update_existing_transactions_expense_account": False,
+                "update_existing_transactions_income_account": False,
             },
             sales_or_purchase_details={
                 "account_id": "80000001-1234567890",
-                "apply_account_to_existing_transactions": False,
                 "description": "Hourly Consulting Service",
                 "price": "19.99",
                 "price_percentage": "10.5",
+                "update_existing_transactions_account": False,
             },
             sales_tax_code_id="80000004-1234567890",
+            sku="MPN-123456",
             unit_of_measure_set_id="80000003-1234567890",
         )
         assert_matches_type(NonInventoryItem, non_inventory_item, path=["response"])
@@ -440,7 +440,7 @@ class TestAsyncNonInventoryItems:
     async def test_raw_response_update(self, async_client: AsyncConductor) -> None:
         response = await async_client.qbd.non_inventory_items.with_raw_response.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -453,7 +453,7 @@ class TestAsyncNonInventoryItems:
     async def test_streaming_response_update(self, async_client: AsyncConductor) -> None:
         async with async_client.qbd.non_inventory_items.with_streaming_response.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
@@ -469,7 +469,7 @@ class TestAsyncNonInventoryItems:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.qbd.non_inventory_items.with_raw_response.update(
                 id="",
-                version="1721172183",
+                revision_number="1721172183",
                 conductor_end_user_id="end_usr_1234567abcdefg",
             )
 

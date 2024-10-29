@@ -93,6 +93,14 @@ class QbdTransfer(BaseModel):
     object_type: Literal["qbd_transfer"] = FieldInfo(alias="objectType")
     """The type of object. This value is always `"qbd_transfer"`."""
 
+    revision_number: str = FieldInfo(alias="revisionNumber")
+    """
+    The current revision number of this transfer, which changes each time the object
+    is modified. When updating this object, you must provide the most recent
+    `revisionNumber` to ensure you're working with the latest data; otherwise, the
+    update will return an error.
+    """
+
     to_account_balance: Optional[str] = FieldInfo(alias="toAccountBalance", default=None)
     """The balance of the account to which money will be transferred."""
 
@@ -110,12 +118,4 @@ class QbdTransfer(BaseModel):
     The date and time when this transfer was last updated, in ISO 8601 format
     (YYYY-MM-DDThh:mm:ss±hh:mm). The time zone is the same as the user's time zone
     in QuickBooks.
-    """
-
-    version: str
-    """
-    The current version identifier of this transfer, which changes each time the
-    object is modified. When updating this object, you must provide the most recent
-    `version` to ensure you're working with the latest data; otherwise, the update
-    will fail. This value is opaque and should not be interpreted.
     """

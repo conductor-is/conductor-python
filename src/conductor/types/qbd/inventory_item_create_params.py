@@ -44,7 +44,7 @@ class InventoryItemCreateParams(TypedDict, total=False):
     default.
     """
 
-    cogs_account_id: Annotated[str, PropertyInfo(alias="cogsAccountId")]
+    cost_of_goods_sold_account_id: Annotated[str, PropertyInfo(alias="costOfGoodsSoldAccountId")]
     """
     The Cost of Goods Sold (COGS) account for this inventory item, tracking the
     original direct costs of producing goods sold.
@@ -71,12 +71,6 @@ class InventoryItemCreateParams(TypedDict, total=False):
     """Indicates whether this inventory item is active.
 
     Inactive objects are typically hidden from views and reports in QuickBooks.
-    """
-
-    manufacturer_part_number: Annotated[str, PropertyInfo(alias="manufacturerPartNumber")]
-    """
-    The manufacturer's part number for this inventory item, which is often the stock
-    keeping unit (SKU).
     """
 
     maximum_quantity_on_hand: Annotated[float, PropertyInfo(alias="maximumQuantityOnHand")]
@@ -145,6 +139,12 @@ class InventoryItemCreateParams(TypedDict, total=False):
     and "Tax" (taxable), but custom codes can also be created in QuickBooks. If
     QuickBooks is not set up to charge sales tax (via the "Do You Charge Sales Tax?"
     preference), it will assign the default non-taxable code to all sales.
+    """
+
+    sku: str
+    """
+    The manufacturer's part number for this inventory item, which is often the stock
+    keeping unit (SKU).
     """
 
     total_value: Annotated[str, PropertyInfo(alias="totalValue")]

@@ -19,12 +19,12 @@ __all__ = [
     "Currency",
     "CustomContactField",
     "CustomField",
-    "PrefillAccount",
+    "DefaultExpenseAccount",
+    "PurchaseTaxAccount",
+    "SalesTaxAccount",
     "SalesTaxCode",
     "SalesTaxReturn",
     "ShippingAddress",
-    "TaxOnPurchasesAccount",
-    "TaxOnSalesAccount",
     "Terms",
     "VendorType",
 ]
@@ -77,6 +77,14 @@ class AdditionalContact(BaseModel):
     object_type: Literal["qbd_contact"] = FieldInfo(alias="objectType")
     """The type of object. This value is always `"qbd_contact"`."""
 
+    revision_number: str = FieldInfo(alias="revisionNumber")
+    """
+    The current revision number of this contact, which changes each time the object
+    is modified. When updating this object, you must provide the most recent
+    `revisionNumber` to ensure you're working with the latest data; otherwise, the
+    update will return an error.
+    """
+
     salutation: Optional[str] = None
     """
     The contact's formal salutation title that precedes their name, such as "Mr.",
@@ -88,14 +96,6 @@ class AdditionalContact(BaseModel):
     The date and time when this contact was last updated, in ISO 8601 format
     (YYYY-MM-DDThh:mm:ss±hh:mm). The time zone is the same as the user's time zone
     in QuickBooks.
-    """
-
-    version: str
-    """
-    The current version identifier of this contact, which changes each time the
-    object is modified. When updating this object, you must provide the most recent
-    `version` to ensure you're working with the latest data; otherwise, the update
-    will fail. This value is opaque and should not be interpreted.
     """
 
 
@@ -241,7 +241,39 @@ class CustomField(BaseModel):
     """
 
 
-class PrefillAccount(BaseModel):
+class DefaultExpenseAccount(BaseModel):
+    id: Optional[str] = None
+    """The unique identifier assigned by QuickBooks to this object.
+
+    This ID is unique across all objects of the same type, but not across different
+    QuickBooks object types.
+    """
+
+    full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
+    """
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
+    """
+
+
+class PurchaseTaxAccount(BaseModel):
+    id: Optional[str] = None
+    """The unique identifier assigned by QuickBooks to this object.
+
+    This ID is unique across all objects of the same type, but not across different
+    QuickBooks object types.
+    """
+
+    full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
+    """
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
+    """
+
+
+class SalesTaxAccount(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks to this object.
 
@@ -327,38 +359,6 @@ class ShippingAddress(BaseModel):
     """The state, county, province, or region name of the address."""
 
 
-class TaxOnPurchasesAccount(BaseModel):
-    id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks to this object.
-
-    This ID is unique across all objects of the same type, but not across different
-    QuickBooks object types.
-    """
-
-    full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
-    """
-    The fully-qualified unique name for this object, formed by combining the names
-    of its parent objects with its own `name`, separated by colons. Not
-    case-sensitive.
-    """
-
-
-class TaxOnSalesAccount(BaseModel):
-    id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks to this object.
-
-    This ID is unique across all objects of the same type, but not across different
-    QuickBooks object types.
-    """
-
-    full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
-    """
-    The fully-qualified unique name for this object, formed by combining the names
-    of its parent objects with its own `name`, separated by colons. Not
-    case-sensitive.
-    """
-
-
 class Terms(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks to this object.
@@ -414,7 +414,7 @@ class QbdVendor(BaseModel):
     """Additional notes about this vendor."""
 
     alternate_contact: Optional[str] = FieldInfo(alias="alternateContact", default=None)
-    """The name of an alternate contact person for this vendor."""
+    """The name of a alternate contact person for this vendor."""
 
     alternate_phone: Optional[str] = FieldInfo(alias="alternatePhone", default=None)
     """The vendor's alternate telephone number."""
@@ -487,6 +487,9 @@ class QbdVendor(BaseModel):
     not included in the standard QuickBooks object.
     """
 
+    default_expense_accounts: List[DefaultExpenseAccount] = FieldInfo(alias="defaultExpenseAccounts")
+    """The expense accounts to prefill when entering bills for this vendor."""
+
     email: Optional[str] = None
     """The vendor's email address."""
 
@@ -510,6 +513,12 @@ class QbdVendor(BaseModel):
     Inactive objects are typically hidden from views and reports in QuickBooks.
     """
 
+    is_compounding_tax: Optional[bool] = FieldInfo(alias="isCompoundingTax", default=None)
+    """
+    Indicates whether tax is charged on top of tax for this vendor, for use in
+    Canada or the UK.
+    """
+
     is_eligible_for1099: Optional[bool] = FieldInfo(alias="isEligibleFor1099", default=None)
     """
     Indicates whether this vendor is eligible to receive a 1099 form for tax
@@ -520,19 +529,13 @@ class QbdVendor(BaseModel):
     is_sales_tax_agency: Optional[bool] = FieldInfo(alias="isSalesTaxAgency", default=None)
     """Indicates whether this vendor is a sales tax agency."""
 
-    is_tax_on_tax: Optional[bool] = FieldInfo(alias="isTaxOnTax", default=None)
-    """
-    Indicates whether tax is charged on top of tax for this vendor, for use in
-    Canada or the UK.
-    """
-
-    is_tax_tracked_on_purchases: Optional[bool] = FieldInfo(alias="isTaxTrackedOnPurchases", default=None)
+    is_tracking_purchase_tax: Optional[bool] = FieldInfo(alias="isTrackingPurchaseTax", default=None)
     """
     Indicates whether tax is tracked on purchases for this vendor, for use in Canada
     or the UK.
     """
 
-    is_tax_tracked_on_sales: Optional[bool] = FieldInfo(alias="isTaxTrackedOnSales", default=None)
+    is_tracking_sales_tax: Optional[bool] = FieldInfo(alias="isTrackingSalesTax", default=None)
     """
     Indicates whether tax is tracked on sales for this vendor, for use in Canada or
     the UK.
@@ -562,11 +565,28 @@ class QbdVendor(BaseModel):
     phone: Optional[str] = None
     """The vendor's primary telephone number."""
 
-    prefill_accounts: List[PrefillAccount] = FieldInfo(alias="prefillAccounts")
-    """The expense accounts to prefill when entering bills for this vendor."""
+    purchase_tax_account: Optional[PurchaseTaxAccount] = FieldInfo(alias="purchaseTaxAccount", default=None)
+    """
+    The account used for tracking taxes on purchases for this vendor, for use in
+    Canada or the UK.
+    """
 
     reporting_period: Optional[Literal["monthly", "quarterly"]] = FieldInfo(alias="reportingPeriod", default=None)
     """The vendor's tax reporting period, for use in Canada or the UK."""
+
+    revision_number: str = FieldInfo(alias="revisionNumber")
+    """
+    The current revision number of this vendor, which changes each time the object
+    is modified. When updating this object, you must provide the most recent
+    `revisionNumber` to ensure you're working with the latest data; otherwise, the
+    update will return an error.
+    """
+
+    sales_tax_account: Optional[SalesTaxAccount] = FieldInfo(alias="salesTaxAccount", default=None)
+    """
+    The account used for tracking taxes on sales for this vendor, for use in Canada
+    or the UK.
+    """
 
     sales_tax_code: Optional[SalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)
     """
@@ -602,18 +622,6 @@ class QbdVendor(BaseModel):
     tax_identification_number: Optional[str] = FieldInfo(alias="taxIdentificationNumber", default=None)
     """The vendor's tax identification number (e.g., EIN or SSN)."""
 
-    tax_on_purchases_account: Optional[TaxOnPurchasesAccount] = FieldInfo(alias="taxOnPurchasesAccount", default=None)
-    """
-    The account used for tracking taxes on purchases for this vendor, for use in
-    Canada or the UK.
-    """
-
-    tax_on_sales_account: Optional[TaxOnSalesAccount] = FieldInfo(alias="taxOnSalesAccount", default=None)
-    """
-    The account used for tracking taxes on sales for this vendor, for use in Canada
-    or the UK.
-    """
-
     tax_registration_number: Optional[str] = FieldInfo(alias="taxRegistrationNumber", default=None)
     """The vendor's tax registration number, for use in Canada or the UK."""
 
@@ -634,12 +642,4 @@ class QbdVendor(BaseModel):
     """
     The vendor's type, used for categorizing vendors into meaningful segments, such
     as industry or region.
-    """
-
-    version: str
-    """
-    The current version identifier of this vendor, which changes each time the
-    object is modified. When updating this object, you must provide the most recent
-    `version` to ensure you're working with the latest data; otherwise, the update
-    will fail. This value is opaque and should not be interpreted.
     """

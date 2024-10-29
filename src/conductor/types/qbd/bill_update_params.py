@@ -12,24 +12,17 @@ __all__ = ["BillUpdateParams", "ExpenseLine", "ItemGroupLine", "ItemGroupLineIte
 
 
 class BillUpdateParams(TypedDict, total=False):
-    version: Required[str]
+    revision_number: Required[Annotated[str, PropertyInfo(alias="revisionNumber")]]
     """
-    The current version identifier of the bill you are updating, which you can get
-    by fetching the object first. Provide the most recent `version` to ensure you're
-    working with the latest data; otherwise, the update will fail.
+    The current revision number of the bill you are updating, which you can get by
+    fetching the object first. Provide the most recent `revisionNumber` to ensure
+    you're working with the latest data; otherwise, the update will return an error.
     """
 
     conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]
     """
     The ID of the EndUser to receive this request (e.g.,
     `"Conductor-End-User-Id: {{END_USER_ID}}"`).
-    """
-
-    accounts_payable_account_id: Annotated[str, PropertyInfo(alias="accountsPayableAccountId")]
-    """
-    The Accounts Payable account to which this bill is assigned, used to track the
-    amount owed. If not specified, the default Accounts Payable account in
-    QuickBooks is used.
     """
 
     clear_expense_lines: Annotated[bool, PropertyInfo(alias="clearExpenseLines")]
@@ -96,6 +89,13 @@ class BillUpdateParams(TypedDict, total=False):
     """A memo or note for this bill, as entered by the user.
 
     Appears in the Accounts Payable register and relevant reports.
+    """
+
+    payables_account_id: Annotated[str, PropertyInfo(alias="payablesAccountId")]
+    """
+    The accounts payable account to which this bill is assigned, used to track the
+    amount owed. If not specified, the default accounts payable account in
+    QuickBooks is used.
     """
 
     ref_number: Annotated[str, PropertyInfo(alias="refNumber")]
