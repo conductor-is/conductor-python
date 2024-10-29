@@ -73,7 +73,8 @@ class SalesTaxCode(BaseModel):
     name: str
     """
     The case-insensitive unique name of this sales-tax code, unique across all
-    sales-tax codes.
+    sales-tax codes. This short name will appear on sales forms to identify the tax
+    status of an item.
     """
 
     object_type: Literal["qbd_sales_tax_code"] = FieldInfo(alias="objectType")
