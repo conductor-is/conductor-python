@@ -77,8 +77,8 @@ class NonInventoryItemCreateParams(TypedDict, total=False):
 
     sku: str
     """
-    The manufacturer's part number for this non-inventory item, which is often the
-    stock keeping unit (SKU).
+    The non-inventory item's stock keeping unit (SKU), which is sometimes the
+    manufacturer's part number.
     """
 
     unit_of_measure_set_id: Annotated[str, PropertyInfo(alias="unitOfMeasureSetId")]

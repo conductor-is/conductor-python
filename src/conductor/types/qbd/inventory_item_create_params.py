@@ -143,8 +143,8 @@ class InventoryItemCreateParams(TypedDict, total=False):
 
     sku: str
     """
-    The manufacturer's part number for this inventory item, which is often the stock
-    keeping unit (SKU).
+    The inventory item's stock keeping unit (SKU), which is sometimes the
+    manufacturer's part number.
     """
 
     total_value: Annotated[str, PropertyInfo(alias="totalValue")]
