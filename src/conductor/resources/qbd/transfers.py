@@ -20,7 +20,7 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...types.qbd import transfer_list_params, transfer_create_params
+from ...types.qbd import transfer_list_params, transfer_create_params, transfer_update_params
 from ...pagination import SyncCursorPage, AsyncCursorPage
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.qbd.qbd_transfer import QbdTransfer
@@ -148,6 +148,83 @@ class TransfersResource(SyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get(
             f"/quickbooks-desktop/transfers/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=QbdTransfer,
+        )
+
+    def update(
+        self,
+        id: str,
+        *,
+        version: str,
+        conductor_end_user_id: str,
+        amount: str | NotGiven = NOT_GIVEN,
+        class_id: str | NotGiven = NOT_GIVEN,
+        memo: str | NotGiven = NOT_GIVEN,
+        transaction_date: Union[str, date] | NotGiven = NOT_GIVEN,
+        transfer_from_account_id: str | NotGiven = NOT_GIVEN,
+        transfer_to_account_id: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> QbdTransfer:
+        """
+        Updates an existing transfer.
+
+        Args:
+          id: The QuickBooks-assigned unique identifier of the transfer to update.
+
+          version: The current version identifier of the transfer you are updating, which you can
+              get by fetching the object first. Provide the most recent `version` to ensure
+              you're working with the latest data; otherwise, the update will fail.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          amount: The monetary amount of this transfer, represented as a decimal string.
+
+          class_id: The transfer's class. Classes can be used to categorize objects into meaningful
+              segments, such as department, location, or type of work. In QuickBooks, class
+              tracking is off by default.
+
+          memo: A memo or note for this transfer, as entered by the user.
+
+          transaction_date: The date of this transfer, in ISO 8601 format (YYYY-MM-DD).
+
+          transfer_from_account_id: The account from which money will be transferred.
+
+          transfer_to_account_id: The account to which money will be transferred.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return self._post(
+            f"/quickbooks-desktop/transfers/{id}",
+            body=maybe_transform(
+                {
+                    "version": version,
+                    "amount": amount,
+                    "class_id": class_id,
+                    "memo": memo,
+                    "transaction_date": transaction_date,
+                    "transfer_from_account_id": transfer_from_account_id,
+                    "transfer_to_account_id": transfer_to_account_id,
+                },
+                transfer_update_params.TransferUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -368,6 +445,83 @@ class AsyncTransfersResource(AsyncAPIResource):
             cast_to=QbdTransfer,
         )
 
+    async def update(
+        self,
+        id: str,
+        *,
+        version: str,
+        conductor_end_user_id: str,
+        amount: str | NotGiven = NOT_GIVEN,
+        class_id: str | NotGiven = NOT_GIVEN,
+        memo: str | NotGiven = NOT_GIVEN,
+        transaction_date: Union[str, date] | NotGiven = NOT_GIVEN,
+        transfer_from_account_id: str | NotGiven = NOT_GIVEN,
+        transfer_to_account_id: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> QbdTransfer:
+        """
+        Updates an existing transfer.
+
+        Args:
+          id: The QuickBooks-assigned unique identifier of the transfer to update.
+
+          version: The current version identifier of the transfer you are updating, which you can
+              get by fetching the object first. Provide the most recent `version` to ensure
+              you're working with the latest data; otherwise, the update will fail.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          amount: The monetary amount of this transfer, represented as a decimal string.
+
+          class_id: The transfer's class. Classes can be used to categorize objects into meaningful
+              segments, such as department, location, or type of work. In QuickBooks, class
+              tracking is off by default.
+
+          memo: A memo or note for this transfer, as entered by the user.
+
+          transaction_date: The date of this transfer, in ISO 8601 format (YYYY-MM-DD).
+
+          transfer_from_account_id: The account from which money will be transferred.
+
+          transfer_to_account_id: The account to which money will be transferred.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return await self._post(
+            f"/quickbooks-desktop/transfers/{id}",
+            body=await async_maybe_transform(
+                {
+                    "version": version,
+                    "amount": amount,
+                    "class_id": class_id,
+                    "memo": memo,
+                    "transaction_date": transaction_date,
+                    "transfer_from_account_id": transfer_from_account_id,
+                    "transfer_to_account_id": transfer_to_account_id,
+                },
+                transfer_update_params.TransferUpdateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=QbdTransfer,
+        )
+
     def list(
         self,
         *,
@@ -466,6 +620,9 @@ class TransfersResourceWithRawResponse:
         self.retrieve = to_raw_response_wrapper(
             transfers.retrieve,
         )
+        self.update = to_raw_response_wrapper(
+            transfers.update,
+        )
         self.list = to_raw_response_wrapper(
             transfers.list,
         )
@@ -480,6 +637,9 @@ class AsyncTransfersResourceWithRawResponse:
         )
         self.retrieve = async_to_raw_response_wrapper(
             transfers.retrieve,
+        )
+        self.update = async_to_raw_response_wrapper(
+            transfers.update,
         )
         self.list = async_to_raw_response_wrapper(
             transfers.list,
@@ -496,6 +656,9 @@ class TransfersResourceWithStreamingResponse:
         self.retrieve = to_streamed_response_wrapper(
             transfers.retrieve,
         )
+        self.update = to_streamed_response_wrapper(
+            transfers.update,
+        )
         self.list = to_streamed_response_wrapper(
             transfers.list,
         )
@@ -510,6 +673,9 @@ class AsyncTransfersResourceWithStreamingResponse:
         )
         self.retrieve = async_to_streamed_response_wrapper(
             transfers.retrieve,
+        )
+        self.update = async_to_streamed_response_wrapper(
+            transfers.update,
         )
         self.list = async_to_streamed_response_wrapper(
             transfers.list,
