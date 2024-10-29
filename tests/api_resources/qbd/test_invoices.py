@@ -34,6 +34,23 @@ class TestInvoices:
             customer_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
+            apply_credits=[
+                {
+                    "applied_amount": "100.00",
+                    "credit_memo_id": "ABCDEF-1234567890",
+                    "override_credit_application": False,
+                },
+                {
+                    "applied_amount": "100.00",
+                    "credit_memo_id": "ABCDEF-1234567890",
+                    "override_credit_application": False,
+                },
+                {
+                    "applied_amount": "100.00",
+                    "credit_memo_id": "ABCDEF-1234567890",
+                    "override_credit_application": False,
+                },
+            ],
             billing_address={
                 "city": "San Francisco",
                 "country": "United States",
@@ -267,23 +284,6 @@ class TestInvoices:
             sales_representative_id="80000030-1234567890",
             sales_tax_code_id="80000004-1234567890",
             sales_tax_item_id="80000010-1234567890",
-            set_credits=[
-                {
-                    "applied_amount": "100.00",
-                    "credit_memo_id": "ABCDEF-1234567890",
-                    "override_credit_application": False,
-                },
-                {
-                    "applied_amount": "100.00",
-                    "credit_memo_id": "ABCDEF-1234567890",
-                    "override_credit_application": False,
-                },
-                {
-                    "applied_amount": "100.00",
-                    "credit_memo_id": "ABCDEF-1234567890",
-                    "override_credit_application": False,
-                },
-            ],
             shipment_origin="San Francisco, CA",
             shipping_address={
                 "city": "San Francisco",
@@ -388,6 +388,23 @@ class TestInvoices:
             id="123ABC-1234567890",
             revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
+            apply_credits=[
+                {
+                    "applied_amount": "100.00",
+                    "credit_memo_id": "ABCDEF-1234567890",
+                    "override_credit_application": False,
+                },
+                {
+                    "applied_amount": "100.00",
+                    "credit_memo_id": "ABCDEF-1234567890",
+                    "override_credit_application": False,
+                },
+                {
+                    "applied_amount": "100.00",
+                    "credit_memo_id": "ABCDEF-1234567890",
+                    "override_credit_application": False,
+                },
+            ],
             billing_address={
                 "city": "San Francisco",
                 "country": "United States",
@@ -724,23 +741,6 @@ class TestInvoices:
             sales_representative_id="80000030-1234567890",
             sales_tax_code_id="80000004-1234567890",
             sales_tax_item_id="80000010-1234567890",
-            set_credits=[
-                {
-                    "applied_amount": "100.00",
-                    "credit_memo_id": "ABCDEF-1234567890",
-                    "override_credit_application": False,
-                },
-                {
-                    "applied_amount": "100.00",
-                    "credit_memo_id": "ABCDEF-1234567890",
-                    "override_credit_application": False,
-                },
-                {
-                    "applied_amount": "100.00",
-                    "credit_memo_id": "ABCDEF-1234567890",
-                    "override_credit_application": False,
-                },
-            ],
             shipment_origin="San Francisco, CA",
             shipping_address={
                 "city": "San Francisco",
@@ -874,6 +874,23 @@ class TestAsyncInvoices:
             customer_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
+            apply_credits=[
+                {
+                    "applied_amount": "100.00",
+                    "credit_memo_id": "ABCDEF-1234567890",
+                    "override_credit_application": False,
+                },
+                {
+                    "applied_amount": "100.00",
+                    "credit_memo_id": "ABCDEF-1234567890",
+                    "override_credit_application": False,
+                },
+                {
+                    "applied_amount": "100.00",
+                    "credit_memo_id": "ABCDEF-1234567890",
+                    "override_credit_application": False,
+                },
+            ],
             billing_address={
                 "city": "San Francisco",
                 "country": "United States",
@@ -1107,23 +1124,6 @@ class TestAsyncInvoices:
             sales_representative_id="80000030-1234567890",
             sales_tax_code_id="80000004-1234567890",
             sales_tax_item_id="80000010-1234567890",
-            set_credits=[
-                {
-                    "applied_amount": "100.00",
-                    "credit_memo_id": "ABCDEF-1234567890",
-                    "override_credit_application": False,
-                },
-                {
-                    "applied_amount": "100.00",
-                    "credit_memo_id": "ABCDEF-1234567890",
-                    "override_credit_application": False,
-                },
-                {
-                    "applied_amount": "100.00",
-                    "credit_memo_id": "ABCDEF-1234567890",
-                    "override_credit_application": False,
-                },
-            ],
             shipment_origin="San Francisco, CA",
             shipping_address={
                 "city": "San Francisco",
@@ -1228,6 +1228,23 @@ class TestAsyncInvoices:
             id="123ABC-1234567890",
             revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
+            apply_credits=[
+                {
+                    "applied_amount": "100.00",
+                    "credit_memo_id": "ABCDEF-1234567890",
+                    "override_credit_application": False,
+                },
+                {
+                    "applied_amount": "100.00",
+                    "credit_memo_id": "ABCDEF-1234567890",
+                    "override_credit_application": False,
+                },
+                {
+                    "applied_amount": "100.00",
+                    "credit_memo_id": "ABCDEF-1234567890",
+                    "override_credit_application": False,
+                },
+            ],
             billing_address={
                 "city": "San Francisco",
                 "country": "United States",
@@ -1564,23 +1581,6 @@ class TestAsyncInvoices:
             sales_representative_id="80000030-1234567890",
             sales_tax_code_id="80000004-1234567890",
             sales_tax_item_id="80000010-1234567890",
-            set_credits=[
-                {
-                    "applied_amount": "100.00",
-                    "credit_memo_id": "ABCDEF-1234567890",
-                    "override_credit_application": False,
-                },
-                {
-                    "applied_amount": "100.00",
-                    "credit_memo_id": "ABCDEF-1234567890",
-                    "override_credit_application": False,
-                },
-                {
-                    "applied_amount": "100.00",
-                    "credit_memo_id": "ABCDEF-1234567890",
-                    "override_credit_application": False,
-                },
-            ],
             shipment_origin="San Francisco, CA",
             shipping_address={
                 "city": "San Francisco",
