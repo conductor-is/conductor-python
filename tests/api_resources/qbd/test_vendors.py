@@ -33,6 +33,71 @@ class TestVendors:
             name="Acme Supplies Inc.",
             conductor_end_user_id="end_usr_1234567abcdefg",
             account_number="1010",
+            additional_contacts=[
+                {
+                    "first_name": "John",
+                    "custom_contact_fields": [
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                    ],
+                    "job_title": "Purchasing Manager",
+                    "last_name": "Doe",
+                    "middle_name": "A.",
+                    "salutation": "Dr.",
+                },
+                {
+                    "first_name": "John",
+                    "custom_contact_fields": [
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                    ],
+                    "job_title": "Purchasing Manager",
+                    "last_name": "Doe",
+                    "middle_name": "A.",
+                    "salutation": "Dr.",
+                },
+                {
+                    "first_name": "John",
+                    "custom_contact_fields": [
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                    ],
+                    "job_title": "Purchasing Manager",
+                    "last_name": "Doe",
+                    "middle_name": "A.",
+                    "salutation": "Dr.",
+                },
+            ],
             additional_notes=[
                 {"note": "This is a fun note."},
                 {"note": "This is a fun note."},
@@ -57,71 +122,6 @@ class TestVendors:
             class_id="80000001-1234567890",
             company_name="Acme Corporation",
             contact="Jane Smith",
-            contacts=[
-                {
-                    "first_name": "John",
-                    "custom_contact_fields": [
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                    ],
-                    "job_title": "Purchasing Manager",
-                    "last_name": "Doe",
-                    "middle_name": "A.",
-                    "salutation": "Dr.",
-                },
-                {
-                    "first_name": "John",
-                    "custom_contact_fields": [
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                    ],
-                    "job_title": "Purchasing Manager",
-                    "last_name": "Doe",
-                    "middle_name": "A.",
-                    "salutation": "Dr.",
-                },
-                {
-                    "first_name": "John",
-                    "custom_contact_fields": [
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                    ],
-                    "job_title": "Purchasing Manager",
-                    "last_name": "Doe",
-                    "middle_name": "A.",
-                    "salutation": "Dr.",
-                },
-            ],
             credit_limit="5000.00",
             currency_id="80000012-1234567890",
             custom_contact_fields=[
@@ -138,16 +138,17 @@ class TestVendors:
                     "value": "555-123-4567",
                 },
             ],
+            default_expense_account_ids=["80000029-1234567890"],
             email="vendor@example.com",
             external_id="12345678-abcd-1234-abcd-1234567890ab",
             fax="+1-555-555-1212",
             first_name="John",
             is_active=True,
+            is_compounding_tax=False,
             is_eligible_for1099=True,
             is_sales_tax_agency=False,
-            is_tax_on_tax=False,
-            is_tax_tracked_on_purchases=True,
-            is_tax_tracked_on_sales=True,
+            is_tracking_purchase_tax=True,
+            is_tracking_sales_tax=True,
             job_title="Purchasing Manager",
             last_name="Doe",
             middle_name="A.",
@@ -156,8 +157,9 @@ class TestVendors:
             opening_balance="1000.00",
             opening_balance_date=parse_date("2019-12-27"),
             phone="+1-555-123-4567",
-            prefill_account_ids=["80000029-1234567890"],
+            purchase_tax_account_id="80000027-1234567890",
             reporting_period="monthly",
+            sales_tax_account_id="80000028-1234567890",
             sales_tax_code_id="80000004-1234567890",
             sales_tax_country="australia",
             sales_tax_return_id="80000026-1234567890",
@@ -175,8 +177,6 @@ class TestVendors:
                 "state": "CA",
             },
             tax_identification_number="12-3456789",
-            tax_on_purchases_account_id="80000027-1234567890",
-            tax_on_sales_account_id="80000028-1234567890",
             tax_registration_number="GB123456789",
             terms_id="80000013-1234567890",
             vendor_type_id="80000025-1234567890",
@@ -255,7 +255,7 @@ class TestVendors:
     def test_method_update(self, client: Conductor) -> None:
         vendor = client.qbd.vendors.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(QbdVendor, vendor, path=["response"])
@@ -264,10 +264,81 @@ class TestVendors:
     def test_method_update_with_all_params(self, client: Conductor) -> None:
         vendor = client.qbd.vendors.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
             account_number="1010",
-            additional_notes_mod=[
+            additional_contacts=[
+                {
+                    "id": "80000001-1234567890",
+                    "first_name": "John",
+                    "revision_number": "1721172183",
+                    "custom_contact_fields": [
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                    ],
+                    "job_title": "Purchasing Manager",
+                    "last_name": "Doe",
+                    "middle_name": "A.",
+                    "salutation": "Dr.",
+                },
+                {
+                    "id": "80000001-1234567890",
+                    "first_name": "John",
+                    "revision_number": "1721172183",
+                    "custom_contact_fields": [
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                    ],
+                    "job_title": "Purchasing Manager",
+                    "last_name": "Doe",
+                    "middle_name": "A.",
+                    "salutation": "Dr.",
+                },
+                {
+                    "id": "80000001-1234567890",
+                    "first_name": "John",
+                    "revision_number": "1721172183",
+                    "custom_contact_fields": [
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                    ],
+                    "job_title": "Purchasing Manager",
+                    "last_name": "Doe",
+                    "middle_name": "A.",
+                    "salutation": "Dr.",
+                },
+            ],
+            additional_notes=[
                 {
                     "id": 1,
                     "note": "This is a fun note.",
@@ -300,77 +371,6 @@ class TestVendors:
             class_id="80000001-1234567890",
             company_name="Acme Corporation",
             contact="Jane Smith",
-            contacts=[
-                {
-                    "id": "80000001-1234567890",
-                    "first_name": "John",
-                    "version": "1721172183",
-                    "custom_contact_fields": [
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                    ],
-                    "job_title": "Purchasing Manager",
-                    "last_name": "Doe",
-                    "middle_name": "A.",
-                    "salutation": "Dr.",
-                },
-                {
-                    "id": "80000001-1234567890",
-                    "first_name": "John",
-                    "version": "1721172183",
-                    "custom_contact_fields": [
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                    ],
-                    "job_title": "Purchasing Manager",
-                    "last_name": "Doe",
-                    "middle_name": "A.",
-                    "salutation": "Dr.",
-                },
-                {
-                    "id": "80000001-1234567890",
-                    "first_name": "John",
-                    "version": "1721172183",
-                    "custom_contact_fields": [
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                    ],
-                    "job_title": "Purchasing Manager",
-                    "last_name": "Doe",
-                    "middle_name": "A.",
-                    "salutation": "Dr.",
-                },
-            ],
             credit_limit="5000.00",
             currency_id="80000012-1234567890",
             custom_contact_fields=[
@@ -387,15 +387,16 @@ class TestVendors:
                     "value": "555-123-4567",
                 },
             ],
+            default_expense_account_ids=["80000029-1234567890"],
             email="vendor@example.com",
             fax="+1-555-555-1212",
             first_name="John",
             is_active=True,
+            is_compounding_tax=False,
             is_eligible_for1099=True,
             is_sales_tax_agency=False,
-            is_tax_on_tax=False,
-            is_tax_tracked_on_purchases=True,
-            is_tax_tracked_on_sales=True,
+            is_tracking_purchase_tax=True,
+            is_tracking_sales_tax=True,
             job_title="Purchasing Manager",
             last_name="Doe",
             middle_name="A.",
@@ -403,8 +404,9 @@ class TestVendors:
             name_on_check="Acme Supplies Ltd.",
             note="Preferred vendor for office supplies.",
             phone="+1-555-123-4567",
-            prefill_account_ids=["80000029-1234567890"],
+            purchase_tax_account_id="80000027-1234567890",
             reporting_period="monthly",
+            sales_tax_account_id="80000028-1234567890",
             sales_tax_code_id="80000004-1234567890",
             sales_tax_country="australia",
             sales_tax_return_id="80000026-1234567890",
@@ -422,8 +424,6 @@ class TestVendors:
                 "state": "CA",
             },
             tax_identification_number="12-3456789",
-            tax_on_purchases_account_id="80000027-1234567890",
-            tax_on_sales_account_id="80000028-1234567890",
             tax_registration_number="GB123456789",
             terms_id="80000013-1234567890",
             vendor_type_id="80000025-1234567890",
@@ -434,7 +434,7 @@ class TestVendors:
     def test_raw_response_update(self, client: Conductor) -> None:
         response = client.qbd.vendors.with_raw_response.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -447,7 +447,7 @@ class TestVendors:
     def test_streaming_response_update(self, client: Conductor) -> None:
         with client.qbd.vendors.with_streaming_response.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
@@ -463,7 +463,7 @@ class TestVendors:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.qbd.vendors.with_raw_response.update(
                 id="",
-                version="1721172183",
+                revision_number="1721172183",
                 conductor_end_user_id="end_usr_1234567abcdefg",
             )
 
@@ -542,6 +542,71 @@ class TestAsyncVendors:
             name="Acme Supplies Inc.",
             conductor_end_user_id="end_usr_1234567abcdefg",
             account_number="1010",
+            additional_contacts=[
+                {
+                    "first_name": "John",
+                    "custom_contact_fields": [
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                    ],
+                    "job_title": "Purchasing Manager",
+                    "last_name": "Doe",
+                    "middle_name": "A.",
+                    "salutation": "Dr.",
+                },
+                {
+                    "first_name": "John",
+                    "custom_contact_fields": [
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                    ],
+                    "job_title": "Purchasing Manager",
+                    "last_name": "Doe",
+                    "middle_name": "A.",
+                    "salutation": "Dr.",
+                },
+                {
+                    "first_name": "John",
+                    "custom_contact_fields": [
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                    ],
+                    "job_title": "Purchasing Manager",
+                    "last_name": "Doe",
+                    "middle_name": "A.",
+                    "salutation": "Dr.",
+                },
+            ],
             additional_notes=[
                 {"note": "This is a fun note."},
                 {"note": "This is a fun note."},
@@ -566,71 +631,6 @@ class TestAsyncVendors:
             class_id="80000001-1234567890",
             company_name="Acme Corporation",
             contact="Jane Smith",
-            contacts=[
-                {
-                    "first_name": "John",
-                    "custom_contact_fields": [
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                    ],
-                    "job_title": "Purchasing Manager",
-                    "last_name": "Doe",
-                    "middle_name": "A.",
-                    "salutation": "Dr.",
-                },
-                {
-                    "first_name": "John",
-                    "custom_contact_fields": [
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                    ],
-                    "job_title": "Purchasing Manager",
-                    "last_name": "Doe",
-                    "middle_name": "A.",
-                    "salutation": "Dr.",
-                },
-                {
-                    "first_name": "John",
-                    "custom_contact_fields": [
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                    ],
-                    "job_title": "Purchasing Manager",
-                    "last_name": "Doe",
-                    "middle_name": "A.",
-                    "salutation": "Dr.",
-                },
-            ],
             credit_limit="5000.00",
             currency_id="80000012-1234567890",
             custom_contact_fields=[
@@ -647,16 +647,17 @@ class TestAsyncVendors:
                     "value": "555-123-4567",
                 },
             ],
+            default_expense_account_ids=["80000029-1234567890"],
             email="vendor@example.com",
             external_id="12345678-abcd-1234-abcd-1234567890ab",
             fax="+1-555-555-1212",
             first_name="John",
             is_active=True,
+            is_compounding_tax=False,
             is_eligible_for1099=True,
             is_sales_tax_agency=False,
-            is_tax_on_tax=False,
-            is_tax_tracked_on_purchases=True,
-            is_tax_tracked_on_sales=True,
+            is_tracking_purchase_tax=True,
+            is_tracking_sales_tax=True,
             job_title="Purchasing Manager",
             last_name="Doe",
             middle_name="A.",
@@ -665,8 +666,9 @@ class TestAsyncVendors:
             opening_balance="1000.00",
             opening_balance_date=parse_date("2019-12-27"),
             phone="+1-555-123-4567",
-            prefill_account_ids=["80000029-1234567890"],
+            purchase_tax_account_id="80000027-1234567890",
             reporting_period="monthly",
+            sales_tax_account_id="80000028-1234567890",
             sales_tax_code_id="80000004-1234567890",
             sales_tax_country="australia",
             sales_tax_return_id="80000026-1234567890",
@@ -684,8 +686,6 @@ class TestAsyncVendors:
                 "state": "CA",
             },
             tax_identification_number="12-3456789",
-            tax_on_purchases_account_id="80000027-1234567890",
-            tax_on_sales_account_id="80000028-1234567890",
             tax_registration_number="GB123456789",
             terms_id="80000013-1234567890",
             vendor_type_id="80000025-1234567890",
@@ -764,7 +764,7 @@ class TestAsyncVendors:
     async def test_method_update(self, async_client: AsyncConductor) -> None:
         vendor = await async_client.qbd.vendors.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(QbdVendor, vendor, path=["response"])
@@ -773,10 +773,81 @@ class TestAsyncVendors:
     async def test_method_update_with_all_params(self, async_client: AsyncConductor) -> None:
         vendor = await async_client.qbd.vendors.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
             account_number="1010",
-            additional_notes_mod=[
+            additional_contacts=[
+                {
+                    "id": "80000001-1234567890",
+                    "first_name": "John",
+                    "revision_number": "1721172183",
+                    "custom_contact_fields": [
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                    ],
+                    "job_title": "Purchasing Manager",
+                    "last_name": "Doe",
+                    "middle_name": "A.",
+                    "salutation": "Dr.",
+                },
+                {
+                    "id": "80000001-1234567890",
+                    "first_name": "John",
+                    "revision_number": "1721172183",
+                    "custom_contact_fields": [
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                    ],
+                    "job_title": "Purchasing Manager",
+                    "last_name": "Doe",
+                    "middle_name": "A.",
+                    "salutation": "Dr.",
+                },
+                {
+                    "id": "80000001-1234567890",
+                    "first_name": "John",
+                    "revision_number": "1721172183",
+                    "custom_contact_fields": [
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                        {
+                            "name": "Main Phone",
+                            "value": "555-123-4567",
+                        },
+                    ],
+                    "job_title": "Purchasing Manager",
+                    "last_name": "Doe",
+                    "middle_name": "A.",
+                    "salutation": "Dr.",
+                },
+            ],
+            additional_notes=[
                 {
                     "id": 1,
                     "note": "This is a fun note.",
@@ -809,77 +880,6 @@ class TestAsyncVendors:
             class_id="80000001-1234567890",
             company_name="Acme Corporation",
             contact="Jane Smith",
-            contacts=[
-                {
-                    "id": "80000001-1234567890",
-                    "first_name": "John",
-                    "version": "1721172183",
-                    "custom_contact_fields": [
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                    ],
-                    "job_title": "Purchasing Manager",
-                    "last_name": "Doe",
-                    "middle_name": "A.",
-                    "salutation": "Dr.",
-                },
-                {
-                    "id": "80000001-1234567890",
-                    "first_name": "John",
-                    "version": "1721172183",
-                    "custom_contact_fields": [
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                    ],
-                    "job_title": "Purchasing Manager",
-                    "last_name": "Doe",
-                    "middle_name": "A.",
-                    "salutation": "Dr.",
-                },
-                {
-                    "id": "80000001-1234567890",
-                    "first_name": "John",
-                    "version": "1721172183",
-                    "custom_contact_fields": [
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                    ],
-                    "job_title": "Purchasing Manager",
-                    "last_name": "Doe",
-                    "middle_name": "A.",
-                    "salutation": "Dr.",
-                },
-            ],
             credit_limit="5000.00",
             currency_id="80000012-1234567890",
             custom_contact_fields=[
@@ -896,15 +896,16 @@ class TestAsyncVendors:
                     "value": "555-123-4567",
                 },
             ],
+            default_expense_account_ids=["80000029-1234567890"],
             email="vendor@example.com",
             fax="+1-555-555-1212",
             first_name="John",
             is_active=True,
+            is_compounding_tax=False,
             is_eligible_for1099=True,
             is_sales_tax_agency=False,
-            is_tax_on_tax=False,
-            is_tax_tracked_on_purchases=True,
-            is_tax_tracked_on_sales=True,
+            is_tracking_purchase_tax=True,
+            is_tracking_sales_tax=True,
             job_title="Purchasing Manager",
             last_name="Doe",
             middle_name="A.",
@@ -912,8 +913,9 @@ class TestAsyncVendors:
             name_on_check="Acme Supplies Ltd.",
             note="Preferred vendor for office supplies.",
             phone="+1-555-123-4567",
-            prefill_account_ids=["80000029-1234567890"],
+            purchase_tax_account_id="80000027-1234567890",
             reporting_period="monthly",
+            sales_tax_account_id="80000028-1234567890",
             sales_tax_code_id="80000004-1234567890",
             sales_tax_country="australia",
             sales_tax_return_id="80000026-1234567890",
@@ -931,8 +933,6 @@ class TestAsyncVendors:
                 "state": "CA",
             },
             tax_identification_number="12-3456789",
-            tax_on_purchases_account_id="80000027-1234567890",
-            tax_on_sales_account_id="80000028-1234567890",
             tax_registration_number="GB123456789",
             terms_id="80000013-1234567890",
             vendor_type_id="80000025-1234567890",
@@ -943,7 +943,7 @@ class TestAsyncVendors:
     async def test_raw_response_update(self, async_client: AsyncConductor) -> None:
         response = await async_client.qbd.vendors.with_raw_response.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -956,7 +956,7 @@ class TestAsyncVendors:
     async def test_streaming_response_update(self, async_client: AsyncConductor) -> None:
         async with async_client.qbd.vendors.with_streaming_response.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
@@ -972,7 +972,7 @@ class TestAsyncVendors:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.qbd.vendors.with_raw_response.update(
                 id="",
-                version="1721172183",
+                revision_number="1721172183",
                 conductor_end_user_id="end_usr_1234567abcdefg",
             )
 

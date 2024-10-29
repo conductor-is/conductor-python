@@ -112,7 +112,7 @@ class TestTransfers:
     def test_method_update(self, client: Conductor) -> None:
         transfer = client.qbd.transfers.update(
             id="123ABC-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(QbdTransfer, transfer, path=["response"])
@@ -121,7 +121,7 @@ class TestTransfers:
     def test_method_update_with_all_params(self, client: Conductor) -> None:
         transfer = client.qbd.transfers.update(
             id="123ABC-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
             amount="1000.00",
             class_id="80000001-1234567890",
@@ -136,7 +136,7 @@ class TestTransfers:
     def test_raw_response_update(self, client: Conductor) -> None:
         response = client.qbd.transfers.with_raw_response.update(
             id="123ABC-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -149,7 +149,7 @@ class TestTransfers:
     def test_streaming_response_update(self, client: Conductor) -> None:
         with client.qbd.transfers.with_streaming_response.update(
             id="123ABC-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
@@ -165,7 +165,7 @@ class TestTransfers:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.qbd.transfers.with_raw_response.update(
                 id="",
-                version="1721172183",
+                revision_number="1721172183",
                 conductor_end_user_id="end_usr_1234567abcdefg",
             )
 
@@ -311,7 +311,7 @@ class TestAsyncTransfers:
     async def test_method_update(self, async_client: AsyncConductor) -> None:
         transfer = await async_client.qbd.transfers.update(
             id="123ABC-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(QbdTransfer, transfer, path=["response"])
@@ -320,7 +320,7 @@ class TestAsyncTransfers:
     async def test_method_update_with_all_params(self, async_client: AsyncConductor) -> None:
         transfer = await async_client.qbd.transfers.update(
             id="123ABC-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
             amount="1000.00",
             class_id="80000001-1234567890",
@@ -335,7 +335,7 @@ class TestAsyncTransfers:
     async def test_raw_response_update(self, async_client: AsyncConductor) -> None:
         response = await async_client.qbd.transfers.with_raw_response.update(
             id="123ABC-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -348,7 +348,7 @@ class TestAsyncTransfers:
     async def test_streaming_response_update(self, async_client: AsyncConductor) -> None:
         async with async_client.qbd.transfers.with_streaming_response.update(
             id="123ABC-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
@@ -364,7 +364,7 @@ class TestAsyncTransfers:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.qbd.transfers.with_raw_response.update(
                 id="",
-                version="1721172183",
+                revision_number="1721172183",
                 conductor_end_user_id="end_usr_1234567abcdefg",
             )
 

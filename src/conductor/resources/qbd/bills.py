@@ -55,7 +55,6 @@ class BillsResource(SyncAPIResource):
         transaction_date: Union[str, date],
         vendor_id: str,
         conductor_end_user_id: str,
-        accounts_payable_account_id: str | NotGiven = NOT_GIVEN,
         due_date: Union[str, date] | NotGiven = NOT_GIVEN,
         exchange_rate: float | NotGiven = NOT_GIVEN,
         expense_lines: Iterable[bill_create_params.ExpenseLine] | NotGiven = NOT_GIVEN,
@@ -64,6 +63,7 @@ class BillsResource(SyncAPIResource):
         item_lines: Iterable[bill_create_params.ItemLine] | NotGiven = NOT_GIVEN,
         link_to_transaction_ids: List[str] | NotGiven = NOT_GIVEN,
         memo: str | NotGiven = NOT_GIVEN,
+        payables_account_id: str | NotGiven = NOT_GIVEN,
         ref_number: str | NotGiven = NOT_GIVEN,
         sales_tax_code_id: str | NotGiven = NOT_GIVEN,
         terms_id: str | NotGiven = NOT_GIVEN,
@@ -85,10 +85,6 @@ class BillsResource(SyncAPIResource):
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
-
-          accounts_payable_account_id: The Accounts Payable account to which this bill is assigned, used to track the
-              amount owed. If not specified, the default Accounts Payable account in
-              QuickBooks is used.
 
           due_date: The date by which this bill must be paid, in ISO 8601 format (YYYY-MM-DD).
 
@@ -134,6 +130,10 @@ class BillsResource(SyncAPIResource):
           memo: A memo or note for this bill, as entered by the user. Appears in the Accounts
               Payable register and relevant reports.
 
+          payables_account_id: The accounts payable account to which this bill is assigned, used to track the
+              amount owed. If not specified, the default accounts payable account in
+              QuickBooks is used.
+
           ref_number: The case-sensitive user-defined reference number for this bill, which can be
               used to identify the transaction in QuickBooks. This value is not required to be
               unique and can be arbitrarily changed by the QuickBooks user.
@@ -165,7 +165,6 @@ class BillsResource(SyncAPIResource):
                 {
                     "transaction_date": transaction_date,
                     "vendor_id": vendor_id,
-                    "accounts_payable_account_id": accounts_payable_account_id,
                     "due_date": due_date,
                     "exchange_rate": exchange_rate,
                     "expense_lines": expense_lines,
@@ -174,6 +173,7 @@ class BillsResource(SyncAPIResource):
                     "item_lines": item_lines,
                     "link_to_transaction_ids": link_to_transaction_ids,
                     "memo": memo,
+                    "payables_account_id": payables_account_id,
                     "ref_number": ref_number,
                     "sales_tax_code_id": sales_tax_code_id,
                     "terms_id": terms_id,
@@ -231,9 +231,8 @@ class BillsResource(SyncAPIResource):
         self,
         id: str,
         *,
-        version: str,
+        revision_number: str,
         conductor_end_user_id: str,
-        accounts_payable_account_id: str | NotGiven = NOT_GIVEN,
         clear_expense_lines: bool | NotGiven = NOT_GIVEN,
         clear_item_lines: bool | NotGiven = NOT_GIVEN,
         due_date: Union[str, date] | NotGiven = NOT_GIVEN,
@@ -242,6 +241,7 @@ class BillsResource(SyncAPIResource):
         item_group_lines: Iterable[bill_update_params.ItemGroupLine] | NotGiven = NOT_GIVEN,
         item_lines: Iterable[bill_update_params.ItemLine] | NotGiven = NOT_GIVEN,
         memo: str | NotGiven = NOT_GIVEN,
+        payables_account_id: str | NotGiven = NOT_GIVEN,
         ref_number: str | NotGiven = NOT_GIVEN,
         sales_tax_code_id: str | NotGiven = NOT_GIVEN,
         terms_id: str | NotGiven = NOT_GIVEN,
@@ -261,16 +261,12 @@ class BillsResource(SyncAPIResource):
         Args:
           id: The QuickBooks-assigned unique identifier of the bill to update.
 
-          version: The current version identifier of the bill you are updating, which you can get
-              by fetching the object first. Provide the most recent `version` to ensure you're
-              working with the latest data; otherwise, the update will fail.
+          revision_number: The current revision number of the bill you are updating, which you can get by
+              fetching the object first. Provide the most recent `revisionNumber` to ensure
+              you're working with the latest data; otherwise, the update will return an error.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
-
-          accounts_payable_account_id: The Accounts Payable account to which this bill is assigned, used to track the
-              amount owed. If not specified, the default Accounts Payable account in
-              QuickBooks is used.
 
           clear_expense_lines: Indicates whether to clear all the expense lines of this bill. To modify
               individual lines, use the field `expenseLines`.
@@ -317,6 +313,10 @@ class BillsResource(SyncAPIResource):
           memo: A memo or note for this bill, as entered by the user. Appears in the Accounts
               Payable register and relevant reports.
 
+          payables_account_id: The accounts payable account to which this bill is assigned, used to track the
+              amount owed. If not specified, the default accounts payable account in
+              QuickBooks is used.
+
           ref_number: The case-sensitive user-defined reference number for this bill, which can be
               used to identify the transaction in QuickBooks. This value is not required to be
               unique and can be arbitrarily changed by the QuickBooks user.
@@ -352,8 +352,7 @@ class BillsResource(SyncAPIResource):
             f"/quickbooks-desktop/bills/{id}",
             body=maybe_transform(
                 {
-                    "version": version,
-                    "accounts_payable_account_id": accounts_payable_account_id,
+                    "revision_number": revision_number,
                     "clear_expense_lines": clear_expense_lines,
                     "clear_item_lines": clear_item_lines,
                     "due_date": due_date,
@@ -362,6 +361,7 @@ class BillsResource(SyncAPIResource):
                     "item_group_lines": item_group_lines,
                     "item_lines": item_lines,
                     "memo": memo,
+                    "payables_account_id": payables_account_id,
                     "ref_number": ref_number,
                     "sales_tax_code_id": sales_tax_code_id,
                     "terms_id": terms_id,
@@ -555,7 +555,6 @@ class AsyncBillsResource(AsyncAPIResource):
         transaction_date: Union[str, date],
         vendor_id: str,
         conductor_end_user_id: str,
-        accounts_payable_account_id: str | NotGiven = NOT_GIVEN,
         due_date: Union[str, date] | NotGiven = NOT_GIVEN,
         exchange_rate: float | NotGiven = NOT_GIVEN,
         expense_lines: Iterable[bill_create_params.ExpenseLine] | NotGiven = NOT_GIVEN,
@@ -564,6 +563,7 @@ class AsyncBillsResource(AsyncAPIResource):
         item_lines: Iterable[bill_create_params.ItemLine] | NotGiven = NOT_GIVEN,
         link_to_transaction_ids: List[str] | NotGiven = NOT_GIVEN,
         memo: str | NotGiven = NOT_GIVEN,
+        payables_account_id: str | NotGiven = NOT_GIVEN,
         ref_number: str | NotGiven = NOT_GIVEN,
         sales_tax_code_id: str | NotGiven = NOT_GIVEN,
         terms_id: str | NotGiven = NOT_GIVEN,
@@ -585,10 +585,6 @@ class AsyncBillsResource(AsyncAPIResource):
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
-
-          accounts_payable_account_id: The Accounts Payable account to which this bill is assigned, used to track the
-              amount owed. If not specified, the default Accounts Payable account in
-              QuickBooks is used.
 
           due_date: The date by which this bill must be paid, in ISO 8601 format (YYYY-MM-DD).
 
@@ -634,6 +630,10 @@ class AsyncBillsResource(AsyncAPIResource):
           memo: A memo or note for this bill, as entered by the user. Appears in the Accounts
               Payable register and relevant reports.
 
+          payables_account_id: The accounts payable account to which this bill is assigned, used to track the
+              amount owed. If not specified, the default accounts payable account in
+              QuickBooks is used.
+
           ref_number: The case-sensitive user-defined reference number for this bill, which can be
               used to identify the transaction in QuickBooks. This value is not required to be
               unique and can be arbitrarily changed by the QuickBooks user.
@@ -665,7 +665,6 @@ class AsyncBillsResource(AsyncAPIResource):
                 {
                     "transaction_date": transaction_date,
                     "vendor_id": vendor_id,
-                    "accounts_payable_account_id": accounts_payable_account_id,
                     "due_date": due_date,
                     "exchange_rate": exchange_rate,
                     "expense_lines": expense_lines,
@@ -674,6 +673,7 @@ class AsyncBillsResource(AsyncAPIResource):
                     "item_lines": item_lines,
                     "link_to_transaction_ids": link_to_transaction_ids,
                     "memo": memo,
+                    "payables_account_id": payables_account_id,
                     "ref_number": ref_number,
                     "sales_tax_code_id": sales_tax_code_id,
                     "terms_id": terms_id,
@@ -731,9 +731,8 @@ class AsyncBillsResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        version: str,
+        revision_number: str,
         conductor_end_user_id: str,
-        accounts_payable_account_id: str | NotGiven = NOT_GIVEN,
         clear_expense_lines: bool | NotGiven = NOT_GIVEN,
         clear_item_lines: bool | NotGiven = NOT_GIVEN,
         due_date: Union[str, date] | NotGiven = NOT_GIVEN,
@@ -742,6 +741,7 @@ class AsyncBillsResource(AsyncAPIResource):
         item_group_lines: Iterable[bill_update_params.ItemGroupLine] | NotGiven = NOT_GIVEN,
         item_lines: Iterable[bill_update_params.ItemLine] | NotGiven = NOT_GIVEN,
         memo: str | NotGiven = NOT_GIVEN,
+        payables_account_id: str | NotGiven = NOT_GIVEN,
         ref_number: str | NotGiven = NOT_GIVEN,
         sales_tax_code_id: str | NotGiven = NOT_GIVEN,
         terms_id: str | NotGiven = NOT_GIVEN,
@@ -761,16 +761,12 @@ class AsyncBillsResource(AsyncAPIResource):
         Args:
           id: The QuickBooks-assigned unique identifier of the bill to update.
 
-          version: The current version identifier of the bill you are updating, which you can get
-              by fetching the object first. Provide the most recent `version` to ensure you're
-              working with the latest data; otherwise, the update will fail.
+          revision_number: The current revision number of the bill you are updating, which you can get by
+              fetching the object first. Provide the most recent `revisionNumber` to ensure
+              you're working with the latest data; otherwise, the update will return an error.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
-
-          accounts_payable_account_id: The Accounts Payable account to which this bill is assigned, used to track the
-              amount owed. If not specified, the default Accounts Payable account in
-              QuickBooks is used.
 
           clear_expense_lines: Indicates whether to clear all the expense lines of this bill. To modify
               individual lines, use the field `expenseLines`.
@@ -817,6 +813,10 @@ class AsyncBillsResource(AsyncAPIResource):
           memo: A memo or note for this bill, as entered by the user. Appears in the Accounts
               Payable register and relevant reports.
 
+          payables_account_id: The accounts payable account to which this bill is assigned, used to track the
+              amount owed. If not specified, the default accounts payable account in
+              QuickBooks is used.
+
           ref_number: The case-sensitive user-defined reference number for this bill, which can be
               used to identify the transaction in QuickBooks. This value is not required to be
               unique and can be arbitrarily changed by the QuickBooks user.
@@ -852,8 +852,7 @@ class AsyncBillsResource(AsyncAPIResource):
             f"/quickbooks-desktop/bills/{id}",
             body=await async_maybe_transform(
                 {
-                    "version": version,
-                    "accounts_payable_account_id": accounts_payable_account_id,
+                    "revision_number": revision_number,
                     "clear_expense_lines": clear_expense_lines,
                     "clear_item_lines": clear_item_lines,
                     "due_date": due_date,
@@ -862,6 +861,7 @@ class AsyncBillsResource(AsyncAPIResource):
                     "item_group_lines": item_group_lines,
                     "item_lines": item_lines,
                     "memo": memo,
+                    "payables_account_id": payables_account_id,
                     "ref_number": ref_number,
                     "sales_tax_code_id": sales_tax_code_id,
                     "terms_id": terms_id,

@@ -198,7 +198,7 @@ class CreditCardCreditsResource(SyncAPIResource):
         self,
         id: str,
         *,
-        version: str,
+        revision_number: str,
         conductor_end_user_id: str,
         account_id: str | NotGiven = NOT_GIVEN,
         clear_expense_lines: bool | NotGiven = NOT_GIVEN,
@@ -225,9 +225,10 @@ class CreditCardCreditsResource(SyncAPIResource):
         Args:
           id: The QuickBooks-assigned unique identifier of the credit card credit to update.
 
-          version: The current version identifier of the credit card credit you are updating, which
-              you can get by fetching the object first. Provide the most recent `version` to
-              ensure you're working with the latest data; otherwise, the update will fail.
+          revision_number: The current revision number of the credit card credit you are updating, which
+              you can get by fetching the object first. Provide the most recent
+              `revisionNumber` to ensure you're working with the latest data; otherwise, the
+              update will return an error.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -310,7 +311,7 @@ class CreditCardCreditsResource(SyncAPIResource):
             f"/quickbooks-desktop/credit-card-credits/{id}",
             body=maybe_transform(
                 {
-                    "version": version,
+                    "revision_number": revision_number,
                     "account_id": account_id,
                     "clear_expense_lines": clear_expense_lines,
                     "clear_item_lines": clear_item_lines,
@@ -646,7 +647,7 @@ class AsyncCreditCardCreditsResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        version: str,
+        revision_number: str,
         conductor_end_user_id: str,
         account_id: str | NotGiven = NOT_GIVEN,
         clear_expense_lines: bool | NotGiven = NOT_GIVEN,
@@ -673,9 +674,10 @@ class AsyncCreditCardCreditsResource(AsyncAPIResource):
         Args:
           id: The QuickBooks-assigned unique identifier of the credit card credit to update.
 
-          version: The current version identifier of the credit card credit you are updating, which
-              you can get by fetching the object first. Provide the most recent `version` to
-              ensure you're working with the latest data; otherwise, the update will fail.
+          revision_number: The current revision number of the credit card credit you are updating, which
+              you can get by fetching the object first. Provide the most recent
+              `revisionNumber` to ensure you're working with the latest data; otherwise, the
+              update will return an error.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -758,7 +760,7 @@ class AsyncCreditCardCreditsResource(AsyncAPIResource):
             f"/quickbooks-desktop/credit-card-credits/{id}",
             body=await async_maybe_transform(
                 {
-                    "version": version,
+                    "revision_number": revision_number,
                     "account_id": account_id,
                     "clear_expense_lines": clear_expense_lines,
                     "clear_item_lines": clear_item_lines,

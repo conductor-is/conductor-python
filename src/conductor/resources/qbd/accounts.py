@@ -222,7 +222,7 @@ class AccountsResource(SyncAPIResource):
         self,
         id: str,
         *,
-        version: str,
+        revision_number: str,
         conductor_end_user_id: str,
         account_number: str | NotGiven = NOT_GIVEN,
         account_type: Literal[
@@ -267,9 +267,9 @@ class AccountsResource(SyncAPIResource):
         Args:
           id: The QuickBooks-assigned unique identifier of the account to update.
 
-          version: The current version identifier of the account you are updating, which you can
-              get by fetching the object first. Provide the most recent `version` to ensure
-              you're working with the latest data; otherwise, the update will fail.
+          revision_number: The current revision number of the account you are updating, which you can get
+              by fetching the object first. Provide the most recent `revisionNumber` to ensure
+              you're working with the latest data; otherwise, the update will return an error.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -337,7 +337,7 @@ class AccountsResource(SyncAPIResource):
             f"/quickbooks-desktop/accounts/{id}",
             body=maybe_transform(
                 {
-                    "version": version,
+                    "revision_number": revision_number,
                     "account_number": account_number,
                     "account_type": account_type,
                     "bank_account_number": bank_account_number,
@@ -691,7 +691,7 @@ class AsyncAccountsResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        version: str,
+        revision_number: str,
         conductor_end_user_id: str,
         account_number: str | NotGiven = NOT_GIVEN,
         account_type: Literal[
@@ -736,9 +736,9 @@ class AsyncAccountsResource(AsyncAPIResource):
         Args:
           id: The QuickBooks-assigned unique identifier of the account to update.
 
-          version: The current version identifier of the account you are updating, which you can
-              get by fetching the object first. Provide the most recent `version` to ensure
-              you're working with the latest data; otherwise, the update will fail.
+          revision_number: The current revision number of the account you are updating, which you can get
+              by fetching the object first. Provide the most recent `revisionNumber` to ensure
+              you're working with the latest data; otherwise, the update will return an error.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -806,7 +806,7 @@ class AsyncAccountsResource(AsyncAPIResource):
             f"/quickbooks-desktop/accounts/{id}",
             body=await async_maybe_transform(
                 {
-                    "version": version,
+                    "revision_number": revision_number,
                     "account_number": account_number,
                     "account_type": account_type,
                     "bank_account_number": bank_account_number,

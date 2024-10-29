@@ -123,7 +123,7 @@ class TestAccounts:
     def test_method_update(self, client: Conductor) -> None:
         account = client.qbd.accounts.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(QbdAccount, account, path=["response"])
@@ -132,7 +132,7 @@ class TestAccounts:
     def test_method_update_with_all_params(self, client: Conductor) -> None:
         account = client.qbd.accounts.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
             account_number="1010",
             account_type="accounts_payable",
@@ -153,7 +153,7 @@ class TestAccounts:
     def test_raw_response_update(self, client: Conductor) -> None:
         response = client.qbd.accounts.with_raw_response.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -166,7 +166,7 @@ class TestAccounts:
     def test_streaming_response_update(self, client: Conductor) -> None:
         with client.qbd.accounts.with_streaming_response.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
@@ -182,7 +182,7 @@ class TestAccounts:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.qbd.accounts.with_raw_response.update(
                 id="",
-                version="1721172183",
+                revision_number="1721172183",
                 conductor_end_user_id="end_usr_1234567abcdefg",
             )
 
@@ -343,7 +343,7 @@ class TestAsyncAccounts:
     async def test_method_update(self, async_client: AsyncConductor) -> None:
         account = await async_client.qbd.accounts.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(QbdAccount, account, path=["response"])
@@ -352,7 +352,7 @@ class TestAsyncAccounts:
     async def test_method_update_with_all_params(self, async_client: AsyncConductor) -> None:
         account = await async_client.qbd.accounts.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
             account_number="1010",
             account_type="accounts_payable",
@@ -373,7 +373,7 @@ class TestAsyncAccounts:
     async def test_raw_response_update(self, async_client: AsyncConductor) -> None:
         response = await async_client.qbd.accounts.with_raw_response.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -386,7 +386,7 @@ class TestAsyncAccounts:
     async def test_streaming_response_update(self, async_client: AsyncConductor) -> None:
         async with async_client.qbd.accounts.with_streaming_response.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
@@ -402,7 +402,7 @@ class TestAsyncAccounts:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.qbd.accounts.with_raw_response.update(
                 id="",
-                version="1721172183",
+                revision_number="1721172183",
                 conductor_end_user_id="end_usr_1234567abcdefg",
             )
 

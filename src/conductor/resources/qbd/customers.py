@@ -55,6 +55,7 @@ class CustomersResource(SyncAPIResource):
         name: str,
         conductor_end_user_id: str,
         account_number: str | NotGiven = NOT_GIVEN,
+        additional_contacts: Iterable[customer_create_params.AdditionalContact] | NotGiven = NOT_GIVEN,
         additional_notes: Iterable[customer_create_params.AdditionalNote] | NotGiven = NOT_GIVEN,
         alternate_contact: str | NotGiven = NOT_GIVEN,
         alternate_phone: str | NotGiven = NOT_GIVEN,
@@ -64,7 +65,6 @@ class CustomersResource(SyncAPIResource):
         class_id: str | NotGiven = NOT_GIVEN,
         company_name: str | NotGiven = NOT_GIVEN,
         contact: str | NotGiven = NOT_GIVEN,
-        contacts: Iterable[customer_create_params.Contact] | NotGiven = NOT_GIVEN,
         credit_card: customer_create_params.CreditCard | NotGiven = NOT_GIVEN,
         credit_limit: str | NotGiven = NOT_GIVEN,
         currency_id: str | NotGiven = NOT_GIVEN,
@@ -75,7 +75,6 @@ class CustomersResource(SyncAPIResource):
         fax: str | NotGiven = NOT_GIVEN,
         first_name: str | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
-        item_sales_tax_id: str | NotGiven = NOT_GIVEN,
         job_description: str | NotGiven = NOT_GIVEN,
         job_end_date: Union[str, date] | NotGiven = NOT_GIVEN,
         job_projected_end_date: Union[str, date] | NotGiven = NOT_GIVEN,
@@ -98,6 +97,7 @@ class CustomersResource(SyncAPIResource):
         sales_representative_id: str | NotGiven = NOT_GIVEN,
         sales_tax_code_id: str | NotGiven = NOT_GIVEN,
         sales_tax_country: Literal["australia", "canada", "uk", "us"] | NotGiven = NOT_GIVEN,
+        sales_tax_item_id: str | NotGiven = NOT_GIVEN,
         salutation: str | NotGiven = NOT_GIVEN,
         shipping_address: customer_create_params.ShippingAddress | NotGiven = NOT_GIVEN,
         tax_registration_number: str | NotGiven = NOT_GIVEN,
@@ -128,9 +128,11 @@ class CustomersResource(SyncAPIResource):
               is turned off in QuickBooks, the account number may not be visible in the user
               interface, but it can still be set and retrieved through the API.
 
+          additional_contacts: Additional alternate contacts for this customer.
+
           additional_notes: Additional notes about this customer.
 
-          alternate_contact: The name of an alternate contact person for this customer.
+          alternate_contact: The name of a alternate contact person for this customer.
 
           alternate_phone: The customer's alternate telephone number.
 
@@ -149,8 +151,6 @@ class CustomersResource(SyncAPIResource):
               invoices, checks, and other forms.
 
           contact: The name of the primary contact person for this customer.
-
-          contacts: Additional alternate contacts for this customer.
 
           credit_card: The customer's credit card information, including card type, number, and
               expiration date, used for processing credit card payments.
@@ -181,11 +181,6 @@ class CustomersResource(SyncAPIResource):
 
           is_active: Indicates whether this customer is active. Inactive objects are typically hidden
               from views and reports in QuickBooks.
-
-          item_sales_tax_id: The sales-tax item used to calculate the actual tax amount for this customer's
-              transactions by applying a specific tax rate collected for a single tax agency.
-              Unlike `salesTaxCode`, which only indicates general taxability, this field
-              drives the actual tax calculation and reporting.
 
           job_description: A brief description of this customer's job, if this object is a job (i.e.,
               sub-customer).
@@ -255,6 +250,11 @@ class CustomersResource(SyncAPIResource):
 
           sales_tax_country: The country for which sales tax is collected for this customer.
 
+          sales_tax_item_id: The sales-tax item used to calculate the actual tax amount for this customer's
+              transactions by applying a specific tax rate collected for a single tax agency.
+              Unlike `salesTaxCode`, which only indicates general taxability, this field
+              drives the actual tax calculation and reporting.
+
           salutation: The formal salutation title that precedes the name of the contact person for
               this customer, such as "Mr.", "Ms.", or "Dr.".
 
@@ -280,6 +280,7 @@ class CustomersResource(SyncAPIResource):
                 {
                     "name": name,
                     "account_number": account_number,
+                    "additional_contacts": additional_contacts,
                     "additional_notes": additional_notes,
                     "alternate_contact": alternate_contact,
                     "alternate_phone": alternate_phone,
@@ -289,7 +290,6 @@ class CustomersResource(SyncAPIResource):
                     "class_id": class_id,
                     "company_name": company_name,
                     "contact": contact,
-                    "contacts": contacts,
                     "credit_card": credit_card,
                     "credit_limit": credit_limit,
                     "currency_id": currency_id,
@@ -300,7 +300,6 @@ class CustomersResource(SyncAPIResource):
                     "fax": fax,
                     "first_name": first_name,
                     "is_active": is_active,
-                    "item_sales_tax_id": item_sales_tax_id,
                     "job_description": job_description,
                     "job_end_date": job_end_date,
                     "job_projected_end_date": job_projected_end_date,
@@ -322,6 +321,7 @@ class CustomersResource(SyncAPIResource):
                     "sales_representative_id": sales_representative_id,
                     "sales_tax_code_id": sales_tax_code_id,
                     "sales_tax_country": sales_tax_country,
+                    "sales_tax_item_id": sales_tax_item_id,
                     "salutation": salutation,
                     "shipping_address": shipping_address,
                     "tax_registration_number": tax_registration_number,
@@ -379,10 +379,11 @@ class CustomersResource(SyncAPIResource):
         self,
         id: str,
         *,
-        version: str,
+        revision_number: str,
         conductor_end_user_id: str,
         account_number: str | NotGiven = NOT_GIVEN,
-        additional_notes_mod: Iterable[customer_update_params.AdditionalNotesMod] | NotGiven = NOT_GIVEN,
+        additional_contacts: Iterable[customer_update_params.AdditionalContact] | NotGiven = NOT_GIVEN,
+        additional_notes: Iterable[customer_update_params.AdditionalNote] | NotGiven = NOT_GIVEN,
         alternate_contact: str | NotGiven = NOT_GIVEN,
         alternate_phone: str | NotGiven = NOT_GIVEN,
         alternate_shipping_addresses: Iterable[customer_update_params.AlternateShippingAddress] | NotGiven = NOT_GIVEN,
@@ -391,7 +392,6 @@ class CustomersResource(SyncAPIResource):
         class_id: str | NotGiven = NOT_GIVEN,
         company_name: str | NotGiven = NOT_GIVEN,
         contact: str | NotGiven = NOT_GIVEN,
-        contacts: Iterable[customer_update_params.Contact] | NotGiven = NOT_GIVEN,
         credit_card: customer_update_params.CreditCard | NotGiven = NOT_GIVEN,
         credit_limit: str | NotGiven = NOT_GIVEN,
         currency_id: str | NotGiven = NOT_GIVEN,
@@ -401,7 +401,6 @@ class CustomersResource(SyncAPIResource):
         fax: str | NotGiven = NOT_GIVEN,
         first_name: str | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
-        item_sales_tax_id: str | NotGiven = NOT_GIVEN,
         job_description: str | NotGiven = NOT_GIVEN,
         job_end_date: Union[str, date] | NotGiven = NOT_GIVEN,
         job_projected_end_date: Union[str, date] | NotGiven = NOT_GIVEN,
@@ -423,6 +422,7 @@ class CustomersResource(SyncAPIResource):
         sales_representative_id: str | NotGiven = NOT_GIVEN,
         sales_tax_code_id: str | NotGiven = NOT_GIVEN,
         sales_tax_country: Literal["australia", "canada", "uk", "us"] | NotGiven = NOT_GIVEN,
+        sales_tax_item_id: str | NotGiven = NOT_GIVEN,
         salutation: str | NotGiven = NOT_GIVEN,
         shipping_address: customer_update_params.ShippingAddress | NotGiven = NOT_GIVEN,
         tax_registration_number: str | NotGiven = NOT_GIVEN,
@@ -440,9 +440,9 @@ class CustomersResource(SyncAPIResource):
         Args:
           id: The QuickBooks-assigned unique identifier of the customer to update.
 
-          version: The current version identifier of the customer you are updating, which you can
-              get by fetching the object first. Provide the most recent `version` to ensure
-              you're working with the latest data; otherwise, the update will fail.
+          revision_number: The current revision number of the customer you are updating, which you can get
+              by fetching the object first. Provide the most recent `revisionNumber` to ensure
+              you're working with the latest data; otherwise, the update will return an error.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -452,9 +452,11 @@ class CustomersResource(SyncAPIResource):
               is turned off in QuickBooks, the account number may not be visible in the user
               interface, but it can still be set and retrieved through the API.
 
-          additional_notes_mod: Additional notes about this customer.
+          additional_contacts: Additional alternate contacts for this customer.
 
-          alternate_contact: The name of an alternate contact person for this customer.
+          additional_notes: Additional notes about this customer.
+
+          alternate_contact: The name of a alternate contact person for this customer.
 
           alternate_phone: The customer's alternate telephone number.
 
@@ -473,8 +475,6 @@ class CustomersResource(SyncAPIResource):
               invoices, checks, and other forms.
 
           contact: The name of the primary contact person for this customer.
-
-          contacts: Additional alternate contacts for this customer.
 
           credit_card: The customer's credit card information, including card type, number, and
               expiration date, used for processing credit card payments.
@@ -500,11 +500,6 @@ class CustomersResource(SyncAPIResource):
 
           is_active: Indicates whether this customer is active. Inactive objects are typically hidden
               from views and reports in QuickBooks.
-
-          item_sales_tax_id: The sales-tax item used to calculate the actual tax amount for this customer's
-              transactions by applying a specific tax rate collected for a single tax agency.
-              Unlike `salesTaxCode`, which only indicates general taxability, this field
-              drives the actual tax calculation and reporting.
 
           job_description: A brief description of this customer's job, if this object is a job (i.e.,
               sub-customer).
@@ -574,6 +569,11 @@ class CustomersResource(SyncAPIResource):
 
           sales_tax_country: The country for which sales tax is collected for this customer.
 
+          sales_tax_item_id: The sales-tax item used to calculate the actual tax amount for this customer's
+              transactions by applying a specific tax rate collected for a single tax agency.
+              Unlike `salesTaxCode`, which only indicates general taxability, this field
+              drives the actual tax calculation and reporting.
+
           salutation: The formal salutation title that precedes the name of the contact person for
               this customer, such as "Mr.", "Ms.", or "Dr.".
 
@@ -599,9 +599,10 @@ class CustomersResource(SyncAPIResource):
             f"/quickbooks-desktop/customers/{id}",
             body=maybe_transform(
                 {
-                    "version": version,
+                    "revision_number": revision_number,
                     "account_number": account_number,
-                    "additional_notes_mod": additional_notes_mod,
+                    "additional_contacts": additional_contacts,
+                    "additional_notes": additional_notes,
                     "alternate_contact": alternate_contact,
                     "alternate_phone": alternate_phone,
                     "alternate_shipping_addresses": alternate_shipping_addresses,
@@ -610,7 +611,6 @@ class CustomersResource(SyncAPIResource):
                     "class_id": class_id,
                     "company_name": company_name,
                     "contact": contact,
-                    "contacts": contacts,
                     "credit_card": credit_card,
                     "credit_limit": credit_limit,
                     "currency_id": currency_id,
@@ -620,7 +620,6 @@ class CustomersResource(SyncAPIResource):
                     "fax": fax,
                     "first_name": first_name,
                     "is_active": is_active,
-                    "item_sales_tax_id": item_sales_tax_id,
                     "job_description": job_description,
                     "job_end_date": job_end_date,
                     "job_projected_end_date": job_projected_end_date,
@@ -641,6 +640,7 @@ class CustomersResource(SyncAPIResource):
                     "sales_representative_id": sales_representative_id,
                     "sales_tax_code_id": sales_tax_code_id,
                     "sales_tax_country": sales_tax_country,
+                    "sales_tax_item_id": sales_tax_item_id,
                     "salutation": salutation,
                     "shipping_address": shipping_address,
                     "tax_registration_number": tax_registration_number,
@@ -838,6 +838,7 @@ class AsyncCustomersResource(AsyncAPIResource):
         name: str,
         conductor_end_user_id: str,
         account_number: str | NotGiven = NOT_GIVEN,
+        additional_contacts: Iterable[customer_create_params.AdditionalContact] | NotGiven = NOT_GIVEN,
         additional_notes: Iterable[customer_create_params.AdditionalNote] | NotGiven = NOT_GIVEN,
         alternate_contact: str | NotGiven = NOT_GIVEN,
         alternate_phone: str | NotGiven = NOT_GIVEN,
@@ -847,7 +848,6 @@ class AsyncCustomersResource(AsyncAPIResource):
         class_id: str | NotGiven = NOT_GIVEN,
         company_name: str | NotGiven = NOT_GIVEN,
         contact: str | NotGiven = NOT_GIVEN,
-        contacts: Iterable[customer_create_params.Contact] | NotGiven = NOT_GIVEN,
         credit_card: customer_create_params.CreditCard | NotGiven = NOT_GIVEN,
         credit_limit: str | NotGiven = NOT_GIVEN,
         currency_id: str | NotGiven = NOT_GIVEN,
@@ -858,7 +858,6 @@ class AsyncCustomersResource(AsyncAPIResource):
         fax: str | NotGiven = NOT_GIVEN,
         first_name: str | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
-        item_sales_tax_id: str | NotGiven = NOT_GIVEN,
         job_description: str | NotGiven = NOT_GIVEN,
         job_end_date: Union[str, date] | NotGiven = NOT_GIVEN,
         job_projected_end_date: Union[str, date] | NotGiven = NOT_GIVEN,
@@ -881,6 +880,7 @@ class AsyncCustomersResource(AsyncAPIResource):
         sales_representative_id: str | NotGiven = NOT_GIVEN,
         sales_tax_code_id: str | NotGiven = NOT_GIVEN,
         sales_tax_country: Literal["australia", "canada", "uk", "us"] | NotGiven = NOT_GIVEN,
+        sales_tax_item_id: str | NotGiven = NOT_GIVEN,
         salutation: str | NotGiven = NOT_GIVEN,
         shipping_address: customer_create_params.ShippingAddress | NotGiven = NOT_GIVEN,
         tax_registration_number: str | NotGiven = NOT_GIVEN,
@@ -911,9 +911,11 @@ class AsyncCustomersResource(AsyncAPIResource):
               is turned off in QuickBooks, the account number may not be visible in the user
               interface, but it can still be set and retrieved through the API.
 
+          additional_contacts: Additional alternate contacts for this customer.
+
           additional_notes: Additional notes about this customer.
 
-          alternate_contact: The name of an alternate contact person for this customer.
+          alternate_contact: The name of a alternate contact person for this customer.
 
           alternate_phone: The customer's alternate telephone number.
 
@@ -932,8 +934,6 @@ class AsyncCustomersResource(AsyncAPIResource):
               invoices, checks, and other forms.
 
           contact: The name of the primary contact person for this customer.
-
-          contacts: Additional alternate contacts for this customer.
 
           credit_card: The customer's credit card information, including card type, number, and
               expiration date, used for processing credit card payments.
@@ -964,11 +964,6 @@ class AsyncCustomersResource(AsyncAPIResource):
 
           is_active: Indicates whether this customer is active. Inactive objects are typically hidden
               from views and reports in QuickBooks.
-
-          item_sales_tax_id: The sales-tax item used to calculate the actual tax amount for this customer's
-              transactions by applying a specific tax rate collected for a single tax agency.
-              Unlike `salesTaxCode`, which only indicates general taxability, this field
-              drives the actual tax calculation and reporting.
 
           job_description: A brief description of this customer's job, if this object is a job (i.e.,
               sub-customer).
@@ -1038,6 +1033,11 @@ class AsyncCustomersResource(AsyncAPIResource):
 
           sales_tax_country: The country for which sales tax is collected for this customer.
 
+          sales_tax_item_id: The sales-tax item used to calculate the actual tax amount for this customer's
+              transactions by applying a specific tax rate collected for a single tax agency.
+              Unlike `salesTaxCode`, which only indicates general taxability, this field
+              drives the actual tax calculation and reporting.
+
           salutation: The formal salutation title that precedes the name of the contact person for
               this customer, such as "Mr.", "Ms.", or "Dr.".
 
@@ -1063,6 +1063,7 @@ class AsyncCustomersResource(AsyncAPIResource):
                 {
                     "name": name,
                     "account_number": account_number,
+                    "additional_contacts": additional_contacts,
                     "additional_notes": additional_notes,
                     "alternate_contact": alternate_contact,
                     "alternate_phone": alternate_phone,
@@ -1072,7 +1073,6 @@ class AsyncCustomersResource(AsyncAPIResource):
                     "class_id": class_id,
                     "company_name": company_name,
                     "contact": contact,
-                    "contacts": contacts,
                     "credit_card": credit_card,
                     "credit_limit": credit_limit,
                     "currency_id": currency_id,
@@ -1083,7 +1083,6 @@ class AsyncCustomersResource(AsyncAPIResource):
                     "fax": fax,
                     "first_name": first_name,
                     "is_active": is_active,
-                    "item_sales_tax_id": item_sales_tax_id,
                     "job_description": job_description,
                     "job_end_date": job_end_date,
                     "job_projected_end_date": job_projected_end_date,
@@ -1105,6 +1104,7 @@ class AsyncCustomersResource(AsyncAPIResource):
                     "sales_representative_id": sales_representative_id,
                     "sales_tax_code_id": sales_tax_code_id,
                     "sales_tax_country": sales_tax_country,
+                    "sales_tax_item_id": sales_tax_item_id,
                     "salutation": salutation,
                     "shipping_address": shipping_address,
                     "tax_registration_number": tax_registration_number,
@@ -1162,10 +1162,11 @@ class AsyncCustomersResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        version: str,
+        revision_number: str,
         conductor_end_user_id: str,
         account_number: str | NotGiven = NOT_GIVEN,
-        additional_notes_mod: Iterable[customer_update_params.AdditionalNotesMod] | NotGiven = NOT_GIVEN,
+        additional_contacts: Iterable[customer_update_params.AdditionalContact] | NotGiven = NOT_GIVEN,
+        additional_notes: Iterable[customer_update_params.AdditionalNote] | NotGiven = NOT_GIVEN,
         alternate_contact: str | NotGiven = NOT_GIVEN,
         alternate_phone: str | NotGiven = NOT_GIVEN,
         alternate_shipping_addresses: Iterable[customer_update_params.AlternateShippingAddress] | NotGiven = NOT_GIVEN,
@@ -1174,7 +1175,6 @@ class AsyncCustomersResource(AsyncAPIResource):
         class_id: str | NotGiven = NOT_GIVEN,
         company_name: str | NotGiven = NOT_GIVEN,
         contact: str | NotGiven = NOT_GIVEN,
-        contacts: Iterable[customer_update_params.Contact] | NotGiven = NOT_GIVEN,
         credit_card: customer_update_params.CreditCard | NotGiven = NOT_GIVEN,
         credit_limit: str | NotGiven = NOT_GIVEN,
         currency_id: str | NotGiven = NOT_GIVEN,
@@ -1184,7 +1184,6 @@ class AsyncCustomersResource(AsyncAPIResource):
         fax: str | NotGiven = NOT_GIVEN,
         first_name: str | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
-        item_sales_tax_id: str | NotGiven = NOT_GIVEN,
         job_description: str | NotGiven = NOT_GIVEN,
         job_end_date: Union[str, date] | NotGiven = NOT_GIVEN,
         job_projected_end_date: Union[str, date] | NotGiven = NOT_GIVEN,
@@ -1206,6 +1205,7 @@ class AsyncCustomersResource(AsyncAPIResource):
         sales_representative_id: str | NotGiven = NOT_GIVEN,
         sales_tax_code_id: str | NotGiven = NOT_GIVEN,
         sales_tax_country: Literal["australia", "canada", "uk", "us"] | NotGiven = NOT_GIVEN,
+        sales_tax_item_id: str | NotGiven = NOT_GIVEN,
         salutation: str | NotGiven = NOT_GIVEN,
         shipping_address: customer_update_params.ShippingAddress | NotGiven = NOT_GIVEN,
         tax_registration_number: str | NotGiven = NOT_GIVEN,
@@ -1223,9 +1223,9 @@ class AsyncCustomersResource(AsyncAPIResource):
         Args:
           id: The QuickBooks-assigned unique identifier of the customer to update.
 
-          version: The current version identifier of the customer you are updating, which you can
-              get by fetching the object first. Provide the most recent `version` to ensure
-              you're working with the latest data; otherwise, the update will fail.
+          revision_number: The current revision number of the customer you are updating, which you can get
+              by fetching the object first. Provide the most recent `revisionNumber` to ensure
+              you're working with the latest data; otherwise, the update will return an error.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -1235,9 +1235,11 @@ class AsyncCustomersResource(AsyncAPIResource):
               is turned off in QuickBooks, the account number may not be visible in the user
               interface, but it can still be set and retrieved through the API.
 
-          additional_notes_mod: Additional notes about this customer.
+          additional_contacts: Additional alternate contacts for this customer.
 
-          alternate_contact: The name of an alternate contact person for this customer.
+          additional_notes: Additional notes about this customer.
+
+          alternate_contact: The name of a alternate contact person for this customer.
 
           alternate_phone: The customer's alternate telephone number.
 
@@ -1256,8 +1258,6 @@ class AsyncCustomersResource(AsyncAPIResource):
               invoices, checks, and other forms.
 
           contact: The name of the primary contact person for this customer.
-
-          contacts: Additional alternate contacts for this customer.
 
           credit_card: The customer's credit card information, including card type, number, and
               expiration date, used for processing credit card payments.
@@ -1283,11 +1283,6 @@ class AsyncCustomersResource(AsyncAPIResource):
 
           is_active: Indicates whether this customer is active. Inactive objects are typically hidden
               from views and reports in QuickBooks.
-
-          item_sales_tax_id: The sales-tax item used to calculate the actual tax amount for this customer's
-              transactions by applying a specific tax rate collected for a single tax agency.
-              Unlike `salesTaxCode`, which only indicates general taxability, this field
-              drives the actual tax calculation and reporting.
 
           job_description: A brief description of this customer's job, if this object is a job (i.e.,
               sub-customer).
@@ -1357,6 +1352,11 @@ class AsyncCustomersResource(AsyncAPIResource):
 
           sales_tax_country: The country for which sales tax is collected for this customer.
 
+          sales_tax_item_id: The sales-tax item used to calculate the actual tax amount for this customer's
+              transactions by applying a specific tax rate collected for a single tax agency.
+              Unlike `salesTaxCode`, which only indicates general taxability, this field
+              drives the actual tax calculation and reporting.
+
           salutation: The formal salutation title that precedes the name of the contact person for
               this customer, such as "Mr.", "Ms.", or "Dr.".
 
@@ -1382,9 +1382,10 @@ class AsyncCustomersResource(AsyncAPIResource):
             f"/quickbooks-desktop/customers/{id}",
             body=await async_maybe_transform(
                 {
-                    "version": version,
+                    "revision_number": revision_number,
                     "account_number": account_number,
-                    "additional_notes_mod": additional_notes_mod,
+                    "additional_contacts": additional_contacts,
+                    "additional_notes": additional_notes,
                     "alternate_contact": alternate_contact,
                     "alternate_phone": alternate_phone,
                     "alternate_shipping_addresses": alternate_shipping_addresses,
@@ -1393,7 +1394,6 @@ class AsyncCustomersResource(AsyncAPIResource):
                     "class_id": class_id,
                     "company_name": company_name,
                     "contact": contact,
-                    "contacts": contacts,
                     "credit_card": credit_card,
                     "credit_limit": credit_limit,
                     "currency_id": currency_id,
@@ -1403,7 +1403,6 @@ class AsyncCustomersResource(AsyncAPIResource):
                     "fax": fax,
                     "first_name": first_name,
                     "is_active": is_active,
-                    "item_sales_tax_id": item_sales_tax_id,
                     "job_description": job_description,
                     "job_end_date": job_end_date,
                     "job_projected_end_date": job_projected_end_date,
@@ -1424,6 +1423,7 @@ class AsyncCustomersResource(AsyncAPIResource):
                     "sales_representative_id": sales_representative_id,
                     "sales_tax_code_id": sales_tax_code_id,
                     "sales_tax_country": sales_tax_country,
+                    "sales_tax_item_id": sales_tax_item_id,
                     "salutation": salutation,
                     "shipping_address": shipping_address,
                     "tax_registration_number": tax_registration_number,

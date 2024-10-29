@@ -120,7 +120,7 @@ class TestSalesTaxItems:
     def test_method_update(self, client: Conductor) -> None:
         sales_tax_item = client.qbd.sales_tax_items.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(QbdSalesTaxItem, sales_tax_item, path=["response"])
@@ -129,7 +129,7 @@ class TestSalesTaxItems:
     def test_method_update_with_all_params(self, client: Conductor) -> None:
         sales_tax_item = client.qbd.sales_tax_items.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
             barcode={
                 "allow_override": False,
@@ -150,7 +150,7 @@ class TestSalesTaxItems:
     def test_raw_response_update(self, client: Conductor) -> None:
         response = client.qbd.sales_tax_items.with_raw_response.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -163,7 +163,7 @@ class TestSalesTaxItems:
     def test_streaming_response_update(self, client: Conductor) -> None:
         with client.qbd.sales_tax_items.with_streaming_response.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
@@ -179,7 +179,7 @@ class TestSalesTaxItems:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.qbd.sales_tax_items.with_raw_response.update(
                 id="",
-                version="1721172183",
+                revision_number="1721172183",
                 conductor_end_user_id="end_usr_1234567abcdefg",
             )
 
@@ -338,7 +338,7 @@ class TestAsyncSalesTaxItems:
     async def test_method_update(self, async_client: AsyncConductor) -> None:
         sales_tax_item = await async_client.qbd.sales_tax_items.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(QbdSalesTaxItem, sales_tax_item, path=["response"])
@@ -347,7 +347,7 @@ class TestAsyncSalesTaxItems:
     async def test_method_update_with_all_params(self, async_client: AsyncConductor) -> None:
         sales_tax_item = await async_client.qbd.sales_tax_items.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
             barcode={
                 "allow_override": False,
@@ -368,7 +368,7 @@ class TestAsyncSalesTaxItems:
     async def test_raw_response_update(self, async_client: AsyncConductor) -> None:
         response = await async_client.qbd.sales_tax_items.with_raw_response.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -381,7 +381,7 @@ class TestAsyncSalesTaxItems:
     async def test_streaming_response_update(self, async_client: AsyncConductor) -> None:
         async with async_client.qbd.sales_tax_items.with_streaming_response.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
@@ -397,7 +397,7 @@ class TestAsyncSalesTaxItems:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.qbd.sales_tax_items.with_raw_response.update(
                 id="",
-                version="1721172183",
+                revision_number="1721172183",
                 conductor_end_user_id="end_usr_1234567abcdefg",
             )
 

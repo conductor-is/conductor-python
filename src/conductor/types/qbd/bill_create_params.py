@@ -34,13 +34,6 @@ class BillCreateParams(TypedDict, total=False):
     `"Conductor-End-User-Id: {{END_USER_ID}}"`).
     """
 
-    accounts_payable_account_id: Annotated[str, PropertyInfo(alias="accountsPayableAccountId")]
-    """
-    The Accounts Payable account to which this bill is assigned, used to track the
-    amount owed. If not specified, the default Accounts Payable account in
-    QuickBooks is used.
-    """
-
     due_date: Annotated[Union[str, date], PropertyInfo(alias="dueDate", format="iso8601")]
     """The date by which this bill must be paid, in ISO 8601 format (YYYY-MM-DD)."""
 
@@ -103,6 +96,13 @@ class BillCreateParams(TypedDict, total=False):
     """A memo or note for this bill, as entered by the user.
 
     Appears in the Accounts Payable register and relevant reports.
+    """
+
+    payables_account_id: Annotated[str, PropertyInfo(alias="payablesAccountId")]
+    """
+    The accounts payable account to which this bill is assigned, used to track the
+    amount owed. If not specified, the default accounts payable account in
+    QuickBooks is used.
     """
 
     ref_number: Annotated[str, PropertyInfo(alias="refNumber")]

@@ -12,11 +12,11 @@ __all__ = ["AccountUpdateParams"]
 
 
 class AccountUpdateParams(TypedDict, total=False):
-    version: Required[str]
+    revision_number: Required[Annotated[str, PropertyInfo(alias="revisionNumber")]]
     """
-    The current version identifier of the account you are updating, which you can
-    get by fetching the object first. Provide the most recent `version` to ensure
-    you're working with the latest data; otherwise, the update will fail.
+    The current revision number of the account you are updating, which you can get
+    by fetching the object first. Provide the most recent `revisionNumber` to ensure
+    you're working with the latest data; otherwise, the update will return an error.
     """
 
     conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]

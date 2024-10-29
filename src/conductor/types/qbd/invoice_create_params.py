@@ -34,15 +34,6 @@ class InvoiceCreateParams(TypedDict, total=False):
     `"Conductor-End-User-Id: {{END_USER_ID}}"`).
     """
 
-    accounts_receivable_account_id: Annotated[str, PropertyInfo(alias="accountsReceivableAccountId")]
-    """
-    The Accounts Receivable account to which this invoice is assigned, used to track
-    the amount owed. If not specified, the default Accounts Receivable account in
-    QuickBooks is used. If this invoice is linked to other transactions, make sure
-    this `accountsReceivableAccount` matches the `accountsReceivableAccount` used in
-    the other transactions.
-    """
-
     billing_address: Annotated[BillingAddress, PropertyInfo(alias="billingAddress")]
     """The invoice's billing address."""
 
@@ -103,26 +94,18 @@ class InvoiceCreateParams(TypedDict, total=False):
     If `true`, the invoice is in a draft state and has not been finalized.
     """
 
-    is_to_be_emailed: Annotated[bool, PropertyInfo(alias="isToBeEmailed")]
+    is_queued_for_email: Annotated[bool, PropertyInfo(alias="isQueuedForEmail")]
     """Indicates whether this invoice is queued to be emailed to the customer.
 
     If set to `true`, the invoice will appear in the list of documents to be emailed
     in QuickBooks.
     """
 
-    is_to_be_printed: Annotated[bool, PropertyInfo(alias="isToBePrinted")]
+    is_queued_for_print: Annotated[bool, PropertyInfo(alias="isQueuedForPrint")]
     """Indicates whether this invoice is queued for printing.
 
     If set to `true`, the invoice will appear in the list of documents to be printed
     in QuickBooks.
-    """
-
-    item_sales_tax_id: Annotated[str, PropertyInfo(alias="itemSalesTaxId")]
-    """
-    The sales-tax item used to calculate the actual tax amount for this invoice's
-    transactions by applying a specific tax rate collected for a single tax agency.
-    Unlike `salesTaxCode`, which only indicates general taxability, this field
-    drives the actual tax calculation and reporting.
     """
 
     link_to_transaction_ids: Annotated[List[str], PropertyInfo(alias="linkToTransactionIds")]
@@ -174,6 +157,15 @@ class InvoiceCreateParams(TypedDict, total=False):
     purchasing system.
     """
 
+    receivables_account_id: Annotated[str, PropertyInfo(alias="receivablesAccountId")]
+    """
+    The accounts receivable account to which this invoice is assigned, used to track
+    the amount owed. If not specified, the default accounts receivable account in
+    QuickBooks is used. If this invoice is linked to other transactions, make sure
+    this `receivablesAccount` matches the `receivablesAccount` used in the other
+    transactions.
+    """
+
     ref_number: Annotated[str, PropertyInfo(alias="refNumber")]
     """
     The case-sensitive user-defined reference number for this invoice, which can be
@@ -197,6 +189,14 @@ class InvoiceCreateParams(TypedDict, total=False):
     code to all sales.
     """
 
+    sales_tax_item_id: Annotated[str, PropertyInfo(alias="salesTaxItemId")]
+    """
+    The sales-tax item used to calculate the actual tax amount for this invoice's
+    transactions by applying a specific tax rate collected for a single tax agency.
+    Unlike `salesTaxCode`, which only indicates general taxability, this field
+    drives the actual tax calculation and reporting.
+    """
+
     set_credits: Annotated[Iterable[SetCredit], PropertyInfo(alias="setCredits")]
     """Credits to apply to this invoice.
 
@@ -209,6 +209,15 @@ class InvoiceCreateParams(TypedDict, total=False):
     via this field, refetch the invoice and check the `linkedTransactions` field. If
     fetching a list of invoices, you must also specify the parameter
     `includeLinkedTransactions` to see the `linkedTransactions` field.
+    """
+
+    shipment_origin: Annotated[str, PropertyInfo(alias="shipmentOrigin")]
+    """
+    The origin location from where the product associated with this invoice is
+    shipped. This is the point at which ownership and liability for goods transfer
+    from seller to buyer. Internally, QuickBooks uses the term "FOB" for this field,
+    which stands for "freight on board". This field is informational and has no
+    accounting implications.
     """
 
     shipping_address: Annotated[ShippingAddress, PropertyInfo(alias="shippingAddress")]
@@ -224,15 +233,6 @@ class InvoiceCreateParams(TypedDict, total=False):
     """
     The shipping method used for this invoice, such as standard mail or overnight
     delivery.
-    """
-
-    shipping_origin: Annotated[str, PropertyInfo(alias="shippingOrigin")]
-    """
-    The point of origin from where the product associated with this invoice is
-    shipped. This is the point at which ownership and liability for goods transfer
-    from seller to buyer. Internally, QuickBooks uses the term "FOB" for this field,
-    which stands for "freight on board". This field is informational and has no
-    accounting implications.
     """
 
     terms_id: Annotated[str, PropertyInfo(alias="termsId")]
@@ -493,8 +493,8 @@ class InvoiceLine(TypedDict, total=False):
     set using the price level.
     """
 
-    price_rule_conflict_behavior: Annotated[
-        Literal["base_price", "zero"], PropertyInfo(alias="priceRuleConflictBehavior")
+    price_rule_conflict_strategy: Annotated[
+        Literal["base_price", "zero"], PropertyInfo(alias="priceRuleConflictStrategy")
     ]
     """
     Specifies how to resolve price rule conflicts when adding or modifying this
@@ -556,10 +556,10 @@ class SetCredit(TypedDict, total=False):
     decimal string.
     """
 
-    credit_id: Required[Annotated[str, PropertyInfo(alias="creditId")]]
+    credit_memo_id: Required[Annotated[str, PropertyInfo(alias="creditMemoId")]]
     """The unique identifier of the credit memo to apply to this transaction."""
 
-    override: bool
+    override_credit_application: Annotated[bool, PropertyInfo(alias="overrideCreditApplication")]
     """Indicates whether to override the credit."""
 
 

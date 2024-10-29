@@ -60,11 +60,11 @@ class NonInventoryItemsResource(SyncAPIResource):
         class_id: str | NotGiven = NOT_GIVEN,
         external_id: str | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
-        manufacturer_part_number: str | NotGiven = NOT_GIVEN,
         parent_id: str | NotGiven = NOT_GIVEN,
         sales_and_purchase_details: non_inventory_item_create_params.SalesAndPurchaseDetails | NotGiven = NOT_GIVEN,
         sales_or_purchase_details: non_inventory_item_create_params.SalesOrPurchaseDetails | NotGiven = NOT_GIVEN,
         sales_tax_code_id: str | NotGiven = NOT_GIVEN,
+        sku: str | NotGiven = NOT_GIVEN,
         unit_of_measure_set_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -101,9 +101,6 @@ class NonInventoryItemsResource(SyncAPIResource):
           is_active: Indicates whether this non-inventory item is active. Inactive objects are
               typically hidden from views and reports in QuickBooks.
 
-          manufacturer_part_number: The manufacturer's part number for this non-inventory item, which is often the
-              stock keeping unit (SKU).
-
           parent_id: The parent non-inventory item one level above this one in the hierarchy. For
               example, if this non-inventory item has a `fullName` of "Office-Supplies:Printer
               Ink Cartridge", its parent has a `fullName` of "Office-Supplies". If this
@@ -116,6 +113,9 @@ class NonInventoryItemsResource(SyncAPIResource):
               QuickBooks. If QuickBooks is not set up to charge sales tax (via the "Do You
               Charge Sales Tax?" preference), it will assign the default non-taxable code to
               all sales.
+
+          sku: The manufacturer's part number for this non-inventory item, which is often the
+              stock keeping unit (SKU).
 
           unit_of_measure_set_id: The unit-of-measure set associated with this non-inventory item, which consists
               of a base unit and related units.
@@ -138,11 +138,11 @@ class NonInventoryItemsResource(SyncAPIResource):
                     "class_id": class_id,
                     "external_id": external_id,
                     "is_active": is_active,
-                    "manufacturer_part_number": manufacturer_part_number,
                     "parent_id": parent_id,
                     "sales_and_purchase_details": sales_and_purchase_details,
                     "sales_or_purchase_details": sales_or_purchase_details,
                     "sales_tax_code_id": sales_tax_code_id,
+                    "sku": sku,
                     "unit_of_measure_set_id": unit_of_measure_set_id,
                 },
                 non_inventory_item_create_params.NonInventoryItemCreateParams,
@@ -197,18 +197,18 @@ class NonInventoryItemsResource(SyncAPIResource):
         self,
         id: str,
         *,
-        version: str,
+        revision_number: str,
         conductor_end_user_id: str,
         barcode: non_inventory_item_update_params.Barcode | NotGiven = NOT_GIVEN,
         class_id: str | NotGiven = NOT_GIVEN,
         force_unit_of_measure_change: bool | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
-        manufacturer_part_number: str | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
         parent_id: str | NotGiven = NOT_GIVEN,
         sales_and_purchase_details: non_inventory_item_update_params.SalesAndPurchaseDetails | NotGiven = NOT_GIVEN,
         sales_or_purchase_details: non_inventory_item_update_params.SalesOrPurchaseDetails | NotGiven = NOT_GIVEN,
         sales_tax_code_id: str | NotGiven = NOT_GIVEN,
+        sku: str | NotGiven = NOT_GIVEN,
         unit_of_measure_set_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -223,9 +223,10 @@ class NonInventoryItemsResource(SyncAPIResource):
         Args:
           id: The QuickBooks-assigned unique identifier of the non-inventory item to update.
 
-          version: The current version identifier of the non-inventory item you are updating, which
-              you can get by fetching the object first. Provide the most recent `version` to
-              ensure you're working with the latest data; otherwise, the update will fail.
+          revision_number: The current revision number of the non-inventory item you are updating, which
+              you can get by fetching the object first. Provide the most recent
+              `revisionNumber` to ensure you're working with the latest data; otherwise, the
+              update will return an error.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -250,9 +251,6 @@ class NonInventoryItemsResource(SyncAPIResource):
 
           is_active: Indicates whether this non-inventory item is active. Inactive objects are
               typically hidden from views and reports in QuickBooks.
-
-          manufacturer_part_number: The manufacturer's part number for this non-inventory item, which is often the
-              stock keeping unit (SKU).
 
           name: The case-insensitive name of this non-inventory item. Not guaranteed to be
               unique because it does not include the names of its parent objects like
@@ -285,6 +283,9 @@ class NonInventoryItemsResource(SyncAPIResource):
               Charge Sales Tax?" preference), it will assign the default non-taxable code to
               all sales.
 
+          sku: The manufacturer's part number for this non-inventory item, which is often the
+              stock keeping unit (SKU).
+
           unit_of_measure_set_id: The unit-of-measure set associated with this non-inventory item, which consists
               of a base unit and related units.
 
@@ -303,17 +304,17 @@ class NonInventoryItemsResource(SyncAPIResource):
             f"/quickbooks-desktop/non-inventory-items/{id}",
             body=maybe_transform(
                 {
-                    "version": version,
+                    "revision_number": revision_number,
                     "barcode": barcode,
                     "class_id": class_id,
                     "force_unit_of_measure_change": force_unit_of_measure_change,
                     "is_active": is_active,
-                    "manufacturer_part_number": manufacturer_part_number,
                     "name": name,
                     "parent_id": parent_id,
                     "sales_and_purchase_details": sales_and_purchase_details,
                     "sales_or_purchase_details": sales_or_purchase_details,
                     "sales_tax_code_id": sales_tax_code_id,
+                    "sku": sku,
                     "unit_of_measure_set_id": unit_of_measure_set_id,
                 },
                 non_inventory_item_update_params.NonInventoryItemUpdateParams,
@@ -478,11 +479,11 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
         class_id: str | NotGiven = NOT_GIVEN,
         external_id: str | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
-        manufacturer_part_number: str | NotGiven = NOT_GIVEN,
         parent_id: str | NotGiven = NOT_GIVEN,
         sales_and_purchase_details: non_inventory_item_create_params.SalesAndPurchaseDetails | NotGiven = NOT_GIVEN,
         sales_or_purchase_details: non_inventory_item_create_params.SalesOrPurchaseDetails | NotGiven = NOT_GIVEN,
         sales_tax_code_id: str | NotGiven = NOT_GIVEN,
+        sku: str | NotGiven = NOT_GIVEN,
         unit_of_measure_set_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -519,9 +520,6 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
           is_active: Indicates whether this non-inventory item is active. Inactive objects are
               typically hidden from views and reports in QuickBooks.
 
-          manufacturer_part_number: The manufacturer's part number for this non-inventory item, which is often the
-              stock keeping unit (SKU).
-
           parent_id: The parent non-inventory item one level above this one in the hierarchy. For
               example, if this non-inventory item has a `fullName` of "Office-Supplies:Printer
               Ink Cartridge", its parent has a `fullName` of "Office-Supplies". If this
@@ -534,6 +532,9 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
               QuickBooks. If QuickBooks is not set up to charge sales tax (via the "Do You
               Charge Sales Tax?" preference), it will assign the default non-taxable code to
               all sales.
+
+          sku: The manufacturer's part number for this non-inventory item, which is often the
+              stock keeping unit (SKU).
 
           unit_of_measure_set_id: The unit-of-measure set associated with this non-inventory item, which consists
               of a base unit and related units.
@@ -556,11 +557,11 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
                     "class_id": class_id,
                     "external_id": external_id,
                     "is_active": is_active,
-                    "manufacturer_part_number": manufacturer_part_number,
                     "parent_id": parent_id,
                     "sales_and_purchase_details": sales_and_purchase_details,
                     "sales_or_purchase_details": sales_or_purchase_details,
                     "sales_tax_code_id": sales_tax_code_id,
+                    "sku": sku,
                     "unit_of_measure_set_id": unit_of_measure_set_id,
                 },
                 non_inventory_item_create_params.NonInventoryItemCreateParams,
@@ -615,18 +616,18 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        version: str,
+        revision_number: str,
         conductor_end_user_id: str,
         barcode: non_inventory_item_update_params.Barcode | NotGiven = NOT_GIVEN,
         class_id: str | NotGiven = NOT_GIVEN,
         force_unit_of_measure_change: bool | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
-        manufacturer_part_number: str | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
         parent_id: str | NotGiven = NOT_GIVEN,
         sales_and_purchase_details: non_inventory_item_update_params.SalesAndPurchaseDetails | NotGiven = NOT_GIVEN,
         sales_or_purchase_details: non_inventory_item_update_params.SalesOrPurchaseDetails | NotGiven = NOT_GIVEN,
         sales_tax_code_id: str | NotGiven = NOT_GIVEN,
+        sku: str | NotGiven = NOT_GIVEN,
         unit_of_measure_set_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -641,9 +642,10 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
         Args:
           id: The QuickBooks-assigned unique identifier of the non-inventory item to update.
 
-          version: The current version identifier of the non-inventory item you are updating, which
-              you can get by fetching the object first. Provide the most recent `version` to
-              ensure you're working with the latest data; otherwise, the update will fail.
+          revision_number: The current revision number of the non-inventory item you are updating, which
+              you can get by fetching the object first. Provide the most recent
+              `revisionNumber` to ensure you're working with the latest data; otherwise, the
+              update will return an error.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -668,9 +670,6 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
 
           is_active: Indicates whether this non-inventory item is active. Inactive objects are
               typically hidden from views and reports in QuickBooks.
-
-          manufacturer_part_number: The manufacturer's part number for this non-inventory item, which is often the
-              stock keeping unit (SKU).
 
           name: The case-insensitive name of this non-inventory item. Not guaranteed to be
               unique because it does not include the names of its parent objects like
@@ -703,6 +702,9 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
               Charge Sales Tax?" preference), it will assign the default non-taxable code to
               all sales.
 
+          sku: The manufacturer's part number for this non-inventory item, which is often the
+              stock keeping unit (SKU).
+
           unit_of_measure_set_id: The unit-of-measure set associated with this non-inventory item, which consists
               of a base unit and related units.
 
@@ -721,17 +723,17 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
             f"/quickbooks-desktop/non-inventory-items/{id}",
             body=await async_maybe_transform(
                 {
-                    "version": version,
+                    "revision_number": revision_number,
                     "barcode": barcode,
                     "class_id": class_id,
                     "force_unit_of_measure_change": force_unit_of_measure_change,
                     "is_active": is_active,
-                    "manufacturer_part_number": manufacturer_part_number,
                     "name": name,
                     "parent_id": parent_id,
                     "sales_and_purchase_details": sales_and_purchase_details,
                     "sales_or_purchase_details": sales_or_purchase_details,
                     "sales_tax_code_id": sales_tax_code_id,
+                    "sku": sku,
                     "unit_of_measure_set_id": unit_of_measure_set_id,
                 },
                 non_inventory_item_update_params.NonInventoryItemUpdateParams,

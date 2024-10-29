@@ -21,13 +21,13 @@ __all__ = [
     "CustomContactField",
     "CustomerType",
     "CustomField",
-    "ItemSalesTax",
     "JobType",
     "Parent",
     "PreferredPaymentMethod",
     "PriceLevel",
     "SalesRepresentative",
     "SalesTaxCode",
+    "SalesTaxItem",
     "ShippingAddress",
     "Terms",
 ]
@@ -80,6 +80,14 @@ class AdditionalContact(BaseModel):
     object_type: Literal["qbd_contact"] = FieldInfo(alias="objectType")
     """The type of object. This value is always `"qbd_contact"`."""
 
+    revision_number: str = FieldInfo(alias="revisionNumber")
+    """
+    The current revision number of this contact, which changes each time the object
+    is modified. When updating this object, you must provide the most recent
+    `revisionNumber` to ensure you're working with the latest data; otherwise, the
+    update will return an error.
+    """
+
     salutation: Optional[str] = None
     """
     The contact's formal salutation title that precedes their name, such as "Mr.",
@@ -91,14 +99,6 @@ class AdditionalContact(BaseModel):
     The date and time when this contact was last updated, in ISO 8601 format
     (YYYY-MM-DDThh:mm:ss±hh:mm). The time zone is the same as the user's time zone
     in QuickBooks.
-    """
-
-    version: str
-    """
-    The current version identifier of this contact, which changes each time the
-    object is modified. When updating this object, you must provide the most recent
-    `version` to ensure you're working with the latest data; otherwise, the update
-    will fail. This value is opaque and should not be interpreted.
     """
 
 
@@ -120,7 +120,7 @@ class AlternateShippingAddress(BaseModel):
     country: Optional[str] = None
     """The country name of the address."""
 
-    is_default_address: Optional[bool] = FieldInfo(alias="isDefaultAddress", default=None)
+    is_default_shipping_address: Optional[bool] = FieldInfo(alias="isDefaultShippingAddress", default=None)
     """Indicates whether this address is the default shipping address."""
 
     line1: Optional[str] = None
@@ -215,9 +215,6 @@ class CreditCard(BaseModel):
     address: Optional[str] = None
     """The card's billing address."""
 
-    address_zip: Optional[str] = FieldInfo(alias="addressZip", default=None)
-    """The card's billing address ZIP or postal code."""
-
     expiration_month: Optional[float] = FieldInfo(alias="expirationMonth", default=None)
     """The month when the credit card expires."""
 
@@ -229,6 +226,9 @@ class CreditCard(BaseModel):
 
     number: Optional[str] = None
     """The credit card number. Must be masked with lower case "x" and no dashes."""
+
+    postal_code: Optional[str] = FieldInfo(alias="postalCode", default=None)
+    """The card's billing address ZIP or postal code."""
 
 
 class Currency(BaseModel):
@@ -305,22 +305,6 @@ class CustomField(BaseModel):
     """The value of the custom field.
 
     The maximum length depends on the field's data type.
-    """
-
-
-class ItemSalesTax(BaseModel):
-    id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks to this object.
-
-    This ID is unique across all objects of the same type, but not across different
-    QuickBooks object types.
-    """
-
-    full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
-    """
-    The fully-qualified unique name for this object, formed by combining the names
-    of its parent objects with its own `name`, separated by colons. Not
-    case-sensitive.
     """
 
 
@@ -420,6 +404,22 @@ class SalesTaxCode(BaseModel):
     """
 
 
+class SalesTaxItem(BaseModel):
+    id: Optional[str] = None
+    """The unique identifier assigned by QuickBooks to this object.
+
+    This ID is unique across all objects of the same type, but not across different
+    QuickBooks object types.
+    """
+
+    full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
+    """
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
+    """
+
+
 class ShippingAddress(BaseModel):
     city: Optional[str] = None
     """The city, district, suburb, town, or village name of the address."""
@@ -497,7 +497,7 @@ class QbdCustomer(BaseModel):
     """Additional notes about this customer."""
 
     alternate_contact: Optional[str] = FieldInfo(alias="alternateContact", default=None)
-    """The name of an alternate contact person for this customer."""
+    """The name of a alternate contact person for this customer."""
 
     alternate_phone: Optional[str] = FieldInfo(alias="alternatePhone", default=None)
     """The customer's alternate telephone number."""
@@ -617,14 +617,6 @@ class QbdCustomer(BaseModel):
     Inactive objects are typically hidden from views and reports in QuickBooks.
     """
 
-    item_sales_tax: Optional[ItemSalesTax] = FieldInfo(alias="itemSalesTax", default=None)
-    """
-    The sales-tax item used to calculate the actual tax amount for this customer's
-    transactions by applying a specific tax rate collected for a single tax agency.
-    Unlike `salesTaxCode`, which only indicates general taxability, this field
-    drives the actual tax calculation and reporting.
-    """
-
     job_description: Optional[str] = FieldInfo(alias="jobDescription", default=None)
     """
     A brief description of this customer's job, if this object is a job (i.e.,
@@ -726,6 +718,14 @@ class QbdCustomer(BaseModel):
     QuickBooks.
     """
 
+    revision_number: str = FieldInfo(alias="revisionNumber")
+    """
+    The current revision number of this customer, which changes each time the object
+    is modified. When updating this object, you must provide the most recent
+    `revisionNumber` to ensure you're working with the latest data; otherwise, the
+    update will return an error.
+    """
+
     sales_representative: Optional[SalesRepresentative] = FieldInfo(alias="salesRepresentative", default=None)
     """The customer's sales representative.
 
@@ -747,6 +747,14 @@ class QbdCustomer(BaseModel):
         alias="salesTaxCountry", default=None
     )
     """The country for which sales tax is collected for this customer."""
+
+    sales_tax_item: Optional[SalesTaxItem] = FieldInfo(alias="salesTaxItem", default=None)
+    """
+    The sales-tax item used to calculate the actual tax amount for this customer's
+    transactions by applying a specific tax rate collected for a single tax agency.
+    Unlike `salesTaxCode`, which only indicates general taxability, this field
+    drives the actual tax calculation and reporting.
+    """
 
     salutation: Optional[str] = None
     """
@@ -789,12 +797,4 @@ class QbdCustomer(BaseModel):
     The date and time when this customer was last updated, in ISO 8601 format
     (YYYY-MM-DDThh:mm:ss±hh:mm). The time zone is the same as the user's time zone
     in QuickBooks.
-    """
-
-    version: str
-    """
-    The current version identifier of this customer, which changes each time the
-    object is modified. When updating this object, you must provide the most recent
-    `version` to ensure you're working with the latest data; otherwise, the update
-    will fail. This value is opaque and should not be interpreted.
     """
