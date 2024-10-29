@@ -55,7 +55,7 @@ class SalesTaxCodesResource(SyncAPIResource):
         conductor_end_user_id: str,
         description: str | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
-        item_sales_tax_id: str | NotGiven = NOT_GIVEN,
+        sales_tax_item_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -88,7 +88,7 @@ class SalesTaxCodesResource(SyncAPIResource):
           is_active: Indicates whether this sales-tax code is active. Inactive objects are typically
               hidden from views and reports in QuickBooks.
 
-          item_sales_tax_id: The sales-tax item used to calculate the actual tax amount for this sales-tax
+          sales_tax_item_id: The sales-tax item used to calculate the actual tax amount for this sales-tax
               code's transactions by applying a specific tax rate collected for a single tax
               agency. Unlike `salesTaxCode`, which only indicates general taxability, this
               field drives the actual tax calculation and reporting.
@@ -110,7 +110,7 @@ class SalesTaxCodesResource(SyncAPIResource):
                     "name": name,
                     "description": description,
                     "is_active": is_active,
-                    "item_sales_tax_id": item_sales_tax_id,
+                    "sales_tax_item_id": sales_tax_item_id,
                 },
                 sales_tax_code_create_params.SalesTaxCodeCreateParams,
             ),
@@ -164,13 +164,13 @@ class SalesTaxCodesResource(SyncAPIResource):
         self,
         id: str,
         *,
-        version: str,
+        revision_number: str,
         conductor_end_user_id: str,
         description: str | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
         is_taxable: bool | NotGiven = NOT_GIVEN,
-        item_sales_tax_id: str | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
+        sales_tax_item_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -184,9 +184,10 @@ class SalesTaxCodesResource(SyncAPIResource):
         Args:
           id: The QuickBooks-assigned unique identifier of the sales-tax code to update.
 
-          version: The current version identifier of the sales-tax code you are updating, which you
-              can get by fetching the object first. Provide the most recent `version` to
-              ensure you're working with the latest data; otherwise, the update will fail.
+          revision_number: The current revision number of the sales-tax code you are updating, which you
+              can get by fetching the object first. Provide the most recent `revisionNumber`
+              to ensure you're working with the latest data; otherwise, the update will return
+              an error.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -205,14 +206,14 @@ class SalesTaxCodesResource(SyncAPIResource):
               the `isTaxable` value when creating a sales-tax code; the issue solely affects
               the retrieval of the `isTaxable` value.
 
-          item_sales_tax_id: The sales-tax item used to calculate the actual tax amount for this sales-tax
-              code's transactions by applying a specific tax rate collected for a single tax
-              agency. Unlike `salesTaxCode`, which only indicates general taxability, this
-              field drives the actual tax calculation and reporting.
-
           name: The case-insensitive unique name of this sales-tax code, unique across all
               sales-tax codes. This short name will appear on sales forms to identify the tax
               status of an item.
+
+          sales_tax_item_id: The sales-tax item used to calculate the actual tax amount for this sales-tax
+              code's transactions by applying a specific tax rate collected for a single tax
+              agency. Unlike `salesTaxCode`, which only indicates general taxability, this
+              field drives the actual tax calculation and reporting.
 
           extra_headers: Send extra headers
 
@@ -229,12 +230,12 @@ class SalesTaxCodesResource(SyncAPIResource):
             f"/quickbooks-desktop/sales-tax-codes/{id}",
             body=maybe_transform(
                 {
-                    "version": version,
+                    "revision_number": revision_number,
                     "description": description,
                     "is_active": is_active,
                     "is_taxable": is_taxable,
-                    "item_sales_tax_id": item_sales_tax_id,
                     "name": name,
+                    "sales_tax_item_id": sales_tax_item_id,
                 },
                 sales_tax_code_update_params.SalesTaxCodeUpdateParams,
             ),
@@ -384,7 +385,7 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
         conductor_end_user_id: str,
         description: str | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
-        item_sales_tax_id: str | NotGiven = NOT_GIVEN,
+        sales_tax_item_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -417,7 +418,7 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
           is_active: Indicates whether this sales-tax code is active. Inactive objects are typically
               hidden from views and reports in QuickBooks.
 
-          item_sales_tax_id: The sales-tax item used to calculate the actual tax amount for this sales-tax
+          sales_tax_item_id: The sales-tax item used to calculate the actual tax amount for this sales-tax
               code's transactions by applying a specific tax rate collected for a single tax
               agency. Unlike `salesTaxCode`, which only indicates general taxability, this
               field drives the actual tax calculation and reporting.
@@ -439,7 +440,7 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
                     "name": name,
                     "description": description,
                     "is_active": is_active,
-                    "item_sales_tax_id": item_sales_tax_id,
+                    "sales_tax_item_id": sales_tax_item_id,
                 },
                 sales_tax_code_create_params.SalesTaxCodeCreateParams,
             ),
@@ -493,13 +494,13 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        version: str,
+        revision_number: str,
         conductor_end_user_id: str,
         description: str | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
         is_taxable: bool | NotGiven = NOT_GIVEN,
-        item_sales_tax_id: str | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
+        sales_tax_item_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -513,9 +514,10 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
         Args:
           id: The QuickBooks-assigned unique identifier of the sales-tax code to update.
 
-          version: The current version identifier of the sales-tax code you are updating, which you
-              can get by fetching the object first. Provide the most recent `version` to
-              ensure you're working with the latest data; otherwise, the update will fail.
+          revision_number: The current revision number of the sales-tax code you are updating, which you
+              can get by fetching the object first. Provide the most recent `revisionNumber`
+              to ensure you're working with the latest data; otherwise, the update will return
+              an error.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -534,14 +536,14 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
               the `isTaxable` value when creating a sales-tax code; the issue solely affects
               the retrieval of the `isTaxable` value.
 
-          item_sales_tax_id: The sales-tax item used to calculate the actual tax amount for this sales-tax
-              code's transactions by applying a specific tax rate collected for a single tax
-              agency. Unlike `salesTaxCode`, which only indicates general taxability, this
-              field drives the actual tax calculation and reporting.
-
           name: The case-insensitive unique name of this sales-tax code, unique across all
               sales-tax codes. This short name will appear on sales forms to identify the tax
               status of an item.
+
+          sales_tax_item_id: The sales-tax item used to calculate the actual tax amount for this sales-tax
+              code's transactions by applying a specific tax rate collected for a single tax
+              agency. Unlike `salesTaxCode`, which only indicates general taxability, this
+              field drives the actual tax calculation and reporting.
 
           extra_headers: Send extra headers
 
@@ -558,12 +560,12 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
             f"/quickbooks-desktop/sales-tax-codes/{id}",
             body=await async_maybe_transform(
                 {
-                    "version": version,
+                    "revision_number": revision_number,
                     "description": description,
                     "is_active": is_active,
                     "is_taxable": is_taxable,
-                    "item_sales_tax_id": item_sales_tax_id,
                     "name": name,
+                    "sales_tax_item_id": sales_tax_item_id,
                 },
                 sales_tax_code_update_params.SalesTaxCodeUpdateParams,
             ),

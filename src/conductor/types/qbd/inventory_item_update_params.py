@@ -10,43 +10,18 @@ __all__ = ["InventoryItemUpdateParams", "Barcode"]
 
 
 class InventoryItemUpdateParams(TypedDict, total=False):
-    version: Required[str]
+    revision_number: Required[Annotated[str, PropertyInfo(alias="revisionNumber")]]
     """
-    The current version identifier of the inventory item you are updating, which you
-    can get by fetching the object first. Provide the most recent `version` to
-    ensure you're working with the latest data; otherwise, the update will fail.
+    The current revision number of the inventory item you are updating, which you
+    can get by fetching the object first. Provide the most recent `revisionNumber`
+    to ensure you're working with the latest data; otherwise, the update will return
+    an error.
     """
 
     conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]
     """
     The ID of the EndUser to receive this request (e.g.,
     `"Conductor-End-User-Id: {{END_USER_ID}}"`).
-    """
-
-    apply_cogs_account_to_existing_transactions: Annotated[
-        bool, PropertyInfo(alias="applyCOGSAccountToExistingTransactions")
-    ]
-    """
-    Indicates whether to apply the new COGS account (specified by the
-    `cogsAccountId` field) to all existing transactions that use this inventory
-    item. If `true`, the COGS account will be updated in all historical transactions
-    where this inventory item appears. Be cautious with this setting as it modifies
-    historical data. The update will fail if any affected transactions fall within a
-    closed accounting period. If not specified, QuickBooks will prompt the user to
-    make this choice.
-    """
-
-    apply_income_account_to_existing_transactions: Annotated[
-        bool, PropertyInfo(alias="applyIncomeAccountToExistingTransactions")
-    ]
-    """
-    Indicates whether to apply the new income account (specified by the
-    `incomeAccountId` field) to all existing transactions that use this inventory
-    item. If `true`, the income account will be updated in all historical
-    transactions where this inventory item appears. Be cautious with this setting as
-    it modifies historical data. The update will fail if any affected transactions
-    fall within a closed accounting period. If not specified, QuickBooks will prompt
-    the user to make this choice.
     """
 
     asset_account_id: Annotated[str, PropertyInfo(alias="assetAccountId")]
@@ -66,7 +41,7 @@ class InventoryItemUpdateParams(TypedDict, total=False):
     default.
     """
 
-    cogs_account_id: Annotated[str, PropertyInfo(alias="cogsAccountId")]
+    cost_of_goods_sold_account_id: Annotated[str, PropertyInfo(alias="costOfGoodsSoldAccountId")]
     """
     The Cost of Goods Sold (COGS) account for this inventory item, tracking the
     original direct costs of producing goods sold.
@@ -94,12 +69,6 @@ class InventoryItemUpdateParams(TypedDict, total=False):
     """Indicates whether this inventory item is active.
 
     Inactive objects are typically hidden from views and reports in QuickBooks.
-    """
-
-    manufacturer_part_number: Annotated[str, PropertyInfo(alias="manufacturerPartNumber")]
-    """
-    The manufacturer's part number for this inventory item, which is often the stock
-    keeping unit (SKU).
     """
 
     maximum_quantity_on_hand: Annotated[float, PropertyInfo(alias="maximumQuantityOnHand")]
@@ -172,10 +141,42 @@ class InventoryItemUpdateParams(TypedDict, total=False):
     preference), it will assign the default non-taxable code to all sales.
     """
 
+    sku: str
+    """
+    The manufacturer's part number for this inventory item, which is often the stock
+    keeping unit (SKU).
+    """
+
     unit_of_measure_set_id: Annotated[str, PropertyInfo(alias="unitOfMeasureSetId")]
     """
     The unit-of-measure set associated with this inventory item, which consists of a
     base unit and related units.
+    """
+
+    update_existing_transactions_cost_of_goods_sold_account: Annotated[
+        bool, PropertyInfo(alias="updateExistingTransactionsCostOfGoodsSoldAccount")
+    ]
+    """
+    Indicates whether to apply the new COGS account (specified by the
+    `cogsAccountId` field) to all existing transactions that use this inventory
+    item. If `true`, the COGS account will be updated in all historical transactions
+    where this inventory item appears. Be cautious with this setting as it modifies
+    historical data. The update will fail if any affected transactions fall within a
+    closed accounting period. If not specified, QuickBooks will prompt the user to
+    make this choice.
+    """
+
+    update_existing_transactions_income_account: Annotated[
+        bool, PropertyInfo(alias="updateExistingTransactionsIncomeAccount")
+    ]
+    """
+    Indicates whether to apply the new income account (specified by the
+    `incomeAccountId` field) to all existing transactions that use this inventory
+    item. If `true`, the income account will be updated in all historical
+    transactions where this inventory item appears. Be cautious with this setting as
+    it modifies historical data. The update will fail if any affected transactions
+    fall within a closed accounting period. If not specified, QuickBooks will prompt
+    the user to make this choice.
     """
 
 

@@ -51,12 +51,6 @@ class NonInventoryItemCreateParams(TypedDict, total=False):
     Inactive objects are typically hidden from views and reports in QuickBooks.
     """
 
-    manufacturer_part_number: Annotated[str, PropertyInfo(alias="manufacturerPartNumber")]
-    """
-    The manufacturer's part number for this non-inventory item, which is often the
-    stock keeping unit (SKU).
-    """
-
     parent_id: Annotated[str, PropertyInfo(alias="parentId")]
     """The parent non-inventory item one level above this one in the hierarchy.
 
@@ -79,6 +73,12 @@ class NonInventoryItemCreateParams(TypedDict, total=False):
     QuickBooks. If QuickBooks is not set up to charge sales tax (via the "Do You
     Charge Sales Tax?" preference), it will assign the default non-taxable code to
     all sales.
+    """
+
+    sku: str
+    """
+    The manufacturer's part number for this non-inventory item, which is often the
+    stock keeping unit (SKU).
     """
 
     unit_of_measure_set_id: Annotated[str, PropertyInfo(alias="unitOfMeasureSetId")]

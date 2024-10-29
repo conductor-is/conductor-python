@@ -135,7 +135,7 @@ class TestServiceItems:
     def test_method_update(self, client: Conductor) -> None:
         service_item = client.qbd.service_items.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(ServiceItem, service_item, path=["response"])
@@ -144,7 +144,7 @@ class TestServiceItems:
     def test_method_update_with_all_params(self, client: Conductor) -> None:
         service_item = client.qbd.service_items.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
             barcode={
                 "allow_override": False,
@@ -157,8 +157,6 @@ class TestServiceItems:
             name="Web-Design",
             parent_id="80000002-1234567890",
             sales_and_purchase_details={
-                "apply_expense_account_to_existing_transactions": False,
-                "apply_income_account_to_existing_transactions": False,
                 "expense_account_id": "80000006-1234567890",
                 "income_account_id": "80000005-1234567890",
                 "preferred_vendor_id": "80000008-1234567890",
@@ -167,13 +165,15 @@ class TestServiceItems:
                 "purchase_tax_code_id": "80000006-1234567890",
                 "sales_description": "High-quality steel bolts suitable for construction",
                 "sales_price": "19.99",
+                "update_existing_transactions_expense_account": False,
+                "update_existing_transactions_income_account": False,
             },
             sales_or_purchase_details={
                 "account_id": "80000001-1234567890",
-                "apply_account_to_existing_transactions": False,
                 "description": "Hourly Consulting Service",
                 "price": "19.99",
                 "price_percentage": "10.5",
+                "update_existing_transactions_account": False,
             },
             sales_tax_code_id="80000004-1234567890",
             unit_of_measure_set_id="80000003-1234567890",
@@ -184,7 +184,7 @@ class TestServiceItems:
     def test_raw_response_update(self, client: Conductor) -> None:
         response = client.qbd.service_items.with_raw_response.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -197,7 +197,7 @@ class TestServiceItems:
     def test_streaming_response_update(self, client: Conductor) -> None:
         with client.qbd.service_items.with_streaming_response.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
@@ -213,7 +213,7 @@ class TestServiceItems:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.qbd.service_items.with_raw_response.update(
                 id="",
-                version="1721172183",
+                revision_number="1721172183",
                 conductor_end_user_id="end_usr_1234567abcdefg",
             )
 
@@ -387,7 +387,7 @@ class TestAsyncServiceItems:
     async def test_method_update(self, async_client: AsyncConductor) -> None:
         service_item = await async_client.qbd.service_items.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(ServiceItem, service_item, path=["response"])
@@ -396,7 +396,7 @@ class TestAsyncServiceItems:
     async def test_method_update_with_all_params(self, async_client: AsyncConductor) -> None:
         service_item = await async_client.qbd.service_items.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
             barcode={
                 "allow_override": False,
@@ -409,8 +409,6 @@ class TestAsyncServiceItems:
             name="Web-Design",
             parent_id="80000002-1234567890",
             sales_and_purchase_details={
-                "apply_expense_account_to_existing_transactions": False,
-                "apply_income_account_to_existing_transactions": False,
                 "expense_account_id": "80000006-1234567890",
                 "income_account_id": "80000005-1234567890",
                 "preferred_vendor_id": "80000008-1234567890",
@@ -419,13 +417,15 @@ class TestAsyncServiceItems:
                 "purchase_tax_code_id": "80000006-1234567890",
                 "sales_description": "High-quality steel bolts suitable for construction",
                 "sales_price": "19.99",
+                "update_existing_transactions_expense_account": False,
+                "update_existing_transactions_income_account": False,
             },
             sales_or_purchase_details={
                 "account_id": "80000001-1234567890",
-                "apply_account_to_existing_transactions": False,
                 "description": "Hourly Consulting Service",
                 "price": "19.99",
                 "price_percentage": "10.5",
+                "update_existing_transactions_account": False,
             },
             sales_tax_code_id="80000004-1234567890",
             unit_of_measure_set_id="80000003-1234567890",
@@ -436,7 +436,7 @@ class TestAsyncServiceItems:
     async def test_raw_response_update(self, async_client: AsyncConductor) -> None:
         response = await async_client.qbd.service_items.with_raw_response.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -449,7 +449,7 @@ class TestAsyncServiceItems:
     async def test_streaming_response_update(self, async_client: AsyncConductor) -> None:
         async with async_client.qbd.service_items.with_streaming_response.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
@@ -465,7 +465,7 @@ class TestAsyncServiceItems:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.qbd.service_items.with_raw_response.update(
                 id="",
-                version="1721172183",
+                revision_number="1721172183",
                 conductor_end_user_id="end_usr_1234567abcdefg",
             )
 

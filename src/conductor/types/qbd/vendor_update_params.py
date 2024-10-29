@@ -9,21 +9,21 @@ from ..._utils import PropertyInfo
 
 __all__ = [
     "VendorUpdateParams",
-    "AdditionalNotesMod",
+    "AdditionalContact",
+    "AdditionalContactCustomContactField",
+    "AdditionalNote",
     "BillingAddress",
-    "Contact",
-    "ContactCustomContactField",
     "CustomContactField",
     "ShippingAddress",
 ]
 
 
 class VendorUpdateParams(TypedDict, total=False):
-    version: Required[str]
+    revision_number: Required[Annotated[str, PropertyInfo(alias="revisionNumber")]]
     """
-    The current version identifier of the vendor you are updating, which you can get
-    by fetching the object first. Provide the most recent `version` to ensure you're
-    working with the latest data; otherwise, the update will fail.
+    The current revision number of the vendor you are updating, which you can get by
+    fetching the object first. Provide the most recent `revisionNumber` to ensure
+    you're working with the latest data; otherwise, the update will return an error.
     """
 
     conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]
@@ -40,11 +40,14 @@ class VendorUpdateParams(TypedDict, total=False):
     but it can still be set and retrieved through the API.
     """
 
-    additional_notes_mod: Annotated[Iterable[AdditionalNotesMod], PropertyInfo(alias="additionalNotesMod")]
+    additional_contacts: Annotated[Iterable[AdditionalContact], PropertyInfo(alias="additionalContacts")]
+    """Additional alternate contacts for this vendor."""
+
+    additional_notes: Annotated[Iterable[AdditionalNote], PropertyInfo(alias="additionalNotes")]
     """Additional notes about this vendor."""
 
     alternate_contact: Annotated[str, PropertyInfo(alias="alternateContact")]
-    """The name of an alternate contact person for this vendor."""
+    """The name of a alternate contact person for this vendor."""
 
     alternate_phone: Annotated[str, PropertyInfo(alias="alternatePhone")]
     """The vendor's alternate telephone number."""
@@ -78,9 +81,6 @@ class VendorUpdateParams(TypedDict, total=False):
     contact: str
     """The name of the primary contact person for this vendor."""
 
-    contacts: Iterable[Contact]
-    """Additional alternate contacts for this vendor."""
-
     credit_limit: Annotated[str, PropertyInfo(alias="creditLimit")]
     """The vendor's credit limit, represented as a decimal string.
 
@@ -101,6 +101,9 @@ class VendorUpdateParams(TypedDict, total=False):
     addresses.
     """
 
+    default_expense_account_ids: Annotated[List[str], PropertyInfo(alias="defaultExpenseAccountIds")]
+    """The expense accounts to prefill when entering bills for this vendor."""
+
     email: str
     """The vendor's email address."""
 
@@ -116,6 +119,12 @@ class VendorUpdateParams(TypedDict, total=False):
     Inactive objects are typically hidden from views and reports in QuickBooks.
     """
 
+    is_compounding_tax: Annotated[bool, PropertyInfo(alias="isCompoundingTax")]
+    """
+    Indicates whether tax is charged on top of tax for this vendor, for use in
+    Canada or the UK.
+    """
+
     is_eligible_for1099: Annotated[bool, PropertyInfo(alias="isEligibleFor1099")]
     """
     Indicates whether this vendor is eligible to receive a 1099 form for tax
@@ -126,19 +135,13 @@ class VendorUpdateParams(TypedDict, total=False):
     is_sales_tax_agency: Annotated[bool, PropertyInfo(alias="isSalesTaxAgency")]
     """Indicates whether this vendor is a sales tax agency."""
 
-    is_tax_on_tax: Annotated[bool, PropertyInfo(alias="isTaxOnTax")]
-    """
-    Indicates whether tax is charged on top of tax for this vendor, for use in
-    Canada or the UK.
-    """
-
-    is_tax_tracked_on_purchases: Annotated[bool, PropertyInfo(alias="isTaxTrackedOnPurchases")]
+    is_tracking_purchase_tax: Annotated[bool, PropertyInfo(alias="isTrackingPurchaseTax")]
     """
     Indicates whether tax is tracked on purchases for this vendor, for use in Canada
     or the UK.
     """
 
-    is_tax_tracked_on_sales: Annotated[bool, PropertyInfo(alias="isTaxTrackedOnSales")]
+    is_tracking_sales_tax: Annotated[bool, PropertyInfo(alias="isTrackingSalesTax")]
     """
     Indicates whether tax is tracked on sales for this vendor, for use in Canada or
     the UK.
@@ -165,11 +168,20 @@ class VendorUpdateParams(TypedDict, total=False):
     phone: str
     """The vendor's primary telephone number."""
 
-    prefill_account_ids: Annotated[List[str], PropertyInfo(alias="prefillAccountIds")]
-    """The expense accounts to prefill when entering bills for this vendor."""
+    purchase_tax_account_id: Annotated[str, PropertyInfo(alias="purchaseTaxAccountId")]
+    """
+    The account used for tracking taxes on purchases for this vendor, for use in
+    Canada or the UK.
+    """
 
     reporting_period: Annotated[Literal["monthly", "quarterly"], PropertyInfo(alias="reportingPeriod")]
     """The vendor's tax reporting period, for use in Canada or the UK."""
+
+    sales_tax_account_id: Annotated[str, PropertyInfo(alias="salesTaxAccountId")]
+    """
+    The account used for tracking taxes on sales for this vendor, for use in Canada
+    or the UK.
+    """
 
     sales_tax_code_id: Annotated[str, PropertyInfo(alias="salesTaxCodeId")]
     """
@@ -203,18 +215,6 @@ class VendorUpdateParams(TypedDict, total=False):
     tax_identification_number: Annotated[str, PropertyInfo(alias="taxIdentificationNumber")]
     """The vendor's tax identification number (e.g., EIN or SSN)."""
 
-    tax_on_purchases_account_id: Annotated[str, PropertyInfo(alias="taxOnPurchasesAccountId")]
-    """
-    The account used for tracking taxes on purchases for this vendor, for use in
-    Canada or the UK.
-    """
-
-    tax_on_sales_account_id: Annotated[str, PropertyInfo(alias="taxOnSalesAccountId")]
-    """
-    The account used for tracking taxes on sales for this vendor, for use in Canada
-    or the UK.
-    """
-
     tax_registration_number: Annotated[str, PropertyInfo(alias="taxRegistrationNumber")]
     """The vendor's tax registration number, for use in Canada or the UK."""
 
@@ -231,7 +231,53 @@ class VendorUpdateParams(TypedDict, total=False):
     """
 
 
-class AdditionalNotesMod(TypedDict, total=False):
+class AdditionalContactCustomContactField(TypedDict, total=False):
+    name: Required[str]
+    """The name of the custom contact field (e.g., "old address", "secondary phone")."""
+
+    value: Required[str]
+    """The value of the custom contact field."""
+
+
+class AdditionalContact(TypedDict, total=False):
+    id: Required[str]
+    """The QuickBooks-assigned unique identifier of the contact to update."""
+
+    first_name: Required[Annotated[str, PropertyInfo(alias="firstName")]]
+    """The contact's first name."""
+
+    revision_number: Required[Annotated[str, PropertyInfo(alias="revisionNumber")]]
+    """
+    The current revision number of the contact you are updating, which you can get
+    by fetching the object first. Provide the most recent `revisionNumber` to ensure
+    you're working with the latest data; otherwise, the update will return an error.
+    """
+
+    custom_contact_fields: Annotated[
+        Iterable[AdditionalContactCustomContactField], PropertyInfo(alias="customContactFields")
+    ]
+    """
+    Additional custom contact fields for this contact, such as phone numbers or
+    email addresses.
+    """
+
+    job_title: Annotated[str, PropertyInfo(alias="jobTitle")]
+    """The contact's job title."""
+
+    last_name: Annotated[str, PropertyInfo(alias="lastName")]
+    """The contact's last name."""
+
+    middle_name: Annotated[str, PropertyInfo(alias="middleName")]
+    """The contact's middle name."""
+
+    salutation: str
+    """
+    The contact's formal salutation title that precedes their name, such as "Mr.",
+    "Ms.", or "Dr.".
+    """
+
+
+class AdditionalNote(TypedDict, total=False):
     id: Required[float]
     """The ID of the note to update."""
 
@@ -275,50 +321,6 @@ class BillingAddress(TypedDict, total=False):
 
     state: str
     """The state, county, province, or region name of the address."""
-
-
-class ContactCustomContactField(TypedDict, total=False):
-    name: Required[str]
-    """The name of the custom contact field (e.g., "old address", "secondary phone")."""
-
-    value: Required[str]
-    """The value of the custom contact field."""
-
-
-class Contact(TypedDict, total=False):
-    id: Required[str]
-    """The QuickBooks-assigned unique identifier of the contact to update."""
-
-    first_name: Required[Annotated[str, PropertyInfo(alias="firstName")]]
-    """The contact's first name."""
-
-    version: Required[str]
-    """
-    The current version identifier of the contact you are updating, which you can
-    get by fetching the object first. Provide the most recent `version` to ensure
-    you're working with the latest data; otherwise, the update will fail.
-    """
-
-    custom_contact_fields: Annotated[Iterable[ContactCustomContactField], PropertyInfo(alias="customContactFields")]
-    """
-    Additional custom contact fields for this contact, such as phone numbers or
-    email addresses.
-    """
-
-    job_title: Annotated[str, PropertyInfo(alias="jobTitle")]
-    """The contact's job title."""
-
-    last_name: Annotated[str, PropertyInfo(alias="lastName")]
-    """The contact's last name."""
-
-    middle_name: Annotated[str, PropertyInfo(alias="middleName")]
-    """The contact's middle name."""
-
-    salutation: str
-    """
-    The contact's formal salutation title that precedes their name, such as "Mr.",
-    "Ms.", or "Dr.".
-    """
 
 
 class CustomContactField(TypedDict, total=False):

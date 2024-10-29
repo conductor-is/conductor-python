@@ -7,10 +7,10 @@ from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
 
-__all__ = ["SalesTaxCode", "ItemSalesTax"]
+__all__ = ["SalesTaxCode", "SalesTaxItem"]
 
 
-class ItemSalesTax(BaseModel):
+class SalesTaxItem(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks to this object.
 
@@ -62,14 +62,6 @@ class SalesTaxCode(BaseModel):
     code; the issue solely affects the retrieval of the `isTaxable` value.
     """
 
-    item_sales_tax: Optional[ItemSalesTax] = FieldInfo(alias="itemSalesTax", default=None)
-    """
-    The sales-tax item used to calculate the actual tax amount for this sales-tax
-    code's transactions by applying a specific tax rate collected for a single tax
-    agency. Unlike `salesTaxCode`, which only indicates general taxability, this
-    field drives the actual tax calculation and reporting.
-    """
-
     name: str
     """
     The case-insensitive unique name of this sales-tax code, unique across all
@@ -80,17 +72,25 @@ class SalesTaxCode(BaseModel):
     object_type: Literal["qbd_sales_tax_code"] = FieldInfo(alias="objectType")
     """The type of object. This value is always `"qbd_sales_tax_code"`."""
 
+    revision_number: str = FieldInfo(alias="revisionNumber")
+    """
+    The current revision number of this sales-tax code, which changes each time the
+    object is modified. When updating this object, you must provide the most recent
+    `revisionNumber` to ensure you're working with the latest data; otherwise, the
+    update will return an error.
+    """
+
+    sales_tax_item: Optional[SalesTaxItem] = FieldInfo(alias="salesTaxItem", default=None)
+    """
+    The sales-tax item used to calculate the actual tax amount for this sales-tax
+    code's transactions by applying a specific tax rate collected for a single tax
+    agency. Unlike `salesTaxCode`, which only indicates general taxability, this
+    field drives the actual tax calculation and reporting.
+    """
+
     updated_at: str = FieldInfo(alias="updatedAt")
     """
     The date and time when this sales-tax code was last updated, in ISO 8601 format
     (YYYY-MM-DDThh:mm:ss±hh:mm). The time zone is the same as the user's time zone
     in QuickBooks.
-    """
-
-    version: str
-    """
-    The current version identifier of this sales-tax code, which changes each time
-    the object is modified. When updating this object, you must provide the most
-    recent `version` to ensure you're working with the latest data; otherwise, the
-    update will fail. This value is opaque and should not be interpreted.
     """

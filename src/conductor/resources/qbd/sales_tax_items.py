@@ -182,7 +182,7 @@ class SalesTaxItemsResource(SyncAPIResource):
         self,
         id: str,
         *,
-        version: str,
+        revision_number: str,
         conductor_end_user_id: str,
         barcode: sales_tax_item_update_params.Barcode | NotGiven = NOT_GIVEN,
         class_id: str | NotGiven = NOT_GIVEN,
@@ -205,9 +205,10 @@ class SalesTaxItemsResource(SyncAPIResource):
         Args:
           id: The QuickBooks-assigned unique identifier of the sales-tax item to update.
 
-          version: The current version identifier of the sales-tax item you are updating, which you
-              can get by fetching the object first. Provide the most recent `version` to
-              ensure you're working with the latest data; otherwise, the update will fail.
+          revision_number: The current revision number of the sales-tax item you are updating, which you
+              can get by fetching the object first. Provide the most recent `revisionNumber`
+              to ensure you're working with the latest data; otherwise, the update will return
+              an error.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -255,7 +256,7 @@ class SalesTaxItemsResource(SyncAPIResource):
             f"/quickbooks-desktop/sales-tax-items/{id}",
             body=maybe_transform(
                 {
-                    "version": version,
+                    "revision_number": revision_number,
                     "barcode": barcode,
                     "class_id": class_id,
                     "description": description,
@@ -553,7 +554,7 @@ class AsyncSalesTaxItemsResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        version: str,
+        revision_number: str,
         conductor_end_user_id: str,
         barcode: sales_tax_item_update_params.Barcode | NotGiven = NOT_GIVEN,
         class_id: str | NotGiven = NOT_GIVEN,
@@ -576,9 +577,10 @@ class AsyncSalesTaxItemsResource(AsyncAPIResource):
         Args:
           id: The QuickBooks-assigned unique identifier of the sales-tax item to update.
 
-          version: The current version identifier of the sales-tax item you are updating, which you
-              can get by fetching the object first. Provide the most recent `version` to
-              ensure you're working with the latest data; otherwise, the update will fail.
+          revision_number: The current revision number of the sales-tax item you are updating, which you
+              can get by fetching the object first. Provide the most recent `revisionNumber`
+              to ensure you're working with the latest data; otherwise, the update will return
+              an error.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -626,7 +628,7 @@ class AsyncSalesTaxItemsResource(AsyncAPIResource):
             f"/quickbooks-desktop/sales-tax-items/{id}",
             body=await async_maybe_transform(
                 {
-                    "version": version,
+                    "revision_number": revision_number,
                     "barcode": barcode,
                     "class_id": class_id,
                     "description": description,

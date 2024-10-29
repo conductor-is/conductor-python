@@ -10,7 +10,6 @@ from ..._models import BaseModel
 
 __all__ = [
     "QbdInvoice",
-    "AccountsReceivableAccount",
     "BillingAddress",
     "Class",
     "Currency",
@@ -38,30 +37,15 @@ __all__ = [
     "InvoiceLineItem",
     "InvoiceLineOverrideUnitOfMeasureSet",
     "InvoiceLineSalesTaxCode",
-    "ItemSalesTax",
     "LinkedTransaction",
+    "ReceivablesAccount",
     "SalesRepresentative",
     "SalesTaxCode",
+    "SalesTaxItem",
     "ShippingAddress",
     "ShippingMethod",
     "Terms",
 ]
-
-
-class AccountsReceivableAccount(BaseModel):
-    id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks to this object.
-
-    This ID is unique across all objects of the same type, but not across different
-    QuickBooks object types.
-    """
-
-    full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
-    """
-    The fully-qualified unique name for this object, formed by combining the names
-    of its parent objects with its own `name`, separated by colons. Not
-    case-sensitive.
-    """
 
 
 class BillingAddress(BaseModel):
@@ -919,22 +903,6 @@ class InvoiceLine(BaseModel):
     """
 
 
-class ItemSalesTax(BaseModel):
-    id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks to this object.
-
-    This ID is unique across all objects of the same type, but not across different
-    QuickBooks object types.
-    """
-
-    full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
-    """
-    The fully-qualified unique name for this object, formed by combining the names
-    of its parent objects with its own `name`, separated by colons. Not
-    case-sensitive.
-    """
-
-
 class LinkedTransaction(BaseModel):
     id: str
     """The unique identifier assigned by QuickBooks to this linked transaction.
@@ -998,6 +966,22 @@ class LinkedTransaction(BaseModel):
     """The type of transaction for this linked transaction."""
 
 
+class ReceivablesAccount(BaseModel):
+    id: Optional[str] = None
+    """The unique identifier assigned by QuickBooks to this object.
+
+    This ID is unique across all objects of the same type, but not across different
+    QuickBooks object types.
+    """
+
+    full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
+    """
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
+    """
+
+
 class SalesRepresentative(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks to this object.
@@ -1015,6 +999,22 @@ class SalesRepresentative(BaseModel):
 
 
 class SalesTaxCode(BaseModel):
+    id: Optional[str] = None
+    """The unique identifier assigned by QuickBooks to this object.
+
+    This ID is unique across all objects of the same type, but not across different
+    QuickBooks object types.
+    """
+
+    full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
+    """
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
+    """
+
+
+class SalesTaxItem(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks to this object.
 
@@ -1105,17 +1105,6 @@ class QbdInvoice(BaseModel):
     """The unique identifier assigned by QuickBooks to this invoice.
 
     This ID is unique across all transaction types.
-    """
-
-    accounts_receivable_account: Optional[AccountsReceivableAccount] = FieldInfo(
-        alias="accountsReceivableAccount", default=None
-    )
-    """
-    The Accounts Receivable account to which this invoice is assigned, used to track
-    the amount owed. If not specified, the default Accounts Receivable account in
-    QuickBooks is used. If this invoice is linked to other transactions, make sure
-    this `accountsReceivableAccount` matches the `accountsReceivableAccount` used in
-    the other transactions.
     """
 
     applied_amount: Optional[str] = FieldInfo(alias="appliedAmount", default=None)
@@ -1227,26 +1216,18 @@ class QbdInvoice(BaseModel):
     If `true`, the invoice is in a draft state and has not been finalized.
     """
 
-    is_to_be_emailed: Optional[bool] = FieldInfo(alias="isToBeEmailed", default=None)
+    is_queued_for_email: Optional[bool] = FieldInfo(alias="isQueuedForEmail", default=None)
     """Indicates whether this invoice is queued to be emailed to the customer.
 
     If set to `true`, the invoice will appear in the list of documents to be emailed
     in QuickBooks.
     """
 
-    is_to_be_printed: Optional[bool] = FieldInfo(alias="isToBePrinted", default=None)
+    is_queued_for_print: Optional[bool] = FieldInfo(alias="isQueuedForPrint", default=None)
     """Indicates whether this invoice is queued for printing.
 
     If set to `true`, the invoice will appear in the list of documents to be printed
     in QuickBooks.
-    """
-
-    item_sales_tax: Optional[ItemSalesTax] = FieldInfo(alias="itemSalesTax", default=None)
-    """
-    The sales-tax item used to calculate the actual tax amount for this invoice's
-    transactions by applying a specific tax rate collected for a single tax agency.
-    Unlike `salesTaxCode`, which only indicates general taxability, this field
-    drives the actual tax calculation and reporting.
     """
 
     linked_transactions: List[LinkedTransaction] = FieldInfo(alias="linkedTransactions")
@@ -1285,11 +1266,28 @@ class QbdInvoice(BaseModel):
     purchasing system.
     """
 
+    receivables_account: Optional[ReceivablesAccount] = FieldInfo(alias="receivablesAccount", default=None)
+    """
+    The accounts receivable account to which this invoice is assigned, used to track
+    the amount owed. If not specified, the default accounts receivable account in
+    QuickBooks is used. If this invoice is linked to other transactions, make sure
+    this `receivablesAccount` matches the `receivablesAccount` used in the other
+    transactions.
+    """
+
     ref_number: Optional[str] = FieldInfo(alias="refNumber", default=None)
     """
     The case-sensitive user-defined reference number for this invoice, which can be
     used to identify the transaction in QuickBooks. This value is not required to be
     unique and can be arbitrarily changed by the QuickBooks user.
+    """
+
+    revision_number: str = FieldInfo(alias="revisionNumber")
+    """
+    The current revision number of this invoice, which changes each time the object
+    is modified. When updating this object, you must provide the most recent
+    `revisionNumber` to ensure you're working with the latest data; otherwise, the
+    update will return an error.
     """
 
     sales_representative: Optional[SalesRepresentative] = FieldInfo(alias="salesRepresentative", default=None)
@@ -1308,6 +1306,14 @@ class QbdInvoice(BaseModel):
     code to all sales.
     """
 
+    sales_tax_item: Optional[SalesTaxItem] = FieldInfo(alias="salesTaxItem", default=None)
+    """
+    The sales-tax item used to calculate the actual tax amount for this invoice's
+    transactions by applying a specific tax rate collected for a single tax agency.
+    Unlike `salesTaxCode`, which only indicates general taxability, this field
+    drives the actual tax calculation and reporting.
+    """
+
     sales_tax_percentage: Optional[str] = FieldInfo(alias="salesTaxPercentage", default=None)
     """
     The sales tax percentage applied to this invoice, represented as a decimal
@@ -1318,6 +1324,15 @@ class QbdInvoice(BaseModel):
     """
     The total amount of sales tax charged for this invoice, represented as a decimal
     string.
+    """
+
+    shipment_origin: Optional[str] = FieldInfo(alias="shipmentOrigin", default=None)
+    """
+    The origin location from where the product associated with this invoice is
+    shipped. This is the point at which ownership and liability for goods transfer
+    from seller to buyer. Internally, QuickBooks uses the term "FOB" for this field,
+    which stands for "freight on board". This field is informational and has no
+    accounting implications.
     """
 
     shipping_address: Optional[ShippingAddress] = FieldInfo(alias="shippingAddress", default=None)
@@ -1333,15 +1348,6 @@ class QbdInvoice(BaseModel):
     """
     The shipping method used for this invoice, such as standard mail or overnight
     delivery.
-    """
-
-    shipping_origin: Optional[str] = FieldInfo(alias="shippingOrigin", default=None)
-    """
-    The point of origin from where the product associated with this invoice is
-    shipped. This is the point at which ownership and liability for goods transfer
-    from seller to buyer. Internally, QuickBooks uses the term "FOB" for this field,
-    which stands for "freight on board". This field is informational and has no
-    accounting implications.
     """
 
     subtotal: Optional[str] = None
@@ -1375,12 +1381,4 @@ class QbdInvoice(BaseModel):
     The date and time when this invoice was last updated, in ISO 8601 format
     (YYYY-MM-DDThh:mm:ss±hh:mm). The time zone is the same as the user's time zone
     in QuickBooks.
-    """
-
-    version: str
-    """
-    The current version identifier of this invoice, which changes each time the
-    object is modified. When updating this object, you must provide the most recent
-    `version` to ensure you're working with the latest data; otherwise, the update
-    will fail. This value is opaque and should not be interpreted.
     """

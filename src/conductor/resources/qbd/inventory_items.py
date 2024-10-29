@@ -57,12 +57,11 @@ class InventoryItemsResource(SyncAPIResource):
         asset_account_id: str | NotGiven = NOT_GIVEN,
         barcode: inventory_item_create_params.Barcode | NotGiven = NOT_GIVEN,
         class_id: str | NotGiven = NOT_GIVEN,
-        cogs_account_id: str | NotGiven = NOT_GIVEN,
+        cost_of_goods_sold_account_id: str | NotGiven = NOT_GIVEN,
         external_id: str | NotGiven = NOT_GIVEN,
         income_account_id: str | NotGiven = NOT_GIVEN,
         inventory_date: Union[str, date] | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
-        manufacturer_part_number: str | NotGiven = NOT_GIVEN,
         maximum_quantity_on_hand: float | NotGiven = NOT_GIVEN,
         parent_id: str | NotGiven = NOT_GIVEN,
         preferred_vendor_id: str | NotGiven = NOT_GIVEN,
@@ -74,6 +73,7 @@ class InventoryItemsResource(SyncAPIResource):
         sales_description: str | NotGiven = NOT_GIVEN,
         sales_price: str | NotGiven = NOT_GIVEN,
         sales_tax_code_id: str | NotGiven = NOT_GIVEN,
+        sku: str | NotGiven = NOT_GIVEN,
         total_value: str | NotGiven = NOT_GIVEN,
         unit_of_measure_set_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -105,7 +105,7 @@ class InventoryItemsResource(SyncAPIResource):
               meaningful segments, such as department, location, or type of work. In
               QuickBooks, class tracking is off by default.
 
-          cogs_account_id: The Cost of Goods Sold (COGS) account for this inventory item, tracking the
+          cost_of_goods_sold_account_id: The Cost of Goods Sold (COGS) account for this inventory item, tracking the
               original direct costs of producing goods sold.
 
           external_id: A globally unique identifier (GUID) you can provide for tracking this object in
@@ -120,9 +120,6 @@ class InventoryItemsResource(SyncAPIResource):
 
           is_active: Indicates whether this inventory item is active. Inactive objects are typically
               hidden from views and reports in QuickBooks.
-
-          manufacturer_part_number: The manufacturer's part number for this inventory item, which is often the stock
-              keeping unit (SKU).
 
           maximum_quantity_on_hand: The maximum quantity of this inventory item desired in inventory.
 
@@ -163,6 +160,9 @@ class InventoryItemsResource(SyncAPIResource):
               QuickBooks is not set up to charge sales tax (via the "Do You Charge Sales Tax?"
               preference), it will assign the default non-taxable code to all sales.
 
+          sku: The manufacturer's part number for this inventory item, which is often the stock
+              keeping unit (SKU).
+
           total_value: The total value of this inventory item. If `totalValue` is provided,
               `quantityOnHand` must also be provided and must be greater than zero. If both
               `quantityOnHand` and `purchaseCost` are provided, then `totalValue` will be set
@@ -189,12 +189,11 @@ class InventoryItemsResource(SyncAPIResource):
                     "asset_account_id": asset_account_id,
                     "barcode": barcode,
                     "class_id": class_id,
-                    "cogs_account_id": cogs_account_id,
+                    "cost_of_goods_sold_account_id": cost_of_goods_sold_account_id,
                     "external_id": external_id,
                     "income_account_id": income_account_id,
                     "inventory_date": inventory_date,
                     "is_active": is_active,
-                    "manufacturer_part_number": manufacturer_part_number,
                     "maximum_quantity_on_hand": maximum_quantity_on_hand,
                     "parent_id": parent_id,
                     "preferred_vendor_id": preferred_vendor_id,
@@ -206,6 +205,7 @@ class InventoryItemsResource(SyncAPIResource):
                     "sales_description": sales_description,
                     "sales_price": sales_price,
                     "sales_tax_code_id": sales_tax_code_id,
+                    "sku": sku,
                     "total_value": total_value,
                     "unit_of_measure_set_id": unit_of_measure_set_id,
                 },
@@ -261,18 +261,15 @@ class InventoryItemsResource(SyncAPIResource):
         self,
         id: str,
         *,
-        version: str,
+        revision_number: str,
         conductor_end_user_id: str,
-        apply_cogs_account_to_existing_transactions: bool | NotGiven = NOT_GIVEN,
-        apply_income_account_to_existing_transactions: bool | NotGiven = NOT_GIVEN,
         asset_account_id: str | NotGiven = NOT_GIVEN,
         barcode: inventory_item_update_params.Barcode | NotGiven = NOT_GIVEN,
         class_id: str | NotGiven = NOT_GIVEN,
-        cogs_account_id: str | NotGiven = NOT_GIVEN,
+        cost_of_goods_sold_account_id: str | NotGiven = NOT_GIVEN,
         force_unit_of_measure_change: bool | NotGiven = NOT_GIVEN,
         income_account_id: str | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
-        manufacturer_part_number: str | NotGiven = NOT_GIVEN,
         maximum_quantity_on_hand: float | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
         parent_id: str | NotGiven = NOT_GIVEN,
@@ -284,7 +281,10 @@ class InventoryItemsResource(SyncAPIResource):
         sales_description: str | NotGiven = NOT_GIVEN,
         sales_price: str | NotGiven = NOT_GIVEN,
         sales_tax_code_id: str | NotGiven = NOT_GIVEN,
+        sku: str | NotGiven = NOT_GIVEN,
         unit_of_measure_set_id: str | NotGiven = NOT_GIVEN,
+        update_existing_transactions_cost_of_goods_sold_account: bool | NotGiven = NOT_GIVEN,
+        update_existing_transactions_income_account: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -298,28 +298,13 @@ class InventoryItemsResource(SyncAPIResource):
         Args:
           id: The QuickBooks-assigned unique identifier of the inventory item to update.
 
-          version: The current version identifier of the inventory item you are updating, which you
-              can get by fetching the object first. Provide the most recent `version` to
-              ensure you're working with the latest data; otherwise, the update will fail.
+          revision_number: The current revision number of the inventory item you are updating, which you
+              can get by fetching the object first. Provide the most recent `revisionNumber`
+              to ensure you're working with the latest data; otherwise, the update will return
+              an error.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
-
-          apply_cogs_account_to_existing_transactions: Indicates whether to apply the new COGS account (specified by the
-              `cogsAccountId` field) to all existing transactions that use this inventory
-              item. If `true`, the COGS account will be updated in all historical transactions
-              where this inventory item appears. Be cautious with this setting as it modifies
-              historical data. The update will fail if any affected transactions fall within a
-              closed accounting period. If not specified, QuickBooks will prompt the user to
-              make this choice.
-
-          apply_income_account_to_existing_transactions: Indicates whether to apply the new income account (specified by the
-              `incomeAccountId` field) to all existing transactions that use this inventory
-              item. If `true`, the income account will be updated in all historical
-              transactions where this inventory item appears. Be cautious with this setting as
-              it modifies historical data. The update will fail if any affected transactions
-              fall within a closed accounting period. If not specified, QuickBooks will prompt
-              the user to make this choice.
 
           asset_account_id: The asset account used to track the current value of this inventory item in
               inventory.
@@ -330,7 +315,7 @@ class InventoryItemsResource(SyncAPIResource):
               meaningful segments, such as department, location, or type of work. In
               QuickBooks, class tracking is off by default.
 
-          cogs_account_id: The Cost of Goods Sold (COGS) account for this inventory item, tracking the
+          cost_of_goods_sold_account_id: The Cost of Goods Sold (COGS) account for this inventory item, tracking the
               original direct costs of producing goods sold.
 
           force_unit_of_measure_change: Indicates whether to allow changing the inventory item's unit-of-measure set
@@ -349,9 +334,6 @@ class InventoryItemsResource(SyncAPIResource):
 
           is_active: Indicates whether this inventory item is active. Inactive objects are typically
               hidden from views and reports in QuickBooks.
-
-          manufacturer_part_number: The manufacturer's part number for this inventory item, which is often the stock
-              keeping unit (SKU).
 
           maximum_quantity_on_hand: The maximum quantity of this inventory item desired in inventory.
 
@@ -394,8 +376,27 @@ class InventoryItemsResource(SyncAPIResource):
               QuickBooks is not set up to charge sales tax (via the "Do You Charge Sales Tax?"
               preference), it will assign the default non-taxable code to all sales.
 
+          sku: The manufacturer's part number for this inventory item, which is often the stock
+              keeping unit (SKU).
+
           unit_of_measure_set_id: The unit-of-measure set associated with this inventory item, which consists of a
               base unit and related units.
+
+          update_existing_transactions_cost_of_goods_sold_account: Indicates whether to apply the new COGS account (specified by the
+              `cogsAccountId` field) to all existing transactions that use this inventory
+              item. If `true`, the COGS account will be updated in all historical transactions
+              where this inventory item appears. Be cautious with this setting as it modifies
+              historical data. The update will fail if any affected transactions fall within a
+              closed accounting period. If not specified, QuickBooks will prompt the user to
+              make this choice.
+
+          update_existing_transactions_income_account: Indicates whether to apply the new income account (specified by the
+              `incomeAccountId` field) to all existing transactions that use this inventory
+              item. If `true`, the income account will be updated in all historical
+              transactions where this inventory item appears. Be cautious with this setting as
+              it modifies historical data. The update will fail if any affected transactions
+              fall within a closed accounting period. If not specified, QuickBooks will prompt
+              the user to make this choice.
 
           extra_headers: Send extra headers
 
@@ -412,17 +413,14 @@ class InventoryItemsResource(SyncAPIResource):
             f"/quickbooks-desktop/inventory-items/{id}",
             body=maybe_transform(
                 {
-                    "version": version,
-                    "apply_cogs_account_to_existing_transactions": apply_cogs_account_to_existing_transactions,
-                    "apply_income_account_to_existing_transactions": apply_income_account_to_existing_transactions,
+                    "revision_number": revision_number,
                     "asset_account_id": asset_account_id,
                     "barcode": barcode,
                     "class_id": class_id,
-                    "cogs_account_id": cogs_account_id,
+                    "cost_of_goods_sold_account_id": cost_of_goods_sold_account_id,
                     "force_unit_of_measure_change": force_unit_of_measure_change,
                     "income_account_id": income_account_id,
                     "is_active": is_active,
-                    "manufacturer_part_number": manufacturer_part_number,
                     "maximum_quantity_on_hand": maximum_quantity_on_hand,
                     "name": name,
                     "parent_id": parent_id,
@@ -434,7 +432,10 @@ class InventoryItemsResource(SyncAPIResource):
                     "sales_description": sales_description,
                     "sales_price": sales_price,
                     "sales_tax_code_id": sales_tax_code_id,
+                    "sku": sku,
                     "unit_of_measure_set_id": unit_of_measure_set_id,
+                    "update_existing_transactions_cost_of_goods_sold_account": update_existing_transactions_cost_of_goods_sold_account,
+                    "update_existing_transactions_income_account": update_existing_transactions_income_account,
                 },
                 inventory_item_update_params.InventoryItemUpdateParams,
             ),
@@ -609,12 +610,11 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
         asset_account_id: str | NotGiven = NOT_GIVEN,
         barcode: inventory_item_create_params.Barcode | NotGiven = NOT_GIVEN,
         class_id: str | NotGiven = NOT_GIVEN,
-        cogs_account_id: str | NotGiven = NOT_GIVEN,
+        cost_of_goods_sold_account_id: str | NotGiven = NOT_GIVEN,
         external_id: str | NotGiven = NOT_GIVEN,
         income_account_id: str | NotGiven = NOT_GIVEN,
         inventory_date: Union[str, date] | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
-        manufacturer_part_number: str | NotGiven = NOT_GIVEN,
         maximum_quantity_on_hand: float | NotGiven = NOT_GIVEN,
         parent_id: str | NotGiven = NOT_GIVEN,
         preferred_vendor_id: str | NotGiven = NOT_GIVEN,
@@ -626,6 +626,7 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
         sales_description: str | NotGiven = NOT_GIVEN,
         sales_price: str | NotGiven = NOT_GIVEN,
         sales_tax_code_id: str | NotGiven = NOT_GIVEN,
+        sku: str | NotGiven = NOT_GIVEN,
         total_value: str | NotGiven = NOT_GIVEN,
         unit_of_measure_set_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -657,7 +658,7 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
               meaningful segments, such as department, location, or type of work. In
               QuickBooks, class tracking is off by default.
 
-          cogs_account_id: The Cost of Goods Sold (COGS) account for this inventory item, tracking the
+          cost_of_goods_sold_account_id: The Cost of Goods Sold (COGS) account for this inventory item, tracking the
               original direct costs of producing goods sold.
 
           external_id: A globally unique identifier (GUID) you can provide for tracking this object in
@@ -672,9 +673,6 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
 
           is_active: Indicates whether this inventory item is active. Inactive objects are typically
               hidden from views and reports in QuickBooks.
-
-          manufacturer_part_number: The manufacturer's part number for this inventory item, which is often the stock
-              keeping unit (SKU).
 
           maximum_quantity_on_hand: The maximum quantity of this inventory item desired in inventory.
 
@@ -715,6 +713,9 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
               QuickBooks is not set up to charge sales tax (via the "Do You Charge Sales Tax?"
               preference), it will assign the default non-taxable code to all sales.
 
+          sku: The manufacturer's part number for this inventory item, which is often the stock
+              keeping unit (SKU).
+
           total_value: The total value of this inventory item. If `totalValue` is provided,
               `quantityOnHand` must also be provided and must be greater than zero. If both
               `quantityOnHand` and `purchaseCost` are provided, then `totalValue` will be set
@@ -741,12 +742,11 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
                     "asset_account_id": asset_account_id,
                     "barcode": barcode,
                     "class_id": class_id,
-                    "cogs_account_id": cogs_account_id,
+                    "cost_of_goods_sold_account_id": cost_of_goods_sold_account_id,
                     "external_id": external_id,
                     "income_account_id": income_account_id,
                     "inventory_date": inventory_date,
                     "is_active": is_active,
-                    "manufacturer_part_number": manufacturer_part_number,
                     "maximum_quantity_on_hand": maximum_quantity_on_hand,
                     "parent_id": parent_id,
                     "preferred_vendor_id": preferred_vendor_id,
@@ -758,6 +758,7 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
                     "sales_description": sales_description,
                     "sales_price": sales_price,
                     "sales_tax_code_id": sales_tax_code_id,
+                    "sku": sku,
                     "total_value": total_value,
                     "unit_of_measure_set_id": unit_of_measure_set_id,
                 },
@@ -813,18 +814,15 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        version: str,
+        revision_number: str,
         conductor_end_user_id: str,
-        apply_cogs_account_to_existing_transactions: bool | NotGiven = NOT_GIVEN,
-        apply_income_account_to_existing_transactions: bool | NotGiven = NOT_GIVEN,
         asset_account_id: str | NotGiven = NOT_GIVEN,
         barcode: inventory_item_update_params.Barcode | NotGiven = NOT_GIVEN,
         class_id: str | NotGiven = NOT_GIVEN,
-        cogs_account_id: str | NotGiven = NOT_GIVEN,
+        cost_of_goods_sold_account_id: str | NotGiven = NOT_GIVEN,
         force_unit_of_measure_change: bool | NotGiven = NOT_GIVEN,
         income_account_id: str | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
-        manufacturer_part_number: str | NotGiven = NOT_GIVEN,
         maximum_quantity_on_hand: float | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
         parent_id: str | NotGiven = NOT_GIVEN,
@@ -836,7 +834,10 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
         sales_description: str | NotGiven = NOT_GIVEN,
         sales_price: str | NotGiven = NOT_GIVEN,
         sales_tax_code_id: str | NotGiven = NOT_GIVEN,
+        sku: str | NotGiven = NOT_GIVEN,
         unit_of_measure_set_id: str | NotGiven = NOT_GIVEN,
+        update_existing_transactions_cost_of_goods_sold_account: bool | NotGiven = NOT_GIVEN,
+        update_existing_transactions_income_account: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -850,28 +851,13 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
         Args:
           id: The QuickBooks-assigned unique identifier of the inventory item to update.
 
-          version: The current version identifier of the inventory item you are updating, which you
-              can get by fetching the object first. Provide the most recent `version` to
-              ensure you're working with the latest data; otherwise, the update will fail.
+          revision_number: The current revision number of the inventory item you are updating, which you
+              can get by fetching the object first. Provide the most recent `revisionNumber`
+              to ensure you're working with the latest data; otherwise, the update will return
+              an error.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
-
-          apply_cogs_account_to_existing_transactions: Indicates whether to apply the new COGS account (specified by the
-              `cogsAccountId` field) to all existing transactions that use this inventory
-              item. If `true`, the COGS account will be updated in all historical transactions
-              where this inventory item appears. Be cautious with this setting as it modifies
-              historical data. The update will fail if any affected transactions fall within a
-              closed accounting period. If not specified, QuickBooks will prompt the user to
-              make this choice.
-
-          apply_income_account_to_existing_transactions: Indicates whether to apply the new income account (specified by the
-              `incomeAccountId` field) to all existing transactions that use this inventory
-              item. If `true`, the income account will be updated in all historical
-              transactions where this inventory item appears. Be cautious with this setting as
-              it modifies historical data. The update will fail if any affected transactions
-              fall within a closed accounting period. If not specified, QuickBooks will prompt
-              the user to make this choice.
 
           asset_account_id: The asset account used to track the current value of this inventory item in
               inventory.
@@ -882,7 +868,7 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
               meaningful segments, such as department, location, or type of work. In
               QuickBooks, class tracking is off by default.
 
-          cogs_account_id: The Cost of Goods Sold (COGS) account for this inventory item, tracking the
+          cost_of_goods_sold_account_id: The Cost of Goods Sold (COGS) account for this inventory item, tracking the
               original direct costs of producing goods sold.
 
           force_unit_of_measure_change: Indicates whether to allow changing the inventory item's unit-of-measure set
@@ -901,9 +887,6 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
 
           is_active: Indicates whether this inventory item is active. Inactive objects are typically
               hidden from views and reports in QuickBooks.
-
-          manufacturer_part_number: The manufacturer's part number for this inventory item, which is often the stock
-              keeping unit (SKU).
 
           maximum_quantity_on_hand: The maximum quantity of this inventory item desired in inventory.
 
@@ -946,8 +929,27 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
               QuickBooks is not set up to charge sales tax (via the "Do You Charge Sales Tax?"
               preference), it will assign the default non-taxable code to all sales.
 
+          sku: The manufacturer's part number for this inventory item, which is often the stock
+              keeping unit (SKU).
+
           unit_of_measure_set_id: The unit-of-measure set associated with this inventory item, which consists of a
               base unit and related units.
+
+          update_existing_transactions_cost_of_goods_sold_account: Indicates whether to apply the new COGS account (specified by the
+              `cogsAccountId` field) to all existing transactions that use this inventory
+              item. If `true`, the COGS account will be updated in all historical transactions
+              where this inventory item appears. Be cautious with this setting as it modifies
+              historical data. The update will fail if any affected transactions fall within a
+              closed accounting period. If not specified, QuickBooks will prompt the user to
+              make this choice.
+
+          update_existing_transactions_income_account: Indicates whether to apply the new income account (specified by the
+              `incomeAccountId` field) to all existing transactions that use this inventory
+              item. If `true`, the income account will be updated in all historical
+              transactions where this inventory item appears. Be cautious with this setting as
+              it modifies historical data. The update will fail if any affected transactions
+              fall within a closed accounting period. If not specified, QuickBooks will prompt
+              the user to make this choice.
 
           extra_headers: Send extra headers
 
@@ -964,17 +966,14 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
             f"/quickbooks-desktop/inventory-items/{id}",
             body=await async_maybe_transform(
                 {
-                    "version": version,
-                    "apply_cogs_account_to_existing_transactions": apply_cogs_account_to_existing_transactions,
-                    "apply_income_account_to_existing_transactions": apply_income_account_to_existing_transactions,
+                    "revision_number": revision_number,
                     "asset_account_id": asset_account_id,
                     "barcode": barcode,
                     "class_id": class_id,
-                    "cogs_account_id": cogs_account_id,
+                    "cost_of_goods_sold_account_id": cost_of_goods_sold_account_id,
                     "force_unit_of_measure_change": force_unit_of_measure_change,
                     "income_account_id": income_account_id,
                     "is_active": is_active,
-                    "manufacturer_part_number": manufacturer_part_number,
                     "maximum_quantity_on_hand": maximum_quantity_on_hand,
                     "name": name,
                     "parent_id": parent_id,
@@ -986,7 +985,10 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
                     "sales_description": sales_description,
                     "sales_price": sales_price,
                     "sales_tax_code_id": sales_tax_code_id,
+                    "sku": sku,
                     "unit_of_measure_set_id": unit_of_measure_set_id,
+                    "update_existing_transactions_cost_of_goods_sold_account": update_existing_transactions_cost_of_goods_sold_account,
+                    "update_existing_transactions_income_account": update_existing_transactions_income_account,
                 },
                 inventory_item_update_params.InventoryItemUpdateParams,
             ),

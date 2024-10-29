@@ -199,7 +199,7 @@ class CreditCardChargesResource(SyncAPIResource):
         self,
         id: str,
         *,
-        version: str,
+        revision_number: str,
         conductor_end_user_id: str,
         account_id: str | NotGiven = NOT_GIVEN,
         clear_expense_lines: bool | NotGiven = NOT_GIVEN,
@@ -226,9 +226,10 @@ class CreditCardChargesResource(SyncAPIResource):
         Args:
           id: The QuickBooks-assigned unique identifier of the credit card charge to update.
 
-          version: The current version identifier of the credit card charge you are updating, which
-              you can get by fetching the object first. Provide the most recent `version` to
-              ensure you're working with the latest data; otherwise, the update will fail.
+          revision_number: The current revision number of the credit card charge you are updating, which
+              you can get by fetching the object first. Provide the most recent
+              `revisionNumber` to ensure you're working with the latest data; otherwise, the
+              update will return an error.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -312,7 +313,7 @@ class CreditCardChargesResource(SyncAPIResource):
             f"/quickbooks-desktop/credit-card-charges/{id}",
             body=maybe_transform(
                 {
-                    "version": version,
+                    "revision_number": revision_number,
                     "account_id": account_id,
                     "clear_expense_lines": clear_expense_lines,
                     "clear_item_lines": clear_item_lines,
@@ -650,7 +651,7 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        version: str,
+        revision_number: str,
         conductor_end_user_id: str,
         account_id: str | NotGiven = NOT_GIVEN,
         clear_expense_lines: bool | NotGiven = NOT_GIVEN,
@@ -677,9 +678,10 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
         Args:
           id: The QuickBooks-assigned unique identifier of the credit card charge to update.
 
-          version: The current version identifier of the credit card charge you are updating, which
-              you can get by fetching the object first. Provide the most recent `version` to
-              ensure you're working with the latest data; otherwise, the update will fail.
+          revision_number: The current revision number of the credit card charge you are updating, which
+              you can get by fetching the object first. Provide the most recent
+              `revisionNumber` to ensure you're working with the latest data; otherwise, the
+              update will return an error.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -763,7 +765,7 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
             f"/quickbooks-desktop/credit-card-charges/{id}",
             body=await async_maybe_transform(
                 {
-                    "version": version,
+                    "revision_number": revision_number,
                     "account_id": account_id,
                     "clear_expense_lines": clear_expense_lines,
                     "clear_item_lines": clear_item_lines,
