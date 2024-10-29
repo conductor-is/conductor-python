@@ -34,7 +34,6 @@ class TestBills:
             transaction_date=parse_date("2019-12-27"),
             vendor_id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
-            accounts_payable_account_id="80000002-1234567890",
             due_date=parse_date("2019-12-27"),
             exchange_rate=1.2345,
             expense_lines=[
@@ -319,6 +318,7 @@ class TestBills:
             ],
             link_to_transaction_ids=["string", "string", "string"],
             memo="Office supplies for September",
+            payables_account_id="80000002-1234567890",
             ref_number="BILL-1234",
             sales_tax_code_id="80000004-1234567890",
             terms_id="80000013-1234567890",
@@ -411,7 +411,7 @@ class TestBills:
     def test_method_update(self, client: Conductor) -> None:
         bill = client.qbd.bills.update(
             id="123ABC-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(QbdBill, bill, path=["response"])
@@ -420,9 +420,8 @@ class TestBills:
     def test_method_update_with_all_params(self, client: Conductor) -> None:
         bill = client.qbd.bills.update(
             id="123ABC-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
-            accounts_payable_account_id="80000002-1234567890",
             clear_expense_lines=False,
             clear_item_lines=False,
             due_date=parse_date("2019-12-27"),
@@ -746,6 +745,7 @@ class TestBills:
                 },
             ],
             memo="Office supplies for September",
+            payables_account_id="80000002-1234567890",
             ref_number="BILL-1234",
             sales_tax_code_id="80000004-1234567890",
             terms_id="80000013-1234567890",
@@ -770,7 +770,7 @@ class TestBills:
     def test_raw_response_update(self, client: Conductor) -> None:
         response = client.qbd.bills.with_raw_response.update(
             id="123ABC-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -783,7 +783,7 @@ class TestBills:
     def test_streaming_response_update(self, client: Conductor) -> None:
         with client.qbd.bills.with_streaming_response.update(
             id="123ABC-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
@@ -799,7 +799,7 @@ class TestBills:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.qbd.bills.with_raw_response.update(
                 id="",
-                version="1721172183",
+                revision_number="1721172183",
                 conductor_end_user_id="end_usr_1234567abcdefg",
             )
 
@@ -879,7 +879,6 @@ class TestAsyncBills:
             transaction_date=parse_date("2019-12-27"),
             vendor_id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
-            accounts_payable_account_id="80000002-1234567890",
             due_date=parse_date("2019-12-27"),
             exchange_rate=1.2345,
             expense_lines=[
@@ -1164,6 +1163,7 @@ class TestAsyncBills:
             ],
             link_to_transaction_ids=["string", "string", "string"],
             memo="Office supplies for September",
+            payables_account_id="80000002-1234567890",
             ref_number="BILL-1234",
             sales_tax_code_id="80000004-1234567890",
             terms_id="80000013-1234567890",
@@ -1256,7 +1256,7 @@ class TestAsyncBills:
     async def test_method_update(self, async_client: AsyncConductor) -> None:
         bill = await async_client.qbd.bills.update(
             id="123ABC-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(QbdBill, bill, path=["response"])
@@ -1265,9 +1265,8 @@ class TestAsyncBills:
     async def test_method_update_with_all_params(self, async_client: AsyncConductor) -> None:
         bill = await async_client.qbd.bills.update(
             id="123ABC-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
-            accounts_payable_account_id="80000002-1234567890",
             clear_expense_lines=False,
             clear_item_lines=False,
             due_date=parse_date("2019-12-27"),
@@ -1591,6 +1590,7 @@ class TestAsyncBills:
                 },
             ],
             memo="Office supplies for September",
+            payables_account_id="80000002-1234567890",
             ref_number="BILL-1234",
             sales_tax_code_id="80000004-1234567890",
             terms_id="80000013-1234567890",
@@ -1615,7 +1615,7 @@ class TestAsyncBills:
     async def test_raw_response_update(self, async_client: AsyncConductor) -> None:
         response = await async_client.qbd.bills.with_raw_response.update(
             id="123ABC-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -1628,7 +1628,7 @@ class TestAsyncBills:
     async def test_streaming_response_update(self, async_client: AsyncConductor) -> None:
         async with async_client.qbd.bills.with_streaming_response.update(
             id="123ABC-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
@@ -1644,7 +1644,7 @@ class TestAsyncBills:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.qbd.bills.with_raw_response.update(
                 id="",
-                version="1721172183",
+                revision_number="1721172183",
                 conductor_end_user_id="end_usr_1234567abcdefg",
             )
 

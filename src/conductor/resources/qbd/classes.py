@@ -152,7 +152,7 @@ class ClassesResource(SyncAPIResource):
         self,
         id: str,
         *,
-        version: str,
+        revision_number: str,
         conductor_end_user_id: str,
         is_active: bool | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
@@ -170,9 +170,9 @@ class ClassesResource(SyncAPIResource):
         Args:
           id: The QuickBooks-assigned unique identifier of the class to update.
 
-          version: The current version identifier of the class you are updating, which you can get
-              by fetching the object first. Provide the most recent `version` to ensure you're
-              working with the latest data; otherwise, the update will fail.
+          revision_number: The current revision number of the class you are updating, which you can get by
+              fetching the object first. Provide the most recent `revisionNumber` to ensure
+              you're working with the latest data; otherwise, the update will return an error.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -206,7 +206,7 @@ class ClassesResource(SyncAPIResource):
             f"/quickbooks-desktop/classes/{id}",
             body=maybe_transform(
                 {
-                    "version": version,
+                    "revision_number": revision_number,
                     "is_active": is_active,
                     "name": name,
                     "parent_id": parent_id,
@@ -455,7 +455,7 @@ class AsyncClassesResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        version: str,
+        revision_number: str,
         conductor_end_user_id: str,
         is_active: bool | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
@@ -473,9 +473,9 @@ class AsyncClassesResource(AsyncAPIResource):
         Args:
           id: The QuickBooks-assigned unique identifier of the class to update.
 
-          version: The current version identifier of the class you are updating, which you can get
-              by fetching the object first. Provide the most recent `version` to ensure you're
-              working with the latest data; otherwise, the update will fail.
+          revision_number: The current revision number of the class you are updating, which you can get by
+              fetching the object first. Provide the most recent `revisionNumber` to ensure
+              you're working with the latest data; otherwise, the update will return an error.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -509,7 +509,7 @@ class AsyncClassesResource(AsyncAPIResource):
             f"/quickbooks-desktop/classes/{id}",
             body=await async_maybe_transform(
                 {
-                    "version": version,
+                    "revision_number": revision_number,
                     "is_active": is_active,
                     "name": name,
                     "parent_id": parent_id,

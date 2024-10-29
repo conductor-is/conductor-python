@@ -186,7 +186,7 @@ class ServiceItemsResource(SyncAPIResource):
         self,
         id: str,
         *,
-        version: str,
+        revision_number: str,
         conductor_end_user_id: str,
         barcode: service_item_update_params.Barcode | NotGiven = NOT_GIVEN,
         class_id: str | NotGiven = NOT_GIVEN,
@@ -211,9 +211,10 @@ class ServiceItemsResource(SyncAPIResource):
         Args:
           id: The QuickBooks-assigned unique identifier of the service item to update.
 
-          version: The current version identifier of the service item you are updating, which you
-              can get by fetching the object first. Provide the most recent `version` to
-              ensure you're working with the latest data; otherwise, the update will fail.
+          revision_number: The current revision number of the service item you are updating, which you can
+              get by fetching the object first. Provide the most recent `revisionNumber` to
+              ensure you're working with the latest data; otherwise, the update will return an
+              error.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -286,7 +287,7 @@ class ServiceItemsResource(SyncAPIResource):
             f"/quickbooks-desktop/service-items/{id}",
             body=maybe_transform(
                 {
-                    "version": version,
+                    "revision_number": revision_number,
                     "barcode": barcode,
                     "class_id": class_id,
                     "force_unit_of_measure_change": force_unit_of_measure_change,
@@ -590,7 +591,7 @@ class AsyncServiceItemsResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        version: str,
+        revision_number: str,
         conductor_end_user_id: str,
         barcode: service_item_update_params.Barcode | NotGiven = NOT_GIVEN,
         class_id: str | NotGiven = NOT_GIVEN,
@@ -615,9 +616,10 @@ class AsyncServiceItemsResource(AsyncAPIResource):
         Args:
           id: The QuickBooks-assigned unique identifier of the service item to update.
 
-          version: The current version identifier of the service item you are updating, which you
-              can get by fetching the object first. Provide the most recent `version` to
-              ensure you're working with the latest data; otherwise, the update will fail.
+          revision_number: The current revision number of the service item you are updating, which you can
+              get by fetching the object first. Provide the most recent `revisionNumber` to
+              ensure you're working with the latest data; otherwise, the update will return an
+              error.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -690,7 +692,7 @@ class AsyncServiceItemsResource(AsyncAPIResource):
             f"/quickbooks-desktop/service-items/{id}",
             body=await async_maybe_transform(
                 {
-                    "version": version,
+                    "revision_number": revision_number,
                     "barcode": barcode,
                     "class_id": class_id,
                     "force_unit_of_measure_change": force_unit_of_measure_change,

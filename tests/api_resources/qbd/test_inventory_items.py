@@ -41,12 +41,11 @@ class TestInventoryItems:
                 "value": "012345678905",
             },
             class_id="80000001-1234567890",
-            cogs_account_id="80000007-1234567890",
+            cost_of_goods_sold_account_id="80000007-1234567890",
             external_id="12345678-abcd-1234-abcd-1234567890ab",
             income_account_id="80000005-1234567890",
             inventory_date=parse_date("2019-12-27"),
             is_active=True,
-            manufacturer_part_number="MPN-123456",
             maximum_quantity_on_hand=200,
             parent_id="80000002-1234567890",
             preferred_vendor_id="80000008-1234567890",
@@ -58,6 +57,7 @@ class TestInventoryItems:
             sales_description="High-quality steel bolts suitable for construction",
             sales_price="19.99",
             sales_tax_code_id="80000004-1234567890",
+            sku="MPN-123456",
             total_value="1500.00",
             unit_of_measure_set_id="80000003-1234567890",
         )
@@ -135,7 +135,7 @@ class TestInventoryItems:
     def test_method_update(self, client: Conductor) -> None:
         inventory_item = client.qbd.inventory_items.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(InventoryItem, inventory_item, path=["response"])
@@ -144,10 +144,8 @@ class TestInventoryItems:
     def test_method_update_with_all_params(self, client: Conductor) -> None:
         inventory_item = client.qbd.inventory_items.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
-            apply_cogs_account_to_existing_transactions=False,
-            apply_income_account_to_existing_transactions=False,
             asset_account_id="80000009-1234567890",
             barcode={
                 "allow_override": False,
@@ -155,11 +153,10 @@ class TestInventoryItems:
                 "value": "012345678905",
             },
             class_id="80000001-1234567890",
-            cogs_account_id="80000007-1234567890",
+            cost_of_goods_sold_account_id="80000007-1234567890",
             force_unit_of_measure_change=False,
             income_account_id="80000005-1234567890",
             is_active=True,
-            manufacturer_part_number="MPN-123456",
             maximum_quantity_on_hand=200,
             name="Widget",
             parent_id="80000002-1234567890",
@@ -171,7 +168,10 @@ class TestInventoryItems:
             sales_description="High-quality steel bolts suitable for construction",
             sales_price="19.99",
             sales_tax_code_id="80000004-1234567890",
+            sku="MPN-123456",
             unit_of_measure_set_id="80000003-1234567890",
+            update_existing_transactions_cost_of_goods_sold_account=False,
+            update_existing_transactions_income_account=False,
         )
         assert_matches_type(InventoryItem, inventory_item, path=["response"])
 
@@ -179,7 +179,7 @@ class TestInventoryItems:
     def test_raw_response_update(self, client: Conductor) -> None:
         response = client.qbd.inventory_items.with_raw_response.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -192,7 +192,7 @@ class TestInventoryItems:
     def test_streaming_response_update(self, client: Conductor) -> None:
         with client.qbd.inventory_items.with_streaming_response.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
@@ -208,7 +208,7 @@ class TestInventoryItems:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.qbd.inventory_items.with_raw_response.update(
                 id="",
-                version="1721172183",
+                revision_number="1721172183",
                 conductor_end_user_id="end_usr_1234567abcdefg",
             )
 
@@ -287,12 +287,11 @@ class TestAsyncInventoryItems:
                 "value": "012345678905",
             },
             class_id="80000001-1234567890",
-            cogs_account_id="80000007-1234567890",
+            cost_of_goods_sold_account_id="80000007-1234567890",
             external_id="12345678-abcd-1234-abcd-1234567890ab",
             income_account_id="80000005-1234567890",
             inventory_date=parse_date("2019-12-27"),
             is_active=True,
-            manufacturer_part_number="MPN-123456",
             maximum_quantity_on_hand=200,
             parent_id="80000002-1234567890",
             preferred_vendor_id="80000008-1234567890",
@@ -304,6 +303,7 @@ class TestAsyncInventoryItems:
             sales_description="High-quality steel bolts suitable for construction",
             sales_price="19.99",
             sales_tax_code_id="80000004-1234567890",
+            sku="MPN-123456",
             total_value="1500.00",
             unit_of_measure_set_id="80000003-1234567890",
         )
@@ -381,7 +381,7 @@ class TestAsyncInventoryItems:
     async def test_method_update(self, async_client: AsyncConductor) -> None:
         inventory_item = await async_client.qbd.inventory_items.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(InventoryItem, inventory_item, path=["response"])
@@ -390,10 +390,8 @@ class TestAsyncInventoryItems:
     async def test_method_update_with_all_params(self, async_client: AsyncConductor) -> None:
         inventory_item = await async_client.qbd.inventory_items.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
-            apply_cogs_account_to_existing_transactions=False,
-            apply_income_account_to_existing_transactions=False,
             asset_account_id="80000009-1234567890",
             barcode={
                 "allow_override": False,
@@ -401,11 +399,10 @@ class TestAsyncInventoryItems:
                 "value": "012345678905",
             },
             class_id="80000001-1234567890",
-            cogs_account_id="80000007-1234567890",
+            cost_of_goods_sold_account_id="80000007-1234567890",
             force_unit_of_measure_change=False,
             income_account_id="80000005-1234567890",
             is_active=True,
-            manufacturer_part_number="MPN-123456",
             maximum_quantity_on_hand=200,
             name="Widget",
             parent_id="80000002-1234567890",
@@ -417,7 +414,10 @@ class TestAsyncInventoryItems:
             sales_description="High-quality steel bolts suitable for construction",
             sales_price="19.99",
             sales_tax_code_id="80000004-1234567890",
+            sku="MPN-123456",
             unit_of_measure_set_id="80000003-1234567890",
+            update_existing_transactions_cost_of_goods_sold_account=False,
+            update_existing_transactions_income_account=False,
         )
         assert_matches_type(InventoryItem, inventory_item, path=["response"])
 
@@ -425,7 +425,7 @@ class TestAsyncInventoryItems:
     async def test_raw_response_update(self, async_client: AsyncConductor) -> None:
         response = await async_client.qbd.inventory_items.with_raw_response.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -438,7 +438,7 @@ class TestAsyncInventoryItems:
     async def test_streaming_response_update(self, async_client: AsyncConductor) -> None:
         async with async_client.qbd.inventory_items.with_streaming_response.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
@@ -454,7 +454,7 @@ class TestAsyncInventoryItems:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.qbd.inventory_items.with_raw_response.update(
                 id="",
-                version="1721172183",
+                revision_number="1721172183",
                 conductor_end_user_id="end_usr_1234567abcdefg",
             )
 

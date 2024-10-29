@@ -10,11 +10,11 @@ from ..._utils import PropertyInfo
 
 __all__ = [
     "CustomerCreateParams",
+    "AdditionalContact",
+    "AdditionalContactCustomContactField",
     "AdditionalNote",
     "AlternateShippingAddress",
     "BillingAddress",
-    "Contact",
-    "ContactCustomContactField",
     "CreditCard",
     "CustomContactField",
     "ShippingAddress",
@@ -45,11 +45,14 @@ class CustomerCreateParams(TypedDict, total=False):
     interface, but it can still be set and retrieved through the API.
     """
 
+    additional_contacts: Annotated[Iterable[AdditionalContact], PropertyInfo(alias="additionalContacts")]
+    """Additional alternate contacts for this customer."""
+
     additional_notes: Annotated[Iterable[AdditionalNote], PropertyInfo(alias="additionalNotes")]
     """Additional notes about this customer."""
 
     alternate_contact: Annotated[str, PropertyInfo(alias="alternateContact")]
-    """The name of an alternate contact person for this customer."""
+    """The name of a alternate contact person for this customer."""
 
     alternate_phone: Annotated[str, PropertyInfo(alias="alternatePhone")]
     """The customer's alternate telephone number."""
@@ -84,9 +87,6 @@ class CustomerCreateParams(TypedDict, total=False):
 
     contact: str
     """The name of the primary contact person for this customer."""
-
-    contacts: Iterable[Contact]
-    """Additional alternate contacts for this customer."""
 
     credit_card: Annotated[CreditCard, PropertyInfo(alias="creditCard")]
     """
@@ -141,14 +141,6 @@ class CustomerCreateParams(TypedDict, total=False):
     """Indicates whether this customer is active.
 
     Inactive objects are typically hidden from views and reports in QuickBooks.
-    """
-
-    item_sales_tax_id: Annotated[str, PropertyInfo(alias="itemSalesTaxId")]
-    """
-    The sales-tax item used to calculate the actual tax amount for this customer's
-    transactions by applying a specific tax rate collected for a single tax agency.
-    Unlike `salesTaxCode`, which only indicates general taxability, this field
-    drives the actual tax calculation and reporting.
     """
 
     job_description: Annotated[str, PropertyInfo(alias="jobDescription")]
@@ -270,6 +262,14 @@ class CustomerCreateParams(TypedDict, total=False):
     sales_tax_country: Annotated[Literal["australia", "canada", "uk", "us"], PropertyInfo(alias="salesTaxCountry")]
     """The country for which sales tax is collected for this customer."""
 
+    sales_tax_item_id: Annotated[str, PropertyInfo(alias="salesTaxItemId")]
+    """
+    The sales-tax item used to calculate the actual tax amount for this customer's
+    transactions by applying a specific tax rate collected for a single tax agency.
+    Unlike `salesTaxCode`, which only indicates general taxability, this field
+    drives the actual tax calculation and reporting.
+    """
+
     salutation: str
     """
     The formal salutation title that precedes the name of the contact person for
@@ -289,6 +289,42 @@ class CustomerCreateParams(TypedDict, total=False):
     """
 
 
+class AdditionalContactCustomContactField(TypedDict, total=False):
+    name: Required[str]
+    """The name of the custom contact field (e.g., "old address", "secondary phone")."""
+
+    value: Required[str]
+    """The value of the custom contact field."""
+
+
+class AdditionalContact(TypedDict, total=False):
+    first_name: Required[Annotated[str, PropertyInfo(alias="firstName")]]
+    """The contact's first name."""
+
+    custom_contact_fields: Annotated[
+        Iterable[AdditionalContactCustomContactField], PropertyInfo(alias="customContactFields")
+    ]
+    """
+    Additional custom contact fields for this contact, such as phone numbers or
+    email addresses.
+    """
+
+    job_title: Annotated[str, PropertyInfo(alias="jobTitle")]
+    """The contact's job title."""
+
+    last_name: Annotated[str, PropertyInfo(alias="lastName")]
+    """The contact's last name."""
+
+    middle_name: Annotated[str, PropertyInfo(alias="middleName")]
+    """The contact's middle name."""
+
+    salutation: str
+    """
+    The contact's formal salutation title that precedes their name, such as "Mr.",
+    "Ms.", or "Dr.".
+    """
+
+
 class AdditionalNote(TypedDict, total=False):
     note: Required[str]
     """The text of this note."""
@@ -304,7 +340,7 @@ class AlternateShippingAddress(TypedDict, total=False):
     country: str
     """The country name of the address."""
 
-    is_default_address: Annotated[bool, PropertyInfo(alias="isDefaultAddress")]
+    is_default_shipping_address: Annotated[bool, PropertyInfo(alias="isDefaultShippingAddress")]
     """Indicates whether this address is the default shipping address."""
 
     line1: str
@@ -376,46 +412,9 @@ class BillingAddress(TypedDict, total=False):
     """The state, county, province, or region name of the address."""
 
 
-class ContactCustomContactField(TypedDict, total=False):
-    name: Required[str]
-    """The name of the custom contact field (e.g., "old address", "secondary phone")."""
-
-    value: Required[str]
-    """The value of the custom contact field."""
-
-
-class Contact(TypedDict, total=False):
-    first_name: Required[Annotated[str, PropertyInfo(alias="firstName")]]
-    """The contact's first name."""
-
-    custom_contact_fields: Annotated[Iterable[ContactCustomContactField], PropertyInfo(alias="customContactFields")]
-    """
-    Additional custom contact fields for this contact, such as phone numbers or
-    email addresses.
-    """
-
-    job_title: Annotated[str, PropertyInfo(alias="jobTitle")]
-    """The contact's job title."""
-
-    last_name: Annotated[str, PropertyInfo(alias="lastName")]
-    """The contact's last name."""
-
-    middle_name: Annotated[str, PropertyInfo(alias="middleName")]
-    """The contact's middle name."""
-
-    salutation: str
-    """
-    The contact's formal salutation title that precedes their name, such as "Mr.",
-    "Ms.", or "Dr.".
-    """
-
-
 class CreditCard(TypedDict, total=False):
     address: str
     """The card's billing address."""
-
-    address_zip: Annotated[str, PropertyInfo(alias="addressZip")]
-    """The card's billing address ZIP or postal code."""
 
     expiration_month: Annotated[float, PropertyInfo(alias="expirationMonth")]
     """The month when the credit card expires."""
@@ -428,6 +427,9 @@ class CreditCard(TypedDict, total=False):
 
     number: str
     """The credit card number. Must be masked with lower case "x" and no dashes."""
+
+    postal_code: Annotated[str, PropertyInfo(alias="postalCode")]
+    """The card's billing address ZIP or postal code."""
 
 
 class CustomContactField(TypedDict, total=False):

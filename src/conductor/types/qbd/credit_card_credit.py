@@ -1165,6 +1165,14 @@ class CreditCardCredit(BaseModel):
     required to be unique and can be arbitrarily changed by the QuickBooks user.
     """
 
+    revision_number: str = FieldInfo(alias="revisionNumber")
+    """
+    The current revision number of this credit card credit, which changes each time
+    the object is modified. When updating this object, you must provide the most
+    recent `revisionNumber` to ensure you're working with the latest data;
+    otherwise, the update will return an error.
+    """
+
     sales_tax_code: Optional[SalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)
     """
     The sales-tax code associated with this credit card credit, determining whether
@@ -1184,12 +1192,4 @@ class CreditCardCredit(BaseModel):
     The date and time when this credit card credit was last updated, in ISO 8601
     format (YYYY-MM-DDThh:mm:ss±hh:mm). The time zone is the same as the user's time
     zone in QuickBooks.
-    """
-
-    version: str
-    """
-    The current version identifier of this credit card credit, which changes each
-    time the object is modified. When updating this object, you must provide the
-    most recent `version` to ensure you're working with the latest data; otherwise,
-    the update will fail. This value is opaque and should not be interpreted.
     """

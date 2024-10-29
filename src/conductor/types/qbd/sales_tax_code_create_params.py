@@ -44,7 +44,7 @@ class SalesTaxCodeCreateParams(TypedDict, total=False):
     Inactive objects are typically hidden from views and reports in QuickBooks.
     """
 
-    item_sales_tax_id: Annotated[str, PropertyInfo(alias="itemSalesTaxId")]
+    sales_tax_item_id: Annotated[str, PropertyInfo(alias="salesTaxItemId")]
     """
     The sales-tax item used to calculate the actual tax amount for this sales-tax
     code's transactions by applying a specific tax rate collected for a single tax

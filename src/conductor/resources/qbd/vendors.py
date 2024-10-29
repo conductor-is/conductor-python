@@ -55,6 +55,7 @@ class VendorsResource(SyncAPIResource):
         name: str,
         conductor_end_user_id: str,
         account_number: str | NotGiven = NOT_GIVEN,
+        additional_contacts: Iterable[vendor_create_params.AdditionalContact] | NotGiven = NOT_GIVEN,
         additional_notes: Iterable[vendor_create_params.AdditionalNote] | NotGiven = NOT_GIVEN,
         alternate_contact: str | NotGiven = NOT_GIVEN,
         alternate_phone: str | NotGiven = NOT_GIVEN,
@@ -64,20 +65,20 @@ class VendorsResource(SyncAPIResource):
         class_id: str | NotGiven = NOT_GIVEN,
         company_name: str | NotGiven = NOT_GIVEN,
         contact: str | NotGiven = NOT_GIVEN,
-        contacts: Iterable[vendor_create_params.Contact] | NotGiven = NOT_GIVEN,
         credit_limit: str | NotGiven = NOT_GIVEN,
         currency_id: str | NotGiven = NOT_GIVEN,
         custom_contact_fields: Iterable[vendor_create_params.CustomContactField] | NotGiven = NOT_GIVEN,
+        default_expense_account_ids: List[str] | NotGiven = NOT_GIVEN,
         email: str | NotGiven = NOT_GIVEN,
         external_id: str | NotGiven = NOT_GIVEN,
         fax: str | NotGiven = NOT_GIVEN,
         first_name: str | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
+        is_compounding_tax: bool | NotGiven = NOT_GIVEN,
         is_eligible_for1099: bool | NotGiven = NOT_GIVEN,
         is_sales_tax_agency: bool | NotGiven = NOT_GIVEN,
-        is_tax_on_tax: bool | NotGiven = NOT_GIVEN,
-        is_tax_tracked_on_purchases: bool | NotGiven = NOT_GIVEN,
-        is_tax_tracked_on_sales: bool | NotGiven = NOT_GIVEN,
+        is_tracking_purchase_tax: bool | NotGiven = NOT_GIVEN,
+        is_tracking_sales_tax: bool | NotGiven = NOT_GIVEN,
         job_title: str | NotGiven = NOT_GIVEN,
         last_name: str | NotGiven = NOT_GIVEN,
         middle_name: str | NotGiven = NOT_GIVEN,
@@ -86,16 +87,15 @@ class VendorsResource(SyncAPIResource):
         opening_balance: str | NotGiven = NOT_GIVEN,
         opening_balance_date: Union[str, date] | NotGiven = NOT_GIVEN,
         phone: str | NotGiven = NOT_GIVEN,
-        prefill_account_ids: List[str] | NotGiven = NOT_GIVEN,
+        purchase_tax_account_id: str | NotGiven = NOT_GIVEN,
         reporting_period: Literal["monthly", "quarterly"] | NotGiven = NOT_GIVEN,
+        sales_tax_account_id: str | NotGiven = NOT_GIVEN,
         sales_tax_code_id: str | NotGiven = NOT_GIVEN,
         sales_tax_country: Literal["australia", "canada", "uk", "us"] | NotGiven = NOT_GIVEN,
         sales_tax_return_id: str | NotGiven = NOT_GIVEN,
         salutation: str | NotGiven = NOT_GIVEN,
         shipping_address: vendor_create_params.ShippingAddress | NotGiven = NOT_GIVEN,
         tax_identification_number: str | NotGiven = NOT_GIVEN,
-        tax_on_purchases_account_id: str | NotGiven = NOT_GIVEN,
-        tax_on_sales_account_id: str | NotGiven = NOT_GIVEN,
         tax_registration_number: str | NotGiven = NOT_GIVEN,
         terms_id: str | NotGiven = NOT_GIVEN,
         vendor_type_id: str | NotGiven = NOT_GIVEN,
@@ -120,9 +120,11 @@ class VendorsResource(SyncAPIResource):
               off in QuickBooks, the account number may not be visible in the user interface,
               but it can still be set and retrieved through the API.
 
+          additional_contacts: Additional alternate contacts for this vendor.
+
           additional_notes: Additional notes about this vendor.
 
-          alternate_contact: The name of an alternate contact person for this vendor.
+          alternate_contact: The name of a alternate contact person for this vendor.
 
           alternate_phone: The vendor's alternate telephone number.
 
@@ -142,8 +144,6 @@ class VendorsResource(SyncAPIResource):
 
           contact: The name of the primary contact person for this vendor.
 
-          contacts: Additional alternate contacts for this vendor.
-
           credit_limit: The vendor's credit limit, represented as a decimal string. This is the maximum
               amount of money that can be spent being before billed by this vendor. If `null`,
               there is no credit limit.
@@ -153,6 +153,8 @@ class VendorsResource(SyncAPIResource):
 
           custom_contact_fields: Additional custom contact fields for this vendor, such as phone numbers or email
               addresses.
+
+          default_expense_account_ids: The expense accounts to prefill when entering bills for this vendor.
 
           email: The vendor's email address.
 
@@ -168,19 +170,19 @@ class VendorsResource(SyncAPIResource):
           is_active: Indicates whether this vendor is active. Inactive objects are typically hidden
               from views and reports in QuickBooks.
 
+          is_compounding_tax: Indicates whether tax is charged on top of tax for this vendor, for use in
+              Canada or the UK.
+
           is_eligible_for1099: Indicates whether this vendor is eligible to receive a 1099 form for tax
               reporting purposes. If `true`, then the fields `taxId` and `billingAddress` are
               required.
 
           is_sales_tax_agency: Indicates whether this vendor is a sales tax agency.
 
-          is_tax_on_tax: Indicates whether tax is charged on top of tax for this vendor, for use in
-              Canada or the UK.
-
-          is_tax_tracked_on_purchases: Indicates whether tax is tracked on purchases for this vendor, for use in Canada
+          is_tracking_purchase_tax: Indicates whether tax is tracked on purchases for this vendor, for use in Canada
               or the UK.
 
-          is_tax_tracked_on_sales: Indicates whether tax is tracked on sales for this vendor, for use in Canada or
+          is_tracking_sales_tax: Indicates whether tax is tracked on sales for this vendor, for use in Canada or
               the UK.
 
           job_title: The job title of the contact person for this vendor.
@@ -200,9 +202,13 @@ class VendorsResource(SyncAPIResource):
 
           phone: The vendor's primary telephone number.
 
-          prefill_account_ids: The expense accounts to prefill when entering bills for this vendor.
+          purchase_tax_account_id: The account used for tracking taxes on purchases for this vendor, for use in
+              Canada or the UK.
 
           reporting_period: The vendor's tax reporting period, for use in Canada or the UK.
+
+          sales_tax_account_id: The account used for tracking taxes on sales for this vendor, for use in Canada
+              or the UK.
 
           sales_tax_code_id: The sales-tax code associated with this vendor, determining whether items bought
               from this vendor are taxable or non-taxable. It's used to assign a default tax
@@ -223,12 +229,6 @@ class VendorsResource(SyncAPIResource):
           shipping_address: The vendor's shipping address.
 
           tax_identification_number: The vendor's tax identification number (e.g., EIN or SSN).
-
-          tax_on_purchases_account_id: The account used for tracking taxes on purchases for this vendor, for use in
-              Canada or the UK.
-
-          tax_on_sales_account_id: The account used for tracking taxes on sales for this vendor, for use in Canada
-              or the UK.
 
           tax_registration_number: The vendor's tax registration number, for use in Canada or the UK.
 
@@ -253,6 +253,7 @@ class VendorsResource(SyncAPIResource):
                 {
                     "name": name,
                     "account_number": account_number,
+                    "additional_contacts": additional_contacts,
                     "additional_notes": additional_notes,
                     "alternate_contact": alternate_contact,
                     "alternate_phone": alternate_phone,
@@ -262,20 +263,20 @@ class VendorsResource(SyncAPIResource):
                     "class_id": class_id,
                     "company_name": company_name,
                     "contact": contact,
-                    "contacts": contacts,
                     "credit_limit": credit_limit,
                     "currency_id": currency_id,
                     "custom_contact_fields": custom_contact_fields,
+                    "default_expense_account_ids": default_expense_account_ids,
                     "email": email,
                     "external_id": external_id,
                     "fax": fax,
                     "first_name": first_name,
                     "is_active": is_active,
+                    "is_compounding_tax": is_compounding_tax,
                     "is_eligible_for1099": is_eligible_for1099,
                     "is_sales_tax_agency": is_sales_tax_agency,
-                    "is_tax_on_tax": is_tax_on_tax,
-                    "is_tax_tracked_on_purchases": is_tax_tracked_on_purchases,
-                    "is_tax_tracked_on_sales": is_tax_tracked_on_sales,
+                    "is_tracking_purchase_tax": is_tracking_purchase_tax,
+                    "is_tracking_sales_tax": is_tracking_sales_tax,
                     "job_title": job_title,
                     "last_name": last_name,
                     "middle_name": middle_name,
@@ -284,16 +285,15 @@ class VendorsResource(SyncAPIResource):
                     "opening_balance": opening_balance,
                     "opening_balance_date": opening_balance_date,
                     "phone": phone,
-                    "prefill_account_ids": prefill_account_ids,
+                    "purchase_tax_account_id": purchase_tax_account_id,
                     "reporting_period": reporting_period,
+                    "sales_tax_account_id": sales_tax_account_id,
                     "sales_tax_code_id": sales_tax_code_id,
                     "sales_tax_country": sales_tax_country,
                     "sales_tax_return_id": sales_tax_return_id,
                     "salutation": salutation,
                     "shipping_address": shipping_address,
                     "tax_identification_number": tax_identification_number,
-                    "tax_on_purchases_account_id": tax_on_purchases_account_id,
-                    "tax_on_sales_account_id": tax_on_sales_account_id,
                     "tax_registration_number": tax_registration_number,
                     "terms_id": terms_id,
                     "vendor_type_id": vendor_type_id,
@@ -350,10 +350,11 @@ class VendorsResource(SyncAPIResource):
         self,
         id: str,
         *,
-        version: str,
+        revision_number: str,
         conductor_end_user_id: str,
         account_number: str | NotGiven = NOT_GIVEN,
-        additional_notes_mod: Iterable[vendor_update_params.AdditionalNotesMod] | NotGiven = NOT_GIVEN,
+        additional_contacts: Iterable[vendor_update_params.AdditionalContact] | NotGiven = NOT_GIVEN,
+        additional_notes: Iterable[vendor_update_params.AdditionalNote] | NotGiven = NOT_GIVEN,
         alternate_contact: str | NotGiven = NOT_GIVEN,
         alternate_phone: str | NotGiven = NOT_GIVEN,
         billing_address: vendor_update_params.BillingAddress | NotGiven = NOT_GIVEN,
@@ -362,19 +363,19 @@ class VendorsResource(SyncAPIResource):
         class_id: str | NotGiven = NOT_GIVEN,
         company_name: str | NotGiven = NOT_GIVEN,
         contact: str | NotGiven = NOT_GIVEN,
-        contacts: Iterable[vendor_update_params.Contact] | NotGiven = NOT_GIVEN,
         credit_limit: str | NotGiven = NOT_GIVEN,
         currency_id: str | NotGiven = NOT_GIVEN,
         custom_contact_fields: Iterable[vendor_update_params.CustomContactField] | NotGiven = NOT_GIVEN,
+        default_expense_account_ids: List[str] | NotGiven = NOT_GIVEN,
         email: str | NotGiven = NOT_GIVEN,
         fax: str | NotGiven = NOT_GIVEN,
         first_name: str | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
+        is_compounding_tax: bool | NotGiven = NOT_GIVEN,
         is_eligible_for1099: bool | NotGiven = NOT_GIVEN,
         is_sales_tax_agency: bool | NotGiven = NOT_GIVEN,
-        is_tax_on_tax: bool | NotGiven = NOT_GIVEN,
-        is_tax_tracked_on_purchases: bool | NotGiven = NOT_GIVEN,
-        is_tax_tracked_on_sales: bool | NotGiven = NOT_GIVEN,
+        is_tracking_purchase_tax: bool | NotGiven = NOT_GIVEN,
+        is_tracking_sales_tax: bool | NotGiven = NOT_GIVEN,
         job_title: str | NotGiven = NOT_GIVEN,
         last_name: str | NotGiven = NOT_GIVEN,
         middle_name: str | NotGiven = NOT_GIVEN,
@@ -382,16 +383,15 @@ class VendorsResource(SyncAPIResource):
         name_on_check: str | NotGiven = NOT_GIVEN,
         note: str | NotGiven = NOT_GIVEN,
         phone: str | NotGiven = NOT_GIVEN,
-        prefill_account_ids: List[str] | NotGiven = NOT_GIVEN,
+        purchase_tax_account_id: str | NotGiven = NOT_GIVEN,
         reporting_period: Literal["monthly", "quarterly"] | NotGiven = NOT_GIVEN,
+        sales_tax_account_id: str | NotGiven = NOT_GIVEN,
         sales_tax_code_id: str | NotGiven = NOT_GIVEN,
         sales_tax_country: Literal["australia", "canada", "uk", "us"] | NotGiven = NOT_GIVEN,
         sales_tax_return_id: str | NotGiven = NOT_GIVEN,
         salutation: str | NotGiven = NOT_GIVEN,
         shipping_address: vendor_update_params.ShippingAddress | NotGiven = NOT_GIVEN,
         tax_identification_number: str | NotGiven = NOT_GIVEN,
-        tax_on_purchases_account_id: str | NotGiven = NOT_GIVEN,
-        tax_on_sales_account_id: str | NotGiven = NOT_GIVEN,
         tax_registration_number: str | NotGiven = NOT_GIVEN,
         terms_id: str | NotGiven = NOT_GIVEN,
         vendor_type_id: str | NotGiven = NOT_GIVEN,
@@ -408,9 +408,9 @@ class VendorsResource(SyncAPIResource):
         Args:
           id: The QuickBooks-assigned unique identifier of the vendor to update.
 
-          version: The current version identifier of the vendor you are updating, which you can get
-              by fetching the object first. Provide the most recent `version` to ensure you're
-              working with the latest data; otherwise, the update will fail.
+          revision_number: The current revision number of the vendor you are updating, which you can get by
+              fetching the object first. Provide the most recent `revisionNumber` to ensure
+              you're working with the latest data; otherwise, the update will return an error.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -420,9 +420,11 @@ class VendorsResource(SyncAPIResource):
               off in QuickBooks, the account number may not be visible in the user interface,
               but it can still be set and retrieved through the API.
 
-          additional_notes_mod: Additional notes about this vendor.
+          additional_contacts: Additional alternate contacts for this vendor.
 
-          alternate_contact: The name of an alternate contact person for this vendor.
+          additional_notes: Additional notes about this vendor.
+
+          alternate_contact: The name of a alternate contact person for this vendor.
 
           alternate_phone: The vendor's alternate telephone number.
 
@@ -442,8 +444,6 @@ class VendorsResource(SyncAPIResource):
 
           contact: The name of the primary contact person for this vendor.
 
-          contacts: Additional alternate contacts for this vendor.
-
           credit_limit: The vendor's credit limit, represented as a decimal string. This is the maximum
               amount of money that can be spent being before billed by this vendor. If `null`,
               there is no credit limit.
@@ -454,6 +454,8 @@ class VendorsResource(SyncAPIResource):
           custom_contact_fields: Additional custom contact fields for this vendor, such as phone numbers or email
               addresses.
 
+          default_expense_account_ids: The expense accounts to prefill when entering bills for this vendor.
+
           email: The vendor's email address.
 
           fax: The vendor's fax number.
@@ -463,19 +465,19 @@ class VendorsResource(SyncAPIResource):
           is_active: Indicates whether this vendor is active. Inactive objects are typically hidden
               from views and reports in QuickBooks.
 
+          is_compounding_tax: Indicates whether tax is charged on top of tax for this vendor, for use in
+              Canada or the UK.
+
           is_eligible_for1099: Indicates whether this vendor is eligible to receive a 1099 form for tax
               reporting purposes. If `true`, then the fields `taxId` and `billingAddress` are
               required.
 
           is_sales_tax_agency: Indicates whether this vendor is a sales tax agency.
 
-          is_tax_on_tax: Indicates whether tax is charged on top of tax for this vendor, for use in
-              Canada or the UK.
-
-          is_tax_tracked_on_purchases: Indicates whether tax is tracked on purchases for this vendor, for use in Canada
+          is_tracking_purchase_tax: Indicates whether tax is tracked on purchases for this vendor, for use in Canada
               or the UK.
 
-          is_tax_tracked_on_sales: Indicates whether tax is tracked on sales for this vendor, for use in Canada or
+          is_tracking_sales_tax: Indicates whether tax is tracked on sales for this vendor, for use in Canada or
               the UK.
 
           job_title: The job title of the contact person for this vendor.
@@ -492,9 +494,13 @@ class VendorsResource(SyncAPIResource):
 
           phone: The vendor's primary telephone number.
 
-          prefill_account_ids: The expense accounts to prefill when entering bills for this vendor.
+          purchase_tax_account_id: The account used for tracking taxes on purchases for this vendor, for use in
+              Canada or the UK.
 
           reporting_period: The vendor's tax reporting period, for use in Canada or the UK.
+
+          sales_tax_account_id: The account used for tracking taxes on sales for this vendor, for use in Canada
+              or the UK.
 
           sales_tax_code_id: The sales-tax code associated with this vendor, determining whether items bought
               from this vendor are taxable or non-taxable. It's used to assign a default tax
@@ -515,12 +521,6 @@ class VendorsResource(SyncAPIResource):
           shipping_address: The vendor's shipping address.
 
           tax_identification_number: The vendor's tax identification number (e.g., EIN or SSN).
-
-          tax_on_purchases_account_id: The account used for tracking taxes on purchases for this vendor, for use in
-              Canada or the UK.
-
-          tax_on_sales_account_id: The account used for tracking taxes on sales for this vendor, for use in Canada
-              or the UK.
 
           tax_registration_number: The vendor's tax registration number, for use in Canada or the UK.
 
@@ -545,9 +545,10 @@ class VendorsResource(SyncAPIResource):
             f"/quickbooks-desktop/vendors/{id}",
             body=maybe_transform(
                 {
-                    "version": version,
+                    "revision_number": revision_number,
                     "account_number": account_number,
-                    "additional_notes_mod": additional_notes_mod,
+                    "additional_contacts": additional_contacts,
+                    "additional_notes": additional_notes,
                     "alternate_contact": alternate_contact,
                     "alternate_phone": alternate_phone,
                     "billing_address": billing_address,
@@ -556,19 +557,19 @@ class VendorsResource(SyncAPIResource):
                     "class_id": class_id,
                     "company_name": company_name,
                     "contact": contact,
-                    "contacts": contacts,
                     "credit_limit": credit_limit,
                     "currency_id": currency_id,
                     "custom_contact_fields": custom_contact_fields,
+                    "default_expense_account_ids": default_expense_account_ids,
                     "email": email,
                     "fax": fax,
                     "first_name": first_name,
                     "is_active": is_active,
+                    "is_compounding_tax": is_compounding_tax,
                     "is_eligible_for1099": is_eligible_for1099,
                     "is_sales_tax_agency": is_sales_tax_agency,
-                    "is_tax_on_tax": is_tax_on_tax,
-                    "is_tax_tracked_on_purchases": is_tax_tracked_on_purchases,
-                    "is_tax_tracked_on_sales": is_tax_tracked_on_sales,
+                    "is_tracking_purchase_tax": is_tracking_purchase_tax,
+                    "is_tracking_sales_tax": is_tracking_sales_tax,
                     "job_title": job_title,
                     "last_name": last_name,
                     "middle_name": middle_name,
@@ -576,16 +577,15 @@ class VendorsResource(SyncAPIResource):
                     "name_on_check": name_on_check,
                     "note": note,
                     "phone": phone,
-                    "prefill_account_ids": prefill_account_ids,
+                    "purchase_tax_account_id": purchase_tax_account_id,
                     "reporting_period": reporting_period,
+                    "sales_tax_account_id": sales_tax_account_id,
                     "sales_tax_code_id": sales_tax_code_id,
                     "sales_tax_country": sales_tax_country,
                     "sales_tax_return_id": sales_tax_return_id,
                     "salutation": salutation,
                     "shipping_address": shipping_address,
                     "tax_identification_number": tax_identification_number,
-                    "tax_on_purchases_account_id": tax_on_purchases_account_id,
-                    "tax_on_sales_account_id": tax_on_sales_account_id,
                     "tax_registration_number": tax_registration_number,
                     "terms_id": terms_id,
                     "vendor_type_id": vendor_type_id,
@@ -781,6 +781,7 @@ class AsyncVendorsResource(AsyncAPIResource):
         name: str,
         conductor_end_user_id: str,
         account_number: str | NotGiven = NOT_GIVEN,
+        additional_contacts: Iterable[vendor_create_params.AdditionalContact] | NotGiven = NOT_GIVEN,
         additional_notes: Iterable[vendor_create_params.AdditionalNote] | NotGiven = NOT_GIVEN,
         alternate_contact: str | NotGiven = NOT_GIVEN,
         alternate_phone: str | NotGiven = NOT_GIVEN,
@@ -790,20 +791,20 @@ class AsyncVendorsResource(AsyncAPIResource):
         class_id: str | NotGiven = NOT_GIVEN,
         company_name: str | NotGiven = NOT_GIVEN,
         contact: str | NotGiven = NOT_GIVEN,
-        contacts: Iterable[vendor_create_params.Contact] | NotGiven = NOT_GIVEN,
         credit_limit: str | NotGiven = NOT_GIVEN,
         currency_id: str | NotGiven = NOT_GIVEN,
         custom_contact_fields: Iterable[vendor_create_params.CustomContactField] | NotGiven = NOT_GIVEN,
+        default_expense_account_ids: List[str] | NotGiven = NOT_GIVEN,
         email: str | NotGiven = NOT_GIVEN,
         external_id: str | NotGiven = NOT_GIVEN,
         fax: str | NotGiven = NOT_GIVEN,
         first_name: str | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
+        is_compounding_tax: bool | NotGiven = NOT_GIVEN,
         is_eligible_for1099: bool | NotGiven = NOT_GIVEN,
         is_sales_tax_agency: bool | NotGiven = NOT_GIVEN,
-        is_tax_on_tax: bool | NotGiven = NOT_GIVEN,
-        is_tax_tracked_on_purchases: bool | NotGiven = NOT_GIVEN,
-        is_tax_tracked_on_sales: bool | NotGiven = NOT_GIVEN,
+        is_tracking_purchase_tax: bool | NotGiven = NOT_GIVEN,
+        is_tracking_sales_tax: bool | NotGiven = NOT_GIVEN,
         job_title: str | NotGiven = NOT_GIVEN,
         last_name: str | NotGiven = NOT_GIVEN,
         middle_name: str | NotGiven = NOT_GIVEN,
@@ -812,16 +813,15 @@ class AsyncVendorsResource(AsyncAPIResource):
         opening_balance: str | NotGiven = NOT_GIVEN,
         opening_balance_date: Union[str, date] | NotGiven = NOT_GIVEN,
         phone: str | NotGiven = NOT_GIVEN,
-        prefill_account_ids: List[str] | NotGiven = NOT_GIVEN,
+        purchase_tax_account_id: str | NotGiven = NOT_GIVEN,
         reporting_period: Literal["monthly", "quarterly"] | NotGiven = NOT_GIVEN,
+        sales_tax_account_id: str | NotGiven = NOT_GIVEN,
         sales_tax_code_id: str | NotGiven = NOT_GIVEN,
         sales_tax_country: Literal["australia", "canada", "uk", "us"] | NotGiven = NOT_GIVEN,
         sales_tax_return_id: str | NotGiven = NOT_GIVEN,
         salutation: str | NotGiven = NOT_GIVEN,
         shipping_address: vendor_create_params.ShippingAddress | NotGiven = NOT_GIVEN,
         tax_identification_number: str | NotGiven = NOT_GIVEN,
-        tax_on_purchases_account_id: str | NotGiven = NOT_GIVEN,
-        tax_on_sales_account_id: str | NotGiven = NOT_GIVEN,
         tax_registration_number: str | NotGiven = NOT_GIVEN,
         terms_id: str | NotGiven = NOT_GIVEN,
         vendor_type_id: str | NotGiven = NOT_GIVEN,
@@ -846,9 +846,11 @@ class AsyncVendorsResource(AsyncAPIResource):
               off in QuickBooks, the account number may not be visible in the user interface,
               but it can still be set and retrieved through the API.
 
+          additional_contacts: Additional alternate contacts for this vendor.
+
           additional_notes: Additional notes about this vendor.
 
-          alternate_contact: The name of an alternate contact person for this vendor.
+          alternate_contact: The name of a alternate contact person for this vendor.
 
           alternate_phone: The vendor's alternate telephone number.
 
@@ -868,8 +870,6 @@ class AsyncVendorsResource(AsyncAPIResource):
 
           contact: The name of the primary contact person for this vendor.
 
-          contacts: Additional alternate contacts for this vendor.
-
           credit_limit: The vendor's credit limit, represented as a decimal string. This is the maximum
               amount of money that can be spent being before billed by this vendor. If `null`,
               there is no credit limit.
@@ -879,6 +879,8 @@ class AsyncVendorsResource(AsyncAPIResource):
 
           custom_contact_fields: Additional custom contact fields for this vendor, such as phone numbers or email
               addresses.
+
+          default_expense_account_ids: The expense accounts to prefill when entering bills for this vendor.
 
           email: The vendor's email address.
 
@@ -894,19 +896,19 @@ class AsyncVendorsResource(AsyncAPIResource):
           is_active: Indicates whether this vendor is active. Inactive objects are typically hidden
               from views and reports in QuickBooks.
 
+          is_compounding_tax: Indicates whether tax is charged on top of tax for this vendor, for use in
+              Canada or the UK.
+
           is_eligible_for1099: Indicates whether this vendor is eligible to receive a 1099 form for tax
               reporting purposes. If `true`, then the fields `taxId` and `billingAddress` are
               required.
 
           is_sales_tax_agency: Indicates whether this vendor is a sales tax agency.
 
-          is_tax_on_tax: Indicates whether tax is charged on top of tax for this vendor, for use in
-              Canada or the UK.
-
-          is_tax_tracked_on_purchases: Indicates whether tax is tracked on purchases for this vendor, for use in Canada
+          is_tracking_purchase_tax: Indicates whether tax is tracked on purchases for this vendor, for use in Canada
               or the UK.
 
-          is_tax_tracked_on_sales: Indicates whether tax is tracked on sales for this vendor, for use in Canada or
+          is_tracking_sales_tax: Indicates whether tax is tracked on sales for this vendor, for use in Canada or
               the UK.
 
           job_title: The job title of the contact person for this vendor.
@@ -926,9 +928,13 @@ class AsyncVendorsResource(AsyncAPIResource):
 
           phone: The vendor's primary telephone number.
 
-          prefill_account_ids: The expense accounts to prefill when entering bills for this vendor.
+          purchase_tax_account_id: The account used for tracking taxes on purchases for this vendor, for use in
+              Canada or the UK.
 
           reporting_period: The vendor's tax reporting period, for use in Canada or the UK.
+
+          sales_tax_account_id: The account used for tracking taxes on sales for this vendor, for use in Canada
+              or the UK.
 
           sales_tax_code_id: The sales-tax code associated with this vendor, determining whether items bought
               from this vendor are taxable or non-taxable. It's used to assign a default tax
@@ -949,12 +955,6 @@ class AsyncVendorsResource(AsyncAPIResource):
           shipping_address: The vendor's shipping address.
 
           tax_identification_number: The vendor's tax identification number (e.g., EIN or SSN).
-
-          tax_on_purchases_account_id: The account used for tracking taxes on purchases for this vendor, for use in
-              Canada or the UK.
-
-          tax_on_sales_account_id: The account used for tracking taxes on sales for this vendor, for use in Canada
-              or the UK.
 
           tax_registration_number: The vendor's tax registration number, for use in Canada or the UK.
 
@@ -979,6 +979,7 @@ class AsyncVendorsResource(AsyncAPIResource):
                 {
                     "name": name,
                     "account_number": account_number,
+                    "additional_contacts": additional_contacts,
                     "additional_notes": additional_notes,
                     "alternate_contact": alternate_contact,
                     "alternate_phone": alternate_phone,
@@ -988,20 +989,20 @@ class AsyncVendorsResource(AsyncAPIResource):
                     "class_id": class_id,
                     "company_name": company_name,
                     "contact": contact,
-                    "contacts": contacts,
                     "credit_limit": credit_limit,
                     "currency_id": currency_id,
                     "custom_contact_fields": custom_contact_fields,
+                    "default_expense_account_ids": default_expense_account_ids,
                     "email": email,
                     "external_id": external_id,
                     "fax": fax,
                     "first_name": first_name,
                     "is_active": is_active,
+                    "is_compounding_tax": is_compounding_tax,
                     "is_eligible_for1099": is_eligible_for1099,
                     "is_sales_tax_agency": is_sales_tax_agency,
-                    "is_tax_on_tax": is_tax_on_tax,
-                    "is_tax_tracked_on_purchases": is_tax_tracked_on_purchases,
-                    "is_tax_tracked_on_sales": is_tax_tracked_on_sales,
+                    "is_tracking_purchase_tax": is_tracking_purchase_tax,
+                    "is_tracking_sales_tax": is_tracking_sales_tax,
                     "job_title": job_title,
                     "last_name": last_name,
                     "middle_name": middle_name,
@@ -1010,16 +1011,15 @@ class AsyncVendorsResource(AsyncAPIResource):
                     "opening_balance": opening_balance,
                     "opening_balance_date": opening_balance_date,
                     "phone": phone,
-                    "prefill_account_ids": prefill_account_ids,
+                    "purchase_tax_account_id": purchase_tax_account_id,
                     "reporting_period": reporting_period,
+                    "sales_tax_account_id": sales_tax_account_id,
                     "sales_tax_code_id": sales_tax_code_id,
                     "sales_tax_country": sales_tax_country,
                     "sales_tax_return_id": sales_tax_return_id,
                     "salutation": salutation,
                     "shipping_address": shipping_address,
                     "tax_identification_number": tax_identification_number,
-                    "tax_on_purchases_account_id": tax_on_purchases_account_id,
-                    "tax_on_sales_account_id": tax_on_sales_account_id,
                     "tax_registration_number": tax_registration_number,
                     "terms_id": terms_id,
                     "vendor_type_id": vendor_type_id,
@@ -1076,10 +1076,11 @@ class AsyncVendorsResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        version: str,
+        revision_number: str,
         conductor_end_user_id: str,
         account_number: str | NotGiven = NOT_GIVEN,
-        additional_notes_mod: Iterable[vendor_update_params.AdditionalNotesMod] | NotGiven = NOT_GIVEN,
+        additional_contacts: Iterable[vendor_update_params.AdditionalContact] | NotGiven = NOT_GIVEN,
+        additional_notes: Iterable[vendor_update_params.AdditionalNote] | NotGiven = NOT_GIVEN,
         alternate_contact: str | NotGiven = NOT_GIVEN,
         alternate_phone: str | NotGiven = NOT_GIVEN,
         billing_address: vendor_update_params.BillingAddress | NotGiven = NOT_GIVEN,
@@ -1088,19 +1089,19 @@ class AsyncVendorsResource(AsyncAPIResource):
         class_id: str | NotGiven = NOT_GIVEN,
         company_name: str | NotGiven = NOT_GIVEN,
         contact: str | NotGiven = NOT_GIVEN,
-        contacts: Iterable[vendor_update_params.Contact] | NotGiven = NOT_GIVEN,
         credit_limit: str | NotGiven = NOT_GIVEN,
         currency_id: str | NotGiven = NOT_GIVEN,
         custom_contact_fields: Iterable[vendor_update_params.CustomContactField] | NotGiven = NOT_GIVEN,
+        default_expense_account_ids: List[str] | NotGiven = NOT_GIVEN,
         email: str | NotGiven = NOT_GIVEN,
         fax: str | NotGiven = NOT_GIVEN,
         first_name: str | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
+        is_compounding_tax: bool | NotGiven = NOT_GIVEN,
         is_eligible_for1099: bool | NotGiven = NOT_GIVEN,
         is_sales_tax_agency: bool | NotGiven = NOT_GIVEN,
-        is_tax_on_tax: bool | NotGiven = NOT_GIVEN,
-        is_tax_tracked_on_purchases: bool | NotGiven = NOT_GIVEN,
-        is_tax_tracked_on_sales: bool | NotGiven = NOT_GIVEN,
+        is_tracking_purchase_tax: bool | NotGiven = NOT_GIVEN,
+        is_tracking_sales_tax: bool | NotGiven = NOT_GIVEN,
         job_title: str | NotGiven = NOT_GIVEN,
         last_name: str | NotGiven = NOT_GIVEN,
         middle_name: str | NotGiven = NOT_GIVEN,
@@ -1108,16 +1109,15 @@ class AsyncVendorsResource(AsyncAPIResource):
         name_on_check: str | NotGiven = NOT_GIVEN,
         note: str | NotGiven = NOT_GIVEN,
         phone: str | NotGiven = NOT_GIVEN,
-        prefill_account_ids: List[str] | NotGiven = NOT_GIVEN,
+        purchase_tax_account_id: str | NotGiven = NOT_GIVEN,
         reporting_period: Literal["monthly", "quarterly"] | NotGiven = NOT_GIVEN,
+        sales_tax_account_id: str | NotGiven = NOT_GIVEN,
         sales_tax_code_id: str | NotGiven = NOT_GIVEN,
         sales_tax_country: Literal["australia", "canada", "uk", "us"] | NotGiven = NOT_GIVEN,
         sales_tax_return_id: str | NotGiven = NOT_GIVEN,
         salutation: str | NotGiven = NOT_GIVEN,
         shipping_address: vendor_update_params.ShippingAddress | NotGiven = NOT_GIVEN,
         tax_identification_number: str | NotGiven = NOT_GIVEN,
-        tax_on_purchases_account_id: str | NotGiven = NOT_GIVEN,
-        tax_on_sales_account_id: str | NotGiven = NOT_GIVEN,
         tax_registration_number: str | NotGiven = NOT_GIVEN,
         terms_id: str | NotGiven = NOT_GIVEN,
         vendor_type_id: str | NotGiven = NOT_GIVEN,
@@ -1134,9 +1134,9 @@ class AsyncVendorsResource(AsyncAPIResource):
         Args:
           id: The QuickBooks-assigned unique identifier of the vendor to update.
 
-          version: The current version identifier of the vendor you are updating, which you can get
-              by fetching the object first. Provide the most recent `version` to ensure you're
-              working with the latest data; otherwise, the update will fail.
+          revision_number: The current revision number of the vendor you are updating, which you can get by
+              fetching the object first. Provide the most recent `revisionNumber` to ensure
+              you're working with the latest data; otherwise, the update will return an error.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -1146,9 +1146,11 @@ class AsyncVendorsResource(AsyncAPIResource):
               off in QuickBooks, the account number may not be visible in the user interface,
               but it can still be set and retrieved through the API.
 
-          additional_notes_mod: Additional notes about this vendor.
+          additional_contacts: Additional alternate contacts for this vendor.
 
-          alternate_contact: The name of an alternate contact person for this vendor.
+          additional_notes: Additional notes about this vendor.
+
+          alternate_contact: The name of a alternate contact person for this vendor.
 
           alternate_phone: The vendor's alternate telephone number.
 
@@ -1168,8 +1170,6 @@ class AsyncVendorsResource(AsyncAPIResource):
 
           contact: The name of the primary contact person for this vendor.
 
-          contacts: Additional alternate contacts for this vendor.
-
           credit_limit: The vendor's credit limit, represented as a decimal string. This is the maximum
               amount of money that can be spent being before billed by this vendor. If `null`,
               there is no credit limit.
@@ -1180,6 +1180,8 @@ class AsyncVendorsResource(AsyncAPIResource):
           custom_contact_fields: Additional custom contact fields for this vendor, such as phone numbers or email
               addresses.
 
+          default_expense_account_ids: The expense accounts to prefill when entering bills for this vendor.
+
           email: The vendor's email address.
 
           fax: The vendor's fax number.
@@ -1189,19 +1191,19 @@ class AsyncVendorsResource(AsyncAPIResource):
           is_active: Indicates whether this vendor is active. Inactive objects are typically hidden
               from views and reports in QuickBooks.
 
+          is_compounding_tax: Indicates whether tax is charged on top of tax for this vendor, for use in
+              Canada or the UK.
+
           is_eligible_for1099: Indicates whether this vendor is eligible to receive a 1099 form for tax
               reporting purposes. If `true`, then the fields `taxId` and `billingAddress` are
               required.
 
           is_sales_tax_agency: Indicates whether this vendor is a sales tax agency.
 
-          is_tax_on_tax: Indicates whether tax is charged on top of tax for this vendor, for use in
-              Canada or the UK.
-
-          is_tax_tracked_on_purchases: Indicates whether tax is tracked on purchases for this vendor, for use in Canada
+          is_tracking_purchase_tax: Indicates whether tax is tracked on purchases for this vendor, for use in Canada
               or the UK.
 
-          is_tax_tracked_on_sales: Indicates whether tax is tracked on sales for this vendor, for use in Canada or
+          is_tracking_sales_tax: Indicates whether tax is tracked on sales for this vendor, for use in Canada or
               the UK.
 
           job_title: The job title of the contact person for this vendor.
@@ -1218,9 +1220,13 @@ class AsyncVendorsResource(AsyncAPIResource):
 
           phone: The vendor's primary telephone number.
 
-          prefill_account_ids: The expense accounts to prefill when entering bills for this vendor.
+          purchase_tax_account_id: The account used for tracking taxes on purchases for this vendor, for use in
+              Canada or the UK.
 
           reporting_period: The vendor's tax reporting period, for use in Canada or the UK.
+
+          sales_tax_account_id: The account used for tracking taxes on sales for this vendor, for use in Canada
+              or the UK.
 
           sales_tax_code_id: The sales-tax code associated with this vendor, determining whether items bought
               from this vendor are taxable or non-taxable. It's used to assign a default tax
@@ -1241,12 +1247,6 @@ class AsyncVendorsResource(AsyncAPIResource):
           shipping_address: The vendor's shipping address.
 
           tax_identification_number: The vendor's tax identification number (e.g., EIN or SSN).
-
-          tax_on_purchases_account_id: The account used for tracking taxes on purchases for this vendor, for use in
-              Canada or the UK.
-
-          tax_on_sales_account_id: The account used for tracking taxes on sales for this vendor, for use in Canada
-              or the UK.
 
           tax_registration_number: The vendor's tax registration number, for use in Canada or the UK.
 
@@ -1271,9 +1271,10 @@ class AsyncVendorsResource(AsyncAPIResource):
             f"/quickbooks-desktop/vendors/{id}",
             body=await async_maybe_transform(
                 {
-                    "version": version,
+                    "revision_number": revision_number,
                     "account_number": account_number,
-                    "additional_notes_mod": additional_notes_mod,
+                    "additional_contacts": additional_contacts,
+                    "additional_notes": additional_notes,
                     "alternate_contact": alternate_contact,
                     "alternate_phone": alternate_phone,
                     "billing_address": billing_address,
@@ -1282,19 +1283,19 @@ class AsyncVendorsResource(AsyncAPIResource):
                     "class_id": class_id,
                     "company_name": company_name,
                     "contact": contact,
-                    "contacts": contacts,
                     "credit_limit": credit_limit,
                     "currency_id": currency_id,
                     "custom_contact_fields": custom_contact_fields,
+                    "default_expense_account_ids": default_expense_account_ids,
                     "email": email,
                     "fax": fax,
                     "first_name": first_name,
                     "is_active": is_active,
+                    "is_compounding_tax": is_compounding_tax,
                     "is_eligible_for1099": is_eligible_for1099,
                     "is_sales_tax_agency": is_sales_tax_agency,
-                    "is_tax_on_tax": is_tax_on_tax,
-                    "is_tax_tracked_on_purchases": is_tax_tracked_on_purchases,
-                    "is_tax_tracked_on_sales": is_tax_tracked_on_sales,
+                    "is_tracking_purchase_tax": is_tracking_purchase_tax,
+                    "is_tracking_sales_tax": is_tracking_sales_tax,
                     "job_title": job_title,
                     "last_name": last_name,
                     "middle_name": middle_name,
@@ -1302,16 +1303,15 @@ class AsyncVendorsResource(AsyncAPIResource):
                     "name_on_check": name_on_check,
                     "note": note,
                     "phone": phone,
-                    "prefill_account_ids": prefill_account_ids,
+                    "purchase_tax_account_id": purchase_tax_account_id,
                     "reporting_period": reporting_period,
+                    "sales_tax_account_id": sales_tax_account_id,
                     "sales_tax_code_id": sales_tax_code_id,
                     "sales_tax_country": sales_tax_country,
                     "sales_tax_return_id": sales_tax_return_id,
                     "salutation": salutation,
                     "shipping_address": shipping_address,
                     "tax_identification_number": tax_identification_number,
-                    "tax_on_purchases_account_id": tax_on_purchases_account_id,
-                    "tax_on_sales_account_id": tax_on_sales_account_id,
                     "tax_registration_number": tax_registration_number,
                     "terms_id": terms_id,
                     "vendor_type_id": vendor_type_id,

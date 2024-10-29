@@ -37,7 +37,7 @@ class TestSalesTaxCodes:
             conductor_end_user_id="end_usr_1234567abcdefg",
             description="For items that are taxable at the standard rate in California.",
             is_active=True,
-            item_sales_tax_id="80000010-1234567890",
+            sales_tax_item_id="80000010-1234567890",
         )
         assert_matches_type(SalesTaxCode, sales_tax_code, path=["response"])
 
@@ -115,7 +115,7 @@ class TestSalesTaxCodes:
     def test_method_update(self, client: Conductor) -> None:
         sales_tax_code = client.qbd.sales_tax_codes.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(SalesTaxCode, sales_tax_code, path=["response"])
@@ -124,13 +124,13 @@ class TestSalesTaxCodes:
     def test_method_update_with_all_params(self, client: Conductor) -> None:
         sales_tax_code = client.qbd.sales_tax_codes.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
             description="For items that are taxable at the standard rate in California.",
             is_active=True,
             is_taxable=True,
-            item_sales_tax_id="80000010-1234567890",
             name="California Sales Tax",
+            sales_tax_item_id="80000010-1234567890",
         )
         assert_matches_type(SalesTaxCode, sales_tax_code, path=["response"])
 
@@ -138,7 +138,7 @@ class TestSalesTaxCodes:
     def test_raw_response_update(self, client: Conductor) -> None:
         response = client.qbd.sales_tax_codes.with_raw_response.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -151,7 +151,7 @@ class TestSalesTaxCodes:
     def test_streaming_response_update(self, client: Conductor) -> None:
         with client.qbd.sales_tax_codes.with_streaming_response.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
@@ -167,7 +167,7 @@ class TestSalesTaxCodes:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.qbd.sales_tax_codes.with_raw_response.update(
                 id="",
-                version="1721172183",
+                revision_number="1721172183",
                 conductor_end_user_id="end_usr_1234567abcdefg",
             )
 
@@ -241,7 +241,7 @@ class TestAsyncSalesTaxCodes:
             conductor_end_user_id="end_usr_1234567abcdefg",
             description="For items that are taxable at the standard rate in California.",
             is_active=True,
-            item_sales_tax_id="80000010-1234567890",
+            sales_tax_item_id="80000010-1234567890",
         )
         assert_matches_type(SalesTaxCode, sales_tax_code, path=["response"])
 
@@ -319,7 +319,7 @@ class TestAsyncSalesTaxCodes:
     async def test_method_update(self, async_client: AsyncConductor) -> None:
         sales_tax_code = await async_client.qbd.sales_tax_codes.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(SalesTaxCode, sales_tax_code, path=["response"])
@@ -328,13 +328,13 @@ class TestAsyncSalesTaxCodes:
     async def test_method_update_with_all_params(self, async_client: AsyncConductor) -> None:
         sales_tax_code = await async_client.qbd.sales_tax_codes.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
             description="For items that are taxable at the standard rate in California.",
             is_active=True,
             is_taxable=True,
-            item_sales_tax_id="80000010-1234567890",
             name="California Sales Tax",
+            sales_tax_item_id="80000010-1234567890",
         )
         assert_matches_type(SalesTaxCode, sales_tax_code, path=["response"])
 
@@ -342,7 +342,7 @@ class TestAsyncSalesTaxCodes:
     async def test_raw_response_update(self, async_client: AsyncConductor) -> None:
         response = await async_client.qbd.sales_tax_codes.with_raw_response.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -355,7 +355,7 @@ class TestAsyncSalesTaxCodes:
     async def test_streaming_response_update(self, async_client: AsyncConductor) -> None:
         async with async_client.qbd.sales_tax_codes.with_streaming_response.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
@@ -371,7 +371,7 @@ class TestAsyncSalesTaxCodes:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.qbd.sales_tax_codes.with_raw_response.update(
                 id="",
-                version="1721172183",
+                revision_number="1721172183",
                 conductor_end_user_id="end_usr_1234567abcdefg",
             )
 

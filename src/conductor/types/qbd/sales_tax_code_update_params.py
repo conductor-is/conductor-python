@@ -10,11 +10,12 @@ __all__ = ["SalesTaxCodeUpdateParams"]
 
 
 class SalesTaxCodeUpdateParams(TypedDict, total=False):
-    version: Required[str]
+    revision_number: Required[Annotated[str, PropertyInfo(alias="revisionNumber")]]
     """
-    The current version identifier of the sales-tax code you are updating, which you
-    can get by fetching the object first. Provide the most recent `version` to
-    ensure you're working with the latest data; otherwise, the update will fail.
+    The current revision number of the sales-tax code you are updating, which you
+    can get by fetching the object first. Provide the most recent `revisionNumber`
+    to ensure you're working with the latest data; otherwise, the update will return
+    an error.
     """
 
     conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]
@@ -44,17 +45,17 @@ class SalesTaxCodeUpdateParams(TypedDict, total=False):
     code; the issue solely affects the retrieval of the `isTaxable` value.
     """
 
-    item_sales_tax_id: Annotated[str, PropertyInfo(alias="itemSalesTaxId")]
-    """
-    The sales-tax item used to calculate the actual tax amount for this sales-tax
-    code's transactions by applying a specific tax rate collected for a single tax
-    agency. Unlike `salesTaxCode`, which only indicates general taxability, this
-    field drives the actual tax calculation and reporting.
-    """
-
     name: str
     """
     The case-insensitive unique name of this sales-tax code, unique across all
     sales-tax codes. This short name will appear on sales forms to identify the tax
     status of an item.
+    """
+
+    sales_tax_item_id: Annotated[str, PropertyInfo(alias="salesTaxItemId")]
+    """
+    The sales-tax item used to calculate the actual tax amount for this sales-tax
+    code's transactions by applying a specific tax rate collected for a single tax
+    agency. Unlike `salesTaxCode`, which only indicates general taxability, this
+    field drives the actual tax calculation and reporting.
     """

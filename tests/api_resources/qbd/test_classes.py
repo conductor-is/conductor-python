@@ -107,7 +107,7 @@ class TestClasses:
     def test_method_update(self, client: Conductor) -> None:
         class_ = client.qbd.classes.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(QbdClass, class_, path=["response"])
@@ -116,7 +116,7 @@ class TestClasses:
     def test_method_update_with_all_params(self, client: Conductor) -> None:
         class_ = client.qbd.classes.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
             is_active=True,
             name="Marketing",
@@ -128,7 +128,7 @@ class TestClasses:
     def test_raw_response_update(self, client: Conductor) -> None:
         response = client.qbd.classes.with_raw_response.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -141,7 +141,7 @@ class TestClasses:
     def test_streaming_response_update(self, client: Conductor) -> None:
         with client.qbd.classes.with_streaming_response.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
@@ -157,7 +157,7 @@ class TestClasses:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.qbd.classes.with_raw_response.update(
                 id="",
-                version="1721172183",
+                revision_number="1721172183",
                 conductor_end_user_id="end_usr_1234567abcdefg",
             )
 
@@ -304,7 +304,7 @@ class TestAsyncClasses:
     async def test_method_update(self, async_client: AsyncConductor) -> None:
         class_ = await async_client.qbd.classes.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(QbdClass, class_, path=["response"])
@@ -313,7 +313,7 @@ class TestAsyncClasses:
     async def test_method_update_with_all_params(self, async_client: AsyncConductor) -> None:
         class_ = await async_client.qbd.classes.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
             is_active=True,
             name="Marketing",
@@ -325,7 +325,7 @@ class TestAsyncClasses:
     async def test_raw_response_update(self, async_client: AsyncConductor) -> None:
         response = await async_client.qbd.classes.with_raw_response.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -338,7 +338,7 @@ class TestAsyncClasses:
     async def test_streaming_response_update(self, async_client: AsyncConductor) -> None:
         async with async_client.qbd.classes.with_streaming_response.update(
             id="80000001-1234567890",
-            version="1721172183",
+            revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
@@ -354,7 +354,7 @@ class TestAsyncClasses:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.qbd.classes.with_raw_response.update(
                 id="",
-                version="1721172183",
+                revision_number="1721172183",
                 conductor_end_user_id="end_usr_1234567abcdefg",
             )
 

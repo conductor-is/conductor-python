@@ -10,7 +10,6 @@ from ..._models import BaseModel
 
 __all__ = [
     "QbdBill",
-    "AccountsPayableAccount",
     "Currency",
     "CustomField",
     "ExpenseLine",
@@ -45,27 +44,12 @@ __all__ = [
     "ItemLineSalesRepresentative",
     "ItemLineSalesTaxCode",
     "LinkedTransaction",
+    "PayablesAccount",
     "SalesTaxCode",
     "Terms",
     "Vendor",
     "VendorAddress",
 ]
-
-
-class AccountsPayableAccount(BaseModel):
-    id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks to this object.
-
-    This ID is unique across all objects of the same type, but not across different
-    QuickBooks object types.
-    """
-
-    full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
-    """
-    The fully-qualified unique name for this object, formed by combining the names
-    of its parent objects with its own `name`, separated by colons. Not
-    case-sensitive.
-    """
 
 
 class Currency(BaseModel):
@@ -1103,6 +1087,22 @@ class LinkedTransaction(BaseModel):
     """The type of transaction for this linked transaction."""
 
 
+class PayablesAccount(BaseModel):
+    id: Optional[str] = None
+    """The unique identifier assigned by QuickBooks to this object.
+
+    This ID is unique across all objects of the same type, but not across different
+    QuickBooks object types.
+    """
+
+    full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
+    """
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
+    """
+
+
 class SalesTaxCode(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks to this object.
@@ -1194,13 +1194,6 @@ class QbdBill(BaseModel):
     """The unique identifier assigned by QuickBooks to this bill.
 
     This ID is unique across all transaction types.
-    """
-
-    accounts_payable_account: Optional[AccountsPayableAccount] = FieldInfo(alias="accountsPayableAccount", default=None)
-    """
-    The Accounts Payable account to which this bill is assigned, used to track the
-    amount owed. If not specified, the default Accounts Payable account in
-    QuickBooks is used.
     """
 
     amount_due: str = FieldInfo(alias="amountDue")
@@ -1304,11 +1297,26 @@ class QbdBill(BaseModel):
     discounts from the `openAmount`. Represented as a decimal string.
     """
 
+    payables_account: Optional[PayablesAccount] = FieldInfo(alias="payablesAccount", default=None)
+    """
+    The accounts payable account to which this bill is assigned, used to track the
+    amount owed. If not specified, the default accounts payable account in
+    QuickBooks is used.
+    """
+
     ref_number: Optional[str] = FieldInfo(alias="refNumber", default=None)
     """
     The case-sensitive user-defined reference number for this bill, which can be
     used to identify the transaction in QuickBooks. This value is not required to be
     unique and can be arbitrarily changed by the QuickBooks user.
+    """
+
+    revision_number: str = FieldInfo(alias="revisionNumber")
+    """
+    The current revision number of this bill, which changes each time the object is
+    modified. When updating this object, you must provide the most recent
+    `revisionNumber` to ensure you're working with the latest data; otherwise, the
+    update will return an error.
     """
 
     sales_tax_code: Optional[SalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)
@@ -1342,11 +1350,3 @@ class QbdBill(BaseModel):
 
     vendor_address: Optional[VendorAddress] = FieldInfo(alias="vendorAddress", default=None)
     """The address of the vendor who sent this bill."""
-
-    version: str
-    """
-    The current version identifier of this bill, which changes each time the object
-    is modified. When updating this object, you must provide the most recent
-    `version` to ensure you're working with the latest data; otherwise, the update
-    will fail. This value is opaque and should not be interpreted.
-    """
