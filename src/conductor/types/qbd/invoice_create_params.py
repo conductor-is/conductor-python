@@ -10,13 +10,13 @@ from ..._utils import PropertyInfo
 
 __all__ = [
     "InvoiceCreateParams",
+    "ApplyCredit",
     "BillingAddress",
     "InvoiceLineGroup",
     "InvoiceLineGroupCustomField",
     "InvoiceLine",
     "InvoiceLineCustomField",
     "InvoiceLineLinkToTransactionLine",
-    "SetCredit",
     "ShippingAddress",
 ]
 
@@ -32,6 +32,20 @@ class InvoiceCreateParams(TypedDict, total=False):
     """
     The ID of the EndUser to receive this request (e.g.,
     `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+    """
+
+    apply_credits: Annotated[Iterable[ApplyCredit], PropertyInfo(alias="applyCredits")]
+    """Credits to apply to this invoice.
+
+    Applying a credit uses an available credit to reduce the balance of this
+    invoice. This creates a link between this invoice and the corresponding existing
+    credit memo.
+
+    Note that QuickBooks will not return any information about these links in this
+    endpoint's response even though they are created. To see the transactions linked
+    via this field, refetch the invoice and check the `linkedTransactions` field. If
+    fetching a list of invoices, you must also specify the parameter
+    `includeLinkedTransactions` to see the `linkedTransactions` field.
     """
 
     billing_address: Annotated[BillingAddress, PropertyInfo(alias="billingAddress")]
@@ -197,20 +211,6 @@ class InvoiceCreateParams(TypedDict, total=False):
     drives the actual tax calculation and reporting.
     """
 
-    set_credits: Annotated[Iterable[SetCredit], PropertyInfo(alias="setCredits")]
-    """Credits to apply to this invoice.
-
-    Applying a credit uses an available credit to reduce the balance of this
-    invoice. This creates a link between this invoice and the corresponding existing
-    credit memo.
-
-    Note that QuickBooks will not return any information about these links in this
-    endpoint's response even though they are created. To see the transactions linked
-    via this field, refetch the invoice and check the `linkedTransactions` field. If
-    fetching a list of invoices, you must also specify the parameter
-    `includeLinkedTransactions` to see the `linkedTransactions` field.
-    """
-
     shipment_origin: Annotated[str, PropertyInfo(alias="shipmentOrigin")]
     """
     The origin location from where the product associated with this invoice is
@@ -240,6 +240,21 @@ class InvoiceCreateParams(TypedDict, total=False):
     The invoice's payment terms, defining when payment is due and any applicable
     discounts.
     """
+
+
+class ApplyCredit(TypedDict, total=False):
+    applied_amount: Required[Annotated[str, PropertyInfo(alias="appliedAmount")]]
+    """The amount of credit applied to this transaction.
+
+    This could include customer deposits, payments, or credits. Represented as a
+    decimal string.
+    """
+
+    credit_memo_id: Required[Annotated[str, PropertyInfo(alias="creditMemoId")]]
+    """The unique identifier of the credit memo to apply to this transaction."""
+
+    override_credit_application: Annotated[bool, PropertyInfo(alias="overrideCreditApplication")]
+    """Indicates whether to override the credit."""
 
 
 class BillingAddress(TypedDict, total=False):
@@ -546,21 +561,6 @@ class InvoiceLine(TypedDict, total=False):
 
     Must be a valid unit within the item's available units of measure.
     """
-
-
-class SetCredit(TypedDict, total=False):
-    applied_amount: Required[Annotated[str, PropertyInfo(alias="appliedAmount")]]
-    """The amount of credit applied to this transaction.
-
-    This could include customer deposits, payments, or credits. Represented as a
-    decimal string.
-    """
-
-    credit_memo_id: Required[Annotated[str, PropertyInfo(alias="creditMemoId")]]
-    """The unique identifier of the credit memo to apply to this transaction."""
-
-    override_credit_application: Annotated[bool, PropertyInfo(alias="overrideCreditApplication")]
-    """Indicates whether to override the credit."""
 
 
 class ShippingAddress(TypedDict, total=False):
