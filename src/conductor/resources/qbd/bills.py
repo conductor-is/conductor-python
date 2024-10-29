@@ -116,6 +116,9 @@ class BillsResource(SyncAPIResource):
               individual lines in a transaction, instead use the field `linkToTransactionLine`
               on this bill's lines, if available.
 
+              Transactions can only be linked when creating this bill and cannot be unlinked
+              later.
+
               You can use both `linkToTransactionIds` (on this bill) and
               `linkToTransactionLine` (on its transaction lines) as long as they do NOT link
               to the same transaction (otherwise, QuickBooks will return an error). QuickBooks
@@ -612,6 +615,9 @@ class AsyncBillsResource(AsyncAPIResource):
               links entire transactions, not individual transaction lines. If you want to link
               individual lines in a transaction, instead use the field `linkToTransactionLine`
               on this bill's lines, if available.
+
+              Transactions can only be linked when creating this bill and cannot be unlinked
+              later.
 
               You can use both `linkToTransactionIds` (on this bill) and
               `linkToTransactionLine` (on its transaction lines) as long as they do NOT link

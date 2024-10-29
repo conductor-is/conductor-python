@@ -158,7 +158,7 @@ class InventoryItemCreateParams(TypedDict, total=False):
 
     unit_of_measure_set_id: Annotated[str, PropertyInfo(alias="unitOfMeasureSetId")]
     """
-    The unit of measure set associated with this inventory item, which consists of a
+    The unit-of-measure set associated with this inventory item, which consists of a
     base unit and related units.
     """
 
