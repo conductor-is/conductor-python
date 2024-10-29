@@ -363,19 +363,21 @@ class NonInventoryItem(BaseModel):
         alias="salesAndPurchaseDetails", default=None
     )
     """
-    Details specific to non-inventory items that are both purchased and sold by the
-    business. Used for items like inventory products (e.g., goods resold to
-    customers) or reimbursable expenses.
+    Details for non-inventory items that are both purchased and sold, such as
+    reimbursable expenses or inventory items that are bought from vendors and sold
+    to customers. Do not use this field alongside `salesOrPurchaseDetails` because
+    an item cannot have both configurations.
     """
 
     sales_or_purchase_details: Optional[SalesOrPurchaseDetails] = FieldInfo(
         alias="salesOrPurchaseDetails", default=None
     )
     """
-    Details specific to non-inventory items that are either purchased by the
-    business or sold to customers, but not both. Used for items like services that
-    are only sold (e.g., consulting services) or goods that are only purchased for
-    internal use (e.g., office supplies).
+    Details for non-inventory items that are exclusively sold or exclusively
+    purchased, but not both. This typically applies to non-inventory items (like a
+    purchased office supply that isn't resold) or service items (like consulting
+    services that are sold but not purchased). Do not use this field alongside
+    `salesAndPurchaseDetails` because an item cannot have both configurations.
     """
 
     sales_tax_code: Optional[SalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)
