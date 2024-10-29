@@ -120,7 +120,7 @@ class AlternateShippingAddress(BaseModel):
     country: Optional[str] = None
     """The country name of the address."""
 
-    default_ship_to: Optional[bool] = FieldInfo(alias="defaultShipTo", default=None)
+    is_default_address: Optional[bool] = FieldInfo(alias="isDefaultAddress", default=None)
     """Indicates whether this address is the default shipping address."""
 
     line1: Optional[str] = None
