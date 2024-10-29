@@ -114,8 +114,8 @@ class NonInventoryItemsResource(SyncAPIResource):
               Charge Sales Tax?" preference), it will assign the default non-taxable code to
               all sales.
 
-          sku: The manufacturer's part number for this non-inventory item, which is often the
-              stock keeping unit (SKU).
+          sku: The non-inventory item's stock keeping unit (SKU), which is sometimes the
+              manufacturer's part number.
 
           unit_of_measure_set_id: The unit-of-measure set associated with this non-inventory item, which consists
               of a base unit and related units.
@@ -283,8 +283,8 @@ class NonInventoryItemsResource(SyncAPIResource):
               Charge Sales Tax?" preference), it will assign the default non-taxable code to
               all sales.
 
-          sku: The manufacturer's part number for this non-inventory item, which is often the
-              stock keeping unit (SKU).
+          sku: The non-inventory item's stock keeping unit (SKU), which is sometimes the
+              manufacturer's part number.
 
           unit_of_measure_set_id: The unit-of-measure set associated with this non-inventory item, which consists
               of a base unit and related units.
@@ -533,8 +533,8 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
               Charge Sales Tax?" preference), it will assign the default non-taxable code to
               all sales.
 
-          sku: The manufacturer's part number for this non-inventory item, which is often the
-              stock keeping unit (SKU).
+          sku: The non-inventory item's stock keeping unit (SKU), which is sometimes the
+              manufacturer's part number.
 
           unit_of_measure_set_id: The unit-of-measure set associated with this non-inventory item, which consists
               of a base unit and related units.
@@ -702,8 +702,8 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
               Charge Sales Tax?" preference), it will assign the default non-taxable code to
               all sales.
 
-          sku: The manufacturer's part number for this non-inventory item, which is often the
-              stock keeping unit (SKU).
+          sku: The non-inventory item's stock keeping unit (SKU), which is sometimes the
+              manufacturer's part number.
 
           unit_of_measure_set_id: The unit-of-measure set associated with this non-inventory item, which consists
               of a base unit and related units.
