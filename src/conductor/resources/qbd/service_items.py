@@ -107,7 +107,7 @@ class ServiceItemsResource(SyncAPIResource):
               QuickBooks is not set up to charge sales tax (via the "Do You Charge Sales Tax?"
               preference), it will assign the default non-taxable code to all sales.
 
-          unit_of_measure_set_id: The unit of measure set associated with this service item, which consists of a
+          unit_of_measure_set_id: The unit-of-measure set associated with this service item, which consists of a
               base unit and related units.
 
           extra_headers: Send extra headers
@@ -224,16 +224,17 @@ class ServiceItemsResource(SyncAPIResource):
               meaningful segments, such as department, location, or type of work. In
               QuickBooks, class tracking is off by default.
 
-          force_unit_of_measure_change: Indicates whether to allow changing the service item's Unit of Measure (UOM) set
-              (using the `unitOfMeasureSetId` field) when the base unit of the new UOM set
-              does not match that of the currently assigned UOM set. Without setting this
-              field to `true` in this scenario, the request will fail with an error; hence,
-              this field is equivalent to accepting the warning prompt in the QuickBooks UI.
+          force_unit_of_measure_change: Indicates whether to allow changing the service item's unit-of-measure set
+              (using the `unitOfMeasureSetId` field) when the base unit of the new
+              unit-of-measure set does not match that of the currently assigned set. Without
+              setting this field to `true` in this scenario, the request will fail with an
+              error; hence, this field is equivalent to accepting the warning prompt in the
+              QuickBooks UI.
 
               Important: Changing the base unit requires you to update the item's
               quantities-on-hand and cost to reflect the new unit; otherwise, these values
               will be inaccurate. Alternatively, consider creating a new item with the desired
-              UOM set and deactivating the old item.
+              unit-of-measure set and deactivating the old item.
 
           is_active: Indicates whether this service item is active. Inactive objects are typically
               hidden from views and reports in QuickBooks.
@@ -267,7 +268,7 @@ class ServiceItemsResource(SyncAPIResource):
               QuickBooks is not set up to charge sales tax (via the "Do You Charge Sales Tax?"
               preference), it will assign the default non-taxable code to all sales.
 
-          unit_of_measure_set_id: The unit of measure set associated with this service item, which consists of a
+          unit_of_measure_set_id: The unit-of-measure set associated with this service item, which consists of a
               base unit and related units.
 
           extra_headers: Send extra headers
@@ -510,7 +511,7 @@ class AsyncServiceItemsResource(AsyncAPIResource):
               QuickBooks is not set up to charge sales tax (via the "Do You Charge Sales Tax?"
               preference), it will assign the default non-taxable code to all sales.
 
-          unit_of_measure_set_id: The unit of measure set associated with this service item, which consists of a
+          unit_of_measure_set_id: The unit-of-measure set associated with this service item, which consists of a
               base unit and related units.
 
           extra_headers: Send extra headers
@@ -627,16 +628,17 @@ class AsyncServiceItemsResource(AsyncAPIResource):
               meaningful segments, such as department, location, or type of work. In
               QuickBooks, class tracking is off by default.
 
-          force_unit_of_measure_change: Indicates whether to allow changing the service item's Unit of Measure (UOM) set
-              (using the `unitOfMeasureSetId` field) when the base unit of the new UOM set
-              does not match that of the currently assigned UOM set. Without setting this
-              field to `true` in this scenario, the request will fail with an error; hence,
-              this field is equivalent to accepting the warning prompt in the QuickBooks UI.
+          force_unit_of_measure_change: Indicates whether to allow changing the service item's unit-of-measure set
+              (using the `unitOfMeasureSetId` field) when the base unit of the new
+              unit-of-measure set does not match that of the currently assigned set. Without
+              setting this field to `true` in this scenario, the request will fail with an
+              error; hence, this field is equivalent to accepting the warning prompt in the
+              QuickBooks UI.
 
               Important: Changing the base unit requires you to update the item's
               quantities-on-hand and cost to reflect the new unit; otherwise, these values
               will be inaccurate. Alternatively, consider creating a new item with the desired
-              UOM set and deactivating the old item.
+              unit-of-measure set and deactivating the old item.
 
           is_active: Indicates whether this service item is active. Inactive objects are typically
               hidden from views and reports in QuickBooks.
@@ -670,7 +672,7 @@ class AsyncServiceItemsResource(AsyncAPIResource):
               QuickBooks is not set up to charge sales tax (via the "Do You Charge Sales Tax?"
               preference), it will assign the default non-taxable code to all sales.
 
-          unit_of_measure_set_id: The unit of measure set associated with this service item, which consists of a
+          unit_of_measure_set_id: The unit-of-measure set associated with this service item, which consists of a
               base unit and related units.
 
           extra_headers: Send extra headers

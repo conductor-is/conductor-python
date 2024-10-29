@@ -169,7 +169,7 @@ class InventoryItemsResource(SyncAPIResource):
               to `quantityOnHand` times `purchaseCost`, regardless of what `totalValue` is
               explicitly set to.
 
-          unit_of_measure_set_id: The unit of measure set associated with this inventory item, which consists of a
+          unit_of_measure_set_id: The unit-of-measure set associated with this inventory item, which consists of a
               base unit and related units.
 
           extra_headers: Send extra headers
@@ -333,16 +333,17 @@ class InventoryItemsResource(SyncAPIResource):
           cogs_account_id: The Cost of Goods Sold (COGS) account for this inventory item, tracking the
               original direct costs of producing goods sold.
 
-          force_unit_of_measure_change: Indicates whether to allow changing the inventory item's Unit of Measure (UOM)
-              set (using the `unitOfMeasureSetId` field) when the base unit of the new UOM set
-              does not match that of the currently assigned UOM set. Without setting this
-              field to `true` in this scenario, the request will fail with an error; hence,
-              this field is equivalent to accepting the warning prompt in the QuickBooks UI.
+          force_unit_of_measure_change: Indicates whether to allow changing the inventory item's unit-of-measure set
+              (using the `unitOfMeasureSetId` field) when the base unit of the new
+              unit-of-measure set does not match that of the currently assigned set. Without
+              setting this field to `true` in this scenario, the request will fail with an
+              error; hence, this field is equivalent to accepting the warning prompt in the
+              QuickBooks UI.
 
               Important: Changing the base unit requires you to update the item's
               quantities-on-hand and cost to reflect the new unit; otherwise, these values
               will be inaccurate. Alternatively, consider creating a new item with the desired
-              UOM set and deactivating the old item.
+              unit-of-measure set and deactivating the old item.
 
           income_account_id: The income account used to track revenue from sales of this inventory item.
 
@@ -393,7 +394,7 @@ class InventoryItemsResource(SyncAPIResource):
               QuickBooks is not set up to charge sales tax (via the "Do You Charge Sales Tax?"
               preference), it will assign the default non-taxable code to all sales.
 
-          unit_of_measure_set_id: The unit of measure set associated with this inventory item, which consists of a
+          unit_of_measure_set_id: The unit-of-measure set associated with this inventory item, which consists of a
               base unit and related units.
 
           extra_headers: Send extra headers
@@ -720,7 +721,7 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
               to `quantityOnHand` times `purchaseCost`, regardless of what `totalValue` is
               explicitly set to.
 
-          unit_of_measure_set_id: The unit of measure set associated with this inventory item, which consists of a
+          unit_of_measure_set_id: The unit-of-measure set associated with this inventory item, which consists of a
               base unit and related units.
 
           extra_headers: Send extra headers
@@ -884,16 +885,17 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
           cogs_account_id: The Cost of Goods Sold (COGS) account for this inventory item, tracking the
               original direct costs of producing goods sold.
 
-          force_unit_of_measure_change: Indicates whether to allow changing the inventory item's Unit of Measure (UOM)
-              set (using the `unitOfMeasureSetId` field) when the base unit of the new UOM set
-              does not match that of the currently assigned UOM set. Without setting this
-              field to `true` in this scenario, the request will fail with an error; hence,
-              this field is equivalent to accepting the warning prompt in the QuickBooks UI.
+          force_unit_of_measure_change: Indicates whether to allow changing the inventory item's unit-of-measure set
+              (using the `unitOfMeasureSetId` field) when the base unit of the new
+              unit-of-measure set does not match that of the currently assigned set. Without
+              setting this field to `true` in this scenario, the request will fail with an
+              error; hence, this field is equivalent to accepting the warning prompt in the
+              QuickBooks UI.
 
               Important: Changing the base unit requires you to update the item's
               quantities-on-hand and cost to reflect the new unit; otherwise, these values
               will be inaccurate. Alternatively, consider creating a new item with the desired
-              UOM set and deactivating the old item.
+              unit-of-measure set and deactivating the old item.
 
           income_account_id: The income account used to track revenue from sales of this inventory item.
 
@@ -944,7 +946,7 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
               QuickBooks is not set up to charge sales tax (via the "Do You Charge Sales Tax?"
               preference), it will assign the default non-taxable code to all sales.
 
-          unit_of_measure_set_id: The unit of measure set associated with this inventory item, which consists of a
+          unit_of_measure_set_id: The unit-of-measure set associated with this inventory item, which consists of a
               base unit and related units.
 
           extra_headers: Send extra headers

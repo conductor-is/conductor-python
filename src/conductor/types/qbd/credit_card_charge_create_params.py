@@ -237,7 +237,7 @@ class ItemGroupLine(TypedDict, total=False):
     """The quantity of the item group associated with this item group line."""
 
     unit_of_measure: Annotated[str, PropertyInfo(alias="unitOfMeasure")]
-    """The unit of measure used for the `quantity` in this item group line.
+    """The unit-of-measure used for the `quantity` in this item group line.
 
     Must be a valid unit within the item's available units of measure.
     """
@@ -358,6 +358,9 @@ class ItemLine(TypedDict, total=False):
     only link to purchase orders; QuickBooks does not support linking these
     transactions to other transaction types.
 
+    Transaction lines can only be linked when creating this item line and cannot be
+    unlinked later.
+
     If you use `linkToTransactionLine` on this item line, you cannot use the field
     `item` on this line (QuickBooks will return an error) because this field brings
     in all of the item information you need. You can, however, specify whatever
@@ -418,7 +421,7 @@ class ItemLine(TypedDict, total=False):
     """
 
     unit_of_measure: Annotated[str, PropertyInfo(alias="unitOfMeasure")]
-    """The unit of measure used for the `quantity` in this item line.
+    """The unit-of-measure used for the `quantity` in this item line.
 
     Must be a valid unit within the item's available units of measure.
     """
