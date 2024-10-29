@@ -19,7 +19,7 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...types.qbd import service_item_list_params, service_item_create_params
+from ...types.qbd import service_item_list_params, service_item_create_params, service_item_update_params
 from ...pagination import SyncCursorPage, AsyncCursorPage
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.qbd.service_item import ServiceItem
@@ -176,6 +176,129 @@ class ServiceItemsResource(SyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get(
             f"/quickbooks-desktop/service-items/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=ServiceItem,
+        )
+
+    def update(
+        self,
+        id: str,
+        *,
+        version: str,
+        conductor_end_user_id: str,
+        barcode: service_item_update_params.Barcode | NotGiven = NOT_GIVEN,
+        class_id: str | NotGiven = NOT_GIVEN,
+        force_unit_of_measure_change: bool | NotGiven = NOT_GIVEN,
+        is_active: bool | NotGiven = NOT_GIVEN,
+        name: str | NotGiven = NOT_GIVEN,
+        parent_id: str | NotGiven = NOT_GIVEN,
+        sales_and_purchase_details: service_item_update_params.SalesAndPurchaseDetails | NotGiven = NOT_GIVEN,
+        sales_or_purchase_details: service_item_update_params.SalesOrPurchaseDetails | NotGiven = NOT_GIVEN,
+        sales_tax_code_id: str | NotGiven = NOT_GIVEN,
+        unit_of_measure_set_id: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> ServiceItem:
+        """
+        Updates an existing service item.
+
+        Args:
+          id: The QuickBooks-assigned unique identifier of the service item to update.
+
+          version: The current version identifier of the service item you are updating, which you
+              can get by fetching the object first. Provide the most recent `version` to
+              ensure you're working with the latest data; otherwise, the update will fail.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          barcode: The service item's barcode.
+
+          class_id: The service item's class. Classes can be used to categorize objects into
+              meaningful segments, such as department, location, or type of work. In
+              QuickBooks, class tracking is off by default.
+
+          force_unit_of_measure_change: Indicates whether to allow changing the service item's Unit of Measure (UOM) set
+              (using the `unitOfMeasureSetId` field) when the base unit of the new UOM set
+              does not match that of the currently assigned UOM set. Without setting this
+              field to `true` in this scenario, the request will fail with an error; hence,
+              this field is equivalent to accepting the warning prompt in the QuickBooks UI.
+
+              Important: Changing the base unit requires you to update the item's
+              quantities-on-hand and cost to reflect the new unit; otherwise, these values
+              will be inaccurate. Alternatively, consider creating a new item with the desired
+              UOM set and deactivating the old item.
+
+          is_active: Indicates whether this service item is active. Inactive objects are typically
+              hidden from views and reports in QuickBooks.
+
+          name: The case-insensitive name of this service item. Not guaranteed to be unique
+              because it does not include the names of its parent objects like `fullName`
+              does. For example, two service items could both have the `name` "Web-Design",
+              but they could have unique `fullName` values, such as "Consulting:Web-Design"
+              and "Contracting:Web-Design".
+
+          parent_id: The parent service item one level above this one in the hierarchy. For example,
+              if this service item has a `fullName` of "Services:Consulting:Web-Design", its
+              parent has a `fullName` of "Services:Consulting". If this service item is at the
+              top level, this field will be `null`.
+
+          sales_and_purchase_details: Details for service items that are both purchased and sold, such as reimbursable
+              expenses or inventory items that are bought from vendors and sold to customers.
+              Do not use this field alongside `salesOrPurchaseDetails` because an item cannot
+              have both configurations.
+
+          sales_or_purchase_details: Details for service items that are exclusively sold or exclusively purchased,
+              but not both. This typically applies to non-inventory items (like a purchased
+              office supply that isn't resold) or service items (like consulting services that
+              are sold but not purchased). Do not use this field alongside
+              `salesAndPurchaseDetails` because an item cannot have both configurations.
+
+          sales_tax_code_id: The sales-tax code associated with this service item, determining whether it is
+              taxable or non-taxable. It's used to assign a default tax status to all
+              transactions for this service item. Default codes include "Non" (non-taxable)
+              and "Tax" (taxable), but custom codes can also be created in QuickBooks. If
+              QuickBooks is not set up to charge sales tax (via the "Do You Charge Sales Tax?"
+              preference), it will assign the default non-taxable code to all sales.
+
+          unit_of_measure_set_id: The unit of measure set associated with this service item, which consists of a
+              base unit and related units.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return self._post(
+            f"/quickbooks-desktop/service-items/{id}",
+            body=maybe_transform(
+                {
+                    "version": version,
+                    "barcode": barcode,
+                    "class_id": class_id,
+                    "force_unit_of_measure_change": force_unit_of_measure_change,
+                    "is_active": is_active,
+                    "name": name,
+                    "parent_id": parent_id,
+                    "sales_and_purchase_details": sales_and_purchase_details,
+                    "sales_or_purchase_details": sales_or_purchase_details,
+                    "sales_tax_code_id": sales_tax_code_id,
+                    "unit_of_measure_set_id": unit_of_measure_set_id,
+                },
+                service_item_update_params.ServiceItemUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -462,6 +585,129 @@ class AsyncServiceItemsResource(AsyncAPIResource):
             cast_to=ServiceItem,
         )
 
+    async def update(
+        self,
+        id: str,
+        *,
+        version: str,
+        conductor_end_user_id: str,
+        barcode: service_item_update_params.Barcode | NotGiven = NOT_GIVEN,
+        class_id: str | NotGiven = NOT_GIVEN,
+        force_unit_of_measure_change: bool | NotGiven = NOT_GIVEN,
+        is_active: bool | NotGiven = NOT_GIVEN,
+        name: str | NotGiven = NOT_GIVEN,
+        parent_id: str | NotGiven = NOT_GIVEN,
+        sales_and_purchase_details: service_item_update_params.SalesAndPurchaseDetails | NotGiven = NOT_GIVEN,
+        sales_or_purchase_details: service_item_update_params.SalesOrPurchaseDetails | NotGiven = NOT_GIVEN,
+        sales_tax_code_id: str | NotGiven = NOT_GIVEN,
+        unit_of_measure_set_id: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> ServiceItem:
+        """
+        Updates an existing service item.
+
+        Args:
+          id: The QuickBooks-assigned unique identifier of the service item to update.
+
+          version: The current version identifier of the service item you are updating, which you
+              can get by fetching the object first. Provide the most recent `version` to
+              ensure you're working with the latest data; otherwise, the update will fail.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          barcode: The service item's barcode.
+
+          class_id: The service item's class. Classes can be used to categorize objects into
+              meaningful segments, such as department, location, or type of work. In
+              QuickBooks, class tracking is off by default.
+
+          force_unit_of_measure_change: Indicates whether to allow changing the service item's Unit of Measure (UOM) set
+              (using the `unitOfMeasureSetId` field) when the base unit of the new UOM set
+              does not match that of the currently assigned UOM set. Without setting this
+              field to `true` in this scenario, the request will fail with an error; hence,
+              this field is equivalent to accepting the warning prompt in the QuickBooks UI.
+
+              Important: Changing the base unit requires you to update the item's
+              quantities-on-hand and cost to reflect the new unit; otherwise, these values
+              will be inaccurate. Alternatively, consider creating a new item with the desired
+              UOM set and deactivating the old item.
+
+          is_active: Indicates whether this service item is active. Inactive objects are typically
+              hidden from views and reports in QuickBooks.
+
+          name: The case-insensitive name of this service item. Not guaranteed to be unique
+              because it does not include the names of its parent objects like `fullName`
+              does. For example, two service items could both have the `name` "Web-Design",
+              but they could have unique `fullName` values, such as "Consulting:Web-Design"
+              and "Contracting:Web-Design".
+
+          parent_id: The parent service item one level above this one in the hierarchy. For example,
+              if this service item has a `fullName` of "Services:Consulting:Web-Design", its
+              parent has a `fullName` of "Services:Consulting". If this service item is at the
+              top level, this field will be `null`.
+
+          sales_and_purchase_details: Details for service items that are both purchased and sold, such as reimbursable
+              expenses or inventory items that are bought from vendors and sold to customers.
+              Do not use this field alongside `salesOrPurchaseDetails` because an item cannot
+              have both configurations.
+
+          sales_or_purchase_details: Details for service items that are exclusively sold or exclusively purchased,
+              but not both. This typically applies to non-inventory items (like a purchased
+              office supply that isn't resold) or service items (like consulting services that
+              are sold but not purchased). Do not use this field alongside
+              `salesAndPurchaseDetails` because an item cannot have both configurations.
+
+          sales_tax_code_id: The sales-tax code associated with this service item, determining whether it is
+              taxable or non-taxable. It's used to assign a default tax status to all
+              transactions for this service item. Default codes include "Non" (non-taxable)
+              and "Tax" (taxable), but custom codes can also be created in QuickBooks. If
+              QuickBooks is not set up to charge sales tax (via the "Do You Charge Sales Tax?"
+              preference), it will assign the default non-taxable code to all sales.
+
+          unit_of_measure_set_id: The unit of measure set associated with this service item, which consists of a
+              base unit and related units.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return await self._post(
+            f"/quickbooks-desktop/service-items/{id}",
+            body=await async_maybe_transform(
+                {
+                    "version": version,
+                    "barcode": barcode,
+                    "class_id": class_id,
+                    "force_unit_of_measure_change": force_unit_of_measure_change,
+                    "is_active": is_active,
+                    "name": name,
+                    "parent_id": parent_id,
+                    "sales_and_purchase_details": sales_and_purchase_details,
+                    "sales_or_purchase_details": sales_or_purchase_details,
+                    "sales_tax_code_id": sales_tax_code_id,
+                    "unit_of_measure_set_id": unit_of_measure_set_id,
+                },
+                service_item_update_params.ServiceItemUpdateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=ServiceItem,
+        )
+
     def list(
         self,
         *,
@@ -597,6 +843,9 @@ class ServiceItemsResourceWithRawResponse:
         self.retrieve = to_raw_response_wrapper(
             service_items.retrieve,
         )
+        self.update = to_raw_response_wrapper(
+            service_items.update,
+        )
         self.list = to_raw_response_wrapper(
             service_items.list,
         )
@@ -611,6 +860,9 @@ class AsyncServiceItemsResourceWithRawResponse:
         )
         self.retrieve = async_to_raw_response_wrapper(
             service_items.retrieve,
+        )
+        self.update = async_to_raw_response_wrapper(
+            service_items.update,
         )
         self.list = async_to_raw_response_wrapper(
             service_items.list,
@@ -627,6 +879,9 @@ class ServiceItemsResourceWithStreamingResponse:
         self.retrieve = to_streamed_response_wrapper(
             service_items.retrieve,
         )
+        self.update = to_streamed_response_wrapper(
+            service_items.update,
+        )
         self.list = to_streamed_response_wrapper(
             service_items.list,
         )
@@ -641,6 +896,9 @@ class AsyncServiceItemsResourceWithStreamingResponse:
         )
         self.retrieve = async_to_streamed_response_wrapper(
             service_items.retrieve,
+        )
+        self.update = async_to_streamed_response_wrapper(
+            service_items.update,
         )
         self.list = async_to_streamed_response_wrapper(
             service_items.list,
