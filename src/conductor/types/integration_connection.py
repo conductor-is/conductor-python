@@ -17,9 +17,6 @@ class IntegrationConnection(BaseModel):
     created_at: str = FieldInfo(alias="createdAt")
     """The date and time when this IntegrationConnection was created."""
 
-    end_user_id: str = FieldInfo(alias="endUserId")
-    """The ID of the EndUser who owns this IntegrationConnection."""
-
     integration_slug: Literal["quickbooks_desktop"] = FieldInfo(alias="integrationSlug")
     """The identifier of the third-party platform to integrate."""
 
