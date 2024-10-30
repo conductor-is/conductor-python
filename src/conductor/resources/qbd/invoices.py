@@ -101,15 +101,15 @@ class InvoicesResource(SyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          apply_credits: Credits to apply to this invoice. Applying a credit uses an available credit to
-              reduce the balance of this invoice. This creates a link between this invoice and
-              the corresponding existing credit memo.
+          apply_credits: Credit memos to apply to this invoice, reducing its balance. This creates a link
+              between this invoice and the specified credit memos.
 
-              Note that QuickBooks will not return any information about these links in this
-              endpoint's response even though they are created. To see the transactions linked
-              via this field, refetch the invoice and check the `linkedTransactions` field. If
-              fetching a list of invoices, you must also specify the parameter
-              `includeLinkedTransactions` to see the `linkedTransactions` field.
+              Note: By default, QuickBooks will not return any information about the linked
+              transactions in this endpoint's response even when this request is successful.
+              To see the transactions linked via this field, refetch the invoice and check the
+              `linkedTransactions` response field. If fetching a list of invoices, you must
+              also specify the parameter `includeLinkedTransactions` to see the
+              `linkedTransactions` response field.
 
           billing_address: The invoice's billing address.
 
@@ -167,11 +167,12 @@ class InvoicesResource(SyncAPIResource):
               will also return an error if you attempt to link a transaction that is empty or
               already closed.
 
-              Note that QuickBooks will not return any information about these links in this
-              endpoint's response even though they are created. To see the transactions linked
-              via this field, refetch the invoice and check the `linkedTransactions` field. If
-              fetching a list of invoices, you must also specify the parameter
-              `includeLinkedTransactions` to return the `linkedTransactions` field.
+              Note: By default, QuickBooks will not return any information about the linked
+              transaction(s) in this endpoint's response even when this request is successful.
+              To see the transactions linked via this field, refetch the invoice and check the
+              `linkedTransactions` response field. If fetching a list of invoices, you must
+              also specify the parameter `includeLinkedTransactions` to return the
+              `linkedTransactions` response field.
 
           memo: A memo or note for this invoice, as entered by the user. This appears in
               reports, but not on the invoice. Use `customerMessage` to add a note to the
@@ -376,15 +377,15 @@ class InvoicesResource(SyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          apply_credits: Credits to apply to this invoice. Applying a credit uses an available credit to
-              reduce the balance of this invoice. This creates a link between this invoice and
-              the corresponding existing credit memo.
+          apply_credits: Credit memos to apply to this invoice, reducing its balance. This creates a link
+              between this invoice and the specified credit memos.
 
-              Note that QuickBooks will not return any information about these links in this
-              endpoint's response even though they are created. To see the transactions linked
-              via this field, refetch the invoice and check the `linkedTransactions` field. If
-              fetching a list of invoices, you must also specify the parameter
-              `includeLinkedTransactions` to see the `linkedTransactions` field.
+              Note: By default, QuickBooks will not return any information about the linked
+              transactions in this endpoint's response even when this request is successful.
+              To see the transactions linked via this field, refetch the invoice and check the
+              `linkedTransactions` response field. If fetching a list of invoices, you must
+              also specify the parameter `includeLinkedTransactions` to see the
+              `linkedTransactions` response field.
 
           billing_address: The invoice's billing address.
 
@@ -772,15 +773,15 @@ class AsyncInvoicesResource(AsyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          apply_credits: Credits to apply to this invoice. Applying a credit uses an available credit to
-              reduce the balance of this invoice. This creates a link between this invoice and
-              the corresponding existing credit memo.
+          apply_credits: Credit memos to apply to this invoice, reducing its balance. This creates a link
+              between this invoice and the specified credit memos.
 
-              Note that QuickBooks will not return any information about these links in this
-              endpoint's response even though they are created. To see the transactions linked
-              via this field, refetch the invoice and check the `linkedTransactions` field. If
-              fetching a list of invoices, you must also specify the parameter
-              `includeLinkedTransactions` to see the `linkedTransactions` field.
+              Note: By default, QuickBooks will not return any information about the linked
+              transactions in this endpoint's response even when this request is successful.
+              To see the transactions linked via this field, refetch the invoice and check the
+              `linkedTransactions` response field. If fetching a list of invoices, you must
+              also specify the parameter `includeLinkedTransactions` to see the
+              `linkedTransactions` response field.
 
           billing_address: The invoice's billing address.
 
@@ -838,11 +839,12 @@ class AsyncInvoicesResource(AsyncAPIResource):
               will also return an error if you attempt to link a transaction that is empty or
               already closed.
 
-              Note that QuickBooks will not return any information about these links in this
-              endpoint's response even though they are created. To see the transactions linked
-              via this field, refetch the invoice and check the `linkedTransactions` field. If
-              fetching a list of invoices, you must also specify the parameter
-              `includeLinkedTransactions` to return the `linkedTransactions` field.
+              Note: By default, QuickBooks will not return any information about the linked
+              transaction(s) in this endpoint's response even when this request is successful.
+              To see the transactions linked via this field, refetch the invoice and check the
+              `linkedTransactions` response field. If fetching a list of invoices, you must
+              also specify the parameter `includeLinkedTransactions` to return the
+              `linkedTransactions` response field.
 
           memo: A memo or note for this invoice, as entered by the user. This appears in
               reports, but not on the invoice. Use `customerMessage` to add a note to the
@@ -1047,15 +1049,15 @@ class AsyncInvoicesResource(AsyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          apply_credits: Credits to apply to this invoice. Applying a credit uses an available credit to
-              reduce the balance of this invoice. This creates a link between this invoice and
-              the corresponding existing credit memo.
+          apply_credits: Credit memos to apply to this invoice, reducing its balance. This creates a link
+              between this invoice and the specified credit memos.
 
-              Note that QuickBooks will not return any information about these links in this
-              endpoint's response even though they are created. To see the transactions linked
-              via this field, refetch the invoice and check the `linkedTransactions` field. If
-              fetching a list of invoices, you must also specify the parameter
-              `includeLinkedTransactions` to see the `linkedTransactions` field.
+              Note: By default, QuickBooks will not return any information about the linked
+              transactions in this endpoint's response even when this request is successful.
+              To see the transactions linked via this field, refetch the invoice and check the
+              `linkedTransactions` response field. If fetching a list of invoices, you must
+              also specify the parameter `includeLinkedTransactions` to see the
+              `linkedTransactions` response field.
 
           billing_address: The invoice's billing address.
 
