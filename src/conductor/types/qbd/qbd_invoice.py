@@ -1235,7 +1235,7 @@ class QbdInvoice(BaseModel):
     The invoice's linked transactions, such as payments applied, credits used, or
     associated purchase orders. You must specify the parameter
     `includeLinkedTransactions` when fetching a list of invoices to receive this
-    field.
+    field because it is not returned by default.
     """
 
     memo: Optional[str] = None

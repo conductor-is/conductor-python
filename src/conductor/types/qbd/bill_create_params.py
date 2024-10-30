@@ -85,11 +85,12 @@ class BillCreateParams(TypedDict, total=False):
     will also return an error if you attempt to link a transaction that is empty or
     already closed.
 
-    Note that QuickBooks will not return any information about these links in this
-    endpoint's response even though they are created. To see the transactions linked
-    via this field, refetch the bill and check the `linkedTransactions` field. If
-    fetching a list of bills, you must also specify the parameter
-    `includeLinkedTransactions` to return the `linkedTransactions` field.
+    Note: By default, QuickBooks will not return any information about the linked
+    transaction(s) in this endpoint's response even when this request is successful.
+    To see the transactions linked via this field, refetch the bill and check the
+    `linkedTransactions` response field. If fetching a list of bills, you must also
+    specify the parameter `includeLinkedTransactions` to return the
+    `linkedTransactions` response field.
     """
 
     memo: str
@@ -408,12 +409,12 @@ class ItemLine(TypedDict, total=False):
     also return an error if you attempt to link a transaction that is empty or
     already closed.
 
-    Note that QuickBooks will not return any information about these links in this
-    endpoint's response even though they are created. To see the transaction lines
-    linked via this field, refetch the parent transaction and check the
-    `linkedTransactions` field. If fetching a list of transactions, you must also
-    specify the parameter `includeLinkedTransactions` to return the
-    `linkedTransactions` field.
+    Note: By default, QuickBooks will not return any information about the linked
+    transaction line in this endpoint's response even when this request is
+    successful. To see the transaction line linked via this field, refetch the
+    parent transaction and check the `linkedTransactions` response field. If
+    fetching a list of transactions, you must also specify the parameter
+    `includeLinkedTransactions` to see the `linkedTransactions` response field.
     """
 
     lot_number: Annotated[str, PropertyInfo(alias="lotNumber")]
