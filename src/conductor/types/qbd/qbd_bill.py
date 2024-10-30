@@ -1279,7 +1279,8 @@ class QbdBill(BaseModel):
     """
     The bill's linked transactions, such as payments applied, credits used, or
     associated purchase orders. You must specify the parameter
-    `includeLinkedTransactions` when fetching a list of bills to receive this field.
+    `includeLinkedTransactions` when fetching a list of bills to receive this field
+    because it is not returned by default.
     """
 
     memo: Optional[str] = None

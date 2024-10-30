@@ -34,17 +34,16 @@ class InvoiceUpdateParams(TypedDict, total=False):
     """
 
     apply_credits: Annotated[Iterable[ApplyCredit], PropertyInfo(alias="applyCredits")]
-    """Credits to apply to this invoice.
+    """Credit memos to apply to this invoice, reducing its balance.
 
-    Applying a credit uses an available credit to reduce the balance of this
-    invoice. This creates a link between this invoice and the corresponding existing
-    credit memo.
+    This creates a link between this invoice and the specified credit memos.
 
-    Note that QuickBooks will not return any information about these links in this
-    endpoint's response even though they are created. To see the transactions linked
-    via this field, refetch the invoice and check the `linkedTransactions` field. If
-    fetching a list of invoices, you must also specify the parameter
-    `includeLinkedTransactions` to see the `linkedTransactions` field.
+    Note: By default, QuickBooks will not return any information about the linked
+    transactions in this endpoint's response even when this request is successful.
+    To see the transactions linked via this field, refetch the invoice and check the
+    `linkedTransactions` response field. If fetching a list of invoices, you must
+    also specify the parameter `includeLinkedTransactions` to see the
+    `linkedTransactions` response field.
     """
 
     billing_address: Annotated[BillingAddress, PropertyInfo(alias="billingAddress")]
