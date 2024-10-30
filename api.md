@@ -273,3 +273,15 @@ Methods:
 - <code title="get /quickbooks-desktop/vendors/{id}">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_vendor.py">QbdVendor</a></code>
 - <code title="post /quickbooks-desktop/vendors/{id}">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/vendor_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_vendor.py">QbdVendor</a></code>
 - <code title="get /quickbooks-desktop/vendors">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">list</a>(\*\*<a href="src/conductor/types/qbd/vendor_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_vendor.py">SyncCursorPage[QbdVendor]</a></code>
+
+# IntegrationConnections
+
+Types:
+
+```python
+from conductor.types import IntegrationConnectionListResponse
+```
+
+Methods:
+
+- <code title="get /integration-connections">client.integration_connections.<a href="./src/conductor/resources/integration_connections.py">list</a>() -> <a href="./src/conductor/types/integration_connection_list_response.py">IntegrationConnectionListResponse</a></code>
