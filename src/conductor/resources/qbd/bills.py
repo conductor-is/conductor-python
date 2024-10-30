@@ -121,11 +121,12 @@ class BillsResource(SyncAPIResource):
               will also return an error if you attempt to link a transaction that is empty or
               already closed.
 
-              Note that QuickBooks will not return any information about these links in this
-              endpoint's response even though they are created. To see the transactions linked
-              via this field, refetch the bill and check the `linkedTransactions` field. If
-              fetching a list of bills, you must also specify the parameter
-              `includeLinkedTransactions` to return the `linkedTransactions` field.
+              Note: By default, QuickBooks will not return any information about the linked
+              transaction(s) in this endpoint's response even when this request is successful.
+              To see the transactions linked via this field, refetch the bill and check the
+              `linkedTransactions` response field. If fetching a list of bills, you must also
+              specify the parameter `includeLinkedTransactions` to return the
+              `linkedTransactions` response field.
 
           memo: A memo or note for this bill, as entered by the user. Appears in the Accounts
               Payable register and relevant reports.
@@ -621,11 +622,12 @@ class AsyncBillsResource(AsyncAPIResource):
               will also return an error if you attempt to link a transaction that is empty or
               already closed.
 
-              Note that QuickBooks will not return any information about these links in this
-              endpoint's response even though they are created. To see the transactions linked
-              via this field, refetch the bill and check the `linkedTransactions` field. If
-              fetching a list of bills, you must also specify the parameter
-              `includeLinkedTransactions` to return the `linkedTransactions` field.
+              Note: By default, QuickBooks will not return any information about the linked
+              transaction(s) in this endpoint's response even when this request is successful.
+              To see the transactions linked via this field, refetch the bill and check the
+              `linkedTransactions` response field. If fetching a list of bills, you must also
+              specify the parameter `includeLinkedTransactions` to return the
+              `linkedTransactions` response field.
 
           memo: A memo or note for this bill, as entered by the user. Appears in the Accounts
               Payable register and relevant reports.
