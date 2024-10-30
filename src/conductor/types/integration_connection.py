@@ -15,7 +15,7 @@ class IntegrationConnection(BaseModel):
     """The unique identifier for this IntegrationConnection."""
 
     created_at: str = FieldInfo(alias="createdAt")
-    """The date and time when this object was created."""
+    """The date and time when this IntegrationConnection was created."""
 
     end_user_id: str = FieldInfo(alias="endUserId")
     """The ID of the EndUser who owns this IntegrationConnection."""
