@@ -23,7 +23,7 @@ class EndUser(BaseModel):
     """The EndUser's company name that will be shown elsewhere in Conductor."""
 
     created_at: str = FieldInfo(alias="createdAt")
-    """The date and time when this object was created."""
+    """The date and time when this EndUser was created."""
 
     email: str
     """The EndUser's email address for identification purposes."""
