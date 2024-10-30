@@ -27,24 +27,24 @@ from conductor.types import (
 
 Methods:
 
-- <code title="post /end-users">client.end_users.<a href="./src/conductor/resources/end_users/end_users.py">create</a>(\*\*<a href="src/conductor/types/end_user_create_params.py">params</a>) -> <a href="./src/conductor/types/end_user.py">EndUser</a></code>
-- <code title="get /end-users/{id}">client.end_users.<a href="./src/conductor/resources/end_users/end_users.py">retrieve</a>(id) -> <a href="./src/conductor/types/end_user.py">EndUser</a></code>
-- <code title="get /end-users">client.end_users.<a href="./src/conductor/resources/end_users/end_users.py">list</a>() -> <a href="./src/conductor/types/end_user_list_response.py">EndUserListResponse</a></code>
-- <code title="delete /end-users/{id}">client.end_users.<a href="./src/conductor/resources/end_users/end_users.py">delete</a>(id) -> <a href="./src/conductor/types/end_user_delete_response.py">EndUserDeleteResponse</a></code>
-- <code title="get /end-users/{id}/ping/{integrationSlug}">client.end_users.<a href="./src/conductor/resources/end_users/end_users.py">ping</a>(integration_slug, \*, id) -> <a href="./src/conductor/types/end_user_ping_response.py">EndUserPingResponse</a></code>
-- <code title="post /end-users/{id}/request/{integrationSlug}">client.end_users.<a href="./src/conductor/resources/end_users/end_users.py">request</a>(integration_slug, \*, id, \*\*<a href="src/conductor/types/end_user_request_params.py">params</a>) -> <a href="./src/conductor/types/end_user_request_response.py">EndUserRequestResponse</a></code>
+- <code title="post /end-users">client.end_users.<a href="./src/conductor/resources/end_users.py">create</a>(\*\*<a href="src/conductor/types/end_user_create_params.py">params</a>) -> <a href="./src/conductor/types/end_user.py">EndUser</a></code>
+- <code title="get /end-users/{id}">client.end_users.<a href="./src/conductor/resources/end_users.py">retrieve</a>(id) -> <a href="./src/conductor/types/end_user.py">EndUser</a></code>
+- <code title="get /end-users">client.end_users.<a href="./src/conductor/resources/end_users.py">list</a>() -> <a href="./src/conductor/types/end_user_list_response.py">EndUserListResponse</a></code>
+- <code title="delete /end-users/{id}">client.end_users.<a href="./src/conductor/resources/end_users.py">delete</a>(id) -> <a href="./src/conductor/types/end_user_delete_response.py">EndUserDeleteResponse</a></code>
+- <code title="get /end-users/{id}/ping/{integrationSlug}">client.end_users.<a href="./src/conductor/resources/end_users.py">ping</a>(integration_slug, \*, id) -> <a href="./src/conductor/types/end_user_ping_response.py">EndUserPingResponse</a></code>
+- <code title="post /end-users/{id}/request/{integrationSlug}">client.end_users.<a href="./src/conductor/resources/end_users.py">request</a>(integration_slug, \*, id, \*\*<a href="src/conductor/types/end_user_request_params.py">params</a>) -> <a href="./src/conductor/types/end_user_request_response.py">EndUserRequestResponse</a></code>
 
-## IntegrationConnections
+# IntegrationConnections
 
 Types:
 
 ```python
-from conductor.types.end_users import IntegrationConnectionListResponse
+from conductor.types import IntegrationConnection, IntegrationConnectionListResponse
 ```
 
 Methods:
 
-- <code title="get /integration-connections">client.end_users.integration_connections.<a href="./src/conductor/resources/end_users/integration_connections.py">list</a>() -> <a href="./src/conductor/types/end_users/integration_connection_list_response.py">IntegrationConnectionListResponse</a></code>
+- <code title="get /integration-connections">client.integration_connections.<a href="./src/conductor/resources/integration_connections.py">list</a>() -> <a href="./src/conductor/types/integration_connection_list_response.py">IntegrationConnectionListResponse</a></code>
 
 # Qbd
 
