@@ -48,7 +48,6 @@ __all__ = [
 class Conductor(SyncAPIClient):
     auth_sessions: resources.AuthSessionsResource
     end_users: resources.EndUsersResource
-    integration_connections: resources.IntegrationConnectionsResource
     qbd: resources.QbdResource
     with_raw_response: ConductorWithRawResponse
     with_streaming_response: ConductorWithStreamedResponse
@@ -109,7 +108,6 @@ class Conductor(SyncAPIClient):
 
         self.auth_sessions = resources.AuthSessionsResource(self)
         self.end_users = resources.EndUsersResource(self)
-        self.integration_connections = resources.IntegrationConnectionsResource(self)
         self.qbd = resources.QbdResource(self)
         self.with_raw_response = ConductorWithRawResponse(self)
         self.with_streaming_response = ConductorWithStreamedResponse(self)
@@ -222,7 +220,6 @@ class Conductor(SyncAPIClient):
 class AsyncConductor(AsyncAPIClient):
     auth_sessions: resources.AsyncAuthSessionsResource
     end_users: resources.AsyncEndUsersResource
-    integration_connections: resources.AsyncIntegrationConnectionsResource
     qbd: resources.AsyncQbdResource
     with_raw_response: AsyncConductorWithRawResponse
     with_streaming_response: AsyncConductorWithStreamedResponse
@@ -283,7 +280,6 @@ class AsyncConductor(AsyncAPIClient):
 
         self.auth_sessions = resources.AsyncAuthSessionsResource(self)
         self.end_users = resources.AsyncEndUsersResource(self)
-        self.integration_connections = resources.AsyncIntegrationConnectionsResource(self)
         self.qbd = resources.AsyncQbdResource(self)
         self.with_raw_response = AsyncConductorWithRawResponse(self)
         self.with_streaming_response = AsyncConductorWithStreamedResponse(self)
@@ -397,9 +393,6 @@ class ConductorWithRawResponse:
     def __init__(self, client: Conductor) -> None:
         self.auth_sessions = resources.AuthSessionsResourceWithRawResponse(client.auth_sessions)
         self.end_users = resources.EndUsersResourceWithRawResponse(client.end_users)
-        self.integration_connections = resources.IntegrationConnectionsResourceWithRawResponse(
-            client.integration_connections
-        )
         self.qbd = resources.QbdResourceWithRawResponse(client.qbd)
 
 
@@ -407,9 +400,6 @@ class AsyncConductorWithRawResponse:
     def __init__(self, client: AsyncConductor) -> None:
         self.auth_sessions = resources.AsyncAuthSessionsResourceWithRawResponse(client.auth_sessions)
         self.end_users = resources.AsyncEndUsersResourceWithRawResponse(client.end_users)
-        self.integration_connections = resources.AsyncIntegrationConnectionsResourceWithRawResponse(
-            client.integration_connections
-        )
         self.qbd = resources.AsyncQbdResourceWithRawResponse(client.qbd)
 
 
@@ -417,9 +407,6 @@ class ConductorWithStreamedResponse:
     def __init__(self, client: Conductor) -> None:
         self.auth_sessions = resources.AuthSessionsResourceWithStreamingResponse(client.auth_sessions)
         self.end_users = resources.EndUsersResourceWithStreamingResponse(client.end_users)
-        self.integration_connections = resources.IntegrationConnectionsResourceWithStreamingResponse(
-            client.integration_connections
-        )
         self.qbd = resources.QbdResourceWithStreamingResponse(client.qbd)
 
 
@@ -427,9 +414,6 @@ class AsyncConductorWithStreamedResponse:
     def __init__(self, client: AsyncConductor) -> None:
         self.auth_sessions = resources.AsyncAuthSessionsResourceWithStreamingResponse(client.auth_sessions)
         self.end_users = resources.AsyncEndUsersResourceWithStreamingResponse(client.end_users)
-        self.integration_connections = resources.AsyncIntegrationConnectionsResourceWithStreamingResponse(
-            client.integration_connections
-        )
         self.qbd = resources.AsyncQbdResourceWithStreamingResponse(client.qbd)
 
 
