@@ -203,7 +203,9 @@ class CustomerUpdateParams(TypedDict, total=False):
     phone: str
     """The customer's primary telephone number."""
 
-    preferred_delivery_method: Annotated[Literal["email", "fax", "none"], PropertyInfo(alias="preferredDeliveryMethod")]
+    preferred_delivery_method: Annotated[
+        Literal["email", "mail", "none"], PropertyInfo(alias="preferredDeliveryMethod")
+    ]
     """
     The preferred method for delivering invoices and other documents to this
     customer.
