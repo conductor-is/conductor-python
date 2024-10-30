@@ -690,7 +690,7 @@ class QbdCustomer(BaseModel):
     phone: Optional[str] = None
     """The customer's primary telephone number."""
 
-    preferred_delivery_method: Optional[Literal["email", "fax", "none"]] = FieldInfo(
+    preferred_delivery_method: Optional[Literal["email", "mail", "none"]] = FieldInfo(
         alias="preferredDeliveryMethod", default=None
     )
     """
