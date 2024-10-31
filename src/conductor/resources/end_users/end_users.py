@@ -23,14 +23,6 @@ from ..._response import (
 )
 from ..._base_client import make_request_options
 from ...types.end_user import EndUser
-from .integration_connections import (
-    IntegrationConnectionsResource,
-    AsyncIntegrationConnectionsResource,
-    IntegrationConnectionsResourceWithRawResponse,
-    AsyncIntegrationConnectionsResourceWithRawResponse,
-    IntegrationConnectionsResourceWithStreamingResponse,
-    AsyncIntegrationConnectionsResourceWithStreamingResponse,
-)
 from ...types.end_user_list_response import EndUserListResponse
 from ...types.end_user_ping_response import EndUserPingResponse
 from ...types.end_user_delete_response import EndUserDeleteResponse
@@ -40,10 +32,6 @@ __all__ = ["EndUsersResource", "AsyncEndUsersResource"]
 
 
 class EndUsersResource(SyncAPIResource):
-    @cached_property
-    def integration_connections(self) -> IntegrationConnectionsResource:
-        return IntegrationConnectionsResource(self._client)
-
     @cached_property
     def with_raw_response(self) -> EndUsersResourceWithRawResponse:
         """
@@ -292,10 +280,6 @@ class EndUsersResource(SyncAPIResource):
 
 
 class AsyncEndUsersResource(AsyncAPIResource):
-    @cached_property
-    def integration_connections(self) -> AsyncIntegrationConnectionsResource:
-        return AsyncIntegrationConnectionsResource(self._client)
-
     @cached_property
     def with_raw_response(self) -> AsyncEndUsersResourceWithRawResponse:
         """
@@ -566,10 +550,6 @@ class EndUsersResourceWithRawResponse:
             end_users.request,
         )
 
-    @cached_property
-    def integration_connections(self) -> IntegrationConnectionsResourceWithRawResponse:
-        return IntegrationConnectionsResourceWithRawResponse(self._end_users.integration_connections)
-
 
 class AsyncEndUsersResourceWithRawResponse:
     def __init__(self, end_users: AsyncEndUsersResource) -> None:
@@ -593,10 +573,6 @@ class AsyncEndUsersResourceWithRawResponse:
         self.request = async_to_raw_response_wrapper(
             end_users.request,
         )
-
-    @cached_property
-    def integration_connections(self) -> AsyncIntegrationConnectionsResourceWithRawResponse:
-        return AsyncIntegrationConnectionsResourceWithRawResponse(self._end_users.integration_connections)
 
 
 class EndUsersResourceWithStreamingResponse:
@@ -622,10 +598,6 @@ class EndUsersResourceWithStreamingResponse:
             end_users.request,
         )
 
-    @cached_property
-    def integration_connections(self) -> IntegrationConnectionsResourceWithStreamingResponse:
-        return IntegrationConnectionsResourceWithStreamingResponse(self._end_users.integration_connections)
-
 
 class AsyncEndUsersResourceWithStreamingResponse:
     def __init__(self, end_users: AsyncEndUsersResource) -> None:
@@ -649,7 +621,3 @@ class AsyncEndUsersResourceWithStreamingResponse:
         self.request = async_to_streamed_response_wrapper(
             end_users.request,
         )
-
-    @cached_property
-    def integration_connections(self) -> AsyncIntegrationConnectionsResourceWithStreamingResponse:
-        return AsyncIntegrationConnectionsResourceWithStreamingResponse(self._end_users.integration_connections)
