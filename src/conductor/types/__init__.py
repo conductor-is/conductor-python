@@ -11,4 +11,3 @@ from .end_user_request_params import EndUserRequestParams as EndUserRequestParam
 from .end_user_delete_response import EndUserDeleteResponse as EndUserDeleteResponse
 from .end_user_request_response import EndUserRequestResponse as EndUserRequestResponse
 from .auth_session_create_params import AuthSessionCreateParams as AuthSessionCreateParams
-from .integration_connection_list_response import IntegrationConnectionListResponse as IntegrationConnectionListResponse
