@@ -24,6 +24,14 @@ from .auth_sessions import (
     AuthSessionsResourceWithStreamingResponse,
     AsyncAuthSessionsResourceWithStreamingResponse,
 )
+from .integration_connections import (
+    IntegrationConnectionsResource,
+    AsyncIntegrationConnectionsResource,
+    IntegrationConnectionsResourceWithRawResponse,
+    AsyncIntegrationConnectionsResourceWithRawResponse,
+    IntegrationConnectionsResourceWithStreamingResponse,
+    AsyncIntegrationConnectionsResourceWithStreamingResponse,
+)
 
 __all__ = [
     "AuthSessionsResource",
@@ -44,4 +52,10 @@ __all__ = [
     "AsyncQbdResourceWithRawResponse",
     "QbdResourceWithStreamingResponse",
     "AsyncQbdResourceWithStreamingResponse",
+    "IntegrationConnectionsResource",
+    "AsyncIntegrationConnectionsResource",
+    "IntegrationConnectionsResourceWithRawResponse",
+    "AsyncIntegrationConnectionsResourceWithRawResponse",
+    "IntegrationConnectionsResourceWithStreamingResponse",
+    "AsyncIntegrationConnectionsResourceWithStreamingResponse",
 ]
