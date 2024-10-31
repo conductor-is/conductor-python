@@ -8,22 +8,8 @@ from .end_users import (
     EndUsersResourceWithStreamingResponse,
     AsyncEndUsersResourceWithStreamingResponse,
 )
-from .integration_connections import (
-    IntegrationConnectionsResource,
-    AsyncIntegrationConnectionsResource,
-    IntegrationConnectionsResourceWithRawResponse,
-    AsyncIntegrationConnectionsResourceWithRawResponse,
-    IntegrationConnectionsResourceWithStreamingResponse,
-    AsyncIntegrationConnectionsResourceWithStreamingResponse,
-)
 
 __all__ = [
-    "IntegrationConnectionsResource",
-    "AsyncIntegrationConnectionsResource",
-    "IntegrationConnectionsResourceWithRawResponse",
-    "AsyncIntegrationConnectionsResourceWithRawResponse",
-    "IntegrationConnectionsResourceWithStreamingResponse",
-    "AsyncIntegrationConnectionsResourceWithStreamingResponse",
     "EndUsersResource",
     "AsyncEndUsersResource",
     "EndUsersResourceWithRawResponse",
