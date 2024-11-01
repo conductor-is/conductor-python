@@ -743,9 +743,8 @@ class CustomersResource(SyncAPIResource):
           total_balance: Filter for customers whose `totalBalance` equals this amount, represented as a
               decimal string. You can only use one total-balance filter at a time.
 
-          total_balance_gt: Filter for customers whose `totalBalance` is greater than this amount,
-              represented as a decimal string. You can only use one total-balance filter at a
-              time.
+          total_balance_gt: Filter for customers whose `totalBalance` is greater than this TEMP, represented
+              as a decimal string. You can only use one total-balance filter at a time.
 
           total_balance_gte: Filter for customers whose `totalBalance` is greater than or equal to this
               amount, represented as a decimal string. You can only use one total-balance
@@ -1526,9 +1525,8 @@ class AsyncCustomersResource(AsyncAPIResource):
           total_balance: Filter for customers whose `totalBalance` equals this amount, represented as a
               decimal string. You can only use one total-balance filter at a time.
 
-          total_balance_gt: Filter for customers whose `totalBalance` is greater than this amount,
-              represented as a decimal string. You can only use one total-balance filter at a
-              time.
+          total_balance_gt: Filter for customers whose `totalBalance` is greater than this TEMP, represented
+              as a decimal string. You can only use one total-balance filter at a time.
 
           total_balance_gte: Filter for customers whose `totalBalance` is greater than or equal to this
               amount, represented as a decimal string. You can only use one total-balance
