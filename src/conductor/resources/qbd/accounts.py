@@ -434,17 +434,17 @@ class AccountsResource(SyncAPIResource):
               fetch the next set of results. To paginate through the results for this
               endpoint, try fetching batches via the date-range query parameters.
 
-          name_contains: Filter for accounts whose `name` contains this substring. If you use this
-              parameter, you cannot use `nameStartsWith` or `nameEndsWith`.
+          name_contains: Filter for accounts whose `name` contains this substring (case insensitive). If
+              you use this parameter, you cannot use `nameStartsWith` or `nameEndsWith`.
 
-          name_ends_with: Filter for accounts whose `name` ends with this substring. If you use this
-              parameter, you cannot use `nameContains` or `nameStartsWith`.
+          name_ends_with: Filter for accounts whose `name` ends with this substring (case insensitive). If
+              you use this parameter, you cannot use `nameContains` or `nameStartsWith`.
 
           name_from: Filter for accounts whose `name` is alphabetically greater than or equal to this
               value.
 
-          name_starts_with: Filter for accounts whose `name` starts with this substring. If you use this
-              parameter, you cannot use `nameContains` or `nameEndsWith`.
+          name_starts_with: Filter for accounts whose `name` starts with this substring (case insensitive).
+              If you use this parameter, you cannot use `nameContains` or `nameEndsWith`.
 
           name_to: Filter for accounts whose `name` is alphabetically less than or equal to this
               value.
@@ -903,17 +903,17 @@ class AsyncAccountsResource(AsyncAPIResource):
               fetch the next set of results. To paginate through the results for this
               endpoint, try fetching batches via the date-range query parameters.
 
-          name_contains: Filter for accounts whose `name` contains this substring. If you use this
-              parameter, you cannot use `nameStartsWith` or `nameEndsWith`.
+          name_contains: Filter for accounts whose `name` contains this substring (case insensitive). If
+              you use this parameter, you cannot use `nameStartsWith` or `nameEndsWith`.
 
-          name_ends_with: Filter for accounts whose `name` ends with this substring. If you use this
-              parameter, you cannot use `nameContains` or `nameStartsWith`.
+          name_ends_with: Filter for accounts whose `name` ends with this substring (case insensitive). If
+              you use this parameter, you cannot use `nameContains` or `nameStartsWith`.
 
           name_from: Filter for accounts whose `name` is alphabetically greater than or equal to this
               value.
 
-          name_starts_with: Filter for accounts whose `name` starts with this substring. If you use this
-              parameter, you cannot use `nameContains` or `nameEndsWith`.
+          name_starts_with: Filter for accounts whose `name` starts with this substring (case insensitive).
+              If you use this parameter, you cannot use `nameContains` or `nameEndsWith`.
 
           name_to: Filter for accounts whose `name` is alphabetically less than or equal to this
               value.
