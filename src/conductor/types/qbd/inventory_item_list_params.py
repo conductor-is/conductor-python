@@ -32,7 +32,7 @@ class InventoryItemListParams(TypedDict, total=False):
     """
 
     full_names: Annotated[str, PropertyInfo(alias="fullNames")]
-    """Filter for specific inventory items by their full-name(s).
+    """Filter for specific inventory items by their full-name(s), case-insensitive.
 
     Specify a single full-name or multiple using a comma-separated list (e.g.,
     `fullNames=1,2,3`). Like `id`, a `fullName` is a unique identifier for an
@@ -40,8 +40,8 @@ class InventoryItemListParams(TypedDict, total=False):
     with its own `name`, separated by colons. For example, if an inventory item is
     under "Furniture:Kitchen" and has the `name` "Cabinet", its `fullName` would be
     "Furniture:Kitchen:Cabinet". Unlike `name`, `fullName` is guaranteed to be
-    unique across all inventory item objects. Not case-sensitive. NOTE: If you
-    include this parameter, all other query parameters will be ignored.
+    unique across all inventory item objects. NOTE: If you include this parameter,
+    all other query parameters will be ignored.
     """
 
     ids: str
@@ -63,16 +63,16 @@ class InventoryItemListParams(TypedDict, total=False):
 
     name_contains: Annotated[str, PropertyInfo(alias="nameContains")]
     """
-    Filter for inventory items whose `name` contains this substring (case
-    insensitive). If you use this parameter, you cannot use `nameStartsWith` or
-    `nameEndsWith`.
+    Filter for inventory items whose `name` contains this substring,
+    case-insensitive. If you use this parameter, you cannot also use
+    `nameStartsWith` or `nameEndsWith`.
     """
 
     name_ends_with: Annotated[str, PropertyInfo(alias="nameEndsWith")]
     """
-    Filter for inventory items whose `name` ends with this substring (case
-    insensitive). If you use this parameter, you cannot use `nameContains` or
-    `nameStartsWith`.
+    Filter for inventory items whose `name` ends with this substring,
+    case-insensitive. If you use this parameter, you cannot also use `nameContains`
+    or `nameStartsWith`.
     """
 
     name_from: Annotated[str, PropertyInfo(alias="nameFrom")]
@@ -83,9 +83,9 @@ class InventoryItemListParams(TypedDict, total=False):
 
     name_starts_with: Annotated[str, PropertyInfo(alias="nameStartsWith")]
     """
-    Filter for inventory items whose `name` starts with this substring (case
-    insensitive). If you use this parameter, you cannot use `nameContains` or
-    `nameEndsWith`.
+    Filter for inventory items whose `name` starts with this substring,
+    case-insensitive. If you use this parameter, you cannot also use `nameContains`
+    or `nameEndsWith`.
     """
 
     name_to: Annotated[str, PropertyInfo(alias="nameTo")]

@@ -47,7 +47,7 @@ class AccountListParams(TypedDict, total=False):
     """
 
     full_names: Annotated[str, PropertyInfo(alias="fullNames")]
-    """Filter for specific accounts by their full-name(s).
+    """Filter for specific accounts by their full-name(s), case-insensitive.
 
     Specify a single full-name or multiple using a comma-separated list (e.g.,
     `fullNames=1,2,3`). Like `id`, a `fullName` is a unique identifier for an
@@ -55,8 +55,8 @@ class AccountListParams(TypedDict, total=False):
     own `name`, separated by colons. For example, if an account is under
     "Expenses:Utilities" and has the `name` "Electricity", its `fullName` would be
     "Expenses:Utilities:Electricity". Unlike `name`, `fullName` is guaranteed to be
-    unique across all account objects. Not case-sensitive. NOTE: If you include this
-    parameter, all other query parameters will be ignored.
+    unique across all account objects. NOTE: If you include this parameter, all
+    other query parameters will be ignored.
     """
 
     ids: str
@@ -78,15 +78,17 @@ class AccountListParams(TypedDict, total=False):
     """
 
     name_contains: Annotated[str, PropertyInfo(alias="nameContains")]
-    """Filter for accounts whose `name` contains this substring (case insensitive).
+    """Filter for accounts whose `name` contains this substring, case-insensitive.
 
-    If you use this parameter, you cannot use `nameStartsWith` or `nameEndsWith`.
+    If you use this parameter, you cannot also use `nameStartsWith` or
+    `nameEndsWith`.
     """
 
     name_ends_with: Annotated[str, PropertyInfo(alias="nameEndsWith")]
-    """Filter for accounts whose `name` ends with this substring (case insensitive).
+    """Filter for accounts whose `name` ends with this substring, case-insensitive.
 
-    If you use this parameter, you cannot use `nameContains` or `nameStartsWith`.
+    If you use this parameter, you cannot also use `nameContains` or
+    `nameStartsWith`.
     """
 
     name_from: Annotated[str, PropertyInfo(alias="nameFrom")]
@@ -96,9 +98,9 @@ class AccountListParams(TypedDict, total=False):
     """
 
     name_starts_with: Annotated[str, PropertyInfo(alias="nameStartsWith")]
-    """Filter for accounts whose `name` starts with this substring (case insensitive).
+    """Filter for accounts whose `name` starts with this substring, case-insensitive.
 
-    If you use this parameter, you cannot use `nameContains` or `nameEndsWith`.
+    If you use this parameter, you cannot also use `nameContains` or `nameEndsWith`.
     """
 
     name_to: Annotated[str, PropertyInfo(alias="nameTo")]
