@@ -111,7 +111,7 @@ class VendorListParams(TypedDict, total=False):
 
     total_balance_gt: Annotated[str, PropertyInfo(alias="totalBalanceGt")]
     """
-    Filter for vendors whose `totalBalance` is greater than this amount, represented
+    Filter for vendors whose `totalBalance` is greater than this TEMP, represented
     as a decimal string. You can only use one total-balance filter at a time.
     """
 
