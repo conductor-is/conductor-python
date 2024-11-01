@@ -5,14 +5,14 @@ from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
+from .account import Account
 from ..._models import BaseModel
-from .qbd_account import QbdAccount
 
 __all__ = ["AccountListResponse"]
 
 
 class AccountListResponse(BaseModel):
-    data: List[QbdAccount]
+    data: List[Account]
     """The array of accounts."""
 
     object_type: Literal["list"] = FieldInfo(alias="objectType")

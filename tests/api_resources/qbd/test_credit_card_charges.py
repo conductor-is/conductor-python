@@ -11,7 +11,7 @@ from conductor import Conductor, AsyncConductor
 from tests.utils import assert_matches_type
 from conductor._utils import parse_date
 from conductor.types.qbd import (
-    QbdCreditCardCharge,
+    CreditCardCharge,
 )
 from conductor.pagination import SyncCursorPage, AsyncCursorPage
 
@@ -28,7 +28,7 @@ class TestCreditCardCharges:
             transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdCreditCardCharge, credit_card_charge, path=["response"])
+        assert_matches_type(CreditCardCharge, credit_card_charge, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Conductor) -> None:
@@ -322,7 +322,7 @@ class TestCreditCardCharges:
             ref_number="CHARGE-1234",
             sales_tax_code_id="80000004-1234567890",
         )
-        assert_matches_type(QbdCreditCardCharge, credit_card_charge, path=["response"])
+        assert_matches_type(CreditCardCharge, credit_card_charge, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: Conductor) -> None:
@@ -335,7 +335,7 @@ class TestCreditCardCharges:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         credit_card_charge = response.parse()
-        assert_matches_type(QbdCreditCardCharge, credit_card_charge, path=["response"])
+        assert_matches_type(CreditCardCharge, credit_card_charge, path=["response"])
 
     @parametrize
     def test_streaming_response_create(self, client: Conductor) -> None:
@@ -348,7 +348,7 @@ class TestCreditCardCharges:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             credit_card_charge = response.parse()
-            assert_matches_type(QbdCreditCardCharge, credit_card_charge, path=["response"])
+            assert_matches_type(CreditCardCharge, credit_card_charge, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -358,7 +358,7 @@ class TestCreditCardCharges:
             id="123ABC-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdCreditCardCharge, credit_card_charge, path=["response"])
+        assert_matches_type(CreditCardCharge, credit_card_charge, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Conductor) -> None:
@@ -370,7 +370,7 @@ class TestCreditCardCharges:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         credit_card_charge = response.parse()
-        assert_matches_type(QbdCreditCardCharge, credit_card_charge, path=["response"])
+        assert_matches_type(CreditCardCharge, credit_card_charge, path=["response"])
 
     @parametrize
     def test_streaming_response_retrieve(self, client: Conductor) -> None:
@@ -382,7 +382,7 @@ class TestCreditCardCharges:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             credit_card_charge = response.parse()
-            assert_matches_type(QbdCreditCardCharge, credit_card_charge, path=["response"])
+            assert_matches_type(CreditCardCharge, credit_card_charge, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -401,7 +401,7 @@ class TestCreditCardCharges:
             revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdCreditCardCharge, credit_card_charge, path=["response"])
+        assert_matches_type(CreditCardCharge, credit_card_charge, path=["response"])
 
     @parametrize
     def test_method_update_with_all_params(self, client: Conductor) -> None:
@@ -737,7 +737,7 @@ class TestCreditCardCharges:
             sales_tax_code_id="80000004-1234567890",
             transaction_date=parse_date("2019-12-27"),
         )
-        assert_matches_type(QbdCreditCardCharge, credit_card_charge, path=["response"])
+        assert_matches_type(CreditCardCharge, credit_card_charge, path=["response"])
 
     @parametrize
     def test_raw_response_update(self, client: Conductor) -> None:
@@ -750,7 +750,7 @@ class TestCreditCardCharges:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         credit_card_charge = response.parse()
-        assert_matches_type(QbdCreditCardCharge, credit_card_charge, path=["response"])
+        assert_matches_type(CreditCardCharge, credit_card_charge, path=["response"])
 
     @parametrize
     def test_streaming_response_update(self, client: Conductor) -> None:
@@ -763,7 +763,7 @@ class TestCreditCardCharges:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             credit_card_charge = response.parse()
-            assert_matches_type(QbdCreditCardCharge, credit_card_charge, path=["response"])
+            assert_matches_type(CreditCardCharge, credit_card_charge, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -781,7 +781,7 @@ class TestCreditCardCharges:
         credit_card_charge = client.qbd.credit_card_charges.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(SyncCursorPage[QbdCreditCardCharge], credit_card_charge, path=["response"])
+        assert_matches_type(SyncCursorPage[CreditCardCharge], credit_card_charge, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Conductor) -> None:
@@ -805,7 +805,7 @@ class TestCreditCardCharges:
             updated_after="updatedAfter",
             updated_before="updatedBefore",
         )
-        assert_matches_type(SyncCursorPage[QbdCreditCardCharge], credit_card_charge, path=["response"])
+        assert_matches_type(SyncCursorPage[CreditCardCharge], credit_card_charge, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Conductor) -> None:
@@ -816,7 +816,7 @@ class TestCreditCardCharges:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         credit_card_charge = response.parse()
-        assert_matches_type(SyncCursorPage[QbdCreditCardCharge], credit_card_charge, path=["response"])
+        assert_matches_type(SyncCursorPage[CreditCardCharge], credit_card_charge, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Conductor) -> None:
@@ -827,7 +827,7 @@ class TestCreditCardCharges:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             credit_card_charge = response.parse()
-            assert_matches_type(SyncCursorPage[QbdCreditCardCharge], credit_card_charge, path=["response"])
+            assert_matches_type(SyncCursorPage[CreditCardCharge], credit_card_charge, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -842,7 +842,7 @@ class TestAsyncCreditCardCharges:
             transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdCreditCardCharge, credit_card_charge, path=["response"])
+        assert_matches_type(CreditCardCharge, credit_card_charge, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncConductor) -> None:
@@ -1136,7 +1136,7 @@ class TestAsyncCreditCardCharges:
             ref_number="CHARGE-1234",
             sales_tax_code_id="80000004-1234567890",
         )
-        assert_matches_type(QbdCreditCardCharge, credit_card_charge, path=["response"])
+        assert_matches_type(CreditCardCharge, credit_card_charge, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncConductor) -> None:
@@ -1149,7 +1149,7 @@ class TestAsyncCreditCardCharges:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         credit_card_charge = await response.parse()
-        assert_matches_type(QbdCreditCardCharge, credit_card_charge, path=["response"])
+        assert_matches_type(CreditCardCharge, credit_card_charge, path=["response"])
 
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncConductor) -> None:
@@ -1162,7 +1162,7 @@ class TestAsyncCreditCardCharges:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             credit_card_charge = await response.parse()
-            assert_matches_type(QbdCreditCardCharge, credit_card_charge, path=["response"])
+            assert_matches_type(CreditCardCharge, credit_card_charge, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1172,7 +1172,7 @@ class TestAsyncCreditCardCharges:
             id="123ABC-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdCreditCardCharge, credit_card_charge, path=["response"])
+        assert_matches_type(CreditCardCharge, credit_card_charge, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncConductor) -> None:
@@ -1184,7 +1184,7 @@ class TestAsyncCreditCardCharges:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         credit_card_charge = await response.parse()
-        assert_matches_type(QbdCreditCardCharge, credit_card_charge, path=["response"])
+        assert_matches_type(CreditCardCharge, credit_card_charge, path=["response"])
 
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncConductor) -> None:
@@ -1196,7 +1196,7 @@ class TestAsyncCreditCardCharges:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             credit_card_charge = await response.parse()
-            assert_matches_type(QbdCreditCardCharge, credit_card_charge, path=["response"])
+            assert_matches_type(CreditCardCharge, credit_card_charge, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1215,7 +1215,7 @@ class TestAsyncCreditCardCharges:
             revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdCreditCardCharge, credit_card_charge, path=["response"])
+        assert_matches_type(CreditCardCharge, credit_card_charge, path=["response"])
 
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncConductor) -> None:
@@ -1551,7 +1551,7 @@ class TestAsyncCreditCardCharges:
             sales_tax_code_id="80000004-1234567890",
             transaction_date=parse_date("2019-12-27"),
         )
-        assert_matches_type(QbdCreditCardCharge, credit_card_charge, path=["response"])
+        assert_matches_type(CreditCardCharge, credit_card_charge, path=["response"])
 
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncConductor) -> None:
@@ -1564,7 +1564,7 @@ class TestAsyncCreditCardCharges:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         credit_card_charge = await response.parse()
-        assert_matches_type(QbdCreditCardCharge, credit_card_charge, path=["response"])
+        assert_matches_type(CreditCardCharge, credit_card_charge, path=["response"])
 
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncConductor) -> None:
@@ -1577,7 +1577,7 @@ class TestAsyncCreditCardCharges:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             credit_card_charge = await response.parse()
-            assert_matches_type(QbdCreditCardCharge, credit_card_charge, path=["response"])
+            assert_matches_type(CreditCardCharge, credit_card_charge, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1595,7 +1595,7 @@ class TestAsyncCreditCardCharges:
         credit_card_charge = await async_client.qbd.credit_card_charges.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(AsyncCursorPage[QbdCreditCardCharge], credit_card_charge, path=["response"])
+        assert_matches_type(AsyncCursorPage[CreditCardCharge], credit_card_charge, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncConductor) -> None:
@@ -1619,7 +1619,7 @@ class TestAsyncCreditCardCharges:
             updated_after="updatedAfter",
             updated_before="updatedBefore",
         )
-        assert_matches_type(AsyncCursorPage[QbdCreditCardCharge], credit_card_charge, path=["response"])
+        assert_matches_type(AsyncCursorPage[CreditCardCharge], credit_card_charge, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncConductor) -> None:
@@ -1630,7 +1630,7 @@ class TestAsyncCreditCardCharges:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         credit_card_charge = await response.parse()
-        assert_matches_type(AsyncCursorPage[QbdCreditCardCharge], credit_card_charge, path=["response"])
+        assert_matches_type(AsyncCursorPage[CreditCardCharge], credit_card_charge, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncConductor) -> None:
@@ -1641,6 +1641,6 @@ class TestAsyncCreditCardCharges:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             credit_card_charge = await response.parse()
-            assert_matches_type(AsyncCursorPage[QbdCreditCardCharge], credit_card_charge, path=["response"])
+            assert_matches_type(AsyncCursorPage[CreditCardCharge], credit_card_charge, path=["response"])
 
         assert cast(Any, response.is_closed) is True

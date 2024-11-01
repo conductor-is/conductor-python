@@ -9,7 +9,7 @@ from pydantic import Field as FieldInfo
 from ..._models import BaseModel
 
 __all__ = [
-    "QbdCreditCardCharge",
+    "CreditCardCharge",
     "Account",
     "Currency",
     "CustomField",
@@ -1069,7 +1069,7 @@ class SalesTaxCode(BaseModel):
     """
 
 
-class QbdCreditCardCharge(BaseModel):
+class CreditCardCharge(BaseModel):
     id: str
     """The unique identifier assigned by QuickBooks to this credit card charge.
 

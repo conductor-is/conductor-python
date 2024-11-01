@@ -27,7 +27,7 @@ from ...types.qbd import (
 )
 from ...pagination import SyncCursorPage, AsyncCursorPage
 from ..._base_client import AsyncPaginator, make_request_options
-from ...types.qbd.qbd_credit_card_charge import QbdCreditCardCharge
+from ...types.qbd.credit_card_charge import CreditCardCharge
 
 __all__ = ["CreditCardChargesResource", "AsyncCreditCardChargesResource"]
 
@@ -73,7 +73,7 @@ class CreditCardChargesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdCreditCardCharge:
+    ) -> CreditCardCharge:
         """
         Creates a credit card charge for the specified account.
 
@@ -152,7 +152,7 @@ class CreditCardChargesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdCreditCardCharge,
+            cast_to=CreditCardCharge,
         )
 
     def retrieve(
@@ -166,7 +166,7 @@ class CreditCardChargesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdCreditCardCharge:
+    ) -> CreditCardCharge:
         """
         Retrieves a credit card charge by ID.
 
@@ -192,7 +192,7 @@ class CreditCardChargesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdCreditCardCharge,
+            cast_to=CreditCardCharge,
         )
 
     def update(
@@ -219,7 +219,7 @@ class CreditCardChargesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdCreditCardCharge:
+    ) -> CreditCardCharge:
         """
         Updates an existing credit card charge.
 
@@ -332,7 +332,7 @@ class CreditCardChargesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdCreditCardCharge,
+            cast_to=CreditCardCharge,
         )
 
     def list(
@@ -362,7 +362,7 @@ class CreditCardChargesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursorPage[QbdCreditCardCharge]:
+    ) -> SyncCursorPage[CreditCardCharge]:
         """
         Returns a list of credit card charges.
 
@@ -451,7 +451,7 @@ class CreditCardChargesResource(SyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/credit-card-charges",
-            page=SyncCursorPage[QbdCreditCardCharge],
+            page=SyncCursorPage[CreditCardCharge],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -480,7 +480,7 @@ class CreditCardChargesResource(SyncAPIResource):
                     credit_card_charge_list_params.CreditCardChargeListParams,
                 ),
             ),
-            model=QbdCreditCardCharge,
+            model=CreditCardCharge,
         )
 
 
@@ -525,7 +525,7 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdCreditCardCharge:
+    ) -> CreditCardCharge:
         """
         Creates a credit card charge for the specified account.
 
@@ -604,7 +604,7 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdCreditCardCharge,
+            cast_to=CreditCardCharge,
         )
 
     async def retrieve(
@@ -618,7 +618,7 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdCreditCardCharge:
+    ) -> CreditCardCharge:
         """
         Retrieves a credit card charge by ID.
 
@@ -644,7 +644,7 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdCreditCardCharge,
+            cast_to=CreditCardCharge,
         )
 
     async def update(
@@ -671,7 +671,7 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdCreditCardCharge:
+    ) -> CreditCardCharge:
         """
         Updates an existing credit card charge.
 
@@ -784,7 +784,7 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdCreditCardCharge,
+            cast_to=CreditCardCharge,
         )
 
     def list(
@@ -814,7 +814,7 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[QbdCreditCardCharge, AsyncCursorPage[QbdCreditCardCharge]]:
+    ) -> AsyncPaginator[CreditCardCharge, AsyncCursorPage[CreditCardCharge]]:
         """
         Returns a list of credit card charges.
 
@@ -903,7 +903,7 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/credit-card-charges",
-            page=AsyncCursorPage[QbdCreditCardCharge],
+            page=AsyncCursorPage[CreditCardCharge],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -932,7 +932,7 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
                     credit_card_charge_list_params.CreditCardChargeListParams,
                 ),
             ),
-            model=QbdCreditCardCharge,
+            model=CreditCardCharge,
         )
 
 

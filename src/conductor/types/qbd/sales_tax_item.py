@@ -7,7 +7,7 @@ from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
 
-__all__ = ["QbdSalesTaxItem", "Class", "CustomField", "SalesTaxReturnLine", "TaxVendor"]
+__all__ = ["SalesTaxItem", "Class", "CustomField", "SalesTaxReturnLine", "TaxVendor"]
 
 
 class Class(BaseModel):
@@ -95,7 +95,7 @@ class TaxVendor(BaseModel):
     """
 
 
-class QbdSalesTaxItem(BaseModel):
+class SalesTaxItem(BaseModel):
     id: str
     """The unique identifier assigned by QuickBooks to this sales-tax item.
 

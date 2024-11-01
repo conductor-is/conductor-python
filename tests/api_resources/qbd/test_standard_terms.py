@@ -10,7 +10,7 @@ import pytest
 from conductor import Conductor, AsyncConductor
 from tests.utils import assert_matches_type
 from conductor.types.qbd import (
-    QbdStandardTerm,
+    StandardTerm,
     StandardTermListResponse,
 )
 
@@ -26,7 +26,7 @@ class TestStandardTerms:
             name="Net 30",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdStandardTerm, standard_term, path=["response"])
+        assert_matches_type(StandardTerm, standard_term, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Conductor) -> None:
@@ -38,7 +38,7 @@ class TestStandardTerms:
             due_days=30,
             is_active=True,
         )
-        assert_matches_type(QbdStandardTerm, standard_term, path=["response"])
+        assert_matches_type(StandardTerm, standard_term, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: Conductor) -> None:
@@ -50,7 +50,7 @@ class TestStandardTerms:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         standard_term = response.parse()
-        assert_matches_type(QbdStandardTerm, standard_term, path=["response"])
+        assert_matches_type(StandardTerm, standard_term, path=["response"])
 
     @parametrize
     def test_streaming_response_create(self, client: Conductor) -> None:
@@ -62,7 +62,7 @@ class TestStandardTerms:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             standard_term = response.parse()
-            assert_matches_type(QbdStandardTerm, standard_term, path=["response"])
+            assert_matches_type(StandardTerm, standard_term, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -72,7 +72,7 @@ class TestStandardTerms:
             id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdStandardTerm, standard_term, path=["response"])
+        assert_matches_type(StandardTerm, standard_term, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Conductor) -> None:
@@ -84,7 +84,7 @@ class TestStandardTerms:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         standard_term = response.parse()
-        assert_matches_type(QbdStandardTerm, standard_term, path=["response"])
+        assert_matches_type(StandardTerm, standard_term, path=["response"])
 
     @parametrize
     def test_streaming_response_retrieve(self, client: Conductor) -> None:
@@ -96,7 +96,7 @@ class TestStandardTerms:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             standard_term = response.parse()
-            assert_matches_type(QbdStandardTerm, standard_term, path=["response"])
+            assert_matches_type(StandardTerm, standard_term, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -167,7 +167,7 @@ class TestAsyncStandardTerms:
             name="Net 30",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdStandardTerm, standard_term, path=["response"])
+        assert_matches_type(StandardTerm, standard_term, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncConductor) -> None:
@@ -179,7 +179,7 @@ class TestAsyncStandardTerms:
             due_days=30,
             is_active=True,
         )
-        assert_matches_type(QbdStandardTerm, standard_term, path=["response"])
+        assert_matches_type(StandardTerm, standard_term, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncConductor) -> None:
@@ -191,7 +191,7 @@ class TestAsyncStandardTerms:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         standard_term = await response.parse()
-        assert_matches_type(QbdStandardTerm, standard_term, path=["response"])
+        assert_matches_type(StandardTerm, standard_term, path=["response"])
 
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncConductor) -> None:
@@ -203,7 +203,7 @@ class TestAsyncStandardTerms:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             standard_term = await response.parse()
-            assert_matches_type(QbdStandardTerm, standard_term, path=["response"])
+            assert_matches_type(StandardTerm, standard_term, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -213,7 +213,7 @@ class TestAsyncStandardTerms:
             id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdStandardTerm, standard_term, path=["response"])
+        assert_matches_type(StandardTerm, standard_term, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncConductor) -> None:
@@ -225,7 +225,7 @@ class TestAsyncStandardTerms:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         standard_term = await response.parse()
-        assert_matches_type(QbdStandardTerm, standard_term, path=["response"])
+        assert_matches_type(StandardTerm, standard_term, path=["response"])
 
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncConductor) -> None:
@@ -237,7 +237,7 @@ class TestAsyncStandardTerms:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             standard_term = await response.parse()
-            assert_matches_type(QbdStandardTerm, standard_term, path=["response"])
+            assert_matches_type(StandardTerm, standard_term, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

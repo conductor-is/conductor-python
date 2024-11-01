@@ -6,13 +6,13 @@ from typing_extensions import Literal
 from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
-from .qbd_standard_term import QbdStandardTerm
+from .standard_term import StandardTerm
 
 __all__ = ["StandardTermListResponse"]
 
 
 class StandardTermListResponse(BaseModel):
-    data: List[QbdStandardTerm]
+    data: List[StandardTerm]
     """The array of standard terms."""
 
     object_type: Literal["list"] = FieldInfo(alias="objectType")
