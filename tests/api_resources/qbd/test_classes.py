@@ -9,7 +9,7 @@ import pytest
 
 from conductor import Conductor, AsyncConductor
 from tests.utils import assert_matches_type
-from conductor.types.qbd import QbdClass, ClassListResponse
+from conductor.types.qbd import Class, ClassListResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -23,7 +23,7 @@ class TestClasses:
             name="Marketing",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdClass, class_, path=["response"])
+        assert_matches_type(Class, class_, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Conductor) -> None:
@@ -33,7 +33,7 @@ class TestClasses:
             is_active=True,
             parent_id="80000002-1234567890",
         )
-        assert_matches_type(QbdClass, class_, path=["response"])
+        assert_matches_type(Class, class_, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: Conductor) -> None:
@@ -45,7 +45,7 @@ class TestClasses:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         class_ = response.parse()
-        assert_matches_type(QbdClass, class_, path=["response"])
+        assert_matches_type(Class, class_, path=["response"])
 
     @parametrize
     def test_streaming_response_create(self, client: Conductor) -> None:
@@ -57,7 +57,7 @@ class TestClasses:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             class_ = response.parse()
-            assert_matches_type(QbdClass, class_, path=["response"])
+            assert_matches_type(Class, class_, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -67,7 +67,7 @@ class TestClasses:
             id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdClass, class_, path=["response"])
+        assert_matches_type(Class, class_, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Conductor) -> None:
@@ -79,7 +79,7 @@ class TestClasses:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         class_ = response.parse()
-        assert_matches_type(QbdClass, class_, path=["response"])
+        assert_matches_type(Class, class_, path=["response"])
 
     @parametrize
     def test_streaming_response_retrieve(self, client: Conductor) -> None:
@@ -91,7 +91,7 @@ class TestClasses:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             class_ = response.parse()
-            assert_matches_type(QbdClass, class_, path=["response"])
+            assert_matches_type(Class, class_, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -110,7 +110,7 @@ class TestClasses:
             revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdClass, class_, path=["response"])
+        assert_matches_type(Class, class_, path=["response"])
 
     @parametrize
     def test_method_update_with_all_params(self, client: Conductor) -> None:
@@ -122,7 +122,7 @@ class TestClasses:
             name="Marketing",
             parent_id="80000002-1234567890",
         )
-        assert_matches_type(QbdClass, class_, path=["response"])
+        assert_matches_type(Class, class_, path=["response"])
 
     @parametrize
     def test_raw_response_update(self, client: Conductor) -> None:
@@ -135,7 +135,7 @@ class TestClasses:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         class_ = response.parse()
-        assert_matches_type(QbdClass, class_, path=["response"])
+        assert_matches_type(Class, class_, path=["response"])
 
     @parametrize
     def test_streaming_response_update(self, client: Conductor) -> None:
@@ -148,7 +148,7 @@ class TestClasses:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             class_ = response.parse()
-            assert_matches_type(QbdClass, class_, path=["response"])
+            assert_matches_type(Class, class_, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -220,7 +220,7 @@ class TestAsyncClasses:
             name="Marketing",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdClass, class_, path=["response"])
+        assert_matches_type(Class, class_, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncConductor) -> None:
@@ -230,7 +230,7 @@ class TestAsyncClasses:
             is_active=True,
             parent_id="80000002-1234567890",
         )
-        assert_matches_type(QbdClass, class_, path=["response"])
+        assert_matches_type(Class, class_, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncConductor) -> None:
@@ -242,7 +242,7 @@ class TestAsyncClasses:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         class_ = await response.parse()
-        assert_matches_type(QbdClass, class_, path=["response"])
+        assert_matches_type(Class, class_, path=["response"])
 
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncConductor) -> None:
@@ -254,7 +254,7 @@ class TestAsyncClasses:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             class_ = await response.parse()
-            assert_matches_type(QbdClass, class_, path=["response"])
+            assert_matches_type(Class, class_, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -264,7 +264,7 @@ class TestAsyncClasses:
             id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdClass, class_, path=["response"])
+        assert_matches_type(Class, class_, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncConductor) -> None:
@@ -276,7 +276,7 @@ class TestAsyncClasses:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         class_ = await response.parse()
-        assert_matches_type(QbdClass, class_, path=["response"])
+        assert_matches_type(Class, class_, path=["response"])
 
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncConductor) -> None:
@@ -288,7 +288,7 @@ class TestAsyncClasses:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             class_ = await response.parse()
-            assert_matches_type(QbdClass, class_, path=["response"])
+            assert_matches_type(Class, class_, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -307,7 +307,7 @@ class TestAsyncClasses:
             revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdClass, class_, path=["response"])
+        assert_matches_type(Class, class_, path=["response"])
 
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncConductor) -> None:
@@ -319,7 +319,7 @@ class TestAsyncClasses:
             name="Marketing",
             parent_id="80000002-1234567890",
         )
-        assert_matches_type(QbdClass, class_, path=["response"])
+        assert_matches_type(Class, class_, path=["response"])
 
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncConductor) -> None:
@@ -332,7 +332,7 @@ class TestAsyncClasses:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         class_ = await response.parse()
-        assert_matches_type(QbdClass, class_, path=["response"])
+        assert_matches_type(Class, class_, path=["response"])
 
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncConductor) -> None:
@@ -345,7 +345,7 @@ class TestAsyncClasses:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             class_ = await response.parse()
-            assert_matches_type(QbdClass, class_, path=["response"])
+            assert_matches_type(Class, class_, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

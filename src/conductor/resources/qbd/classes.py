@@ -21,7 +21,7 @@ from ..._response import (
 )
 from ...types.qbd import class_list_params, class_create_params, class_update_params
 from ..._base_client import make_request_options
-from ...types.qbd.qbd_class import QbdClass
+from ...types.qbd.class_ import Class
 from ...types.qbd.class_list_response import ClassListResponse
 
 __all__ = ["ClassesResource", "AsyncClassesResource"]
@@ -60,7 +60,7 @@ class ClassesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdClass:
+    ) -> Class:
         """Creates a class.
 
         Args:
@@ -105,7 +105,7 @@ class ClassesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdClass,
+            cast_to=Class,
         )
 
     def retrieve(
@@ -119,7 +119,7 @@ class ClassesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdClass:
+    ) -> Class:
         """
         Retrieves a class by ID.
 
@@ -145,7 +145,7 @@ class ClassesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdClass,
+            cast_to=Class,
         )
 
     def update(
@@ -163,7 +163,7 @@ class ClassesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdClass:
+    ) -> Class:
         """
         Updates an existing class.
 
@@ -216,7 +216,7 @@ class ClassesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdClass,
+            cast_to=Class,
         )
 
     def list(
@@ -363,7 +363,7 @@ class AsyncClassesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdClass:
+    ) -> Class:
         """Creates a class.
 
         Args:
@@ -408,7 +408,7 @@ class AsyncClassesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdClass,
+            cast_to=Class,
         )
 
     async def retrieve(
@@ -422,7 +422,7 @@ class AsyncClassesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdClass:
+    ) -> Class:
         """
         Retrieves a class by ID.
 
@@ -448,7 +448,7 @@ class AsyncClassesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdClass,
+            cast_to=Class,
         )
 
     async def update(
@@ -466,7 +466,7 @@ class AsyncClassesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdClass:
+    ) -> Class:
         """
         Updates an existing class.
 
@@ -519,7 +519,7 @@ class AsyncClassesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdClass,
+            cast_to=Class,
         )
 
     async def list(

@@ -21,7 +21,7 @@ from ..._response import (
 )
 from ...types.qbd import standard_term_list_params, standard_term_create_params
 from ..._base_client import make_request_options
-from ...types.qbd.qbd_standard_term import QbdStandardTerm
+from ...types.qbd.standard_term import StandardTerm
 from ...types.qbd.standard_term_list_response import StandardTermListResponse
 
 __all__ = ["StandardTermsResource", "AsyncStandardTermsResource"]
@@ -62,7 +62,7 @@ class StandardTermsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdStandardTerm:
+    ) -> StandardTerm:
         """
         Creates a standard term.
 
@@ -108,7 +108,7 @@ class StandardTermsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdStandardTerm,
+            cast_to=StandardTerm,
         )
 
     def retrieve(
@@ -122,7 +122,7 @@ class StandardTermsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdStandardTerm:
+    ) -> StandardTerm:
         """
         Retrieves a standard term by ID.
 
@@ -148,7 +148,7 @@ class StandardTermsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdStandardTerm,
+            cast_to=StandardTerm,
         )
 
     def list(
@@ -298,7 +298,7 @@ class AsyncStandardTermsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdStandardTerm:
+    ) -> StandardTerm:
         """
         Creates a standard term.
 
@@ -344,7 +344,7 @@ class AsyncStandardTermsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdStandardTerm,
+            cast_to=StandardTerm,
         )
 
     async def retrieve(
@@ -358,7 +358,7 @@ class AsyncStandardTermsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdStandardTerm:
+    ) -> StandardTerm:
         """
         Retrieves a standard term by ID.
 
@@ -384,7 +384,7 @@ class AsyncStandardTermsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdStandardTerm,
+            cast_to=StandardTerm,
         )
 
     async def list(

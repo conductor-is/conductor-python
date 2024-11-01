@@ -7,10 +7,10 @@ from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
 
-__all__ = ["QbdStandardTerm"]
+__all__ = ["StandardTerm"]
 
 
-class QbdStandardTerm(BaseModel):
+class StandardTerm(BaseModel):
     id: str
     """The unique identifier assigned by QuickBooks to this standard term.
 

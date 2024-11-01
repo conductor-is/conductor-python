@@ -8,7 +8,7 @@ from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
 
-__all__ = ["QbdTransfer", "Class", "TransferFromAccount", "TransferToAccount"]
+__all__ = ["Transfer", "Class", "TransferFromAccount", "TransferToAccount"]
 
 
 class Class(BaseModel):
@@ -59,7 +59,7 @@ class TransferToAccount(BaseModel):
     """
 
 
-class QbdTransfer(BaseModel):
+class Transfer(BaseModel):
     id: str
     """The unique identifier assigned by QuickBooks to this transfer.
 

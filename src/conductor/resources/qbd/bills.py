@@ -24,7 +24,7 @@ from ..._response import (
 from ...types.qbd import bill_list_params, bill_create_params, bill_update_params
 from ...pagination import SyncCursorPage, AsyncCursorPage
 from ..._base_client import AsyncPaginator, make_request_options
-from ...types.qbd.qbd_bill import QbdBill
+from ...types.qbd.bill import Bill
 
 __all__ = ["BillsResource", "AsyncBillsResource"]
 
@@ -74,7 +74,7 @@ class BillsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdBill:
+    ) -> Bill:
         """
         Creates a bill.
 
@@ -185,7 +185,7 @@ class BillsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdBill,
+            cast_to=Bill,
         )
 
     def retrieve(
@@ -199,7 +199,7 @@ class BillsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdBill:
+    ) -> Bill:
         """
         Retrieves a bill by ID.
 
@@ -225,7 +225,7 @@ class BillsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdBill,
+            cast_to=Bill,
         )
 
     def update(
@@ -255,7 +255,7 @@ class BillsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdBill:
+    ) -> Bill:
         """
         Updates an existing bill.
 
@@ -375,7 +375,7 @@ class BillsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdBill,
+            cast_to=Bill,
         )
 
     def list(
@@ -407,7 +407,7 @@ class BillsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursorPage[QbdBill]:
+    ) -> SyncCursorPage[Bill]:
         """
         Returns a list of bills.
 
@@ -495,7 +495,7 @@ class BillsResource(SyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/bills",
-            page=SyncCursorPage[QbdBill],
+            page=SyncCursorPage[Bill],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -526,7 +526,7 @@ class BillsResource(SyncAPIResource):
                     bill_list_params.BillListParams,
                 ),
             ),
-            model=QbdBill,
+            model=Bill,
         )
 
 
@@ -575,7 +575,7 @@ class AsyncBillsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdBill:
+    ) -> Bill:
         """
         Creates a bill.
 
@@ -686,7 +686,7 @@ class AsyncBillsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdBill,
+            cast_to=Bill,
         )
 
     async def retrieve(
@@ -700,7 +700,7 @@ class AsyncBillsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdBill:
+    ) -> Bill:
         """
         Retrieves a bill by ID.
 
@@ -726,7 +726,7 @@ class AsyncBillsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdBill,
+            cast_to=Bill,
         )
 
     async def update(
@@ -756,7 +756,7 @@ class AsyncBillsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdBill:
+    ) -> Bill:
         """
         Updates an existing bill.
 
@@ -876,7 +876,7 @@ class AsyncBillsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdBill,
+            cast_to=Bill,
         )
 
     def list(
@@ -908,7 +908,7 @@ class AsyncBillsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[QbdBill, AsyncCursorPage[QbdBill]]:
+    ) -> AsyncPaginator[Bill, AsyncCursorPage[Bill]]:
         """
         Returns a list of bills.
 
@@ -996,7 +996,7 @@ class AsyncBillsResource(AsyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/bills",
-            page=AsyncCursorPage[QbdBill],
+            page=AsyncCursorPage[Bill],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1027,7 +1027,7 @@ class AsyncBillsResource(AsyncAPIResource):
                     bill_list_params.BillListParams,
                 ),
             ),
-            model=QbdBill,
+            model=Bill,
         )
 
 

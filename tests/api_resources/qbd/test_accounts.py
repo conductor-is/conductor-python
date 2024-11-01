@@ -11,7 +11,7 @@ from conductor import Conductor, AsyncConductor
 from tests.utils import assert_matches_type
 from conductor._utils import parse_date
 from conductor.types.qbd import (
-    QbdAccount,
+    Account,
     AccountListResponse,
 )
 
@@ -28,7 +28,7 @@ class TestAccounts:
             name="Accounts-Payable",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdAccount, account, path=["response"])
+        assert_matches_type(Account, account, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Conductor) -> None:
@@ -47,7 +47,7 @@ class TestAccounts:
             sales_tax_code_id="80000004-1234567890",
             tax_line_id=123,
         )
-        assert_matches_type(QbdAccount, account, path=["response"])
+        assert_matches_type(Account, account, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: Conductor) -> None:
@@ -60,7 +60,7 @@ class TestAccounts:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         account = response.parse()
-        assert_matches_type(QbdAccount, account, path=["response"])
+        assert_matches_type(Account, account, path=["response"])
 
     @parametrize
     def test_streaming_response_create(self, client: Conductor) -> None:
@@ -73,7 +73,7 @@ class TestAccounts:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             account = response.parse()
-            assert_matches_type(QbdAccount, account, path=["response"])
+            assert_matches_type(Account, account, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -83,7 +83,7 @@ class TestAccounts:
             id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdAccount, account, path=["response"])
+        assert_matches_type(Account, account, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Conductor) -> None:
@@ -95,7 +95,7 @@ class TestAccounts:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         account = response.parse()
-        assert_matches_type(QbdAccount, account, path=["response"])
+        assert_matches_type(Account, account, path=["response"])
 
     @parametrize
     def test_streaming_response_retrieve(self, client: Conductor) -> None:
@@ -107,7 +107,7 @@ class TestAccounts:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             account = response.parse()
-            assert_matches_type(QbdAccount, account, path=["response"])
+            assert_matches_type(Account, account, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -126,7 +126,7 @@ class TestAccounts:
             revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdAccount, account, path=["response"])
+        assert_matches_type(Account, account, path=["response"])
 
     @parametrize
     def test_method_update_with_all_params(self, client: Conductor) -> None:
@@ -147,7 +147,7 @@ class TestAccounts:
             sales_tax_code_id="80000004-1234567890",
             tax_line_id=123,
         )
-        assert_matches_type(QbdAccount, account, path=["response"])
+        assert_matches_type(Account, account, path=["response"])
 
     @parametrize
     def test_raw_response_update(self, client: Conductor) -> None:
@@ -160,7 +160,7 @@ class TestAccounts:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         account = response.parse()
-        assert_matches_type(QbdAccount, account, path=["response"])
+        assert_matches_type(Account, account, path=["response"])
 
     @parametrize
     def test_streaming_response_update(self, client: Conductor) -> None:
@@ -173,7 +173,7 @@ class TestAccounts:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             account = response.parse()
-            assert_matches_type(QbdAccount, account, path=["response"])
+            assert_matches_type(Account, account, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -248,7 +248,7 @@ class TestAsyncAccounts:
             name="Accounts-Payable",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdAccount, account, path=["response"])
+        assert_matches_type(Account, account, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncConductor) -> None:
@@ -267,7 +267,7 @@ class TestAsyncAccounts:
             sales_tax_code_id="80000004-1234567890",
             tax_line_id=123,
         )
-        assert_matches_type(QbdAccount, account, path=["response"])
+        assert_matches_type(Account, account, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncConductor) -> None:
@@ -280,7 +280,7 @@ class TestAsyncAccounts:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         account = await response.parse()
-        assert_matches_type(QbdAccount, account, path=["response"])
+        assert_matches_type(Account, account, path=["response"])
 
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncConductor) -> None:
@@ -293,7 +293,7 @@ class TestAsyncAccounts:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             account = await response.parse()
-            assert_matches_type(QbdAccount, account, path=["response"])
+            assert_matches_type(Account, account, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -303,7 +303,7 @@ class TestAsyncAccounts:
             id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdAccount, account, path=["response"])
+        assert_matches_type(Account, account, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncConductor) -> None:
@@ -315,7 +315,7 @@ class TestAsyncAccounts:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         account = await response.parse()
-        assert_matches_type(QbdAccount, account, path=["response"])
+        assert_matches_type(Account, account, path=["response"])
 
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncConductor) -> None:
@@ -327,7 +327,7 @@ class TestAsyncAccounts:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             account = await response.parse()
-            assert_matches_type(QbdAccount, account, path=["response"])
+            assert_matches_type(Account, account, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -346,7 +346,7 @@ class TestAsyncAccounts:
             revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdAccount, account, path=["response"])
+        assert_matches_type(Account, account, path=["response"])
 
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncConductor) -> None:
@@ -367,7 +367,7 @@ class TestAsyncAccounts:
             sales_tax_code_id="80000004-1234567890",
             tax_line_id=123,
         )
-        assert_matches_type(QbdAccount, account, path=["response"])
+        assert_matches_type(Account, account, path=["response"])
 
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncConductor) -> None:
@@ -380,7 +380,7 @@ class TestAsyncAccounts:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         account = await response.parse()
-        assert_matches_type(QbdAccount, account, path=["response"])
+        assert_matches_type(Account, account, path=["response"])
 
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncConductor) -> None:
@@ -393,7 +393,7 @@ class TestAsyncAccounts:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             account = await response.parse()
-            assert_matches_type(QbdAccount, account, path=["response"])
+            assert_matches_type(Account, account, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
