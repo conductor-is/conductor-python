@@ -17,7 +17,7 @@ class DateDrivenTermListParams(TypedDict, total=False):
     """
 
     full_names: Annotated[str, PropertyInfo(alias="fullNames")]
-    """Filter for specific date-driven terms by their full-name(s).
+    """Filter for specific date-driven terms by their full-name(s), case-insensitive.
 
     Specify a single full-name or multiple using a comma-separated list (e.g.,
     `fullNames=1,2,3`). Like `id`, a `fullName` is a unique identifier for a
@@ -25,8 +25,8 @@ class DateDrivenTermListParams(TypedDict, total=False):
     with its own `name`, separated by colons. For example, if a date-driven term is
     under "Net 30" and has the `name` "2% 10 Net 30", its `fullName` would be "Net
     30:2% 10 Net 30". Unlike `name`, `fullName` is guaranteed to be unique across
-    all date-driven term objects. Not case-sensitive. NOTE: If you include this
-    parameter, all other query parameters will be ignored.
+    all date-driven term objects. NOTE: If you include this parameter, all other
+    query parameters will be ignored.
     """
 
     ids: str
@@ -49,16 +49,16 @@ class DateDrivenTermListParams(TypedDict, total=False):
 
     name_contains: Annotated[str, PropertyInfo(alias="nameContains")]
     """
-    Filter for date-driven terms whose `name` contains this substring (case
-    insensitive). If you use this parameter, you cannot use `nameStartsWith` or
-    `nameEndsWith`.
+    Filter for date-driven terms whose `name` contains this substring,
+    case-insensitive. If you use this parameter, you cannot also use
+    `nameStartsWith` or `nameEndsWith`.
     """
 
     name_ends_with: Annotated[str, PropertyInfo(alias="nameEndsWith")]
     """
-    Filter for date-driven terms whose `name` ends with this substring (case
-    insensitive). If you use this parameter, you cannot use `nameContains` or
-    `nameStartsWith`.
+    Filter for date-driven terms whose `name` ends with this substring,
+    case-insensitive. If you use this parameter, you cannot also use `nameContains`
+    or `nameStartsWith`.
     """
 
     name_from: Annotated[str, PropertyInfo(alias="nameFrom")]
@@ -69,9 +69,9 @@ class DateDrivenTermListParams(TypedDict, total=False):
 
     name_starts_with: Annotated[str, PropertyInfo(alias="nameStartsWith")]
     """
-    Filter for date-driven terms whose `name` starts with this substring (case
-    insensitive). If you use this parameter, you cannot use `nameContains` or
-    `nameEndsWith`.
+    Filter for date-driven terms whose `name` starts with this substring,
+    case-insensitive. If you use this parameter, you cannot also use `nameContains`
+    or `nameEndsWith`.
     """
 
     name_to: Annotated[str, PropertyInfo(alias="nameTo")]

@@ -70,14 +70,14 @@ class CreditCardCreditListParams(TypedDict, total=False):
     ref_number_contains: Annotated[str, PropertyInfo(alias="refNumberContains")]
     """Filter for credit card credits whose `refNumber` contains this substring.
 
-    If you use this parameter, you cannot use `refNumberStartsWith` or
+    If you use this parameter, you cannot also use `refNumberStartsWith` or
     `refNumberEndsWith`.
     """
 
     ref_number_ends_with: Annotated[str, PropertyInfo(alias="refNumberEndsWith")]
     """Filter for credit card credits whose `refNumber` ends with this substring.
 
-    If you use this parameter, you cannot use `refNumberContains` or
+    If you use this parameter, you cannot also use `refNumberContains` or
     `refNumberStartsWith`.
     """
 
@@ -101,7 +101,7 @@ class CreditCardCreditListParams(TypedDict, total=False):
     ref_number_starts_with: Annotated[str, PropertyInfo(alias="refNumberStartsWith")]
     """Filter for credit card credits whose `refNumber` starts with this substring.
 
-    If you use this parameter, you cannot use `refNumberContains` or
+    If you use this parameter, you cannot also use `refNumberContains` or
     `refNumberEndsWith`.
     """
 

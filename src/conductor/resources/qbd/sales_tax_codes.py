@@ -274,15 +274,15 @@ class SalesTaxCodesResource(SyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          full_names: Filter for specific sales-tax codes by their full-name(s). Specify a single
-              full-name or multiple using a comma-separated list (e.g., `fullNames=1,2,3`).
-              Like `id`, a `fullName` is a unique identifier for a sales-tax code, and is
-              formed by by combining the names of its parent objects with its own `name`,
-              separated by colons. For example, if a sales-tax code is under "State" and has
-              the `name` "CA Sales Tax", its `fullName` would be "State:CA Sales Tax". Unlike
-              `name`, `fullName` is guaranteed to be unique across all sales-tax code objects.
-              Not case-sensitive. NOTE: If you include this parameter, all other query
-              parameters will be ignored.
+          full_names: Filter for specific sales-tax codes by their full-name(s), case-insensitive.
+              Specify a single full-name or multiple using a comma-separated list (e.g.,
+              `fullNames=1,2,3`). Like `id`, a `fullName` is a unique identifier for a
+              sales-tax code, and is formed by by combining the names of its parent objects
+              with its own `name`, separated by colons. For example, if a sales-tax code is
+              under "State" and has the `name` "CA Sales Tax", its `fullName` would be
+              "State:CA Sales Tax". Unlike `name`, `fullName` is guaranteed to be unique
+              across all sales-tax code objects. NOTE: If you include this parameter, all
+              other query parameters will be ignored.
 
           ids: Filter for specific sales-tax codes by their QuickBooks-assigned unique
               identifier(s). Specify a single ID or multiple using a comma-separated list
@@ -295,20 +295,20 @@ class SalesTaxCodesResource(SyncAPIResource):
               able to fetch the next set of results. To paginate through the results for this
               endpoint, try fetching batches via the date-range query parameters.
 
-          name_contains: Filter for sales-tax codes whose `name` contains this substring (case
-              insensitive). If you use this parameter, you cannot use `nameStartsWith` or
-              `nameEndsWith`.
+          name_contains: Filter for sales-tax codes whose `name` contains this substring,
+              case-insensitive. If you use this parameter, you cannot also use
+              `nameStartsWith` or `nameEndsWith`.
 
-          name_ends_with: Filter for sales-tax codes whose `name` ends with this substring (case
-              insensitive). If you use this parameter, you cannot use `nameContains` or
-              `nameStartsWith`.
+          name_ends_with: Filter for sales-tax codes whose `name` ends with this substring,
+              case-insensitive. If you use this parameter, you cannot also use `nameContains`
+              or `nameStartsWith`.
 
           name_from: Filter for sales-tax codes whose `name` is alphabetically greater than or equal
               to this value.
 
-          name_starts_with: Filter for sales-tax codes whose `name` starts with this substring (case
-              insensitive). If you use this parameter, you cannot use `nameContains` or
-              `nameEndsWith`.
+          name_starts_with: Filter for sales-tax codes whose `name` starts with this substring,
+              case-insensitive. If you use this parameter, you cannot also use `nameContains`
+              or `nameEndsWith`.
 
           name_to: Filter for sales-tax codes whose `name` is alphabetically less than or equal to
               this value.
@@ -607,15 +607,15 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          full_names: Filter for specific sales-tax codes by their full-name(s). Specify a single
-              full-name or multiple using a comma-separated list (e.g., `fullNames=1,2,3`).
-              Like `id`, a `fullName` is a unique identifier for a sales-tax code, and is
-              formed by by combining the names of its parent objects with its own `name`,
-              separated by colons. For example, if a sales-tax code is under "State" and has
-              the `name` "CA Sales Tax", its `fullName` would be "State:CA Sales Tax". Unlike
-              `name`, `fullName` is guaranteed to be unique across all sales-tax code objects.
-              Not case-sensitive. NOTE: If you include this parameter, all other query
-              parameters will be ignored.
+          full_names: Filter for specific sales-tax codes by their full-name(s), case-insensitive.
+              Specify a single full-name or multiple using a comma-separated list (e.g.,
+              `fullNames=1,2,3`). Like `id`, a `fullName` is a unique identifier for a
+              sales-tax code, and is formed by by combining the names of its parent objects
+              with its own `name`, separated by colons. For example, if a sales-tax code is
+              under "State" and has the `name` "CA Sales Tax", its `fullName` would be
+              "State:CA Sales Tax". Unlike `name`, `fullName` is guaranteed to be unique
+              across all sales-tax code objects. NOTE: If you include this parameter, all
+              other query parameters will be ignored.
 
           ids: Filter for specific sales-tax codes by their QuickBooks-assigned unique
               identifier(s). Specify a single ID or multiple using a comma-separated list
@@ -628,20 +628,20 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
               able to fetch the next set of results. To paginate through the results for this
               endpoint, try fetching batches via the date-range query parameters.
 
-          name_contains: Filter for sales-tax codes whose `name` contains this substring (case
-              insensitive). If you use this parameter, you cannot use `nameStartsWith` or
-              `nameEndsWith`.
+          name_contains: Filter for sales-tax codes whose `name` contains this substring,
+              case-insensitive. If you use this parameter, you cannot also use
+              `nameStartsWith` or `nameEndsWith`.
 
-          name_ends_with: Filter for sales-tax codes whose `name` ends with this substring (case
-              insensitive). If you use this parameter, you cannot use `nameContains` or
-              `nameStartsWith`.
+          name_ends_with: Filter for sales-tax codes whose `name` ends with this substring,
+              case-insensitive. If you use this parameter, you cannot also use `nameContains`
+              or `nameStartsWith`.
 
           name_from: Filter for sales-tax codes whose `name` is alphabetically greater than or equal
               to this value.
 
-          name_starts_with: Filter for sales-tax codes whose `name` starts with this substring (case
-              insensitive). If you use this parameter, you cannot use `nameContains` or
-              `nameEndsWith`.
+          name_starts_with: Filter for sales-tax codes whose `name` starts with this substring,
+              case-insensitive. If you use this parameter, you cannot also use `nameContains`
+              or `nameEndsWith`.
 
           name_to: Filter for sales-tax codes whose `name` is alphabetically less than or equal to
               this value.
