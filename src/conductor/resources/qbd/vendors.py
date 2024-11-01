@@ -687,7 +687,7 @@ class VendorsResource(SyncAPIResource):
           total_balance: Filter for vendors whose `totalBalance` equals this amount, represented as a
               decimal string. You can only use one total-balance filter at a time.
 
-          total_balance_gt: Filter for vendors whose `totalBalance` is greater than this amount, represented
+          total_balance_gt: Filter for vendors whose `totalBalance` is greater than this TEMP, represented
               as a decimal string. You can only use one total-balance filter at a time.
 
           total_balance_gte: Filter for vendors whose `totalBalance` is greater than or equal to this amount,
@@ -1413,7 +1413,7 @@ class AsyncVendorsResource(AsyncAPIResource):
           total_balance: Filter for vendors whose `totalBalance` equals this amount, represented as a
               decimal string. You can only use one total-balance filter at a time.
 
-          total_balance_gt: Filter for vendors whose `totalBalance` is greater than this amount, represented
+          total_balance_gt: Filter for vendors whose `totalBalance` is greater than this TEMP, represented
               as a decimal string. You can only use one total-balance filter at a time.
 
           total_balance_gte: Filter for vendors whose `totalBalance` is greater than or equal to this amount,
