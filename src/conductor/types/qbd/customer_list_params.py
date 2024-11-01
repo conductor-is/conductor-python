@@ -111,8 +111,9 @@ class CustomerListParams(TypedDict, total=False):
 
     total_balance_gt: Annotated[str, PropertyInfo(alias="totalBalanceGt")]
     """
-    Filter for customers whose `totalBalance` is greater than this TEMP, represented
-    as a decimal string. You can only use one total-balance filter at a time.
+    Filter for customers whose `totalBalance` is greater than this amount,
+    represented as a decimal string. You can only use one total-balance filter at a
+    time.
     """
 
     total_balance_gte: Annotated[str, PropertyInfo(alias="totalBalanceGte")]
