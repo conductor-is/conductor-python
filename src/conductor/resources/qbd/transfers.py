@@ -23,7 +23,7 @@ from ..._response import (
 from ...types.qbd import transfer_list_params, transfer_create_params, transfer_update_params
 from ...pagination import SyncCursorPage, AsyncCursorPage
 from ..._base_client import AsyncPaginator, make_request_options
-from ...types.qbd.qbd_transfer import QbdTransfer
+from ...types.qbd.transfer import Transfer
 
 __all__ = ["TransfersResource", "AsyncTransfersResource"]
 
@@ -64,7 +64,7 @@ class TransfersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdTransfer:
+    ) -> Transfer:
         """
         Creates a transfer.
 
@@ -111,7 +111,7 @@ class TransfersResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdTransfer,
+            cast_to=Transfer,
         )
 
     def retrieve(
@@ -125,7 +125,7 @@ class TransfersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdTransfer:
+    ) -> Transfer:
         """
         Retrieves a transfer by ID.
 
@@ -151,7 +151,7 @@ class TransfersResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdTransfer,
+            cast_to=Transfer,
         )
 
     def update(
@@ -172,7 +172,7 @@ class TransfersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdTransfer:
+    ) -> Transfer:
         """
         Updates an existing transfer.
 
@@ -228,7 +228,7 @@ class TransfersResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdTransfer,
+            cast_to=Transfer,
         )
 
     def list(
@@ -248,7 +248,7 @@ class TransfersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursorPage[QbdTransfer]:
+    ) -> SyncCursorPage[Transfer]:
         """
         Returns a list of transfers.
 
@@ -296,7 +296,7 @@ class TransfersResource(SyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/transfers",
-            page=SyncCursorPage[QbdTransfer],
+            page=SyncCursorPage[Transfer],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -315,7 +315,7 @@ class TransfersResource(SyncAPIResource):
                     transfer_list_params.TransferListParams,
                 ),
             ),
-            model=QbdTransfer,
+            model=Transfer,
         )
 
 
@@ -355,7 +355,7 @@ class AsyncTransfersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdTransfer:
+    ) -> Transfer:
         """
         Creates a transfer.
 
@@ -402,7 +402,7 @@ class AsyncTransfersResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdTransfer,
+            cast_to=Transfer,
         )
 
     async def retrieve(
@@ -416,7 +416,7 @@ class AsyncTransfersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdTransfer:
+    ) -> Transfer:
         """
         Retrieves a transfer by ID.
 
@@ -442,7 +442,7 @@ class AsyncTransfersResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdTransfer,
+            cast_to=Transfer,
         )
 
     async def update(
@@ -463,7 +463,7 @@ class AsyncTransfersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdTransfer:
+    ) -> Transfer:
         """
         Updates an existing transfer.
 
@@ -519,7 +519,7 @@ class AsyncTransfersResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdTransfer,
+            cast_to=Transfer,
         )
 
     def list(
@@ -539,7 +539,7 @@ class AsyncTransfersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[QbdTransfer, AsyncCursorPage[QbdTransfer]]:
+    ) -> AsyncPaginator[Transfer, AsyncCursorPage[Transfer]]:
         """
         Returns a list of transfers.
 
@@ -587,7 +587,7 @@ class AsyncTransfersResource(AsyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/transfers",
-            page=AsyncCursorPage[QbdTransfer],
+            page=AsyncCursorPage[Transfer],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -606,7 +606,7 @@ class AsyncTransfersResource(AsyncAPIResource):
                     transfer_list_params.TransferListParams,
                 ),
             ),
-            model=QbdTransfer,
+            model=Transfer,
         )
 
 

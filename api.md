@@ -41,14 +41,14 @@ Methods:
 Types:
 
 ```python
-from conductor.types.qbd import QbdAccount, AccountListResponse
+from conductor.types.qbd import Account, AccountListResponse
 ```
 
 Methods:
 
-- <code title="post /quickbooks-desktop/accounts">client.qbd.accounts.<a href="./src/conductor/resources/qbd/accounts.py">create</a>(\*\*<a href="src/conductor/types/qbd/account_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_account.py">QbdAccount</a></code>
-- <code title="get /quickbooks-desktop/accounts/{id}">client.qbd.accounts.<a href="./src/conductor/resources/qbd/accounts.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_account.py">QbdAccount</a></code>
-- <code title="post /quickbooks-desktop/accounts/{id}">client.qbd.accounts.<a href="./src/conductor/resources/qbd/accounts.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/account_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_account.py">QbdAccount</a></code>
+- <code title="post /quickbooks-desktop/accounts">client.qbd.accounts.<a href="./src/conductor/resources/qbd/accounts.py">create</a>(\*\*<a href="src/conductor/types/qbd/account_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/account.py">Account</a></code>
+- <code title="get /quickbooks-desktop/accounts/{id}">client.qbd.accounts.<a href="./src/conductor/resources/qbd/accounts.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/account.py">Account</a></code>
+- <code title="post /quickbooks-desktop/accounts/{id}">client.qbd.accounts.<a href="./src/conductor/resources/qbd/accounts.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/account_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/account.py">Account</a></code>
 - <code title="get /quickbooks-desktop/accounts">client.qbd.accounts.<a href="./src/conductor/resources/qbd/accounts.py">list</a>(\*\*<a href="src/conductor/types/qbd/account_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/account_list_response.py">AccountListResponse</a></code>
 
 ## Bills
@@ -56,29 +56,29 @@ Methods:
 Types:
 
 ```python
-from conductor.types.qbd import QbdBill
+from conductor.types.qbd import Bill
 ```
 
 Methods:
 
-- <code title="post /quickbooks-desktop/bills">client.qbd.bills.<a href="./src/conductor/resources/qbd/bills.py">create</a>(\*\*<a href="src/conductor/types/qbd/bill_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_bill.py">QbdBill</a></code>
-- <code title="get /quickbooks-desktop/bills/{id}">client.qbd.bills.<a href="./src/conductor/resources/qbd/bills.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_bill.py">QbdBill</a></code>
-- <code title="post /quickbooks-desktop/bills/{id}">client.qbd.bills.<a href="./src/conductor/resources/qbd/bills.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/bill_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_bill.py">QbdBill</a></code>
-- <code title="get /quickbooks-desktop/bills">client.qbd.bills.<a href="./src/conductor/resources/qbd/bills.py">list</a>(\*\*<a href="src/conductor/types/qbd/bill_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_bill.py">SyncCursorPage[QbdBill]</a></code>
+- <code title="post /quickbooks-desktop/bills">client.qbd.bills.<a href="./src/conductor/resources/qbd/bills.py">create</a>(\*\*<a href="src/conductor/types/qbd/bill_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/bill.py">Bill</a></code>
+- <code title="get /quickbooks-desktop/bills/{id}">client.qbd.bills.<a href="./src/conductor/resources/qbd/bills.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/bill.py">Bill</a></code>
+- <code title="post /quickbooks-desktop/bills/{id}">client.qbd.bills.<a href="./src/conductor/resources/qbd/bills.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/bill_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/bill.py">Bill</a></code>
+- <code title="get /quickbooks-desktop/bills">client.qbd.bills.<a href="./src/conductor/resources/qbd/bills.py">list</a>(\*\*<a href="src/conductor/types/qbd/bill_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/bill.py">SyncCursorPage[Bill]</a></code>
 
 ## Classes
 
 Types:
 
 ```python
-from conductor.types.qbd import QbdClass, ClassListResponse
+from conductor.types.qbd import Class, ClassListResponse
 ```
 
 Methods:
 
-- <code title="post /quickbooks-desktop/classes">client.qbd.classes.<a href="./src/conductor/resources/qbd/classes.py">create</a>(\*\*<a href="src/conductor/types/qbd/class_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_class.py">QbdClass</a></code>
-- <code title="get /quickbooks-desktop/classes/{id}">client.qbd.classes.<a href="./src/conductor/resources/qbd/classes.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_class.py">QbdClass</a></code>
-- <code title="post /quickbooks-desktop/classes/{id}">client.qbd.classes.<a href="./src/conductor/resources/qbd/classes.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/class_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_class.py">QbdClass</a></code>
+- <code title="post /quickbooks-desktop/classes">client.qbd.classes.<a href="./src/conductor/resources/qbd/classes.py">create</a>(\*\*<a href="src/conductor/types/qbd/class_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/class_.py">Class</a></code>
+- <code title="get /quickbooks-desktop/classes/{id}">client.qbd.classes.<a href="./src/conductor/resources/qbd/classes.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/class_.py">Class</a></code>
+- <code title="post /quickbooks-desktop/classes/{id}">client.qbd.classes.<a href="./src/conductor/resources/qbd/classes.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/class_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/class_.py">Class</a></code>
 - <code title="get /quickbooks-desktop/classes">client.qbd.classes.<a href="./src/conductor/resources/qbd/classes.py">list</a>(\*\*<a href="src/conductor/types/qbd/class_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/class_list_response.py">ClassListResponse</a></code>
 
 ## CreditCardCharges
@@ -86,15 +86,15 @@ Methods:
 Types:
 
 ```python
-from conductor.types.qbd import QbdCreditCardCharge
+from conductor.types.qbd import CreditCardCharge
 ```
 
 Methods:
 
-- <code title="post /quickbooks-desktop/credit-card-charges">client.qbd.credit_card_charges.<a href="./src/conductor/resources/qbd/credit_card_charges.py">create</a>(\*\*<a href="src/conductor/types/qbd/credit_card_charge_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_credit_card_charge.py">QbdCreditCardCharge</a></code>
-- <code title="get /quickbooks-desktop/credit-card-charges/{id}">client.qbd.credit_card_charges.<a href="./src/conductor/resources/qbd/credit_card_charges.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_credit_card_charge.py">QbdCreditCardCharge</a></code>
-- <code title="post /quickbooks-desktop/credit-card-charges/{id}">client.qbd.credit_card_charges.<a href="./src/conductor/resources/qbd/credit_card_charges.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/credit_card_charge_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_credit_card_charge.py">QbdCreditCardCharge</a></code>
-- <code title="get /quickbooks-desktop/credit-card-charges">client.qbd.credit_card_charges.<a href="./src/conductor/resources/qbd/credit_card_charges.py">list</a>(\*\*<a href="src/conductor/types/qbd/credit_card_charge_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_credit_card_charge.py">SyncCursorPage[QbdCreditCardCharge]</a></code>
+- <code title="post /quickbooks-desktop/credit-card-charges">client.qbd.credit_card_charges.<a href="./src/conductor/resources/qbd/credit_card_charges.py">create</a>(\*\*<a href="src/conductor/types/qbd/credit_card_charge_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/credit_card_charge.py">CreditCardCharge</a></code>
+- <code title="get /quickbooks-desktop/credit-card-charges/{id}">client.qbd.credit_card_charges.<a href="./src/conductor/resources/qbd/credit_card_charges.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/credit_card_charge.py">CreditCardCharge</a></code>
+- <code title="post /quickbooks-desktop/credit-card-charges/{id}">client.qbd.credit_card_charges.<a href="./src/conductor/resources/qbd/credit_card_charges.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/credit_card_charge_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/credit_card_charge.py">CreditCardCharge</a></code>
+- <code title="get /quickbooks-desktop/credit-card-charges">client.qbd.credit_card_charges.<a href="./src/conductor/resources/qbd/credit_card_charges.py">list</a>(\*\*<a href="src/conductor/types/qbd/credit_card_charge_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/credit_card_charge.py">SyncCursorPage[CreditCardCharge]</a></code>
 
 ## CreditCardCredits
 
@@ -116,15 +116,15 @@ Methods:
 Types:
 
 ```python
-from conductor.types.qbd import QbdCustomer
+from conductor.types.qbd import Customer
 ```
 
 Methods:
 
-- <code title="post /quickbooks-desktop/customers">client.qbd.customers.<a href="./src/conductor/resources/qbd/customers.py">create</a>(\*\*<a href="src/conductor/types/qbd/customer_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_customer.py">QbdCustomer</a></code>
-- <code title="get /quickbooks-desktop/customers/{id}">client.qbd.customers.<a href="./src/conductor/resources/qbd/customers.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_customer.py">QbdCustomer</a></code>
-- <code title="post /quickbooks-desktop/customers/{id}">client.qbd.customers.<a href="./src/conductor/resources/qbd/customers.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/customer_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_customer.py">QbdCustomer</a></code>
-- <code title="get /quickbooks-desktop/customers">client.qbd.customers.<a href="./src/conductor/resources/qbd/customers.py">list</a>(\*\*<a href="src/conductor/types/qbd/customer_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_customer.py">SyncCursorPage[QbdCustomer]</a></code>
+- <code title="post /quickbooks-desktop/customers">client.qbd.customers.<a href="./src/conductor/resources/qbd/customers.py">create</a>(\*\*<a href="src/conductor/types/qbd/customer_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/customer.py">Customer</a></code>
+- <code title="get /quickbooks-desktop/customers/{id}">client.qbd.customers.<a href="./src/conductor/resources/qbd/customers.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/customer.py">Customer</a></code>
+- <code title="post /quickbooks-desktop/customers/{id}">client.qbd.customers.<a href="./src/conductor/resources/qbd/customers.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/customer_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/customer.py">Customer</a></code>
+- <code title="get /quickbooks-desktop/customers">client.qbd.customers.<a href="./src/conductor/resources/qbd/customers.py">list</a>(\*\*<a href="src/conductor/types/qbd/customer_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/customer.py">SyncCursorPage[Customer]</a></code>
 
 ## DateDrivenTerms
 
@@ -160,15 +160,15 @@ Methods:
 Types:
 
 ```python
-from conductor.types.qbd import QbdInvoice
+from conductor.types.qbd import Invoice
 ```
 
 Methods:
 
-- <code title="post /quickbooks-desktop/invoices">client.qbd.invoices.<a href="./src/conductor/resources/qbd/invoices.py">create</a>(\*\*<a href="src/conductor/types/qbd/invoice_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_invoice.py">QbdInvoice</a></code>
-- <code title="get /quickbooks-desktop/invoices/{id}">client.qbd.invoices.<a href="./src/conductor/resources/qbd/invoices.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_invoice.py">QbdInvoice</a></code>
-- <code title="post /quickbooks-desktop/invoices/{id}">client.qbd.invoices.<a href="./src/conductor/resources/qbd/invoices.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/invoice_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_invoice.py">QbdInvoice</a></code>
-- <code title="get /quickbooks-desktop/invoices">client.qbd.invoices.<a href="./src/conductor/resources/qbd/invoices.py">list</a>(\*\*<a href="src/conductor/types/qbd/invoice_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_invoice.py">SyncCursorPage[QbdInvoice]</a></code>
+- <code title="post /quickbooks-desktop/invoices">client.qbd.invoices.<a href="./src/conductor/resources/qbd/invoices.py">create</a>(\*\*<a href="src/conductor/types/qbd/invoice_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/invoice.py">Invoice</a></code>
+- <code title="get /quickbooks-desktop/invoices/{id}">client.qbd.invoices.<a href="./src/conductor/resources/qbd/invoices.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/invoice.py">Invoice</a></code>
+- <code title="post /quickbooks-desktop/invoices/{id}">client.qbd.invoices.<a href="./src/conductor/resources/qbd/invoices.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/invoice_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/invoice.py">Invoice</a></code>
+- <code title="get /quickbooks-desktop/invoices">client.qbd.invoices.<a href="./src/conductor/resources/qbd/invoices.py">list</a>(\*\*<a href="src/conductor/types/qbd/invoice_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/invoice.py">SyncCursorPage[Invoice]</a></code>
 
 ## NonInventoryItems
 
@@ -205,15 +205,15 @@ Methods:
 Types:
 
 ```python
-from conductor.types.qbd import QbdSalesTaxItem
+from conductor.types.qbd import SalesTaxItem
 ```
 
 Methods:
 
-- <code title="post /quickbooks-desktop/sales-tax-items">client.qbd.sales_tax_items.<a href="./src/conductor/resources/qbd/sales_tax_items.py">create</a>(\*\*<a href="src/conductor/types/qbd/sales_tax_item_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_sales_tax_item.py">QbdSalesTaxItem</a></code>
-- <code title="get /quickbooks-desktop/sales-tax-items/{id}">client.qbd.sales_tax_items.<a href="./src/conductor/resources/qbd/sales_tax_items.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_sales_tax_item.py">QbdSalesTaxItem</a></code>
-- <code title="post /quickbooks-desktop/sales-tax-items/{id}">client.qbd.sales_tax_items.<a href="./src/conductor/resources/qbd/sales_tax_items.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/sales_tax_item_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_sales_tax_item.py">QbdSalesTaxItem</a></code>
-- <code title="get /quickbooks-desktop/sales-tax-items">client.qbd.sales_tax_items.<a href="./src/conductor/resources/qbd/sales_tax_items.py">list</a>(\*\*<a href="src/conductor/types/qbd/sales_tax_item_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_sales_tax_item.py">SyncCursorPage[QbdSalesTaxItem]</a></code>
+- <code title="post /quickbooks-desktop/sales-tax-items">client.qbd.sales_tax_items.<a href="./src/conductor/resources/qbd/sales_tax_items.py">create</a>(\*\*<a href="src/conductor/types/qbd/sales_tax_item_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/sales_tax_item.py">SalesTaxItem</a></code>
+- <code title="get /quickbooks-desktop/sales-tax-items/{id}">client.qbd.sales_tax_items.<a href="./src/conductor/resources/qbd/sales_tax_items.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/sales_tax_item.py">SalesTaxItem</a></code>
+- <code title="post /quickbooks-desktop/sales-tax-items/{id}">client.qbd.sales_tax_items.<a href="./src/conductor/resources/qbd/sales_tax_items.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/sales_tax_item_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/sales_tax_item.py">SalesTaxItem</a></code>
+- <code title="get /quickbooks-desktop/sales-tax-items">client.qbd.sales_tax_items.<a href="./src/conductor/resources/qbd/sales_tax_items.py">list</a>(\*\*<a href="src/conductor/types/qbd/sales_tax_item_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/sales_tax_item.py">SyncCursorPage[SalesTaxItem]</a></code>
 
 ## ServiceItems
 
@@ -235,13 +235,13 @@ Methods:
 Types:
 
 ```python
-from conductor.types.qbd import QbdStandardTerm, StandardTermListResponse
+from conductor.types.qbd import StandardTerm, StandardTermListResponse
 ```
 
 Methods:
 
-- <code title="post /quickbooks-desktop/standard-terms">client.qbd.standard_terms.<a href="./src/conductor/resources/qbd/standard_terms.py">create</a>(\*\*<a href="src/conductor/types/qbd/standard_term_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_standard_term.py">QbdStandardTerm</a></code>
-- <code title="get /quickbooks-desktop/standard-terms/{id}">client.qbd.standard_terms.<a href="./src/conductor/resources/qbd/standard_terms.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_standard_term.py">QbdStandardTerm</a></code>
+- <code title="post /quickbooks-desktop/standard-terms">client.qbd.standard_terms.<a href="./src/conductor/resources/qbd/standard_terms.py">create</a>(\*\*<a href="src/conductor/types/qbd/standard_term_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/standard_term.py">StandardTerm</a></code>
+- <code title="get /quickbooks-desktop/standard-terms/{id}">client.qbd.standard_terms.<a href="./src/conductor/resources/qbd/standard_terms.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/standard_term.py">StandardTerm</a></code>
 - <code title="get /quickbooks-desktop/standard-terms">client.qbd.standard_terms.<a href="./src/conductor/resources/qbd/standard_terms.py">list</a>(\*\*<a href="src/conductor/types/qbd/standard_term_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/standard_term_list_response.py">StandardTermListResponse</a></code>
 
 ## Transfers
@@ -249,27 +249,27 @@ Methods:
 Types:
 
 ```python
-from conductor.types.qbd import QbdTransfer
+from conductor.types.qbd import Transfer
 ```
 
 Methods:
 
-- <code title="post /quickbooks-desktop/transfers">client.qbd.transfers.<a href="./src/conductor/resources/qbd/transfers.py">create</a>(\*\*<a href="src/conductor/types/qbd/transfer_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_transfer.py">QbdTransfer</a></code>
-- <code title="get /quickbooks-desktop/transfers/{id}">client.qbd.transfers.<a href="./src/conductor/resources/qbd/transfers.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_transfer.py">QbdTransfer</a></code>
-- <code title="post /quickbooks-desktop/transfers/{id}">client.qbd.transfers.<a href="./src/conductor/resources/qbd/transfers.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/transfer_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_transfer.py">QbdTransfer</a></code>
-- <code title="get /quickbooks-desktop/transfers">client.qbd.transfers.<a href="./src/conductor/resources/qbd/transfers.py">list</a>(\*\*<a href="src/conductor/types/qbd/transfer_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_transfer.py">SyncCursorPage[QbdTransfer]</a></code>
+- <code title="post /quickbooks-desktop/transfers">client.qbd.transfers.<a href="./src/conductor/resources/qbd/transfers.py">create</a>(\*\*<a href="src/conductor/types/qbd/transfer_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/transfer.py">Transfer</a></code>
+- <code title="get /quickbooks-desktop/transfers/{id}">client.qbd.transfers.<a href="./src/conductor/resources/qbd/transfers.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/transfer.py">Transfer</a></code>
+- <code title="post /quickbooks-desktop/transfers/{id}">client.qbd.transfers.<a href="./src/conductor/resources/qbd/transfers.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/transfer_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/transfer.py">Transfer</a></code>
+- <code title="get /quickbooks-desktop/transfers">client.qbd.transfers.<a href="./src/conductor/resources/qbd/transfers.py">list</a>(\*\*<a href="src/conductor/types/qbd/transfer_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/transfer.py">SyncCursorPage[Transfer]</a></code>
 
 ## Vendors
 
 Types:
 
 ```python
-from conductor.types.qbd import QbdVendor
+from conductor.types.qbd import Vendor
 ```
 
 Methods:
 
-- <code title="post /quickbooks-desktop/vendors">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">create</a>(\*\*<a href="src/conductor/types/qbd/vendor_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_vendor.py">QbdVendor</a></code>
-- <code title="get /quickbooks-desktop/vendors/{id}">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_vendor.py">QbdVendor</a></code>
-- <code title="post /quickbooks-desktop/vendors/{id}">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/vendor_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_vendor.py">QbdVendor</a></code>
-- <code title="get /quickbooks-desktop/vendors">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">list</a>(\*\*<a href="src/conductor/types/qbd/vendor_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_vendor.py">SyncCursorPage[QbdVendor]</a></code>
+- <code title="post /quickbooks-desktop/vendors">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">create</a>(\*\*<a href="src/conductor/types/qbd/vendor_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/vendor.py">Vendor</a></code>
+- <code title="get /quickbooks-desktop/vendors/{id}">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/vendor.py">Vendor</a></code>
+- <code title="post /quickbooks-desktop/vendors/{id}">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/vendor_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/vendor.py">Vendor</a></code>
+- <code title="get /quickbooks-desktop/vendors">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">list</a>(\*\*<a href="src/conductor/types/qbd/vendor_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/vendor.py">SyncCursorPage[Vendor]</a></code>

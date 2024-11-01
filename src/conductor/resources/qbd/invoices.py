@@ -24,7 +24,7 @@ from ..._response import (
 from ...types.qbd import invoice_list_params, invoice_create_params, invoice_update_params
 from ...pagination import SyncCursorPage, AsyncCursorPage
 from ..._base_client import AsyncPaginator, make_request_options
-from ...types.qbd.qbd_invoice import QbdInvoice
+from ...types.qbd.invoice import Invoice
 
 __all__ = ["InvoicesResource", "AsyncInvoicesResource"]
 
@@ -89,7 +89,7 @@ class InvoicesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdInvoice:
+    ) -> Invoice:
         """
         Creates an invoice.
 
@@ -281,7 +281,7 @@ class InvoicesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdInvoice,
+            cast_to=Invoice,
         )
 
     def retrieve(
@@ -295,7 +295,7 @@ class InvoicesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdInvoice:
+    ) -> Invoice:
         """
         Retrieves an invoice by ID.
 
@@ -321,7 +321,7 @@ class InvoicesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdInvoice,
+            cast_to=Invoice,
         )
 
     def update(
@@ -363,7 +363,7 @@ class InvoicesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdInvoice:
+    ) -> Invoice:
         """
         Updates an existing invoice.
 
@@ -545,7 +545,7 @@ class InvoicesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdInvoice,
+            cast_to=Invoice,
         )
 
     def list(
@@ -577,7 +577,7 @@ class InvoicesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursorPage[QbdInvoice]:
+    ) -> SyncCursorPage[Invoice]:
         """
         Returns a list of invoices.
 
@@ -666,7 +666,7 @@ class InvoicesResource(SyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/invoices",
-            page=SyncCursorPage[QbdInvoice],
+            page=SyncCursorPage[Invoice],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -697,7 +697,7 @@ class InvoicesResource(SyncAPIResource):
                     invoice_list_params.InvoiceListParams,
                 ),
             ),
-            model=QbdInvoice,
+            model=Invoice,
         )
 
 
@@ -761,7 +761,7 @@ class AsyncInvoicesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdInvoice:
+    ) -> Invoice:
         """
         Creates an invoice.
 
@@ -953,7 +953,7 @@ class AsyncInvoicesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdInvoice,
+            cast_to=Invoice,
         )
 
     async def retrieve(
@@ -967,7 +967,7 @@ class AsyncInvoicesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdInvoice:
+    ) -> Invoice:
         """
         Retrieves an invoice by ID.
 
@@ -993,7 +993,7 @@ class AsyncInvoicesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdInvoice,
+            cast_to=Invoice,
         )
 
     async def update(
@@ -1035,7 +1035,7 @@ class AsyncInvoicesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdInvoice:
+    ) -> Invoice:
         """
         Updates an existing invoice.
 
@@ -1217,7 +1217,7 @@ class AsyncInvoicesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdInvoice,
+            cast_to=Invoice,
         )
 
     def list(
@@ -1249,7 +1249,7 @@ class AsyncInvoicesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[QbdInvoice, AsyncCursorPage[QbdInvoice]]:
+    ) -> AsyncPaginator[Invoice, AsyncCursorPage[Invoice]]:
         """
         Returns a list of invoices.
 
@@ -1338,7 +1338,7 @@ class AsyncInvoicesResource(AsyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/invoices",
-            page=AsyncCursorPage[QbdInvoice],
+            page=AsyncCursorPage[Invoice],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1369,7 +1369,7 @@ class AsyncInvoicesResource(AsyncAPIResource):
                     invoice_list_params.InvoiceListParams,
                 ),
             ),
-            model=QbdInvoice,
+            model=Invoice,
         )
 
 

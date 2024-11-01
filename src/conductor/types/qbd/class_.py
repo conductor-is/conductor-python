@@ -7,7 +7,7 @@ from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
 
-__all__ = ["QbdClass", "Parent"]
+__all__ = ["Class", "Parent"]
 
 
 class Parent(BaseModel):
@@ -26,7 +26,7 @@ class Parent(BaseModel):
     """
 
 
-class QbdClass(BaseModel):
+class Class(BaseModel):
     id: str
     """The unique identifier assigned by QuickBooks to this class.
 

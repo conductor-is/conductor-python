@@ -9,24 +9,27 @@ from pydantic import Field as FieldInfo
 from ..._models import BaseModel
 
 __all__ = [
-    "QbdVendor",
+    "Customer",
     "AdditionalContact",
     "AdditionalContactCustomContactField",
     "AdditionalNote",
+    "AlternateShippingAddress",
     "BillingAddress",
-    "BillingRate",
     "Class",
+    "CreditCard",
     "Currency",
     "CustomContactField",
+    "CustomerType",
     "CustomField",
-    "DefaultExpenseAccount",
-    "PurchaseTaxAccount",
-    "SalesTaxAccount",
+    "JobType",
+    "Parent",
+    "PreferredPaymentMethod",
+    "PriceLevel",
+    "SalesRepresentative",
     "SalesTaxCode",
-    "SalesTaxReturn",
+    "SalesTaxItem",
     "ShippingAddress",
     "Terms",
-    "VendorType",
 ]
 
 
@@ -110,6 +113,50 @@ class AdditionalNote(BaseModel):
     """The text of this note."""
 
 
+class AlternateShippingAddress(BaseModel):
+    city: Optional[str] = None
+    """The city, district, suburb, town, or village name of the address."""
+
+    country: Optional[str] = None
+    """The country name of the address."""
+
+    is_default_shipping_address: Optional[bool] = FieldInfo(alias="isDefaultShippingAddress", default=None)
+    """Indicates whether this address is the default shipping address."""
+
+    line1: Optional[str] = None
+    """The first line of the address (e.g., street, PO Box, or company name)."""
+
+    line2: Optional[str] = None
+    """
+    The second line of the address, if needed (e.g., apartment, suite, unit, or
+    building).
+    """
+
+    line3: Optional[str] = None
+    """The third line of the address, if needed."""
+
+    line4: Optional[str] = None
+    """The fourth line of the address, if needed."""
+
+    line5: Optional[str] = None
+    """The fifth line of the address, if needed."""
+
+    name: str
+    """The case-insensitive unique name of this address, unique across all addresses."""
+
+    note: Optional[str] = None
+    """
+    A note written at the bottom of the address in the form in which it appears,
+    such as the invoice form.
+    """
+
+    postal_code: Optional[str] = FieldInfo(alias="postalCode", default=None)
+    """The postal code or ZIP code of the address."""
+
+    state: Optional[str] = None
+    """The state, county, province, or region name of the address."""
+
+
 class BillingAddress(BaseModel):
     city: Optional[str] = None
     """The city, district, suburb, town, or village name of the address."""
@@ -148,22 +195,6 @@ class BillingAddress(BaseModel):
     """The state, county, province, or region name of the address."""
 
 
-class BillingRate(BaseModel):
-    id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks to this object.
-
-    This ID is unique across all objects of the same type, but not across different
-    QuickBooks object types.
-    """
-
-    full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
-    """
-    The fully-qualified unique name for this object, formed by combining the names
-    of its parent objects with its own `name`, separated by colons. Not
-    case-sensitive.
-    """
-
-
 class Class(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks to this object.
@@ -178,6 +209,26 @@ class Class(BaseModel):
     of its parent objects with its own `name`, separated by colons. Not
     case-sensitive.
     """
+
+
+class CreditCard(BaseModel):
+    address: Optional[str] = None
+    """The card's billing address."""
+
+    expiration_month: Optional[float] = FieldInfo(alias="expirationMonth", default=None)
+    """The month when the credit card expires."""
+
+    expiration_year: Optional[float] = FieldInfo(alias="expirationYear", default=None)
+    """The year when the credit card expires."""
+
+    name: Optional[str] = None
+    """The cardholder's name on the card."""
+
+    number: Optional[str] = None
+    """The credit card number. Must be masked with lower case "x" and no dashes."""
+
+    postal_code: Optional[str] = FieldInfo(alias="postalCode", default=None)
+    """The card's billing address ZIP or postal code."""
 
 
 class Currency(BaseModel):
@@ -202,6 +253,22 @@ class CustomContactField(BaseModel):
 
     value: str
     """The value of the custom contact field."""
+
+
+class CustomerType(BaseModel):
+    id: Optional[str] = None
+    """The unique identifier assigned by QuickBooks to this object.
+
+    This ID is unique across all objects of the same type, but not across different
+    QuickBooks object types.
+    """
+
+    full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
+    """
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
+    """
 
 
 class CustomField(BaseModel):
@@ -241,7 +308,7 @@ class CustomField(BaseModel):
     """
 
 
-class DefaultExpenseAccount(BaseModel):
+class JobType(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks to this object.
 
@@ -257,7 +324,7 @@ class DefaultExpenseAccount(BaseModel):
     """
 
 
-class PurchaseTaxAccount(BaseModel):
+class Parent(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks to this object.
 
@@ -273,7 +340,39 @@ class PurchaseTaxAccount(BaseModel):
     """
 
 
-class SalesTaxAccount(BaseModel):
+class PreferredPaymentMethod(BaseModel):
+    id: Optional[str] = None
+    """The unique identifier assigned by QuickBooks to this object.
+
+    This ID is unique across all objects of the same type, but not across different
+    QuickBooks object types.
+    """
+
+    full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
+    """
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
+    """
+
+
+class PriceLevel(BaseModel):
+    id: Optional[str] = None
+    """The unique identifier assigned by QuickBooks to this object.
+
+    This ID is unique across all objects of the same type, but not across different
+    QuickBooks object types.
+    """
+
+    full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
+    """
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
+    """
+
+
+class SalesRepresentative(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks to this object.
 
@@ -305,7 +404,7 @@ class SalesTaxCode(BaseModel):
     """
 
 
-class SalesTaxReturn(BaseModel):
+class SalesTaxItem(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks to this object.
 
@@ -375,70 +474,55 @@ class Terms(BaseModel):
     """
 
 
-class VendorType(BaseModel):
-    id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks to this object.
-
-    This ID is unique across all objects of the same type, but not across different
-    QuickBooks object types.
-    """
-
-    full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
-    """
-    The fully-qualified unique name for this object, formed by combining the names
-    of its parent objects with its own `name`, separated by colons. Not
-    case-sensitive.
-    """
-
-
-class QbdVendor(BaseModel):
+class Customer(BaseModel):
     id: str
-    """The unique identifier assigned by QuickBooks to this vendor.
+    """The unique identifier assigned by QuickBooks to this customer.
 
-    This ID is unique across all vendors but not across different QuickBooks object
-    types.
+    This ID is unique across all customers but not across different QuickBooks
+    object types.
     """
 
     account_number: Optional[str] = FieldInfo(alias="accountNumber", default=None)
     """
-    The vendor's account number, which appears in the QuickBooks chart of accounts,
-    reports, and graphs. Note that if the "Use Account Numbers" preference is turned
-    off in QuickBooks, the account number may not be visible in the user interface,
-    but it can still be set and retrieved through the API.
+    The customer's account number, which appears in the QuickBooks chart of
+    accounts, reports, and graphs. Note that if the "Use Account Numbers" preference
+    is turned off in QuickBooks, the account number may not be visible in the user
+    interface, but it can still be set and retrieved through the API.
     """
 
     additional_contacts: List[AdditionalContact] = FieldInfo(alias="additionalContacts")
-    """Additional alternate contacts for this vendor."""
+    """Additional alternate contacts for this customer."""
 
     additional_notes: List[AdditionalNote] = FieldInfo(alias="additionalNotes")
-    """Additional notes about this vendor."""
+    """Additional notes about this customer."""
 
     alternate_contact: Optional[str] = FieldInfo(alias="alternateContact", default=None)
-    """The name of a alternate contact person for this vendor."""
+    """The name of a alternate contact person for this customer."""
 
     alternate_phone: Optional[str] = FieldInfo(alias="alternatePhone", default=None)
-    """The vendor's alternate telephone number."""
+    """The customer's alternate telephone number."""
+
+    alternate_shipping_addresses: List[AlternateShippingAddress] = FieldInfo(alias="alternateShippingAddresses")
+    """A list of additional shipping addresses for this customer.
+
+    Useful when the customer has multiple shipping locations.
+    """
 
     balance: Optional[str] = None
-    """The current balance owed to this vendor, represented as a decimal string.
-
-    A positive number indicates money owed to the vendor.
+    """
+    The current balance owed by this customer, excluding balances from any jobs
+    (i.e., sub-customers), represented as a decimal string. Compare with
+    `totalBalance`. A positive number indicates money owed by the customer.
     """
 
     billing_address: Optional[BillingAddress] = FieldInfo(alias="billingAddress", default=None)
-    """The vendor's billing address."""
-
-    billing_rate: Optional[BillingRate] = FieldInfo(alias="billingRate", default=None)
-    """
-    The vendor's billing rate, used to override service item rates in time tracking
-    transactions.
-    """
+    """The customer's billing address."""
 
     cc_email: Optional[str] = FieldInfo(alias="ccEmail", default=None)
-    """An email address to carbon copy (CC) on communications with this vendor."""
+    """An email address to carbon copy (CC) on communications with this customer."""
 
     class_: Optional[Class] = FieldInfo(alias="class", default=None)
-    """The vendor's class.
+    """The customer's class.
 
     Classes can be used to categorize objects into meaningful segments, such as
     department, location, or type of work. In QuickBooks, class tracking is off by
@@ -446,30 +530,36 @@ class QbdVendor(BaseModel):
     """
 
     company_name: Optional[str] = FieldInfo(alias="companyName", default=None)
-    """The name of the company associated with this vendor.
+    """The name of the company associated with this customer.
 
     This name is used on invoices, checks, and other forms.
     """
 
     contact: Optional[str] = None
-    """The name of the primary contact person for this vendor."""
+    """The name of the primary contact person for this customer."""
 
     created_at: str = FieldInfo(alias="createdAt")
     """
-    The date and time when this vendor was created, in ISO 8601 format
+    The date and time when this customer was created, in ISO 8601 format
     (YYYY-MM-DDThh:mm:ss±hh:mm). The time zone is the same as the user's time zone
     in QuickBooks.
     """
 
-    credit_limit: Optional[str] = FieldInfo(alias="creditLimit", default=None)
-    """The vendor's credit limit, represented as a decimal string.
+    credit_card: Optional[CreditCard] = FieldInfo(alias="creditCard", default=None)
+    """
+    The customer's credit card information, including card type, number, and
+    expiration date, used for processing credit card payments.
+    """
 
-    This is the maximum amount of money that can be spent being before billed by
-    this vendor. If `null`, there is no credit limit.
+    credit_limit: Optional[str] = FieldInfo(alias="creditLimit", default=None)
+    """The customer's credit limit, represented as a decimal string.
+
+    This is the maximum amount of money this customer can spend before being billed.
+    If `null`, there is no credit limit.
     """
 
     currency: Optional[Currency] = None
-    """The vendor's currency.
+    """The customer's currency.
 
     For built-in currencies, the name and code are standard international values.
     For user-defined currencies, all values are editable.
@@ -477,21 +567,24 @@ class QbdVendor(BaseModel):
 
     custom_contact_fields: List[CustomContactField] = FieldInfo(alias="customContactFields")
     """
-    Additional custom contact fields for this vendor, such as phone numbers or email
-    addresses.
+    Additional custom contact fields for this customer, such as phone numbers or
+    email addresses.
+    """
+
+    customer_type: Optional[CustomerType] = FieldInfo(alias="customerType", default=None)
+    """
+    The customer's type, used for categorizing customers into meaningful segments,
+    such as industry or region.
     """
 
     custom_fields: List[CustomField] = FieldInfo(alias="customFields")
     """
-    The custom fields for the vendor object, added as user-defined data extensions,
-    not included in the standard QuickBooks object.
+    The custom fields for the customer object, added as user-defined data
+    extensions, not included in the standard QuickBooks object.
     """
 
-    default_expense_accounts: List[DefaultExpenseAccount] = FieldInfo(alias="defaultExpenseAccounts")
-    """The expense accounts to prefill when entering bills for this vendor."""
-
     email: Optional[str] = None
-    """The vendor's email address."""
+    """The customer's email address."""
 
     external_id: Optional[str] = FieldInfo(alias="externalId", default=None)
     """
@@ -502,97 +595,148 @@ class QbdVendor(BaseModel):
     """
 
     fax: Optional[str] = None
-    """The vendor's fax number."""
+    """The customer's fax number."""
 
     first_name: Optional[str] = FieldInfo(alias="firstName", default=None)
-    """The first name of the contact person for this vendor."""
+    """The first name of the contact person for this customer."""
+
+    full_name: str = FieldInfo(alias="fullName")
+    """
+    The case-insensitive fully-qualified unique name of this customer, formed by
+    combining the names of its parent objects with its own `name`, separated by
+    colons. For example, if a customer is under "Jones" and has the `name`
+    "Kitchen-Renovation", its `fullName` would be "Jones:Kitchen-Renovation". Unlike
+    `name`, `fullName` is guaranteed to be unique across all customer objects. If
+    this object is a job (i.e., a sub-customer), this value would likely be the
+    job's `name` prefixed by the customer's `name`.
+    """
 
     is_active: bool = FieldInfo(alias="isActive")
-    """Indicates whether this vendor is active.
+    """Indicates whether this customer is active.
 
     Inactive objects are typically hidden from views and reports in QuickBooks.
     """
 
-    is_compounding_tax: Optional[bool] = FieldInfo(alias="isCompoundingTax", default=None)
+    job_description: Optional[str] = FieldInfo(alias="jobDescription", default=None)
     """
-    Indicates whether tax is charged on top of tax for this vendor, for use in
-    Canada or the UK.
-    """
-
-    is_eligible_for1099: Optional[bool] = FieldInfo(alias="isEligibleFor1099", default=None)
-    """
-    Indicates whether this vendor is eligible to receive a 1099 form for tax
-    reporting purposes. If `true`, then the fields `taxId` and `billingAddress` are
-    required.
+    A brief description of this customer's job, if this object is a job (i.e.,
+    sub-customer).
     """
 
-    is_sales_tax_agency: Optional[bool] = FieldInfo(alias="isSalesTaxAgency", default=None)
-    """Indicates whether this vendor is a sales tax agency."""
-
-    is_tracking_purchase_tax: Optional[bool] = FieldInfo(alias="isTrackingPurchaseTax", default=None)
+    job_end_date: Optional[datetime.date] = FieldInfo(alias="jobEndDate", default=None)
     """
-    Indicates whether tax is tracked on purchases for this vendor, for use in Canada
-    or the UK.
+    The actual completion date of this customer's job, if applicable, in ISO 8601
+    format (YYYY-MM-DD).
     """
 
-    is_tracking_sales_tax: Optional[bool] = FieldInfo(alias="isTrackingSalesTax", default=None)
+    job_projected_end_date: Optional[datetime.date] = FieldInfo(alias="jobProjectedEndDate", default=None)
     """
-    Indicates whether tax is tracked on sales for this vendor, for use in Canada or
-    the UK.
+    The projected completion date for this customer's job, if applicable, in ISO
+    8601 format (YYYY-MM-DD).
+    """
+
+    job_start_date: Optional[datetime.date] = FieldInfo(alias="jobStartDate", default=None)
+    """
+    The date when work on this customer's job began, if applicable, in ISO 8601
+    format (YYYY-MM-DD).
+    """
+
+    job_status: Optional[Literal["awarded", "closed", "in_progress", "none", "not_awarded", "pending"]] = FieldInfo(
+        alias="jobStatus", default=None
+    )
+    """
+    The status of this customer's job, if this object is a job (i.e., sub-customer).
     """
 
     job_title: Optional[str] = FieldInfo(alias="jobTitle", default=None)
-    """The job title of the contact person for this vendor."""
+    """The job title of the contact person for this customer."""
+
+    job_type: Optional[JobType] = FieldInfo(alias="jobType", default=None)
+    """
+    The type or category of this customer's job, if this object is a job (i.e.,
+    sub-customer). Useful for classifying into meaningful segments (e.g., repair,
+    installation, consulting).
+    """
 
     last_name: Optional[str] = FieldInfo(alias="lastName", default=None)
-    """The last name of the contact person for this vendor."""
+    """The last name of the contact person for this customer."""
 
     middle_name: Optional[str] = FieldInfo(alias="middleName", default=None)
-    """The middle name of the contact person for this vendor."""
+    """The middle name of the contact person for this customer."""
 
     name: str
-    """The case-insensitive unique name of this vendor, unique across all vendors."""
+    """The case-insensitive name of this customer.
 
-    name_on_check: Optional[str] = FieldInfo(alias="nameOnCheck", default=None)
-    """The vendor's name as it should appear on checks issued to this vendor."""
+    Not guaranteed to be unique because it does not include the names of its parent
+    objects like `fullName` does. For example, two customers could both have the
+    `name` "Kitchen-Renovation", but they could have unique `fullName` values, such
+    as "Jones:Kitchen-Renovation" and "Baker:Kitchen-Renovation".
+    """
 
     note: Optional[str] = None
-    """Additional notes or comments about this vendor."""
+    """Additional notes or comments about this customer."""
 
-    object_type: Literal["qbd_vendor"] = FieldInfo(alias="objectType")
-    """The type of object. This value is always `"qbd_vendor"`."""
+    object_type: Literal["qbd_customer"] = FieldInfo(alias="objectType")
+    """The type of object. This value is always `"qbd_customer"`."""
+
+    parent: Optional[Parent] = None
+    """The parent customer one level above this one in the hierarchy.
+
+    For example, if this customer has a `fullName` of "Jones:Kitchen-Renovation",
+    its parent has a `fullName` of "Jones". If this customer is at the top level,
+    this field will be `null`.
+    """
 
     phone: Optional[str] = None
-    """The vendor's primary telephone number."""
+    """The customer's primary telephone number."""
 
-    purchase_tax_account: Optional[PurchaseTaxAccount] = FieldInfo(alias="purchaseTaxAccount", default=None)
+    preferred_delivery_method: Optional[Literal["email", "mail", "none"]] = FieldInfo(
+        alias="preferredDeliveryMethod", default=None
+    )
     """
-    The account used for tracking taxes on purchases for this vendor, for use in
-    Canada or the UK.
+    The preferred method for delivering invoices and other documents to this
+    customer.
     """
 
-    reporting_period: Optional[Literal["monthly", "quarterly"]] = FieldInfo(alias="reportingPeriod", default=None)
-    """The vendor's tax reporting period, for use in Canada or the UK."""
+    preferred_payment_method: Optional[PreferredPaymentMethod] = FieldInfo(alias="preferredPaymentMethod", default=None)
+    """The customer's preferred payment method (e.g., cash, check, credit card)."""
+
+    price_level: Optional[PriceLevel] = FieldInfo(alias="priceLevel", default=None)
+    """
+    The custom price level assigned to this customer, used to apply custom pricing
+    in invoices, sales receipts, sales orders, or credit memos for that customer.
+    You can override this automatic feature, however, when you create the invoices,
+    sales receipts, etc. Notice that the affected sales transactions do not list the
+    price level, but instead list the rate for the item, which was set using the
+    price level.
+    """
+
+    resale_number: Optional[str] = FieldInfo(alias="resaleNumber", default=None)
+    """
+    The customer's resale number, used if the customer is purchasing items for
+    resale. This number does not affect sales tax calculations or reports in
+    QuickBooks.
+    """
 
     revision_number: str = FieldInfo(alias="revisionNumber")
     """
-    The current revision number of this vendor, which changes each time the object
+    The current revision number of this customer, which changes each time the object
     is modified. When updating this object, you must provide the most recent
     `revisionNumber` to ensure you're working with the latest data; otherwise, the
     update will return an error.
     """
 
-    sales_tax_account: Optional[SalesTaxAccount] = FieldInfo(alias="salesTaxAccount", default=None)
-    """
-    The account used for tracking taxes on sales for this vendor, for use in Canada
-    or the UK.
+    sales_representative: Optional[SalesRepresentative] = FieldInfo(alias="salesRepresentative", default=None)
+    """The customer's sales representative.
+
+    Sales representatives can be employees, vendors, or other names in QuickBooks.
     """
 
     sales_tax_code: Optional[SalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)
     """
-    The sales-tax code associated with this vendor, determining whether items bought
-    from this vendor are taxable or non-taxable. It's used to assign a default tax
-    status to all transactions for this vendor. Default codes include "Non"
+    The sales-tax code associated with this customer, determining whether items sold
+    to this customer are taxable or non-taxable. It's used to assign a default tax
+    status to all transactions for this customer. Default codes include "Non"
     (non-taxable) and "Tax" (taxable), but custom codes can also be created in
     QuickBooks. If QuickBooks is not set up to charge sales tax (via the "Do You
     Charge Sales Tax?" preference), it will assign the default non-taxable code to
@@ -602,44 +746,55 @@ class QbdVendor(BaseModel):
     sales_tax_country: Optional[Literal["australia", "canada", "uk", "us"]] = FieldInfo(
         alias="salesTaxCountry", default=None
     )
-    """The country for which sales tax is collected for this vendor."""
+    """The country for which sales tax is collected for this customer."""
 
-    sales_tax_return: Optional[SalesTaxReturn] = FieldInfo(alias="salesTaxReturn", default=None)
+    sales_tax_item: Optional[SalesTaxItem] = FieldInfo(alias="salesTaxItem", default=None)
     """
-    The vendor's sales tax return information, used for tracking and reporting sales
-    tax liabilities.
+    The sales-tax item used to calculate the actual tax amount for this customer's
+    transactions by applying a specific tax rate collected for a single tax agency.
+    Unlike `salesTaxCode`, which only indicates general taxability, this field
+    drives the actual tax calculation and reporting.
     """
 
     salutation: Optional[str] = None
     """
     The formal salutation title that precedes the name of the contact person for
-    this vendor, such as "Mr.", "Ms.", or "Dr.".
+    this customer, such as "Mr.", "Ms.", or "Dr.".
     """
 
     shipping_address: Optional[ShippingAddress] = FieldInfo(alias="shippingAddress", default=None)
-    """The vendor's shipping address."""
+    """The customer's shipping address."""
 
-    tax_identification_number: Optional[str] = FieldInfo(alias="taxIdentificationNumber", default=None)
-    """The vendor's tax identification number (e.g., EIN or SSN)."""
+    sublevel: float
+    """The depth level of this customer in the hierarchy.
+
+    A top-level customer has a `sublevel` of 0; each subsequent sublevel increases
+    this number by 1. For example, a customer with a `fullName` of
+    "Jones:Kitchen-Renovation" would have a `sublevel` of 1. When `sublevel` is 0,
+    this object is a customer; when `sublevel` is greater than 0, this object is
+    typically a job (i.e., a sub-customer).
+    """
 
     tax_registration_number: Optional[str] = FieldInfo(alias="taxRegistrationNumber", default=None)
-    """The vendor's tax registration number, for use in Canada or the UK."""
+    """The customer's tax registration number, for use in Canada or the UK."""
 
     terms: Optional[Terms] = None
     """
-    The vendor's payment terms, defining when payment is due and any applicable
+    The customer's payment terms, defining when payment is due and any applicable
     discounts.
+    """
+
+    total_balance: Optional[str] = FieldInfo(alias="totalBalance", default=None)
+    """
+    The combined balance of this customer and all of this customer's jobs (i.e.,
+    sub-customers), represented as a decimal string. If there are no sub-customers,
+    `totalBalance` and `balance` are equal. A positive number indicates money owed
+    by the customer.
     """
 
     updated_at: str = FieldInfo(alias="updatedAt")
     """
-    The date and time when this vendor was last updated, in ISO 8601 format
+    The date and time when this customer was last updated, in ISO 8601 format
     (YYYY-MM-DDThh:mm:ss±hh:mm). The time zone is the same as the user's time zone
     in QuickBooks.
-    """
-
-    vendor_type: Optional[VendorType] = FieldInfo(alias="vendorType", default=None)
-    """
-    The vendor's type, used for categorizing vendors into meaningful segments, such
-    as industry or region.
     """

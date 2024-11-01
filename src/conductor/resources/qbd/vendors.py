@@ -24,7 +24,7 @@ from ..._response import (
 from ...types.qbd import vendor_list_params, vendor_create_params, vendor_update_params
 from ...pagination import SyncCursorPage, AsyncCursorPage
 from ..._base_client import AsyncPaginator, make_request_options
-from ...types.qbd.qbd_vendor import QbdVendor
+from ...types.qbd.vendor import Vendor
 
 __all__ = ["VendorsResource", "AsyncVendorsResource"]
 
@@ -105,7 +105,7 @@ class VendorsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdVendor:
+    ) -> Vendor:
         """
         Creates a vendor.
 
@@ -303,7 +303,7 @@ class VendorsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdVendor,
+            cast_to=Vendor,
         )
 
     def retrieve(
@@ -317,7 +317,7 @@ class VendorsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdVendor:
+    ) -> Vendor:
         """
         Retrieves a vendor by ID.
 
@@ -343,7 +343,7 @@ class VendorsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdVendor,
+            cast_to=Vendor,
         )
 
     def update(
@@ -401,7 +401,7 @@ class VendorsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdVendor:
+    ) -> Vendor:
         """
         Updates an existing vendor.
 
@@ -595,7 +595,7 @@ class VendorsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdVendor,
+            cast_to=Vendor,
         )
 
     def list(
@@ -627,7 +627,7 @@ class VendorsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursorPage[QbdVendor]:
+    ) -> SyncCursorPage[Vendor]:
         """
         Returns a list of vendors.
 
@@ -720,7 +720,7 @@ class VendorsResource(SyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/vendors",
-            page=SyncCursorPage[QbdVendor],
+            page=SyncCursorPage[Vendor],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -751,7 +751,7 @@ class VendorsResource(SyncAPIResource):
                     vendor_list_params.VendorListParams,
                 ),
             ),
-            model=QbdVendor,
+            model=Vendor,
         )
 
 
@@ -831,7 +831,7 @@ class AsyncVendorsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdVendor:
+    ) -> Vendor:
         """
         Creates a vendor.
 
@@ -1029,7 +1029,7 @@ class AsyncVendorsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdVendor,
+            cast_to=Vendor,
         )
 
     async def retrieve(
@@ -1043,7 +1043,7 @@ class AsyncVendorsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdVendor:
+    ) -> Vendor:
         """
         Retrieves a vendor by ID.
 
@@ -1069,7 +1069,7 @@ class AsyncVendorsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdVendor,
+            cast_to=Vendor,
         )
 
     async def update(
@@ -1127,7 +1127,7 @@ class AsyncVendorsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdVendor:
+    ) -> Vendor:
         """
         Updates an existing vendor.
 
@@ -1321,7 +1321,7 @@ class AsyncVendorsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdVendor,
+            cast_to=Vendor,
         )
 
     def list(
@@ -1353,7 +1353,7 @@ class AsyncVendorsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[QbdVendor, AsyncCursorPage[QbdVendor]]:
+    ) -> AsyncPaginator[Vendor, AsyncCursorPage[Vendor]]:
         """
         Returns a list of vendors.
 
@@ -1446,7 +1446,7 @@ class AsyncVendorsResource(AsyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/vendors",
-            page=AsyncCursorPage[QbdVendor],
+            page=AsyncCursorPage[Vendor],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1477,7 +1477,7 @@ class AsyncVendorsResource(AsyncAPIResource):
                     vendor_list_params.VendorListParams,
                 ),
             ),
-            model=QbdVendor,
+            model=Vendor,
         )
 
 
