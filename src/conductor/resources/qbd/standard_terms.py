@@ -180,14 +180,14 @@ class StandardTermsResource(SyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          full_names: Filter for specific standard terms by their full-name(s). Specify a single
-              full-name or multiple using a comma-separated list (e.g., `fullNames=1,2,3`).
-              Like `id`, a `fullName` is a unique identifier for a standard term, and is
-              formed by by combining the names of its parent objects with its own `name`,
-              separated by colons. For example, if a standard term is under "Payment Terms"
-              and has the `name` "Net 15", its `fullName` would be "Payment Terms:Net 15".
-              Unlike `name`, `fullName` is guaranteed to be unique across all standard term
-              objects. Not case-sensitive. NOTE: If you include this parameter, all other
+          full_names: Filter for specific standard terms by their full-name(s), case-insensitive.
+              Specify a single full-name or multiple using a comma-separated list (e.g.,
+              `fullNames=1,2,3`). Like `id`, a `fullName` is a unique identifier for a
+              standard term, and is formed by by combining the names of its parent objects
+              with its own `name`, separated by colons. For example, if a standard term is
+              under "Payment Terms" and has the `name` "Net 15", its `fullName` would be
+              "Payment Terms:Net 15". Unlike `name`, `fullName` is guaranteed to be unique
+              across all standard term objects. NOTE: If you include this parameter, all other
               query parameters will be ignored.
 
           ids: Filter for specific standard terms by their QuickBooks-assigned unique
@@ -201,20 +201,20 @@ class StandardTermsResource(SyncAPIResource):
               able to fetch the next set of results. To paginate through the results for this
               endpoint, try fetching batches via the date-range query parameters.
 
-          name_contains: Filter for standard terms whose `name` contains this substring (case
-              insensitive). If you use this parameter, you cannot use `nameStartsWith` or
-              `nameEndsWith`.
+          name_contains: Filter for standard terms whose `name` contains this substring,
+              case-insensitive. If you use this parameter, you cannot also use
+              `nameStartsWith` or `nameEndsWith`.
 
-          name_ends_with: Filter for standard terms whose `name` ends with this substring (case
-              insensitive). If you use this parameter, you cannot use `nameContains` or
-              `nameStartsWith`.
+          name_ends_with: Filter for standard terms whose `name` ends with this substring,
+              case-insensitive. If you use this parameter, you cannot also use `nameContains`
+              or `nameStartsWith`.
 
           name_from: Filter for standard terms whose `name` is alphabetically greater than or equal
               to this value.
 
-          name_starts_with: Filter for standard terms whose `name` starts with this substring (case
-              insensitive). If you use this parameter, you cannot use `nameContains` or
-              `nameEndsWith`.
+          name_starts_with: Filter for standard terms whose `name` starts with this substring,
+              case-insensitive. If you use this parameter, you cannot also use `nameContains`
+              or `nameEndsWith`.
 
           name_to: Filter for standard terms whose `name` is alphabetically less than or equal to
               this value.
@@ -419,14 +419,14 @@ class AsyncStandardTermsResource(AsyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          full_names: Filter for specific standard terms by their full-name(s). Specify a single
-              full-name or multiple using a comma-separated list (e.g., `fullNames=1,2,3`).
-              Like `id`, a `fullName` is a unique identifier for a standard term, and is
-              formed by by combining the names of its parent objects with its own `name`,
-              separated by colons. For example, if a standard term is under "Payment Terms"
-              and has the `name` "Net 15", its `fullName` would be "Payment Terms:Net 15".
-              Unlike `name`, `fullName` is guaranteed to be unique across all standard term
-              objects. Not case-sensitive. NOTE: If you include this parameter, all other
+          full_names: Filter for specific standard terms by their full-name(s), case-insensitive.
+              Specify a single full-name or multiple using a comma-separated list (e.g.,
+              `fullNames=1,2,3`). Like `id`, a `fullName` is a unique identifier for a
+              standard term, and is formed by by combining the names of its parent objects
+              with its own `name`, separated by colons. For example, if a standard term is
+              under "Payment Terms" and has the `name` "Net 15", its `fullName` would be
+              "Payment Terms:Net 15". Unlike `name`, `fullName` is guaranteed to be unique
+              across all standard term objects. NOTE: If you include this parameter, all other
               query parameters will be ignored.
 
           ids: Filter for specific standard terms by their QuickBooks-assigned unique
@@ -440,20 +440,20 @@ class AsyncStandardTermsResource(AsyncAPIResource):
               able to fetch the next set of results. To paginate through the results for this
               endpoint, try fetching batches via the date-range query parameters.
 
-          name_contains: Filter for standard terms whose `name` contains this substring (case
-              insensitive). If you use this parameter, you cannot use `nameStartsWith` or
-              `nameEndsWith`.
+          name_contains: Filter for standard terms whose `name` contains this substring,
+              case-insensitive. If you use this parameter, you cannot also use
+              `nameStartsWith` or `nameEndsWith`.
 
-          name_ends_with: Filter for standard terms whose `name` ends with this substring (case
-              insensitive). If you use this parameter, you cannot use `nameContains` or
-              `nameStartsWith`.
+          name_ends_with: Filter for standard terms whose `name` ends with this substring,
+              case-insensitive. If you use this parameter, you cannot also use `nameContains`
+              or `nameStartsWith`.
 
           name_from: Filter for standard terms whose `name` is alphabetically greater than or equal
               to this value.
 
-          name_starts_with: Filter for standard terms whose `name` starts with this substring (case
-              insensitive). If you use this parameter, you cannot use `nameContains` or
-              `nameEndsWith`.
+          name_starts_with: Filter for standard terms whose `name` starts with this substring,
+              case-insensitive. If you use this parameter, you cannot also use `nameContains`
+              or `nameEndsWith`.
 
           name_to: Filter for standard terms whose `name` is alphabetically less than or equal to
               this value.

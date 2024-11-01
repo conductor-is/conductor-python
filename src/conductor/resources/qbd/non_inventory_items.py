@@ -364,15 +364,16 @@ class NonInventoryItemsResource(SyncAPIResource):
               `limit` parameter. Retrieve this value from the `nextCursor` field in the
               previous response. If omitted, the API returns the first page of results.
 
-          full_names: Filter for specific non-inventory items by their full-name(s). Specify a single
-              full-name or multiple using a comma-separated list (e.g., `fullNames=1,2,3`).
-              Like `id`, a `fullName` is a unique identifier for a non-inventory item, and is
-              formed by by combining the names of its parent objects with its own `name`,
-              separated by colons. For example, if a non-inventory item is under "Office
-              Supplies" and has the `name` "Printer Ink Cartridge", its `fullName` would be
-              "Office Supplies:Printer Ink Cartridge". Unlike `name`, `fullName` is guaranteed
-              to be unique across all non-inventory item objects. Not case-sensitive. NOTE: If
-              you include this parameter, all other query parameters will be ignored.
+          full_names: Filter for specific non-inventory items by their full-name(s), case-insensitive.
+              Specify a single full-name or multiple using a comma-separated list (e.g.,
+              `fullNames=1,2,3`). Like `id`, a `fullName` is a unique identifier for a
+              non-inventory item, and is formed by by combining the names of its parent
+              objects with its own `name`, separated by colons. For example, if a
+              non-inventory item is under "Office Supplies" and has the `name` "Printer Ink
+              Cartridge", its `fullName` would be "Office Supplies:Printer Ink Cartridge".
+              Unlike `name`, `fullName` is guaranteed to be unique across all non-inventory
+              item objects. NOTE: If you include this parameter, all other query parameters
+              will be ignored.
 
           ids: Filter for specific non-inventory items by their QuickBooks-assigned unique
               identifier(s). Specify a single ID or multiple using a comma-separated list
@@ -385,20 +386,20 @@ class NonInventoryItemsResource(SyncAPIResource):
               used as the `cursor` parameter value in subsequent requests to fetch the next
               set of results.
 
-          name_contains: Filter for non-inventory items whose `name` contains this substring (case
-              insensitive). If you use this parameter, you cannot use `nameStartsWith` or
-              `nameEndsWith`.
+          name_contains: Filter for non-inventory items whose `name` contains this substring,
+              case-insensitive. If you use this parameter, you cannot also use
+              `nameStartsWith` or `nameEndsWith`.
 
-          name_ends_with: Filter for non-inventory items whose `name` ends with this substring (case
-              insensitive). If you use this parameter, you cannot use `nameContains` or
-              `nameStartsWith`.
+          name_ends_with: Filter for non-inventory items whose `name` ends with this substring,
+              case-insensitive. If you use this parameter, you cannot also use `nameContains`
+              or `nameStartsWith`.
 
           name_from: Filter for non-inventory items whose `name` is alphabetically greater than or
               equal to this value.
 
-          name_starts_with: Filter for non-inventory items whose `name` starts with this substring (case
-              insensitive). If you use this parameter, you cannot use `nameContains` or
-              `nameEndsWith`.
+          name_starts_with: Filter for non-inventory items whose `name` starts with this substring,
+              case-insensitive. If you use this parameter, you cannot also use `nameContains`
+              or `nameEndsWith`.
 
           name_to: Filter for non-inventory items whose `name` is alphabetically less than or equal
               to this value.
@@ -786,15 +787,16 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
               `limit` parameter. Retrieve this value from the `nextCursor` field in the
               previous response. If omitted, the API returns the first page of results.
 
-          full_names: Filter for specific non-inventory items by their full-name(s). Specify a single
-              full-name or multiple using a comma-separated list (e.g., `fullNames=1,2,3`).
-              Like `id`, a `fullName` is a unique identifier for a non-inventory item, and is
-              formed by by combining the names of its parent objects with its own `name`,
-              separated by colons. For example, if a non-inventory item is under "Office
-              Supplies" and has the `name` "Printer Ink Cartridge", its `fullName` would be
-              "Office Supplies:Printer Ink Cartridge". Unlike `name`, `fullName` is guaranteed
-              to be unique across all non-inventory item objects. Not case-sensitive. NOTE: If
-              you include this parameter, all other query parameters will be ignored.
+          full_names: Filter for specific non-inventory items by their full-name(s), case-insensitive.
+              Specify a single full-name or multiple using a comma-separated list (e.g.,
+              `fullNames=1,2,3`). Like `id`, a `fullName` is a unique identifier for a
+              non-inventory item, and is formed by by combining the names of its parent
+              objects with its own `name`, separated by colons. For example, if a
+              non-inventory item is under "Office Supplies" and has the `name` "Printer Ink
+              Cartridge", its `fullName` would be "Office Supplies:Printer Ink Cartridge".
+              Unlike `name`, `fullName` is guaranteed to be unique across all non-inventory
+              item objects. NOTE: If you include this parameter, all other query parameters
+              will be ignored.
 
           ids: Filter for specific non-inventory items by their QuickBooks-assigned unique
               identifier(s). Specify a single ID or multiple using a comma-separated list
@@ -807,20 +809,20 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
               used as the `cursor` parameter value in subsequent requests to fetch the next
               set of results.
 
-          name_contains: Filter for non-inventory items whose `name` contains this substring (case
-              insensitive). If you use this parameter, you cannot use `nameStartsWith` or
-              `nameEndsWith`.
+          name_contains: Filter for non-inventory items whose `name` contains this substring,
+              case-insensitive. If you use this parameter, you cannot also use
+              `nameStartsWith` or `nameEndsWith`.
 
-          name_ends_with: Filter for non-inventory items whose `name` ends with this substring (case
-              insensitive). If you use this parameter, you cannot use `nameContains` or
-              `nameStartsWith`.
+          name_ends_with: Filter for non-inventory items whose `name` ends with this substring,
+              case-insensitive. If you use this parameter, you cannot also use `nameContains`
+              or `nameStartsWith`.
 
           name_from: Filter for non-inventory items whose `name` is alphabetically greater than or
               equal to this value.
 
-          name_starts_with: Filter for non-inventory items whose `name` starts with this substring (case
-              insensitive). If you use this parameter, you cannot use `nameContains` or
-              `nameEndsWith`.
+          name_starts_with: Filter for non-inventory items whose `name` starts with this substring,
+              case-insensitive. If you use this parameter, you cannot also use `nameContains`
+              or `nameEndsWith`.
 
           name_to: Filter for non-inventory items whose `name` is alphabetically less than or equal
               to this value.
