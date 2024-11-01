@@ -24,7 +24,7 @@ from ..._response import (
 from ...types.qbd import customer_list_params, customer_create_params, customer_update_params
 from ...pagination import SyncCursorPage, AsyncCursorPage
 from ..._base_client import AsyncPaginator, make_request_options
-from ...types.qbd.qbd_customer import QbdCustomer
+from ...types.qbd.customer import Customer
 
 __all__ = ["CustomersResource", "AsyncCustomersResource"]
 
@@ -108,7 +108,7 @@ class CustomersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdCustomer:
+    ) -> Customer:
         """Creates a customer.
 
         Args:
@@ -332,7 +332,7 @@ class CustomersResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdCustomer,
+            cast_to=Customer,
         )
 
     def retrieve(
@@ -346,7 +346,7 @@ class CustomersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdCustomer:
+    ) -> Customer:
         """
         Retrieves a customer by ID.
 
@@ -372,7 +372,7 @@ class CustomersResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdCustomer,
+            cast_to=Customer,
         )
 
     def update(
@@ -433,7 +433,7 @@ class CustomersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdCustomer:
+    ) -> Customer:
         """
         Updates an existing customer.
 
@@ -651,7 +651,7 @@ class CustomersResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdCustomer,
+            cast_to=Customer,
         )
 
     def list(
@@ -683,7 +683,7 @@ class CustomersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursorPage[QbdCustomer]:
+    ) -> SyncCursorPage[Customer]:
         """
         Returns a list of customers.
 
@@ -777,7 +777,7 @@ class CustomersResource(SyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/customers",
-            page=SyncCursorPage[QbdCustomer],
+            page=SyncCursorPage[Customer],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -808,7 +808,7 @@ class CustomersResource(SyncAPIResource):
                     customer_list_params.CustomerListParams,
                 ),
             ),
-            model=QbdCustomer,
+            model=Customer,
         )
 
 
@@ -891,7 +891,7 @@ class AsyncCustomersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdCustomer:
+    ) -> Customer:
         """Creates a customer.
 
         Args:
@@ -1115,7 +1115,7 @@ class AsyncCustomersResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdCustomer,
+            cast_to=Customer,
         )
 
     async def retrieve(
@@ -1129,7 +1129,7 @@ class AsyncCustomersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdCustomer:
+    ) -> Customer:
         """
         Retrieves a customer by ID.
 
@@ -1155,7 +1155,7 @@ class AsyncCustomersResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdCustomer,
+            cast_to=Customer,
         )
 
     async def update(
@@ -1216,7 +1216,7 @@ class AsyncCustomersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdCustomer:
+    ) -> Customer:
         """
         Updates an existing customer.
 
@@ -1434,7 +1434,7 @@ class AsyncCustomersResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdCustomer,
+            cast_to=Customer,
         )
 
     def list(
@@ -1466,7 +1466,7 @@ class AsyncCustomersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[QbdCustomer, AsyncCursorPage[QbdCustomer]]:
+    ) -> AsyncPaginator[Customer, AsyncCursorPage[Customer]]:
         """
         Returns a list of customers.
 
@@ -1560,7 +1560,7 @@ class AsyncCustomersResource(AsyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/customers",
-            page=AsyncCursorPage[QbdCustomer],
+            page=AsyncCursorPage[Customer],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1591,7 +1591,7 @@ class AsyncCustomersResource(AsyncAPIResource):
                     customer_list_params.CustomerListParams,
                 ),
             ),
-            model=QbdCustomer,
+            model=Customer,
         )
 
 

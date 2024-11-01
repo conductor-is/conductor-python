@@ -10,7 +10,7 @@ import pytest
 from conductor import Conductor, AsyncConductor
 from tests.utils import assert_matches_type
 from conductor._utils import parse_date
-from conductor.types.qbd import QbdVendor
+from conductor.types.qbd import Vendor
 from conductor.pagination import SyncCursorPage, AsyncCursorPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -25,7 +25,7 @@ class TestVendors:
             name="Acme Supplies Inc.",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdVendor, vendor, path=["response"])
+        assert_matches_type(Vendor, vendor, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Conductor) -> None:
@@ -181,7 +181,7 @@ class TestVendors:
             terms_id="80000013-1234567890",
             vendor_type_id="80000025-1234567890",
         )
-        assert_matches_type(QbdVendor, vendor, path=["response"])
+        assert_matches_type(Vendor, vendor, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: Conductor) -> None:
@@ -193,7 +193,7 @@ class TestVendors:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         vendor = response.parse()
-        assert_matches_type(QbdVendor, vendor, path=["response"])
+        assert_matches_type(Vendor, vendor, path=["response"])
 
     @parametrize
     def test_streaming_response_create(self, client: Conductor) -> None:
@@ -205,7 +205,7 @@ class TestVendors:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             vendor = response.parse()
-            assert_matches_type(QbdVendor, vendor, path=["response"])
+            assert_matches_type(Vendor, vendor, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -215,7 +215,7 @@ class TestVendors:
             id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdVendor, vendor, path=["response"])
+        assert_matches_type(Vendor, vendor, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Conductor) -> None:
@@ -227,7 +227,7 @@ class TestVendors:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         vendor = response.parse()
-        assert_matches_type(QbdVendor, vendor, path=["response"])
+        assert_matches_type(Vendor, vendor, path=["response"])
 
     @parametrize
     def test_streaming_response_retrieve(self, client: Conductor) -> None:
@@ -239,7 +239,7 @@ class TestVendors:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             vendor = response.parse()
-            assert_matches_type(QbdVendor, vendor, path=["response"])
+            assert_matches_type(Vendor, vendor, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -258,7 +258,7 @@ class TestVendors:
             revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdVendor, vendor, path=["response"])
+        assert_matches_type(Vendor, vendor, path=["response"])
 
     @parametrize
     def test_method_update_with_all_params(self, client: Conductor) -> None:
@@ -428,7 +428,7 @@ class TestVendors:
             terms_id="80000013-1234567890",
             vendor_type_id="80000025-1234567890",
         )
-        assert_matches_type(QbdVendor, vendor, path=["response"])
+        assert_matches_type(Vendor, vendor, path=["response"])
 
     @parametrize
     def test_raw_response_update(self, client: Conductor) -> None:
@@ -441,7 +441,7 @@ class TestVendors:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         vendor = response.parse()
-        assert_matches_type(QbdVendor, vendor, path=["response"])
+        assert_matches_type(Vendor, vendor, path=["response"])
 
     @parametrize
     def test_streaming_response_update(self, client: Conductor) -> None:
@@ -454,7 +454,7 @@ class TestVendors:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             vendor = response.parse()
-            assert_matches_type(QbdVendor, vendor, path=["response"])
+            assert_matches_type(Vendor, vendor, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -472,7 +472,7 @@ class TestVendors:
         vendor = client.qbd.vendors.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(SyncCursorPage[QbdVendor], vendor, path=["response"])
+        assert_matches_type(SyncCursorPage[Vendor], vendor, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Conductor) -> None:
@@ -498,7 +498,7 @@ class TestVendors:
             updated_after="updatedAfter",
             updated_before="updatedBefore",
         )
-        assert_matches_type(SyncCursorPage[QbdVendor], vendor, path=["response"])
+        assert_matches_type(SyncCursorPage[Vendor], vendor, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Conductor) -> None:
@@ -509,7 +509,7 @@ class TestVendors:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         vendor = response.parse()
-        assert_matches_type(SyncCursorPage[QbdVendor], vendor, path=["response"])
+        assert_matches_type(SyncCursorPage[Vendor], vendor, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Conductor) -> None:
@@ -520,7 +520,7 @@ class TestVendors:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             vendor = response.parse()
-            assert_matches_type(SyncCursorPage[QbdVendor], vendor, path=["response"])
+            assert_matches_type(SyncCursorPage[Vendor], vendor, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -534,7 +534,7 @@ class TestAsyncVendors:
             name="Acme Supplies Inc.",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdVendor, vendor, path=["response"])
+        assert_matches_type(Vendor, vendor, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncConductor) -> None:
@@ -690,7 +690,7 @@ class TestAsyncVendors:
             terms_id="80000013-1234567890",
             vendor_type_id="80000025-1234567890",
         )
-        assert_matches_type(QbdVendor, vendor, path=["response"])
+        assert_matches_type(Vendor, vendor, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncConductor) -> None:
@@ -702,7 +702,7 @@ class TestAsyncVendors:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         vendor = await response.parse()
-        assert_matches_type(QbdVendor, vendor, path=["response"])
+        assert_matches_type(Vendor, vendor, path=["response"])
 
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncConductor) -> None:
@@ -714,7 +714,7 @@ class TestAsyncVendors:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             vendor = await response.parse()
-            assert_matches_type(QbdVendor, vendor, path=["response"])
+            assert_matches_type(Vendor, vendor, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -724,7 +724,7 @@ class TestAsyncVendors:
             id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdVendor, vendor, path=["response"])
+        assert_matches_type(Vendor, vendor, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncConductor) -> None:
@@ -736,7 +736,7 @@ class TestAsyncVendors:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         vendor = await response.parse()
-        assert_matches_type(QbdVendor, vendor, path=["response"])
+        assert_matches_type(Vendor, vendor, path=["response"])
 
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncConductor) -> None:
@@ -748,7 +748,7 @@ class TestAsyncVendors:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             vendor = await response.parse()
-            assert_matches_type(QbdVendor, vendor, path=["response"])
+            assert_matches_type(Vendor, vendor, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -767,7 +767,7 @@ class TestAsyncVendors:
             revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdVendor, vendor, path=["response"])
+        assert_matches_type(Vendor, vendor, path=["response"])
 
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncConductor) -> None:
@@ -937,7 +937,7 @@ class TestAsyncVendors:
             terms_id="80000013-1234567890",
             vendor_type_id="80000025-1234567890",
         )
-        assert_matches_type(QbdVendor, vendor, path=["response"])
+        assert_matches_type(Vendor, vendor, path=["response"])
 
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncConductor) -> None:
@@ -950,7 +950,7 @@ class TestAsyncVendors:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         vendor = await response.parse()
-        assert_matches_type(QbdVendor, vendor, path=["response"])
+        assert_matches_type(Vendor, vendor, path=["response"])
 
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncConductor) -> None:
@@ -963,7 +963,7 @@ class TestAsyncVendors:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             vendor = await response.parse()
-            assert_matches_type(QbdVendor, vendor, path=["response"])
+            assert_matches_type(Vendor, vendor, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -981,7 +981,7 @@ class TestAsyncVendors:
         vendor = await async_client.qbd.vendors.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(AsyncCursorPage[QbdVendor], vendor, path=["response"])
+        assert_matches_type(AsyncCursorPage[Vendor], vendor, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncConductor) -> None:
@@ -1007,7 +1007,7 @@ class TestAsyncVendors:
             updated_after="updatedAfter",
             updated_before="updatedBefore",
         )
-        assert_matches_type(AsyncCursorPage[QbdVendor], vendor, path=["response"])
+        assert_matches_type(AsyncCursorPage[Vendor], vendor, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncConductor) -> None:
@@ -1018,7 +1018,7 @@ class TestAsyncVendors:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         vendor = await response.parse()
-        assert_matches_type(AsyncCursorPage[QbdVendor], vendor, path=["response"])
+        assert_matches_type(AsyncCursorPage[Vendor], vendor, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncConductor) -> None:
@@ -1029,6 +1029,6 @@ class TestAsyncVendors:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             vendor = await response.parse()
-            assert_matches_type(AsyncCursorPage[QbdVendor], vendor, path=["response"])
+            assert_matches_type(AsyncCursorPage[Vendor], vendor, path=["response"])
 
         assert cast(Any, response.is_closed) is True

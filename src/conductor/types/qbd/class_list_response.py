@@ -5,14 +5,14 @@ from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
+from .class_ import Class
 from ..._models import BaseModel
-from .qbd_class import QbdClass
 
 __all__ = ["ClassListResponse"]
 
 
 class ClassListResponse(BaseModel):
-    data: List[QbdClass]
+    data: List[Class]
     """The array of classes."""
 
     object_type: Literal["list"] = FieldInfo(alias="objectType")

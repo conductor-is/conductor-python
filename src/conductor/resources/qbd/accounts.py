@@ -23,7 +23,7 @@ from ..._response import (
 )
 from ...types.qbd import account_list_params, account_create_params, account_update_params
 from ..._base_client import make_request_options
-from ...types.qbd.qbd_account import QbdAccount
+from ...types.qbd.account import Account
 from ...types.qbd.account_list_response import AccountListResponse
 
 __all__ = ["AccountsResource", "AsyncAccountsResource"]
@@ -88,7 +88,7 @@ class AccountsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdAccount:
+    ) -> Account:
         """
         Creates a financial account.
 
@@ -175,7 +175,7 @@ class AccountsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdAccount,
+            cast_to=Account,
         )
 
     def retrieve(
@@ -189,7 +189,7 @@ class AccountsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdAccount:
+    ) -> Account:
         """
         Retrieves an account by ID.
 
@@ -215,7 +215,7 @@ class AccountsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdAccount,
+            cast_to=Account,
         )
 
     def update(
@@ -260,7 +260,7 @@ class AccountsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdAccount:
+    ) -> Account:
         """
         Updates a financial account.
 
@@ -356,7 +356,7 @@ class AccountsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdAccount,
+            cast_to=Account,
         )
 
     def list(
@@ -557,7 +557,7 @@ class AsyncAccountsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdAccount:
+    ) -> Account:
         """
         Creates a financial account.
 
@@ -644,7 +644,7 @@ class AsyncAccountsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdAccount,
+            cast_to=Account,
         )
 
     async def retrieve(
@@ -658,7 +658,7 @@ class AsyncAccountsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdAccount:
+    ) -> Account:
         """
         Retrieves an account by ID.
 
@@ -684,7 +684,7 @@ class AsyncAccountsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdAccount,
+            cast_to=Account,
         )
 
     async def update(
@@ -729,7 +729,7 @@ class AsyncAccountsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdAccount:
+    ) -> Account:
         """
         Updates a financial account.
 
@@ -825,7 +825,7 @@ class AsyncAccountsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdAccount,
+            cast_to=Account,
         )
 
     async def list(

@@ -22,7 +22,7 @@ from ..._response import (
 from ...types.qbd import sales_tax_item_list_params, sales_tax_item_create_params, sales_tax_item_update_params
 from ...pagination import SyncCursorPage, AsyncCursorPage
 from ..._base_client import AsyncPaginator, make_request_options
-from ...types.qbd.qbd_sales_tax_item import QbdSalesTaxItem
+from ...types.qbd.sales_tax_item import SalesTaxItem
 
 __all__ = ["SalesTaxItemsResource", "AsyncSalesTaxItemsResource"]
 
@@ -66,7 +66,7 @@ class SalesTaxItemsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdSalesTaxItem:
+    ) -> SalesTaxItem:
         """
         Creates a sales-tax item.
 
@@ -135,7 +135,7 @@ class SalesTaxItemsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdSalesTaxItem,
+            cast_to=SalesTaxItem,
         )
 
     def retrieve(
@@ -149,7 +149,7 @@ class SalesTaxItemsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdSalesTaxItem:
+    ) -> SalesTaxItem:
         """
         Retrieves a sales-tax item by ID.
 
@@ -175,7 +175,7 @@ class SalesTaxItemsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdSalesTaxItem,
+            cast_to=SalesTaxItem,
         )
 
     def update(
@@ -198,7 +198,7 @@ class SalesTaxItemsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdSalesTaxItem:
+    ) -> SalesTaxItem:
         """
         Updates an existing sales-tax item.
 
@@ -271,7 +271,7 @@ class SalesTaxItemsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdSalesTaxItem,
+            cast_to=SalesTaxItem,
         )
 
     def list(
@@ -297,7 +297,7 @@ class SalesTaxItemsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursorPage[QbdSalesTaxItem]:
+    ) -> SyncCursorPage[SalesTaxItem]:
         """
         Returns a list of sales-tax items.
 
@@ -370,7 +370,7 @@ class SalesTaxItemsResource(SyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/sales-tax-items",
-            page=SyncCursorPage[QbdSalesTaxItem],
+            page=SyncCursorPage[SalesTaxItem],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -395,7 +395,7 @@ class SalesTaxItemsResource(SyncAPIResource):
                     sales_tax_item_list_params.SalesTaxItemListParams,
                 ),
             ),
-            model=QbdSalesTaxItem,
+            model=SalesTaxItem,
         )
 
 
@@ -438,7 +438,7 @@ class AsyncSalesTaxItemsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdSalesTaxItem:
+    ) -> SalesTaxItem:
         """
         Creates a sales-tax item.
 
@@ -507,7 +507,7 @@ class AsyncSalesTaxItemsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdSalesTaxItem,
+            cast_to=SalesTaxItem,
         )
 
     async def retrieve(
@@ -521,7 +521,7 @@ class AsyncSalesTaxItemsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdSalesTaxItem:
+    ) -> SalesTaxItem:
         """
         Retrieves a sales-tax item by ID.
 
@@ -547,7 +547,7 @@ class AsyncSalesTaxItemsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdSalesTaxItem,
+            cast_to=SalesTaxItem,
         )
 
     async def update(
@@ -570,7 +570,7 @@ class AsyncSalesTaxItemsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdSalesTaxItem:
+    ) -> SalesTaxItem:
         """
         Updates an existing sales-tax item.
 
@@ -643,7 +643,7 @@ class AsyncSalesTaxItemsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdSalesTaxItem,
+            cast_to=SalesTaxItem,
         )
 
     def list(
@@ -669,7 +669,7 @@ class AsyncSalesTaxItemsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[QbdSalesTaxItem, AsyncCursorPage[QbdSalesTaxItem]]:
+    ) -> AsyncPaginator[SalesTaxItem, AsyncCursorPage[SalesTaxItem]]:
         """
         Returns a list of sales-tax items.
 
@@ -742,7 +742,7 @@ class AsyncSalesTaxItemsResource(AsyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/sales-tax-items",
-            page=AsyncCursorPage[QbdSalesTaxItem],
+            page=AsyncCursorPage[SalesTaxItem],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -767,7 +767,7 @@ class AsyncSalesTaxItemsResource(AsyncAPIResource):
                     sales_tax_item_list_params.SalesTaxItemListParams,
                 ),
             ),
-            model=QbdSalesTaxItem,
+            model=SalesTaxItem,
         )
 
 
