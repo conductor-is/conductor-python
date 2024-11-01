@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.0-alpha.23 (2024-11-01)
+
+Full Changelog: [v0.1.0-alpha.22...v0.1.0-alpha.23](https://github.com/conductor-is/conductor-python/compare/v0.1.0-alpha.22...v0.1.0-alpha.23)
+
+### Features
+
+* **api:** api update ([#198](https://github.com/conductor-is/conductor-python/issues/198)) ([f4bfb1a](https://github.com/conductor-is/conductor-python/commit/f4bfb1a3b049c5f20978dcc1086acb969092fc20))
+* **api:** api update ([#199](https://github.com/conductor-is/conductor-python/issues/199)) ([c55c61a](https://github.com/conductor-is/conductor-python/commit/c55c61aec269dd6ae1ac3e685133b90e0dc2599b))
+* **api:** manual updates ([#195](https://github.com/conductor-is/conductor-python/issues/195)) ([aab7f65](https://github.com/conductor-is/conductor-python/commit/aab7f65cdef91a085a2ee9f7795fd08f4b6c9750))
+
 ## 0.1.0-alpha.22 (2024-10-31)
 
 Full Changelog: [v0.1.0-alpha.21...v0.1.0-alpha.22](https://github.com/conductor-is/conductor-python/compare/v0.1.0-alpha.21...v0.1.0-alpha.22)
