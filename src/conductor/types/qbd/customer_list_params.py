@@ -69,13 +69,13 @@ class CustomerListParams(TypedDict, total=False):
     """
 
     name_contains: Annotated[str, PropertyInfo(alias="nameContains")]
-    """Filter for customers whose `name` contains this substring.
+    """Filter for customers whose `name` contains this substring (case insensitive).
 
     If you use this parameter, you cannot use `nameStartsWith` or `nameEndsWith`.
     """
 
     name_ends_with: Annotated[str, PropertyInfo(alias="nameEndsWith")]
-    """Filter for customers whose `name` ends with this substring.
+    """Filter for customers whose `name` ends with this substring (case insensitive).
 
     If you use this parameter, you cannot use `nameContains` or `nameStartsWith`.
     """
@@ -87,7 +87,7 @@ class CustomerListParams(TypedDict, total=False):
     """
 
     name_starts_with: Annotated[str, PropertyInfo(alias="nameStartsWith")]
-    """Filter for customers whose `name` starts with this substring.
+    """Filter for customers whose `name` starts with this substring (case insensitive).
 
     If you use this parameter, you cannot use `nameContains` or `nameEndsWith`.
     """
