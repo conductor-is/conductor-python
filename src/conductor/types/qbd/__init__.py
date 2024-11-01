@@ -2,25 +2,26 @@
 
 from __future__ import annotations
 
-from .qbd_bill import QbdBill as QbdBill
-from .qbd_class import QbdClass as QbdClass
-from .qbd_vendor import QbdVendor as QbdVendor
-from .qbd_account import QbdAccount as QbdAccount
-from .qbd_invoice import QbdInvoice as QbdInvoice
-from .qbd_customer import QbdCustomer as QbdCustomer
-from .qbd_transfer import QbdTransfer as QbdTransfer
+from .bill import Bill as Bill
+from .class_ import Class as Class
+from .vendor import Vendor as Vendor
+from .account import Account as Account
+from .invoice import Invoice as Invoice
+from .customer import Customer as Customer
+from .transfer import Transfer as Transfer
 from .service_item import ServiceItem as ServiceItem
+from .standard_term import StandardTerm as StandardTerm
 from .inventory_item import InventoryItem as InventoryItem
 from .sales_tax_code import SalesTaxCode as SalesTaxCode
+from .sales_tax_item import SalesTaxItem as SalesTaxItem
 from .bill_list_params import BillListParams as BillListParams
 from .date_driven_term import DateDrivenTerm as DateDrivenTerm
 from .class_list_params import ClassListParams as ClassListParams
-from .qbd_standard_term import QbdStandardTerm as QbdStandardTerm
 from .bill_create_params import BillCreateParams as BillCreateParams
 from .bill_update_params import BillUpdateParams as BillUpdateParams
+from .credit_card_charge import CreditCardCharge as CreditCardCharge
 from .credit_card_credit import CreditCardCredit as CreditCardCredit
 from .non_inventory_item import NonInventoryItem as NonInventoryItem
-from .qbd_sales_tax_item import QbdSalesTaxItem as QbdSalesTaxItem
 from .vendor_list_params import VendorListParams as VendorListParams
 from .account_list_params import AccountListParams as AccountListParams
 from .class_create_params import ClassCreateParams as ClassCreateParams
@@ -38,7 +39,6 @@ from .invoice_create_params import InvoiceCreateParams as InvoiceCreateParams
 from .invoice_update_params import InvoiceUpdateParams as InvoiceUpdateParams
 from .customer_create_params import CustomerCreateParams as CustomerCreateParams
 from .customer_update_params import CustomerUpdateParams as CustomerUpdateParams
-from .qbd_credit_card_charge import QbdCreditCardCharge as QbdCreditCardCharge
 from .transfer_create_params import TransferCreateParams as TransferCreateParams
 from .transfer_update_params import TransferUpdateParams as TransferUpdateParams
 from .service_item_list_params import ServiceItemListParams as ServiceItemListParams
