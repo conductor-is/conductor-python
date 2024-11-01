@@ -444,10 +444,10 @@ class BillsResource(SyncAPIResource):
           payment_status: Filter for bills that are paid, not paid, or both.
 
           ref_number_contains: Filter for bills whose `refNumber` contains this substring. If you use this
-              parameter, you cannot use `refNumberStartsWith` or `refNumberEndsWith`.
+              parameter, you cannot also use `refNumberStartsWith` or `refNumberEndsWith`.
 
           ref_number_ends_with: Filter for bills whose `refNumber` ends with this substring. If you use this
-              parameter, you cannot use `refNumberContains` or `refNumberStartsWith`.
+              parameter, you cannot also use `refNumberContains` or `refNumberStartsWith`.
 
           ref_number_from: Filter for bills whose `refNumber` is greater than or equal to this value. If
               omitted, the range will begin with the first number of the list. Uses a
@@ -461,7 +461,7 @@ class BillsResource(SyncAPIResource):
               parameter, all other query parameters will be ignored.
 
           ref_number_starts_with: Filter for bills whose `refNumber` starts with this substring. If you use this
-              parameter, you cannot use `refNumberContains` or `refNumberEndsWith`.
+              parameter, you cannot also use `refNumberContains` or `refNumberEndsWith`.
 
           ref_number_to: Filter for bills whose `refNumber` is less than or equal to this value. If
               omitted, the range will end with the last number of the list. Uses a numerical
@@ -945,10 +945,10 @@ class AsyncBillsResource(AsyncAPIResource):
           payment_status: Filter for bills that are paid, not paid, or both.
 
           ref_number_contains: Filter for bills whose `refNumber` contains this substring. If you use this
-              parameter, you cannot use `refNumberStartsWith` or `refNumberEndsWith`.
+              parameter, you cannot also use `refNumberStartsWith` or `refNumberEndsWith`.
 
           ref_number_ends_with: Filter for bills whose `refNumber` ends with this substring. If you use this
-              parameter, you cannot use `refNumberContains` or `refNumberStartsWith`.
+              parameter, you cannot also use `refNumberContains` or `refNumberStartsWith`.
 
           ref_number_from: Filter for bills whose `refNumber` is greater than or equal to this value. If
               omitted, the range will begin with the first number of the list. Uses a
@@ -962,7 +962,7 @@ class AsyncBillsResource(AsyncAPIResource):
               parameter, all other query parameters will be ignored.
 
           ref_number_starts_with: Filter for bills whose `refNumber` starts with this substring. If you use this
-              parameter, you cannot use `refNumberContains` or `refNumberEndsWith`.
+              parameter, you cannot also use `refNumberContains` or `refNumberEndsWith`.
 
           ref_number_to: Filter for bills whose `refNumber` is less than or equal to this value. If
               omitted, the range will end with the last number of the list. Uses a numerical

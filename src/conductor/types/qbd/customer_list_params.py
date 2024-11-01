@@ -39,7 +39,7 @@ class CustomerListParams(TypedDict, total=False):
     """
 
     full_names: Annotated[str, PropertyInfo(alias="fullNames")]
-    """Filter for specific customers by their full-name(s).
+    """Filter for specific customers by their full-name(s), case-insensitive.
 
     Specify a single full-name or multiple using a comma-separated list (e.g.,
     `fullNames=1,2,3`). Like `id`, a `fullName` is a unique identifier for a
@@ -47,8 +47,8 @@ class CustomerListParams(TypedDict, total=False):
     own `name`, separated by colons. For example, if a customer is under "ABC
     Corporation" and has the `name` "Website Redesign Project", its `fullName` would
     be "ABC Corporation:Website Redesign Project". Unlike `name`, `fullName` is
-    guaranteed to be unique across all customer objects. Not case-sensitive. NOTE:
-    If you include this parameter, all other query parameters will be ignored.
+    guaranteed to be unique across all customer objects. NOTE: If you include this
+    parameter, all other query parameters will be ignored.
     """
 
     ids: str
@@ -69,15 +69,17 @@ class CustomerListParams(TypedDict, total=False):
     """
 
     name_contains: Annotated[str, PropertyInfo(alias="nameContains")]
-    """Filter for customers whose `name` contains this substring (case insensitive).
+    """Filter for customers whose `name` contains this substring, case-insensitive.
 
-    If you use this parameter, you cannot use `nameStartsWith` or `nameEndsWith`.
+    If you use this parameter, you cannot also use `nameStartsWith` or
+    `nameEndsWith`.
     """
 
     name_ends_with: Annotated[str, PropertyInfo(alias="nameEndsWith")]
-    """Filter for customers whose `name` ends with this substring (case insensitive).
+    """Filter for customers whose `name` ends with this substring, case-insensitive.
 
-    If you use this parameter, you cannot use `nameContains` or `nameStartsWith`.
+    If you use this parameter, you cannot also use `nameContains` or
+    `nameStartsWith`.
     """
 
     name_from: Annotated[str, PropertyInfo(alias="nameFrom")]
@@ -87,9 +89,9 @@ class CustomerListParams(TypedDict, total=False):
     """
 
     name_starts_with: Annotated[str, PropertyInfo(alias="nameStartsWith")]
-    """Filter for customers whose `name` starts with this substring (case insensitive).
+    """Filter for customers whose `name` starts with this substring, case-insensitive.
 
-    If you use this parameter, you cannot use `nameContains` or `nameEndsWith`.
+    If you use this parameter, you cannot also use `nameContains` or `nameEndsWith`.
     """
 
     name_to: Annotated[str, PropertyInfo(alias="nameTo")]
