@@ -60,12 +60,12 @@ class CustomerListParams(TypedDict, total=False):
     """
 
     limit: int
-    """The maximum number of objects to return, ranging from 1 to 500.
+    """The maximum number of objects to return.
 
-    Defaults to 500. Use this parameter in conjunction with the `cursor` parameter
-    to paginate through results. The response will include a `nextCursor` field,
-    which can be used as the `cursor` parameter value in subsequent requests to
-    fetch the next set of results.
+    Ranging from 1 to 200, defaults to 200. Use this parameter in conjunction with
+    the `cursor` parameter to paginate through results. The response will include a
+    `nextCursor` field, which can be used as the `cursor` parameter value in
+    subsequent requests to fetch the next set of results.
     """
 
     name_contains: Annotated[str, PropertyInfo(alias="nameContains")]
