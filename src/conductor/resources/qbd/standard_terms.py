@@ -189,13 +189,15 @@ class StandardTermsResource(SyncAPIResource):
               "Payment Terms:Net 15". Unlike `name`, `fullName` is guaranteed to be unique
               across all standard term objects.
 
-              NOTE: If you include this parameter, all other query parameters will be ignored.
+              NOTE: If you include this parameter, QuickBooks will ignore all other query
+              parameters.
 
           ids: Filter for specific standard terms by their QuickBooks-assigned unique
               identifier(s). Specify a single ID or multiple using a comma-separated list
               (e.g., `ids=1,2,3`).
 
-              NOTE: If you include this parameter, all other query parameters will be ignored.
+              NOTE: If you include this parameter, QuickBooks will ignore all other query
+              parameters.
 
           limit: The maximum number of objects to return. NOTE: QuickBooks Desktop does not
               support cursor-based pagination for standard terms. Hence, this parameter will
@@ -430,13 +432,15 @@ class AsyncStandardTermsResource(AsyncAPIResource):
               "Payment Terms:Net 15". Unlike `name`, `fullName` is guaranteed to be unique
               across all standard term objects.
 
-              NOTE: If you include this parameter, all other query parameters will be ignored.
+              NOTE: If you include this parameter, QuickBooks will ignore all other query
+              parameters.
 
           ids: Filter for specific standard terms by their QuickBooks-assigned unique
               identifier(s). Specify a single ID or multiple using a comma-separated list
               (e.g., `ids=1,2,3`).
 
-              NOTE: If you include this parameter, all other query parameters will be ignored.
+              NOTE: If you include this parameter, QuickBooks will ignore all other query
+              parameters.
 
           limit: The maximum number of objects to return. NOTE: QuickBooks Desktop does not
               support cursor-based pagination for standard terms. Hence, this parameter will
