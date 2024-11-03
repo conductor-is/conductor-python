@@ -26,7 +26,8 @@ class ClassListParams(TypedDict, total=False):
     has the `name` "Marketing", its `fullName` would be "Department:Marketing".
     Unlike `name`, `fullName` is guaranteed to be unique across all class objects.
 
-    NOTE: If you include this parameter, all other query parameters will be ignored.
+    NOTE: If you include this parameter, QuickBooks will ignore all other query
+    parameters.
     """
 
     ids: str
@@ -35,7 +36,8 @@ class ClassListParams(TypedDict, total=False):
     Specify a single ID or multiple using a comma-separated list (e.g.,
     `ids=1,2,3`).
 
-    NOTE: If you include this parameter, all other query parameters will be ignored.
+    NOTE: If you include this parameter, QuickBooks will ignore all other query
+    parameters.
     """
 
     limit: int
