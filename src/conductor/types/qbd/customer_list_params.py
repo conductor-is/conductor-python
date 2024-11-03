@@ -47,16 +47,18 @@ class CustomerListParams(TypedDict, total=False):
     own `name`, separated by colons. For example, if a customer is under "ABC
     Corporation" and has the `name` "Website Redesign Project", its `fullName` would
     be "ABC Corporation:Website Redesign Project". Unlike `name`, `fullName` is
-    guaranteed to be unique across all customer objects. NOTE: If you include this
-    parameter, all other query parameters will be ignored.
+    guaranteed to be unique across all customer objects.
+
+    NOTE: If you include this parameter, all other query parameters will be ignored.
     """
 
     ids: str
     """Filter for specific customers by their QuickBooks-assigned unique identifier(s).
 
     Specify a single ID or multiple using a comma-separated list (e.g.,
-    `ids=1,2,3`). NOTE: If you include this parameter, all other query parameters
-    will be ignored.
+    `ids=1,2,3`).
+
+    NOTE: If you include this parameter, all other query parameters will be ignored.
     """
 
     limit: int

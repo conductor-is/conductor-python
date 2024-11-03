@@ -25,16 +25,18 @@ class SalesTaxCodeListParams(TypedDict, total=False):
     with its own `name`, separated by colons. For example, if a sales-tax code is
     under "State" and has the `name` "CA Sales Tax", its `fullName` would be
     "State:CA Sales Tax". Unlike `name`, `fullName` is guaranteed to be unique
-    across all sales-tax code objects. NOTE: If you include this parameter, all
-    other query parameters will be ignored.
+    across all sales-tax code objects.
+
+    NOTE: If you include this parameter, all other query parameters will be ignored.
     """
 
     ids: str
     """
     Filter for specific sales-tax codes by their QuickBooks-assigned unique
     identifier(s). Specify a single ID or multiple using a comma-separated list
-    (e.g., `ids=1,2,3`). NOTE: If you include this parameter, all other query
-    parameters will be ignored.
+    (e.g., `ids=1,2,3`).
+
+    NOTE: If you include this parameter, all other query parameters will be ignored.
     """
 
     limit: int
