@@ -298,19 +298,19 @@ class SalesTaxCodesResource(SyncAPIResource):
               via the name-range (e.g., `nameFrom=A&nameTo=B`) query parameters.
 
           name_contains: Filter for sales-tax codes whose `name` contains this substring,
-              case-insensitive. If you use this parameter, you cannot also use
+              case-insensitive. NOTE: If you use this parameter, you cannot also use
               `nameStartsWith` or `nameEndsWith`.
 
           name_ends_with: Filter for sales-tax codes whose `name` ends with this substring,
-              case-insensitive. If you use this parameter, you cannot also use `nameContains`
-              or `nameStartsWith`.
+              case-insensitive. NOTE: If you use this parameter, you cannot also use
+              `nameContains` or `nameStartsWith`.
 
           name_from: Filter for sales-tax codes whose `name` is alphabetically greater than or equal
               to this value.
 
           name_starts_with: Filter for sales-tax codes whose `name` starts with this substring,
-              case-insensitive. If you use this parameter, you cannot also use `nameContains`
-              or `nameEndsWith`.
+              case-insensitive. NOTE: If you use this parameter, you cannot also use
+              `nameContains` or `nameEndsWith`.
 
           name_to: Filter for sales-tax codes whose `name` is alphabetically less than or equal to
               this value.
@@ -633,19 +633,19 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
               via the name-range (e.g., `nameFrom=A&nameTo=B`) query parameters.
 
           name_contains: Filter for sales-tax codes whose `name` contains this substring,
-              case-insensitive. If you use this parameter, you cannot also use
+              case-insensitive. NOTE: If you use this parameter, you cannot also use
               `nameStartsWith` or `nameEndsWith`.
 
           name_ends_with: Filter for sales-tax codes whose `name` ends with this substring,
-              case-insensitive. If you use this parameter, you cannot also use `nameContains`
-              or `nameStartsWith`.
+              case-insensitive. NOTE: If you use this parameter, you cannot also use
+              `nameContains` or `nameStartsWith`.
 
           name_from: Filter for sales-tax codes whose `name` is alphabetically greater than or equal
               to this value.
 
           name_starts_with: Filter for sales-tax codes whose `name` starts with this substring,
-              case-insensitive. If you use this parameter, you cannot also use `nameContains`
-              or `nameEndsWith`.
+              case-insensitive. NOTE: If you use this parameter, you cannot also use
+              `nameContains` or `nameEndsWith`.
 
           name_to: Filter for sales-tax codes whose `name` is alphabetically less than or equal to
               this value.
