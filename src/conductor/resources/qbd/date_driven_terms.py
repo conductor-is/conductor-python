@@ -195,13 +195,15 @@ class DateDrivenTermsResource(SyncAPIResource):
               with its own `name`, separated by colons. For example, if a date-driven term is
               under "Net 30" and has the `name` "2% 10 Net 30", its `fullName` would be "Net
               30:2% 10 Net 30". Unlike `name`, `fullName` is guaranteed to be unique across
-              all date-driven term objects. NOTE: If you include this parameter, all other
-              query parameters will be ignored.
+              all date-driven term objects.
+
+              NOTE: If you include this parameter, all other query parameters will be ignored.
 
           ids: Filter for specific date-driven terms by their QuickBooks-assigned unique
               identifier(s). Specify a single ID or multiple using a comma-separated list
-              (e.g., `ids=1,2,3`). NOTE: If you include this parameter, all other query
-              parameters will be ignored.
+              (e.g., `ids=1,2,3`).
+
+              NOTE: If you include this parameter, all other query parameters will be ignored.
 
           limit: The maximum number of objects to return. NOTE: QuickBooks Desktop does not
               support cursor-based pagination for date-driven terms. Hence, this parameter
@@ -442,13 +444,15 @@ class AsyncDateDrivenTermsResource(AsyncAPIResource):
               with its own `name`, separated by colons. For example, if a date-driven term is
               under "Net 30" and has the `name` "2% 10 Net 30", its `fullName` would be "Net
               30:2% 10 Net 30". Unlike `name`, `fullName` is guaranteed to be unique across
-              all date-driven term objects. NOTE: If you include this parameter, all other
-              query parameters will be ignored.
+              all date-driven term objects.
+
+              NOTE: If you include this parameter, all other query parameters will be ignored.
 
           ids: Filter for specific date-driven terms by their QuickBooks-assigned unique
               identifier(s). Specify a single ID or multiple using a comma-separated list
-              (e.g., `ids=1,2,3`). NOTE: If you include this parameter, all other query
-              parameters will be ignored.
+              (e.g., `ids=1,2,3`).
+
+              NOTE: If you include this parameter, all other query parameters will be ignored.
 
           limit: The maximum number of objects to return. NOTE: QuickBooks Desktop does not
               support cursor-based pagination for date-driven terms. Hence, this parameter
