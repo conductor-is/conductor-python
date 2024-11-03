@@ -386,7 +386,7 @@ class CreditCardCreditsResource(SyncAPIResource):
 
           include_line_items: Whether to include line items in the response.
 
-          limit: The maximum number of objects to return, ranging from 1 to 500. Defaults to 500.
+          limit: The maximum number of objects to return. Ranging from 1 to 200, defaults to 200.
               Use this parameter in conjunction with the `cursor` parameter to paginate
               through results. The response will include a `nextCursor` field, which can be
               used as the `cursor` parameter value in subsequent requests to fetch the next
@@ -836,7 +836,7 @@ class AsyncCreditCardCreditsResource(AsyncAPIResource):
 
           include_line_items: Whether to include line items in the response.
 
-          limit: The maximum number of objects to return, ranging from 1 to 500. Defaults to 500.
+          limit: The maximum number of objects to return. Ranging from 1 to 200, defaults to 200.
               Use this parameter in conjunction with the `cursor` parameter to paginate
               through results. The response will include a `nextCursor` field, which can be
               used as the `cursor` parameter value in subsequent requests to fetch the next
