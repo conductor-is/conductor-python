@@ -199,7 +199,7 @@ class StandardTermsResource(SyncAPIResource):
               support cursor-based pagination for standard terms. Hence, this parameter will
               limit the response size, but you will not be able to fetch the next set of
               results. To paginate through the results for this endpoint, try fetching batches
-              via the date-range query parameters.
+              via the name-range (e.g., `nameFrom=A&nameTo=B`) query parameters.
 
           name_contains: Filter for standard terms whose `name` contains this substring,
               case-insensitive. If you use this parameter, you cannot also use
@@ -438,7 +438,7 @@ class AsyncStandardTermsResource(AsyncAPIResource):
               support cursor-based pagination for standard terms. Hence, this parameter will
               limit the response size, but you will not be able to fetch the next set of
               results. To paginate through the results for this endpoint, try fetching batches
-              via the date-range query parameters.
+              via the name-range (e.g., `nameFrom=A&nameTo=B`) query parameters.
 
           name_contains: Filter for standard terms whose `name` contains this substring,
               case-insensitive. If you use this parameter, you cannot also use
