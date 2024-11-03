@@ -374,13 +374,15 @@ class NonInventoryItemsResource(SyncAPIResource):
               Unlike `name`, `fullName` is guaranteed to be unique across all non-inventory
               item objects.
 
-              NOTE: If you include this parameter, all other query parameters will be ignored.
+              NOTE: If you include this parameter, QuickBooks will ignore all other query
+              parameters.
 
           ids: Filter for specific non-inventory items by their QuickBooks-assigned unique
               identifier(s). Specify a single ID or multiple using a comma-separated list
               (e.g., `ids=1,2,3`).
 
-              NOTE: If you include this parameter, all other query parameters will be ignored.
+              NOTE: If you include this parameter, QuickBooks will ignore all other query
+              parameters.
 
           limit: The maximum number of objects to return. Ranging from 1 to 200, defaults to 200.
               Use this parameter in conjunction with the `cursor` parameter to paginate
@@ -799,13 +801,15 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
               Unlike `name`, `fullName` is guaranteed to be unique across all non-inventory
               item objects.
 
-              NOTE: If you include this parameter, all other query parameters will be ignored.
+              NOTE: If you include this parameter, QuickBooks will ignore all other query
+              parameters.
 
           ids: Filter for specific non-inventory items by their QuickBooks-assigned unique
               identifier(s). Specify a single ID or multiple using a comma-separated list
               (e.g., `ids=1,2,3`).
 
-              NOTE: If you include this parameter, all other query parameters will be ignored.
+              NOTE: If you include this parameter, QuickBooks will ignore all other query
+              parameters.
 
           limit: The maximum number of objects to return. Ranging from 1 to 200, defaults to 200.
               Use this parameter in conjunction with the `cursor` parameter to paginate

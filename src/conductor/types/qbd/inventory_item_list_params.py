@@ -42,7 +42,8 @@ class InventoryItemListParams(TypedDict, total=False):
     "Furniture:Kitchen:Cabinet". Unlike `name`, `fullName` is guaranteed to be
     unique across all inventory item objects.
 
-    NOTE: If you include this parameter, all other query parameters will be ignored.
+    NOTE: If you include this parameter, QuickBooks will ignore all other query
+    parameters.
     """
 
     ids: str
@@ -51,7 +52,8 @@ class InventoryItemListParams(TypedDict, total=False):
     identifier(s). Specify a single ID or multiple using a comma-separated list
     (e.g., `ids=1,2,3`).
 
-    NOTE: If you include this parameter, all other query parameters will be ignored.
+    NOTE: If you include this parameter, QuickBooks will ignore all other query
+    parameters.
     """
 
     limit: int
