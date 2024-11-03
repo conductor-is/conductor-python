@@ -53,15 +53,15 @@ class StandardTermListParams(TypedDict, total=False):
     """Filter for standard terms whose `name` contains this substring,
     case-insensitive.
 
-    If you use this parameter, you cannot also use `nameStartsWith` or
+    NOTE: If you use this parameter, you cannot also use `nameStartsWith` or
     `nameEndsWith`.
     """
 
     name_ends_with: Annotated[str, PropertyInfo(alias="nameEndsWith")]
     """
     Filter for standard terms whose `name` ends with this substring,
-    case-insensitive. If you use this parameter, you cannot also use `nameContains`
-    or `nameStartsWith`.
+    case-insensitive. NOTE: If you use this parameter, you cannot also use
+    `nameContains` or `nameStartsWith`.
     """
 
     name_from: Annotated[str, PropertyInfo(alias="nameFrom")]
@@ -73,8 +73,8 @@ class StandardTermListParams(TypedDict, total=False):
     name_starts_with: Annotated[str, PropertyInfo(alias="nameStartsWith")]
     """
     Filter for standard terms whose `name` starts with this substring,
-    case-insensitive. If you use this parameter, you cannot also use `nameContains`
-    or `nameEndsWith`.
+    case-insensitive. NOTE: If you use this parameter, you cannot also use
+    `nameContains` or `nameEndsWith`.
     """
 
     name_to: Annotated[str, PropertyInfo(alias="nameTo")]
