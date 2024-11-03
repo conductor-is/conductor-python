@@ -397,12 +397,14 @@ class CreditCardCreditsResource(SyncAPIResource):
               ID or multiple using a comma-separated list (e.g., `payeeIds=1,2,3`). These are
               the vendors or companies from whom the credits were received.
 
-          ref_number_contains: Filter for credit card credits whose `refNumber` contains this substring. If you
-              use this parameter, you cannot also use `refNumberStartsWith` or
+          ref_number_contains:
+              Filter for credit card credits whose `refNumber` contains this substring. NOTE:
+              If you use this parameter, you cannot also use `refNumberStartsWith` or
               `refNumberEndsWith`.
 
-          ref_number_ends_with: Filter for credit card credits whose `refNumber` ends with this substring. If
-              you use this parameter, you cannot also use `refNumberContains` or
+          ref_number_ends_with:
+              Filter for credit card credits whose `refNumber` ends with this substring. NOTE:
+              If you use this parameter, you cannot also use `refNumberContains` or
               `refNumberStartsWith`.
 
           ref_number_from: Filter for credit card credits whose `refNumber` is greater than or equal to
@@ -417,8 +419,8 @@ class CreditCardCreditsResource(SyncAPIResource):
 
               NOTE: If you include this parameter, all other query parameters will be ignored.
 
-          ref_number_starts_with: Filter for credit card credits whose `refNumber` starts with this substring. If
-              you use this parameter, you cannot also use `refNumberContains` or
+          ref_number_starts_with: Filter for credit card credits whose `refNumber` starts with this substring.
+              NOTE: If you use this parameter, you cannot also use `refNumberContains` or
               `refNumberEndsWith`.
 
           ref_number_to: Filter for credit card credits whose `refNumber` is less than or equal to this
@@ -849,12 +851,14 @@ class AsyncCreditCardCreditsResource(AsyncAPIResource):
               ID or multiple using a comma-separated list (e.g., `payeeIds=1,2,3`). These are
               the vendors or companies from whom the credits were received.
 
-          ref_number_contains: Filter for credit card credits whose `refNumber` contains this substring. If you
-              use this parameter, you cannot also use `refNumberStartsWith` or
+          ref_number_contains:
+              Filter for credit card credits whose `refNumber` contains this substring. NOTE:
+              If you use this parameter, you cannot also use `refNumberStartsWith` or
               `refNumberEndsWith`.
 
-          ref_number_ends_with: Filter for credit card credits whose `refNumber` ends with this substring. If
-              you use this parameter, you cannot also use `refNumberContains` or
+          ref_number_ends_with:
+              Filter for credit card credits whose `refNumber` ends with this substring. NOTE:
+              If you use this parameter, you cannot also use `refNumberContains` or
               `refNumberStartsWith`.
 
           ref_number_from: Filter for credit card credits whose `refNumber` is greater than or equal to
@@ -869,8 +873,8 @@ class AsyncCreditCardCreditsResource(AsyncAPIResource):
 
               NOTE: If you include this parameter, all other query parameters will be ignored.
 
-          ref_number_starts_with: Filter for credit card credits whose `refNumber` starts with this substring. If
-              you use this parameter, you cannot also use `refNumberContains` or
+          ref_number_starts_with: Filter for credit card credits whose `refNumber` starts with this substring.
+              NOTE: If you use this parameter, you cannot also use `refNumberContains` or
               `refNumberEndsWith`.
 
           ref_number_to: Filter for credit card credits whose `refNumber` is less than or equal to this

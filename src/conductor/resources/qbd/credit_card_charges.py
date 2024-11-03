@@ -400,12 +400,14 @@ class CreditCardChargesResource(SyncAPIResource):
               the vendors or companies from whom merchandise or services were purchased for
               these credit card charges.
 
-          ref_number_contains: Filter for credit card charges whose `refNumber` contains this substring. If you
-              use this parameter, you cannot also use `refNumberStartsWith` or
+          ref_number_contains:
+              Filter for credit card charges whose `refNumber` contains this substring. NOTE:
+              If you use this parameter, you cannot also use `refNumberStartsWith` or
               `refNumberEndsWith`.
 
-          ref_number_ends_with: Filter for credit card charges whose `refNumber` ends with this substring. If
-              you use this parameter, you cannot also use `refNumberContains` or
+          ref_number_ends_with:
+              Filter for credit card charges whose `refNumber` ends with this substring. NOTE:
+              If you use this parameter, you cannot also use `refNumberContains` or
               `refNumberStartsWith`.
 
           ref_number_from: Filter for credit card charges whose `refNumber` is greater than or equal to
@@ -420,8 +422,8 @@ class CreditCardChargesResource(SyncAPIResource):
 
               NOTE: If you include this parameter, all other query parameters will be ignored.
 
-          ref_number_starts_with: Filter for credit card charges whose `refNumber` starts with this substring. If
-              you use this parameter, you cannot also use `refNumberContains` or
+          ref_number_starts_with: Filter for credit card charges whose `refNumber` starts with this substring.
+              NOTE: If you use this parameter, you cannot also use `refNumberContains` or
               `refNumberEndsWith`.
 
           ref_number_to: Filter for credit card charges whose `refNumber` is less than or equal to this
@@ -855,12 +857,14 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
               the vendors or companies from whom merchandise or services were purchased for
               these credit card charges.
 
-          ref_number_contains: Filter for credit card charges whose `refNumber` contains this substring. If you
-              use this parameter, you cannot also use `refNumberStartsWith` or
+          ref_number_contains:
+              Filter for credit card charges whose `refNumber` contains this substring. NOTE:
+              If you use this parameter, you cannot also use `refNumberStartsWith` or
               `refNumberEndsWith`.
 
-          ref_number_ends_with: Filter for credit card charges whose `refNumber` ends with this substring. If
-              you use this parameter, you cannot also use `refNumberContains` or
+          ref_number_ends_with:
+              Filter for credit card charges whose `refNumber` ends with this substring. NOTE:
+              If you use this parameter, you cannot also use `refNumberContains` or
               `refNumberStartsWith`.
 
           ref_number_from: Filter for credit card charges whose `refNumber` is greater than or equal to
@@ -875,8 +879,8 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
 
               NOTE: If you include this parameter, all other query parameters will be ignored.
 
-          ref_number_starts_with: Filter for credit card charges whose `refNumber` starts with this substring. If
-              you use this parameter, you cannot also use `refNumberContains` or
+          ref_number_starts_with: Filter for credit card charges whose `refNumber` starts with this substring.
+              NOTE: If you use this parameter, you cannot also use `refNumberContains` or
               `refNumberEndsWith`.
 
           ref_number_to: Filter for credit card charges whose `refNumber` is less than or equal to this
