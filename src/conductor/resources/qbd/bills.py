@@ -427,8 +427,9 @@ class BillsResource(SyncAPIResource):
 
           ids: Filter for specific bills by their QuickBooks-assigned unique identifier(s).
               Specify a single ID or multiple using a comma-separated list (e.g.,
-              `ids=1,2,3`). NOTE: If you include this parameter, all other query parameters
-              will be ignored.
+              `ids=1,2,3`).
+
+              NOTE: If you include this parameter, all other query parameters will be ignored.
 
           include_line_items: Whether to include line items in the response.
 
@@ -457,8 +458,9 @@ class BillsResource(SyncAPIResource):
           ref_numbers: Filter for specific bills by their ref-number(s), case-sensitive. Specify a
               single ref-number or multiple using a comma-separated list (e.g.,
               `refNumbers=1,2,3`). In QuickBooks, ref-numbers are not required to be unique
-              and can be arbitrarily changed by the QuickBooks user. NOTE: If you include this
-              parameter, all other query parameters will be ignored.
+              and can be arbitrarily changed by the QuickBooks user.
+
+              NOTE: If you include this parameter, all other query parameters will be ignored.
 
           ref_number_starts_with: Filter for bills whose `refNumber` starts with this substring. If you use this
               parameter, you cannot also use `refNumberContains` or `refNumberEndsWith`.
@@ -928,8 +930,9 @@ class AsyncBillsResource(AsyncAPIResource):
 
           ids: Filter for specific bills by their QuickBooks-assigned unique identifier(s).
               Specify a single ID or multiple using a comma-separated list (e.g.,
-              `ids=1,2,3`). NOTE: If you include this parameter, all other query parameters
-              will be ignored.
+              `ids=1,2,3`).
+
+              NOTE: If you include this parameter, all other query parameters will be ignored.
 
           include_line_items: Whether to include line items in the response.
 
@@ -958,8 +961,9 @@ class AsyncBillsResource(AsyncAPIResource):
           ref_numbers: Filter for specific bills by their ref-number(s), case-sensitive. Specify a
               single ref-number or multiple using a comma-separated list (e.g.,
               `refNumbers=1,2,3`). In QuickBooks, ref-numbers are not required to be unique
-              and can be arbitrarily changed by the QuickBooks user. NOTE: If you include this
-              parameter, all other query parameters will be ignored.
+              and can be arbitrarily changed by the QuickBooks user.
+
+              NOTE: If you include this parameter, all other query parameters will be ignored.
 
           ref_number_starts_with: Filter for bills whose `refNumber` starts with this substring. If you use this
               parameter, you cannot also use `refNumberContains` or `refNumberEndsWith`.

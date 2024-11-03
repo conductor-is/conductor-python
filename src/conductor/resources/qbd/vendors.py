@@ -653,13 +653,15 @@ class VendorsResource(SyncAPIResource):
               `name`, separated by colons. For example, if a vendor is under "Suppliers" and
               has the `name` "ABC Office Supplies", its `fullName` would be "Suppliers:ABC
               Office Supplies". Unlike `name`, `fullName` is guaranteed to be unique across
-              all vendor objects. NOTE: If you include this parameter, all other query
-              parameters will be ignored.
+              all vendor objects.
+
+              NOTE: If you include this parameter, all other query parameters will be ignored.
 
           ids: Filter for specific vendors by their QuickBooks-assigned unique identifier(s).
               Specify a single ID or multiple using a comma-separated list (e.g.,
-              `ids=1,2,3`). NOTE: If you include this parameter, all other query parameters
-              will be ignored.
+              `ids=1,2,3`).
+
+              NOTE: If you include this parameter, all other query parameters will be ignored.
 
           limit: The maximum number of objects to return. Ranging from 1 to 200, defaults to 200.
               Use this parameter in conjunction with the `cursor` parameter to paginate
@@ -1379,13 +1381,15 @@ class AsyncVendorsResource(AsyncAPIResource):
               `name`, separated by colons. For example, if a vendor is under "Suppliers" and
               has the `name` "ABC Office Supplies", its `fullName` would be "Suppliers:ABC
               Office Supplies". Unlike `name`, `fullName` is guaranteed to be unique across
-              all vendor objects. NOTE: If you include this parameter, all other query
-              parameters will be ignored.
+              all vendor objects.
+
+              NOTE: If you include this parameter, all other query parameters will be ignored.
 
           ids: Filter for specific vendors by their QuickBooks-assigned unique identifier(s).
               Specify a single ID or multiple using a comma-separated list (e.g.,
-              `ids=1,2,3`). NOTE: If you include this parameter, all other query parameters
-              will be ignored.
+              `ids=1,2,3`).
+
+              NOTE: If you include this parameter, all other query parameters will be ignored.
 
           limit: The maximum number of objects to return. Ranging from 1 to 200, defaults to 200.
               Use this parameter in conjunction with the `cursor` parameter to paginate
