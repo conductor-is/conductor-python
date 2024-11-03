@@ -73,14 +73,14 @@ class VendorListParams(TypedDict, total=False):
     name_contains: Annotated[str, PropertyInfo(alias="nameContains")]
     """Filter for vendors whose `name` contains this substring, case-insensitive.
 
-    If you use this parameter, you cannot also use `nameStartsWith` or
+    NOTE: If you use this parameter, you cannot also use `nameStartsWith` or
     `nameEndsWith`.
     """
 
     name_ends_with: Annotated[str, PropertyInfo(alias="nameEndsWith")]
     """Filter for vendors whose `name` ends with this substring, case-insensitive.
 
-    If you use this parameter, you cannot also use `nameContains` or
+    NOTE: If you use this parameter, you cannot also use `nameContains` or
     `nameStartsWith`.
     """
 
@@ -93,7 +93,8 @@ class VendorListParams(TypedDict, total=False):
     name_starts_with: Annotated[str, PropertyInfo(alias="nameStartsWith")]
     """Filter for vendors whose `name` starts with this substring, case-insensitive.
 
-    If you use this parameter, you cannot also use `nameContains` or `nameEndsWith`.
+    NOTE: If you use this parameter, you cannot also use `nameContains` or
+    `nameEndsWith`.
     """
 
     name_to: Annotated[str, PropertyInfo(alias="nameTo")]
