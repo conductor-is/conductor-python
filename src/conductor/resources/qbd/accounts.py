@@ -414,11 +414,13 @@ class AccountsResource(SyncAPIResource):
               or multiple using a comma-separated list (e.g., `currencyIds=1,2,3`).
 
           full_names: Filter for specific accounts by their full-name(s), case-insensitive. Like `id`,
-              a `fullName` is a unique identifier for an account, and is formed by by
-              combining the names of its parent objects with its own `name`, separated by
-              colons. For example, if an account is under "Expenses:Utilities" and has the
-              `name` "Electricity", its `fullName` would be "Expenses:Utilities:Electricity".
-              Unlike `name`, `fullName` is guaranteed to be unique across all account objects.
+              `fullName` is a unique identifier for an account, formed by by combining the
+              names of its parent objects with its own `name`, separated by colons. For
+              example, if an account is under "Expenses:Utilities" and has the `name`
+              "Electricity", its `fullName` would be "Expenses:Utilities:Electricity". Unlike
+              `name`, `fullName` is guaranteed to be unique across all account objects. Also,
+              unlike `id`, `fullName` can be arbitrarily changed by the QuickBooks user when
+              modifying its underlying `name` field.
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
@@ -886,11 +888,13 @@ class AsyncAccountsResource(AsyncAPIResource):
               or multiple using a comma-separated list (e.g., `currencyIds=1,2,3`).
 
           full_names: Filter for specific accounts by their full-name(s), case-insensitive. Like `id`,
-              a `fullName` is a unique identifier for an account, and is formed by by
-              combining the names of its parent objects with its own `name`, separated by
-              colons. For example, if an account is under "Expenses:Utilities" and has the
-              `name` "Electricity", its `fullName` would be "Expenses:Utilities:Electricity".
-              Unlike `name`, `fullName` is guaranteed to be unique across all account objects.
+              `fullName` is a unique identifier for an account, formed by by combining the
+              names of its parent objects with its own `name`, separated by colons. For
+              example, if an account is under "Expenses:Utilities" and has the `name`
+              "Electricity", its `fullName` would be "Expenses:Utilities:Electricity". Unlike
+              `name`, `fullName` is guaranteed to be unique across all account objects. Also,
+              unlike `id`, `fullName` can be arbitrarily changed by the QuickBooks user when
+              modifying its underlying `name` field.
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.

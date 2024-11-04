@@ -264,11 +264,13 @@ class SalesTaxCodesResource(SyncAPIResource):
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
           full_names: Filter for specific sales-tax codes by their full-name(s), case-insensitive.
-              Like `id`, a `fullName` is a unique identifier for a sales-tax code, and is
-              formed by by combining the names of its parent objects with its own `name`,
-              separated by colons. For example, if a sales-tax code is under "State" and has
-              the `name` "CA Sales Tax", its `fullName` would be "State:CA Sales Tax". Unlike
-              `name`, `fullName` is guaranteed to be unique across all sales-tax code objects.
+              Like `id`, `fullName` is a unique identifier for a sales-tax code, formed by by
+              combining the names of its parent objects with its own `name`, separated by
+              colons. For example, if a sales-tax code is under "State" and has the `name` "CA
+              Sales Tax", its `fullName` would be "State:CA Sales Tax". Unlike `name`,
+              `fullName` is guaranteed to be unique across all sales-tax code objects. Also,
+              unlike `id`, `fullName` can be arbitrarily changed by the QuickBooks user when
+              modifying its underlying `name` field.
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
@@ -586,11 +588,13 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
           full_names: Filter for specific sales-tax codes by their full-name(s), case-insensitive.
-              Like `id`, a `fullName` is a unique identifier for a sales-tax code, and is
-              formed by by combining the names of its parent objects with its own `name`,
-              separated by colons. For example, if a sales-tax code is under "State" and has
-              the `name` "CA Sales Tax", its `fullName` would be "State:CA Sales Tax". Unlike
-              `name`, `fullName` is guaranteed to be unique across all sales-tax code objects.
+              Like `id`, `fullName` is a unique identifier for a sales-tax code, formed by by
+              combining the names of its parent objects with its own `name`, separated by
+              colons. For example, if a sales-tax code is under "State" and has the `name` "CA
+              Sales Tax", its `fullName` would be "State:CA Sales Tax". Unlike `name`,
+              `fullName` is guaranteed to be unique across all sales-tax code objects. Also,
+              unlike `id`, `fullName` can be arbitrarily changed by the QuickBooks user when
+              modifying its underlying `name` field.
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
