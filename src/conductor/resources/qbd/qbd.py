@@ -10,6 +10,14 @@ from .bills import (
     BillsResourceWithStreamingResponse,
     AsyncBillsResourceWithStreamingResponse,
 )
+from .checks import (
+    ChecksResource,
+    AsyncChecksResource,
+    ChecksResourceWithRawResponse,
+    AsyncChecksResourceWithRawResponse,
+    ChecksResourceWithStreamingResponse,
+    AsyncChecksResourceWithStreamingResponse,
+)
 from .classes import (
     ClassesResource,
     AsyncClassesResource,
@@ -202,6 +210,10 @@ class QbdResource(SyncAPIResource):
         return VendorsResource(self._client)
 
     @cached_property
+    def checks(self) -> ChecksResource:
+        return ChecksResource(self._client)
+
+    @cached_property
     def with_raw_response(self) -> QbdResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return the
@@ -285,6 +297,10 @@ class AsyncQbdResource(AsyncAPIResource):
     @cached_property
     def vendors(self) -> AsyncVendorsResource:
         return AsyncVendorsResource(self._client)
+
+    @cached_property
+    def checks(self) -> AsyncChecksResource:
+        return AsyncChecksResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncQbdResourceWithRawResponse:
@@ -374,6 +390,10 @@ class QbdResourceWithRawResponse:
     def vendors(self) -> VendorsResourceWithRawResponse:
         return VendorsResourceWithRawResponse(self._qbd.vendors)
 
+    @cached_property
+    def checks(self) -> ChecksResourceWithRawResponse:
+        return ChecksResourceWithRawResponse(self._qbd.checks)
+
 
 class AsyncQbdResourceWithRawResponse:
     def __init__(self, qbd: AsyncQbdResource) -> None:
@@ -442,6 +462,10 @@ class AsyncQbdResourceWithRawResponse:
     @cached_property
     def vendors(self) -> AsyncVendorsResourceWithRawResponse:
         return AsyncVendorsResourceWithRawResponse(self._qbd.vendors)
+
+    @cached_property
+    def checks(self) -> AsyncChecksResourceWithRawResponse:
+        return AsyncChecksResourceWithRawResponse(self._qbd.checks)
 
 
 class QbdResourceWithStreamingResponse:
@@ -512,6 +536,10 @@ class QbdResourceWithStreamingResponse:
     def vendors(self) -> VendorsResourceWithStreamingResponse:
         return VendorsResourceWithStreamingResponse(self._qbd.vendors)
 
+    @cached_property
+    def checks(self) -> ChecksResourceWithStreamingResponse:
+        return ChecksResourceWithStreamingResponse(self._qbd.checks)
+
 
 class AsyncQbdResourceWithStreamingResponse:
     def __init__(self, qbd: AsyncQbdResource) -> None:
@@ -580,3 +608,7 @@ class AsyncQbdResourceWithStreamingResponse:
     @cached_property
     def vendors(self) -> AsyncVendorsResourceWithStreamingResponse:
         return AsyncVendorsResourceWithStreamingResponse(self._qbd.vendors)
+
+    @cached_property
+    def checks(self) -> AsyncChecksResourceWithStreamingResponse:
+        return AsyncChecksResourceWithStreamingResponse(self._qbd.checks)
