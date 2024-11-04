@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from typing import List
 from typing_extensions import Literal
 
 import httpx
@@ -163,8 +164,8 @@ class DateDrivenTermsResource(SyncAPIResource):
         self,
         *,
         conductor_end_user_id: str,
-        full_names: str | NotGiven = NOT_GIVEN,
-        ids: str | NotGiven = NOT_GIVEN,
+        full_names: List[str] | NotGiven = NOT_GIVEN,
+        ids: List[str] | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         name_contains: str | NotGiven = NOT_GIVEN,
         name_ends_with: str | NotGiven = NOT_GIVEN,
@@ -414,8 +415,8 @@ class AsyncDateDrivenTermsResource(AsyncAPIResource):
         self,
         *,
         conductor_end_user_id: str,
-        full_names: str | NotGiven = NOT_GIVEN,
-        ids: str | NotGiven = NOT_GIVEN,
+        full_names: List[str] | NotGiven = NOT_GIVEN,
+        ids: List[str] | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         name_contains: str | NotGiven = NOT_GIVEN,
         name_ends_with: str | NotGiven = NOT_GIVEN,

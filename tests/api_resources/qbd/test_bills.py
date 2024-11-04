@@ -814,10 +814,10 @@ class TestBills:
     def test_method_list_with_all_params(self, client: Conductor) -> None:
         bill = client.qbd.bills.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
-            account_ids="80000001-1234567890",
-            currency_ids="80000001-1234567890",
+            account_ids=["string", "string", "string"],
+            currency_ids=["string", "string", "string"],
             cursor="12345678-abcd-abcd-example-1234567890ab",
-            ids="123ABC-1234567890",
+            ids=["string", "string", "string"],
             include_line_items=True,
             include_linked_transactions=False,
             limit=200,
@@ -825,14 +825,14 @@ class TestBills:
             ref_number_contains="BILL-1234",
             ref_number_ends_with="1234",
             ref_number_from="BILL-0001",
-            ref_numbers="BILL-1234",
+            ref_numbers=["string", "string", "string"],
             ref_number_starts_with="BILL",
             ref_number_to="BILL-9999",
             transaction_date_from=parse_date("2019-12-27"),
             transaction_date_to=parse_date("2019-12-27"),
             updated_after="updatedAfter",
             updated_before="updatedBefore",
-            vendor_ids="80000001-1234567890",
+            vendor_ids=["string", "string", "string"],
         )
         assert_matches_type(SyncCursorPage[Bill], bill, path=["response"])
 
@@ -1659,10 +1659,10 @@ class TestAsyncBills:
     async def test_method_list_with_all_params(self, async_client: AsyncConductor) -> None:
         bill = await async_client.qbd.bills.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
-            account_ids="80000001-1234567890",
-            currency_ids="80000001-1234567890",
+            account_ids=["string", "string", "string"],
+            currency_ids=["string", "string", "string"],
             cursor="12345678-abcd-abcd-example-1234567890ab",
-            ids="123ABC-1234567890",
+            ids=["string", "string", "string"],
             include_line_items=True,
             include_linked_transactions=False,
             limit=200,
@@ -1670,14 +1670,14 @@ class TestAsyncBills:
             ref_number_contains="BILL-1234",
             ref_number_ends_with="1234",
             ref_number_from="BILL-0001",
-            ref_numbers="BILL-1234",
+            ref_numbers=["string", "string", "string"],
             ref_number_starts_with="BILL",
             ref_number_to="BILL-9999",
             transaction_date_from=parse_date("2019-12-27"),
             transaction_date_to=parse_date("2019-12-27"),
             updated_after="updatedAfter",
             updated_before="updatedBefore",
-            vendor_ids="80000001-1234567890",
+            vendor_ids=["string", "string", "string"],
         )
         assert_matches_type(AsyncCursorPage[Bill], bill, path=["response"])
 

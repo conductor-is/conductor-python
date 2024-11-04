@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from typing import List
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
@@ -16,7 +17,7 @@ class NonInventoryItemListParams(TypedDict, total=False):
     `"Conductor-End-User-Id: {{END_USER_ID}}"`).
     """
 
-    class_ids: Annotated[str, PropertyInfo(alias="classIds")]
+    class_ids: Annotated[List[str], PropertyInfo(alias="classIds")]
     """Filter for non-inventory items of this class or classes.
 
     Specify a single class ID or multiple using a comma-separated list (e.g.,
@@ -31,7 +32,7 @@ class NonInventoryItemListParams(TypedDict, total=False):
     previous response. If omitted, the API returns the first page of results.
     """
 
-    full_names: Annotated[str, PropertyInfo(alias="fullNames")]
+    full_names: Annotated[List[str], PropertyInfo(alias="fullNames")]
     """Filter for specific non-inventory items by their full-name(s), case-insensitive.
 
     Specify a single full-name or multiple using a comma-separated list (e.g.,
@@ -47,7 +48,7 @@ class NonInventoryItemListParams(TypedDict, total=False):
     parameters.
     """
 
-    ids: str
+    ids: List[str]
     """
     Filter for specific non-inventory items by their QuickBooks-assigned unique
     identifier(s). Specify a single ID or multiple using a comma-separated list

@@ -182,8 +182,8 @@ class TestSalesTaxCodes:
     def test_method_list_with_all_params(self, client: Conductor) -> None:
         sales_tax_code = client.qbd.sales_tax_codes.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
-            full_names="State:CA Sales Tax",
-            ids="80000001-1234567890",
+            full_names=["string", "string", "string"],
+            ids=["string", "string", "string"],
             limit=10,
             name_contains="ABC",
             name_ends_with="ABC",
@@ -386,8 +386,8 @@ class TestAsyncSalesTaxCodes:
     async def test_method_list_with_all_params(self, async_client: AsyncConductor) -> None:
         sales_tax_code = await async_client.qbd.sales_tax_codes.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
-            full_names="State:CA Sales Tax",
-            ids="80000001-1234567890",
+            full_names=["string", "string", "string"],
+            ids=["string", "string", "string"],
             limit=10,
             name_contains="ABC",
             name_ends_with="ABC",

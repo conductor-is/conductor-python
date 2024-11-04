@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from typing import List
 from typing_extensions import Literal
 
 import httpx
@@ -278,10 +279,10 @@ class SalesTaxItemsResource(SyncAPIResource):
         self,
         *,
         conductor_end_user_id: str,
-        class_ids: str | NotGiven = NOT_GIVEN,
+        class_ids: List[str] | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
-        full_names: str | NotGiven = NOT_GIVEN,
-        ids: str | NotGiven = NOT_GIVEN,
+        full_names: List[str] | NotGiven = NOT_GIVEN,
+        ids: List[str] | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         name_contains: str | NotGiven = NOT_GIVEN,
         name_ends_with: str | NotGiven = NOT_GIVEN,
@@ -657,10 +658,10 @@ class AsyncSalesTaxItemsResource(AsyncAPIResource):
         self,
         *,
         conductor_end_user_id: str,
-        class_ids: str | NotGiven = NOT_GIVEN,
+        class_ids: List[str] | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
-        full_names: str | NotGiven = NOT_GIVEN,
-        ids: str | NotGiven = NOT_GIVEN,
+        full_names: List[str] | NotGiven = NOT_GIVEN,
+        ids: List[str] | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         name_contains: str | NotGiven = NOT_GIVEN,
         name_ends_with: str | NotGiven = NOT_GIVEN,

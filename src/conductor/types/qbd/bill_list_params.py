@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Union
+from typing import List, Union
 from datetime import date
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
@@ -18,14 +18,14 @@ class BillListParams(TypedDict, total=False):
     `"Conductor-End-User-Id: {{END_USER_ID}}"`).
     """
 
-    account_ids: Annotated[str, PropertyInfo(alias="accountIds")]
+    account_ids: Annotated[List[str], PropertyInfo(alias="accountIds")]
     """Filter for bills from this account or accounts.
 
     Specify a single account ID or multiple using a comma-separated list (e.g.,
     `accountIds=1,2,3`).
     """
 
-    currency_ids: Annotated[str, PropertyInfo(alias="currencyIds")]
+    currency_ids: Annotated[List[str], PropertyInfo(alias="currencyIds")]
     """Filter for bills in this currency or currencies.
 
     Specify a single currency ID or multiple using a comma-separated list (e.g.,
@@ -39,7 +39,7 @@ class BillListParams(TypedDict, total=False):
     previous response. If omitted, the API returns the first page of results.
     """
 
-    ids: str
+    ids: List[str]
     """Filter for specific bills by their QuickBooks-assigned unique identifier(s).
 
     Specify a single ID or multiple using a comma-separated list (e.g.,
@@ -92,7 +92,7 @@ class BillListParams(TypedDict, total=False):
     lexicographical comparison.
     """
 
-    ref_numbers: Annotated[str, PropertyInfo(alias="refNumbers")]
+    ref_numbers: Annotated[List[str], PropertyInfo(alias="refNumbers")]
     """Filter for specific bills by their ref-number(s), case-sensitive.
 
     Specify a single ref-number or multiple using a comma-separated list (e.g.,
@@ -143,7 +143,7 @@ class BillListParams(TypedDict, total=False):
     assumed to be 23:59:59 of that day.
     """
 
-    vendor_ids: Annotated[str, PropertyInfo(alias="vendorIds")]
+    vendor_ids: Annotated[List[str], PropertyInfo(alias="vendorIds")]
     """Filter for bills from this vendor or vendors.
 
     Specify a single vendor ID or multiple using a comma-separated list (e.g.,

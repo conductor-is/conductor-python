@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Union
+from typing import List, Union
 from datetime import date
 from typing_extensions import Required, Annotated, TypedDict
 
@@ -18,14 +18,14 @@ class CreditCardCreditListParams(TypedDict, total=False):
     `"Conductor-End-User-Id: {{END_USER_ID}}"`).
     """
 
-    account_ids: Annotated[str, PropertyInfo(alias="accountIds")]
+    account_ids: Annotated[List[str], PropertyInfo(alias="accountIds")]
     """Filter for credit card credits from this account or accounts.
 
     Specify a single account ID or multiple using a comma-separated list (e.g.,
     `accountIds=1,2,3`).
     """
 
-    currency_ids: Annotated[str, PropertyInfo(alias="currencyIds")]
+    currency_ids: Annotated[List[str], PropertyInfo(alias="currencyIds")]
     """Filter for credit card credits in this currency or currencies.
 
     Specify a single currency ID or multiple using a comma-separated list (e.g.,
@@ -39,7 +39,7 @@ class CreditCardCreditListParams(TypedDict, total=False):
     previous response. If omitted, the API returns the first page of results.
     """
 
-    ids: str
+    ids: List[str]
     """
     Filter for specific credit card credits by their QuickBooks-assigned unique
     identifier(s). Specify a single ID or multiple using a comma-separated list
@@ -61,7 +61,7 @@ class CreditCardCreditListParams(TypedDict, total=False):
     subsequent requests to fetch the next set of results.
     """
 
-    payee_ids: Annotated[str, PropertyInfo(alias="payeeIds")]
+    payee_ids: Annotated[List[str], PropertyInfo(alias="payeeIds")]
     """Filter for credit card credits from this payee or payees.
 
     Specify a single payee ID or multiple using a comma-separated list (e.g.,
@@ -91,7 +91,7 @@ class CreditCardCreditListParams(TypedDict, total=False):
     a lexicographical comparison.
     """
 
-    ref_numbers: Annotated[str, PropertyInfo(alias="refNumbers")]
+    ref_numbers: Annotated[List[str], PropertyInfo(alias="refNumbers")]
     """Filter for specific credit card credits by their ref-number(s), case-sensitive.
 
     Specify a single ref-number or multiple using a comma-separated list (e.g.,
