@@ -142,7 +142,10 @@ class AlternateShippingAddress(BaseModel):
     """The fifth line of the address, if needed."""
 
     name: str
-    """The case-insensitive unique name of this address, unique across all addresses."""
+    """The case-insensitive unique name of this address, unique across all addresses.
+
+    Maximum length: 41 characters.
+    """
 
     note: Optional[str] = None
     """
@@ -674,7 +677,8 @@ class Customer(BaseModel):
     Not guaranteed to be unique because it does not include the names of its parent
     objects like `fullName` does. For example, two customers could both have the
     `name` "Kitchen-Renovation", but they could have unique `fullName` values, such
-    as "Jones:Kitchen-Renovation" and "Baker:Kitchen-Renovation".
+    as "Jones:Kitchen-Renovation" and "Baker:Kitchen-Renovation". Maximum length: 41
+    characters.
     """
 
     note: Optional[str] = None

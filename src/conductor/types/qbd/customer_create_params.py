@@ -28,7 +28,8 @@ class CustomerCreateParams(TypedDict, total=False):
     Not guaranteed to be unique because it does not include the names of its parent
     objects like `fullName` does. For example, two customers could both have the
     `name` "Kitchen-Renovation", but they could have unique `fullName` values, such
-    as "Jones:Kitchen-Renovation" and "Baker:Kitchen-Renovation".
+    as "Jones:Kitchen-Renovation" and "Baker:Kitchen-Renovation". Maximum length: 41
+    characters.
     """
 
     conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]
@@ -334,7 +335,10 @@ class AdditionalNote(TypedDict, total=False):
 
 class AlternateShippingAddress(TypedDict, total=False):
     name: Required[str]
-    """The case-insensitive unique name of this address, unique across all addresses."""
+    """The case-insensitive unique name of this address, unique across all addresses.
+
+    Maximum length: 41 characters.
+    """
 
     city: str
     """The city, district, suburb, town, or village name of the address."""

@@ -157,7 +157,10 @@ class VendorUpdateParams(TypedDict, total=False):
     """The middle name of the contact person for this vendor."""
 
     name: str
-    """The case-insensitive unique name of this vendor, unique across all vendors."""
+    """The case-insensitive unique name of this vendor, unique across all vendors.
+
+    Maximum length: 41 characters.
+    """
 
     name_on_check: Annotated[str, PropertyInfo(alias="nameOnCheck")]
     """The vendor's name as it should appear on checks issued to this vendor."""

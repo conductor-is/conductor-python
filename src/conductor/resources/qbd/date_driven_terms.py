@@ -72,7 +72,7 @@ class DateDrivenTermsResource(SyncAPIResource):
           due_day_of_month: The day of the month when full payment is due without discount.
 
           name: The case-insensitive unique name of this date-driven term, unique across all
-              date-driven terms.
+              date-driven terms. Maximum length: 31 characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -323,7 +323,7 @@ class AsyncDateDrivenTermsResource(AsyncAPIResource):
           due_day_of_month: The day of the month when full payment is due without discount.
 
           name: The case-insensitive unique name of this date-driven term, unique across all
-              date-driven terms.
+              date-driven terms. Maximum length: 31 characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).

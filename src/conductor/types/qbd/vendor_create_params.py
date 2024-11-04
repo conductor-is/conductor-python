@@ -21,7 +21,10 @@ __all__ = [
 
 class VendorCreateParams(TypedDict, total=False):
     name: Required[str]
-    """The case-insensitive unique name of this vendor, unique across all vendors."""
+    """The case-insensitive unique name of this vendor, unique across all vendors.
+
+    Maximum length: 41 characters.
+    """
 
     conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]
     """

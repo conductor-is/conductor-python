@@ -58,7 +58,7 @@ class DateDrivenTerm(BaseModel):
     name: str
     """
     The case-insensitive unique name of this date-driven term, unique across all
-    date-driven terms.
+    date-driven terms. Maximum length: 31 characters.
     """
 
     object_type: Literal["qbd_date_driven_term"] = FieldInfo(alias="objectType")
