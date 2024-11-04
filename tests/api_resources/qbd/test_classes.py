@@ -172,8 +172,8 @@ class TestClasses:
     def test_method_list_with_all_params(self, client: Conductor) -> None:
         class_ = client.qbd.classes.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
-            full_names="Department:Marketing",
-            ids="80000001-1234567890",
+            full_names=["string", "string", "string"],
+            ids=["string", "string", "string"],
             limit=10,
             name_contains="ABC",
             name_ends_with="ABC",
@@ -369,8 +369,8 @@ class TestAsyncClasses:
     async def test_method_list_with_all_params(self, async_client: AsyncConductor) -> None:
         class_ = await async_client.qbd.classes.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
-            full_names="Department:Marketing",
-            ids="80000001-1234567890",
+            full_names=["string", "string", "string"],
+            ids=["string", "string", "string"],
             limit=10,
             name_contains="ABC",
             name_ends_with="ABC",

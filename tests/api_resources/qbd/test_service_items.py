@@ -228,10 +228,10 @@ class TestServiceItems:
     def test_method_list_with_all_params(self, client: Conductor) -> None:
         service_item = client.qbd.service_items.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
-            class_ids="80000001-1234567890",
+            class_ids=["string", "string", "string"],
             cursor="12345678-abcd-abcd-example-1234567890ab",
-            full_names="Professional Services:Consulting",
-            ids="80000001-1234567890",
+            full_names=["string", "string", "string"],
+            ids=["string", "string", "string"],
             limit=200,
             name_contains="ABC",
             name_ends_with="ABC",
@@ -480,10 +480,10 @@ class TestAsyncServiceItems:
     async def test_method_list_with_all_params(self, async_client: AsyncConductor) -> None:
         service_item = await async_client.qbd.service_items.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
-            class_ids="80000001-1234567890",
+            class_ids=["string", "string", "string"],
             cursor="12345678-abcd-abcd-example-1234567890ab",
-            full_names="Professional Services:Consulting",
-            ids="80000001-1234567890",
+            full_names=["string", "string", "string"],
+            ids=["string", "string", "string"],
             limit=200,
             name_contains="ABC",
             name_ends_with="ABC",

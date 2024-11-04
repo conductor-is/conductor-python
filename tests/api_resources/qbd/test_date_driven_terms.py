@@ -123,8 +123,8 @@ class TestDateDrivenTerms:
     def test_method_list_with_all_params(self, client: Conductor) -> None:
         date_driven_term = client.qbd.date_driven_terms.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
-            full_names="Net 30:2% 10 Net 30",
-            ids="80000001-1234567890",
+            full_names=["string", "string", "string"],
+            ids=["string", "string", "string"],
             limit=10,
             name_contains="ABC",
             name_ends_with="ABC",
@@ -268,8 +268,8 @@ class TestAsyncDateDrivenTerms:
     async def test_method_list_with_all_params(self, async_client: AsyncConductor) -> None:
         date_driven_term = await async_client.qbd.date_driven_terms.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
-            full_names="Net 30:2% 10 Net 30",
-            ids="80000001-1234567890",
+            full_names=["string", "string", "string"],
+            ids=["string", "string", "string"],
             limit=10,
             name_contains="ABC",
             name_ends_with="ABC",

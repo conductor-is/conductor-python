@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Union
+from typing import List, Union
 from datetime import date
 from typing_extensions import Literal
 
@@ -382,9 +382,9 @@ class AccountsResource(SyncAPIResource):
             "other_income",
         ]
         | NotGiven = NOT_GIVEN,
-        currency_ids: str | NotGiven = NOT_GIVEN,
-        full_names: str | NotGiven = NOT_GIVEN,
-        ids: str | NotGiven = NOT_GIVEN,
+        currency_ids: List[str] | NotGiven = NOT_GIVEN,
+        full_names: List[str] | NotGiven = NOT_GIVEN,
+        ids: List[str] | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         name_contains: str | NotGiven = NOT_GIVEN,
         name_ends_with: str | NotGiven = NOT_GIVEN,
@@ -858,9 +858,9 @@ class AsyncAccountsResource(AsyncAPIResource):
             "other_income",
         ]
         | NotGiven = NOT_GIVEN,
-        currency_ids: str | NotGiven = NOT_GIVEN,
-        full_names: str | NotGiven = NOT_GIVEN,
-        ids: str | NotGiven = NOT_GIVEN,
+        currency_ids: List[str] | NotGiven = NOT_GIVEN,
+        full_names: List[str] | NotGiven = NOT_GIVEN,
+        ids: List[str] | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         name_contains: str | NotGiven = NOT_GIVEN,
         name_ends_with: str | NotGiven = NOT_GIVEN,
