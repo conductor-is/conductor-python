@@ -78,8 +78,8 @@ class CreditCardChargesResource(SyncAPIResource):
         Creates a credit card charge for the specified account.
 
         Args:
-          account_id: The bank account or credit card company to whom money is owed for this credit
-              card charge.
+          account_id: The bank or credit card account to whom money is owed for this credit card
+              charge.
 
           transaction_date: The date of this credit card charge, in ISO 8601 format (YYYY-MM-DD).
 
@@ -234,8 +234,8 @@ class CreditCardChargesResource(SyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_id: The bank account or credit card company to whom money is owed for this credit
-              card charge.
+          account_id: The bank or credit card account to whom money is owed for this credit card
+              charge.
 
           clear_expense_lines: Indicates whether to clear all the expense lines of this credit card charge. To
               modify individual lines, use the field `expenseLines`.
@@ -535,8 +535,8 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
         Creates a credit card charge for the specified account.
 
         Args:
-          account_id: The bank account or credit card company to whom money is owed for this credit
-              card charge.
+          account_id: The bank or credit card account to whom money is owed for this credit card
+              charge.
 
           transaction_date: The date of this credit card charge, in ISO 8601 format (YYYY-MM-DD).
 
@@ -691,8 +691,8 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_id: The bank account or credit card company to whom money is owed for this credit
-              card charge.
+          account_id: The bank or credit card account to whom money is owed for this credit card
+              charge.
 
           clear_expense_lines: Indicates whether to clear all the expense lines of this credit card charge. To
               modify individual lines, use the field `expenseLines`.

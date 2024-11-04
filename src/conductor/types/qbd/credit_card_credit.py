@@ -1077,7 +1077,7 @@ class CreditCardCredit(BaseModel):
     """
 
     account: Account
-    """The bank account or credit card account to which the credit is applied."""
+    """The bank or credit card account to which the credit is applied."""
 
     amount: str
     """
