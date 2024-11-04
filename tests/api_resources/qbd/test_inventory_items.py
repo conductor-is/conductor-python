@@ -41,7 +41,7 @@ class TestInventoryItems:
                 "value": "012345678905",
             },
             class_id="80000001-1234567890",
-            cost_of_goods_sold_account_id="80000007-1234567890",
+            cogs_account_id="80000007-1234567890",
             external_id="12345678-abcd-1234-abcd-1234567890ab",
             income_account_id="80000005-1234567890",
             inventory_date=parse_date("2019-12-27"),
@@ -153,7 +153,7 @@ class TestInventoryItems:
                 "value": "012345678905",
             },
             class_id="80000001-1234567890",
-            cost_of_goods_sold_account_id="80000007-1234567890",
+            cogs_account_id="80000007-1234567890",
             force_unit_of_measure_change=False,
             income_account_id="80000005-1234567890",
             is_active=True,
@@ -170,7 +170,7 @@ class TestInventoryItems:
             sales_tax_code_id="80000004-1234567890",
             sku="MPN-123456",
             unit_of_measure_set_id="80000003-1234567890",
-            update_existing_transactions_cost_of_goods_sold_account=False,
+            update_existing_transactions_cogs_account=False,
             update_existing_transactions_income_account=False,
         )
         assert_matches_type(InventoryItem, inventory_item, path=["response"])
@@ -287,7 +287,7 @@ class TestAsyncInventoryItems:
                 "value": "012345678905",
             },
             class_id="80000001-1234567890",
-            cost_of_goods_sold_account_id="80000007-1234567890",
+            cogs_account_id="80000007-1234567890",
             external_id="12345678-abcd-1234-abcd-1234567890ab",
             income_account_id="80000005-1234567890",
             inventory_date=parse_date("2019-12-27"),
@@ -399,7 +399,7 @@ class TestAsyncInventoryItems:
                 "value": "012345678905",
             },
             class_id="80000001-1234567890",
-            cost_of_goods_sold_account_id="80000007-1234567890",
+            cogs_account_id="80000007-1234567890",
             force_unit_of_measure_change=False,
             income_account_id="80000005-1234567890",
             is_active=True,
@@ -416,7 +416,7 @@ class TestAsyncInventoryItems:
             sales_tax_code_id="80000004-1234567890",
             sku="MPN-123456",
             unit_of_measure_set_id="80000003-1234567890",
-            update_existing_transactions_cost_of_goods_sold_account=False,
+            update_existing_transactions_cogs_account=False,
             update_existing_transactions_income_account=False,
         )
         assert_matches_type(InventoryItem, inventory_item, path=["response"])
