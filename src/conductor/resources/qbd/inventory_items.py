@@ -485,12 +485,13 @@ class InventoryItemsResource(SyncAPIResource):
               previous response. If omitted, the API returns the first page of results.
 
           full_names: Filter for specific inventory items by their full-name(s), case-insensitive.
-              Like `id`, a `fullName` is a unique identifier for an inventory item, and is
-              formed by by combining the names of its parent objects with its own `name`,
-              separated by colons. For example, if an inventory item is under
-              "Furniture:Kitchen" and has the `name` "Cabinet", its `fullName` would be
-              "Furniture:Kitchen:Cabinet". Unlike `name`, `fullName` is guaranteed to be
-              unique across all inventory item objects.
+              Like `id`, `fullName` is a unique identifier for an inventory item, formed by by
+              combining the names of its parent objects with its own `name`, separated by
+              colons. For example, if an inventory item is under "Furniture:Kitchen" and has
+              the `name` "Cabinet", its `fullName` would be "Furniture:Kitchen:Cabinet".
+              Unlike `name`, `fullName` is guaranteed to be unique across all inventory item
+              objects. Also, unlike `id`, `fullName` can be arbitrarily changed by the
+              QuickBooks user when modifying its underlying `name` field.
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
@@ -1043,12 +1044,13 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
               previous response. If omitted, the API returns the first page of results.
 
           full_names: Filter for specific inventory items by their full-name(s), case-insensitive.
-              Like `id`, a `fullName` is a unique identifier for an inventory item, and is
-              formed by by combining the names of its parent objects with its own `name`,
-              separated by colons. For example, if an inventory item is under
-              "Furniture:Kitchen" and has the `name` "Cabinet", its `fullName` would be
-              "Furniture:Kitchen:Cabinet". Unlike `name`, `fullName` is guaranteed to be
-              unique across all inventory item objects.
+              Like `id`, `fullName` is a unique identifier for an inventory item, formed by by
+              combining the names of its parent objects with its own `name`, separated by
+              colons. For example, if an inventory item is under "Furniture:Kitchen" and has
+              the `name` "Cabinet", its `fullName` would be "Furniture:Kitchen:Cabinet".
+              Unlike `name`, `fullName` is guaranteed to be unique across all inventory item
+              objects. Also, unlike `id`, `fullName` can be arbitrarily changed by the
+              QuickBooks user when modifying its underlying `name` field.
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
