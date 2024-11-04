@@ -78,7 +78,7 @@ class CreditCardCreditsResource(SyncAPIResource):
         Creates a credit card credit for the specified account.
 
         Args:
-          account_id: The bank account or credit card account to which the credit is applied.
+          account_id: The bank or credit card account to which the credit is applied.
 
           transaction_date: The date of this credit card credit, in ISO 8601 format (YYYY-MM-DD).
 
@@ -233,7 +233,7 @@ class CreditCardCreditsResource(SyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_id: The bank account or credit card account to which the credit is applied.
+          account_id: The bank or credit card account to which the credit is applied.
 
           clear_expense_lines: Indicates whether to clear all the expense lines of this credit card credit. To
               modify individual lines, use the field `expenseLines`.
@@ -532,7 +532,7 @@ class AsyncCreditCardCreditsResource(AsyncAPIResource):
         Creates a credit card credit for the specified account.
 
         Args:
-          account_id: The bank account or credit card account to which the credit is applied.
+          account_id: The bank or credit card account to which the credit is applied.
 
           transaction_date: The date of this credit card credit, in ISO 8601 format (YYYY-MM-DD).
 
@@ -687,7 +687,7 @@ class AsyncCreditCardCreditsResource(AsyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_id: The bank account or credit card account to which the credit is applied.
+          account_id: The bank or credit card account to which the credit is applied.
 
           clear_expense_lines: Indicates whether to clear all the expense lines of this credit card credit. To
               modify individual lines, use the field `expenseLines`.

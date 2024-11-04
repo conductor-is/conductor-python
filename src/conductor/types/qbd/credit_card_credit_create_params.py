@@ -22,7 +22,7 @@ __all__ = [
 
 class CreditCardCreditCreateParams(TypedDict, total=False):
     account_id: Required[Annotated[str, PropertyInfo(alias="accountId")]]
-    """The bank account or credit card account to which the credit is applied."""
+    """The bank or credit card account to which the credit is applied."""
 
     transaction_date: Required[Annotated[Union[str, date], PropertyInfo(alias="transactionDate", format="iso8601")]]
     """The date of this credit card credit, in ISO 8601 format (YYYY-MM-DD)."""

@@ -28,8 +28,8 @@ class CreditCardChargeUpdateParams(TypedDict, total=False):
 
     account_id: Annotated[str, PropertyInfo(alias="accountId")]
     """
-    The bank account or credit card company to whom money is owed for this credit
-    card charge.
+    The bank or credit card account to whom money is owed for this credit card
+    charge.
     """
 
     clear_expense_lines: Annotated[bool, PropertyInfo(alias="clearExpenseLines")]

@@ -1078,8 +1078,8 @@ class CreditCardCharge(BaseModel):
 
     account: Account
     """
-    The bank account or credit card company to whom money is owed for this credit
-    card charge.
+    The bank or credit card account to whom money is owed for this credit card
+    charge.
     """
 
     amount: str
