@@ -249,20 +249,17 @@ class ClassesResource(SyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          full_names: Filter for specific classes by their full-name(s), case-insensitive. Specify a
-              single full-name or multiple using a comma-separated list (e.g.,
-              `fullNames=1,2,3`). Like `id`, a `fullName` is a unique identifier for a class,
-              and is formed by by combining the names of its parent objects with its own
-              `name`, separated by colons. For example, if a class is under "Department" and
-              has the `name` "Marketing", its `fullName` would be "Department:Marketing".
-              Unlike `name`, `fullName` is guaranteed to be unique across all class objects.
+          full_names: Filter for specific classes by their full-name(s), case-insensitive. Like `id`,
+              a `fullName` is a unique identifier for a class, and is formed by by combining
+              the names of its parent objects with its own `name`, separated by colons. For
+              example, if a class is under "Department" and has the `name` "Marketing", its
+              `fullName` would be "Department:Marketing". Unlike `name`, `fullName` is
+              guaranteed to be unique across all class objects.
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
 
           ids: Filter for specific classes by their QuickBooks-assigned unique identifier(s).
-              Specify a single ID or multiple using a comma-separated list (e.g.,
-              `ids=1,2,3`).
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
@@ -560,20 +557,17 @@ class AsyncClassesResource(AsyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          full_names: Filter for specific classes by their full-name(s), case-insensitive. Specify a
-              single full-name or multiple using a comma-separated list (e.g.,
-              `fullNames=1,2,3`). Like `id`, a `fullName` is a unique identifier for a class,
-              and is formed by by combining the names of its parent objects with its own
-              `name`, separated by colons. For example, if a class is under "Department" and
-              has the `name` "Marketing", its `fullName` would be "Department:Marketing".
-              Unlike `name`, `fullName` is guaranteed to be unique across all class objects.
+          full_names: Filter for specific classes by their full-name(s), case-insensitive. Like `id`,
+              a `fullName` is a unique identifier for a class, and is formed by by combining
+              the names of its parent objects with its own `name`, separated by colons. For
+              example, if a class is under "Department" and has the `name` "Marketing", its
+              `fullName` would be "Department:Marketing". Unlike `name`, `fullName` is
+              guaranteed to be unique across all class objects.
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
 
           ids: Filter for specific classes by their QuickBooks-assigned unique identifier(s).
-              Specify a single ID or multiple using a comma-separated list (e.g.,
-              `ids=1,2,3`).
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.

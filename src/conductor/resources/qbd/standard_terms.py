@@ -181,21 +181,18 @@ class StandardTermsResource(SyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          full_names: Filter for specific standard terms by their full-name(s), case-insensitive.
-              Specify a single full-name or multiple using a comma-separated list (e.g.,
-              `fullNames=1,2,3`). Like `id`, a `fullName` is a unique identifier for a
-              standard term, and is formed by by combining the names of its parent objects
-              with its own `name`, separated by colons. For example, if a standard term is
-              under "Payment Terms" and has the `name` "Net 15", its `fullName` would be
-              "Payment Terms:Net 15". Unlike `name`, `fullName` is guaranteed to be unique
-              across all standard term objects.
+          full_names: Filter for specific standard terms by their full-name(s), case-insensitive. Like
+              `id`, a `fullName` is a unique identifier for a standard term, and is formed by
+              by combining the names of its parent objects with its own `name`, separated by
+              colons. For example, if a standard term is under "Payment Terms" and has the
+              `name` "Net 15", its `fullName` would be "Payment Terms:Net 15". Unlike `name`,
+              `fullName` is guaranteed to be unique across all standard term objects.
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
 
           ids: Filter for specific standard terms by their QuickBooks-assigned unique
-              identifier(s). Specify a single ID or multiple using a comma-separated list
-              (e.g., `ids=1,2,3`).
+              identifier(s).
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
@@ -424,21 +421,18 @@ class AsyncStandardTermsResource(AsyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          full_names: Filter for specific standard terms by their full-name(s), case-insensitive.
-              Specify a single full-name or multiple using a comma-separated list (e.g.,
-              `fullNames=1,2,3`). Like `id`, a `fullName` is a unique identifier for a
-              standard term, and is formed by by combining the names of its parent objects
-              with its own `name`, separated by colons. For example, if a standard term is
-              under "Payment Terms" and has the `name` "Net 15", its `fullName` would be
-              "Payment Terms:Net 15". Unlike `name`, `fullName` is guaranteed to be unique
-              across all standard term objects.
+          full_names: Filter for specific standard terms by their full-name(s), case-insensitive. Like
+              `id`, a `fullName` is a unique identifier for a standard term, and is formed by
+              by combining the names of its parent objects with its own `name`, separated by
+              colons. For example, if a standard term is under "Payment Terms" and has the
+              `name` "Net 15", its `fullName` would be "Payment Terms:Net 15". Unlike `name`,
+              `fullName` is guaranteed to be unique across all standard term objects.
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
 
           ids: Filter for specific standard terms by their QuickBooks-assigned unique
-              identifier(s). Specify a single ID or multiple using a comma-separated list
-              (e.g., `ids=1,2,3`).
+              identifier(s).
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.

@@ -702,21 +702,18 @@ class CustomersResource(SyncAPIResource):
               `limit` parameter. Retrieve this value from the `nextCursor` field in the
               previous response. If omitted, the API returns the first page of results.
 
-          full_names: Filter for specific customers by their full-name(s), case-insensitive. Specify a
-              single full-name or multiple using a comma-separated list (e.g.,
-              `fullNames=1,2,3`). Like `id`, a `fullName` is a unique identifier for a
-              customer, and is formed by by combining the names of its parent objects with its
-              own `name`, separated by colons. For example, if a customer is under "ABC
-              Corporation" and has the `name` "Website Redesign Project", its `fullName` would
-              be "ABC Corporation:Website Redesign Project". Unlike `name`, `fullName` is
-              guaranteed to be unique across all customer objects.
+          full_names: Filter for specific customers by their full-name(s), case-insensitive. Like
+              `id`, a `fullName` is a unique identifier for a customer, and is formed by by
+              combining the names of its parent objects with its own `name`, separated by
+              colons. For example, if a customer is under "ABC Corporation" and has the `name`
+              "Website Redesign Project", its `fullName` would be "ABC Corporation:Website
+              Redesign Project". Unlike `name`, `fullName` is guaranteed to be unique across
+              all customer objects.
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
 
           ids: Filter for specific customers by their QuickBooks-assigned unique identifier(s).
-              Specify a single ID or multiple using a comma-separated list (e.g.,
-              `ids=1,2,3`).
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
@@ -1492,21 +1489,18 @@ class AsyncCustomersResource(AsyncAPIResource):
               `limit` parameter. Retrieve this value from the `nextCursor` field in the
               previous response. If omitted, the API returns the first page of results.
 
-          full_names: Filter for specific customers by their full-name(s), case-insensitive. Specify a
-              single full-name or multiple using a comma-separated list (e.g.,
-              `fullNames=1,2,3`). Like `id`, a `fullName` is a unique identifier for a
-              customer, and is formed by by combining the names of its parent objects with its
-              own `name`, separated by colons. For example, if a customer is under "ABC
-              Corporation" and has the `name` "Website Redesign Project", its `fullName` would
-              be "ABC Corporation:Website Redesign Project". Unlike `name`, `fullName` is
-              guaranteed to be unique across all customer objects.
+          full_names: Filter for specific customers by their full-name(s), case-insensitive. Like
+              `id`, a `fullName` is a unique identifier for a customer, and is formed by by
+              combining the names of its parent objects with its own `name`, separated by
+              colons. For example, if a customer is under "ABC Corporation" and has the `name`
+              "Website Redesign Project", its `fullName` would be "ABC Corporation:Website
+              Redesign Project". Unlike `name`, `fullName` is guaranteed to be unique across
+              all customer objects.
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
 
           ids: Filter for specific customers by their QuickBooks-assigned unique identifier(s).
-              Specify a single ID or multiple using a comma-separated list (e.g.,
-              `ids=1,2,3`).
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
