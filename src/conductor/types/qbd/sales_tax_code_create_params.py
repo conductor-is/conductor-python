@@ -20,7 +20,7 @@ class SalesTaxCodeCreateParams(TypedDict, total=False):
     name: Required[str]
     """
     The case-insensitive unique name of this sales-tax code, unique across all
-    sales-tax codes. Maximum length: 3 characters. This short name will appear on
+    sales-tax codes. Maximum length: 31 characters. This short name will appear on
     sales forms to identify the tax status of an item.
     """
 
