@@ -46,10 +46,11 @@ class Class(BaseModel):
     The case-insensitive fully-qualified unique name of this class, formed by
     combining the names of its parent objects with its own `name`, separated by
     colons. For example, if a class is under "Corporate:Sales" and has the `name`
-    "Marketing", its `fullName` would be "Corporate:Sales:Marketing". Unlike `name`,
-    `fullName` is guaranteed to be unique across all class objects. Also, unlike
-    `name`, `fullName` can be arbitrarily changed by the QuickBooks user when
-    modifying its underlying `name` field.
+    "Marketing", its `fullName` would be "Corporate:Sales:Marketing".
+
+    Unlike `name`, `fullName` is guaranteed to be unique across all class objects.
+    Also, unlike `name`, `fullName` can be arbitrarily changed by the QuickBooks
+    user when modifying its underlying `name` field.
     """
 
     is_active: bool = FieldInfo(alias="isActive")
