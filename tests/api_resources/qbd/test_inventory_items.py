@@ -223,10 +223,10 @@ class TestInventoryItems:
     def test_method_list_with_all_params(self, client: Conductor) -> None:
         inventory_item = client.qbd.inventory_items.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
-            class_ids=["string", "string", "string"],
+            class_ids=["80000001-1234567890"],
             cursor="12345678-abcd-abcd-example-1234567890ab",
-            full_names=["string", "string", "string"],
-            ids=["string", "string", "string"],
+            full_names=["Furniture:Kitchen:Cabinet"],
+            ids=["80000001-1234567890"],
             limit=200,
             name_contains="ABC",
             name_ends_with="ABC",
@@ -469,10 +469,10 @@ class TestAsyncInventoryItems:
     async def test_method_list_with_all_params(self, async_client: AsyncConductor) -> None:
         inventory_item = await async_client.qbd.inventory_items.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
-            class_ids=["string", "string", "string"],
+            class_ids=["80000001-1234567890"],
             cursor="12345678-abcd-abcd-example-1234567890ab",
-            full_names=["string", "string", "string"],
-            ids=["string", "string", "string"],
+            full_names=["Furniture:Kitchen:Cabinet"],
+            ids=["80000001-1234567890"],
             limit=200,
             name_contains="ABC",
             name_ends_with="ABC",

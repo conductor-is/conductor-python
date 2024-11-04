@@ -478,11 +478,11 @@ class TestVendors:
     def test_method_list_with_all_params(self, client: Conductor) -> None:
         vendor = client.qbd.vendors.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
-            class_ids=["string", "string", "string"],
-            currency_ids=["string", "string", "string"],
+            class_ids=["80000001-1234567890"],
+            currency_ids=["80000001-1234567890"],
             cursor="12345678-abcd-abcd-example-1234567890ab",
-            full_names=["string", "string", "string"],
-            ids=["string", "string", "string"],
+            full_names=["Suppliers:ABC Office Supplies"],
+            ids=["80000001-1234567890"],
             limit=200,
             name_contains="ABC",
             name_ends_with="ABC",
@@ -987,11 +987,11 @@ class TestAsyncVendors:
     async def test_method_list_with_all_params(self, async_client: AsyncConductor) -> None:
         vendor = await async_client.qbd.vendors.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
-            class_ids=["string", "string", "string"],
-            currency_ids=["string", "string", "string"],
+            class_ids=["80000001-1234567890"],
+            currency_ids=["80000001-1234567890"],
             cursor="12345678-abcd-abcd-example-1234567890ab",
-            full_names=["string", "string", "string"],
-            ids=["string", "string", "string"],
+            full_names=["Suppliers:ABC Office Supplies"],
+            ids=["80000001-1234567890"],
             limit=200,
             name_contains="ABC",
             name_ends_with="ABC",

@@ -119,8 +119,8 @@ class TestStandardTerms:
     def test_method_list_with_all_params(self, client: Conductor) -> None:
         standard_term = client.qbd.standard_terms.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
-            full_names=["string", "string", "string"],
-            ids=["string", "string", "string"],
+            full_names=["Payment Terms:Net 15"],
+            ids=["80000001-1234567890"],
             limit=10,
             name_contains="ABC",
             name_ends_with="ABC",
@@ -260,8 +260,8 @@ class TestAsyncStandardTerms:
     async def test_method_list_with_all_params(self, async_client: AsyncConductor) -> None:
         standard_term = await async_client.qbd.standard_terms.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
-            full_names=["string", "string", "string"],
-            ids=["string", "string", "string"],
+            full_names=["Payment Terms:Net 15"],
+            ids=["80000001-1234567890"],
             limit=10,
             name_contains="ABC",
             name_ends_with="ABC",
