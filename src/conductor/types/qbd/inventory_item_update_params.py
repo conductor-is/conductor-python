@@ -80,7 +80,7 @@ class InventoryItemUpdateParams(TypedDict, total=False):
     Not guaranteed to be unique because it does not include the names of its parent
     objects like `fullName` does. For example, two inventory items could both have
     the `name` "Widget", but they could have unique `fullName` values, such as
-    "Products:Widget" and "Inventory:Widget".
+    "Products:Widget" and "Inventory:Widget". Maximum length: 31 characters.
     """
 
     parent_id: Annotated[str, PropertyInfo(alias="parentId")]

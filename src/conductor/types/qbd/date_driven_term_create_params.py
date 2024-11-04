@@ -16,7 +16,7 @@ class DateDrivenTermCreateParams(TypedDict, total=False):
     name: Required[str]
     """
     The case-insensitive unique name of this date-driven term, unique across all
-    date-driven terms.
+    date-driven terms. Maximum length: 31 characters.
     """
 
     conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]

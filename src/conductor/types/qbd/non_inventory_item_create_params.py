@@ -17,7 +17,7 @@ class NonInventoryItemCreateParams(TypedDict, total=False):
     objects like `fullName` does. For example, two non-inventory items could both
     have the `name` "Printer Ink Cartridge", but they could have unique `fullName`
     values, such as "Office-Supplies:Printer Ink Cartridge" and
-    "Miscellaneous:Printer Ink Cartridge".
+    "Miscellaneous:Printer Ink Cartridge". Maximum length: 31 characters.
     """
 
     conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]

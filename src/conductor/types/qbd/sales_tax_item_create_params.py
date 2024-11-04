@@ -13,7 +13,7 @@ class SalesTaxItemCreateParams(TypedDict, total=False):
     name: Required[str]
     """
     The case-insensitive unique name of this sales-tax item, unique across all
-    sales-tax items.
+    sales-tax items. Maximum length: 31 characters.
     """
 
     conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]

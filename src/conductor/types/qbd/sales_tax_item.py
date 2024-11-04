@@ -150,7 +150,7 @@ class SalesTaxItem(BaseModel):
     name: str
     """
     The case-insensitive unique name of this sales-tax item, unique across all
-    sales-tax items.
+    sales-tax items. Maximum length: 31 characters.
     """
 
     object_type: Literal["qbd_sales_tax_item"] = FieldInfo(alias="objectType")
