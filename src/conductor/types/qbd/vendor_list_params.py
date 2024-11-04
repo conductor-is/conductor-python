@@ -42,11 +42,13 @@ class VendorListParams(TypedDict, total=False):
     full_names: Annotated[List[str], PropertyInfo(alias="fullNames")]
     """Filter for specific vendors by their full-name(s), case-insensitive.
 
-    Like `id`, a `fullName` is a unique identifier for a vendor, and is formed by by
+    Like `id`, `fullName` is a unique identifier for a vendor, formed by by
     combining the names of its parent objects with its own `name`, separated by
     colons. For example, if a vendor is under "Suppliers" and has the `name` "ABC
     Office Supplies", its `fullName` would be "Suppliers:ABC Office Supplies".
     Unlike `name`, `fullName` is guaranteed to be unique across all vendor objects.
+    Also, unlike `id`, `fullName` can be arbitrarily changed by the QuickBooks user
+    when modifying its underlying `name` field.
 
     NOTE: If you include this parameter, QuickBooks will ignore all other query
     parameters.

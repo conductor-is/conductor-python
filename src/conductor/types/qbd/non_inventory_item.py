@@ -322,7 +322,9 @@ class NonInventoryItem(BaseModel):
     separated by colons. For example, if a non-inventory item is under
     "Office-Supplies" and has the `name` "Printer Ink Cartridge", its `fullName`
     would be "Office-Supplies:Printer Ink Cartridge". Unlike `name`, `fullName` is
-    guaranteed to be unique across all non-inventory item objects.
+    guaranteed to be unique across all non-inventory item objects. Also, unlike
+    `name`, `fullName` can be arbitrarily changed by the QuickBooks user when
+    modifying its underlying `name` field.
     """
 
     is_active: bool = FieldInfo(alias="isActive")
