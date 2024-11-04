@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Union
+from typing import List, Union
 from datetime import date
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
@@ -18,14 +18,14 @@ class InvoiceListParams(TypedDict, total=False):
     `"Conductor-End-User-Id: {{END_USER_ID}}"`).
     """
 
-    account_ids: Annotated[str, PropertyInfo(alias="accountIds")]
+    account_ids: Annotated[List[str], PropertyInfo(alias="accountIds")]
     """Filter for invoices from this account or accounts.
 
     Specify a single account ID or multiple using a comma-separated list (e.g.,
     `accountIds=1,2,3`).
     """
 
-    currency_ids: Annotated[str, PropertyInfo(alias="currencyIds")]
+    currency_ids: Annotated[List[str], PropertyInfo(alias="currencyIds")]
     """Filter for invoices in this currency or currencies.
 
     Specify a single currency ID or multiple using a comma-separated list (e.g.,
@@ -39,14 +39,14 @@ class InvoiceListParams(TypedDict, total=False):
     previous response. If omitted, the API returns the first page of results.
     """
 
-    customer_ids: Annotated[str, PropertyInfo(alias="customerIds")]
+    customer_ids: Annotated[List[str], PropertyInfo(alias="customerIds")]
     """Filter for invoices from this customer or customers.
 
     Specify a single customer ID or multiple using a comma-separated list (e.g.,
     `customerIds=1,2,3`).
     """
 
-    ids: str
+    ids: List[str]
     """Filter for specific invoices by their QuickBooks-assigned unique identifier(s).
 
     Specify a single ID or multiple using a comma-separated list (e.g.,
@@ -99,7 +99,7 @@ class InvoiceListParams(TypedDict, total=False):
     lexicographical comparison.
     """
 
-    ref_numbers: Annotated[str, PropertyInfo(alias="refNumbers")]
+    ref_numbers: Annotated[List[str], PropertyInfo(alias="refNumbers")]
     """Filter for specific invoices by their ref-number(s), case-sensitive.
 
     Specify a single ref-number or multiple using a comma-separated list (e.g.,

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from typing import List
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
@@ -39,14 +40,14 @@ class AccountListParams(TypedDict, total=False):
     ]
     """Filter for accounts of this type."""
 
-    currency_ids: Annotated[str, PropertyInfo(alias="currencyIds")]
+    currency_ids: Annotated[List[str], PropertyInfo(alias="currencyIds")]
     """Filter for accounts in this currency or currencies.
 
     Specify a single currency ID or multiple using a comma-separated list (e.g.,
     `currencyIds=1,2,3`).
     """
 
-    full_names: Annotated[str, PropertyInfo(alias="fullNames")]
+    full_names: Annotated[List[str], PropertyInfo(alias="fullNames")]
     """Filter for specific accounts by their full-name(s), case-insensitive.
 
     Specify a single full-name or multiple using a comma-separated list (e.g.,
@@ -61,7 +62,7 @@ class AccountListParams(TypedDict, total=False):
     parameters.
     """
 
-    ids: str
+    ids: List[str]
     """Filter for specific accounts by their QuickBooks-assigned unique identifier(s).
 
     Specify a single ID or multiple using a comma-separated list (e.g.,

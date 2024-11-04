@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Union, Iterable
+from typing import List, Union, Iterable
 from datetime import date
 
 import httpx
@@ -339,17 +339,17 @@ class CreditCardChargesResource(SyncAPIResource):
         self,
         *,
         conductor_end_user_id: str,
-        account_ids: str | NotGiven = NOT_GIVEN,
-        currency_ids: str | NotGiven = NOT_GIVEN,
+        account_ids: List[str] | NotGiven = NOT_GIVEN,
+        currency_ids: List[str] | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
-        ids: str | NotGiven = NOT_GIVEN,
+        ids: List[str] | NotGiven = NOT_GIVEN,
         include_line_items: bool | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
-        payee_ids: str | NotGiven = NOT_GIVEN,
+        payee_ids: List[str] | NotGiven = NOT_GIVEN,
         ref_number_contains: str | NotGiven = NOT_GIVEN,
         ref_number_ends_with: str | NotGiven = NOT_GIVEN,
         ref_number_from: str | NotGiven = NOT_GIVEN,
-        ref_numbers: str | NotGiven = NOT_GIVEN,
+        ref_numbers: List[str] | NotGiven = NOT_GIVEN,
         ref_number_starts_with: str | NotGiven = NOT_GIVEN,
         ref_number_to: str | NotGiven = NOT_GIVEN,
         transaction_date_from: Union[str, date] | NotGiven = NOT_GIVEN,
@@ -798,17 +798,17 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
         self,
         *,
         conductor_end_user_id: str,
-        account_ids: str | NotGiven = NOT_GIVEN,
-        currency_ids: str | NotGiven = NOT_GIVEN,
+        account_ids: List[str] | NotGiven = NOT_GIVEN,
+        currency_ids: List[str] | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
-        ids: str | NotGiven = NOT_GIVEN,
+        ids: List[str] | NotGiven = NOT_GIVEN,
         include_line_items: bool | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
-        payee_ids: str | NotGiven = NOT_GIVEN,
+        payee_ids: List[str] | NotGiven = NOT_GIVEN,
         ref_number_contains: str | NotGiven = NOT_GIVEN,
         ref_number_ends_with: str | NotGiven = NOT_GIVEN,
         ref_number_from: str | NotGiven = NOT_GIVEN,
-        ref_numbers: str | NotGiven = NOT_GIVEN,
+        ref_numbers: List[str] | NotGiven = NOT_GIVEN,
         ref_number_starts_with: str | NotGiven = NOT_GIVEN,
         ref_number_to: str | NotGiven = NOT_GIVEN,
         transaction_date_from: Union[str, date] | NotGiven = NOT_GIVEN,
