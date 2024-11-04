@@ -68,13 +68,7 @@ class SalesTaxCodesResource(SyncAPIResource):
 
         Args:
           is_taxable: Indicates whether this sales-tax code is tracking taxable sales. This field
-              cannot be modified once the sales-tax code has been used in a transaction. For
-              the default built-in sales-tax codes, "Non" always has `isTaxable` as `false`,
-              while "Tax" always has it as `true`. Due to a bug in QuickBooks, for all other
-              (custom) sales-tax codes, the value of this field cannot be reliably retrieved
-              externally, resulting in `null` being returned. However, you can confidently set
-              the `isTaxable` value when creating a sales-tax code; the issue solely affects
-              the retrieval of the `isTaxable` value.
+              cannot be modified once the sales-tax code has been used in a transaction.
 
           name: The case-insensitive unique name of this sales-tax code, unique across all
               sales-tax codes. This short name will appear on sales forms to identify the tax
@@ -198,13 +192,7 @@ class SalesTaxCodesResource(SyncAPIResource):
               hidden from views and reports in QuickBooks.
 
           is_taxable: Indicates whether this sales-tax code is tracking taxable sales. This field
-              cannot be modified once the sales-tax code has been used in a transaction. For
-              the default built-in sales-tax codes, "Non" always has `isTaxable` as `false`,
-              while "Tax" always has it as `true`. Due to a bug in QuickBooks, for all other
-              (custom) sales-tax codes, the value of this field cannot be reliably retrieved
-              externally, resulting in `null` being returned. However, you can confidently set
-              the `isTaxable` value when creating a sales-tax code; the issue solely affects
-              the retrieval of the `isTaxable` value.
+              cannot be modified once the sales-tax code has been used in a transaction.
 
           name: The case-insensitive unique name of this sales-tax code, unique across all
               sales-tax codes. This short name will appear on sales forms to identify the tax
@@ -405,13 +393,7 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
 
         Args:
           is_taxable: Indicates whether this sales-tax code is tracking taxable sales. This field
-              cannot be modified once the sales-tax code has been used in a transaction. For
-              the default built-in sales-tax codes, "Non" always has `isTaxable` as `false`,
-              while "Tax" always has it as `true`. Due to a bug in QuickBooks, for all other
-              (custom) sales-tax codes, the value of this field cannot be reliably retrieved
-              externally, resulting in `null` being returned. However, you can confidently set
-              the `isTaxable` value when creating a sales-tax code; the issue solely affects
-              the retrieval of the `isTaxable` value.
+              cannot be modified once the sales-tax code has been used in a transaction.
 
           name: The case-insensitive unique name of this sales-tax code, unique across all
               sales-tax codes. This short name will appear on sales forms to identify the tax
@@ -535,13 +517,7 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
               hidden from views and reports in QuickBooks.
 
           is_taxable: Indicates whether this sales-tax code is tracking taxable sales. This field
-              cannot be modified once the sales-tax code has been used in a transaction. For
-              the default built-in sales-tax codes, "Non" always has `isTaxable` as `false`,
-              while "Tax" always has it as `true`. Due to a bug in QuickBooks, for all other
-              (custom) sales-tax codes, the value of this field cannot be reliably retrieved
-              externally, resulting in `null` being returned. However, you can confidently set
-              the `isTaxable` value when creating a sales-tax code; the issue solely affects
-              the retrieval of the `isTaxable` value.
+              cannot be modified once the sales-tax code has been used in a transaction.
 
           name: The case-insensitive unique name of this sales-tax code, unique across all
               sales-tax codes. This short name will appear on sales forms to identify the tax
