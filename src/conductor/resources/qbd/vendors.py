@@ -646,21 +646,17 @@ class VendorsResource(SyncAPIResource):
               `limit` parameter. Retrieve this value from the `nextCursor` field in the
               previous response. If omitted, the API returns the first page of results.
 
-          full_names: Filter for specific vendors by their full-name(s), case-insensitive. Specify a
-              single full-name or multiple using a comma-separated list (e.g.,
-              `fullNames=1,2,3`). Like `id`, a `fullName` is a unique identifier for a vendor,
-              and is formed by by combining the names of its parent objects with its own
-              `name`, separated by colons. For example, if a vendor is under "Suppliers" and
-              has the `name` "ABC Office Supplies", its `fullName` would be "Suppliers:ABC
-              Office Supplies". Unlike `name`, `fullName` is guaranteed to be unique across
-              all vendor objects.
+          full_names: Filter for specific vendors by their full-name(s), case-insensitive. Like `id`,
+              a `fullName` is a unique identifier for a vendor, and is formed by by combining
+              the names of its parent objects with its own `name`, separated by colons. For
+              example, if a vendor is under "Suppliers" and has the `name` "ABC Office
+              Supplies", its `fullName` would be "Suppliers:ABC Office Supplies". Unlike
+              `name`, `fullName` is guaranteed to be unique across all vendor objects.
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
 
           ids: Filter for specific vendors by their QuickBooks-assigned unique identifier(s).
-              Specify a single ID or multiple using a comma-separated list (e.g.,
-              `ids=1,2,3`).
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
@@ -1380,21 +1376,17 @@ class AsyncVendorsResource(AsyncAPIResource):
               `limit` parameter. Retrieve this value from the `nextCursor` field in the
               previous response. If omitted, the API returns the first page of results.
 
-          full_names: Filter for specific vendors by their full-name(s), case-insensitive. Specify a
-              single full-name or multiple using a comma-separated list (e.g.,
-              `fullNames=1,2,3`). Like `id`, a `fullName` is a unique identifier for a vendor,
-              and is formed by by combining the names of its parent objects with its own
-              `name`, separated by colons. For example, if a vendor is under "Suppliers" and
-              has the `name` "ABC Office Supplies", its `fullName` would be "Suppliers:ABC
-              Office Supplies". Unlike `name`, `fullName` is guaranteed to be unique across
-              all vendor objects.
+          full_names: Filter for specific vendors by their full-name(s), case-insensitive. Like `id`,
+              a `fullName` is a unique identifier for a vendor, and is formed by by combining
+              the names of its parent objects with its own `name`, separated by colons. For
+              example, if a vendor is under "Suppliers" and has the `name` "ABC Office
+              Supplies", its `fullName` would be "Suppliers:ABC Office Supplies". Unlike
+              `name`, `fullName` is guaranteed to be unique across all vendor objects.
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
 
           ids: Filter for specific vendors by their QuickBooks-assigned unique identifier(s).
-              Specify a single ID or multiple using a comma-separated list (e.g.,
-              `ids=1,2,3`).
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.

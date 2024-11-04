@@ -35,13 +35,12 @@ class ServiceItemListParams(TypedDict, total=False):
     full_names: Annotated[List[str], PropertyInfo(alias="fullNames")]
     """Filter for specific service items by their full-name(s), case-insensitive.
 
-    Specify a single full-name or multiple using a comma-separated list (e.g.,
-    `fullNames=1,2,3`). Like `id`, a `fullName` is a unique identifier for a service
-    item, and is formed by by combining the names of its parent objects with its own
-    `name`, separated by colons. For example, if a service item is under
-    "Professional Services" and has the `name` "Consulting", its `fullName` would be
-    "Professional Services:Consulting". Unlike `name`, `fullName` is guaranteed to
-    be unique across all service item objects.
+    Like `id`, a `fullName` is a unique identifier for a service item, and is formed
+    by by combining the names of its parent objects with its own `name`, separated
+    by colons. For example, if a service item is under "Professional Services" and
+    has the `name` "Consulting", its `fullName` would be "Professional
+    Services:Consulting". Unlike `name`, `fullName` is guaranteed to be unique
+    across all service item objects.
 
     NOTE: If you include this parameter, QuickBooks will ignore all other query
     parameters.
@@ -50,8 +49,7 @@ class ServiceItemListParams(TypedDict, total=False):
     ids: List[str]
     """
     Filter for specific service items by their QuickBooks-assigned unique
-    identifier(s). Specify a single ID or multiple using a comma-separated list
-    (e.g., `ids=1,2,3`).
+    identifier(s).
 
     NOTE: If you include this parameter, QuickBooks will ignore all other query
     parameters.

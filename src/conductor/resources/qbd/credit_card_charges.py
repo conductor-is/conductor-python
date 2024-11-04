@@ -382,8 +382,7 @@ class CreditCardChargesResource(SyncAPIResource):
               previous response. If omitted, the API returns the first page of results.
 
           ids: Filter for specific credit card charges by their QuickBooks-assigned unique
-              identifier(s). Specify a single ID or multiple using a comma-separated list
-              (e.g., `ids=1,2,3`).
+              identifier(s).
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
@@ -417,9 +416,8 @@ class CreditCardChargesResource(SyncAPIResource):
               a lexicographical comparison.
 
           ref_numbers: Filter for specific credit card charges by their ref-number(s), case-sensitive.
-              Specify a single ref-number or multiple using a comma-separated list (e.g.,
-              `refNumbers=1,2,3`). In QuickBooks, ref-numbers are not required to be unique
-              and can be arbitrarily changed by the QuickBooks user.
+              In QuickBooks, ref-numbers are not required to be unique and can be arbitrarily
+              changed by the QuickBooks user.
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
@@ -841,8 +839,7 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
               previous response. If omitted, the API returns the first page of results.
 
           ids: Filter for specific credit card charges by their QuickBooks-assigned unique
-              identifier(s). Specify a single ID or multiple using a comma-separated list
-              (e.g., `ids=1,2,3`).
+              identifier(s).
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
@@ -876,9 +873,8 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
               a lexicographical comparison.
 
           ref_numbers: Filter for specific credit card charges by their ref-number(s), case-sensitive.
-              Specify a single ref-number or multiple using a comma-separated list (e.g.,
-              `refNumbers=1,2,3`). In QuickBooks, ref-numbers are not required to be unique
-              and can be arbitrarily changed by the QuickBooks user.
+              In QuickBooks, ref-numbers are not required to be unique and can be arbitrarily
+              changed by the QuickBooks user.
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
