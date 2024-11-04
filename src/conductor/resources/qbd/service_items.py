@@ -352,10 +352,11 @@ class ServiceItemsResource(SyncAPIResource):
               combining the names of its parent objects with its own `name`, separated by
               colons. For example, if a service item is under "Professional Services" and has
               the `name` "Consulting", its `fullName` would be "Professional
-              Services:Consulting". Unlike `name`, `fullName` is guaranteed to be unique
-              across all service item objects. Also, unlike `id`, `fullName` can be
-              arbitrarily changed by the QuickBooks user when modifying its underlying `name`
-              field.
+              Services:Consulting".
+
+              Unlike `name`, `fullName` is guaranteed to be unique across all service item
+              objects. Also, unlike `id`, `fullName` can be arbitrarily changed by the
+              QuickBooks user when modifying its underlying `name` field.
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
@@ -764,10 +765,11 @@ class AsyncServiceItemsResource(AsyncAPIResource):
               combining the names of its parent objects with its own `name`, separated by
               colons. For example, if a service item is under "Professional Services" and has
               the `name` "Consulting", its `fullName` would be "Professional
-              Services:Consulting". Unlike `name`, `fullName` is guaranteed to be unique
-              across all service item objects. Also, unlike `id`, `fullName` can be
-              arbitrarily changed by the QuickBooks user when modifying its underlying `name`
-              field.
+              Services:Consulting".
+
+              Unlike `name`, `fullName` is guaranteed to be unique across all service item
+              objects. Also, unlike `id`, `fullName` can be arbitrarily changed by the
+              QuickBooks user when modifying its underlying `name` field.
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
