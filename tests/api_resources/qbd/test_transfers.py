@@ -181,7 +181,7 @@ class TestTransfers:
         transfer = client.qbd.transfers.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
             cursor="12345678-abcd-abcd-example-1234567890ab",
-            ids=["string", "string", "string"],
+            ids=["123ABC-1234567890"],
             limit=200,
             transaction_date_from=parse_date("2019-12-27"),
             transaction_date_to=parse_date("2019-12-27"),
@@ -380,7 +380,7 @@ class TestAsyncTransfers:
         transfer = await async_client.qbd.transfers.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
             cursor="12345678-abcd-abcd-example-1234567890ab",
-            ids=["string", "string", "string"],
+            ids=["123ABC-1234567890"],
             limit=200,
             transaction_date_from=parse_date("2019-12-27"),
             transaction_date_to=parse_date("2019-12-27"),
