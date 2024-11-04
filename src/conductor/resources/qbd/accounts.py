@@ -101,7 +101,7 @@ class AccountsResource(SyncAPIResource):
               it does not include the names of its parent objects like `fullName` does. For
               example, two accounts could both have the `name` "Accounts-Payable", but they
               could have unique `fullName` values, such as "Corporate:Accounts-Payable" and
-              "Finance:Accounts-Payable".
+              "Finance:Accounts-Payable". Maximum length: 31 characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -298,7 +298,7 @@ class AccountsResource(SyncAPIResource):
               it does not include the names of its parent objects like `fullName` does. For
               example, two accounts could both have the `name` "Accounts-Payable", but they
               could have unique `fullName` values, such as "Corporate:Accounts-Payable" and
-              "Finance:Accounts-Payable".
+              "Finance:Accounts-Payable". Maximum length: 31 characters.
 
           opening_balance: The amount of money in, or the value of, this account as of
               `openingBalanceDate`. On a bank statement, this would be the amount of money in
@@ -576,7 +576,7 @@ class AsyncAccountsResource(AsyncAPIResource):
               it does not include the names of its parent objects like `fullName` does. For
               example, two accounts could both have the `name` "Accounts-Payable", but they
               could have unique `fullName` values, such as "Corporate:Accounts-Payable" and
-              "Finance:Accounts-Payable".
+              "Finance:Accounts-Payable". Maximum length: 31 characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -773,7 +773,7 @@ class AsyncAccountsResource(AsyncAPIResource):
               it does not include the names of its parent objects like `fullName` does. For
               example, two accounts could both have the `name` "Accounts-Payable", but they
               could have unique `fullName` values, such as "Corporate:Accounts-Payable" and
-              "Finance:Accounts-Payable".
+              "Finance:Accounts-Payable". Maximum length: 31 characters.
 
           opening_balance: The amount of money in, or the value of, this account as of
               `openingBalanceDate`. On a bank statement, this would be the amount of money in

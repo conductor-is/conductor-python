@@ -77,7 +77,7 @@ class ServiceItemsResource(SyncAPIResource):
               because it does not include the names of its parent objects like `fullName`
               does. For example, two service items could both have the `name` "Web-Design",
               but they could have unique `fullName` values, such as "Consulting:Web-Design"
-              and "Contracting:Web-Design".
+              and "Contracting:Web-Design". Maximum length: 31 characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -258,7 +258,7 @@ class ServiceItemsResource(SyncAPIResource):
               because it does not include the names of its parent objects like `fullName`
               does. For example, two service items could both have the `name` "Web-Design",
               but they could have unique `fullName` values, such as "Consulting:Web-Design"
-              and "Contracting:Web-Design".
+              and "Contracting:Web-Design". Maximum length: 31 characters.
 
           parent_id: The parent service item one level above this one in the hierarchy. For example,
               if this service item has a `fullName` of "Services:Consulting:Web-Design", its
@@ -505,7 +505,7 @@ class AsyncServiceItemsResource(AsyncAPIResource):
               because it does not include the names of its parent objects like `fullName`
               does. For example, two service items could both have the `name` "Web-Design",
               but they could have unique `fullName` values, such as "Consulting:Web-Design"
-              and "Contracting:Web-Design".
+              and "Contracting:Web-Design". Maximum length: 31 characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -686,7 +686,7 @@ class AsyncServiceItemsResource(AsyncAPIResource):
               because it does not include the names of its parent objects like `fullName`
               does. For example, two service items could both have the `name` "Web-Design",
               but they could have unique `fullName` values, such as "Consulting:Web-Design"
-              and "Contracting:Web-Design".
+              and "Contracting:Web-Design". Maximum length: 31 characters.
 
           parent_id: The parent service item one level above this one in the hierarchy. For example,
               if this service item has a `fullName` of "Services:Consulting:Web-Design", its

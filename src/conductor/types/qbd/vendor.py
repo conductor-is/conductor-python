@@ -551,7 +551,10 @@ class Vendor(BaseModel):
     """The middle name of the contact person for this vendor."""
 
     name: str
-    """The case-insensitive unique name of this vendor, unique across all vendors."""
+    """The case-insensitive unique name of this vendor, unique across all vendors.
+
+    Maximum length: 41 characters.
+    """
 
     name_on_check: Optional[str] = FieldInfo(alias="nameOnCheck", default=None)
     """The vendor's name as it should appear on checks issued to this vendor."""

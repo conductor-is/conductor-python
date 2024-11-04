@@ -118,7 +118,7 @@ class CustomersResource(SyncAPIResource):
               it does not include the names of its parent objects like `fullName` does. For
               example, two customers could both have the `name` "Kitchen-Renovation", but they
               could have unique `fullName` values, such as "Jones:Kitchen-Renovation" and
-              "Baker:Kitchen-Renovation".
+              "Baker:Kitchen-Renovation". Maximum length: 41 characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -529,7 +529,7 @@ class CustomersResource(SyncAPIResource):
               it does not include the names of its parent objects like `fullName` does. For
               example, two customers could both have the `name` "Kitchen-Renovation", but they
               could have unique `fullName` values, such as "Jones:Kitchen-Renovation" and
-              "Baker:Kitchen-Renovation".
+              "Baker:Kitchen-Renovation". Maximum length: 41 characters.
 
           note: Additional notes or comments about this customer.
 
@@ -908,7 +908,7 @@ class AsyncCustomersResource(AsyncAPIResource):
               it does not include the names of its parent objects like `fullName` does. For
               example, two customers could both have the `name` "Kitchen-Renovation", but they
               could have unique `fullName` values, such as "Jones:Kitchen-Renovation" and
-              "Baker:Kitchen-Renovation".
+              "Baker:Kitchen-Renovation". Maximum length: 41 characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -1319,7 +1319,7 @@ class AsyncCustomersResource(AsyncAPIResource):
               it does not include the names of its parent objects like `fullName` does. For
               example, two customers could both have the `name` "Kitchen-Renovation", but they
               could have unique `fullName` values, such as "Jones:Kitchen-Renovation" and
-              "Baker:Kitchen-Renovation".
+              "Baker:Kitchen-Renovation". Maximum length: 41 characters.
 
           note: Additional notes or comments about this customer.
 

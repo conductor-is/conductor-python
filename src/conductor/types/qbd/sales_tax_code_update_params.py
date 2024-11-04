@@ -43,8 +43,8 @@ class SalesTaxCodeUpdateParams(TypedDict, total=False):
     name: str
     """
     The case-insensitive unique name of this sales-tax code, unique across all
-    sales-tax codes. This short name will appear on sales forms to identify the tax
-    status of an item.
+    sales-tax codes. Maximum length: 3 characters. This short name will appear on
+    sales forms to identify the tax status of an item.
     """
 
     sales_tax_item_id: Annotated[str, PropertyInfo(alias="salesTaxItemId")]

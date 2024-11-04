@@ -65,7 +65,7 @@ class Class(BaseModel):
     Not guaranteed to be unique because it does not include the names of its parent
     objects like `fullName` does. For example, two classes could both have the
     `name` "Marketing", but they could have unique `fullName` values, such as
-    "Corporate:Marketing" and "Internal:Marketing".
+    "Corporate:Marketing" and "Internal:Marketing". Maximum length: 31 characters.
     """
 
     object_type: Literal["qbd_class"] = FieldInfo(alias="objectType")

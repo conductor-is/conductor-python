@@ -83,7 +83,7 @@ class NonInventoryItemsResource(SyncAPIResource):
               `fullName` does. For example, two non-inventory items could both have the `name`
               "Printer Ink Cartridge", but they could have unique `fullName` values, such as
               "Office-Supplies:Printer Ink Cartridge" and "Miscellaneous:Printer Ink
-              Cartridge".
+              Cartridge". Maximum length: 31 characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -271,7 +271,7 @@ class NonInventoryItemsResource(SyncAPIResource):
               `fullName` does. For example, two non-inventory items could both have the `name`
               "Printer Ink Cartridge", but they could have unique `fullName` values, such as
               "Office-Supplies:Printer Ink Cartridge" and "Miscellaneous:Printer Ink
-              Cartridge".
+              Cartridge". Maximum length: 31 characters.
 
           parent_id: The parent non-inventory item one level above this one in the hierarchy. For
               example, if this non-inventory item has a `fullName` of "Office-Supplies:Printer
@@ -525,7 +525,7 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
               `fullName` does. For example, two non-inventory items could both have the `name`
               "Printer Ink Cartridge", but they could have unique `fullName` values, such as
               "Office-Supplies:Printer Ink Cartridge" and "Miscellaneous:Printer Ink
-              Cartridge".
+              Cartridge". Maximum length: 31 characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -713,7 +713,7 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
               `fullName` does. For example, two non-inventory items could both have the `name`
               "Printer Ink Cartridge", but they could have unique `fullName` values, such as
               "Office-Supplies:Printer Ink Cartridge" and "Miscellaneous:Printer Ink
-              Cartridge".
+              Cartridge". Maximum length: 31 characters.
 
           parent_id: The parent non-inventory item one level above this one in the hierarchy. For
               example, if this non-inventory item has a `fullName` of "Office-Supplies:Printer

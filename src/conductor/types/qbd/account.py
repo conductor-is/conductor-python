@@ -219,7 +219,8 @@ class Account(BaseModel):
     Not guaranteed to be unique because it does not include the names of its parent
     objects like `fullName` does. For example, two accounts could both have the
     `name` "Accounts-Payable", but they could have unique `fullName` values, such as
-    "Corporate:Accounts-Payable" and "Finance:Accounts-Payable".
+    "Corporate:Accounts-Payable" and "Finance:Accounts-Payable". Maximum length: 31
+    characters.
     """
 
     object_type: Literal["qbd_account"] = FieldInfo(alias="objectType")

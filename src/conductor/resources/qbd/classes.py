@@ -71,7 +71,7 @@ class ClassesResource(SyncAPIResource):
               does not include the names of its parent objects like `fullName` does. For
               example, two classes could both have the `name` "Marketing", but they could have
               unique `fullName` values, such as "Corporate:Marketing" and
-              "Internal:Marketing".
+              "Internal:Marketing". Maximum length: 31 characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -185,7 +185,7 @@ class ClassesResource(SyncAPIResource):
               does not include the names of its parent objects like `fullName` does. For
               example, two classes could both have the `name` "Marketing", but they could have
               unique `fullName` values, such as "Corporate:Marketing" and
-              "Internal:Marketing".
+              "Internal:Marketing". Maximum length: 31 characters.
 
           parent_id: The parent class one level above this one in the hierarchy. For example, if this
               class has a `fullName` of "Corporate:Sales:Marketing", its parent has a
@@ -382,7 +382,7 @@ class AsyncClassesResource(AsyncAPIResource):
               does not include the names of its parent objects like `fullName` does. For
               example, two classes could both have the `name` "Marketing", but they could have
               unique `fullName` values, such as "Corporate:Marketing" and
-              "Internal:Marketing".
+              "Internal:Marketing". Maximum length: 31 characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -496,7 +496,7 @@ class AsyncClassesResource(AsyncAPIResource):
               does not include the names of its parent objects like `fullName` does. For
               example, two classes could both have the `name` "Marketing", but they could have
               unique `fullName` values, such as "Corporate:Marketing" and
-              "Internal:Marketing".
+              "Internal:Marketing". Maximum length: 31 characters.
 
           parent_id: The parent class one level above this one in the hierarchy. For example, if this
               class has a `fullName` of "Corporate:Sales:Marketing", its parent has a
