@@ -41,7 +41,7 @@ class InventoryItemUpdateParams(TypedDict, total=False):
     default.
     """
 
-    cost_of_goods_sold_account_id: Annotated[str, PropertyInfo(alias="costOfGoodsSoldAccountId")]
+    cogs_account_id: Annotated[str, PropertyInfo(alias="cogsAccountId")]
     """
     The Cost of Goods Sold (COGS) account for this inventory item, tracking the
     original direct costs of producing goods sold.
@@ -153,8 +153,8 @@ class InventoryItemUpdateParams(TypedDict, total=False):
     base unit and related units.
     """
 
-    update_existing_transactions_cost_of_goods_sold_account: Annotated[
-        bool, PropertyInfo(alias="updateExistingTransactionsCostOfGoodsSoldAccount")
+    update_existing_transactions_cogs_account: Annotated[
+        bool, PropertyInfo(alias="updateExistingTransactionsCogsAccount")
     ]
     """
     Indicates whether to apply the new COGS account (specified by the

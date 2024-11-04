@@ -11,7 +11,7 @@ __all__ = [
     "InventoryItem",
     "AssetAccount",
     "Class",
-    "CostOfGoodsSoldAccount",
+    "CogsAccount",
     "CustomField",
     "IncomeAccount",
     "Parent",
@@ -54,7 +54,7 @@ class Class(BaseModel):
     """
 
 
-class CostOfGoodsSoldAccount(BaseModel):
+class CogsAccount(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks to this object.
 
@@ -234,9 +234,7 @@ class InventoryItem(BaseModel):
     default.
     """
 
-    cost_of_goods_sold_account: Optional[CostOfGoodsSoldAccount] = FieldInfo(
-        alias="costOfGoodsSoldAccount", default=None
-    )
+    cogs_account: Optional[CogsAccount] = FieldInfo(alias="cogsAccount", default=None)
     """
     The Cost of Goods Sold (COGS) account for this inventory item, tracking the
     original direct costs of producing goods sold.
