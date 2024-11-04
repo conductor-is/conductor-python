@@ -606,9 +606,11 @@ class Customer(BaseModel):
     combining the names of its parent objects with its own `name`, separated by
     colons. For example, if a customer is under "Jones" and has the `name`
     "Kitchen-Renovation", its `fullName` would be "Jones:Kitchen-Renovation". Unlike
-    `name`, `fullName` is guaranteed to be unique across all customer objects. If
-    this object is a job (i.e., a sub-customer), this value would likely be the
-    job's `name` prefixed by the customer's `name`.
+    `name`, `fullName` is guaranteed to be unique across all customer objects. Also,
+    unlike `name`, `fullName` can be arbitrarily changed by the QuickBooks user when
+    modifying its underlying `name` field. If this object is a job (i.e., a
+    sub-customer), this value would likely be the job's `name` prefixed by the
+    customer's `name`.
     """
 
     is_active: bool = FieldInfo(alias="isActive")

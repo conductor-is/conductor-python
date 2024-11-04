@@ -35,12 +35,14 @@ class ServiceItemListParams(TypedDict, total=False):
     full_names: Annotated[List[str], PropertyInfo(alias="fullNames")]
     """Filter for specific service items by their full-name(s), case-insensitive.
 
-    Like `id`, a `fullName` is a unique identifier for a service item, and is formed
-    by by combining the names of its parent objects with its own `name`, separated
-    by colons. For example, if a service item is under "Professional Services" and
-    has the `name` "Consulting", its `fullName` would be "Professional
+    Like `id`, `fullName` is a unique identifier for a service item, formed by by
+    combining the names of its parent objects with its own `name`, separated by
+    colons. For example, if a service item is under "Professional Services" and has
+    the `name` "Consulting", its `fullName` would be "Professional
     Services:Consulting". Unlike `name`, `fullName` is guaranteed to be unique
-    across all service item objects.
+    across all service item objects. Also, unlike `id`, `fullName` can be
+    arbitrarily changed by the QuickBooks user when modifying its underlying `name`
+    field.
 
     NOTE: If you include this parameter, QuickBooks will ignore all other query
     parameters.

@@ -182,11 +182,13 @@ class StandardTermsResource(SyncAPIResource):
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
           full_names: Filter for specific standard terms by their full-name(s), case-insensitive. Like
-              `id`, a `fullName` is a unique identifier for a standard term, and is formed by
-              by combining the names of its parent objects with its own `name`, separated by
+              `id`, `fullName` is a unique identifier for a standard term, formed by by
+              combining the names of its parent objects with its own `name`, separated by
               colons. For example, if a standard term is under "Payment Terms" and has the
               `name` "Net 15", its `fullName` would be "Payment Terms:Net 15". Unlike `name`,
-              `fullName` is guaranteed to be unique across all standard term objects.
+              `fullName` is guaranteed to be unique across all standard term objects. Also,
+              unlike `id`, `fullName` can be arbitrarily changed by the QuickBooks user when
+              modifying its underlying `name` field.
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
@@ -422,11 +424,13 @@ class AsyncStandardTermsResource(AsyncAPIResource):
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
           full_names: Filter for specific standard terms by their full-name(s), case-insensitive. Like
-              `id`, a `fullName` is a unique identifier for a standard term, and is formed by
-              by combining the names of its parent objects with its own `name`, separated by
+              `id`, `fullName` is a unique identifier for a standard term, formed by by
+              combining the names of its parent objects with its own `name`, separated by
               colons. For example, if a standard term is under "Payment Terms" and has the
               `name` "Net 15", its `fullName` would be "Payment Terms:Net 15". Unlike `name`,
-              `fullName` is guaranteed to be unique across all standard term objects.
+              `fullName` is guaranteed to be unique across all standard term objects. Also,
+              unlike `id`, `fullName` can be arbitrarily changed by the QuickBooks user when
+              modifying its underlying `name` field.
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
