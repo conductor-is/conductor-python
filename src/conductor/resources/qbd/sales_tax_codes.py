@@ -72,7 +72,7 @@ class SalesTaxCodesResource(SyncAPIResource):
               cannot be modified once the sales-tax code has been used in a transaction.
 
           name: The case-insensitive unique name of this sales-tax code, unique across all
-              sales-tax codes. Maximum length: 31 characters. This short name will appear on
+              sales-tax codes. Maximum length: 3 characters. This short name will appear on
               sales forms to identify the tax status of an item.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
@@ -196,7 +196,7 @@ class SalesTaxCodesResource(SyncAPIResource):
               cannot be modified once the sales-tax code has been used in a transaction.
 
           name: The case-insensitive unique name of this sales-tax code, unique across all
-              sales-tax codes. Maximum length: 31 characters. This short name will appear on
+              sales-tax codes. Maximum length: 3 characters. This short name will appear on
               sales forms to identify the tax status of an item.
 
           sales_tax_item_id: The sales-tax item used to calculate the actual tax amount for this sales-tax
@@ -397,7 +397,7 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
               cannot be modified once the sales-tax code has been used in a transaction.
 
           name: The case-insensitive unique name of this sales-tax code, unique across all
-              sales-tax codes. Maximum length: 31 characters. This short name will appear on
+              sales-tax codes. Maximum length: 3 characters. This short name will appear on
               sales forms to identify the tax status of an item.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
@@ -521,7 +521,7 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
               cannot be modified once the sales-tax code has been used in a transaction.
 
           name: The case-insensitive unique name of this sales-tax code, unique across all
-              sales-tax codes. Maximum length: 31 characters. This short name will appear on
+              sales-tax codes. Maximum length: 3 characters. This short name will appear on
               sales forms to identify the tax status of an item.
 
           sales_tax_item_id: The sales-tax item used to calculate the actual tax amount for this sales-tax
