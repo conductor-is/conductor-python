@@ -16,6 +16,7 @@ from .sales_tax_code import SalesTaxCode as SalesTaxCode
 from .sales_tax_item import SalesTaxItem as SalesTaxItem
 from .bill_list_params import BillListParams as BillListParams
 from .date_driven_term import DateDrivenTerm as DateDrivenTerm
+from .check_list_params import CheckListParams as CheckListParams
 from .class_list_params import ClassListParams as ClassListParams
 from .bill_create_params import BillCreateParams as BillCreateParams
 from .bill_update_params import BillUpdateParams as BillUpdateParams
@@ -24,6 +25,7 @@ from .credit_card_credit import CreditCardCredit as CreditCardCredit
 from .non_inventory_item import NonInventoryItem as NonInventoryItem
 from .vendor_list_params import VendorListParams as VendorListParams
 from .account_list_params import AccountListParams as AccountListParams
+from .check_list_response import CheckListResponse as CheckListResponse
 from .class_create_params import ClassCreateParams as ClassCreateParams
 from .class_list_response import ClassListResponse as ClassListResponse
 from .class_update_params import ClassUpdateParams as ClassUpdateParams
