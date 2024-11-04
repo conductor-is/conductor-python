@@ -264,20 +264,17 @@ class SalesTaxCodesResource(SyncAPIResource):
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
           full_names: Filter for specific sales-tax codes by their full-name(s), case-insensitive.
-              Specify a single full-name or multiple using a comma-separated list (e.g.,
-              `fullNames=1,2,3`). Like `id`, a `fullName` is a unique identifier for a
-              sales-tax code, and is formed by by combining the names of its parent objects
-              with its own `name`, separated by colons. For example, if a sales-tax code is
-              under "State" and has the `name` "CA Sales Tax", its `fullName` would be
-              "State:CA Sales Tax". Unlike `name`, `fullName` is guaranteed to be unique
-              across all sales-tax code objects.
+              Like `id`, a `fullName` is a unique identifier for a sales-tax code, and is
+              formed by by combining the names of its parent objects with its own `name`,
+              separated by colons. For example, if a sales-tax code is under "State" and has
+              the `name` "CA Sales Tax", its `fullName` would be "State:CA Sales Tax". Unlike
+              `name`, `fullName` is guaranteed to be unique across all sales-tax code objects.
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
 
           ids: Filter for specific sales-tax codes by their QuickBooks-assigned unique
-              identifier(s). Specify a single ID or multiple using a comma-separated list
-              (e.g., `ids=1,2,3`).
+              identifier(s).
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
@@ -589,20 +586,17 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
           full_names: Filter for specific sales-tax codes by their full-name(s), case-insensitive.
-              Specify a single full-name or multiple using a comma-separated list (e.g.,
-              `fullNames=1,2,3`). Like `id`, a `fullName` is a unique identifier for a
-              sales-tax code, and is formed by by combining the names of its parent objects
-              with its own `name`, separated by colons. For example, if a sales-tax code is
-              under "State" and has the `name` "CA Sales Tax", its `fullName` would be
-              "State:CA Sales Tax". Unlike `name`, `fullName` is guaranteed to be unique
-              across all sales-tax code objects.
+              Like `id`, a `fullName` is a unique identifier for a sales-tax code, and is
+              formed by by combining the names of its parent objects with its own `name`,
+              separated by colons. For example, if a sales-tax code is under "State" and has
+              the `name` "CA Sales Tax", its `fullName` would be "State:CA Sales Tax". Unlike
+              `name`, `fullName` is guaranteed to be unique across all sales-tax code objects.
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
 
           ids: Filter for specific sales-tax codes by their QuickBooks-assigned unique
-              identifier(s). Specify a single ID or multiple using a comma-separated list
-              (e.g., `ids=1,2,3`).
+              identifier(s).
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.

@@ -261,8 +261,6 @@ class TransfersResource(SyncAPIResource):
               previous response. If omitted, the API returns the first page of results.
 
           ids: Filter for specific transfers by their QuickBooks-assigned unique identifier(s).
-              Specify a single ID or multiple using a comma-separated list (e.g.,
-              `ids=1,2,3`).
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
@@ -554,8 +552,6 @@ class AsyncTransfersResource(AsyncAPIResource):
               previous response. If omitted, the API returns the first page of results.
 
           ids: Filter for specific transfers by their QuickBooks-assigned unique identifier(s).
-              Specify a single ID or multiple using a comma-separated list (e.g.,
-              `ids=1,2,3`).
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.

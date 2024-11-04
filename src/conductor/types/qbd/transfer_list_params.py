@@ -28,9 +28,6 @@ class TransferListParams(TypedDict, total=False):
     ids: List[str]
     """Filter for specific transfers by their QuickBooks-assigned unique identifier(s).
 
-    Specify a single ID or multiple using a comma-separated list (e.g.,
-    `ids=1,2,3`).
-
     NOTE: If you include this parameter, QuickBooks will ignore all other query
     parameters.
     """

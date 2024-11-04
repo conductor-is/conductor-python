@@ -599,8 +599,6 @@ class InvoicesResource(SyncAPIResource):
               ID or multiple using a comma-separated list (e.g., `customerIds=1,2,3`).
 
           ids: Filter for specific invoices by their QuickBooks-assigned unique identifier(s).
-              Specify a single ID or multiple using a comma-separated list (e.g.,
-              `ids=1,2,3`).
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
@@ -631,10 +629,9 @@ class InvoicesResource(SyncAPIResource):
               numerical comparison for values that contain only digits; otherwise, uses a
               lexicographical comparison.
 
-          ref_numbers: Filter for specific invoices by their ref-number(s), case-sensitive. Specify a
-              single ref-number or multiple using a comma-separated list (e.g.,
-              `refNumbers=1,2,3`). In QuickBooks, ref-numbers are not required to be unique
-              and can be arbitrarily changed by the QuickBooks user.
+          ref_numbers: Filter for specific invoices by their ref-number(s), case-sensitive. In
+              QuickBooks, ref-numbers are not required to be unique and can be arbitrarily
+              changed by the QuickBooks user.
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
@@ -1278,8 +1275,6 @@ class AsyncInvoicesResource(AsyncAPIResource):
               ID or multiple using a comma-separated list (e.g., `customerIds=1,2,3`).
 
           ids: Filter for specific invoices by their QuickBooks-assigned unique identifier(s).
-              Specify a single ID or multiple using a comma-separated list (e.g.,
-              `ids=1,2,3`).
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
@@ -1310,10 +1305,9 @@ class AsyncInvoicesResource(AsyncAPIResource):
               numerical comparison for values that contain only digits; otherwise, uses a
               lexicographical comparison.
 
-          ref_numbers: Filter for specific invoices by their ref-number(s), case-sensitive. Specify a
-              single ref-number or multiple using a comma-separated list (e.g.,
-              `refNumbers=1,2,3`). In QuickBooks, ref-numbers are not required to be unique
-              and can be arbitrarily changed by the QuickBooks user.
+          ref_numbers: Filter for specific invoices by their ref-number(s), case-sensitive. In
+              QuickBooks, ref-numbers are not required to be unique and can be arbitrarily
+              changed by the QuickBooks user.
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.

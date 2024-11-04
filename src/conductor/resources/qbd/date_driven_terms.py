@@ -190,20 +190,18 @@ class DateDrivenTermsResource(SyncAPIResource):
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
           full_names: Filter for specific date-driven terms by their full-name(s), case-insensitive.
-              Specify a single full-name or multiple using a comma-separated list (e.g.,
-              `fullNames=1,2,3`). Like `id`, a `fullName` is a unique identifier for a
-              date-driven term, and is formed by by combining the names of its parent objects
-              with its own `name`, separated by colons. For example, if a date-driven term is
-              under "Net 30" and has the `name` "2% 10 Net 30", its `fullName` would be "Net
-              30:2% 10 Net 30". Unlike `name`, `fullName` is guaranteed to be unique across
-              all date-driven term objects.
+              Like `id`, a `fullName` is a unique identifier for a date-driven term, and is
+              formed by by combining the names of its parent objects with its own `name`,
+              separated by colons. For example, if a date-driven term is under "Net 30" and
+              has the `name` "2% 10 Net 30", its `fullName` would be "Net 30:2% 10 Net 30".
+              Unlike `name`, `fullName` is guaranteed to be unique across all date-driven term
+              objects.
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
 
           ids: Filter for specific date-driven terms by their QuickBooks-assigned unique
-              identifier(s). Specify a single ID or multiple using a comma-separated list
-              (e.g., `ids=1,2,3`).
+              identifier(s).
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
@@ -441,20 +439,18 @@ class AsyncDateDrivenTermsResource(AsyncAPIResource):
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
           full_names: Filter for specific date-driven terms by their full-name(s), case-insensitive.
-              Specify a single full-name or multiple using a comma-separated list (e.g.,
-              `fullNames=1,2,3`). Like `id`, a `fullName` is a unique identifier for a
-              date-driven term, and is formed by by combining the names of its parent objects
-              with its own `name`, separated by colons. For example, if a date-driven term is
-              under "Net 30" and has the `name` "2% 10 Net 30", its `fullName` would be "Net
-              30:2% 10 Net 30". Unlike `name`, `fullName` is guaranteed to be unique across
-              all date-driven term objects.
+              Like `id`, a `fullName` is a unique identifier for a date-driven term, and is
+              formed by by combining the names of its parent objects with its own `name`,
+              separated by colons. For example, if a date-driven term is under "Net 30" and
+              has the `name` "2% 10 Net 30", its `fullName` would be "Net 30:2% 10 Net 30".
+              Unlike `name`, `fullName` is guaranteed to be unique across all date-driven term
+              objects.
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
 
           ids: Filter for specific date-driven terms by their QuickBooks-assigned unique
-              identifier(s). Specify a single ID or multiple using a comma-separated list
-              (e.g., `ids=1,2,3`).
+              identifier(s).
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
