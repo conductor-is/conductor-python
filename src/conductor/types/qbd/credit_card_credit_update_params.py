@@ -27,7 +27,7 @@ class CreditCardCreditUpdateParams(TypedDict, total=False):
     """
 
     account_id: Annotated[str, PropertyInfo(alias="accountId")]
-    """The bank account or credit card account to which the credit is applied."""
+    """The bank or credit card account to which the credit is applied."""
 
     clear_expense_lines: Annotated[bool, PropertyInfo(alias="clearExpenseLines")]
     """Indicates whether to clear all the expense lines of this credit card credit.

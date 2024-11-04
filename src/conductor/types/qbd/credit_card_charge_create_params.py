@@ -23,8 +23,8 @@ __all__ = [
 class CreditCardChargeCreateParams(TypedDict, total=False):
     account_id: Required[Annotated[str, PropertyInfo(alias="accountId")]]
     """
-    The bank account or credit card company to whom money is owed for this credit
-    card charge.
+    The bank or credit card account to whom money is owed for this credit card
+    charge.
     """
 
     transaction_date: Required[Annotated[Union[str, date], PropertyInfo(alias="transactionDate", format="iso8601")]]
