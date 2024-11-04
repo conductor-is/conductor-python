@@ -44,7 +44,7 @@ class InventoryItemCreateParams(TypedDict, total=False):
     default.
     """
 
-    cost_of_goods_sold_account_id: Annotated[str, PropertyInfo(alias="costOfGoodsSoldAccountId")]
+    cogs_account_id: Annotated[str, PropertyInfo(alias="cogsAccountId")]
     """
     The Cost of Goods Sold (COGS) account for this inventory item, tracking the
     original direct costs of producing goods sold.

@@ -78,8 +78,9 @@ class ServiceItemUpdateParams(TypedDict, total=False):
     """
     Details for service items that are both purchased and sold, such as reimbursable
     expenses or inventory items that are bought from vendors and sold to customers.
-    Do not use this field alongside `salesOrPurchaseDetails` because an item cannot
-    have both configurations.
+    IMPORTANT: a service item must specify either `salesAndPurchaseDetails` or
+    `salesOrPurchaseDetails`, but never both because an item cannot have both
+    configurations.
     """
 
     sales_or_purchase_details: Annotated[SalesOrPurchaseDetails, PropertyInfo(alias="salesOrPurchaseDetails")]
@@ -87,8 +88,9 @@ class ServiceItemUpdateParams(TypedDict, total=False):
     Details for service items that are exclusively sold or exclusively purchased,
     but not both. This typically applies to non-inventory items (like a purchased
     office supply that isn't resold) or service items (like consulting services that
-    are sold but not purchased). Do not use this field alongside
-    `salesAndPurchaseDetails` because an item cannot have both configurations.
+    are sold but not purchased). IMPORTANT: a service item must specify either
+    `salesOrPurchaseDetails` or `salesAndPurchaseDetails`, but never both because an
+    item cannot have both configurations.
     """
 
     sales_tax_code_id: Annotated[str, PropertyInfo(alias="salesTaxCodeId")]
