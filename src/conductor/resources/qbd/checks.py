@@ -20,7 +20,7 @@ from ..._response import (
 from ...types.qbd import check_list_params
 from ...pagination import SyncCursorPage, AsyncCursorPage
 from ..._base_client import AsyncPaginator, make_request_options
-from ...types.qbd.check_list_response import CheckListResponse
+from ...types.qbd.qbd_check import QbdCheck
 
 __all__ = ["ChecksResource", "AsyncChecksResource"]
 
@@ -45,6 +45,46 @@ class ChecksResource(SyncAPIResource):
         """
         return ChecksResourceWithStreamingResponse(self)
 
+    def retrieve(
+        self,
+        id: str,
+        *,
+        conductor_end_user_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> QbdCheck:
+        """
+        Retrieves a check by ID.
+
+        Args:
+          id: The QuickBooks-assigned unique identifier of the check to retrieve.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return self._get(
+            f"/quickbooks-desktop/checks/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=QbdCheck,
+        )
+
     def list(
         self,
         *,
@@ -73,7 +113,7 @@ class ChecksResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursorPage[CheckListResponse]:
+    ) -> SyncCursorPage[QbdCheck]:
         """
         Returns a list of checks.
 
@@ -164,7 +204,7 @@ class ChecksResource(SyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/checks",
-            page=SyncCursorPage[CheckListResponse],
+            page=SyncCursorPage[QbdCheck],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -194,7 +234,7 @@ class ChecksResource(SyncAPIResource):
                     check_list_params.CheckListParams,
                 ),
             ),
-            model=CheckListResponse,
+            model=QbdCheck,
         )
 
 
@@ -218,6 +258,46 @@ class AsyncChecksResource(AsyncAPIResource):
         """
         return AsyncChecksResourceWithStreamingResponse(self)
 
+    async def retrieve(
+        self,
+        id: str,
+        *,
+        conductor_end_user_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> QbdCheck:
+        """
+        Retrieves a check by ID.
+
+        Args:
+          id: The QuickBooks-assigned unique identifier of the check to retrieve.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return await self._get(
+            f"/quickbooks-desktop/checks/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=QbdCheck,
+        )
+
     def list(
         self,
         *,
@@ -246,7 +326,7 @@ class AsyncChecksResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[CheckListResponse, AsyncCursorPage[CheckListResponse]]:
+    ) -> AsyncPaginator[QbdCheck, AsyncCursorPage[QbdCheck]]:
         """
         Returns a list of checks.
 
@@ -337,7 +417,7 @@ class AsyncChecksResource(AsyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/checks",
-            page=AsyncCursorPage[CheckListResponse],
+            page=AsyncCursorPage[QbdCheck],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -367,7 +447,7 @@ class AsyncChecksResource(AsyncAPIResource):
                     check_list_params.CheckListParams,
                 ),
             ),
-            model=CheckListResponse,
+            model=QbdCheck,
         )
 
 
@@ -375,6 +455,9 @@ class ChecksResourceWithRawResponse:
     def __init__(self, checks: ChecksResource) -> None:
         self._checks = checks
 
+        self.retrieve = to_raw_response_wrapper(
+            checks.retrieve,
+        )
         self.list = to_raw_response_wrapper(
             checks.list,
         )
@@ -384,6 +467,9 @@ class AsyncChecksResourceWithRawResponse:
     def __init__(self, checks: AsyncChecksResource) -> None:
         self._checks = checks
 
+        self.retrieve = async_to_raw_response_wrapper(
+            checks.retrieve,
+        )
         self.list = async_to_raw_response_wrapper(
             checks.list,
         )
@@ -393,6 +479,9 @@ class ChecksResourceWithStreamingResponse:
     def __init__(self, checks: ChecksResource) -> None:
         self._checks = checks
 
+        self.retrieve = to_streamed_response_wrapper(
+            checks.retrieve,
+        )
         self.list = to_streamed_response_wrapper(
             checks.list,
         )
@@ -402,6 +491,9 @@ class AsyncChecksResourceWithStreamingResponse:
     def __init__(self, checks: AsyncChecksResource) -> None:
         self._checks = checks
 
+        self.retrieve = async_to_streamed_response_wrapper(
+            checks.retrieve,
+        )
         self.list = async_to_streamed_response_wrapper(
             checks.list,
         )
