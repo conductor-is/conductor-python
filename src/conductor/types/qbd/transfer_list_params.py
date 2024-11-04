@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Union
+from typing import List, Union
 from datetime import date
 from typing_extensions import Required, Annotated, TypedDict
 
@@ -25,7 +25,7 @@ class TransferListParams(TypedDict, total=False):
     previous response. If omitted, the API returns the first page of results.
     """
 
-    ids: str
+    ids: List[str]
     """Filter for specific transfers by their QuickBooks-assigned unique identifier(s).
 
     Specify a single ID or multiple using a comma-separated list (e.g.,
