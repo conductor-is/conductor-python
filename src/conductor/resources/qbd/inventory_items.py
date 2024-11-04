@@ -485,11 +485,10 @@ class InventoryItemsResource(SyncAPIResource):
               previous response. If omitted, the API returns the first page of results.
 
           full_names: Filter for specific inventory items by their full-name(s), case-insensitive.
-              Specify a single full-name or multiple using a comma-separated list (e.g.,
-              `fullNames=1,2,3`). Like `id`, a `fullName` is a unique identifier for an
-              inventory item, and is formed by by combining the names of its parent objects
-              with its own `name`, separated by colons. For example, if an inventory item is
-              under "Furniture:Kitchen" and has the `name` "Cabinet", its `fullName` would be
+              Like `id`, a `fullName` is a unique identifier for an inventory item, and is
+              formed by by combining the names of its parent objects with its own `name`,
+              separated by colons. For example, if an inventory item is under
+              "Furniture:Kitchen" and has the `name` "Cabinet", its `fullName` would be
               "Furniture:Kitchen:Cabinet". Unlike `name`, `fullName` is guaranteed to be
               unique across all inventory item objects.
 
@@ -497,8 +496,7 @@ class InventoryItemsResource(SyncAPIResource):
               parameters.
 
           ids: Filter for specific inventory items by their QuickBooks-assigned unique
-              identifier(s). Specify a single ID or multiple using a comma-separated list
-              (e.g., `ids=1,2,3`).
+              identifier(s).
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
@@ -1045,11 +1043,10 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
               previous response. If omitted, the API returns the first page of results.
 
           full_names: Filter for specific inventory items by their full-name(s), case-insensitive.
-              Specify a single full-name or multiple using a comma-separated list (e.g.,
-              `fullNames=1,2,3`). Like `id`, a `fullName` is a unique identifier for an
-              inventory item, and is formed by by combining the names of its parent objects
-              with its own `name`, separated by colons. For example, if an inventory item is
-              under "Furniture:Kitchen" and has the `name` "Cabinet", its `fullName` would be
+              Like `id`, a `fullName` is a unique identifier for an inventory item, and is
+              formed by by combining the names of its parent objects with its own `name`,
+              separated by colons. For example, if an inventory item is under
+              "Furniture:Kitchen" and has the `name` "Cabinet", its `fullName` would be
               "Furniture:Kitchen:Cabinet". Unlike `name`, `fullName` is guaranteed to be
               unique across all inventory item objects.
 
@@ -1057,8 +1054,7 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
               parameters.
 
           ids: Filter for specific inventory items by their QuickBooks-assigned unique
-              identifier(s). Specify a single ID or multiple using a comma-separated list
-              (e.g., `ids=1,2,3`).
+              identifier(s).
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.

@@ -42,9 +42,6 @@ class BillListParams(TypedDict, total=False):
     ids: List[str]
     """Filter for specific bills by their QuickBooks-assigned unique identifier(s).
 
-    Specify a single ID or multiple using a comma-separated list (e.g.,
-    `ids=1,2,3`).
-
     NOTE: If you include this parameter, QuickBooks will ignore all other query
     parameters.
     """
@@ -95,9 +92,8 @@ class BillListParams(TypedDict, total=False):
     ref_numbers: Annotated[List[str], PropertyInfo(alias="refNumbers")]
     """Filter for specific bills by their ref-number(s), case-sensitive.
 
-    Specify a single ref-number or multiple using a comma-separated list (e.g.,
-    `refNumbers=1,2,3`). In QuickBooks, ref-numbers are not required to be unique
-    and can be arbitrarily changed by the QuickBooks user.
+    In QuickBooks, ref-numbers are not required to be unique and can be arbitrarily
+    changed by the QuickBooks user.
 
     NOTE: If you include this parameter, QuickBooks will ignore all other query
     parameters.
