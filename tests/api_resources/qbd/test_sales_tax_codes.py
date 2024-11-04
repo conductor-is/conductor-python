@@ -24,7 +24,7 @@ class TestSalesTaxCodes:
     def test_method_create(self, client: Conductor) -> None:
         sales_tax_code = client.qbd.sales_tax_codes.create(
             is_taxable=True,
-            name="California Sales Tax",
+            name="xxx",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(SalesTaxCode, sales_tax_code, path=["response"])
@@ -33,7 +33,7 @@ class TestSalesTaxCodes:
     def test_method_create_with_all_params(self, client: Conductor) -> None:
         sales_tax_code = client.qbd.sales_tax_codes.create(
             is_taxable=True,
-            name="California Sales Tax",
+            name="xxx",
             conductor_end_user_id="end_usr_1234567abcdefg",
             description="For items that are taxable at the standard rate in California.",
             is_active=True,
@@ -45,7 +45,7 @@ class TestSalesTaxCodes:
     def test_raw_response_create(self, client: Conductor) -> None:
         response = client.qbd.sales_tax_codes.with_raw_response.create(
             is_taxable=True,
-            name="California Sales Tax",
+            name="xxx",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -58,7 +58,7 @@ class TestSalesTaxCodes:
     def test_streaming_response_create(self, client: Conductor) -> None:
         with client.qbd.sales_tax_codes.with_streaming_response.create(
             is_taxable=True,
-            name="California Sales Tax",
+            name="xxx",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
@@ -129,7 +129,7 @@ class TestSalesTaxCodes:
             description="For items that are taxable at the standard rate in California.",
             is_active=True,
             is_taxable=True,
-            name="California Sales Tax",
+            name="xxx",
             sales_tax_item_id="80000010-1234567890",
         )
         assert_matches_type(SalesTaxCode, sales_tax_code, path=["response"])
@@ -228,7 +228,7 @@ class TestAsyncSalesTaxCodes:
     async def test_method_create(self, async_client: AsyncConductor) -> None:
         sales_tax_code = await async_client.qbd.sales_tax_codes.create(
             is_taxable=True,
-            name="California Sales Tax",
+            name="xxx",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(SalesTaxCode, sales_tax_code, path=["response"])
@@ -237,7 +237,7 @@ class TestAsyncSalesTaxCodes:
     async def test_method_create_with_all_params(self, async_client: AsyncConductor) -> None:
         sales_tax_code = await async_client.qbd.sales_tax_codes.create(
             is_taxable=True,
-            name="California Sales Tax",
+            name="xxx",
             conductor_end_user_id="end_usr_1234567abcdefg",
             description="For items that are taxable at the standard rate in California.",
             is_active=True,
@@ -249,7 +249,7 @@ class TestAsyncSalesTaxCodes:
     async def test_raw_response_create(self, async_client: AsyncConductor) -> None:
         response = await async_client.qbd.sales_tax_codes.with_raw_response.create(
             is_taxable=True,
-            name="California Sales Tax",
+            name="xxx",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -262,7 +262,7 @@ class TestAsyncSalesTaxCodes:
     async def test_streaming_response_create(self, async_client: AsyncConductor) -> None:
         async with async_client.qbd.sales_tax_codes.with_streaming_response.create(
             is_taxable=True,
-            name="California Sales Tax",
+            name="xxx",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
@@ -333,7 +333,7 @@ class TestAsyncSalesTaxCodes:
             description="For items that are taxable at the standard rate in California.",
             is_active=True,
             is_taxable=True,
-            name="California Sales Tax",
+            name="xxx",
             sales_tax_item_id="80000010-1234567890",
         )
         assert_matches_type(SalesTaxCode, sales_tax_code, path=["response"])

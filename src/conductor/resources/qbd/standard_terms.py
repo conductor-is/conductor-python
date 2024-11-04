@@ -69,7 +69,7 @@ class StandardTermsResource(SyncAPIResource):
 
         Args:
           name: The case-insensitive unique name of this standard term, unique across all
-              standard terms.
+              standard terms. Maximum length: 31 characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -312,7 +312,7 @@ class AsyncStandardTermsResource(AsyncAPIResource):
 
         Args:
           name: The case-insensitive unique name of this standard term, unique across all
-              standard terms.
+              standard terms. Maximum length: 31 characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
