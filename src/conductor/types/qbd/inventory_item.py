@@ -269,10 +269,11 @@ class InventoryItem(BaseModel):
     by combining the names of its parent objects with its own `name`, separated by
     colons. For example, if an inventory item is under "Products:Electronics" and
     has the `name` "Widgets", its `fullName` would be
-    "Products:Electronics:Widgets". Unlike `name`, `fullName` is guaranteed to be
-    unique across all inventory item objects. Also, unlike `name`, `fullName` can be
-    arbitrarily changed by the QuickBooks user when modifying its underlying `name`
-    field.
+    "Products:Electronics:Widgets".
+
+    Unlike `name`, `fullName` is guaranteed to be unique across all inventory item
+    objects. Also, unlike `name`, `fullName` can be arbitrarily changed by the
+    QuickBooks user when modifying its underlying `name` field.
     """
 
     income_account: Optional[IncomeAccount] = FieldInfo(alias="incomeAccount", default=None)

@@ -707,9 +707,11 @@ class CustomersResource(SyncAPIResource):
               the names of its parent objects with its own `name`, separated by colons. For
               example, if a customer is under "ABC Corporation" and has the `name` "Website
               Redesign Project", its `fullName` would be "ABC Corporation:Website Redesign
-              Project". Unlike `name`, `fullName` is guaranteed to be unique across all
-              customer objects. Also, unlike `id`, `fullName` can be arbitrarily changed by
-              the QuickBooks user when modifying its underlying `name` field.
+              Project".
+
+              Unlike `name`, `fullName` is guaranteed to be unique across all customer
+              objects. Also, unlike `id`, `fullName` can be arbitrarily changed by the
+              QuickBooks user when modifying its underlying `name` field.
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
@@ -1495,9 +1497,11 @@ class AsyncCustomersResource(AsyncAPIResource):
               the names of its parent objects with its own `name`, separated by colons. For
               example, if a customer is under "ABC Corporation" and has the `name` "Website
               Redesign Project", its `fullName` would be "ABC Corporation:Website Redesign
-              Project". Unlike `name`, `fullName` is guaranteed to be unique across all
-              customer objects. Also, unlike `id`, `fullName` can be arbitrarily changed by
-              the QuickBooks user when modifying its underlying `name` field.
+              Project".
+
+              Unlike `name`, `fullName` is guaranteed to be unique across all customer
+              objects. Also, unlike `id`, `fullName` can be arbitrarily changed by the
+              QuickBooks user when modifying its underlying `name` field.
 
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
