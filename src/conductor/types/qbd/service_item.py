@@ -321,10 +321,11 @@ class ServiceItem(BaseModel):
     combining the names of its parent objects with its own `name`, separated by
     colons. For example, if a service item is under "Services:Consulting" and has
     the `name` "Web-Design", its `fullName` would be
-    "Services:Consulting:Web-Design". Unlike `name`, `fullName` is guaranteed to be
-    unique across all service item objects. Also, unlike `name`, `fullName` can be
-    arbitrarily changed by the QuickBooks user when modifying its underlying `name`
-    field.
+    "Services:Consulting:Web-Design".
+
+    Unlike `name`, `fullName` is guaranteed to be unique across all service item
+    objects. Also, unlike `name`, `fullName` can be arbitrarily changed by the
+    QuickBooks user when modifying its underlying `name` field.
     """
 
     is_active: bool = FieldInfo(alias="isActive")
