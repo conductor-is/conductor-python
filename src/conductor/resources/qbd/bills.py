@@ -435,7 +435,7 @@ class BillsResource(SyncAPIResource):
           include_linked_transactions: Whether to include linked transactions in the response. For example, a payment
               linked to the corresponding bill.
 
-          limit: The maximum number of objects to return. Ranging from 1 to 200, defaults to 200.
+          limit: The maximum number of objects to return. Ranging from 1 to 150, defaults to 150.
               Use this parameter in conjunction with the `cursor` parameter to paginate
               through results. The response will include a `nextCursor` field, which can be
               used as the `cursor` parameter value in subsequent requests to fetch the next
@@ -939,7 +939,7 @@ class AsyncBillsResource(AsyncAPIResource):
           include_linked_transactions: Whether to include linked transactions in the response. For example, a payment
               linked to the corresponding bill.
 
-          limit: The maximum number of objects to return. Ranging from 1 to 200, defaults to 200.
+          limit: The maximum number of objects to return. Ranging from 1 to 150, defaults to 150.
               Use this parameter in conjunction with the `cursor` parameter to paginate
               through results. The response will include a `nextCursor` field, which can be
               used as the `cursor` parameter value in subsequent requests to fetch the next
