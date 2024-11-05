@@ -85,7 +85,7 @@ class ChecksResource(SyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          address: The address that will print on the check.
+          address: The address that is printed on the check.
 
           apply_checks_to_transactions: Transactions to be paid by this check. This will create a link between this
               check and the specified transactions.
@@ -108,8 +108,8 @@ class ChecksResource(SyncAPIResource):
               will return an error. This field is immutable and can only be set during object
               creation.
 
-          is_queued_for_print: Indicates whether this check is queued for printing. If set to `true`, the check
-              will appear in the list of documents to be printed in QuickBooks.
+          is_queued_for_print: Indicates whether this check is added to the queue of documents for QuickBooks
+              to print.
 
           item_group_lines: The check's item group lines, each representing a predefined set of items
               bundled together because they are commonly purchased together or grouped for
@@ -118,7 +118,7 @@ class ChecksResource(SyncAPIResource):
           item_lines: The check's item lines, each representing the purchase of a specific item or
               service.
 
-          memo: A memo or note for this check, as entered by the user.
+          memo: The memo that is printed on the check.
 
           payee_id: The person or company to whom the check is written.
 
@@ -254,7 +254,7 @@ class ChecksResource(SyncAPIResource):
           account_id: The bank account from which the funds are being drawn for this check; e.g.,
               Checking or Savings. This check decreases the balance of this account.
 
-          address: The address that will print on the check.
+          address: The address that is printed on the check.
 
           apply_checks_to_transactions: Transactions to be paid by this check. This will create a link between this
               check and the specified transactions.
@@ -266,11 +266,11 @@ class ChecksResource(SyncAPIResource):
               specify the parameter `includeLinkedTransactions` to see the
               `linkedTransactions` response field.
 
-          clear_expense_lines: Indicates whether to clear all the expense lines of this check. To modify
-              individual lines, use the field `expenseLines`.
+          clear_expense_lines: When `true`, removes all existing expense lines associated with this check. To
+              modify or add individual expense lines, use the field `expenseLines` instead.
 
-          clear_item_lines: Indicates whether to clear all the item lines of this check. To modify
-              individual lines, use the field `itemLines`.
+          clear_item_lines: When `true`, removes all existing item lines associated with this check. To
+              modify or add individual item lines, use the field `itemLines` instead.
 
           exchange_rate: The market exchange rate between this check's currency and the home currency in
               QuickBooks at the time of this transaction. Represented as a decimal value
@@ -285,8 +285,8 @@ class ChecksResource(SyncAPIResource):
               set to `-1`. If you do not wish to modify the expense lines, you can omit this
               field entirely to keep them unchanged.
 
-          is_queued_for_print: Indicates whether this check is queued for printing. If set to `true`, the check
-              will appear in the list of documents to be printed in QuickBooks.
+          is_queued_for_print: Indicates whether this check is added to the queue of documents for QuickBooks
+              to print.
 
           item_group_lines: The check's item group lines, each representing a predefined set of items
               bundled together because they are commonly purchased together or grouped for
@@ -309,7 +309,7 @@ class ChecksResource(SyncAPIResource):
               to `-1`. If you do not wish to modify the item lines, you can omit this field
               entirely to keep them unchanged.
 
-          memo: A memo or note for this check, as entered by the user.
+          memo: The memo that is printed on the check.
 
           payee_id: The person or company to whom the check is written.
 
@@ -577,7 +577,7 @@ class AsyncChecksResource(AsyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          address: The address that will print on the check.
+          address: The address that is printed on the check.
 
           apply_checks_to_transactions: Transactions to be paid by this check. This will create a link between this
               check and the specified transactions.
@@ -600,8 +600,8 @@ class AsyncChecksResource(AsyncAPIResource):
               will return an error. This field is immutable and can only be set during object
               creation.
 
-          is_queued_for_print: Indicates whether this check is queued for printing. If set to `true`, the check
-              will appear in the list of documents to be printed in QuickBooks.
+          is_queued_for_print: Indicates whether this check is added to the queue of documents for QuickBooks
+              to print.
 
           item_group_lines: The check's item group lines, each representing a predefined set of items
               bundled together because they are commonly purchased together or grouped for
@@ -610,7 +610,7 @@ class AsyncChecksResource(AsyncAPIResource):
           item_lines: The check's item lines, each representing the purchase of a specific item or
               service.
 
-          memo: A memo or note for this check, as entered by the user.
+          memo: The memo that is printed on the check.
 
           payee_id: The person or company to whom the check is written.
 
@@ -746,7 +746,7 @@ class AsyncChecksResource(AsyncAPIResource):
           account_id: The bank account from which the funds are being drawn for this check; e.g.,
               Checking or Savings. This check decreases the balance of this account.
 
-          address: The address that will print on the check.
+          address: The address that is printed on the check.
 
           apply_checks_to_transactions: Transactions to be paid by this check. This will create a link between this
               check and the specified transactions.
@@ -758,11 +758,11 @@ class AsyncChecksResource(AsyncAPIResource):
               specify the parameter `includeLinkedTransactions` to see the
               `linkedTransactions` response field.
 
-          clear_expense_lines: Indicates whether to clear all the expense lines of this check. To modify
-              individual lines, use the field `expenseLines`.
+          clear_expense_lines: When `true`, removes all existing expense lines associated with this check. To
+              modify or add individual expense lines, use the field `expenseLines` instead.
 
-          clear_item_lines: Indicates whether to clear all the item lines of this check. To modify
-              individual lines, use the field `itemLines`.
+          clear_item_lines: When `true`, removes all existing item lines associated with this check. To
+              modify or add individual item lines, use the field `itemLines` instead.
 
           exchange_rate: The market exchange rate between this check's currency and the home currency in
               QuickBooks at the time of this transaction. Represented as a decimal value
@@ -777,8 +777,8 @@ class AsyncChecksResource(AsyncAPIResource):
               set to `-1`. If you do not wish to modify the expense lines, you can omit this
               field entirely to keep them unchanged.
 
-          is_queued_for_print: Indicates whether this check is queued for printing. If set to `true`, the check
-              will appear in the list of documents to be printed in QuickBooks.
+          is_queued_for_print: Indicates whether this check is added to the queue of documents for QuickBooks
+              to print.
 
           item_group_lines: The check's item group lines, each representing a predefined set of items
               bundled together because they are commonly purchased together or grouped for
@@ -801,7 +801,7 @@ class AsyncChecksResource(AsyncAPIResource):
               to `-1`. If you do not wish to modify the item lines, you can omit this field
               entirely to keep them unchanged.
 
-          memo: A memo or note for this check, as entered by the user.
+          memo: The memo that is printed on the check.
 
           payee_id: The person or company to whom the check is written.
 

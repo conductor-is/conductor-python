@@ -26,15 +26,15 @@ class BillUpdateParams(TypedDict, total=False):
     """
 
     clear_expense_lines: Annotated[bool, PropertyInfo(alias="clearExpenseLines")]
-    """Indicates whether to clear all the expense lines of this bill.
+    """When `true`, removes all existing expense lines associated with this bill.
 
-    To modify individual lines, use the field `expenseLines`.
+    To modify or add individual expense lines, use the field `expenseLines` instead.
     """
 
     clear_item_lines: Annotated[bool, PropertyInfo(alias="clearItemLines")]
-    """Indicates whether to clear all the item lines of this bill.
+    """When `true`, removes all existing item lines associated with this bill.
 
-    To modify individual lines, use the field `itemLines`.
+    To modify or add individual item lines, use the field `itemLines` instead.
     """
 
     due_date: Annotated[Union[str, date], PropertyInfo(alias="dueDate", format="iso8601")]

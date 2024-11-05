@@ -1186,7 +1186,7 @@ class QbdCheck(BaseModel):
     """
 
     address: Optional[Address] = None
-    """The address that will print on the check."""
+    """The address that is printed on the check."""
 
     amount: str
     """The total monetary amount of this check, represented as a decimal string.
@@ -1246,10 +1246,9 @@ class QbdCheck(BaseModel):
     """
 
     is_queued_for_print: Optional[bool] = FieldInfo(alias="isQueuedForPrint", default=None)
-    """Indicates whether this check is queued for printing.
-
-    If set to `true`, the check will appear in the list of documents to be printed
-    in QuickBooks.
+    """
+    Indicates whether this check is added to the queue of documents for QuickBooks
+    to print.
     """
 
     item_group_lines: List[ItemGroupLine] = FieldInfo(alias="itemGroupLines")
@@ -1268,13 +1267,13 @@ class QbdCheck(BaseModel):
     linked_transactions: List[LinkedTransaction] = FieldInfo(alias="linkedTransactions")
     """
     The check's linked transactions, such as payments applied, credits used, or
-    associated purchase orders. You must specify the parameter
+    associated purchase orders. NOTE: You must specify the parameter
     `includeLinkedTransactions` when fetching a list of checks to receive this field
     because it is not returned by default.
     """
 
     memo: Optional[str] = None
-    """A memo or note for this check, as entered by the user."""
+    """The memo that is printed on the check."""
 
     object_type: Literal["qbd_check"] = FieldInfo(alias="objectType")
     """The type of object. This value is always `"qbd_check"`."""

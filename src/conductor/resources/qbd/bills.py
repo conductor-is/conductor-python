@@ -269,11 +269,11 @@ class BillsResource(SyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          clear_expense_lines: Indicates whether to clear all the expense lines of this bill. To modify
-              individual lines, use the field `expenseLines`.
+          clear_expense_lines: When `true`, removes all existing expense lines associated with this bill. To
+              modify or add individual expense lines, use the field `expenseLines` instead.
 
-          clear_item_lines: Indicates whether to clear all the item lines of this bill. To modify individual
-              lines, use the field `itemLines`.
+          clear_item_lines: When `true`, removes all existing item lines associated with this bill. To
+              modify or add individual item lines, use the field `itemLines` instead.
 
           due_date: The date by which this bill must be paid, in ISO 8601 format (YYYY-MM-DD).
 
@@ -773,11 +773,11 @@ class AsyncBillsResource(AsyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          clear_expense_lines: Indicates whether to clear all the expense lines of this bill. To modify
-              individual lines, use the field `expenseLines`.
+          clear_expense_lines: When `true`, removes all existing expense lines associated with this bill. To
+              modify or add individual expense lines, use the field `expenseLines` instead.
 
-          clear_item_lines: Indicates whether to clear all the item lines of this bill. To modify individual
-              lines, use the field `itemLines`.
+          clear_item_lines: When `true`, removes all existing item lines associated with this bill. To
+              modify or add individual item lines, use the field `itemLines` instead.
 
           due_date: The date by which this bill must be paid, in ISO 8601 format (YYYY-MM-DD).
 
