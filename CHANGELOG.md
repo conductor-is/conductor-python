@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.1.0-alpha.27 (2024-11-05)
+
+Full Changelog: [v0.1.0-alpha.26...v0.1.0-alpha.27](https://github.com/conductor-is/conductor-python/compare/v0.1.0-alpha.26...v0.1.0-alpha.27)
+
+### Features
+
+* **api:** api update ([#230](https://github.com/conductor-is/conductor-python/issues/230)) ([e339794](https://github.com/conductor-is/conductor-python/commit/e339794d5e43d47a259463ab86c28db1bbe03744))
+* **api:** api update ([#232](https://github.com/conductor-is/conductor-python/issues/232)) ([66adc05](https://github.com/conductor-is/conductor-python/commit/66adc0587d8f0b3665153aaef75a0662dbea7d8c))
+* **api:** api update ([#233](https://github.com/conductor-is/conductor-python/issues/233)) ([96d6201](https://github.com/conductor-is/conductor-python/commit/96d62011782a65db5747c43adba52b9b1d369e3b))
+* **api:** api update ([#234](https://github.com/conductor-is/conductor-python/issues/234)) ([518f06a](https://github.com/conductor-is/conductor-python/commit/518f06ac0bf0c4f0b0d06bde7a73f412bd16010e))
+* **api:** api update ([#236](https://github.com/conductor-is/conductor-python/issues/236)) ([cf93450](https://github.com/conductor-is/conductor-python/commit/cf934502b6c9ab26ade073191d55a7075408693d))
+* **api:** api update ([#237](https://github.com/conductor-is/conductor-python/issues/237)) ([e808673](https://github.com/conductor-is/conductor-python/commit/e808673c7b00ef401a66677e9343132bd7fc4c6f))
+* **api:** api update ([#239](https://github.com/conductor-is/conductor-python/issues/239)) ([1b8d8e8](https://github.com/conductor-is/conductor-python/commit/1b8d8e8325fa78d8b72f91addfae1ecb2ca247c2))
+* **api:** manual updates ([#235](https://github.com/conductor-is/conductor-python/issues/235)) ([84b7a95](https://github.com/conductor-is/conductor-python/commit/84b7a954fd1575d9c46fb1886d4b68f310f71796))
+
+
+### Refactors
+
+* **api:** Fix check model name ([#238](https://github.com/conductor-is/conductor-python/issues/238)) ([d561a8b](https://github.com/conductor-is/conductor-python/commit/d561a8b9d5572370d8e46d91d9f5df57936d0164))
+
 ## 0.1.0-alpha.26 (2024-11-04)
 
 Full Changelog: [v0.1.0-alpha.25...v0.1.0-alpha.26](https://github.com/conductor-is/conductor-python/compare/v0.1.0-alpha.25...v0.1.0-alpha.26)
