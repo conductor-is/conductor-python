@@ -25,8 +25,8 @@ __all__ = [
 class CheckCreateParams(TypedDict, total=False):
     account_id: Required[Annotated[str, PropertyInfo(alias="accountId")]]
     """
-    The account from which the funds are being drawn for this check; e.g., Checking
-    or Savings. This check decreases the balance of this account.
+    The bank account from which the funds are being drawn for this check; e.g.,
+    Checking or Savings. This check decreases the balance of this account.
     """
 
     transaction_date: Required[Annotated[Union[str, date], PropertyInfo(alias="transactionDate", format="iso8601")]]
