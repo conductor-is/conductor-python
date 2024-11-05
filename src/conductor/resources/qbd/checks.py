@@ -23,7 +23,7 @@ from ..._response import (
 from ...types.qbd import check_list_params, check_create_params, check_update_params
 from ...pagination import SyncCursorPage, AsyncCursorPage
 from ..._base_client import AsyncPaginator, make_request_options
-from ...types.qbd.qbd_check import QbdCheck
+from ...types.qbd.check import Check
 
 __all__ = ["ChecksResource", "AsyncChecksResource"]
 
@@ -72,7 +72,7 @@ class ChecksResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdCheck:
+    ) -> Check:
         """
         Creates a check.
 
@@ -167,7 +167,7 @@ class ChecksResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdCheck,
+            cast_to=Check,
         )
 
     def retrieve(
@@ -181,7 +181,7 @@ class ChecksResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdCheck:
+    ) -> Check:
         """
         Retrieves a check by ID.
 
@@ -207,7 +207,7 @@ class ChecksResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdCheck,
+            cast_to=Check,
         )
 
     def update(
@@ -237,7 +237,7 @@ class ChecksResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdCheck:
+    ) -> Check:
         """
         Updates an existing check.
 
@@ -364,7 +364,7 @@ class ChecksResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdCheck,
+            cast_to=Check,
         )
 
     def list(
@@ -395,7 +395,7 @@ class ChecksResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursorPage[QbdCheck]:
+    ) -> SyncCursorPage[Check]:
         """
         Returns a list of checks.
 
@@ -486,7 +486,7 @@ class ChecksResource(SyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/checks",
-            page=SyncCursorPage[QbdCheck],
+            page=SyncCursorPage[Check],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -516,7 +516,7 @@ class ChecksResource(SyncAPIResource):
                     check_list_params.CheckListParams,
                 ),
             ),
-            model=QbdCheck,
+            model=Check,
         )
 
 
@@ -564,7 +564,7 @@ class AsyncChecksResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdCheck:
+    ) -> Check:
         """
         Creates a check.
 
@@ -659,7 +659,7 @@ class AsyncChecksResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdCheck,
+            cast_to=Check,
         )
 
     async def retrieve(
@@ -673,7 +673,7 @@ class AsyncChecksResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdCheck:
+    ) -> Check:
         """
         Retrieves a check by ID.
 
@@ -699,7 +699,7 @@ class AsyncChecksResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdCheck,
+            cast_to=Check,
         )
 
     async def update(
@@ -729,7 +729,7 @@ class AsyncChecksResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdCheck:
+    ) -> Check:
         """
         Updates an existing check.
 
@@ -856,7 +856,7 @@ class AsyncChecksResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdCheck,
+            cast_to=Check,
         )
 
     def list(
@@ -887,7 +887,7 @@ class AsyncChecksResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[QbdCheck, AsyncCursorPage[QbdCheck]]:
+    ) -> AsyncPaginator[Check, AsyncCursorPage[Check]]:
         """
         Returns a list of checks.
 
@@ -978,7 +978,7 @@ class AsyncChecksResource(AsyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/checks",
-            page=AsyncCursorPage[QbdCheck],
+            page=AsyncCursorPage[Check],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1008,7 +1008,7 @@ class AsyncChecksResource(AsyncAPIResource):
                     check_list_params.CheckListParams,
                 ),
             ),
-            model=QbdCheck,
+            model=Check,
         )
 
 
