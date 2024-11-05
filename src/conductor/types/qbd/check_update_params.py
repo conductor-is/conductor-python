@@ -35,8 +35,8 @@ class CheckUpdateParams(TypedDict, total=False):
 
     account_id: Annotated[str, PropertyInfo(alias="accountId")]
     """
-    The account from which the funds are being drawn for this check; e.g., Checking
-    or Savings. This check decreases the balance of this account.
+    The bank account from which the funds are being drawn for this check; e.g.,
+    Checking or Savings. This check decreases the balance of this account.
     """
 
     address: Address
