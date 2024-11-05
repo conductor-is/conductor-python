@@ -3,13 +3,13 @@
 from __future__ import annotations
 
 from .bill import Bill as Bill
+from .check import Check as Check
 from .class_ import Class as Class
 from .vendor import Vendor as Vendor
 from .account import Account as Account
 from .invoice import Invoice as Invoice
 from .customer import Customer as Customer
 from .transfer import Transfer as Transfer
-from .qbd_check import QbdCheck as QbdCheck
 from .service_item import ServiceItem as ServiceItem
 from .standard_term import StandardTerm as StandardTerm
 from .inventory_item import InventoryItem as InventoryItem
