@@ -39,7 +39,7 @@ class InvoiceCreateParams(TypedDict, total=False):
 
     This creates a link between this invoice and the specified credit memos.
 
-    Note: By default, QuickBooks will not return any information about the linked
+    NOTE: By default, QuickBooks will not return any information about the linked
     transactions in this endpoint's response even when this request is successful.
     To see the transactions linked via this field, refetch the invoice and check the
     `linkedTransactions` response field. If fetching a list of invoices, you must
@@ -138,11 +138,11 @@ class InvoiceCreateParams(TypedDict, total=False):
     will also return an error if you attempt to link a transaction that is empty or
     already closed.
 
-    Note: By default, QuickBooks will not return any information about the linked
-    transaction(s) in this endpoint's response even when this request is successful.
+    NOTE: By default, QuickBooks will not return any information about the linked
+    transactions in this endpoint's response even when this request is successful.
     To see the transactions linked via this field, refetch the invoice and check the
     `linkedTransactions` response field. If fetching a list of invoices, you must
-    also specify the parameter `includeLinkedTransactions` to return the
+    also specify the parameter `includeLinkedTransactions` to see the
     `linkedTransactions` response field.
     """
 
@@ -457,11 +457,11 @@ class InvoiceLine(TypedDict, total=False):
     will also return an error if you attempt to link a transaction that is empty or
     already closed.
 
-    Note: By default, QuickBooks will not return any information about the linked
+    NOTE: By default, QuickBooks will not return any information about the linked
     transaction line in this endpoint's response even when this request is
     successful. To see the transaction line linked via this field, refetch the
-    parent transaction and check the `linkedTransactions` response field. If
-    fetching a list of transactions, you must also specify the parameter
+    parent invoice and check the `linkedTransactions` response field. If fetching a
+    list of invoices, you must also specify the parameter
     `includeLinkedTransactions` to see the `linkedTransactions` response field.
     """
 

@@ -38,7 +38,7 @@ class InvoiceUpdateParams(TypedDict, total=False):
 
     This creates a link between this invoice and the specified credit memos.
 
-    Note: By default, QuickBooks will not return any information about the linked
+    NOTE: By default, QuickBooks will not return any information about the linked
     transactions in this endpoint's response even when this request is successful.
     To see the transactions linked via this field, refetch the invoice and check the
     `linkedTransactions` response field. If fetching a list of invoices, you must

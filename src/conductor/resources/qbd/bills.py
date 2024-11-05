@@ -121,11 +121,11 @@ class BillsResource(SyncAPIResource):
               will also return an error if you attempt to link a transaction that is empty or
               already closed.
 
-              Note: By default, QuickBooks will not return any information about the linked
-              transaction(s) in this endpoint's response even when this request is successful.
+              NOTE: By default, QuickBooks will not return any information about the linked
+              transactions in this endpoint's response even when this request is successful.
               To see the transactions linked via this field, refetch the bill and check the
               `linkedTransactions` response field. If fetching a list of bills, you must also
-              specify the parameter `includeLinkedTransactions` to return the
+              specify the parameter `includeLinkedTransactions` to see the
               `linkedTransactions` response field.
 
           memo: A memo or note for this bill, as entered by the user. Appears in the Accounts
@@ -625,11 +625,11 @@ class AsyncBillsResource(AsyncAPIResource):
               will also return an error if you attempt to link a transaction that is empty or
               already closed.
 
-              Note: By default, QuickBooks will not return any information about the linked
-              transaction(s) in this endpoint's response even when this request is successful.
+              NOTE: By default, QuickBooks will not return any information about the linked
+              transactions in this endpoint's response even when this request is successful.
               To see the transactions linked via this field, refetch the bill and check the
               `linkedTransactions` response field. If fetching a list of bills, you must also
-              specify the parameter `includeLinkedTransactions` to return the
+              specify the parameter `includeLinkedTransactions` to see the
               `linkedTransactions` response field.
 
           memo: A memo or note for this bill, as entered by the user. Appears in the Accounts
