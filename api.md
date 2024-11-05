@@ -284,5 +284,7 @@ from conductor.types.qbd import QbdCheck
 
 Methods:
 
+- <code title="post /quickbooks-desktop/checks">client.qbd.checks.<a href="./src/conductor/resources/qbd/checks.py">create</a>(\*\*<a href="src/conductor/types/qbd/check_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_check.py">QbdCheck</a></code>
 - <code title="get /quickbooks-desktop/checks/{id}">client.qbd.checks.<a href="./src/conductor/resources/qbd/checks.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_check.py">QbdCheck</a></code>
+- <code title="post /quickbooks-desktop/checks/{id}">client.qbd.checks.<a href="./src/conductor/resources/qbd/checks.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/check_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_check.py">QbdCheck</a></code>
 - <code title="get /quickbooks-desktop/checks">client.qbd.checks.<a href="./src/conductor/resources/qbd/checks.py">list</a>(\*\*<a href="src/conductor/types/qbd/check_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_check.py">SyncCursorPage[QbdCheck]</a></code>

@@ -2,13 +2,16 @@
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import List, Union, Iterable
 from datetime import date
 
 import httpx
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from ..._utils import maybe_transform
+from ..._utils import (
+    maybe_transform,
+    async_maybe_transform,
+)
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -17,7 +20,7 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...types.qbd import check_list_params
+from ...types.qbd import check_list_params, check_create_params, check_update_params
 from ...pagination import SyncCursorPage, AsyncCursorPage
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.qbd.qbd_check import QbdCheck
@@ -44,6 +47,128 @@ class ChecksResource(SyncAPIResource):
         For more information, see https://www.github.com/conductor-is/conductor-python#with_streaming_response
         """
         return ChecksResourceWithStreamingResponse(self)
+
+    def create(
+        self,
+        *,
+        account_id: str,
+        transaction_date: Union[str, date],
+        conductor_end_user_id: str,
+        address: check_create_params.Address | NotGiven = NOT_GIVEN,
+        apply_checks_to_transactions: Iterable[check_create_params.ApplyChecksToTransaction] | NotGiven = NOT_GIVEN,
+        exchange_rate: float | NotGiven = NOT_GIVEN,
+        expense_lines: Iterable[check_create_params.ExpenseLine] | NotGiven = NOT_GIVEN,
+        external_id: str | NotGiven = NOT_GIVEN,
+        is_queued_for_print: bool | NotGiven = NOT_GIVEN,
+        item_group_lines: Iterable[check_create_params.ItemGroupLine] | NotGiven = NOT_GIVEN,
+        item_lines: Iterable[check_create_params.ItemLine] | NotGiven = NOT_GIVEN,
+        memo: str | NotGiven = NOT_GIVEN,
+        payee_id: str | NotGiven = NOT_GIVEN,
+        ref_number: str | NotGiven = NOT_GIVEN,
+        sales_tax_code_id: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> QbdCheck:
+        """
+        Creates a check.
+
+        Args:
+          account_id: The account from which the funds are being drawn for this check; e.g., Checking
+              or Savings. This check decreases the balance of this account.
+
+          transaction_date: The date written on this check, in ISO 8601 format (YYYY-MM-DD).
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          address: The address that will print on the check.
+
+          apply_checks_to_transactions: Transactions to be paid by this check. This will create a link between this
+              check and the specified transactions.
+
+              NOTE: By default, QuickBooks will not return any information about the linked
+              transactions in this endpoint's response even when this request is successful.
+              To see the transactions linked via this field, refetch the check and check the
+              `linkedTransactions` response field. If fetching a list of checks, you must also
+              specify the parameter `includeLinkedTransactions` to see the
+              `linkedTransactions` response field.
+
+          exchange_rate: The market exchange rate between this check's currency and the home currency in
+              QuickBooks at the time of this transaction. Represented as a decimal value
+              (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
+
+          expense_lines: The check's expense lines, each representing one line in this expense.
+
+          external_id: A globally unique identifier (GUID) you can provide for tracking this object in
+              your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
+              will return an error. This field is immutable and can only be set during object
+              creation.
+
+          is_queued_for_print: Indicates whether this check is queued for printing. If set to `true`, the check
+              will appear in the list of documents to be printed in QuickBooks.
+
+          item_group_lines: The check's item group lines, each representing a predefined set of items
+              bundled together because they are commonly purchased together or grouped for
+              faster entry.
+
+          item_lines: The check's item lines, each representing the purchase of a specific item or
+              service.
+
+          memo: A memo or note for this check, as entered by the user.
+
+          payee_id: The person or company to whom the check is written.
+
+          ref_number: The case-sensitive user-defined reference number for this check, which can be
+              used to identify the transaction in QuickBooks. This value is not required to be
+              unique and can be arbitrarily changed by the QuickBooks user.
+
+          sales_tax_code_id: The sales-tax code associated with this check, determining whether transactions
+              in this account are taxable or non-taxable. It's used to assign a default tax
+              status to all transactions for this check. Default codes include "Non"
+              (non-taxable) and "Tax" (taxable), but custom codes can also be created in
+              QuickBooks. If QuickBooks is not set up to charge sales tax (via the "Do You
+              Charge Sales Tax?" preference), it will assign the default non-taxable code to
+              all sales.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return self._post(
+            "/quickbooks-desktop/checks",
+            body=maybe_transform(
+                {
+                    "account_id": account_id,
+                    "transaction_date": transaction_date,
+                    "address": address,
+                    "apply_checks_to_transactions": apply_checks_to_transactions,
+                    "exchange_rate": exchange_rate,
+                    "expense_lines": expense_lines,
+                    "external_id": external_id,
+                    "is_queued_for_print": is_queued_for_print,
+                    "item_group_lines": item_group_lines,
+                    "item_lines": item_lines,
+                    "memo": memo,
+                    "payee_id": payee_id,
+                    "ref_number": ref_number,
+                    "sales_tax_code_id": sales_tax_code_id,
+                },
+                check_create_params.CheckCreateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=QbdCheck,
+        )
 
     def retrieve(
         self,
@@ -79,6 +204,163 @@ class ChecksResource(SyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get(
             f"/quickbooks-desktop/checks/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=QbdCheck,
+        )
+
+    def update(
+        self,
+        id: str,
+        *,
+        revision_number: str,
+        conductor_end_user_id: str,
+        account_id: str | NotGiven = NOT_GIVEN,
+        address: check_update_params.Address | NotGiven = NOT_GIVEN,
+        apply_checks_to_transactions: Iterable[check_update_params.ApplyChecksToTransaction] | NotGiven = NOT_GIVEN,
+        clear_expense_lines: bool | NotGiven = NOT_GIVEN,
+        clear_item_lines: bool | NotGiven = NOT_GIVEN,
+        exchange_rate: float | NotGiven = NOT_GIVEN,
+        expense_lines: Iterable[check_update_params.ExpenseLine] | NotGiven = NOT_GIVEN,
+        is_queued_for_print: bool | NotGiven = NOT_GIVEN,
+        item_group_lines: Iterable[check_update_params.ItemGroupLine] | NotGiven = NOT_GIVEN,
+        item_lines: Iterable[check_update_params.ItemLine] | NotGiven = NOT_GIVEN,
+        memo: str | NotGiven = NOT_GIVEN,
+        payee_id: str | NotGiven = NOT_GIVEN,
+        ref_number: str | NotGiven = NOT_GIVEN,
+        sales_tax_code_id: str | NotGiven = NOT_GIVEN,
+        transaction_date: Union[str, date] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> QbdCheck:
+        """
+        Updates an existing check.
+
+        Args:
+          id: The QuickBooks-assigned unique identifier of the check to update.
+
+          revision_number: The current revision number of the check you are updating, which you can get by
+              fetching the object first. Provide the most recent `revisionNumber` to ensure
+              you're working with the latest data; otherwise, the update will return an error.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          account_id: The account from which the funds are being drawn for this check; e.g., Checking
+              or Savings. This check decreases the balance of this account.
+
+          address: The address that will print on the check.
+
+          apply_checks_to_transactions: Transactions to be paid by this check. This will create a link between this
+              check and the specified transactions.
+
+              NOTE: By default, QuickBooks will not return any information about the linked
+              transactions in this endpoint's response even when this request is successful.
+              To see the transactions linked via this field, refetch the check and check the
+              `linkedTransactions` response field. If fetching a list of checks, you must also
+              specify the parameter `includeLinkedTransactions` to see the
+              `linkedTransactions` response field.
+
+          clear_expense_lines: Indicates whether to clear all the expense lines of this check. To modify
+              individual lines, use the field `expenseLines`.
+
+          clear_item_lines: Indicates whether to clear all the item lines of this check. To modify
+              individual lines, use the field `itemLines`.
+
+          exchange_rate: The market exchange rate between this check's currency and the home currency in
+              QuickBooks at the time of this transaction. Represented as a decimal value
+              (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
+
+          expense_lines: The check's expense lines, each representing one line in this expense.
+
+              IMPORTANT: When updating a check's expense lines, this array completely REPLACES
+              all existing expense lines for that check. To retain any current expense lines,
+              include them in this array, even if they have not changed. Any expense lines not
+              included will be removed. To add a new expense line, include it with its `id`
+              set to `-1`. If you do not wish to modify the expense lines, you can omit this
+              field entirely to keep them unchanged.
+
+          is_queued_for_print: Indicates whether this check is queued for printing. If set to `true`, the check
+              will appear in the list of documents to be printed in QuickBooks.
+
+          item_group_lines: The check's item group lines, each representing a predefined set of items
+              bundled together because they are commonly purchased together or grouped for
+              faster entry.
+
+              IMPORTANT: When updating a check's item group lines, this array completely
+              REPLACES all existing item group lines for that check. To retain any current
+              item group lines, include them in this array, even if they have not changed. Any
+              item group lines not included will be removed. To add a new item group line,
+              include it with its `id` set to `-1`. If you do not wish to modify the item
+              group lines, you can omit this field entirely to keep them unchanged.
+
+          item_lines: The check's item lines, each representing the purchase of a specific item or
+              service.
+
+              IMPORTANT: When updating a check's item lines, this array completely REPLACES
+              all existing item lines for that check. To retain any current item lines,
+              include them in this array, even if they have not changed. Any item lines not
+              included will be removed. To add a new item line, include it with its `id` set
+              to `-1`. If you do not wish to modify the item lines, you can omit this field
+              entirely to keep them unchanged.
+
+          memo: A memo or note for this check, as entered by the user.
+
+          payee_id: The person or company to whom the check is written.
+
+          ref_number: The case-sensitive user-defined reference number for this check, which can be
+              used to identify the transaction in QuickBooks. This value is not required to be
+              unique and can be arbitrarily changed by the QuickBooks user.
+
+          sales_tax_code_id: The sales-tax code associated with this check, determining whether transactions
+              in this account are taxable or non-taxable. It's used to assign a default tax
+              status to all transactions for this check. Default codes include "Non"
+              (non-taxable) and "Tax" (taxable), but custom codes can also be created in
+              QuickBooks. If QuickBooks is not set up to charge sales tax (via the "Do You
+              Charge Sales Tax?" preference), it will assign the default non-taxable code to
+              all sales.
+
+          transaction_date: The date written on this check, in ISO 8601 format (YYYY-MM-DD).
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return self._post(
+            f"/quickbooks-desktop/checks/{id}",
+            body=maybe_transform(
+                {
+                    "revision_number": revision_number,
+                    "account_id": account_id,
+                    "address": address,
+                    "apply_checks_to_transactions": apply_checks_to_transactions,
+                    "clear_expense_lines": clear_expense_lines,
+                    "clear_item_lines": clear_item_lines,
+                    "exchange_rate": exchange_rate,
+                    "expense_lines": expense_lines,
+                    "is_queued_for_print": is_queued_for_print,
+                    "item_group_lines": item_group_lines,
+                    "item_lines": item_lines,
+                    "memo": memo,
+                    "payee_id": payee_id,
+                    "ref_number": ref_number,
+                    "sales_tax_code_id": sales_tax_code_id,
+                    "transaction_date": transaction_date,
+                },
+                check_update_params.CheckUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -258,6 +540,128 @@ class AsyncChecksResource(AsyncAPIResource):
         """
         return AsyncChecksResourceWithStreamingResponse(self)
 
+    async def create(
+        self,
+        *,
+        account_id: str,
+        transaction_date: Union[str, date],
+        conductor_end_user_id: str,
+        address: check_create_params.Address | NotGiven = NOT_GIVEN,
+        apply_checks_to_transactions: Iterable[check_create_params.ApplyChecksToTransaction] | NotGiven = NOT_GIVEN,
+        exchange_rate: float | NotGiven = NOT_GIVEN,
+        expense_lines: Iterable[check_create_params.ExpenseLine] | NotGiven = NOT_GIVEN,
+        external_id: str | NotGiven = NOT_GIVEN,
+        is_queued_for_print: bool | NotGiven = NOT_GIVEN,
+        item_group_lines: Iterable[check_create_params.ItemGroupLine] | NotGiven = NOT_GIVEN,
+        item_lines: Iterable[check_create_params.ItemLine] | NotGiven = NOT_GIVEN,
+        memo: str | NotGiven = NOT_GIVEN,
+        payee_id: str | NotGiven = NOT_GIVEN,
+        ref_number: str | NotGiven = NOT_GIVEN,
+        sales_tax_code_id: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> QbdCheck:
+        """
+        Creates a check.
+
+        Args:
+          account_id: The account from which the funds are being drawn for this check; e.g., Checking
+              or Savings. This check decreases the balance of this account.
+
+          transaction_date: The date written on this check, in ISO 8601 format (YYYY-MM-DD).
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          address: The address that will print on the check.
+
+          apply_checks_to_transactions: Transactions to be paid by this check. This will create a link between this
+              check and the specified transactions.
+
+              NOTE: By default, QuickBooks will not return any information about the linked
+              transactions in this endpoint's response even when this request is successful.
+              To see the transactions linked via this field, refetch the check and check the
+              `linkedTransactions` response field. If fetching a list of checks, you must also
+              specify the parameter `includeLinkedTransactions` to see the
+              `linkedTransactions` response field.
+
+          exchange_rate: The market exchange rate between this check's currency and the home currency in
+              QuickBooks at the time of this transaction. Represented as a decimal value
+              (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
+
+          expense_lines: The check's expense lines, each representing one line in this expense.
+
+          external_id: A globally unique identifier (GUID) you can provide for tracking this object in
+              your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
+              will return an error. This field is immutable and can only be set during object
+              creation.
+
+          is_queued_for_print: Indicates whether this check is queued for printing. If set to `true`, the check
+              will appear in the list of documents to be printed in QuickBooks.
+
+          item_group_lines: The check's item group lines, each representing a predefined set of items
+              bundled together because they are commonly purchased together or grouped for
+              faster entry.
+
+          item_lines: The check's item lines, each representing the purchase of a specific item or
+              service.
+
+          memo: A memo or note for this check, as entered by the user.
+
+          payee_id: The person or company to whom the check is written.
+
+          ref_number: The case-sensitive user-defined reference number for this check, which can be
+              used to identify the transaction in QuickBooks. This value is not required to be
+              unique and can be arbitrarily changed by the QuickBooks user.
+
+          sales_tax_code_id: The sales-tax code associated with this check, determining whether transactions
+              in this account are taxable or non-taxable. It's used to assign a default tax
+              status to all transactions for this check. Default codes include "Non"
+              (non-taxable) and "Tax" (taxable), but custom codes can also be created in
+              QuickBooks. If QuickBooks is not set up to charge sales tax (via the "Do You
+              Charge Sales Tax?" preference), it will assign the default non-taxable code to
+              all sales.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return await self._post(
+            "/quickbooks-desktop/checks",
+            body=await async_maybe_transform(
+                {
+                    "account_id": account_id,
+                    "transaction_date": transaction_date,
+                    "address": address,
+                    "apply_checks_to_transactions": apply_checks_to_transactions,
+                    "exchange_rate": exchange_rate,
+                    "expense_lines": expense_lines,
+                    "external_id": external_id,
+                    "is_queued_for_print": is_queued_for_print,
+                    "item_group_lines": item_group_lines,
+                    "item_lines": item_lines,
+                    "memo": memo,
+                    "payee_id": payee_id,
+                    "ref_number": ref_number,
+                    "sales_tax_code_id": sales_tax_code_id,
+                },
+                check_create_params.CheckCreateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=QbdCheck,
+        )
+
     async def retrieve(
         self,
         id: str,
@@ -292,6 +696,163 @@ class AsyncChecksResource(AsyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return await self._get(
             f"/quickbooks-desktop/checks/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=QbdCheck,
+        )
+
+    async def update(
+        self,
+        id: str,
+        *,
+        revision_number: str,
+        conductor_end_user_id: str,
+        account_id: str | NotGiven = NOT_GIVEN,
+        address: check_update_params.Address | NotGiven = NOT_GIVEN,
+        apply_checks_to_transactions: Iterable[check_update_params.ApplyChecksToTransaction] | NotGiven = NOT_GIVEN,
+        clear_expense_lines: bool | NotGiven = NOT_GIVEN,
+        clear_item_lines: bool | NotGiven = NOT_GIVEN,
+        exchange_rate: float | NotGiven = NOT_GIVEN,
+        expense_lines: Iterable[check_update_params.ExpenseLine] | NotGiven = NOT_GIVEN,
+        is_queued_for_print: bool | NotGiven = NOT_GIVEN,
+        item_group_lines: Iterable[check_update_params.ItemGroupLine] | NotGiven = NOT_GIVEN,
+        item_lines: Iterable[check_update_params.ItemLine] | NotGiven = NOT_GIVEN,
+        memo: str | NotGiven = NOT_GIVEN,
+        payee_id: str | NotGiven = NOT_GIVEN,
+        ref_number: str | NotGiven = NOT_GIVEN,
+        sales_tax_code_id: str | NotGiven = NOT_GIVEN,
+        transaction_date: Union[str, date] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> QbdCheck:
+        """
+        Updates an existing check.
+
+        Args:
+          id: The QuickBooks-assigned unique identifier of the check to update.
+
+          revision_number: The current revision number of the check you are updating, which you can get by
+              fetching the object first. Provide the most recent `revisionNumber` to ensure
+              you're working with the latest data; otherwise, the update will return an error.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          account_id: The account from which the funds are being drawn for this check; e.g., Checking
+              or Savings. This check decreases the balance of this account.
+
+          address: The address that will print on the check.
+
+          apply_checks_to_transactions: Transactions to be paid by this check. This will create a link between this
+              check and the specified transactions.
+
+              NOTE: By default, QuickBooks will not return any information about the linked
+              transactions in this endpoint's response even when this request is successful.
+              To see the transactions linked via this field, refetch the check and check the
+              `linkedTransactions` response field. If fetching a list of checks, you must also
+              specify the parameter `includeLinkedTransactions` to see the
+              `linkedTransactions` response field.
+
+          clear_expense_lines: Indicates whether to clear all the expense lines of this check. To modify
+              individual lines, use the field `expenseLines`.
+
+          clear_item_lines: Indicates whether to clear all the item lines of this check. To modify
+              individual lines, use the field `itemLines`.
+
+          exchange_rate: The market exchange rate between this check's currency and the home currency in
+              QuickBooks at the time of this transaction. Represented as a decimal value
+              (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
+
+          expense_lines: The check's expense lines, each representing one line in this expense.
+
+              IMPORTANT: When updating a check's expense lines, this array completely REPLACES
+              all existing expense lines for that check. To retain any current expense lines,
+              include them in this array, even if they have not changed. Any expense lines not
+              included will be removed. To add a new expense line, include it with its `id`
+              set to `-1`. If you do not wish to modify the expense lines, you can omit this
+              field entirely to keep them unchanged.
+
+          is_queued_for_print: Indicates whether this check is queued for printing. If set to `true`, the check
+              will appear in the list of documents to be printed in QuickBooks.
+
+          item_group_lines: The check's item group lines, each representing a predefined set of items
+              bundled together because they are commonly purchased together or grouped for
+              faster entry.
+
+              IMPORTANT: When updating a check's item group lines, this array completely
+              REPLACES all existing item group lines for that check. To retain any current
+              item group lines, include them in this array, even if they have not changed. Any
+              item group lines not included will be removed. To add a new item group line,
+              include it with its `id` set to `-1`. If you do not wish to modify the item
+              group lines, you can omit this field entirely to keep them unchanged.
+
+          item_lines: The check's item lines, each representing the purchase of a specific item or
+              service.
+
+              IMPORTANT: When updating a check's item lines, this array completely REPLACES
+              all existing item lines for that check. To retain any current item lines,
+              include them in this array, even if they have not changed. Any item lines not
+              included will be removed. To add a new item line, include it with its `id` set
+              to `-1`. If you do not wish to modify the item lines, you can omit this field
+              entirely to keep them unchanged.
+
+          memo: A memo or note for this check, as entered by the user.
+
+          payee_id: The person or company to whom the check is written.
+
+          ref_number: The case-sensitive user-defined reference number for this check, which can be
+              used to identify the transaction in QuickBooks. This value is not required to be
+              unique and can be arbitrarily changed by the QuickBooks user.
+
+          sales_tax_code_id: The sales-tax code associated with this check, determining whether transactions
+              in this account are taxable or non-taxable. It's used to assign a default tax
+              status to all transactions for this check. Default codes include "Non"
+              (non-taxable) and "Tax" (taxable), but custom codes can also be created in
+              QuickBooks. If QuickBooks is not set up to charge sales tax (via the "Do You
+              Charge Sales Tax?" preference), it will assign the default non-taxable code to
+              all sales.
+
+          transaction_date: The date written on this check, in ISO 8601 format (YYYY-MM-DD).
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return await self._post(
+            f"/quickbooks-desktop/checks/{id}",
+            body=await async_maybe_transform(
+                {
+                    "revision_number": revision_number,
+                    "account_id": account_id,
+                    "address": address,
+                    "apply_checks_to_transactions": apply_checks_to_transactions,
+                    "clear_expense_lines": clear_expense_lines,
+                    "clear_item_lines": clear_item_lines,
+                    "exchange_rate": exchange_rate,
+                    "expense_lines": expense_lines,
+                    "is_queued_for_print": is_queued_for_print,
+                    "item_group_lines": item_group_lines,
+                    "item_lines": item_lines,
+                    "memo": memo,
+                    "payee_id": payee_id,
+                    "ref_number": ref_number,
+                    "sales_tax_code_id": sales_tax_code_id,
+                    "transaction_date": transaction_date,
+                },
+                check_update_params.CheckUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -455,8 +1016,14 @@ class ChecksResourceWithRawResponse:
     def __init__(self, checks: ChecksResource) -> None:
         self._checks = checks
 
+        self.create = to_raw_response_wrapper(
+            checks.create,
+        )
         self.retrieve = to_raw_response_wrapper(
             checks.retrieve,
+        )
+        self.update = to_raw_response_wrapper(
+            checks.update,
         )
         self.list = to_raw_response_wrapper(
             checks.list,
@@ -467,8 +1034,14 @@ class AsyncChecksResourceWithRawResponse:
     def __init__(self, checks: AsyncChecksResource) -> None:
         self._checks = checks
 
+        self.create = async_to_raw_response_wrapper(
+            checks.create,
+        )
         self.retrieve = async_to_raw_response_wrapper(
             checks.retrieve,
+        )
+        self.update = async_to_raw_response_wrapper(
+            checks.update,
         )
         self.list = async_to_raw_response_wrapper(
             checks.list,
@@ -479,8 +1052,14 @@ class ChecksResourceWithStreamingResponse:
     def __init__(self, checks: ChecksResource) -> None:
         self._checks = checks
 
+        self.create = to_streamed_response_wrapper(
+            checks.create,
+        )
         self.retrieve = to_streamed_response_wrapper(
             checks.retrieve,
+        )
+        self.update = to_streamed_response_wrapper(
+            checks.update,
         )
         self.list = to_streamed_response_wrapper(
             checks.list,
@@ -491,8 +1070,14 @@ class AsyncChecksResourceWithStreamingResponse:
     def __init__(self, checks: AsyncChecksResource) -> None:
         self._checks = checks
 
+        self.create = async_to_streamed_response_wrapper(
+            checks.create,
+        )
         self.retrieve = async_to_streamed_response_wrapper(
             checks.retrieve,
+        )
+        self.update = async_to_streamed_response_wrapper(
+            checks.update,
         )
         self.list = async_to_streamed_response_wrapper(
             checks.list,
