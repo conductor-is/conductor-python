@@ -1217,23 +1217,21 @@ class Invoice(BaseModel):
     """
 
     is_queued_for_email: Optional[bool] = FieldInfo(alias="isQueuedForEmail", default=None)
-    """Indicates whether this invoice is queued to be emailed to the customer.
-
-    If set to `true`, the invoice will appear in the list of documents to be emailed
-    in QuickBooks.
+    """
+    Indicates whether this invoice is added to the queue of documents for QuickBooks
+    to email to the customer.
     """
 
     is_queued_for_print: Optional[bool] = FieldInfo(alias="isQueuedForPrint", default=None)
-    """Indicates whether this invoice is queued for printing.
-
-    If set to `true`, the invoice will appear in the list of documents to be printed
-    in QuickBooks.
+    """
+    Indicates whether this invoice is added to the queue of documents for QuickBooks
+    to print.
     """
 
     linked_transactions: List[LinkedTransaction] = FieldInfo(alias="linkedTransactions")
     """
     The invoice's linked transactions, such as payments applied, credits used, or
-    associated purchase orders. You must specify the parameter
+    associated purchase orders. NOTE: You must specify the parameter
     `includeLinkedTransactions` when fetching a list of invoices to receive this
     field because it is not returned by default.
     """
