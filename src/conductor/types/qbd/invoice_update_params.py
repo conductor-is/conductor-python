@@ -111,17 +111,15 @@ class InvoiceUpdateParams(TypedDict, total=False):
     """
 
     is_queued_for_email: Annotated[bool, PropertyInfo(alias="isQueuedForEmail")]
-    """Indicates whether this invoice is queued to be emailed to the customer.
-
-    If set to `true`, the invoice will appear in the list of documents to be emailed
-    in QuickBooks.
+    """
+    Indicates whether this invoice is added to the queue of documents for QuickBooks
+    to email to the customer.
     """
 
     is_queued_for_print: Annotated[bool, PropertyInfo(alias="isQueuedForPrint")]
-    """Indicates whether this invoice is queued for printing.
-
-    If set to `true`, the invoice will appear in the list of documents to be printed
-    in QuickBooks.
+    """
+    Indicates whether this invoice is added to the queue of documents for QuickBooks
+    to print.
     """
 
     memo: str

@@ -40,7 +40,7 @@ class CheckUpdateParams(TypedDict, total=False):
     """
 
     address: Address
-    """The address that will print on the check."""
+    """The address that is printed on the check."""
 
     apply_checks_to_transactions: Annotated[
         Iterable[ApplyChecksToTransaction], PropertyInfo(alias="applyChecksToTransactions")
@@ -58,15 +58,15 @@ class CheckUpdateParams(TypedDict, total=False):
     """
 
     clear_expense_lines: Annotated[bool, PropertyInfo(alias="clearExpenseLines")]
-    """Indicates whether to clear all the expense lines of this check.
+    """When `true`, removes all existing expense lines associated with this check.
 
-    To modify individual lines, use the field `expenseLines`.
+    To modify or add individual expense lines, use the field `expenseLines` instead.
     """
 
     clear_item_lines: Annotated[bool, PropertyInfo(alias="clearItemLines")]
-    """Indicates whether to clear all the item lines of this check.
+    """When `true`, removes all existing item lines associated with this check.
 
-    To modify individual lines, use the field `itemLines`.
+    To modify or add individual item lines, use the field `itemLines` instead.
     """
 
     exchange_rate: Annotated[float, PropertyInfo(alias="exchangeRate")]
@@ -88,10 +88,9 @@ class CheckUpdateParams(TypedDict, total=False):
     """
 
     is_queued_for_print: Annotated[bool, PropertyInfo(alias="isQueuedForPrint")]
-    """Indicates whether this check is queued for printing.
-
-    If set to `true`, the check will appear in the list of documents to be printed
-    in QuickBooks.
+    """
+    Indicates whether this check is added to the queue of documents for QuickBooks
+    to print.
     """
 
     item_group_lines: Annotated[Iterable[ItemGroupLine], PropertyInfo(alias="itemGroupLines")]
@@ -122,7 +121,7 @@ class CheckUpdateParams(TypedDict, total=False):
     """
 
     memo: str
-    """A memo or note for this check, as entered by the user."""
+    """The memo that is printed on the check."""
 
     payee_id: Annotated[str, PropertyInfo(alias="payeeId")]
     """The person or company to whom the check is written."""

@@ -30,15 +30,17 @@ class CreditCardCreditUpdateParams(TypedDict, total=False):
     """The bank or credit card account to which the credit is applied."""
 
     clear_expense_lines: Annotated[bool, PropertyInfo(alias="clearExpenseLines")]
-    """Indicates whether to clear all the expense lines of this credit card credit.
-
-    To modify individual lines, use the field `expenseLines`.
+    """
+    When `true`, removes all existing expense lines associated with this credit card
+    credit. To modify or add individual expense lines, use the field `expenseLines`
+    instead.
     """
 
     clear_item_lines: Annotated[bool, PropertyInfo(alias="clearItemLines")]
-    """Indicates whether to clear all the item lines of this credit card credit.
-
-    To modify individual lines, use the field `itemLines`.
+    """
+    When `true`, removes all existing item lines associated with this credit card
+    credit. To modify or add individual item lines, use the field `itemLines`
+    instead.
     """
 
     exchange_rate: Annotated[float, PropertyInfo(alias="exchangeRate")]
