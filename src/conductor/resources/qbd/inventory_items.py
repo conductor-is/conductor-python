@@ -382,21 +382,20 @@ class InventoryItemsResource(SyncAPIResource):
           unit_of_measure_set_id: The unit-of-measure set associated with this inventory item, which consists of a
               base unit and related units.
 
-          update_existing_transactions_cogs_account: Indicates whether to apply the new COGS account (specified by the
-              `cogsAccountId` field) to all existing transactions that use this inventory
-              item. If `true`, the COGS account will be updated in all historical transactions
-              where this inventory item appears. Be cautious with this setting as it modifies
-              historical data. The update will fail if any affected transactions fall within a
-              closed accounting period. If not specified, QuickBooks will prompt the user to
-              make this choice.
+          update_existing_transactions_cogs_account: When `true`, applies the new COGS account (specified by the `cogsAccountId`
+              field) to all existing transactions that use this inventory item. If `true`, the
+              COGS account will be updated in all historical transactions where this inventory
+              item appears. Be cautious with this setting as it modifies historical data. The
+              update will fail if any affected transactions fall within a closed accounting
+              period. If not specified, QuickBooks will prompt the user to make this choice.
 
-          update_existing_transactions_income_account: Indicates whether to apply the new income account (specified by the
-              `incomeAccountId` field) to all existing transactions that use this inventory
-              item. If `true`, the income account will be updated in all historical
-              transactions where this inventory item appears. Be cautious with this setting as
-              it modifies historical data. The update will fail if any affected transactions
-              fall within a closed accounting period. If not specified, QuickBooks will prompt
-              the user to make this choice.
+          update_existing_transactions_income_account: When `true`, applies the new income account (specified by the `incomeAccountId`
+              field) to all existing transactions that use this inventory item. If `true`, the
+              income account will be updated in all historical transactions where this
+              inventory item appears. Be cautious with this setting as it modifies historical
+              data. The update will fail if any affected transactions fall within a closed
+              accounting period. If not specified, QuickBooks will prompt the user to make
+              this choice.
 
           extra_headers: Send extra headers
 
@@ -942,21 +941,20 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
           unit_of_measure_set_id: The unit-of-measure set associated with this inventory item, which consists of a
               base unit and related units.
 
-          update_existing_transactions_cogs_account: Indicates whether to apply the new COGS account (specified by the
-              `cogsAccountId` field) to all existing transactions that use this inventory
-              item. If `true`, the COGS account will be updated in all historical transactions
-              where this inventory item appears. Be cautious with this setting as it modifies
-              historical data. The update will fail if any affected transactions fall within a
-              closed accounting period. If not specified, QuickBooks will prompt the user to
-              make this choice.
+          update_existing_transactions_cogs_account: When `true`, applies the new COGS account (specified by the `cogsAccountId`
+              field) to all existing transactions that use this inventory item. If `true`, the
+              COGS account will be updated in all historical transactions where this inventory
+              item appears. Be cautious with this setting as it modifies historical data. The
+              update will fail if any affected transactions fall within a closed accounting
+              period. If not specified, QuickBooks will prompt the user to make this choice.
 
-          update_existing_transactions_income_account: Indicates whether to apply the new income account (specified by the
-              `incomeAccountId` field) to all existing transactions that use this inventory
-              item. If `true`, the income account will be updated in all historical
-              transactions where this inventory item appears. Be cautious with this setting as
-              it modifies historical data. The update will fail if any affected transactions
-              fall within a closed accounting period. If not specified, QuickBooks will prompt
-              the user to make this choice.
+          update_existing_transactions_income_account: When `true`, applies the new income account (specified by the `incomeAccountId`
+              field) to all existing transactions that use this inventory item. If `true`, the
+              income account will be updated in all historical transactions where this
+              inventory item appears. Be cautious with this setting as it modifies historical
+              data. The update will fail if any affected transactions fall within a closed
+              accounting period. If not specified, QuickBooks will prompt the user to make
+              this choice.
 
           extra_headers: Send extra headers
 
