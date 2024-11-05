@@ -77,8 +77,8 @@ class ChecksResource(SyncAPIResource):
         Creates a check.
 
         Args:
-          account_id: The account from which the funds are being drawn for this check; e.g., Checking
-              or Savings. This check decreases the balance of this account.
+          account_id: The bank account from which the funds are being drawn for this check; e.g.,
+              Checking or Savings. This check decreases the balance of this account.
 
           transaction_date: The date written on this check, in ISO 8601 format (YYYY-MM-DD).
 
@@ -251,8 +251,8 @@ class ChecksResource(SyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_id: The account from which the funds are being drawn for this check; e.g., Checking
-              or Savings. This check decreases the balance of this account.
+          account_id: The bank account from which the funds are being drawn for this check; e.g.,
+              Checking or Savings. This check decreases the balance of this account.
 
           address: The address that will print on the check.
 
@@ -569,8 +569,8 @@ class AsyncChecksResource(AsyncAPIResource):
         Creates a check.
 
         Args:
-          account_id: The account from which the funds are being drawn for this check; e.g., Checking
-              or Savings. This check decreases the balance of this account.
+          account_id: The bank account from which the funds are being drawn for this check; e.g.,
+              Checking or Savings. This check decreases the balance of this account.
 
           transaction_date: The date written on this check, in ISO 8601 format (YYYY-MM-DD).
 
@@ -743,8 +743,8 @@ class AsyncChecksResource(AsyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_id: The account from which the funds are being drawn for this check; e.g., Checking
-              or Savings. This check decreases the balance of this account.
+          account_id: The bank account from which the funds are being drawn for this check; e.g.,
+              Checking or Savings. This check decreases the balance of this account.
 
           address: The address that will print on the check.
 
