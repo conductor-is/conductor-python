@@ -76,8 +76,8 @@ class CheckCreateParams(TypedDict, total=False):
 
     is_queued_for_print: Annotated[bool, PropertyInfo(alias="isQueuedForPrint")]
     """
-    Indicates whether this check is added to the queue of documents for QuickBooks
-    to print.
+    Indicates whether this check is included in the queue of documents for
+    QuickBooks to print.
     """
 
     item_group_lines: Annotated[Iterable[ItemGroupLine], PropertyInfo(alias="itemGroupLines")]

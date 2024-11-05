@@ -108,8 +108,8 @@ class ChecksResource(SyncAPIResource):
               will return an error. This field is immutable and can only be set during object
               creation.
 
-          is_queued_for_print: Indicates whether this check is added to the queue of documents for QuickBooks
-              to print.
+          is_queued_for_print: Indicates whether this check is included in the queue of documents for
+              QuickBooks to print.
 
           item_group_lines: The check's item group lines, each representing a predefined set of items
               bundled together because they are commonly purchased together or grouped for
@@ -285,8 +285,8 @@ class ChecksResource(SyncAPIResource):
               set to `-1`. If you do not wish to modify the expense lines, you can omit this
               field entirely to keep them unchanged.
 
-          is_queued_for_print: Indicates whether this check is added to the queue of documents for QuickBooks
-              to print.
+          is_queued_for_print: Indicates whether this check is included in the queue of documents for
+              QuickBooks to print.
 
           item_group_lines: The check's item group lines, each representing a predefined set of items
               bundled together because they are commonly purchased together or grouped for
@@ -600,8 +600,8 @@ class AsyncChecksResource(AsyncAPIResource):
               will return an error. This field is immutable and can only be set during object
               creation.
 
-          is_queued_for_print: Indicates whether this check is added to the queue of documents for QuickBooks
-              to print.
+          is_queued_for_print: Indicates whether this check is included in the queue of documents for
+              QuickBooks to print.
 
           item_group_lines: The check's item group lines, each representing a predefined set of items
               bundled together because they are commonly purchased together or grouped for
@@ -777,8 +777,8 @@ class AsyncChecksResource(AsyncAPIResource):
               set to `-1`. If you do not wish to modify the expense lines, you can omit this
               field entirely to keep them unchanged.
 
-          is_queued_for_print: Indicates whether this check is added to the queue of documents for QuickBooks
-              to print.
+          is_queued_for_print: Indicates whether this check is included in the queue of documents for
+              QuickBooks to print.
 
           item_group_lines: The check's item group lines, each representing a predefined set of items
               bundled together because they are commonly purchased together or grouped for

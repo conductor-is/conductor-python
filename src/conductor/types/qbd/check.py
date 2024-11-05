@@ -1247,8 +1247,8 @@ class Check(BaseModel):
 
     is_queued_for_print: Optional[bool] = FieldInfo(alias="isQueuedForPrint", default=None)
     """
-    Indicates whether this check is added to the queue of documents for QuickBooks
-    to print.
+    Indicates whether this check is included in the queue of documents for
+    QuickBooks to print.
     """
 
     item_group_lines: List[ItemGroupLine] = FieldInfo(alias="itemGroupLines")
