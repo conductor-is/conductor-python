@@ -157,26 +157,25 @@ class InventoryItemUpdateParams(TypedDict, total=False):
         bool, PropertyInfo(alias="updateExistingTransactionsCogsAccount")
     ]
     """
-    Indicates whether to apply the new COGS account (specified by the
-    `cogsAccountId` field) to all existing transactions that use this inventory
-    item. If `true`, the COGS account will be updated in all historical transactions
-    where this inventory item appears. Be cautious with this setting as it modifies
-    historical data. The update will fail if any affected transactions fall within a
-    closed accounting period. If not specified, QuickBooks will prompt the user to
-    make this choice.
+    When `true`, applies the new COGS account (specified by the `cogsAccountId`
+    field) to all existing transactions that use this inventory item. If `true`, the
+    COGS account will be updated in all historical transactions where this inventory
+    item appears. Be cautious with this setting as it modifies historical data. The
+    update will fail if any affected transactions fall within a closed accounting
+    period. If not specified, QuickBooks will prompt the user to make this choice.
     """
 
     update_existing_transactions_income_account: Annotated[
         bool, PropertyInfo(alias="updateExistingTransactionsIncomeAccount")
     ]
     """
-    Indicates whether to apply the new income account (specified by the
-    `incomeAccountId` field) to all existing transactions that use this inventory
-    item. If `true`, the income account will be updated in all historical
-    transactions where this inventory item appears. Be cautious with this setting as
-    it modifies historical data. The update will fail if any affected transactions
-    fall within a closed accounting period. If not specified, QuickBooks will prompt
-    the user to make this choice.
+    When `true`, applies the new income account (specified by the `incomeAccountId`
+    field) to all existing transactions that use this inventory item. If `true`, the
+    income account will be updated in all historical transactions where this
+    inventory item appears. Be cautious with this setting as it modifies historical
+    data. The update will fail if any affected transactions fall within a closed
+    accounting period. If not specified, QuickBooks will prompt the user to make
+    this choice.
     """
 
 
