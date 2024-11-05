@@ -145,12 +145,11 @@ class InvoicesResource(SyncAPIResource):
           is_pending: Indicates whether this invoice is pending approval or completion. If `true`, the
               invoice is in a draft state and has not been finalized.
 
-          is_queued_for_email: Indicates whether this invoice is queued to be emailed to the customer. If set
-              to `true`, the invoice will appear in the list of documents to be emailed in
-              QuickBooks.
+          is_queued_for_email: Indicates whether this invoice is added to the queue of documents for QuickBooks
+              to email to the customer.
 
-          is_queued_for_print: Indicates whether this invoice is queued for printing. If set to `true`, the
-              invoice will appear in the list of documents to be printed in QuickBooks.
+          is_queued_for_print: Indicates whether this invoice is added to the queue of documents for QuickBooks
+              to print.
 
           link_to_transaction_ids: IDs of existing transactions that you wish to link to this invoice, such as
               payments applied, credits used, or associated purchase orders. Note that this
@@ -429,12 +428,11 @@ class InvoicesResource(SyncAPIResource):
           is_pending: Indicates whether this invoice is pending approval or completion. If `true`, the
               invoice is in a draft state and has not been finalized.
 
-          is_queued_for_email: Indicates whether this invoice is queued to be emailed to the customer. If set
-              to `true`, the invoice will appear in the list of documents to be emailed in
-              QuickBooks.
+          is_queued_for_email: Indicates whether this invoice is added to the queue of documents for QuickBooks
+              to email to the customer.
 
-          is_queued_for_print: Indicates whether this invoice is queued for printing. If set to `true`, the
-              invoice will appear in the list of documents to be printed in QuickBooks.
+          is_queued_for_print: Indicates whether this invoice is added to the queue of documents for QuickBooks
+              to print.
 
           memo: A memo or note for this invoice, as entered by the user. This appears in
               reports, but not on the invoice. Use `customerMessage` to add a note to the
@@ -821,12 +819,11 @@ class AsyncInvoicesResource(AsyncAPIResource):
           is_pending: Indicates whether this invoice is pending approval or completion. If `true`, the
               invoice is in a draft state and has not been finalized.
 
-          is_queued_for_email: Indicates whether this invoice is queued to be emailed to the customer. If set
-              to `true`, the invoice will appear in the list of documents to be emailed in
-              QuickBooks.
+          is_queued_for_email: Indicates whether this invoice is added to the queue of documents for QuickBooks
+              to email to the customer.
 
-          is_queued_for_print: Indicates whether this invoice is queued for printing. If set to `true`, the
-              invoice will appear in the list of documents to be printed in QuickBooks.
+          is_queued_for_print: Indicates whether this invoice is added to the queue of documents for QuickBooks
+              to print.
 
           link_to_transaction_ids: IDs of existing transactions that you wish to link to this invoice, such as
               payments applied, credits used, or associated purchase orders. Note that this
@@ -1105,12 +1102,11 @@ class AsyncInvoicesResource(AsyncAPIResource):
           is_pending: Indicates whether this invoice is pending approval or completion. If `true`, the
               invoice is in a draft state and has not been finalized.
 
-          is_queued_for_email: Indicates whether this invoice is queued to be emailed to the customer. If set
-              to `true`, the invoice will appear in the list of documents to be emailed in
-              QuickBooks.
+          is_queued_for_email: Indicates whether this invoice is added to the queue of documents for QuickBooks
+              to email to the customer.
 
-          is_queued_for_print: Indicates whether this invoice is queued for printing. If set to `true`, the
-              invoice will appear in the list of documents to be printed in QuickBooks.
+          is_queued_for_print: Indicates whether this invoice is added to the queue of documents for QuickBooks
+              to print.
 
           memo: A memo or note for this invoice, as entered by the user. This appears in
               reports, but not on the invoice. Use `customerMessage` to add a note to the

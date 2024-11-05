@@ -39,7 +39,7 @@ class CheckCreateParams(TypedDict, total=False):
     """
 
     address: Address
-    """The address that will print on the check."""
+    """The address that is printed on the check."""
 
     apply_checks_to_transactions: Annotated[
         Iterable[ApplyChecksToTransaction], PropertyInfo(alias="applyChecksToTransactions")
@@ -75,10 +75,9 @@ class CheckCreateParams(TypedDict, total=False):
     """
 
     is_queued_for_print: Annotated[bool, PropertyInfo(alias="isQueuedForPrint")]
-    """Indicates whether this check is queued for printing.
-
-    If set to `true`, the check will appear in the list of documents to be printed
-    in QuickBooks.
+    """
+    Indicates whether this check is added to the queue of documents for QuickBooks
+    to print.
     """
 
     item_group_lines: Annotated[Iterable[ItemGroupLine], PropertyInfo(alias="itemGroupLines")]
@@ -95,7 +94,7 @@ class CheckCreateParams(TypedDict, total=False):
     """
 
     memo: str
-    """A memo or note for this check, as entered by the user."""
+    """The memo that is printed on the check."""
 
     payee_id: Annotated[str, PropertyInfo(alias="payeeId")]
     """The person or company to whom the check is written."""

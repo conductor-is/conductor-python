@@ -1278,7 +1278,7 @@ class Bill(BaseModel):
     linked_transactions: List[LinkedTransaction] = FieldInfo(alias="linkedTransactions")
     """
     The bill's linked transactions, such as payments applied, credits used, or
-    associated purchase orders. You must specify the parameter
+    associated purchase orders. NOTE: You must specify the parameter
     `includeLinkedTransactions` when fetching a list of bills to receive this field
     because it is not returned by default.
     """

@@ -235,11 +235,13 @@ class CreditCardCreditsResource(SyncAPIResource):
 
           account_id: The bank or credit card account to which the credit is applied.
 
-          clear_expense_lines: Indicates whether to clear all the expense lines of this credit card credit. To
-              modify individual lines, use the field `expenseLines`.
+          clear_expense_lines: When `true`, removes all existing expense lines associated with this credit card
+              credit. To modify or add individual expense lines, use the field `expenseLines`
+              instead.
 
-          clear_item_lines: Indicates whether to clear all the item lines of this credit card credit. To
-              modify individual lines, use the field `itemLines`.
+          clear_item_lines: When `true`, removes all existing item lines associated with this credit card
+              credit. To modify or add individual item lines, use the field `itemLines`
+              instead.
 
           exchange_rate: The market exchange rate between this credit card credit's currency and the home
               currency in QuickBooks at the time of this transaction. Represented as a decimal
@@ -689,11 +691,13 @@ class AsyncCreditCardCreditsResource(AsyncAPIResource):
 
           account_id: The bank or credit card account to which the credit is applied.
 
-          clear_expense_lines: Indicates whether to clear all the expense lines of this credit card credit. To
-              modify individual lines, use the field `expenseLines`.
+          clear_expense_lines: When `true`, removes all existing expense lines associated with this credit card
+              credit. To modify or add individual expense lines, use the field `expenseLines`
+              instead.
 
-          clear_item_lines: Indicates whether to clear all the item lines of this credit card credit. To
-              modify individual lines, use the field `itemLines`.
+          clear_item_lines: When `true`, removes all existing item lines associated with this credit card
+              credit. To modify or add individual item lines, use the field `itemLines`
+              instead.
 
           exchange_rate: The market exchange rate between this credit card credit's currency and the home
               currency in QuickBooks at the time of this transaction. Represented as a decimal
