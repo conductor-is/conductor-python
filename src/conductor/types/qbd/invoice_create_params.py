@@ -109,14 +109,14 @@ class InvoiceCreateParams(TypedDict, total=False):
 
     is_queued_for_email: Annotated[bool, PropertyInfo(alias="isQueuedForEmail")]
     """
-    Indicates whether this invoice is added to the queue of documents for QuickBooks
-    to email to the customer.
+    Indicates whether this invoice is included in the queue of documents for
+    QuickBooks to email to the customer.
     """
 
     is_queued_for_print: Annotated[bool, PropertyInfo(alias="isQueuedForPrint")]
     """
-    Indicates whether this invoice is added to the queue of documents for QuickBooks
-    to print.
+    Indicates whether this invoice is included in the queue of documents for
+    QuickBooks to print.
     """
 
     link_to_transaction_ids: Annotated[List[str], PropertyInfo(alias="linkToTransactionIds")]
