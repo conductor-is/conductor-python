@@ -579,7 +579,7 @@ class InvoiceLineGroup(BaseModel):
     is_print_items_in_group: bool = FieldInfo(alias="isPrintItemsInGroup")
     """
     Indicates whether the individual items in this invoice line group and their
-    amounts will appear on printed forms.
+    amounts appear on printed forms.
     """
 
     item_group: InvoiceLineGroupItemGroup = FieldInfo(alias="itemGroup")
@@ -1218,14 +1218,14 @@ class Invoice(BaseModel):
 
     is_queued_for_email: Optional[bool] = FieldInfo(alias="isQueuedForEmail", default=None)
     """
-    Indicates whether this invoice is added to the queue of documents for QuickBooks
-    to email to the customer.
+    Indicates whether this invoice is included in the queue of documents for
+    QuickBooks to email to the customer.
     """
 
     is_queued_for_print: Optional[bool] = FieldInfo(alias="isQueuedForPrint", default=None)
     """
-    Indicates whether this invoice is added to the queue of documents for QuickBooks
-    to print.
+    Indicates whether this invoice is included in the queue of documents for
+    QuickBooks to print.
     """
 
     linked_transactions: List[LinkedTransaction] = FieldInfo(alias="linkedTransactions")
