@@ -22,7 +22,7 @@ class TestChecks:
     @parametrize
     def test_method_create(self, client: Conductor) -> None:
         check = client.qbd.checks.create(
-            account_id="80000001-1234567890",
+            bank_account_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
@@ -31,7 +31,7 @@ class TestChecks:
     @parametrize
     def test_method_create_with_all_params(self, client: Conductor) -> None:
         check = client.qbd.checks.create(
-            account_id="80000001-1234567890",
+            bank_account_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
             address={
@@ -352,7 +352,7 @@ class TestChecks:
     @parametrize
     def test_raw_response_create(self, client: Conductor) -> None:
         response = client.qbd.checks.with_raw_response.create(
-            account_id="80000001-1234567890",
+            bank_account_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
@@ -365,7 +365,7 @@ class TestChecks:
     @parametrize
     def test_streaming_response_create(self, client: Conductor) -> None:
         with client.qbd.checks.with_streaming_response.create(
-            account_id="80000001-1234567890",
+            bank_account_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
@@ -434,7 +434,6 @@ class TestChecks:
             id="123ABC-1234567890",
             revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
-            account_id="80000001-1234567890",
             address={
                 "city": "San Francisco",
                 "country": "United States",
@@ -461,6 +460,7 @@ class TestChecks:
                     "amount": "1000.00",
                 },
             ],
+            bank_account_id="80000001-1234567890",
             clear_expense_lines=False,
             clear_item_lines=False,
             exchange_rate=1.2345,
@@ -891,7 +891,7 @@ class TestAsyncChecks:
     @parametrize
     async def test_method_create(self, async_client: AsyncConductor) -> None:
         check = await async_client.qbd.checks.create(
-            account_id="80000001-1234567890",
+            bank_account_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
@@ -900,7 +900,7 @@ class TestAsyncChecks:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncConductor) -> None:
         check = await async_client.qbd.checks.create(
-            account_id="80000001-1234567890",
+            bank_account_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
             address={
@@ -1221,7 +1221,7 @@ class TestAsyncChecks:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncConductor) -> None:
         response = await async_client.qbd.checks.with_raw_response.create(
-            account_id="80000001-1234567890",
+            bank_account_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
@@ -1234,7 +1234,7 @@ class TestAsyncChecks:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncConductor) -> None:
         async with async_client.qbd.checks.with_streaming_response.create(
-            account_id="80000001-1234567890",
+            bank_account_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
@@ -1303,7 +1303,6 @@ class TestAsyncChecks:
             id="123ABC-1234567890",
             revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
-            account_id="80000001-1234567890",
             address={
                 "city": "San Francisco",
                 "country": "United States",
@@ -1330,6 +1329,7 @@ class TestAsyncChecks:
                     "amount": "1000.00",
                 },
             ],
+            bank_account_id="80000001-1234567890",
             clear_expense_lines=False,
             clear_item_lines=False,
             exchange_rate=1.2345,
