@@ -10,8 +10,8 @@ from ..._models import BaseModel
 
 __all__ = [
     "Check",
-    "Account",
     "Address",
+    "BankAccount",
     "Currency",
     "CustomField",
     "ExpenseLine",
@@ -51,22 +51,6 @@ __all__ = [
 ]
 
 
-class Account(BaseModel):
-    id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks to this object.
-
-    This ID is unique across all objects of the same type, but not across different
-    QuickBooks object types.
-    """
-
-    full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
-    """
-    The fully-qualified unique name for this object, formed by combining the names
-    of its parent objects with its own `name`, separated by colons. Not
-    case-sensitive.
-    """
-
-
 class Address(BaseModel):
     city: Optional[str] = None
     """The city, district, suburb, town, or village name of the address."""
@@ -103,6 +87,22 @@ class Address(BaseModel):
 
     state: Optional[str] = None
     """The state, county, province, or region name of the address."""
+
+
+class BankAccount(BaseModel):
+    id: Optional[str] = None
+    """The unique identifier assigned by QuickBooks to this object.
+
+    This ID is unique across all objects of the same type, but not across different
+    QuickBooks object types.
+    """
+
+    full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
+    """
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
+    """
 
 
 class Currency(BaseModel):
@@ -1179,12 +1179,6 @@ class Check(BaseModel):
     This ID is unique across all transaction types.
     """
 
-    account: Account
-    """
-    The bank account from which the funds are being drawn for this check; e.g.,
-    Checking or Savings. This check decreases the balance of this account.
-    """
-
     address: Optional[Address] = None
     """The address that is printed on the check."""
 
@@ -1199,6 +1193,12 @@ class Check(BaseModel):
     """
     The total amount for this check converted to the home currency of the QuickBooks
     company file. Represented as a decimal string.
+    """
+
+    bank_account: BankAccount = FieldInfo(alias="bankAccount")
+    """
+    The bank account from which the funds are being drawn for this check; e.g.,
+    Checking or Savings. This check will decrease the balance of this account.
     """
 
     created_at: str = FieldInfo(alias="createdAt")
@@ -1273,13 +1273,13 @@ class Check(BaseModel):
     """
 
     memo: Optional[str] = None
-    """The memo that is printed on the check."""
+    """The memo that is printed on this check."""
 
     object_type: Literal["qbd_check"] = FieldInfo(alias="objectType")
     """The type of object. This value is always `"qbd_check"`."""
 
     payee: Optional[Payee] = None
-    """The person or company to whom the check is written."""
+    """The person or company to whom this check is written."""
 
     ref_number: Optional[str] = FieldInfo(alias="refNumber", default=None)
     """

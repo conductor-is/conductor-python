@@ -68,7 +68,7 @@ class CheckListParams(TypedDict, total=False):
     """Filter for checks from this payee or payees.
 
     Specify a single payee ID or multiple using a comma-separated list (e.g.,
-    `payeeIds=1,2,3`). The person or company to whom the check is written.
+    `payeeIds=1,2,3`). The person or company to whom this check is written.
     """
 
     ref_number_contains: Annotated[str, PropertyInfo(alias="refNumberContains")]
