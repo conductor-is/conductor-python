@@ -51,7 +51,7 @@ class ChecksResource(SyncAPIResource):
     def create(
         self,
         *,
-        account_id: str,
+        bank_account_id: str,
         transaction_date: Union[str, date],
         conductor_end_user_id: str,
         address: check_create_params.Address | NotGiven = NOT_GIVEN,
@@ -77,8 +77,8 @@ class ChecksResource(SyncAPIResource):
         Creates a check.
 
         Args:
-          account_id: The bank account from which the funds are being drawn for this check; e.g.,
-              Checking or Savings. This check decreases the balance of this account.
+          bank_account_id: The bank account from which the funds are being drawn for this check; e.g.,
+              Checking or Savings. This check will decrease the balance of this account.
 
           transaction_date: The date written on this check, in ISO 8601 format (YYYY-MM-DD).
 
@@ -118,9 +118,9 @@ class ChecksResource(SyncAPIResource):
           item_lines: The check's item lines, each representing the purchase of a specific item or
               service.
 
-          memo: The memo that is printed on the check.
+          memo: The memo that is printed on this check.
 
-          payee_id: The person or company to whom the check is written.
+          payee_id: The person or company to whom this check is written.
 
           ref_number: The case-sensitive user-defined reference number for this check, which can be
               used to identify the transaction in QuickBooks. This value is not required to be
@@ -147,7 +147,7 @@ class ChecksResource(SyncAPIResource):
             "/quickbooks-desktop/checks",
             body=maybe_transform(
                 {
-                    "account_id": account_id,
+                    "bank_account_id": bank_account_id,
                     "transaction_date": transaction_date,
                     "address": address,
                     "apply_checks_to_transactions": apply_checks_to_transactions,
@@ -216,9 +216,9 @@ class ChecksResource(SyncAPIResource):
         *,
         revision_number: str,
         conductor_end_user_id: str,
-        account_id: str | NotGiven = NOT_GIVEN,
         address: check_update_params.Address | NotGiven = NOT_GIVEN,
         apply_checks_to_transactions: Iterable[check_update_params.ApplyChecksToTransaction] | NotGiven = NOT_GIVEN,
+        bank_account_id: str | NotGiven = NOT_GIVEN,
         clear_expense_lines: bool | NotGiven = NOT_GIVEN,
         clear_item_lines: bool | NotGiven = NOT_GIVEN,
         exchange_rate: float | NotGiven = NOT_GIVEN,
@@ -251,9 +251,6 @@ class ChecksResource(SyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_id: The bank account from which the funds are being drawn for this check; e.g.,
-              Checking or Savings. This check decreases the balance of this account.
-
           address: The address that is printed on the check.
 
           apply_checks_to_transactions: Transactions to be paid by this check. This will create a link between this
@@ -265,6 +262,9 @@ class ChecksResource(SyncAPIResource):
               `linkedTransactions` response field. If fetching a list of checks, you must also
               specify the parameter `includeLinkedTransactions` to see the
               `linkedTransactions` response field.
+
+          bank_account_id: The bank account from which the funds are being drawn for this check; e.g.,
+              Checking or Savings. This check will decrease the balance of this account.
 
           clear_expense_lines: When `true`, removes all existing expense lines associated with this check. To
               modify or add individual expense lines, use the field `expenseLines` instead.
@@ -309,9 +309,9 @@ class ChecksResource(SyncAPIResource):
               to `-1`. If you do not wish to modify the item lines, you can omit this field
               entirely to keep them unchanged.
 
-          memo: The memo that is printed on the check.
+          memo: The memo that is printed on this check.
 
-          payee_id: The person or company to whom the check is written.
+          payee_id: The person or company to whom this check is written.
 
           ref_number: The case-sensitive user-defined reference number for this check, which can be
               used to identify the transaction in QuickBooks. This value is not required to be
@@ -343,9 +343,9 @@ class ChecksResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "revision_number": revision_number,
-                    "account_id": account_id,
                     "address": address,
                     "apply_checks_to_transactions": apply_checks_to_transactions,
+                    "bank_account_id": bank_account_id,
                     "clear_expense_lines": clear_expense_lines,
                     "clear_item_lines": clear_item_lines,
                     "exchange_rate": exchange_rate,
@@ -431,7 +431,7 @@ class ChecksResource(SyncAPIResource):
 
           payee_ids: Filter for checks from this payee or payees. Specify a single payee ID or
               multiple using a comma-separated list (e.g., `payeeIds=1,2,3`). The person or
-              company to whom the check is written.
+              company to whom this check is written.
 
           ref_number_contains: Filter for checks whose `refNumber` contains this substring. NOTE: If you use
               this parameter, you cannot also use `refNumberStartsWith` or
@@ -543,7 +543,7 @@ class AsyncChecksResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        account_id: str,
+        bank_account_id: str,
         transaction_date: Union[str, date],
         conductor_end_user_id: str,
         address: check_create_params.Address | NotGiven = NOT_GIVEN,
@@ -569,8 +569,8 @@ class AsyncChecksResource(AsyncAPIResource):
         Creates a check.
 
         Args:
-          account_id: The bank account from which the funds are being drawn for this check; e.g.,
-              Checking or Savings. This check decreases the balance of this account.
+          bank_account_id: The bank account from which the funds are being drawn for this check; e.g.,
+              Checking or Savings. This check will decrease the balance of this account.
 
           transaction_date: The date written on this check, in ISO 8601 format (YYYY-MM-DD).
 
@@ -610,9 +610,9 @@ class AsyncChecksResource(AsyncAPIResource):
           item_lines: The check's item lines, each representing the purchase of a specific item or
               service.
 
-          memo: The memo that is printed on the check.
+          memo: The memo that is printed on this check.
 
-          payee_id: The person or company to whom the check is written.
+          payee_id: The person or company to whom this check is written.
 
           ref_number: The case-sensitive user-defined reference number for this check, which can be
               used to identify the transaction in QuickBooks. This value is not required to be
@@ -639,7 +639,7 @@ class AsyncChecksResource(AsyncAPIResource):
             "/quickbooks-desktop/checks",
             body=await async_maybe_transform(
                 {
-                    "account_id": account_id,
+                    "bank_account_id": bank_account_id,
                     "transaction_date": transaction_date,
                     "address": address,
                     "apply_checks_to_transactions": apply_checks_to_transactions,
@@ -708,9 +708,9 @@ class AsyncChecksResource(AsyncAPIResource):
         *,
         revision_number: str,
         conductor_end_user_id: str,
-        account_id: str | NotGiven = NOT_GIVEN,
         address: check_update_params.Address | NotGiven = NOT_GIVEN,
         apply_checks_to_transactions: Iterable[check_update_params.ApplyChecksToTransaction] | NotGiven = NOT_GIVEN,
+        bank_account_id: str | NotGiven = NOT_GIVEN,
         clear_expense_lines: bool | NotGiven = NOT_GIVEN,
         clear_item_lines: bool | NotGiven = NOT_GIVEN,
         exchange_rate: float | NotGiven = NOT_GIVEN,
@@ -743,9 +743,6 @@ class AsyncChecksResource(AsyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_id: The bank account from which the funds are being drawn for this check; e.g.,
-              Checking or Savings. This check decreases the balance of this account.
-
           address: The address that is printed on the check.
 
           apply_checks_to_transactions: Transactions to be paid by this check. This will create a link between this
@@ -757,6 +754,9 @@ class AsyncChecksResource(AsyncAPIResource):
               `linkedTransactions` response field. If fetching a list of checks, you must also
               specify the parameter `includeLinkedTransactions` to see the
               `linkedTransactions` response field.
+
+          bank_account_id: The bank account from which the funds are being drawn for this check; e.g.,
+              Checking or Savings. This check will decrease the balance of this account.
 
           clear_expense_lines: When `true`, removes all existing expense lines associated with this check. To
               modify or add individual expense lines, use the field `expenseLines` instead.
@@ -801,9 +801,9 @@ class AsyncChecksResource(AsyncAPIResource):
               to `-1`. If you do not wish to modify the item lines, you can omit this field
               entirely to keep them unchanged.
 
-          memo: The memo that is printed on the check.
+          memo: The memo that is printed on this check.
 
-          payee_id: The person or company to whom the check is written.
+          payee_id: The person or company to whom this check is written.
 
           ref_number: The case-sensitive user-defined reference number for this check, which can be
               used to identify the transaction in QuickBooks. This value is not required to be
@@ -835,9 +835,9 @@ class AsyncChecksResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "revision_number": revision_number,
-                    "account_id": account_id,
                     "address": address,
                     "apply_checks_to_transactions": apply_checks_to_transactions,
+                    "bank_account_id": bank_account_id,
                     "clear_expense_lines": clear_expense_lines,
                     "clear_item_lines": clear_item_lines,
                     "exchange_rate": exchange_rate,
@@ -923,7 +923,7 @@ class AsyncChecksResource(AsyncAPIResource):
 
           payee_ids: Filter for checks from this payee or payees. Specify a single payee ID or
               multiple using a comma-separated list (e.g., `payeeIds=1,2,3`). The person or
-              company to whom the check is written.
+              company to whom this check is written.
 
           ref_number_contains: Filter for checks whose `refNumber` contains this substring. NOTE: If you use
               this parameter, you cannot also use `refNumberStartsWith` or

@@ -23,10 +23,10 @@ __all__ = [
 
 
 class CheckCreateParams(TypedDict, total=False):
-    account_id: Required[Annotated[str, PropertyInfo(alias="accountId")]]
+    bank_account_id: Required[Annotated[str, PropertyInfo(alias="bankAccountId")]]
     """
     The bank account from which the funds are being drawn for this check; e.g.,
-    Checking or Savings. This check decreases the balance of this account.
+    Checking or Savings. This check will decrease the balance of this account.
     """
 
     transaction_date: Required[Annotated[Union[str, date], PropertyInfo(alias="transactionDate", format="iso8601")]]
@@ -94,10 +94,10 @@ class CheckCreateParams(TypedDict, total=False):
     """
 
     memo: str
-    """The memo that is printed on the check."""
+    """The memo that is printed on this check."""
 
     payee_id: Annotated[str, PropertyInfo(alias="payeeId")]
-    """The person or company to whom the check is written."""
+    """The person or company to whom this check is written."""
 
     ref_number: Annotated[str, PropertyInfo(alias="refNumber")]
     """
