@@ -33,12 +33,6 @@ class CheckUpdateParams(TypedDict, total=False):
     `"Conductor-End-User-Id: {{END_USER_ID}}"`).
     """
 
-    account_id: Annotated[str, PropertyInfo(alias="accountId")]
-    """
-    The bank account from which the funds are being drawn for this check; e.g.,
-    Checking or Savings. This check decreases the balance of this account.
-    """
-
     address: Address
     """The address that is printed on the check."""
 
@@ -55,6 +49,12 @@ class CheckUpdateParams(TypedDict, total=False):
     `linkedTransactions` response field. If fetching a list of checks, you must also
     specify the parameter `includeLinkedTransactions` to see the
     `linkedTransactions` response field.
+    """
+
+    bank_account_id: Annotated[str, PropertyInfo(alias="bankAccountId")]
+    """
+    The bank account from which the funds are being drawn for this check; e.g.,
+    Checking or Savings. This check will decrease the balance of this account.
     """
 
     clear_expense_lines: Annotated[bool, PropertyInfo(alias="clearExpenseLines")]
@@ -121,10 +121,10 @@ class CheckUpdateParams(TypedDict, total=False):
     """
 
     memo: str
-    """The memo that is printed on the check."""
+    """The memo that is printed on this check."""
 
     payee_id: Annotated[str, PropertyInfo(alias="payeeId")]
-    """The person or company to whom the check is written."""
+    """The person or company to whom this check is written."""
 
     ref_number: Annotated[str, PropertyInfo(alias="refNumber")]
     """
