@@ -26,8 +26,7 @@ import os
 from conductor import Conductor
 
 client = Conductor(
-    # This is the default and can be omitted
-    api_key=os.environ.get("CONDUCTOR_SECRET_KEY"),
+    api_key=os.environ.get("CONDUCTOR_SECRET_KEY"),  # This is the default and can be omitted
 )
 
 page = client.qbd.invoices.list(
@@ -51,8 +50,7 @@ import asyncio
 from conductor import AsyncConductor
 
 client = AsyncConductor(
-    # This is the default and can be omitted
-    api_key=os.environ.get("CONDUCTOR_SECRET_KEY"),
+    api_key=os.environ.get("CONDUCTOR_SECRET_KEY"),  # This is the default and can be omitted
 )
 
 
