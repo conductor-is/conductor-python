@@ -102,8 +102,9 @@ class CheckCreateParams(TypedDict, total=False):
     ref_number: Annotated[str, PropertyInfo(alias="refNumber")]
     """
     The case-sensitive user-defined reference number for this check, which can be
-    used to identify the transaction in QuickBooks. This value is not required to be
-    unique and can be arbitrarily changed by the QuickBooks user.
+    used to identify the transaction in QuickBooks. For checks, this field is the
+    check number. This value is not required to be unique and can be arbitrarily
+    changed by the QuickBooks user.
     """
 
     sales_tax_code_id: Annotated[str, PropertyInfo(alias="salesTaxCodeId")]
@@ -158,10 +159,13 @@ class Address(TypedDict, total=False):
 
 class ApplyChecksToTransaction(TypedDict, total=False):
     id: Required[str]
-    """The QuickBooks-assigned unique identifier of the check to update."""
+    """The ID of the transaction to be paid by this check."""
 
     amount: str
-    """The monetary amount of this check, represented as a decimal string."""
+    """
+    The monetary amount from this check to apply to the specified transaction,
+    represented as a decimal string.
+    """
 
 
 class ExpenseLineCustomField(TypedDict, total=False):
@@ -336,10 +340,10 @@ class ItemLineCustomField(TypedDict, total=False):
 
 class ItemLineLinkToTransactionLine(TypedDict, total=False):
     transaction_id: Required[Annotated[str, PropertyInfo(alias="transactionId")]]
-    """The unique identifier of the transaction to link to."""
+    """The ID of the transaction to which to link this transaction."""
 
     transaction_line_id: Required[Annotated[str, PropertyInfo(alias="transactionLineId")]]
-    """The unique identifier of the transaction line to link to."""
+    """The ID of the transaction line to which to link this transaction."""
 
 
 class ItemLine(TypedDict, total=False):
