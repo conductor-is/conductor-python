@@ -1117,7 +1117,7 @@ class Invoice(BaseModel):
     balance_remaining: Optional[str] = FieldInfo(alias="balanceRemaining", default=None)
     """The outstanding balance of this invoice after applying any credits or payments.
 
-    Calculated as (`subtotal` + `salesTaxTotal`) - `appliedAmount`. Represented as a
+    Calculated as `subtotal` + `salesTaxTotal` - `appliedAmount`. Represented as a
     decimal string.
     """
 

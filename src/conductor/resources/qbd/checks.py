@@ -123,8 +123,9 @@ class ChecksResource(SyncAPIResource):
           payee_id: The person or company to whom this check is written.
 
           ref_number: The case-sensitive user-defined reference number for this check, which can be
-              used to identify the transaction in QuickBooks. This value is not required to be
-              unique and can be arbitrarily changed by the QuickBooks user.
+              used to identify the transaction in QuickBooks. For checks, this field is the
+              check number. This value is not required to be unique and can be arbitrarily
+              changed by the QuickBooks user.
 
           sales_tax_code_id: The sales-tax code associated with this check, determining whether transactions
               in this account are taxable or non-taxable. It's used to assign a default tax
@@ -314,8 +315,9 @@ class ChecksResource(SyncAPIResource):
           payee_id: The person or company to whom this check is written.
 
           ref_number: The case-sensitive user-defined reference number for this check, which can be
-              used to identify the transaction in QuickBooks. This value is not required to be
-              unique and can be arbitrarily changed by the QuickBooks user.
+              used to identify the transaction in QuickBooks. For checks, this field is the
+              check number. This value is not required to be unique and can be arbitrarily
+              changed by the QuickBooks user.
 
           sales_tax_code_id: The sales-tax code associated with this check, determining whether transactions
               in this account are taxable or non-taxable. It's used to assign a default tax
@@ -433,13 +435,13 @@ class ChecksResource(SyncAPIResource):
               multiple using a comma-separated list (e.g., `payeeIds=1,2,3`). The person or
               company to whom this check is written.
 
-          ref_number_contains: Filter for checks whose `refNumber` contains this substring. NOTE: If you use
-              this parameter, you cannot also use `refNumberStartsWith` or
-              `refNumberEndsWith`.
+          ref_number_contains: Filter for checks whose `refNumber` contains this substring. For checks, this is
+              the check number. NOTE: If you use this parameter, you cannot also use
+              `refNumberStartsWith` or `refNumberEndsWith`.
 
-          ref_number_ends_with: Filter for checks whose `refNumber` ends with this substring. NOTE: If you use
-              this parameter, you cannot also use `refNumberContains` or
-              `refNumberStartsWith`.
+          ref_number_ends_with: Filter for checks whose `refNumber` ends with this substring. For checks, this
+              is the check number. NOTE: If you use this parameter, you cannot also use
+              `refNumberContains` or `refNumberStartsWith`.
 
           ref_number_from: Filter for checks whose `refNumber` is greater than or equal to this value. If
               omitted, the range will begin with the first number of the list. Uses a
@@ -453,8 +455,9 @@ class ChecksResource(SyncAPIResource):
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
 
-          ref_number_starts_with: Filter for checks whose `refNumber` starts with this substring. NOTE: If you use
-              this parameter, you cannot also use `refNumberContains` or `refNumberEndsWith`.
+          ref_number_starts_with: Filter for checks whose `refNumber` starts with this substring. For checks, this
+              is the check number. NOTE: If you use this parameter, you cannot also use
+              `refNumberContains` or `refNumberEndsWith`.
 
           ref_number_to: Filter for checks whose `refNumber` is less than or equal to this value. If
               omitted, the range will end with the last number of the list. Uses a numerical
@@ -615,8 +618,9 @@ class AsyncChecksResource(AsyncAPIResource):
           payee_id: The person or company to whom this check is written.
 
           ref_number: The case-sensitive user-defined reference number for this check, which can be
-              used to identify the transaction in QuickBooks. This value is not required to be
-              unique and can be arbitrarily changed by the QuickBooks user.
+              used to identify the transaction in QuickBooks. For checks, this field is the
+              check number. This value is not required to be unique and can be arbitrarily
+              changed by the QuickBooks user.
 
           sales_tax_code_id: The sales-tax code associated with this check, determining whether transactions
               in this account are taxable or non-taxable. It's used to assign a default tax
@@ -806,8 +810,9 @@ class AsyncChecksResource(AsyncAPIResource):
           payee_id: The person or company to whom this check is written.
 
           ref_number: The case-sensitive user-defined reference number for this check, which can be
-              used to identify the transaction in QuickBooks. This value is not required to be
-              unique and can be arbitrarily changed by the QuickBooks user.
+              used to identify the transaction in QuickBooks. For checks, this field is the
+              check number. This value is not required to be unique and can be arbitrarily
+              changed by the QuickBooks user.
 
           sales_tax_code_id: The sales-tax code associated with this check, determining whether transactions
               in this account are taxable or non-taxable. It's used to assign a default tax
@@ -925,13 +930,13 @@ class AsyncChecksResource(AsyncAPIResource):
               multiple using a comma-separated list (e.g., `payeeIds=1,2,3`). The person or
               company to whom this check is written.
 
-          ref_number_contains: Filter for checks whose `refNumber` contains this substring. NOTE: If you use
-              this parameter, you cannot also use `refNumberStartsWith` or
-              `refNumberEndsWith`.
+          ref_number_contains: Filter for checks whose `refNumber` contains this substring. For checks, this is
+              the check number. NOTE: If you use this parameter, you cannot also use
+              `refNumberStartsWith` or `refNumberEndsWith`.
 
-          ref_number_ends_with: Filter for checks whose `refNumber` ends with this substring. NOTE: If you use
-              this parameter, you cannot also use `refNumberContains` or
-              `refNumberStartsWith`.
+          ref_number_ends_with: Filter for checks whose `refNumber` ends with this substring. For checks, this
+              is the check number. NOTE: If you use this parameter, you cannot also use
+              `refNumberContains` or `refNumberStartsWith`.
 
           ref_number_from: Filter for checks whose `refNumber` is greater than or equal to this value. If
               omitted, the range will begin with the first number of the list. Uses a
@@ -945,8 +950,9 @@ class AsyncChecksResource(AsyncAPIResource):
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
 
-          ref_number_starts_with: Filter for checks whose `refNumber` starts with this substring. NOTE: If you use
-              this parameter, you cannot also use `refNumberContains` or `refNumberEndsWith`.
+          ref_number_starts_with: Filter for checks whose `refNumber` starts with this substring. For checks, this
+              is the check number. NOTE: If you use this parameter, you cannot also use
+              `refNumberContains` or `refNumberEndsWith`.
 
           ref_number_to: Filter for checks whose `refNumber` is less than or equal to this value. If
               omitted, the range will end with the last number of the list. Uses a numerical
