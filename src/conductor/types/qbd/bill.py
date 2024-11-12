@@ -1058,6 +1058,8 @@ class LinkedTransaction(BaseModel):
     """The date of this linked transaction, in ISO 8601 format (YYYY-MM-DD)."""
 
     transaction_type: Literal[
+        "ar_refund_credit_card",
+        "bill",
         "bill_payment_check",
         "bill_payment_credit_card",
         "build_assembly",
@@ -1301,8 +1303,8 @@ class Bill(BaseModel):
     payables_account: Optional[PayablesAccount] = FieldInfo(alias="payablesAccount", default=None)
     """
     The Accounts-Payable (A/P) account to which this bill is assigned, used to track
-    the amount owed. If not specified, the default Accounts-Payable account in
-    QuickBooks is used.
+    the amount owed. If not specified, QuickBooks Desktop will use its default
+    Accounts-Payable account.
     """
 
     ref_number: Optional[str] = FieldInfo(alias="refNumber", default=None)

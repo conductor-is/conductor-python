@@ -1111,6 +1111,8 @@ class LinkedTransaction(BaseModel):
     """The date of this linked transaction, in ISO 8601 format (YYYY-MM-DD)."""
 
     transaction_type: Literal[
+        "ar_refund_credit_card",
+        "bill",
         "bill_payment_check",
         "bill_payment_credit_card",
         "build_assembly",

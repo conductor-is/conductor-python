@@ -127,6 +127,8 @@ class AppliedToTransactionLinkedTransaction(BaseModel):
     """The date of this linked transaction, in ISO 8601 format (YYYY-MM-DD)."""
 
     transaction_type: Literal[
+        "ar_refund_credit_card",
+        "bill",
         "bill_payment_check",
         "bill_payment_credit_card",
         "build_assembly",
@@ -207,6 +209,8 @@ class AppliedToTransaction(BaseModel):
     """The ID of the receivable transaction to which this payment is applied."""
 
     transaction_type: Literal[
+        "ar_refund_credit_card",
+        "bill",
         "bill_payment_check",
         "bill_payment_credit_card",
         "build_assembly",
@@ -418,8 +422,8 @@ class QbdBillPaymentCheck(BaseModel):
     payables_account: Optional[PayablesAccount] = FieldInfo(alias="payablesAccount", default=None)
     """
     The Accounts-Payable (A/P) account to which this bill payment check is assigned,
-    used to track the amount owed. If not specified, the default Accounts-Payable
-    account in QuickBooks is used.
+    used to track the amount owed. If not specified, QuickBooks Desktop will use its
+    default Accounts-Payable account.
     """
 
     payee: Optional[Payee] = None
