@@ -70,15 +70,15 @@ class BillPaymentCheckListParams(TypedDict, total=False):
     ref_number_contains: Annotated[str, PropertyInfo(alias="refNumberContains")]
     """Filter for bill payment checks whose `refNumber` contains this substring.
 
-    NOTE: If you use this parameter, you cannot also use `refNumberStartsWith` or
-    `refNumberEndsWith`.
+    For checks, this is the check number. NOTE: If you use this parameter, you
+    cannot also use `refNumberStartsWith` or `refNumberEndsWith`.
     """
 
     ref_number_ends_with: Annotated[str, PropertyInfo(alias="refNumberEndsWith")]
     """Filter for bill payment checks whose `refNumber` ends with this substring.
 
-    NOTE: If you use this parameter, you cannot also use `refNumberContains` or
-    `refNumberStartsWith`.
+    For checks, this is the check number. NOTE: If you use this parameter, you
+    cannot also use `refNumberContains` or `refNumberStartsWith`.
     """
 
     ref_number_from: Annotated[str, PropertyInfo(alias="refNumberFrom")]
@@ -102,8 +102,8 @@ class BillPaymentCheckListParams(TypedDict, total=False):
     ref_number_starts_with: Annotated[str, PropertyInfo(alias="refNumberStartsWith")]
     """Filter for bill payment checks whose `refNumber` starts with this substring.
 
-    NOTE: If you use this parameter, you cannot also use `refNumberContains` or
-    `refNumberEndsWith`.
+    For checks, this is the check number. NOTE: If you use this parameter, you
+    cannot also use `refNumberContains` or `refNumberEndsWith`.
     """
 
     ref_number_to: Annotated[str, PropertyInfo(alias="refNumberTo")]
