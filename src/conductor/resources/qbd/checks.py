@@ -123,8 +123,8 @@ class ChecksResource(SyncAPIResource):
           payee_id: The person or company to whom this check is addressed.
 
           ref_number: The case-sensitive user-defined reference number for this check, which can be
-              used to identify the transaction in QuickBooks. For checks, this field is the
-              check number. This value is not required to be unique and can be arbitrarily
+              used to identify the transaction in QuickBooks. NOTE: For checks, this field is
+              the check number. This value is not required to be unique and can be arbitrarily
               changed by the QuickBooks user.
 
           sales_tax_code_id: The sales-tax code associated with this check, determining whether transactions
@@ -315,8 +315,8 @@ class ChecksResource(SyncAPIResource):
           payee_id: The person or company to whom this check is addressed.
 
           ref_number: The case-sensitive user-defined reference number for this check, which can be
-              used to identify the transaction in QuickBooks. For checks, this field is the
-              check number. This value is not required to be unique and can be arbitrarily
+              used to identify the transaction in QuickBooks. NOTE: For checks, this field is
+              the check number. This value is not required to be unique and can be arbitrarily
               changed by the QuickBooks user.
 
           sales_tax_code_id: The sales-tax code associated with this check, determining whether transactions
@@ -618,8 +618,8 @@ class AsyncChecksResource(AsyncAPIResource):
           payee_id: The person or company to whom this check is addressed.
 
           ref_number: The case-sensitive user-defined reference number for this check, which can be
-              used to identify the transaction in QuickBooks. For checks, this field is the
-              check number. This value is not required to be unique and can be arbitrarily
+              used to identify the transaction in QuickBooks. NOTE: For checks, this field is
+              the check number. This value is not required to be unique and can be arbitrarily
               changed by the QuickBooks user.
 
           sales_tax_code_id: The sales-tax code associated with this check, determining whether transactions
@@ -810,8 +810,8 @@ class AsyncChecksResource(AsyncAPIResource):
           payee_id: The person or company to whom this check is addressed.
 
           ref_number: The case-sensitive user-defined reference number for this check, which can be
-              used to identify the transaction in QuickBooks. For checks, this field is the
-              check number. This value is not required to be unique and can be arbitrarily
+              used to identify the transaction in QuickBooks. NOTE: For checks, this field is
+              the check number. This value is not required to be unique and can be arbitrarily
               changed by the QuickBooks user.
 
           sales_tax_code_id: The sales-tax code associated with this check, determining whether transactions

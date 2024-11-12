@@ -424,6 +424,10 @@ class QbdBillPaymentCheck(BaseModel):
     The Accounts-Payable (A/P) account to which this bill payment check is assigned,
     used to track the amount owed. If not specified, QuickBooks Desktop will use its
     default Accounts-Payable account.
+
+    **IMPORTANT:** This A/P account must be the same as the `payablesAccount` used
+    when originally adding the corresponding bill specified in
+    `applyToTransactions`.
     """
 
     payee: Optional[Payee] = None
@@ -435,9 +439,9 @@ class QbdBillPaymentCheck(BaseModel):
     ref_number: Optional[str] = FieldInfo(alias="refNumber", default=None)
     """
     The case-sensitive user-defined reference number for this bill payment check,
-    which can be used to identify the transaction in QuickBooks. For checks, this
-    field is the check number. This value is not required to be unique and can be
-    arbitrarily changed by the QuickBooks user.
+    which can be used to identify the transaction in QuickBooks. NOTE: For checks,
+    this field is the check number. This value is not required to be unique and can
+    be arbitrarily changed by the QuickBooks user.
     """
 
     revision_number: str = FieldInfo(alias="revisionNumber")
