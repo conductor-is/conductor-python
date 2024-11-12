@@ -246,7 +246,7 @@ class ExpenseLine(BaseModel):
     """The expense account being debited (increased).
 
     The corresponding account being credited is usually a liability account (e.g.,
-    Accounts Payable) or an asset account (e.g., Cash), depending on the transaction
+    Accounts-Payable) or an asset account (e.g., Cash), depending on the transaction
     type.
     """
 
@@ -282,7 +282,7 @@ class ExpenseLine(BaseModel):
 
     payee: Optional[ExpenseLinePayee] = None
     """
-    If `account` refers to an Accounts Payable (A/P) account, `payee` refers to the
+    If `account` refers to an Accounts-Payable (A/P) account, `payee` refers to the
     expense's vendor (not the customer). If `account` refers to any other type of
     account, `payee` refers to the expense's customer (not the vendor).
     """
