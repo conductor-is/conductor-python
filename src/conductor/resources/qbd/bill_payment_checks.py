@@ -117,10 +117,15 @@ class BillPaymentChecksResource(SyncAPIResource):
               used to track the amount owed. If not specified, QuickBooks Desktop will use its
               default Accounts-Payable account.
 
+              _IMPORTANT_: This A/P account must be the same as the `payablesAccount` used
+              when originally adding the corresponding bill specified in
+              `applyToTransactions`. Otherwise, QuickBooks will say the `transactionId` in
+              `applyToTransactions` does not exist.
+
           ref_number: The case-sensitive user-defined reference number for this bill payment check,
-              which can be used to identify the transaction in QuickBooks. For checks, this
-              field is the check number. This value is not required to be unique and can be
-              arbitrarily changed by the QuickBooks user.
+              which can be used to identify the transaction in QuickBooks. NOTE: For checks,
+              this field is the check number. This value is not required to be unique and can
+              be arbitrarily changed by the QuickBooks user.
 
           extra_headers: Send extra headers
 
@@ -255,9 +260,9 @@ class BillPaymentChecksResource(SyncAPIResource):
           memo: A memo or note for this bill payment check, as entered by the user.
 
           ref_number: The case-sensitive user-defined reference number for this bill payment check,
-              which can be used to identify the transaction in QuickBooks. For checks, this
-              field is the check number. This value is not required to be unique and can be
-              arbitrarily changed by the QuickBooks user.
+              which can be used to identify the transaction in QuickBooks. NOTE: For checks,
+              this field is the check number. This value is not required to be unique and can
+              be arbitrarily changed by the QuickBooks user.
 
           transaction_date: The date of this bill payment check, in ISO 8601 format (YYYY-MM-DD).
 
@@ -531,10 +536,15 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
               used to track the amount owed. If not specified, QuickBooks Desktop will use its
               default Accounts-Payable account.
 
+              _IMPORTANT_: This A/P account must be the same as the `payablesAccount` used
+              when originally adding the corresponding bill specified in
+              `applyToTransactions`. Otherwise, QuickBooks will say the `transactionId` in
+              `applyToTransactions` does not exist.
+
           ref_number: The case-sensitive user-defined reference number for this bill payment check,
-              which can be used to identify the transaction in QuickBooks. For checks, this
-              field is the check number. This value is not required to be unique and can be
-              arbitrarily changed by the QuickBooks user.
+              which can be used to identify the transaction in QuickBooks. NOTE: For checks,
+              this field is the check number. This value is not required to be unique and can
+              be arbitrarily changed by the QuickBooks user.
 
           extra_headers: Send extra headers
 
@@ -669,9 +679,9 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
           memo: A memo or note for this bill payment check, as entered by the user.
 
           ref_number: The case-sensitive user-defined reference number for this bill payment check,
-              which can be used to identify the transaction in QuickBooks. For checks, this
-              field is the check number. This value is not required to be unique and can be
-              arbitrarily changed by the QuickBooks user.
+              which can be used to identify the transaction in QuickBooks. NOTE: For checks,
+              this field is the check number. This value is not required to be unique and can
+              be arbitrarily changed by the QuickBooks user.
 
           transaction_date: The date of this bill payment check, in ISO 8601 format (YYYY-MM-DD).
 
