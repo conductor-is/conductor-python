@@ -19,6 +19,9 @@ class BillPaymentCheckCreateParams(TypedDict, total=False):
     balance of this account.
     """
 
+    payee_id: Required[Annotated[str, PropertyInfo(alias="payeeId")]]
+    """The person or company who sent this bill payment check."""
+
     transaction_date: Required[Annotated[Union[str, date], PropertyInfo(alias="transactionDate", format="iso8601")]]
     """The date of this bill payment check, in ISO 8601 format (YYYY-MM-DD)."""
 
@@ -72,9 +75,6 @@ class BillPaymentCheckCreateParams(TypedDict, total=False):
     used to track the amount owed. If not specified, the default Accounts-Payable
     account in QuickBooks is used.
     """
-
-    payee_id: Annotated[str, PropertyInfo(alias="payeeId")]
-    """The person or company who sent this bill payment check."""
 
     ref_number: Annotated[str, PropertyInfo(alias="refNumber")]
     """
