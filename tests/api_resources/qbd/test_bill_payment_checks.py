@@ -24,6 +24,11 @@ class TestBillPaymentChecks:
     @parametrize
     def test_method_create(self, client: Conductor) -> None:
         bill_payment_check = client.qbd.bill_payment_checks.create(
+            apply_to_transactions=[
+                {"id": "123ABC-1234567890"},
+                {"id": "123ABC-1234567890"},
+                {"id": "123ABC-1234567890"},
+            ],
             bank_account_id="80000008-1234567890",
             payee_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
@@ -34,10 +39,6 @@ class TestBillPaymentChecks:
     @parametrize
     def test_method_create_with_all_params(self, client: Conductor) -> None:
         bill_payment_check = client.qbd.bill_payment_checks.create(
-            bank_account_id="80000008-1234567890",
-            payee_id="80000001-1234567890",
-            transaction_date=parse_date("2019-12-27"),
-            conductor_end_user_id="end_usr_1234567abcdefg",
             apply_to_transactions=[
                 {
                     "id": "123ABC-1234567890",
@@ -112,6 +113,10 @@ class TestBillPaymentChecks:
                     "payment_amount": "25.00",
                 },
             ],
+            bank_account_id="80000008-1234567890",
+            payee_id="80000001-1234567890",
+            transaction_date=parse_date("2019-12-27"),
+            conductor_end_user_id="end_usr_1234567abcdefg",
             exchange_rate=1.2345,
             external_id="12345678-abcd-1234-abcd-1234567890ab",
             is_queued_for_print=True,
@@ -124,6 +129,11 @@ class TestBillPaymentChecks:
     @parametrize
     def test_raw_response_create(self, client: Conductor) -> None:
         response = client.qbd.bill_payment_checks.with_raw_response.create(
+            apply_to_transactions=[
+                {"id": "123ABC-1234567890"},
+                {"id": "123ABC-1234567890"},
+                {"id": "123ABC-1234567890"},
+            ],
             bank_account_id="80000008-1234567890",
             payee_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
@@ -138,6 +148,11 @@ class TestBillPaymentChecks:
     @parametrize
     def test_streaming_response_create(self, client: Conductor) -> None:
         with client.qbd.bill_payment_checks.with_streaming_response.create(
+            apply_to_transactions=[
+                {"id": "123ABC-1234567890"},
+                {"id": "123ABC-1234567890"},
+                {"id": "123ABC-1234567890"},
+            ],
             bank_account_id="80000008-1234567890",
             payee_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
@@ -391,6 +406,11 @@ class TestAsyncBillPaymentChecks:
     @parametrize
     async def test_method_create(self, async_client: AsyncConductor) -> None:
         bill_payment_check = await async_client.qbd.bill_payment_checks.create(
+            apply_to_transactions=[
+                {"id": "123ABC-1234567890"},
+                {"id": "123ABC-1234567890"},
+                {"id": "123ABC-1234567890"},
+            ],
             bank_account_id="80000008-1234567890",
             payee_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
@@ -401,10 +421,6 @@ class TestAsyncBillPaymentChecks:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncConductor) -> None:
         bill_payment_check = await async_client.qbd.bill_payment_checks.create(
-            bank_account_id="80000008-1234567890",
-            payee_id="80000001-1234567890",
-            transaction_date=parse_date("2019-12-27"),
-            conductor_end_user_id="end_usr_1234567abcdefg",
             apply_to_transactions=[
                 {
                     "id": "123ABC-1234567890",
@@ -479,6 +495,10 @@ class TestAsyncBillPaymentChecks:
                     "payment_amount": "25.00",
                 },
             ],
+            bank_account_id="80000008-1234567890",
+            payee_id="80000001-1234567890",
+            transaction_date=parse_date("2019-12-27"),
+            conductor_end_user_id="end_usr_1234567abcdefg",
             exchange_rate=1.2345,
             external_id="12345678-abcd-1234-abcd-1234567890ab",
             is_queued_for_print=True,
@@ -491,6 +511,11 @@ class TestAsyncBillPaymentChecks:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncConductor) -> None:
         response = await async_client.qbd.bill_payment_checks.with_raw_response.create(
+            apply_to_transactions=[
+                {"id": "123ABC-1234567890"},
+                {"id": "123ABC-1234567890"},
+                {"id": "123ABC-1234567890"},
+            ],
             bank_account_id="80000008-1234567890",
             payee_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
@@ -505,6 +530,11 @@ class TestAsyncBillPaymentChecks:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncConductor) -> None:
         async with async_client.qbd.bill_payment_checks.with_streaming_response.create(
+            apply_to_transactions=[
+                {"id": "123ABC-1234567890"},
+                {"id": "123ABC-1234567890"},
+                {"id": "123ABC-1234567890"},
+            ],
             bank_account_id="80000008-1234567890",
             payee_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
