@@ -56,6 +56,7 @@ class BillPaymentChecksResource(SyncAPIResource):
         self,
         *,
         bank_account_id: str,
+        payee_id: str,
         transaction_date: Union[str, date],
         conductor_end_user_id: str,
         apply_to_transactions: Iterable[bill_payment_check_create_params.ApplyToTransaction] | NotGiven = NOT_GIVEN,
@@ -64,7 +65,6 @@ class BillPaymentChecksResource(SyncAPIResource):
         is_queued_for_print: bool | NotGiven = NOT_GIVEN,
         memo: str | NotGiven = NOT_GIVEN,
         payables_account_id: str | NotGiven = NOT_GIVEN,
-        payee_id: str | NotGiven = NOT_GIVEN,
         ref_number: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -80,6 +80,8 @@ class BillPaymentChecksResource(SyncAPIResource):
           bank_account_id: The bank account from which the funds are being drawn for this bill payment
               check; e.g., Checking or Savings. This bill payment check will decrease the
               balance of this account.
+
+          payee_id: The person or company who sent this bill payment check.
 
           transaction_date: The date of this bill payment check, in ISO 8601 format (YYYY-MM-DD).
 
@@ -114,8 +116,6 @@ class BillPaymentChecksResource(SyncAPIResource):
               used to track the amount owed. If not specified, the default Accounts-Payable
               account in QuickBooks is used.
 
-          payee_id: The person or company who sent this bill payment check.
-
           ref_number: The case-sensitive user-defined reference number for this bill payment check,
               which can be used to identify the transaction in QuickBooks. This value is not
               required to be unique and can be arbitrarily changed by the QuickBooks user.
@@ -134,6 +134,7 @@ class BillPaymentChecksResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "bank_account_id": bank_account_id,
+                    "payee_id": payee_id,
                     "transaction_date": transaction_date,
                     "apply_to_transactions": apply_to_transactions,
                     "exchange_rate": exchange_rate,
@@ -141,7 +142,6 @@ class BillPaymentChecksResource(SyncAPIResource):
                     "is_queued_for_print": is_queued_for_print,
                     "memo": memo,
                     "payables_account_id": payables_account_id,
-                    "payee_id": payee_id,
                     "ref_number": ref_number,
                 },
                 bill_payment_check_create_params.BillPaymentCheckCreateParams,
@@ -468,6 +468,7 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
         self,
         *,
         bank_account_id: str,
+        payee_id: str,
         transaction_date: Union[str, date],
         conductor_end_user_id: str,
         apply_to_transactions: Iterable[bill_payment_check_create_params.ApplyToTransaction] | NotGiven = NOT_GIVEN,
@@ -476,7 +477,6 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
         is_queued_for_print: bool | NotGiven = NOT_GIVEN,
         memo: str | NotGiven = NOT_GIVEN,
         payables_account_id: str | NotGiven = NOT_GIVEN,
-        payee_id: str | NotGiven = NOT_GIVEN,
         ref_number: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -492,6 +492,8 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
           bank_account_id: The bank account from which the funds are being drawn for this bill payment
               check; e.g., Checking or Savings. This bill payment check will decrease the
               balance of this account.
+
+          payee_id: The person or company who sent this bill payment check.
 
           transaction_date: The date of this bill payment check, in ISO 8601 format (YYYY-MM-DD).
 
@@ -526,8 +528,6 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
               used to track the amount owed. If not specified, the default Accounts-Payable
               account in QuickBooks is used.
 
-          payee_id: The person or company who sent this bill payment check.
-
           ref_number: The case-sensitive user-defined reference number for this bill payment check,
               which can be used to identify the transaction in QuickBooks. This value is not
               required to be unique and can be arbitrarily changed by the QuickBooks user.
@@ -546,6 +546,7 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "bank_account_id": bank_account_id,
+                    "payee_id": payee_id,
                     "transaction_date": transaction_date,
                     "apply_to_transactions": apply_to_transactions,
                     "exchange_rate": exchange_rate,
@@ -553,7 +554,6 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
                     "is_queued_for_print": is_queued_for_print,
                     "memo": memo,
                     "payables_account_id": payables_account_id,
-                    "payee_id": payee_id,
                     "ref_number": ref_number,
                 },
                 bill_payment_check_create_params.BillPaymentCheckCreateParams,
