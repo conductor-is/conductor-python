@@ -120,7 +120,7 @@ class ChecksResource(SyncAPIResource):
 
           memo: The memo that is printed on this check.
 
-          payee_id: The person or company to whom this check is written.
+          payee_id: The person or company to whom this check is addressed.
 
           ref_number: The case-sensitive user-defined reference number for this check, which can be
               used to identify the transaction in QuickBooks. For checks, this field is the
@@ -312,7 +312,7 @@ class ChecksResource(SyncAPIResource):
 
           memo: The memo that is printed on this check.
 
-          payee_id: The person or company to whom this check is written.
+          payee_id: The person or company to whom this check is addressed.
 
           ref_number: The case-sensitive user-defined reference number for this check, which can be
               used to identify the transaction in QuickBooks. For checks, this field is the
@@ -615,7 +615,7 @@ class AsyncChecksResource(AsyncAPIResource):
 
           memo: The memo that is printed on this check.
 
-          payee_id: The person or company to whom this check is written.
+          payee_id: The person or company to whom this check is addressed.
 
           ref_number: The case-sensitive user-defined reference number for this check, which can be
               used to identify the transaction in QuickBooks. For checks, this field is the
@@ -807,7 +807,7 @@ class AsyncChecksResource(AsyncAPIResource):
 
           memo: The memo that is printed on this check.
 
-          payee_id: The person or company to whom this check is written.
+          payee_id: The person or company to whom this check is addressed.
 
           ref_number: The case-sensitive user-defined reference number for this check, which can be
               used to identify the transaction in QuickBooks. For checks, this field is the

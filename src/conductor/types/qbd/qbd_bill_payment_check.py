@@ -359,7 +359,7 @@ class QbdBillPaymentCheck(BaseModel):
     """
 
     applied_to_transactions: List[AppliedToTransaction] = FieldInfo(alias="appliedToTransactions")
-    """Transactions linked to this bill payment check."""
+    """The transaction(s) paid by this bill payment check."""
 
     bank_account: Optional[BankAccount] = FieldInfo(alias="bankAccount", default=None)
     """
@@ -423,7 +423,10 @@ class QbdBillPaymentCheck(BaseModel):
     """
 
     payee: Optional[Payee] = None
-    """The person or company who sent this bill payment check."""
+    """The vendor who sent the bill that this check is paying.
+
+    This is the payee who will receive the check payment.
+    """
 
     ref_number: Optional[str] = FieldInfo(alias="refNumber", default=None)
     """

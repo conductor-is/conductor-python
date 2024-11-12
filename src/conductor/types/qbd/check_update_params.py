@@ -124,7 +124,7 @@ class CheckUpdateParams(TypedDict, total=False):
     """The memo that is printed on this check."""
 
     payee_id: Annotated[str, PropertyInfo(alias="payeeId")]
-    """The person or company to whom this check is written."""
+    """The person or company to whom this check is addressed."""
 
     ref_number: Annotated[str, PropertyInfo(alias="refNumber")]
     """

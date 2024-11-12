@@ -12,26 +12,7 @@ __all__ = ["BillPaymentCheckCreateParams", "ApplyToTransaction", "ApplyToTransac
 
 
 class BillPaymentCheckCreateParams(TypedDict, total=False):
-    bank_account_id: Required[Annotated[str, PropertyInfo(alias="bankAccountId")]]
-    """
-    The bank account from which the funds are being drawn for this bill payment
-    check; e.g., Checking or Savings. This bill payment check will decrease the
-    balance of this account.
-    """
-
-    payee_id: Required[Annotated[str, PropertyInfo(alias="payeeId")]]
-    """The person or company who sent this bill payment check."""
-
-    transaction_date: Required[Annotated[Union[str, date], PropertyInfo(alias="transactionDate", format="iso8601")]]
-    """The date of this bill payment check, in ISO 8601 format (YYYY-MM-DD)."""
-
-    conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]
-    """
-    The ID of the EndUser to receive this request (e.g.,
-    `"Conductor-End-User-Id: {{END_USER_ID}}"`).
-    """
-
-    apply_to_transactions: Annotated[Iterable[ApplyToTransaction], PropertyInfo(alias="applyToTransactions")]
+    apply_to_transactions: Required[Annotated[Iterable[ApplyToTransaction], PropertyInfo(alias="applyToTransactions")]]
     """Transactions to be paid by this bill payment check.
 
     This will create a link between this bill payment check and the specified
@@ -43,6 +24,28 @@ class BillPaymentCheckCreateParams(TypedDict, total=False):
     and check the `linkedTransactions` response field. If fetching a list of bill
     payment checks, you must also specify the parameter `includeLinkedTransactions`
     to see the `linkedTransactions` response field.
+    """
+
+    bank_account_id: Required[Annotated[str, PropertyInfo(alias="bankAccountId")]]
+    """
+    The bank account from which the funds are being drawn for this bill payment
+    check; e.g., Checking or Savings. This bill payment check will decrease the
+    balance of this account.
+    """
+
+    payee_id: Required[Annotated[str, PropertyInfo(alias="payeeId")]]
+    """The vendor who sent the bill that this check is paying.
+
+    This is the payee who will receive the check payment.
+    """
+
+    transaction_date: Required[Annotated[Union[str, date], PropertyInfo(alias="transactionDate", format="iso8601")]]
+    """The date of this bill payment check, in ISO 8601 format (YYYY-MM-DD)."""
+
+    conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]
+    """
+    The ID of the EndUser to receive this request (e.g.,
+    `"Conductor-End-User-Id: {{END_USER_ID}}"`).
     """
 
     exchange_rate: Annotated[float, PropertyInfo(alias="exchangeRate")]

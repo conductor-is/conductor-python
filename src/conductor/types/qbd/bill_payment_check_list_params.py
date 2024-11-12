@@ -64,7 +64,8 @@ class BillPaymentCheckListParams(TypedDict, total=False):
     """Filter for bill payment checks from this payee or payees.
 
     Specify a single payee ID or multiple using a comma-separated list (e.g.,
-    `payeeIds=1,2,3`). The person or company who sent this bill payment check.
+    `payeeIds=1,2,3`). The vendor who sent the bill that this check is paying. This
+    is the payee who will receive the check payment.
     """
 
     ref_number_contains: Annotated[str, PropertyInfo(alias="refNumberContains")]
