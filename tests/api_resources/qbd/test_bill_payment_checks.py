@@ -25,6 +25,7 @@ class TestBillPaymentChecks:
     def test_method_create(self, client: Conductor) -> None:
         bill_payment_check = client.qbd.bill_payment_checks.create(
             bank_account_id="80000008-1234567890",
+            payee_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
@@ -34,6 +35,7 @@ class TestBillPaymentChecks:
     def test_method_create_with_all_params(self, client: Conductor) -> None:
         bill_payment_check = client.qbd.bill_payment_checks.create(
             bank_account_id="80000008-1234567890",
+            payee_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
             apply_to_transactions=[
@@ -115,7 +117,6 @@ class TestBillPaymentChecks:
             is_queued_for_print=True,
             memo="Payment for office supplies - Invoice INV-1234",
             payables_account_id="80000002-1234567890",
-            payee_id="80000001-1234567890",
             ref_number="CHECK-1234",
         )
         assert_matches_type(QbdBillPaymentCheck, bill_payment_check, path=["response"])
@@ -124,6 +125,7 @@ class TestBillPaymentChecks:
     def test_raw_response_create(self, client: Conductor) -> None:
         response = client.qbd.bill_payment_checks.with_raw_response.create(
             bank_account_id="80000008-1234567890",
+            payee_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
@@ -137,6 +139,7 @@ class TestBillPaymentChecks:
     def test_streaming_response_create(self, client: Conductor) -> None:
         with client.qbd.bill_payment_checks.with_streaming_response.create(
             bank_account_id="80000008-1234567890",
+            payee_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
@@ -389,6 +392,7 @@ class TestAsyncBillPaymentChecks:
     async def test_method_create(self, async_client: AsyncConductor) -> None:
         bill_payment_check = await async_client.qbd.bill_payment_checks.create(
             bank_account_id="80000008-1234567890",
+            payee_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
@@ -398,6 +402,7 @@ class TestAsyncBillPaymentChecks:
     async def test_method_create_with_all_params(self, async_client: AsyncConductor) -> None:
         bill_payment_check = await async_client.qbd.bill_payment_checks.create(
             bank_account_id="80000008-1234567890",
+            payee_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
             apply_to_transactions=[
@@ -479,7 +484,6 @@ class TestAsyncBillPaymentChecks:
             is_queued_for_print=True,
             memo="Payment for office supplies - Invoice INV-1234",
             payables_account_id="80000002-1234567890",
-            payee_id="80000001-1234567890",
             ref_number="CHECK-1234",
         )
         assert_matches_type(QbdBillPaymentCheck, bill_payment_check, path=["response"])
@@ -488,6 +492,7 @@ class TestAsyncBillPaymentChecks:
     async def test_raw_response_create(self, async_client: AsyncConductor) -> None:
         response = await async_client.qbd.bill_payment_checks.with_raw_response.create(
             bank_account_id="80000008-1234567890",
+            payee_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
@@ -501,6 +506,7 @@ class TestAsyncBillPaymentChecks:
     async def test_streaming_response_create(self, async_client: AsyncConductor) -> None:
         async with async_client.qbd.bill_payment_checks.with_streaming_response.create(
             bank_account_id="80000008-1234567890",
+            payee_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
