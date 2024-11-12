@@ -104,7 +104,7 @@ class ApplyToTransactionApplyCredit(TypedDict, total=False):
 
 
 class ApplyToTransaction(TypedDict, total=False):
-    id: Required[str]
+    transaction_id: Required[Annotated[str, PropertyInfo(alias="transactionId")]]
     """The ID of the receivable transaction to which this payment is applied."""
 
     apply_credits: Annotated[Iterable[ApplyToTransactionApplyCredit], PropertyInfo(alias="applyCredits")]
