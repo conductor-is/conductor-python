@@ -110,9 +110,9 @@ class BillPaymentChecksResource(SyncAPIResource):
 
           memo: A memo or note for this bill payment check, as entered by the user.
 
-          payables_account_id: The accounts payable account to which this bill payment check is assigned, used
-              to track the amount owed. If not specified, the default accounts payable account
-              in QuickBooks is used.
+          payables_account_id: The Accounts-Payable (A/P) account to which this bill payment check is assigned,
+              used to track the amount owed. If not specified, the default Accounts-Payable
+              account in QuickBooks is used.
 
           payee_id: The person or company who sent this bill payment check.
 
@@ -522,9 +522,9 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
 
           memo: A memo or note for this bill payment check, as entered by the user.
 
-          payables_account_id: The accounts payable account to which this bill payment check is assigned, used
-              to track the amount owed. If not specified, the default accounts payable account
-              in QuickBooks is used.
+          payables_account_id: The Accounts-Payable (A/P) account to which this bill payment check is assigned,
+              used to track the amount owed. If not specified, the default Accounts-Payable
+              account in QuickBooks is used.
 
           payee_id: The person or company who sent this bill payment check.
 

@@ -233,7 +233,7 @@ class ExpenseLine(BaseModel):
     """The expense account being debited (increased).
 
     The corresponding account being credited is usually a liability account (e.g.,
-    Accounts Payable) or an asset account (e.g., Cash), depending on the transaction
+    Accounts-Payable) or an asset account (e.g., Cash), depending on the transaction
     type.
     """
 
@@ -269,7 +269,7 @@ class ExpenseLine(BaseModel):
 
     payee: Optional[ExpenseLinePayee] = None
     """
-    If `account` refers to an Accounts Payable (A/P) account, `payee` refers to the
+    If `account` refers to an Accounts-Payable (A/P) account, `payee` refers to the
     expense's vendor (not the customer). If `account` refers to any other type of
     account, `payee` refers to the expense's customer (not the vendor).
     """
@@ -1286,7 +1286,7 @@ class Bill(BaseModel):
     memo: Optional[str] = None
     """A memo or note for this bill, as entered by the user.
 
-    Appears in the Accounts Payable register and relevant reports.
+    Appears in the Accounts-Payable register and relevant reports.
     """
 
     object_type: Literal["qbd_bill"] = FieldInfo(alias="objectType")
@@ -1300,8 +1300,8 @@ class Bill(BaseModel):
 
     payables_account: Optional[PayablesAccount] = FieldInfo(alias="payablesAccount", default=None)
     """
-    The accounts payable account to which this bill is assigned, used to track the
-    amount owed. If not specified, the default accounts payable account in
+    The Accounts-Payable (A/P) account to which this bill is assigned, used to track
+    the amount owed. If not specified, the default Accounts-Payable account in
     QuickBooks is used.
     """
 

@@ -149,11 +149,11 @@ class InvoiceUpdateParams(TypedDict, total=False):
 
     receivables_account_id: Annotated[str, PropertyInfo(alias="receivablesAccountId")]
     """
-    The accounts receivable account to which this invoice is assigned, used to track
-    the amount owed. If not specified, the default accounts receivable account in
-    QuickBooks is used. If this invoice is linked to other transactions, make sure
-    this `receivablesAccount` matches the `receivablesAccount` used in the other
-    transactions.
+    The Accounts-Receivable (A/R) account to which this invoice is assigned, used to
+    track the amount owed. If not specified, the default Accounts-Receivable account
+    in QuickBooks is used. If this invoice is linked to other transactions, make
+    sure this `receivablesAccount` matches the `receivablesAccount` used in the
+    other transactions.
     """
 
     ref_number: Annotated[str, PropertyInfo(alias="refNumber")]

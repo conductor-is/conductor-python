@@ -128,11 +128,11 @@ class BillsResource(SyncAPIResource):
               specify the parameter `includeLinkedTransactions` to see the
               `linkedTransactions` response field.
 
-          memo: A memo or note for this bill, as entered by the user. Appears in the Accounts
-              Payable register and relevant reports.
+          memo: A memo or note for this bill, as entered by the user. Appears in the
+              Accounts-Payable register and relevant reports.
 
-          payables_account_id: The accounts payable account to which this bill is assigned, used to track the
-              amount owed. If not specified, the default accounts payable account in
+          payables_account_id: The Accounts-Payable (A/P) account to which this bill is assigned, used to track
+              the amount owed. If not specified, the default Accounts-Payable account in
               QuickBooks is used.
 
           ref_number: The case-sensitive user-defined reference number for this bill, which can be
@@ -311,11 +311,11 @@ class BillsResource(SyncAPIResource):
               If you do not wish to modify the item lines, you can omit this field entirely to
               keep them unchanged.
 
-          memo: A memo or note for this bill, as entered by the user. Appears in the Accounts
-              Payable register and relevant reports.
+          memo: A memo or note for this bill, as entered by the user. Appears in the
+              Accounts-Payable register and relevant reports.
 
-          payables_account_id: The accounts payable account to which this bill is assigned, used to track the
-              amount owed. If not specified, the default accounts payable account in
+          payables_account_id: The Accounts-Payable (A/P) account to which this bill is assigned, used to track
+              the amount owed. If not specified, the default Accounts-Payable account in
               QuickBooks is used.
 
           ref_number: The case-sensitive user-defined reference number for this bill, which can be
@@ -632,11 +632,11 @@ class AsyncBillsResource(AsyncAPIResource):
               specify the parameter `includeLinkedTransactions` to see the
               `linkedTransactions` response field.
 
-          memo: A memo or note for this bill, as entered by the user. Appears in the Accounts
-              Payable register and relevant reports.
+          memo: A memo or note for this bill, as entered by the user. Appears in the
+              Accounts-Payable register and relevant reports.
 
-          payables_account_id: The accounts payable account to which this bill is assigned, used to track the
-              amount owed. If not specified, the default accounts payable account in
+          payables_account_id: The Accounts-Payable (A/P) account to which this bill is assigned, used to track
+              the amount owed. If not specified, the default Accounts-Payable account in
               QuickBooks is used.
 
           ref_number: The case-sensitive user-defined reference number for this bill, which can be
@@ -815,11 +815,11 @@ class AsyncBillsResource(AsyncAPIResource):
               If you do not wish to modify the item lines, you can omit this field entirely to
               keep them unchanged.
 
-          memo: A memo or note for this bill, as entered by the user. Appears in the Accounts
-              Payable register and relevant reports.
+          memo: A memo or note for this bill, as entered by the user. Appears in the
+              Accounts-Payable register and relevant reports.
 
-          payables_account_id: The accounts payable account to which this bill is assigned, used to track the
-              amount owed. If not specified, the default accounts payable account in
+          payables_account_id: The Accounts-Payable (A/P) account to which this bill is assigned, used to track
+              the amount owed. If not specified, the default Accounts-Payable account in
               QuickBooks is used.
 
           ref_number: The case-sensitive user-defined reference number for this bill, which can be

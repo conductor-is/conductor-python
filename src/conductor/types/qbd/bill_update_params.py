@@ -88,13 +88,13 @@ class BillUpdateParams(TypedDict, total=False):
     memo: str
     """A memo or note for this bill, as entered by the user.
 
-    Appears in the Accounts Payable register and relevant reports.
+    Appears in the Accounts-Payable register and relevant reports.
     """
 
     payables_account_id: Annotated[str, PropertyInfo(alias="payablesAccountId")]
     """
-    The accounts payable account to which this bill is assigned, used to track the
-    amount owed. If not specified, the default accounts payable account in
+    The Accounts-Payable (A/P) account to which this bill is assigned, used to track
+    the amount owed. If not specified, the default Accounts-Payable account in
     QuickBooks is used.
     """
 
@@ -143,7 +143,7 @@ class ExpenseLine(TypedDict, total=False):
     """The expense account being debited (increased).
 
     The corresponding account being credited is usually a liability account (e.g.,
-    Accounts Payable) or an asset account (e.g., Cash), depending on the transaction
+    Accounts-Payable) or an asset account (e.g., Cash), depending on the transaction
     type.
     """
 
@@ -170,7 +170,7 @@ class ExpenseLine(TypedDict, total=False):
 
     payee_id: Annotated[str, PropertyInfo(alias="payeeId")]
     """
-    If `account` refers to an Accounts Payable (A/P) account, `payee` refers to the
+    If `account` refers to an Accounts-Payable (A/P) account, `payee` refers to the
     expense's vendor (not the customer). If `account` refers to any other type of
     account, `payee` refers to the expense's customer (not the vendor).
     """
