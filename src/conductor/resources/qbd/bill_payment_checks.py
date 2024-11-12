@@ -55,11 +55,11 @@ class BillPaymentChecksResource(SyncAPIResource):
     def create(
         self,
         *,
+        apply_to_transactions: Iterable[bill_payment_check_create_params.ApplyToTransaction],
         bank_account_id: str,
         payee_id: str,
         transaction_date: Union[str, date],
         conductor_end_user_id: str,
-        apply_to_transactions: Iterable[bill_payment_check_create_params.ApplyToTransaction] | NotGiven = NOT_GIVEN,
         exchange_rate: float | NotGiven = NOT_GIVEN,
         external_id: str | NotGiven = NOT_GIVEN,
         is_queued_for_print: bool | NotGiven = NOT_GIVEN,
@@ -77,17 +77,6 @@ class BillPaymentChecksResource(SyncAPIResource):
         Creates a bill payment check.
 
         Args:
-          bank_account_id: The bank account from which the funds are being drawn for this bill payment
-              check; e.g., Checking or Savings. This bill payment check will decrease the
-              balance of this account.
-
-          payee_id: The person or company who sent this bill payment check.
-
-          transaction_date: The date of this bill payment check, in ISO 8601 format (YYYY-MM-DD).
-
-          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
-              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
-
           apply_to_transactions: Transactions to be paid by this bill payment check. This will create a link
               between this bill payment check and the specified transactions.
 
@@ -97,6 +86,18 @@ class BillPaymentChecksResource(SyncAPIResource):
               and check the `linkedTransactions` response field. If fetching a list of bill
               payment checks, you must also specify the parameter `includeLinkedTransactions`
               to see the `linkedTransactions` response field.
+
+          bank_account_id: The bank account from which the funds are being drawn for this bill payment
+              check; e.g., Checking or Savings. This bill payment check will decrease the
+              balance of this account.
+
+          payee_id: The vendor who sent the bill that this check is paying. This is the payee who
+              will receive the check payment.
+
+          transaction_date: The date of this bill payment check, in ISO 8601 format (YYYY-MM-DD).
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
           exchange_rate: The market exchange rate between this bill payment check's currency and the home
               currency in QuickBooks at the time of this transaction. Represented as a decimal
@@ -134,10 +135,10 @@ class BillPaymentChecksResource(SyncAPIResource):
             "/quickbooks-desktop/bill-payment-checks",
             body=maybe_transform(
                 {
+                    "apply_to_transactions": apply_to_transactions,
                     "bank_account_id": bank_account_id,
                     "payee_id": payee_id,
                     "transaction_date": transaction_date,
-                    "apply_to_transactions": apply_to_transactions,
                     "exchange_rate": exchange_rate,
                     "external_id": external_id,
                     "is_queued_for_print": is_queued_for_print,
@@ -354,8 +355,9 @@ class BillPaymentChecksResource(SyncAPIResource):
               set of results.
 
           payee_ids: Filter for bill payment checks from this payee or payees. Specify a single payee
-              ID or multiple using a comma-separated list (e.g., `payeeIds=1,2,3`). The person
-              or company who sent this bill payment check.
+              ID or multiple using a comma-separated list (e.g., `payeeIds=1,2,3`). The vendor
+              who sent the bill that this check is paying. This is the payee who will receive
+              the check payment.
 
           ref_number_contains: Filter for bill payment checks whose `refNumber` contains this substring. For
               checks, this is the check number. NOTE: If you use this parameter, you cannot
@@ -467,11 +469,11 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
     async def create(
         self,
         *,
+        apply_to_transactions: Iterable[bill_payment_check_create_params.ApplyToTransaction],
         bank_account_id: str,
         payee_id: str,
         transaction_date: Union[str, date],
         conductor_end_user_id: str,
-        apply_to_transactions: Iterable[bill_payment_check_create_params.ApplyToTransaction] | NotGiven = NOT_GIVEN,
         exchange_rate: float | NotGiven = NOT_GIVEN,
         external_id: str | NotGiven = NOT_GIVEN,
         is_queued_for_print: bool | NotGiven = NOT_GIVEN,
@@ -489,17 +491,6 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
         Creates a bill payment check.
 
         Args:
-          bank_account_id: The bank account from which the funds are being drawn for this bill payment
-              check; e.g., Checking or Savings. This bill payment check will decrease the
-              balance of this account.
-
-          payee_id: The person or company who sent this bill payment check.
-
-          transaction_date: The date of this bill payment check, in ISO 8601 format (YYYY-MM-DD).
-
-          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
-              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
-
           apply_to_transactions: Transactions to be paid by this bill payment check. This will create a link
               between this bill payment check and the specified transactions.
 
@@ -509,6 +500,18 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
               and check the `linkedTransactions` response field. If fetching a list of bill
               payment checks, you must also specify the parameter `includeLinkedTransactions`
               to see the `linkedTransactions` response field.
+
+          bank_account_id: The bank account from which the funds are being drawn for this bill payment
+              check; e.g., Checking or Savings. This bill payment check will decrease the
+              balance of this account.
+
+          payee_id: The vendor who sent the bill that this check is paying. This is the payee who
+              will receive the check payment.
+
+          transaction_date: The date of this bill payment check, in ISO 8601 format (YYYY-MM-DD).
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
           exchange_rate: The market exchange rate between this bill payment check's currency and the home
               currency in QuickBooks at the time of this transaction. Represented as a decimal
@@ -546,10 +549,10 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
             "/quickbooks-desktop/bill-payment-checks",
             body=await async_maybe_transform(
                 {
+                    "apply_to_transactions": apply_to_transactions,
                     "bank_account_id": bank_account_id,
                     "payee_id": payee_id,
                     "transaction_date": transaction_date,
-                    "apply_to_transactions": apply_to_transactions,
                     "exchange_rate": exchange_rate,
                     "external_id": external_id,
                     "is_queued_for_print": is_queued_for_print,
@@ -766,8 +769,9 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
               set of results.
 
           payee_ids: Filter for bill payment checks from this payee or payees. Specify a single payee
-              ID or multiple using a comma-separated list (e.g., `payeeIds=1,2,3`). The person
-              or company who sent this bill payment check.
+              ID or multiple using a comma-separated list (e.g., `payeeIds=1,2,3`). The vendor
+              who sent the bill that this check is paying. This is the payee who will receive
+              the check payment.
 
           ref_number_contains: Filter for bill payment checks whose `refNumber` contains this substring. For
               checks, this is the check number. NOTE: If you use this parameter, you cannot
