@@ -25,9 +25,9 @@ class TestBillPaymentChecks:
     def test_method_create(self, client: Conductor) -> None:
         bill_payment_check = client.qbd.bill_payment_checks.create(
             apply_to_transactions=[
-                {"id": "123ABC-1234567890"},
-                {"id": "123ABC-1234567890"},
-                {"id": "123ABC-1234567890"},
+                {"transaction_id": "123ABC-1234567890"},
+                {"transaction_id": "123ABC-1234567890"},
+                {"transaction_id": "123ABC-1234567890"},
             ],
             bank_account_id="80000008-1234567890",
             payee_id="80000001-1234567890",
@@ -41,7 +41,7 @@ class TestBillPaymentChecks:
         bill_payment_check = client.qbd.bill_payment_checks.create(
             apply_to_transactions=[
                 {
-                    "id": "123ABC-1234567890",
+                    "transaction_id": "123ABC-1234567890",
                     "apply_credits": [
                         {
                             "applied_amount": "100.00",
@@ -65,7 +65,7 @@ class TestBillPaymentChecks:
                     "payment_amount": "25.00",
                 },
                 {
-                    "id": "123ABC-1234567890",
+                    "transaction_id": "123ABC-1234567890",
                     "apply_credits": [
                         {
                             "applied_amount": "100.00",
@@ -89,7 +89,7 @@ class TestBillPaymentChecks:
                     "payment_amount": "25.00",
                 },
                 {
-                    "id": "123ABC-1234567890",
+                    "transaction_id": "123ABC-1234567890",
                     "apply_credits": [
                         {
                             "applied_amount": "100.00",
@@ -130,9 +130,9 @@ class TestBillPaymentChecks:
     def test_raw_response_create(self, client: Conductor) -> None:
         response = client.qbd.bill_payment_checks.with_raw_response.create(
             apply_to_transactions=[
-                {"id": "123ABC-1234567890"},
-                {"id": "123ABC-1234567890"},
-                {"id": "123ABC-1234567890"},
+                {"transaction_id": "123ABC-1234567890"},
+                {"transaction_id": "123ABC-1234567890"},
+                {"transaction_id": "123ABC-1234567890"},
             ],
             bank_account_id="80000008-1234567890",
             payee_id="80000001-1234567890",
@@ -149,9 +149,9 @@ class TestBillPaymentChecks:
     def test_streaming_response_create(self, client: Conductor) -> None:
         with client.qbd.bill_payment_checks.with_streaming_response.create(
             apply_to_transactions=[
-                {"id": "123ABC-1234567890"},
-                {"id": "123ABC-1234567890"},
-                {"id": "123ABC-1234567890"},
+                {"transaction_id": "123ABC-1234567890"},
+                {"transaction_id": "123ABC-1234567890"},
+                {"transaction_id": "123ABC-1234567890"},
             ],
             bank_account_id="80000008-1234567890",
             payee_id="80000001-1234567890",
@@ -226,7 +226,7 @@ class TestBillPaymentChecks:
             amount="1000.00",
             apply_to_transactions=[
                 {
-                    "id": "123ABC-1234567890",
+                    "transaction_id": "123ABC-1234567890",
                     "apply_credits": [
                         {
                             "applied_amount": "100.00",
@@ -250,7 +250,7 @@ class TestBillPaymentChecks:
                     "payment_amount": "25.00",
                 },
                 {
-                    "id": "123ABC-1234567890",
+                    "transaction_id": "123ABC-1234567890",
                     "apply_credits": [
                         {
                             "applied_amount": "100.00",
@@ -274,7 +274,7 @@ class TestBillPaymentChecks:
                     "payment_amount": "25.00",
                 },
                 {
-                    "id": "123ABC-1234567890",
+                    "transaction_id": "123ABC-1234567890",
                     "apply_credits": [
                         {
                             "applied_amount": "100.00",
@@ -407,9 +407,9 @@ class TestAsyncBillPaymentChecks:
     async def test_method_create(self, async_client: AsyncConductor) -> None:
         bill_payment_check = await async_client.qbd.bill_payment_checks.create(
             apply_to_transactions=[
-                {"id": "123ABC-1234567890"},
-                {"id": "123ABC-1234567890"},
-                {"id": "123ABC-1234567890"},
+                {"transaction_id": "123ABC-1234567890"},
+                {"transaction_id": "123ABC-1234567890"},
+                {"transaction_id": "123ABC-1234567890"},
             ],
             bank_account_id="80000008-1234567890",
             payee_id="80000001-1234567890",
@@ -423,7 +423,7 @@ class TestAsyncBillPaymentChecks:
         bill_payment_check = await async_client.qbd.bill_payment_checks.create(
             apply_to_transactions=[
                 {
-                    "id": "123ABC-1234567890",
+                    "transaction_id": "123ABC-1234567890",
                     "apply_credits": [
                         {
                             "applied_amount": "100.00",
@@ -447,7 +447,7 @@ class TestAsyncBillPaymentChecks:
                     "payment_amount": "25.00",
                 },
                 {
-                    "id": "123ABC-1234567890",
+                    "transaction_id": "123ABC-1234567890",
                     "apply_credits": [
                         {
                             "applied_amount": "100.00",
@@ -471,7 +471,7 @@ class TestAsyncBillPaymentChecks:
                     "payment_amount": "25.00",
                 },
                 {
-                    "id": "123ABC-1234567890",
+                    "transaction_id": "123ABC-1234567890",
                     "apply_credits": [
                         {
                             "applied_amount": "100.00",
@@ -512,9 +512,9 @@ class TestAsyncBillPaymentChecks:
     async def test_raw_response_create(self, async_client: AsyncConductor) -> None:
         response = await async_client.qbd.bill_payment_checks.with_raw_response.create(
             apply_to_transactions=[
-                {"id": "123ABC-1234567890"},
-                {"id": "123ABC-1234567890"},
-                {"id": "123ABC-1234567890"},
+                {"transaction_id": "123ABC-1234567890"},
+                {"transaction_id": "123ABC-1234567890"},
+                {"transaction_id": "123ABC-1234567890"},
             ],
             bank_account_id="80000008-1234567890",
             payee_id="80000001-1234567890",
@@ -531,9 +531,9 @@ class TestAsyncBillPaymentChecks:
     async def test_streaming_response_create(self, async_client: AsyncConductor) -> None:
         async with async_client.qbd.bill_payment_checks.with_streaming_response.create(
             apply_to_transactions=[
-                {"id": "123ABC-1234567890"},
-                {"id": "123ABC-1234567890"},
-                {"id": "123ABC-1234567890"},
+                {"transaction_id": "123ABC-1234567890"},
+                {"transaction_id": "123ABC-1234567890"},
+                {"transaction_id": "123ABC-1234567890"},
             ],
             bank_account_id="80000008-1234567890",
             payee_id="80000001-1234567890",
@@ -608,7 +608,7 @@ class TestAsyncBillPaymentChecks:
             amount="1000.00",
             apply_to_transactions=[
                 {
-                    "id": "123ABC-1234567890",
+                    "transaction_id": "123ABC-1234567890",
                     "apply_credits": [
                         {
                             "applied_amount": "100.00",
@@ -632,7 +632,7 @@ class TestAsyncBillPaymentChecks:
                     "payment_amount": "25.00",
                 },
                 {
-                    "id": "123ABC-1234567890",
+                    "transaction_id": "123ABC-1234567890",
                     "apply_credits": [
                         {
                             "applied_amount": "100.00",
@@ -656,7 +656,7 @@ class TestAsyncBillPaymentChecks:
                     "payment_amount": "25.00",
                 },
                 {
-                    "id": "123ABC-1234567890",
+                    "transaction_id": "123ABC-1234567890",
                     "apply_credits": [
                         {
                             "applied_amount": "100.00",
