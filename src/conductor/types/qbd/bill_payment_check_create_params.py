@@ -75,8 +75,8 @@ class BillPaymentCheckCreateParams(TypedDict, total=False):
     payables_account_id: Annotated[str, PropertyInfo(alias="payablesAccountId")]
     """
     The Accounts-Payable (A/P) account to which this bill payment check is assigned,
-    used to track the amount owed. If not specified, the default Accounts-Payable
-    account in QuickBooks is used.
+    used to track the amount owed. If not specified, QuickBooks Desktop will use its
+    default Accounts-Payable account.
     """
 
     ref_number: Annotated[str, PropertyInfo(alias="refNumber")]

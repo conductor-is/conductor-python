@@ -132,8 +132,8 @@ class BillsResource(SyncAPIResource):
               Accounts-Payable register and relevant reports.
 
           payables_account_id: The Accounts-Payable (A/P) account to which this bill is assigned, used to track
-              the amount owed. If not specified, the default Accounts-Payable account in
-              QuickBooks is used.
+              the amount owed. If not specified, QuickBooks Desktop will use its default
+              Accounts-Payable account.
 
           ref_number: The case-sensitive user-defined reference number for this bill, which can be
               used to identify the transaction in QuickBooks. This value is not required to be
@@ -315,8 +315,8 @@ class BillsResource(SyncAPIResource):
               Accounts-Payable register and relevant reports.
 
           payables_account_id: The Accounts-Payable (A/P) account to which this bill is assigned, used to track
-              the amount owed. If not specified, the default Accounts-Payable account in
-              QuickBooks is used.
+              the amount owed. If not specified, QuickBooks Desktop will use its default
+              Accounts-Payable account.
 
           ref_number: The case-sensitive user-defined reference number for this bill, which can be
               used to identify the transaction in QuickBooks. This value is not required to be
@@ -636,8 +636,8 @@ class AsyncBillsResource(AsyncAPIResource):
               Accounts-Payable register and relevant reports.
 
           payables_account_id: The Accounts-Payable (A/P) account to which this bill is assigned, used to track
-              the amount owed. If not specified, the default Accounts-Payable account in
-              QuickBooks is used.
+              the amount owed. If not specified, QuickBooks Desktop will use its default
+              Accounts-Payable account.
 
           ref_number: The case-sensitive user-defined reference number for this bill, which can be
               used to identify the transaction in QuickBooks. This value is not required to be
@@ -819,8 +819,8 @@ class AsyncBillsResource(AsyncAPIResource):
               Accounts-Payable register and relevant reports.
 
           payables_account_id: The Accounts-Payable (A/P) account to which this bill is assigned, used to track
-              the amount owed. If not specified, the default Accounts-Payable account in
-              QuickBooks is used.
+              the amount owed. If not specified, QuickBooks Desktop will use its default
+              Accounts-Payable account.
 
           ref_number: The case-sensitive user-defined reference number for this bill, which can be
               used to identify the transaction in QuickBooks. This value is not required to be
