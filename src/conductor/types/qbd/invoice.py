@@ -937,6 +937,8 @@ class LinkedTransaction(BaseModel):
     """The date of this linked transaction, in ISO 8601 format (YYYY-MM-DD)."""
 
     transaction_type: Literal[
+        "ar_refund_credit_card",
+        "bill",
         "bill_payment_check",
         "bill_payment_credit_card",
         "build_assembly",
@@ -1267,9 +1269,9 @@ class Invoice(BaseModel):
     receivables_account: Optional[ReceivablesAccount] = FieldInfo(alias="receivablesAccount", default=None)
     """
     The Accounts-Receivable (A/R) account to which this invoice is assigned, used to
-    track the amount owed. If not specified, the default Accounts-Receivable account
-    in QuickBooks is used. If this invoice is linked to other transactions, make
-    sure this `receivablesAccount` matches the `receivablesAccount` used in the
+    track the amount owed. If not specified, QuickBooks Desktop will use its default
+    Accounts-Receivable account. If this invoice is linked to other transactions,
+    make sure this `receivablesAccount` matches the `receivablesAccount` used in the
     other transactions.
     """
 
