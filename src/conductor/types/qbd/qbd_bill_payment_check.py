@@ -157,9 +157,6 @@ class AppliedToTransactionLinkedTransaction(BaseModel):
 
 
 class AppliedToTransaction(BaseModel):
-    id: str
-    """The ID of the receivable transaction to which this payment is applied."""
-
     amount: Optional[str] = None
     """
     The monetary amount of this receivable transaction, represented as a decimal
@@ -205,6 +202,9 @@ class AppliedToTransaction(BaseModel):
 
     transaction_date: date = FieldInfo(alias="transactionDate")
     """The date of this receivable transaction, in ISO 8601 format (YYYY-MM-DD)."""
+
+    transaction_id: str = FieldInfo(alias="transactionId")
+    """The ID of the receivable transaction to which this payment is applied."""
 
     transaction_type: Literal[
         "bill_payment_check",
