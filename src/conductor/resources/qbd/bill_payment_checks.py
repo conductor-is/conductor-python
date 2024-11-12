@@ -117,8 +117,9 @@ class BillPaymentChecksResource(SyncAPIResource):
               account in QuickBooks is used.
 
           ref_number: The case-sensitive user-defined reference number for this bill payment check,
-              which can be used to identify the transaction in QuickBooks. This value is not
-              required to be unique and can be arbitrarily changed by the QuickBooks user.
+              which can be used to identify the transaction in QuickBooks. For checks, this
+              field is the check number. This value is not required to be unique and can be
+              arbitrarily changed by the QuickBooks user.
 
           extra_headers: Send extra headers
 
@@ -253,8 +254,9 @@ class BillPaymentChecksResource(SyncAPIResource):
           memo: A memo or note for this bill payment check, as entered by the user.
 
           ref_number: The case-sensitive user-defined reference number for this bill payment check,
-              which can be used to identify the transaction in QuickBooks. This value is not
-              required to be unique and can be arbitrarily changed by the QuickBooks user.
+              which can be used to identify the transaction in QuickBooks. For checks, this
+              field is the check number. This value is not required to be unique and can be
+              arbitrarily changed by the QuickBooks user.
 
           transaction_date: The date of this bill payment check, in ISO 8601 format (YYYY-MM-DD).
 
@@ -355,15 +357,13 @@ class BillPaymentChecksResource(SyncAPIResource):
               ID or multiple using a comma-separated list (e.g., `payeeIds=1,2,3`). The person
               or company who sent this bill payment check.
 
-          ref_number_contains:
-              Filter for bill payment checks whose `refNumber` contains this substring. NOTE:
-              If you use this parameter, you cannot also use `refNumberStartsWith` or
-              `refNumberEndsWith`.
+          ref_number_contains: Filter for bill payment checks whose `refNumber` contains this substring. For
+              checks, this is the check number. NOTE: If you use this parameter, you cannot
+              also use `refNumberStartsWith` or `refNumberEndsWith`.
 
-          ref_number_ends_with:
-              Filter for bill payment checks whose `refNumber` ends with this substring. NOTE:
-              If you use this parameter, you cannot also use `refNumberContains` or
-              `refNumberStartsWith`.
+          ref_number_ends_with: Filter for bill payment checks whose `refNumber` ends with this substring. For
+              checks, this is the check number. NOTE: If you use this parameter, you cannot
+              also use `refNumberContains` or `refNumberStartsWith`.
 
           ref_number_from: Filter for bill payment checks whose `refNumber` is greater than or equal to
               this value. If omitted, the range will begin with the first number of the list.
@@ -377,9 +377,9 @@ class BillPaymentChecksResource(SyncAPIResource):
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
 
-          ref_number_starts_with: Filter for bill payment checks whose `refNumber` starts with this substring.
-              NOTE: If you use this parameter, you cannot also use `refNumberContains` or
-              `refNumberEndsWith`.
+          ref_number_starts_with: Filter for bill payment checks whose `refNumber` starts with this substring. For
+              checks, this is the check number. NOTE: If you use this parameter, you cannot
+              also use `refNumberContains` or `refNumberEndsWith`.
 
           ref_number_to: Filter for bill payment checks whose `refNumber` is less than or equal to this
               value. If omitted, the range will end with the last number of the list. Uses a
@@ -529,8 +529,9 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
               account in QuickBooks is used.
 
           ref_number: The case-sensitive user-defined reference number for this bill payment check,
-              which can be used to identify the transaction in QuickBooks. This value is not
-              required to be unique and can be arbitrarily changed by the QuickBooks user.
+              which can be used to identify the transaction in QuickBooks. For checks, this
+              field is the check number. This value is not required to be unique and can be
+              arbitrarily changed by the QuickBooks user.
 
           extra_headers: Send extra headers
 
@@ -665,8 +666,9 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
           memo: A memo or note for this bill payment check, as entered by the user.
 
           ref_number: The case-sensitive user-defined reference number for this bill payment check,
-              which can be used to identify the transaction in QuickBooks. This value is not
-              required to be unique and can be arbitrarily changed by the QuickBooks user.
+              which can be used to identify the transaction in QuickBooks. For checks, this
+              field is the check number. This value is not required to be unique and can be
+              arbitrarily changed by the QuickBooks user.
 
           transaction_date: The date of this bill payment check, in ISO 8601 format (YYYY-MM-DD).
 
@@ -767,15 +769,13 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
               ID or multiple using a comma-separated list (e.g., `payeeIds=1,2,3`). The person
               or company who sent this bill payment check.
 
-          ref_number_contains:
-              Filter for bill payment checks whose `refNumber` contains this substring. NOTE:
-              If you use this parameter, you cannot also use `refNumberStartsWith` or
-              `refNumberEndsWith`.
+          ref_number_contains: Filter for bill payment checks whose `refNumber` contains this substring. For
+              checks, this is the check number. NOTE: If you use this parameter, you cannot
+              also use `refNumberStartsWith` or `refNumberEndsWith`.
 
-          ref_number_ends_with:
-              Filter for bill payment checks whose `refNumber` ends with this substring. NOTE:
-              If you use this parameter, you cannot also use `refNumberContains` or
-              `refNumberStartsWith`.
+          ref_number_ends_with: Filter for bill payment checks whose `refNumber` ends with this substring. For
+              checks, this is the check number. NOTE: If you use this parameter, you cannot
+              also use `refNumberContains` or `refNumberStartsWith`.
 
           ref_number_from: Filter for bill payment checks whose `refNumber` is greater than or equal to
               this value. If omitted, the range will begin with the first number of the list.
@@ -789,9 +789,9 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
 
-          ref_number_starts_with: Filter for bill payment checks whose `refNumber` starts with this substring.
-              NOTE: If you use this parameter, you cannot also use `refNumberContains` or
-              `refNumberEndsWith`.
+          ref_number_starts_with: Filter for bill payment checks whose `refNumber` starts with this substring. For
+              checks, this is the check number. NOTE: If you use this parameter, you cannot
+              also use `refNumberContains` or `refNumberEndsWith`.
 
           ref_number_to: Filter for bill payment checks whose `refNumber` is less than or equal to this
               value. If omitted, the range will end with the last number of the list. Uses a

@@ -71,8 +71,9 @@ class BillPaymentCheckUpdateParams(TypedDict, total=False):
     ref_number: Annotated[str, PropertyInfo(alias="refNumber")]
     """
     The case-sensitive user-defined reference number for this bill payment check,
-    which can be used to identify the transaction in QuickBooks. This value is not
-    required to be unique and can be arbitrarily changed by the QuickBooks user.
+    which can be used to identify the transaction in QuickBooks. For checks, this
+    field is the check number. This value is not required to be unique and can be
+    arbitrarily changed by the QuickBooks user.
     """
 
     transaction_date: Annotated[Union[str, date], PropertyInfo(alias="transactionDate", format="iso8601")]
