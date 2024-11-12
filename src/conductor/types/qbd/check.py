@@ -1286,8 +1286,8 @@ class Check(BaseModel):
     ref_number: Optional[str] = FieldInfo(alias="refNumber", default=None)
     """
     The case-sensitive user-defined reference number for this check, which can be
-    used to identify the transaction in QuickBooks. For checks, this field is the
-    check number. This value is not required to be unique and can be arbitrarily
+    used to identify the transaction in QuickBooks. NOTE: For checks, this field is
+    the check number. This value is not required to be unique and can be arbitrarily
     changed by the QuickBooks user.
     """
 
