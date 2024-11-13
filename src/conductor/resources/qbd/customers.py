@@ -673,10 +673,10 @@ class CustomersResource(SyncAPIResource):
         name_to: str | NotGiven = NOT_GIVEN,
         status: Literal["active", "all", "inactive"] | NotGiven = NOT_GIVEN,
         total_balance: str | NotGiven = NOT_GIVEN,
-        total_balance_gt: str | NotGiven = NOT_GIVEN,
-        total_balance_gte: str | NotGiven = NOT_GIVEN,
-        total_balance_lt: str | NotGiven = NOT_GIVEN,
-        total_balance_lte: str | NotGiven = NOT_GIVEN,
+        total_balance_greater_than: str | NotGiven = NOT_GIVEN,
+        total_balance_greater_than_or_equal_to: str | NotGiven = NOT_GIVEN,
+        total_balance_less_than: str | NotGiven = NOT_GIVEN,
+        total_balance_less_than_or_equal_to: str | NotGiven = NOT_GIVEN,
         updated_after: str | NotGiven = NOT_GIVEN,
         updated_before: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -750,18 +750,18 @@ class CustomersResource(SyncAPIResource):
           total_balance: Filter for customers whose `totalBalance` equals this amount, represented as a
               decimal string. You can only use one total-balance filter at a time.
 
-          total_balance_gt: Filter for customers whose `totalBalance` is greater than this amount,
+          total_balance_greater_than: Filter for customers whose `totalBalance` is greater than this amount,
               represented as a decimal string. You can only use one total-balance filter at a
               time.
 
-          total_balance_gte: Filter for customers whose `totalBalance` is greater than or equal to this
+          total_balance_greater_than_or_equal_to: Filter for customers whose `totalBalance` is greater than or equal to this
               amount, represented as a decimal string. You can only use one total-balance
               filter at a time.
 
-          total_balance_lt: Filter for customers whose `totalBalance` is less than this amount, represented
+          total_balance_less_than: Filter for customers whose `totalBalance` is less than this amount, represented
               as a decimal string. You can only use one total-balance filter at a time.
 
-          total_balance_lte: Filter for customers whose `totalBalance` is less than or equal to this amount,
+          total_balance_less_than_or_equal_to: Filter for customers whose `totalBalance` is less than or equal to this amount,
               represented as a decimal string. You can only use one total-balance filter at a
               time.
 
@@ -805,10 +805,10 @@ class CustomersResource(SyncAPIResource):
                         "name_to": name_to,
                         "status": status,
                         "total_balance": total_balance,
-                        "total_balance_gt": total_balance_gt,
-                        "total_balance_gte": total_balance_gte,
-                        "total_balance_lt": total_balance_lt,
-                        "total_balance_lte": total_balance_lte,
+                        "total_balance_greater_than": total_balance_greater_than,
+                        "total_balance_greater_than_or_equal_to": total_balance_greater_than_or_equal_to,
+                        "total_balance_less_than": total_balance_less_than,
+                        "total_balance_less_than_or_equal_to": total_balance_less_than_or_equal_to,
                         "updated_after": updated_after,
                         "updated_before": updated_before,
                     },
@@ -1463,10 +1463,10 @@ class AsyncCustomersResource(AsyncAPIResource):
         name_to: str | NotGiven = NOT_GIVEN,
         status: Literal["active", "all", "inactive"] | NotGiven = NOT_GIVEN,
         total_balance: str | NotGiven = NOT_GIVEN,
-        total_balance_gt: str | NotGiven = NOT_GIVEN,
-        total_balance_gte: str | NotGiven = NOT_GIVEN,
-        total_balance_lt: str | NotGiven = NOT_GIVEN,
-        total_balance_lte: str | NotGiven = NOT_GIVEN,
+        total_balance_greater_than: str | NotGiven = NOT_GIVEN,
+        total_balance_greater_than_or_equal_to: str | NotGiven = NOT_GIVEN,
+        total_balance_less_than: str | NotGiven = NOT_GIVEN,
+        total_balance_less_than_or_equal_to: str | NotGiven = NOT_GIVEN,
         updated_after: str | NotGiven = NOT_GIVEN,
         updated_before: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -1540,18 +1540,18 @@ class AsyncCustomersResource(AsyncAPIResource):
           total_balance: Filter for customers whose `totalBalance` equals this amount, represented as a
               decimal string. You can only use one total-balance filter at a time.
 
-          total_balance_gt: Filter for customers whose `totalBalance` is greater than this amount,
+          total_balance_greater_than: Filter for customers whose `totalBalance` is greater than this amount,
               represented as a decimal string. You can only use one total-balance filter at a
               time.
 
-          total_balance_gte: Filter for customers whose `totalBalance` is greater than or equal to this
+          total_balance_greater_than_or_equal_to: Filter for customers whose `totalBalance` is greater than or equal to this
               amount, represented as a decimal string. You can only use one total-balance
               filter at a time.
 
-          total_balance_lt: Filter for customers whose `totalBalance` is less than this amount, represented
+          total_balance_less_than: Filter for customers whose `totalBalance` is less than this amount, represented
               as a decimal string. You can only use one total-balance filter at a time.
 
-          total_balance_lte: Filter for customers whose `totalBalance` is less than or equal to this amount,
+          total_balance_less_than_or_equal_to: Filter for customers whose `totalBalance` is less than or equal to this amount,
               represented as a decimal string. You can only use one total-balance filter at a
               time.
 
@@ -1595,10 +1595,10 @@ class AsyncCustomersResource(AsyncAPIResource):
                         "name_to": name_to,
                         "status": status,
                         "total_balance": total_balance,
-                        "total_balance_gt": total_balance_gt,
-                        "total_balance_gte": total_balance_gte,
-                        "total_balance_lt": total_balance_lt,
-                        "total_balance_lte": total_balance_lte,
+                        "total_balance_greater_than": total_balance_greater_than,
+                        "total_balance_greater_than_or_equal_to": total_balance_greater_than_or_equal_to,
+                        "total_balance_less_than": total_balance_less_than,
+                        "total_balance_less_than_or_equal_to": total_balance_less_than_or_equal_to,
                         "updated_after": updated_after,
                         "updated_before": updated_before,
                     },
