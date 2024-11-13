@@ -32,7 +32,7 @@ class BillPaymentCheckUpdateParams(TypedDict, total=False):
     """
 
     apply_to_transactions: Annotated[Iterable[ApplyToTransaction], PropertyInfo(alias="applyToTransactions")]
-    """bills to be paid by this bill payment check.
+    """The bills to be paid by this bill payment check.
 
     This will create a link between this bill payment check and the specified bills.
     **IMPORTANT**: The target bill must have `isPaid` as `false`, otherwise,
