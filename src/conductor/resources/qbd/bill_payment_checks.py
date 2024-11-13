@@ -354,8 +354,8 @@ class BillPaymentChecksResource(SyncAPIResource):
           ids: Filter for specific bill payment checks by their QuickBooks-assigned unique
               identifier(s).
 
-              NOTE: If you include this parameter, QuickBooks will ignore all other query
-              parameters.
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              query parameters.
 
           include_line_items: Whether to include line items in the response. Defaults to `true`.
 
@@ -382,8 +382,8 @@ class BillPaymentChecksResource(SyncAPIResource):
               In QuickBooks, ref-numbers are not required to be unique and can be arbitrarily
               changed by the QuickBooks user.
 
-              NOTE: If you include this parameter, QuickBooks will ignore all other query
-              parameters.
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              query parameters.
 
           ref_number_starts_with: Filter for bill payment checks whose `refNumber` starts with this substring. For
               checks, this is the check number. NOTE: If you use this parameter, you cannot
@@ -777,8 +777,8 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
           ids: Filter for specific bill payment checks by their QuickBooks-assigned unique
               identifier(s).
 
-              NOTE: If you include this parameter, QuickBooks will ignore all other query
-              parameters.
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              query parameters.
 
           include_line_items: Whether to include line items in the response. Defaults to `true`.
 
@@ -805,8 +805,8 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
               In QuickBooks, ref-numbers are not required to be unique and can be arbitrarily
               changed by the QuickBooks user.
 
-              NOTE: If you include this parameter, QuickBooks will ignore all other query
-              parameters.
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              query parameters.
 
           ref_number_starts_with: Filter for bill payment checks whose `refNumber` starts with this substring. For
               checks, this is the check number. NOTE: If you use this parameter, you cannot

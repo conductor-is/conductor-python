@@ -494,14 +494,14 @@ class InventoryItemsResource(SyncAPIResource):
               objects. Also, unlike `id`, `fullName` can be arbitrarily changed by the
               QuickBooks user when modifying its underlying `name` field.
 
-              NOTE: If you include this parameter, QuickBooks will ignore all other query
-              parameters.
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              query parameters.
 
           ids: Filter for specific inventory items by their QuickBooks-assigned unique
               identifier(s).
 
-              NOTE: If you include this parameter, QuickBooks will ignore all other query
-              parameters.
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              query parameters.
 
           limit: The maximum number of objects to return. Ranging from 1 to 150, defaults to 150.
               Use this parameter in conjunction with the `cursor` parameter to paginate
@@ -533,7 +533,7 @@ class InventoryItemsResource(SyncAPIResource):
               format (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the time
               is assumed to be 00:00:00 of that day.
 
-              WARNING: Due to a known issue in QuickBooks Desktop, the `updatedAfter`
+              **WARNING**: Due to a known issue in QuickBooks Desktop, the `updatedAfter`
               parameter may not correctly filter inventory items by their updated dates. To
               accurately retrieve the desired inventory items, we recommend avoiding this
               parameter and instead fetching a broader dataset, then filtering the results
@@ -543,7 +543,7 @@ class InventoryItemsResource(SyncAPIResource):
               format (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the time
               is assumed to be 23:59:59 of that day.
 
-              WARNING: Due to a known issue in QuickBooks Desktop, the `updatedBefore`
+              **WARNING**: Due to a known issue in QuickBooks Desktop, the `updatedBefore`
               parameter may not correctly filter inventory items by their updated dates. To
               accurately retrieve the desired inventory items, we recommend avoiding this
               parameter and instead fetching a broader dataset, then filtering the results
@@ -1054,14 +1054,14 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
               objects. Also, unlike `id`, `fullName` can be arbitrarily changed by the
               QuickBooks user when modifying its underlying `name` field.
 
-              NOTE: If you include this parameter, QuickBooks will ignore all other query
-              parameters.
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              query parameters.
 
           ids: Filter for specific inventory items by their QuickBooks-assigned unique
               identifier(s).
 
-              NOTE: If you include this parameter, QuickBooks will ignore all other query
-              parameters.
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              query parameters.
 
           limit: The maximum number of objects to return. Ranging from 1 to 150, defaults to 150.
               Use this parameter in conjunction with the `cursor` parameter to paginate
@@ -1093,7 +1093,7 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
               format (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the time
               is assumed to be 00:00:00 of that day.
 
-              WARNING: Due to a known issue in QuickBooks Desktop, the `updatedAfter`
+              **WARNING**: Due to a known issue in QuickBooks Desktop, the `updatedAfter`
               parameter may not correctly filter inventory items by their updated dates. To
               accurately retrieve the desired inventory items, we recommend avoiding this
               parameter and instead fetching a broader dataset, then filtering the results
@@ -1103,7 +1103,7 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
               format (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the time
               is assumed to be 23:59:59 of that day.
 
-              WARNING: Due to a known issue in QuickBooks Desktop, the `updatedBefore`
+              **WARNING**: Due to a known issue in QuickBooks Desktop, the `updatedBefore`
               parameter may not correctly filter inventory items by their updated dates. To
               accurately retrieve the desired inventory items, we recommend avoiding this
               parameter and instead fetching a broader dataset, then filtering the results
