@@ -106,11 +106,11 @@ class ApplyToTransaction(TypedDict, total=False):
     This creates a link between this receivable transaction and the specified credit
     memos.
 
-    NOTE: By default, QuickBooks will not return any information about the linked
-    transactions in this endpoint's response even when this request is successful.
-    To see the transactions linked via this field, refetch the receivable
-    transaction and check the `linkedTransactions` response field. If fetching a
-    list of receivable transactions, you must also specify the parameter
+    **IMPORTANT**: By default, QuickBooks will not return any information about the
+    linked transactions in this endpoint's response even when this request is
+    successful. To see the transactions linked via this field, refetch the
+    receivable transaction and check the `linkedTransactions` response field. If
+    fetching a list of receivable transactions, you must also specify the parameter
     `includeLinkedTransactions` to see the `linkedTransactions` response field.
     """
 

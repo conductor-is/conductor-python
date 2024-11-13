@@ -39,12 +39,12 @@ class InvoiceCreateParams(TypedDict, total=False):
 
     This creates a link between this invoice and the specified credit memos.
 
-    NOTE: By default, QuickBooks will not return any information about the linked
-    transactions in this endpoint's response even when this request is successful.
-    To see the transactions linked via this field, refetch the invoice and check the
-    `linkedTransactions` response field. If fetching a list of invoices, you must
-    also specify the parameter `includeLinkedTransactions` to see the
-    `linkedTransactions` response field.
+    **IMPORTANT**: By default, QuickBooks will not return any information about the
+    linked transactions in this endpoint's response even when this request is
+    successful. To see the transactions linked via this field, refetch the invoice
+    and check the `linkedTransactions` response field. If fetching a list of
+    invoices, you must also specify the parameter `includeLinkedTransactions` to see
+    the `linkedTransactions` response field.
     """
 
     billing_address: Annotated[BillingAddress, PropertyInfo(alias="billingAddress")]
@@ -138,12 +138,12 @@ class InvoiceCreateParams(TypedDict, total=False):
     will also return an error if you attempt to link a transaction that is empty or
     already closed.
 
-    NOTE: By default, QuickBooks will not return any information about the linked
-    transactions in this endpoint's response even when this request is successful.
-    To see the transactions linked via this field, refetch the invoice and check the
-    `linkedTransactions` response field. If fetching a list of invoices, you must
-    also specify the parameter `includeLinkedTransactions` to see the
-    `linkedTransactions` response field.
+    **IMPORTANT**: By default, QuickBooks will not return any information about the
+    linked transactions in this endpoint's response even when this request is
+    successful. To see the transactions linked via this field, refetch the invoice
+    and check the `linkedTransactions` response field. If fetching a list of
+    invoices, you must also specify the parameter `includeLinkedTransactions` to see
+    the `linkedTransactions` response field.
     """
 
     memo: str
@@ -457,8 +457,8 @@ class InvoiceLine(TypedDict, total=False):
     will also return an error if you attempt to link a transaction that is empty or
     already closed.
 
-    NOTE: By default, QuickBooks will not return any information about the linked
-    transaction line in this endpoint's response even when this request is
+    **IMPORTANT**: By default, QuickBooks will not return any information about the
+    linked transaction line in this endpoint's response even when this request is
     successful. To see the transaction line linked via this field, refetch the
     parent invoice and check the `linkedTransactions` response field. If fetching a
     list of invoices, you must also specify the parameter
