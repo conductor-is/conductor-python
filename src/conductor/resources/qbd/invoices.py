@@ -108,8 +108,8 @@ class InvoicesResource(SyncAPIResource):
               linked transactions in this endpoint's response even when this request is
               successful. To see the transactions linked via this field, refetch the invoice
               and check the `linkedTransactions` response field. If fetching a list of
-              invoices, you must also specify the parameter `includeLinkedTransactions` to see
-              the `linkedTransactions` response field.
+              invoices, you must also specify the parameter `includeLinkedTransactions=true`
+              to see the `linkedTransactions` response field.
 
           billing_address: The invoice's billing address.
 
@@ -172,8 +172,8 @@ class InvoicesResource(SyncAPIResource):
               linked transactions in this endpoint's response even when this request is
               successful. To see the transactions linked via this field, refetch the invoice
               and check the `linkedTransactions` response field. If fetching a list of
-              invoices, you must also specify the parameter `includeLinkedTransactions` to see
-              the `linkedTransactions` response field.
+              invoices, you must also specify the parameter `includeLinkedTransactions=true`
+              to see the `linkedTransactions` response field.
 
           memo: A memo or note for this invoice, as entered by the user. This appears in
               reports, but not on the invoice. Use `customerMessage` to add a note to the
@@ -385,8 +385,8 @@ class InvoicesResource(SyncAPIResource):
               linked transactions in this endpoint's response even when this request is
               successful. To see the transactions linked via this field, refetch the invoice
               and check the `linkedTransactions` response field. If fetching a list of
-              invoices, you must also specify the parameter `includeLinkedTransactions` to see
-              the `linkedTransactions` response field.
+              invoices, you must also specify the parameter `includeLinkedTransactions=true`
+              to see the `linkedTransactions` response field.
 
           billing_address: The invoice's billing address.
 
@@ -781,8 +781,8 @@ class AsyncInvoicesResource(AsyncAPIResource):
               linked transactions in this endpoint's response even when this request is
               successful. To see the transactions linked via this field, refetch the invoice
               and check the `linkedTransactions` response field. If fetching a list of
-              invoices, you must also specify the parameter `includeLinkedTransactions` to see
-              the `linkedTransactions` response field.
+              invoices, you must also specify the parameter `includeLinkedTransactions=true`
+              to see the `linkedTransactions` response field.
 
           billing_address: The invoice's billing address.
 
@@ -845,8 +845,8 @@ class AsyncInvoicesResource(AsyncAPIResource):
               linked transactions in this endpoint's response even when this request is
               successful. To see the transactions linked via this field, refetch the invoice
               and check the `linkedTransactions` response field. If fetching a list of
-              invoices, you must also specify the parameter `includeLinkedTransactions` to see
-              the `linkedTransactions` response field.
+              invoices, you must also specify the parameter `includeLinkedTransactions=true`
+              to see the `linkedTransactions` response field.
 
           memo: A memo or note for this invoice, as entered by the user. This appears in
               reports, but not on the invoice. Use `customerMessage` to add a note to the
@@ -1058,8 +1058,8 @@ class AsyncInvoicesResource(AsyncAPIResource):
               linked transactions in this endpoint's response even when this request is
               successful. To see the transactions linked via this field, refetch the invoice
               and check the `linkedTransactions` response field. If fetching a list of
-              invoices, you must also specify the parameter `includeLinkedTransactions` to see
-              the `linkedTransactions` response field.
+              invoices, you must also specify the parameter `includeLinkedTransactions=true`
+              to see the `linkedTransactions` response field.
 
           billing_address: The invoice's billing address.
 

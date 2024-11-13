@@ -92,7 +92,7 @@ class TestInvoices:
                     "item_id": "80000010-1234567890",
                     "link_to_transaction_line": {
                         "transaction_id": "123ABC-1234567890",
-                        "transaction_line_id": "123ABC-1234567890",
+                        "transaction_line_id": "456DEF-1234567890",
                     },
                     "lot_number": "LOT2023-001",
                     "other_custom_field1": "Special handling required",
@@ -253,10 +253,10 @@ class TestInvoices:
             exchange_rate=1.2345,
             invoice_line_groups=[
                 {
-                    "id": "123ABC-1234567890",
+                    "id": "456DEF-1234567890",
                     "invoice_lines": [
                         {
-                            "id": "123ABC-1234567890",
+                            "id": "456DEF-1234567890",
                             "amount": "1000.00",
                             "class_id": "80000001-1234567890",
                             "description": "High-quality widget with custom engraving",
@@ -287,7 +287,7 @@ class TestInvoices:
             ],
             invoice_lines=[
                 {
-                    "id": "123ABC-1234567890",
+                    "id": "456DEF-1234567890",
                     "amount": "1000.00",
                     "class_id": "80000001-1234567890",
                     "description": "High-quality widget with custom engraving",
@@ -512,7 +512,7 @@ class TestAsyncInvoices:
                     "item_id": "80000010-1234567890",
                     "link_to_transaction_line": {
                         "transaction_id": "123ABC-1234567890",
-                        "transaction_line_id": "123ABC-1234567890",
+                        "transaction_line_id": "456DEF-1234567890",
                     },
                     "lot_number": "LOT2023-001",
                     "other_custom_field1": "Special handling required",
@@ -673,10 +673,10 @@ class TestAsyncInvoices:
             exchange_rate=1.2345,
             invoice_line_groups=[
                 {
-                    "id": "123ABC-1234567890",
+                    "id": "456DEF-1234567890",
                     "invoice_lines": [
                         {
-                            "id": "123ABC-1234567890",
+                            "id": "456DEF-1234567890",
                             "amount": "1000.00",
                             "class_id": "80000001-1234567890",
                             "description": "High-quality widget with custom engraving",
@@ -707,7 +707,7 @@ class TestAsyncInvoices:
             ],
             invoice_lines=[
                 {
-                    "id": "123ABC-1234567890",
+                    "id": "456DEF-1234567890",
                     "amount": "1000.00",
                     "class_id": "80000001-1234567890",
                     "description": "High-quality widget with custom engraving",

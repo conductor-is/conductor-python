@@ -43,8 +43,8 @@ class InvoiceCreateParams(TypedDict, total=False):
     linked transactions in this endpoint's response even when this request is
     successful. To see the transactions linked via this field, refetch the invoice
     and check the `linkedTransactions` response field. If fetching a list of
-    invoices, you must also specify the parameter `includeLinkedTransactions` to see
-    the `linkedTransactions` response field.
+    invoices, you must also specify the parameter `includeLinkedTransactions=true`
+    to see the `linkedTransactions` response field.
     """
 
     billing_address: Annotated[BillingAddress, PropertyInfo(alias="billingAddress")]
@@ -142,8 +142,8 @@ class InvoiceCreateParams(TypedDict, total=False):
     linked transactions in this endpoint's response even when this request is
     successful. To see the transactions linked via this field, refetch the invoice
     and check the `linkedTransactions` response field. If fetching a list of
-    invoices, you must also specify the parameter `includeLinkedTransactions` to see
-    the `linkedTransactions` response field.
+    invoices, you must also specify the parameter `includeLinkedTransactions=true`
+    to see the `linkedTransactions` response field.
     """
 
     memo: str
@@ -444,11 +444,11 @@ class InvoiceLine(TypedDict, total=False):
     Transaction lines can only be linked when creating this invoice line and cannot
     be unlinked later.
 
-    If you use `linkToTransactionLine` on this invoice line, you cannot use the
-    field `item` on this line (QuickBooks will return an error) because this field
-    brings in all of the item information you need. You can, however, specify
-    whatever `quantity` or `rate` that you want, or any other transaction line
-    element other than `item`.
+    **IMPORTANT**: If you use `linkToTransactionLine` on this invoice line, you
+    cannot use the field `item` on this line (QuickBooks will return an error)
+    because this field brings in all of the item information you need. You can,
+    however, specify whatever `quantity` or `rate` that you want, or any other
+    transaction line element other than `item`.
 
     If the parent transaction supports the `linkToTransactionIds` field, you can use
     both `linkToTransactionLine` (on this invoice line) and `linkToTransactionIds`
@@ -462,7 +462,7 @@ class InvoiceLine(TypedDict, total=False):
     successful. To see the transaction line linked via this field, refetch the
     parent invoice and check the `linkedTransactions` response field. If fetching a
     list of invoices, you must also specify the parameter
-    `includeLinkedTransactions` to see the `linkedTransactions` response field.
+    `includeLinkedTransactions=true` to see the `linkedTransactions` response field.
     """
 
     lot_number: Annotated[str, PropertyInfo(alias="lotNumber")]
