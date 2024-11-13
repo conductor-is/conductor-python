@@ -120,14 +120,6 @@ from .date_driven_terms import (
     DateDrivenTermsResourceWithStreamingResponse,
     AsyncDateDrivenTermsResourceWithStreamingResponse,
 )
-from .bill_payment_checks import (
-    BillPaymentChecksResource,
-    AsyncBillPaymentChecksResource,
-    BillPaymentChecksResourceWithRawResponse,
-    AsyncBillPaymentChecksResourceWithRawResponse,
-    BillPaymentChecksResourceWithStreamingResponse,
-    AsyncBillPaymentChecksResourceWithStreamingResponse,
-)
 from .credit_card_charges import (
     CreditCardChargesResource,
     AsyncCreditCardChargesResource,
@@ -256,12 +248,6 @@ __all__ = [
     "AsyncVendorsResourceWithRawResponse",
     "VendorsResourceWithStreamingResponse",
     "AsyncVendorsResourceWithStreamingResponse",
-    "BillPaymentChecksResource",
-    "AsyncBillPaymentChecksResource",
-    "BillPaymentChecksResourceWithRawResponse",
-    "AsyncBillPaymentChecksResourceWithRawResponse",
-    "BillPaymentChecksResourceWithStreamingResponse",
-    "AsyncBillPaymentChecksResourceWithStreamingResponse",
     "QbdResource",
     "AsyncQbdResource",
     "QbdResourceWithRawResponse",
