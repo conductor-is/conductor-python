@@ -457,7 +457,7 @@ class QbdBillPaymentCheck(BaseModel):
     """
 
     vendor: Optional[Vendor] = None
-    """The vendor who sent the bill that this check is paying.
-
-    This is the payee who will receive the check payment.
+    """
+    The vendor who sent the bill(s) specified in `applyToTransactions` that this
+    check is paying. This is the payee who will receive the check payment.
     """

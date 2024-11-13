@@ -46,7 +46,7 @@ class TestChecks:
                 "postal_code": "94110",
                 "state": "CA",
             },
-            apply_checks_to_transactions=[
+            apply_to_transactions=[
                 {
                     "id": "123ABC-1234567890",
                     "amount": "1000.00",
@@ -446,7 +446,7 @@ class TestChecks:
                 "postal_code": "94110",
                 "state": "CA",
             },
-            apply_checks_to_transactions=[
+            apply_to_transactions=[
                 {
                     "id": "123ABC-1234567890",
                     "amount": "1000.00",
@@ -915,7 +915,7 @@ class TestAsyncChecks:
                 "postal_code": "94110",
                 "state": "CA",
             },
-            apply_checks_to_transactions=[
+            apply_to_transactions=[
                 {
                     "id": "123ABC-1234567890",
                     "amount": "1000.00",
@@ -1315,7 +1315,7 @@ class TestAsyncChecks:
                 "postal_code": "94110",
                 "state": "CA",
             },
-            apply_checks_to_transactions=[
+            apply_to_transactions=[
                 {
                     "id": "123ABC-1234567890",
                     "amount": "1000.00",
