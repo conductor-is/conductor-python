@@ -40,69 +40,15 @@ class TestCustomers:
                         {
                             "name": "Main Phone",
                             "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
+                        }
                     ],
                     "job_title": "Purchasing Manager",
                     "last_name": "Doe",
                     "middle_name": "A.",
                     "salutation": "Dr.",
-                },
-                {
-                    "first_name": "John",
-                    "custom_contact_fields": [
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                    ],
-                    "job_title": "Purchasing Manager",
-                    "last_name": "Doe",
-                    "middle_name": "A.",
-                    "salutation": "Dr.",
-                },
-                {
-                    "first_name": "John",
-                    "custom_contact_fields": [
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                    ],
-                    "job_title": "Purchasing Manager",
-                    "last_name": "Doe",
-                    "middle_name": "A.",
-                    "salutation": "Dr.",
-                },
+                }
             ],
-            additional_notes=[
-                {"note": "This is a fun note."},
-                {"note": "This is a fun note."},
-                {"note": "This is a fun note."},
-            ],
+            additional_notes=[{"note": "This is a fun note."}],
             alternate_contact="Bob Johnson",
             alternate_phone="+1-555-987-6543",
             alternate_shipping_addresses=[
@@ -119,35 +65,7 @@ class TestCustomers:
                     "note": "Conductor HQ",
                     "postal_code": "94110",
                     "state": "CA",
-                },
-                {
-                    "name": "Alternate shipping address",
-                    "city": "San Francisco",
-                    "country": "United States",
-                    "is_default_shipping_address": True,
-                    "line1": "548 Market St.",
-                    "line2": "Suite 100",
-                    "line3": "line3",
-                    "line4": "line4",
-                    "line5": "line5",
-                    "note": "Conductor HQ",
-                    "postal_code": "94110",
-                    "state": "CA",
-                },
-                {
-                    "name": "Alternate shipping address",
-                    "city": "San Francisco",
-                    "country": "United States",
-                    "is_default_shipping_address": True,
-                    "line1": "548 Market St.",
-                    "line2": "Suite 100",
-                    "line3": "line3",
-                    "line4": "line4",
-                    "line5": "line5",
-                    "note": "Conductor HQ",
-                    "postal_code": "94110",
-                    "state": "CA",
-                },
+                }
             ],
             billing_address={
                 "city": "San Francisco",
@@ -179,15 +97,7 @@ class TestCustomers:
                 {
                     "name": "Main Phone",
                     "value": "555-123-4567",
-                },
-                {
-                    "name": "Main Phone",
-                    "value": "555-123-4567",
-                },
-                {
-                    "name": "Main Phone",
-                    "value": "555-123-4567",
-                },
+                }
             ],
             customer_type_id="80000025-1234567890",
             email="customer@example.com",
@@ -328,81 +238,19 @@ class TestCustomers:
                         {
                             "name": "Main Phone",
                             "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
+                        }
                     ],
                     "job_title": "Purchasing Manager",
                     "last_name": "Doe",
                     "middle_name": "A.",
                     "salutation": "Dr.",
-                },
-                {
-                    "id": "80000001-1234567890",
-                    "first_name": "John",
-                    "revision_number": "1721172183",
-                    "custom_contact_fields": [
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                    ],
-                    "job_title": "Purchasing Manager",
-                    "last_name": "Doe",
-                    "middle_name": "A.",
-                    "salutation": "Dr.",
-                },
-                {
-                    "id": "80000001-1234567890",
-                    "first_name": "John",
-                    "revision_number": "1721172183",
-                    "custom_contact_fields": [
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                    ],
-                    "job_title": "Purchasing Manager",
-                    "last_name": "Doe",
-                    "middle_name": "A.",
-                    "salutation": "Dr.",
-                },
+                }
             ],
             additional_notes=[
                 {
                     "id": 1,
                     "note": "This is a fun note.",
-                },
-                {
-                    "id": 1,
-                    "note": "This is a fun note.",
-                },
-                {
-                    "id": 1,
-                    "note": "This is a fun note.",
-                },
+                }
             ],
             alternate_contact="Bob Johnson",
             alternate_phone="+1-555-987-6543",
@@ -420,35 +268,7 @@ class TestCustomers:
                     "note": "Conductor HQ",
                     "postal_code": "94110",
                     "state": "CA",
-                },
-                {
-                    "name": "Alternate shipping address",
-                    "city": "San Francisco",
-                    "country": "United States",
-                    "is_default_shipping_address": True,
-                    "line1": "548 Market St.",
-                    "line2": "Suite 100",
-                    "line3": "line3",
-                    "line4": "line4",
-                    "line5": "line5",
-                    "note": "Conductor HQ",
-                    "postal_code": "94110",
-                    "state": "CA",
-                },
-                {
-                    "name": "Alternate shipping address",
-                    "city": "San Francisco",
-                    "country": "United States",
-                    "is_default_shipping_address": True,
-                    "line1": "548 Market St.",
-                    "line2": "Suite 100",
-                    "line3": "line3",
-                    "line4": "line4",
-                    "line5": "line5",
-                    "note": "Conductor HQ",
-                    "postal_code": "94110",
-                    "state": "CA",
-                },
+                }
             ],
             billing_address={
                 "city": "San Francisco",
@@ -480,15 +300,7 @@ class TestCustomers:
                 {
                     "name": "Main Phone",
                     "value": "555-123-4567",
-                },
-                {
-                    "name": "Main Phone",
-                    "value": "555-123-4567",
-                },
-                {
-                    "name": "Main Phone",
-                    "value": "555-123-4567",
-                },
+                }
             ],
             customer_type_id="80000025-1234567890",
             email="customer@example.com",
@@ -653,69 +465,15 @@ class TestAsyncCustomers:
                         {
                             "name": "Main Phone",
                             "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
+                        }
                     ],
                     "job_title": "Purchasing Manager",
                     "last_name": "Doe",
                     "middle_name": "A.",
                     "salutation": "Dr.",
-                },
-                {
-                    "first_name": "John",
-                    "custom_contact_fields": [
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                    ],
-                    "job_title": "Purchasing Manager",
-                    "last_name": "Doe",
-                    "middle_name": "A.",
-                    "salutation": "Dr.",
-                },
-                {
-                    "first_name": "John",
-                    "custom_contact_fields": [
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                    ],
-                    "job_title": "Purchasing Manager",
-                    "last_name": "Doe",
-                    "middle_name": "A.",
-                    "salutation": "Dr.",
-                },
+                }
             ],
-            additional_notes=[
-                {"note": "This is a fun note."},
-                {"note": "This is a fun note."},
-                {"note": "This is a fun note."},
-            ],
+            additional_notes=[{"note": "This is a fun note."}],
             alternate_contact="Bob Johnson",
             alternate_phone="+1-555-987-6543",
             alternate_shipping_addresses=[
@@ -732,35 +490,7 @@ class TestAsyncCustomers:
                     "note": "Conductor HQ",
                     "postal_code": "94110",
                     "state": "CA",
-                },
-                {
-                    "name": "Alternate shipping address",
-                    "city": "San Francisco",
-                    "country": "United States",
-                    "is_default_shipping_address": True,
-                    "line1": "548 Market St.",
-                    "line2": "Suite 100",
-                    "line3": "line3",
-                    "line4": "line4",
-                    "line5": "line5",
-                    "note": "Conductor HQ",
-                    "postal_code": "94110",
-                    "state": "CA",
-                },
-                {
-                    "name": "Alternate shipping address",
-                    "city": "San Francisco",
-                    "country": "United States",
-                    "is_default_shipping_address": True,
-                    "line1": "548 Market St.",
-                    "line2": "Suite 100",
-                    "line3": "line3",
-                    "line4": "line4",
-                    "line5": "line5",
-                    "note": "Conductor HQ",
-                    "postal_code": "94110",
-                    "state": "CA",
-                },
+                }
             ],
             billing_address={
                 "city": "San Francisco",
@@ -792,15 +522,7 @@ class TestAsyncCustomers:
                 {
                     "name": "Main Phone",
                     "value": "555-123-4567",
-                },
-                {
-                    "name": "Main Phone",
-                    "value": "555-123-4567",
-                },
-                {
-                    "name": "Main Phone",
-                    "value": "555-123-4567",
-                },
+                }
             ],
             customer_type_id="80000025-1234567890",
             email="customer@example.com",
@@ -941,81 +663,19 @@ class TestAsyncCustomers:
                         {
                             "name": "Main Phone",
                             "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
+                        }
                     ],
                     "job_title": "Purchasing Manager",
                     "last_name": "Doe",
                     "middle_name": "A.",
                     "salutation": "Dr.",
-                },
-                {
-                    "id": "80000001-1234567890",
-                    "first_name": "John",
-                    "revision_number": "1721172183",
-                    "custom_contact_fields": [
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                    ],
-                    "job_title": "Purchasing Manager",
-                    "last_name": "Doe",
-                    "middle_name": "A.",
-                    "salutation": "Dr.",
-                },
-                {
-                    "id": "80000001-1234567890",
-                    "first_name": "John",
-                    "revision_number": "1721172183",
-                    "custom_contact_fields": [
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                        {
-                            "name": "Main Phone",
-                            "value": "555-123-4567",
-                        },
-                    ],
-                    "job_title": "Purchasing Manager",
-                    "last_name": "Doe",
-                    "middle_name": "A.",
-                    "salutation": "Dr.",
-                },
+                }
             ],
             additional_notes=[
                 {
                     "id": 1,
                     "note": "This is a fun note.",
-                },
-                {
-                    "id": 1,
-                    "note": "This is a fun note.",
-                },
-                {
-                    "id": 1,
-                    "note": "This is a fun note.",
-                },
+                }
             ],
             alternate_contact="Bob Johnson",
             alternate_phone="+1-555-987-6543",
@@ -1033,35 +693,7 @@ class TestAsyncCustomers:
                     "note": "Conductor HQ",
                     "postal_code": "94110",
                     "state": "CA",
-                },
-                {
-                    "name": "Alternate shipping address",
-                    "city": "San Francisco",
-                    "country": "United States",
-                    "is_default_shipping_address": True,
-                    "line1": "548 Market St.",
-                    "line2": "Suite 100",
-                    "line3": "line3",
-                    "line4": "line4",
-                    "line5": "line5",
-                    "note": "Conductor HQ",
-                    "postal_code": "94110",
-                    "state": "CA",
-                },
-                {
-                    "name": "Alternate shipping address",
-                    "city": "San Francisco",
-                    "country": "United States",
-                    "is_default_shipping_address": True,
-                    "line1": "548 Market St.",
-                    "line2": "Suite 100",
-                    "line3": "line3",
-                    "line4": "line4",
-                    "line5": "line5",
-                    "note": "Conductor HQ",
-                    "postal_code": "94110",
-                    "state": "CA",
-                },
+                }
             ],
             billing_address={
                 "city": "San Francisco",
@@ -1093,15 +725,7 @@ class TestAsyncCustomers:
                 {
                     "name": "Main Phone",
                     "value": "555-123-4567",
-                },
-                {
-                    "name": "Main Phone",
-                    "value": "555-123-4567",
-                },
-                {
-                    "name": "Main Phone",
-                    "value": "555-123-4567",
-                },
+                }
             ],
             customer_type_id="80000025-1234567890",
             email="customer@example.com",
