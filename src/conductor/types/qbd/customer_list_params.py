@@ -20,17 +20,11 @@ class CustomerListParams(TypedDict, total=False):
     class_ids: Annotated[List[str], PropertyInfo(alias="classIds")]
     """Filter for customers of this class or classes.
 
-    Specify a single class ID or multiple using a comma-separated list (e.g.,
-    `classIds=1,2,3`). A class is a way end-users can categorize customers in
-    QuickBooks.
+    A class is a way end-users can categorize customers in QuickBooks.
     """
 
     currency_ids: Annotated[List[str], PropertyInfo(alias="currencyIds")]
-    """Filter for customers in this currency or currencies.
-
-    Specify a single currency ID or multiple using a comma-separated list (e.g.,
-    `currencyIds=1,2,3`).
-    """
+    """Filter for customers in this currency or currencies."""
 
     cursor: str
     """

@@ -13,10 +13,11 @@ __all__ = ["BillPaymentCheckCreateParams", "ApplyToTransaction", "ApplyToTransac
 
 class BillPaymentCheckCreateParams(TypedDict, total=False):
     apply_to_transactions: Required[Annotated[Iterable[ApplyToTransaction], PropertyInfo(alias="applyToTransactions")]]
-    """Transactions to be paid by this bill payment check.
+    """bills to be paid by this bill payment check.
 
-    This will create a link between this bill payment check and the specified
-    transactions.
+    This will create a link between this bill payment check and the specified bills.
+    The target bill must have `isPaid=false`, otherwise, QuickBooks will report this
+    object as "cannot be found".
 
     NOTE: By default, QuickBooks will not return any information about the linked
     transactions in this endpoint's response even when this request is successful.
@@ -33,14 +34,14 @@ class BillPaymentCheckCreateParams(TypedDict, total=False):
     balance of this account.
     """
 
-    payee_id: Required[Annotated[str, PropertyInfo(alias="payeeId")]]
+    transaction_date: Required[Annotated[Union[str, date], PropertyInfo(alias="transactionDate", format="iso8601")]]
+    """The date of this bill payment check, in ISO 8601 format (YYYY-MM-DD)."""
+
+    vendor_id: Required[Annotated[str, PropertyInfo(alias="vendorId")]]
     """The vendor who sent the bill that this check is paying.
 
     This is the payee who will receive the check payment.
     """
-
-    transaction_date: Required[Annotated[Union[str, date], PropertyInfo(alias="transactionDate", format="iso8601")]]
-    """The date of this bill payment check, in ISO 8601 format (YYYY-MM-DD)."""
 
     conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]
     """

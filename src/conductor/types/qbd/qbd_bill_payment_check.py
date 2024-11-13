@@ -19,7 +19,7 @@ __all__ = [
     "Currency",
     "CustomField",
     "PayablesAccount",
-    "Payee",
+    "Vendor",
 ]
 
 
@@ -325,7 +325,7 @@ class PayablesAccount(BaseModel):
     """
 
 
-class Payee(BaseModel):
+class Vendor(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks to this object.
 
@@ -363,7 +363,7 @@ class QbdBillPaymentCheck(BaseModel):
     """
 
     applied_to_transactions: List[AppliedToTransaction] = FieldInfo(alias="appliedToTransactions")
-    """The transaction(s) paid by this bill payment check."""
+    """The bill(s) paid by this bill payment check."""
 
     bank_account: Optional[BankAccount] = FieldInfo(alias="bankAccount", default=None)
     """
@@ -430,12 +430,6 @@ class QbdBillPaymentCheck(BaseModel):
     `applyToTransactions`.
     """
 
-    payee: Optional[Payee] = None
-    """The vendor who sent the bill that this check is paying.
-
-    This is the payee who will receive the check payment.
-    """
-
     ref_number: Optional[str] = FieldInfo(alias="refNumber", default=None)
     """
     The case-sensitive user-defined reference number for this bill payment check,
@@ -460,4 +454,10 @@ class QbdBillPaymentCheck(BaseModel):
     The date and time when this bill payment check was last updated, in ISO 8601
     format (YYYY-MM-DDThh:mm:ss±hh:mm). The time zone is the same as the user's time
     zone in QuickBooks.
+    """
+
+    vendor: Optional[Vendor] = None
+    """The vendor who sent the bill that this check is paying.
+
+    This is the payee who will receive the check payment.
     """

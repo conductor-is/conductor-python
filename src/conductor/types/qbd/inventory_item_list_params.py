@@ -20,9 +20,7 @@ class InventoryItemListParams(TypedDict, total=False):
     class_ids: Annotated[List[str], PropertyInfo(alias="classIds")]
     """Filter for inventory items of this class or classes.
 
-    Specify a single class ID or multiple using a comma-separated list (e.g.,
-    `classIds=1,2,3`). A class is a way end-users can categorize inventory items in
-    QuickBooks.
+    A class is a way end-users can categorize inventory items in QuickBooks.
     """
 
     cursor: str

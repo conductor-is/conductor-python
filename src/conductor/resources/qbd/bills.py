@@ -415,11 +415,9 @@ class BillsResource(SyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_ids: Filter for bills from this account or accounts. Specify a single account ID or
-              multiple using a comma-separated list (e.g., `accountIds=1,2,3`).
+          account_ids: Filter for bills from this account or accounts.
 
-          currency_ids: Filter for bills in this currency or currencies. Specify a single currency ID or
-              multiple using a comma-separated list (e.g., `currencyIds=1,2,3`).
+          currency_ids: Filter for bills in this currency or currencies.
 
           cursor: The pagination token to fetch the next set of results when paginating with the
               `limit` parameter. Retrieve this value from the `nextCursor` field in the
@@ -484,8 +482,7 @@ class BillsResource(SyncAPIResource):
               (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the time is
               assumed to be 23:59:59 of that day.
 
-          vendor_ids: Filter for bills from this vendor or vendors. Specify a single vendor ID or
-              multiple using a comma-separated list (e.g., `vendorIds=1,2,3`).
+          vendor_ids: Filter for bills from this vendor or vendors.
 
           extra_headers: Send extra headers
 
@@ -919,11 +916,9 @@ class AsyncBillsResource(AsyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_ids: Filter for bills from this account or accounts. Specify a single account ID or
-              multiple using a comma-separated list (e.g., `accountIds=1,2,3`).
+          account_ids: Filter for bills from this account or accounts.
 
-          currency_ids: Filter for bills in this currency or currencies. Specify a single currency ID or
-              multiple using a comma-separated list (e.g., `currencyIds=1,2,3`).
+          currency_ids: Filter for bills in this currency or currencies.
 
           cursor: The pagination token to fetch the next set of results when paginating with the
               `limit` parameter. Retrieve this value from the `nextCursor` field in the
@@ -988,8 +983,7 @@ class AsyncBillsResource(AsyncAPIResource):
               (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the time is
               assumed to be 23:59:59 of that day.
 
-          vendor_ids: Filter for bills from this vendor or vendors. Specify a single vendor ID or
-              multiple using a comma-separated list (e.g., `vendorIds=1,2,3`).
+          vendor_ids: Filter for bills from this vendor or vendors.
 
           extra_headers: Send extra headers
 

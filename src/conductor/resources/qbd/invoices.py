@@ -583,18 +583,15 @@ class InvoicesResource(SyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_ids: Filter for invoices from this account or accounts. Specify a single account ID
-              or multiple using a comma-separated list (e.g., `accountIds=1,2,3`).
+          account_ids: Filter for invoices from this account or accounts.
 
-          currency_ids: Filter for invoices in this currency or currencies. Specify a single currency ID
-              or multiple using a comma-separated list (e.g., `currencyIds=1,2,3`).
+          currency_ids: Filter for invoices in this currency or currencies.
 
           cursor: The pagination token to fetch the next set of results when paginating with the
               `limit` parameter. Retrieve this value from the `nextCursor` field in the
               previous response. If omitted, the API returns the first page of results.
 
-          customer_ids: Filter for invoices from this customer or customers. Specify a single customer
-              ID or multiple using a comma-separated list (e.g., `customerIds=1,2,3`).
+          customer_ids: Filter for invoices from this customer or customers.
 
           ids: Filter for specific invoices by their QuickBooks-assigned unique identifier(s).
 
@@ -1257,18 +1254,15 @@ class AsyncInvoicesResource(AsyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_ids: Filter for invoices from this account or accounts. Specify a single account ID
-              or multiple using a comma-separated list (e.g., `accountIds=1,2,3`).
+          account_ids: Filter for invoices from this account or accounts.
 
-          currency_ids: Filter for invoices in this currency or currencies. Specify a single currency ID
-              or multiple using a comma-separated list (e.g., `currencyIds=1,2,3`).
+          currency_ids: Filter for invoices in this currency or currencies.
 
           cursor: The pagination token to fetch the next set of results when paginating with the
               `limit` parameter. Retrieve this value from the `nextCursor` field in the
               previous response. If omitted, the API returns the first page of results.
 
-          customer_ids: Filter for invoices from this customer or customers. Specify a single customer
-              ID or multiple using a comma-separated list (e.g., `customerIds=1,2,3`).
+          customer_ids: Filter for invoices from this customer or customers.
 
           ids: Filter for specific invoices by their QuickBooks-assigned unique identifier(s).
 
