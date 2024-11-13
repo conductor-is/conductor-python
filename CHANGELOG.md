@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.32 (2024-11-13)
+
+Full Changelog: [v0.1.0-alpha.31...v0.1.0-alpha.32](https://github.com/conductor-is/conductor-python/compare/v0.1.0-alpha.31...v0.1.0-alpha.32)
+
+### Styles
+
+* **api:** reorder resource and method keys in config ([#277](https://github.com/conductor-is/conductor-python/issues/277)) ([45afd70](https://github.com/conductor-is/conductor-python/commit/45afd70fc57e03401cb0b2c9cd505823bc18dac1))
+
 ## 0.1.0-alpha.31 (2024-11-13)
 
 Full Changelog: [v0.1.0-alpha.30...v0.1.0-alpha.31](https://github.com/conductor-is/conductor-python/compare/v0.1.0-alpha.30...v0.1.0-alpha.31)
