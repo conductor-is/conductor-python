@@ -425,9 +425,9 @@ class QbdBillPaymentCheck(BaseModel):
     used to track the amount owed. If not specified, QuickBooks Desktop will use its
     default Accounts-Payable account.
 
-    TEST _TEST_ **TEST** **_TEST_** _TEST_ **TEST** **_TEST_** This A/P account must
-    be the same as the `payablesAccount` used when originally adding the
-    corresponding bill specified in `applyToTransactions`.
+    **IMPORTANT**: This A/P account must be the same as the `payablesAccount` used
+    when originally adding the corresponding bill specified in
+    `applyToTransactions`.
     """
 
     payee: Optional[Payee] = None
