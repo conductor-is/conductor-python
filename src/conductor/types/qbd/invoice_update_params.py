@@ -42,8 +42,8 @@ class InvoiceUpdateParams(TypedDict, total=False):
     linked transactions in this endpoint's response even when this request is
     successful. To see the transactions linked via this field, refetch the invoice
     and check the `linkedTransactions` response field. If fetching a list of
-    invoices, you must also specify the parameter `includeLinkedTransactions` to see
-    the `linkedTransactions` response field.
+    invoices, you must also specify the parameter `includeLinkedTransactions=true`
+    to see the `linkedTransactions` response field.
     """
 
     billing_address: Annotated[BillingAddress, PropertyInfo(alias="billingAddress")]

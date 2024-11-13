@@ -193,9 +193,6 @@ class AppliedToTransaction(BaseModel):
     not returned by default.
     """
 
-    object_type: Literal["qbd_receivable_transaction"] = FieldInfo(alias="objectType")
-    """The type of object. This value is always `"qbd_receivable_transaction"`."""
-
     ref_number: Optional[str] = FieldInfo(alias="refNumber", default=None)
     """
     The case-sensitive user-defined reference number for this receivable

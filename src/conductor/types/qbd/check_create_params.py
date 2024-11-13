@@ -50,7 +50,7 @@ class CheckCreateParams(TypedDict, total=False):
     linked transactions in this endpoint's response even when this request is
     successful. To see the transactions linked via this field, refetch the check and
     check the `linkedTransactions` response field. If fetching a list of checks, you
-    must also specify the parameter `includeLinkedTransactions` to see the
+    must also specify the parameter `includeLinkedTransactions=true` to see the
     `linkedTransactions` response field.
     """
 
@@ -159,7 +159,7 @@ class Address(TypedDict, total=False):
 
 
 class ApplyToTransaction(TypedDict, total=False):
-    id: Required[str]
+    transaction_id: Required[Annotated[str, PropertyInfo(alias="transactionId")]]
     """The ID of the transaction to be paid by this check."""
 
     amount: str
@@ -432,11 +432,11 @@ class ItemLine(TypedDict, total=False):
     Transaction lines can only be linked when creating this item line and cannot be
     unlinked later.
 
-    If you use `linkToTransactionLine` on this item line, you cannot use the field
-    `item` on this line (QuickBooks will return an error) because this field brings
-    in all of the item information you need. You can, however, specify whatever
-    `quantity` or `rate` that you want, or any other transaction line element other
-    than `item`.
+    **IMPORTANT**: If you use `linkToTransactionLine` on this item line, you cannot
+    use the field `item` on this line (QuickBooks will return an error) because this
+    field brings in all of the item information you need. You can, however, specify
+    whatever `quantity` or `rate` that you want, or any other transaction line
+    element other than `item`.
 
     If the parent transaction supports the `linkToTransactionIds` field, you can use
     both `linkToTransactionLine` (on this item line) and `linkToTransactionIds` (on
@@ -450,7 +450,7 @@ class ItemLine(TypedDict, total=False):
     successful. To see the transaction line linked via this field, refetch the
     parent transaction and check the `linkedTransactions` response field. If
     fetching a list of transactions, you must also specify the parameter
-    `includeLinkedTransactions` to see the `linkedTransactions` response field.
+    `includeLinkedTransactions=true` to see the `linkedTransactions` response field.
     """
 
     lot_number: Annotated[str, PropertyInfo(alias="lotNumber")]
