@@ -94,7 +94,7 @@ class TestCreditCardCharges:
                     "item_id": "80000010-1234567890",
                     "link_to_transaction_line": {
                         "transaction_id": "123ABC-1234567890",
-                        "transaction_line_id": "123ABC-1234567890",
+                        "transaction_line_id": "456DEF-1234567890",
                     },
                     "lot_number": "LOT2023-001",
                     "override_item_account_id": "80000001-1234567890",
@@ -203,7 +203,7 @@ class TestCreditCardCharges:
             exchange_rate=1.2345,
             expense_lines=[
                 {
-                    "id": "123ABC-1234567890",
+                    "id": "456DEF-1234567890",
                     "account_id": "80000001-1234567890",
                     "amount": "1000.00",
                     "billing_status": "billable",
@@ -216,11 +216,11 @@ class TestCreditCardCharges:
             ],
             item_group_lines=[
                 {
-                    "id": "123ABC-1234567890",
+                    "id": "456DEF-1234567890",
                     "item_group_id": "80000011-1234567890",
                     "item_lines": [
                         {
-                            "id": "123ABC-1234567890",
+                            "id": "456DEF-1234567890",
                             "amount": "1000.00",
                             "billing_status": "billable",
                             "class_id": "80000001-1234567890",
@@ -248,7 +248,7 @@ class TestCreditCardCharges:
             ],
             item_lines=[
                 {
-                    "id": "123ABC-1234567890",
+                    "id": "456DEF-1234567890",
                     "amount": "1000.00",
                     "billing_status": "billable",
                     "class_id": "80000001-1234567890",
@@ -446,7 +446,7 @@ class TestAsyncCreditCardCharges:
                     "item_id": "80000010-1234567890",
                     "link_to_transaction_line": {
                         "transaction_id": "123ABC-1234567890",
-                        "transaction_line_id": "123ABC-1234567890",
+                        "transaction_line_id": "456DEF-1234567890",
                     },
                     "lot_number": "LOT2023-001",
                     "override_item_account_id": "80000001-1234567890",
@@ -555,7 +555,7 @@ class TestAsyncCreditCardCharges:
             exchange_rate=1.2345,
             expense_lines=[
                 {
-                    "id": "123ABC-1234567890",
+                    "id": "456DEF-1234567890",
                     "account_id": "80000001-1234567890",
                     "amount": "1000.00",
                     "billing_status": "billable",
@@ -568,11 +568,11 @@ class TestAsyncCreditCardCharges:
             ],
             item_group_lines=[
                 {
-                    "id": "123ABC-1234567890",
+                    "id": "456DEF-1234567890",
                     "item_group_id": "80000011-1234567890",
                     "item_lines": [
                         {
-                            "id": "123ABC-1234567890",
+                            "id": "456DEF-1234567890",
                             "amount": "1000.00",
                             "billing_status": "billable",
                             "class_id": "80000001-1234567890",
@@ -600,7 +600,7 @@ class TestAsyncCreditCardCharges:
             ],
             item_lines=[
                 {
-                    "id": "123ABC-1234567890",
+                    "id": "456DEF-1234567890",
                     "amount": "1000.00",
                     "billing_status": "billable",
                     "class_id": "80000001-1234567890",

@@ -85,8 +85,8 @@ class BillPaymentChecksResource(SyncAPIResource):
               if none of these are specified, you will receive an error for an empty
               transaction.
 
-              **IMPORTANT**: The target bill must have `isPaid` as `false`, otherwise,
-              QuickBooks will report this object as "cannot be found".
+              **IMPORTANT**: The target bill must have `isPaid=false`, otherwise, QuickBooks
+              will report this object as "cannot be found".
 
           bank_account_id: The bank account from which the funds are being drawn for this bill payment
               check; e.g., Checking or Savings. This bill payment check will decrease the
@@ -251,8 +251,8 @@ class BillPaymentChecksResource(SyncAPIResource):
               if none of these are specified, you will receive an error for an empty
               transaction.
 
-              **IMPORTANT**: The target bill must have `isPaid` as `false`, otherwise,
-              QuickBooks will report this object as "cannot be found".
+              **IMPORTANT**: The target bill must have `isPaid=false`, otherwise, QuickBooks
+              will report this object as "cannot be found".
 
           bank_account_id: The bank account from which the funds are being drawn for this bill payment
               check; e.g., Checking or Savings. This bill payment check will decrease the
@@ -508,8 +508,8 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
               if none of these are specified, you will receive an error for an empty
               transaction.
 
-              **IMPORTANT**: The target bill must have `isPaid` as `false`, otherwise,
-              QuickBooks will report this object as "cannot be found".
+              **IMPORTANT**: The target bill must have `isPaid=false`, otherwise, QuickBooks
+              will report this object as "cannot be found".
 
           bank_account_id: The bank account from which the funds are being drawn for this bill payment
               check; e.g., Checking or Savings. This bill payment check will decrease the
@@ -674,8 +674,8 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
               if none of these are specified, you will receive an error for an empty
               transaction.
 
-              **IMPORTANT**: The target bill must have `isPaid` as `false`, otherwise,
-              QuickBooks will report this object as "cannot be found".
+              **IMPORTANT**: The target bill must have `isPaid=false`, otherwise, QuickBooks
+              will report this object as "cannot be found".
 
           bank_account_id: The bank account from which the funds are being drawn for this bill payment
               check; e.g., Checking or Savings. This bill payment check will decrease the

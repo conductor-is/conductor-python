@@ -22,8 +22,8 @@ class BillPaymentCheckCreateParams(TypedDict, total=False):
     if none of these are specified, you will receive an error for an empty
     transaction.
 
-    **IMPORTANT**: The target bill must have `isPaid` as `false`, otherwise,
-    QuickBooks will report this object as "cannot be found".
+    **IMPORTANT**: The target bill must have `isPaid=false`, otherwise, QuickBooks
+    will report this object as "cannot be found".
     """
 
     bank_account_id: Required[Annotated[str, PropertyInfo(alias="bankAccountId")]]
@@ -129,7 +129,7 @@ class ApplyToTransaction(TypedDict, total=False):
     successful. To see the transactions linked via this field, refetch the
     receivable transaction and check the `linkedTransactions` response field. If
     fetching a list of receivable transactions, you must also specify the parameter
-    `includeLinkedTransactions` to see the `linkedTransactions` response field.
+    `includeLinkedTransactions=true` to see the `linkedTransactions` response field.
     """
 
     discount_account_id: Annotated[str, PropertyInfo(alias="discountAccountId")]
