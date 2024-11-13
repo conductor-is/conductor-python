@@ -325,14 +325,14 @@ class SalesTaxItemsResource(SyncAPIResource):
               objects. Also, unlike `id`, `fullName` can be arbitrarily changed by the
               QuickBooks user when modifying its underlying `name` field.
 
-              NOTE: If you include this parameter, QuickBooks will ignore all other query
-              parameters.
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              query parameters.
 
           ids: Filter for specific sales-tax items by their QuickBooks-assigned unique
               identifier(s).
 
-              NOTE: If you include this parameter, QuickBooks will ignore all other query
-              parameters.
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              query parameters.
 
           limit: The maximum number of objects to return. Ranging from 1 to 150, defaults to 150.
               Use this parameter in conjunction with the `cursor` parameter to paginate
@@ -705,14 +705,14 @@ class AsyncSalesTaxItemsResource(AsyncAPIResource):
               objects. Also, unlike `id`, `fullName` can be arbitrarily changed by the
               QuickBooks user when modifying its underlying `name` field.
 
-              NOTE: If you include this parameter, QuickBooks will ignore all other query
-              parameters.
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              query parameters.
 
           ids: Filter for specific sales-tax items by their QuickBooks-assigned unique
               identifier(s).
 
-              NOTE: If you include this parameter, QuickBooks will ignore all other query
-              parameters.
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              query parameters.
 
           limit: The maximum number of objects to return. Ranging from 1 to 150, defaults to 150.
               Use this parameter in conjunction with the `cursor` parameter to paginate
