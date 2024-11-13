@@ -46,11 +46,11 @@ class CheckCreateParams(TypedDict, total=False):
 
     This will create a link between this check and the specified transactions.
 
-    NOTE: By default, QuickBooks will not return any information about the linked
-    transactions in this endpoint's response even when this request is successful.
-    To see the transactions linked via this field, refetch the check and check the
-    `linkedTransactions` response field. If fetching a list of checks, you must also
-    specify the parameter `includeLinkedTransactions` to see the
+    **IMPORTANT**: By default, QuickBooks will not return any information about the
+    linked transactions in this endpoint's response even when this request is
+    successful. To see the transactions linked via this field, refetch the check and
+    check the `linkedTransactions` response field. If fetching a list of checks, you
+    must also specify the parameter `includeLinkedTransactions` to see the
     `linkedTransactions` response field.
     """
 
@@ -445,8 +445,8 @@ class ItemLine(TypedDict, total=False):
     also return an error if you attempt to link a transaction that is empty or
     already closed.
 
-    NOTE: By default, QuickBooks will not return any information about the linked
-    transaction line in this endpoint's response even when this request is
+    **IMPORTANT**: By default, QuickBooks will not return any information about the
+    linked transaction line in this endpoint's response even when this request is
     successful. To see the transaction line linked via this field, refetch the
     parent transaction and check the `linkedTransactions` response field. If
     fetching a list of transactions, you must also specify the parameter
