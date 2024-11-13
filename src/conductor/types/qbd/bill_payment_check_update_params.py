@@ -35,8 +35,8 @@ class BillPaymentCheckUpdateParams(TypedDict, total=False):
     """bills to be paid by this bill payment check.
 
     This will create a link between this bill payment check and the specified bills.
-    **IMPORTANT**: The target bill must have `isPaid=false`, otherwise, QuickBooks
-    will report this object as "cannot be found".
+    **IMPORTANT**: The target bill must have `isPaid` as `false`, otherwise,
+    QuickBooks will report this object as "cannot be found".
     """
 
     bank_account_id: Annotated[str, PropertyInfo(alias="bankAccountId")]
