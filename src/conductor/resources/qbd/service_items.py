@@ -251,7 +251,7 @@ class ServiceItemsResource(SyncAPIResource):
               error; hence, this field is equivalent to accepting the warning prompt in the
               QuickBooks UI.
 
-              Important: Changing the base unit requires you to update the item's
+              NOTE: Changing the base unit requires you to update the item's
               quantities-on-hand and cost to reflect the new unit; otherwise, these values
               will be inaccurate. Alternatively, consider creating a new item with the desired
               unit-of-measure set and deactivating the old item.
@@ -686,7 +686,7 @@ class AsyncServiceItemsResource(AsyncAPIResource):
               error; hence, this field is equivalent to accepting the warning prompt in the
               QuickBooks UI.
 
-              Important: Changing the base unit requires you to update the item's
+              NOTE: Changing the base unit requires you to update the item's
               quantities-on-hand and cost to reflect the new unit; otherwise, these values
               will be inaccurate. Alternatively, consider creating a new item with the desired
               unit-of-measure set and deactivating the old item.
