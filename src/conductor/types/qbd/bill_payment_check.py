@@ -9,7 +9,7 @@ from pydantic import Field as FieldInfo
 from ..._models import BaseModel
 
 __all__ = [
-    "QbdBillPaymentCheck",
+    "BillPaymentCheck",
     "Address",
     "AppliedToTransaction",
     "AppliedToTransactionDiscountAccount",
@@ -341,7 +341,7 @@ class Vendor(BaseModel):
     """
 
 
-class QbdBillPaymentCheck(BaseModel):
+class BillPaymentCheck(BaseModel):
     id: str
     """The unique identifier assigned by QuickBooks to this bill payment check.
 
