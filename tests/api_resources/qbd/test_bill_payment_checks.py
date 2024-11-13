@@ -11,7 +11,7 @@ from conductor import Conductor, AsyncConductor
 from tests.utils import assert_matches_type
 from conductor._utils import parse_date
 from conductor.types.qbd import (
-    QbdBillPaymentCheck,
+    BillPaymentCheck,
 )
 from conductor.pagination import SyncCursorPage, AsyncCursorPage
 
@@ -30,7 +30,7 @@ class TestBillPaymentChecks:
             vendor_id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdBillPaymentCheck, bill_payment_check, path=["response"])
+        assert_matches_type(BillPaymentCheck, bill_payment_check, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Conductor) -> None:
@@ -62,7 +62,7 @@ class TestBillPaymentChecks:
             payables_account_id="80000002-1234567890",
             ref_number="CHECK-1234",
         )
-        assert_matches_type(QbdBillPaymentCheck, bill_payment_check, path=["response"])
+        assert_matches_type(BillPaymentCheck, bill_payment_check, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: Conductor) -> None:
@@ -77,7 +77,7 @@ class TestBillPaymentChecks:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         bill_payment_check = response.parse()
-        assert_matches_type(QbdBillPaymentCheck, bill_payment_check, path=["response"])
+        assert_matches_type(BillPaymentCheck, bill_payment_check, path=["response"])
 
     @parametrize
     def test_streaming_response_create(self, client: Conductor) -> None:
@@ -92,7 +92,7 @@ class TestBillPaymentChecks:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             bill_payment_check = response.parse()
-            assert_matches_type(QbdBillPaymentCheck, bill_payment_check, path=["response"])
+            assert_matches_type(BillPaymentCheck, bill_payment_check, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -102,7 +102,7 @@ class TestBillPaymentChecks:
             id="123ABC-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdBillPaymentCheck, bill_payment_check, path=["response"])
+        assert_matches_type(BillPaymentCheck, bill_payment_check, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Conductor) -> None:
@@ -114,7 +114,7 @@ class TestBillPaymentChecks:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         bill_payment_check = response.parse()
-        assert_matches_type(QbdBillPaymentCheck, bill_payment_check, path=["response"])
+        assert_matches_type(BillPaymentCheck, bill_payment_check, path=["response"])
 
     @parametrize
     def test_streaming_response_retrieve(self, client: Conductor) -> None:
@@ -126,7 +126,7 @@ class TestBillPaymentChecks:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             bill_payment_check = response.parse()
-            assert_matches_type(QbdBillPaymentCheck, bill_payment_check, path=["response"])
+            assert_matches_type(BillPaymentCheck, bill_payment_check, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -145,7 +145,7 @@ class TestBillPaymentChecks:
             revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdBillPaymentCheck, bill_payment_check, path=["response"])
+        assert_matches_type(BillPaymentCheck, bill_payment_check, path=["response"])
 
     @parametrize
     def test_method_update_with_all_params(self, client: Conductor) -> None:
@@ -177,7 +177,7 @@ class TestBillPaymentChecks:
             ref_number="CHECK-1234",
             transaction_date=parse_date("2019-12-27"),
         )
-        assert_matches_type(QbdBillPaymentCheck, bill_payment_check, path=["response"])
+        assert_matches_type(BillPaymentCheck, bill_payment_check, path=["response"])
 
     @parametrize
     def test_raw_response_update(self, client: Conductor) -> None:
@@ -190,7 +190,7 @@ class TestBillPaymentChecks:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         bill_payment_check = response.parse()
-        assert_matches_type(QbdBillPaymentCheck, bill_payment_check, path=["response"])
+        assert_matches_type(BillPaymentCheck, bill_payment_check, path=["response"])
 
     @parametrize
     def test_streaming_response_update(self, client: Conductor) -> None:
@@ -203,7 +203,7 @@ class TestBillPaymentChecks:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             bill_payment_check = response.parse()
-            assert_matches_type(QbdBillPaymentCheck, bill_payment_check, path=["response"])
+            assert_matches_type(BillPaymentCheck, bill_payment_check, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -221,7 +221,7 @@ class TestBillPaymentChecks:
         bill_payment_check = client.qbd.bill_payment_checks.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(SyncCursorPage[QbdBillPaymentCheck], bill_payment_check, path=["response"])
+        assert_matches_type(SyncCursorPage[BillPaymentCheck], bill_payment_check, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Conductor) -> None:
@@ -245,7 +245,7 @@ class TestBillPaymentChecks:
             updated_before="updatedBefore",
             vendor_ids=["80000001-1234567890"],
         )
-        assert_matches_type(SyncCursorPage[QbdBillPaymentCheck], bill_payment_check, path=["response"])
+        assert_matches_type(SyncCursorPage[BillPaymentCheck], bill_payment_check, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Conductor) -> None:
@@ -256,7 +256,7 @@ class TestBillPaymentChecks:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         bill_payment_check = response.parse()
-        assert_matches_type(SyncCursorPage[QbdBillPaymentCheck], bill_payment_check, path=["response"])
+        assert_matches_type(SyncCursorPage[BillPaymentCheck], bill_payment_check, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Conductor) -> None:
@@ -267,7 +267,7 @@ class TestBillPaymentChecks:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             bill_payment_check = response.parse()
-            assert_matches_type(SyncCursorPage[QbdBillPaymentCheck], bill_payment_check, path=["response"])
+            assert_matches_type(SyncCursorPage[BillPaymentCheck], bill_payment_check, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -284,7 +284,7 @@ class TestAsyncBillPaymentChecks:
             vendor_id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdBillPaymentCheck, bill_payment_check, path=["response"])
+        assert_matches_type(BillPaymentCheck, bill_payment_check, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncConductor) -> None:
@@ -316,7 +316,7 @@ class TestAsyncBillPaymentChecks:
             payables_account_id="80000002-1234567890",
             ref_number="CHECK-1234",
         )
-        assert_matches_type(QbdBillPaymentCheck, bill_payment_check, path=["response"])
+        assert_matches_type(BillPaymentCheck, bill_payment_check, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncConductor) -> None:
@@ -331,7 +331,7 @@ class TestAsyncBillPaymentChecks:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         bill_payment_check = await response.parse()
-        assert_matches_type(QbdBillPaymentCheck, bill_payment_check, path=["response"])
+        assert_matches_type(BillPaymentCheck, bill_payment_check, path=["response"])
 
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncConductor) -> None:
@@ -346,7 +346,7 @@ class TestAsyncBillPaymentChecks:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             bill_payment_check = await response.parse()
-            assert_matches_type(QbdBillPaymentCheck, bill_payment_check, path=["response"])
+            assert_matches_type(BillPaymentCheck, bill_payment_check, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -356,7 +356,7 @@ class TestAsyncBillPaymentChecks:
             id="123ABC-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdBillPaymentCheck, bill_payment_check, path=["response"])
+        assert_matches_type(BillPaymentCheck, bill_payment_check, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncConductor) -> None:
@@ -368,7 +368,7 @@ class TestAsyncBillPaymentChecks:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         bill_payment_check = await response.parse()
-        assert_matches_type(QbdBillPaymentCheck, bill_payment_check, path=["response"])
+        assert_matches_type(BillPaymentCheck, bill_payment_check, path=["response"])
 
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncConductor) -> None:
@@ -380,7 +380,7 @@ class TestAsyncBillPaymentChecks:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             bill_payment_check = await response.parse()
-            assert_matches_type(QbdBillPaymentCheck, bill_payment_check, path=["response"])
+            assert_matches_type(BillPaymentCheck, bill_payment_check, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -399,7 +399,7 @@ class TestAsyncBillPaymentChecks:
             revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdBillPaymentCheck, bill_payment_check, path=["response"])
+        assert_matches_type(BillPaymentCheck, bill_payment_check, path=["response"])
 
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncConductor) -> None:
@@ -431,7 +431,7 @@ class TestAsyncBillPaymentChecks:
             ref_number="CHECK-1234",
             transaction_date=parse_date("2019-12-27"),
         )
-        assert_matches_type(QbdBillPaymentCheck, bill_payment_check, path=["response"])
+        assert_matches_type(BillPaymentCheck, bill_payment_check, path=["response"])
 
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncConductor) -> None:
@@ -444,7 +444,7 @@ class TestAsyncBillPaymentChecks:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         bill_payment_check = await response.parse()
-        assert_matches_type(QbdBillPaymentCheck, bill_payment_check, path=["response"])
+        assert_matches_type(BillPaymentCheck, bill_payment_check, path=["response"])
 
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncConductor) -> None:
@@ -457,7 +457,7 @@ class TestAsyncBillPaymentChecks:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             bill_payment_check = await response.parse()
-            assert_matches_type(QbdBillPaymentCheck, bill_payment_check, path=["response"])
+            assert_matches_type(BillPaymentCheck, bill_payment_check, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -475,7 +475,7 @@ class TestAsyncBillPaymentChecks:
         bill_payment_check = await async_client.qbd.bill_payment_checks.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(AsyncCursorPage[QbdBillPaymentCheck], bill_payment_check, path=["response"])
+        assert_matches_type(AsyncCursorPage[BillPaymentCheck], bill_payment_check, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncConductor) -> None:
@@ -499,7 +499,7 @@ class TestAsyncBillPaymentChecks:
             updated_before="updatedBefore",
             vendor_ids=["80000001-1234567890"],
         )
-        assert_matches_type(AsyncCursorPage[QbdBillPaymentCheck], bill_payment_check, path=["response"])
+        assert_matches_type(AsyncCursorPage[BillPaymentCheck], bill_payment_check, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncConductor) -> None:
@@ -510,7 +510,7 @@ class TestAsyncBillPaymentChecks:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         bill_payment_check = await response.parse()
-        assert_matches_type(AsyncCursorPage[QbdBillPaymentCheck], bill_payment_check, path=["response"])
+        assert_matches_type(AsyncCursorPage[BillPaymentCheck], bill_payment_check, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncConductor) -> None:
@@ -521,6 +521,6 @@ class TestAsyncBillPaymentChecks:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             bill_payment_check = await response.parse()
-            assert_matches_type(AsyncCursorPage[QbdBillPaymentCheck], bill_payment_check, path=["response"])
+            assert_matches_type(AsyncCursorPage[BillPaymentCheck], bill_payment_check, path=["response"])
 
         assert cast(Any, response.is_closed) is True
