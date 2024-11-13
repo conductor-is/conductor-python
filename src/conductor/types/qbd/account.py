@@ -200,8 +200,8 @@ class Account(BaseModel):
     "Accounts-Payable", its `fullName` would be "Corporate:Accounts-Payable".
 
     Unlike `name`, `fullName` is guaranteed to be unique across all account objects.
-    Also, unlike `name`, `fullName` can be arbitrarily changed by the QuickBooks
-    user when modifying its underlying `name` field.
+    However, `fullName` can still be arbitrarily changed by the QuickBooks user when
+    they modify the underlying `name` field.
     """
 
     is_active: bool = FieldInfo(alias="isActive")
