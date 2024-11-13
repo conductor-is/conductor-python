@@ -55,7 +55,8 @@ class CreditCardCreditListParams(TypedDict, total=False):
     payee_ids: Annotated[List[str], PropertyInfo(alias="payeeIds")]
     """Filter for credit card credits from this payee or payees.
 
-    These are the vendors or companies from whom the credits were received.
+    These are the vendors or companies from whom these credit card credits were
+    received.
     """
 
     ref_number_contains: Annotated[str, PropertyInfo(alias="refNumberContains")]

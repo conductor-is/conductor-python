@@ -57,9 +57,9 @@ class CheckListParams(TypedDict, total=False):
     """
 
     payee_ids: Annotated[List[str], PropertyInfo(alias="payeeIds")]
-    """Filter for checks from this payee or payees.
+    """Filter for checks to this payee or payees.
 
-    The person or company to whom this check is written.
+    These are the people or companies who will receive these checks.
     """
 
     ref_number_contains: Annotated[str, PropertyInfo(alias="refNumberContains")]
