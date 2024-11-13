@@ -45,7 +45,7 @@ class CheckUpdateParams(TypedDict, total=False):
     linked transactions in this endpoint's response even when this request is
     successful. To see the transactions linked via this field, refetch the check and
     check the `linkedTransactions` response field. If fetching a list of checks, you
-    must also specify the parameter `includeLinkedTransactions` to see the
+    must also specify the parameter `includeLinkedTransactions=true` to see the
     `linkedTransactions` response field.
     """
 
@@ -187,7 +187,7 @@ class Address(TypedDict, total=False):
 
 
 class ApplyToTransaction(TypedDict, total=False):
-    id: Required[str]
+    transaction_id: Required[Annotated[str, PropertyInfo(alias="transactionId")]]
     """The ID of the transaction to be paid by this check."""
 
     amount: str
