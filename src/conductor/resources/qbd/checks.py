@@ -55,7 +55,7 @@ class ChecksResource(SyncAPIResource):
         transaction_date: Union[str, date],
         conductor_end_user_id: str,
         address: check_create_params.Address | NotGiven = NOT_GIVEN,
-        apply_checks_to_transactions: Iterable[check_create_params.ApplyChecksToTransaction] | NotGiven = NOT_GIVEN,
+        apply_to_transactions: Iterable[check_create_params.ApplyToTransaction] | NotGiven = NOT_GIVEN,
         exchange_rate: float | NotGiven = NOT_GIVEN,
         expense_lines: Iterable[check_create_params.ExpenseLine] | NotGiven = NOT_GIVEN,
         external_id: str | NotGiven = NOT_GIVEN,
@@ -87,7 +87,7 @@ class ChecksResource(SyncAPIResource):
 
           address: The address that is printed on the check.
 
-          apply_checks_to_transactions: Transactions to be paid by this check. This will create a link between this
+          apply_to_transactions: Transactions to be paid by this check. This will create a link between this
               check and the specified transactions.
 
               NOTE: By default, QuickBooks will not return any information about the linked
@@ -151,7 +151,7 @@ class ChecksResource(SyncAPIResource):
                     "bank_account_id": bank_account_id,
                     "transaction_date": transaction_date,
                     "address": address,
-                    "apply_checks_to_transactions": apply_checks_to_transactions,
+                    "apply_to_transactions": apply_to_transactions,
                     "exchange_rate": exchange_rate,
                     "expense_lines": expense_lines,
                     "external_id": external_id,
@@ -218,7 +218,7 @@ class ChecksResource(SyncAPIResource):
         revision_number: str,
         conductor_end_user_id: str,
         address: check_update_params.Address | NotGiven = NOT_GIVEN,
-        apply_checks_to_transactions: Iterable[check_update_params.ApplyChecksToTransaction] | NotGiven = NOT_GIVEN,
+        apply_to_transactions: Iterable[check_update_params.ApplyToTransaction] | NotGiven = NOT_GIVEN,
         bank_account_id: str | NotGiven = NOT_GIVEN,
         clear_expense_lines: bool | NotGiven = NOT_GIVEN,
         clear_item_lines: bool | NotGiven = NOT_GIVEN,
@@ -254,7 +254,7 @@ class ChecksResource(SyncAPIResource):
 
           address: The address that is printed on the check.
 
-          apply_checks_to_transactions: Transactions to be paid by this check. This will create a link between this
+          apply_to_transactions: Transactions to be paid by this check. This will create a link between this
               check and the specified transactions.
 
               NOTE: By default, QuickBooks will not return any information about the linked
@@ -346,7 +346,7 @@ class ChecksResource(SyncAPIResource):
                 {
                     "revision_number": revision_number,
                     "address": address,
-                    "apply_checks_to_transactions": apply_checks_to_transactions,
+                    "apply_to_transactions": apply_to_transactions,
                     "bank_account_id": bank_account_id,
                     "clear_expense_lines": clear_expense_lines,
                     "clear_item_lines": clear_item_lines,
@@ -418,10 +418,10 @@ class ChecksResource(SyncAPIResource):
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
 
-          include_line_items: Whether to include line items in the response.
+          include_line_items: Whether to include line items in the response. Defaults to `true`.
 
-          include_linked_transactions: Whether to include linked transactions in the response. For example, a payment
-              linked to the corresponding check.
+          include_linked_transactions: Whether to include linked transactions in the response. Defaults to `false`. For
+              example, a payment linked to the corresponding check.
 
           limit: The maximum number of objects to return. Ranging from 1 to 150, defaults to 150.
               Use this parameter in conjunction with the `cursor` parameter to paginate
@@ -547,7 +547,7 @@ class AsyncChecksResource(AsyncAPIResource):
         transaction_date: Union[str, date],
         conductor_end_user_id: str,
         address: check_create_params.Address | NotGiven = NOT_GIVEN,
-        apply_checks_to_transactions: Iterable[check_create_params.ApplyChecksToTransaction] | NotGiven = NOT_GIVEN,
+        apply_to_transactions: Iterable[check_create_params.ApplyToTransaction] | NotGiven = NOT_GIVEN,
         exchange_rate: float | NotGiven = NOT_GIVEN,
         expense_lines: Iterable[check_create_params.ExpenseLine] | NotGiven = NOT_GIVEN,
         external_id: str | NotGiven = NOT_GIVEN,
@@ -579,7 +579,7 @@ class AsyncChecksResource(AsyncAPIResource):
 
           address: The address that is printed on the check.
 
-          apply_checks_to_transactions: Transactions to be paid by this check. This will create a link between this
+          apply_to_transactions: Transactions to be paid by this check. This will create a link between this
               check and the specified transactions.
 
               NOTE: By default, QuickBooks will not return any information about the linked
@@ -643,7 +643,7 @@ class AsyncChecksResource(AsyncAPIResource):
                     "bank_account_id": bank_account_id,
                     "transaction_date": transaction_date,
                     "address": address,
-                    "apply_checks_to_transactions": apply_checks_to_transactions,
+                    "apply_to_transactions": apply_to_transactions,
                     "exchange_rate": exchange_rate,
                     "expense_lines": expense_lines,
                     "external_id": external_id,
@@ -710,7 +710,7 @@ class AsyncChecksResource(AsyncAPIResource):
         revision_number: str,
         conductor_end_user_id: str,
         address: check_update_params.Address | NotGiven = NOT_GIVEN,
-        apply_checks_to_transactions: Iterable[check_update_params.ApplyChecksToTransaction] | NotGiven = NOT_GIVEN,
+        apply_to_transactions: Iterable[check_update_params.ApplyToTransaction] | NotGiven = NOT_GIVEN,
         bank_account_id: str | NotGiven = NOT_GIVEN,
         clear_expense_lines: bool | NotGiven = NOT_GIVEN,
         clear_item_lines: bool | NotGiven = NOT_GIVEN,
@@ -746,7 +746,7 @@ class AsyncChecksResource(AsyncAPIResource):
 
           address: The address that is printed on the check.
 
-          apply_checks_to_transactions: Transactions to be paid by this check. This will create a link between this
+          apply_to_transactions: Transactions to be paid by this check. This will create a link between this
               check and the specified transactions.
 
               NOTE: By default, QuickBooks will not return any information about the linked
@@ -838,7 +838,7 @@ class AsyncChecksResource(AsyncAPIResource):
                 {
                     "revision_number": revision_number,
                     "address": address,
-                    "apply_checks_to_transactions": apply_checks_to_transactions,
+                    "apply_to_transactions": apply_to_transactions,
                     "bank_account_id": bank_account_id,
                     "clear_expense_lines": clear_expense_lines,
                     "clear_item_lines": clear_item_lines,
@@ -910,10 +910,10 @@ class AsyncChecksResource(AsyncAPIResource):
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
 
-          include_line_items: Whether to include line items in the response.
+          include_line_items: Whether to include line items in the response. Defaults to `true`.
 
-          include_linked_transactions: Whether to include linked transactions in the response. For example, a payment
-              linked to the corresponding check.
+          include_linked_transactions: Whether to include linked transactions in the response. Defaults to `false`. For
+              example, a payment linked to the corresponding check.
 
           limit: The maximum number of objects to return. Ranging from 1 to 150, defaults to 150.
               Use this parameter in conjunction with the `cursor` parameter to paginate
