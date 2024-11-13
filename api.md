@@ -51,6 +51,21 @@ Methods:
 - <code title="post /quickbooks-desktop/accounts/{id}">client.qbd.accounts.<a href="./src/conductor/resources/qbd/accounts.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/account_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/account.py">Account</a></code>
 - <code title="get /quickbooks-desktop/accounts">client.qbd.accounts.<a href="./src/conductor/resources/qbd/accounts.py">list</a>(\*\*<a href="src/conductor/types/qbd/account_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/account_list_response.py">AccountListResponse</a></code>
 
+## BillPaymentChecks
+
+Types:
+
+```python
+from conductor.types.qbd import BillPaymentCheck
+```
+
+Methods:
+
+- <code title="post /quickbooks-desktop/bill-payment-checks">client.qbd.bill_payment_checks.<a href="./src/conductor/resources/qbd/bill_payment_checks.py">create</a>(\*\*<a href="src/conductor/types/qbd/bill_payment_check_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/bill_payment_check.py">BillPaymentCheck</a></code>
+- <code title="get /quickbooks-desktop/bill-payment-checks/{id}">client.qbd.bill_payment_checks.<a href="./src/conductor/resources/qbd/bill_payment_checks.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/bill_payment_check.py">BillPaymentCheck</a></code>
+- <code title="post /quickbooks-desktop/bill-payment-checks/{id}">client.qbd.bill_payment_checks.<a href="./src/conductor/resources/qbd/bill_payment_checks.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/bill_payment_check_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/bill_payment_check.py">BillPaymentCheck</a></code>
+- <code title="get /quickbooks-desktop/bill-payment-checks">client.qbd.bill_payment_checks.<a href="./src/conductor/resources/qbd/bill_payment_checks.py">list</a>(\*\*<a href="src/conductor/types/qbd/bill_payment_check_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/bill_payment_check.py">SyncCursorPage[BillPaymentCheck]</a></code>
+
 ## Bills
 
 Types:
@@ -288,18 +303,3 @@ Methods:
 - <code title="get /quickbooks-desktop/vendors/{id}">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/vendor.py">Vendor</a></code>
 - <code title="post /quickbooks-desktop/vendors/{id}">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/vendor_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/vendor.py">Vendor</a></code>
 - <code title="get /quickbooks-desktop/vendors">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">list</a>(\*\*<a href="src/conductor/types/qbd/vendor_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/vendor.py">SyncCursorPage[Vendor]</a></code>
-
-## BillPaymentChecks
-
-Types:
-
-```python
-from conductor.types.qbd import QbdBillPaymentCheck
-```
-
-Methods:
-
-- <code title="post /quickbooks-desktop/bill-payment-checks">client.qbd.bill_payment_checks.<a href="./src/conductor/resources/qbd/bill_payment_checks.py">create</a>(\*\*<a href="src/conductor/types/qbd/bill_payment_check_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_bill_payment_check.py">QbdBillPaymentCheck</a></code>
-- <code title="get /quickbooks-desktop/bill-payment-checks/{id}">client.qbd.bill_payment_checks.<a href="./src/conductor/resources/qbd/bill_payment_checks.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_bill_payment_check.py">QbdBillPaymentCheck</a></code>
-- <code title="post /quickbooks-desktop/bill-payment-checks/{id}">client.qbd.bill_payment_checks.<a href="./src/conductor/resources/qbd/bill_payment_checks.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/bill_payment_check_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_bill_payment_check.py">QbdBillPaymentCheck</a></code>
-- <code title="get /quickbooks-desktop/bill-payment-checks">client.qbd.bill_payment_checks.<a href="./src/conductor/resources/qbd/bill_payment_checks.py">list</a>(\*\*<a href="src/conductor/types/qbd/bill_payment_check_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_bill_payment_check.py">SyncCursorPage[QbdBillPaymentCheck]</a></code>

@@ -20,6 +20,7 @@ from .date_driven_term import DateDrivenTerm as DateDrivenTerm
 from .check_list_params import CheckListParams as CheckListParams
 from .class_list_params import ClassListParams as ClassListParams
 from .bill_create_params import BillCreateParams as BillCreateParams
+from .bill_payment_check import BillPaymentCheck as BillPaymentCheck
 from .bill_update_params import BillUpdateParams as BillUpdateParams
 from .credit_card_charge import CreditCardCharge as CreditCardCharge
 from .credit_card_credit import CreditCardCredit as CreditCardCredit
@@ -43,7 +44,6 @@ from .invoice_create_params import InvoiceCreateParams as InvoiceCreateParams
 from .invoice_update_params import InvoiceUpdateParams as InvoiceUpdateParams
 from .customer_create_params import CustomerCreateParams as CustomerCreateParams
 from .customer_update_params import CustomerUpdateParams as CustomerUpdateParams
-from .qbd_bill_payment_check import QbdBillPaymentCheck as QbdBillPaymentCheck
 from .transfer_create_params import TransferCreateParams as TransferCreateParams
 from .transfer_update_params import TransferUpdateParams as TransferUpdateParams
 from .service_item_list_params import ServiceItemListParams as ServiceItemListParams
