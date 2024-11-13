@@ -93,8 +93,10 @@ class CreditCardCreditsResource(SyncAPIResource):
               expense.
 
           external_id: A globally unique identifier (GUID) you can provide for tracking this object in
-              your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
-              will return an error. This field is immutable and can only be set during object
+              your external system.
+
+              **IMPORTANT**: Must be formatted as a valid GUID; otherwise, QuickBooks will
+              return an error. This field is immutable and can only be set during object
               creation.
 
           item_group_lines: The credit card credit's item group lines, each representing a predefined set of
@@ -545,8 +547,10 @@ class AsyncCreditCardCreditsResource(AsyncAPIResource):
               expense.
 
           external_id: A globally unique identifier (GUID) you can provide for tracking this object in
-              your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
-              will return an error. This field is immutable and can only be set during object
+              your external system.
+
+              **IMPORTANT**: Must be formatted as a valid GUID; otherwise, QuickBooks will
+              return an error. This field is immutable and can only be set during object
               creation.
 
           item_group_lines: The credit card credit's item group lines, each representing a predefined set of

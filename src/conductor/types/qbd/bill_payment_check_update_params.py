@@ -35,6 +35,12 @@ class BillPaymentCheckUpdateParams(TypedDict, total=False):
     """The bills to be paid by this bill payment check.
 
     This will create a link between this bill payment check and the specified bills.
+
+    **IMPORTANT**: In each `applyToTransactions` object, you must specify either
+    `paymentAmount`, `applyCredits`, `discountAmount`, or any combination of these;
+    if none of these are specified, you will receive an error for an empty
+    transaction.
+
     **IMPORTANT**: The target bill must have `isPaid` as `false`, otherwise,
     QuickBooks will report this object as "cannot be found".
     """
@@ -65,9 +71,10 @@ class BillPaymentCheckUpdateParams(TypedDict, total=False):
     ref_number: Annotated[str, PropertyInfo(alias="refNumber")]
     """
     The case-sensitive user-defined reference number for this bill payment check,
-    which can be used to identify the transaction in QuickBooks. NOTE: For checks,
-    this field is the check number. This value is not required to be unique and can
-    be arbitrarily changed by the QuickBooks user.
+    which can be used to identify the transaction in QuickBooks. This value is not
+    required to be unique and can be arbitrarily changed by the QuickBooks user.
+
+    **IMPORTANT**: For checks, this field is the check number.
     """
 
     transaction_date: Annotated[Union[str, date], PropertyInfo(alias="transactionDate", format="iso8601")]
