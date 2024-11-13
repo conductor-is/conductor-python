@@ -37,13 +37,6 @@ class BillPaymentCheckUpdateParams(TypedDict, total=False):
     This will create a link between this bill payment check and the specified bills.
     **IMPORTANT**: The target bill must have `isPaid=false`, otherwise, QuickBooks
     will report this object as "cannot be found".
-
-    NOTE: By default, QuickBooks will not return any information about the linked
-    transactions in this endpoint's response even when this request is successful.
-    To see the transactions linked via this field, refetch the bill payment check
-    and check the `linkedTransactions` response field. If fetching a list of bill
-    payment checks, you must also specify the parameter `includeLinkedTransactions`
-    to see the `linkedTransactions` response field.
     """
 
     bank_account_id: Annotated[str, PropertyInfo(alias="bankAccountId")]
