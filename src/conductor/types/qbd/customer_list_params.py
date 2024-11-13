@@ -108,27 +108,27 @@ class CustomerListParams(TypedDict, total=False):
     decimal string. You can only use one total-balance filter at a time.
     """
 
-    total_balance_gt: Annotated[str, PropertyInfo(alias="totalBalanceGt")]
+    total_balance_greater_than: Annotated[str, PropertyInfo(alias="totalBalanceGreaterThan")]
     """
     Filter for customers whose `totalBalance` is greater than this amount,
     represented as a decimal string. You can only use one total-balance filter at a
     time.
     """
 
-    total_balance_gte: Annotated[str, PropertyInfo(alias="totalBalanceGte")]
+    total_balance_greater_than_or_equal_to: Annotated[str, PropertyInfo(alias="totalBalanceGreaterThanOrEqualTo")]
     """
     Filter for customers whose `totalBalance` is greater than or equal to this
     amount, represented as a decimal string. You can only use one total-balance
     filter at a time.
     """
 
-    total_balance_lt: Annotated[str, PropertyInfo(alias="totalBalanceLt")]
+    total_balance_less_than: Annotated[str, PropertyInfo(alias="totalBalanceLessThan")]
     """
     Filter for customers whose `totalBalance` is less than this amount, represented
     as a decimal string. You can only use one total-balance filter at a time.
     """
 
-    total_balance_lte: Annotated[str, PropertyInfo(alias="totalBalanceLte")]
+    total_balance_less_than_or_equal_to: Annotated[str, PropertyInfo(alias="totalBalanceLessThanOrEqualTo")]
     """
     Filter for customers whose `totalBalance` is less than or equal to this amount,
     represented as a decimal string. You can only use one total-balance filter at a
