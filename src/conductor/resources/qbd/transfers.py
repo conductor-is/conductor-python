@@ -262,8 +262,8 @@ class TransfersResource(SyncAPIResource):
 
           ids: Filter for specific transfers by their QuickBooks-assigned unique identifier(s).
 
-              NOTE: If you include this parameter, QuickBooks will ignore all other query
-              parameters.
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              query parameters.
 
           limit: The maximum number of objects to return. Ranging from 1 to 150, defaults to 150.
               Use this parameter in conjunction with the `cursor` parameter to paginate
@@ -553,8 +553,8 @@ class AsyncTransfersResource(AsyncAPIResource):
 
           ids: Filter for specific transfers by their QuickBooks-assigned unique identifier(s).
 
-              NOTE: If you include this parameter, QuickBooks will ignore all other query
-              parameters.
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              query parameters.
 
           limit: The maximum number of objects to return. Ranging from 1 to 150, defaults to 150.
               Use this parameter in conjunction with the `cursor` parameter to paginate
