@@ -252,7 +252,7 @@ class CreditCardCreditsResource(SyncAPIResource):
           expense_lines: The credit card credit's expense lines, each representing one line in this
               expense.
 
-              IMPORTANT: When updating a credit card credit's expense lines, this array
+              **IMPORTANT**: When updating a credit card credit's expense lines, this array
               completely REPLACES all existing expense lines for that credit card credit. To
               retain any current expense lines, include them in this array, even if they have
               not changed. Any expense lines not included will be removed. To add a new
@@ -263,7 +263,7 @@ class CreditCardCreditsResource(SyncAPIResource):
               items bundled together because they are commonly purchased together or grouped
               for faster entry.
 
-              IMPORTANT: When updating a credit card credit's item group lines, this array
+              **IMPORTANT**: When updating a credit card credit's item group lines, this array
               completely REPLACES all existing item group lines for that credit card credit.
               To retain any current item group lines, include them in this array, even if they
               have not changed. Any item group lines not included will be removed. To add a
@@ -274,7 +274,7 @@ class CreditCardCreditsResource(SyncAPIResource):
           item_lines: The credit card credit's item lines, each representing the purchase of a
               specific item or service.
 
-              IMPORTANT: When updating a credit card credit's item lines, this array
+              **IMPORTANT**: When updating a credit card credit's item lines, this array
               completely REPLACES all existing item lines for that credit card credit. To
               retain any current item lines, include them in this array, even if they have not
               changed. Any item lines not included will be removed. To add a new item line,
@@ -706,7 +706,7 @@ class AsyncCreditCardCreditsResource(AsyncAPIResource):
           expense_lines: The credit card credit's expense lines, each representing one line in this
               expense.
 
-              IMPORTANT: When updating a credit card credit's expense lines, this array
+              **IMPORTANT**: When updating a credit card credit's expense lines, this array
               completely REPLACES all existing expense lines for that credit card credit. To
               retain any current expense lines, include them in this array, even if they have
               not changed. Any expense lines not included will be removed. To add a new
@@ -717,7 +717,7 @@ class AsyncCreditCardCreditsResource(AsyncAPIResource):
               items bundled together because they are commonly purchased together or grouped
               for faster entry.
 
-              IMPORTANT: When updating a credit card credit's item group lines, this array
+              **IMPORTANT**: When updating a credit card credit's item group lines, this array
               completely REPLACES all existing item group lines for that credit card credit.
               To retain any current item group lines, include them in this array, even if they
               have not changed. Any item group lines not included will be removed. To add a
@@ -728,7 +728,7 @@ class AsyncCreditCardCreditsResource(AsyncAPIResource):
           item_lines: The credit card credit's item lines, each representing the purchase of a
               specific item or service.
 
-              IMPORTANT: When updating a credit card credit's item lines, this array
+              **IMPORTANT**: When updating a credit card credit's item lines, this array
               completely REPLACES all existing item lines for that credit card credit. To
               retain any current item lines, include them in this array, even if they have not
               changed. Any item lines not included will be removed. To add a new item line,
