@@ -24,11 +24,7 @@ class TestBillPaymentChecks:
     @parametrize
     def test_method_create(self, client: Conductor) -> None:
         bill_payment_check = client.qbd.bill_payment_checks.create(
-            apply_to_transactions=[
-                {"transaction_id": "123ABC-1234567890"},
-                {"transaction_id": "123ABC-1234567890"},
-                {"transaction_id": "123ABC-1234567890"},
-            ],
+            apply_to_transactions=[{"transaction_id": "123ABC-1234567890"}],
             bank_account_id="80000008-1234567890",
             transaction_date=parse_date("2019-12-27"),
             vendor_id="80000001-1234567890",
@@ -47,71 +43,13 @@ class TestBillPaymentChecks:
                             "applied_amount": "100.00",
                             "credit_memo_id": "ABCDEF-1234567890",
                             "override_credit_application": False,
-                        },
-                        {
-                            "applied_amount": "100.00",
-                            "credit_memo_id": "ABCDEF-1234567890",
-                            "override_credit_application": False,
-                        },
-                        {
-                            "applied_amount": "100.00",
-                            "credit_memo_id": "ABCDEF-1234567890",
-                            "override_credit_application": False,
-                        },
+                        }
                     ],
                     "discount_account_id": "80000008-1234567890",
                     "discount_amount": "50.00",
                     "discount_class_id": "80000008-1234567890",
                     "payment_amount": "25.00",
-                },
-                {
-                    "transaction_id": "123ABC-1234567890",
-                    "apply_credits": [
-                        {
-                            "applied_amount": "100.00",
-                            "credit_memo_id": "ABCDEF-1234567890",
-                            "override_credit_application": False,
-                        },
-                        {
-                            "applied_amount": "100.00",
-                            "credit_memo_id": "ABCDEF-1234567890",
-                            "override_credit_application": False,
-                        },
-                        {
-                            "applied_amount": "100.00",
-                            "credit_memo_id": "ABCDEF-1234567890",
-                            "override_credit_application": False,
-                        },
-                    ],
-                    "discount_account_id": "80000008-1234567890",
-                    "discount_amount": "50.00",
-                    "discount_class_id": "80000008-1234567890",
-                    "payment_amount": "25.00",
-                },
-                {
-                    "transaction_id": "123ABC-1234567890",
-                    "apply_credits": [
-                        {
-                            "applied_amount": "100.00",
-                            "credit_memo_id": "ABCDEF-1234567890",
-                            "override_credit_application": False,
-                        },
-                        {
-                            "applied_amount": "100.00",
-                            "credit_memo_id": "ABCDEF-1234567890",
-                            "override_credit_application": False,
-                        },
-                        {
-                            "applied_amount": "100.00",
-                            "credit_memo_id": "ABCDEF-1234567890",
-                            "override_credit_application": False,
-                        },
-                    ],
-                    "discount_account_id": "80000008-1234567890",
-                    "discount_amount": "50.00",
-                    "discount_class_id": "80000008-1234567890",
-                    "payment_amount": "25.00",
-                },
+                }
             ],
             bank_account_id="80000008-1234567890",
             transaction_date=parse_date("2019-12-27"),
@@ -129,11 +67,7 @@ class TestBillPaymentChecks:
     @parametrize
     def test_raw_response_create(self, client: Conductor) -> None:
         response = client.qbd.bill_payment_checks.with_raw_response.create(
-            apply_to_transactions=[
-                {"transaction_id": "123ABC-1234567890"},
-                {"transaction_id": "123ABC-1234567890"},
-                {"transaction_id": "123ABC-1234567890"},
-            ],
+            apply_to_transactions=[{"transaction_id": "123ABC-1234567890"}],
             bank_account_id="80000008-1234567890",
             transaction_date=parse_date("2019-12-27"),
             vendor_id="80000001-1234567890",
@@ -148,11 +82,7 @@ class TestBillPaymentChecks:
     @parametrize
     def test_streaming_response_create(self, client: Conductor) -> None:
         with client.qbd.bill_payment_checks.with_streaming_response.create(
-            apply_to_transactions=[
-                {"transaction_id": "123ABC-1234567890"},
-                {"transaction_id": "123ABC-1234567890"},
-                {"transaction_id": "123ABC-1234567890"},
-            ],
+            apply_to_transactions=[{"transaction_id": "123ABC-1234567890"}],
             bank_account_id="80000008-1234567890",
             transaction_date=parse_date("2019-12-27"),
             vendor_id="80000001-1234567890",
@@ -232,71 +162,13 @@ class TestBillPaymentChecks:
                             "applied_amount": "100.00",
                             "credit_memo_id": "ABCDEF-1234567890",
                             "override_credit_application": False,
-                        },
-                        {
-                            "applied_amount": "100.00",
-                            "credit_memo_id": "ABCDEF-1234567890",
-                            "override_credit_application": False,
-                        },
-                        {
-                            "applied_amount": "100.00",
-                            "credit_memo_id": "ABCDEF-1234567890",
-                            "override_credit_application": False,
-                        },
+                        }
                     ],
                     "discount_account_id": "80000008-1234567890",
                     "discount_amount": "50.00",
                     "discount_class_id": "80000008-1234567890",
                     "payment_amount": "25.00",
-                },
-                {
-                    "transaction_id": "123ABC-1234567890",
-                    "apply_credits": [
-                        {
-                            "applied_amount": "100.00",
-                            "credit_memo_id": "ABCDEF-1234567890",
-                            "override_credit_application": False,
-                        },
-                        {
-                            "applied_amount": "100.00",
-                            "credit_memo_id": "ABCDEF-1234567890",
-                            "override_credit_application": False,
-                        },
-                        {
-                            "applied_amount": "100.00",
-                            "credit_memo_id": "ABCDEF-1234567890",
-                            "override_credit_application": False,
-                        },
-                    ],
-                    "discount_account_id": "80000008-1234567890",
-                    "discount_amount": "50.00",
-                    "discount_class_id": "80000008-1234567890",
-                    "payment_amount": "25.00",
-                },
-                {
-                    "transaction_id": "123ABC-1234567890",
-                    "apply_credits": [
-                        {
-                            "applied_amount": "100.00",
-                            "credit_memo_id": "ABCDEF-1234567890",
-                            "override_credit_application": False,
-                        },
-                        {
-                            "applied_amount": "100.00",
-                            "credit_memo_id": "ABCDEF-1234567890",
-                            "override_credit_application": False,
-                        },
-                        {
-                            "applied_amount": "100.00",
-                            "credit_memo_id": "ABCDEF-1234567890",
-                            "override_credit_application": False,
-                        },
-                    ],
-                    "discount_account_id": "80000008-1234567890",
-                    "discount_amount": "50.00",
-                    "discount_class_id": "80000008-1234567890",
-                    "payment_amount": "25.00",
-                },
+                }
             ],
             bank_account_id="80000008-1234567890",
             exchange_rate=1.2345,
@@ -406,11 +278,7 @@ class TestAsyncBillPaymentChecks:
     @parametrize
     async def test_method_create(self, async_client: AsyncConductor) -> None:
         bill_payment_check = await async_client.qbd.bill_payment_checks.create(
-            apply_to_transactions=[
-                {"transaction_id": "123ABC-1234567890"},
-                {"transaction_id": "123ABC-1234567890"},
-                {"transaction_id": "123ABC-1234567890"},
-            ],
+            apply_to_transactions=[{"transaction_id": "123ABC-1234567890"}],
             bank_account_id="80000008-1234567890",
             transaction_date=parse_date("2019-12-27"),
             vendor_id="80000001-1234567890",
@@ -429,71 +297,13 @@ class TestAsyncBillPaymentChecks:
                             "applied_amount": "100.00",
                             "credit_memo_id": "ABCDEF-1234567890",
                             "override_credit_application": False,
-                        },
-                        {
-                            "applied_amount": "100.00",
-                            "credit_memo_id": "ABCDEF-1234567890",
-                            "override_credit_application": False,
-                        },
-                        {
-                            "applied_amount": "100.00",
-                            "credit_memo_id": "ABCDEF-1234567890",
-                            "override_credit_application": False,
-                        },
+                        }
                     ],
                     "discount_account_id": "80000008-1234567890",
                     "discount_amount": "50.00",
                     "discount_class_id": "80000008-1234567890",
                     "payment_amount": "25.00",
-                },
-                {
-                    "transaction_id": "123ABC-1234567890",
-                    "apply_credits": [
-                        {
-                            "applied_amount": "100.00",
-                            "credit_memo_id": "ABCDEF-1234567890",
-                            "override_credit_application": False,
-                        },
-                        {
-                            "applied_amount": "100.00",
-                            "credit_memo_id": "ABCDEF-1234567890",
-                            "override_credit_application": False,
-                        },
-                        {
-                            "applied_amount": "100.00",
-                            "credit_memo_id": "ABCDEF-1234567890",
-                            "override_credit_application": False,
-                        },
-                    ],
-                    "discount_account_id": "80000008-1234567890",
-                    "discount_amount": "50.00",
-                    "discount_class_id": "80000008-1234567890",
-                    "payment_amount": "25.00",
-                },
-                {
-                    "transaction_id": "123ABC-1234567890",
-                    "apply_credits": [
-                        {
-                            "applied_amount": "100.00",
-                            "credit_memo_id": "ABCDEF-1234567890",
-                            "override_credit_application": False,
-                        },
-                        {
-                            "applied_amount": "100.00",
-                            "credit_memo_id": "ABCDEF-1234567890",
-                            "override_credit_application": False,
-                        },
-                        {
-                            "applied_amount": "100.00",
-                            "credit_memo_id": "ABCDEF-1234567890",
-                            "override_credit_application": False,
-                        },
-                    ],
-                    "discount_account_id": "80000008-1234567890",
-                    "discount_amount": "50.00",
-                    "discount_class_id": "80000008-1234567890",
-                    "payment_amount": "25.00",
-                },
+                }
             ],
             bank_account_id="80000008-1234567890",
             transaction_date=parse_date("2019-12-27"),
@@ -511,11 +321,7 @@ class TestAsyncBillPaymentChecks:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncConductor) -> None:
         response = await async_client.qbd.bill_payment_checks.with_raw_response.create(
-            apply_to_transactions=[
-                {"transaction_id": "123ABC-1234567890"},
-                {"transaction_id": "123ABC-1234567890"},
-                {"transaction_id": "123ABC-1234567890"},
-            ],
+            apply_to_transactions=[{"transaction_id": "123ABC-1234567890"}],
             bank_account_id="80000008-1234567890",
             transaction_date=parse_date("2019-12-27"),
             vendor_id="80000001-1234567890",
@@ -530,11 +336,7 @@ class TestAsyncBillPaymentChecks:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncConductor) -> None:
         async with async_client.qbd.bill_payment_checks.with_streaming_response.create(
-            apply_to_transactions=[
-                {"transaction_id": "123ABC-1234567890"},
-                {"transaction_id": "123ABC-1234567890"},
-                {"transaction_id": "123ABC-1234567890"},
-            ],
+            apply_to_transactions=[{"transaction_id": "123ABC-1234567890"}],
             bank_account_id="80000008-1234567890",
             transaction_date=parse_date("2019-12-27"),
             vendor_id="80000001-1234567890",
@@ -614,71 +416,13 @@ class TestAsyncBillPaymentChecks:
                             "applied_amount": "100.00",
                             "credit_memo_id": "ABCDEF-1234567890",
                             "override_credit_application": False,
-                        },
-                        {
-                            "applied_amount": "100.00",
-                            "credit_memo_id": "ABCDEF-1234567890",
-                            "override_credit_application": False,
-                        },
-                        {
-                            "applied_amount": "100.00",
-                            "credit_memo_id": "ABCDEF-1234567890",
-                            "override_credit_application": False,
-                        },
+                        }
                     ],
                     "discount_account_id": "80000008-1234567890",
                     "discount_amount": "50.00",
                     "discount_class_id": "80000008-1234567890",
                     "payment_amount": "25.00",
-                },
-                {
-                    "transaction_id": "123ABC-1234567890",
-                    "apply_credits": [
-                        {
-                            "applied_amount": "100.00",
-                            "credit_memo_id": "ABCDEF-1234567890",
-                            "override_credit_application": False,
-                        },
-                        {
-                            "applied_amount": "100.00",
-                            "credit_memo_id": "ABCDEF-1234567890",
-                            "override_credit_application": False,
-                        },
-                        {
-                            "applied_amount": "100.00",
-                            "credit_memo_id": "ABCDEF-1234567890",
-                            "override_credit_application": False,
-                        },
-                    ],
-                    "discount_account_id": "80000008-1234567890",
-                    "discount_amount": "50.00",
-                    "discount_class_id": "80000008-1234567890",
-                    "payment_amount": "25.00",
-                },
-                {
-                    "transaction_id": "123ABC-1234567890",
-                    "apply_credits": [
-                        {
-                            "applied_amount": "100.00",
-                            "credit_memo_id": "ABCDEF-1234567890",
-                            "override_credit_application": False,
-                        },
-                        {
-                            "applied_amount": "100.00",
-                            "credit_memo_id": "ABCDEF-1234567890",
-                            "override_credit_application": False,
-                        },
-                        {
-                            "applied_amount": "100.00",
-                            "credit_memo_id": "ABCDEF-1234567890",
-                            "override_credit_application": False,
-                        },
-                    ],
-                    "discount_account_id": "80000008-1234567890",
-                    "discount_amount": "50.00",
-                    "discount_class_id": "80000008-1234567890",
-                    "payment_amount": "25.00",
-                },
+                }
             ],
             bank_account_id="80000008-1234567890",
             exchange_rate=1.2345,

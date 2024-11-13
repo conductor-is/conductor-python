@@ -78,9 +78,9 @@ class BillPaymentChecksResource(SyncAPIResource):
 
         Args:
           apply_to_transactions: bills to be paid by this bill payment check. This will create a link between
-              this bill payment check and the specified bills. The target bill must have
-              `isPaid=false`, otherwise, QuickBooks will report this object as "cannot be
-              found".
+              this bill payment check and the specified bills. **IMPORTANT**: The target bill
+              must have `isPaid=false`, otherwise, QuickBooks will report this object as
+              "cannot be found".
 
               NOTE: By default, QuickBooks will not return any information about the linked
               transactions in this endpoint's response even when this request is successful.
@@ -240,9 +240,9 @@ class BillPaymentChecksResource(SyncAPIResource):
           amount: The monetary amount of this bill payment check, represented as a decimal string.
 
           apply_to_transactions: bills to be paid by this bill payment check. This will create a link between
-              this bill payment check and the specified bills. The target bill must have
-              `isPaid=false`, otherwise, QuickBooks will report this object as "cannot be
-              found".
+              this bill payment check and the specified bills. **IMPORTANT**: The target bill
+              must have `isPaid=false`, otherwise, QuickBooks will report this object as
+              "cannot be found".
 
               NOTE: By default, QuickBooks will not return any information about the linked
               transactions in this endpoint's response even when this request is successful.
@@ -497,9 +497,9 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
 
         Args:
           apply_to_transactions: bills to be paid by this bill payment check. This will create a link between
-              this bill payment check and the specified bills. The target bill must have
-              `isPaid=false`, otherwise, QuickBooks will report this object as "cannot be
-              found".
+              this bill payment check and the specified bills. **IMPORTANT**: The target bill
+              must have `isPaid=false`, otherwise, QuickBooks will report this object as
+              "cannot be found".
 
               NOTE: By default, QuickBooks will not return any information about the linked
               transactions in this endpoint's response even when this request is successful.
@@ -659,9 +659,9 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
           amount: The monetary amount of this bill payment check, represented as a decimal string.
 
           apply_to_transactions: bills to be paid by this bill payment check. This will create a link between
-              this bill payment check and the specified bills. The target bill must have
-              `isPaid=false`, otherwise, QuickBooks will report this object as "cannot be
-              found".
+              this bill payment check and the specified bills. **IMPORTANT**: The target bill
+              must have `isPaid=false`, otherwise, QuickBooks will report this object as
+              "cannot be found".
 
               NOTE: By default, QuickBooks will not return any information about the linked
               transactions in this endpoint's response even when this request is successful.
