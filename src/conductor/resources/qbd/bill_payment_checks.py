@@ -77,7 +77,7 @@ class BillPaymentChecksResource(SyncAPIResource):
         Creates a bill payment check.
 
         Args:
-          apply_to_transactions: bills to be paid by this bill payment check. This will create a link between
+          apply_to_transactions: The bills to be paid by this bill payment check. This will create a link between
               this bill payment check and the specified bills. **IMPORTANT**: The target bill
               must have `isPaid` as `false`, otherwise, QuickBooks will report this object as
               "cannot be found".
@@ -232,7 +232,7 @@ class BillPaymentChecksResource(SyncAPIResource):
 
           amount: The monetary amount of this bill payment check, represented as a decimal string.
 
-          apply_to_transactions: bills to be paid by this bill payment check. This will create a link between
+          apply_to_transactions: The bills to be paid by this bill payment check. This will create a link between
               this bill payment check and the specified bills. **IMPORTANT**: The target bill
               must have `isPaid` as `false`, otherwise, QuickBooks will report this object as
               "cannot be found".
@@ -482,7 +482,7 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
         Creates a bill payment check.
 
         Args:
-          apply_to_transactions: bills to be paid by this bill payment check. This will create a link between
+          apply_to_transactions: The bills to be paid by this bill payment check. This will create a link between
               this bill payment check and the specified bills. **IMPORTANT**: The target bill
               must have `isPaid` as `false`, otherwise, QuickBooks will report this object as
               "cannot be found".
@@ -637,7 +637,7 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
 
           amount: The monetary amount of this bill payment check, represented as a decimal string.
 
-          apply_to_transactions: bills to be paid by this bill payment check. This will create a link between
+          apply_to_transactions: The bills to be paid by this bill payment check. This will create a link between
               this bill payment check and the specified bills. **IMPORTANT**: The target bill
               must have `isPaid` as `false`, otherwise, QuickBooks will report this object as
               "cannot be found".
