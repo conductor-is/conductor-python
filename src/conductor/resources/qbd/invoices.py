@@ -130,8 +130,10 @@ class InvoicesResource(SyncAPIResource):
               (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
 
           external_id: A globally unique identifier (GUID) you can provide for tracking this object in
-              your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
-              will return an error. This field is immutable and can only be set during object
+              your external system.
+
+              **IMPORTANT**: Must be formatted as a valid GUID; otherwise, QuickBooks will
+              return an error. This field is immutable and can only be set during object
               creation.
 
           invoice_line_groups: The invoice's line item groups, each representing a predefined set of related
@@ -801,8 +803,10 @@ class AsyncInvoicesResource(AsyncAPIResource):
               (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
 
           external_id: A globally unique identifier (GUID) you can provide for tracking this object in
-              your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
-              will return an error. This field is immutable and can only be set during object
+              your external system.
+
+              **IMPORTANT**: Must be formatted as a valid GUID; otherwise, QuickBooks will
+              return an error. This field is immutable and can only be set during object
               creation.
 
           invoice_line_groups: The invoice's line item groups, each representing a predefined set of related

@@ -402,8 +402,10 @@ class BillPaymentCheck(BaseModel):
     external_id: Optional[str] = FieldInfo(alias="externalId", default=None)
     """
     A globally unique identifier (GUID) you can provide for tracking this object in
-    your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
-    will return an error. This field is immutable and can only be set during object
+    your external system.
+
+    **IMPORTANT**: Must be formatted as a valid GUID; otherwise, QuickBooks will
+    return an error. This field is immutable and can only be set during object
     creation.
     """
 
@@ -432,9 +434,10 @@ class BillPaymentCheck(BaseModel):
     ref_number: Optional[str] = FieldInfo(alias="refNumber", default=None)
     """
     The case-sensitive user-defined reference number for this bill payment check,
-    which can be used to identify the transaction in QuickBooks. NOTE: For checks,
-    this field is the check number. This value is not required to be unique and can
-    be arbitrarily changed by the QuickBooks user.
+    which can be used to identify the transaction in QuickBooks. This value is not
+    required to be unique and can be arbitrarily changed by the QuickBooks user.
+
+    **IMPORTANT**: For checks, this field is the check number.
     """
 
     revision_number: str = FieldInfo(alias="revisionNumber")
@@ -458,6 +461,8 @@ class BillPaymentCheck(BaseModel):
     vendor: Optional[Vendor] = None
     """
     The vendor who sent the bill(s) that this check is paying and who will receive
-    this check payment. **IMPORTANT**: This vendor must match the `vendor` on the
-    bill(s) specified in `applyToTransactions`.
+    this check payment.
+
+    **IMPORTANT**: This vendor must match the `vendor` on the bill(s) specified in
+    `applyToTransactions`.
     """
