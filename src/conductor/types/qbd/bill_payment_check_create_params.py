@@ -38,9 +38,9 @@ class BillPaymentCheckCreateParams(TypedDict, total=False):
     """The date of this bill payment check, in ISO 8601 format (YYYY-MM-DD)."""
 
     vendor_id: Required[Annotated[str, PropertyInfo(alias="vendorId")]]
-    """The vendor who sent the bill that this check is paying.
-
-    This is the payee who will receive the check payment.
+    """
+    The vendor who sent the bill(s) specified in `applyToTransactions` that this
+    check is paying. This is the payee who will receive the check payment.
     """
 
     conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]

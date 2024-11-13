@@ -39,12 +39,12 @@ class CheckListParams(TypedDict, total=False):
     """
 
     include_line_items: Annotated[bool, PropertyInfo(alias="includeLineItems")]
-    """Whether to include line items in the response."""
+    """Whether to include line items in the response. Defaults to `true`."""
 
     include_linked_transactions: Annotated[bool, PropertyInfo(alias="includeLinkedTransactions")]
     """Whether to include linked transactions in the response.
 
-    For example, a payment linked to the corresponding check.
+    Defaults to `false`. For example, a payment linked to the corresponding check.
     """
 
     limit: int

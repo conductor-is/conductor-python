@@ -11,7 +11,7 @@ from ..._utils import PropertyInfo
 __all__ = [
     "CheckCreateParams",
     "Address",
-    "ApplyChecksToTransaction",
+    "ApplyToTransaction",
     "ExpenseLine",
     "ExpenseLineCustomField",
     "ItemGroupLine",
@@ -41,9 +41,7 @@ class CheckCreateParams(TypedDict, total=False):
     address: Address
     """The address that is printed on the check."""
 
-    apply_checks_to_transactions: Annotated[
-        Iterable[ApplyChecksToTransaction], PropertyInfo(alias="applyChecksToTransactions")
-    ]
+    apply_to_transactions: Annotated[Iterable[ApplyToTransaction], PropertyInfo(alias="applyToTransactions")]
     """Transactions to be paid by this check.
 
     This will create a link between this check and the specified transactions.
@@ -157,7 +155,7 @@ class Address(TypedDict, total=False):
     """The state, county, province, or region name of the address."""
 
 
-class ApplyChecksToTransaction(TypedDict, total=False):
+class ApplyToTransaction(TypedDict, total=False):
     id: Required[str]
     """The ID of the transaction to be paid by this check."""
 

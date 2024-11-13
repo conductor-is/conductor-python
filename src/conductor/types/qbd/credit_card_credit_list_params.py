@@ -41,7 +41,7 @@ class CreditCardCreditListParams(TypedDict, total=False):
     """
 
     include_line_items: Annotated[bool, PropertyInfo(alias="includeLineItems")]
-    """Whether to include line items in the response."""
+    """Whether to include line items in the response. Defaults to `true`."""
 
     limit: int
     """The maximum number of objects to return.
