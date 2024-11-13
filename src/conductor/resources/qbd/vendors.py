@@ -637,12 +637,10 @@ class VendorsResource(SyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          class_ids: Filter for vendors of this class or classes. Specify a single class ID or
-              multiple using a comma-separated list (e.g., `classIds=1,2,3`). A class is a way
-              end-users can categorize vendors in QuickBooks.
+          class_ids: Filter for vendors of this class or classes. A class is a way end-users can
+              categorize vendors in QuickBooks.
 
-          currency_ids: Filter for vendors in this currency or currencies. Specify a single currency ID
-              or multiple using a comma-separated list (e.g., `currencyIds=1,2,3`).
+          currency_ids: Filter for vendors in this currency or currencies.
 
           cursor: The pagination token to fetch the next set of results when paginating with the
               `limit` parameter. Retrieve this value from the `nextCursor` field in the
@@ -1372,12 +1370,10 @@ class AsyncVendorsResource(AsyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          class_ids: Filter for vendors of this class or classes. Specify a single class ID or
-              multiple using a comma-separated list (e.g., `classIds=1,2,3`). A class is a way
-              end-users can categorize vendors in QuickBooks.
+          class_ids: Filter for vendors of this class or classes. A class is a way end-users can
+              categorize vendors in QuickBooks.
 
-          currency_ids: Filter for vendors in this currency or currencies. Specify a single currency ID
-              or multiple using a comma-separated list (e.g., `currencyIds=1,2,3`).
+          currency_ids: Filter for vendors in this currency or currencies.
 
           cursor: The pagination token to fetch the next set of results when paginating with the
               `limit` parameter. Retrieve this value from the `nextCursor` field in the
