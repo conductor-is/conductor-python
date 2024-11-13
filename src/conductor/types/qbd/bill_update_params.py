@@ -50,12 +50,12 @@ class BillUpdateParams(TypedDict, total=False):
     expense_lines: Annotated[Iterable[ExpenseLine], PropertyInfo(alias="expenseLines")]
     """The bill's expense lines, each representing one line in this expense.
 
-    IMPORTANT: When updating a bill's expense lines, this array completely REPLACES
-    all existing expense lines for that bill. To retain any current expense lines,
-    include them in this array, even if they have not changed. Any expense lines not
-    included will be removed. To add a new expense line, include it with its `id`
-    set to `-1`. If you do not wish to modify the expense lines, you can omit this
-    field entirely to keep them unchanged.
+    **IMPORTANT**: When updating a bill's expense lines, this array completely
+    REPLACES all existing expense lines for that bill. To retain any current expense
+    lines, include them in this array, even if they have not changed. Any expense
+    lines not included will be removed. To add a new expense line, include it with
+    its `id` set to `-1`. If you do not wish to modify the expense lines, you can
+    omit this field entirely to keep them unchanged.
     """
 
     item_group_lines: Annotated[Iterable[ItemGroupLine], PropertyInfo(alias="itemGroupLines")]
@@ -64,7 +64,7 @@ class BillUpdateParams(TypedDict, total=False):
     together because they are commonly purchased together or grouped for faster
     entry.
 
-    IMPORTANT: When updating a bill's item group lines, this array completely
+    **IMPORTANT**: When updating a bill's item group lines, this array completely
     REPLACES all existing item group lines for that bill. To retain any current item
     group lines, include them in this array, even if they have not changed. Any item
     group lines not included will be removed. To add a new item group line, include
@@ -77,8 +77,8 @@ class BillUpdateParams(TypedDict, total=False):
     The bill's item lines, each representing the purchase of a specific item or
     service.
 
-    IMPORTANT: When updating a bill's item lines, this array completely REPLACES all
-    existing item lines for that bill. To retain any current item lines, include
+    **IMPORTANT**: When updating a bill's item lines, this array completely REPLACES
+    all existing item lines for that bill. To retain any current item lines, include
     them in this array, even if they have not changed. Any item lines not included
     will be removed. To add a new item line, include it with its `id` set to `-1`.
     If you do not wish to modify the item lines, you can omit this field entirely to
@@ -339,12 +339,12 @@ class ItemGroupLine(TypedDict, total=False):
     The item group line's item lines, each representing the purchase of a specific
     item or service.
 
-    IMPORTANT: When updating an item group line's item lines, this array completely
-    REPLACES all existing item lines for that item group line. To retain any current
-    item lines, include them in this array, even if they have not changed. Any item
-    lines not included will be removed. To add a new item line, include it with its
-    `id` set to `-1`. If you do not wish to modify the item lines, you can omit this
-    field entirely to keep them unchanged.
+    **IMPORTANT**: When updating an item group line's item lines, this array
+    completely REPLACES all existing item lines for that item group line. To retain
+    any current item lines, include them in this array, even if they have not
+    changed. Any item lines not included will be removed. To add a new item line,
+    include it with its `id` set to `-1`. If you do not wish to modify the item
+    lines, you can omit this field entirely to keep them unchanged.
     """
 
     override_unit_of_measure_set_id: Annotated[str, PropertyInfo(alias="overrideUnitOfMeasureSetId")]
