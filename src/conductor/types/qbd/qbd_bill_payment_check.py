@@ -427,7 +427,7 @@ class QbdBillPaymentCheck(BaseModel):
 
     **IMPORTANT**: This A/P account must be the same as the `payablesAccount` used
     when originally adding the corresponding bill specified in
-    `applyToTransactions`.
+    `appliedToTransactions`.
     """
 
     ref_number: Optional[str] = FieldInfo(alias="refNumber", default=None)
@@ -458,6 +458,7 @@ class QbdBillPaymentCheck(BaseModel):
 
     vendor: Optional[Vendor] = None
     """
-    The vendor who sent the bill(s) specified in `applyToTransactions` that this
-    check is paying. This is the payee who will receive the check payment.
+    The vendor who sent the bill(s) that this check is paying and who will receive
+    this check payment. This vendor must match the vendor on the bills specified in
+    `appliedToTransactions` that are being paid.
     """

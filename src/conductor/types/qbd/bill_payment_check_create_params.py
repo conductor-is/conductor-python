@@ -39,8 +39,9 @@ class BillPaymentCheckCreateParams(TypedDict, total=False):
 
     vendor_id: Required[Annotated[str, PropertyInfo(alias="vendorId")]]
     """
-    The vendor who sent the bill(s) specified in `applyToTransactions` that this
-    check is paying. This is the payee who will receive the check payment.
+    The vendor who sent the bill(s) that this check is paying and who will receive
+    this check payment. This vendor must match the vendor on the bills specified in
+    `applyToTransactions` that are being paid.
     """
 
     conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]
