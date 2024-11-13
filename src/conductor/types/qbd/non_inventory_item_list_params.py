@@ -43,8 +43,8 @@ class NonInventoryItemListParams(TypedDict, total=False):
     item objects. Also, unlike `id`, `fullName` can be arbitrarily changed by the
     QuickBooks user when modifying its underlying `name` field.
 
-    NOTE: If you include this parameter, QuickBooks will ignore all other query
-    parameters.
+    **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+    query parameters.
     """
 
     ids: List[str]
@@ -52,8 +52,8 @@ class NonInventoryItemListParams(TypedDict, total=False):
     Filter for specific non-inventory items by their QuickBooks-assigned unique
     identifier(s).
 
-    NOTE: If you include this parameter, QuickBooks will ignore all other query
-    parameters.
+    **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+    query parameters.
     """
 
     limit: int

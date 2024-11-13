@@ -422,13 +422,13 @@ class AccountsResource(SyncAPIResource):
               Also, unlike `id`, `fullName` can be arbitrarily changed by the QuickBooks user
               when modifying its underlying `name` field.
 
-              NOTE: If you include this parameter, QuickBooks will ignore all other query
-              parameters.
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              query parameters.
 
           ids: Filter for specific accounts by their QuickBooks-assigned unique identifier(s).
 
-              NOTE: If you include this parameter, QuickBooks will ignore all other query
-              parameters.
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              query parameters.
 
           limit: The maximum number of objects to return. NOTE: QuickBooks Desktop does not
               support cursor-based pagination for accounts. Hence, this parameter will limit
@@ -896,13 +896,13 @@ class AsyncAccountsResource(AsyncAPIResource):
               Also, unlike `id`, `fullName` can be arbitrarily changed by the QuickBooks user
               when modifying its underlying `name` field.
 
-              NOTE: If you include this parameter, QuickBooks will ignore all other query
-              parameters.
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              query parameters.
 
           ids: Filter for specific accounts by their QuickBooks-assigned unique identifier(s).
 
-              NOTE: If you include this parameter, QuickBooks will ignore all other query
-              parameters.
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              query parameters.
 
           limit: The maximum number of objects to return. NOTE: QuickBooks Desktop does not
               support cursor-based pagination for accounts. Hence, this parameter will limit
