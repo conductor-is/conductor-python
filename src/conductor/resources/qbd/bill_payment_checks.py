@@ -117,7 +117,7 @@ class BillPaymentChecksResource(SyncAPIResource):
               used to track the amount owed. If not specified, QuickBooks Desktop will use its
               default Accounts-Payable account.
 
-              _IMPORTANT_: This A/P account must be the same as the `payablesAccount` used
+              **IMPORTANT**: This A/P account must be the same as the `payablesAccount` used
               when originally adding the corresponding bill specified in
               `applyToTransactions`. Otherwise, QuickBooks will say the `transactionId` in
               `applyToTransactions` does not exist.
@@ -536,7 +536,7 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
               used to track the amount owed. If not specified, QuickBooks Desktop will use its
               default Accounts-Payable account.
 
-              _IMPORTANT_: This A/P account must be the same as the `payablesAccount` used
+              **IMPORTANT**: This A/P account must be the same as the `payablesAccount` used
               when originally adding the corresponding bill specified in
               `applyToTransactions`. Otherwise, QuickBooks will say the `transactionId` in
               `applyToTransactions` does not exist.
