@@ -79,7 +79,7 @@ class BillPaymentChecksResource(SyncAPIResource):
         Args:
           apply_to_transactions: bills to be paid by this bill payment check. This will create a link between
               this bill payment check and the specified bills. **IMPORTANT**: The target bill
-              must have `isPaid=false`, otherwise, QuickBooks will report this object as
+              must have `isPaid` as `false`, otherwise, QuickBooks will report this object as
               "cannot be found".
 
           bank_account_id: The bank account from which the funds are being drawn for this bill payment
@@ -234,7 +234,7 @@ class BillPaymentChecksResource(SyncAPIResource):
 
           apply_to_transactions: bills to be paid by this bill payment check. This will create a link between
               this bill payment check and the specified bills. **IMPORTANT**: The target bill
-              must have `isPaid=false`, otherwise, QuickBooks will report this object as
+              must have `isPaid` as `false`, otherwise, QuickBooks will report this object as
               "cannot be found".
 
           bank_account_id: The bank account from which the funds are being drawn for this bill payment
@@ -484,7 +484,7 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
         Args:
           apply_to_transactions: bills to be paid by this bill payment check. This will create a link between
               this bill payment check and the specified bills. **IMPORTANT**: The target bill
-              must have `isPaid=false`, otherwise, QuickBooks will report this object as
+              must have `isPaid` as `false`, otherwise, QuickBooks will report this object as
               "cannot be found".
 
           bank_account_id: The bank account from which the funds are being drawn for this bill payment
@@ -639,7 +639,7 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
 
           apply_to_transactions: bills to be paid by this bill payment check. This will create a link between
               this bill payment check and the specified bills. **IMPORTANT**: The target bill
-              must have `isPaid=false`, otherwise, QuickBooks will report this object as
+              must have `isPaid` as `false`, otherwise, QuickBooks will report this object as
               "cannot be found".
 
           bank_account_id: The bank account from which the funds are being drawn for this bill payment
