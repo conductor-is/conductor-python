@@ -386,7 +386,7 @@ class CreditCardChargesResource(SyncAPIResource):
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
 
-          include_line_items: Whether to include line items in the response.
+          include_line_items: Whether to include line items in the response. Defaults to `true`.
 
           limit: The maximum number of objects to return. Ranging from 1 to 150, defaults to 150.
               Use this parameter in conjunction with the `cursor` parameter to paginate
@@ -841,7 +841,7 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
 
-          include_line_items: Whether to include line items in the response.
+          include_line_items: Whether to include line items in the response. Defaults to `true`.
 
           limit: The maximum number of objects to return. Ranging from 1 to 150, defaults to 150.
               Use this parameter in conjunction with the `cursor` parameter to paginate

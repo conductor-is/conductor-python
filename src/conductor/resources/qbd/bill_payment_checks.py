@@ -95,8 +95,8 @@ class BillPaymentChecksResource(SyncAPIResource):
 
           transaction_date: The date of this bill payment check, in ISO 8601 format (YYYY-MM-DD).
 
-          vendor_id: The vendor who sent the bill that this check is paying. This is the payee who
-              will receive the check payment.
+          vendor_id: The vendor who sent the bill(s) specified in `applyToTransactions` that this
+              check is paying. This is the payee who will receive the check payment.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -352,7 +352,7 @@ class BillPaymentChecksResource(SyncAPIResource):
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
 
-          include_line_items: Whether to include line items in the response.
+          include_line_items: Whether to include line items in the response. Defaults to `true`.
 
           limit: The maximum number of objects to return. Ranging from 1 to 150, defaults to 150.
               Use this parameter in conjunction with the `cursor` parameter to paginate
@@ -514,8 +514,8 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
 
           transaction_date: The date of this bill payment check, in ISO 8601 format (YYYY-MM-DD).
 
-          vendor_id: The vendor who sent the bill that this check is paying. This is the payee who
-              will receive the check payment.
+          vendor_id: The vendor who sent the bill(s) specified in `applyToTransactions` that this
+              check is paying. This is the payee who will receive the check payment.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -771,7 +771,7 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
               NOTE: If you include this parameter, QuickBooks will ignore all other query
               parameters.
 
-          include_line_items: Whether to include line items in the response.
+          include_line_items: Whether to include line items in the response. Defaults to `true`.
 
           limit: The maximum number of objects to return. Ranging from 1 to 150, defaults to 150.
               Use this parameter in conjunction with the `cursor` parameter to paginate
