@@ -104,8 +104,10 @@ class ChecksResource(SyncAPIResource):
           expense_lines: The check's expense lines, each representing one line in this expense.
 
           external_id: A globally unique identifier (GUID) you can provide for tracking this object in
-              your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
-              will return an error. This field is immutable and can only be set during object
+              your external system.
+
+              **IMPORTANT**: Must be formatted as a valid GUID; otherwise, QuickBooks will
+              return an error. This field is immutable and can only be set during object
               creation.
 
           is_queued_for_print: Indicates whether this check is included in the queue of documents for
@@ -123,9 +125,10 @@ class ChecksResource(SyncAPIResource):
           payee_id: The person or company who will receive this check.
 
           ref_number: The case-sensitive user-defined reference number for this check, which can be
-              used to identify the transaction in QuickBooks. NOTE: For checks, this field is
-              the check number. This value is not required to be unique and can be arbitrarily
-              changed by the QuickBooks user.
+              used to identify the transaction in QuickBooks. This value is not required to be
+              unique and can be arbitrarily changed by the QuickBooks user.
+
+              **IMPORTANT**: For checks, this field is the check number.
 
           sales_tax_code_id: The sales-tax code associated with this check, determining whether transactions
               in this account are taxable or non-taxable. It's used to assign a default tax
@@ -315,9 +318,10 @@ class ChecksResource(SyncAPIResource):
           payee_id: The person or company who will receive this check.
 
           ref_number: The case-sensitive user-defined reference number for this check, which can be
-              used to identify the transaction in QuickBooks. NOTE: For checks, this field is
-              the check number. This value is not required to be unique and can be arbitrarily
-              changed by the QuickBooks user.
+              used to identify the transaction in QuickBooks. This value is not required to be
+              unique and can be arbitrarily changed by the QuickBooks user.
+
+              **IMPORTANT**: For checks, this field is the check number.
 
           sales_tax_code_id: The sales-tax code associated with this check, determining whether transactions
               in this account are taxable or non-taxable. It's used to assign a default tax
@@ -596,8 +600,10 @@ class AsyncChecksResource(AsyncAPIResource):
           expense_lines: The check's expense lines, each representing one line in this expense.
 
           external_id: A globally unique identifier (GUID) you can provide for tracking this object in
-              your external system. Must be formatted as a valid GUID; otherwise, QuickBooks
-              will return an error. This field is immutable and can only be set during object
+              your external system.
+
+              **IMPORTANT**: Must be formatted as a valid GUID; otherwise, QuickBooks will
+              return an error. This field is immutable and can only be set during object
               creation.
 
           is_queued_for_print: Indicates whether this check is included in the queue of documents for
@@ -615,9 +621,10 @@ class AsyncChecksResource(AsyncAPIResource):
           payee_id: The person or company who will receive this check.
 
           ref_number: The case-sensitive user-defined reference number for this check, which can be
-              used to identify the transaction in QuickBooks. NOTE: For checks, this field is
-              the check number. This value is not required to be unique and can be arbitrarily
-              changed by the QuickBooks user.
+              used to identify the transaction in QuickBooks. This value is not required to be
+              unique and can be arbitrarily changed by the QuickBooks user.
+
+              **IMPORTANT**: For checks, this field is the check number.
 
           sales_tax_code_id: The sales-tax code associated with this check, determining whether transactions
               in this account are taxable or non-taxable. It's used to assign a default tax
@@ -807,9 +814,10 @@ class AsyncChecksResource(AsyncAPIResource):
           payee_id: The person or company who will receive this check.
 
           ref_number: The case-sensitive user-defined reference number for this check, which can be
-              used to identify the transaction in QuickBooks. NOTE: For checks, this field is
-              the check number. This value is not required to be unique and can be arbitrarily
-              changed by the QuickBooks user.
+              used to identify the transaction in QuickBooks. This value is not required to be
+              unique and can be arbitrarily changed by the QuickBooks user.
+
+              **IMPORTANT**: For checks, this field is the check number.
 
           sales_tax_code_id: The sales-tax code associated with this check, determining whether transactions
               in this account are taxable or non-taxable. It's used to assign a default tax
