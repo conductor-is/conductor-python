@@ -96,8 +96,9 @@ class BillPaymentChecksResource(SyncAPIResource):
           transaction_date: The date of this bill payment check, in ISO 8601 format (YYYY-MM-DD).
 
           vendor_id: The vendor who sent the bill(s) that this check is paying and who will receive
-              this check payment. This vendor must match the vendor on the bills specified in
-              `applyToTransactions` that are being paid.
+              this check payment. **IMPORTANT**: This vendor must match the `vendor` on the
+              bill(s) specified in `applyToTransactions`; otherwise, QuickBooks will say the
+              `transactionId` in `applyToTransactions` "does not exist".
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -120,10 +121,9 @@ class BillPaymentChecksResource(SyncAPIResource):
               used to track the amount owed. If not specified, QuickBooks Desktop will use its
               default Accounts-Payable account.
 
-              **IMPORTANT**: This A/P account must be the same as the `payablesAccount` used
-              when originally adding the corresponding bill specified in
-              `applyToTransactions`. Otherwise, QuickBooks will say the `transactionId` in
-              `applyToTransactions` does not exist.
+              **IMPORTANT**: This A/P account must match the `payablesAccount` on the bill(s)
+              specified in `applyToTransactions`; otherwise, QuickBooks will say the
+              `transactionId` in `applyToTransactions` "does not exist".
 
           ref_number: The case-sensitive user-defined reference number for this bill payment check,
               which can be used to identify the transaction in QuickBooks. NOTE: For checks,
@@ -515,8 +515,9 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
           transaction_date: The date of this bill payment check, in ISO 8601 format (YYYY-MM-DD).
 
           vendor_id: The vendor who sent the bill(s) that this check is paying and who will receive
-              this check payment. This vendor must match the vendor on the bills specified in
-              `applyToTransactions` that are being paid.
+              this check payment. **IMPORTANT**: This vendor must match the `vendor` on the
+              bill(s) specified in `applyToTransactions`; otherwise, QuickBooks will say the
+              `transactionId` in `applyToTransactions` "does not exist".
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -539,10 +540,9 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
               used to track the amount owed. If not specified, QuickBooks Desktop will use its
               default Accounts-Payable account.
 
-              **IMPORTANT**: This A/P account must be the same as the `payablesAccount` used
-              when originally adding the corresponding bill specified in
-              `applyToTransactions`. Otherwise, QuickBooks will say the `transactionId` in
-              `applyToTransactions` does not exist.
+              **IMPORTANT**: This A/P account must match the `payablesAccount` on the bill(s)
+              specified in `applyToTransactions`; otherwise, QuickBooks will say the
+              `transactionId` in `applyToTransactions` "does not exist".
 
           ref_number: The case-sensitive user-defined reference number for this bill payment check,
               which can be used to identify the transaction in QuickBooks. NOTE: For checks,

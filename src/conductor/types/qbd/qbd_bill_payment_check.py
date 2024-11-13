@@ -425,9 +425,8 @@ class QbdBillPaymentCheck(BaseModel):
     used to track the amount owed. If not specified, QuickBooks Desktop will use its
     default Accounts-Payable account.
 
-    **IMPORTANT**: This A/P account must be the same as the `payablesAccount` used
-    when originally adding the corresponding bill specified in
-    `appliedToTransactions`.
+    **IMPORTANT**: This A/P account must match the `payablesAccount` on the bill(s)
+    specified in `applyToTransactions`
     """
 
     ref_number: Optional[str] = FieldInfo(alias="refNumber", default=None)
@@ -459,6 +458,6 @@ class QbdBillPaymentCheck(BaseModel):
     vendor: Optional[Vendor] = None
     """
     The vendor who sent the bill(s) that this check is paying and who will receive
-    this check payment. This vendor must match the vendor on the bills specified in
-    `appliedToTransactions` that are being paid.
+    this check payment. **IMPORTANT**: This vendor must match the `vendor` on the
+    bill(s) specified in `applyToTransactions`.
     """
