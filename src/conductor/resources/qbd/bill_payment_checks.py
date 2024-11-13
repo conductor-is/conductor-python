@@ -95,8 +95,9 @@ class BillPaymentChecksResource(SyncAPIResource):
 
           transaction_date: The date of this bill payment check, in ISO 8601 format (YYYY-MM-DD).
 
-          vendor_id: The vendor who sent the bill(s) specified in `applyToTransactions` that this
-              check is paying. This is the payee who will receive the check payment.
+          vendor_id: The vendor who sent the bill(s) that this check is paying and who will receive
+              this check payment. This vendor must match the vendor on the bills specified in
+              `applyToTransactions` that are being paid.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -403,9 +404,8 @@ class BillPaymentChecksResource(SyncAPIResource):
               8601 format (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the
               time is assumed to be 23:59:59 of that day.
 
-          vendor_ids: Filter for bill payment checks from this vendor or vendors. The vendor who sent
-              the bill that this check is paying. This is the payee who will receive the check
-              payment.
+          vendor_ids: Filter for bill payment checks to this vendor or vendors. These are the vendors
+              who sent the bills that these checks are paying.
 
           extra_headers: Send extra headers
 
@@ -514,8 +514,9 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
 
           transaction_date: The date of this bill payment check, in ISO 8601 format (YYYY-MM-DD).
 
-          vendor_id: The vendor who sent the bill(s) specified in `applyToTransactions` that this
-              check is paying. This is the payee who will receive the check payment.
+          vendor_id: The vendor who sent the bill(s) that this check is paying and who will receive
+              this check payment. This vendor must match the vendor on the bills specified in
+              `applyToTransactions` that are being paid.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -822,9 +823,8 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
               8601 format (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the
               time is assumed to be 23:59:59 of that day.
 
-          vendor_ids: Filter for bill payment checks from this vendor or vendors. The vendor who sent
-              the bill that this check is paying. This is the payee who will receive the check
-              payment.
+          vendor_ids: Filter for bill payment checks to this vendor or vendors. These are the vendors
+              who sent the bills that these checks are paying.
 
           extra_headers: Send extra headers
 

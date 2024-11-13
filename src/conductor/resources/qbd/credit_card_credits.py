@@ -393,7 +393,7 @@ class CreditCardCreditsResource(SyncAPIResource):
               set of results.
 
           payee_ids: Filter for credit card credits from this payee or payees. These are the vendors
-              or companies from whom the credits were received.
+              or companies from whom these credit card credits were received.
 
           ref_number_contains:
               Filter for credit card credits whose `refNumber` contains this substring. NOTE:
@@ -845,7 +845,7 @@ class AsyncCreditCardCreditsResource(AsyncAPIResource):
               set of results.
 
           payee_ids: Filter for credit card credits from this payee or payees. These are the vendors
-              or companies from whom the credits were received.
+              or companies from whom these credit card credits were received.
 
           ref_number_contains:
               Filter for credit card credits whose `refNumber` contains this substring. NOTE:
