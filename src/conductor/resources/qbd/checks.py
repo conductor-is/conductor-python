@@ -90,11 +90,11 @@ class ChecksResource(SyncAPIResource):
           apply_to_transactions: Transactions to be paid by this check. This will create a link between this
               check and the specified transactions.
 
-              NOTE: By default, QuickBooks will not return any information about the linked
-              transactions in this endpoint's response even when this request is successful.
-              To see the transactions linked via this field, refetch the check and check the
-              `linkedTransactions` response field. If fetching a list of checks, you must also
-              specify the parameter `includeLinkedTransactions` to see the
+              **IMPORTANT**: By default, QuickBooks will not return any information about the
+              linked transactions in this endpoint's response even when this request is
+              successful. To see the transactions linked via this field, refetch the check and
+              check the `linkedTransactions` response field. If fetching a list of checks, you
+              must also specify the parameter `includeLinkedTransactions` to see the
               `linkedTransactions` response field.
 
           exchange_rate: The market exchange rate between this check's currency and the home currency in
@@ -260,11 +260,11 @@ class ChecksResource(SyncAPIResource):
           apply_to_transactions: Transactions to be paid by this check. This will create a link between this
               check and the specified transactions.
 
-              NOTE: By default, QuickBooks will not return any information about the linked
-              transactions in this endpoint's response even when this request is successful.
-              To see the transactions linked via this field, refetch the check and check the
-              `linkedTransactions` response field. If fetching a list of checks, you must also
-              specify the parameter `includeLinkedTransactions` to see the
+              **IMPORTANT**: By default, QuickBooks will not return any information about the
+              linked transactions in this endpoint's response even when this request is
+              successful. To see the transactions linked via this field, refetch the check and
+              check the `linkedTransactions` response field. If fetching a list of checks, you
+              must also specify the parameter `includeLinkedTransactions` to see the
               `linkedTransactions` response field.
 
           bank_account_id: The bank account from which the funds are being drawn for this check; e.g.,
@@ -586,11 +586,11 @@ class AsyncChecksResource(AsyncAPIResource):
           apply_to_transactions: Transactions to be paid by this check. This will create a link between this
               check and the specified transactions.
 
-              NOTE: By default, QuickBooks will not return any information about the linked
-              transactions in this endpoint's response even when this request is successful.
-              To see the transactions linked via this field, refetch the check and check the
-              `linkedTransactions` response field. If fetching a list of checks, you must also
-              specify the parameter `includeLinkedTransactions` to see the
+              **IMPORTANT**: By default, QuickBooks will not return any information about the
+              linked transactions in this endpoint's response even when this request is
+              successful. To see the transactions linked via this field, refetch the check and
+              check the `linkedTransactions` response field. If fetching a list of checks, you
+              must also specify the parameter `includeLinkedTransactions` to see the
               `linkedTransactions` response field.
 
           exchange_rate: The market exchange rate between this check's currency and the home currency in
@@ -756,11 +756,11 @@ class AsyncChecksResource(AsyncAPIResource):
           apply_to_transactions: Transactions to be paid by this check. This will create a link between this
               check and the specified transactions.
 
-              NOTE: By default, QuickBooks will not return any information about the linked
-              transactions in this endpoint's response even when this request is successful.
-              To see the transactions linked via this field, refetch the check and check the
-              `linkedTransactions` response field. If fetching a list of checks, you must also
-              specify the parameter `includeLinkedTransactions` to see the
+              **IMPORTANT**: By default, QuickBooks will not return any information about the
+              linked transactions in this endpoint's response even when this request is
+              successful. To see the transactions linked via this field, refetch the check and
+              check the `linkedTransactions` response field. If fetching a list of checks, you
+              must also specify the parameter `includeLinkedTransactions` to see the
               `linkedTransactions` response field.
 
           bank_account_id: The bank account from which the funds are being drawn for this check; e.g.,

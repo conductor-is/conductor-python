@@ -186,9 +186,11 @@ class AppliedToTransaction(BaseModel):
     linked_transactions: List[AppliedToTransactionLinkedTransaction] = FieldInfo(alias="linkedTransactions")
     """
     The receivable transaction's linked transactions, such as payments applied,
-    credits used, or associated purchase orders. NOTE: You must specify the
-    parameter `includeLinkedTransactions` when fetching a list of receivable
-    transactions to receive this field because it is not returned by default.
+    credits used, or associated purchase orders.
+
+    **IMPORTANT**: You must specify the parameter `includeLinkedTransactions` when
+    fetching a list of receivable transactions to receive this field because it is
+    not returned by default.
     """
 
     object_type: Literal["qbd_receivable_transaction"] = FieldInfo(alias="objectType")
