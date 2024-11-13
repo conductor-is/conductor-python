@@ -1281,7 +1281,7 @@ class Check(BaseModel):
     """The type of object. This value is always `"qbd_check"`."""
 
     payee: Optional[Payee] = None
-    """The person or company to whom this check is written."""
+    """The person or company who will receive this check."""
 
     ref_number: Optional[str] = FieldInfo(alias="refNumber", default=None)
     """
