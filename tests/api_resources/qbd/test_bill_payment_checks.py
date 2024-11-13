@@ -30,8 +30,8 @@ class TestBillPaymentChecks:
                 {"transaction_id": "123ABC-1234567890"},
             ],
             bank_account_id="80000008-1234567890",
-            payee_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
+            vendor_id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(QbdBillPaymentCheck, bill_payment_check, path=["response"])
@@ -114,8 +114,8 @@ class TestBillPaymentChecks:
                 },
             ],
             bank_account_id="80000008-1234567890",
-            payee_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
+            vendor_id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
             exchange_rate=1.2345,
             external_id="12345678-abcd-1234-abcd-1234567890ab",
@@ -135,8 +135,8 @@ class TestBillPaymentChecks:
                 {"transaction_id": "123ABC-1234567890"},
             ],
             bank_account_id="80000008-1234567890",
-            payee_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
+            vendor_id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -154,8 +154,8 @@ class TestBillPaymentChecks:
                 {"transaction_id": "123ABC-1234567890"},
             ],
             bank_account_id="80000008-1234567890",
-            payee_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
+            vendor_id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
@@ -361,7 +361,6 @@ class TestBillPaymentChecks:
             ids=["123ABC-1234567890"],
             include_line_items=True,
             limit=150,
-            payee_ids=["80000001-1234567890"],
             ref_number_contains="CHECK-1234",
             ref_number_ends_with="1234",
             ref_number_from="CHECK-0001",
@@ -372,6 +371,7 @@ class TestBillPaymentChecks:
             transaction_date_to=parse_date("2019-12-27"),
             updated_after="updatedAfter",
             updated_before="updatedBefore",
+            vendor_ids=["80000001-1234567890"],
         )
         assert_matches_type(SyncCursorPage[QbdBillPaymentCheck], bill_payment_check, path=["response"])
 
@@ -412,8 +412,8 @@ class TestAsyncBillPaymentChecks:
                 {"transaction_id": "123ABC-1234567890"},
             ],
             bank_account_id="80000008-1234567890",
-            payee_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
+            vendor_id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(QbdBillPaymentCheck, bill_payment_check, path=["response"])
@@ -496,8 +496,8 @@ class TestAsyncBillPaymentChecks:
                 },
             ],
             bank_account_id="80000008-1234567890",
-            payee_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
+            vendor_id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
             exchange_rate=1.2345,
             external_id="12345678-abcd-1234-abcd-1234567890ab",
@@ -517,8 +517,8 @@ class TestAsyncBillPaymentChecks:
                 {"transaction_id": "123ABC-1234567890"},
             ],
             bank_account_id="80000008-1234567890",
-            payee_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
+            vendor_id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -536,8 +536,8 @@ class TestAsyncBillPaymentChecks:
                 {"transaction_id": "123ABC-1234567890"},
             ],
             bank_account_id="80000008-1234567890",
-            payee_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
+            vendor_id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
@@ -743,7 +743,6 @@ class TestAsyncBillPaymentChecks:
             ids=["123ABC-1234567890"],
             include_line_items=True,
             limit=150,
-            payee_ids=["80000001-1234567890"],
             ref_number_contains="CHECK-1234",
             ref_number_ends_with="1234",
             ref_number_from="CHECK-0001",
@@ -754,6 +753,7 @@ class TestAsyncBillPaymentChecks:
             transaction_date_to=parse_date("2019-12-27"),
             updated_after="updatedAfter",
             updated_before="updatedBefore",
+            vendor_ids=["80000001-1234567890"],
         )
         assert_matches_type(AsyncCursorPage[QbdBillPaymentCheck], bill_payment_check, path=["response"])
 

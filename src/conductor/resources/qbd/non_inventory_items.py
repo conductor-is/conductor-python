@@ -372,9 +372,8 @@ class NonInventoryItemsResource(SyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          class_ids: Filter for non-inventory items of this class or classes. Specify a single class
-              ID or multiple using a comma-separated list (e.g., `classIds=1,2,3`). A class is
-              a way end-users can categorize non-inventory items in QuickBooks.
+          class_ids: Filter for non-inventory items of this class or classes. A class is a way
+              end-users can categorize non-inventory items in QuickBooks.
 
           cursor: The pagination token to fetch the next set of results when paginating with the
               `limit` parameter. Retrieve this value from the `nextCursor` field in the
@@ -814,9 +813,8 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          class_ids: Filter for non-inventory items of this class or classes. Specify a single class
-              ID or multiple using a comma-separated list (e.g., `classIds=1,2,3`). A class is
-              a way end-users can categorize non-inventory items in QuickBooks.
+          class_ids: Filter for non-inventory items of this class or classes. A class is a way
+              end-users can categorize non-inventory items in QuickBooks.
 
           cursor: The pagination token to fetch the next set of results when paginating with the
               `limit` parameter. Retrieve this value from the `nextCursor` field in the

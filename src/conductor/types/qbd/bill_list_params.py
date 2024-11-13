@@ -19,18 +19,10 @@ class BillListParams(TypedDict, total=False):
     """
 
     account_ids: Annotated[List[str], PropertyInfo(alias="accountIds")]
-    """Filter for bills from this account or accounts.
-
-    Specify a single account ID or multiple using a comma-separated list (e.g.,
-    `accountIds=1,2,3`).
-    """
+    """Filter for bills from this account or accounts."""
 
     currency_ids: Annotated[List[str], PropertyInfo(alias="currencyIds")]
-    """Filter for bills in this currency or currencies.
-
-    Specify a single currency ID or multiple using a comma-separated list (e.g.,
-    `currencyIds=1,2,3`).
-    """
+    """Filter for bills in this currency or currencies."""
 
     cursor: str
     """
@@ -140,8 +132,4 @@ class BillListParams(TypedDict, total=False):
     """
 
     vendor_ids: Annotated[List[str], PropertyInfo(alias="vendorIds")]
-    """Filter for bills from this vendor or vendors.
-
-    Specify a single vendor ID or multiple using a comma-separated list (e.g.,
-    `vendorIds=1,2,3`).
-    """
+    """Filter for bills from this vendor or vendors."""

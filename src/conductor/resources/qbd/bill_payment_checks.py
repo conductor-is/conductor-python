@@ -57,8 +57,8 @@ class BillPaymentChecksResource(SyncAPIResource):
         *,
         apply_to_transactions: Iterable[bill_payment_check_create_params.ApplyToTransaction],
         bank_account_id: str,
-        payee_id: str,
         transaction_date: Union[str, date],
+        vendor_id: str,
         conductor_end_user_id: str,
         exchange_rate: float | NotGiven = NOT_GIVEN,
         external_id: str | NotGiven = NOT_GIVEN,
@@ -77,8 +77,10 @@ class BillPaymentChecksResource(SyncAPIResource):
         Creates a bill payment check.
 
         Args:
-          apply_to_transactions: Transactions to be paid by this bill payment check. This will create a link
-              between this bill payment check and the specified transactions.
+          apply_to_transactions: bills to be paid by this bill payment check. This will create a link between
+              this bill payment check and the specified bills. The target bill must have
+              `isPaid=false`, otherwise, QuickBooks will report this object as "cannot be
+              found".
 
               NOTE: By default, QuickBooks will not return any information about the linked
               transactions in this endpoint's response even when this request is successful.
@@ -91,10 +93,10 @@ class BillPaymentChecksResource(SyncAPIResource):
               check; e.g., Checking or Savings. This bill payment check will decrease the
               balance of this account.
 
-          payee_id: The vendor who sent the bill that this check is paying. This is the payee who
-              will receive the check payment.
-
           transaction_date: The date of this bill payment check, in ISO 8601 format (YYYY-MM-DD).
+
+          vendor_id: The vendor who sent the bill that this check is paying. This is the payee who
+              will receive the check payment.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -142,8 +144,8 @@ class BillPaymentChecksResource(SyncAPIResource):
                 {
                     "apply_to_transactions": apply_to_transactions,
                     "bank_account_id": bank_account_id,
-                    "payee_id": payee_id,
                     "transaction_date": transaction_date,
+                    "vendor_id": vendor_id,
                     "exchange_rate": exchange_rate,
                     "external_id": external_id,
                     "is_queued_for_print": is_queued_for_print,
@@ -236,8 +238,10 @@ class BillPaymentChecksResource(SyncAPIResource):
 
           amount: The monetary amount of this bill payment check, represented as a decimal string.
 
-          apply_to_transactions: Transactions to be paid by this bill payment check. This will create a link
-              between this bill payment check and the specified transactions.
+          apply_to_transactions: bills to be paid by this bill payment check. This will create a link between
+              this bill payment check and the specified bills. The target bill must have
+              `isPaid=false`, otherwise, QuickBooks will report this object as "cannot be
+              found".
 
               NOTE: By default, QuickBooks will not return any information about the linked
               transactions in this endpoint's response even when this request is successful.
@@ -309,7 +313,6 @@ class BillPaymentChecksResource(SyncAPIResource):
         ids: List[str] | NotGiven = NOT_GIVEN,
         include_line_items: bool | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
-        payee_ids: List[str] | NotGiven = NOT_GIVEN,
         ref_number_contains: str | NotGiven = NOT_GIVEN,
         ref_number_ends_with: str | NotGiven = NOT_GIVEN,
         ref_number_from: str | NotGiven = NOT_GIVEN,
@@ -320,6 +323,7 @@ class BillPaymentChecksResource(SyncAPIResource):
         transaction_date_to: Union[str, date] | NotGiven = NOT_GIVEN,
         updated_after: str | NotGiven = NOT_GIVEN,
         updated_before: str | NotGiven = NOT_GIVEN,
+        vendor_ids: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -334,12 +338,9 @@ class BillPaymentChecksResource(SyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_ids: Filter for bill payment checks from this account or accounts. Specify a single
-              account ID or multiple using a comma-separated list (e.g., `accountIds=1,2,3`).
+          account_ids: Filter for bill payment checks from this account or accounts.
 
-          currency_ids: Filter for bill payment checks in this currency or currencies. Specify a single
-              currency ID or multiple using a comma-separated list (e.g.,
-              `currencyIds=1,2,3`).
+          currency_ids: Filter for bill payment checks in this currency or currencies.
 
           cursor: The pagination token to fetch the next set of results when paginating with the
               `limit` parameter. Retrieve this value from the `nextCursor` field in the
@@ -358,11 +359,6 @@ class BillPaymentChecksResource(SyncAPIResource):
               through results. The response will include a `nextCursor` field, which can be
               used as the `cursor` parameter value in subsequent requests to fetch the next
               set of results.
-
-          payee_ids: Filter for bill payment checks from this payee or payees. Specify a single payee
-              ID or multiple using a comma-separated list (e.g., `payeeIds=1,2,3`). The vendor
-              who sent the bill that this check is paying. This is the payee who will receive
-              the check payment.
 
           ref_number_contains: Filter for bill payment checks whose `refNumber` contains this substring. For
               checks, this is the check number. NOTE: If you use this parameter, you cannot
@@ -407,6 +403,10 @@ class BillPaymentChecksResource(SyncAPIResource):
               8601 format (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the
               time is assumed to be 23:59:59 of that day.
 
+          vendor_ids: Filter for bill payment checks from this vendor or vendors. The vendor who sent
+              the bill that this check is paying. This is the payee who will receive the check
+              payment.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -432,7 +432,6 @@ class BillPaymentChecksResource(SyncAPIResource):
                         "ids": ids,
                         "include_line_items": include_line_items,
                         "limit": limit,
-                        "payee_ids": payee_ids,
                         "ref_number_contains": ref_number_contains,
                         "ref_number_ends_with": ref_number_ends_with,
                         "ref_number_from": ref_number_from,
@@ -443,6 +442,7 @@ class BillPaymentChecksResource(SyncAPIResource):
                         "transaction_date_to": transaction_date_to,
                         "updated_after": updated_after,
                         "updated_before": updated_before,
+                        "vendor_ids": vendor_ids,
                     },
                     bill_payment_check_list_params.BillPaymentCheckListParams,
                 ),
@@ -476,8 +476,8 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
         *,
         apply_to_transactions: Iterable[bill_payment_check_create_params.ApplyToTransaction],
         bank_account_id: str,
-        payee_id: str,
         transaction_date: Union[str, date],
+        vendor_id: str,
         conductor_end_user_id: str,
         exchange_rate: float | NotGiven = NOT_GIVEN,
         external_id: str | NotGiven = NOT_GIVEN,
@@ -496,8 +496,10 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
         Creates a bill payment check.
 
         Args:
-          apply_to_transactions: Transactions to be paid by this bill payment check. This will create a link
-              between this bill payment check and the specified transactions.
+          apply_to_transactions: bills to be paid by this bill payment check. This will create a link between
+              this bill payment check and the specified bills. The target bill must have
+              `isPaid=false`, otherwise, QuickBooks will report this object as "cannot be
+              found".
 
               NOTE: By default, QuickBooks will not return any information about the linked
               transactions in this endpoint's response even when this request is successful.
@@ -510,10 +512,10 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
               check; e.g., Checking or Savings. This bill payment check will decrease the
               balance of this account.
 
-          payee_id: The vendor who sent the bill that this check is paying. This is the payee who
-              will receive the check payment.
-
           transaction_date: The date of this bill payment check, in ISO 8601 format (YYYY-MM-DD).
+
+          vendor_id: The vendor who sent the bill that this check is paying. This is the payee who
+              will receive the check payment.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -561,8 +563,8 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
                 {
                     "apply_to_transactions": apply_to_transactions,
                     "bank_account_id": bank_account_id,
-                    "payee_id": payee_id,
                     "transaction_date": transaction_date,
+                    "vendor_id": vendor_id,
                     "exchange_rate": exchange_rate,
                     "external_id": external_id,
                     "is_queued_for_print": is_queued_for_print,
@@ -655,8 +657,10 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
 
           amount: The monetary amount of this bill payment check, represented as a decimal string.
 
-          apply_to_transactions: Transactions to be paid by this bill payment check. This will create a link
-              between this bill payment check and the specified transactions.
+          apply_to_transactions: bills to be paid by this bill payment check. This will create a link between
+              this bill payment check and the specified bills. The target bill must have
+              `isPaid=false`, otherwise, QuickBooks will report this object as "cannot be
+              found".
 
               NOTE: By default, QuickBooks will not return any information about the linked
               transactions in this endpoint's response even when this request is successful.
@@ -728,7 +732,6 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
         ids: List[str] | NotGiven = NOT_GIVEN,
         include_line_items: bool | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
-        payee_ids: List[str] | NotGiven = NOT_GIVEN,
         ref_number_contains: str | NotGiven = NOT_GIVEN,
         ref_number_ends_with: str | NotGiven = NOT_GIVEN,
         ref_number_from: str | NotGiven = NOT_GIVEN,
@@ -739,6 +742,7 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
         transaction_date_to: Union[str, date] | NotGiven = NOT_GIVEN,
         updated_after: str | NotGiven = NOT_GIVEN,
         updated_before: str | NotGiven = NOT_GIVEN,
+        vendor_ids: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -753,12 +757,9 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_ids: Filter for bill payment checks from this account or accounts. Specify a single
-              account ID or multiple using a comma-separated list (e.g., `accountIds=1,2,3`).
+          account_ids: Filter for bill payment checks from this account or accounts.
 
-          currency_ids: Filter for bill payment checks in this currency or currencies. Specify a single
-              currency ID or multiple using a comma-separated list (e.g.,
-              `currencyIds=1,2,3`).
+          currency_ids: Filter for bill payment checks in this currency or currencies.
 
           cursor: The pagination token to fetch the next set of results when paginating with the
               `limit` parameter. Retrieve this value from the `nextCursor` field in the
@@ -777,11 +778,6 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
               through results. The response will include a `nextCursor` field, which can be
               used as the `cursor` parameter value in subsequent requests to fetch the next
               set of results.
-
-          payee_ids: Filter for bill payment checks from this payee or payees. Specify a single payee
-              ID or multiple using a comma-separated list (e.g., `payeeIds=1,2,3`). The vendor
-              who sent the bill that this check is paying. This is the payee who will receive
-              the check payment.
 
           ref_number_contains: Filter for bill payment checks whose `refNumber` contains this substring. For
               checks, this is the check number. NOTE: If you use this parameter, you cannot
@@ -826,6 +822,10 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
               8601 format (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the
               time is assumed to be 23:59:59 of that day.
 
+          vendor_ids: Filter for bill payment checks from this vendor or vendors. The vendor who sent
+              the bill that this check is paying. This is the payee who will receive the check
+              payment.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -851,7 +851,6 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
                         "ids": ids,
                         "include_line_items": include_line_items,
                         "limit": limit,
-                        "payee_ids": payee_ids,
                         "ref_number_contains": ref_number_contains,
                         "ref_number_ends_with": ref_number_ends_with,
                         "ref_number_from": ref_number_from,
@@ -862,6 +861,7 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
                         "transaction_date_to": transaction_date_to,
                         "updated_after": updated_after,
                         "updated_before": updated_before,
+                        "vendor_ids": vendor_ids,
                     },
                     bill_payment_check_list_params.BillPaymentCheckListParams,
                 ),

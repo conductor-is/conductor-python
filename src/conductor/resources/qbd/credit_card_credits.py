@@ -370,12 +370,9 @@ class CreditCardCreditsResource(SyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_ids: Filter for credit card credits from this account or accounts. Specify a single
-              account ID or multiple using a comma-separated list (e.g., `accountIds=1,2,3`).
+          account_ids: Filter for credit card credits from this account or accounts.
 
-          currency_ids: Filter for credit card credits in this currency or currencies. Specify a single
-              currency ID or multiple using a comma-separated list (e.g.,
-              `currencyIds=1,2,3`).
+          currency_ids: Filter for credit card credits in this currency or currencies.
 
           cursor: The pagination token to fetch the next set of results when paginating with the
               `limit` parameter. Retrieve this value from the `nextCursor` field in the
@@ -395,9 +392,8 @@ class CreditCardCreditsResource(SyncAPIResource):
               used as the `cursor` parameter value in subsequent requests to fetch the next
               set of results.
 
-          payee_ids: Filter for credit card credits from this payee or payees. Specify a single payee
-              ID or multiple using a comma-separated list (e.g., `payeeIds=1,2,3`). These are
-              the vendors or companies from whom the credits were received.
+          payee_ids: Filter for credit card credits from this payee or payees. These are the vendors
+              or companies from whom the credits were received.
 
           ref_number_contains:
               Filter for credit card credits whose `refNumber` contains this substring. NOTE:
@@ -826,12 +822,9 @@ class AsyncCreditCardCreditsResource(AsyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_ids: Filter for credit card credits from this account or accounts. Specify a single
-              account ID or multiple using a comma-separated list (e.g., `accountIds=1,2,3`).
+          account_ids: Filter for credit card credits from this account or accounts.
 
-          currency_ids: Filter for credit card credits in this currency or currencies. Specify a single
-              currency ID or multiple using a comma-separated list (e.g.,
-              `currencyIds=1,2,3`).
+          currency_ids: Filter for credit card credits in this currency or currencies.
 
           cursor: The pagination token to fetch the next set of results when paginating with the
               `limit` parameter. Retrieve this value from the `nextCursor` field in the
@@ -851,9 +844,8 @@ class AsyncCreditCardCreditsResource(AsyncAPIResource):
               used as the `cursor` parameter value in subsequent requests to fetch the next
               set of results.
 
-          payee_ids: Filter for credit card credits from this payee or payees. Specify a single payee
-              ID or multiple using a comma-separated list (e.g., `payeeIds=1,2,3`). These are
-              the vendors or companies from whom the credits were received.
+          payee_ids: Filter for credit card credits from this payee or payees. These are the vendors
+              or companies from whom the credits were received.
 
           ref_number_contains:
               Filter for credit card credits whose `refNumber` contains this substring. NOTE:

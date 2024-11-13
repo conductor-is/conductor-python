@@ -41,11 +41,7 @@ class AccountListParams(TypedDict, total=False):
     """Filter for accounts of this type."""
 
     currency_ids: Annotated[List[str], PropertyInfo(alias="currencyIds")]
-    """Filter for accounts in this currency or currencies.
-
-    Specify a single currency ID or multiple using a comma-separated list (e.g.,
-    `currencyIds=1,2,3`).
-    """
+    """Filter for accounts in this currency or currencies."""
 
     full_names: Annotated[List[str], PropertyInfo(alias="fullNames")]
     """Filter for specific accounts by their full-name(s), case-insensitive.
