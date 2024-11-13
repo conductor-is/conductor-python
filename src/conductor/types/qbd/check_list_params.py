@@ -19,18 +19,10 @@ class CheckListParams(TypedDict, total=False):
     """
 
     account_ids: Annotated[List[str], PropertyInfo(alias="accountIds")]
-    """Filter for checks from this account or accounts.
-
-    Specify a single account ID or multiple using a comma-separated list (e.g.,
-    `accountIds=1,2,3`).
-    """
+    """Filter for checks from this account or accounts."""
 
     currency_ids: Annotated[List[str], PropertyInfo(alias="currencyIds")]
-    """Filter for checks in this currency or currencies.
-
-    Specify a single currency ID or multiple using a comma-separated list (e.g.,
-    `currencyIds=1,2,3`).
-    """
+    """Filter for checks in this currency or currencies."""
 
     cursor: str
     """
@@ -67,8 +59,7 @@ class CheckListParams(TypedDict, total=False):
     payee_ids: Annotated[List[str], PropertyInfo(alias="payeeIds")]
     """Filter for checks from this payee or payees.
 
-    Specify a single payee ID or multiple using a comma-separated list (e.g.,
-    `payeeIds=1,2,3`). The person or company to whom this check is written.
+    The person or company to whom this check is written.
     """
 
     ref_number_contains: Annotated[str, PropertyInfo(alias="refNumberContains")]

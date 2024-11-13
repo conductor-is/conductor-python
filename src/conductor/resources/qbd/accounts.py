@@ -410,8 +410,7 @@ class AccountsResource(SyncAPIResource):
 
           account_type: Filter for accounts of this type.
 
-          currency_ids: Filter for accounts in this currency or currencies. Specify a single currency ID
-              or multiple using a comma-separated list (e.g., `currencyIds=1,2,3`).
+          currency_ids: Filter for accounts in this currency or currencies.
 
           full_names: Filter for specific accounts by their full-name(s), case-insensitive. Like `id`,
               `fullName` is a unique identifier for an account, formed by by combining the
@@ -885,8 +884,7 @@ class AsyncAccountsResource(AsyncAPIResource):
 
           account_type: Filter for accounts of this type.
 
-          currency_ids: Filter for accounts in this currency or currencies. Specify a single currency ID
-              or multiple using a comma-separated list (e.g., `currencyIds=1,2,3`).
+          currency_ids: Filter for accounts in this currency or currencies.
 
           full_names: Filter for specific accounts by their full-name(s), case-insensitive. Like `id`,
               `fullName` is a unique identifier for an account, formed by by combining the

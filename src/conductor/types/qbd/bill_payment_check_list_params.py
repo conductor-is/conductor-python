@@ -19,18 +19,10 @@ class BillPaymentCheckListParams(TypedDict, total=False):
     """
 
     account_ids: Annotated[List[str], PropertyInfo(alias="accountIds")]
-    """Filter for bill payment checks from this account or accounts.
-
-    Specify a single account ID or multiple using a comma-separated list (e.g.,
-    `accountIds=1,2,3`).
-    """
+    """Filter for bill payment checks from this account or accounts."""
 
     currency_ids: Annotated[List[str], PropertyInfo(alias="currencyIds")]
-    """Filter for bill payment checks in this currency or currencies.
-
-    Specify a single currency ID or multiple using a comma-separated list (e.g.,
-    `currencyIds=1,2,3`).
-    """
+    """Filter for bill payment checks in this currency or currencies."""
 
     cursor: str
     """
@@ -58,14 +50,6 @@ class BillPaymentCheckListParams(TypedDict, total=False):
     the `cursor` parameter to paginate through results. The response will include a
     `nextCursor` field, which can be used as the `cursor` parameter value in
     subsequent requests to fetch the next set of results.
-    """
-
-    payee_ids: Annotated[List[str], PropertyInfo(alias="payeeIds")]
-    """Filter for bill payment checks from this payee or payees.
-
-    Specify a single payee ID or multiple using a comma-separated list (e.g.,
-    `payeeIds=1,2,3`). The vendor who sent the bill that this check is paying. This
-    is the payee who will receive the check payment.
     """
 
     ref_number_contains: Annotated[str, PropertyInfo(alias="refNumberContains")]
@@ -139,4 +123,11 @@ class BillPaymentCheckListParams(TypedDict, total=False):
     Filter for bill payment checks updated on or before this date and time, in ISO
     8601 format (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the
     time is assumed to be 23:59:59 of that day.
+    """
+
+    vendor_ids: Annotated[List[str], PropertyInfo(alias="vendorIds")]
+    """Filter for bill payment checks from this vendor or vendors.
+
+    The vendor who sent the bill that this check is paying. This is the payee who
+    will receive the check payment.
     """

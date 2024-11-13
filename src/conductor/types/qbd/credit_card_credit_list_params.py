@@ -19,18 +19,10 @@ class CreditCardCreditListParams(TypedDict, total=False):
     """
 
     account_ids: Annotated[List[str], PropertyInfo(alias="accountIds")]
-    """Filter for credit card credits from this account or accounts.
-
-    Specify a single account ID or multiple using a comma-separated list (e.g.,
-    `accountIds=1,2,3`).
-    """
+    """Filter for credit card credits from this account or accounts."""
 
     currency_ids: Annotated[List[str], PropertyInfo(alias="currencyIds")]
-    """Filter for credit card credits in this currency or currencies.
-
-    Specify a single currency ID or multiple using a comma-separated list (e.g.,
-    `currencyIds=1,2,3`).
-    """
+    """Filter for credit card credits in this currency or currencies."""
 
     cursor: str
     """
@@ -63,9 +55,7 @@ class CreditCardCreditListParams(TypedDict, total=False):
     payee_ids: Annotated[List[str], PropertyInfo(alias="payeeIds")]
     """Filter for credit card credits from this payee or payees.
 
-    Specify a single payee ID or multiple using a comma-separated list (e.g.,
-    `payeeIds=1,2,3`). These are the vendors or companies from whom the credits were
-    received.
+    These are the vendors or companies from whom the credits were received.
     """
 
     ref_number_contains: Annotated[str, PropertyInfo(alias="refNumberContains")]
