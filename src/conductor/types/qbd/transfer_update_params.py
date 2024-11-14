@@ -39,11 +39,11 @@ class TransferUpdateParams(TypedDict, total=False):
     memo: str
     """A memo or note for this transfer, as entered by the user."""
 
-    transaction_date: Annotated[Union[str, date], PropertyInfo(alias="transactionDate", format="iso8601")]
-    """The date of this transfer, in ISO 8601 format (YYYY-MM-DD)."""
-
-    transfer_from_account_id: Annotated[str, PropertyInfo(alias="transferFromAccountId")]
+    source_account_id: Annotated[str, PropertyInfo(alias="sourceAccountId")]
     """The account from which money will be transferred."""
 
-    transfer_to_account_id: Annotated[str, PropertyInfo(alias="transferToAccountId")]
+    target_account_id: Annotated[str, PropertyInfo(alias="targetAccountId")]
     """The account to which money will be transferred."""
+
+    transaction_date: Annotated[Union[str, date], PropertyInfo(alias="transactionDate", format="iso8601")]
+    """The date of this transfer, in ISO 8601 format (YYYY-MM-DD)."""

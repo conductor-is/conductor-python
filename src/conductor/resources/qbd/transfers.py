@@ -51,13 +51,13 @@ class TransfersResource(SyncAPIResource):
     def create(
         self,
         *,
+        amount: str,
+        target_account_id: str,
         transaction_date: Union[str, date],
         conductor_end_user_id: str,
-        amount: str | NotGiven = NOT_GIVEN,
         class_id: str | NotGiven = NOT_GIVEN,
         memo: str | NotGiven = NOT_GIVEN,
-        transfer_from_account_id: str | NotGiven = NOT_GIVEN,
-        transfer_to_account_id: str | NotGiven = NOT_GIVEN,
+        source_account_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -69,12 +69,14 @@ class TransfersResource(SyncAPIResource):
         Creates a transfer.
 
         Args:
+          amount: The monetary amount of this transfer, represented as a decimal string.
+
+          target_account_id: The account to which money will be transferred.
+
           transaction_date: The date of this transfer, in ISO 8601 format (YYYY-MM-DD).
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
-
-          amount: The monetary amount of this transfer, represented as a decimal string.
 
           class_id: The transfer's class. Classes can be used to categorize objects into meaningful
               segments, such as department, location, or type of work. In QuickBooks, class
@@ -82,9 +84,7 @@ class TransfersResource(SyncAPIResource):
 
           memo: A memo or note for this transfer, as entered by the user.
 
-          transfer_from_account_id: The account from which money will be transferred.
-
-          transfer_to_account_id: The account to which money will be transferred.
+          source_account_id: The account from which money will be transferred.
 
           extra_headers: Send extra headers
 
@@ -99,12 +99,12 @@ class TransfersResource(SyncAPIResource):
             "/quickbooks-desktop/transfers",
             body=maybe_transform(
                 {
-                    "transaction_date": transaction_date,
                     "amount": amount,
+                    "target_account_id": target_account_id,
+                    "transaction_date": transaction_date,
                     "class_id": class_id,
                     "memo": memo,
-                    "transfer_from_account_id": transfer_from_account_id,
-                    "transfer_to_account_id": transfer_to_account_id,
+                    "source_account_id": source_account_id,
                 },
                 transfer_create_params.TransferCreateParams,
             ),
@@ -163,9 +163,9 @@ class TransfersResource(SyncAPIResource):
         amount: str | NotGiven = NOT_GIVEN,
         class_id: str | NotGiven = NOT_GIVEN,
         memo: str | NotGiven = NOT_GIVEN,
+        source_account_id: str | NotGiven = NOT_GIVEN,
+        target_account_id: str | NotGiven = NOT_GIVEN,
         transaction_date: Union[str, date] | NotGiven = NOT_GIVEN,
-        transfer_from_account_id: str | NotGiven = NOT_GIVEN,
-        transfer_to_account_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -194,11 +194,11 @@ class TransfersResource(SyncAPIResource):
 
           memo: A memo or note for this transfer, as entered by the user.
 
+          source_account_id: The account from which money will be transferred.
+
+          target_account_id: The account to which money will be transferred.
+
           transaction_date: The date of this transfer, in ISO 8601 format (YYYY-MM-DD).
-
-          transfer_from_account_id: The account from which money will be transferred.
-
-          transfer_to_account_id: The account to which money will be transferred.
 
           extra_headers: Send extra headers
 
@@ -219,9 +219,9 @@ class TransfersResource(SyncAPIResource):
                     "amount": amount,
                     "class_id": class_id,
                     "memo": memo,
+                    "source_account_id": source_account_id,
+                    "target_account_id": target_account_id,
                     "transaction_date": transaction_date,
-                    "transfer_from_account_id": transfer_from_account_id,
-                    "transfer_to_account_id": transfer_to_account_id,
                 },
                 transfer_update_params.TransferUpdateParams,
             ),
@@ -342,13 +342,13 @@ class AsyncTransfersResource(AsyncAPIResource):
     async def create(
         self,
         *,
+        amount: str,
+        target_account_id: str,
         transaction_date: Union[str, date],
         conductor_end_user_id: str,
-        amount: str | NotGiven = NOT_GIVEN,
         class_id: str | NotGiven = NOT_GIVEN,
         memo: str | NotGiven = NOT_GIVEN,
-        transfer_from_account_id: str | NotGiven = NOT_GIVEN,
-        transfer_to_account_id: str | NotGiven = NOT_GIVEN,
+        source_account_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -360,12 +360,14 @@ class AsyncTransfersResource(AsyncAPIResource):
         Creates a transfer.
 
         Args:
+          amount: The monetary amount of this transfer, represented as a decimal string.
+
+          target_account_id: The account to which money will be transferred.
+
           transaction_date: The date of this transfer, in ISO 8601 format (YYYY-MM-DD).
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
-
-          amount: The monetary amount of this transfer, represented as a decimal string.
 
           class_id: The transfer's class. Classes can be used to categorize objects into meaningful
               segments, such as department, location, or type of work. In QuickBooks, class
@@ -373,9 +375,7 @@ class AsyncTransfersResource(AsyncAPIResource):
 
           memo: A memo or note for this transfer, as entered by the user.
 
-          transfer_from_account_id: The account from which money will be transferred.
-
-          transfer_to_account_id: The account to which money will be transferred.
+          source_account_id: The account from which money will be transferred.
 
           extra_headers: Send extra headers
 
@@ -390,12 +390,12 @@ class AsyncTransfersResource(AsyncAPIResource):
             "/quickbooks-desktop/transfers",
             body=await async_maybe_transform(
                 {
-                    "transaction_date": transaction_date,
                     "amount": amount,
+                    "target_account_id": target_account_id,
+                    "transaction_date": transaction_date,
                     "class_id": class_id,
                     "memo": memo,
-                    "transfer_from_account_id": transfer_from_account_id,
-                    "transfer_to_account_id": transfer_to_account_id,
+                    "source_account_id": source_account_id,
                 },
                 transfer_create_params.TransferCreateParams,
             ),
@@ -454,9 +454,9 @@ class AsyncTransfersResource(AsyncAPIResource):
         amount: str | NotGiven = NOT_GIVEN,
         class_id: str | NotGiven = NOT_GIVEN,
         memo: str | NotGiven = NOT_GIVEN,
+        source_account_id: str | NotGiven = NOT_GIVEN,
+        target_account_id: str | NotGiven = NOT_GIVEN,
         transaction_date: Union[str, date] | NotGiven = NOT_GIVEN,
-        transfer_from_account_id: str | NotGiven = NOT_GIVEN,
-        transfer_to_account_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -485,11 +485,11 @@ class AsyncTransfersResource(AsyncAPIResource):
 
           memo: A memo or note for this transfer, as entered by the user.
 
+          source_account_id: The account from which money will be transferred.
+
+          target_account_id: The account to which money will be transferred.
+
           transaction_date: The date of this transfer, in ISO 8601 format (YYYY-MM-DD).
-
-          transfer_from_account_id: The account from which money will be transferred.
-
-          transfer_to_account_id: The account to which money will be transferred.
 
           extra_headers: Send extra headers
 
@@ -510,9 +510,9 @@ class AsyncTransfersResource(AsyncAPIResource):
                     "amount": amount,
                     "class_id": class_id,
                     "memo": memo,
+                    "source_account_id": source_account_id,
+                    "target_account_id": target_account_id,
                     "transaction_date": transaction_date,
-                    "transfer_from_account_id": transfer_from_account_id,
-                    "transfer_to_account_id": transfer_to_account_id,
                 },
                 transfer_update_params.TransferUpdateParams,
             ),
