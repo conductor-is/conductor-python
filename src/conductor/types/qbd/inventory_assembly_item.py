@@ -8,7 +8,7 @@ from pydantic import Field as FieldInfo
 from ..._models import BaseModel
 
 __all__ = [
-    "QbdInventoryAssemblyItem",
+    "InventoryAssemblyItem",
     "AssetAccount",
     "Class",
     "CogsAccount",
@@ -229,7 +229,7 @@ class UnitOfMeasureSet(BaseModel):
     """
 
 
-class QbdInventoryAssemblyItem(BaseModel):
+class InventoryAssemblyItem(BaseModel):
     id: str
     """The unique identifier assigned by QuickBooks to this inventory assembly item.
 

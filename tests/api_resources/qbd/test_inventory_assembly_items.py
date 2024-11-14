@@ -11,7 +11,7 @@ from conductor import Conductor, AsyncConductor
 from tests.utils import assert_matches_type
 from conductor._utils import parse_date
 from conductor.types.qbd import (
-    QbdInventoryAssemblyItem,
+    InventoryAssemblyItem,
 )
 from conductor.pagination import SyncCursorPage, AsyncCursorPage
 
@@ -30,7 +30,7 @@ class TestInventoryAssemblyItems:
             name="Deluxe Kit",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdInventoryAssemblyItem, inventory_assembly_item, path=["response"])
+        assert_matches_type(InventoryAssemblyItem, inventory_assembly_item, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Conductor) -> None:
@@ -69,7 +69,7 @@ class TestInventoryAssemblyItems:
             total_value="1500.00",
             unit_of_measure_set_id="80000003-1234567890",
         )
-        assert_matches_type(QbdInventoryAssemblyItem, inventory_assembly_item, path=["response"])
+        assert_matches_type(InventoryAssemblyItem, inventory_assembly_item, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: Conductor) -> None:
@@ -84,7 +84,7 @@ class TestInventoryAssemblyItems:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         inventory_assembly_item = response.parse()
-        assert_matches_type(QbdInventoryAssemblyItem, inventory_assembly_item, path=["response"])
+        assert_matches_type(InventoryAssemblyItem, inventory_assembly_item, path=["response"])
 
     @parametrize
     def test_streaming_response_create(self, client: Conductor) -> None:
@@ -99,7 +99,7 @@ class TestInventoryAssemblyItems:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             inventory_assembly_item = response.parse()
-            assert_matches_type(QbdInventoryAssemblyItem, inventory_assembly_item, path=["response"])
+            assert_matches_type(InventoryAssemblyItem, inventory_assembly_item, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -109,7 +109,7 @@ class TestInventoryAssemblyItems:
             id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdInventoryAssemblyItem, inventory_assembly_item, path=["response"])
+        assert_matches_type(InventoryAssemblyItem, inventory_assembly_item, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Conductor) -> None:
@@ -121,7 +121,7 @@ class TestInventoryAssemblyItems:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         inventory_assembly_item = response.parse()
-        assert_matches_type(QbdInventoryAssemblyItem, inventory_assembly_item, path=["response"])
+        assert_matches_type(InventoryAssemblyItem, inventory_assembly_item, path=["response"])
 
     @parametrize
     def test_streaming_response_retrieve(self, client: Conductor) -> None:
@@ -133,7 +133,7 @@ class TestInventoryAssemblyItems:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             inventory_assembly_item = response.parse()
-            assert_matches_type(QbdInventoryAssemblyItem, inventory_assembly_item, path=["response"])
+            assert_matches_type(InventoryAssemblyItem, inventory_assembly_item, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -152,7 +152,7 @@ class TestInventoryAssemblyItems:
             revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdInventoryAssemblyItem, inventory_assembly_item, path=["response"])
+        assert_matches_type(InventoryAssemblyItem, inventory_assembly_item, path=["response"])
 
     @parametrize
     def test_method_update_with_all_params(self, client: Conductor) -> None:
@@ -193,7 +193,7 @@ class TestInventoryAssemblyItems:
             unit_of_measure_set_id="80000003-1234567890",
             update_existing_transactions_income_account=False,
         )
-        assert_matches_type(QbdInventoryAssemblyItem, inventory_assembly_item, path=["response"])
+        assert_matches_type(InventoryAssemblyItem, inventory_assembly_item, path=["response"])
 
     @parametrize
     def test_raw_response_update(self, client: Conductor) -> None:
@@ -206,7 +206,7 @@ class TestInventoryAssemblyItems:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         inventory_assembly_item = response.parse()
-        assert_matches_type(QbdInventoryAssemblyItem, inventory_assembly_item, path=["response"])
+        assert_matches_type(InventoryAssemblyItem, inventory_assembly_item, path=["response"])
 
     @parametrize
     def test_streaming_response_update(self, client: Conductor) -> None:
@@ -219,7 +219,7 @@ class TestInventoryAssemblyItems:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             inventory_assembly_item = response.parse()
-            assert_matches_type(QbdInventoryAssemblyItem, inventory_assembly_item, path=["response"])
+            assert_matches_type(InventoryAssemblyItem, inventory_assembly_item, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -237,7 +237,7 @@ class TestInventoryAssemblyItems:
         inventory_assembly_item = client.qbd.inventory_assembly_items.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(SyncCursorPage[QbdInventoryAssemblyItem], inventory_assembly_item, path=["response"])
+        assert_matches_type(SyncCursorPage[InventoryAssemblyItem], inventory_assembly_item, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Conductor) -> None:
@@ -257,7 +257,7 @@ class TestInventoryAssemblyItems:
             updated_after="updatedAfter",
             updated_before="updatedBefore",
         )
-        assert_matches_type(SyncCursorPage[QbdInventoryAssemblyItem], inventory_assembly_item, path=["response"])
+        assert_matches_type(SyncCursorPage[InventoryAssemblyItem], inventory_assembly_item, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Conductor) -> None:
@@ -268,7 +268,7 @@ class TestInventoryAssemblyItems:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         inventory_assembly_item = response.parse()
-        assert_matches_type(SyncCursorPage[QbdInventoryAssemblyItem], inventory_assembly_item, path=["response"])
+        assert_matches_type(SyncCursorPage[InventoryAssemblyItem], inventory_assembly_item, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Conductor) -> None:
@@ -279,7 +279,7 @@ class TestInventoryAssemblyItems:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             inventory_assembly_item = response.parse()
-            assert_matches_type(SyncCursorPage[QbdInventoryAssemblyItem], inventory_assembly_item, path=["response"])
+            assert_matches_type(SyncCursorPage[InventoryAssemblyItem], inventory_assembly_item, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -296,7 +296,7 @@ class TestAsyncInventoryAssemblyItems:
             name="Deluxe Kit",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdInventoryAssemblyItem, inventory_assembly_item, path=["response"])
+        assert_matches_type(InventoryAssemblyItem, inventory_assembly_item, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncConductor) -> None:
@@ -335,7 +335,7 @@ class TestAsyncInventoryAssemblyItems:
             total_value="1500.00",
             unit_of_measure_set_id="80000003-1234567890",
         )
-        assert_matches_type(QbdInventoryAssemblyItem, inventory_assembly_item, path=["response"])
+        assert_matches_type(InventoryAssemblyItem, inventory_assembly_item, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncConductor) -> None:
@@ -350,7 +350,7 @@ class TestAsyncInventoryAssemblyItems:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         inventory_assembly_item = await response.parse()
-        assert_matches_type(QbdInventoryAssemblyItem, inventory_assembly_item, path=["response"])
+        assert_matches_type(InventoryAssemblyItem, inventory_assembly_item, path=["response"])
 
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncConductor) -> None:
@@ -365,7 +365,7 @@ class TestAsyncInventoryAssemblyItems:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             inventory_assembly_item = await response.parse()
-            assert_matches_type(QbdInventoryAssemblyItem, inventory_assembly_item, path=["response"])
+            assert_matches_type(InventoryAssemblyItem, inventory_assembly_item, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -375,7 +375,7 @@ class TestAsyncInventoryAssemblyItems:
             id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdInventoryAssemblyItem, inventory_assembly_item, path=["response"])
+        assert_matches_type(InventoryAssemblyItem, inventory_assembly_item, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncConductor) -> None:
@@ -387,7 +387,7 @@ class TestAsyncInventoryAssemblyItems:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         inventory_assembly_item = await response.parse()
-        assert_matches_type(QbdInventoryAssemblyItem, inventory_assembly_item, path=["response"])
+        assert_matches_type(InventoryAssemblyItem, inventory_assembly_item, path=["response"])
 
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncConductor) -> None:
@@ -399,7 +399,7 @@ class TestAsyncInventoryAssemblyItems:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             inventory_assembly_item = await response.parse()
-            assert_matches_type(QbdInventoryAssemblyItem, inventory_assembly_item, path=["response"])
+            assert_matches_type(InventoryAssemblyItem, inventory_assembly_item, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -418,7 +418,7 @@ class TestAsyncInventoryAssemblyItems:
             revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdInventoryAssemblyItem, inventory_assembly_item, path=["response"])
+        assert_matches_type(InventoryAssemblyItem, inventory_assembly_item, path=["response"])
 
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncConductor) -> None:
@@ -459,7 +459,7 @@ class TestAsyncInventoryAssemblyItems:
             unit_of_measure_set_id="80000003-1234567890",
             update_existing_transactions_income_account=False,
         )
-        assert_matches_type(QbdInventoryAssemblyItem, inventory_assembly_item, path=["response"])
+        assert_matches_type(InventoryAssemblyItem, inventory_assembly_item, path=["response"])
 
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncConductor) -> None:
@@ -472,7 +472,7 @@ class TestAsyncInventoryAssemblyItems:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         inventory_assembly_item = await response.parse()
-        assert_matches_type(QbdInventoryAssemblyItem, inventory_assembly_item, path=["response"])
+        assert_matches_type(InventoryAssemblyItem, inventory_assembly_item, path=["response"])
 
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncConductor) -> None:
@@ -485,7 +485,7 @@ class TestAsyncInventoryAssemblyItems:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             inventory_assembly_item = await response.parse()
-            assert_matches_type(QbdInventoryAssemblyItem, inventory_assembly_item, path=["response"])
+            assert_matches_type(InventoryAssemblyItem, inventory_assembly_item, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -503,7 +503,7 @@ class TestAsyncInventoryAssemblyItems:
         inventory_assembly_item = await async_client.qbd.inventory_assembly_items.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(AsyncCursorPage[QbdInventoryAssemblyItem], inventory_assembly_item, path=["response"])
+        assert_matches_type(AsyncCursorPage[InventoryAssemblyItem], inventory_assembly_item, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncConductor) -> None:
@@ -523,7 +523,7 @@ class TestAsyncInventoryAssemblyItems:
             updated_after="updatedAfter",
             updated_before="updatedBefore",
         )
-        assert_matches_type(AsyncCursorPage[QbdInventoryAssemblyItem], inventory_assembly_item, path=["response"])
+        assert_matches_type(AsyncCursorPage[InventoryAssemblyItem], inventory_assembly_item, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncConductor) -> None:
@@ -534,7 +534,7 @@ class TestAsyncInventoryAssemblyItems:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         inventory_assembly_item = await response.parse()
-        assert_matches_type(AsyncCursorPage[QbdInventoryAssemblyItem], inventory_assembly_item, path=["response"])
+        assert_matches_type(AsyncCursorPage[InventoryAssemblyItem], inventory_assembly_item, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncConductor) -> None:
@@ -545,6 +545,6 @@ class TestAsyncInventoryAssemblyItems:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             inventory_assembly_item = await response.parse()
-            assert_matches_type(AsyncCursorPage[QbdInventoryAssemblyItem], inventory_assembly_item, path=["response"])
+            assert_matches_type(AsyncCursorPage[InventoryAssemblyItem], inventory_assembly_item, path=["response"])
 
         assert cast(Any, response.is_closed) is True
