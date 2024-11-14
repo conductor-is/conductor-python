@@ -148,6 +148,14 @@ from .non_inventory_items import (
     NonInventoryItemsResourceWithStreamingResponse,
     AsyncNonInventoryItemsResourceWithStreamingResponse,
 )
+from .inventory_assembly_items import (
+    InventoryAssemblyItemsResource,
+    AsyncInventoryAssemblyItemsResource,
+    InventoryAssemblyItemsResourceWithRawResponse,
+    AsyncInventoryAssemblyItemsResourceWithRawResponse,
+    InventoryAssemblyItemsResourceWithStreamingResponse,
+    AsyncInventoryAssemblyItemsResourceWithStreamingResponse,
+)
 
 __all__ = ["QbdResource", "AsyncQbdResource"]
 
@@ -224,6 +232,10 @@ class QbdResource(SyncAPIResource):
     @cached_property
     def vendors(self) -> VendorsResource:
         return VendorsResource(self._client)
+
+    @cached_property
+    def inventory_assembly_items(self) -> InventoryAssemblyItemsResource:
+        return InventoryAssemblyItemsResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> QbdResourceWithRawResponse:
@@ -317,6 +329,10 @@ class AsyncQbdResource(AsyncAPIResource):
     @cached_property
     def vendors(self) -> AsyncVendorsResource:
         return AsyncVendorsResource(self._client)
+
+    @cached_property
+    def inventory_assembly_items(self) -> AsyncInventoryAssemblyItemsResource:
+        return AsyncInventoryAssemblyItemsResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncQbdResourceWithRawResponse:
@@ -414,6 +430,10 @@ class QbdResourceWithRawResponse:
     def vendors(self) -> VendorsResourceWithRawResponse:
         return VendorsResourceWithRawResponse(self._qbd.vendors)
 
+    @cached_property
+    def inventory_assembly_items(self) -> InventoryAssemblyItemsResourceWithRawResponse:
+        return InventoryAssemblyItemsResourceWithRawResponse(self._qbd.inventory_assembly_items)
+
 
 class AsyncQbdResourceWithRawResponse:
     def __init__(self, qbd: AsyncQbdResource) -> None:
@@ -490,6 +510,10 @@ class AsyncQbdResourceWithRawResponse:
     @cached_property
     def vendors(self) -> AsyncVendorsResourceWithRawResponse:
         return AsyncVendorsResourceWithRawResponse(self._qbd.vendors)
+
+    @cached_property
+    def inventory_assembly_items(self) -> AsyncInventoryAssemblyItemsResourceWithRawResponse:
+        return AsyncInventoryAssemblyItemsResourceWithRawResponse(self._qbd.inventory_assembly_items)
 
 
 class QbdResourceWithStreamingResponse:
@@ -568,6 +592,10 @@ class QbdResourceWithStreamingResponse:
     def vendors(self) -> VendorsResourceWithStreamingResponse:
         return VendorsResourceWithStreamingResponse(self._qbd.vendors)
 
+    @cached_property
+    def inventory_assembly_items(self) -> InventoryAssemblyItemsResourceWithStreamingResponse:
+        return InventoryAssemblyItemsResourceWithStreamingResponse(self._qbd.inventory_assembly_items)
+
 
 class AsyncQbdResourceWithStreamingResponse:
     def __init__(self, qbd: AsyncQbdResource) -> None:
@@ -644,3 +672,7 @@ class AsyncQbdResourceWithStreamingResponse:
     @cached_property
     def vendors(self) -> AsyncVendorsResourceWithStreamingResponse:
         return AsyncVendorsResourceWithStreamingResponse(self._qbd.vendors)
+
+    @cached_property
+    def inventory_assembly_items(self) -> AsyncInventoryAssemblyItemsResourceWithStreamingResponse:
+        return AsyncInventoryAssemblyItemsResourceWithStreamingResponse(self._qbd.inventory_assembly_items)
