@@ -152,6 +152,14 @@ from .non_inventory_items import (
     NonInventoryItemsResourceWithStreamingResponse,
     AsyncNonInventoryItemsResourceWithStreamingResponse,
 )
+from .inventory_assembly_items import (
+    InventoryAssemblyItemsResource,
+    AsyncInventoryAssemblyItemsResource,
+    InventoryAssemblyItemsResourceWithRawResponse,
+    AsyncInventoryAssemblyItemsResourceWithRawResponse,
+    InventoryAssemblyItemsResourceWithStreamingResponse,
+    AsyncInventoryAssemblyItemsResourceWithStreamingResponse,
+)
 
 __all__ = [
     "AccountsResource",
@@ -262,6 +270,12 @@ __all__ = [
     "AsyncVendorsResourceWithRawResponse",
     "VendorsResourceWithStreamingResponse",
     "AsyncVendorsResourceWithStreamingResponse",
+    "InventoryAssemblyItemsResource",
+    "AsyncInventoryAssemblyItemsResource",
+    "InventoryAssemblyItemsResourceWithRawResponse",
+    "AsyncInventoryAssemblyItemsResourceWithRawResponse",
+    "InventoryAssemblyItemsResourceWithStreamingResponse",
+    "AsyncInventoryAssemblyItemsResourceWithStreamingResponse",
     "QbdResource",
     "AsyncQbdResource",
     "QbdResourceWithRawResponse",

@@ -53,6 +53,7 @@ from .sales_tax_code_list_params import SalesTaxCodeListParams as SalesTaxCodeLi
 from .sales_tax_item_list_params import SalesTaxItemListParams as SalesTaxItemListParams
 from .service_item_create_params import ServiceItemCreateParams as ServiceItemCreateParams
 from .service_item_update_params import ServiceItemUpdateParams as ServiceItemUpdateParams
+from .qbd_inventory_assembly_item import QbdInventoryAssemblyItem as QbdInventoryAssemblyItem
 from .standard_term_create_params import StandardTermCreateParams as StandardTermCreateParams
 from .standard_term_list_response import StandardTermListResponse as StandardTermListResponse
 from .date_driven_term_list_params import DateDrivenTermListParams as DateDrivenTermListParams
@@ -77,3 +78,10 @@ from .credit_card_credit_create_params import CreditCardCreditCreateParams as Cr
 from .credit_card_credit_update_params import CreditCardCreditUpdateParams as CreditCardCreditUpdateParams
 from .non_inventory_item_create_params import NonInventoryItemCreateParams as NonInventoryItemCreateParams
 from .non_inventory_item_update_params import NonInventoryItemUpdateParams as NonInventoryItemUpdateParams
+from .inventory_assembly_item_list_params import InventoryAssemblyItemListParams as InventoryAssemblyItemListParams
+from .inventory_assembly_item_create_params import (
+    InventoryAssemblyItemCreateParams as InventoryAssemblyItemCreateParams,
+)
+from .inventory_assembly_item_update_params import (
+    InventoryAssemblyItemUpdateParams as InventoryAssemblyItemUpdateParams,
+)
