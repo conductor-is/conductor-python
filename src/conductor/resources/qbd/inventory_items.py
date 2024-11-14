@@ -52,14 +52,14 @@ class InventoryItemsResource(SyncAPIResource):
     def create(
         self,
         *,
+        asset_account_id: str,
+        cogs_account_id: str,
+        income_account_id: str,
         name: str,
         conductor_end_user_id: str,
-        asset_account_id: str | NotGiven = NOT_GIVEN,
         barcode: inventory_item_create_params.Barcode | NotGiven = NOT_GIVEN,
         class_id: str | NotGiven = NOT_GIVEN,
-        cogs_account_id: str | NotGiven = NOT_GIVEN,
         external_id: str | NotGiven = NOT_GIVEN,
-        income_account_id: str | NotGiven = NOT_GIVEN,
         inventory_date: Union[str, date] | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
         maximum_quantity_on_hand: float | NotGiven = NOT_GIVEN,
@@ -87,6 +87,14 @@ class InventoryItemsResource(SyncAPIResource):
         Creates an inventory item.
 
         Args:
+          asset_account_id: The asset account used to track the current value of this inventory item in
+              inventory.
+
+          cogs_account_id: The Cost of Goods Sold (COGS) account for this inventory item, tracking the
+              original direct costs of producing goods sold.
+
+          income_account_id: The income account used to track revenue from sales of this inventory item.
+
           name: The case-insensitive name of this inventory item. Not guaranteed to be unique
               because it does not include the names of its parent objects like `fullName`
               does. For example, two inventory items could both have the `name` "Widget", but
@@ -96,17 +104,11 @@ class InventoryItemsResource(SyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          asset_account_id: The asset account used to track the current value of this inventory item in
-              inventory.
-
           barcode: The inventory item's barcode.
 
           class_id: The inventory item's class. Classes can be used to categorize objects into
               meaningful segments, such as department, location, or type of work. In
               QuickBooks, class tracking is off by default.
-
-          cogs_account_id: The Cost of Goods Sold (COGS) account for this inventory item, tracking the
-              original direct costs of producing goods sold.
 
           external_id: A globally unique identifier (GUID) you can provide for tracking this object in
               your external system.
@@ -114,8 +116,6 @@ class InventoryItemsResource(SyncAPIResource):
               **IMPORTANT**: Must be formatted as a valid GUID; otherwise, QuickBooks will
               return an error. This field is immutable and can only be set during object
               creation.
-
-          income_account_id: The income account used to track revenue from sales of this inventory item.
 
           inventory_date: The date when this inventory item was converted into an inventory item from some
               other type of item, in ISO 8601 format (YYYY-MM-DD).
@@ -187,13 +187,13 @@ class InventoryItemsResource(SyncAPIResource):
             "/quickbooks-desktop/inventory-items",
             body=maybe_transform(
                 {
-                    "name": name,
                     "asset_account_id": asset_account_id,
+                    "cogs_account_id": cogs_account_id,
+                    "income_account_id": income_account_id,
+                    "name": name,
                     "barcode": barcode,
                     "class_id": class_id,
-                    "cogs_account_id": cogs_account_id,
                     "external_id": external_id,
-                    "income_account_id": income_account_id,
                     "inventory_date": inventory_date,
                     "is_active": is_active,
                     "maximum_quantity_on_hand": maximum_quantity_on_hand,
@@ -612,14 +612,14 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
     async def create(
         self,
         *,
+        asset_account_id: str,
+        cogs_account_id: str,
+        income_account_id: str,
         name: str,
         conductor_end_user_id: str,
-        asset_account_id: str | NotGiven = NOT_GIVEN,
         barcode: inventory_item_create_params.Barcode | NotGiven = NOT_GIVEN,
         class_id: str | NotGiven = NOT_GIVEN,
-        cogs_account_id: str | NotGiven = NOT_GIVEN,
         external_id: str | NotGiven = NOT_GIVEN,
-        income_account_id: str | NotGiven = NOT_GIVEN,
         inventory_date: Union[str, date] | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
         maximum_quantity_on_hand: float | NotGiven = NOT_GIVEN,
@@ -647,6 +647,14 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
         Creates an inventory item.
 
         Args:
+          asset_account_id: The asset account used to track the current value of this inventory item in
+              inventory.
+
+          cogs_account_id: The Cost of Goods Sold (COGS) account for this inventory item, tracking the
+              original direct costs of producing goods sold.
+
+          income_account_id: The income account used to track revenue from sales of this inventory item.
+
           name: The case-insensitive name of this inventory item. Not guaranteed to be unique
               because it does not include the names of its parent objects like `fullName`
               does. For example, two inventory items could both have the `name` "Widget", but
@@ -656,17 +664,11 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          asset_account_id: The asset account used to track the current value of this inventory item in
-              inventory.
-
           barcode: The inventory item's barcode.
 
           class_id: The inventory item's class. Classes can be used to categorize objects into
               meaningful segments, such as department, location, or type of work. In
               QuickBooks, class tracking is off by default.
-
-          cogs_account_id: The Cost of Goods Sold (COGS) account for this inventory item, tracking the
-              original direct costs of producing goods sold.
 
           external_id: A globally unique identifier (GUID) you can provide for tracking this object in
               your external system.
@@ -674,8 +676,6 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
               **IMPORTANT**: Must be formatted as a valid GUID; otherwise, QuickBooks will
               return an error. This field is immutable and can only be set during object
               creation.
-
-          income_account_id: The income account used to track revenue from sales of this inventory item.
 
           inventory_date: The date when this inventory item was converted into an inventory item from some
               other type of item, in ISO 8601 format (YYYY-MM-DD).
@@ -747,13 +747,13 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
             "/quickbooks-desktop/inventory-items",
             body=await async_maybe_transform(
                 {
-                    "name": name,
                     "asset_account_id": asset_account_id,
+                    "cogs_account_id": cogs_account_id,
+                    "income_account_id": income_account_id,
+                    "name": name,
                     "barcode": barcode,
                     "class_id": class_id,
-                    "cogs_account_id": cogs_account_id,
                     "external_id": external_id,
-                    "income_account_id": income_account_id,
                     "inventory_date": inventory_date,
                     "is_active": is_active,
                     "maximum_quantity_on_hand": maximum_quantity_on_hand,

@@ -192,15 +192,15 @@ class SalesAndPurchaseDetails(TypedDict, total=False):
 
 
 class SalesOrPurchaseDetails(TypedDict, total=False):
-    account_id: Annotated[str, PropertyInfo(alias="accountId")]
+    description: str
+    """A description of this item."""
+
+    posting_account_id: Annotated[str, PropertyInfo(alias="postingAccountId")]
     """
-    The account associated with this item, used when recording transactions
+    The posting account associated with this item, used when recording transactions
     involving this item. This could be an income account when selling or an expense
     account when purchasing.
     """
-
-    description: str
-    """A description of this item."""
 
     price: str
     """
