@@ -46,6 +46,7 @@ from .customer_create_params import CustomerCreateParams as CustomerCreateParams
 from .customer_update_params import CustomerUpdateParams as CustomerUpdateParams
 from .transfer_create_params import TransferCreateParams as TransferCreateParams
 from .transfer_update_params import TransferUpdateParams as TransferUpdateParams
+from .inventory_assembly_item import InventoryAssemblyItem as InventoryAssemblyItem
 from .service_item_list_params import ServiceItemListParams as ServiceItemListParams
 from .standard_term_list_params import StandardTermListParams as StandardTermListParams
 from .inventory_item_list_params import InventoryItemListParams as InventoryItemListParams
@@ -53,7 +54,6 @@ from .sales_tax_code_list_params import SalesTaxCodeListParams as SalesTaxCodeLi
 from .sales_tax_item_list_params import SalesTaxItemListParams as SalesTaxItemListParams
 from .service_item_create_params import ServiceItemCreateParams as ServiceItemCreateParams
 from .service_item_update_params import ServiceItemUpdateParams as ServiceItemUpdateParams
-from .qbd_inventory_assembly_item import QbdInventoryAssemblyItem as QbdInventoryAssemblyItem
 from .standard_term_create_params import StandardTermCreateParams as StandardTermCreateParams
 from .standard_term_list_response import StandardTermListResponse as StandardTermListResponse
 from .date_driven_term_list_params import DateDrivenTermListParams as DateDrivenTermListParams
