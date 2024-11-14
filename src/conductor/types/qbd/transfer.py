@@ -8,7 +8,7 @@ from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
 
-__all__ = ["Transfer", "Class", "TransferFromAccount", "TransferToAccount"]
+__all__ = ["Transfer", "Class", "SourceAccount", "TargetAccount"]
 
 
 class Class(BaseModel):
@@ -27,7 +27,7 @@ class Class(BaseModel):
     """
 
 
-class TransferFromAccount(BaseModel):
+class SourceAccount(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks to this object.
 
@@ -43,7 +43,7 @@ class TransferFromAccount(BaseModel):
     """
 
 
-class TransferToAccount(BaseModel):
+class TargetAccount(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks to this object.
 
@@ -84,9 +84,6 @@ class Transfer(BaseModel):
     in QuickBooks.
     """
 
-    from_account_balance: Optional[str] = FieldInfo(alias="fromAccountBalance", default=None)
-    """The balance of the account from which money will be transferred."""
-
     memo: Optional[str] = None
     """A memo or note for this transfer, as entered by the user."""
 
@@ -101,17 +98,20 @@ class Transfer(BaseModel):
     update will return an error.
     """
 
-    to_account_balance: Optional[str] = FieldInfo(alias="toAccountBalance", default=None)
+    source_account: Optional[SourceAccount] = FieldInfo(alias="sourceAccount", default=None)
+    """The account from which money will be transferred."""
+
+    source_account_balance: Optional[str] = FieldInfo(alias="sourceAccountBalance", default=None)
+    """The balance of the account from which money will be transferred."""
+
+    target_account: Optional[TargetAccount] = FieldInfo(alias="targetAccount", default=None)
+    """The account to which money will be transferred."""
+
+    target_account_balance: Optional[str] = FieldInfo(alias="targetAccountBalance", default=None)
     """The balance of the account to which money will be transferred."""
 
     transaction_date: date = FieldInfo(alias="transactionDate")
     """The date of this transfer, in ISO 8601 format (YYYY-MM-DD)."""
-
-    transfer_from_account: Optional[TransferFromAccount] = FieldInfo(alias="transferFromAccount", default=None)
-    """The account from which money will be transferred."""
-
-    transfer_to_account: Optional[TransferToAccount] = FieldInfo(alias="transferToAccount", default=None)
-    """The account to which money will be transferred."""
 
     updated_at: str = FieldInfo(alias="updatedAt")
     """
