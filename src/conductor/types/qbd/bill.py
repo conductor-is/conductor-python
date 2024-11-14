@@ -1309,6 +1309,9 @@ class Bill(BaseModel):
     The Accounts-Payable (A/P) account to which this bill is assigned, used to track
     the amount owed. If not specified, QuickBooks Desktop will use its default
     Accounts-Payable account.
+
+    **IMPORTANT**: If this bill is linked to other transactions, this A/P account
+    must match the `payablesAccount` used in the other transactions.
     """
 
     ref_number: Optional[str] = FieldInfo(alias="refNumber", default=None)

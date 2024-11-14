@@ -137,6 +137,9 @@ class BillsResource(SyncAPIResource):
               the amount owed. If not specified, QuickBooks Desktop will use its default
               Accounts-Payable account.
 
+              **IMPORTANT**: If this bill is linked to other transactions, this A/P account
+              must match the `payablesAccount` used in the other transactions.
+
           ref_number: The case-sensitive user-defined reference number for this bill, which can be
               used to identify the transaction in QuickBooks. This value is not required to be
               unique and can be arbitrarily changed by the QuickBooks user.
@@ -319,6 +322,9 @@ class BillsResource(SyncAPIResource):
           payables_account_id: The Accounts-Payable (A/P) account to which this bill is assigned, used to track
               the amount owed. If not specified, QuickBooks Desktop will use its default
               Accounts-Payable account.
+
+              **IMPORTANT**: If this bill is linked to other transactions, this A/P account
+              must match the `payablesAccount` used in the other transactions.
 
           ref_number: The case-sensitive user-defined reference number for this bill, which can be
               used to identify the transaction in QuickBooks. This value is not required to be
@@ -640,6 +646,9 @@ class AsyncBillsResource(AsyncAPIResource):
               the amount owed. If not specified, QuickBooks Desktop will use its default
               Accounts-Payable account.
 
+              **IMPORTANT**: If this bill is linked to other transactions, this A/P account
+              must match the `payablesAccount` used in the other transactions.
+
           ref_number: The case-sensitive user-defined reference number for this bill, which can be
               used to identify the transaction in QuickBooks. This value is not required to be
               unique and can be arbitrarily changed by the QuickBooks user.
@@ -822,6 +831,9 @@ class AsyncBillsResource(AsyncAPIResource):
           payables_account_id: The Accounts-Payable (A/P) account to which this bill is assigned, used to track
               the amount owed. If not specified, QuickBooks Desktop will use its default
               Accounts-Payable account.
+
+              **IMPORTANT**: If this bill is linked to other transactions, this A/P account
+              must match the `payablesAccount` used in the other transactions.
 
           ref_number: The case-sensitive user-defined reference number for this bill, which can be
               used to identify the transaction in QuickBooks. This value is not required to be

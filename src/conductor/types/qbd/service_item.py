@@ -18,7 +18,7 @@ __all__ = [
     "SalesAndPurchaseDetailsPreferredVendor",
     "SalesAndPurchaseDetailsPurchaseTaxCode",
     "SalesOrPurchaseDetails",
-    "SalesOrPurchaseDetailsAccount",
+    "SalesOrPurchaseDetailsPostingAccount",
     "SalesTaxCode",
     "UnitOfMeasureSet",
 ]
@@ -202,7 +202,7 @@ class SalesAndPurchaseDetails(BaseModel):
     """
 
 
-class SalesOrPurchaseDetailsAccount(BaseModel):
+class SalesOrPurchaseDetailsPostingAccount(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks to this object.
 
@@ -219,15 +219,15 @@ class SalesOrPurchaseDetailsAccount(BaseModel):
 
 
 class SalesOrPurchaseDetails(BaseModel):
-    account: Optional[SalesOrPurchaseDetailsAccount] = None
+    description: Optional[str] = None
+    """A description of this item."""
+
+    posting_account: Optional[SalesOrPurchaseDetailsPostingAccount] = FieldInfo(alias="postingAccount", default=None)
     """
-    The account associated with this item, used when recording transactions
+    The posting account associated with this item, used when recording transactions
     involving this item. This could be an income account when selling or an expense
     account when purchasing.
     """
-
-    description: Optional[str] = None
-    """A description of this item."""
 
     price: Optional[str] = None
     """

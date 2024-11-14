@@ -124,9 +124,8 @@ class BillPaymentChecksResource(SyncAPIResource):
               used to track the amount owed. If not specified, QuickBooks Desktop will use its
               default Accounts-Payable account.
 
-              **IMPORTANT**: This A/P account must match the `payablesAccount` on the bill(s)
-              specified in `applyToTransactions`; otherwise, QuickBooks will say the
-              `transactionId` in `applyToTransactions` "does not exist".
+              **IMPORTANT**: If this bill payment check is linked to other transactions, this
+              A/P account must match the `payablesAccount` used in the other transactions.
 
           ref_number: The case-sensitive user-defined reference number for this bill payment check,
               which can be used to identify the transaction in QuickBooks. This value is not
@@ -547,9 +546,8 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
               used to track the amount owed. If not specified, QuickBooks Desktop will use its
               default Accounts-Payable account.
 
-              **IMPORTANT**: This A/P account must match the `payablesAccount` on the bill(s)
-              specified in `applyToTransactions`; otherwise, QuickBooks will say the
-              `transactionId` in `applyToTransactions` "does not exist".
+              **IMPORTANT**: If this bill payment check is linked to other transactions, this
+              A/P account must match the `payablesAccount` used in the other transactions.
 
           ref_number: The case-sensitive user-defined reference number for this bill payment check,
               which can be used to identify the transaction in QuickBooks. This value is not

@@ -12,6 +12,21 @@ __all__ = ["InventoryItemCreateParams", "Barcode"]
 
 
 class InventoryItemCreateParams(TypedDict, total=False):
+    asset_account_id: Required[Annotated[str, PropertyInfo(alias="assetAccountId")]]
+    """
+    The asset account used to track the current value of this inventory item in
+    inventory.
+    """
+
+    cogs_account_id: Required[Annotated[str, PropertyInfo(alias="cogsAccountId")]]
+    """
+    The Cost of Goods Sold (COGS) account for this inventory item, tracking the
+    original direct costs of producing goods sold.
+    """
+
+    income_account_id: Required[Annotated[str, PropertyInfo(alias="incomeAccountId")]]
+    """The income account used to track revenue from sales of this inventory item."""
+
     name: Required[str]
     """The case-insensitive name of this inventory item.
 
@@ -27,12 +42,6 @@ class InventoryItemCreateParams(TypedDict, total=False):
     `"Conductor-End-User-Id: {{END_USER_ID}}"`).
     """
 
-    asset_account_id: Annotated[str, PropertyInfo(alias="assetAccountId")]
-    """
-    The asset account used to track the current value of this inventory item in
-    inventory.
-    """
-
     barcode: Barcode
     """The inventory item's barcode."""
 
@@ -44,12 +53,6 @@ class InventoryItemCreateParams(TypedDict, total=False):
     default.
     """
 
-    cogs_account_id: Annotated[str, PropertyInfo(alias="cogsAccountId")]
-    """
-    The Cost of Goods Sold (COGS) account for this inventory item, tracking the
-    original direct costs of producing goods sold.
-    """
-
     external_id: Annotated[str, PropertyInfo(alias="externalId")]
     """
     A globally unique identifier (GUID) you can provide for tracking this object in
@@ -59,9 +62,6 @@ class InventoryItemCreateParams(TypedDict, total=False):
     return an error. This field is immutable and can only be set during object
     creation.
     """
-
-    income_account_id: Annotated[str, PropertyInfo(alias="incomeAccountId")]
-    """The income account used to track revenue from sales of this inventory item."""
 
     inventory_date: Annotated[Union[str, date], PropertyInfo(alias="inventoryDate", format="iso8601")]
     """
