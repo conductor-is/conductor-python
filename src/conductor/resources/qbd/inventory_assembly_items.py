@@ -56,15 +56,15 @@ class InventoryAssemblyItemsResource(SyncAPIResource):
     def create(
         self,
         *,
+        asset_account_id: str,
+        cogs_account_id: str,
+        income_account_id: str,
         name: str,
         conductor_end_user_id: str,
-        asset_account_id: str | NotGiven = NOT_GIVEN,
         barcode: inventory_assembly_item_create_params.Barcode | NotGiven = NOT_GIVEN,
         build_notification_threshold: float | NotGiven = NOT_GIVEN,
         class_id: str | NotGiven = NOT_GIVEN,
-        cogs_account_id: str | NotGiven = NOT_GIVEN,
         external_id: str | NotGiven = NOT_GIVEN,
-        income_account_id: str | NotGiven = NOT_GIVEN,
         inventory_date: Union[str, date] | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
         item_lines: Iterable[inventory_assembly_item_create_params.ItemLine] | NotGiven = NOT_GIVEN,
@@ -91,6 +91,15 @@ class InventoryAssemblyItemsResource(SyncAPIResource):
         Creates an inventory assembly item.
 
         Args:
+          asset_account_id: The asset account used to track the current value of this inventory assembly
+              item in inventory.
+
+          cogs_account_id: The Cost of Goods Sold (COGS) account for this inventory assembly item, tracking
+              the original direct costs of producing goods sold.
+
+          income_account_id: The income account used to track revenue from sales of this inventory assembly
+              item.
+
           name: The case-insensitive name of this inventory assembly item. Not guaranteed to be
               unique because it does not include the names of its parent objects like
               `fullName` does. For example, two inventory assembly items could both have the
@@ -100,9 +109,6 @@ class InventoryAssemblyItemsResource(SyncAPIResource):
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
-
-          asset_account_id: The asset account used to track the current value of this inventory assembly
-              item in inventory.
 
           barcode: The inventory assembly item's barcode.
 
@@ -116,18 +122,12 @@ class InventoryAssemblyItemsResource(SyncAPIResource):
               into meaningful segments, such as department, location, or type of work. In
               QuickBooks, class tracking is off by default.
 
-          cogs_account_id: The Cost of Goods Sold (COGS) account for this inventory assembly item, tracking
-              the original direct costs of producing goods sold.
-
           external_id: A globally unique identifier (GUID) you can provide for tracking this object in
               your external system.
 
               **IMPORTANT**: Must be formatted as a valid GUID; otherwise, QuickBooks will
               return an error. This field is immutable and can only be set during object
               creation.
-
-          income_account_id: The income account used to track revenue from sales of this inventory assembly
-              item.
 
           inventory_date: The date when this inventory assembly item was converted into an inventory item
               from some other type of item, in ISO 8601 format (YYYY-MM-DD).
@@ -197,14 +197,14 @@ class InventoryAssemblyItemsResource(SyncAPIResource):
             "/quickbooks-desktop/inventory-assembly-items",
             body=maybe_transform(
                 {
-                    "name": name,
                     "asset_account_id": asset_account_id,
+                    "cogs_account_id": cogs_account_id,
+                    "income_account_id": income_account_id,
+                    "name": name,
                     "barcode": barcode,
                     "build_notification_threshold": build_notification_threshold,
                     "class_id": class_id,
-                    "cogs_account_id": cogs_account_id,
                     "external_id": external_id,
-                    "income_account_id": income_account_id,
                     "inventory_date": inventory_date,
                     "is_active": is_active,
                     "item_lines": item_lines,
@@ -633,15 +633,15 @@ class AsyncInventoryAssemblyItemsResource(AsyncAPIResource):
     async def create(
         self,
         *,
+        asset_account_id: str,
+        cogs_account_id: str,
+        income_account_id: str,
         name: str,
         conductor_end_user_id: str,
-        asset_account_id: str | NotGiven = NOT_GIVEN,
         barcode: inventory_assembly_item_create_params.Barcode | NotGiven = NOT_GIVEN,
         build_notification_threshold: float | NotGiven = NOT_GIVEN,
         class_id: str | NotGiven = NOT_GIVEN,
-        cogs_account_id: str | NotGiven = NOT_GIVEN,
         external_id: str | NotGiven = NOT_GIVEN,
-        income_account_id: str | NotGiven = NOT_GIVEN,
         inventory_date: Union[str, date] | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
         item_lines: Iterable[inventory_assembly_item_create_params.ItemLine] | NotGiven = NOT_GIVEN,
@@ -668,6 +668,15 @@ class AsyncInventoryAssemblyItemsResource(AsyncAPIResource):
         Creates an inventory assembly item.
 
         Args:
+          asset_account_id: The asset account used to track the current value of this inventory assembly
+              item in inventory.
+
+          cogs_account_id: The Cost of Goods Sold (COGS) account for this inventory assembly item, tracking
+              the original direct costs of producing goods sold.
+
+          income_account_id: The income account used to track revenue from sales of this inventory assembly
+              item.
+
           name: The case-insensitive name of this inventory assembly item. Not guaranteed to be
               unique because it does not include the names of its parent objects like
               `fullName` does. For example, two inventory assembly items could both have the
@@ -677,9 +686,6 @@ class AsyncInventoryAssemblyItemsResource(AsyncAPIResource):
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
-
-          asset_account_id: The asset account used to track the current value of this inventory assembly
-              item in inventory.
 
           barcode: The inventory assembly item's barcode.
 
@@ -693,18 +699,12 @@ class AsyncInventoryAssemblyItemsResource(AsyncAPIResource):
               into meaningful segments, such as department, location, or type of work. In
               QuickBooks, class tracking is off by default.
 
-          cogs_account_id: The Cost of Goods Sold (COGS) account for this inventory assembly item, tracking
-              the original direct costs of producing goods sold.
-
           external_id: A globally unique identifier (GUID) you can provide for tracking this object in
               your external system.
 
               **IMPORTANT**: Must be formatted as a valid GUID; otherwise, QuickBooks will
               return an error. This field is immutable and can only be set during object
               creation.
-
-          income_account_id: The income account used to track revenue from sales of this inventory assembly
-              item.
 
           inventory_date: The date when this inventory assembly item was converted into an inventory item
               from some other type of item, in ISO 8601 format (YYYY-MM-DD).
@@ -774,14 +774,14 @@ class AsyncInventoryAssemblyItemsResource(AsyncAPIResource):
             "/quickbooks-desktop/inventory-assembly-items",
             body=await async_maybe_transform(
                 {
-                    "name": name,
                     "asset_account_id": asset_account_id,
+                    "cogs_account_id": cogs_account_id,
+                    "income_account_id": income_account_id,
+                    "name": name,
                     "barcode": barcode,
                     "build_notification_threshold": build_notification_threshold,
                     "class_id": class_id,
-                    "cogs_account_id": cogs_account_id,
                     "external_id": external_id,
-                    "income_account_id": income_account_id,
                     "inventory_date": inventory_date,
                     "is_active": is_active,
                     "item_lines": item_lines,

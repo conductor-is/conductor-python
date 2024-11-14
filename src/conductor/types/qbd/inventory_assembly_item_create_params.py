@@ -12,6 +12,24 @@ __all__ = ["InventoryAssemblyItemCreateParams", "Barcode", "ItemLine"]
 
 
 class InventoryAssemblyItemCreateParams(TypedDict, total=False):
+    asset_account_id: Required[Annotated[str, PropertyInfo(alias="assetAccountId")]]
+    """
+    The asset account used to track the current value of this inventory assembly
+    item in inventory.
+    """
+
+    cogs_account_id: Required[Annotated[str, PropertyInfo(alias="cogsAccountId")]]
+    """
+    The Cost of Goods Sold (COGS) account for this inventory assembly item, tracking
+    the original direct costs of producing goods sold.
+    """
+
+    income_account_id: Required[Annotated[str, PropertyInfo(alias="incomeAccountId")]]
+    """
+    The income account used to track revenue from sales of this inventory assembly
+    item.
+    """
+
     name: Required[str]
     """The case-insensitive name of this inventory assembly item.
 
@@ -26,12 +44,6 @@ class InventoryAssemblyItemCreateParams(TypedDict, total=False):
     """
     The ID of the EndUser to receive this request (e.g.,
     `"Conductor-End-User-Id: {{END_USER_ID}}"`).
-    """
-
-    asset_account_id: Annotated[str, PropertyInfo(alias="assetAccountId")]
-    """
-    The asset account used to track the current value of this inventory assembly
-    item in inventory.
     """
 
     barcode: Barcode
@@ -54,12 +66,6 @@ class InventoryAssemblyItemCreateParams(TypedDict, total=False):
     default.
     """
 
-    cogs_account_id: Annotated[str, PropertyInfo(alias="cogsAccountId")]
-    """
-    The Cost of Goods Sold (COGS) account for this inventory assembly item, tracking
-    the original direct costs of producing goods sold.
-    """
-
     external_id: Annotated[str, PropertyInfo(alias="externalId")]
     """
     A globally unique identifier (GUID) you can provide for tracking this object in
@@ -68,12 +74,6 @@ class InventoryAssemblyItemCreateParams(TypedDict, total=False):
     **IMPORTANT**: Must be formatted as a valid GUID; otherwise, QuickBooks will
     return an error. This field is immutable and can only be set during object
     creation.
-    """
-
-    income_account_id: Annotated[str, PropertyInfo(alias="incomeAccountId")]
-    """
-    The income account used to track revenue from sales of this inventory assembly
-    item.
     """
 
     inventory_date: Annotated[Union[str, date], PropertyInfo(alias="inventoryDate", format="iso8601")]
