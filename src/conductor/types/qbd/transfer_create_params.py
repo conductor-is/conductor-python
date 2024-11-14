@@ -12,6 +12,12 @@ __all__ = ["TransferCreateParams"]
 
 
 class TransferCreateParams(TypedDict, total=False):
+    amount: Required[str]
+    """The monetary amount of this transfer, represented as a decimal string."""
+
+    target_account_id: Required[Annotated[str, PropertyInfo(alias="targetAccountId")]]
+    """The account to which money will be transferred."""
+
     transaction_date: Required[Annotated[Union[str, date], PropertyInfo(alias="transactionDate", format="iso8601")]]
     """The date of this transfer, in ISO 8601 format (YYYY-MM-DD)."""
 
@@ -20,9 +26,6 @@ class TransferCreateParams(TypedDict, total=False):
     The ID of the EndUser to receive this request (e.g.,
     `"Conductor-End-User-Id: {{END_USER_ID}}"`).
     """
-
-    amount: str
-    """The monetary amount of this transfer, represented as a decimal string."""
 
     class_id: Annotated[str, PropertyInfo(alias="classId")]
     """The transfer's class.
@@ -35,8 +38,5 @@ class TransferCreateParams(TypedDict, total=False):
     memo: str
     """A memo or note for this transfer, as entered by the user."""
 
-    transfer_from_account_id: Annotated[str, PropertyInfo(alias="transferFromAccountId")]
+    source_account_id: Annotated[str, PropertyInfo(alias="sourceAccountId")]
     """The account from which money will be transferred."""
-
-    transfer_to_account_id: Annotated[str, PropertyInfo(alias="transferToAccountId")]
-    """The account to which money will be transferred."""
