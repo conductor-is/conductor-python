@@ -24,6 +24,9 @@ class TestInventoryAssemblyItems:
     @parametrize
     def test_method_create(self, client: Conductor) -> None:
         inventory_assembly_item = client.qbd.inventory_assembly_items.create(
+            asset_account_id="80000009-1234567890",
+            cogs_account_id="80000007-1234567890",
+            income_account_id="80000005-1234567890",
             name="Deluxe Kit",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
@@ -32,9 +35,11 @@ class TestInventoryAssemblyItems:
     @parametrize
     def test_method_create_with_all_params(self, client: Conductor) -> None:
         inventory_assembly_item = client.qbd.inventory_assembly_items.create(
+            asset_account_id="80000009-1234567890",
+            cogs_account_id="80000007-1234567890",
+            income_account_id="80000005-1234567890",
             name="Deluxe Kit",
             conductor_end_user_id="end_usr_1234567abcdefg",
-            asset_account_id="80000009-1234567890",
             barcode={
                 "allow_override": False,
                 "assign_even_if_used": False,
@@ -42,9 +47,7 @@ class TestInventoryAssemblyItems:
             },
             build_notification_threshold=10,
             class_id="80000001-1234567890",
-            cogs_account_id="80000007-1234567890",
             external_id="12345678-abcd-1234-abcd-1234567890ab",
-            income_account_id="80000005-1234567890",
             inventory_date=parse_date("2019-12-27"),
             is_active=True,
             item_lines=[
@@ -71,6 +74,9 @@ class TestInventoryAssemblyItems:
     @parametrize
     def test_raw_response_create(self, client: Conductor) -> None:
         response = client.qbd.inventory_assembly_items.with_raw_response.create(
+            asset_account_id="80000009-1234567890",
+            cogs_account_id="80000007-1234567890",
+            income_account_id="80000005-1234567890",
             name="Deluxe Kit",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
@@ -83,6 +89,9 @@ class TestInventoryAssemblyItems:
     @parametrize
     def test_streaming_response_create(self, client: Conductor) -> None:
         with client.qbd.inventory_assembly_items.with_streaming_response.create(
+            asset_account_id="80000009-1234567890",
+            cogs_account_id="80000007-1234567890",
+            income_account_id="80000005-1234567890",
             name="Deluxe Kit",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
@@ -281,6 +290,9 @@ class TestAsyncInventoryAssemblyItems:
     @parametrize
     async def test_method_create(self, async_client: AsyncConductor) -> None:
         inventory_assembly_item = await async_client.qbd.inventory_assembly_items.create(
+            asset_account_id="80000009-1234567890",
+            cogs_account_id="80000007-1234567890",
+            income_account_id="80000005-1234567890",
             name="Deluxe Kit",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
@@ -289,9 +301,11 @@ class TestAsyncInventoryAssemblyItems:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncConductor) -> None:
         inventory_assembly_item = await async_client.qbd.inventory_assembly_items.create(
+            asset_account_id="80000009-1234567890",
+            cogs_account_id="80000007-1234567890",
+            income_account_id="80000005-1234567890",
             name="Deluxe Kit",
             conductor_end_user_id="end_usr_1234567abcdefg",
-            asset_account_id="80000009-1234567890",
             barcode={
                 "allow_override": False,
                 "assign_even_if_used": False,
@@ -299,9 +313,7 @@ class TestAsyncInventoryAssemblyItems:
             },
             build_notification_threshold=10,
             class_id="80000001-1234567890",
-            cogs_account_id="80000007-1234567890",
             external_id="12345678-abcd-1234-abcd-1234567890ab",
-            income_account_id="80000005-1234567890",
             inventory_date=parse_date("2019-12-27"),
             is_active=True,
             item_lines=[
@@ -328,6 +340,9 @@ class TestAsyncInventoryAssemblyItems:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncConductor) -> None:
         response = await async_client.qbd.inventory_assembly_items.with_raw_response.create(
+            asset_account_id="80000009-1234567890",
+            cogs_account_id="80000007-1234567890",
+            income_account_id="80000005-1234567890",
             name="Deluxe Kit",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
@@ -340,6 +355,9 @@ class TestAsyncInventoryAssemblyItems:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncConductor) -> None:
         async with async_client.qbd.inventory_assembly_items.with_streaming_response.create(
+            asset_account_id="80000009-1234567890",
+            cogs_account_id="80000007-1234567890",
+            income_account_id="80000005-1234567890",
             name="Deluxe Kit",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:

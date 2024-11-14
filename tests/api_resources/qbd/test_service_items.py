@@ -53,7 +53,7 @@ class TestServiceItems:
                 "sales_price": "19.99",
             },
             sales_or_purchase_details={
-                "account_id": "80000001-1234567890",
+                "posting_account_id": "80000001-1234567890",
                 "description": "Hourly Consulting Service",
                 "price": "19.99",
                 "price_percentage": "10.5",
@@ -169,8 +169,8 @@ class TestServiceItems:
                 "update_existing_transactions_income_account": False,
             },
             sales_or_purchase_details={
-                "account_id": "80000001-1234567890",
                 "description": "Hourly Consulting Service",
+                "posting_account_id": "80000001-1234567890",
                 "price": "19.99",
                 "price_percentage": "10.5",
                 "update_existing_transactions_account": False,
@@ -305,7 +305,7 @@ class TestAsyncServiceItems:
                 "sales_price": "19.99",
             },
             sales_or_purchase_details={
-                "account_id": "80000001-1234567890",
+                "posting_account_id": "80000001-1234567890",
                 "description": "Hourly Consulting Service",
                 "price": "19.99",
                 "price_percentage": "10.5",
@@ -421,8 +421,8 @@ class TestAsyncServiceItems:
                 "update_existing_transactions_income_account": False,
             },
             sales_or_purchase_details={
-                "account_id": "80000001-1234567890",
                 "description": "Hourly Consulting Service",
+                "posting_account_id": "80000001-1234567890",
                 "price": "19.99",
                 "price_percentage": "10.5",
                 "update_existing_transactions_account": False,

@@ -113,10 +113,10 @@ class Barcode(TypedDict, total=False):
 
 
 class SalesAndPurchaseDetails(TypedDict, total=False):
-    expense_account_id: Annotated[str, PropertyInfo(alias="expenseAccountId")]
+    expense_account_id: Required[Annotated[str, PropertyInfo(alias="expenseAccountId")]]
     """The expense account used to track expenses from purchases of this item."""
 
-    income_account_id: Annotated[str, PropertyInfo(alias="incomeAccountId")]
+    income_account_id: Required[Annotated[str, PropertyInfo(alias="incomeAccountId")]]
     """The income account used to track revenue from sales of this item."""
 
     preferred_vendor_id: Annotated[str, PropertyInfo(alias="preferredVendorId")]
@@ -154,9 +154,9 @@ class SalesAndPurchaseDetails(TypedDict, total=False):
 
 
 class SalesOrPurchaseDetails(TypedDict, total=False):
-    account_id: Annotated[str, PropertyInfo(alias="accountId")]
+    posting_account_id: Required[Annotated[str, PropertyInfo(alias="postingAccountId")]]
     """
-    The account associated with this item, used when recording transactions
+    The posting account associated with this item, used when recording transactions
     involving this item. This could be an income account when selling or an expense
     account when purchasing.
     """

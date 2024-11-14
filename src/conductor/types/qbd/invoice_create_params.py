@@ -175,9 +175,10 @@ class InvoiceCreateParams(TypedDict, total=False):
     """
     The Accounts-Receivable (A/R) account to which this invoice is assigned, used to
     track the amount owed. If not specified, QuickBooks Desktop will use its default
-    Accounts-Receivable account. If this invoice is linked to other transactions,
-    make sure this `receivablesAccount` matches the `receivablesAccount` used in the
-    other transactions.
+    Accounts-Receivable account.
+
+    **IMPORTANT**: If this invoice is linked to other transactions, this A/R account
+    must match the `receivablesAccount` used in the other transactions.
     """
 
     ref_number: Annotated[str, PropertyInfo(alias="refNumber")]
