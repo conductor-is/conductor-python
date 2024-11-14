@@ -28,7 +28,7 @@ from ...types.qbd import (
 )
 from ...pagination import SyncCursorPage, AsyncCursorPage
 from ..._base_client import AsyncPaginator, make_request_options
-from ...types.qbd.qbd_inventory_assembly_item import QbdInventoryAssemblyItem
+from ...types.qbd.inventory_assembly_item import InventoryAssemblyItem
 
 __all__ = ["InventoryAssemblyItemsResource", "AsyncInventoryAssemblyItemsResource"]
 
@@ -86,7 +86,7 @@ class InventoryAssemblyItemsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdInventoryAssemblyItem:
+    ) -> InventoryAssemblyItem:
         """
         Creates an inventory assembly item.
 
@@ -226,7 +226,7 @@ class InventoryAssemblyItemsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdInventoryAssemblyItem,
+            cast_to=InventoryAssemblyItem,
         )
 
     def retrieve(
@@ -240,7 +240,7 @@ class InventoryAssemblyItemsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdInventoryAssemblyItem:
+    ) -> InventoryAssemblyItem:
         """
         Retrieves an inventory assembly item by ID.
 
@@ -267,7 +267,7 @@ class InventoryAssemblyItemsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdInventoryAssemblyItem,
+            cast_to=InventoryAssemblyItem,
         )
 
     def update(
@@ -305,7 +305,7 @@ class InventoryAssemblyItemsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdInventoryAssemblyItem:
+    ) -> InventoryAssemblyItem:
         """
         Updates an existing inventory assembly item.
 
@@ -463,7 +463,7 @@ class InventoryAssemblyItemsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdInventoryAssemblyItem,
+            cast_to=InventoryAssemblyItem,
         )
 
     def list(
@@ -489,7 +489,7 @@ class InventoryAssemblyItemsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursorPage[QbdInventoryAssemblyItem]:
+    ) -> SyncCursorPage[InventoryAssemblyItem]:
         """
         Returns a list of inventory assembly items.
 
@@ -581,7 +581,7 @@ class InventoryAssemblyItemsResource(SyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/inventory-assembly-items",
-            page=SyncCursorPage[QbdInventoryAssemblyItem],
+            page=SyncCursorPage[InventoryAssemblyItem],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -606,7 +606,7 @@ class InventoryAssemblyItemsResource(SyncAPIResource):
                     inventory_assembly_item_list_params.InventoryAssemblyItemListParams,
                 ),
             ),
-            model=QbdInventoryAssemblyItem,
+            model=InventoryAssemblyItem,
         )
 
 
@@ -663,7 +663,7 @@ class AsyncInventoryAssemblyItemsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdInventoryAssemblyItem:
+    ) -> InventoryAssemblyItem:
         """
         Creates an inventory assembly item.
 
@@ -803,7 +803,7 @@ class AsyncInventoryAssemblyItemsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdInventoryAssemblyItem,
+            cast_to=InventoryAssemblyItem,
         )
 
     async def retrieve(
@@ -817,7 +817,7 @@ class AsyncInventoryAssemblyItemsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdInventoryAssemblyItem:
+    ) -> InventoryAssemblyItem:
         """
         Retrieves an inventory assembly item by ID.
 
@@ -844,7 +844,7 @@ class AsyncInventoryAssemblyItemsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdInventoryAssemblyItem,
+            cast_to=InventoryAssemblyItem,
         )
 
     async def update(
@@ -882,7 +882,7 @@ class AsyncInventoryAssemblyItemsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdInventoryAssemblyItem:
+    ) -> InventoryAssemblyItem:
         """
         Updates an existing inventory assembly item.
 
@@ -1040,7 +1040,7 @@ class AsyncInventoryAssemblyItemsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdInventoryAssemblyItem,
+            cast_to=InventoryAssemblyItem,
         )
 
     def list(
@@ -1066,7 +1066,7 @@ class AsyncInventoryAssemblyItemsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[QbdInventoryAssemblyItem, AsyncCursorPage[QbdInventoryAssemblyItem]]:
+    ) -> AsyncPaginator[InventoryAssemblyItem, AsyncCursorPage[InventoryAssemblyItem]]:
         """
         Returns a list of inventory assembly items.
 
@@ -1158,7 +1158,7 @@ class AsyncInventoryAssemblyItemsResource(AsyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/inventory-assembly-items",
-            page=AsyncCursorPage[QbdInventoryAssemblyItem],
+            page=AsyncCursorPage[InventoryAssemblyItem],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1183,7 +1183,7 @@ class AsyncInventoryAssemblyItemsResource(AsyncAPIResource):
                     inventory_assembly_item_list_params.InventoryAssemblyItemListParams,
                 ),
             ),
-            model=QbdInventoryAssemblyItem,
+            model=InventoryAssemblyItem,
         )
 
 

@@ -198,6 +198,10 @@ class QbdResource(SyncAPIResource):
         return DateDrivenTermsResource(self._client)
 
     @cached_property
+    def inventory_assembly_items(self) -> InventoryAssemblyItemsResource:
+        return InventoryAssemblyItemsResource(self._client)
+
+    @cached_property
     def inventory_items(self) -> InventoryItemsResource:
         return InventoryItemsResource(self._client)
 
@@ -232,10 +236,6 @@ class QbdResource(SyncAPIResource):
     @cached_property
     def vendors(self) -> VendorsResource:
         return VendorsResource(self._client)
-
-    @cached_property
-    def inventory_assembly_items(self) -> InventoryAssemblyItemsResource:
-        return InventoryAssemblyItemsResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> QbdResourceWithRawResponse:
@@ -295,6 +295,10 @@ class AsyncQbdResource(AsyncAPIResource):
         return AsyncDateDrivenTermsResource(self._client)
 
     @cached_property
+    def inventory_assembly_items(self) -> AsyncInventoryAssemblyItemsResource:
+        return AsyncInventoryAssemblyItemsResource(self._client)
+
+    @cached_property
     def inventory_items(self) -> AsyncInventoryItemsResource:
         return AsyncInventoryItemsResource(self._client)
 
@@ -329,10 +333,6 @@ class AsyncQbdResource(AsyncAPIResource):
     @cached_property
     def vendors(self) -> AsyncVendorsResource:
         return AsyncVendorsResource(self._client)
-
-    @cached_property
-    def inventory_assembly_items(self) -> AsyncInventoryAssemblyItemsResource:
-        return AsyncInventoryAssemblyItemsResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncQbdResourceWithRawResponse:
@@ -395,6 +395,10 @@ class QbdResourceWithRawResponse:
         return DateDrivenTermsResourceWithRawResponse(self._qbd.date_driven_terms)
 
     @cached_property
+    def inventory_assembly_items(self) -> InventoryAssemblyItemsResourceWithRawResponse:
+        return InventoryAssemblyItemsResourceWithRawResponse(self._qbd.inventory_assembly_items)
+
+    @cached_property
     def inventory_items(self) -> InventoryItemsResourceWithRawResponse:
         return InventoryItemsResourceWithRawResponse(self._qbd.inventory_items)
 
@@ -429,10 +433,6 @@ class QbdResourceWithRawResponse:
     @cached_property
     def vendors(self) -> VendorsResourceWithRawResponse:
         return VendorsResourceWithRawResponse(self._qbd.vendors)
-
-    @cached_property
-    def inventory_assembly_items(self) -> InventoryAssemblyItemsResourceWithRawResponse:
-        return InventoryAssemblyItemsResourceWithRawResponse(self._qbd.inventory_assembly_items)
 
 
 class AsyncQbdResourceWithRawResponse:
@@ -476,6 +476,10 @@ class AsyncQbdResourceWithRawResponse:
         return AsyncDateDrivenTermsResourceWithRawResponse(self._qbd.date_driven_terms)
 
     @cached_property
+    def inventory_assembly_items(self) -> AsyncInventoryAssemblyItemsResourceWithRawResponse:
+        return AsyncInventoryAssemblyItemsResourceWithRawResponse(self._qbd.inventory_assembly_items)
+
+    @cached_property
     def inventory_items(self) -> AsyncInventoryItemsResourceWithRawResponse:
         return AsyncInventoryItemsResourceWithRawResponse(self._qbd.inventory_items)
 
@@ -510,10 +514,6 @@ class AsyncQbdResourceWithRawResponse:
     @cached_property
     def vendors(self) -> AsyncVendorsResourceWithRawResponse:
         return AsyncVendorsResourceWithRawResponse(self._qbd.vendors)
-
-    @cached_property
-    def inventory_assembly_items(self) -> AsyncInventoryAssemblyItemsResourceWithRawResponse:
-        return AsyncInventoryAssemblyItemsResourceWithRawResponse(self._qbd.inventory_assembly_items)
 
 
 class QbdResourceWithStreamingResponse:
@@ -557,6 +557,10 @@ class QbdResourceWithStreamingResponse:
         return DateDrivenTermsResourceWithStreamingResponse(self._qbd.date_driven_terms)
 
     @cached_property
+    def inventory_assembly_items(self) -> InventoryAssemblyItemsResourceWithStreamingResponse:
+        return InventoryAssemblyItemsResourceWithStreamingResponse(self._qbd.inventory_assembly_items)
+
+    @cached_property
     def inventory_items(self) -> InventoryItemsResourceWithStreamingResponse:
         return InventoryItemsResourceWithStreamingResponse(self._qbd.inventory_items)
 
@@ -591,10 +595,6 @@ class QbdResourceWithStreamingResponse:
     @cached_property
     def vendors(self) -> VendorsResourceWithStreamingResponse:
         return VendorsResourceWithStreamingResponse(self._qbd.vendors)
-
-    @cached_property
-    def inventory_assembly_items(self) -> InventoryAssemblyItemsResourceWithStreamingResponse:
-        return InventoryAssemblyItemsResourceWithStreamingResponse(self._qbd.inventory_assembly_items)
 
 
 class AsyncQbdResourceWithStreamingResponse:
@@ -638,6 +638,10 @@ class AsyncQbdResourceWithStreamingResponse:
         return AsyncDateDrivenTermsResourceWithStreamingResponse(self._qbd.date_driven_terms)
 
     @cached_property
+    def inventory_assembly_items(self) -> AsyncInventoryAssemblyItemsResourceWithStreamingResponse:
+        return AsyncInventoryAssemblyItemsResourceWithStreamingResponse(self._qbd.inventory_assembly_items)
+
+    @cached_property
     def inventory_items(self) -> AsyncInventoryItemsResourceWithStreamingResponse:
         return AsyncInventoryItemsResourceWithStreamingResponse(self._qbd.inventory_items)
 
@@ -672,7 +676,3 @@ class AsyncQbdResourceWithStreamingResponse:
     @cached_property
     def vendors(self) -> AsyncVendorsResourceWithStreamingResponse:
         return AsyncVendorsResourceWithStreamingResponse(self._qbd.vendors)
-
-    @cached_property
-    def inventory_assembly_items(self) -> AsyncInventoryAssemblyItemsResourceWithStreamingResponse:
-        return AsyncInventoryAssemblyItemsResourceWithStreamingResponse(self._qbd.inventory_assembly_items)
