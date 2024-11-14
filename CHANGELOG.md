@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.1.0-alpha.34 (2024-11-14)
+
+Full Changelog: [v0.1.0-alpha.33...v0.1.0-alpha.34](https://github.com/conductor-is/conductor-python/compare/v0.1.0-alpha.33...v0.1.0-alpha.34)
+
+### Features
+
+* **api:** api update ([#287](https://github.com/conductor-is/conductor-python/issues/287)) ([da64f61](https://github.com/conductor-is/conductor-python/commit/da64f613d07d596abd5e3ba0d3d2a0e0f5c40c79))
+* **api:** api update ([#289](https://github.com/conductor-is/conductor-python/issues/289)) ([c6f58e7](https://github.com/conductor-is/conductor-python/commit/c6f58e78ff81a2816c73717493af1849008b70cb))
+* **api:** api update ([#290](https://github.com/conductor-is/conductor-python/issues/290)) ([0a34b7a](https://github.com/conductor-is/conductor-python/commit/0a34b7a2aa974f504ea65ab19992440505789ede))
+* **api:** api update ([#291](https://github.com/conductor-is/conductor-python/issues/291)) ([e371300](https://github.com/conductor-is/conductor-python/commit/e3713007f4f90e6b51385ed94b57877f864ace59))
+
+
+### Styles
+
+* **api:** reorder props ([#292](https://github.com/conductor-is/conductor-python/issues/292)) ([fbb2119](https://github.com/conductor-is/conductor-python/commit/fbb2119b07d0578518298a6bf1f752540484a276))
+
 ## 0.1.0-alpha.33 (2024-11-13)
 
 Full Changelog: [v0.1.0-alpha.32...v0.1.0-alpha.33](https://github.com/conductor-is/conductor-python/compare/v0.1.0-alpha.32...v0.1.0-alpha.33)
