@@ -90,7 +90,7 @@ class AccountsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> Account:
         """
-        Creates a financial account.
+        Creates a new financial account.
 
         Args:
           account_type: The classification of this account, indicating its purpose within the chart of
@@ -564,7 +564,7 @@ class AsyncAccountsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> Account:
         """
-        Creates a financial account.
+        Creates a new financial account.
 
         Args:
           account_type: The classification of this account, indicating its purpose within the chart of

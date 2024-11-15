@@ -75,7 +75,7 @@ class CreditCardChargesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> CreditCardCharge:
         """
-        Creates a credit card charge for the specified account.
+        Creates a new credit card charge for the specified account.
 
         Args:
           account_id: The bank or credit card account to whom money is owed for this credit card
@@ -532,7 +532,7 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> CreditCardCharge:
         """
-        Creates a credit card charge for the specified account.
+        Creates a new credit card charge for the specified account.
 
         Args:
           account_id: The bank or credit card account to whom money is owed for this credit card

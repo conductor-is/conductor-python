@@ -70,7 +70,7 @@ class ServiceItemsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ServiceItem:
         """
-        Creates a service item.
+        Creates a new service item.
 
         Args:
           name: The case-insensitive name of this service item. Not guaranteed to be unique
@@ -505,7 +505,7 @@ class AsyncServiceItemsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ServiceItem:
         """
-        Creates a service item.
+        Creates a new service item.
 
         Args:
           name: The case-insensitive name of this service item. Not guaranteed to be unique

@@ -88,7 +88,7 @@ class InventoryAssemblyItemsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> InventoryAssemblyItem:
         """
-        Creates an inventory assembly item.
+        Creates a new inventory assembly item.
 
         Args:
           asset_account_id: The asset account used to track the current value of this inventory assembly
@@ -665,7 +665,7 @@ class AsyncInventoryAssemblyItemsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> InventoryAssemblyItem:
         """
-        Creates an inventory assembly item.
+        Creates a new inventory assembly item.
 
         Args:
           asset_account_id: The asset account used to track the current value of this inventory assembly

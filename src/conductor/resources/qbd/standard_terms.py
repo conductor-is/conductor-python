@@ -65,7 +65,7 @@ class StandardTermsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> StandardTerm:
         """
-        Creates a standard term.
+        Creates a new standard term.
 
         Args:
           name: The case-insensitive unique name of this standard term, unique across all
@@ -308,7 +308,7 @@ class AsyncStandardTermsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> StandardTerm:
         """
-        Creates a standard term.
+        Creates a new standard term.
 
         Args:
           name: The case-insensitive unique name of this standard term, unique across all

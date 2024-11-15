@@ -91,7 +91,7 @@ class InvoicesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> Invoice:
         """
-        Creates an invoice.
+        Creates a new invoice.
 
         Args:
           customer_id: The customer or customer-job associated with this invoice.
@@ -766,7 +766,7 @@ class AsyncInvoicesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> Invoice:
         """
-        Creates an invoice.
+        Creates a new invoice.
 
         Args:
           customer_id: The customer or customer-job associated with this invoice.

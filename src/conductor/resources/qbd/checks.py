@@ -74,7 +74,7 @@ class ChecksResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> Check:
         """
-        Creates a check.
+        Creates a new check.
 
         Args:
           bank_account_id: The bank account from which the funds are being drawn for this check; e.g.,
@@ -570,7 +570,7 @@ class AsyncChecksResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> Check:
         """
-        Creates a check.
+        Creates a new check.
 
         Args:
           bank_account_id: The bank account from which the funds are being drawn for this check; e.g.,

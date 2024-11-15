@@ -107,7 +107,7 @@ class VendorsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> Vendor:
         """
-        Creates a vendor.
+        Creates a new vendor.
 
         Args:
           name: The case-insensitive unique name of this vendor, unique across all vendors.
@@ -842,7 +842,7 @@ class AsyncVendorsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> Vendor:
         """
-        Creates a vendor.
+        Creates a new vendor.
 
         Args:
           name: The case-insensitive unique name of this vendor, unique across all vendors.
