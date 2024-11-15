@@ -65,7 +65,7 @@ class SalesTaxCodesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SalesTaxCode:
         """
-        Creates a sales-tax code.
+        Creates a new sales-tax code.
 
         Args:
           is_taxable: Indicates whether this sales-tax code is tracking taxable sales. This field
@@ -390,7 +390,7 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SalesTaxCode:
         """
-        Creates a sales-tax code.
+        Creates a new sales-tax code.
 
         Args:
           is_taxable: Indicates whether this sales-tax code is tracking taxable sales. This field

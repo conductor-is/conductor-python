@@ -66,7 +66,7 @@ class DateDrivenTermsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> DateDrivenTerm:
         """
-        Creates a date-driven term.
+        Creates a new date-driven term.
 
         Args:
           due_day_of_month: The day of the month when full payment is due without discount.
@@ -317,7 +317,7 @@ class AsyncDateDrivenTermsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> DateDrivenTerm:
         """
-        Creates a date-driven term.
+        Creates a new date-driven term.
 
         Args:
           due_day_of_month: The day of the month when full payment is due without discount.

@@ -66,7 +66,7 @@ class TransfersResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> Transfer:
         """
-        Creates a transfer.
+        Creates a new transfer.
 
         Args:
           amount: The monetary amount of this transfer, represented as a decimal string.
@@ -357,7 +357,7 @@ class AsyncTransfersResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> Transfer:
         """
-        Creates a transfer.
+        Creates a new transfer.
 
         Args:
           amount: The monetary amount of this transfer, represented as a decimal string.
