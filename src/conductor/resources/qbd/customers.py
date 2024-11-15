@@ -109,12 +109,11 @@ class CustomersResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> Customer:
-        """Creates a customer.
+        """
+        Creates a new customer.
 
         Args:
-          name: The case-insensitive name of this customer.
-
-        Not guaranteed to be unique because
+          name: The case-insensitive name of this customer. Not guaranteed to be unique because
               it does not include the names of its parent objects like `fullName` does. For
               example, two customers could both have the `name` "Kitchen-Renovation", but they
               could have unique `fullName` values, such as "Jones:Kitchen-Renovation" and
@@ -899,12 +898,11 @@ class AsyncCustomersResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> Customer:
-        """Creates a customer.
+        """
+        Creates a new customer.
 
         Args:
-          name: The case-insensitive name of this customer.
-
-        Not guaranteed to be unique because
+          name: The case-insensitive name of this customer. Not guaranteed to be unique because
               it does not include the names of its parent objects like `fullName` does. For
               example, two customers could both have the `name` "Kitchen-Renovation", but they
               could have unique `fullName` values, such as "Jones:Kitchen-Renovation" and

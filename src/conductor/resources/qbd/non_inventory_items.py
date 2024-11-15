@@ -75,7 +75,7 @@ class NonInventoryItemsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> NonInventoryItem:
         """
-        Creates a non-inventory item.
+        Creates a new non-inventory item.
 
         Args:
           name: The case-insensitive name of this non-inventory item. Not guaranteed to be
@@ -526,7 +526,7 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> NonInventoryItem:
         """
-        Creates a non-inventory item.
+        Creates a new non-inventory item.
 
         Args:
           name: The case-insensitive name of this non-inventory item. Not guaranteed to be

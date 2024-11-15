@@ -62,7 +62,7 @@ class ClassesResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> Class:
-        """Creates a class.
+        """Creates a new class.
 
         Args:
           name: The case-insensitive name of this class.
@@ -373,7 +373,7 @@ class AsyncClassesResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> Class:
-        """Creates a class.
+        """Creates a new class.
 
         Args:
           name: The case-insensitive name of this class.

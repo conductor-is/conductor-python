@@ -74,7 +74,7 @@ class BillPaymentChecksResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> BillPaymentCheck:
         """
-        Creates a bill payment check.
+        Creates a new bill payment check.
 
         Args:
           apply_to_transactions: The bills to be paid by this bill payment check. This will create a link between
@@ -496,7 +496,7 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> BillPaymentCheck:
         """
-        Creates a bill payment check.
+        Creates a new bill payment check.
 
         Args:
           apply_to_transactions: The bills to be paid by this bill payment check. This will create a link between
