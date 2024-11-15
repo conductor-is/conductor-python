@@ -69,7 +69,7 @@ class SalesTaxItemsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SalesTaxItem:
         """
-        Creates a sales-tax item.
+        Creates a new sales-tax item.
 
         Args:
           name: The case-insensitive unique name of this sales-tax item, unique across all
@@ -449,7 +449,7 @@ class AsyncSalesTaxItemsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SalesTaxItem:
         """
-        Creates a sales-tax item.
+        Creates a new sales-tax item.
 
         Args:
           name: The case-insensitive unique name of this sales-tax item, unique across all

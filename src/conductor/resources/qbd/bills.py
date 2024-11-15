@@ -76,7 +76,7 @@ class BillsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> Bill:
         """
-        Creates a bill.
+        Creates a new bill.
 
         Args:
           transaction_date: The date of this bill, in ISO 8601 format (YYYY-MM-DD).
@@ -585,7 +585,7 @@ class AsyncBillsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> Bill:
         """
-        Creates a bill.
+        Creates a new bill.
 
         Args:
           transaction_date: The date of this bill, in ISO 8601 format (YYYY-MM-DD).

@@ -75,7 +75,7 @@ class CreditCardCreditsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> CreditCardCredit:
         """
-        Creates a credit card credit for the specified account.
+        Creates a new credit card credit for the specified account.
 
         Args:
           account_id: The bank or credit card account to which the credit is applied.
@@ -529,7 +529,7 @@ class AsyncCreditCardCreditsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> CreditCardCredit:
         """
-        Creates a credit card credit for the specified account.
+        Creates a new credit card credit for the specified account.
 
         Args:
           account_id: The bank or credit card account to which the credit is applied.
