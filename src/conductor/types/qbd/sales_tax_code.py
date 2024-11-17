@@ -69,10 +69,10 @@ class SalesTaxCode(BaseModel):
 
     revision_number: str = FieldInfo(alias="revisionNumber")
     """
-    The current revision number of this sales-tax code, which changes each time the
-    object is modified. When updating this object, you must provide the most recent
-    `revisionNumber` to ensure you're working with the latest data; otherwise, the
-    update will return an error.
+    The current revision number of this sales-tax code object, which changes each
+    time the object is modified. When updating this object, you must provide the
+    most recent `revisionNumber` to ensure you're working with the latest data;
+    otherwise, the update will return an error.
     """
 
     sales_tax_item: Optional[SalesTaxItem] = FieldInfo(alias="salesTaxItem", default=None)

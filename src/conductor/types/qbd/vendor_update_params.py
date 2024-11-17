@@ -21,9 +21,10 @@ __all__ = [
 class VendorUpdateParams(TypedDict, total=False):
     revision_number: Required[Annotated[str, PropertyInfo(alias="revisionNumber")]]
     """
-    The current revision number of the vendor you are updating, which you can get by
-    fetching the object first. Provide the most recent `revisionNumber` to ensure
-    you're working with the latest data; otherwise, the update will return an error.
+    The current revision number of the vendor object you are updating, which you can
+    get by fetching the object first. Provide the most recent `revisionNumber` to
+    ensure you're working with the latest data; otherwise, the update will return an
+    error.
     """
 
     conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]
@@ -251,9 +252,10 @@ class AdditionalContact(TypedDict, total=False):
 
     revision_number: Required[Annotated[str, PropertyInfo(alias="revisionNumber")]]
     """
-    The current revision number of the contact you are updating, which you can get
-    by fetching the object first. Provide the most recent `revisionNumber` to ensure
-    you're working with the latest data; otherwise, the update will return an error.
+    The current revision number of the contact object you are updating, which you
+    can get by fetching the object first. Provide the most recent `revisionNumber`
+    to ensure you're working with the latest data; otherwise, the update will return
+    an error.
     """
 
     custom_contact_fields: Annotated[
