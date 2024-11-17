@@ -22,7 +22,7 @@ from ..._response import (
 )
 from ...types.qbd import inventory_site_list_params, inventory_site_create_params, inventory_site_update_params
 from ..._base_client import make_request_options
-from ...types.qbd.qbd_inventory_site import QbdInventorySite
+from ...types.qbd.inventory_site import InventorySite
 from ...types.qbd.inventory_site_list_response import InventorySiteListResponse
 
 __all__ = ["InventorySitesResource", "AsyncInventorySitesResource"]
@@ -64,7 +64,7 @@ class InventorySitesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdInventorySite:
+    ) -> InventorySite:
         """
         Creates a new inventory site.
 
@@ -111,7 +111,7 @@ class InventorySitesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdInventorySite,
+            cast_to=InventorySite,
         )
 
     def retrieve(
@@ -125,7 +125,7 @@ class InventorySitesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdInventorySite:
+    ) -> InventorySite:
         """
         Retrieves an inventory site by ID.
 
@@ -151,7 +151,7 @@ class InventorySitesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdInventorySite,
+            cast_to=InventorySite,
         )
 
     def update(
@@ -175,7 +175,7 @@ class InventorySitesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdInventorySite:
+    ) -> InventorySite:
         """
         Updates an existing inventory site.
 
@@ -241,7 +241,7 @@ class InventorySitesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdInventorySite,
+            cast_to=InventorySite,
         )
 
     def list(
@@ -391,7 +391,7 @@ class AsyncInventorySitesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdInventorySite:
+    ) -> InventorySite:
         """
         Creates a new inventory site.
 
@@ -438,7 +438,7 @@ class AsyncInventorySitesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdInventorySite,
+            cast_to=InventorySite,
         )
 
     async def retrieve(
@@ -452,7 +452,7 @@ class AsyncInventorySitesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdInventorySite:
+    ) -> InventorySite:
         """
         Retrieves an inventory site by ID.
 
@@ -478,7 +478,7 @@ class AsyncInventorySitesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdInventorySite,
+            cast_to=InventorySite,
         )
 
     async def update(
@@ -502,7 +502,7 @@ class AsyncInventorySitesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdInventorySite:
+    ) -> InventorySite:
         """
         Updates an existing inventory site.
 
@@ -568,7 +568,7 @@ class AsyncInventorySitesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdInventorySite,
+            cast_to=InventorySite,
         )
 
     async def list(

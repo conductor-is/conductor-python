@@ -23,7 +23,7 @@ from ..._response import (
 from ...types.qbd import bill_payment_credit_card_list_params, bill_payment_credit_card_create_params
 from ...pagination import SyncCursorPage, AsyncCursorPage
 from ..._base_client import AsyncPaginator, make_request_options
-from ...types.qbd.qbd_bill_payment_credit_card import QbdBillPaymentCreditCard
+from ...types.qbd.bill_payment_credit_card import BillPaymentCreditCard
 
 __all__ = ["BillPaymentCreditCardsResource", "AsyncBillPaymentCreditCardsResource"]
 
@@ -67,7 +67,7 @@ class BillPaymentCreditCardsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdBillPaymentCreditCard:
+    ) -> BillPaymentCreditCard:
         """
         Creates a new bill payment credit card.
 
@@ -152,7 +152,7 @@ class BillPaymentCreditCardsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdBillPaymentCreditCard,
+            cast_to=BillPaymentCreditCard,
         )
 
     def retrieve(
@@ -166,7 +166,7 @@ class BillPaymentCreditCardsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdBillPaymentCreditCard:
+    ) -> BillPaymentCreditCard:
         """
         Retrieves a bill payment credit card by ID.
 
@@ -193,7 +193,7 @@ class BillPaymentCreditCardsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdBillPaymentCreditCard,
+            cast_to=BillPaymentCreditCard,
         )
 
     def list(
@@ -223,7 +223,7 @@ class BillPaymentCreditCardsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursorPage[QbdBillPaymentCreditCard]:
+    ) -> SyncCursorPage[BillPaymentCreditCard]:
         """
         Returns a list of bill payment credit cards.
 
@@ -310,7 +310,7 @@ class BillPaymentCreditCardsResource(SyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/bill-payment-credit-cards",
-            page=SyncCursorPage[QbdBillPaymentCreditCard],
+            page=SyncCursorPage[BillPaymentCreditCard],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -339,7 +339,7 @@ class BillPaymentCreditCardsResource(SyncAPIResource):
                     bill_payment_credit_card_list_params.BillPaymentCreditCardListParams,
                 ),
             ),
-            model=QbdBillPaymentCreditCard,
+            model=BillPaymentCreditCard,
         )
 
 
@@ -382,7 +382,7 @@ class AsyncBillPaymentCreditCardsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdBillPaymentCreditCard:
+    ) -> BillPaymentCreditCard:
         """
         Creates a new bill payment credit card.
 
@@ -467,7 +467,7 @@ class AsyncBillPaymentCreditCardsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdBillPaymentCreditCard,
+            cast_to=BillPaymentCreditCard,
         )
 
     async def retrieve(
@@ -481,7 +481,7 @@ class AsyncBillPaymentCreditCardsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdBillPaymentCreditCard:
+    ) -> BillPaymentCreditCard:
         """
         Retrieves a bill payment credit card by ID.
 
@@ -508,7 +508,7 @@ class AsyncBillPaymentCreditCardsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdBillPaymentCreditCard,
+            cast_to=BillPaymentCreditCard,
         )
 
     def list(
@@ -538,7 +538,7 @@ class AsyncBillPaymentCreditCardsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[QbdBillPaymentCreditCard, AsyncCursorPage[QbdBillPaymentCreditCard]]:
+    ) -> AsyncPaginator[BillPaymentCreditCard, AsyncCursorPage[BillPaymentCreditCard]]:
         """
         Returns a list of bill payment credit cards.
 
@@ -625,7 +625,7 @@ class AsyncBillPaymentCreditCardsResource(AsyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/bill-payment-credit-cards",
-            page=AsyncCursorPage[QbdBillPaymentCreditCard],
+            page=AsyncCursorPage[BillPaymentCreditCard],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -654,7 +654,7 @@ class AsyncBillPaymentCreditCardsResource(AsyncAPIResource):
                     bill_payment_credit_card_list_params.BillPaymentCreditCardListParams,
                 ),
             ),
-            model=QbdBillPaymentCreditCard,
+            model=BillPaymentCreditCard,
         )
 
 
