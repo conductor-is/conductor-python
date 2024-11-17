@@ -601,7 +601,7 @@ class InvoicesResource(SyncAPIResource):
           ids: Filter for specific invoices by their QuickBooks-assigned unique identifier(s).
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters.
+              query parameters for this request.
 
           include_line_items: Whether to include line items in the response. Defaults to `true`.
 
@@ -634,7 +634,7 @@ class InvoicesResource(SyncAPIResource):
               changed by the QuickBooks user.
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters.
+              query parameters for this request.
 
           ref_number_starts_with: Filter for invoices whose `refNumber` starts with this substring. NOTE: If you
               use this parameter, you cannot also use `refNumberContains` or
@@ -1277,7 +1277,7 @@ class AsyncInvoicesResource(AsyncAPIResource):
           ids: Filter for specific invoices by their QuickBooks-assigned unique identifier(s).
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters.
+              query parameters for this request.
 
           include_line_items: Whether to include line items in the response. Defaults to `true`.
 
@@ -1310,7 +1310,7 @@ class AsyncInvoicesResource(AsyncAPIResource):
               changed by the QuickBooks user.
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters.
+              query parameters for this request.
 
           ref_number_starts_with: Filter for invoices whose `refNumber` starts with this substring. NOTE: If you
               use this parameter, you cannot also use `refNumberContains` or

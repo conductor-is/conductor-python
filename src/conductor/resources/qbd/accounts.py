@@ -422,12 +422,12 @@ class AccountsResource(SyncAPIResource):
               "Electricity", its `fullName` would be "Expenses:Utilities:Electricity".
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters.
+              query parameters for this request.
 
           ids: Filter for specific accounts by their QuickBooks-assigned unique identifier(s).
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters.
+              query parameters for this request.
 
           limit: The maximum number of objects to return. NOTE: QuickBooks Desktop does not
               support cursor-based pagination for accounts. Hence, this parameter will limit
@@ -895,12 +895,12 @@ class AsyncAccountsResource(AsyncAPIResource):
               "Electricity", its `fullName` would be "Expenses:Utilities:Electricity".
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters.
+              query parameters for this request.
 
           ids: Filter for specific accounts by their QuickBooks-assigned unique identifier(s).
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters.
+              query parameters for this request.
 
           limit: The maximum number of objects to return. NOTE: QuickBooks Desktop does not
               support cursor-based pagination for accounts. Hence, this parameter will limit

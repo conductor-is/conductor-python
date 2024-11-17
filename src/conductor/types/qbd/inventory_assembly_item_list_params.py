@@ -41,7 +41,7 @@ class InventoryAssemblyItemListParams(TypedDict, total=False):
     "Assemblies:Deluxe Kit".
 
     **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-    query parameters.
+    query parameters for this request.
     """
 
     ids: List[str]
@@ -50,7 +50,7 @@ class InventoryAssemblyItemListParams(TypedDict, total=False):
     identifier(s).
 
     **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-    query parameters.
+    query parameters for this request.
     """
 
     limit: int

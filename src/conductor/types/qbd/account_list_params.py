@@ -52,14 +52,14 @@ class AccountListParams(TypedDict, total=False):
     `name` "Electricity", its `fullName` would be "Expenses:Utilities:Electricity".
 
     **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-    query parameters.
+    query parameters for this request.
     """
 
     ids: List[str]
     """Filter for specific accounts by their QuickBooks-assigned unique identifier(s).
 
     **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-    query parameters.
+    query parameters for this request.
     """
 
     limit: int

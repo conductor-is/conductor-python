@@ -435,7 +435,7 @@ class BillsResource(SyncAPIResource):
           ids: Filter for specific bills by their QuickBooks-assigned unique identifier(s).
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters.
+              query parameters for this request.
 
           include_line_items: Whether to include line items in the response. Defaults to `true`.
 
@@ -468,7 +468,7 @@ class BillsResource(SyncAPIResource):
               QuickBooks user.
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters.
+              query parameters for this request.
 
           ref_number_starts_with: Filter for bills whose `refNumber` starts with this substring. NOTE: If you use
               this parameter, you cannot also use `refNumberContains` or `refNumberEndsWith`.
@@ -945,7 +945,7 @@ class AsyncBillsResource(AsyncAPIResource):
           ids: Filter for specific bills by their QuickBooks-assigned unique identifier(s).
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters.
+              query parameters for this request.
 
           include_line_items: Whether to include line items in the response. Defaults to `true`.
 
@@ -978,7 +978,7 @@ class AsyncBillsResource(AsyncAPIResource):
               QuickBooks user.
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters.
+              query parameters for this request.
 
           ref_number_starts_with: Filter for bills whose `refNumber` starts with this substring. NOTE: If you use
               this parameter, you cannot also use `refNumberContains` or `refNumberEndsWith`.

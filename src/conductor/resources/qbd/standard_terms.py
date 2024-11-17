@@ -189,7 +189,7 @@ class StandardTermsResource(SyncAPIResource):
               identifier(s).
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters.
+              query parameters for this request.
 
           limit: The maximum number of objects to return. NOTE: QuickBooks Desktop does not
               support cursor-based pagination for standard terms. Hence, this parameter will
@@ -212,7 +212,7 @@ class StandardTermsResource(SyncAPIResource):
               `id`, `name` is a unique identifier for a standard term.
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters.
+              query parameters for this request.
 
           name_starts_with: Filter for standard terms whose `name` starts with this substring,
               case-insensitive. NOTE: If you use this parameter, you cannot also use
@@ -429,7 +429,7 @@ class AsyncStandardTermsResource(AsyncAPIResource):
               identifier(s).
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters.
+              query parameters for this request.
 
           limit: The maximum number of objects to return. NOTE: QuickBooks Desktop does not
               support cursor-based pagination for standard terms. Hence, this parameter will
@@ -452,7 +452,7 @@ class AsyncStandardTermsResource(AsyncAPIResource):
               `id`, `name` is a unique identifier for a standard term.
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters.
+              query parameters for this request.
 
           name_starts_with: Filter for standard terms whose `name` starts with this substring,
               case-insensitive. NOTE: If you use this parameter, you cannot also use
