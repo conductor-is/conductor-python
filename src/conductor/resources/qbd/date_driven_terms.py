@@ -72,7 +72,11 @@ class DateDrivenTermsResource(SyncAPIResource):
           due_day_of_month: The day of the month when full payment is due without discount.
 
           name: The case-insensitive unique name of this date-driven term, unique across all
-              date-driven terms. Maximum length: 31 characters.
+              date-driven terms.
+
+              NOTE: date-driven terms do not have a `fullName` field because they are not
+              hierarchical, which is why `name` is unique for them but not for objects that
+              have parents. Maximum length: 31 characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -164,12 +168,12 @@ class DateDrivenTermsResource(SyncAPIResource):
         self,
         *,
         conductor_end_user_id: str,
-        full_names: List[str] | NotGiven = NOT_GIVEN,
         ids: List[str] | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         name_contains: str | NotGiven = NOT_GIVEN,
         name_ends_with: str | NotGiven = NOT_GIVEN,
         name_from: str | NotGiven = NOT_GIVEN,
+        names: List[str] | NotGiven = NOT_GIVEN,
         name_starts_with: str | NotGiven = NOT_GIVEN,
         name_to: str | NotGiven = NOT_GIVEN,
         status: Literal["active", "all", "inactive"] | NotGiven = NOT_GIVEN,
@@ -188,19 +192,6 @@ class DateDrivenTermsResource(SyncAPIResource):
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
-
-          full_names: Filter for specific date-driven terms by their full-name(s), case-insensitive.
-              Like `id`, `fullName` is a unique identifier for a date-driven term, formed by
-              by combining the names of its parent objects with its own `name`, separated by
-              colons. For example, if a date-driven term is under "Net 30" and has the `name`
-              "2% 10 Net 30", its `fullName` would be "Net 30:2% 10 Net 30".
-
-              Unlike `name`, `fullName` is guaranteed to be unique across all date-driven term
-              objects. Also, unlike `id`, `fullName` can be arbitrarily changed by the
-              QuickBooks user when modifying its underlying `name` field.
-
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters.
 
           ids: Filter for specific date-driven terms by their QuickBooks-assigned unique
               identifier(s).
@@ -224,6 +215,16 @@ class DateDrivenTermsResource(SyncAPIResource):
 
           name_from: Filter for date-driven terms whose `name` is alphabetically greater than or
               equal to this value.
+
+          names: Filter for specific date-driven terms by their name(s), case-insensitive. Like
+              `id`, `name` is a unique identifier for a date-driven term.
+
+              NOTE: date-driven terms do not have a `fullName` field because they are not
+              hierarchical, which is why `name` is unique for them but not for objects that
+              have parents.
+
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              query parameters.
 
           name_starts_with: Filter for date-driven terms whose `name` starts with this substring,
               case-insensitive. NOTE: If you use this parameter, you cannot also use
@@ -260,12 +261,12 @@ class DateDrivenTermsResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "full_names": full_names,
                         "ids": ids,
                         "limit": limit,
                         "name_contains": name_contains,
                         "name_ends_with": name_ends_with,
                         "name_from": name_from,
+                        "names": names,
                         "name_starts_with": name_starts_with,
                         "name_to": name_to,
                         "status": status,
@@ -323,7 +324,11 @@ class AsyncDateDrivenTermsResource(AsyncAPIResource):
           due_day_of_month: The day of the month when full payment is due without discount.
 
           name: The case-insensitive unique name of this date-driven term, unique across all
-              date-driven terms. Maximum length: 31 characters.
+              date-driven terms.
+
+              NOTE: date-driven terms do not have a `fullName` field because they are not
+              hierarchical, which is why `name` is unique for them but not for objects that
+              have parents. Maximum length: 31 characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -415,12 +420,12 @@ class AsyncDateDrivenTermsResource(AsyncAPIResource):
         self,
         *,
         conductor_end_user_id: str,
-        full_names: List[str] | NotGiven = NOT_GIVEN,
         ids: List[str] | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         name_contains: str | NotGiven = NOT_GIVEN,
         name_ends_with: str | NotGiven = NOT_GIVEN,
         name_from: str | NotGiven = NOT_GIVEN,
+        names: List[str] | NotGiven = NOT_GIVEN,
         name_starts_with: str | NotGiven = NOT_GIVEN,
         name_to: str | NotGiven = NOT_GIVEN,
         status: Literal["active", "all", "inactive"] | NotGiven = NOT_GIVEN,
@@ -439,19 +444,6 @@ class AsyncDateDrivenTermsResource(AsyncAPIResource):
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
-
-          full_names: Filter for specific date-driven terms by their full-name(s), case-insensitive.
-              Like `id`, `fullName` is a unique identifier for a date-driven term, formed by
-              by combining the names of its parent objects with its own `name`, separated by
-              colons. For example, if a date-driven term is under "Net 30" and has the `name`
-              "2% 10 Net 30", its `fullName` would be "Net 30:2% 10 Net 30".
-
-              Unlike `name`, `fullName` is guaranteed to be unique across all date-driven term
-              objects. Also, unlike `id`, `fullName` can be arbitrarily changed by the
-              QuickBooks user when modifying its underlying `name` field.
-
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters.
 
           ids: Filter for specific date-driven terms by their QuickBooks-assigned unique
               identifier(s).
@@ -475,6 +467,16 @@ class AsyncDateDrivenTermsResource(AsyncAPIResource):
 
           name_from: Filter for date-driven terms whose `name` is alphabetically greater than or
               equal to this value.
+
+          names: Filter for specific date-driven terms by their name(s), case-insensitive. Like
+              `id`, `name` is a unique identifier for a date-driven term.
+
+              NOTE: date-driven terms do not have a `fullName` field because they are not
+              hierarchical, which is why `name` is unique for them but not for objects that
+              have parents.
+
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              query parameters.
 
           name_starts_with: Filter for date-driven terms whose `name` starts with this substring,
               case-insensitive. NOTE: If you use this parameter, you cannot also use
@@ -511,12 +513,12 @@ class AsyncDateDrivenTermsResource(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform(
                     {
-                        "full_names": full_names,
                         "ids": ids,
                         "limit": limit,
                         "name_contains": name_contains,
                         "name_ends_with": name_ends_with,
                         "name_from": name_from,
+                        "names": names,
                         "name_starts_with": name_starts_with,
                         "name_to": name_to,
                         "status": status,

@@ -320,14 +320,14 @@ class ServiceItem(BaseModel):
     full_name: str = FieldInfo(alias="fullName")
     """
     The case-insensitive fully-qualified unique name of this service item, formed by
-    combining the names of its parent objects with its own `name`, separated by
-    colons. For example, if a service item is under "Services:Consulting" and has
-    the `name` "Web-Design", its `fullName` would be
+    combining the names of its hierarchical parent objects with its own `name`,
+    separated by colons. For example, if a service item is under
+    "Services:Consulting" and has the `name` "Web-Design", its `fullName` would be
     "Services:Consulting:Web-Design".
 
-    Unlike `name`, `fullName` is guaranteed to be unique across all service item
-    objects. However, `fullName` can still be arbitrarily changed by the QuickBooks
-    user when they modify the underlying `name` field.
+    NOTE: Unlike `name`, `fullName` is guaranteed to be unique across all service
+    item objects. However, `fullName` can still be arbitrarily changed by the
+    QuickBooks user when they modify the underlying `name` field.
     """
 
     is_active: bool = FieldInfo(alias="isActive")
@@ -339,11 +339,11 @@ class ServiceItem(BaseModel):
     name: str
     """The case-insensitive name of this service item.
 
-    Not guaranteed to be unique because it does not include the names of its parent
-    objects like `fullName` does. For example, two service items could both have the
-    `name` "Web-Design", but they could have unique `fullName` values, such as
-    "Consulting:Web-Design" and "Contracting:Web-Design". Maximum length: 31
-    characters.
+    Not guaranteed to be unique because it does not include the names of its
+    hierarchical parent objects like `fullName` does. For example, two service items
+    could both have the `name` "Web-Design", but they could have unique `fullName`
+    values, such as "Consulting:Web-Design" and "Contracting:Web-Design". Maximum
+    length: 31 characters.
     """
 
     object_type: Literal["qbd_service_item"] = FieldInfo(alias="objectType")

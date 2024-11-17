@@ -320,14 +320,14 @@ class NonInventoryItem(BaseModel):
     full_name: str = FieldInfo(alias="fullName")
     """
     The case-insensitive fully-qualified unique name of this non-inventory item,
-    formed by combining the names of its parent objects with its own `name`,
-    separated by colons. For example, if a non-inventory item is under
+    formed by combining the names of its hierarchical parent objects with its own
+    `name`, separated by colons. For example, if a non-inventory item is under
     "Office-Supplies" and has the `name` "Printer Ink Cartridge", its `fullName`
     would be "Office-Supplies:Printer Ink Cartridge".
 
-    Unlike `name`, `fullName` is guaranteed to be unique across all non-inventory
-    item objects. However, `fullName` can still be arbitrarily changed by the
-    QuickBooks user when they modify the underlying `name` field.
+    NOTE: Unlike `name`, `fullName` is guaranteed to be unique across all
+    non-inventory item objects. However, `fullName` can still be arbitrarily changed
+    by the QuickBooks user when they modify the underlying `name` field.
     """
 
     is_active: bool = FieldInfo(alias="isActive")
@@ -339,10 +339,10 @@ class NonInventoryItem(BaseModel):
     name: str
     """The case-insensitive name of this non-inventory item.
 
-    Not guaranteed to be unique because it does not include the names of its parent
-    objects like `fullName` does. For example, two non-inventory items could both
-    have the `name` "Printer Ink Cartridge", but they could have unique `fullName`
-    values, such as "Office-Supplies:Printer Ink Cartridge" and
+    Not guaranteed to be unique because it does not include the names of its
+    hierarchical parent objects like `fullName` does. For example, two non-inventory
+    items could both have the `name` "Printer Ink Cartridge", but they could have
+    unique `fullName` values, such as "Office-Supplies:Printer Ink Cartridge" and
     "Miscellaneous:Printer Ink Cartridge". Maximum length: 31 characters.
     """
 

@@ -25,9 +25,9 @@ class ClassListParams(TypedDict, total=False):
     example, if a class is under "Department" and has the `name` "Marketing", its
     `fullName` would be "Department:Marketing".
 
-    Unlike `name`, `fullName` is guaranteed to be unique across all class objects.
-    Also, unlike `id`, `fullName` can be arbitrarily changed by the QuickBooks user
-    when modifying its underlying `name` field.
+    NOTE: Unlike `name`, `fullName` is guaranteed to be unique across all class
+    objects. Also, unlike `id`, `fullName` can be arbitrarily changed by the
+    QuickBooks user when modifying its underlying `name` field.
 
     **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
     query parameters.

@@ -39,8 +39,8 @@ class ServiceItemListParams(TypedDict, total=False):
     the `name` "Consulting", its `fullName` would be "Professional
     Services:Consulting".
 
-    Unlike `name`, `fullName` is guaranteed to be unique across all service item
-    objects. Also, unlike `id`, `fullName` can be arbitrarily changed by the
+    NOTE: Unlike `name`, `fullName` is guaranteed to be unique across all service
+    item objects. Also, unlike `id`, `fullName` can be arbitrarily changed by the
     QuickBooks user when modifying its underlying `name` field.
 
     **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
