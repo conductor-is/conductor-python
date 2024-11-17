@@ -13,6 +13,7 @@ from .transfer import Transfer as Transfer
 from .service_item import ServiceItem as ServiceItem
 from .standard_term import StandardTerm as StandardTerm
 from .inventory_item import InventoryItem as InventoryItem
+from .inventory_site import InventorySite as InventorySite
 from .sales_tax_code import SalesTaxCode as SalesTaxCode
 from .sales_tax_item import SalesTaxItem as SalesTaxItem
 from .bill_list_params import BillListParams as BillListParams
@@ -25,7 +26,6 @@ from .bill_update_params import BillUpdateParams as BillUpdateParams
 from .credit_card_charge import CreditCardCharge as CreditCardCharge
 from .credit_card_credit import CreditCardCredit as CreditCardCredit
 from .non_inventory_item import NonInventoryItem as NonInventoryItem
-from .qbd_inventory_site import QbdInventorySite as QbdInventorySite
 from .vendor_list_params import VendorListParams as VendorListParams
 from .account_list_params import AccountListParams as AccountListParams
 from .check_create_params import CheckCreateParams as CheckCreateParams
@@ -48,6 +48,7 @@ from .customer_update_params import CustomerUpdateParams as CustomerUpdateParams
 from .transfer_create_params import TransferCreateParams as TransferCreateParams
 from .transfer_update_params import TransferUpdateParams as TransferUpdateParams
 from .inventory_assembly_item import InventoryAssemblyItem as InventoryAssemblyItem
+from .bill_payment_credit_card import BillPaymentCreditCard as BillPaymentCreditCard
 from .service_item_list_params import ServiceItemListParams as ServiceItemListParams
 from .standard_term_list_params import StandardTermListParams as StandardTermListParams
 from .inventory_item_list_params import InventoryItemListParams as InventoryItemListParams
@@ -64,7 +65,6 @@ from .inventory_item_update_params import InventoryItemUpdateParams as Inventory
 from .inventory_site_create_params import InventorySiteCreateParams as InventorySiteCreateParams
 from .inventory_site_list_response import InventorySiteListResponse as InventorySiteListResponse
 from .inventory_site_update_params import InventorySiteUpdateParams as InventorySiteUpdateParams
-from .qbd_bill_payment_credit_card import QbdBillPaymentCreditCard as QbdBillPaymentCreditCard
 from .sales_tax_code_create_params import SalesTaxCodeCreateParams as SalesTaxCodeCreateParams
 from .sales_tax_code_list_response import SalesTaxCodeListResponse as SalesTaxCodeListResponse
 from .sales_tax_code_update_params import SalesTaxCodeUpdateParams as SalesTaxCodeUpdateParams
