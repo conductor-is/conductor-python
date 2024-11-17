@@ -79,10 +79,10 @@ class NonInventoryItemsResource(SyncAPIResource):
 
         Args:
           name: The case-insensitive name of this non-inventory item. Not guaranteed to be
-              unique because it does not include the names of its parent objects like
-              `fullName` does. For example, two non-inventory items could both have the `name`
-              "Printer Ink Cartridge", but they could have unique `fullName` values, such as
-              "Office-Supplies:Printer Ink Cartridge" and "Miscellaneous:Printer Ink
+              unique because it does not include the names of its hierarchical parent objects
+              like `fullName` does. For example, two non-inventory items could both have the
+              `name` "Printer Ink Cartridge", but they could have unique `fullName` values,
+              such as "Office-Supplies:Printer Ink Cartridge" and "Miscellaneous:Printer Ink
               Cartridge". Maximum length: 31 characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
@@ -273,10 +273,10 @@ class NonInventoryItemsResource(SyncAPIResource):
               typically hidden from views and reports in QuickBooks.
 
           name: The case-insensitive name of this non-inventory item. Not guaranteed to be
-              unique because it does not include the names of its parent objects like
-              `fullName` does. For example, two non-inventory items could both have the `name`
-              "Printer Ink Cartridge", but they could have unique `fullName` values, such as
-              "Office-Supplies:Printer Ink Cartridge" and "Miscellaneous:Printer Ink
+              unique because it does not include the names of its hierarchical parent objects
+              like `fullName` does. For example, two non-inventory items could both have the
+              `name` "Printer Ink Cartridge", but they could have unique `fullName` values,
+              such as "Office-Supplies:Printer Ink Cartridge" and "Miscellaneous:Printer Ink
               Cartridge". Maximum length: 31 characters.
 
           parent_id: The parent non-inventory item one level above this one in the hierarchy. For
@@ -396,9 +396,9 @@ class NonInventoryItemsResource(SyncAPIResource):
               the `name` "Printer Ink Cartridge", its `fullName` would be "Office
               Supplies:Printer Ink Cartridge".
 
-              Unlike `name`, `fullName` is guaranteed to be unique across all non-inventory
-              item objects. Also, unlike `id`, `fullName` can be arbitrarily changed by the
-              QuickBooks user when modifying its underlying `name` field.
+              NOTE: Unlike `name`, `fullName` is guaranteed to be unique across all
+              non-inventory item objects. Also, unlike `id`, `fullName` can be arbitrarily
+              changed by the QuickBooks user when modifying its underlying `name` field.
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters.
@@ -530,10 +530,10 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
 
         Args:
           name: The case-insensitive name of this non-inventory item. Not guaranteed to be
-              unique because it does not include the names of its parent objects like
-              `fullName` does. For example, two non-inventory items could both have the `name`
-              "Printer Ink Cartridge", but they could have unique `fullName` values, such as
-              "Office-Supplies:Printer Ink Cartridge" and "Miscellaneous:Printer Ink
+              unique because it does not include the names of its hierarchical parent objects
+              like `fullName` does. For example, two non-inventory items could both have the
+              `name` "Printer Ink Cartridge", but they could have unique `fullName` values,
+              such as "Office-Supplies:Printer Ink Cartridge" and "Miscellaneous:Printer Ink
               Cartridge". Maximum length: 31 characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
@@ -724,10 +724,10 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
               typically hidden from views and reports in QuickBooks.
 
           name: The case-insensitive name of this non-inventory item. Not guaranteed to be
-              unique because it does not include the names of its parent objects like
-              `fullName` does. For example, two non-inventory items could both have the `name`
-              "Printer Ink Cartridge", but they could have unique `fullName` values, such as
-              "Office-Supplies:Printer Ink Cartridge" and "Miscellaneous:Printer Ink
+              unique because it does not include the names of its hierarchical parent objects
+              like `fullName` does. For example, two non-inventory items could both have the
+              `name` "Printer Ink Cartridge", but they could have unique `fullName` values,
+              such as "Office-Supplies:Printer Ink Cartridge" and "Miscellaneous:Printer Ink
               Cartridge". Maximum length: 31 characters.
 
           parent_id: The parent non-inventory item one level above this one in the hierarchy. For
@@ -847,9 +847,9 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
               the `name` "Printer Ink Cartridge", its `fullName` would be "Office
               Supplies:Printer Ink Cartridge".
 
-              Unlike `name`, `fullName` is guaranteed to be unique across all non-inventory
-              item objects. Also, unlike `id`, `fullName` can be arbitrarily changed by the
-              QuickBooks user when modifying its underlying `name` field.
+              NOTE: Unlike `name`, `fullName` is guaranteed to be unique across all
+              non-inventory item objects. Also, unlike `id`, `fullName` can be arbitrarily
+              changed by the QuickBooks user when modifying its underlying `name` field.
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters.

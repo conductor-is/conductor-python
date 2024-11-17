@@ -44,13 +44,13 @@ class Class(BaseModel):
     full_name: str = FieldInfo(alias="fullName")
     """
     The case-insensitive fully-qualified unique name of this class, formed by
-    combining the names of its parent objects with its own `name`, separated by
-    colons. For example, if a class is under "Corporate:Sales" and has the `name`
-    "Marketing", its `fullName` would be "Corporate:Sales:Marketing".
+    combining the names of its hierarchical parent objects with its own `name`,
+    separated by colons. For example, if a class is under "Corporate:Sales" and has
+    the `name` "Marketing", its `fullName` would be "Corporate:Sales:Marketing".
 
-    Unlike `name`, `fullName` is guaranteed to be unique across all class objects.
-    However, `fullName` can still be arbitrarily changed by the QuickBooks user when
-    they modify the underlying `name` field.
+    NOTE: Unlike `name`, `fullName` is guaranteed to be unique across all class
+    objects. However, `fullName` can still be arbitrarily changed by the QuickBooks
+    user when they modify the underlying `name` field.
     """
 
     is_active: bool = FieldInfo(alias="isActive")
@@ -62,10 +62,11 @@ class Class(BaseModel):
     name: str
     """The case-insensitive name of this class.
 
-    Not guaranteed to be unique because it does not include the names of its parent
-    objects like `fullName` does. For example, two classes could both have the
-    `name` "Marketing", but they could have unique `fullName` values, such as
-    "Corporate:Marketing" and "Internal:Marketing". Maximum length: 31 characters.
+    Not guaranteed to be unique because it does not include the names of its
+    hierarchical parent objects like `fullName` does. For example, two classes could
+    both have the `name` "Marketing", but they could have unique `fullName` values,
+    such as "Corporate:Marketing" and "Internal:Marketing". Maximum length: 31
+    characters.
     """
 
     object_type: Literal["qbd_class"] = FieldInfo(alias="objectType")

@@ -72,8 +72,12 @@ class SalesTaxCodesResource(SyncAPIResource):
               cannot be modified once the sales-tax code has been used in a transaction.
 
           name: The case-insensitive unique name of this sales-tax code, unique across all
-              sales-tax codes. Maximum length: 3 characters. This short name will appear on
-              sales forms to identify the tax status of an item.
+              sales-tax codes.
+
+              NOTE: sales-tax codes do not have a `fullName` field because they are not
+              hierarchical, which is why `name` is unique for them but not for objects that
+              have parents. Maximum length: 3 characters. This short name will appear on sales
+              forms to identify the tax status of an item.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -196,8 +200,12 @@ class SalesTaxCodesResource(SyncAPIResource):
               cannot be modified once the sales-tax code has been used in a transaction.
 
           name: The case-insensitive unique name of this sales-tax code, unique across all
-              sales-tax codes. Maximum length: 3 characters. This short name will appear on
-              sales forms to identify the tax status of an item.
+              sales-tax codes.
+
+              NOTE: sales-tax codes do not have a `fullName` field because they are not
+              hierarchical, which is why `name` is unique for them but not for objects that
+              have parents. Maximum length: 3 characters. This short name will appear on sales
+              forms to identify the tax status of an item.
 
           sales_tax_item_id: The sales-tax item used to calculate the actual tax amount for this sales-tax
               code's transactions by applying a specific tax rate collected for a single tax
@@ -238,12 +246,12 @@ class SalesTaxCodesResource(SyncAPIResource):
         self,
         *,
         conductor_end_user_id: str,
-        full_names: List[str] | NotGiven = NOT_GIVEN,
         ids: List[str] | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         name_contains: str | NotGiven = NOT_GIVEN,
         name_ends_with: str | NotGiven = NOT_GIVEN,
         name_from: str | NotGiven = NOT_GIVEN,
+        names: List[str] | NotGiven = NOT_GIVEN,
         name_starts_with: str | NotGiven = NOT_GIVEN,
         name_to: str | NotGiven = NOT_GIVEN,
         status: Literal["active", "all", "inactive"] | NotGiven = NOT_GIVEN,
@@ -262,19 +270,6 @@ class SalesTaxCodesResource(SyncAPIResource):
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
-
-          full_names: Filter for specific sales-tax codes by their full-name(s), case-insensitive.
-              Like `id`, `fullName` is a unique identifier for a sales-tax code, formed by by
-              combining the names of its parent objects with its own `name`, separated by
-              colons. For example, if a sales-tax code is under "State" and has the `name` "CA
-              Sales Tax", its `fullName` would be "State:CA Sales Tax".
-
-              Unlike `name`, `fullName` is guaranteed to be unique across all sales-tax code
-              objects. Also, unlike `id`, `fullName` can be arbitrarily changed by the
-              QuickBooks user when modifying its underlying `name` field.
-
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters.
 
           ids: Filter for specific sales-tax codes by their QuickBooks-assigned unique
               identifier(s).
@@ -298,6 +293,16 @@ class SalesTaxCodesResource(SyncAPIResource):
 
           name_from: Filter for sales-tax codes whose `name` is alphabetically greater than or equal
               to this value.
+
+          names: Filter for specific sales-tax codes by their name(s), case-insensitive. Like
+              `id`, `name` is a unique identifier for a sales-tax code.
+
+              NOTE: sales-tax codes do not have a `fullName` field because they are not
+              hierarchical, which is why `name` is unique for them but not for objects that
+              have parents.
+
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              query parameters.
 
           name_starts_with: Filter for sales-tax codes whose `name` starts with this substring,
               case-insensitive. NOTE: If you use this parameter, you cannot also use
@@ -334,12 +339,12 @@ class SalesTaxCodesResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "full_names": full_names,
                         "ids": ids,
                         "limit": limit,
                         "name_contains": name_contains,
                         "name_ends_with": name_ends_with,
                         "name_from": name_from,
+                        "names": names,
                         "name_starts_with": name_starts_with,
                         "name_to": name_to,
                         "status": status,
@@ -397,8 +402,12 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
               cannot be modified once the sales-tax code has been used in a transaction.
 
           name: The case-insensitive unique name of this sales-tax code, unique across all
-              sales-tax codes. Maximum length: 3 characters. This short name will appear on
-              sales forms to identify the tax status of an item.
+              sales-tax codes.
+
+              NOTE: sales-tax codes do not have a `fullName` field because they are not
+              hierarchical, which is why `name` is unique for them but not for objects that
+              have parents. Maximum length: 3 characters. This short name will appear on sales
+              forms to identify the tax status of an item.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -521,8 +530,12 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
               cannot be modified once the sales-tax code has been used in a transaction.
 
           name: The case-insensitive unique name of this sales-tax code, unique across all
-              sales-tax codes. Maximum length: 3 characters. This short name will appear on
-              sales forms to identify the tax status of an item.
+              sales-tax codes.
+
+              NOTE: sales-tax codes do not have a `fullName` field because they are not
+              hierarchical, which is why `name` is unique for them but not for objects that
+              have parents. Maximum length: 3 characters. This short name will appear on sales
+              forms to identify the tax status of an item.
 
           sales_tax_item_id: The sales-tax item used to calculate the actual tax amount for this sales-tax
               code's transactions by applying a specific tax rate collected for a single tax
@@ -563,12 +576,12 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
         self,
         *,
         conductor_end_user_id: str,
-        full_names: List[str] | NotGiven = NOT_GIVEN,
         ids: List[str] | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         name_contains: str | NotGiven = NOT_GIVEN,
         name_ends_with: str | NotGiven = NOT_GIVEN,
         name_from: str | NotGiven = NOT_GIVEN,
+        names: List[str] | NotGiven = NOT_GIVEN,
         name_starts_with: str | NotGiven = NOT_GIVEN,
         name_to: str | NotGiven = NOT_GIVEN,
         status: Literal["active", "all", "inactive"] | NotGiven = NOT_GIVEN,
@@ -587,19 +600,6 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
-
-          full_names: Filter for specific sales-tax codes by their full-name(s), case-insensitive.
-              Like `id`, `fullName` is a unique identifier for a sales-tax code, formed by by
-              combining the names of its parent objects with its own `name`, separated by
-              colons. For example, if a sales-tax code is under "State" and has the `name` "CA
-              Sales Tax", its `fullName` would be "State:CA Sales Tax".
-
-              Unlike `name`, `fullName` is guaranteed to be unique across all sales-tax code
-              objects. Also, unlike `id`, `fullName` can be arbitrarily changed by the
-              QuickBooks user when modifying its underlying `name` field.
-
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters.
 
           ids: Filter for specific sales-tax codes by their QuickBooks-assigned unique
               identifier(s).
@@ -623,6 +623,16 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
 
           name_from: Filter for sales-tax codes whose `name` is alphabetically greater than or equal
               to this value.
+
+          names: Filter for specific sales-tax codes by their name(s), case-insensitive. Like
+              `id`, `name` is a unique identifier for a sales-tax code.
+
+              NOTE: sales-tax codes do not have a `fullName` field because they are not
+              hierarchical, which is why `name` is unique for them but not for objects that
+              have parents.
+
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              query parameters.
 
           name_starts_with: Filter for sales-tax codes whose `name` starts with this substring,
               case-insensitive. NOTE: If you use this parameter, you cannot also use
@@ -659,12 +669,12 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform(
                     {
-                        "full_names": full_names,
                         "ids": ids,
                         "limit": limit,
                         "name_contains": name_contains,
                         "name_ends_with": name_ends_with,
                         "name_from": name_from,
+                        "names": names,
                         "name_starts_with": name_starts_with,
                         "name_to": name_to,
                         "status": status,

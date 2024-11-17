@@ -98,10 +98,11 @@ class AccountsResource(SyncAPIResource):
               because QuickBooks creates these accounts behind the scenes.
 
           name: The case-insensitive name of this account. Not guaranteed to be unique because
-              it does not include the names of its parent objects like `fullName` does. For
-              example, two accounts could both have the `name` "Accounts-Payable", but they
-              could have unique `fullName` values, such as "Corporate:Accounts-Payable" and
-              "Finance:Accounts-Payable". Maximum length: 31 characters.
+              it does not include the names of its hierarchical parent objects like `fullName`
+              does. For example, two accounts could both have the `name` "Accounts-Payable",
+              but they could have unique `fullName` values, such as
+              "Corporate:Accounts-Payable" and "Finance:Accounts-Payable". Maximum length: 31
+              characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -296,10 +297,11 @@ class AccountsResource(SyncAPIResource):
               from views and reports in QuickBooks.
 
           name: The case-insensitive name of this account. Not guaranteed to be unique because
-              it does not include the names of its parent objects like `fullName` does. For
-              example, two accounts could both have the `name` "Accounts-Payable", but they
-              could have unique `fullName` values, such as "Corporate:Accounts-Payable" and
-              "Finance:Accounts-Payable". Maximum length: 31 characters.
+              it does not include the names of its hierarchical parent objects like `fullName`
+              does. For example, two accounts could both have the `name` "Accounts-Payable",
+              but they could have unique `fullName` values, such as
+              "Corporate:Accounts-Payable" and "Finance:Accounts-Payable". Maximum length: 31
+              characters.
 
           opening_balance: The amount of money in, or the value of, this account as of
               `openingBalanceDate`. On a bank statement, this would be the amount of money in
@@ -419,9 +421,9 @@ class AccountsResource(SyncAPIResource):
               example, if an account is under "Expenses:Utilities" and has the `name`
               "Electricity", its `fullName` would be "Expenses:Utilities:Electricity".
 
-              Unlike `name`, `fullName` is guaranteed to be unique across all account objects.
-              Also, unlike `id`, `fullName` can be arbitrarily changed by the QuickBooks user
-              when modifying its underlying `name` field.
+              NOTE: Unlike `name`, `fullName` is guaranteed to be unique across all account
+              objects. Also, unlike `id`, `fullName` can be arbitrarily changed by the
+              QuickBooks user when modifying its underlying `name` field.
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters.
@@ -573,10 +575,11 @@ class AsyncAccountsResource(AsyncAPIResource):
               because QuickBooks creates these accounts behind the scenes.
 
           name: The case-insensitive name of this account. Not guaranteed to be unique because
-              it does not include the names of its parent objects like `fullName` does. For
-              example, two accounts could both have the `name` "Accounts-Payable", but they
-              could have unique `fullName` values, such as "Corporate:Accounts-Payable" and
-              "Finance:Accounts-Payable". Maximum length: 31 characters.
+              it does not include the names of its hierarchical parent objects like `fullName`
+              does. For example, two accounts could both have the `name` "Accounts-Payable",
+              but they could have unique `fullName` values, such as
+              "Corporate:Accounts-Payable" and "Finance:Accounts-Payable". Maximum length: 31
+              characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -771,10 +774,11 @@ class AsyncAccountsResource(AsyncAPIResource):
               from views and reports in QuickBooks.
 
           name: The case-insensitive name of this account. Not guaranteed to be unique because
-              it does not include the names of its parent objects like `fullName` does. For
-              example, two accounts could both have the `name` "Accounts-Payable", but they
-              could have unique `fullName` values, such as "Corporate:Accounts-Payable" and
-              "Finance:Accounts-Payable". Maximum length: 31 characters.
+              it does not include the names of its hierarchical parent objects like `fullName`
+              does. For example, two accounts could both have the `name` "Accounts-Payable",
+              but they could have unique `fullName` values, such as
+              "Corporate:Accounts-Payable" and "Finance:Accounts-Payable". Maximum length: 31
+              characters.
 
           opening_balance: The amount of money in, or the value of, this account as of
               `openingBalanceDate`. On a bank statement, this would be the amount of money in
@@ -894,9 +898,9 @@ class AsyncAccountsResource(AsyncAPIResource):
               example, if an account is under "Expenses:Utilities" and has the `name`
               "Electricity", its `fullName` would be "Expenses:Utilities:Electricity".
 
-              Unlike `name`, `fullName` is guaranteed to be unique across all account objects.
-              Also, unlike `id`, `fullName` can be arbitrarily changed by the QuickBooks user
-              when modifying its underlying `name` field.
+              NOTE: Unlike `name`, `fullName` is guaranteed to be unique across all account
+              objects. Also, unlike `id`, `fullName` can be arbitrarily changed by the
+              QuickBooks user when modifying its underlying `name` field.
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters.

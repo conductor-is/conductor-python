@@ -301,12 +301,12 @@ class InventoryAssemblyItem(BaseModel):
     full_name: str = FieldInfo(alias="fullName")
     """
     The case-insensitive fully-qualified unique name of this inventory assembly
-    item, formed by combining the names of its parent objects with its own `name`,
-    separated by colons. For example, if an inventory assembly item is under
-    "Assemblies:Kitchen" and has the `name` "Deluxe Kit", its `fullName` would be
-    "Assemblies:Kitchen:Deluxe Kit".
+    item, formed by combining the names of its hierarchical parent objects with its
+    own `name`, separated by colons. For example, if an inventory assembly item is
+    under "Assemblies:Kitchen" and has the `name` "Deluxe Kit", its `fullName` would
+    be "Assemblies:Kitchen:Deluxe Kit".
 
-    Unlike `name`, `fullName` is guaranteed to be unique across all inventory
+    NOTE: Unlike `name`, `fullName` is guaranteed to be unique across all inventory
     assembly item objects. However, `fullName` can still be arbitrarily changed by
     the QuickBooks user when they modify the underlying `name` field.
     """
@@ -332,11 +332,11 @@ class InventoryAssemblyItem(BaseModel):
     name: str
     """The case-insensitive name of this inventory assembly item.
 
-    Not guaranteed to be unique because it does not include the names of its parent
-    objects like `fullName` does. For example, two inventory assembly items could
-    both have the `name` "Deluxe Kit", but they could have unique `fullName` values,
-    such as "Assemblies:Deluxe Kit" and "Inventory:Deluxe Kit". Maximum length: 31
-    characters.
+    Not guaranteed to be unique because it does not include the names of its
+    hierarchical parent objects like `fullName` does. For example, two inventory
+    assembly items could both have the `name` "Deluxe Kit", but they could have
+    unique `fullName` values, such as "Assemblies:Deluxe Kit" and "Inventory:Deluxe
+    Kit". Maximum length: 31 characters.
     """
 
     object_type: Literal["qbd_inventory_assembly_item"] = FieldInfo(alias="objectType")
