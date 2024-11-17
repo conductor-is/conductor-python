@@ -73,10 +73,6 @@ class SalesTaxItemListParams(TypedDict, total=False):
 
     Like `id`, `name` is a unique identifier for a sales-tax item.
 
-    NOTE: sales-tax items do not have a `fullName` field because they are not
-    hierarchical, which is why `name` is unique for them but not for objects that
-    have parents.
-
     **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
     query parameters.
     """

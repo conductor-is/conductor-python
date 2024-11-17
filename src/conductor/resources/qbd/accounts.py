@@ -421,10 +421,6 @@ class AccountsResource(SyncAPIResource):
               example, if an account is under "Expenses:Utilities" and has the `name`
               "Electricity", its `fullName` would be "Expenses:Utilities:Electricity".
 
-              NOTE: Unlike `name`, `fullName` is guaranteed to be unique across all account
-              objects. Also, unlike `id`, `fullName` can be arbitrarily changed by the
-              QuickBooks user when modifying its underlying `name` field.
-
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters.
 
@@ -897,10 +893,6 @@ class AsyncAccountsResource(AsyncAPIResource):
               names of its parent objects with its own `name`, separated by colons. For
               example, if an account is under "Expenses:Utilities" and has the `name`
               "Electricity", its `fullName` would be "Expenses:Utilities:Electricity".
-
-              NOTE: Unlike `name`, `fullName` is guaranteed to be unique across all account
-              objects. Also, unlike `id`, `fullName` can be arbitrarily changed by the
-              QuickBooks user when modifying its underlying `name` field.
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters.

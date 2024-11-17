@@ -42,10 +42,6 @@ class CustomerListParams(TypedDict, total=False):
     "Website Redesign Project", its `fullName` would be "ABC Corporation:Website
     Redesign Project".
 
-    NOTE: Unlike `name`, `fullName` is guaranteed to be unique across all customer
-    objects. Also, unlike `id`, `fullName` can be arbitrarily changed by the
-    QuickBooks user when modifying its underlying `name` field.
-
     **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
     query parameters.
     """

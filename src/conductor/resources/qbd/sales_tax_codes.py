@@ -74,10 +74,10 @@ class SalesTaxCodesResource(SyncAPIResource):
           name: The case-insensitive unique name of this sales-tax code, unique across all
               sales-tax codes.
 
-              NOTE: sales-tax codes do not have a `fullName` field because they are not
-              hierarchical, which is why `name` is unique for them but not for objects that
-              have parents. Maximum length: 3 characters. This short name will appear on sales
-              forms to identify the tax status of an item.
+              NOTE: Sales-tax codes do not have a `fullName` field because they are not
+              hierarchical objects, which is why `name` is unique for them but not for objects
+              that have parents. Maximum length: 3 characters. This short name will appear on
+              sales forms to identify the tax status of an item.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -202,10 +202,10 @@ class SalesTaxCodesResource(SyncAPIResource):
           name: The case-insensitive unique name of this sales-tax code, unique across all
               sales-tax codes.
 
-              NOTE: sales-tax codes do not have a `fullName` field because they are not
-              hierarchical, which is why `name` is unique for them but not for objects that
-              have parents. Maximum length: 3 characters. This short name will appear on sales
-              forms to identify the tax status of an item.
+              NOTE: Sales-tax codes do not have a `fullName` field because they are not
+              hierarchical objects, which is why `name` is unique for them but not for objects
+              that have parents. Maximum length: 3 characters. This short name will appear on
+              sales forms to identify the tax status of an item.
 
           sales_tax_item_id: The sales-tax item used to calculate the actual tax amount for this sales-tax
               code's transactions by applying a specific tax rate collected for a single tax
@@ -296,10 +296,6 @@ class SalesTaxCodesResource(SyncAPIResource):
 
           names: Filter for specific sales-tax codes by their name(s), case-insensitive. Like
               `id`, `name` is a unique identifier for a sales-tax code.
-
-              NOTE: sales-tax codes do not have a `fullName` field because they are not
-              hierarchical, which is why `name` is unique for them but not for objects that
-              have parents.
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters.
@@ -404,10 +400,10 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
           name: The case-insensitive unique name of this sales-tax code, unique across all
               sales-tax codes.
 
-              NOTE: sales-tax codes do not have a `fullName` field because they are not
-              hierarchical, which is why `name` is unique for them but not for objects that
-              have parents. Maximum length: 3 characters. This short name will appear on sales
-              forms to identify the tax status of an item.
+              NOTE: Sales-tax codes do not have a `fullName` field because they are not
+              hierarchical objects, which is why `name` is unique for them but not for objects
+              that have parents. Maximum length: 3 characters. This short name will appear on
+              sales forms to identify the tax status of an item.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -532,10 +528,10 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
           name: The case-insensitive unique name of this sales-tax code, unique across all
               sales-tax codes.
 
-              NOTE: sales-tax codes do not have a `fullName` field because they are not
-              hierarchical, which is why `name` is unique for them but not for objects that
-              have parents. Maximum length: 3 characters. This short name will appear on sales
-              forms to identify the tax status of an item.
+              NOTE: Sales-tax codes do not have a `fullName` field because they are not
+              hierarchical objects, which is why `name` is unique for them but not for objects
+              that have parents. Maximum length: 3 characters. This short name will appear on
+              sales forms to identify the tax status of an item.
 
           sales_tax_item_id: The sales-tax item used to calculate the actual tax amount for this sales-tax
               code's transactions by applying a specific tax rate collected for a single tax
@@ -626,10 +622,6 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
 
           names: Filter for specific sales-tax codes by their name(s), case-insensitive. Like
               `id`, `name` is a unique identifier for a sales-tax code.
-
-              NOTE: sales-tax codes do not have a `fullName` field because they are not
-              hierarchical, which is why `name` is unique for them but not for objects that
-              have parents.
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters.
