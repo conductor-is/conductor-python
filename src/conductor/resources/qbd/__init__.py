@@ -160,6 +160,14 @@ from .inventory_assembly_items import (
     InventoryAssemblyItemsResourceWithStreamingResponse,
     AsyncInventoryAssemblyItemsResourceWithStreamingResponse,
 )
+from .bill_payment_credit_cards import (
+    BillPaymentCreditCardsResource,
+    AsyncBillPaymentCreditCardsResource,
+    BillPaymentCreditCardsResourceWithRawResponse,
+    AsyncBillPaymentCreditCardsResourceWithRawResponse,
+    BillPaymentCreditCardsResourceWithStreamingResponse,
+    AsyncBillPaymentCreditCardsResourceWithStreamingResponse,
+)
 
 __all__ = [
     "AccountsResource",
@@ -276,6 +284,12 @@ __all__ = [
     "AsyncVendorsResourceWithRawResponse",
     "VendorsResourceWithStreamingResponse",
     "AsyncVendorsResourceWithStreamingResponse",
+    "BillPaymentCreditCardsResource",
+    "AsyncBillPaymentCreditCardsResource",
+    "BillPaymentCreditCardsResourceWithRawResponse",
+    "AsyncBillPaymentCreditCardsResourceWithRawResponse",
+    "BillPaymentCreditCardsResourceWithStreamingResponse",
+    "AsyncBillPaymentCreditCardsResourceWithStreamingResponse",
     "QbdResource",
     "AsyncQbdResource",
     "QbdResourceWithRawResponse",
