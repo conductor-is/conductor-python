@@ -421,7 +421,7 @@ class ChecksResource(SyncAPIResource):
           ids: Filter for specific checks by their QuickBooks-assigned unique identifier(s).
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters.
+              query parameters for this request.
 
           include_line_items: Whether to include line items in the response. Defaults to `true`.
 
@@ -455,7 +455,7 @@ class ChecksResource(SyncAPIResource):
               changed by the QuickBooks user.
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters.
+              query parameters for this request.
 
           ref_number_starts_with: Filter for checks whose `refNumber` starts with this substring. For checks, this
               is the check number. NOTE: If you use this parameter, you cannot also use
@@ -918,7 +918,7 @@ class AsyncChecksResource(AsyncAPIResource):
           ids: Filter for specific checks by their QuickBooks-assigned unique identifier(s).
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters.
+              query parameters for this request.
 
           include_line_items: Whether to include line items in the response. Defaults to `true`.
 
@@ -952,7 +952,7 @@ class AsyncChecksResource(AsyncAPIResource):
               changed by the QuickBooks user.
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters.
+              query parameters for this request.
 
           ref_number_starts_with: Filter for checks whose `refNumber` starts with this substring. For checks, this
               is the check number. NOTE: If you use this parameter, you cannot also use

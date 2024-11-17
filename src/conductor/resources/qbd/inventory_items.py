@@ -491,13 +491,13 @@ class InventoryItemsResource(SyncAPIResource):
               the `name` "Cabinet", its `fullName` would be "Furniture:Kitchen:Cabinet".
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters.
+              query parameters for this request.
 
           ids: Filter for specific inventory items by their QuickBooks-assigned unique
               identifier(s).
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters.
+              query parameters for this request.
 
           limit: The maximum number of objects to return. Ranging from 1 to 150, defaults to 150.
               Use this parameter in conjunction with the `cursor` parameter to paginate
@@ -1047,13 +1047,13 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
               the `name` "Cabinet", its `fullName` would be "Furniture:Kitchen:Cabinet".
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters.
+              query parameters for this request.
 
           ids: Filter for specific inventory items by their QuickBooks-assigned unique
               identifier(s).
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters.
+              query parameters for this request.
 
           limit: The maximum number of objects to return. Ranging from 1 to 150, defaults to 150.
               Use this parameter in conjunction with the `cursor` parameter to paginate

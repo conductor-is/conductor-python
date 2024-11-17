@@ -284,7 +284,7 @@ class InventorySitesResource(SyncAPIResource):
               identifier(s).
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters.
+              query parameters for this request.
 
           name_contains: Filter for inventory sites whose `name` contains this substring,
               case-insensitive. NOTE: If you use this parameter, you cannot also use
@@ -301,7 +301,7 @@ class InventorySitesResource(SyncAPIResource):
               `id`, `name` is a unique identifier for an inventory site.
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters.
+              query parameters for this request.
 
           name_starts_with: Filter for inventory sites whose `name` starts with this substring,
               case-insensitive. NOTE: If you use this parameter, you cannot also use
@@ -612,7 +612,7 @@ class AsyncInventorySitesResource(AsyncAPIResource):
               identifier(s).
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters.
+              query parameters for this request.
 
           name_contains: Filter for inventory sites whose `name` contains this substring,
               case-insensitive. NOTE: If you use this parameter, you cannot also use
@@ -629,7 +629,7 @@ class AsyncInventorySitesResource(AsyncAPIResource):
               `id`, `name` is a unique identifier for an inventory site.
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters.
+              query parameters for this request.
 
           name_starts_with: Filter for inventory sites whose `name` starts with this substring,
               case-insensitive. NOTE: If you use this parameter, you cannot also use

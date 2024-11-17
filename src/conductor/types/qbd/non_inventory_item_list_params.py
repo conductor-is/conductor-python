@@ -40,7 +40,7 @@ class NonInventoryItemListParams(TypedDict, total=False):
     Supplies:Printer Ink Cartridge".
 
     **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-    query parameters.
+    query parameters for this request.
     """
 
     ids: List[str]
@@ -49,7 +49,7 @@ class NonInventoryItemListParams(TypedDict, total=False):
     identifier(s).
 
     **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-    query parameters.
+    query parameters for this request.
     """
 
     limit: int
