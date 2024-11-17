@@ -332,3 +332,18 @@ Methods:
 - <code title="post /quickbooks-desktop/bill-payment-credit-cards">client.qbd.bill_payment_credit_cards.<a href="./src/conductor/resources/qbd/bill_payment_credit_cards.py">create</a>(\*\*<a href="src/conductor/types/qbd/bill_payment_credit_card_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_bill_payment_credit_card.py">QbdBillPaymentCreditCard</a></code>
 - <code title="get /quickbooks-desktop/bill-payment-credit-cards/{id}">client.qbd.bill_payment_credit_cards.<a href="./src/conductor/resources/qbd/bill_payment_credit_cards.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_bill_payment_credit_card.py">QbdBillPaymentCreditCard</a></code>
 - <code title="get /quickbooks-desktop/bill-payment-credit-cards">client.qbd.bill_payment_credit_cards.<a href="./src/conductor/resources/qbd/bill_payment_credit_cards.py">list</a>(\*\*<a href="src/conductor/types/qbd/bill_payment_credit_card_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_bill_payment_credit_card.py">SyncCursorPage[QbdBillPaymentCreditCard]</a></code>
+
+## InventorySites
+
+Types:
+
+```python
+from conductor.types.qbd import QbdInventorySite, InventorySiteListResponse
+```
+
+Methods:
+
+- <code title="post /quickbooks-desktop/inventory-sites">client.qbd.inventory_sites.<a href="./src/conductor/resources/qbd/inventory_sites.py">create</a>(\*\*<a href="src/conductor/types/qbd/inventory_site_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_inventory_site.py">QbdInventorySite</a></code>
+- <code title="get /quickbooks-desktop/inventory-sites/{id}">client.qbd.inventory_sites.<a href="./src/conductor/resources/qbd/inventory_sites.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_inventory_site.py">QbdInventorySite</a></code>
+- <code title="post /quickbooks-desktop/inventory-sites/{id}">client.qbd.inventory_sites.<a href="./src/conductor/resources/qbd/inventory_sites.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/inventory_site_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_inventory_site.py">QbdInventorySite</a></code>
+- <code title="get /quickbooks-desktop/inventory-sites">client.qbd.inventory_sites.<a href="./src/conductor/resources/qbd/inventory_sites.py">list</a>(\*\*<a href="src/conductor/types/qbd/inventory_site_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/inventory_site_list_response.py">InventorySiteListResponse</a></code>
