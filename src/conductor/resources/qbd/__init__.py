@@ -96,6 +96,14 @@ from .inventory_items import (
     InventoryItemsResourceWithStreamingResponse,
     AsyncInventoryItemsResourceWithStreamingResponse,
 )
+from .inventory_sites import (
+    InventorySitesResource,
+    AsyncInventorySitesResource,
+    InventorySitesResourceWithRawResponse,
+    AsyncInventorySitesResourceWithRawResponse,
+    InventorySitesResourceWithStreamingResponse,
+    AsyncInventorySitesResourceWithStreamingResponse,
+)
 from .sales_tax_codes import (
     SalesTaxCodesResource,
     AsyncSalesTaxCodesResource,
@@ -290,6 +298,12 @@ __all__ = [
     "AsyncBillPaymentCreditCardsResourceWithRawResponse",
     "BillPaymentCreditCardsResourceWithStreamingResponse",
     "AsyncBillPaymentCreditCardsResourceWithStreamingResponse",
+    "InventorySitesResource",
+    "AsyncInventorySitesResource",
+    "InventorySitesResourceWithRawResponse",
+    "AsyncInventorySitesResourceWithRawResponse",
+    "InventorySitesResourceWithStreamingResponse",
+    "AsyncInventorySitesResourceWithStreamingResponse",
     "QbdResource",
     "AsyncQbdResource",
     "QbdResourceWithRawResponse",
