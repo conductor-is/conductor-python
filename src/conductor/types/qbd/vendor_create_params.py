@@ -23,9 +23,9 @@ class VendorCreateParams(TypedDict, total=False):
     name: Required[str]
     """The case-insensitive unique name of this vendor, unique across all vendors.
 
-    NOTE: vendors do not have a `fullName` field because they are not hierarchical,
-    which is why `name` is unique for them but not for objects that have parents.
-    Maximum length: 41 characters.
+    NOTE: Vendors do not have a `fullName` field because they are not hierarchical
+    objects, which is why `name` is unique for them but not for objects that have
+    parents. Maximum length: 41 characters.
     """
 
     conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]
