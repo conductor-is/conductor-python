@@ -73,7 +73,11 @@ class SalesTaxItemsResource(SyncAPIResource):
 
         Args:
           name: The case-insensitive unique name of this sales-tax item, unique across all
-              sales-tax items. Maximum length: 31 characters.
+              sales-tax items.
+
+              NOTE: sales-tax items do not have a `fullName` field because they are not
+              hierarchical, which is why `name` is unique for them but not for objects that
+              have parents. Maximum length: 31 characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -229,7 +233,11 @@ class SalesTaxItemsResource(SyncAPIResource):
               hidden from views and reports in QuickBooks.
 
           name: The case-insensitive unique name of this sales-tax item, unique across all
-              sales-tax items. Maximum length: 31 characters.
+              sales-tax items.
+
+              NOTE: sales-tax items do not have a `fullName` field because they are not
+              hierarchical, which is why `name` is unique for them but not for objects that
+              have parents. Maximum length: 31 characters.
 
           sales_tax_return_line_id: The specific line on the sales tax return form where the tax collected using
               this sales-tax item should be reported.
@@ -283,12 +291,12 @@ class SalesTaxItemsResource(SyncAPIResource):
         conductor_end_user_id: str,
         class_ids: List[str] | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
-        full_names: List[str] | NotGiven = NOT_GIVEN,
         ids: List[str] | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         name_contains: str | NotGiven = NOT_GIVEN,
         name_ends_with: str | NotGiven = NOT_GIVEN,
         name_from: str | NotGiven = NOT_GIVEN,
+        names: List[str] | NotGiven = NOT_GIVEN,
         name_starts_with: str | NotGiven = NOT_GIVEN,
         name_to: str | NotGiven = NOT_GIVEN,
         status: Literal["active", "all", "inactive"] | NotGiven = NOT_GIVEN,
@@ -315,19 +323,6 @@ class SalesTaxItemsResource(SyncAPIResource):
               `limit` parameter. Retrieve this value from the `nextCursor` field in the
               previous response. If omitted, the API returns the first page of results.
 
-          full_names: Filter for specific sales-tax items by their full-name(s), case-insensitive.
-              Like `id`, `fullName` is a unique identifier for a sales-tax item, formed by by
-              combining the names of its parent objects with its own `name`, separated by
-              colons. For example, if a sales-tax item is under "State" and has the `name` "CA
-              Sales Tax", its `fullName` would be "State:CA Sales Tax".
-
-              Unlike `name`, `fullName` is guaranteed to be unique across all sales-tax item
-              objects. Also, unlike `id`, `fullName` can be arbitrarily changed by the
-              QuickBooks user when modifying its underlying `name` field.
-
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters.
-
           ids: Filter for specific sales-tax items by their QuickBooks-assigned unique
               identifier(s).
 
@@ -350,6 +345,16 @@ class SalesTaxItemsResource(SyncAPIResource):
 
           name_from: Filter for sales-tax items whose `name` is alphabetically greater than or equal
               to this value.
+
+          names: Filter for specific sales-tax items by their name(s), case-insensitive. Like
+              `id`, `name` is a unique identifier for a sales-tax item.
+
+              NOTE: sales-tax items do not have a `fullName` field because they are not
+              hierarchical, which is why `name` is unique for them but not for objects that
+              have parents.
+
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              query parameters.
 
           name_starts_with: Filter for sales-tax items whose `name` starts with this substring,
               case-insensitive. NOTE: If you use this parameter, you cannot also use
@@ -389,12 +394,12 @@ class SalesTaxItemsResource(SyncAPIResource):
                     {
                         "class_ids": class_ids,
                         "cursor": cursor,
-                        "full_names": full_names,
                         "ids": ids,
                         "limit": limit,
                         "name_contains": name_contains,
                         "name_ends_with": name_ends_with,
                         "name_from": name_from,
+                        "names": names,
                         "name_starts_with": name_starts_with,
                         "name_to": name_to,
                         "status": status,
@@ -453,7 +458,11 @@ class AsyncSalesTaxItemsResource(AsyncAPIResource):
 
         Args:
           name: The case-insensitive unique name of this sales-tax item, unique across all
-              sales-tax items. Maximum length: 31 characters.
+              sales-tax items.
+
+              NOTE: sales-tax items do not have a `fullName` field because they are not
+              hierarchical, which is why `name` is unique for them but not for objects that
+              have parents. Maximum length: 31 characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -609,7 +618,11 @@ class AsyncSalesTaxItemsResource(AsyncAPIResource):
               hidden from views and reports in QuickBooks.
 
           name: The case-insensitive unique name of this sales-tax item, unique across all
-              sales-tax items. Maximum length: 31 characters.
+              sales-tax items.
+
+              NOTE: sales-tax items do not have a `fullName` field because they are not
+              hierarchical, which is why `name` is unique for them but not for objects that
+              have parents. Maximum length: 31 characters.
 
           sales_tax_return_line_id: The specific line on the sales tax return form where the tax collected using
               this sales-tax item should be reported.
@@ -663,12 +676,12 @@ class AsyncSalesTaxItemsResource(AsyncAPIResource):
         conductor_end_user_id: str,
         class_ids: List[str] | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
-        full_names: List[str] | NotGiven = NOT_GIVEN,
         ids: List[str] | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         name_contains: str | NotGiven = NOT_GIVEN,
         name_ends_with: str | NotGiven = NOT_GIVEN,
         name_from: str | NotGiven = NOT_GIVEN,
+        names: List[str] | NotGiven = NOT_GIVEN,
         name_starts_with: str | NotGiven = NOT_GIVEN,
         name_to: str | NotGiven = NOT_GIVEN,
         status: Literal["active", "all", "inactive"] | NotGiven = NOT_GIVEN,
@@ -695,19 +708,6 @@ class AsyncSalesTaxItemsResource(AsyncAPIResource):
               `limit` parameter. Retrieve this value from the `nextCursor` field in the
               previous response. If omitted, the API returns the first page of results.
 
-          full_names: Filter for specific sales-tax items by their full-name(s), case-insensitive.
-              Like `id`, `fullName` is a unique identifier for a sales-tax item, formed by by
-              combining the names of its parent objects with its own `name`, separated by
-              colons. For example, if a sales-tax item is under "State" and has the `name` "CA
-              Sales Tax", its `fullName` would be "State:CA Sales Tax".
-
-              Unlike `name`, `fullName` is guaranteed to be unique across all sales-tax item
-              objects. Also, unlike `id`, `fullName` can be arbitrarily changed by the
-              QuickBooks user when modifying its underlying `name` field.
-
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters.
-
           ids: Filter for specific sales-tax items by their QuickBooks-assigned unique
               identifier(s).
 
@@ -730,6 +730,16 @@ class AsyncSalesTaxItemsResource(AsyncAPIResource):
 
           name_from: Filter for sales-tax items whose `name` is alphabetically greater than or equal
               to this value.
+
+          names: Filter for specific sales-tax items by their name(s), case-insensitive. Like
+              `id`, `name` is a unique identifier for a sales-tax item.
+
+              NOTE: sales-tax items do not have a `fullName` field because they are not
+              hierarchical, which is why `name` is unique for them but not for objects that
+              have parents.
+
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              query parameters.
 
           name_starts_with: Filter for sales-tax items whose `name` starts with this substring,
               case-insensitive. NOTE: If you use this parameter, you cannot also use
@@ -769,12 +779,12 @@ class AsyncSalesTaxItemsResource(AsyncAPIResource):
                     {
                         "class_ids": class_ids,
                         "cursor": cursor,
-                        "full_names": full_names,
                         "ids": ids,
                         "limit": limit,
                         "name_contains": name_contains,
                         "name_ends_with": name_ends_with,
                         "name_from": name_from,
+                        "names": names,
                         "name_starts_with": name_starts_with,
                         "name_to": name_to,
                         "status": status,

@@ -74,10 +74,11 @@ class ServiceItemsResource(SyncAPIResource):
 
         Args:
           name: The case-insensitive name of this service item. Not guaranteed to be unique
-              because it does not include the names of its parent objects like `fullName`
-              does. For example, two service items could both have the `name` "Web-Design",
-              but they could have unique `fullName` values, such as "Consulting:Web-Design"
-              and "Contracting:Web-Design". Maximum length: 31 characters.
+              because it does not include the names of its hierarchical parent objects like
+              `fullName` does. For example, two service items could both have the `name`
+              "Web-Design", but they could have unique `fullName` values, such as
+              "Consulting:Web-Design" and "Contracting:Web-Design". Maximum length: 31
+              characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -260,10 +261,11 @@ class ServiceItemsResource(SyncAPIResource):
               hidden from views and reports in QuickBooks.
 
           name: The case-insensitive name of this service item. Not guaranteed to be unique
-              because it does not include the names of its parent objects like `fullName`
-              does. For example, two service items could both have the `name` "Web-Design",
-              but they could have unique `fullName` values, such as "Consulting:Web-Design"
-              and "Contracting:Web-Design". Maximum length: 31 characters.
+              because it does not include the names of its hierarchical parent objects like
+              `fullName` does. For example, two service items could both have the `name`
+              "Web-Design", but they could have unique `fullName` values, such as
+              "Consulting:Web-Design" and "Contracting:Web-Design". Maximum length: 31
+              characters.
 
           parent_id: The parent service item one level above this one in the hierarchy. For example,
               if this service item has a `fullName` of "Services:Consulting:Web-Design", its
@@ -376,8 +378,8 @@ class ServiceItemsResource(SyncAPIResource):
               the `name` "Consulting", its `fullName` would be "Professional
               Services:Consulting".
 
-              Unlike `name`, `fullName` is guaranteed to be unique across all service item
-              objects. Also, unlike `id`, `fullName` can be arbitrarily changed by the
+              NOTE: Unlike `name`, `fullName` is guaranteed to be unique across all service
+              item objects. Also, unlike `id`, `fullName` can be arbitrarily changed by the
               QuickBooks user when modifying its underlying `name` field.
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
@@ -509,10 +511,11 @@ class AsyncServiceItemsResource(AsyncAPIResource):
 
         Args:
           name: The case-insensitive name of this service item. Not guaranteed to be unique
-              because it does not include the names of its parent objects like `fullName`
-              does. For example, two service items could both have the `name` "Web-Design",
-              but they could have unique `fullName` values, such as "Consulting:Web-Design"
-              and "Contracting:Web-Design". Maximum length: 31 characters.
+              because it does not include the names of its hierarchical parent objects like
+              `fullName` does. For example, two service items could both have the `name`
+              "Web-Design", but they could have unique `fullName` values, such as
+              "Consulting:Web-Design" and "Contracting:Web-Design". Maximum length: 31
+              characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -695,10 +698,11 @@ class AsyncServiceItemsResource(AsyncAPIResource):
               hidden from views and reports in QuickBooks.
 
           name: The case-insensitive name of this service item. Not guaranteed to be unique
-              because it does not include the names of its parent objects like `fullName`
-              does. For example, two service items could both have the `name` "Web-Design",
-              but they could have unique `fullName` values, such as "Consulting:Web-Design"
-              and "Contracting:Web-Design". Maximum length: 31 characters.
+              because it does not include the names of its hierarchical parent objects like
+              `fullName` does. For example, two service items could both have the `name`
+              "Web-Design", but they could have unique `fullName` values, such as
+              "Consulting:Web-Design" and "Contracting:Web-Design". Maximum length: 31
+              characters.
 
           parent_id: The parent service item one level above this one in the hierarchy. For example,
               if this service item has a `fullName` of "Services:Consulting:Web-Design", its
@@ -811,8 +815,8 @@ class AsyncServiceItemsResource(AsyncAPIResource):
               the `name` "Consulting", its `fullName` would be "Professional
               Services:Consulting".
 
-              Unlike `name`, `fullName` is guaranteed to be unique across all service item
-              objects. Also, unlike `id`, `fullName` can be arbitrarily changed by the
+              NOTE: Unlike `name`, `fullName` is guaranteed to be unique across all service
+              item objects. Also, unlike `id`, `fullName` can be arbitrarily changed by the
               QuickBooks user when modifying its underlying `name` field.
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other

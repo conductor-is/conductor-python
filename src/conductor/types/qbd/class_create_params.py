@@ -13,10 +13,11 @@ class ClassCreateParams(TypedDict, total=False):
     name: Required[str]
     """The case-insensitive name of this class.
 
-    Not guaranteed to be unique because it does not include the names of its parent
-    objects like `fullName` does. For example, two classes could both have the
-    `name` "Marketing", but they could have unique `fullName` values, such as
-    "Corporate:Marketing" and "Internal:Marketing". Maximum length: 31 characters.
+    Not guaranteed to be unique because it does not include the names of its
+    hierarchical parent objects like `fullName` does. For example, two classes could
+    both have the `name` "Marketing", but they could have unique `fullName` values,
+    such as "Corporate:Marketing" and "Internal:Marketing". Maximum length: 31
+    characters.
     """
 
     conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]

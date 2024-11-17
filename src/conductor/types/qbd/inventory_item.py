@@ -266,14 +266,14 @@ class InventoryItem(BaseModel):
     full_name: str = FieldInfo(alias="fullName")
     """
     The case-insensitive fully-qualified unique name of this inventory item, formed
-    by combining the names of its parent objects with its own `name`, separated by
-    colons. For example, if an inventory item is under "Products:Electronics" and
-    has the `name` "Widgets", its `fullName` would be
+    by combining the names of its hierarchical parent objects with its own `name`,
+    separated by colons. For example, if an inventory item is under
+    "Products:Electronics" and has the `name` "Widgets", its `fullName` would be
     "Products:Electronics:Widgets".
 
-    Unlike `name`, `fullName` is guaranteed to be unique across all inventory item
-    objects. However, `fullName` can still be arbitrarily changed by the QuickBooks
-    user when they modify the underlying `name` field.
+    NOTE: Unlike `name`, `fullName` is guaranteed to be unique across all inventory
+    item objects. However, `fullName` can still be arbitrarily changed by the
+    QuickBooks user when they modify the underlying `name` field.
     """
 
     income_account: Optional[IncomeAccount] = FieldInfo(alias="incomeAccount", default=None)
@@ -291,10 +291,11 @@ class InventoryItem(BaseModel):
     name: str
     """The case-insensitive name of this inventory item.
 
-    Not guaranteed to be unique because it does not include the names of its parent
-    objects like `fullName` does. For example, two inventory items could both have
-    the `name` "Widget", but they could have unique `fullName` values, such as
-    "Products:Widget" and "Inventory:Widget". Maximum length: 31 characters.
+    Not guaranteed to be unique because it does not include the names of its
+    hierarchical parent objects like `fullName` does. For example, two inventory
+    items could both have the `name` "Widget", but they could have unique `fullName`
+    values, such as "Products:Widget" and "Inventory:Widget". Maximum length: 31
+    characters.
     """
 
     object_type: Literal["qbd_inventory_item"] = FieldInfo(alias="objectType")

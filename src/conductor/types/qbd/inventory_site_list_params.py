@@ -17,22 +17,6 @@ class InventorySiteListParams(TypedDict, total=False):
     `"Conductor-End-User-Id: {{END_USER_ID}}"`).
     """
 
-    full_names: Annotated[List[str], PropertyInfo(alias="fullNames")]
-    """Filter for specific inventory sites by their full-name(s), case-insensitive.
-
-    Like `id`, `fullName` is a unique identifier for an inventory site, formed by by
-    combining the names of its parent objects with its own `name`, separated by
-    colons. For example, if an inventory site is under "Warehouse" and has the
-    `name` "Stockroom", its `fullName` would be "Warehouse:Stockroom".
-
-    Unlike `name`, `fullName` is guaranteed to be unique across all inventory site
-    objects. Also, unlike `id`, `fullName` can be arbitrarily changed by the
-    QuickBooks user when modifying its underlying `name` field.
-
-    **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-    query parameters.
-    """
-
     ids: List[str]
     """
     Filter for specific inventory sites by their QuickBooks-assigned unique
@@ -60,6 +44,19 @@ class InventorySiteListParams(TypedDict, total=False):
     """
     Filter for inventory sites whose `name` is alphabetically greater than or equal
     to this value.
+    """
+
+    names: List[str]
+    """Filter for specific inventory sites by their name(s), case-insensitive.
+
+    Like `id`, `name` is a unique identifier for an inventory site.
+
+    NOTE: inventory sites do not have a `fullName` field because they are not
+    hierarchical, which is why `name` is unique for them but not for objects that
+    have parents.
+
+    **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+    query parameters.
     """
 
     name_starts_with: Annotated[str, PropertyInfo(alias="nameStartsWith")]

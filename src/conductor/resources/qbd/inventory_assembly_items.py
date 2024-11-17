@@ -101,9 +101,9 @@ class InventoryAssemblyItemsResource(SyncAPIResource):
               item.
 
           name: The case-insensitive name of this inventory assembly item. Not guaranteed to be
-              unique because it does not include the names of its parent objects like
-              `fullName` does. For example, two inventory assembly items could both have the
-              `name` "Deluxe Kit", but they could have unique `fullName` values, such as
+              unique because it does not include the names of its hierarchical parent objects
+              like `fullName` does. For example, two inventory assembly items could both have
+              the `name` "Deluxe Kit", but they could have unique `fullName` values, such as
               "Assemblies:Deluxe Kit" and "Inventory:Deluxe Kit". Maximum length: 31
               characters.
 
@@ -366,9 +366,9 @@ class InventoryAssemblyItemsResource(SyncAPIResource):
           maximum_quantity_on_hand: The maximum quantity of this inventory assembly item desired in inventory.
 
           name: The case-insensitive name of this inventory assembly item. Not guaranteed to be
-              unique because it does not include the names of its parent objects like
-              `fullName` does. For example, two inventory assembly items could both have the
-              `name` "Deluxe Kit", but they could have unique `fullName` values, such as
+              unique because it does not include the names of its hierarchical parent objects
+              like `fullName` does. For example, two inventory assembly items could both have
+              the `name` "Deluxe Kit", but they could have unique `fullName` values, such as
               "Assemblies:Deluxe Kit" and "Inventory:Deluxe Kit". Maximum length: 31
               characters.
 
@@ -511,7 +511,7 @@ class InventoryAssemblyItemsResource(SyncAPIResource):
               under "Assemblies" and has the `name` "Deluxe Kit", its `fullName` would be
               "Assemblies:Deluxe Kit".
 
-              Unlike `name`, `fullName` is guaranteed to be unique across all inventory
+              NOTE: Unlike `name`, `fullName` is guaranteed to be unique across all inventory
               assembly item objects. Also, unlike `id`, `fullName` can be arbitrarily changed
               by the QuickBooks user when modifying its underlying `name` field.
 
@@ -678,9 +678,9 @@ class AsyncInventoryAssemblyItemsResource(AsyncAPIResource):
               item.
 
           name: The case-insensitive name of this inventory assembly item. Not guaranteed to be
-              unique because it does not include the names of its parent objects like
-              `fullName` does. For example, two inventory assembly items could both have the
-              `name` "Deluxe Kit", but they could have unique `fullName` values, such as
+              unique because it does not include the names of its hierarchical parent objects
+              like `fullName` does. For example, two inventory assembly items could both have
+              the `name` "Deluxe Kit", but they could have unique `fullName` values, such as
               "Assemblies:Deluxe Kit" and "Inventory:Deluxe Kit". Maximum length: 31
               characters.
 
@@ -943,9 +943,9 @@ class AsyncInventoryAssemblyItemsResource(AsyncAPIResource):
           maximum_quantity_on_hand: The maximum quantity of this inventory assembly item desired in inventory.
 
           name: The case-insensitive name of this inventory assembly item. Not guaranteed to be
-              unique because it does not include the names of its parent objects like
-              `fullName` does. For example, two inventory assembly items could both have the
-              `name` "Deluxe Kit", but they could have unique `fullName` values, such as
+              unique because it does not include the names of its hierarchical parent objects
+              like `fullName` does. For example, two inventory assembly items could both have
+              the `name` "Deluxe Kit", but they could have unique `fullName` values, such as
               "Assemblies:Deluxe Kit" and "Inventory:Deluxe Kit". Maximum length: 31
               characters.
 
@@ -1088,7 +1088,7 @@ class AsyncInventoryAssemblyItemsResource(AsyncAPIResource):
               under "Assemblies" and has the `name` "Deluxe Kit", its `fullName` would be
               "Assemblies:Deluxe Kit".
 
-              Unlike `name`, `fullName` is guaranteed to be unique across all inventory
+              NOTE: Unlike `name`, `fullName` is guaranteed to be unique across all inventory
               assembly item objects. Also, unlike `id`, `fullName` can be arbitrarily changed
               by the QuickBooks user when modifying its underlying `name` field.
 
