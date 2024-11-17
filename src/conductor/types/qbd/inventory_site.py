@@ -7,7 +7,7 @@ from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
 
-__all__ = ["QbdInventorySite", "Address", "Parent"]
+__all__ = ["InventorySite", "Address", "Parent"]
 
 
 class Address(BaseModel):
@@ -58,7 +58,7 @@ class Parent(BaseModel):
     """
 
 
-class QbdInventorySite(BaseModel):
+class InventorySite(BaseModel):
     id: str
     """The unique identifier assigned by QuickBooks to this inventory site.
 

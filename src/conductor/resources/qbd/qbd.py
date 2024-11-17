@@ -186,6 +186,10 @@ class QbdResource(SyncAPIResource):
         return BillPaymentChecksResource(self._client)
 
     @cached_property
+    def bill_payment_credit_cards(self) -> BillPaymentCreditCardsResource:
+        return BillPaymentCreditCardsResource(self._client)
+
+    @cached_property
     def bills(self) -> BillsResource:
         return BillsResource(self._client)
 
@@ -222,6 +226,10 @@ class QbdResource(SyncAPIResource):
         return InventoryItemsResource(self._client)
 
     @cached_property
+    def inventory_sites(self) -> InventorySitesResource:
+        return InventorySitesResource(self._client)
+
+    @cached_property
     def invoices(self) -> InvoicesResource:
         return InvoicesResource(self._client)
 
@@ -254,14 +262,6 @@ class QbdResource(SyncAPIResource):
         return VendorsResource(self._client)
 
     @cached_property
-    def bill_payment_credit_cards(self) -> BillPaymentCreditCardsResource:
-        return BillPaymentCreditCardsResource(self._client)
-
-    @cached_property
-    def inventory_sites(self) -> InventorySitesResource:
-        return InventorySitesResource(self._client)
-
-    @cached_property
     def with_raw_response(self) -> QbdResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return the
@@ -289,6 +289,10 @@ class AsyncQbdResource(AsyncAPIResource):
     @cached_property
     def bill_payment_checks(self) -> AsyncBillPaymentChecksResource:
         return AsyncBillPaymentChecksResource(self._client)
+
+    @cached_property
+    def bill_payment_credit_cards(self) -> AsyncBillPaymentCreditCardsResource:
+        return AsyncBillPaymentCreditCardsResource(self._client)
 
     @cached_property
     def bills(self) -> AsyncBillsResource:
@@ -327,6 +331,10 @@ class AsyncQbdResource(AsyncAPIResource):
         return AsyncInventoryItemsResource(self._client)
 
     @cached_property
+    def inventory_sites(self) -> AsyncInventorySitesResource:
+        return AsyncInventorySitesResource(self._client)
+
+    @cached_property
     def invoices(self) -> AsyncInvoicesResource:
         return AsyncInvoicesResource(self._client)
 
@@ -359,14 +367,6 @@ class AsyncQbdResource(AsyncAPIResource):
         return AsyncVendorsResource(self._client)
 
     @cached_property
-    def bill_payment_credit_cards(self) -> AsyncBillPaymentCreditCardsResource:
-        return AsyncBillPaymentCreditCardsResource(self._client)
-
-    @cached_property
-    def inventory_sites(self) -> AsyncInventorySitesResource:
-        return AsyncInventorySitesResource(self._client)
-
-    @cached_property
     def with_raw_response(self) -> AsyncQbdResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return the
@@ -397,6 +397,10 @@ class QbdResourceWithRawResponse:
     @cached_property
     def bill_payment_checks(self) -> BillPaymentChecksResourceWithRawResponse:
         return BillPaymentChecksResourceWithRawResponse(self._qbd.bill_payment_checks)
+
+    @cached_property
+    def bill_payment_credit_cards(self) -> BillPaymentCreditCardsResourceWithRawResponse:
+        return BillPaymentCreditCardsResourceWithRawResponse(self._qbd.bill_payment_credit_cards)
 
     @cached_property
     def bills(self) -> BillsResourceWithRawResponse:
@@ -435,6 +439,10 @@ class QbdResourceWithRawResponse:
         return InventoryItemsResourceWithRawResponse(self._qbd.inventory_items)
 
     @cached_property
+    def inventory_sites(self) -> InventorySitesResourceWithRawResponse:
+        return InventorySitesResourceWithRawResponse(self._qbd.inventory_sites)
+
+    @cached_property
     def invoices(self) -> InvoicesResourceWithRawResponse:
         return InvoicesResourceWithRawResponse(self._qbd.invoices)
 
@@ -466,14 +474,6 @@ class QbdResourceWithRawResponse:
     def vendors(self) -> VendorsResourceWithRawResponse:
         return VendorsResourceWithRawResponse(self._qbd.vendors)
 
-    @cached_property
-    def bill_payment_credit_cards(self) -> BillPaymentCreditCardsResourceWithRawResponse:
-        return BillPaymentCreditCardsResourceWithRawResponse(self._qbd.bill_payment_credit_cards)
-
-    @cached_property
-    def inventory_sites(self) -> InventorySitesResourceWithRawResponse:
-        return InventorySitesResourceWithRawResponse(self._qbd.inventory_sites)
-
 
 class AsyncQbdResourceWithRawResponse:
     def __init__(self, qbd: AsyncQbdResource) -> None:
@@ -486,6 +486,10 @@ class AsyncQbdResourceWithRawResponse:
     @cached_property
     def bill_payment_checks(self) -> AsyncBillPaymentChecksResourceWithRawResponse:
         return AsyncBillPaymentChecksResourceWithRawResponse(self._qbd.bill_payment_checks)
+
+    @cached_property
+    def bill_payment_credit_cards(self) -> AsyncBillPaymentCreditCardsResourceWithRawResponse:
+        return AsyncBillPaymentCreditCardsResourceWithRawResponse(self._qbd.bill_payment_credit_cards)
 
     @cached_property
     def bills(self) -> AsyncBillsResourceWithRawResponse:
@@ -524,6 +528,10 @@ class AsyncQbdResourceWithRawResponse:
         return AsyncInventoryItemsResourceWithRawResponse(self._qbd.inventory_items)
 
     @cached_property
+    def inventory_sites(self) -> AsyncInventorySitesResourceWithRawResponse:
+        return AsyncInventorySitesResourceWithRawResponse(self._qbd.inventory_sites)
+
+    @cached_property
     def invoices(self) -> AsyncInvoicesResourceWithRawResponse:
         return AsyncInvoicesResourceWithRawResponse(self._qbd.invoices)
 
@@ -555,14 +563,6 @@ class AsyncQbdResourceWithRawResponse:
     def vendors(self) -> AsyncVendorsResourceWithRawResponse:
         return AsyncVendorsResourceWithRawResponse(self._qbd.vendors)
 
-    @cached_property
-    def bill_payment_credit_cards(self) -> AsyncBillPaymentCreditCardsResourceWithRawResponse:
-        return AsyncBillPaymentCreditCardsResourceWithRawResponse(self._qbd.bill_payment_credit_cards)
-
-    @cached_property
-    def inventory_sites(self) -> AsyncInventorySitesResourceWithRawResponse:
-        return AsyncInventorySitesResourceWithRawResponse(self._qbd.inventory_sites)
-
 
 class QbdResourceWithStreamingResponse:
     def __init__(self, qbd: QbdResource) -> None:
@@ -575,6 +575,10 @@ class QbdResourceWithStreamingResponse:
     @cached_property
     def bill_payment_checks(self) -> BillPaymentChecksResourceWithStreamingResponse:
         return BillPaymentChecksResourceWithStreamingResponse(self._qbd.bill_payment_checks)
+
+    @cached_property
+    def bill_payment_credit_cards(self) -> BillPaymentCreditCardsResourceWithStreamingResponse:
+        return BillPaymentCreditCardsResourceWithStreamingResponse(self._qbd.bill_payment_credit_cards)
 
     @cached_property
     def bills(self) -> BillsResourceWithStreamingResponse:
@@ -613,6 +617,10 @@ class QbdResourceWithStreamingResponse:
         return InventoryItemsResourceWithStreamingResponse(self._qbd.inventory_items)
 
     @cached_property
+    def inventory_sites(self) -> InventorySitesResourceWithStreamingResponse:
+        return InventorySitesResourceWithStreamingResponse(self._qbd.inventory_sites)
+
+    @cached_property
     def invoices(self) -> InvoicesResourceWithStreamingResponse:
         return InvoicesResourceWithStreamingResponse(self._qbd.invoices)
 
@@ -644,14 +652,6 @@ class QbdResourceWithStreamingResponse:
     def vendors(self) -> VendorsResourceWithStreamingResponse:
         return VendorsResourceWithStreamingResponse(self._qbd.vendors)
 
-    @cached_property
-    def bill_payment_credit_cards(self) -> BillPaymentCreditCardsResourceWithStreamingResponse:
-        return BillPaymentCreditCardsResourceWithStreamingResponse(self._qbd.bill_payment_credit_cards)
-
-    @cached_property
-    def inventory_sites(self) -> InventorySitesResourceWithStreamingResponse:
-        return InventorySitesResourceWithStreamingResponse(self._qbd.inventory_sites)
-
 
 class AsyncQbdResourceWithStreamingResponse:
     def __init__(self, qbd: AsyncQbdResource) -> None:
@@ -664,6 +664,10 @@ class AsyncQbdResourceWithStreamingResponse:
     @cached_property
     def bill_payment_checks(self) -> AsyncBillPaymentChecksResourceWithStreamingResponse:
         return AsyncBillPaymentChecksResourceWithStreamingResponse(self._qbd.bill_payment_checks)
+
+    @cached_property
+    def bill_payment_credit_cards(self) -> AsyncBillPaymentCreditCardsResourceWithStreamingResponse:
+        return AsyncBillPaymentCreditCardsResourceWithStreamingResponse(self._qbd.bill_payment_credit_cards)
 
     @cached_property
     def bills(self) -> AsyncBillsResourceWithStreamingResponse:
@@ -702,6 +706,10 @@ class AsyncQbdResourceWithStreamingResponse:
         return AsyncInventoryItemsResourceWithStreamingResponse(self._qbd.inventory_items)
 
     @cached_property
+    def inventory_sites(self) -> AsyncInventorySitesResourceWithStreamingResponse:
+        return AsyncInventorySitesResourceWithStreamingResponse(self._qbd.inventory_sites)
+
+    @cached_property
     def invoices(self) -> AsyncInvoicesResourceWithStreamingResponse:
         return AsyncInvoicesResourceWithStreamingResponse(self._qbd.invoices)
 
@@ -732,11 +740,3 @@ class AsyncQbdResourceWithStreamingResponse:
     @cached_property
     def vendors(self) -> AsyncVendorsResourceWithStreamingResponse:
         return AsyncVendorsResourceWithStreamingResponse(self._qbd.vendors)
-
-    @cached_property
-    def bill_payment_credit_cards(self) -> AsyncBillPaymentCreditCardsResourceWithStreamingResponse:
-        return AsyncBillPaymentCreditCardsResourceWithStreamingResponse(self._qbd.bill_payment_credit_cards)
-
-    @cached_property
-    def inventory_sites(self) -> AsyncInventorySitesResourceWithStreamingResponse:
-        return AsyncInventorySitesResourceWithStreamingResponse(self._qbd.inventory_sites)
