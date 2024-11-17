@@ -128,5 +128,5 @@ class BillPaymentCheckListParams(TypedDict, total=False):
     vendor_ids: Annotated[List[str], PropertyInfo(alias="vendorIds")]
     """Filter for bill payment checks to this vendor or vendors.
 
-    These are the vendors who sent the bills that these checks are paying.
+    These are the vendors who sent the bills paid by these checks.
     """
