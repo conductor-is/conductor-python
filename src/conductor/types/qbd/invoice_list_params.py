@@ -38,7 +38,7 @@ class InvoiceListParams(TypedDict, total=False):
     """Filter for specific invoices by their QuickBooks-assigned unique identifier(s).
 
     **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-    query parameters.
+    query parameters for this request.
     """
 
     include_line_items: Annotated[bool, PropertyInfo(alias="includeLineItems")]
@@ -91,7 +91,7 @@ class InvoiceListParams(TypedDict, total=False):
     changed by the QuickBooks user.
 
     **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-    query parameters.
+    query parameters for this request.
     """
 
     ref_number_starts_with: Annotated[str, PropertyInfo(alias="refNumberStartsWith")]

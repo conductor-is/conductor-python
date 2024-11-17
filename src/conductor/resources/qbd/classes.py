@@ -257,12 +257,12 @@ class ClassesResource(SyncAPIResource):
               would be "Department:Marketing".
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters.
+              query parameters for this request.
 
           ids: Filter for specific classes by their QuickBooks-assigned unique identifier(s).
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters.
+              query parameters for this request.
 
           limit: The maximum number of objects to return. NOTE: QuickBooks Desktop does not
               support cursor-based pagination for classes. Hence, this parameter will limit
@@ -565,12 +565,12 @@ class AsyncClassesResource(AsyncAPIResource):
               would be "Department:Marketing".
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters.
+              query parameters for this request.
 
           ids: Filter for specific classes by their QuickBooks-assigned unique identifier(s).
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters.
+              query parameters for this request.
 
           limit: The maximum number of objects to return. NOTE: QuickBooks Desktop does not
               support cursor-based pagination for classes. Hence, this parameter will limit

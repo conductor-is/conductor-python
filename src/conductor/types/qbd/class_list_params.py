@@ -26,14 +26,14 @@ class ClassListParams(TypedDict, total=False):
     `fullName` would be "Department:Marketing".
 
     **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-    query parameters.
+    query parameters for this request.
     """
 
     ids: List[str]
     """Filter for specific classes by their QuickBooks-assigned unique identifier(s).
 
     **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-    query parameters.
+    query parameters for this request.
     """
 
     limit: int

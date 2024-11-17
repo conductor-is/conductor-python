@@ -43,14 +43,14 @@ class CustomerListParams(TypedDict, total=False):
     Redesign Project".
 
     **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-    query parameters.
+    query parameters for this request.
     """
 
     ids: List[str]
     """Filter for specific customers by their QuickBooks-assigned unique identifier(s).
 
     **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-    query parameters.
+    query parameters for this request.
     """
 
     limit: int

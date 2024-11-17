@@ -29,7 +29,7 @@ class TransferListParams(TypedDict, total=False):
     """Filter for specific transfers by their QuickBooks-assigned unique identifier(s).
 
     **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-    query parameters.
+    query parameters for this request.
     """
 
     limit: int

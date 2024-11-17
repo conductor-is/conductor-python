@@ -39,7 +39,7 @@ class InventoryItemListParams(TypedDict, total=False):
     the `name` "Cabinet", its `fullName` would be "Furniture:Kitchen:Cabinet".
 
     **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-    query parameters.
+    query parameters for this request.
     """
 
     ids: List[str]
@@ -48,7 +48,7 @@ class InventoryItemListParams(TypedDict, total=False):
     identifier(s).
 
     **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-    query parameters.
+    query parameters for this request.
     """
 
     limit: int
