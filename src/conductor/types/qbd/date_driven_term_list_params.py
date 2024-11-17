@@ -61,10 +61,6 @@ class DateDrivenTermListParams(TypedDict, total=False):
 
     Like `id`, `name` is a unique identifier for a date-driven term.
 
-    NOTE: date-driven terms do not have a `fullName` field because they are not
-    hierarchical, which is why `name` is unique for them but not for objects that
-    have parents.
-
     **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
     query parameters.
     """

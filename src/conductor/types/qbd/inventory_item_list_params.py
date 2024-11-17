@@ -38,10 +38,6 @@ class InventoryItemListParams(TypedDict, total=False):
     colons. For example, if an inventory item is under "Furniture:Kitchen" and has
     the `name` "Cabinet", its `fullName` would be "Furniture:Kitchen:Cabinet".
 
-    NOTE: Unlike `name`, `fullName` is guaranteed to be unique across all inventory
-    item objects. Also, unlike `id`, `fullName` can be arbitrarily changed by the
-    QuickBooks user when modifying its underlying `name` field.
-
     **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
     query parameters.
     """

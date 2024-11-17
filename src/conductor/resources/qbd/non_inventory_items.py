@@ -396,10 +396,6 @@ class NonInventoryItemsResource(SyncAPIResource):
               the `name` "Printer Ink Cartridge", its `fullName` would be "Office
               Supplies:Printer Ink Cartridge".
 
-              NOTE: Unlike `name`, `fullName` is guaranteed to be unique across all
-              non-inventory item objects. Also, unlike `id`, `fullName` can be arbitrarily
-              changed by the QuickBooks user when modifying its underlying `name` field.
-
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters.
 
@@ -846,10 +842,6 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
               colons. For example, if a non-inventory item is under "Office Supplies" and has
               the `name` "Printer Ink Cartridge", its `fullName` would be "Office
               Supplies:Printer Ink Cartridge".
-
-              NOTE: Unlike `name`, `fullName` is guaranteed to be unique across all
-              non-inventory item objects. Also, unlike `id`, `fullName` can be arbitrarily
-              changed by the QuickBooks user when modifying its underlying `name` field.
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters.

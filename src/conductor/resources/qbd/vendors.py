@@ -112,9 +112,9 @@ class VendorsResource(SyncAPIResource):
         Args:
           name: The case-insensitive unique name of this vendor, unique across all vendors.
 
-              NOTE: vendors do not have a `fullName` field because they are not hierarchical,
-              which is why `name` is unique for them but not for objects that have parents.
-              Maximum length: 41 characters.
+              NOTE: Vendors do not have a `fullName` field because they are not hierarchical
+              objects, which is why `name` is unique for them but not for objects that have
+              parents. Maximum length: 41 characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -495,9 +495,9 @@ class VendorsResource(SyncAPIResource):
 
           name: The case-insensitive unique name of this vendor, unique across all vendors.
 
-              NOTE: vendors do not have a `fullName` field because they are not hierarchical,
-              which is why `name` is unique for them but not for objects that have parents.
-              Maximum length: 41 characters.
+              NOTE: Vendors do not have a `fullName` field because they are not hierarchical
+              objects, which is why `name` is unique for them but not for objects that have
+              parents. Maximum length: 41 characters.
 
           name_on_check: The vendor's name as it should appear on checks issued to this vendor.
 
@@ -660,10 +660,6 @@ class VendorsResource(SyncAPIResource):
               of its parent objects with its own `name`, separated by colons. For example, if
               a vendor is under "Suppliers" and has the `name` "ABC Office Supplies", its
               `fullName` would be "Suppliers:ABC Office Supplies".
-
-              NOTE: Unlike `name`, `fullName` is guaranteed to be unique across all vendor
-              objects. Also, unlike `id`, `fullName` can be arbitrarily changed by the
-              QuickBooks user when modifying its underlying `name` field.
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters.
@@ -854,9 +850,9 @@ class AsyncVendorsResource(AsyncAPIResource):
         Args:
           name: The case-insensitive unique name of this vendor, unique across all vendors.
 
-              NOTE: vendors do not have a `fullName` field because they are not hierarchical,
-              which is why `name` is unique for them but not for objects that have parents.
-              Maximum length: 41 characters.
+              NOTE: Vendors do not have a `fullName` field because they are not hierarchical
+              objects, which is why `name` is unique for them but not for objects that have
+              parents. Maximum length: 41 characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -1237,9 +1233,9 @@ class AsyncVendorsResource(AsyncAPIResource):
 
           name: The case-insensitive unique name of this vendor, unique across all vendors.
 
-              NOTE: vendors do not have a `fullName` field because they are not hierarchical,
-              which is why `name` is unique for them but not for objects that have parents.
-              Maximum length: 41 characters.
+              NOTE: Vendors do not have a `fullName` field because they are not hierarchical
+              objects, which is why `name` is unique for them but not for objects that have
+              parents. Maximum length: 41 characters.
 
           name_on_check: The vendor's name as it should appear on checks issued to this vendor.
 
@@ -1402,10 +1398,6 @@ class AsyncVendorsResource(AsyncAPIResource):
               of its parent objects with its own `name`, separated by colons. For example, if
               a vendor is under "Suppliers" and has the `name` "ABC Office Supplies", its
               `fullName` would be "Suppliers:ABC Office Supplies".
-
-              NOTE: Unlike `name`, `fullName` is guaranteed to be unique across all vendor
-              objects. Also, unlike `id`, `fullName` can be arbitrarily changed by the
-              QuickBooks user when modifying its underlying `name` field.
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters.
