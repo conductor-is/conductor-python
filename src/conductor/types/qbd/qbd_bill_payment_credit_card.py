@@ -380,7 +380,7 @@ class QbdBillPaymentCreditCard(BaseModel):
     will use its default Accounts-Payable account.
 
     **IMPORTANT**: If this bill payment credit card is linked to other transactions,
-    this A/P account must match the `payablesAccount` used in the other
+    this A/P account must match the `payablesAccount` used in those other
     transactions.
     """
 

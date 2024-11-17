@@ -427,7 +427,7 @@ class BillPaymentCheck(BaseModel):
     default Accounts-Payable account.
 
     **IMPORTANT**: If this bill payment check is linked to other transactions, this
-    A/P account must match the `payablesAccount` used in the other transactions.
+    A/P account must match the `payablesAccount` used in those other transactions.
     """
 
     ref_number: Optional[str] = FieldInfo(alias="refNumber", default=None)

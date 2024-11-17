@@ -138,7 +138,7 @@ class BillsResource(SyncAPIResource):
               Accounts-Payable account.
 
               **IMPORTANT**: If this bill is linked to other transactions, this A/P account
-              must match the `payablesAccount` used in the other transactions.
+              must match the `payablesAccount` used in those other transactions.
 
           ref_number: The case-sensitive user-defined reference number for this bill, which can be
               used to identify the transaction in QuickBooks. This value is not required to be
@@ -325,7 +325,7 @@ class BillsResource(SyncAPIResource):
               Accounts-Payable account.
 
               **IMPORTANT**: If this bill is linked to other transactions, this A/P account
-              must match the `payablesAccount` used in the other transactions.
+              must match the `payablesAccount` used in those other transactions.
 
           ref_number: The case-sensitive user-defined reference number for this bill, which can be
               used to identify the transaction in QuickBooks. This value is not required to be
@@ -648,7 +648,7 @@ class AsyncBillsResource(AsyncAPIResource):
               Accounts-Payable account.
 
               **IMPORTANT**: If this bill is linked to other transactions, this A/P account
-              must match the `payablesAccount` used in the other transactions.
+              must match the `payablesAccount` used in those other transactions.
 
           ref_number: The case-sensitive user-defined reference number for this bill, which can be
               used to identify the transaction in QuickBooks. This value is not required to be
@@ -835,7 +835,7 @@ class AsyncBillsResource(AsyncAPIResource):
               Accounts-Payable account.
 
               **IMPORTANT**: If this bill is linked to other transactions, this A/P account
-              must match the `payablesAccount` used in the other transactions.
+              must match the `payablesAccount` used in those other transactions.
 
           ref_number: The case-sensitive user-defined reference number for this bill, which can be
               used to identify the transaction in QuickBooks. This value is not required to be
