@@ -360,10 +360,10 @@ class ServiceItem(BaseModel):
 
     revision_number: str = FieldInfo(alias="revisionNumber")
     """
-    The current revision number of this service item, which changes each time the
-    object is modified. When updating this object, you must provide the most recent
-    `revisionNumber` to ensure you're working with the latest data; otherwise, the
-    update will return an error.
+    The current revision number of this service item object, which changes each time
+    the object is modified. When updating this object, you must provide the most
+    recent `revisionNumber` to ensure you're working with the latest data;
+    otherwise, the update will return an error.
     """
 
     sales_and_purchase_details: Optional[SalesAndPurchaseDetails] = FieldInfo(
