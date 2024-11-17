@@ -36,7 +36,7 @@ class SalesTaxItemListParams(TypedDict, total=False):
     identifier(s).
 
     **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-    query parameters.
+    query parameters for this request.
     """
 
     limit: int
@@ -74,7 +74,7 @@ class SalesTaxItemListParams(TypedDict, total=False):
     Like `id`, `name` is a unique identifier for a sales-tax item.
 
     **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-    query parameters.
+    query parameters for this request.
     """
 
     name_starts_with: Annotated[str, PropertyInfo(alias="nameStartsWith")]

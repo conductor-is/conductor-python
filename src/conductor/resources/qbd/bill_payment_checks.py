@@ -354,7 +354,7 @@ class BillPaymentChecksResource(SyncAPIResource):
               identifier(s).
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters.
+              query parameters for this request.
 
           include_line_items: Whether to include line items in the response. Defaults to `true`.
 
@@ -382,7 +382,7 @@ class BillPaymentChecksResource(SyncAPIResource):
               changed by the QuickBooks user.
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters.
+              query parameters for this request.
 
           ref_number_starts_with: Filter for bill payment checks whose `refNumber` starts with this substring. For
               checks, this is the check number. NOTE: If you use this parameter, you cannot
@@ -776,7 +776,7 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
               identifier(s).
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters.
+              query parameters for this request.
 
           include_line_items: Whether to include line items in the response. Defaults to `true`.
 
@@ -804,7 +804,7 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
               changed by the QuickBooks user.
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters.
+              query parameters for this request.
 
           ref_number_starts_with: Filter for bill payment checks whose `refNumber` starts with this substring. For
               checks, this is the check number. NOTE: If you use this parameter, you cannot

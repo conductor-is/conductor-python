@@ -327,7 +327,7 @@ class SalesTaxItemsResource(SyncAPIResource):
               identifier(s).
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters.
+              query parameters for this request.
 
           limit: The maximum number of objects to return. Ranging from 1 to 150, defaults to 150.
               Use this parameter in conjunction with the `cursor` parameter to paginate
@@ -350,7 +350,7 @@ class SalesTaxItemsResource(SyncAPIResource):
               `id`, `name` is a unique identifier for a sales-tax item.
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters.
+              query parameters for this request.
 
           name_starts_with: Filter for sales-tax items whose `name` starts with this substring,
               case-insensitive. NOTE: If you use this parameter, you cannot also use
@@ -708,7 +708,7 @@ class AsyncSalesTaxItemsResource(AsyncAPIResource):
               identifier(s).
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters.
+              query parameters for this request.
 
           limit: The maximum number of objects to return. Ranging from 1 to 150, defaults to 150.
               Use this parameter in conjunction with the `cursor` parameter to paginate
@@ -731,7 +731,7 @@ class AsyncSalesTaxItemsResource(AsyncAPIResource):
               `id`, `name` is a unique identifier for a sales-tax item.
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters.
+              query parameters for this request.
 
           name_starts_with: Filter for sales-tax items whose `name` starts with this substring,
               case-insensitive. NOTE: If you use this parameter, you cannot also use

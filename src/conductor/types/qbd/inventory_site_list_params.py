@@ -23,7 +23,7 @@ class InventorySiteListParams(TypedDict, total=False):
     identifier(s).
 
     **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-    query parameters.
+    query parameters for this request.
     """
 
     name_contains: Annotated[str, PropertyInfo(alias="nameContains")]
@@ -52,7 +52,7 @@ class InventorySiteListParams(TypedDict, total=False):
     Like `id`, `name` is a unique identifier for an inventory site.
 
     **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-    query parameters.
+    query parameters for this request.
     """
 
     name_starts_with: Annotated[str, PropertyInfo(alias="nameStartsWith")]
