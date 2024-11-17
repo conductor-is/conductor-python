@@ -95,7 +95,7 @@ class BillPaymentChecksResource(SyncAPIResource):
           transaction_date: The date of this bill payment check, in ISO 8601 format (YYYY-MM-DD).
 
           vendor_id: The vendor who sent the bill(s) that this check is paying and who will receive
-              this check payment.
+              this payment.
 
               **IMPORTANT**: This vendor must match the `vendor` on the bill(s) specified in
               `applyToTransactions`; otherwise, QuickBooks will say the `transactionId` in
@@ -408,7 +408,7 @@ class BillPaymentChecksResource(SyncAPIResource):
               time is assumed to be 23:59:59 of that day.
 
           vendor_ids: Filter for bill payment checks to this vendor or vendors. These are the vendors
-              who sent the bills that these checks are paying.
+              who sent the bills paid by these checks.
 
           extra_headers: Send extra headers
 
@@ -517,7 +517,7 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
           transaction_date: The date of this bill payment check, in ISO 8601 format (YYYY-MM-DD).
 
           vendor_id: The vendor who sent the bill(s) that this check is paying and who will receive
-              this check payment.
+              this payment.
 
               **IMPORTANT**: This vendor must match the `vendor` on the bill(s) specified in
               `applyToTransactions`; otherwise, QuickBooks will say the `transactionId` in
@@ -830,7 +830,7 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
               time is assumed to be 23:59:59 of that day.
 
           vendor_ids: Filter for bill payment checks to this vendor or vendors. These are the vendors
-              who sent the bills that these checks are paying.
+              who sent the bills paid by these checks.
 
           extra_headers: Send extra headers
 
