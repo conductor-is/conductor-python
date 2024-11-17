@@ -1311,7 +1311,7 @@ class Bill(BaseModel):
     Accounts-Payable account.
 
     **IMPORTANT**: If this bill is linked to other transactions, this A/P account
-    must match the `payablesAccount` used in the other transactions.
+    must match the `payablesAccount` used in those other transactions.
     """
 
     ref_number: Optional[str] = FieldInfo(alias="refNumber", default=None)

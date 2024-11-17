@@ -196,7 +196,7 @@ class InvoicesResource(SyncAPIResource):
               Accounts-Receivable account.
 
               **IMPORTANT**: If this invoice is linked to other transactions, this A/R account
-              must match the `receivablesAccount` used in the other transactions.
+              must match the `receivablesAccount` used in those other transactions.
 
           ref_number: The case-sensitive user-defined reference number for this invoice, which can be
               used to identify the transaction in QuickBooks. This value is not required to be
@@ -459,7 +459,7 @@ class InvoicesResource(SyncAPIResource):
               Accounts-Receivable account.
 
               **IMPORTANT**: If this invoice is linked to other transactions, this A/R account
-              must match the `receivablesAccount` used in the other transactions.
+              must match the `receivablesAccount` used in those other transactions.
 
           ref_number: The case-sensitive user-defined reference number for this invoice, which can be
               used to identify the transaction in QuickBooks. This value is not required to be
@@ -872,7 +872,7 @@ class AsyncInvoicesResource(AsyncAPIResource):
               Accounts-Receivable account.
 
               **IMPORTANT**: If this invoice is linked to other transactions, this A/R account
-              must match the `receivablesAccount` used in the other transactions.
+              must match the `receivablesAccount` used in those other transactions.
 
           ref_number: The case-sensitive user-defined reference number for this invoice, which can be
               used to identify the transaction in QuickBooks. This value is not required to be
@@ -1135,7 +1135,7 @@ class AsyncInvoicesResource(AsyncAPIResource):
               Accounts-Receivable account.
 
               **IMPORTANT**: If this invoice is linked to other transactions, this A/R account
-              must match the `receivablesAccount` used in the other transactions.
+              must match the `receivablesAccount` used in those other transactions.
 
           ref_number: The case-sensitive user-defined reference number for this invoice, which can be
               used to identify the transaction in QuickBooks. This value is not required to be

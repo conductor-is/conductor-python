@@ -155,7 +155,7 @@ class InvoiceUpdateParams(TypedDict, total=False):
     Accounts-Receivable account.
 
     **IMPORTANT**: If this invoice is linked to other transactions, this A/R account
-    must match the `receivablesAccount` used in the other transactions.
+    must match the `receivablesAccount` used in those other transactions.
     """
 
     ref_number: Annotated[str, PropertyInfo(alias="refNumber")]

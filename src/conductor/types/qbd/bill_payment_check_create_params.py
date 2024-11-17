@@ -85,7 +85,7 @@ class BillPaymentCheckCreateParams(TypedDict, total=False):
     default Accounts-Payable account.
 
     **IMPORTANT**: If this bill payment check is linked to other transactions, this
-    A/P account must match the `payablesAccount` used in the other transactions.
+    A/P account must match the `payablesAccount` used in those other transactions.
     """
 
     ref_number: Annotated[str, PropertyInfo(alias="refNumber")]
