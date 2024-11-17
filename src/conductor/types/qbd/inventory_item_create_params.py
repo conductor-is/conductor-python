@@ -30,10 +30,11 @@ class InventoryItemCreateParams(TypedDict, total=False):
     name: Required[str]
     """The case-insensitive name of this inventory item.
 
-    Not guaranteed to be unique because it does not include the names of its parent
-    objects like `fullName` does. For example, two inventory items could both have
-    the `name` "Widget", but they could have unique `fullName` values, such as
-    "Products:Widget" and "Inventory:Widget". Maximum length: 31 characters.
+    Not guaranteed to be unique because it does not include the names of its
+    hierarchical parent objects like `fullName` does. For example, two inventory
+    items could both have the `name` "Widget", but they could have unique `fullName`
+    values, such as "Products:Widget" and "Inventory:Widget". Maximum length: 31
+    characters.
     """
 
     conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]

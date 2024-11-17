@@ -41,9 +41,9 @@ class VendorListParams(TypedDict, total=False):
     colons. For example, if a vendor is under "Suppliers" and has the `name` "ABC
     Office Supplies", its `fullName` would be "Suppliers:ABC Office Supplies".
 
-    Unlike `name`, `fullName` is guaranteed to be unique across all vendor objects.
-    Also, unlike `id`, `fullName` can be arbitrarily changed by the QuickBooks user
-    when modifying its underlying `name` field.
+    NOTE: Unlike `name`, `fullName` is guaranteed to be unique across all vendor
+    objects. Also, unlike `id`, `fullName` can be arbitrarily changed by the
+    QuickBooks user when modifying its underlying `name` field.
 
     **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
     query parameters.

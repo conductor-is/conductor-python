@@ -39,9 +39,9 @@ class NonInventoryItemListParams(TypedDict, total=False):
     the `name` "Printer Ink Cartridge", its `fullName` would be "Office
     Supplies:Printer Ink Cartridge".
 
-    Unlike `name`, `fullName` is guaranteed to be unique across all non-inventory
-    item objects. Also, unlike `id`, `fullName` can be arbitrarily changed by the
-    QuickBooks user when modifying its underlying `name` field.
+    NOTE: Unlike `name`, `fullName` is guaranteed to be unique across all
+    non-inventory item objects. Also, unlike `id`, `fullName` can be arbitrarily
+    changed by the QuickBooks user when modifying its underlying `name` field.
 
     **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
     query parameters.

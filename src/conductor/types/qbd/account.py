@@ -195,13 +195,13 @@ class Account(BaseModel):
     full_name: str = FieldInfo(alias="fullName")
     """
     The case-insensitive fully-qualified unique name of this account, formed by
-    combining the names of its parent objects with its own `name`, separated by
-    colons. For example, if an account is under "Corporate" and has the `name`
-    "Accounts-Payable", its `fullName` would be "Corporate:Accounts-Payable".
+    combining the names of its hierarchical parent objects with its own `name`,
+    separated by colons. For example, if an account is under "Corporate" and has the
+    `name` "Accounts-Payable", its `fullName` would be "Corporate:Accounts-Payable".
 
-    Unlike `name`, `fullName` is guaranteed to be unique across all account objects.
-    However, `fullName` can still be arbitrarily changed by the QuickBooks user when
-    they modify the underlying `name` field.
+    NOTE: Unlike `name`, `fullName` is guaranteed to be unique across all account
+    objects. However, `fullName` can still be arbitrarily changed by the QuickBooks
+    user when they modify the underlying `name` field.
     """
 
     is_active: bool = FieldInfo(alias="isActive")
@@ -216,11 +216,11 @@ class Account(BaseModel):
     name: str
     """The case-insensitive name of this account.
 
-    Not guaranteed to be unique because it does not include the names of its parent
-    objects like `fullName` does. For example, two accounts could both have the
-    `name` "Accounts-Payable", but they could have unique `fullName` values, such as
-    "Corporate:Accounts-Payable" and "Finance:Accounts-Payable". Maximum length: 31
-    characters.
+    Not guaranteed to be unique because it does not include the names of its
+    hierarchical parent objects like `fullName` does. For example, two accounts
+    could both have the `name` "Accounts-Payable", but they could have unique
+    `fullName` values, such as "Corporate:Accounts-Payable" and
+    "Finance:Accounts-Payable". Maximum length: 31 characters.
     """
 
     object_type: Literal["qbd_account"] = FieldInfo(alias="objectType")

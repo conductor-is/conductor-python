@@ -33,11 +33,11 @@ class InventoryAssemblyItemCreateParams(TypedDict, total=False):
     name: Required[str]
     """The case-insensitive name of this inventory assembly item.
 
-    Not guaranteed to be unique because it does not include the names of its parent
-    objects like `fullName` does. For example, two inventory assembly items could
-    both have the `name` "Deluxe Kit", but they could have unique `fullName` values,
-    such as "Assemblies:Deluxe Kit" and "Inventory:Deluxe Kit". Maximum length: 31
-    characters.
+    Not guaranteed to be unique because it does not include the names of its
+    hierarchical parent objects like `fullName` does. For example, two inventory
+    assembly items could both have the `name` "Deluxe Kit", but they could have
+    unique `fullName` values, such as "Assemblies:Deluxe Kit" and "Inventory:Deluxe
+    Kit". Maximum length: 31 characters.
     """
 
     conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]

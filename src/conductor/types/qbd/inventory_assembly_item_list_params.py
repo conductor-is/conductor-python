@@ -40,7 +40,7 @@ class InventoryAssemblyItemListParams(TypedDict, total=False):
     under "Assemblies" and has the `name` "Deluxe Kit", its `fullName` would be
     "Assemblies:Deluxe Kit".
 
-    Unlike `name`, `fullName` is guaranteed to be unique across all inventory
+    NOTE: Unlike `name`, `fullName` is guaranteed to be unique across all inventory
     assembly item objects. Also, unlike `id`, `fullName` can be arbitrarily changed
     by the QuickBooks user when modifying its underlying `name` field.
 

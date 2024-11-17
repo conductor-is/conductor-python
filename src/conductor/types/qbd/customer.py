@@ -144,7 +144,9 @@ class AlternateShippingAddress(BaseModel):
     name: str
     """The case-insensitive unique name of this address, unique across all addresses.
 
-    Maximum length: 41 characters.
+    NOTE: addresses do not have a `fullName` field because they are not
+    hierarchical, which is why `name` is unique for them but not for objects that
+    have parents. Maximum length: 41 characters.
     """
 
     note: Optional[str] = None
@@ -608,11 +610,11 @@ class Customer(BaseModel):
     full_name: str = FieldInfo(alias="fullName")
     """
     The case-insensitive fully-qualified unique name of this customer, formed by
-    combining the names of its parent objects with its own `name`, separated by
-    colons. For example, if a customer is under "Jones" and has the `name`
-    "Kitchen-Renovation", its `fullName` would be "Jones:Kitchen-Renovation".
+    combining the names of its hierarchical parent objects with its own `name`,
+    separated by colons. For example, if a customer is under "Jones" and has the
+    `name` "Kitchen-Renovation", its `fullName` would be "Jones:Kitchen-Renovation".
 
-    Unlike `name`, `fullName` is guaranteed to be unique across all customer
+    NOTE: Unlike `name`, `fullName` is guaranteed to be unique across all customer
     objects. However, `fullName` can still be arbitrarily changed by the QuickBooks
     user when they modify the underlying `name` field.
 
@@ -676,11 +678,11 @@ class Customer(BaseModel):
     name: str
     """The case-insensitive name of this customer.
 
-    Not guaranteed to be unique because it does not include the names of its parent
-    objects like `fullName` does. For example, two customers could both have the
-    `name` "Kitchen-Renovation", but they could have unique `fullName` values, such
-    as "Jones:Kitchen-Renovation" and "Baker:Kitchen-Renovation". Maximum length: 41
-    characters.
+    Not guaranteed to be unique because it does not include the names of its
+    hierarchical parent objects like `fullName` does. For example, two customers
+    could both have the `name` "Kitchen-Renovation", but they could have unique
+    `fullName` values, such as "Jones:Kitchen-Renovation" and
+    "Baker:Kitchen-Renovation". Maximum length: 41 characters.
     """
 
     note: Optional[str] = None

@@ -114,10 +114,11 @@ class CustomersResource(SyncAPIResource):
 
         Args:
           name: The case-insensitive name of this customer. Not guaranteed to be unique because
-              it does not include the names of its parent objects like `fullName` does. For
-              example, two customers could both have the `name` "Kitchen-Renovation", but they
-              could have unique `fullName` values, such as "Jones:Kitchen-Renovation" and
-              "Baker:Kitchen-Renovation". Maximum length: 41 characters.
+              it does not include the names of its hierarchical parent objects like `fullName`
+              does. For example, two customers could both have the `name`
+              "Kitchen-Renovation", but they could have unique `fullName` values, such as
+              "Jones:Kitchen-Renovation" and "Baker:Kitchen-Renovation". Maximum length: 41
+              characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -528,10 +529,11 @@ class CustomersResource(SyncAPIResource):
           middle_name: The middle name of the contact person for this customer.
 
           name: The case-insensitive name of this customer. Not guaranteed to be unique because
-              it does not include the names of its parent objects like `fullName` does. For
-              example, two customers could both have the `name` "Kitchen-Renovation", but they
-              could have unique `fullName` values, such as "Jones:Kitchen-Renovation" and
-              "Baker:Kitchen-Renovation". Maximum length: 41 characters.
+              it does not include the names of its hierarchical parent objects like `fullName`
+              does. For example, two customers could both have the `name`
+              "Kitchen-Renovation", but they could have unique `fullName` values, such as
+              "Jones:Kitchen-Renovation" and "Baker:Kitchen-Renovation". Maximum length: 41
+              characters.
 
           note: Additional notes or comments about this customer.
 
@@ -709,7 +711,7 @@ class CustomersResource(SyncAPIResource):
               Redesign Project", its `fullName` would be "ABC Corporation:Website Redesign
               Project".
 
-              Unlike `name`, `fullName` is guaranteed to be unique across all customer
+              NOTE: Unlike `name`, `fullName` is guaranteed to be unique across all customer
               objects. Also, unlike `id`, `fullName` can be arbitrarily changed by the
               QuickBooks user when modifying its underlying `name` field.
 
@@ -904,10 +906,11 @@ class AsyncCustomersResource(AsyncAPIResource):
 
         Args:
           name: The case-insensitive name of this customer. Not guaranteed to be unique because
-              it does not include the names of its parent objects like `fullName` does. For
-              example, two customers could both have the `name` "Kitchen-Renovation", but they
-              could have unique `fullName` values, such as "Jones:Kitchen-Renovation" and
-              "Baker:Kitchen-Renovation". Maximum length: 41 characters.
+              it does not include the names of its hierarchical parent objects like `fullName`
+              does. For example, two customers could both have the `name`
+              "Kitchen-Renovation", but they could have unique `fullName` values, such as
+              "Jones:Kitchen-Renovation" and "Baker:Kitchen-Renovation". Maximum length: 41
+              characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -1318,10 +1321,11 @@ class AsyncCustomersResource(AsyncAPIResource):
           middle_name: The middle name of the contact person for this customer.
 
           name: The case-insensitive name of this customer. Not guaranteed to be unique because
-              it does not include the names of its parent objects like `fullName` does. For
-              example, two customers could both have the `name` "Kitchen-Renovation", but they
-              could have unique `fullName` values, such as "Jones:Kitchen-Renovation" and
-              "Baker:Kitchen-Renovation". Maximum length: 41 characters.
+              it does not include the names of its hierarchical parent objects like `fullName`
+              does. For example, two customers could both have the `name`
+              "Kitchen-Renovation", but they could have unique `fullName` values, such as
+              "Jones:Kitchen-Renovation" and "Baker:Kitchen-Renovation". Maximum length: 41
+              characters.
 
           note: Additional notes or comments about this customer.
 
@@ -1499,7 +1503,7 @@ class AsyncCustomersResource(AsyncAPIResource):
               Redesign Project", its `fullName` would be "ABC Corporation:Website Redesign
               Project".
 
-              Unlike `name`, `fullName` is guaranteed to be unique across all customer
+              NOTE: Unlike `name`, `fullName` is guaranteed to be unique across all customer
               objects. Also, unlike `id`, `fullName` can be arbitrarily changed by the
               QuickBooks user when modifying its underlying `name` field.
 

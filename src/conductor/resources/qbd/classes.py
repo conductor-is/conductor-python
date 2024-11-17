@@ -68,9 +68,9 @@ class ClassesResource(SyncAPIResource):
           name: The case-insensitive name of this class.
 
         Not guaranteed to be unique because it
-              does not include the names of its parent objects like `fullName` does. For
-              example, two classes could both have the `name` "Marketing", but they could have
-              unique `fullName` values, such as "Corporate:Marketing" and
+              does not include the names of its hierarchical parent objects like `fullName`
+              does. For example, two classes could both have the `name` "Marketing", but they
+              could have unique `fullName` values, such as "Corporate:Marketing" and
               "Internal:Marketing". Maximum length: 31 characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
@@ -183,9 +183,9 @@ class ClassesResource(SyncAPIResource):
               from views and reports in QuickBooks.
 
           name: The case-insensitive name of this class. Not guaranteed to be unique because it
-              does not include the names of its parent objects like `fullName` does. For
-              example, two classes could both have the `name` "Marketing", but they could have
-              unique `fullName` values, such as "Corporate:Marketing" and
+              does not include the names of its hierarchical parent objects like `fullName`
+              does. For example, two classes could both have the `name` "Marketing", but they
+              could have unique `fullName` values, such as "Corporate:Marketing" and
               "Internal:Marketing". Maximum length: 31 characters.
 
           parent_id: The parent class one level above this one in the hierarchy. For example, if this
@@ -256,9 +256,9 @@ class ClassesResource(SyncAPIResource):
               a class is under "Department" and has the `name` "Marketing", its `fullName`
               would be "Department:Marketing".
 
-              Unlike `name`, `fullName` is guaranteed to be unique across all class objects.
-              Also, unlike `id`, `fullName` can be arbitrarily changed by the QuickBooks user
-              when modifying its underlying `name` field.
+              NOTE: Unlike `name`, `fullName` is guaranteed to be unique across all class
+              objects. Also, unlike `id`, `fullName` can be arbitrarily changed by the
+              QuickBooks user when modifying its underlying `name` field.
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters.
@@ -380,9 +380,9 @@ class AsyncClassesResource(AsyncAPIResource):
           name: The case-insensitive name of this class.
 
         Not guaranteed to be unique because it
-              does not include the names of its parent objects like `fullName` does. For
-              example, two classes could both have the `name` "Marketing", but they could have
-              unique `fullName` values, such as "Corporate:Marketing" and
+              does not include the names of its hierarchical parent objects like `fullName`
+              does. For example, two classes could both have the `name` "Marketing", but they
+              could have unique `fullName` values, such as "Corporate:Marketing" and
               "Internal:Marketing". Maximum length: 31 characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
@@ -495,9 +495,9 @@ class AsyncClassesResource(AsyncAPIResource):
               from views and reports in QuickBooks.
 
           name: The case-insensitive name of this class. Not guaranteed to be unique because it
-              does not include the names of its parent objects like `fullName` does. For
-              example, two classes could both have the `name` "Marketing", but they could have
-              unique `fullName` values, such as "Corporate:Marketing" and
+              does not include the names of its hierarchical parent objects like `fullName`
+              does. For example, two classes could both have the `name` "Marketing", but they
+              could have unique `fullName` values, such as "Corporate:Marketing" and
               "Internal:Marketing". Maximum length: 31 characters.
 
           parent_id: The parent class one level above this one in the hierarchy. For example, if this
@@ -568,9 +568,9 @@ class AsyncClassesResource(AsyncAPIResource):
               a class is under "Department" and has the `name` "Marketing", its `fullName`
               would be "Department:Marketing".
 
-              Unlike `name`, `fullName` is guaranteed to be unique across all class objects.
-              Also, unlike `id`, `fullName` can be arbitrarily changed by the QuickBooks user
-              when modifying its underlying `name` field.
+              NOTE: Unlike `name`, `fullName` is guaranteed to be unique across all class
+              objects. Also, unlike `id`, `fullName` can be arbitrarily changed by the
+              QuickBooks user when modifying its underlying `name` field.
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters.

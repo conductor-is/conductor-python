@@ -204,11 +204,11 @@ class TestInventorySites:
     def test_method_list_with_all_params(self, client: Conductor) -> None:
         inventory_site = client.qbd.inventory_sites.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
-            full_names=["Warehouse:Stockroom"],
             ids=["80000001-1234567890"],
             name_contains="ABC",
             name_ends_with="ABC",
             name_from="A",
+            names=["Warehouse"],
             name_starts_with="ABC",
             name_to="Z",
             status="active",
@@ -429,11 +429,11 @@ class TestAsyncInventorySites:
     async def test_method_list_with_all_params(self, async_client: AsyncConductor) -> None:
         inventory_site = await async_client.qbd.inventory_sites.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
-            full_names=["Warehouse:Stockroom"],
             ids=["80000001-1234567890"],
             name_contains="ABC",
             name_ends_with="ABC",
             name_from="A",
+            names=["Warehouse"],
             name_starts_with="ABC",
             name_to="Z",
             status="active",

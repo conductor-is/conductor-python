@@ -49,7 +49,11 @@ class StandardTerm(BaseModel):
     name: str
     """
     The case-insensitive unique name of this standard term, unique across all
-    standard terms. Maximum length: 31 characters.
+    standard terms.
+
+    NOTE: standard terms do not have a `fullName` field because they are not
+    hierarchical, which is why `name` is unique for them but not for objects that
+    have parents. Maximum length: 31 characters.
     """
 
     object_type: Literal["qbd_standard_term"] = FieldInfo(alias="objectType")
