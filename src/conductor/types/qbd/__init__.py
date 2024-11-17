@@ -59,6 +59,7 @@ from .standard_term_list_response import StandardTermListResponse as StandardTer
 from .date_driven_term_list_params import DateDrivenTermListParams as DateDrivenTermListParams
 from .inventory_item_create_params import InventoryItemCreateParams as InventoryItemCreateParams
 from .inventory_item_update_params import InventoryItemUpdateParams as InventoryItemUpdateParams
+from .qbd_bill_payment_credit_card import QbdBillPaymentCreditCard as QbdBillPaymentCreditCard
 from .sales_tax_code_create_params import SalesTaxCodeCreateParams as SalesTaxCodeCreateParams
 from .sales_tax_code_list_response import SalesTaxCodeListResponse as SalesTaxCodeListResponse
 from .sales_tax_code_update_params import SalesTaxCodeUpdateParams as SalesTaxCodeUpdateParams
@@ -79,9 +80,13 @@ from .credit_card_credit_update_params import CreditCardCreditUpdateParams as Cr
 from .non_inventory_item_create_params import NonInventoryItemCreateParams as NonInventoryItemCreateParams
 from .non_inventory_item_update_params import NonInventoryItemUpdateParams as NonInventoryItemUpdateParams
 from .inventory_assembly_item_list_params import InventoryAssemblyItemListParams as InventoryAssemblyItemListParams
+from .bill_payment_credit_card_list_params import BillPaymentCreditCardListParams as BillPaymentCreditCardListParams
 from .inventory_assembly_item_create_params import (
     InventoryAssemblyItemCreateParams as InventoryAssemblyItemCreateParams,
 )
 from .inventory_assembly_item_update_params import (
     InventoryAssemblyItemUpdateParams as InventoryAssemblyItemUpdateParams,
+)
+from .bill_payment_credit_card_create_params import (
+    BillPaymentCreditCardCreateParams as BillPaymentCreditCardCreateParams,
 )
