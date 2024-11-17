@@ -6,13 +6,13 @@ from typing_extensions import Literal
 from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
-from .qbd_inventory_site import QbdInventorySite
+from .inventory_site import InventorySite
 
 __all__ = ["InventorySiteListResponse"]
 
 
 class InventorySiteListResponse(BaseModel):
-    data: List[QbdInventorySite]
+    data: List[InventorySite]
     """The array of inventory sites."""
 
     object_type: Literal["list"] = FieldInfo(alias="objectType")
