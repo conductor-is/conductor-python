@@ -125,7 +125,7 @@ class BillPaymentChecksResource(SyncAPIResource):
               default Accounts-Payable account.
 
               **IMPORTANT**: If this bill payment check is linked to other transactions, this
-              A/P account must match the `payablesAccount` used in the other transactions.
+              A/P account must match the `payablesAccount` used in those other transactions.
 
           ref_number: The case-sensitive user-defined reference number for this bill payment check,
               which can be used to identify the transaction in QuickBooks. This value is not
@@ -547,7 +547,7 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
               default Accounts-Payable account.
 
               **IMPORTANT**: If this bill payment check is linked to other transactions, this
-              A/P account must match the `payablesAccount` used in the other transactions.
+              A/P account must match the `payablesAccount` used in those other transactions.
 
           ref_number: The case-sensitive user-defined reference number for this bill payment check,
               which can be used to identify the transaction in QuickBooks. This value is not
