@@ -460,7 +460,7 @@ class BillPaymentCheck(BaseModel):
     vendor: Optional[Vendor] = None
     """
     The vendor who sent the bill(s) that this check is paying and who will receive
-    this check payment.
+    this payment.
 
     **IMPORTANT**: This vendor must match the `vendor` on the bill(s) specified in
     `applyToTransactions`.
