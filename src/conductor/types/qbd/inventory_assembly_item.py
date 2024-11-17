@@ -397,10 +397,10 @@ class InventoryAssemblyItem(BaseModel):
 
     revision_number: str = FieldInfo(alias="revisionNumber")
     """
-    The current revision number of this inventory assembly item, which changes each
-    time the object is modified. When updating this object, you must provide the
-    most recent `revisionNumber` to ensure you're working with the latest data;
-    otherwise, the update will return an error.
+    The current revision number of this inventory assembly item object, which
+    changes each time the object is modified. When updating this object, you must
+    provide the most recent `revisionNumber` to ensure you're working with the
+    latest data; otherwise, the update will return an error.
     """
 
     sales_description: Optional[str] = FieldInfo(alias="salesDescription", default=None)

@@ -12,8 +12,8 @@ __all__ = ["NonInventoryItemUpdateParams", "Barcode", "SalesAndPurchaseDetails",
 class NonInventoryItemUpdateParams(TypedDict, total=False):
     revision_number: Required[Annotated[str, PropertyInfo(alias="revisionNumber")]]
     """
-    The current revision number of the non-inventory item you are updating, which
-    you can get by fetching the object first. Provide the most recent
+    The current revision number of the non-inventory item object you are updating,
+    which you can get by fetching the object first. Provide the most recent
     `revisionNumber` to ensure you're working with the latest data; otherwise, the
     update will return an error.
     """

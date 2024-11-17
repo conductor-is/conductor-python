@@ -300,10 +300,10 @@ class InventoryItemsResource(SyncAPIResource):
         Args:
           id: The QuickBooks-assigned unique identifier of the inventory item to update.
 
-          revision_number: The current revision number of the inventory item you are updating, which you
-              can get by fetching the object first. Provide the most recent `revisionNumber`
-              to ensure you're working with the latest data; otherwise, the update will return
-              an error.
+          revision_number: The current revision number of the inventory item object you are updating, which
+              you can get by fetching the object first. Provide the most recent
+              `revisionNumber` to ensure you're working with the latest data; otherwise, the
+              update will return an error.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -860,10 +860,10 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
         Args:
           id: The QuickBooks-assigned unique identifier of the inventory item to update.
 
-          revision_number: The current revision number of the inventory item you are updating, which you
-              can get by fetching the object first. Provide the most recent `revisionNumber`
-              to ensure you're working with the latest data; otherwise, the update will return
-              an error.
+          revision_number: The current revision number of the inventory item object you are updating, which
+              you can get by fetching the object first. Provide the most recent
+              `revisionNumber` to ensure you're working with the latest data; otherwise, the
+              update will return an error.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).

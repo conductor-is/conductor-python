@@ -232,8 +232,8 @@ class BillPaymentChecksResource(SyncAPIResource):
         Args:
           id: The QuickBooks-assigned unique identifier of the bill payment check to update.
 
-          revision_number: The current revision number of the bill payment check you are updating, which
-              you can get by fetching the object first. Provide the most recent
+          revision_number: The current revision number of the bill payment check object you are updating,
+              which you can get by fetching the object first. Provide the most recent
               `revisionNumber` to ensure you're working with the latest data; otherwise, the
               update will return an error.
 
@@ -654,8 +654,8 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
         Args:
           id: The QuickBooks-assigned unique identifier of the bill payment check to update.
 
-          revision_number: The current revision number of the bill payment check you are updating, which
-              you can get by fetching the object first. Provide the most recent
+          revision_number: The current revision number of the bill payment check object you are updating,
+              which you can get by fetching the object first. Provide the most recent
               `revisionNumber` to ensure you're working with the latest data; otherwise, the
               update will return an error.
 

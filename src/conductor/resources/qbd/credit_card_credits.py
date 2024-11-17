@@ -227,8 +227,8 @@ class CreditCardCreditsResource(SyncAPIResource):
         Args:
           id: The QuickBooks-assigned unique identifier of the credit card credit to update.
 
-          revision_number: The current revision number of the credit card credit you are updating, which
-              you can get by fetching the object first. Provide the most recent
+          revision_number: The current revision number of the credit card credit object you are updating,
+              which you can get by fetching the object first. Provide the most recent
               `revisionNumber` to ensure you're working with the latest data; otherwise, the
               update will return an error.
 
@@ -681,8 +681,8 @@ class AsyncCreditCardCreditsResource(AsyncAPIResource):
         Args:
           id: The QuickBooks-assigned unique identifier of the credit card credit to update.
 
-          revision_number: The current revision number of the credit card credit you are updating, which
-              you can get by fetching the object first. Provide the most recent
+          revision_number: The current revision number of the credit card credit object you are updating,
+              which you can get by fetching the object first. Provide the most recent
               `revisionNumber` to ensure you're working with the latest data; otherwise, the
               update will return an error.
 
