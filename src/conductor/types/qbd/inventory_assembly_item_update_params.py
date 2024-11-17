@@ -13,10 +13,10 @@ __all__ = ["InventoryAssemblyItemUpdateParams", "Barcode", "ItemLine"]
 class InventoryAssemblyItemUpdateParams(TypedDict, total=False):
     revision_number: Required[Annotated[str, PropertyInfo(alias="revisionNumber")]]
     """
-    The current revision number of the inventory assembly item you are updating,
-    which you can get by fetching the object first. Provide the most recent
-    `revisionNumber` to ensure you're working with the latest data; otherwise, the
-    update will return an error.
+    The current revision number of the inventory assembly item object you are
+    updating, which you can get by fetching the object first. Provide the most
+    recent `revisionNumber` to ensure you're working with the latest data;
+    otherwise, the update will return an error.
     """
 
     conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]

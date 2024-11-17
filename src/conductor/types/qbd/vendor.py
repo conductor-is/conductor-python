@@ -79,8 +79,8 @@ class AdditionalContact(BaseModel):
 
     revision_number: str = FieldInfo(alias="revisionNumber")
     """
-    The current revision number of this contact, which changes each time the object
-    is modified. When updating this object, you must provide the most recent
+    The current revision number of this contact object, which changes each time the
+    object is modified. When updating this object, you must provide the most recent
     `revisionNumber` to ensure you're working with the latest data; otherwise, the
     update will return an error.
     """
@@ -581,8 +581,8 @@ class Vendor(BaseModel):
 
     revision_number: str = FieldInfo(alias="revisionNumber")
     """
-    The current revision number of this vendor, which changes each time the object
-    is modified. When updating this object, you must provide the most recent
+    The current revision number of this vendor object, which changes each time the
+    object is modified. When updating this object, you must provide the most recent
     `revisionNumber` to ensure you're working with the latest data; otherwise, the
     update will return an error.
     """
