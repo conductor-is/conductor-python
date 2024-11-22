@@ -374,9 +374,9 @@ class CreditCardChargesResource(SyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_ids: Filter for credit card charges from this account or accounts.
+          account_ids: Filter for credit card charges from these accounts.
 
-          currency_ids: Filter for credit card charges in this currency or currencies.
+          currency_ids: Filter for credit card charges in these currencies.
 
           cursor: The pagination token to fetch the next set of results when paginating with the
               `limit` parameter. Retrieve this value from the `nextCursor` field in the
@@ -396,9 +396,9 @@ class CreditCardChargesResource(SyncAPIResource):
               used as the `cursor` parameter value in subsequent requests to fetch the next
               set of results.
 
-          payee_ids: Filter for credit card charges from this payee or payees. These are the vendors
-              or companies from whom merchandise or services were purchased for these credit
-              card charges.
+          payee_ids: Filter for credit card charges from these payees. These are the vendors or
+              companies from whom merchandise or services were purchased for these credit card
+              charges.
 
           ref_number_contains:
               Filter for credit card charges whose `refNumber` contains this substring. NOTE:
@@ -831,9 +831,9 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_ids: Filter for credit card charges from this account or accounts.
+          account_ids: Filter for credit card charges from these accounts.
 
-          currency_ids: Filter for credit card charges in this currency or currencies.
+          currency_ids: Filter for credit card charges in these currencies.
 
           cursor: The pagination token to fetch the next set of results when paginating with the
               `limit` parameter. Retrieve this value from the `nextCursor` field in the
@@ -853,9 +853,9 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
               used as the `cursor` parameter value in subsequent requests to fetch the next
               set of results.
 
-          payee_ids: Filter for credit card charges from this payee or payees. These are the vendors
-              or companies from whom merchandise or services were purchased for these credit
-              card charges.
+          payee_ids: Filter for credit card charges from these payees. These are the vendors or
+              companies from whom merchandise or services were purchased for these credit card
+              charges.
 
           ref_number_contains:
               Filter for credit card charges whose `refNumber` contains this substring. NOTE:

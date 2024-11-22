@@ -18,13 +18,13 @@ class VendorListParams(TypedDict, total=False):
     """
 
     class_ids: Annotated[List[str], PropertyInfo(alias="classIds")]
-    """Filter for vendors of this class or classes.
+    """Filter for vendors of these classes.
 
     A class is a way end-users can categorize vendors in QuickBooks.
     """
 
     currency_ids: Annotated[List[str], PropertyInfo(alias="currencyIds")]
-    """Filter for vendors in this currency or currencies."""
+    """Filter for vendors in these currencies."""
 
     cursor: str
     """
