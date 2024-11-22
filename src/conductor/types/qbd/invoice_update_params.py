@@ -285,7 +285,13 @@ class InvoiceLineGroupInvoiceLine(TypedDict, total=False):
     """
 
     amount: str
-    """The monetary amount of this invoice line, represented as a decimal string."""
+    """The monetary amount of this invoice line, represented as a decimal string.
+
+    If both `quantity` and `rate` are specified but not `amount`, QuickBooks will
+    use them to calculate `amount`. If `amount`, `rate`, and `quantity` are all
+    unspecified, then QuickBooks will calculate `amount` based on a `quantity` of
+    `1` and the suggested `rate`.
+    """
 
     class_id: Annotated[str, PropertyInfo(alias="classId")]
     """The invoice line's class.
@@ -365,13 +371,11 @@ class InvoiceLineGroupInvoiceLine(TypedDict, total=False):
     """
 
     price_level_id: Annotated[str, PropertyInfo(alias="priceLevelId")]
-    """
-    The custom price level assigned to this invoice line, used to apply custom
-    pricing in invoices, sales receipts, sales orders, or credit memos for that
-    invoice line. You can override this automatic feature, however, when you create
-    the invoices, sales receipts, etc. Notice that the affected sales transactions
-    do not list the price level, but instead list the rate for the item, which was
-    set using the price level.
+    """The price level applied to this invoice line.
+
+    This overrides any price level set on the corresponding customer. The resulting
+    invoice line will not show this price level, only the final `rate` calculated
+    from it.
     """
 
     price_rule_conflict_strategy: Annotated[
@@ -388,10 +392,9 @@ class InvoiceLineGroupInvoiceLine(TypedDict, total=False):
     rate: str
     """The price per unit for this invoice line.
 
-    If both `rate` and `amount` are specified, `rate` will be ignored and
-    recalculated based on `quantity` and `amount`. If `rate` is not specified,
-    QuickBooks will calculate it based on `quantity` and `amount`. Represented as a
-    decimal string.
+    If both `rate` and `amount` are specified, `rate` will be ignored. If both
+    `quantity` and `amount` are specified but not `rate`, QuickBooks will use them
+    to calculate `rate`. Represented as a decimal string.
     """
 
     rate_percent: Annotated[str, PropertyInfo(alias="ratePercent")]
@@ -487,7 +490,13 @@ class InvoiceLine(TypedDict, total=False):
     """
 
     amount: str
-    """The monetary amount of this invoice line, represented as a decimal string."""
+    """The monetary amount of this invoice line, represented as a decimal string.
+
+    If both `quantity` and `rate` are specified but not `amount`, QuickBooks will
+    use them to calculate `amount`. If `amount`, `rate`, and `quantity` are all
+    unspecified, then QuickBooks will calculate `amount` based on a `quantity` of
+    `1` and the suggested `rate`.
+    """
 
     class_id: Annotated[str, PropertyInfo(alias="classId")]
     """The invoice line's class.
@@ -567,13 +576,11 @@ class InvoiceLine(TypedDict, total=False):
     """
 
     price_level_id: Annotated[str, PropertyInfo(alias="priceLevelId")]
-    """
-    The custom price level assigned to this invoice line, used to apply custom
-    pricing in invoices, sales receipts, sales orders, or credit memos for that
-    invoice line. You can override this automatic feature, however, when you create
-    the invoices, sales receipts, etc. Notice that the affected sales transactions
-    do not list the price level, but instead list the rate for the item, which was
-    set using the price level.
+    """The price level applied to this invoice line.
+
+    This overrides any price level set on the corresponding customer. The resulting
+    invoice line will not show this price level, only the final `rate` calculated
+    from it.
     """
 
     price_rule_conflict_strategy: Annotated[
@@ -590,10 +597,9 @@ class InvoiceLine(TypedDict, total=False):
     rate: str
     """The price per unit for this invoice line.
 
-    If both `rate` and `amount` are specified, `rate` will be ignored and
-    recalculated based on `quantity` and `amount`. If `rate` is not specified,
-    QuickBooks will calculate it based on `quantity` and `amount`. Represented as a
-    decimal string.
+    If both `rate` and `amount` are specified, `rate` will be ignored. If both
+    `quantity` and `amount` are specified but not `rate`, QuickBooks will use them
+    to calculate `rate`. Represented as a decimal string.
     """
 
     rate_percent: Annotated[str, PropertyInfo(alias="ratePercent")]
