@@ -63,12 +63,12 @@ class InvoicesResource(SyncAPIResource):
         due_date: Union[str, date] | NotGiven = NOT_GIVEN,
         exchange_rate: float | NotGiven = NOT_GIVEN,
         external_id: str | NotGiven = NOT_GIVEN,
-        invoice_line_groups: Iterable[invoice_create_params.InvoiceLineGroup] | NotGiven = NOT_GIVEN,
-        invoice_lines: Iterable[invoice_create_params.InvoiceLine] | NotGiven = NOT_GIVEN,
         is_finance_charge: bool | NotGiven = NOT_GIVEN,
         is_pending: bool | NotGiven = NOT_GIVEN,
         is_queued_for_email: bool | NotGiven = NOT_GIVEN,
         is_queued_for_print: bool | NotGiven = NOT_GIVEN,
+        line_groups: Iterable[invoice_create_params.LineGroup] | NotGiven = NOT_GIVEN,
+        lines: Iterable[invoice_create_params.Line] | NotGiven = NOT_GIVEN,
         link_to_transaction_ids: List[str] | NotGiven = NOT_GIVEN,
         memo: str | NotGiven = NOT_GIVEN,
         other_custom_field: str | NotGiven = NOT_GIVEN,
@@ -136,11 +136,6 @@ class InvoicesResource(SyncAPIResource):
               return an error. This field is immutable and can only be set during object
               creation.
 
-          invoice_line_groups: The invoice's line item groups, each representing a predefined set of related
-              items.
-
-          invoice_lines: The invoice's line items, each representing a single product or service sold.
-
           is_finance_charge: Whether this invoice includes a finance charge. This field is immutable and can
               only be set during invoice creation.
 
@@ -152,6 +147,11 @@ class InvoicesResource(SyncAPIResource):
 
           is_queued_for_print: Indicates whether this invoice is included in the queue of documents for
               QuickBooks to print.
+
+          line_groups: The invoice's line item groups, each representing a predefined set of related
+              items.
+
+          lines: The invoice's line items, each representing a single product or service sold.
 
           link_to_transaction_ids: IDs of existing transactions that you wish to link to this invoice, such as
               payments applied, credits used, or associated purchase orders. Note that this
@@ -257,12 +257,12 @@ class InvoicesResource(SyncAPIResource):
                     "due_date": due_date,
                     "exchange_rate": exchange_rate,
                     "external_id": external_id,
-                    "invoice_line_groups": invoice_line_groups,
-                    "invoice_lines": invoice_lines,
                     "is_finance_charge": is_finance_charge,
                     "is_pending": is_pending,
                     "is_queued_for_email": is_queued_for_email,
                     "is_queued_for_print": is_queued_for_print,
+                    "line_groups": line_groups,
+                    "lines": lines,
                     "link_to_transaction_ids": link_to_transaction_ids,
                     "memo": memo,
                     "other_custom_field": other_custom_field,
@@ -340,11 +340,11 @@ class InvoicesResource(SyncAPIResource):
         document_template_id: str | NotGiven = NOT_GIVEN,
         due_date: Union[str, date] | NotGiven = NOT_GIVEN,
         exchange_rate: float | NotGiven = NOT_GIVEN,
-        invoice_line_groups: Iterable[invoice_update_params.InvoiceLineGroup] | NotGiven = NOT_GIVEN,
-        invoice_lines: Iterable[invoice_update_params.InvoiceLine] | NotGiven = NOT_GIVEN,
         is_pending: bool | NotGiven = NOT_GIVEN,
         is_queued_for_email: bool | NotGiven = NOT_GIVEN,
         is_queued_for_print: bool | NotGiven = NOT_GIVEN,
+        line_groups: Iterable[invoice_update_params.LineGroup] | NotGiven = NOT_GIVEN,
+        lines: Iterable[invoice_update_params.Line] | NotGiven = NOT_GIVEN,
         memo: str | NotGiven = NOT_GIVEN,
         other_custom_field: str | NotGiven = NOT_GIVEN,
         purchase_order_number: str | NotGiven = NOT_GIVEN,
@@ -410,7 +410,16 @@ class InvoicesResource(SyncAPIResource):
               in QuickBooks at the time of this transaction. Represented as a decimal value
               (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
 
-          invoice_line_groups: The invoice's line item groups, each representing a predefined set of related
+          is_pending: Indicates whether this invoice is pending approval or completion. If `true`, the
+              invoice is in a draft state and has not been finalized.
+
+          is_queued_for_email: Indicates whether this invoice is included in the queue of documents for
+              QuickBooks to email to the customer.
+
+          is_queued_for_print: Indicates whether this invoice is included in the queue of documents for
+              QuickBooks to print.
+
+          line_groups: The invoice's line item groups, each representing a predefined set of related
               items.
 
               **IMPORTANT**: When updating an invoice's line item groups, this array
@@ -420,7 +429,7 @@ class InvoicesResource(SyncAPIResource):
               item group, include it with its `id` set to `-1`. If you do not wish to modify
               the line item groups, you can omit this field entirely to keep them unchanged.
 
-          invoice_lines: The invoice's line items, each representing a single product or service sold.
+          lines: The invoice's line items, each representing a single product or service sold.
 
               **IMPORTANT**: When updating an invoice's line items, this array completely
               REPLACES all existing line items for that invoice. To retain any current line
@@ -428,15 +437,6 @@ class InvoicesResource(SyncAPIResource):
               not included will be removed. To add a new line item, include it with its `id`
               set to `-1`. If you do not wish to modify the line items, you can omit this
               field entirely to keep them unchanged.
-
-          is_pending: Indicates whether this invoice is pending approval or completion. If `true`, the
-              invoice is in a draft state and has not been finalized.
-
-          is_queued_for_email: Indicates whether this invoice is included in the queue of documents for
-              QuickBooks to email to the customer.
-
-          is_queued_for_print: Indicates whether this invoice is included in the queue of documents for
-              QuickBooks to print.
 
           memo: A memo or note for this invoice, as entered by the user. This appears in
               reports, but not on the invoice. Use `customerMessage` to add a note to the
@@ -523,11 +523,11 @@ class InvoicesResource(SyncAPIResource):
                     "document_template_id": document_template_id,
                     "due_date": due_date,
                     "exchange_rate": exchange_rate,
-                    "invoice_line_groups": invoice_line_groups,
-                    "invoice_lines": invoice_lines,
                     "is_pending": is_pending,
                     "is_queued_for_email": is_queued_for_email,
                     "is_queued_for_print": is_queued_for_print,
+                    "line_groups": line_groups,
+                    "lines": lines,
                     "memo": memo,
                     "other_custom_field": other_custom_field,
                     "purchase_order_number": purchase_order_number,
@@ -739,12 +739,12 @@ class AsyncInvoicesResource(AsyncAPIResource):
         due_date: Union[str, date] | NotGiven = NOT_GIVEN,
         exchange_rate: float | NotGiven = NOT_GIVEN,
         external_id: str | NotGiven = NOT_GIVEN,
-        invoice_line_groups: Iterable[invoice_create_params.InvoiceLineGroup] | NotGiven = NOT_GIVEN,
-        invoice_lines: Iterable[invoice_create_params.InvoiceLine] | NotGiven = NOT_GIVEN,
         is_finance_charge: bool | NotGiven = NOT_GIVEN,
         is_pending: bool | NotGiven = NOT_GIVEN,
         is_queued_for_email: bool | NotGiven = NOT_GIVEN,
         is_queued_for_print: bool | NotGiven = NOT_GIVEN,
+        line_groups: Iterable[invoice_create_params.LineGroup] | NotGiven = NOT_GIVEN,
+        lines: Iterable[invoice_create_params.Line] | NotGiven = NOT_GIVEN,
         link_to_transaction_ids: List[str] | NotGiven = NOT_GIVEN,
         memo: str | NotGiven = NOT_GIVEN,
         other_custom_field: str | NotGiven = NOT_GIVEN,
@@ -812,11 +812,6 @@ class AsyncInvoicesResource(AsyncAPIResource):
               return an error. This field is immutable and can only be set during object
               creation.
 
-          invoice_line_groups: The invoice's line item groups, each representing a predefined set of related
-              items.
-
-          invoice_lines: The invoice's line items, each representing a single product or service sold.
-
           is_finance_charge: Whether this invoice includes a finance charge. This field is immutable and can
               only be set during invoice creation.
 
@@ -828,6 +823,11 @@ class AsyncInvoicesResource(AsyncAPIResource):
 
           is_queued_for_print: Indicates whether this invoice is included in the queue of documents for
               QuickBooks to print.
+
+          line_groups: The invoice's line item groups, each representing a predefined set of related
+              items.
+
+          lines: The invoice's line items, each representing a single product or service sold.
 
           link_to_transaction_ids: IDs of existing transactions that you wish to link to this invoice, such as
               payments applied, credits used, or associated purchase orders. Note that this
@@ -933,12 +933,12 @@ class AsyncInvoicesResource(AsyncAPIResource):
                     "due_date": due_date,
                     "exchange_rate": exchange_rate,
                     "external_id": external_id,
-                    "invoice_line_groups": invoice_line_groups,
-                    "invoice_lines": invoice_lines,
                     "is_finance_charge": is_finance_charge,
                     "is_pending": is_pending,
                     "is_queued_for_email": is_queued_for_email,
                     "is_queued_for_print": is_queued_for_print,
+                    "line_groups": line_groups,
+                    "lines": lines,
                     "link_to_transaction_ids": link_to_transaction_ids,
                     "memo": memo,
                     "other_custom_field": other_custom_field,
@@ -1016,11 +1016,11 @@ class AsyncInvoicesResource(AsyncAPIResource):
         document_template_id: str | NotGiven = NOT_GIVEN,
         due_date: Union[str, date] | NotGiven = NOT_GIVEN,
         exchange_rate: float | NotGiven = NOT_GIVEN,
-        invoice_line_groups: Iterable[invoice_update_params.InvoiceLineGroup] | NotGiven = NOT_GIVEN,
-        invoice_lines: Iterable[invoice_update_params.InvoiceLine] | NotGiven = NOT_GIVEN,
         is_pending: bool | NotGiven = NOT_GIVEN,
         is_queued_for_email: bool | NotGiven = NOT_GIVEN,
         is_queued_for_print: bool | NotGiven = NOT_GIVEN,
+        line_groups: Iterable[invoice_update_params.LineGroup] | NotGiven = NOT_GIVEN,
+        lines: Iterable[invoice_update_params.Line] | NotGiven = NOT_GIVEN,
         memo: str | NotGiven = NOT_GIVEN,
         other_custom_field: str | NotGiven = NOT_GIVEN,
         purchase_order_number: str | NotGiven = NOT_GIVEN,
@@ -1086,7 +1086,16 @@ class AsyncInvoicesResource(AsyncAPIResource):
               in QuickBooks at the time of this transaction. Represented as a decimal value
               (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
 
-          invoice_line_groups: The invoice's line item groups, each representing a predefined set of related
+          is_pending: Indicates whether this invoice is pending approval or completion. If `true`, the
+              invoice is in a draft state and has not been finalized.
+
+          is_queued_for_email: Indicates whether this invoice is included in the queue of documents for
+              QuickBooks to email to the customer.
+
+          is_queued_for_print: Indicates whether this invoice is included in the queue of documents for
+              QuickBooks to print.
+
+          line_groups: The invoice's line item groups, each representing a predefined set of related
               items.
 
               **IMPORTANT**: When updating an invoice's line item groups, this array
@@ -1096,7 +1105,7 @@ class AsyncInvoicesResource(AsyncAPIResource):
               item group, include it with its `id` set to `-1`. If you do not wish to modify
               the line item groups, you can omit this field entirely to keep them unchanged.
 
-          invoice_lines: The invoice's line items, each representing a single product or service sold.
+          lines: The invoice's line items, each representing a single product or service sold.
 
               **IMPORTANT**: When updating an invoice's line items, this array completely
               REPLACES all existing line items for that invoice. To retain any current line
@@ -1104,15 +1113,6 @@ class AsyncInvoicesResource(AsyncAPIResource):
               not included will be removed. To add a new line item, include it with its `id`
               set to `-1`. If you do not wish to modify the line items, you can omit this
               field entirely to keep them unchanged.
-
-          is_pending: Indicates whether this invoice is pending approval or completion. If `true`, the
-              invoice is in a draft state and has not been finalized.
-
-          is_queued_for_email: Indicates whether this invoice is included in the queue of documents for
-              QuickBooks to email to the customer.
-
-          is_queued_for_print: Indicates whether this invoice is included in the queue of documents for
-              QuickBooks to print.
 
           memo: A memo or note for this invoice, as entered by the user. This appears in
               reports, but not on the invoice. Use `customerMessage` to add a note to the
@@ -1199,11 +1199,11 @@ class AsyncInvoicesResource(AsyncAPIResource):
                     "document_template_id": document_template_id,
                     "due_date": due_date,
                     "exchange_rate": exchange_rate,
-                    "invoice_line_groups": invoice_line_groups,
-                    "invoice_lines": invoice_lines,
                     "is_pending": is_pending,
                     "is_queued_for_email": is_queued_for_email,
                     "is_queued_for_print": is_queued_for_print,
+                    "line_groups": line_groups,
+                    "lines": lines,
                     "memo": memo,
                     "other_custom_field": other_custom_field,
                     "purchase_order_number": purchase_order_number,

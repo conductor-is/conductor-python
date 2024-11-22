@@ -53,7 +53,7 @@ class CreditCardChargeListParams(TypedDict, total=False):
     """
 
     payee_ids: Annotated[List[str], PropertyInfo(alias="payeeIds")]
-    """Filter for credit card charges from these payees.
+    """Filter for credit card charges to these payees.
 
     These are the vendors or companies from whom merchandise or services were
     purchased for these credit card charges.
