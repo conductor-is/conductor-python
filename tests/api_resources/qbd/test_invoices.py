@@ -59,7 +59,11 @@ class TestInvoices:
             due_date=parse_date("2019-12-27"),
             exchange_rate=1.2345,
             external_id="12345678-abcd-1234-abcd-1234567890ab",
-            invoice_line_groups=[
+            is_finance_charge=True,
+            is_pending=False,
+            is_queued_for_email=True,
+            is_queued_for_print=True,
+            line_groups=[
                 {
                     "item_group_id": "80000011-1234567890",
                     "custom_fields": [
@@ -75,7 +79,7 @@ class TestInvoices:
                     "unit_of_measure": "Each",
                 }
             ],
-            invoice_lines=[
+            lines=[
                 {
                     "amount": "1000.00",
                     "class_id": "80000001-1234567890",
@@ -109,10 +113,6 @@ class TestInvoices:
                     "unit_of_measure": "Each",
                 }
             ],
-            is_finance_charge=True,
-            is_pending=False,
-            is_queued_for_email=True,
-            is_queued_for_print=True,
             link_to_transaction_ids=["string"],
             memo="Customer requested rush delivery",
             other_custom_field="Special handling required",
@@ -251,10 +251,14 @@ class TestInvoices:
             document_template_id="80000001-1234567890",
             due_date=parse_date("2019-12-27"),
             exchange_rate=1.2345,
-            invoice_line_groups=[
+            is_pending=False,
+            is_queued_for_email=True,
+            is_queued_for_print=True,
+            line_groups=[
                 {
                     "id": "456DEF-1234567890",
-                    "invoice_lines": [
+                    "item_group_id": "80000011-1234567890",
+                    "lines": [
                         {
                             "id": "456DEF-1234567890",
                             "amount": "1000.00",
@@ -279,13 +283,12 @@ class TestInvoices:
                             "unit_of_measure": "Each",
                         }
                     ],
-                    "item_group_id": "80000011-1234567890",
                     "override_unit_of_measure_set_id": "80000003-1234567890",
                     "quantity": 5,
                     "unit_of_measure": "Each",
                 }
             ],
-            invoice_lines=[
+            lines=[
                 {
                     "id": "456DEF-1234567890",
                     "amount": "1000.00",
@@ -310,9 +313,6 @@ class TestInvoices:
                     "unit_of_measure": "Each",
                 }
             ],
-            is_pending=False,
-            is_queued_for_email=True,
-            is_queued_for_print=True,
             memo="Customer requested rush delivery",
             other_custom_field="Special handling required",
             purchase_order_number="PO-1234",
@@ -479,7 +479,11 @@ class TestAsyncInvoices:
             due_date=parse_date("2019-12-27"),
             exchange_rate=1.2345,
             external_id="12345678-abcd-1234-abcd-1234567890ab",
-            invoice_line_groups=[
+            is_finance_charge=True,
+            is_pending=False,
+            is_queued_for_email=True,
+            is_queued_for_print=True,
+            line_groups=[
                 {
                     "item_group_id": "80000011-1234567890",
                     "custom_fields": [
@@ -495,7 +499,7 @@ class TestAsyncInvoices:
                     "unit_of_measure": "Each",
                 }
             ],
-            invoice_lines=[
+            lines=[
                 {
                     "amount": "1000.00",
                     "class_id": "80000001-1234567890",
@@ -529,10 +533,6 @@ class TestAsyncInvoices:
                     "unit_of_measure": "Each",
                 }
             ],
-            is_finance_charge=True,
-            is_pending=False,
-            is_queued_for_email=True,
-            is_queued_for_print=True,
             link_to_transaction_ids=["string"],
             memo="Customer requested rush delivery",
             other_custom_field="Special handling required",
@@ -671,10 +671,14 @@ class TestAsyncInvoices:
             document_template_id="80000001-1234567890",
             due_date=parse_date("2019-12-27"),
             exchange_rate=1.2345,
-            invoice_line_groups=[
+            is_pending=False,
+            is_queued_for_email=True,
+            is_queued_for_print=True,
+            line_groups=[
                 {
                     "id": "456DEF-1234567890",
-                    "invoice_lines": [
+                    "item_group_id": "80000011-1234567890",
+                    "lines": [
                         {
                             "id": "456DEF-1234567890",
                             "amount": "1000.00",
@@ -699,13 +703,12 @@ class TestAsyncInvoices:
                             "unit_of_measure": "Each",
                         }
                     ],
-                    "item_group_id": "80000011-1234567890",
                     "override_unit_of_measure_set_id": "80000003-1234567890",
                     "quantity": 5,
                     "unit_of_measure": "Each",
                 }
             ],
-            invoice_lines=[
+            lines=[
                 {
                     "id": "456DEF-1234567890",
                     "amount": "1000.00",
@@ -730,9 +733,6 @@ class TestAsyncInvoices:
                     "unit_of_measure": "Each",
                 }
             ],
-            is_pending=False,
-            is_queued_for_email=True,
-            is_queued_for_print=True,
             memo="Customer requested rush delivery",
             other_custom_field="Special handling required",
             purchase_order_number="PO-1234",

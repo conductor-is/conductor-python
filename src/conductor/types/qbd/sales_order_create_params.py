@@ -106,7 +106,7 @@ class SalesOrderCreateParams(TypedDict, total=False):
     lines: Iterable[Line]
     """
     The sales order's line items, each representing a single product or service
-    sold.
+    ordered.
 
     **IMPORTANT**: You must specify `lines`, `lineGroups`, or both when creating a
     sales order.

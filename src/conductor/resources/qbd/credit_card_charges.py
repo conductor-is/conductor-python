@@ -396,7 +396,7 @@ class CreditCardChargesResource(SyncAPIResource):
               used as the `cursor` parameter value in subsequent requests to fetch the next
               set of results.
 
-          payee_ids: Filter for credit card charges from these payees. These are the vendors or
+          payee_ids: Filter for credit card charges to these payees. These are the vendors or
               companies from whom merchandise or services were purchased for these credit card
               charges.
 
@@ -853,7 +853,7 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
               used as the `cursor` parameter value in subsequent requests to fetch the next
               set of results.
 
-          payee_ids: Filter for credit card charges from these payees. These are the vendors or
+          payee_ids: Filter for credit card charges to these payees. These are the vendors or
               companies from whom merchandise or services were purchased for these credit card
               charges.
 

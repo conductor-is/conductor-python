@@ -98,7 +98,7 @@ class SalesOrderUpdateParams(TypedDict, total=False):
     lines: Iterable[Line]
     """
     The sales order's line items, each representing a single product or service
-    sold.
+    ordered.
 
     **IMPORTANT**: When updating a sales order's line items, this array completely
     REPLACES all existing line items for that sales order. To retain any current
@@ -409,7 +409,7 @@ class LineGroup(TypedDict, total=False):
     lines: Iterable[LineGroupLine]
     """
     The sales order line group's line items, each representing a single product or
-    service sold.
+    service ordered.
 
     **IMPORTANT**: When updating a sales order line group's line items, this array
     completely REPLACES all existing line items for that sales order line group. To

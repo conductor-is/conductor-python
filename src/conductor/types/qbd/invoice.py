@@ -17,26 +17,26 @@ __all__ = [
     "CustomerMessage",
     "CustomField",
     "DocumentTemplate",
-    "InvoiceLineGroup",
-    "InvoiceLineGroupCustomField",
-    "InvoiceLineGroupInvoiceLine",
-    "InvoiceLineGroupInvoiceLineClass",
-    "InvoiceLineGroupInvoiceLineCustomField",
-    "InvoiceLineGroupInvoiceLineInventorySite",
-    "InvoiceLineGroupInvoiceLineInventorySiteLocation",
-    "InvoiceLineGroupInvoiceLineItem",
-    "InvoiceLineGroupInvoiceLineOverrideUnitOfMeasureSet",
-    "InvoiceLineGroupInvoiceLineSalesTaxCode",
-    "InvoiceLineGroupItemGroup",
-    "InvoiceLineGroupOverrideUnitOfMeasureSet",
-    "InvoiceLine",
-    "InvoiceLineClass",
-    "InvoiceLineCustomField",
-    "InvoiceLineInventorySite",
-    "InvoiceLineInventorySiteLocation",
-    "InvoiceLineItem",
-    "InvoiceLineOverrideUnitOfMeasureSet",
-    "InvoiceLineSalesTaxCode",
+    "LineGroup",
+    "LineGroupCustomField",
+    "LineGroupItemGroup",
+    "LineGroupLine",
+    "LineGroupLineClass",
+    "LineGroupLineCustomField",
+    "LineGroupLineInventorySite",
+    "LineGroupLineInventorySiteLocation",
+    "LineGroupLineItem",
+    "LineGroupLineOverrideUnitOfMeasureSet",
+    "LineGroupLineSalesTaxCode",
+    "LineGroupOverrideUnitOfMeasureSet",
+    "Line",
+    "LineClass",
+    "LineCustomField",
+    "LineInventorySite",
+    "LineInventorySiteLocation",
+    "LineItem",
+    "LineOverrideUnitOfMeasureSet",
+    "LineSalesTaxCode",
     "LinkedTransaction",
     "ReceivablesAccount",
     "SalesRepresentative",
@@ -203,7 +203,7 @@ class DocumentTemplate(BaseModel):
     """
 
 
-class InvoiceLineGroupCustomField(BaseModel):
+class LineGroupCustomField(BaseModel):
     name: str
     """The name of the custom field, unique for the specified `ownerId`.
 
@@ -240,7 +240,7 @@ class InvoiceLineGroupCustomField(BaseModel):
     """
 
 
-class InvoiceLineGroupInvoiceLineClass(BaseModel):
+class LineGroupItemGroup(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks to this object.
 
@@ -256,7 +256,23 @@ class InvoiceLineGroupInvoiceLineClass(BaseModel):
     """
 
 
-class InvoiceLineGroupInvoiceLineCustomField(BaseModel):
+class LineGroupLineClass(BaseModel):
+    id: Optional[str] = None
+    """The unique identifier assigned by QuickBooks to this object.
+
+    This ID is unique across all objects of the same type, but not across different
+    QuickBooks object types.
+    """
+
+    full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
+    """
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
+    """
+
+
+class LineGroupLineCustomField(BaseModel):
     name: str
     """The name of the custom field, unique for the specified `ownerId`.
 
@@ -293,7 +309,7 @@ class InvoiceLineGroupInvoiceLineCustomField(BaseModel):
     """
 
 
-class InvoiceLineGroupInvoiceLineInventorySite(BaseModel):
+class LineGroupLineInventorySite(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks to this object.
 
@@ -309,7 +325,7 @@ class InvoiceLineGroupInvoiceLineInventorySite(BaseModel):
     """
 
 
-class InvoiceLineGroupInvoiceLineInventorySiteLocation(BaseModel):
+class LineGroupLineInventorySiteLocation(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks to this object.
 
@@ -325,7 +341,7 @@ class InvoiceLineGroupInvoiceLineInventorySiteLocation(BaseModel):
     """
 
 
-class InvoiceLineGroupInvoiceLineItem(BaseModel):
+class LineGroupLineItem(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks to this object.
 
@@ -341,7 +357,7 @@ class InvoiceLineGroupInvoiceLineItem(BaseModel):
     """
 
 
-class InvoiceLineGroupInvoiceLineOverrideUnitOfMeasureSet(BaseModel):
+class LineGroupLineOverrideUnitOfMeasureSet(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks to this object.
 
@@ -357,7 +373,7 @@ class InvoiceLineGroupInvoiceLineOverrideUnitOfMeasureSet(BaseModel):
     """
 
 
-class InvoiceLineGroupInvoiceLineSalesTaxCode(BaseModel):
+class LineGroupLineSalesTaxCode(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks to this object.
 
@@ -373,7 +389,7 @@ class InvoiceLineGroupInvoiceLineSalesTaxCode(BaseModel):
     """
 
 
-class InvoiceLineGroupInvoiceLine(BaseModel):
+class LineGroupLine(BaseModel):
     id: str
     """The unique identifier assigned by QuickBooks to this invoice line.
 
@@ -389,7 +405,7 @@ class InvoiceLineGroupInvoiceLine(BaseModel):
     `1` and the suggested `rate`.
     """
 
-    class_: Optional[InvoiceLineGroupInvoiceLineClass] = FieldInfo(alias="class", default=None)
+    class_: Optional[LineGroupLineClass] = FieldInfo(alias="class", default=None)
     """The invoice line's class.
 
     Classes can be used to categorize objects into meaningful segments, such as
@@ -399,7 +415,7 @@ class InvoiceLineGroupInvoiceLine(BaseModel):
     transaction line level.
     """
 
-    custom_fields: List[InvoiceLineGroupInvoiceLineCustomField] = FieldInfo(alias="customFields")
+    custom_fields: List[LineGroupLineCustomField] = FieldInfo(alias="customFields")
     """
     The custom fields for the invoice line object, added as user-defined data
     extensions, not included in the standard QuickBooks object.
@@ -416,13 +432,13 @@ class InvoiceLineGroupInvoiceLine(BaseModel):
     is only supported on QuickBooks Desktop 2023 or later.
     """
 
-    inventory_site: Optional[InvoiceLineGroupInvoiceLineInventorySite] = FieldInfo(alias="inventorySite", default=None)
+    inventory_site: Optional[LineGroupLineInventorySite] = FieldInfo(alias="inventorySite", default=None)
     """
     The site location where inventory for the item associated with this invoice line
     is stored.
     """
 
-    inventory_site_location: Optional[InvoiceLineGroupInvoiceLineInventorySiteLocation] = FieldInfo(
+    inventory_site_location: Optional[LineGroupLineInventorySiteLocation] = FieldInfo(
         alias="inventorySiteLocation", default=None
     )
     """
@@ -430,7 +446,7 @@ class InvoiceLineGroupInvoiceLine(BaseModel):
     item associated with this invoice line is stored.
     """
 
-    item: Optional[InvoiceLineGroupInvoiceLineItem] = None
+    item: Optional[LineGroupLineItem] = None
     """The item associated with this invoice line.
 
     This can refer to any good or service that the business buys or sells, including
@@ -468,7 +484,7 @@ class InvoiceLineGroupInvoiceLine(BaseModel):
     Hidden by default in the QuickBooks UI.
     """
 
-    override_unit_of_measure_set: Optional[InvoiceLineGroupInvoiceLineOverrideUnitOfMeasureSet] = FieldInfo(
+    override_unit_of_measure_set: Optional[LineGroupLineOverrideUnitOfMeasureSet] = FieldInfo(
         alias="overrideUnitOfMeasureSet", default=None
     )
     """
@@ -498,7 +514,7 @@ class InvoiceLineGroupInvoiceLine(BaseModel):
     Typically used for discount or markup items.
     """
 
-    sales_tax_code: Optional[InvoiceLineGroupInvoiceLineSalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)
+    sales_tax_code: Optional[LineGroupLineSalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)
     """
     The sales-tax code associated with this invoice line, determining whether it is
     taxable or non-taxable. It's used to assign a default tax status to all
@@ -527,7 +543,7 @@ class InvoiceLineGroupInvoiceLine(BaseModel):
     """
 
 
-class InvoiceLineGroupItemGroup(BaseModel):
+class LineGroupOverrideUnitOfMeasureSet(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks to this object.
 
@@ -543,30 +559,14 @@ class InvoiceLineGroupItemGroup(BaseModel):
     """
 
 
-class InvoiceLineGroupOverrideUnitOfMeasureSet(BaseModel):
-    id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks to this object.
-
-    This ID is unique across all objects of the same type, but not across different
-    QuickBooks object types.
-    """
-
-    full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
-    """
-    The fully-qualified unique name for this object, formed by combining the names
-    of its parent objects with its own `name`, separated by colons. Not
-    case-sensitive.
-    """
-
-
-class InvoiceLineGroup(BaseModel):
+class LineGroup(BaseModel):
     id: str
     """The unique identifier assigned by QuickBooks to this invoice line group.
 
     This ID is unique across all transaction line types.
     """
 
-    custom_fields: List[InvoiceLineGroupCustomField] = FieldInfo(alias="customFields")
+    custom_fields: List[LineGroupCustomField] = FieldInfo(alias="customFields")
     """
     The custom fields for the invoice line group object, added as user-defined data
     extensions, not included in the standard QuickBooks object.
@@ -575,23 +575,23 @@ class InvoiceLineGroup(BaseModel):
     description: Optional[str] = None
     """A description of this invoice line group."""
 
-    invoice_lines: List[InvoiceLineGroupInvoiceLine] = FieldInfo(alias="invoiceLines")
-    """
-    The invoice line group's line items, each representing a single product or
-    service sold.
-    """
-
-    item_group: InvoiceLineGroupItemGroup = FieldInfo(alias="itemGroup")
+    item_group: LineGroupItemGroup = FieldInfo(alias="itemGroup")
     """
     The invoice line group's item group, representing a predefined set of items
     bundled because they are commonly purchased together or grouped for faster
     entry.
     """
 
+    lines: List[LineGroupLine]
+    """
+    The invoice line group's line items, each representing a single product or
+    service sold.
+    """
+
     object_type: Literal["qbd_invoice_line_group"] = FieldInfo(alias="objectType")
     """The type of object. This value is always `"qbd_invoice_line_group"`."""
 
-    override_unit_of_measure_set: Optional[InvoiceLineGroupOverrideUnitOfMeasureSet] = FieldInfo(
+    override_unit_of_measure_set: Optional[LineGroupOverrideUnitOfMeasureSet] = FieldInfo(
         alias="overrideUnitOfMeasureSet", default=None
     )
     """
@@ -626,7 +626,7 @@ class InvoiceLineGroup(BaseModel):
     """
 
 
-class InvoiceLineClass(BaseModel):
+class LineClass(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks to this object.
 
@@ -642,7 +642,7 @@ class InvoiceLineClass(BaseModel):
     """
 
 
-class InvoiceLineCustomField(BaseModel):
+class LineCustomField(BaseModel):
     name: str
     """The name of the custom field, unique for the specified `ownerId`.
 
@@ -679,7 +679,7 @@ class InvoiceLineCustomField(BaseModel):
     """
 
 
-class InvoiceLineInventorySite(BaseModel):
+class LineInventorySite(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks to this object.
 
@@ -695,7 +695,7 @@ class InvoiceLineInventorySite(BaseModel):
     """
 
 
-class InvoiceLineInventorySiteLocation(BaseModel):
+class LineInventorySiteLocation(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks to this object.
 
@@ -711,7 +711,7 @@ class InvoiceLineInventorySiteLocation(BaseModel):
     """
 
 
-class InvoiceLineItem(BaseModel):
+class LineItem(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks to this object.
 
@@ -727,7 +727,7 @@ class InvoiceLineItem(BaseModel):
     """
 
 
-class InvoiceLineOverrideUnitOfMeasureSet(BaseModel):
+class LineOverrideUnitOfMeasureSet(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks to this object.
 
@@ -743,7 +743,7 @@ class InvoiceLineOverrideUnitOfMeasureSet(BaseModel):
     """
 
 
-class InvoiceLineSalesTaxCode(BaseModel):
+class LineSalesTaxCode(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks to this object.
 
@@ -759,7 +759,7 @@ class InvoiceLineSalesTaxCode(BaseModel):
     """
 
 
-class InvoiceLine(BaseModel):
+class Line(BaseModel):
     id: str
     """The unique identifier assigned by QuickBooks to this invoice line.
 
@@ -775,7 +775,7 @@ class InvoiceLine(BaseModel):
     `1` and the suggested `rate`.
     """
 
-    class_: Optional[InvoiceLineClass] = FieldInfo(alias="class", default=None)
+    class_: Optional[LineClass] = FieldInfo(alias="class", default=None)
     """The invoice line's class.
 
     Classes can be used to categorize objects into meaningful segments, such as
@@ -785,7 +785,7 @@ class InvoiceLine(BaseModel):
     transaction line level.
     """
 
-    custom_fields: List[InvoiceLineCustomField] = FieldInfo(alias="customFields")
+    custom_fields: List[LineCustomField] = FieldInfo(alias="customFields")
     """
     The custom fields for the invoice line object, added as user-defined data
     extensions, not included in the standard QuickBooks object.
@@ -802,13 +802,13 @@ class InvoiceLine(BaseModel):
     is only supported on QuickBooks Desktop 2023 or later.
     """
 
-    inventory_site: Optional[InvoiceLineInventorySite] = FieldInfo(alias="inventorySite", default=None)
+    inventory_site: Optional[LineInventorySite] = FieldInfo(alias="inventorySite", default=None)
     """
     The site location where inventory for the item associated with this invoice line
     is stored.
     """
 
-    inventory_site_location: Optional[InvoiceLineInventorySiteLocation] = FieldInfo(
+    inventory_site_location: Optional[LineInventorySiteLocation] = FieldInfo(
         alias="inventorySiteLocation", default=None
     )
     """
@@ -816,7 +816,7 @@ class InvoiceLine(BaseModel):
     item associated with this invoice line is stored.
     """
 
-    item: Optional[InvoiceLineItem] = None
+    item: Optional[LineItem] = None
     """The item associated with this invoice line.
 
     This can refer to any good or service that the business buys or sells, including
@@ -854,7 +854,7 @@ class InvoiceLine(BaseModel):
     Hidden by default in the QuickBooks UI.
     """
 
-    override_unit_of_measure_set: Optional[InvoiceLineOverrideUnitOfMeasureSet] = FieldInfo(
+    override_unit_of_measure_set: Optional[LineOverrideUnitOfMeasureSet] = FieldInfo(
         alias="overrideUnitOfMeasureSet", default=None
     )
     """
@@ -884,7 +884,7 @@ class InvoiceLine(BaseModel):
     Typically used for discount or markup items.
     """
 
-    sales_tax_code: Optional[InvoiceLineSalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)
+    sales_tax_code: Optional[LineSalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)
     """
     The sales-tax code associated with this invoice line, determining whether it is
     taxable or non-taxable. It's used to assign a default tax status to all
@@ -1203,15 +1203,6 @@ class Invoice(BaseModel):
     creation.
     """
 
-    invoice_line_groups: List[InvoiceLineGroup] = FieldInfo(alias="invoiceLineGroups")
-    """
-    The invoice's line item groups, each representing a predefined set of related
-    items.
-    """
-
-    invoice_lines: List[InvoiceLine] = FieldInfo(alias="invoiceLines")
-    """The invoice's line items, each representing a single product or service sold."""
-
     is_finance_charge: Optional[bool] = FieldInfo(alias="isFinanceCharge", default=None)
     """Whether this invoice includes a finance charge.
 
@@ -1241,6 +1232,15 @@ class Invoice(BaseModel):
     Indicates whether this invoice is included in the queue of documents for
     QuickBooks to print.
     """
+
+    line_groups: List[LineGroup] = FieldInfo(alias="lineGroups")
+    """
+    The invoice's line item groups, each representing a predefined set of related
+    items.
+    """
+
+    lines: List[Line]
+    """The invoice's line items, each representing a single product or service sold."""
 
     linked_transactions: List[LinkedTransaction] = FieldInfo(alias="linkedTransactions")
     """

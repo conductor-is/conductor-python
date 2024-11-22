@@ -12,9 +12,9 @@ __all__ = [
     "InvoiceUpdateParams",
     "ApplyCredit",
     "BillingAddress",
-    "InvoiceLineGroup",
-    "InvoiceLineGroupInvoiceLine",
-    "InvoiceLine",
+    "LineGroup",
+    "LineGroupLine",
+    "Line",
     "ShippingAddress",
 ]
 
@@ -81,30 +81,6 @@ class InvoiceUpdateParams(TypedDict, total=False):
     (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
     """
 
-    invoice_line_groups: Annotated[Iterable[InvoiceLineGroup], PropertyInfo(alias="invoiceLineGroups")]
-    """
-    The invoice's line item groups, each representing a predefined set of related
-    items.
-
-    **IMPORTANT**: When updating an invoice's line item groups, this array
-    completely REPLACES all existing line item groups for that invoice. To retain
-    any current line item groups, include them in this array, even if they have not
-    changed. Any line item groups not included will be removed. To add a new line
-    item group, include it with its `id` set to `-1`. If you do not wish to modify
-    the line item groups, you can omit this field entirely to keep them unchanged.
-    """
-
-    invoice_lines: Annotated[Iterable[InvoiceLine], PropertyInfo(alias="invoiceLines")]
-    """The invoice's line items, each representing a single product or service sold.
-
-    **IMPORTANT**: When updating an invoice's line items, this array completely
-    REPLACES all existing line items for that invoice. To retain any current line
-    items, include them in this array, even if they have not changed. Any line items
-    not included will be removed. To add a new line item, include it with its `id`
-    set to `-1`. If you do not wish to modify the line items, you can omit this
-    field entirely to keep them unchanged.
-    """
-
     is_pending: Annotated[bool, PropertyInfo(alias="isPending")]
     """Indicates whether this invoice is pending approval or completion.
 
@@ -121,6 +97,30 @@ class InvoiceUpdateParams(TypedDict, total=False):
     """
     Indicates whether this invoice is included in the queue of documents for
     QuickBooks to print.
+    """
+
+    line_groups: Annotated[Iterable[LineGroup], PropertyInfo(alias="lineGroups")]
+    """
+    The invoice's line item groups, each representing a predefined set of related
+    items.
+
+    **IMPORTANT**: When updating an invoice's line item groups, this array
+    completely REPLACES all existing line item groups for that invoice. To retain
+    any current line item groups, include them in this array, even if they have not
+    changed. Any line item groups not included will be removed. To add a new line
+    item group, include it with its `id` set to `-1`. If you do not wish to modify
+    the line item groups, you can omit this field entirely to keep them unchanged.
+    """
+
+    lines: Iterable[Line]
+    """The invoice's line items, each representing a single product or service sold.
+
+    **IMPORTANT**: When updating an invoice's line items, this array completely
+    REPLACES all existing line items for that invoice. To retain any current line
+    items, include them in this array, even if they have not changed. Any line items
+    not included will be removed. To add a new line item, include it with its `id`
+    set to `-1`. If you do not wish to modify the line items, you can omit this
+    field entirely to keep them unchanged.
     """
 
     memo: str
@@ -276,7 +276,7 @@ class BillingAddress(TypedDict, total=False):
     """The state, county, province, or region name of the address."""
 
 
-class InvoiceLineGroupInvoiceLine(TypedDict, total=False):
+class LineGroupLine(TypedDict, total=False):
     id: Required[str]
     """
     The QuickBooks-assigned unique identifier of an existing invoice line you wish
@@ -432,7 +432,7 @@ class InvoiceLineGroupInvoiceLine(TypedDict, total=False):
     """
 
 
-class InvoiceLineGroup(TypedDict, total=False):
+class LineGroup(TypedDict, total=False):
     id: Required[str]
     """
     The QuickBooks-assigned unique identifier of an existing invoice line group you
@@ -440,7 +440,14 @@ class InvoiceLineGroup(TypedDict, total=False):
     wish to add.
     """
 
-    invoice_lines: Annotated[Iterable[InvoiceLineGroupInvoiceLine], PropertyInfo(alias="invoiceLines")]
+    item_group_id: Annotated[str, PropertyInfo(alias="itemGroupId")]
+    """
+    The invoice line group's item group, representing a predefined set of items
+    bundled because they are commonly purchased together or grouped for faster
+    entry.
+    """
+
+    lines: Iterable[LineGroupLine]
     """
     The invoice line group's line items, each representing a single product or
     service sold.
@@ -451,13 +458,6 @@ class InvoiceLineGroup(TypedDict, total=False):
     changed. Any line items not included will be removed. To add a new line item,
     include it with its `id` set to `-1`. If you do not wish to modify the line
     items, you can omit this field entirely to keep them unchanged.
-    """
-
-    item_group_id: Annotated[str, PropertyInfo(alias="itemGroupId")]
-    """
-    The invoice line group's item group, representing a predefined set of items
-    bundled because they are commonly purchased together or grouped for faster
-    entry.
     """
 
     override_unit_of_measure_set_id: Annotated[str, PropertyInfo(alias="overrideUnitOfMeasureSetId")]
@@ -481,7 +481,7 @@ class InvoiceLineGroup(TypedDict, total=False):
     """
 
 
-class InvoiceLine(TypedDict, total=False):
+class Line(TypedDict, total=False):
     id: Required[str]
     """
     The QuickBooks-assigned unique identifier of an existing invoice line you wish
