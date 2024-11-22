@@ -72,6 +72,14 @@ from .transfers import (
     TransfersResourceWithStreamingResponse,
     AsyncTransfersResourceWithStreamingResponse,
 )
+from .sales_orders import (
+    SalesOrdersResource,
+    AsyncSalesOrdersResource,
+    SalesOrdersResourceWithRawResponse,
+    AsyncSalesOrdersResourceWithRawResponse,
+    SalesOrdersResourceWithStreamingResponse,
+    AsyncSalesOrdersResourceWithStreamingResponse,
+)
 from .service_items import (
     ServiceItemsResource,
     AsyncServiceItemsResource,
@@ -304,6 +312,12 @@ __all__ = [
     "AsyncVendorsResourceWithRawResponse",
     "VendorsResourceWithStreamingResponse",
     "AsyncVendorsResourceWithStreamingResponse",
+    "SalesOrdersResource",
+    "AsyncSalesOrdersResource",
+    "SalesOrdersResourceWithRawResponse",
+    "AsyncSalesOrdersResourceWithRawResponse",
+    "SalesOrdersResourceWithStreamingResponse",
+    "AsyncSalesOrdersResourceWithStreamingResponse",
     "QbdResource",
     "AsyncQbdResource",
     "QbdResourceWithRawResponse",
