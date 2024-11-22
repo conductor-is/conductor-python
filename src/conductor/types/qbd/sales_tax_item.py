@@ -154,7 +154,7 @@ class SalesTaxItem(BaseModel):
     The case-insensitive unique name of this sales-tax item, unique across all
     sales-tax items.
 
-    NOTE: Sales-tax items do not have a `fullName` field because they are not
+    **NOTE**: Sales-tax items do not have a `fullName` field because they are not
     hierarchical objects, which is why `name` is unique for them but not for objects
     that have parents. Maximum length: 31 characters.
     """

@@ -136,11 +136,20 @@ class SalesOrderUpdateParams(TypedDict, total=False):
     be unique and can be arbitrarily changed by the QuickBooks user.
     """
 
+    sales_channel_name: Annotated[Literal["blank", "ecommerce"], PropertyInfo(alias="salesChannelName")]
+    """The name of the sales channel for this sales order."""
+
     sales_representative_id: Annotated[str, PropertyInfo(alias="salesRepresentativeId")]
     """The sales order's sales representative.
 
     Sales representatives can be employees, vendors, or other names in QuickBooks.
     """
+
+    sales_store_name: Annotated[str, PropertyInfo(alias="salesStoreName")]
+    """The name of the sales store for this sales order."""
+
+    sales_store_type: Annotated[str, PropertyInfo(alias="salesStoreType")]
+    """The type of the sales store for this sales order."""
 
     sales_tax_code_id: Annotated[str, PropertyInfo(alias="salesTaxCodeId")]
     """

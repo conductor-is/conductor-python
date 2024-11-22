@@ -144,9 +144,9 @@ class AlternateShippingAddress(BaseModel):
     name: str
     """The case-insensitive unique name of this address, unique across all addresses.
 
-    NOTE: Addresses do not have a `fullName` field because they are not hierarchical
-    objects, which is why `name` is unique for them but not for objects that have
-    parents. Maximum length: 41 characters.
+    **NOTE**: Addresses do not have a `fullName` field because they are not
+    hierarchical objects, which is why `name` is unique for them but not for objects
+    that have parents. Maximum length: 41 characters.
     """
 
     note: Optional[str] = None
@@ -614,9 +614,9 @@ class Customer(BaseModel):
     separated by colons. For example, if a customer is under "Jones" and has the
     `name` "Kitchen-Renovation", its `fullName` would be "Jones:Kitchen-Renovation".
 
-    NOTE: Unlike `name`, `fullName` is guaranteed to be unique across all customer
-    objects. However, `fullName` can still be arbitrarily changed by the QuickBooks
-    user when they modify the underlying `name` field.
+    **NOTE**: Unlike `name`, `fullName` is guaranteed to be unique across all
+    customer objects. However, `fullName` can still be arbitrarily changed by the
+    QuickBooks user when they modify the underlying `name` field.
 
     **IMPORTANT**: If this object is a job (i.e., a sub-customer), this value would
     likely be the job's `name` prefixed by the customer's `name`.
