@@ -325,9 +325,9 @@ class ServiceItem(BaseModel):
     "Services:Consulting" and has the `name` "Web-Design", its `fullName` would be
     "Services:Consulting:Web-Design".
 
-    NOTE: Unlike `name`, `fullName` is guaranteed to be unique across all service
-    item objects. However, `fullName` can still be arbitrarily changed by the
-    QuickBooks user when they modify the underlying `name` field.
+    **NOTE**: Unlike `name`, `fullName` is guaranteed to be unique across all
+    service item objects. However, `fullName` can still be arbitrarily changed by
+    the QuickBooks user when they modify the underlying `name` field.
     """
 
     is_active: bool = FieldInfo(alias="isActive")
@@ -373,7 +373,7 @@ class ServiceItem(BaseModel):
     Details for service items that are both purchased and sold, such as reimbursable
     expenses or inventory items that are bought from vendors and sold to customers.
 
-    **IMPORTANT**: A service item must specify either `salesAndPurchaseDetails` or
+    **IMPORTANT**: A service item will have either `salesAndPurchaseDetails` or
     `salesOrPurchaseDetails`, but never both because an item cannot have both
     configurations.
     """
@@ -387,8 +387,8 @@ class ServiceItem(BaseModel):
     office supply that isn't resold) or service items (like consulting services that
     are sold but not purchased).
 
-    **IMPORTANT**: A service item must specify either `salesOrPurchaseDetails` or
-    `salesAndPurchaseDetails`, but never both because an item cannot have both
+    **IMPORTANT**: A service item will have either `salesAndPurchaseDetails` or
+    `salesOrPurchaseDetails`, but never both because an item cannot have both
     configurations.
     """
 
