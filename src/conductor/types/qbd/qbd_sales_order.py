@@ -1344,6 +1344,9 @@ class QbdSalesOrder(BaseModel):
     discounts.
     """
 
+    total_amount: Optional[str] = FieldInfo(alias="totalAmount", default=None)
+    """The total monetary amount of this sales order, represented as a decimal string."""
+
     total_amount_in_home_currency: Optional[str] = FieldInfo(alias="totalAmountInHomeCurrency", default=None)
     """
     The total amount of money paid for this sales order converted to the home
@@ -1359,6 +1362,3 @@ class QbdSalesOrder(BaseModel):
     (YYYY-MM-DDThh:mm:ss±hh:mm). The time zone is the same as the user's time zone
     in QuickBooks.
     """
-
-    total_amount: Optional[str] = FieldInfo(alias="totalAmount", default=None)
-    """The total monetary amount of this sales order, represented as a decimal string."""
