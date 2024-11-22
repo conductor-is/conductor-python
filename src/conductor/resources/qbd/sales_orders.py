@@ -143,7 +143,7 @@ class SalesOrdersResource(SyncAPIResource):
               sales order.
 
           lines: The sales order's line items, each representing a single product or service
-              sold.
+              ordered.
 
               **IMPORTANT**: You must specify `lines`, `lineGroups`, or both when creating a
               sales order.
@@ -393,7 +393,7 @@ class SalesOrdersResource(SyncAPIResource):
               unchanged.
 
           lines: The sales order's line items, each representing a single product or service
-              sold.
+              ordered.
 
               **IMPORTANT**: When updating a sales order's line items, this array completely
               REPLACES all existing line items for that sales order. To retain any current
@@ -774,7 +774,7 @@ class AsyncSalesOrdersResource(AsyncAPIResource):
               sales order.
 
           lines: The sales order's line items, each representing a single product or service
-              sold.
+              ordered.
 
               **IMPORTANT**: You must specify `lines`, `lineGroups`, or both when creating a
               sales order.
@@ -1024,7 +1024,7 @@ class AsyncSalesOrdersResource(AsyncAPIResource):
               unchanged.
 
           lines: The sales order's line items, each representing a single product or service
-              sold.
+              ordered.
 
               **IMPORTANT**: When updating a sales order's line items, this array completely
               REPLACES all existing line items for that sales order. To retain any current
