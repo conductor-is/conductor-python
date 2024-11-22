@@ -590,7 +590,7 @@ class LineGroup(BaseModel):
     lines: List[LineGroupLine]
     """
     The sales order line group's line items, each representing a single product or
-    service sold.
+    service ordered.
     """
 
     object_type: Literal["qbd_sales_order_line_group"] = FieldInfo(alias="objectType")
@@ -1211,7 +1211,7 @@ class QbdSalesOrder(BaseModel):
     lines: List[Line]
     """
     The sales order's line items, each representing a single product or service
-    sold.
+    ordered.
     """
 
     linked_transactions: List[LinkedTransaction] = FieldInfo(alias="linkedTransactions")

@@ -12,11 +12,11 @@ __all__ = [
     "InvoiceCreateParams",
     "ApplyCredit",
     "BillingAddress",
-    "InvoiceLineGroup",
-    "InvoiceLineGroupCustomField",
-    "InvoiceLine",
-    "InvoiceLineCustomField",
-    "InvoiceLineLinkToTransactionLine",
+    "LineGroup",
+    "LineGroupCustomField",
+    "Line",
+    "LineCustomField",
+    "LineLinkToTransactionLine",
     "ShippingAddress",
 ]
 
@@ -88,15 +88,6 @@ class InvoiceCreateParams(TypedDict, total=False):
     creation.
     """
 
-    invoice_line_groups: Annotated[Iterable[InvoiceLineGroup], PropertyInfo(alias="invoiceLineGroups")]
-    """
-    The invoice's line item groups, each representing a predefined set of related
-    items.
-    """
-
-    invoice_lines: Annotated[Iterable[InvoiceLine], PropertyInfo(alias="invoiceLines")]
-    """The invoice's line items, each representing a single product or service sold."""
-
     is_finance_charge: Annotated[bool, PropertyInfo(alias="isFinanceCharge")]
     """Whether this invoice includes a finance charge.
 
@@ -120,6 +111,15 @@ class InvoiceCreateParams(TypedDict, total=False):
     Indicates whether this invoice is included in the queue of documents for
     QuickBooks to print.
     """
+
+    line_groups: Annotated[Iterable[LineGroup], PropertyInfo(alias="lineGroups")]
+    """
+    The invoice's line item groups, each representing a predefined set of related
+    items.
+    """
+
+    lines: Iterable[Line]
+    """The invoice's line items, each representing a single product or service sold."""
 
     link_to_transaction_ids: Annotated[List[str], PropertyInfo(alias="linkToTransactionIds")]
     """
@@ -296,7 +296,7 @@ class BillingAddress(TypedDict, total=False):
     """The state, county, province, or region name of the address."""
 
 
-class InvoiceLineGroupCustomField(TypedDict, total=False):
+class LineGroupCustomField(TypedDict, total=False):
     name: Required[str]
     """The name of the custom field, unique for the specified `ownerId`.
 
@@ -321,7 +321,7 @@ class InvoiceLineGroupCustomField(TypedDict, total=False):
     """
 
 
-class InvoiceLineGroup(TypedDict, total=False):
+class LineGroup(TypedDict, total=False):
     item_group_id: Required[Annotated[str, PropertyInfo(alias="itemGroupId")]]
     """
     The invoice line group's item group, representing a predefined set of items
@@ -329,7 +329,7 @@ class InvoiceLineGroup(TypedDict, total=False):
     entry.
     """
 
-    custom_fields: Annotated[Iterable[InvoiceLineGroupCustomField], PropertyInfo(alias="customFields")]
+    custom_fields: Annotated[Iterable[LineGroupCustomField], PropertyInfo(alias="customFields")]
     """
     The custom fields for the invoice line group object, added as user-defined data
     extensions, not included in the standard QuickBooks object.
@@ -357,7 +357,7 @@ class InvoiceLineGroup(TypedDict, total=False):
     """
 
 
-class InvoiceLineCustomField(TypedDict, total=False):
+class LineCustomField(TypedDict, total=False):
     name: Required[str]
     """The name of the custom field, unique for the specified `ownerId`.
 
@@ -382,7 +382,7 @@ class InvoiceLineCustomField(TypedDict, total=False):
     """
 
 
-class InvoiceLineLinkToTransactionLine(TypedDict, total=False):
+class LineLinkToTransactionLine(TypedDict, total=False):
     transaction_id: Required[Annotated[str, PropertyInfo(alias="transactionId")]]
     """The ID of the transaction to which to link this transaction."""
 
@@ -390,7 +390,7 @@ class InvoiceLineLinkToTransactionLine(TypedDict, total=False):
     """The ID of the transaction line to which to link this transaction."""
 
 
-class InvoiceLine(TypedDict, total=False):
+class Line(TypedDict, total=False):
     amount: str
     """The monetary amount of this invoice line, represented as a decimal string.
 
@@ -410,7 +410,7 @@ class InvoiceLine(TypedDict, total=False):
     transaction line level.
     """
 
-    custom_fields: Annotated[Iterable[InvoiceLineCustomField], PropertyInfo(alias="customFields")]
+    custom_fields: Annotated[Iterable[LineCustomField], PropertyInfo(alias="customFields")]
     """
     The custom fields for the invoice line object, added as user-defined data
     extensions, not included in the standard QuickBooks object.
@@ -439,7 +439,7 @@ class InvoiceLine(TypedDict, total=False):
     like a discount item or sales-tax item.
     """
 
-    link_to_transaction_line: Annotated[InvoiceLineLinkToTransactionLine, PropertyInfo(alias="linkToTransactionLine")]
+    link_to_transaction_line: Annotated[LineLinkToTransactionLine, PropertyInfo(alias="linkToTransactionLine")]
     """An existing transaction line that you wish to link to this invoice line.
 
     Note that this only links to a single transaction line item, not an entire
