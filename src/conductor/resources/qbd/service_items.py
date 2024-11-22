@@ -364,8 +364,8 @@ class ServiceItemsResource(SyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          class_ids: Filter for service items of this class or classes. A class is a way end-users
-              can categorize service items in QuickBooks.
+          class_ids: Filter for service items of these classes. A class is a way end-users can
+              categorize service items in QuickBooks.
 
           cursor: The pagination token to fetch the next set of results when paginating with the
               `limit` parameter. Retrieve this value from the `nextCursor` field in the
@@ -797,8 +797,8 @@ class AsyncServiceItemsResource(AsyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          class_ids: Filter for service items of this class or classes. A class is a way end-users
-              can categorize service items in QuickBooks.
+          class_ids: Filter for service items of these classes. A class is a way end-users can
+              categorize service items in QuickBooks.
 
           cursor: The pagination token to fetch the next set of results when paginating with the
               `limit` parameter. Retrieve this value from the `nextCursor` field in the

@@ -18,7 +18,7 @@ class NonInventoryItemListParams(TypedDict, total=False):
     """
 
     class_ids: Annotated[List[str], PropertyInfo(alias="classIds")]
-    """Filter for non-inventory items of this class or classes.
+    """Filter for non-inventory items of these classes.
 
     A class is a way end-users can categorize non-inventory items in QuickBooks.
     """

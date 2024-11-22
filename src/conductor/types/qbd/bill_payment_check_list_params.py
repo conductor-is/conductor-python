@@ -19,10 +19,10 @@ class BillPaymentCheckListParams(TypedDict, total=False):
     """
 
     account_ids: Annotated[List[str], PropertyInfo(alias="accountIds")]
-    """Filter for bill payment checks from this account or accounts."""
+    """Filter for bill payment checks from these accounts."""
 
     currency_ids: Annotated[List[str], PropertyInfo(alias="currencyIds")]
-    """Filter for bill payment checks in this currency or currencies."""
+    """Filter for bill payment checks in these currencies."""
 
     cursor: str
     """
@@ -126,7 +126,7 @@ class BillPaymentCheckListParams(TypedDict, total=False):
     """
 
     vendor_ids: Annotated[List[str], PropertyInfo(alias="vendorIds")]
-    """Filter for bill payment checks to this vendor or vendors.
+    """Filter for bill payment checks to these vendors.
 
     These are the vendors who sent the bills paid by these checks.
     """

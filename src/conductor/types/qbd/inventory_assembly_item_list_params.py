@@ -18,7 +18,7 @@ class InventoryAssemblyItemListParams(TypedDict, total=False):
     """
 
     class_ids: Annotated[List[str], PropertyInfo(alias="classIds")]
-    """Filter for inventory assembly items of this class or classes.
+    """Filter for inventory assembly items of these classes.
 
     A class is a way end-users can categorize inventory assembly items in
     QuickBooks.
