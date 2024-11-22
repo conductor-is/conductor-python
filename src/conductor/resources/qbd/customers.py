@@ -228,12 +228,11 @@ class CustomersResource(SyncAPIResource):
 
           preferred_payment_method_id: The customer's preferred payment method (e.g., cash, check, credit card).
 
-          price_level_id: The custom price level assigned to this customer, used to apply custom pricing
-              in invoices, sales receipts, sales orders, or credit memos for that customer.
-              You can override this automatic feature, however, when you create the invoices,
-              sales receipts, etc. Notice that the affected sales transactions do not list the
-              price level, but instead list the rate for the item, which was set using the
-              price level.
+          price_level_id: The customer's custom price level that QuickBooks automatically applies to
+              calculate item rates in new transactions (e.g., invoices, sales receipts, sales
+              orders, and credit memos) for this customer. While applied automatically, this
+              can be overridden when creating individual transactions. Note that transactions
+              will not show the price level itself, only the final `rate` calculated from it.
 
           resale_number: The customer's resale number, used if the customer is purchasing items for
               resale. This number does not affect sales tax calculations or reports in
@@ -549,12 +548,11 @@ class CustomersResource(SyncAPIResource):
 
           preferred_payment_method_id: The customer's preferred payment method (e.g., cash, check, credit card).
 
-          price_level_id: The custom price level assigned to this customer, used to apply custom pricing
-              in invoices, sales receipts, sales orders, or credit memos for that customer.
-              You can override this automatic feature, however, when you create the invoices,
-              sales receipts, etc. Notice that the affected sales transactions do not list the
-              price level, but instead list the rate for the item, which was set using the
-              price level.
+          price_level_id: The customer's custom price level that QuickBooks automatically applies to
+              calculate item rates in new transactions (e.g., invoices, sales receipts, sales
+              orders, and credit memos) for this customer. While applied automatically, this
+              can be overridden when creating individual transactions. Note that transactions
+              will not show the price level itself, only the final `rate` calculated from it.
 
           resale_number: The customer's resale number, used if the customer is purchasing items for
               resale. This number does not affect sales tax calculations or reports in
@@ -1016,12 +1014,11 @@ class AsyncCustomersResource(AsyncAPIResource):
 
           preferred_payment_method_id: The customer's preferred payment method (e.g., cash, check, credit card).
 
-          price_level_id: The custom price level assigned to this customer, used to apply custom pricing
-              in invoices, sales receipts, sales orders, or credit memos for that customer.
-              You can override this automatic feature, however, when you create the invoices,
-              sales receipts, etc. Notice that the affected sales transactions do not list the
-              price level, but instead list the rate for the item, which was set using the
-              price level.
+          price_level_id: The customer's custom price level that QuickBooks automatically applies to
+              calculate item rates in new transactions (e.g., invoices, sales receipts, sales
+              orders, and credit memos) for this customer. While applied automatically, this
+              can be overridden when creating individual transactions. Note that transactions
+              will not show the price level itself, only the final `rate` calculated from it.
 
           resale_number: The customer's resale number, used if the customer is purchasing items for
               resale. This number does not affect sales tax calculations or reports in
@@ -1337,12 +1334,11 @@ class AsyncCustomersResource(AsyncAPIResource):
 
           preferred_payment_method_id: The customer's preferred payment method (e.g., cash, check, credit card).
 
-          price_level_id: The custom price level assigned to this customer, used to apply custom pricing
-              in invoices, sales receipts, sales orders, or credit memos for that customer.
-              You can override this automatic feature, however, when you create the invoices,
-              sales receipts, etc. Notice that the affected sales transactions do not list the
-              price level, but instead list the rate for the item, which was set using the
-              price level.
+          price_level_id: The customer's custom price level that QuickBooks automatically applies to
+              calculate item rates in new transactions (e.g., invoices, sales receipts, sales
+              orders, and credit memos) for this customer. While applied automatically, this
+              can be overridden when creating individual transactions. Note that transactions
+              will not show the price level itself, only the final `rate` calculated from it.
 
           resale_number: The customer's resale number, used if the customer is purchasing items for
               resale. This number does not affect sales tax calculations or reports in
