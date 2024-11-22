@@ -19,10 +19,10 @@ class CreditCardChargeListParams(TypedDict, total=False):
     """
 
     account_ids: Annotated[List[str], PropertyInfo(alias="accountIds")]
-    """Filter for credit card charges from this account or accounts."""
+    """Filter for credit card charges from these accounts."""
 
     currency_ids: Annotated[List[str], PropertyInfo(alias="currencyIds")]
-    """Filter for credit card charges in this currency or currencies."""
+    """Filter for credit card charges in these currencies."""
 
     cursor: str
     """
@@ -53,7 +53,7 @@ class CreditCardChargeListParams(TypedDict, total=False):
     """
 
     payee_ids: Annotated[List[str], PropertyInfo(alias="payeeIds")]
-    """Filter for credit card charges from this payee or payees.
+    """Filter for credit card charges from these payees.
 
     These are the vendors or companies from whom merchandise or services were
     purchased for these credit card charges.

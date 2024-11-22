@@ -231,9 +231,9 @@ class BillPaymentCreditCardsResource(SyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_ids: Filter for bill payment credit cards from this account or accounts.
+          account_ids: Filter for bill payment credit cards from these accounts.
 
-          currency_ids: Filter for bill payment credit cards in this currency or currencies.
+          currency_ids: Filter for bill payment credit cards in these currencies.
 
           cursor: The pagination token to fetch the next set of results when paginating with the
               `limit` parameter. Retrieve this value from the `nextCursor` field in the
@@ -296,8 +296,8 @@ class BillPaymentCreditCardsResource(SyncAPIResource):
               ISO 8601 format (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD),
               the time is assumed to be 23:59:59 of that day.
 
-          vendor_ids: Filter for bill payment credit cards to this vendor or vendors. These are the
-              vendors who sent the bills paid by these credit card payments.
+          vendor_ids: Filter for bill payment credit cards to these vendors. These are the vendors who
+              sent the bills paid by these credit card payments.
 
           extra_headers: Send extra headers
 
@@ -546,9 +546,9 @@ class AsyncBillPaymentCreditCardsResource(AsyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_ids: Filter for bill payment credit cards from this account or accounts.
+          account_ids: Filter for bill payment credit cards from these accounts.
 
-          currency_ids: Filter for bill payment credit cards in this currency or currencies.
+          currency_ids: Filter for bill payment credit cards in these currencies.
 
           cursor: The pagination token to fetch the next set of results when paginating with the
               `limit` parameter. Retrieve this value from the `nextCursor` field in the
@@ -611,8 +611,8 @@ class AsyncBillPaymentCreditCardsResource(AsyncAPIResource):
               ISO 8601 format (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD),
               the time is assumed to be 23:59:59 of that day.
 
-          vendor_ids: Filter for bill payment credit cards to this vendor or vendors. These are the
-              vendors who sent the bills paid by these credit card payments.
+          vendor_ids: Filter for bill payment credit cards to these vendors. These are the vendors who
+              sent the bills paid by these credit card payments.
 
           extra_headers: Send extra headers
 

@@ -19,10 +19,10 @@ class InvoiceListParams(TypedDict, total=False):
     """
 
     account_ids: Annotated[List[str], PropertyInfo(alias="accountIds")]
-    """Filter for invoices from this account or accounts."""
+    """Filter for invoices from these accounts."""
 
     currency_ids: Annotated[List[str], PropertyInfo(alias="currencyIds")]
-    """Filter for invoices in this currency or currencies."""
+    """Filter for invoices in these currencies."""
 
     cursor: str
     """
@@ -32,7 +32,7 @@ class InvoiceListParams(TypedDict, total=False):
     """
 
     customer_ids: Annotated[List[str], PropertyInfo(alias="customerIds")]
-    """Filter for invoices from this customer or customers."""
+    """Filter for invoices from these customers."""
 
     ids: List[str]
     """Filter for specific invoices by their QuickBooks-assigned unique identifier(s).

@@ -19,10 +19,10 @@ class BillListParams(TypedDict, total=False):
     """
 
     account_ids: Annotated[List[str], PropertyInfo(alias="accountIds")]
-    """Filter for bills from this account or accounts."""
+    """Filter for bills from these accounts."""
 
     currency_ids: Annotated[List[str], PropertyInfo(alias="currencyIds")]
-    """Filter for bills in this currency or currencies."""
+    """Filter for bills in these currencies."""
 
     cursor: str
     """
@@ -132,4 +132,4 @@ class BillListParams(TypedDict, total=False):
     """
 
     vendor_ids: Annotated[List[str], PropertyInfo(alias="vendorIds")]
-    """Filter for bills from this vendor or vendors."""
+    """Filter for bills from these vendors."""
