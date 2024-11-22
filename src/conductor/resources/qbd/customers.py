@@ -693,10 +693,10 @@ class CustomersResource(SyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          class_ids: Filter for customers of this class or classes. A class is a way end-users can
-              categorize customers in QuickBooks.
+          class_ids: Filter for customers of these classes. A class is a way end-users can categorize
+              customers in QuickBooks.
 
-          currency_ids: Filter for customers in this currency or currencies.
+          currency_ids: Filter for customers in these currencies.
 
           cursor: The pagination token to fetch the next set of results when paginating with the
               `limit` parameter. Retrieve this value from the `nextCursor` field in the
@@ -1479,10 +1479,10 @@ class AsyncCustomersResource(AsyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          class_ids: Filter for customers of this class or classes. A class is a way end-users can
-              categorize customers in QuickBooks.
+          class_ids: Filter for customers of these classes. A class is a way end-users can categorize
+              customers in QuickBooks.
 
-          currency_ids: Filter for customers in this currency or currencies.
+          currency_ids: Filter for customers in these currencies.
 
           cursor: The pagination token to fetch the next set of results when paginating with the
               `limit` parameter. Retrieve this value from the `nextCursor` field in the

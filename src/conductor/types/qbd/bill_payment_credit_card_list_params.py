@@ -19,10 +19,10 @@ class BillPaymentCreditCardListParams(TypedDict, total=False):
     """
 
     account_ids: Annotated[List[str], PropertyInfo(alias="accountIds")]
-    """Filter for bill payment credit cards from this account or accounts."""
+    """Filter for bill payment credit cards from these accounts."""
 
     currency_ids: Annotated[List[str], PropertyInfo(alias="currencyIds")]
-    """Filter for bill payment credit cards in this currency or currencies."""
+    """Filter for bill payment credit cards in these currencies."""
 
     cursor: str
     """
@@ -126,7 +126,7 @@ class BillPaymentCreditCardListParams(TypedDict, total=False):
     """
 
     vendor_ids: Annotated[List[str], PropertyInfo(alias="vendorIds")]
-    """Filter for bill payment credit cards to this vendor or vendors.
+    """Filter for bill payment credit cards to these vendors.
 
     These are the vendors who sent the bills paid by these credit card payments.
     """

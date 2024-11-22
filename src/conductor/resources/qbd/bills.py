@@ -424,9 +424,9 @@ class BillsResource(SyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_ids: Filter for bills from this account or accounts.
+          account_ids: Filter for bills from these accounts.
 
-          currency_ids: Filter for bills in this currency or currencies.
+          currency_ids: Filter for bills in these currencies.
 
           cursor: The pagination token to fetch the next set of results when paginating with the
               `limit` parameter. Retrieve this value from the `nextCursor` field in the
@@ -491,7 +491,7 @@ class BillsResource(SyncAPIResource):
               (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the time is
               assumed to be 23:59:59 of that day.
 
-          vendor_ids: Filter for bills from this vendor or vendors.
+          vendor_ids: Filter for bills from these vendors.
 
           extra_headers: Send extra headers
 
@@ -934,9 +934,9 @@ class AsyncBillsResource(AsyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_ids: Filter for bills from this account or accounts.
+          account_ids: Filter for bills from these accounts.
 
-          currency_ids: Filter for bills in this currency or currencies.
+          currency_ids: Filter for bills in these currencies.
 
           cursor: The pagination token to fetch the next set of results when paginating with the
               `limit` parameter. Retrieve this value from the `nextCursor` field in the
@@ -1001,7 +1001,7 @@ class AsyncBillsResource(AsyncAPIResource):
               (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the time is
               assumed to be 23:59:59 of that day.
 
-          vendor_ids: Filter for bills from this vendor or vendors.
+          vendor_ids: Filter for bills from these vendors.
 
           extra_headers: Send extra headers
 

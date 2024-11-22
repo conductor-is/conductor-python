@@ -18,7 +18,7 @@ class SalesTaxItemListParams(TypedDict, total=False):
     """
 
     class_ids: Annotated[List[str], PropertyInfo(alias="classIds")]
-    """Filter for sales-tax items of this class or classes.
+    """Filter for sales-tax items of these classes.
 
     A class is a way end-users can categorize sales-tax items in QuickBooks.
     """

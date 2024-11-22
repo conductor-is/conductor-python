@@ -342,9 +342,9 @@ class BillPaymentChecksResource(SyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_ids: Filter for bill payment checks from this account or accounts.
+          account_ids: Filter for bill payment checks from these accounts.
 
-          currency_ids: Filter for bill payment checks in this currency or currencies.
+          currency_ids: Filter for bill payment checks in these currencies.
 
           cursor: The pagination token to fetch the next set of results when paginating with the
               `limit` parameter. Retrieve this value from the `nextCursor` field in the
@@ -407,8 +407,8 @@ class BillPaymentChecksResource(SyncAPIResource):
               8601 format (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the
               time is assumed to be 23:59:59 of that day.
 
-          vendor_ids: Filter for bill payment checks to this vendor or vendors. These are the vendors
-              who sent the bills paid by these checks.
+          vendor_ids: Filter for bill payment checks to these vendors. These are the vendors who sent
+              the bills paid by these checks.
 
           extra_headers: Send extra headers
 
@@ -764,9 +764,9 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_ids: Filter for bill payment checks from this account or accounts.
+          account_ids: Filter for bill payment checks from these accounts.
 
-          currency_ids: Filter for bill payment checks in this currency or currencies.
+          currency_ids: Filter for bill payment checks in these currencies.
 
           cursor: The pagination token to fetch the next set of results when paginating with the
               `limit` parameter. Retrieve this value from the `nextCursor` field in the
@@ -829,8 +829,8 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
               8601 format (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the
               time is assumed to be 23:59:59 of that day.
 
-          vendor_ids: Filter for bill payment checks to this vendor or vendors. These are the vendors
-              who sent the bills paid by these checks.
+          vendor_ids: Filter for bill payment checks to these vendors. These are the vendors who sent
+              the bills paid by these checks.
 
           extra_headers: Send extra headers
 

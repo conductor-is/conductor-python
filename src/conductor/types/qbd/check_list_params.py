@@ -19,10 +19,10 @@ class CheckListParams(TypedDict, total=False):
     """
 
     account_ids: Annotated[List[str], PropertyInfo(alias="accountIds")]
-    """Filter for checks from this account or accounts."""
+    """Filter for checks from these accounts."""
 
     currency_ids: Annotated[List[str], PropertyInfo(alias="currencyIds")]
-    """Filter for checks in this currency or currencies."""
+    """Filter for checks in these currencies."""
 
     cursor: str
     """
@@ -57,7 +57,7 @@ class CheckListParams(TypedDict, total=False):
     """
 
     payee_ids: Annotated[List[str], PropertyInfo(alias="payeeIds")]
-    """Filter for checks to this payee or payees.
+    """Filter for checks to these payees.
 
     These are the people or companies who will receive these checks.
     """
