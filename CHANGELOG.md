@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.39 (2024-11-22)
+
+Full Changelog: [v0.1.0-alpha.38...v0.1.0-alpha.39](https://github.com/conductor-is/conductor-python/compare/v0.1.0-alpha.38...v0.1.0-alpha.39)
+
+### Features
+
+* **api:** api update ([#318](https://github.com/conductor-is/conductor-python/issues/318)) ([5e889b7](https://github.com/conductor-is/conductor-python/commit/5e889b7455340941804f0c2c0a4d83e43edb5841))
+
+
+### Chores
+
+* **internal:** fix compat model_dump method when warnings are passed ([#316](https://github.com/conductor-is/conductor-python/issues/316)) ([41bf269](https://github.com/conductor-is/conductor-python/commit/41bf269f99c5b036337e00176218920d88a9c850))
+
 ## 0.1.0-alpha.38 (2024-11-22)
 
 Full Changelog: [v0.1.0-alpha.37...v0.1.0-alpha.38](https://github.com/conductor-is/conductor-python/compare/v0.1.0-alpha.37...v0.1.0-alpha.38)
