@@ -381,7 +381,13 @@ class InvoiceLineGroupInvoiceLine(BaseModel):
     """
 
     amount: Optional[str] = None
-    """The monetary amount of this invoice line, represented as a decimal string."""
+    """The monetary amount of this invoice line, represented as a decimal string.
+
+    If both `quantity` and `rate` are specified but not `amount`, QuickBooks will
+    use them to calculate `amount`. If `amount`, `rate`, and `quantity` are all
+    unspecified, then QuickBooks will calculate `amount` based on a `quantity` of
+    `1` and the suggested `rate`.
+    """
 
     class_: Optional[InvoiceLineGroupInvoiceLineClass] = FieldInfo(alias="class", default=None)
     """The invoice line's class.
@@ -481,10 +487,9 @@ class InvoiceLineGroupInvoiceLine(BaseModel):
     rate: Optional[str] = None
     """The price per unit for this invoice line.
 
-    If both `rate` and `amount` are specified, `rate` will be ignored and
-    recalculated based on `quantity` and `amount`. If `rate` is not specified,
-    QuickBooks will calculate it based on `quantity` and `amount`. Represented as a
-    decimal string.
+    If both `rate` and `amount` are specified, `rate` will be ignored. If both
+    `quantity` and `amount` are specified but not `rate`, QuickBooks will use them
+    to calculate `rate`. Represented as a decimal string.
     """
 
     rate_percent: Optional[str] = FieldInfo(alias="ratePercent", default=None)
@@ -576,12 +581,6 @@ class InvoiceLineGroup(BaseModel):
     service sold.
     """
 
-    is_print_items_in_group: bool = FieldInfo(alias="isPrintItemsInGroup")
-    """
-    Indicates whether the individual items in this invoice line group and their
-    amounts appear on printed forms.
-    """
-
     item_group: InvoiceLineGroupItemGroup = FieldInfo(alias="itemGroup")
     """
     The invoice line group's item group, representing a predefined set of items
@@ -607,6 +606,12 @@ class InvoiceLineGroup(BaseModel):
 
     quantity: Optional[float] = None
     """The quantity of the item group associated with this invoice line group."""
+
+    should_print_items_in_group: bool = FieldInfo(alias="shouldPrintItemsInGroup")
+    """
+    Indicates whether the individual items in this invoice line group and their
+    separate amounts appear on printed forms.
+    """
 
     total_amount: str = FieldInfo(alias="totalAmount")
     """
@@ -762,7 +767,13 @@ class InvoiceLine(BaseModel):
     """
 
     amount: Optional[str] = None
-    """The monetary amount of this invoice line, represented as a decimal string."""
+    """The monetary amount of this invoice line, represented as a decimal string.
+
+    If both `quantity` and `rate` are specified but not `amount`, QuickBooks will
+    use them to calculate `amount`. If `amount`, `rate`, and `quantity` are all
+    unspecified, then QuickBooks will calculate `amount` based on a `quantity` of
+    `1` and the suggested `rate`.
+    """
 
     class_: Optional[InvoiceLineClass] = FieldInfo(alias="class", default=None)
     """The invoice line's class.
@@ -862,10 +873,9 @@ class InvoiceLine(BaseModel):
     rate: Optional[str] = None
     """The price per unit for this invoice line.
 
-    If both `rate` and `amount` are specified, `rate` will be ignored and
-    recalculated based on `quantity` and `amount`. If `rate` is not specified,
-    QuickBooks will calculate it based on `quantity` and `amount`. Represented as a
-    decimal string.
+    If both `rate` and `amount` are specified, `rate` will be ignored. If both
+    `quantity` and `amount` are specified but not `rate`, QuickBooks will use them
+    to calculate `rate`. Represented as a decimal string.
     """
 
     rate_percent: Optional[str] = FieldInfo(alias="ratePercent", default=None)
