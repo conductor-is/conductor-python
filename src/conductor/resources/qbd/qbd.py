@@ -68,6 +68,14 @@ from .transfers import (
     AsyncTransfersResourceWithStreamingResponse,
 )
 from ..._resource import SyncAPIResource, AsyncAPIResource
+from .sales_orders import (
+    SalesOrdersResource,
+    AsyncSalesOrdersResource,
+    SalesOrdersResourceWithRawResponse,
+    AsyncSalesOrdersResourceWithRawResponse,
+    SalesOrdersResourceWithStreamingResponse,
+    AsyncSalesOrdersResourceWithStreamingResponse,
+)
 from .service_items import (
     ServiceItemsResource,
     AsyncServiceItemsResource,
@@ -262,6 +270,10 @@ class QbdResource(SyncAPIResource):
         return VendorsResource(self._client)
 
     @cached_property
+    def sales_orders(self) -> SalesOrdersResource:
+        return SalesOrdersResource(self._client)
+
+    @cached_property
     def with_raw_response(self) -> QbdResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return the
@@ -365,6 +377,10 @@ class AsyncQbdResource(AsyncAPIResource):
     @cached_property
     def vendors(self) -> AsyncVendorsResource:
         return AsyncVendorsResource(self._client)
+
+    @cached_property
+    def sales_orders(self) -> AsyncSalesOrdersResource:
+        return AsyncSalesOrdersResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncQbdResourceWithRawResponse:
@@ -474,6 +490,10 @@ class QbdResourceWithRawResponse:
     def vendors(self) -> VendorsResourceWithRawResponse:
         return VendorsResourceWithRawResponse(self._qbd.vendors)
 
+    @cached_property
+    def sales_orders(self) -> SalesOrdersResourceWithRawResponse:
+        return SalesOrdersResourceWithRawResponse(self._qbd.sales_orders)
+
 
 class AsyncQbdResourceWithRawResponse:
     def __init__(self, qbd: AsyncQbdResource) -> None:
@@ -562,6 +582,10 @@ class AsyncQbdResourceWithRawResponse:
     @cached_property
     def vendors(self) -> AsyncVendorsResourceWithRawResponse:
         return AsyncVendorsResourceWithRawResponse(self._qbd.vendors)
+
+    @cached_property
+    def sales_orders(self) -> AsyncSalesOrdersResourceWithRawResponse:
+        return AsyncSalesOrdersResourceWithRawResponse(self._qbd.sales_orders)
 
 
 class QbdResourceWithStreamingResponse:
@@ -652,6 +676,10 @@ class QbdResourceWithStreamingResponse:
     def vendors(self) -> VendorsResourceWithStreamingResponse:
         return VendorsResourceWithStreamingResponse(self._qbd.vendors)
 
+    @cached_property
+    def sales_orders(self) -> SalesOrdersResourceWithStreamingResponse:
+        return SalesOrdersResourceWithStreamingResponse(self._qbd.sales_orders)
+
 
 class AsyncQbdResourceWithStreamingResponse:
     def __init__(self, qbd: AsyncQbdResource) -> None:
@@ -740,3 +768,7 @@ class AsyncQbdResourceWithStreamingResponse:
     @cached_property
     def vendors(self) -> AsyncVendorsResourceWithStreamingResponse:
         return AsyncVendorsResourceWithStreamingResponse(self._qbd.vendors)
+
+    @cached_property
+    def sales_orders(self) -> AsyncSalesOrdersResourceWithStreamingResponse:
+        return AsyncSalesOrdersResourceWithStreamingResponse(self._qbd.sales_orders)

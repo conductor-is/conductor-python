@@ -16,6 +16,7 @@ from .inventory_item import InventoryItem as InventoryItem
 from .inventory_site import InventorySite as InventorySite
 from .sales_tax_code import SalesTaxCode as SalesTaxCode
 from .sales_tax_item import SalesTaxItem as SalesTaxItem
+from .qbd_sales_order import QbdSalesOrder as QbdSalesOrder
 from .bill_list_params import BillListParams as BillListParams
 from .date_driven_term import DateDrivenTerm as DateDrivenTerm
 from .check_list_params import CheckListParams as CheckListParams
@@ -48,8 +49,11 @@ from .customer_update_params import CustomerUpdateParams as CustomerUpdateParams
 from .transfer_create_params import TransferCreateParams as TransferCreateParams
 from .transfer_update_params import TransferUpdateParams as TransferUpdateParams
 from .inventory_assembly_item import InventoryAssemblyItem as InventoryAssemblyItem
+from .sales_order_list_params import SalesOrderListParams as SalesOrderListParams
 from .bill_payment_credit_card import BillPaymentCreditCard as BillPaymentCreditCard
 from .service_item_list_params import ServiceItemListParams as ServiceItemListParams
+from .sales_order_create_params import SalesOrderCreateParams as SalesOrderCreateParams
+from .sales_order_update_params import SalesOrderUpdateParams as SalesOrderUpdateParams
 from .standard_term_list_params import StandardTermListParams as StandardTermListParams
 from .inventory_item_list_params import InventoryItemListParams as InventoryItemListParams
 from .inventory_site_list_params import InventorySiteListParams as InventorySiteListParams
