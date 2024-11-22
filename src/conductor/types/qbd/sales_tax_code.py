@@ -62,7 +62,7 @@ class SalesTaxCode(BaseModel):
     The case-insensitive unique name of this sales-tax code, unique across all
     sales-tax codes.
 
-    NOTE: Sales-tax codes do not have a `fullName` field because they are not
+    **NOTE**: Sales-tax codes do not have a `fullName` field because they are not
     hierarchical objects, which is why `name` is unique for them but not for objects
     that have parents. Maximum length: 3 characters. This short name will appear on
     sales forms to identify the tax status of an item.

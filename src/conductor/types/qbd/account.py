@@ -199,9 +199,9 @@ class Account(BaseModel):
     separated by colons. For example, if an account is under "Corporate" and has the
     `name` "Accounts-Payable", its `fullName` would be "Corporate:Accounts-Payable".
 
-    NOTE: Unlike `name`, `fullName` is guaranteed to be unique across all account
-    objects. However, `fullName` can still be arbitrarily changed by the QuickBooks
-    user when they modify the underlying `name` field.
+    **NOTE**: Unlike `name`, `fullName` is guaranteed to be unique across all
+    account objects. However, `fullName` can still be arbitrarily changed by the
+    QuickBooks user when they modify the underlying `name` field.
     """
 
     is_active: bool = FieldInfo(alias="isActive")

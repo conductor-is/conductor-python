@@ -1263,11 +1263,20 @@ class QbdSalesOrder(BaseModel):
     otherwise, the update will return an error.
     """
 
+    sales_channel_name: Optional[Literal["blank", "ecommerce"]] = FieldInfo(alias="salesChannelName", default=None)
+    """The name of the sales channel for this sales order."""
+
     sales_representative: Optional[SalesRepresentative] = FieldInfo(alias="salesRepresentative", default=None)
     """The sales order's sales representative.
 
     Sales representatives can be employees, vendors, or other names in QuickBooks.
     """
+
+    sales_store_name: Optional[str] = FieldInfo(alias="salesStoreName", default=None)
+    """The name of the sales store for this sales order."""
+
+    sales_store_type: Optional[str] = FieldInfo(alias="salesStoreType", default=None)
+    """The type of the sales store for this sales order."""
 
     sales_tax_code: Optional[SalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)
     """

@@ -113,18 +113,18 @@ class NonInventoryItemsResource(SyncAPIResource):
               reimbursable expenses or inventory items that are bought from vendors and sold
               to customers.
 
-              **IMPORTANT**: A non-inventory item must specify either
-              `salesAndPurchaseDetails` or `salesOrPurchaseDetails`, but never both because an
-              item cannot have both configurations.
+              **IMPORTANT**: You must specify either `salesAndPurchaseDetails` or
+              `salesOrPurchaseDetails` when creating a non-inventory item, but never both
+              because an item cannot have both configurations.
 
           sales_or_purchase_details: Details for non-inventory items that are exclusively sold or exclusively
               purchased, but not both. This typically applies to non-inventory items (like a
               purchased office supply that isn't resold) or service items (like consulting
               services that are sold but not purchased).
 
-              **IMPORTANT**: A non-inventory item must specify either `salesOrPurchaseDetails`
-              or `salesAndPurchaseDetails`, but never both because an item cannot have both
-              configurations.
+              **IMPORTANT**: You must specify either `salesOrPurchaseDetails` or
+              `salesAndPurchaseDetails` when creating a non-inventory item, but never both
+              because an item cannot have both configurations.
 
           sales_tax_code_id: The sales-tax code associated with this non-inventory item, determining whether
               it is taxable or non-taxable. It's used to assign a default tax status to all
@@ -288,18 +288,18 @@ class NonInventoryItemsResource(SyncAPIResource):
               reimbursable expenses or inventory items that are bought from vendors and sold
               to customers.
 
-              **IMPORTANT**: A non-inventory item must specify either
-              `salesAndPurchaseDetails` or `salesOrPurchaseDetails`, but never both because an
-              item cannot have both configurations.
+              **IMPORTANT**: You cannot specify both `salesAndPurchaseDetails` and
+              `salesOrPurchaseDetails` when modifying a non-inventory item because an item
+              cannot have both configurations.
 
           sales_or_purchase_details: Details for non-inventory items that are exclusively sold or exclusively
               purchased, but not both. This typically applies to non-inventory items (like a
               purchased office supply that isn't resold) or service items (like consulting
               services that are sold but not purchased).
 
-              **IMPORTANT**: A non-inventory item must specify either `salesOrPurchaseDetails`
-              or `salesAndPurchaseDetails`, but never both because an item cannot have both
-              configurations.
+              **IMPORTANT**: You cannot specify both `salesOrPurchaseDetails` and
+              `salesAndPurchaseDetails` when modifying a non-inventory item because an item
+              cannot have both configurations.
 
           sales_tax_code_id: The sales-tax code associated with this non-inventory item, determining whether
               it is taxable or non-taxable. It's used to assign a default tax status to all
@@ -560,18 +560,18 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
               reimbursable expenses or inventory items that are bought from vendors and sold
               to customers.
 
-              **IMPORTANT**: A non-inventory item must specify either
-              `salesAndPurchaseDetails` or `salesOrPurchaseDetails`, but never both because an
-              item cannot have both configurations.
+              **IMPORTANT**: You must specify either `salesAndPurchaseDetails` or
+              `salesOrPurchaseDetails` when creating a non-inventory item, but never both
+              because an item cannot have both configurations.
 
           sales_or_purchase_details: Details for non-inventory items that are exclusively sold or exclusively
               purchased, but not both. This typically applies to non-inventory items (like a
               purchased office supply that isn't resold) or service items (like consulting
               services that are sold but not purchased).
 
-              **IMPORTANT**: A non-inventory item must specify either `salesOrPurchaseDetails`
-              or `salesAndPurchaseDetails`, but never both because an item cannot have both
-              configurations.
+              **IMPORTANT**: You must specify either `salesOrPurchaseDetails` or
+              `salesAndPurchaseDetails` when creating a non-inventory item, but never both
+              because an item cannot have both configurations.
 
           sales_tax_code_id: The sales-tax code associated with this non-inventory item, determining whether
               it is taxable or non-taxable. It's used to assign a default tax status to all
@@ -735,18 +735,18 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
               reimbursable expenses or inventory items that are bought from vendors and sold
               to customers.
 
-              **IMPORTANT**: A non-inventory item must specify either
-              `salesAndPurchaseDetails` or `salesOrPurchaseDetails`, but never both because an
-              item cannot have both configurations.
+              **IMPORTANT**: You cannot specify both `salesAndPurchaseDetails` and
+              `salesOrPurchaseDetails` when modifying a non-inventory item because an item
+              cannot have both configurations.
 
           sales_or_purchase_details: Details for non-inventory items that are exclusively sold or exclusively
               purchased, but not both. This typically applies to non-inventory items (like a
               purchased office supply that isn't resold) or service items (like consulting
               services that are sold but not purchased).
 
-              **IMPORTANT**: A non-inventory item must specify either `salesOrPurchaseDetails`
-              or `salesAndPurchaseDetails`, but never both because an item cannot have both
-              configurations.
+              **IMPORTANT**: You cannot specify both `salesOrPurchaseDetails` and
+              `salesAndPurchaseDetails` when modifying a non-inventory item because an item
+              cannot have both configurations.
 
           sales_tax_code_id: The sales-tax code associated with this non-inventory item, determining whether
               it is taxable or non-taxable. It's used to assign a default tax status to all

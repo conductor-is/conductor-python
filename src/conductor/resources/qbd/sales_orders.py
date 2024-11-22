@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import List, Union, Iterable
 from datetime import date
+from typing_extensions import Literal
 
 import httpx
 
@@ -70,7 +71,10 @@ class SalesOrdersResource(SyncAPIResource):
         other_custom_field: str | NotGiven = NOT_GIVEN,
         purchase_order_number: str | NotGiven = NOT_GIVEN,
         ref_number: str | NotGiven = NOT_GIVEN,
+        sales_channel_name: Literal["blank", "ecommerce"] | NotGiven = NOT_GIVEN,
         sales_representative_id: str | NotGiven = NOT_GIVEN,
+        sales_store_name: str | NotGiven = NOT_GIVEN,
+        sales_store_type: str | NotGiven = NOT_GIVEN,
         sales_tax_code_id: str | NotGiven = NOT_GIVEN,
         sales_tax_item_id: str | NotGiven = NOT_GIVEN,
         shipment_origin: str | NotGiven = NOT_GIVEN,
@@ -135,8 +139,14 @@ class SalesOrdersResource(SyncAPIResource):
           line_groups: The sales order's line item groups, each representing a predefined set of
               related items.
 
+              **IMPORTANT**: You must specify `lines`, `lineGroups`, or both when creating a
+              sales order.
+
           lines: The sales order's line items, each representing a single product or service
               sold.
+
+              **IMPORTANT**: You must specify `lines`, `lineGroups`, or both when creating a
+              sales order.
 
           memo: A memo or note for this sales order, as entered by the user.
 
@@ -156,8 +166,14 @@ class SalesOrdersResource(SyncAPIResource):
               be used to identify the transaction in QuickBooks. This value is not required to
               be unique and can be arbitrarily changed by the QuickBooks user.
 
+          sales_channel_name: The name of the sales channel for this sales order.
+
           sales_representative_id: The sales order's sales representative. Sales representatives can be employees,
               vendors, or other names in QuickBooks.
+
+          sales_store_name: The name of the sales store for this sales order.
+
+          sales_store_type: The type of the sales store for this sales order.
 
           sales_tax_code_id: The sales-tax code for items sold to the `customer` of this sales order,
               determining whether items sold to this customer are taxable or non-taxable.
@@ -219,7 +235,10 @@ class SalesOrdersResource(SyncAPIResource):
                     "other_custom_field": other_custom_field,
                     "purchase_order_number": purchase_order_number,
                     "ref_number": ref_number,
+                    "sales_channel_name": sales_channel_name,
                     "sales_representative_id": sales_representative_id,
+                    "sales_store_name": sales_store_name,
+                    "sales_store_type": sales_store_type,
                     "sales_tax_code_id": sales_tax_code_id,
                     "sales_tax_item_id": sales_tax_item_id,
                     "shipment_origin": shipment_origin,
@@ -298,7 +317,10 @@ class SalesOrdersResource(SyncAPIResource):
         other_custom_field: str | NotGiven = NOT_GIVEN,
         purchase_order_number: str | NotGiven = NOT_GIVEN,
         ref_number: str | NotGiven = NOT_GIVEN,
+        sales_channel_name: Literal["blank", "ecommerce"] | NotGiven = NOT_GIVEN,
         sales_representative_id: str | NotGiven = NOT_GIVEN,
+        sales_store_name: str | NotGiven = NOT_GIVEN,
+        sales_store_type: str | NotGiven = NOT_GIVEN,
         sales_tax_code_id: str | NotGiven = NOT_GIVEN,
         sales_tax_item_id: str | NotGiven = NOT_GIVEN,
         shipment_origin: str | NotGiven = NOT_GIVEN,
@@ -398,8 +420,14 @@ class SalesOrdersResource(SyncAPIResource):
               be used to identify the transaction in QuickBooks. This value is not required to
               be unique and can be arbitrarily changed by the QuickBooks user.
 
+          sales_channel_name: The name of the sales channel for this sales order.
+
           sales_representative_id: The sales order's sales representative. Sales representatives can be employees,
               vendors, or other names in QuickBooks.
+
+          sales_store_name: The name of the sales store for this sales order.
+
+          sales_store_type: The type of the sales store for this sales order.
 
           sales_tax_code_id: The sales-tax code for items sold to the `customer` of this sales order,
               determining whether items sold to this customer are taxable or non-taxable.
@@ -464,7 +492,10 @@ class SalesOrdersResource(SyncAPIResource):
                     "other_custom_field": other_custom_field,
                     "purchase_order_number": purchase_order_number,
                     "ref_number": ref_number,
+                    "sales_channel_name": sales_channel_name,
                     "sales_representative_id": sales_representative_id,
+                    "sales_store_name": sales_store_name,
+                    "sales_store_type": sales_store_type,
                     "sales_tax_code_id": sales_tax_code_id,
                     "sales_tax_item_id": sales_tax_item_id,
                     "shipment_origin": shipment_origin,
@@ -671,7 +702,10 @@ class AsyncSalesOrdersResource(AsyncAPIResource):
         other_custom_field: str | NotGiven = NOT_GIVEN,
         purchase_order_number: str | NotGiven = NOT_GIVEN,
         ref_number: str | NotGiven = NOT_GIVEN,
+        sales_channel_name: Literal["blank", "ecommerce"] | NotGiven = NOT_GIVEN,
         sales_representative_id: str | NotGiven = NOT_GIVEN,
+        sales_store_name: str | NotGiven = NOT_GIVEN,
+        sales_store_type: str | NotGiven = NOT_GIVEN,
         sales_tax_code_id: str | NotGiven = NOT_GIVEN,
         sales_tax_item_id: str | NotGiven = NOT_GIVEN,
         shipment_origin: str | NotGiven = NOT_GIVEN,
@@ -736,8 +770,14 @@ class AsyncSalesOrdersResource(AsyncAPIResource):
           line_groups: The sales order's line item groups, each representing a predefined set of
               related items.
 
+              **IMPORTANT**: You must specify `lines`, `lineGroups`, or both when creating a
+              sales order.
+
           lines: The sales order's line items, each representing a single product or service
               sold.
+
+              **IMPORTANT**: You must specify `lines`, `lineGroups`, or both when creating a
+              sales order.
 
           memo: A memo or note for this sales order, as entered by the user.
 
@@ -757,8 +797,14 @@ class AsyncSalesOrdersResource(AsyncAPIResource):
               be used to identify the transaction in QuickBooks. This value is not required to
               be unique and can be arbitrarily changed by the QuickBooks user.
 
+          sales_channel_name: The name of the sales channel for this sales order.
+
           sales_representative_id: The sales order's sales representative. Sales representatives can be employees,
               vendors, or other names in QuickBooks.
+
+          sales_store_name: The name of the sales store for this sales order.
+
+          sales_store_type: The type of the sales store for this sales order.
 
           sales_tax_code_id: The sales-tax code for items sold to the `customer` of this sales order,
               determining whether items sold to this customer are taxable or non-taxable.
@@ -820,7 +866,10 @@ class AsyncSalesOrdersResource(AsyncAPIResource):
                     "other_custom_field": other_custom_field,
                     "purchase_order_number": purchase_order_number,
                     "ref_number": ref_number,
+                    "sales_channel_name": sales_channel_name,
                     "sales_representative_id": sales_representative_id,
+                    "sales_store_name": sales_store_name,
+                    "sales_store_type": sales_store_type,
                     "sales_tax_code_id": sales_tax_code_id,
                     "sales_tax_item_id": sales_tax_item_id,
                     "shipment_origin": shipment_origin,
@@ -899,7 +948,10 @@ class AsyncSalesOrdersResource(AsyncAPIResource):
         other_custom_field: str | NotGiven = NOT_GIVEN,
         purchase_order_number: str | NotGiven = NOT_GIVEN,
         ref_number: str | NotGiven = NOT_GIVEN,
+        sales_channel_name: Literal["blank", "ecommerce"] | NotGiven = NOT_GIVEN,
         sales_representative_id: str | NotGiven = NOT_GIVEN,
+        sales_store_name: str | NotGiven = NOT_GIVEN,
+        sales_store_type: str | NotGiven = NOT_GIVEN,
         sales_tax_code_id: str | NotGiven = NOT_GIVEN,
         sales_tax_item_id: str | NotGiven = NOT_GIVEN,
         shipment_origin: str | NotGiven = NOT_GIVEN,
@@ -999,8 +1051,14 @@ class AsyncSalesOrdersResource(AsyncAPIResource):
               be used to identify the transaction in QuickBooks. This value is not required to
               be unique and can be arbitrarily changed by the QuickBooks user.
 
+          sales_channel_name: The name of the sales channel for this sales order.
+
           sales_representative_id: The sales order's sales representative. Sales representatives can be employees,
               vendors, or other names in QuickBooks.
+
+          sales_store_name: The name of the sales store for this sales order.
+
+          sales_store_type: The type of the sales store for this sales order.
 
           sales_tax_code_id: The sales-tax code for items sold to the `customer` of this sales order,
               determining whether items sold to this customer are taxable or non-taxable.
@@ -1065,7 +1123,10 @@ class AsyncSalesOrdersResource(AsyncAPIResource):
                     "other_custom_field": other_custom_field,
                     "purchase_order_number": purchase_order_number,
                     "ref_number": ref_number,
+                    "sales_channel_name": sales_channel_name,
                     "sales_representative_id": sales_representative_id,
+                    "sales_store_name": sales_store_name,
+                    "sales_store_type": sales_store_type,
                     "sales_tax_code_id": sales_tax_code_id,
                     "sales_tax_item_id": sales_tax_item_id,
                     "shipment_origin": shipment_origin,

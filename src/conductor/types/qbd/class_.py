@@ -48,7 +48,7 @@ class Class(BaseModel):
     separated by colons. For example, if a class is under "Corporate:Sales" and has
     the `name` "Marketing", its `fullName` would be "Corporate:Sales:Marketing".
 
-    NOTE: Unlike `name`, `fullName` is guaranteed to be unique across all class
+    **NOTE**: Unlike `name`, `fullName` is guaranteed to be unique across all class
     objects. However, `fullName` can still be arbitrarily changed by the QuickBooks
     user when they modify the underlying `name` field.
     """
