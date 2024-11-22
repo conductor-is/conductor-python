@@ -715,12 +715,11 @@ class Customer(BaseModel):
 
     price_level: Optional[PriceLevel] = FieldInfo(alias="priceLevel", default=None)
     """
-    The custom price level assigned to this customer, used to apply custom pricing
-    in invoices, sales receipts, sales orders, or credit memos for that customer.
-    You can override this automatic feature, however, when you create the invoices,
-    sales receipts, etc. Notice that the affected sales transactions do not list the
-    price level, but instead list the rate for the item, which was set using the
-    price level.
+    The customer's custom price level that QuickBooks automatically applies to
+    calculate item rates in new transactions (e.g., invoices, sales receipts, sales
+    orders, and credit memos) for this customer. While applied automatically, this
+    can be overridden when creating individual transactions. Note that transactions
+    will not show the price level itself, only the final `rate` calculated from it.
     """
 
     resale_number: Optional[str] = FieldInfo(alias="resaleNumber", default=None)
