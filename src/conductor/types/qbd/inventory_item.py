@@ -271,9 +271,9 @@ class InventoryItem(BaseModel):
     "Products:Electronics" and has the `name` "Widgets", its `fullName` would be
     "Products:Electronics:Widgets".
 
-    NOTE: Unlike `name`, `fullName` is guaranteed to be unique across all inventory
-    item objects. However, `fullName` can still be arbitrarily changed by the
-    QuickBooks user when they modify the underlying `name` field.
+    **NOTE**: Unlike `name`, `fullName` is guaranteed to be unique across all
+    inventory item objects. However, `fullName` can still be arbitrarily changed by
+    the QuickBooks user when they modify the underlying `name` field.
     """
 
     income_account: Optional[IncomeAccount] = FieldInfo(alias="incomeAccount", default=None)
