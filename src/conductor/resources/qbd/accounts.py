@@ -94,7 +94,9 @@ class AccountsResource(SyncAPIResource):
 
         Args:
           account_type: The classification of this account, indicating its purpose within the chart of
-              accounts. You cannot create an account of type "non_posting" through the API
+              accounts.
+
+              **NOTE**: You cannot create an account of type `non_posting` through the API
               because QuickBooks creates these accounts behind the scenes.
 
           name: The case-insensitive name of this account. Not guaranteed to be unique because
@@ -282,7 +284,9 @@ class AccountsResource(SyncAPIResource):
               but it can still be set and retrieved through the API.
 
           account_type: The classification of this account, indicating its purpose within the chart of
-              accounts. You cannot create an account of type "non_posting" through the API
+              accounts.
+
+              **NOTE**: You cannot create an account of type `non_posting` through the API
               because QuickBooks creates these accounts behind the scenes.
 
           bank_account_number: The bank account number or identifying note for this account. Access to this
@@ -567,7 +571,9 @@ class AsyncAccountsResource(AsyncAPIResource):
 
         Args:
           account_type: The classification of this account, indicating its purpose within the chart of
-              accounts. You cannot create an account of type "non_posting" through the API
+              accounts.
+
+              **NOTE**: You cannot create an account of type `non_posting` through the API
               because QuickBooks creates these accounts behind the scenes.
 
           name: The case-insensitive name of this account. Not guaranteed to be unique because
@@ -755,7 +761,9 @@ class AsyncAccountsResource(AsyncAPIResource):
               but it can still be set and retrieved through the API.
 
           account_type: The classification of this account, indicating its purpose within the chart of
-              accounts. You cannot create an account of type "non_posting" through the API
+              accounts.
+
+              **NOTE**: You cannot create an account of type `non_posting` through the API
               because QuickBooks creates these accounts behind the scenes.
 
           bank_account_number: The bank account number or identifying note for this account. Access to this

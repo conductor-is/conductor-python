@@ -109,10 +109,10 @@ class CustomField(BaseModel):
         "string_1024_type",
         "string_255_type",
     ]
-    """The data type of the custom field."""
+    """The data type of this custom field."""
 
     value: str
-    """The value of the custom field.
+    """The value of this custom field.
 
     The maximum length depends on the field's data type.
     """
@@ -178,10 +178,10 @@ class ExpenseLineCustomField(BaseModel):
         "string_1024_type",
         "string_255_type",
     ]
-    """The data type of the custom field."""
+    """The data type of this custom field."""
 
     value: str
-    """The value of the custom field.
+    """The value of this custom field.
 
     The maximum length depends on the field's data type.
     """
@@ -334,10 +334,10 @@ class ItemGroupLineCustomField(BaseModel):
         "string_1024_type",
         "string_255_type",
     ]
-    """The data type of the custom field."""
+    """The data type of this custom field."""
 
     value: str
-    """The value of the custom field.
+    """The value of this custom field.
 
     The maximum length depends on the field's data type.
     """
@@ -419,10 +419,10 @@ class ItemGroupLineItemLineCustomField(BaseModel):
         "string_1024_type",
         "string_255_type",
     ]
-    """The data type of the custom field."""
+    """The data type of this custom field."""
 
     value: str
-    """The value of the custom field.
+    """The value of this custom field.
 
     The maximum length depends on the field's data type.
     """
@@ -797,10 +797,10 @@ class ItemLineCustomField(BaseModel):
         "string_1024_type",
         "string_255_type",
     ]
-    """The data type of the custom field."""
+    """The data type of this custom field."""
 
     value: str
-    """The value of the custom field.
+    """The value of this custom field.
 
     The maximum length depends on the field's data type.
     """

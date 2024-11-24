@@ -315,7 +315,7 @@ class LineGroupCustomField(TypedDict, total=False):
     """
 
     value: Required[str]
-    """The value of the custom field.
+    """The value of this custom field.
 
     The maximum length depends on the field's data type.
     """
@@ -376,7 +376,7 @@ class LineCustomField(TypedDict, total=False):
     """
 
     value: Required[str]
-    """The value of the custom field.
+    """The value of this custom field.
 
     The maximum length depends on the field's data type.
     """
