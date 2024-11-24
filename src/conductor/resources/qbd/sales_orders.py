@@ -166,7 +166,7 @@ class SalesOrdersResource(SyncAPIResource):
               be used to identify the transaction in QuickBooks. This value is not required to
               be unique and can be arbitrarily changed by the QuickBooks user.
 
-          sales_channel_name: The name of the sales channel for this sales order.
+          sales_channel_name: The type of the sales channel for this sales order.
 
           sales_representative_id: The sales order's sales representative. Sales representatives can be employees,
               vendors, or other names in QuickBooks.
@@ -420,7 +420,7 @@ class SalesOrdersResource(SyncAPIResource):
               be used to identify the transaction in QuickBooks. This value is not required to
               be unique and can be arbitrarily changed by the QuickBooks user.
 
-          sales_channel_name: The name of the sales channel for this sales order.
+          sales_channel_name: The type of the sales channel for this sales order.
 
           sales_representative_id: The sales order's sales representative. Sales representatives can be employees,
               vendors, or other names in QuickBooks.
@@ -797,7 +797,7 @@ class AsyncSalesOrdersResource(AsyncAPIResource):
               be used to identify the transaction in QuickBooks. This value is not required to
               be unique and can be arbitrarily changed by the QuickBooks user.
 
-          sales_channel_name: The name of the sales channel for this sales order.
+          sales_channel_name: The type of the sales channel for this sales order.
 
           sales_representative_id: The sales order's sales representative. Sales representatives can be employees,
               vendors, or other names in QuickBooks.
@@ -1051,7 +1051,7 @@ class AsyncSalesOrdersResource(AsyncAPIResource):
               be used to identify the transaction in QuickBooks. This value is not required to
               be unique and can be arbitrarily changed by the QuickBooks user.
 
-          sales_channel_name: The name of the sales channel for this sales order.
+          sales_channel_name: The type of the sales channel for this sales order.
 
           sales_representative_id: The sales order's sales representative. Sales representatives can be employees,
               vendors, or other names in QuickBooks.
