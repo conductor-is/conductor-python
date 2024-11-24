@@ -137,7 +137,7 @@ class SalesOrderUpdateParams(TypedDict, total=False):
     """
 
     sales_channel_name: Annotated[Literal["blank", "ecommerce"], PropertyInfo(alias="salesChannelName")]
-    """The name of the sales channel for this sales order."""
+    """The type of the sales channel for this sales order."""
 
     sales_representative_id: Annotated[str, PropertyInfo(alias="salesRepresentativeId")]
     """The sales order's sales representative.

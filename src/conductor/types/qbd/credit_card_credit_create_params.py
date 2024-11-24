@@ -116,7 +116,7 @@ class ExpenseLineCustomField(TypedDict, total=False):
     """
 
     value: Required[str]
-    """The value of the custom field.
+    """The value of this custom field.
 
     The maximum length depends on the field's data type.
     """
@@ -201,7 +201,7 @@ class ItemGroupLineCustomField(TypedDict, total=False):
     """
 
     value: Required[str]
-    """The value of the custom field.
+    """The value of this custom field.
 
     The maximum length depends on the field's data type.
     """
@@ -261,7 +261,7 @@ class ItemLineCustomField(TypedDict, total=False):
     """
 
     value: Required[str]
-    """The value of the custom field.
+    """The value of this custom field.
 
     The maximum length depends on the field's data type.
     """

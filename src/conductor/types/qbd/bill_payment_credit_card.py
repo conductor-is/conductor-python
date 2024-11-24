@@ -68,8 +68,8 @@ class AppliedToTransactionLinkedTransaction(BaseModel):
 
     link_type: Optional[Literal["amount", "quantity"]] = FieldInfo(alias="linkType", default=None)
     """
-    Indicates the nature of the link between the transactions: "amount" denotes an
-    amount-based link (e.g., an invoice linked to a payment), and "quantity" denotes
+    Indicates the nature of the link between the transactions: `amount` denotes an
+    amount-based link (e.g., an invoice linked to a payment), and `quantity` denotes
     a quantity-based link (e.g., an invoice created from a sales order based on the
     quantity of items received).
     """
@@ -260,10 +260,10 @@ class CustomField(BaseModel):
         "string_1024_type",
         "string_255_type",
     ]
-    """The data type of the custom field."""
+    """The data type of this custom field."""
 
     value: str
-    """The value of the custom field.
+    """The value of this custom field.
 
     The maximum length depends on the field's data type.
     """
