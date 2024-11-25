@@ -50,7 +50,7 @@ class SalesTaxCode(BaseModel):
     Inactive objects are typically hidden from views and reports in QuickBooks.
     """
 
-    is_taxable: Optional[bool] = FieldInfo(alias="isTaxable", default=None)
+    is_taxable: bool = FieldInfo(alias="isTaxable")
     """Indicates whether this sales-tax code is tracking taxable sales.
 
     This field cannot be modified once the sales-tax code has been used in a
