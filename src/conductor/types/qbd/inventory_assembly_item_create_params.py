@@ -8,7 +8,7 @@ from typing_extensions import Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
-__all__ = ["InventoryAssemblyItemCreateParams", "Barcode", "ItemLine"]
+__all__ = ["InventoryAssemblyItemCreateParams", "Barcode", "Line"]
 
 
 class InventoryAssemblyItemCreateParams(TypedDict, total=False):
@@ -88,7 +88,7 @@ class InventoryAssemblyItemCreateParams(TypedDict, total=False):
     Inactive objects are typically hidden from views and reports in QuickBooks.
     """
 
-    item_lines: Annotated[Iterable[ItemLine], PropertyInfo(alias="itemLines")]
+    lines: Iterable[Line]
     """The inventory assembly item's lines."""
 
     maximum_quantity_on_hand: Annotated[float, PropertyInfo(alias="maximumQuantityOnHand")]
@@ -98,9 +98,8 @@ class InventoryAssemblyItemCreateParams(TypedDict, total=False):
     """The parent inventory assembly item one level above this one in the hierarchy.
 
     For example, if this inventory assembly item has a `fullName` of
-    "Assemblies:Kitchen:Cabinets", its parent has a `fullName` of
-    "Assemblies:Kitchen". If this inventory assembly item is at the top level, this
-    field will be `null`.
+    "Assemblies:Deluxe Kit", its parent has a `fullName` of "Assemblies". If this
+    inventory assembly item is at the top level, this field will be `null`.
     """
 
     preferred_vendor_id: Annotated[str, PropertyInfo(alias="preferredVendorId")]
@@ -185,7 +184,7 @@ class Barcode(TypedDict, total=False):
     """The item's barcode value."""
 
 
-class ItemLine(TypedDict, total=False):
+class Line(TypedDict, total=False):
     inventory_item_id: Annotated[str, PropertyInfo(alias="inventoryItemId")]
     """The inventory item associated with this inventory assembly item line."""
 

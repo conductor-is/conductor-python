@@ -115,10 +115,10 @@ class CustomersResource(SyncAPIResource):
         Args:
           name: The case-insensitive name of this customer. Not guaranteed to be unique because
               it does not include the names of its hierarchical parent objects like `fullName`
-              does. For example, two customers could both have the `name`
-              "Kitchen-Renovation", but they could have unique `fullName` values, such as
-              "Jones:Kitchen-Renovation" and "Baker:Kitchen-Renovation". Maximum length: 41
-              characters.
+              does. For example, two customers could both have the `name` "Website Redesign
+              Project", but they could have unique `fullName` values, such as "ABC
+              Corporation:Website Redesign Project" and "Baker:Website Redesign Project".
+              Maximum length: 41 characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -217,9 +217,9 @@ class CustomersResource(SyncAPIResource):
               (YYYY-MM-DD).
 
           parent_id: The parent customer one level above this one in the hierarchy. For example, if
-              this customer has a `fullName` of "Jones:Kitchen-Renovation", its parent has a
-              `fullName` of "Jones". If this customer is at the top level, this field will be
-              `null`.
+              this customer has a `fullName` of "ABC Corporation:Website Redesign Project",
+              its parent has a `fullName` of "ABC Corporation". If this customer is at the top
+              level, this field will be `null`.
 
           phone: The customer's primary telephone number.
 
@@ -529,17 +529,17 @@ class CustomersResource(SyncAPIResource):
 
           name: The case-insensitive name of this customer. Not guaranteed to be unique because
               it does not include the names of its hierarchical parent objects like `fullName`
-              does. For example, two customers could both have the `name`
-              "Kitchen-Renovation", but they could have unique `fullName` values, such as
-              "Jones:Kitchen-Renovation" and "Baker:Kitchen-Renovation". Maximum length: 41
-              characters.
+              does. For example, two customers could both have the `name` "Website Redesign
+              Project", but they could have unique `fullName` values, such as "ABC
+              Corporation:Website Redesign Project" and "Baker:Website Redesign Project".
+              Maximum length: 41 characters.
 
           note: Additional notes or comments about this customer.
 
           parent_id: The parent customer one level above this one in the hierarchy. For example, if
-              this customer has a `fullName` of "Jones:Kitchen-Renovation", its parent has a
-              `fullName` of "Jones". If this customer is at the top level, this field will be
-              `null`.
+              this customer has a `fullName` of "ABC Corporation:Website Redesign Project",
+              its parent has a `fullName` of "ABC Corporation". If this customer is at the top
+              level, this field will be `null`.
 
           phone: The customer's primary telephone number.
 
@@ -901,10 +901,10 @@ class AsyncCustomersResource(AsyncAPIResource):
         Args:
           name: The case-insensitive name of this customer. Not guaranteed to be unique because
               it does not include the names of its hierarchical parent objects like `fullName`
-              does. For example, two customers could both have the `name`
-              "Kitchen-Renovation", but they could have unique `fullName` values, such as
-              "Jones:Kitchen-Renovation" and "Baker:Kitchen-Renovation". Maximum length: 41
-              characters.
+              does. For example, two customers could both have the `name` "Website Redesign
+              Project", but they could have unique `fullName` values, such as "ABC
+              Corporation:Website Redesign Project" and "Baker:Website Redesign Project".
+              Maximum length: 41 characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -1003,9 +1003,9 @@ class AsyncCustomersResource(AsyncAPIResource):
               (YYYY-MM-DD).
 
           parent_id: The parent customer one level above this one in the hierarchy. For example, if
-              this customer has a `fullName` of "Jones:Kitchen-Renovation", its parent has a
-              `fullName` of "Jones". If this customer is at the top level, this field will be
-              `null`.
+              this customer has a `fullName` of "ABC Corporation:Website Redesign Project",
+              its parent has a `fullName` of "ABC Corporation". If this customer is at the top
+              level, this field will be `null`.
 
           phone: The customer's primary telephone number.
 
@@ -1315,17 +1315,17 @@ class AsyncCustomersResource(AsyncAPIResource):
 
           name: The case-insensitive name of this customer. Not guaranteed to be unique because
               it does not include the names of its hierarchical parent objects like `fullName`
-              does. For example, two customers could both have the `name`
-              "Kitchen-Renovation", but they could have unique `fullName` values, such as
-              "Jones:Kitchen-Renovation" and "Baker:Kitchen-Renovation". Maximum length: 41
-              characters.
+              does. For example, two customers could both have the `name` "Website Redesign
+              Project", but they could have unique `fullName` values, such as "ABC
+              Corporation:Website Redesign Project" and "Baker:Website Redesign Project".
+              Maximum length: 41 characters.
 
           note: Additional notes or comments about this customer.
 
           parent_id: The parent customer one level above this one in the hierarchy. For example, if
-              this customer has a `fullName` of "Jones:Kitchen-Renovation", its parent has a
-              `fullName` of "Jones". If this customer is at the top level, this field will be
-              `null`.
+              this customer has a `fullName` of "ABC Corporation:Website Redesign Project",
+              its parent has a `fullName` of "ABC Corporation". If this customer is at the top
+              level, this field will be `null`.
 
           phone: The customer's primary telephone number.
 

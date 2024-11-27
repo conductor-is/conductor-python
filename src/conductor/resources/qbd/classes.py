@@ -70,7 +70,7 @@ class ClassesResource(SyncAPIResource):
         Not guaranteed to be unique because it
               does not include the names of its hierarchical parent objects like `fullName`
               does. For example, two classes could both have the `name` "Marketing", but they
-              could have unique `fullName` values, such as "Corporate:Marketing" and
+              could have unique `fullName` values, such as "Department:Marketing" and
               "Internal:Marketing". Maximum length: 31 characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
@@ -80,9 +80,8 @@ class ClassesResource(SyncAPIResource):
               from views and reports in QuickBooks.
 
           parent_id: The parent class one level above this one in the hierarchy. For example, if this
-              class has a `fullName` of "Corporate:Sales:Marketing", its parent has a
-              `fullName` of "Corporate:Sales". If this class is at the top level, this field
-              will be `null`.
+              class has a `fullName` of "Department:Marketing", its parent has a `fullName` of
+              "Department". If this class is at the top level, this field will be `null`.
 
           extra_headers: Send extra headers
 
@@ -185,13 +184,12 @@ class ClassesResource(SyncAPIResource):
           name: The case-insensitive name of this class. Not guaranteed to be unique because it
               does not include the names of its hierarchical parent objects like `fullName`
               does. For example, two classes could both have the `name` "Marketing", but they
-              could have unique `fullName` values, such as "Corporate:Marketing" and
+              could have unique `fullName` values, such as "Department:Marketing" and
               "Internal:Marketing". Maximum length: 31 characters.
 
           parent_id: The parent class one level above this one in the hierarchy. For example, if this
-              class has a `fullName` of "Corporate:Sales:Marketing", its parent has a
-              `fullName` of "Corporate:Sales". If this class is at the top level, this field
-              will be `null`.
+              class has a `fullName` of "Department:Marketing", its parent has a `fullName` of
+              "Department". If this class is at the top level, this field will be `null`.
 
           extra_headers: Send extra headers
 
@@ -378,7 +376,7 @@ class AsyncClassesResource(AsyncAPIResource):
         Not guaranteed to be unique because it
               does not include the names of its hierarchical parent objects like `fullName`
               does. For example, two classes could both have the `name` "Marketing", but they
-              could have unique `fullName` values, such as "Corporate:Marketing" and
+              could have unique `fullName` values, such as "Department:Marketing" and
               "Internal:Marketing". Maximum length: 31 characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
@@ -388,9 +386,8 @@ class AsyncClassesResource(AsyncAPIResource):
               from views and reports in QuickBooks.
 
           parent_id: The parent class one level above this one in the hierarchy. For example, if this
-              class has a `fullName` of "Corporate:Sales:Marketing", its parent has a
-              `fullName` of "Corporate:Sales". If this class is at the top level, this field
-              will be `null`.
+              class has a `fullName` of "Department:Marketing", its parent has a `fullName` of
+              "Department". If this class is at the top level, this field will be `null`.
 
           extra_headers: Send extra headers
 
@@ -493,13 +490,12 @@ class AsyncClassesResource(AsyncAPIResource):
           name: The case-insensitive name of this class. Not guaranteed to be unique because it
               does not include the names of its hierarchical parent objects like `fullName`
               does. For example, two classes could both have the `name` "Marketing", but they
-              could have unique `fullName` values, such as "Corporate:Marketing" and
+              could have unique `fullName` values, such as "Department:Marketing" and
               "Internal:Marketing". Maximum length: 31 characters.
 
           parent_id: The parent class one level above this one in the hierarchy. For example, if this
-              class has a `fullName` of "Corporate:Sales:Marketing", its parent has a
-              `fullName` of "Corporate:Sales". If this class is at the top level, this field
-              will be `null`.
+              class has a `fullName` of "Department:Marketing", its parent has a `fullName` of
+              "Department". If this class is at the top level, this field will be `null`.
 
           extra_headers: Send extra headers
 

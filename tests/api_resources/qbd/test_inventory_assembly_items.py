@@ -50,7 +50,7 @@ class TestInventoryAssemblyItems:
             external_id="12345678-abcd-1234-abcd-1234567890ab",
             inventory_date=parse_date("2019-12-27"),
             is_active=True,
-            item_lines=[
+            lines=[
                 {
                     "inventory_item_id": "80000008-1234567890",
                     "quantity": 5,
@@ -173,7 +173,7 @@ class TestInventoryAssemblyItems:
             force_unit_of_measure_change=False,
             income_account_id="80000005-1234567890",
             is_active=True,
-            item_lines=[
+            lines=[
                 {
                     "inventory_item_id": "80000008-1234567890",
                     "quantity": 5,
@@ -316,7 +316,7 @@ class TestAsyncInventoryAssemblyItems:
             external_id="12345678-abcd-1234-abcd-1234567890ab",
             inventory_date=parse_date("2019-12-27"),
             is_active=True,
-            item_lines=[
+            lines=[
                 {
                     "inventory_item_id": "80000008-1234567890",
                     "quantity": 5,
@@ -439,7 +439,7 @@ class TestAsyncInventoryAssemblyItems:
             force_unit_of_measure_change=False,
             income_account_id="80000005-1234567890",
             is_active=True,
-            item_lines=[
+            lines=[
                 {
                     "inventory_item_id": "80000008-1234567890",
                     "quantity": 5,

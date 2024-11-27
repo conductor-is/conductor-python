@@ -27,7 +27,7 @@ class TestInventoryItems:
             asset_account_id="80000009-1234567890",
             cogs_account_id="80000007-1234567890",
             income_account_id="80000005-1234567890",
-            name="Widget",
+            name="Cabinet",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(InventoryItem, inventory_item, path=["response"])
@@ -38,7 +38,7 @@ class TestInventoryItems:
             asset_account_id="80000009-1234567890",
             cogs_account_id="80000007-1234567890",
             income_account_id="80000005-1234567890",
-            name="Widget",
+            name="Cabinet",
             conductor_end_user_id="end_usr_1234567abcdefg",
             barcode={
                 "allow_override": False,
@@ -72,7 +72,7 @@ class TestInventoryItems:
             asset_account_id="80000009-1234567890",
             cogs_account_id="80000007-1234567890",
             income_account_id="80000005-1234567890",
-            name="Widget",
+            name="Cabinet",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -87,7 +87,7 @@ class TestInventoryItems:
             asset_account_id="80000009-1234567890",
             cogs_account_id="80000007-1234567890",
             income_account_id="80000005-1234567890",
-            name="Widget",
+            name="Cabinet",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
@@ -167,7 +167,7 @@ class TestInventoryItems:
             income_account_id="80000005-1234567890",
             is_active=True,
             maximum_quantity_on_hand=200,
-            name="Widget",
+            name="Cabinet",
             parent_id="80000002-1234567890",
             preferred_vendor_id="80000008-1234567890",
             purchase_cost="15.75",
@@ -234,7 +234,7 @@ class TestInventoryItems:
             conductor_end_user_id="end_usr_1234567abcdefg",
             class_ids=["80000001-1234567890"],
             cursor="12345678-abcd-abcd-example-1234567890ab",
-            full_names=["Furniture:Kitchen:Cabinet"],
+            full_names=["Kitchen:Cabinet"],
             ids=["80000001-1234567890"],
             limit=150,
             name_contains="ABC",
@@ -282,7 +282,7 @@ class TestAsyncInventoryItems:
             asset_account_id="80000009-1234567890",
             cogs_account_id="80000007-1234567890",
             income_account_id="80000005-1234567890",
-            name="Widget",
+            name="Cabinet",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(InventoryItem, inventory_item, path=["response"])
@@ -293,7 +293,7 @@ class TestAsyncInventoryItems:
             asset_account_id="80000009-1234567890",
             cogs_account_id="80000007-1234567890",
             income_account_id="80000005-1234567890",
-            name="Widget",
+            name="Cabinet",
             conductor_end_user_id="end_usr_1234567abcdefg",
             barcode={
                 "allow_override": False,
@@ -327,7 +327,7 @@ class TestAsyncInventoryItems:
             asset_account_id="80000009-1234567890",
             cogs_account_id="80000007-1234567890",
             income_account_id="80000005-1234567890",
-            name="Widget",
+            name="Cabinet",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -342,7 +342,7 @@ class TestAsyncInventoryItems:
             asset_account_id="80000009-1234567890",
             cogs_account_id="80000007-1234567890",
             income_account_id="80000005-1234567890",
-            name="Widget",
+            name="Cabinet",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
@@ -422,7 +422,7 @@ class TestAsyncInventoryItems:
             income_account_id="80000005-1234567890",
             is_active=True,
             maximum_quantity_on_hand=200,
-            name="Widget",
+            name="Cabinet",
             parent_id="80000002-1234567890",
             preferred_vendor_id="80000008-1234567890",
             purchase_cost="15.75",
@@ -489,7 +489,7 @@ class TestAsyncInventoryItems:
             conductor_end_user_id="end_usr_1234567abcdefg",
             class_ids=["80000001-1234567890"],
             cursor="12345678-abcd-abcd-example-1234567890ab",
-            full_names=["Furniture:Kitchen:Cabinet"],
+            full_names=["Kitchen:Cabinet"],
             ids=["80000001-1234567890"],
             limit=150,
             name_contains="ABC",
