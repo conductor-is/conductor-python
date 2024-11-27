@@ -27,9 +27,9 @@ class CustomerCreateParams(TypedDict, total=False):
 
     Not guaranteed to be unique because it does not include the names of its
     hierarchical parent objects like `fullName` does. For example, two customers
-    could both have the `name` "Kitchen-Renovation", but they could have unique
-    `fullName` values, such as "Jones:Kitchen-Renovation" and
-    "Baker:Kitchen-Renovation". Maximum length: 41 characters.
+    could both have the `name` "Website Redesign Project", but they could have
+    unique `fullName` values, such as "ABC Corporation:Website Redesign Project" and
+    "Baker:Website Redesign Project". Maximum length: 41 characters.
     """
 
     conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]
@@ -211,9 +211,9 @@ class CustomerCreateParams(TypedDict, total=False):
     parent_id: Annotated[str, PropertyInfo(alias="parentId")]
     """The parent customer one level above this one in the hierarchy.
 
-    For example, if this customer has a `fullName` of "Jones:Kitchen-Renovation",
-    its parent has a `fullName` of "Jones". If this customer is at the top level,
-    this field will be `null`.
+    For example, if this customer has a `fullName` of "ABC Corporation:Website
+    Redesign Project", its parent has a `fullName` of "ABC Corporation". If this
+    customer is at the top level, this field will be `null`.
     """
 
     phone: str

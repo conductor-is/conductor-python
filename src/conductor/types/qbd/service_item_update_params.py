@@ -69,10 +69,9 @@ class ServiceItemUpdateParams(TypedDict, total=False):
     parent_id: Annotated[str, PropertyInfo(alias="parentId")]
     """The parent service item one level above this one in the hierarchy.
 
-    For example, if this service item has a `fullName` of
-    "Services:Consulting:Web-Design", its parent has a `fullName` of
-    "Services:Consulting". If this service item is at the top level, this field will
-    be `null`.
+    For example, if this service item has a `fullName` of "Consulting:Web-Design",
+    its parent has a `fullName` of "Consulting". If this service item is at the top
+    level, this field will be `null`.
     """
 
     sales_and_purchase_details: Annotated[SalesAndPurchaseDetails, PropertyInfo(alias="salesAndPurchaseDetails")]

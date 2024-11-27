@@ -293,9 +293,9 @@ class InventoryItem(BaseModel):
 
     Not guaranteed to be unique because it does not include the names of its
     hierarchical parent objects like `fullName` does. For example, two inventory
-    items could both have the `name` "Widget", but they could have unique `fullName`
-    values, such as "Products:Widget" and "Inventory:Widget". Maximum length: 31
-    characters.
+    items could both have the `name` "Cabinet", but they could have unique
+    `fullName` values, such as "Kitchen:Cabinet" and "Inventory:Cabinet". Maximum
+    length: 31 characters.
     """
 
     object_type: Literal["qbd_inventory_item"] = FieldInfo(alias="objectType")
@@ -304,10 +304,9 @@ class InventoryItem(BaseModel):
     parent: Optional[Parent] = None
     """The parent inventory item one level above this one in the hierarchy.
 
-    For example, if this inventory item has a `fullName` of
-    "Products:Electronics:Widgets", its parent has a `fullName` of
-    "Products:Electronics". If this inventory item is at the top level, this field
-    will be `null`.
+    For example, if this inventory item has a `fullName` of "Kitchen:Cabinet", its
+    parent has a `fullName` of "Kitchen". If this inventory item is at the top
+    level, this field will be `null`.
     """
 
     preferred_vendor: Optional[PreferredVendor] = FieldInfo(alias="preferredVendor", default=None)
@@ -397,7 +396,7 @@ class InventoryItem(BaseModel):
 
     A top-level inventory item has a `sublevel` of 0; each subsequent sublevel
     increases this number by 1. For example, an inventory item with a `fullName` of
-    "Products:Electronics:Widgets" would have a `sublevel` of 2.
+    "Kitchen:Cabinet" would have a `sublevel` of 1.
     """
 
     unit_of_measure_set: Optional[UnitOfMeasureSet] = FieldInfo(alias="unitOfMeasureSet", default=None)

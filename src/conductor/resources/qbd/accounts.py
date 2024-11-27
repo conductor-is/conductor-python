@@ -422,8 +422,8 @@ class AccountsResource(SyncAPIResource):
           full_names: Filter for specific accounts by their full-name(s), case-insensitive. Like `id`,
               `fullName` is a unique identifier for an account, formed by by combining the
               names of its parent objects with its own `name`, separated by colons. For
-              example, if an account is under "Expenses:Utilities" and has the `name`
-              "Electricity", its `fullName` would be "Expenses:Utilities:Electricity".
+              example, if an account is under "Corporate" and has the `name`
+              "Accounts-Payable", its `fullName` would be "Corporate:Accounts-Payable".
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
@@ -899,8 +899,8 @@ class AsyncAccountsResource(AsyncAPIResource):
           full_names: Filter for specific accounts by their full-name(s), case-insensitive. Like `id`,
               `fullName` is a unique identifier for an account, formed by by combining the
               names of its parent objects with its own `name`, separated by colons. For
-              example, if an account is under "Expenses:Utilities" and has the `name`
-              "Electricity", its `fullName` would be "Expenses:Utilities:Electricity".
+              example, if an account is under "Corporate" and has the `name`
+              "Accounts-Payable", its `fullName` would be "Corporate:Accounts-Payable".
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.

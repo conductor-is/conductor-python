@@ -22,7 +22,7 @@ class TestCustomers:
     @parametrize
     def test_method_create(self, client: Conductor) -> None:
         customer = client.qbd.customers.create(
-            name="Kitchen-Renovation",
+            name="Website Redesign Project",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(Customer, customer, path=["response"])
@@ -30,7 +30,7 @@ class TestCustomers:
     @parametrize
     def test_method_create_with_all_params(self, client: Conductor) -> None:
         customer = client.qbd.customers.create(
-            name="Kitchen-Renovation",
+            name="Website Redesign Project",
             conductor_end_user_id="end_usr_1234567abcdefg",
             account_number="1010",
             additional_contacts=[
@@ -148,7 +148,7 @@ class TestCustomers:
     @parametrize
     def test_raw_response_create(self, client: Conductor) -> None:
         response = client.qbd.customers.with_raw_response.create(
-            name="Kitchen-Renovation",
+            name="Website Redesign Project",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -160,7 +160,7 @@ class TestCustomers:
     @parametrize
     def test_streaming_response_create(self, client: Conductor) -> None:
         with client.qbd.customers.with_streaming_response.create(
-            name="Kitchen-Renovation",
+            name="Website Redesign Project",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
@@ -316,7 +316,7 @@ class TestCustomers:
             job_type_id="80000035-1234567890",
             last_name="Doe",
             middle_name="A.",
-            name="Kitchen-Renovation",
+            name="Website Redesign Project",
             note="Our favorite customer.",
             parent_id="80000002-1234567890",
             phone="+1-555-123-4567",
@@ -447,7 +447,7 @@ class TestAsyncCustomers:
     @parametrize
     async def test_method_create(self, async_client: AsyncConductor) -> None:
         customer = await async_client.qbd.customers.create(
-            name="Kitchen-Renovation",
+            name="Website Redesign Project",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(Customer, customer, path=["response"])
@@ -455,7 +455,7 @@ class TestAsyncCustomers:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncConductor) -> None:
         customer = await async_client.qbd.customers.create(
-            name="Kitchen-Renovation",
+            name="Website Redesign Project",
             conductor_end_user_id="end_usr_1234567abcdefg",
             account_number="1010",
             additional_contacts=[
@@ -573,7 +573,7 @@ class TestAsyncCustomers:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncConductor) -> None:
         response = await async_client.qbd.customers.with_raw_response.create(
-            name="Kitchen-Renovation",
+            name="Website Redesign Project",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -585,7 +585,7 @@ class TestAsyncCustomers:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncConductor) -> None:
         async with async_client.qbd.customers.with_streaming_response.create(
-            name="Kitchen-Renovation",
+            name="Website Redesign Project",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
@@ -741,7 +741,7 @@ class TestAsyncCustomers:
             job_type_id="80000035-1234567890",
             last_name="Doe",
             middle_name="A.",
-            name="Kitchen-Renovation",
+            name="Website Redesign Project",
             note="Our favorite customer.",
             parent_id="80000002-1234567890",
             phone="+1-555-123-4567",

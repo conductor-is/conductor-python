@@ -35,9 +35,8 @@ class ServiceItemListParams(TypedDict, total=False):
 
     Like `id`, `fullName` is a unique identifier for a service item, formed by by
     combining the names of its parent objects with its own `name`, separated by
-    colons. For example, if a service item is under "Professional Services" and has
-    the `name` "Consulting", its `fullName` would be "Professional
-    Services:Consulting".
+    colons. For example, if a service item is under "Consulting" and has the `name`
+    "Web-Design", its `fullName` would be "Consulting:Web-Design".
 
     **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
     query parameters for this request.
