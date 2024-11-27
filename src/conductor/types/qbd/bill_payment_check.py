@@ -364,7 +364,7 @@ class BillPaymentCheck(BaseModel):
     applied_to_transactions: List[AppliedToTransaction] = FieldInfo(alias="appliedToTransactions")
     """The bill(s) paid by this bill payment check."""
 
-    bank_account: Optional[BankAccount] = FieldInfo(alias="bankAccount", default=None)
+    bank_account: BankAccount = FieldInfo(alias="bankAccount")
     """
     The bank account from which the funds are being drawn for this bill payment
     check; e.g., Checking or Savings. This bill payment check will decrease the

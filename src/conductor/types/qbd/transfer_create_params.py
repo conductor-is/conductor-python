@@ -15,6 +15,9 @@ class TransferCreateParams(TypedDict, total=False):
     amount: Required[str]
     """The monetary amount of this transfer, represented as a decimal string."""
 
+    source_account_id: Required[Annotated[str, PropertyInfo(alias="sourceAccountId")]]
+    """The account from which money will be transferred."""
+
     target_account_id: Required[Annotated[str, PropertyInfo(alias="targetAccountId")]]
     """The account to which money will be transferred."""
 
@@ -37,6 +40,3 @@ class TransferCreateParams(TypedDict, total=False):
 
     memo: str
     """A memo or note for this transfer, as entered by the user."""
-
-    source_account_id: Annotated[str, PropertyInfo(alias="sourceAccountId")]
-    """The account from which money will be transferred."""
