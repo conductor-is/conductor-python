@@ -1193,8 +1193,8 @@ class Check(BaseModel):
 
     amount_in_home_currency: Optional[str] = FieldInfo(alias="amountInHomeCurrency", default=None)
     """
-    The total amount for this check converted to the home currency of the QuickBooks
-    company file. Represented as a decimal string.
+    The total monetary amount for this check converted to the home currency of the
+    QuickBooks company file. Represented as a decimal string.
     """
 
     bank_account: BankAccount = FieldInfo(alias="bankAccount")
