@@ -1349,8 +1349,8 @@ class QbdSalesOrder(BaseModel):
 
     total_amount_in_home_currency: Optional[str] = FieldInfo(alias="totalAmountInHomeCurrency", default=None)
     """
-    The total amount of money paid for this sales order converted to the home
-    currency of the QuickBooks company file. Represented as a decimal string.
+    The total monetary amount for this sales order converted to the home currency of
+    the QuickBooks company file. Represented as a decimal string.
     """
 
     transaction_date: date = FieldInfo(alias="transactionDate")
