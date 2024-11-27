@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.1.0-alpha.41 (2024-11-27)
+
+Full Changelog: [v0.1.0-alpha.40...v0.1.0-alpha.41](https://github.com/conductor-is/conductor-python/compare/v0.1.0-alpha.40...v0.1.0-alpha.41)
+
+### Features
+
+* **api:** api update ([#324](https://github.com/conductor-is/conductor-python/issues/324)) ([5880f1b](https://github.com/conductor-is/conductor-python/commit/5880f1bf4a7ae045e43c7dacaf86742dff6face8))
+* **api:** api update ([#326](https://github.com/conductor-is/conductor-python/issues/326)) ([5a77814](https://github.com/conductor-is/conductor-python/commit/5a77814a1928db788c7276da9a075ceb86340aa4))
+* **api:** api update ([#327](https://github.com/conductor-is/conductor-python/issues/327)) ([5c709df](https://github.com/conductor-is/conductor-python/commit/5c709df4335c51160798e216920dac909212cfab))
+* **api:** api update ([#330](https://github.com/conductor-is/conductor-python/issues/330)) ([4437162](https://github.com/conductor-is/conductor-python/commit/44371625dcf57acc8d431b4a6be36644a5e05f4a))
+* **api:** api update ([#331](https://github.com/conductor-is/conductor-python/issues/331)) ([0791a12](https://github.com/conductor-is/conductor-python/commit/0791a1245b219a7ddaaa2dab6442f98ebc3c4809))
+* **api:** api update ([#332](https://github.com/conductor-is/conductor-python/issues/332)) ([6255a42](https://github.com/conductor-is/conductor-python/commit/6255a4215fcfd2d97ba106346d578a2ea0976a0c))
+
+
+### Chores
+
+* remove now unused `cached-property` dep ([#329](https://github.com/conductor-is/conductor-python/issues/329)) ([49cd1a9](https://github.com/conductor-is/conductor-python/commit/49cd1a9ee29514366dc9c31f974a075f02bd3207))
+
+
+### Documentation
+
+* add info log level to readme ([#328](https://github.com/conductor-is/conductor-python/issues/328)) ([938fe94](https://github.com/conductor-is/conductor-python/commit/938fe948b8f8206dceff5504c71c9de08be6ea38))
+
 ## 0.1.0-alpha.40 (2024-11-22)
 
 Full Changelog: [v0.1.0-alpha.39...v0.1.0-alpha.40](https://github.com/conductor-is/conductor-python/compare/v0.1.0-alpha.39...v0.1.0-alpha.40)
