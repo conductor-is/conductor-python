@@ -330,7 +330,7 @@ class BillPaymentCreditCard(BaseModel):
     zone in QuickBooks.
     """
 
-    credit_card_account: Optional[CreditCardAccount] = FieldInfo(alias="creditCardAccount", default=None)
+    credit_card_account: CreditCardAccount = FieldInfo(alias="creditCardAccount")
     """The credit card account to which this bill payment credit card is being charged.
 
     This bill payment credit card will decrease the balance of this account.
