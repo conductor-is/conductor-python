@@ -237,7 +237,7 @@ class InventoryAssemblyItem(BaseModel):
     QuickBooks object types.
     """
 
-    asset_account: Optional[AssetAccount] = FieldInfo(alias="assetAccount", default=None)
+    asset_account: AssetAccount = FieldInfo(alias="assetAccount")
     """
     The asset account used to track the current value of this inventory assembly
     item in inventory.
@@ -269,7 +269,7 @@ class InventoryAssemblyItem(BaseModel):
     default.
     """
 
-    cogs_account: Optional[CogsAccount] = FieldInfo(alias="cogsAccount", default=None)
+    cogs_account: CogsAccount = FieldInfo(alias="cogsAccount")
     """
     The Cost of Goods Sold (COGS) account for this inventory assembly item, tracking
     the original direct costs of producing goods sold.
@@ -311,7 +311,7 @@ class InventoryAssemblyItem(BaseModel):
     changed by the QuickBooks user when they modify the underlying `name` field.
     """
 
-    income_account: Optional[IncomeAccount] = FieldInfo(alias="incomeAccount", default=None)
+    income_account: IncomeAccount = FieldInfo(alias="incomeAccount")
     """
     The income account used to track revenue from sales of this inventory assembly
     item.
