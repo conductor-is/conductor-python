@@ -100,9 +100,9 @@ class ServiceItemsResource(SyncAPIResource):
               hidden from views and reports in QuickBooks.
 
           parent_id: The parent service item one level above this one in the hierarchy. For example,
-              if this service item has a `fullName` of "Services:Consulting:Web-Design", its
-              parent has a `fullName` of "Services:Consulting". If this service item is at the
-              top level, this field will be `null`.
+              if this service item has a `fullName` of "Consulting:Web-Design", its parent has
+              a `fullName` of "Consulting". If this service item is at the top level, this
+              field will be `null`.
 
           sales_and_purchase_details: Details for service items that are both purchased and sold, such as reimbursable
               expenses or inventory items that are bought from vendors and sold to customers.
@@ -268,9 +268,9 @@ class ServiceItemsResource(SyncAPIResource):
               characters.
 
           parent_id: The parent service item one level above this one in the hierarchy. For example,
-              if this service item has a `fullName` of "Services:Consulting:Web-Design", its
-              parent has a `fullName` of "Services:Consulting". If this service item is at the
-              top level, this field will be `null`.
+              if this service item has a `fullName` of "Consulting:Web-Design", its parent has
+              a `fullName` of "Consulting". If this service item is at the top level, this
+              field will be `null`.
 
           sales_and_purchase_details: Details for service items that are both purchased and sold, such as reimbursable
               expenses or inventory items that are bought from vendors and sold to customers.
@@ -374,9 +374,8 @@ class ServiceItemsResource(SyncAPIResource):
           full_names: Filter for specific service items by their full-name(s), case-insensitive. Like
               `id`, `fullName` is a unique identifier for a service item, formed by by
               combining the names of its parent objects with its own `name`, separated by
-              colons. For example, if a service item is under "Professional Services" and has
-              the `name` "Consulting", its `fullName` would be "Professional
-              Services:Consulting".
+              colons. For example, if a service item is under "Consulting" and has the `name`
+              "Web-Design", its `fullName` would be "Consulting:Web-Design".
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
@@ -533,9 +532,9 @@ class AsyncServiceItemsResource(AsyncAPIResource):
               hidden from views and reports in QuickBooks.
 
           parent_id: The parent service item one level above this one in the hierarchy. For example,
-              if this service item has a `fullName` of "Services:Consulting:Web-Design", its
-              parent has a `fullName` of "Services:Consulting". If this service item is at the
-              top level, this field will be `null`.
+              if this service item has a `fullName` of "Consulting:Web-Design", its parent has
+              a `fullName` of "Consulting". If this service item is at the top level, this
+              field will be `null`.
 
           sales_and_purchase_details: Details for service items that are both purchased and sold, such as reimbursable
               expenses or inventory items that are bought from vendors and sold to customers.
@@ -701,9 +700,9 @@ class AsyncServiceItemsResource(AsyncAPIResource):
               characters.
 
           parent_id: The parent service item one level above this one in the hierarchy. For example,
-              if this service item has a `fullName` of "Services:Consulting:Web-Design", its
-              parent has a `fullName` of "Services:Consulting". If this service item is at the
-              top level, this field will be `null`.
+              if this service item has a `fullName` of "Consulting:Web-Design", its parent has
+              a `fullName` of "Consulting". If this service item is at the top level, this
+              field will be `null`.
 
           sales_and_purchase_details: Details for service items that are both purchased and sold, such as reimbursable
               expenses or inventory items that are bought from vendors and sold to customers.
@@ -807,9 +806,8 @@ class AsyncServiceItemsResource(AsyncAPIResource):
           full_names: Filter for specific service items by their full-name(s), case-insensitive. Like
               `id`, `fullName` is a unique identifier for a service item, formed by by
               combining the names of its parent objects with its own `name`, separated by
-              colons. For example, if a service item is under "Professional Services" and has
-              the `name` "Consulting", its `fullName` would be "Professional
-              Services:Consulting".
+              colons. For example, if a service item is under "Consulting" and has the `name`
+              "Web-Design", its `fullName` would be "Consulting:Web-Design".
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.

@@ -67,7 +67,7 @@ class InventoryAssemblyItemsResource(SyncAPIResource):
         external_id: str | NotGiven = NOT_GIVEN,
         inventory_date: Union[str, date] | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
-        item_lines: Iterable[inventory_assembly_item_create_params.ItemLine] | NotGiven = NOT_GIVEN,
+        lines: Iterable[inventory_assembly_item_create_params.Line] | NotGiven = NOT_GIVEN,
         maximum_quantity_on_hand: float | NotGiven = NOT_GIVEN,
         parent_id: str | NotGiven = NOT_GIVEN,
         preferred_vendor_id: str | NotGiven = NOT_GIVEN,
@@ -135,15 +135,14 @@ class InventoryAssemblyItemsResource(SyncAPIResource):
           is_active: Indicates whether this inventory assembly item is active. Inactive objects are
               typically hidden from views and reports in QuickBooks.
 
-          item_lines: The inventory assembly item's lines.
+          lines: The inventory assembly item's lines.
 
           maximum_quantity_on_hand: The maximum quantity of this inventory assembly item desired in inventory.
 
           parent_id: The parent inventory assembly item one level above this one in the hierarchy.
               For example, if this inventory assembly item has a `fullName` of
-              "Assemblies:Kitchen:Cabinets", its parent has a `fullName` of
-              "Assemblies:Kitchen". If this inventory assembly item is at the top level, this
-              field will be `null`.
+              "Assemblies:Deluxe Kit", its parent has a `fullName` of "Assemblies". If this
+              inventory assembly item is at the top level, this field will be `null`.
 
           preferred_vendor_id: The preferred vendor from whom this inventory assembly item is typically
               purchased.
@@ -207,7 +206,7 @@ class InventoryAssemblyItemsResource(SyncAPIResource):
                     "external_id": external_id,
                     "inventory_date": inventory_date,
                     "is_active": is_active,
-                    "item_lines": item_lines,
+                    "lines": lines,
                     "maximum_quantity_on_hand": maximum_quantity_on_hand,
                     "parent_id": parent_id,
                     "preferred_vendor_id": preferred_vendor_id,
@@ -285,7 +284,7 @@ class InventoryAssemblyItemsResource(SyncAPIResource):
         force_unit_of_measure_change: bool | NotGiven = NOT_GIVEN,
         income_account_id: str | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
-        item_lines: Iterable[inventory_assembly_item_update_params.ItemLine] | NotGiven = NOT_GIVEN,
+        lines: Iterable[inventory_assembly_item_update_params.Line] | NotGiven = NOT_GIVEN,
         maximum_quantity_on_hand: float | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
         parent_id: str | NotGiven = NOT_GIVEN,
@@ -361,7 +360,7 @@ class InventoryAssemblyItemsResource(SyncAPIResource):
           is_active: Indicates whether this inventory assembly item is active. Inactive objects are
               typically hidden from views and reports in QuickBooks.
 
-          item_lines: The inventory assembly item's lines.
+          lines: The inventory assembly item's lines.
 
           maximum_quantity_on_hand: The maximum quantity of this inventory assembly item desired in inventory.
 
@@ -374,9 +373,8 @@ class InventoryAssemblyItemsResource(SyncAPIResource):
 
           parent_id: The parent inventory assembly item one level above this one in the hierarchy.
               For example, if this inventory assembly item has a `fullName` of
-              "Assemblies:Kitchen:Cabinets", its parent has a `fullName` of
-              "Assemblies:Kitchen". If this inventory assembly item is at the top level, this
-              field will be `null`.
+              "Assemblies:Deluxe Kit", its parent has a `fullName` of "Assemblies". If this
+              inventory assembly item is at the top level, this field will be `null`.
 
           preferred_vendor_id: The preferred vendor from whom this inventory assembly item is typically
               purchased.
@@ -443,7 +441,7 @@ class InventoryAssemblyItemsResource(SyncAPIResource):
                     "force_unit_of_measure_change": force_unit_of_measure_change,
                     "income_account_id": income_account_id,
                     "is_active": is_active,
-                    "item_lines": item_lines,
+                    "lines": lines,
                     "maximum_quantity_on_hand": maximum_quantity_on_hand,
                     "name": name,
                     "parent_id": parent_id,
@@ -640,7 +638,7 @@ class AsyncInventoryAssemblyItemsResource(AsyncAPIResource):
         external_id: str | NotGiven = NOT_GIVEN,
         inventory_date: Union[str, date] | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
-        item_lines: Iterable[inventory_assembly_item_create_params.ItemLine] | NotGiven = NOT_GIVEN,
+        lines: Iterable[inventory_assembly_item_create_params.Line] | NotGiven = NOT_GIVEN,
         maximum_quantity_on_hand: float | NotGiven = NOT_GIVEN,
         parent_id: str | NotGiven = NOT_GIVEN,
         preferred_vendor_id: str | NotGiven = NOT_GIVEN,
@@ -708,15 +706,14 @@ class AsyncInventoryAssemblyItemsResource(AsyncAPIResource):
           is_active: Indicates whether this inventory assembly item is active. Inactive objects are
               typically hidden from views and reports in QuickBooks.
 
-          item_lines: The inventory assembly item's lines.
+          lines: The inventory assembly item's lines.
 
           maximum_quantity_on_hand: The maximum quantity of this inventory assembly item desired in inventory.
 
           parent_id: The parent inventory assembly item one level above this one in the hierarchy.
               For example, if this inventory assembly item has a `fullName` of
-              "Assemblies:Kitchen:Cabinets", its parent has a `fullName` of
-              "Assemblies:Kitchen". If this inventory assembly item is at the top level, this
-              field will be `null`.
+              "Assemblies:Deluxe Kit", its parent has a `fullName` of "Assemblies". If this
+              inventory assembly item is at the top level, this field will be `null`.
 
           preferred_vendor_id: The preferred vendor from whom this inventory assembly item is typically
               purchased.
@@ -780,7 +777,7 @@ class AsyncInventoryAssemblyItemsResource(AsyncAPIResource):
                     "external_id": external_id,
                     "inventory_date": inventory_date,
                     "is_active": is_active,
-                    "item_lines": item_lines,
+                    "lines": lines,
                     "maximum_quantity_on_hand": maximum_quantity_on_hand,
                     "parent_id": parent_id,
                     "preferred_vendor_id": preferred_vendor_id,
@@ -858,7 +855,7 @@ class AsyncInventoryAssemblyItemsResource(AsyncAPIResource):
         force_unit_of_measure_change: bool | NotGiven = NOT_GIVEN,
         income_account_id: str | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
-        item_lines: Iterable[inventory_assembly_item_update_params.ItemLine] | NotGiven = NOT_GIVEN,
+        lines: Iterable[inventory_assembly_item_update_params.Line] | NotGiven = NOT_GIVEN,
         maximum_quantity_on_hand: float | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
         parent_id: str | NotGiven = NOT_GIVEN,
@@ -934,7 +931,7 @@ class AsyncInventoryAssemblyItemsResource(AsyncAPIResource):
           is_active: Indicates whether this inventory assembly item is active. Inactive objects are
               typically hidden from views and reports in QuickBooks.
 
-          item_lines: The inventory assembly item's lines.
+          lines: The inventory assembly item's lines.
 
           maximum_quantity_on_hand: The maximum quantity of this inventory assembly item desired in inventory.
 
@@ -947,9 +944,8 @@ class AsyncInventoryAssemblyItemsResource(AsyncAPIResource):
 
           parent_id: The parent inventory assembly item one level above this one in the hierarchy.
               For example, if this inventory assembly item has a `fullName` of
-              "Assemblies:Kitchen:Cabinets", its parent has a `fullName` of
-              "Assemblies:Kitchen". If this inventory assembly item is at the top level, this
-              field will be `null`.
+              "Assemblies:Deluxe Kit", its parent has a `fullName` of "Assemblies". If this
+              inventory assembly item is at the top level, this field will be `null`.
 
           preferred_vendor_id: The preferred vendor from whom this inventory assembly item is typically
               purchased.
@@ -1016,7 +1012,7 @@ class AsyncInventoryAssemblyItemsResource(AsyncAPIResource):
                     "force_unit_of_measure_change": force_unit_of_measure_change,
                     "income_account_id": income_account_id,
                     "is_active": is_active,
-                    "item_lines": item_lines,
+                    "lines": lines,
                     "maximum_quantity_on_hand": maximum_quantity_on_hand,
                     "name": name,
                     "parent_id": parent_id,

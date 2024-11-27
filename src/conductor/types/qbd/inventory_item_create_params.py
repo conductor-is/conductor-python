@@ -32,9 +32,9 @@ class InventoryItemCreateParams(TypedDict, total=False):
 
     Not guaranteed to be unique because it does not include the names of its
     hierarchical parent objects like `fullName` does. For example, two inventory
-    items could both have the `name` "Widget", but they could have unique `fullName`
-    values, such as "Products:Widget" and "Inventory:Widget". Maximum length: 31
-    characters.
+    items could both have the `name` "Cabinet", but they could have unique
+    `fullName` values, such as "Kitchen:Cabinet" and "Inventory:Cabinet". Maximum
+    length: 31 characters.
     """
 
     conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]
@@ -82,10 +82,9 @@ class InventoryItemCreateParams(TypedDict, total=False):
     parent_id: Annotated[str, PropertyInfo(alias="parentId")]
     """The parent inventory item one level above this one in the hierarchy.
 
-    For example, if this inventory item has a `fullName` of
-    "Products:Electronics:Widgets", its parent has a `fullName` of
-    "Products:Electronics". If this inventory item is at the top level, this field
-    will be `null`.
+    For example, if this inventory item has a `fullName` of "Kitchen:Cabinet", its
+    parent has a `fullName` of "Kitchen". If this inventory item is at the top
+    level, this field will be `null`.
     """
 
     preferred_vendor_id: Annotated[str, PropertyInfo(alias="preferredVendorId")]

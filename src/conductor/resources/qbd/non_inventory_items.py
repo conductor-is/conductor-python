@@ -82,7 +82,7 @@ class NonInventoryItemsResource(SyncAPIResource):
               unique because it does not include the names of its hierarchical parent objects
               like `fullName` does. For example, two non-inventory items could both have the
               `name` "Printer Ink Cartridge", but they could have unique `fullName` values,
-              such as "Office-Supplies:Printer Ink Cartridge" and "Miscellaneous:Printer Ink
+              such as "Office Supplies:Printer Ink Cartridge" and "Miscellaneous:Printer Ink
               Cartridge". Maximum length: 31 characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
@@ -105,8 +105,8 @@ class NonInventoryItemsResource(SyncAPIResource):
               typically hidden from views and reports in QuickBooks.
 
           parent_id: The parent non-inventory item one level above this one in the hierarchy. For
-              example, if this non-inventory item has a `fullName` of "Office-Supplies:Printer
-              Ink Cartridge", its parent has a `fullName` of "Office-Supplies". If this
+              example, if this non-inventory item has a `fullName` of "Office Supplies:Printer
+              Ink Cartridge", its parent has a `fullName` of "Office Supplies". If this
               non-inventory item is at the top level, this field will be `null`.
 
           sales_and_purchase_details: Details for non-inventory items that are both purchased and sold, such as
@@ -276,12 +276,12 @@ class NonInventoryItemsResource(SyncAPIResource):
               unique because it does not include the names of its hierarchical parent objects
               like `fullName` does. For example, two non-inventory items could both have the
               `name` "Printer Ink Cartridge", but they could have unique `fullName` values,
-              such as "Office-Supplies:Printer Ink Cartridge" and "Miscellaneous:Printer Ink
+              such as "Office Supplies:Printer Ink Cartridge" and "Miscellaneous:Printer Ink
               Cartridge". Maximum length: 31 characters.
 
           parent_id: The parent non-inventory item one level above this one in the hierarchy. For
-              example, if this non-inventory item has a `fullName` of "Office-Supplies:Printer
-              Ink Cartridge", its parent has a `fullName` of "Office-Supplies". If this
+              example, if this non-inventory item has a `fullName` of "Office Supplies:Printer
+              Ink Cartridge", its parent has a `fullName` of "Office Supplies". If this
               non-inventory item is at the top level, this field will be `null`.
 
           sales_and_purchase_details: Details for non-inventory items that are both purchased and sold, such as
@@ -529,7 +529,7 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
               unique because it does not include the names of its hierarchical parent objects
               like `fullName` does. For example, two non-inventory items could both have the
               `name` "Printer Ink Cartridge", but they could have unique `fullName` values,
-              such as "Office-Supplies:Printer Ink Cartridge" and "Miscellaneous:Printer Ink
+              such as "Office Supplies:Printer Ink Cartridge" and "Miscellaneous:Printer Ink
               Cartridge". Maximum length: 31 characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
@@ -552,8 +552,8 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
               typically hidden from views and reports in QuickBooks.
 
           parent_id: The parent non-inventory item one level above this one in the hierarchy. For
-              example, if this non-inventory item has a `fullName` of "Office-Supplies:Printer
-              Ink Cartridge", its parent has a `fullName` of "Office-Supplies". If this
+              example, if this non-inventory item has a `fullName` of "Office Supplies:Printer
+              Ink Cartridge", its parent has a `fullName` of "Office Supplies". If this
               non-inventory item is at the top level, this field will be `null`.
 
           sales_and_purchase_details: Details for non-inventory items that are both purchased and sold, such as
@@ -723,12 +723,12 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
               unique because it does not include the names of its hierarchical parent objects
               like `fullName` does. For example, two non-inventory items could both have the
               `name` "Printer Ink Cartridge", but they could have unique `fullName` values,
-              such as "Office-Supplies:Printer Ink Cartridge" and "Miscellaneous:Printer Ink
+              such as "Office Supplies:Printer Ink Cartridge" and "Miscellaneous:Printer Ink
               Cartridge". Maximum length: 31 characters.
 
           parent_id: The parent non-inventory item one level above this one in the hierarchy. For
-              example, if this non-inventory item has a `fullName` of "Office-Supplies:Printer
-              Ink Cartridge", its parent has a `fullName` of "Office-Supplies". If this
+              example, if this non-inventory item has a `fullName` of "Office Supplies:Printer
+              Ink Cartridge", its parent has a `fullName` of "Office Supplies". If this
               non-inventory item is at the top level, this field will be `null`.
 
           sales_and_purchase_details: Details for non-inventory items that are both purchased and sold, such as

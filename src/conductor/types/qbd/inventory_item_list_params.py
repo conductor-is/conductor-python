@@ -35,8 +35,8 @@ class InventoryItemListParams(TypedDict, total=False):
 
     Like `id`, `fullName` is a unique identifier for an inventory item, formed by by
     combining the names of its parent objects with its own `name`, separated by
-    colons. For example, if an inventory item is under "Furniture:Kitchen" and has
-    the `name` "Cabinet", its `fullName` would be "Furniture:Kitchen:Cabinet".
+    colons. For example, if an inventory item is under "Kitchen" and has the `name`
+    "Cabinet", its `fullName` would be "Kitchen:Cabinet".
 
     **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
     query parameters for this request.

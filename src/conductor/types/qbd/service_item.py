@@ -321,9 +321,8 @@ class ServiceItem(BaseModel):
     """
     The case-insensitive fully-qualified unique name of this service item, formed by
     combining the names of its hierarchical parent objects with its own `name`,
-    separated by colons. For example, if a service item is under
-    "Services:Consulting" and has the `name` "Web-Design", its `fullName` would be
-    "Services:Consulting:Web-Design".
+    separated by colons. For example, if a service item is under "Consulting" and
+    has the `name` "Web-Design", its `fullName` would be "Consulting:Web-Design".
 
     **NOTE**: Unlike `name`, `fullName` is guaranteed to be unique across all
     service item objects. However, `fullName` can still be arbitrarily changed by
@@ -352,10 +351,9 @@ class ServiceItem(BaseModel):
     parent: Optional[Parent] = None
     """The parent service item one level above this one in the hierarchy.
 
-    For example, if this service item has a `fullName` of
-    "Services:Consulting:Web-Design", its parent has a `fullName` of
-    "Services:Consulting". If this service item is at the top level, this field will
-    be `null`.
+    For example, if this service item has a `fullName` of "Consulting:Web-Design",
+    its parent has a `fullName` of "Consulting". If this service item is at the top
+    level, this field will be `null`.
     """
 
     revision_number: str = FieldInfo(alias="revisionNumber")
@@ -407,7 +405,7 @@ class ServiceItem(BaseModel):
 
     A top-level service item has a `sublevel` of 0; each subsequent sublevel
     increases this number by 1. For example, a service item with a `fullName` of
-    "Services:Consulting:Web-Design" would have a `sublevel` of 2.
+    "Consulting:Web-Design" would have a `sublevel` of 1.
     """
 
     unit_of_measure_set: Optional[UnitOfMeasureSet] = FieldInfo(alias="unitOfMeasureSet", default=None)

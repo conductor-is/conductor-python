@@ -616,12 +616,12 @@ class VendorsResource(SyncAPIResource):
         class_ids: List[str] | NotGiven = NOT_GIVEN,
         currency_ids: List[str] | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
-        full_names: List[str] | NotGiven = NOT_GIVEN,
         ids: List[str] | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         name_contains: str | NotGiven = NOT_GIVEN,
         name_ends_with: str | NotGiven = NOT_GIVEN,
         name_from: str | NotGiven = NOT_GIVEN,
+        names: List[str] | NotGiven = NOT_GIVEN,
         name_starts_with: str | NotGiven = NOT_GIVEN,
         name_to: str | NotGiven = NOT_GIVEN,
         status: Literal["active", "all", "inactive"] | NotGiven = NOT_GIVEN,
@@ -655,15 +655,6 @@ class VendorsResource(SyncAPIResource):
               `limit` parameter. Retrieve this value from the `nextCursor` field in the
               previous response. If omitted, the API returns the first page of results.
 
-          full_names: Filter for specific vendors by their full-name(s), case-insensitive. Like `id`,
-              `fullName` is a unique identifier for a vendor, formed by by combining the names
-              of its parent objects with its own `name`, separated by colons. For example, if
-              a vendor is under "Suppliers" and has the `name` "ABC Office Supplies", its
-              `fullName` would be "Suppliers:ABC Office Supplies".
-
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters for this request.
-
           ids: Filter for specific vendors by their QuickBooks-assigned unique identifier(s).
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
@@ -686,6 +677,12 @@ class VendorsResource(SyncAPIResource):
 
           name_from: Filter for vendors whose `name` is alphabetically greater than or equal to this
               value.
+
+          names: Filter for specific vendors by their name(s), case-insensitive. Like `id`,
+              `name` is a unique identifier for a vendor.
+
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              query parameters for this request.
 
           name_starts_with: Filter for vendors whose `name` starts with this substring, case-insensitive.
               NOTE: If you use this parameter, you cannot also use `nameContains` or
@@ -743,12 +740,12 @@ class VendorsResource(SyncAPIResource):
                         "class_ids": class_ids,
                         "currency_ids": currency_ids,
                         "cursor": cursor,
-                        "full_names": full_names,
                         "ids": ids,
                         "limit": limit,
                         "name_contains": name_contains,
                         "name_ends_with": name_ends_with,
                         "name_from": name_from,
+                        "names": names,
                         "name_starts_with": name_starts_with,
                         "name_to": name_to,
                         "status": status,
@@ -1354,12 +1351,12 @@ class AsyncVendorsResource(AsyncAPIResource):
         class_ids: List[str] | NotGiven = NOT_GIVEN,
         currency_ids: List[str] | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
-        full_names: List[str] | NotGiven = NOT_GIVEN,
         ids: List[str] | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         name_contains: str | NotGiven = NOT_GIVEN,
         name_ends_with: str | NotGiven = NOT_GIVEN,
         name_from: str | NotGiven = NOT_GIVEN,
+        names: List[str] | NotGiven = NOT_GIVEN,
         name_starts_with: str | NotGiven = NOT_GIVEN,
         name_to: str | NotGiven = NOT_GIVEN,
         status: Literal["active", "all", "inactive"] | NotGiven = NOT_GIVEN,
@@ -1393,15 +1390,6 @@ class AsyncVendorsResource(AsyncAPIResource):
               `limit` parameter. Retrieve this value from the `nextCursor` field in the
               previous response. If omitted, the API returns the first page of results.
 
-          full_names: Filter for specific vendors by their full-name(s), case-insensitive. Like `id`,
-              `fullName` is a unique identifier for a vendor, formed by by combining the names
-              of its parent objects with its own `name`, separated by colons. For example, if
-              a vendor is under "Suppliers" and has the `name` "ABC Office Supplies", its
-              `fullName` would be "Suppliers:ABC Office Supplies".
-
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-              query parameters for this request.
-
           ids: Filter for specific vendors by their QuickBooks-assigned unique identifier(s).
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
@@ -1424,6 +1412,12 @@ class AsyncVendorsResource(AsyncAPIResource):
 
           name_from: Filter for vendors whose `name` is alphabetically greater than or equal to this
               value.
+
+          names: Filter for specific vendors by their name(s), case-insensitive. Like `id`,
+              `name` is a unique identifier for a vendor.
+
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              query parameters for this request.
 
           name_starts_with: Filter for vendors whose `name` starts with this substring, case-insensitive.
               NOTE: If you use this parameter, you cannot also use `nameContains` or
@@ -1481,12 +1475,12 @@ class AsyncVendorsResource(AsyncAPIResource):
                         "class_ids": class_ids,
                         "currency_ids": currency_ids,
                         "cursor": cursor,
-                        "full_names": full_names,
                         "ids": ids,
                         "limit": limit,
                         "name_contains": name_contains,
                         "name_ends_with": name_ends_with,
                         "name_from": name_from,
+                        "names": names,
                         "name_starts_with": name_starts_with,
                         "name_to": name_to,
                         "status": status,

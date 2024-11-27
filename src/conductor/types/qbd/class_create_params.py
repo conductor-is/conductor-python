@@ -16,7 +16,7 @@ class ClassCreateParams(TypedDict, total=False):
     Not guaranteed to be unique because it does not include the names of its
     hierarchical parent objects like `fullName` does. For example, two classes could
     both have the `name` "Marketing", but they could have unique `fullName` values,
-    such as "Corporate:Marketing" and "Internal:Marketing". Maximum length: 31
+    such as "Department:Marketing" and "Internal:Marketing". Maximum length: 31
     characters.
     """
 
@@ -35,7 +35,7 @@ class ClassCreateParams(TypedDict, total=False):
     parent_id: Annotated[str, PropertyInfo(alias="parentId")]
     """The parent class one level above this one in the hierarchy.
 
-    For example, if this class has a `fullName` of "Corporate:Sales:Marketing", its
-    parent has a `fullName` of "Corporate:Sales". If this class is at the top level,
-    this field will be `null`.
+    For example, if this class has a `fullName` of "Department:Marketing", its
+    parent has a `fullName` of "Department". If this class is at the top level, this
+    field will be `null`.
     """

@@ -322,8 +322,8 @@ class NonInventoryItem(BaseModel):
     The case-insensitive fully-qualified unique name of this non-inventory item,
     formed by combining the names of its hierarchical parent objects with its own
     `name`, separated by colons. For example, if a non-inventory item is under
-    "Office-Supplies" and has the `name` "Printer Ink Cartridge", its `fullName`
-    would be "Office-Supplies:Printer Ink Cartridge".
+    "Office Supplies" and has the `name` "Printer Ink Cartridge", its `fullName`
+    would be "Office Supplies:Printer Ink Cartridge".
 
     **NOTE**: Unlike `name`, `fullName` is guaranteed to be unique across all
     non-inventory item objects. However, `fullName` can still be arbitrarily changed
@@ -342,7 +342,7 @@ class NonInventoryItem(BaseModel):
     Not guaranteed to be unique because it does not include the names of its
     hierarchical parent objects like `fullName` does. For example, two non-inventory
     items could both have the `name` "Printer Ink Cartridge", but they could have
-    unique `fullName` values, such as "Office-Supplies:Printer Ink Cartridge" and
+    unique `fullName` values, such as "Office Supplies:Printer Ink Cartridge" and
     "Miscellaneous:Printer Ink Cartridge". Maximum length: 31 characters.
     """
 
@@ -352,10 +352,10 @@ class NonInventoryItem(BaseModel):
     parent: Optional[Parent] = None
     """The parent non-inventory item one level above this one in the hierarchy.
 
-    For example, if this non-inventory item has a `fullName` of
-    "Office-Supplies:Printer Ink Cartridge", its parent has a `fullName` of
-    "Office-Supplies". If this non-inventory item is at the top level, this field
-    will be `null`.
+    For example, if this non-inventory item has a `fullName` of "Office
+    Supplies:Printer Ink Cartridge", its parent has a `fullName` of "Office
+    Supplies". If this non-inventory item is at the top level, this field will be
+    `null`.
     """
 
     revision_number: str = FieldInfo(alias="revisionNumber")
@@ -415,7 +415,7 @@ class NonInventoryItem(BaseModel):
 
     A top-level non-inventory item has a `sublevel` of 0; each subsequent sublevel
     increases this number by 1. For example, a non-inventory item with a `fullName`
-    of "Office-Supplies:Printer Ink Cartridge" would have a `sublevel` of 1.
+    of "Office Supplies:Printer Ink Cartridge" would have a `sublevel` of 1.
     """
 
     unit_of_measure_set: Optional[UnitOfMeasureSet] = FieldInfo(alias="unitOfMeasureSet", default=None)

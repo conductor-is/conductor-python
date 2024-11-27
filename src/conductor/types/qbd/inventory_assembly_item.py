@@ -14,8 +14,8 @@ __all__ = [
     "CogsAccount",
     "CustomField",
     "IncomeAccount",
-    "ItemLine",
-    "ItemLineInventoryItem",
+    "Line",
+    "LineInventoryItem",
     "Parent",
     "PreferredVendor",
     "PurchaseTaxCode",
@@ -125,7 +125,7 @@ class IncomeAccount(BaseModel):
     """
 
 
-class ItemLineInventoryItem(BaseModel):
+class LineInventoryItem(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks to this object.
 
@@ -141,8 +141,8 @@ class ItemLineInventoryItem(BaseModel):
     """
 
 
-class ItemLine(BaseModel):
-    inventory_item: Optional[ItemLineInventoryItem] = FieldInfo(alias="inventoryItem", default=None)
+class Line(BaseModel):
+    inventory_item: Optional[LineInventoryItem] = FieldInfo(alias="inventoryItem", default=None)
     """The inventory item associated with this inventory assembly item line."""
 
     quantity: Optional[float] = None
@@ -303,8 +303,8 @@ class InventoryAssemblyItem(BaseModel):
     The case-insensitive fully-qualified unique name of this inventory assembly
     item, formed by combining the names of its hierarchical parent objects with its
     own `name`, separated by colons. For example, if an inventory assembly item is
-    under "Assemblies:Kitchen" and has the `name` "Deluxe Kit", its `fullName` would
-    be "Assemblies:Kitchen:Deluxe Kit".
+    under "Assemblies" and has the `name` "Deluxe Kit", its `fullName` would be
+    "Assemblies:Deluxe Kit".
 
     **NOTE**: Unlike `name`, `fullName` is guaranteed to be unique across all
     inventory assembly item objects. However, `fullName` can still be arbitrarily
@@ -323,7 +323,7 @@ class InventoryAssemblyItem(BaseModel):
     Inactive objects are typically hidden from views and reports in QuickBooks.
     """
 
-    item_lines: List[ItemLine] = FieldInfo(alias="itemLines")
+    lines: List[Line]
     """The inventory assembly item's lines."""
 
     maximum_quantity_on_hand: Optional[float] = FieldInfo(alias="maximumQuantityOnHand", default=None)
@@ -346,9 +346,8 @@ class InventoryAssemblyItem(BaseModel):
     """The parent inventory assembly item one level above this one in the hierarchy.
 
     For example, if this inventory assembly item has a `fullName` of
-    "Assemblies:Kitchen:Cabinets", its parent has a `fullName` of
-    "Assemblies:Kitchen". If this inventory assembly item is at the top level, this
-    field will be `null`.
+    "Assemblies:Deluxe Kit", its parent has a `fullName` of "Assemblies". If this
+    inventory assembly item is at the top level, this field will be `null`.
     """
 
     preferred_vendor: Optional[PreferredVendor] = FieldInfo(alias="preferredVendor", default=None)
@@ -437,8 +436,7 @@ class InventoryAssemblyItem(BaseModel):
 
     A top-level inventory assembly item has a `sublevel` of 0; each subsequent
     sublevel increases this number by 1. For example, an inventory assembly item
-    with a `fullName` of "Assemblies:Kitchen:Cabinets:Deluxe Kit" would have a
-    `sublevel` of 3.
+    with a `fullName` of "Assemblies:Deluxe Kit" would have a `sublevel` of 1.
     """
 
     unit_of_measure_set: Optional[UnitOfMeasureSet] = FieldInfo(alias="unitOfMeasureSet", default=None)
