@@ -611,8 +611,9 @@ class Customer(BaseModel):
     """
     The case-insensitive fully-qualified unique name of this customer, formed by
     combining the names of its hierarchical parent objects with its own `name`,
-    separated by colons. For example, if a customer is under "Jones" and has the
-    `name` "Kitchen-Renovation", its `fullName` would be "Jones:Kitchen-Renovation".
+    separated by colons. For example, if a customer is under "ABC Corporation" and
+    has the `name` "Website Redesign Project", its `fullName` would be "ABC
+    Corporation:Website Redesign Project".
 
     **NOTE**: Unlike `name`, `fullName` is guaranteed to be unique across all
     customer objects. However, `fullName` can still be arbitrarily changed by the
@@ -680,9 +681,9 @@ class Customer(BaseModel):
 
     Not guaranteed to be unique because it does not include the names of its
     hierarchical parent objects like `fullName` does. For example, two customers
-    could both have the `name` "Kitchen-Renovation", but they could have unique
-    `fullName` values, such as "Jones:Kitchen-Renovation" and
-    "Baker:Kitchen-Renovation". Maximum length: 41 characters.
+    could both have the `name` "Website Redesign Project", but they could have
+    unique `fullName` values, such as "ABC Corporation:Website Redesign Project" and
+    "Baker:Website Redesign Project". Maximum length: 41 characters.
     """
 
     note: Optional[str] = None
@@ -694,9 +695,9 @@ class Customer(BaseModel):
     parent: Optional[Parent] = None
     """The parent customer one level above this one in the hierarchy.
 
-    For example, if this customer has a `fullName` of "Jones:Kitchen-Renovation",
-    its parent has a `fullName` of "Jones". If this customer is at the top level,
-    this field will be `null`.
+    For example, if this customer has a `fullName` of "ABC Corporation:Website
+    Redesign Project", its parent has a `fullName` of "ABC Corporation". If this
+    customer is at the top level, this field will be `null`.
     """
 
     phone: Optional[str] = None
@@ -780,10 +781,10 @@ class Customer(BaseModel):
     """The depth level of this customer in the hierarchy.
 
     A top-level customer has a `sublevel` of 0; each subsequent sublevel increases
-    this number by 1. For example, a customer with a `fullName` of
-    "Jones:Kitchen-Renovation" would have a `sublevel` of 1. When `sublevel` is 0,
-    this object is a customer; when `sublevel` is greater than 0, this object is
-    typically a job (i.e., a sub-customer).
+    this number by 1. For example, a customer with a `fullName` of "ABC
+    Corporation:Website Redesign Project" would have a `sublevel` of 1. When
+    `sublevel` is 0, this object is a customer; when `sublevel` is greater than 0,
+    this object is typically a job (i.e., a sub-customer).
     """
 
     tax_registration_number: Optional[str] = FieldInfo(alias="taxRegistrationNumber", default=None)

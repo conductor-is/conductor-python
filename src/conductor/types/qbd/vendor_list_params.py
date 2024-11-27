@@ -33,18 +33,6 @@ class VendorListParams(TypedDict, total=False):
     previous response. If omitted, the API returns the first page of results.
     """
 
-    full_names: Annotated[List[str], PropertyInfo(alias="fullNames")]
-    """Filter for specific vendors by their full-name(s), case-insensitive.
-
-    Like `id`, `fullName` is a unique identifier for a vendor, formed by by
-    combining the names of its parent objects with its own `name`, separated by
-    colons. For example, if a vendor is under "Suppliers" and has the `name` "ABC
-    Office Supplies", its `fullName` would be "Suppliers:ABC Office Supplies".
-
-    **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
-    query parameters for this request.
-    """
-
     ids: List[str]
     """Filter for specific vendors by their QuickBooks-assigned unique identifier(s).
 
@@ -79,6 +67,15 @@ class VendorListParams(TypedDict, total=False):
     """
     Filter for vendors whose `name` is alphabetically greater than or equal to this
     value.
+    """
+
+    names: List[str]
+    """Filter for specific vendors by their name(s), case-insensitive.
+
+    Like `id`, `name` is a unique identifier for a vendor.
+
+    **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+    query parameters for this request.
     """
 
     name_starts_with: Annotated[str, PropertyInfo(alias="nameStartsWith")]

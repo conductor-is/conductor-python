@@ -45,8 +45,8 @@ class Class(BaseModel):
     """
     The case-insensitive fully-qualified unique name of this class, formed by
     combining the names of its hierarchical parent objects with its own `name`,
-    separated by colons. For example, if a class is under "Corporate:Sales" and has
-    the `name` "Marketing", its `fullName` would be "Corporate:Sales:Marketing".
+    separated by colons. For example, if a class is under "Department" and has the
+    `name` "Marketing", its `fullName` would be "Department:Marketing".
 
     **NOTE**: Unlike `name`, `fullName` is guaranteed to be unique across all class
     objects. However, `fullName` can still be arbitrarily changed by the QuickBooks
@@ -65,7 +65,7 @@ class Class(BaseModel):
     Not guaranteed to be unique because it does not include the names of its
     hierarchical parent objects like `fullName` does. For example, two classes could
     both have the `name` "Marketing", but they could have unique `fullName` values,
-    such as "Corporate:Marketing" and "Internal:Marketing". Maximum length: 31
+    such as "Department:Marketing" and "Internal:Marketing". Maximum length: 31
     characters.
     """
 
@@ -75,9 +75,9 @@ class Class(BaseModel):
     parent: Optional[Parent] = None
     """The parent class one level above this one in the hierarchy.
 
-    For example, if this class has a `fullName` of "Corporate:Sales:Marketing", its
-    parent has a `fullName` of "Corporate:Sales". If this class is at the top level,
-    this field will be `null`.
+    For example, if this class has a `fullName` of "Department:Marketing", its
+    parent has a `fullName` of "Department". If this class is at the top level, this
+    field will be `null`.
     """
 
     revision_number: str = FieldInfo(alias="revisionNumber")
@@ -92,8 +92,8 @@ class Class(BaseModel):
     """The depth level of this class in the hierarchy.
 
     A top-level class has a `sublevel` of 0; each subsequent sublevel increases this
-    number by 1. For example, a class with a `fullName` of
-    "Corporate:Sales:Marketing" would have a `sublevel` of 2.
+    number by 1. For example, a class with a `fullName` of "Department:Marketing"
+    would have a `sublevel` of 1.
     """
 
     updated_at: str = FieldInfo(alias="updatedAt")

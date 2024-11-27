@@ -98,8 +98,8 @@ class InventoryItemsResource(SyncAPIResource):
           name: The case-insensitive name of this inventory item. Not guaranteed to be unique
               because it does not include the names of its hierarchical parent objects like
               `fullName` does. For example, two inventory items could both have the `name`
-              "Widget", but they could have unique `fullName` values, such as
-              "Products:Widget" and "Inventory:Widget". Maximum length: 31 characters.
+              "Cabinet", but they could have unique `fullName` values, such as
+              "Kitchen:Cabinet" and "Inventory:Cabinet". Maximum length: 31 characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -126,10 +126,9 @@ class InventoryItemsResource(SyncAPIResource):
           maximum_quantity_on_hand: The maximum quantity of this inventory item desired in inventory.
 
           parent_id: The parent inventory item one level above this one in the hierarchy. For
-              example, if this inventory item has a `fullName` of
-              "Products:Electronics:Widgets", its parent has a `fullName` of
-              "Products:Electronics". If this inventory item is at the top level, this field
-              will be `null`.
+              example, if this inventory item has a `fullName` of "Kitchen:Cabinet", its
+              parent has a `fullName` of "Kitchen". If this inventory item is at the top
+              level, this field will be `null`.
 
           preferred_vendor_id: The preferred vendor from whom this inventory item is typically purchased.
 
@@ -342,14 +341,13 @@ class InventoryItemsResource(SyncAPIResource):
           name: The case-insensitive name of this inventory item. Not guaranteed to be unique
               because it does not include the names of its hierarchical parent objects like
               `fullName` does. For example, two inventory items could both have the `name`
-              "Widget", but they could have unique `fullName` values, such as
-              "Products:Widget" and "Inventory:Widget". Maximum length: 31 characters.
+              "Cabinet", but they could have unique `fullName` values, such as
+              "Kitchen:Cabinet" and "Inventory:Cabinet". Maximum length: 31 characters.
 
           parent_id: The parent inventory item one level above this one in the hierarchy. For
-              example, if this inventory item has a `fullName` of
-              "Products:Electronics:Widgets", its parent has a `fullName` of
-              "Products:Electronics". If this inventory item is at the top level, this field
-              will be `null`.
+              example, if this inventory item has a `fullName` of "Kitchen:Cabinet", its
+              parent has a `fullName` of "Kitchen". If this inventory item is at the top
+              level, this field will be `null`.
 
           preferred_vendor_id: The preferred vendor from whom this inventory item is typically purchased.
 
@@ -487,8 +485,8 @@ class InventoryItemsResource(SyncAPIResource):
           full_names: Filter for specific inventory items by their full-name(s), case-insensitive.
               Like `id`, `fullName` is a unique identifier for an inventory item, formed by by
               combining the names of its parent objects with its own `name`, separated by
-              colons. For example, if an inventory item is under "Furniture:Kitchen" and has
-              the `name` "Cabinet", its `fullName` would be "Furniture:Kitchen:Cabinet".
+              colons. For example, if an inventory item is under "Kitchen" and has the `name`
+              "Cabinet", its `fullName` would be "Kitchen:Cabinet".
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
@@ -654,8 +652,8 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
           name: The case-insensitive name of this inventory item. Not guaranteed to be unique
               because it does not include the names of its hierarchical parent objects like
               `fullName` does. For example, two inventory items could both have the `name`
-              "Widget", but they could have unique `fullName` values, such as
-              "Products:Widget" and "Inventory:Widget". Maximum length: 31 characters.
+              "Cabinet", but they could have unique `fullName` values, such as
+              "Kitchen:Cabinet" and "Inventory:Cabinet". Maximum length: 31 characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -682,10 +680,9 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
           maximum_quantity_on_hand: The maximum quantity of this inventory item desired in inventory.
 
           parent_id: The parent inventory item one level above this one in the hierarchy. For
-              example, if this inventory item has a `fullName` of
-              "Products:Electronics:Widgets", its parent has a `fullName` of
-              "Products:Electronics". If this inventory item is at the top level, this field
-              will be `null`.
+              example, if this inventory item has a `fullName` of "Kitchen:Cabinet", its
+              parent has a `fullName` of "Kitchen". If this inventory item is at the top
+              level, this field will be `null`.
 
           preferred_vendor_id: The preferred vendor from whom this inventory item is typically purchased.
 
@@ -898,14 +895,13 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
           name: The case-insensitive name of this inventory item. Not guaranteed to be unique
               because it does not include the names of its hierarchical parent objects like
               `fullName` does. For example, two inventory items could both have the `name`
-              "Widget", but they could have unique `fullName` values, such as
-              "Products:Widget" and "Inventory:Widget". Maximum length: 31 characters.
+              "Cabinet", but they could have unique `fullName` values, such as
+              "Kitchen:Cabinet" and "Inventory:Cabinet". Maximum length: 31 characters.
 
           parent_id: The parent inventory item one level above this one in the hierarchy. For
-              example, if this inventory item has a `fullName` of
-              "Products:Electronics:Widgets", its parent has a `fullName` of
-              "Products:Electronics". If this inventory item is at the top level, this field
-              will be `null`.
+              example, if this inventory item has a `fullName` of "Kitchen:Cabinet", its
+              parent has a `fullName` of "Kitchen". If this inventory item is at the top
+              level, this field will be `null`.
 
           preferred_vendor_id: The preferred vendor from whom this inventory item is typically purchased.
 
@@ -1043,8 +1039,8 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
           full_names: Filter for specific inventory items by their full-name(s), case-insensitive.
               Like `id`, `fullName` is a unique identifier for an inventory item, formed by by
               combining the names of its parent objects with its own `name`, separated by
-              colons. For example, if an inventory item is under "Furniture:Kitchen" and has
-              the `name` "Cabinet", its `fullName` would be "Furniture:Kitchen:Cabinet".
+              colons. For example, if an inventory item is under "Kitchen" and has the `name`
+              "Cabinet", its `fullName` would be "Kitchen:Cabinet".
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
