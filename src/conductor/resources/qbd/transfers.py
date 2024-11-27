@@ -52,12 +52,12 @@ class TransfersResource(SyncAPIResource):
         self,
         *,
         amount: str,
+        source_account_id: str,
         target_account_id: str,
         transaction_date: Union[str, date],
         conductor_end_user_id: str,
         class_id: str | NotGiven = NOT_GIVEN,
         memo: str | NotGiven = NOT_GIVEN,
-        source_account_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -71,6 +71,8 @@ class TransfersResource(SyncAPIResource):
         Args:
           amount: The monetary amount of this transfer, represented as a decimal string.
 
+          source_account_id: The account from which money will be transferred.
+
           target_account_id: The account to which money will be transferred.
 
           transaction_date: The date of this transfer, in ISO 8601 format (YYYY-MM-DD).
@@ -83,8 +85,6 @@ class TransfersResource(SyncAPIResource):
               tracking is off by default.
 
           memo: A memo or note for this transfer, as entered by the user.
-
-          source_account_id: The account from which money will be transferred.
 
           extra_headers: Send extra headers
 
@@ -100,11 +100,11 @@ class TransfersResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "amount": amount,
+                    "source_account_id": source_account_id,
                     "target_account_id": target_account_id,
                     "transaction_date": transaction_date,
                     "class_id": class_id,
                     "memo": memo,
-                    "source_account_id": source_account_id,
                 },
                 transfer_create_params.TransferCreateParams,
             ),
@@ -344,12 +344,12 @@ class AsyncTransfersResource(AsyncAPIResource):
         self,
         *,
         amount: str,
+        source_account_id: str,
         target_account_id: str,
         transaction_date: Union[str, date],
         conductor_end_user_id: str,
         class_id: str | NotGiven = NOT_GIVEN,
         memo: str | NotGiven = NOT_GIVEN,
-        source_account_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -363,6 +363,8 @@ class AsyncTransfersResource(AsyncAPIResource):
         Args:
           amount: The monetary amount of this transfer, represented as a decimal string.
 
+          source_account_id: The account from which money will be transferred.
+
           target_account_id: The account to which money will be transferred.
 
           transaction_date: The date of this transfer, in ISO 8601 format (YYYY-MM-DD).
@@ -375,8 +377,6 @@ class AsyncTransfersResource(AsyncAPIResource):
               tracking is off by default.
 
           memo: A memo or note for this transfer, as entered by the user.
-
-          source_account_id: The account from which money will be transferred.
 
           extra_headers: Send extra headers
 
@@ -392,11 +392,11 @@ class AsyncTransfersResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "amount": amount,
+                    "source_account_id": source_account_id,
                     "target_account_id": target_account_id,
                     "transaction_date": transaction_date,
                     "class_id": class_id,
                     "memo": memo,
-                    "source_account_id": source_account_id,
                 },
                 transfer_create_params.TransferCreateParams,
             ),

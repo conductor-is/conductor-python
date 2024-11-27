@@ -98,13 +98,13 @@ class Transfer(BaseModel):
     update will return an error.
     """
 
-    source_account: Optional[SourceAccount] = FieldInfo(alias="sourceAccount", default=None)
+    source_account: SourceAccount = FieldInfo(alias="sourceAccount")
     """The account from which money will be transferred."""
 
     source_account_balance: Optional[str] = FieldInfo(alias="sourceAccountBalance", default=None)
     """The balance of the account from which money will be transferred."""
 
-    target_account: Optional[TargetAccount] = FieldInfo(alias="targetAccount", default=None)
+    target_account: TargetAccount = FieldInfo(alias="targetAccount")
     """The account to which money will be transferred."""
 
     target_account_balance: Optional[str] = FieldInfo(alias="targetAccountBalance", default=None)
