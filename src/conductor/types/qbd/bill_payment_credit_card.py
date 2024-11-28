@@ -368,7 +368,7 @@ class BillPaymentCreditCard(BaseModel):
     """
 
     memo: Optional[str] = None
-    """A memo or note for this bill payment credit card, as entered by the user."""
+    """A memo or note for this bill payment credit card."""
 
     object_type: Literal["qbd_bill_payment_credit_card"] = FieldInfo(alias="objectType")
     """The type of object. This value is always `"qbd_bill_payment_credit_card"`."""

@@ -315,7 +315,7 @@ class ExpenseLine(BaseModel):
     """
 
     memo: Optional[str] = None
-    """A memo or note for this expense line, as entered by the user."""
+    """A memo or note for this expense line."""
 
     object_type: Literal["qbd_expense_line"] = FieldInfo(alias="objectType")
     """The type of object. This value is always `"qbd_expense_line"`."""
@@ -1244,10 +1244,7 @@ class Check(BaseModel):
     """
 
     is_pending: Optional[bool] = FieldInfo(alias="isPending", default=None)
-    """Indicates whether this check is pending approval or completion.
-
-    If `true`, the check is in a draft state and has not been finalized.
-    """
+    """Indicates whether this check has not been completed."""
 
     is_queued_for_print: Optional[bool] = FieldInfo(alias="isQueuedForPrint", default=None)
     """

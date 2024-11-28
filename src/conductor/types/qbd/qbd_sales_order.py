@@ -1225,7 +1225,7 @@ class QbdSalesOrder(BaseModel):
     """
 
     memo: Optional[str] = None
-    """A memo or note for this sales order, as entered by the user."""
+    """A memo or note for this sales order."""
 
     object_type: Literal["qbd_sales_order"] = FieldInfo(alias="objectType")
     """The type of object. This value is always `"qbd_sales_order"`."""

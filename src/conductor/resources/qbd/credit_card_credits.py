@@ -106,7 +106,7 @@ class CreditCardCreditsResource(SyncAPIResource):
           item_lines: The credit card credit's item lines, each representing the purchase of a
               specific item or service.
 
-          memo: A memo or note for this credit card credit, as entered by the user.
+          memo: A memo or note for this credit card credit.
 
           payee_id: The vendor or company from whom this credit card credit was received for
               purchased merchandise or services.
@@ -281,7 +281,7 @@ class CreditCardCreditsResource(SyncAPIResource):
               include it with its `id` set to `-1`. If you do not wish to modify the item
               lines, you can omit this field entirely to keep them unchanged.
 
-          memo: A memo or note for this credit card credit, as entered by the user.
+          memo: A memo or note for this credit card credit.
 
           payee_id: The vendor or company from whom this credit card credit was received for
               purchased merchandise or services.
@@ -560,7 +560,7 @@ class AsyncCreditCardCreditsResource(AsyncAPIResource):
           item_lines: The credit card credit's item lines, each representing the purchase of a
               specific item or service.
 
-          memo: A memo or note for this credit card credit, as entered by the user.
+          memo: A memo or note for this credit card credit.
 
           payee_id: The vendor or company from whom this credit card credit was received for
               purchased merchandise or services.
@@ -735,7 +735,7 @@ class AsyncCreditCardCreditsResource(AsyncAPIResource):
               include it with its `id` set to `-1`. If you do not wish to modify the item
               lines, you can omit this field entirely to keep them unchanged.
 
-          memo: A memo or note for this credit card credit, as entered by the user.
+          memo: A memo or note for this credit card credit.
 
           payee_id: The vendor or company from whom this credit card credit was received for
               purchased merchandise or services.

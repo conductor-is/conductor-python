@@ -96,9 +96,9 @@ class BillCreateParams(TypedDict, total=False):
     """
 
     memo: str
-    """A memo or note for this bill, as entered by the user.
-
-    Appears in the Accounts-Payable register and relevant reports.
+    """
+    A memo or note for this bill that appears in the Accounts-Payable register and
+    in reports that include this bill.
     """
 
     payables_account_id: Annotated[str, PropertyInfo(alias="payablesAccountId")]
@@ -197,7 +197,7 @@ class ExpenseLine(TypedDict, total=False):
     """
 
     memo: str
-    """A memo or note for this expense line, as entered by the user."""
+    """A memo or note for this expense line."""
 
     payee_id: Annotated[str, PropertyInfo(alias="payeeId")]
     """

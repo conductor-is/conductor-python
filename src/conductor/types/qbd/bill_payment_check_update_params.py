@@ -66,7 +66,7 @@ class BillPaymentCheckUpdateParams(TypedDict, total=False):
     """
 
     memo: str
-    """A memo or note for this bill payment check, as entered by the user."""
+    """A memo or note for this bill payment check."""
 
     ref_number: Annotated[str, PropertyInfo(alias="refNumber")]
     """

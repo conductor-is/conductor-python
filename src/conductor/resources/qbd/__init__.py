@@ -88,6 +88,14 @@ from .service_items import (
     ServiceItemsResourceWithStreamingResponse,
     AsyncServiceItemsResourceWithStreamingResponse,
 )
+from .sales_receipts import (
+    SalesReceiptsResource,
+    AsyncSalesReceiptsResource,
+    SalesReceiptsResourceWithRawResponse,
+    AsyncSalesReceiptsResourceWithRawResponse,
+    SalesReceiptsResourceWithStreamingResponse,
+    AsyncSalesReceiptsResourceWithStreamingResponse,
+)
 from .standard_terms import (
     StandardTermsResource,
     AsyncStandardTermsResource,
@@ -318,6 +326,12 @@ __all__ = [
     "AsyncSalesOrdersResourceWithRawResponse",
     "SalesOrdersResourceWithStreamingResponse",
     "AsyncSalesOrdersResourceWithStreamingResponse",
+    "SalesReceiptsResource",
+    "AsyncSalesReceiptsResource",
+    "SalesReceiptsResourceWithRawResponse",
+    "AsyncSalesReceiptsResourceWithRawResponse",
+    "SalesReceiptsResourceWithStreamingResponse",
+    "AsyncSalesReceiptsResourceWithStreamingResponse",
     "QbdResource",
     "AsyncQbdResource",
     "QbdResourceWithRawResponse",
