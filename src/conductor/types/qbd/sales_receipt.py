@@ -231,7 +231,7 @@ class CreditCardTransactionResponse(BaseModel):
     reconciliation feature.
     """
 
-    transaction_authorized_at: date = FieldInfo(alias="transactionAuthorizedAt")
+    transaction_authorized_at: str = FieldInfo(alias="transactionAuthorizedAt")
     """
     The date and time when the credit card processor authorized this credit card
     transaction.
@@ -938,7 +938,7 @@ class LineCreditCardTransactionResponse(BaseModel):
     reconciliation feature.
     """
 
-    transaction_authorized_at: date = FieldInfo(alias="transactionAuthorizedAt")
+    transaction_authorized_at: str = FieldInfo(alias="transactionAuthorizedAt")
     """
     The date and time when the credit card processor authorized this credit card
     transaction.
