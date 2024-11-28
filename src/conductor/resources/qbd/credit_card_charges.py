@@ -107,7 +107,7 @@ class CreditCardChargesResource(SyncAPIResource):
           item_lines: The credit card charge's item lines, each representing the purchase of a
               specific item or service.
 
-          memo: A memo or note for this credit card charge, as entered by the user.
+          memo: A memo or note for this credit card charge.
 
           payee_id: The vendor or company from whom merchandise or services were purchased for this
               credit card charge.
@@ -283,7 +283,7 @@ class CreditCardChargesResource(SyncAPIResource):
               include it with its `id` set to `-1`. If you do not wish to modify the item
               lines, you can omit this field entirely to keep them unchanged.
 
-          memo: A memo or note for this credit card charge, as entered by the user.
+          memo: A memo or note for this credit card charge.
 
           payee_id: The vendor or company from whom merchandise or services were purchased for this
               credit card charge.
@@ -564,7 +564,7 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
           item_lines: The credit card charge's item lines, each representing the purchase of a
               specific item or service.
 
-          memo: A memo or note for this credit card charge, as entered by the user.
+          memo: A memo or note for this credit card charge.
 
           payee_id: The vendor or company from whom merchandise or services were purchased for this
               credit card charge.
@@ -740,7 +740,7 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
               include it with its `id` set to `-1`. If you do not wish to modify the item
               lines, you can omit this field entirely to keep them unchanged.
 
-          memo: A memo or note for this credit card charge, as entered by the user.
+          memo: A memo or note for this credit card charge.
 
           payee_id: The vendor or company from whom merchandise or services were purchased for this
               credit card charge.

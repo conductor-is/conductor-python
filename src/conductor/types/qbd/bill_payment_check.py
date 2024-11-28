@@ -415,7 +415,7 @@ class BillPaymentCheck(BaseModel):
     """
 
     memo: Optional[str] = None
-    """A memo or note for this bill payment check, as entered by the user."""
+    """A memo or note for this bill payment check."""
 
     object_type: Literal["qbd_bill_payment_check"] = FieldInfo(alias="objectType")
     """The type of object. This value is always `"qbd_bill_payment_check"`."""

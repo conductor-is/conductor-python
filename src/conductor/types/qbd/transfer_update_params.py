@@ -38,7 +38,7 @@ class TransferUpdateParams(TypedDict, total=False):
     """
 
     memo: str
-    """A memo or note for this transfer, as entered by the user."""
+    """A memo or note for this transfer."""
 
     source_account_id: Annotated[str, PropertyInfo(alias="sourceAccountId")]
     """The account from which money will be transferred."""

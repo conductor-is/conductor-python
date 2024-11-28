@@ -39,4 +39,4 @@ class TransferCreateParams(TypedDict, total=False):
     """
 
     memo: str
-    """A memo or note for this transfer, as entered by the user."""
+    """A memo or note for this transfer."""

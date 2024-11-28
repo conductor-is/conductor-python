@@ -233,7 +233,7 @@ class ExpenseLine(TypedDict, total=False):
     """
 
     memo: str
-    """A memo or note for this expense line, as entered by the user."""
+    """A memo or note for this expense line."""
 
     payee_id: Annotated[str, PropertyInfo(alias="payeeId")]
     """

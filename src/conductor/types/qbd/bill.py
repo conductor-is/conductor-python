@@ -262,7 +262,7 @@ class ExpenseLine(BaseModel):
     """
 
     memo: Optional[str] = None
-    """A memo or note for this expense line, as entered by the user."""
+    """A memo or note for this expense line."""
 
     object_type: Literal["qbd_expense_line"] = FieldInfo(alias="objectType")
     """The type of object. This value is always `"qbd_expense_line"`."""
@@ -1261,10 +1261,7 @@ class Bill(BaseModel):
     """
 
     is_pending: Optional[bool] = FieldInfo(alias="isPending", default=None)
-    """Indicates whether this bill is pending approval or completion.
-
-    If `true`, the bill is in a draft state and has not been finalized.
-    """
+    """Indicates whether this bill has not been completed or is in a draft version."""
 
     item_group_lines: List[ItemGroupLine] = FieldInfo(alias="itemGroupLines")
     """
@@ -1290,9 +1287,9 @@ class Bill(BaseModel):
     """
 
     memo: Optional[str] = None
-    """A memo or note for this bill, as entered by the user.
-
-    Appears in the Accounts-Payable register and relevant reports.
+    """
+    A memo or note for this bill that appears in the Accounts-Payable register and
+    in reports that include this bill.
     """
 
     object_type: Literal["qbd_bill"] = FieldInfo(alias="objectType")

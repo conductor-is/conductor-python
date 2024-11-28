@@ -82,10 +82,7 @@ class InvoiceUpdateParams(TypedDict, total=False):
     """
 
     is_pending: Annotated[bool, PropertyInfo(alias="isPending")]
-    """Indicates whether this invoice is pending approval or completion.
-
-    If `true`, the invoice is in a draft state and has not been finalized.
-    """
+    """Indicates whether this invoice has not been completed or is in a draft version."""
 
     is_queued_for_email: Annotated[bool, PropertyInfo(alias="isQueuedForEmail")]
     """
@@ -124,10 +121,9 @@ class InvoiceUpdateParams(TypedDict, total=False):
     """
 
     memo: str
-    """A memo or note for this invoice, as entered by the user.
+    """A memo or note for this invoice that appears in reports, but not on the invoice.
 
-    This appears in reports, but not on the invoice. Use `customerMessage` to add a
-    note to the invoice.
+    Use `customerMessage` to add a note to this invoice.
     """
 
     other_custom_field: Annotated[str, PropertyInfo(alias="otherCustomField")]
@@ -187,6 +183,16 @@ class InvoiceUpdateParams(TypedDict, total=False):
     transactions by applying a specific tax rate collected for a single tax agency.
     Unlike `salesTaxCode`, which only indicates general taxability, this field
     drives the actual tax calculation and reporting.
+
+    For invoices, while using this field to specify a single tax item/group that
+    applies uniformly is recommended, complex tax scenarios may require alternative
+    approaches. In such cases, you can set this field to a 0% tax item
+    (conventionally named "Tax Calculated On Invoice") and handle tax calculations
+    through line items instead. When using line items for taxes, note that only
+    individual tax items (not tax groups) can be used, subtotals can help apply a
+    tax to multiple items but only the first tax line after a subtotal is calculated
+    automatically (subsequent tax lines require manual amounts), and the rate column
+    will always display the actual tax amount rather than the rate percentage.
     """
 
     shipment_origin: Annotated[str, PropertyInfo(alias="shipmentOrigin")]

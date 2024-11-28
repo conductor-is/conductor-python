@@ -84,7 +84,7 @@ class TransfersResource(SyncAPIResource):
               segments, such as department, location, or type of work. In QuickBooks, class
               tracking is off by default.
 
-          memo: A memo or note for this transfer, as entered by the user.
+          memo: A memo or note for this transfer.
 
           extra_headers: Send extra headers
 
@@ -193,7 +193,7 @@ class TransfersResource(SyncAPIResource):
               segments, such as department, location, or type of work. In QuickBooks, class
               tracking is off by default.
 
-          memo: A memo or note for this transfer, as entered by the user.
+          memo: A memo or note for this transfer.
 
           source_account_id: The account from which money will be transferred.
 
@@ -376,7 +376,7 @@ class AsyncTransfersResource(AsyncAPIResource):
               segments, such as department, location, or type of work. In QuickBooks, class
               tracking is off by default.
 
-          memo: A memo or note for this transfer, as entered by the user.
+          memo: A memo or note for this transfer.
 
           extra_headers: Send extra headers
 
@@ -485,7 +485,7 @@ class AsyncTransfersResource(AsyncAPIResource):
               segments, such as department, location, or type of work. In QuickBooks, class
               tracking is off by default.
 
-          memo: A memo or note for this transfer, as entered by the user.
+          memo: A memo or note for this transfer.
 
           source_account_id: The account from which money will be transferred.
 

@@ -11,6 +11,7 @@ from .invoice import Invoice as Invoice
 from .customer import Customer as Customer
 from .transfer import Transfer as Transfer
 from .service_item import ServiceItem as ServiceItem
+from .sales_receipt import SalesReceipt as SalesReceipt
 from .standard_term import StandardTerm as StandardTerm
 from .inventory_item import InventoryItem as InventoryItem
 from .inventory_site import InventorySite as InventorySite
@@ -54,6 +55,7 @@ from .bill_payment_credit_card import BillPaymentCreditCard as BillPaymentCredit
 from .service_item_list_params import ServiceItemListParams as ServiceItemListParams
 from .sales_order_create_params import SalesOrderCreateParams as SalesOrderCreateParams
 from .sales_order_update_params import SalesOrderUpdateParams as SalesOrderUpdateParams
+from .sales_receipt_list_params import SalesReceiptListParams as SalesReceiptListParams
 from .standard_term_list_params import StandardTermListParams as StandardTermListParams
 from .inventory_item_list_params import InventoryItemListParams as InventoryItemListParams
 from .inventory_site_list_params import InventorySiteListParams as InventorySiteListParams
@@ -61,6 +63,8 @@ from .sales_tax_code_list_params import SalesTaxCodeListParams as SalesTaxCodeLi
 from .sales_tax_item_list_params import SalesTaxItemListParams as SalesTaxItemListParams
 from .service_item_create_params import ServiceItemCreateParams as ServiceItemCreateParams
 from .service_item_update_params import ServiceItemUpdateParams as ServiceItemUpdateParams
+from .sales_receipt_create_params import SalesReceiptCreateParams as SalesReceiptCreateParams
+from .sales_receipt_update_params import SalesReceiptUpdateParams as SalesReceiptUpdateParams
 from .standard_term_create_params import StandardTermCreateParams as StandardTermCreateParams
 from .standard_term_list_response import StandardTermListResponse as StandardTermListResponse
 from .date_driven_term_list_params import DateDrivenTermListParams as DateDrivenTermListParams
