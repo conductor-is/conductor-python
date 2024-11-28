@@ -336,9 +336,7 @@ class CreditCardTransactionResponse(TypedDict, total=False):
     credit card transaction.
     """
 
-    transaction_authorized_at: Required[
-        Annotated[Union[str, date], PropertyInfo(alias="transactionAuthorizedAt", format="iso8601")]
-    ]
+    transaction_authorized_at: Required[Annotated[str, PropertyInfo(alias="transactionAuthorizedAt")]]
     """
     The date and time when the credit card processor authorized this credit card
     transaction.
@@ -541,9 +539,7 @@ class LineCreditCardTransactionResponse(TypedDict, total=False):
     credit card transaction.
     """
 
-    transaction_authorized_at: Required[
-        Annotated[Union[str, date], PropertyInfo(alias="transactionAuthorizedAt", format="iso8601")]
-    ]
+    transaction_authorized_at: Required[Annotated[str, PropertyInfo(alias="transactionAuthorizedAt")]]
     """
     The date and time when the credit card processor authorized this credit card
     transaction.
