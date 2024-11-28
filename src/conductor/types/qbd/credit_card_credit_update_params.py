@@ -92,7 +92,7 @@ class CreditCardCreditUpdateParams(TypedDict, total=False):
     """
 
     memo: str
-    """A memo or note for this credit card credit, as entered by the user."""
+    """A memo or note for this credit card credit."""
 
     payee_id: Annotated[str, PropertyInfo(alias="payeeId")]
     """
@@ -157,7 +157,7 @@ class ExpenseLine(TypedDict, total=False):
     """
 
     memo: str
-    """A memo or note for this expense line, as entered by the user."""
+    """A memo or note for this expense line."""
 
     payee_id: Annotated[str, PropertyInfo(alias="payeeId")]
     """

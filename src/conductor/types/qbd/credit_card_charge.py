@@ -275,7 +275,7 @@ class ExpenseLine(BaseModel):
     """
 
     memo: Optional[str] = None
-    """A memo or note for this expense line, as entered by the user."""
+    """A memo or note for this expense line."""
 
     object_type: Literal["qbd_expense_line"] = FieldInfo(alias="objectType")
     """The type of object. This value is always `"qbd_expense_line"`."""
@@ -1152,7 +1152,7 @@ class CreditCardCharge(BaseModel):
     """
 
     memo: Optional[str] = None
-    """A memo or note for this credit card charge, as entered by the user."""
+    """A memo or note for this credit card charge."""
 
     object_type: Literal["qbd_credit_card_charge"] = FieldInfo(alias="objectType")
     """The type of object. This value is always `"qbd_credit_card_charge"`."""

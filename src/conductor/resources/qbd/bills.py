@@ -130,8 +130,8 @@ class BillsResource(SyncAPIResource):
               must also specify the parameter `includeLinkedTransactions=true` to see the
               `linkedTransactions` response field.
 
-          memo: A memo or note for this bill, as entered by the user. Appears in the
-              Accounts-Payable register and relevant reports.
+          memo: A memo or note for this bill that appears in the Accounts-Payable register and
+              in reports that include this bill.
 
           payables_account_id: The Accounts-Payable (A/P) account to which this bill is assigned, used to track
               the amount owed. If not specified, QuickBooks Desktop will use its default
@@ -317,8 +317,8 @@ class BillsResource(SyncAPIResource):
               If you do not wish to modify the item lines, you can omit this field entirely to
               keep them unchanged.
 
-          memo: A memo or note for this bill, as entered by the user. Appears in the
-              Accounts-Payable register and relevant reports.
+          memo: A memo or note for this bill that appears in the Accounts-Payable register and
+              in reports that include this bill.
 
           payables_account_id: The Accounts-Payable (A/P) account to which this bill is assigned, used to track
               the amount owed. If not specified, QuickBooks Desktop will use its default
@@ -640,8 +640,8 @@ class AsyncBillsResource(AsyncAPIResource):
               must also specify the parameter `includeLinkedTransactions=true` to see the
               `linkedTransactions` response field.
 
-          memo: A memo or note for this bill, as entered by the user. Appears in the
-              Accounts-Payable register and relevant reports.
+          memo: A memo or note for this bill that appears in the Accounts-Payable register and
+              in reports that include this bill.
 
           payables_account_id: The Accounts-Payable (A/P) account to which this bill is assigned, used to track
               the amount owed. If not specified, QuickBooks Desktop will use its default
@@ -827,8 +827,8 @@ class AsyncBillsResource(AsyncAPIResource):
               If you do not wish to modify the item lines, you can omit this field entirely to
               keep them unchanged.
 
-          memo: A memo or note for this bill, as entered by the user. Appears in the
-              Accounts-Payable register and relevant reports.
+          memo: A memo or note for this bill that appears in the Accounts-Payable register and
+              in reports that include this bill.
 
           payables_account_id: The Accounts-Payable (A/P) account to which this bill is assigned, used to track
               the amount owed. If not specified, QuickBooks Desktop will use its default

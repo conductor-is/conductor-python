@@ -110,7 +110,7 @@ class BillPaymentCreditCardsResource(SyncAPIResource):
               return an error. This field is immutable and can only be set during object
               creation.
 
-          memo: A memo or note for this bill payment credit card, as entered by the user.
+          memo: A memo or note for this bill payment credit card.
 
           payables_account_id: The Accounts-Payable (A/P) account to which this bill payment credit card is
               assigned, used to track the amount owed. If not specified, QuickBooks Desktop
@@ -425,7 +425,7 @@ class AsyncBillPaymentCreditCardsResource(AsyncAPIResource):
               return an error. This field is immutable and can only be set during object
               creation.
 
-          memo: A memo or note for this bill payment credit card, as entered by the user.
+          memo: A memo or note for this bill payment credit card.
 
           payables_account_id: The Accounts-Payable (A/P) account to which this bill payment credit card is
               assigned, used to track the amount owed. If not specified, QuickBooks Desktop

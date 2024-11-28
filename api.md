@@ -362,3 +362,18 @@ Methods:
 - <code title="get /quickbooks-desktop/sales-orders/{id}">client.qbd.sales_orders.<a href="./src/conductor/resources/qbd/sales_orders.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_sales_order.py">QbdSalesOrder</a></code>
 - <code title="post /quickbooks-desktop/sales-orders/{id}">client.qbd.sales_orders.<a href="./src/conductor/resources/qbd/sales_orders.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/sales_order_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_sales_order.py">QbdSalesOrder</a></code>
 - <code title="get /quickbooks-desktop/sales-orders">client.qbd.sales_orders.<a href="./src/conductor/resources/qbd/sales_orders.py">list</a>(\*\*<a href="src/conductor/types/qbd/sales_order_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_sales_order.py">SyncCursorPage[QbdSalesOrder]</a></code>
+
+## SalesReceipts
+
+Types:
+
+```python
+from conductor.types.qbd import SalesReceipt
+```
+
+Methods:
+
+- <code title="post /quickbooks-desktop/sales-receipts">client.qbd.sales_receipts.<a href="./src/conductor/resources/qbd/sales_receipts.py">create</a>(\*\*<a href="src/conductor/types/qbd/sales_receipt_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/sales_receipt.py">SalesReceipt</a></code>
+- <code title="get /quickbooks-desktop/sales-receipts/{id}">client.qbd.sales_receipts.<a href="./src/conductor/resources/qbd/sales_receipts.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/sales_receipt.py">SalesReceipt</a></code>
+- <code title="post /quickbooks-desktop/sales-receipts/{id}">client.qbd.sales_receipts.<a href="./src/conductor/resources/qbd/sales_receipts.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/sales_receipt_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/sales_receipt.py">SalesReceipt</a></code>
+- <code title="get /quickbooks-desktop/sales-receipts">client.qbd.sales_receipts.<a href="./src/conductor/resources/qbd/sales_receipts.py">list</a>(\*\*<a href="src/conductor/types/qbd/sales_receipt_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/sales_receipt.py">SyncCursorPage[SalesReceipt]</a></code>

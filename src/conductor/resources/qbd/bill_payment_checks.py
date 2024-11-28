@@ -118,7 +118,7 @@ class BillPaymentChecksResource(SyncAPIResource):
           is_queued_for_print: Indicates whether this bill payment check is included in the queue of documents
               for QuickBooks to print.
 
-          memo: A memo or note for this bill payment check, as entered by the user.
+          memo: A memo or note for this bill payment check.
 
           payables_account_id: The Accounts-Payable (A/P) account to which this bill payment check is assigned,
               used to track the amount owed. If not specified, QuickBooks Desktop will use its
@@ -264,7 +264,7 @@ class BillPaymentChecksResource(SyncAPIResource):
           is_queued_for_print: Indicates whether this bill payment check is included in the queue of documents
               for QuickBooks to print.
 
-          memo: A memo or note for this bill payment check, as entered by the user.
+          memo: A memo or note for this bill payment check.
 
           ref_number: The case-sensitive user-defined reference number for this bill payment check,
               which can be used to identify the transaction in QuickBooks. This value is not
@@ -540,7 +540,7 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
           is_queued_for_print: Indicates whether this bill payment check is included in the queue of documents
               for QuickBooks to print.
 
-          memo: A memo or note for this bill payment check, as entered by the user.
+          memo: A memo or note for this bill payment check.
 
           payables_account_id: The Accounts-Payable (A/P) account to which this bill payment check is assigned,
               used to track the amount owed. If not specified, QuickBooks Desktop will use its
@@ -686,7 +686,7 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
           is_queued_for_print: Indicates whether this bill payment check is included in the queue of documents
               for QuickBooks to print.
 
-          memo: A memo or note for this bill payment check, as entered by the user.
+          memo: A memo or note for this bill payment check.
 
           ref_number: The case-sensitive user-defined reference number for this bill payment check,
               which can be used to identify the transaction in QuickBooks. This value is not
