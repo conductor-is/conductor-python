@@ -71,7 +71,7 @@ class BillPaymentCreditCardCreateParams(TypedDict, total=False):
     """
 
     memo: str
-    """A memo or note for this bill payment credit card, as entered by the user."""
+    """A memo or note for this bill payment credit card."""
 
     payables_account_id: Annotated[str, PropertyInfo(alias="payablesAccountId")]
     """

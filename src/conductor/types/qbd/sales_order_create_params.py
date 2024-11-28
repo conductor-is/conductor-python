@@ -113,7 +113,7 @@ class SalesOrderCreateParams(TypedDict, total=False):
     """
 
     memo: str
-    """A memo or note for this sales order, as entered by the user."""
+    """A memo or note for this sales order."""
 
     other_custom_field: Annotated[str, PropertyInfo(alias="otherCustomField")]
     """A built-in custom field for additional information specific to this sales order.

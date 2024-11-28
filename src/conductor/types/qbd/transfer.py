@@ -85,7 +85,7 @@ class Transfer(BaseModel):
     """
 
     memo: Optional[str] = None
-    """A memo or note for this transfer, as entered by the user."""
+    """A memo or note for this transfer."""
 
     object_type: Literal["qbd_transfer"] = FieldInfo(alias="objectType")
     """The type of object. This value is always `"qbd_transfer"`."""

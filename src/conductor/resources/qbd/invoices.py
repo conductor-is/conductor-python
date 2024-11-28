@@ -139,8 +139,7 @@ class InvoicesResource(SyncAPIResource):
           is_finance_charge: Whether this invoice includes a finance charge. This field is immutable and can
               only be set during invoice creation.
 
-          is_pending: Indicates whether this invoice is pending approval or completion. If `true`, the
-              invoice is in a draft state and has not been finalized.
+          is_pending: Indicates whether this invoice has not been completed or is in a draft version.
 
           is_queued_for_email: Indicates whether this invoice is included in the queue of documents for
               QuickBooks to email to the customer.
@@ -175,9 +174,8 @@ class InvoicesResource(SyncAPIResource):
               invoices, you must also specify the parameter `includeLinkedTransactions=true`
               to see the `linkedTransactions` response field.
 
-          memo: A memo or note for this invoice, as entered by the user. This appears in
-              reports, but not on the invoice. Use `customerMessage` to add a note to the
-              invoice.
+          memo: A memo or note for this invoice that appears in reports, but not on the invoice.
+              Use `customerMessage` to add a note to this invoice.
 
           other_custom_field: A built-in custom field for additional information specific to this invoice.
               Unlike the user-defined fields in the `customFields` array, this is a standard
@@ -216,6 +214,16 @@ class InvoicesResource(SyncAPIResource):
               transactions by applying a specific tax rate collected for a single tax agency.
               Unlike `salesTaxCode`, which only indicates general taxability, this field
               drives the actual tax calculation and reporting.
+
+              For invoices, while using this field to specify a single tax item/group that
+              applies uniformly is recommended, complex tax scenarios may require alternative
+              approaches. In such cases, you can set this field to a 0% tax item
+              (conventionally named "Tax Calculated On Invoice") and handle tax calculations
+              through line items instead. When using line items for taxes, note that only
+              individual tax items (not tax groups) can be used, subtotals can help apply a
+              tax to multiple items but only the first tax line after a subtotal is calculated
+              automatically (subsequent tax lines require manual amounts), and the rate column
+              will always display the actual tax amount rather than the rate percentage.
 
           shipment_origin: The origin location from where the product associated with this invoice is
               shipped. This is the point at which ownership and liability for goods transfer
@@ -410,8 +418,7 @@ class InvoicesResource(SyncAPIResource):
               in QuickBooks at the time of this transaction. Represented as a decimal value
               (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
 
-          is_pending: Indicates whether this invoice is pending approval or completion. If `true`, the
-              invoice is in a draft state and has not been finalized.
+          is_pending: Indicates whether this invoice has not been completed or is in a draft version.
 
           is_queued_for_email: Indicates whether this invoice is included in the queue of documents for
               QuickBooks to email to the customer.
@@ -438,9 +445,8 @@ class InvoicesResource(SyncAPIResource):
               set to `-1`. If you do not wish to modify the line items, you can omit this
               field entirely to keep them unchanged.
 
-          memo: A memo or note for this invoice, as entered by the user. This appears in
-              reports, but not on the invoice. Use `customerMessage` to add a note to the
-              invoice.
+          memo: A memo or note for this invoice that appears in reports, but not on the invoice.
+              Use `customerMessage` to add a note to this invoice.
 
           other_custom_field: A built-in custom field for additional information specific to this invoice.
               Unlike the user-defined fields in the `customFields` array, this is a standard
@@ -479,6 +485,16 @@ class InvoicesResource(SyncAPIResource):
               transactions by applying a specific tax rate collected for a single tax agency.
               Unlike `salesTaxCode`, which only indicates general taxability, this field
               drives the actual tax calculation and reporting.
+
+              For invoices, while using this field to specify a single tax item/group that
+              applies uniformly is recommended, complex tax scenarios may require alternative
+              approaches. In such cases, you can set this field to a 0% tax item
+              (conventionally named "Tax Calculated On Invoice") and handle tax calculations
+              through line items instead. When using line items for taxes, note that only
+              individual tax items (not tax groups) can be used, subtotals can help apply a
+              tax to multiple items but only the first tax line after a subtotal is calculated
+              automatically (subsequent tax lines require manual amounts), and the rate column
+              will always display the actual tax amount rather than the rate percentage.
 
           shipment_origin: The origin location from where the product associated with this invoice is
               shipped. This is the point at which ownership and liability for goods transfer
@@ -815,8 +831,7 @@ class AsyncInvoicesResource(AsyncAPIResource):
           is_finance_charge: Whether this invoice includes a finance charge. This field is immutable and can
               only be set during invoice creation.
 
-          is_pending: Indicates whether this invoice is pending approval or completion. If `true`, the
-              invoice is in a draft state and has not been finalized.
+          is_pending: Indicates whether this invoice has not been completed or is in a draft version.
 
           is_queued_for_email: Indicates whether this invoice is included in the queue of documents for
               QuickBooks to email to the customer.
@@ -851,9 +866,8 @@ class AsyncInvoicesResource(AsyncAPIResource):
               invoices, you must also specify the parameter `includeLinkedTransactions=true`
               to see the `linkedTransactions` response field.
 
-          memo: A memo or note for this invoice, as entered by the user. This appears in
-              reports, but not on the invoice. Use `customerMessage` to add a note to the
-              invoice.
+          memo: A memo or note for this invoice that appears in reports, but not on the invoice.
+              Use `customerMessage` to add a note to this invoice.
 
           other_custom_field: A built-in custom field for additional information specific to this invoice.
               Unlike the user-defined fields in the `customFields` array, this is a standard
@@ -892,6 +906,16 @@ class AsyncInvoicesResource(AsyncAPIResource):
               transactions by applying a specific tax rate collected for a single tax agency.
               Unlike `salesTaxCode`, which only indicates general taxability, this field
               drives the actual tax calculation and reporting.
+
+              For invoices, while using this field to specify a single tax item/group that
+              applies uniformly is recommended, complex tax scenarios may require alternative
+              approaches. In such cases, you can set this field to a 0% tax item
+              (conventionally named "Tax Calculated On Invoice") and handle tax calculations
+              through line items instead. When using line items for taxes, note that only
+              individual tax items (not tax groups) can be used, subtotals can help apply a
+              tax to multiple items but only the first tax line after a subtotal is calculated
+              automatically (subsequent tax lines require manual amounts), and the rate column
+              will always display the actual tax amount rather than the rate percentage.
 
           shipment_origin: The origin location from where the product associated with this invoice is
               shipped. This is the point at which ownership and liability for goods transfer
@@ -1086,8 +1110,7 @@ class AsyncInvoicesResource(AsyncAPIResource):
               in QuickBooks at the time of this transaction. Represented as a decimal value
               (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
 
-          is_pending: Indicates whether this invoice is pending approval or completion. If `true`, the
-              invoice is in a draft state and has not been finalized.
+          is_pending: Indicates whether this invoice has not been completed or is in a draft version.
 
           is_queued_for_email: Indicates whether this invoice is included in the queue of documents for
               QuickBooks to email to the customer.
@@ -1114,9 +1137,8 @@ class AsyncInvoicesResource(AsyncAPIResource):
               set to `-1`. If you do not wish to modify the line items, you can omit this
               field entirely to keep them unchanged.
 
-          memo: A memo or note for this invoice, as entered by the user. This appears in
-              reports, but not on the invoice. Use `customerMessage` to add a note to the
-              invoice.
+          memo: A memo or note for this invoice that appears in reports, but not on the invoice.
+              Use `customerMessage` to add a note to this invoice.
 
           other_custom_field: A built-in custom field for additional information specific to this invoice.
               Unlike the user-defined fields in the `customFields` array, this is a standard
@@ -1155,6 +1177,16 @@ class AsyncInvoicesResource(AsyncAPIResource):
               transactions by applying a specific tax rate collected for a single tax agency.
               Unlike `salesTaxCode`, which only indicates general taxability, this field
               drives the actual tax calculation and reporting.
+
+              For invoices, while using this field to specify a single tax item/group that
+              applies uniformly is recommended, complex tax scenarios may require alternative
+              approaches. In such cases, you can set this field to a 0% tax item
+              (conventionally named "Tax Calculated On Invoice") and handle tax calculations
+              through line items instead. When using line items for taxes, note that only
+              individual tax items (not tax groups) can be used, subtotals can help apply a
+              tax to multiple items but only the first tax line after a subtotal is calculated
+              automatically (subsequent tax lines require manual amounts), and the rate column
+              will always display the actual tax amount rather than the rate percentage.
 
           shipment_origin: The origin location from where the product associated with this invoice is
               shipped. This is the point at which ownership and liability for goods transfer
