@@ -210,7 +210,7 @@ class SalesTaxItemsResource(SyncAPIResource):
         Updates an existing sales-tax item.
 
         Args:
-          id: The QuickBooks-assigned unique identifier of the sales-tax item to update.
+          id: TEMP QuickBooks-assigned unique identifier of the sales-tax item to update.
 
           revision_number: The current revision number of the sales-tax item object you are updating, which
               you can get by fetching the object first. Provide the most recent
@@ -591,7 +591,7 @@ class AsyncSalesTaxItemsResource(AsyncAPIResource):
         Updates an existing sales-tax item.
 
         Args:
-          id: The QuickBooks-assigned unique identifier of the sales-tax item to update.
+          id: TEMP QuickBooks-assigned unique identifier of the sales-tax item to update.
 
           revision_number: The current revision number of the sales-tax item object you are updating, which
               you can get by fetching the object first. Provide the most recent
