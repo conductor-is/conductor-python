@@ -10,14 +10,15 @@ from .account import Account as Account
 from .invoice import Invoice as Invoice
 from .customer import Customer as Customer
 from .transfer import Transfer as Transfer
+from .sales_order import SalesOrder as SalesOrder
 from .service_item import ServiceItem as ServiceItem
 from .sales_receipt import SalesReceipt as SalesReceipt
 from .standard_term import StandardTerm as StandardTerm
 from .inventory_item import InventoryItem as InventoryItem
 from .inventory_site import InventorySite as InventorySite
+from .purchase_order import PurchaseOrder as PurchaseOrder
 from .sales_tax_code import SalesTaxCode as SalesTaxCode
 from .sales_tax_item import SalesTaxItem as SalesTaxItem
-from .qbd_sales_order import QbdSalesOrder as QbdSalesOrder
 from .bill_list_params import BillListParams as BillListParams
 from .date_driven_term import DateDrivenTerm as DateDrivenTerm
 from .check_list_params import CheckListParams as CheckListParams
@@ -28,7 +29,6 @@ from .bill_update_params import BillUpdateParams as BillUpdateParams
 from .credit_card_charge import CreditCardCharge as CreditCardCharge
 from .credit_card_credit import CreditCardCredit as CreditCardCredit
 from .non_inventory_item import NonInventoryItem as NonInventoryItem
-from .qbd_purchase_order import QbdPurchaseOrder as QbdPurchaseOrder
 from .vendor_list_params import VendorListParams as VendorListParams
 from .account_list_params import AccountListParams as AccountListParams
 from .check_create_params import CheckCreateParams as CheckCreateParams
