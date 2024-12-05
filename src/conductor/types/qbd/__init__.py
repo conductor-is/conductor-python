@@ -28,6 +28,7 @@ from .bill_update_params import BillUpdateParams as BillUpdateParams
 from .credit_card_charge import CreditCardCharge as CreditCardCharge
 from .credit_card_credit import CreditCardCredit as CreditCardCredit
 from .non_inventory_item import NonInventoryItem as NonInventoryItem
+from .qbd_purchase_order import QbdPurchaseOrder as QbdPurchaseOrder
 from .vendor_list_params import VendorListParams as VendorListParams
 from .account_list_params import AccountListParams as AccountListParams
 from .check_create_params import CheckCreateParams as CheckCreateParams
@@ -59,6 +60,7 @@ from .sales_receipt_list_params import SalesReceiptListParams as SalesReceiptLis
 from .standard_term_list_params import StandardTermListParams as StandardTermListParams
 from .inventory_item_list_params import InventoryItemListParams as InventoryItemListParams
 from .inventory_site_list_params import InventorySiteListParams as InventorySiteListParams
+from .purchase_order_list_params import PurchaseOrderListParams as PurchaseOrderListParams
 from .sales_tax_code_list_params import SalesTaxCodeListParams as SalesTaxCodeListParams
 from .sales_tax_item_list_params import SalesTaxItemListParams as SalesTaxItemListParams
 from .service_item_create_params import ServiceItemCreateParams as ServiceItemCreateParams
@@ -73,6 +75,8 @@ from .inventory_item_update_params import InventoryItemUpdateParams as Inventory
 from .inventory_site_create_params import InventorySiteCreateParams as InventorySiteCreateParams
 from .inventory_site_list_response import InventorySiteListResponse as InventorySiteListResponse
 from .inventory_site_update_params import InventorySiteUpdateParams as InventorySiteUpdateParams
+from .purchase_order_create_params import PurchaseOrderCreateParams as PurchaseOrderCreateParams
+from .purchase_order_update_params import PurchaseOrderUpdateParams as PurchaseOrderUpdateParams
 from .sales_tax_code_create_params import SalesTaxCodeCreateParams as SalesTaxCodeCreateParams
 from .sales_tax_code_list_response import SalesTaxCodeListResponse as SalesTaxCodeListResponse
 from .sales_tax_code_update_params import SalesTaxCodeUpdateParams as SalesTaxCodeUpdateParams
