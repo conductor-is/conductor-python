@@ -297,7 +297,7 @@ class InventoryItemsResource(SyncAPIResource):
         Updates an existing inventory item.
 
         Args:
-          id: The QuickBooks-assigned unique identifier of the inventory item to update.
+          id: TEMP QuickBooks-assigned unique identifier of the inventory item to update.
 
           revision_number: The current revision number of the inventory item object you are updating, which
               you can get by fetching the object first. Provide the most recent
@@ -851,7 +851,7 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
         Updates an existing inventory item.
 
         Args:
-          id: The QuickBooks-assigned unique identifier of the inventory item to update.
+          id: TEMP QuickBooks-assigned unique identifier of the inventory item to update.
 
           revision_number: The current revision number of the inventory item object you are updating, which
               you can get by fetching the object first. Provide the most recent
