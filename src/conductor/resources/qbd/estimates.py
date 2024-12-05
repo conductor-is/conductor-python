@@ -23,7 +23,7 @@ from ..._response import (
 from ...types.qbd import estimate_list_params, estimate_create_params, estimate_update_params
 from ...pagination import SyncCursorPage, AsyncCursorPage
 from ..._base_client import AsyncPaginator, make_request_options
-from ...types.qbd.qbd_estimate import QbdEstimate
+from ...types.qbd.estimate import Estimate
 
 __all__ = ["EstimatesResource", "AsyncEstimatesResource"]
 
@@ -81,7 +81,7 @@ class EstimatesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdEstimate:
+    ) -> Estimate:
         """
         Creates a new estimate.
 
@@ -216,7 +216,7 @@ class EstimatesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdEstimate,
+            cast_to=Estimate,
         )
 
     def retrieve(
@@ -230,7 +230,7 @@ class EstimatesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdEstimate:
+    ) -> Estimate:
         """
         Retrieves an estimate by ID.
 
@@ -256,7 +256,7 @@ class EstimatesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdEstimate,
+            cast_to=Estimate,
         )
 
     def update(
@@ -294,7 +294,7 @@ class EstimatesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdEstimate:
+    ) -> Estimate:
         """
         Updates an existing estimate.
 
@@ -451,7 +451,7 @@ class EstimatesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdEstimate,
+            cast_to=Estimate,
         )
 
     def list(
@@ -482,7 +482,7 @@ class EstimatesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursorPage[QbdEstimate]:
+    ) -> SyncCursorPage[Estimate]:
         """
         Returns a list of estimates.
 
@@ -570,7 +570,7 @@ class EstimatesResource(SyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/estimates",
-            page=SyncCursorPage[QbdEstimate],
+            page=SyncCursorPage[Estimate],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -600,7 +600,7 @@ class EstimatesResource(SyncAPIResource):
                     estimate_list_params.EstimateListParams,
                 ),
             ),
-            model=QbdEstimate,
+            model=Estimate,
         )
 
 
@@ -657,7 +657,7 @@ class AsyncEstimatesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdEstimate:
+    ) -> Estimate:
         """
         Creates a new estimate.
 
@@ -792,7 +792,7 @@ class AsyncEstimatesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdEstimate,
+            cast_to=Estimate,
         )
 
     async def retrieve(
@@ -806,7 +806,7 @@ class AsyncEstimatesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdEstimate:
+    ) -> Estimate:
         """
         Retrieves an estimate by ID.
 
@@ -832,7 +832,7 @@ class AsyncEstimatesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdEstimate,
+            cast_to=Estimate,
         )
 
     async def update(
@@ -870,7 +870,7 @@ class AsyncEstimatesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdEstimate:
+    ) -> Estimate:
         """
         Updates an existing estimate.
 
@@ -1027,7 +1027,7 @@ class AsyncEstimatesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdEstimate,
+            cast_to=Estimate,
         )
 
     def list(
@@ -1058,7 +1058,7 @@ class AsyncEstimatesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[QbdEstimate, AsyncCursorPage[QbdEstimate]]:
+    ) -> AsyncPaginator[Estimate, AsyncCursorPage[Estimate]]:
         """
         Returns a list of estimates.
 
@@ -1146,7 +1146,7 @@ class AsyncEstimatesResource(AsyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/estimates",
-            page=AsyncCursorPage[QbdEstimate],
+            page=AsyncCursorPage[Estimate],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1176,7 +1176,7 @@ class AsyncEstimatesResource(AsyncAPIResource):
                     estimate_list_params.EstimateListParams,
                 ),
             ),
-            model=QbdEstimate,
+            model=Estimate,
         )
 
 
