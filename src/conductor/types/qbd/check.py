@@ -577,7 +577,7 @@ class ItemGroupLineItemLine(BaseModel):
     If both `quantity` and `cost` are specified but not `amount`, QuickBooks will
     use them to calculate `amount`. If `amount`, `cost`, and `quantity` are all
     unspecified, then QuickBooks will calculate `amount` based on a `quantity` of
-    `1` and the suggested `cost`.
+    `1` and the suggested `cost`. This field cannot be cleared.
     """
 
     billing_status: Optional[Literal["billable", "has_been_billed", "not_billable"]] = FieldInfo(
@@ -668,7 +668,10 @@ class ItemGroupLineItemLine(BaseModel):
     """
 
     quantity: Optional[float] = None
-    """The quantity of the item associated with this item line."""
+    """The quantity of the item associated with this item line.
+
+    This field cannot be cleared.
+    """
 
     sales_representative: Optional[ItemGroupLineItemLineSalesRepresentative] = FieldInfo(
         alias="salesRepresentative", default=None
@@ -762,7 +765,10 @@ class ItemGroupLine(BaseModel):
     """
 
     quantity: Optional[float] = None
-    """The quantity of the item group associated with this item group line."""
+    """The quantity of the item group associated with this item group line.
+
+    This field cannot be cleared.
+    """
 
     total_amount: str = FieldInfo(alias="totalAmount")
     """
@@ -955,7 +961,7 @@ class ItemLine(BaseModel):
     If both `quantity` and `cost` are specified but not `amount`, QuickBooks will
     use them to calculate `amount`. If `amount`, `cost`, and `quantity` are all
     unspecified, then QuickBooks will calculate `amount` based on a `quantity` of
-    `1` and the suggested `cost`.
+    `1` and the suggested `cost`. This field cannot be cleared.
     """
 
     billing_status: Optional[Literal["billable", "has_been_billed", "not_billable"]] = FieldInfo(
@@ -1046,7 +1052,10 @@ class ItemLine(BaseModel):
     """
 
     quantity: Optional[float] = None
-    """The quantity of the item associated with this item line."""
+    """The quantity of the item associated with this item line.
+
+    This field cannot be cleared.
+    """
 
     sales_representative: Optional[ItemLineSalesRepresentative] = FieldInfo(alias="salesRepresentative", default=None)
     """The item line's sales representative.
