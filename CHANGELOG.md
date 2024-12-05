@@ -1,5 +1,34 @@
 # Changelog
 
+## 0.1.0-alpha.43 (2024-12-05)
+
+Full Changelog: [v0.1.0-alpha.42...v0.1.0-alpha.43](https://github.com/conductor-is/conductor-python/compare/v0.1.0-alpha.42...v0.1.0-alpha.43)
+
+### Features
+
+* **api:** api update ([#344](https://github.com/conductor-is/conductor-python/issues/344)) ([c8130ca](https://github.com/conductor-is/conductor-python/commit/c8130ca105328e54ab132660ec72db746e04e81a))
+* **api:** api update ([#345](https://github.com/conductor-is/conductor-python/issues/345)) ([1a7155e](https://github.com/conductor-is/conductor-python/commit/1a7155ea2a428aed74204f099d2be3fadfb1b181))
+* **api:** api update ([#347](https://github.com/conductor-is/conductor-python/issues/347)) ([fc1936a](https://github.com/conductor-is/conductor-python/commit/fc1936a9fb4fbc5e0d228b2dd51391e03a7916f3))
+* **api:** api update ([#348](https://github.com/conductor-is/conductor-python/issues/348)) ([021deda](https://github.com/conductor-is/conductor-python/commit/021dedacddd82e494e19f0139d2fcf79c5cd8e9f))
+* **api:** api update ([#350](https://github.com/conductor-is/conductor-python/issues/350)) ([d0a88ac](https://github.com/conductor-is/conductor-python/commit/d0a88acf951b18d4f3d37fe993dd923d76d74b3e))
+* **api:** api update ([#351](https://github.com/conductor-is/conductor-python/issues/351)) ([d05ad21](https://github.com/conductor-is/conductor-python/commit/d05ad218007d93586ac4b029d363731a30fdf42b))
+* **api:** manual updates ([#346](https://github.com/conductor-is/conductor-python/issues/346)) ([dc47c24](https://github.com/conductor-is/conductor-python/commit/dc47c24bbbccedf323f8256e53e611821a50decd))
+* **api:** manual updates ([#349](https://github.com/conductor-is/conductor-python/issues/349)) ([9b24566](https://github.com/conductor-is/conductor-python/commit/9b24566fdc13d42e2fe64489877492641da68644))
+
+
+### Bug Fixes
+
+* class member name when assigning an aliased class member to a variable ([#352](https://github.com/conductor-is/conductor-python/issues/352)) ([6d64aea](https://github.com/conductor-is/conductor-python/commit/6d64aead8abf19b73141daec0a353728f77276b6))
+* **client:** compat with new httpx 0.28.0 release ([#340](https://github.com/conductor-is/conductor-python/issues/340)) ([6284bae](https://github.com/conductor-is/conductor-python/commit/6284bae815d3edf486c329df7f9eddc3a7506270))
+
+
+### Chores
+
+* **internal:** bump pyright ([#342](https://github.com/conductor-is/conductor-python/issues/342)) ([c7009ef](https://github.com/conductor-is/conductor-python/commit/c7009ef01f37a58ff61c60aad1aa2fd2a94afbf3))
+* **internal:** codegen related update ([#341](https://github.com/conductor-is/conductor-python/issues/341)) ([f200bd6](https://github.com/conductor-is/conductor-python/commit/f200bd60624333847a3cfd73901faeb8cdd6f3e0))
+* **internal:** exclude mypy from running on tests ([#338](https://github.com/conductor-is/conductor-python/issues/338)) ([da09201](https://github.com/conductor-is/conductor-python/commit/da092012888f76eb49181385afc2f1d590b7a335))
+* make the `Omit` type public ([#343](https://github.com/conductor-is/conductor-python/issues/343)) ([1d2b41f](https://github.com/conductor-is/conductor-python/commit/1d2b41f49db44f666b1713fcd9744fe0f4eb00bc))
+
 ## 0.1.0-alpha.42 (2024-11-28)
 
 Full Changelog: [v0.1.0-alpha.41...v0.1.0-alpha.42](https://github.com/conductor-is/conductor-python/compare/v0.1.0-alpha.41...v0.1.0-alpha.42)
