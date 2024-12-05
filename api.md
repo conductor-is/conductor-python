@@ -184,6 +184,21 @@ Methods:
 - <code title="get /quickbooks-desktop/date-driven-terms/{id}">client.qbd.date_driven_terms.<a href="./src/conductor/resources/qbd/date_driven_terms.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/date_driven_term.py">DateDrivenTerm</a></code>
 - <code title="get /quickbooks-desktop/date-driven-terms">client.qbd.date_driven_terms.<a href="./src/conductor/resources/qbd/date_driven_terms.py">list</a>(\*\*<a href="src/conductor/types/qbd/date_driven_term_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/date_driven_term_list_response.py">DateDrivenTermListResponse</a></code>
 
+## Estimates
+
+Types:
+
+```python
+from conductor.types.qbd import Estimate
+```
+
+Methods:
+
+- <code title="post /quickbooks-desktop/estimates">client.qbd.estimates.<a href="./src/conductor/resources/qbd/estimates.py">create</a>(\*\*<a href="src/conductor/types/qbd/estimate_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/estimate.py">Estimate</a></code>
+- <code title="get /quickbooks-desktop/estimates/{id}">client.qbd.estimates.<a href="./src/conductor/resources/qbd/estimates.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/estimate.py">Estimate</a></code>
+- <code title="post /quickbooks-desktop/estimates/{id}">client.qbd.estimates.<a href="./src/conductor/resources/qbd/estimates.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/estimate_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/estimate.py">Estimate</a></code>
+- <code title="get /quickbooks-desktop/estimates">client.qbd.estimates.<a href="./src/conductor/resources/qbd/estimates.py">list</a>(\*\*<a href="src/conductor/types/qbd/estimate_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/estimate.py">SyncCursorPage[Estimate]</a></code>
+
 ## InventoryAssemblyItems
 
 Types:
@@ -392,18 +407,3 @@ Methods:
 - <code title="get /quickbooks-desktop/vendors/{id}">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/vendor.py">Vendor</a></code>
 - <code title="post /quickbooks-desktop/vendors/{id}">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/vendor_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/vendor.py">Vendor</a></code>
 - <code title="get /quickbooks-desktop/vendors">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">list</a>(\*\*<a href="src/conductor/types/qbd/vendor_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/vendor.py">SyncCursorPage[Vendor]</a></code>
-
-## Estimates
-
-Types:
-
-```python
-from conductor.types.qbd import QbdEstimate
-```
-
-Methods:
-
-- <code title="post /quickbooks-desktop/estimates">client.qbd.estimates.<a href="./src/conductor/resources/qbd/estimates.py">create</a>(\*\*<a href="src/conductor/types/qbd/estimate_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_estimate.py">QbdEstimate</a></code>
-- <code title="get /quickbooks-desktop/estimates/{id}">client.qbd.estimates.<a href="./src/conductor/resources/qbd/estimates.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_estimate.py">QbdEstimate</a></code>
-- <code title="post /quickbooks-desktop/estimates/{id}">client.qbd.estimates.<a href="./src/conductor/resources/qbd/estimates.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/estimate_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_estimate.py">QbdEstimate</a></code>
-- <code title="get /quickbooks-desktop/estimates">client.qbd.estimates.<a href="./src/conductor/resources/qbd/estimates.py">list</a>(\*\*<a href="src/conductor/types/qbd/estimate_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_estimate.py">SyncCursorPage[QbdEstimate]</a></code>
