@@ -574,7 +574,7 @@ class SalesReceiptsResource(SyncAPIResource):
               `limit` parameter. Retrieve this value from the `nextCursor` field in the
               previous response. If omitted, the API returns the first page of results.
 
-          customer_ids: Filter for sales receipts for these customers.
+          customer_ids: Filter for sales receipts created for these customers.
 
           ids: Filter for specific sales receipts by their QuickBooks-assigned unique
               identifier(s).
@@ -1223,7 +1223,7 @@ class AsyncSalesReceiptsResource(AsyncAPIResource):
               `limit` parameter. Retrieve this value from the `nextCursor` field in the
               previous response. If omitted, the API returns the first page of results.
 
-          customer_ids: Filter for sales receipts for these customers.
+          customer_ids: Filter for sales receipts created for these customers.
 
           ids: Filter for specific sales receipts by their QuickBooks-assigned unique
               identifier(s).

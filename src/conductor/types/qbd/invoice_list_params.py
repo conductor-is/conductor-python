@@ -32,7 +32,7 @@ class InvoiceListParams(TypedDict, total=False):
     """
 
     customer_ids: Annotated[List[str], PropertyInfo(alias="customerIds")]
-    """Filter for invoices for these customers."""
+    """Filter for invoices created for these customers."""
 
     ids: List[str]
     """Filter for specific invoices by their QuickBooks-assigned unique identifier(s).

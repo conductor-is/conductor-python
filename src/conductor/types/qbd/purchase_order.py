@@ -383,7 +383,10 @@ class LineGroupLine(BaseModel):
     is_manually_closed: Optional[bool] = FieldInfo(alias="isManuallyClosed", default=None)
     """
     Indicates whether this purchase order line has been manually marked as closed,
-    even if it has not been invoiced.
+    even if this item has not been received or its sale has not been cancelled. If
+    all the purchase order lines are marked as closed, the purchase order itself is
+    marked as closed as well. You cannot change `isManuallyClosed` to `false` after
+    the purchase order line has been fully received.
     """
 
     item: Optional[LineGroupLineItem] = None
@@ -751,7 +754,10 @@ class Line(BaseModel):
     is_manually_closed: Optional[bool] = FieldInfo(alias="isManuallyClosed", default=None)
     """
     Indicates whether this purchase order line has been manually marked as closed,
-    even if it has not been invoiced.
+    even if this item has not been received or its sale has not been cancelled. If
+    all the purchase order lines are marked as closed, the purchase order itself is
+    marked as closed as well. You cannot change `isManuallyClosed` to `false` after
+    the purchase order line has been fully received.
     """
 
     item: Optional[LineItem] = None
@@ -1160,7 +1166,10 @@ class PurchaseOrder(BaseModel):
     is_manually_closed: Optional[bool] = FieldInfo(alias="isManuallyClosed", default=None)
     """
     Indicates whether this purchase order has been manually marked as closed, even
-    if it has not been invoiced.
+    if all items have not been received or the sale has not been cancelled. Once the
+    purchase order is marked as closed, all of its line items become closed as well.
+    You cannot change `isManuallyClosed` to `false` after the purchase order has
+    been fully received.
     """
 
     is_queued_for_email: Optional[bool] = FieldInfo(alias="isQueuedForEmail", default=None)
