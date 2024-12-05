@@ -11,6 +11,7 @@ from .invoice import Invoice as Invoice
 from .customer import Customer as Customer
 from .transfer import Transfer as Transfer
 from .sales_order import SalesOrder as SalesOrder
+from .qbd_estimate import QbdEstimate as QbdEstimate
 from .service_item import ServiceItem as ServiceItem
 from .sales_receipt import SalesReceipt as SalesReceipt
 from .standard_term import StandardTerm as StandardTerm
@@ -38,6 +39,7 @@ from .class_list_response import ClassListResponse as ClassListResponse
 from .class_update_params import ClassUpdateParams as ClassUpdateParams
 from .invoice_list_params import InvoiceListParams as InvoiceListParams
 from .customer_list_params import CustomerListParams as CustomerListParams
+from .estimate_list_params import EstimateListParams as EstimateListParams
 from .transfer_list_params import TransferListParams as TransferListParams
 from .vendor_create_params import VendorCreateParams as VendorCreateParams
 from .vendor_update_params import VendorUpdateParams as VendorUpdateParams
@@ -48,6 +50,8 @@ from .invoice_create_params import InvoiceCreateParams as InvoiceCreateParams
 from .invoice_update_params import InvoiceUpdateParams as InvoiceUpdateParams
 from .customer_create_params import CustomerCreateParams as CustomerCreateParams
 from .customer_update_params import CustomerUpdateParams as CustomerUpdateParams
+from .estimate_create_params import EstimateCreateParams as EstimateCreateParams
+from .estimate_update_params import EstimateUpdateParams as EstimateUpdateParams
 from .transfer_create_params import TransferCreateParams as TransferCreateParams
 from .transfer_update_params import TransferUpdateParams as TransferUpdateParams
 from .inventory_assembly_item import InventoryAssemblyItem as InventoryAssemblyItem

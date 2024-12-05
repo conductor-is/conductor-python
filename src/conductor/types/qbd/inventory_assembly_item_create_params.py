@@ -189,4 +189,7 @@ class Line(TypedDict, total=False):
     """The inventory item associated with this inventory assembly item line."""
 
     quantity: float
-    """The quantity of the item associated with this inventory assembly item line."""
+    """The quantity of the item associated with this inventory assembly item line.
+
+    This field cannot be cleared.
+    """

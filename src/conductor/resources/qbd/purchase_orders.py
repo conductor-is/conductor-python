@@ -142,7 +142,8 @@ class PurchaseOrdersResource(SyncAPIResource):
               **IMPORTANT**: You must specify `lines`, `lineGroups`, or both when creating a
               purchase order.
 
-          memo: A memo or note for this purchase order.
+          memo: A memo or note for this purchase order that appears in reports, but not on the
+              purchase order.
 
           other_custom_field1: A built-in custom field for additional information specific to this purchase
               order. Unlike the user-defined fields in the `customFields` array, this is a
@@ -384,7 +385,8 @@ class PurchaseOrdersResource(SyncAPIResource):
               include it with its `id` set to `-1`. If you do not wish to modify the line
               items, you can omit this field entirely to keep them unchanged.
 
-          memo: A memo or note for this purchase order.
+          memo: A memo or note for this purchase order that appears in reports, but not on the
+              purchase order.
 
           other_custom_field1: A built-in custom field for additional information specific to this purchase
               order. Unlike the user-defined fields in the `customFields` array, this is a
@@ -752,7 +754,8 @@ class AsyncPurchaseOrdersResource(AsyncAPIResource):
               **IMPORTANT**: You must specify `lines`, `lineGroups`, or both when creating a
               purchase order.
 
-          memo: A memo or note for this purchase order.
+          memo: A memo or note for this purchase order that appears in reports, but not on the
+              purchase order.
 
           other_custom_field1: A built-in custom field for additional information specific to this purchase
               order. Unlike the user-defined fields in the `customFields` array, this is a
@@ -994,7 +997,8 @@ class AsyncPurchaseOrdersResource(AsyncAPIResource):
               include it with its `id` set to `-1`. If you do not wish to modify the line
               items, you can omit this field entirely to keep them unchanged.
 
-          memo: A memo or note for this purchase order.
+          memo: A memo or note for this purchase order that appears in reports, but not on the
+              purchase order.
 
           other_custom_field1: A built-in custom field for additional information specific to this purchase
               order. Unlike the user-defined fields in the `customFields` array, this is a
