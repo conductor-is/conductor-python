@@ -9,7 +9,7 @@ from typing_extensions import Literal, Required, Annotated, TypedDict
 from ..._utils import PropertyInfo
 
 __all__ = [
-    "SalesOrderCreateParams",
+    "EstimateCreateParams",
     "BillingAddress",
     "LineGroup",
     "LineGroupCustomField",
@@ -19,12 +19,12 @@ __all__ = [
 ]
 
 
-class SalesOrderCreateParams(TypedDict, total=False):
+class EstimateCreateParams(TypedDict, total=False):
     customer_id: Required[Annotated[str, PropertyInfo(alias="customerId")]]
-    """The customer or customer-job associated with this sales order."""
+    """The customer or customer-job associated with this estimate."""
 
     transaction_date: Required[Annotated[Union[str, date], PropertyInfo(alias="transactionDate", format="iso8601")]]
-    """The date of this sales order, in ISO 8601 format (YYYY-MM-DD)."""
+    """The date of this estimate, in ISO 8601 format (YYYY-MM-DD)."""
 
     conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]
     """
@@ -33,37 +33,34 @@ class SalesOrderCreateParams(TypedDict, total=False):
     """
 
     billing_address: Annotated[BillingAddress, PropertyInfo(alias="billingAddress")]
-    """The sales order's billing address."""
+    """The estimate's billing address."""
 
     class_id: Annotated[str, PropertyInfo(alias="classId")]
-    """The sales order's class.
+    """The estimate's class.
 
     Classes can be used to categorize objects into meaningful segments, such as
     department, location, or type of work. In QuickBooks, class tracking is off by
-    default. A class defined here is automatically used in this sales order's line
+    default. A class defined here is automatically used in this estimate's line
     items unless overridden at the line item level.
     """
 
     customer_message_id: Annotated[str, PropertyInfo(alias="customerMessageId")]
-    """The message to display to the customer on the sales order."""
+    """The message to display to the customer on the estimate."""
 
     document_template_id: Annotated[str, PropertyInfo(alias="documentTemplateId")]
     """
     The predefined template in QuickBooks that determines the layout and formatting
-    for this sales order when printed or displayed.
+    for this estimate when printed or displayed.
     """
 
     due_date: Annotated[Union[str, date], PropertyInfo(alias="dueDate", format="iso8601")]
-    """
-    The date by which this sales order must be paid, in ISO 8601 format
-    (YYYY-MM-DD).
-    """
+    """The date by which this estimate must be paid, in ISO 8601 format (YYYY-MM-DD)."""
 
     exchange_rate: Annotated[float, PropertyInfo(alias="exchangeRate")]
     """
-    The market exchange rate between this sales order's currency and the home
-    currency in QuickBooks at the time of this transaction. Represented as a decimal
-    value (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
+    The market exchange rate between this estimate's currency and the home currency
+    in QuickBooks at the time of this transaction. Represented as a decimal value
+    (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
     """
 
     external_id: Annotated[str, PropertyInfo(alias="externalId")]
@@ -76,88 +73,69 @@ class SalesOrderCreateParams(TypedDict, total=False):
     creation.
     """
 
-    is_manually_closed: Annotated[bool, PropertyInfo(alias="isManuallyClosed")]
-    """
-    Indicates whether this sales order has been manually marked as closed, even if
-    it has not been invoiced.
+    is_active: Annotated[bool, PropertyInfo(alias="isActive")]
+    """Indicates whether this estimate is active.
+
+    Inactive objects are typically hidden from views and reports in QuickBooks.
     """
 
     is_queued_for_email: Annotated[bool, PropertyInfo(alias="isQueuedForEmail")]
     """
-    Indicates whether this sales order is included in the queue of documents for
+    Indicates whether this estimate is included in the queue of documents for
     QuickBooks to email to the customer.
-    """
-
-    is_queued_for_print: Annotated[bool, PropertyInfo(alias="isQueuedForPrint")]
-    """
-    Indicates whether this sales order is included in the queue of documents for
-    QuickBooks to print.
     """
 
     line_groups: Annotated[Iterable[LineGroup], PropertyInfo(alias="lineGroups")]
     """
-    The sales order's line item groups, each representing a predefined set of
-    related items.
-
-    **IMPORTANT**: You must specify `lines`, `lineGroups`, or both when creating a
-    sales order.
+    The estimate's line item groups, each representing a predefined set of related
+    items.
     """
 
     lines: Iterable[Line]
     """
-    The sales order's line items, each representing a single product or service
-    ordered.
-
-    **IMPORTANT**: You must specify `lines`, `lineGroups`, or both when creating a
-    sales order.
+    The estimate's line items, each representing a single product or service quoted.
     """
 
     memo: str
-    """A memo or note for this sales order."""
+    """
+    A memo or note for this estimate that appears in reports, but not on the
+    estimate. Use `customerMessage` to add a note to this estimate.
+    """
 
     other_custom_field: Annotated[str, PropertyInfo(alias="otherCustomField")]
-    """A built-in custom field for additional information specific to this sales order.
+    """A built-in custom field for additional information specific to this estimate.
 
     Unlike the user-defined fields in the `customFields` array, this is a standard
-    QuickBooks field that exists for all sales orders for convenience. Developers
-    often use this field for tracking information that doesn't fit into other
-    standard QuickBooks fields. Unlike `otherCustomField1` and `otherCustomField2`,
-    which are line item fields, this exists at the transaction level. Hidden by
-    default in the QuickBooks UI.
+    QuickBooks field that exists for all estimates for convenience. Developers often
+    use this field for tracking information that doesn't fit into other standard
+    QuickBooks fields. Unlike `otherCustomField1` and `otherCustomField2`, which are
+    line item fields, this exists at the transaction level. Hidden by default in the
+    QuickBooks UI.
     """
 
     purchase_order_number: Annotated[str, PropertyInfo(alias="purchaseOrderNumber")]
-    """The customer's Purchase Order (PO) number associated with this sales order.
+    """The customer's Purchase Order (PO) number associated with this estimate.
 
-    This field is often used to cross-reference the sales order with the customer's
+    This field is often used to cross-reference the estimate with the customer's
     purchasing system.
     """
 
     ref_number: Annotated[str, PropertyInfo(alias="refNumber")]
     """
-    The case-sensitive user-defined reference number for this sales order, which can
-    be used to identify the transaction in QuickBooks. This value is not required to
-    be unique and can be arbitrarily changed by the QuickBooks user.
+    The case-sensitive user-defined reference number for this estimate, which can be
+    used to identify the transaction in QuickBooks. This value is not required to be
+    unique and can be arbitrarily changed by the QuickBooks user.
     """
 
-    sales_channel_name: Annotated[Literal["blank", "ecommerce"], PropertyInfo(alias="salesChannelName")]
-    """The type of the sales channel for this sales order."""
-
     sales_representative_id: Annotated[str, PropertyInfo(alias="salesRepresentativeId")]
-    """The sales order's sales representative.
+    """The estimate's sales representative.
 
     Sales representatives can be employees, vendors, or other names in QuickBooks.
     """
 
-    sales_store_name: Annotated[str, PropertyInfo(alias="salesStoreName")]
-    """The name of the sales store for this sales order."""
-
-    sales_store_type: Annotated[str, PropertyInfo(alias="salesStoreType")]
-    """The type of the sales store for this sales order."""
-
     sales_tax_code_id: Annotated[str, PropertyInfo(alias="salesTaxCodeId")]
     """
-    The sales-tax code for items sold to the `customer` of this sales order,
+    The sales-tax code for items sold to the `customer` of this estimate,
     determining whether items sold to this customer are taxable or non-taxable.
     Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
     can also be created in QuickBooks. If QuickBooks is not set up to charge sales
@@ -167,15 +145,15 @@ class SalesOrderCreateParams(TypedDict, total=False):
 
     sales_tax_item_id: Annotated[str, PropertyInfo(alias="salesTaxItemId")]
     """
-    The sales-tax item used to calculate the actual tax amount for this sales
-    order's transactions by applying a specific tax rate collected for a single tax
-    agency. Unlike `salesTaxCode`, which only indicates general taxability, this
-    field drives the actual tax calculation and reporting.
+    The sales-tax item used to calculate the actual tax amount for this estimate's
+    transactions by applying a specific tax rate collected for a single tax agency.
+    Unlike `salesTaxCode`, which only indicates general taxability, this field
+    drives the actual tax calculation and reporting.
     """
 
     shipment_origin: Annotated[str, PropertyInfo(alias="shipmentOrigin")]
     """
-    The origin location from where the product associated with this sales order is
+    The origin location from where the product associated with this estimate is
     shipped. This is the point at which ownership and liability for goods transfer
     from seller to buyer. Internally, QuickBooks uses the term "FOB" for this field,
     which stands for "freight on board". This field is informational and has no
@@ -183,23 +161,11 @@ class SalesOrderCreateParams(TypedDict, total=False):
     """
 
     shipping_address: Annotated[ShippingAddress, PropertyInfo(alias="shippingAddress")]
-    """The sales order's shipping address."""
-
-    shipping_date: Annotated[Union[str, date], PropertyInfo(alias="shippingDate", format="iso8601")]
-    """
-    The date when the products or services for this sales order were shipped or are
-    expected to be shipped, in ISO 8601 format (YYYY-MM-DD).
-    """
-
-    shipping_method_id: Annotated[str, PropertyInfo(alias="shippingMethodId")]
-    """
-    The shipping method used for this sales order, such as standard mail or
-    overnight delivery.
-    """
+    """The estimate's shipping address."""
 
     terms_id: Annotated[str, PropertyInfo(alias="termsId")]
     """
-    The sales order's payment terms, defining when payment is due and any applicable
+    The estimate's payment terms, defining when payment is due and any applicable
     discounts.
     """
 
@@ -270,37 +236,37 @@ class LineGroupCustomField(TypedDict, total=False):
 class LineGroup(TypedDict, total=False):
     item_group_id: Required[Annotated[str, PropertyInfo(alias="itemGroupId")]]
     """
-    The sales order line group's item group, representing a predefined set of items
+    The estimate line group's item group, representing a predefined set of items
     bundled because they are commonly purchased together or grouped for faster
     entry.
     """
 
     custom_fields: Annotated[Iterable[LineGroupCustomField], PropertyInfo(alias="customFields")]
     """
-    The custom fields for the sales order line group object, added as user-defined
-    data extensions, not included in the standard QuickBooks object.
+    The custom fields for the estimate line group object, added as user-defined data
+    extensions, not included in the standard QuickBooks object.
     """
 
     inventory_site_id: Annotated[str, PropertyInfo(alias="inventorySiteId")]
     """
-    The site location where inventory for the item group associated with this sales
-    order line group is stored.
+    The site location where inventory for the item group associated with this
+    estimate line group is stored.
     """
 
     inventory_site_location_id: Annotated[str, PropertyInfo(alias="inventorySiteLocationId")]
     """
     The specific location (e.g., bin or shelf) within the inventory site where the
-    item group associated with this sales order line group is stored.
+    item group associated with this estimate line group is stored.
     """
 
     quantity: float
-    """The quantity of the item group associated with this sales order line group.
+    """The quantity of the item group associated with this estimate line group.
 
     This field cannot be cleared.
     """
 
     unit_of_measure: Annotated[str, PropertyInfo(alias="unitOfMeasure")]
-    """The unit-of-measure used for the `quantity` in this sales order line group.
+    """The unit-of-measure used for the `quantity` in this estimate line group.
 
     Must be a valid unit within the item's available units of measure.
     """
@@ -333,7 +299,7 @@ class LineCustomField(TypedDict, total=False):
 
 class Line(TypedDict, total=False):
     amount: str
-    """The monetary amount of this sales order line, represented as a decimal string.
+    """The monetary amount of this estimate line, represented as a decimal string.
 
     If both `quantity` and `rate` are specified but not `amount`, QuickBooks will
     use them to calculate `amount`. If `amount`, `rate`, and `quantity` are all
@@ -342,82 +308,88 @@ class Line(TypedDict, total=False):
     """
 
     class_id: Annotated[str, PropertyInfo(alias="classId")]
-    """The sales order line's class.
+    """The estimate line's class.
 
     Classes can be used to categorize objects into meaningful segments, such as
     department, location, or type of work. In QuickBooks, class tracking is off by
     default. If a class is specified for the entire parent transaction, it is
-    automatically applied to all sales order lines unless overridden here, at the
+    automatically applied to all estimate lines unless overridden here, at the
     transaction line level.
     """
 
     custom_fields: Annotated[Iterable[LineCustomField], PropertyInfo(alias="customFields")]
     """
-    The custom fields for the sales order line object, added as user-defined data
+    The custom fields for the estimate line object, added as user-defined data
     extensions, not included in the standard QuickBooks object.
     """
 
     description: str
-    """A description of this sales order line."""
+    """A description of this estimate line."""
 
     inventory_site_id: Annotated[str, PropertyInfo(alias="inventorySiteId")]
     """
-    The site location where inventory for the item associated with this sales order
+    The site location where inventory for the item associated with this estimate
     line is stored.
     """
 
     inventory_site_location_id: Annotated[str, PropertyInfo(alias="inventorySiteLocationId")]
     """
     The specific location (e.g., bin or shelf) within the inventory site where the
-    item associated with this sales order line is stored.
-    """
-
-    is_manually_closed: Annotated[bool, PropertyInfo(alias="isManuallyClosed")]
-    """
-    Indicates whether this sales order line has been manually marked as closed, even
-    if it has not been invoiced.
+    item associated with this estimate line is stored.
     """
 
     item_id: Annotated[str, PropertyInfo(alias="itemId")]
-    """The item associated with this sales order line.
+    """The item associated with this estimate line.
 
     This can refer to any good or service that the business buys or sells, including
     item types such as a service item, inventory item, or special calculation item
     like a discount item or sales-tax item.
     """
 
-    lot_number: Annotated[str, PropertyInfo(alias="lotNumber")]
-    """The lot number of the item associated with this sales order line.
+    markup_rate: Annotated[str, PropertyInfo(alias="markupRate")]
+    """
+    The markup that will be passed on to the customer for this item on this estimate
+    line. `amount = (quantity * rate) * (1 + markupRate)`
+    """
 
-    Used for tracking groups of inventory items that are purchased or manufactured
-    together.
+    markup_rate_percent: Annotated[str, PropertyInfo(alias="markupRatePercent")]
+    """
+    The markup, expressed as a percentage, that will be passed on to the customer
+    for this item on this estimate line.
+    `amount = (quantity * rate) * (1 + markupRatePercent/100)`
     """
 
     other_custom_field1: Annotated[str, PropertyInfo(alias="otherCustomField1")]
     """
-    A built-in custom field for additional information specific to this sales order
+    A built-in custom field for additional information specific to this estimate
     line. Unlike the user-defined fields in the `customFields` array, this is a
-    standard QuickBooks field that exists for all sales order lines for convenience.
+    standard QuickBooks field that exists for all estimate lines for convenience.
     Developers often use this field for tracking information that doesn't fit into
     other standard QuickBooks fields. Hidden by default in the QuickBooks UI.
     """
 
     other_custom_field2: Annotated[str, PropertyInfo(alias="otherCustomField2")]
     """
-    A second built-in custom field for additional information specific to this sales
-    order line. Unlike the user-defined fields in the `customFields` array, this is
-    a standard QuickBooks field that exists for all sales order lines for
+    A second built-in custom field for additional information specific to this
+    estimate line. Unlike the user-defined fields in the `customFields` array, this
+    is a standard QuickBooks field that exists for all estimate lines for
     convenience. Like `otherCustomField1`, developers often use this field for
     tracking information that doesn't fit into other standard QuickBooks fields.
     Hidden by default in the QuickBooks UI.
     """
 
+    override_item_account_id: Annotated[str, PropertyInfo(alias="overrideItemAccountId")]
+    """
+    The account to use for this estimate line, overriding the default account
+    associated with the item.
+    """
+
     price_level_id: Annotated[str, PropertyInfo(alias="priceLevelId")]
-    """The price level applied to this sales order line.
+    """The price level applied to this estimate line.
 
     This overrides any price level set on the corresponding customer. The resulting
-    sales order line will not show this price level, only the final `rate`
-    calculated from it.
+    estimate line will not show this price level, only the final `rate` calculated
+    from it.
     """
 
     price_rule_conflict_strategy: Annotated[
@@ -425,17 +397,17 @@ class Line(TypedDict, total=False):
     ]
     """
     Specifies how to resolve price rule conflicts when adding or modifying this
-    sales order line.
+    estimate line.
     """
 
     quantity: float
-    """The quantity of the item associated with this sales order line.
+    """The quantity of the item associated with this estimate line.
 
     This field cannot be cleared.
     """
 
     rate: str
-    """The price per unit for this sales order line.
+    """The price per unit for this estimate line.
 
     If both `rate` and `amount` are specified, `rate` will be ignored. If both
     `quantity` and `amount` are specified but not `rate`, QuickBooks will use them
@@ -444,30 +416,24 @@ class Line(TypedDict, total=False):
     """
 
     rate_percent: Annotated[str, PropertyInfo(alias="ratePercent")]
-    """The price of this sales order line expressed as a percentage.
+    """The price of this estimate line expressed as a percentage.
 
     Typically used for discount or markup items.
     """
 
     sales_tax_code_id: Annotated[str, PropertyInfo(alias="salesTaxCodeId")]
     """
-    The sales-tax code associated with this sales order line, determining whether
-    items sold to this customer are taxable or non-taxable. It's used to assign a
-    default tax status to all transactions for this sales order line. Default codes
-    include "Non" (non-taxable) and "Tax" (taxable), but custom codes can also be
-    created in QuickBooks. If QuickBooks is not set up to charge sales tax (via the
-    "Do You Charge Sales Tax?" preference), it will assign the default non-taxable
-    code to all sales.
-    """
-
-    serial_number: Annotated[str, PropertyInfo(alias="serialNumber")]
-    """The serial number of the item associated with this sales order line.
-
-    This is used for tracking individual units of serialized inventory items.
+    The sales-tax code associated with this estimate line, determining whether items
+    sold to this customer are taxable or non-taxable. It's used to assign a default
+    tax status to all transactions for this estimate line. Default codes include
+    "Non" (non-taxable) and "Tax" (taxable), but custom codes can also be created in
+    QuickBooks. If QuickBooks is not set up to charge sales tax (via the "Do You
+    Charge Sales Tax?" preference), it will assign the default non-taxable code to
+    all sales.
     """
 
     unit_of_measure: Annotated[str, PropertyInfo(alias="unitOfMeasure")]
-    """The unit-of-measure used for the `quantity` in this sales order line.
+    """The unit-of-measure used for the `quantity` in this estimate line.
 
     Must be a valid unit within the item's available units of measure.
     """

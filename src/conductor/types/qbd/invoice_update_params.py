@@ -296,7 +296,7 @@ class LineGroupLine(TypedDict, total=False):
     If both `quantity` and `rate` are specified but not `amount`, QuickBooks will
     use them to calculate `amount`. If `amount`, `rate`, and `quantity` are all
     unspecified, then QuickBooks will calculate `amount` based on a `quantity` of
-    `1` and the suggested `rate`.
+    `1` and the suggested `rate`. This field cannot be cleared.
     """
 
     class_id: Annotated[str, PropertyInfo(alias="classId")]
@@ -393,14 +393,18 @@ class LineGroupLine(TypedDict, total=False):
     """
 
     quantity: float
-    """The quantity of the item associated with this invoice line."""
+    """The quantity of the item associated with this invoice line.
+
+    This field cannot be cleared.
+    """
 
     rate: str
     """The price per unit for this invoice line.
 
     If both `rate` and `amount` are specified, `rate` will be ignored. If both
     `quantity` and `amount` are specified but not `rate`, QuickBooks will use them
-    to calculate `rate`. Represented as a decimal string.
+    to calculate `rate`. Represented as a decimal string. This field cannot be
+    cleared.
     """
 
     rate_percent: Annotated[str, PropertyInfo(alias="ratePercent")]
@@ -478,7 +482,10 @@ class LineGroup(TypedDict, total=False):
     """
 
     quantity: float
-    """The quantity of the item group associated with this invoice line group."""
+    """The quantity of the item group associated with this invoice line group.
+
+    This field cannot be cleared.
+    """
 
     unit_of_measure: Annotated[str, PropertyInfo(alias="unitOfMeasure")]
     """The unit-of-measure used for the `quantity` in this invoice line group.
@@ -501,7 +508,7 @@ class Line(TypedDict, total=False):
     If both `quantity` and `rate` are specified but not `amount`, QuickBooks will
     use them to calculate `amount`. If `amount`, `rate`, and `quantity` are all
     unspecified, then QuickBooks will calculate `amount` based on a `quantity` of
-    `1` and the suggested `rate`.
+    `1` and the suggested `rate`. This field cannot be cleared.
     """
 
     class_id: Annotated[str, PropertyInfo(alias="classId")]
@@ -598,14 +605,18 @@ class Line(TypedDict, total=False):
     """
 
     quantity: float
-    """The quantity of the item associated with this invoice line."""
+    """The quantity of the item associated with this invoice line.
+
+    This field cannot be cleared.
+    """
 
     rate: str
     """The price per unit for this invoice line.
 
     If both `rate` and `amount` are specified, `rate` will be ignored. If both
     `quantity` and `amount` are specified but not `rate`, QuickBooks will use them
-    to calculate `rate`. Represented as a decimal string.
+    to calculate `rate`. Represented as a decimal string. This field cannot be
+    cleared.
     """
 
     rate_percent: Annotated[str, PropertyInfo(alias="ratePercent")]

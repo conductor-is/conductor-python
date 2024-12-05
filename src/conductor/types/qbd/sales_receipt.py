@@ -568,7 +568,7 @@ class LineGroupLine(BaseModel):
     If both `quantity` and `rate` are specified but not `amount`, QuickBooks will
     use them to calculate `amount`. If `amount`, `rate`, and `quantity` are all
     unspecified, then QuickBooks will calculate `amount` based on a `quantity` of
-    `1` and the suggested `rate`.
+    `1` and the suggested `rate`. This field cannot be cleared.
     """
 
     class_: Optional[LineGroupLineClass] = FieldInfo(alias="class", default=None)
@@ -669,7 +669,10 @@ class LineGroupLine(BaseModel):
     """
 
     quantity: Optional[float] = None
-    """The quantity of the item associated with this sales order line."""
+    """The quantity of the item associated with this sales order line.
+
+    This field cannot be cleared.
+    """
 
     quantity_invoiced: Optional[float] = FieldInfo(alias="quantityInvoiced", default=None)
     """
@@ -682,7 +685,8 @@ class LineGroupLine(BaseModel):
 
     If both `rate` and `amount` are specified, `rate` will be ignored. If both
     `quantity` and `amount` are specified but not `rate`, QuickBooks will use them
-    to calculate `rate`. Represented as a decimal string.
+    to calculate `rate`. Represented as a decimal string. This field cannot be
+    cleared.
     """
 
     rate_percent: Optional[str] = FieldInfo(alias="ratePercent", default=None)
@@ -777,7 +781,10 @@ class LineGroup(BaseModel):
     """
 
     quantity: Optional[float] = None
-    """The quantity of the item group associated with this sales receipt line group."""
+    """The quantity of the item group associated with this sales receipt line group.
+
+    This field cannot be cleared.
+    """
 
     should_print_items_in_group: bool = FieldInfo(alias="shouldPrintItemsInGroup")
     """
@@ -1089,7 +1096,7 @@ class Line(BaseModel):
     If both `quantity` and `rate` are specified but not `amount`, QuickBooks will
     use them to calculate `amount`. If `amount`, `rate`, and `quantity` are all
     unspecified, then QuickBooks will calculate `amount` based on a `quantity` of
-    `1` and the suggested `rate`.
+    `1` and the suggested `rate`. This field cannot be cleared.
     """
 
     class_: Optional[LineClass] = FieldInfo(alias="class", default=None)
@@ -1193,14 +1200,18 @@ class Line(BaseModel):
     """
 
     quantity: Optional[float] = None
-    """The quantity of the item associated with this sales receipt line."""
+    """The quantity of the item associated with this sales receipt line.
+
+    This field cannot be cleared.
+    """
 
     rate: Optional[str] = None
     """The price per unit for this sales receipt line.
 
     If both `rate` and `amount` are specified, `rate` will be ignored. If both
     `quantity` and `amount` are specified but not `rate`, QuickBooks will use them
-    to calculate `rate`. Represented as a decimal string.
+    to calculate `rate`. Represented as a decimal string. This field cannot be
+    cleared.
     """
 
     rate_percent: Optional[str] = FieldInfo(alias="ratePercent", default=None)
@@ -1591,8 +1602,8 @@ class SalesReceipt(BaseModel):
 
     subtotal: Optional[str] = None
     """
-    The subtotal of this sales receipt, which is the sum of all line items before
-    taxes and discounts are applied, represented as a decimal string.
+    The subtotal of this sales receipt, which is the sum of all sales receipt lines
+    before taxes and discounts are applied, represented as a decimal string.
     """
 
     total_amount: Optional[str] = FieldInfo(alias="totalAmount", default=None)
