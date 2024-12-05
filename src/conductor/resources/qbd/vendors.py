@@ -412,7 +412,7 @@ class VendorsResource(SyncAPIResource):
         Updates an existing vendor.
 
         Args:
-          id: TEMP QuickBooks-assigned unique identifier of the vendor to update.
+          id: The QuickBooks-assigned unique identifier of the vendor to update.
 
           revision_number: The current revision number of the vendor object you are updating, which you can
               get by fetching the object first. Provide the most recent `revisionNumber` to
@@ -1147,7 +1147,7 @@ class AsyncVendorsResource(AsyncAPIResource):
         Updates an existing vendor.
 
         Args:
-          id: TEMP QuickBooks-assigned unique identifier of the vendor to update.
+          id: The QuickBooks-assigned unique identifier of the vendor to update.
 
           revision_number: The current revision number of the vendor object you are updating, which you can
               get by fetching the object first. Provide the most recent `revisionNumber` to
