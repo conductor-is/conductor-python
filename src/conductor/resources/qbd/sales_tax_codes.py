@@ -181,7 +181,7 @@ class SalesTaxCodesResource(SyncAPIResource):
         Updates an existing sales-tax code.
 
         Args:
-          id: TEMP QuickBooks-assigned unique identifier of the sales-tax code to update.
+          id: The QuickBooks-assigned unique identifier of the sales-tax code to update.
 
           revision_number: The current revision number of the sales-tax code object you are updating, which
               you can get by fetching the object first. Provide the most recent
@@ -507,7 +507,7 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
         Updates an existing sales-tax code.
 
         Args:
-          id: TEMP QuickBooks-assigned unique identifier of the sales-tax code to update.
+          id: The QuickBooks-assigned unique identifier of the sales-tax code to update.
 
           revision_number: The current revision number of the sales-tax code object you are updating, which
               you can get by fetching the object first. Provide the most recent

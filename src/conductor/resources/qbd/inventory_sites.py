@@ -184,7 +184,7 @@ class InventorySitesResource(SyncAPIResource):
         Updates an existing inventory site.
 
         Args:
-          id: TEMP QuickBooks-assigned unique identifier of the inventory site to update.
+          id: The QuickBooks-assigned unique identifier of the inventory site to update.
 
           revision_number: The current revision number of the inventory site object you are updating, which
               you can get by fetching the object first. Provide the most recent
@@ -512,7 +512,7 @@ class AsyncInventorySitesResource(AsyncAPIResource):
         Updates an existing inventory site.
 
         Args:
-          id: TEMP QuickBooks-assigned unique identifier of the inventory site to update.
+          id: The QuickBooks-assigned unique identifier of the inventory site to update.
 
           revision_number: The current revision number of the inventory site object you are updating, which
               you can get by fetching the object first. Provide the most recent
