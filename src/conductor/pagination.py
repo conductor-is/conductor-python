@@ -25,7 +25,7 @@ class SyncCursorPage(BaseSyncPage[_T], BasePage[_T], Generic[_T]):
 
     @override
     def next_page_info(self) -> Optional[PageInfo]:
-        next_cursor = self.nextCursor
+        next_cursor = self.next_cursor
         if not next_cursor:
             return None
 
@@ -45,7 +45,7 @@ class AsyncCursorPage(BaseAsyncPage[_T], BasePage[_T], Generic[_T]):
 
     @override
     def next_page_info(self) -> Optional[PageInfo]:
-        next_cursor = self.nextCursor
+        next_cursor = self.next_cursor
         if not next_cursor:
             return None
 
