@@ -32,7 +32,7 @@ class SalesReceiptListParams(TypedDict, total=False):
     """
 
     customer_ids: Annotated[List[str], PropertyInfo(alias="customerIds")]
-    """Filter for sales receipts for these customers."""
+    """Filter for sales receipts created for these customers."""
 
     ids: List[str]
     """
