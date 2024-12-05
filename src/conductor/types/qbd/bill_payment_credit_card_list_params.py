@@ -126,7 +126,7 @@ class BillPaymentCreditCardListParams(TypedDict, total=False):
     """
 
     vendor_ids: Annotated[List[str], PropertyInfo(alias="vendorIds")]
-    """Filter for bill payment credit cards to these vendors.
+    """Filter for bill payment credit cards sent to these vendors.
 
     These are the vendors who sent the bills paid by these credit card payments.
     """
