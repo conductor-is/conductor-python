@@ -241,7 +241,7 @@ class NonInventoryItemsResource(SyncAPIResource):
         Updates an existing non-inventory item.
 
         Args:
-          id: The QuickBooks-assigned unique identifier of the non-inventory item to update.
+          id: TEMP QuickBooks-assigned unique identifier of the non-inventory item to update.
 
           revision_number: The current revision number of the non-inventory item object you are updating,
               which you can get by fetching the object first. Provide the most recent
@@ -688,7 +688,7 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
         Updates an existing non-inventory item.
 
         Args:
-          id: The QuickBooks-assigned unique identifier of the non-inventory item to update.
+          id: TEMP QuickBooks-assigned unique identifier of the non-inventory item to update.
 
           revision_number: The current revision number of the non-inventory item object you are updating,
               which you can get by fetching the object first. Provide the most recent

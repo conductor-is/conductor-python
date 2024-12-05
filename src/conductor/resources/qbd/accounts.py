@@ -268,7 +268,7 @@ class AccountsResource(SyncAPIResource):
         Updates a financial account.
 
         Args:
-          id: The QuickBooks-assigned unique identifier of the account to update.
+          id: TEMP QuickBooks-assigned unique identifier of the account to update.
 
           revision_number: The current revision number of the account object you are updating, which you
               can get by fetching the object first. Provide the most recent `revisionNumber`
@@ -745,7 +745,7 @@ class AsyncAccountsResource(AsyncAPIResource):
         Updates a financial account.
 
         Args:
-          id: The QuickBooks-assigned unique identifier of the account to update.
+          id: TEMP QuickBooks-assigned unique identifier of the account to update.
 
           revision_number: The current revision number of the account object you are updating, which you
               can get by fetching the object first. Provide the most recent `revisionNumber`
