@@ -69,7 +69,10 @@ class PurchaseOrderUpdateParams(TypedDict, total=False):
     is_manually_closed: Annotated[bool, PropertyInfo(alias="isManuallyClosed")]
     """
     Indicates whether this purchase order has been manually marked as closed, even
-    if it has not been invoiced.
+    if all items have not been received or the sale has not been cancelled. Once the
+    purchase order is marked as closed, all of its line items become closed as well.
+    You cannot change `isManuallyClosed` to `false` after the purchase order has
+    been fully received.
     """
 
     is_queued_for_email: Annotated[bool, PropertyInfo(alias="isQueuedForEmail")]
@@ -234,7 +237,10 @@ class LineGroupLine(TypedDict, total=False):
     is_manually_closed: Annotated[bool, PropertyInfo(alias="isManuallyClosed")]
     """
     Indicates whether this purchase order line has been manually marked as closed,
-    even if it has not been invoiced.
+    even if this item has not been received or its sale has not been cancelled. If
+    all the purchase order lines are marked as closed, the purchase order itself is
+    marked as closed as well. You cannot change `isManuallyClosed` to `false` after
+    the purchase order line has been fully received.
     """
 
     item_id: Annotated[str, PropertyInfo(alias="itemId")]
@@ -420,7 +426,10 @@ class Line(TypedDict, total=False):
     is_manually_closed: Annotated[bool, PropertyInfo(alias="isManuallyClosed")]
     """
     Indicates whether this purchase order line has been manually marked as closed,
-    even if it has not been invoiced.
+    even if this item has not been received or its sale has not been cancelled. If
+    all the purchase order lines are marked as closed, the purchase order itself is
+    marked as closed as well. You cannot change `isManuallyClosed` to `false` after
+    the purchase order line has been fully received.
     """
 
     item_id: Annotated[str, PropertyInfo(alias="itemId")]

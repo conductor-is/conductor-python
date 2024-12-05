@@ -554,7 +554,7 @@ class SalesOrdersResource(SyncAPIResource):
               `limit` parameter. Retrieve this value from the `nextCursor` field in the
               previous response. If omitted, the API returns the first page of results.
 
-          customer_ids: Filter for sales orders for these customers.
+          customer_ids: Filter for sales orders created for these customers.
 
           ids: Filter for specific sales orders by their QuickBooks-assigned unique
               identifier(s).
@@ -1185,7 +1185,7 @@ class AsyncSalesOrdersResource(AsyncAPIResource):
               `limit` parameter. Retrieve this value from the `nextCursor` field in the
               previous response. If omitted, the API returns the first page of results.
 
-          customer_ids: Filter for sales orders for these customers.
+          customer_ids: Filter for sales orders created for these customers.
 
           ids: Filter for specific sales orders by their QuickBooks-assigned unique
               identifier(s).
