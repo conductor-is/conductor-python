@@ -11,7 +11,7 @@ from conductor import Conductor, AsyncConductor
 from tests.utils import assert_matches_type
 from conductor._utils import parse_date
 from conductor.types.qbd import (
-    QbdPurchaseOrder,
+    PurchaseOrder,
 )
 from conductor.pagination import SyncCursorPage, AsyncCursorPage
 
@@ -28,7 +28,7 @@ class TestPurchaseOrders:
             vendor_id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdPurchaseOrder, purchase_order, path=["response"])
+        assert_matches_type(PurchaseOrder, purchase_order, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Conductor) -> None:
@@ -121,7 +121,7 @@ class TestPurchaseOrders:
             },
             vendor_message="Please include packing slip with shipment",
         )
-        assert_matches_type(QbdPurchaseOrder, purchase_order, path=["response"])
+        assert_matches_type(PurchaseOrder, purchase_order, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: Conductor) -> None:
@@ -134,7 +134,7 @@ class TestPurchaseOrders:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         purchase_order = response.parse()
-        assert_matches_type(QbdPurchaseOrder, purchase_order, path=["response"])
+        assert_matches_type(PurchaseOrder, purchase_order, path=["response"])
 
     @parametrize
     def test_streaming_response_create(self, client: Conductor) -> None:
@@ -147,7 +147,7 @@ class TestPurchaseOrders:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             purchase_order = response.parse()
-            assert_matches_type(QbdPurchaseOrder, purchase_order, path=["response"])
+            assert_matches_type(PurchaseOrder, purchase_order, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -157,7 +157,7 @@ class TestPurchaseOrders:
             id="123ABC-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdPurchaseOrder, purchase_order, path=["response"])
+        assert_matches_type(PurchaseOrder, purchase_order, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Conductor) -> None:
@@ -169,7 +169,7 @@ class TestPurchaseOrders:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         purchase_order = response.parse()
-        assert_matches_type(QbdPurchaseOrder, purchase_order, path=["response"])
+        assert_matches_type(PurchaseOrder, purchase_order, path=["response"])
 
     @parametrize
     def test_streaming_response_retrieve(self, client: Conductor) -> None:
@@ -181,7 +181,7 @@ class TestPurchaseOrders:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             purchase_order = response.parse()
-            assert_matches_type(QbdPurchaseOrder, purchase_order, path=["response"])
+            assert_matches_type(PurchaseOrder, purchase_order, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -200,7 +200,7 @@ class TestPurchaseOrders:
             revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdPurchaseOrder, purchase_order, path=["response"])
+        assert_matches_type(PurchaseOrder, purchase_order, path=["response"])
 
     @parametrize
     def test_method_update_with_all_params(self, client: Conductor) -> None:
@@ -307,7 +307,7 @@ class TestPurchaseOrders:
             vendor_id="80000001-1234567890",
             vendor_message="Please include packing slip with shipment",
         )
-        assert_matches_type(QbdPurchaseOrder, purchase_order, path=["response"])
+        assert_matches_type(PurchaseOrder, purchase_order, path=["response"])
 
     @parametrize
     def test_raw_response_update(self, client: Conductor) -> None:
@@ -320,7 +320,7 @@ class TestPurchaseOrders:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         purchase_order = response.parse()
-        assert_matches_type(QbdPurchaseOrder, purchase_order, path=["response"])
+        assert_matches_type(PurchaseOrder, purchase_order, path=["response"])
 
     @parametrize
     def test_streaming_response_update(self, client: Conductor) -> None:
@@ -333,7 +333,7 @@ class TestPurchaseOrders:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             purchase_order = response.parse()
-            assert_matches_type(QbdPurchaseOrder, purchase_order, path=["response"])
+            assert_matches_type(PurchaseOrder, purchase_order, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -351,7 +351,7 @@ class TestPurchaseOrders:
         purchase_order = client.qbd.purchase_orders.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(SyncCursorPage[QbdPurchaseOrder], purchase_order, path=["response"])
+        assert_matches_type(SyncCursorPage[PurchaseOrder], purchase_order, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Conductor) -> None:
@@ -376,7 +376,7 @@ class TestPurchaseOrders:
             updated_before="updatedBefore",
             vendor_ids=["80000001-1234567890"],
         )
-        assert_matches_type(SyncCursorPage[QbdPurchaseOrder], purchase_order, path=["response"])
+        assert_matches_type(SyncCursorPage[PurchaseOrder], purchase_order, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Conductor) -> None:
@@ -387,7 +387,7 @@ class TestPurchaseOrders:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         purchase_order = response.parse()
-        assert_matches_type(SyncCursorPage[QbdPurchaseOrder], purchase_order, path=["response"])
+        assert_matches_type(SyncCursorPage[PurchaseOrder], purchase_order, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Conductor) -> None:
@@ -398,7 +398,7 @@ class TestPurchaseOrders:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             purchase_order = response.parse()
-            assert_matches_type(SyncCursorPage[QbdPurchaseOrder], purchase_order, path=["response"])
+            assert_matches_type(SyncCursorPage[PurchaseOrder], purchase_order, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -413,7 +413,7 @@ class TestAsyncPurchaseOrders:
             vendor_id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdPurchaseOrder, purchase_order, path=["response"])
+        assert_matches_type(PurchaseOrder, purchase_order, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncConductor) -> None:
@@ -506,7 +506,7 @@ class TestAsyncPurchaseOrders:
             },
             vendor_message="Please include packing slip with shipment",
         )
-        assert_matches_type(QbdPurchaseOrder, purchase_order, path=["response"])
+        assert_matches_type(PurchaseOrder, purchase_order, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncConductor) -> None:
@@ -519,7 +519,7 @@ class TestAsyncPurchaseOrders:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         purchase_order = await response.parse()
-        assert_matches_type(QbdPurchaseOrder, purchase_order, path=["response"])
+        assert_matches_type(PurchaseOrder, purchase_order, path=["response"])
 
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncConductor) -> None:
@@ -532,7 +532,7 @@ class TestAsyncPurchaseOrders:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             purchase_order = await response.parse()
-            assert_matches_type(QbdPurchaseOrder, purchase_order, path=["response"])
+            assert_matches_type(PurchaseOrder, purchase_order, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -542,7 +542,7 @@ class TestAsyncPurchaseOrders:
             id="123ABC-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdPurchaseOrder, purchase_order, path=["response"])
+        assert_matches_type(PurchaseOrder, purchase_order, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncConductor) -> None:
@@ -554,7 +554,7 @@ class TestAsyncPurchaseOrders:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         purchase_order = await response.parse()
-        assert_matches_type(QbdPurchaseOrder, purchase_order, path=["response"])
+        assert_matches_type(PurchaseOrder, purchase_order, path=["response"])
 
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncConductor) -> None:
@@ -566,7 +566,7 @@ class TestAsyncPurchaseOrders:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             purchase_order = await response.parse()
-            assert_matches_type(QbdPurchaseOrder, purchase_order, path=["response"])
+            assert_matches_type(PurchaseOrder, purchase_order, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -585,7 +585,7 @@ class TestAsyncPurchaseOrders:
             revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdPurchaseOrder, purchase_order, path=["response"])
+        assert_matches_type(PurchaseOrder, purchase_order, path=["response"])
 
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncConductor) -> None:
@@ -692,7 +692,7 @@ class TestAsyncPurchaseOrders:
             vendor_id="80000001-1234567890",
             vendor_message="Please include packing slip with shipment",
         )
-        assert_matches_type(QbdPurchaseOrder, purchase_order, path=["response"])
+        assert_matches_type(PurchaseOrder, purchase_order, path=["response"])
 
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncConductor) -> None:
@@ -705,7 +705,7 @@ class TestAsyncPurchaseOrders:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         purchase_order = await response.parse()
-        assert_matches_type(QbdPurchaseOrder, purchase_order, path=["response"])
+        assert_matches_type(PurchaseOrder, purchase_order, path=["response"])
 
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncConductor) -> None:
@@ -718,7 +718,7 @@ class TestAsyncPurchaseOrders:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             purchase_order = await response.parse()
-            assert_matches_type(QbdPurchaseOrder, purchase_order, path=["response"])
+            assert_matches_type(PurchaseOrder, purchase_order, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -736,7 +736,7 @@ class TestAsyncPurchaseOrders:
         purchase_order = await async_client.qbd.purchase_orders.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(AsyncCursorPage[QbdPurchaseOrder], purchase_order, path=["response"])
+        assert_matches_type(AsyncCursorPage[PurchaseOrder], purchase_order, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncConductor) -> None:
@@ -761,7 +761,7 @@ class TestAsyncPurchaseOrders:
             updated_before="updatedBefore",
             vendor_ids=["80000001-1234567890"],
         )
-        assert_matches_type(AsyncCursorPage[QbdPurchaseOrder], purchase_order, path=["response"])
+        assert_matches_type(AsyncCursorPage[PurchaseOrder], purchase_order, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncConductor) -> None:
@@ -772,7 +772,7 @@ class TestAsyncPurchaseOrders:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         purchase_order = await response.parse()
-        assert_matches_type(AsyncCursorPage[QbdPurchaseOrder], purchase_order, path=["response"])
+        assert_matches_type(AsyncCursorPage[PurchaseOrder], purchase_order, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncConductor) -> None:
@@ -783,6 +783,6 @@ class TestAsyncPurchaseOrders:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             purchase_order = await response.parse()
-            assert_matches_type(AsyncCursorPage[QbdPurchaseOrder], purchase_order, path=["response"])
+            assert_matches_type(AsyncCursorPage[PurchaseOrder], purchase_order, path=["response"])
 
         assert cast(Any, response.is_closed) is True
