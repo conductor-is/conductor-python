@@ -407,8 +407,8 @@ class BillPaymentChecksResource(SyncAPIResource):
               8601 format (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the
               time is assumed to be 23:59:59 of that day.
 
-          vendor_ids: Filter for bill payment checks to these vendors. These are the vendors who sent
-              the bills paid by these checks.
+          vendor_ids: Filter for bill payment checks sent to these vendors. These are the vendors who
+              sent the bills paid by these checks.
 
           extra_headers: Send extra headers
 
@@ -829,8 +829,8 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
               8601 format (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the
               time is assumed to be 23:59:59 of that day.
 
-          vendor_ids: Filter for bill payment checks to these vendors. These are the vendors who sent
-              the bills paid by these checks.
+          vendor_ids: Filter for bill payment checks sent to these vendors. These are the vendors who
+              sent the bills paid by these checks.
 
           extra_headers: Send extra headers
 

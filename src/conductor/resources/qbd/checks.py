@@ -434,8 +434,8 @@ class ChecksResource(SyncAPIResource):
               used as the `cursor` parameter value in subsequent requests to fetch the next
               set of results.
 
-          payee_ids: Filter for checks to these payees. These are the people or companies who will
-              receive these checks.
+          payee_ids: Filter for checks addressed to these payees. These are the people or companies
+              who will receive these checks.
 
           ref_number_contains: Filter for checks whose `refNumber` contains this substring. For checks, this is
               the check number. NOTE: If you use this parameter, you cannot also use
@@ -931,8 +931,8 @@ class AsyncChecksResource(AsyncAPIResource):
               used as the `cursor` parameter value in subsequent requests to fetch the next
               set of results.
 
-          payee_ids: Filter for checks to these payees. These are the people or companies who will
-              receive these checks.
+          payee_ids: Filter for checks addressed to these payees. These are the people or companies
+              who will receive these checks.
 
           ref_number_contains: Filter for checks whose `refNumber` contains this substring. For checks, this is
               the check number. NOTE: If you use this parameter, you cannot also use
