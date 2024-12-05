@@ -10,7 +10,7 @@ import pytest
 from conductor import Conductor, AsyncConductor
 from tests.utils import assert_matches_type
 from conductor._utils import parse_date
-from conductor.types.qbd import QbdEstimate
+from conductor.types.qbd import Estimate
 from conductor.pagination import SyncCursorPage, AsyncCursorPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -26,7 +26,7 @@ class TestEstimates:
             transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdEstimate, estimate, path=["response"])
+        assert_matches_type(Estimate, estimate, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Conductor) -> None:
@@ -121,7 +121,7 @@ class TestEstimates:
             },
             terms_id="80000013-1234567890",
         )
-        assert_matches_type(QbdEstimate, estimate, path=["response"])
+        assert_matches_type(Estimate, estimate, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: Conductor) -> None:
@@ -134,7 +134,7 @@ class TestEstimates:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         estimate = response.parse()
-        assert_matches_type(QbdEstimate, estimate, path=["response"])
+        assert_matches_type(Estimate, estimate, path=["response"])
 
     @parametrize
     def test_streaming_response_create(self, client: Conductor) -> None:
@@ -147,7 +147,7 @@ class TestEstimates:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             estimate = response.parse()
-            assert_matches_type(QbdEstimate, estimate, path=["response"])
+            assert_matches_type(Estimate, estimate, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -157,7 +157,7 @@ class TestEstimates:
             id="123ABC-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdEstimate, estimate, path=["response"])
+        assert_matches_type(Estimate, estimate, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Conductor) -> None:
@@ -169,7 +169,7 @@ class TestEstimates:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         estimate = response.parse()
-        assert_matches_type(QbdEstimate, estimate, path=["response"])
+        assert_matches_type(Estimate, estimate, path=["response"])
 
     @parametrize
     def test_streaming_response_retrieve(self, client: Conductor) -> None:
@@ -181,7 +181,7 @@ class TestEstimates:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             estimate = response.parse()
-            assert_matches_type(QbdEstimate, estimate, path=["response"])
+            assert_matches_type(Estimate, estimate, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -201,7 +201,7 @@ class TestEstimates:
             revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdEstimate, estimate, path=["response"])
+        assert_matches_type(Estimate, estimate, path=["response"])
 
     @parametrize
     def test_method_update_with_all_params(self, client: Conductor) -> None:
@@ -308,7 +308,7 @@ class TestEstimates:
             terms_id="80000013-1234567890",
             transaction_date=parse_date("2019-12-27"),
         )
-        assert_matches_type(QbdEstimate, estimate, path=["response"])
+        assert_matches_type(Estimate, estimate, path=["response"])
 
     @parametrize
     def test_raw_response_update(self, client: Conductor) -> None:
@@ -322,7 +322,7 @@ class TestEstimates:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         estimate = response.parse()
-        assert_matches_type(QbdEstimate, estimate, path=["response"])
+        assert_matches_type(Estimate, estimate, path=["response"])
 
     @parametrize
     def test_streaming_response_update(self, client: Conductor) -> None:
@@ -336,7 +336,7 @@ class TestEstimates:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             estimate = response.parse()
-            assert_matches_type(QbdEstimate, estimate, path=["response"])
+            assert_matches_type(Estimate, estimate, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -355,7 +355,7 @@ class TestEstimates:
         estimate = client.qbd.estimates.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(SyncCursorPage[QbdEstimate], estimate, path=["response"])
+        assert_matches_type(SyncCursorPage[Estimate], estimate, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Conductor) -> None:
@@ -380,7 +380,7 @@ class TestEstimates:
             updated_after="updatedAfter",
             updated_before="updatedBefore",
         )
-        assert_matches_type(SyncCursorPage[QbdEstimate], estimate, path=["response"])
+        assert_matches_type(SyncCursorPage[Estimate], estimate, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Conductor) -> None:
@@ -391,7 +391,7 @@ class TestEstimates:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         estimate = response.parse()
-        assert_matches_type(SyncCursorPage[QbdEstimate], estimate, path=["response"])
+        assert_matches_type(SyncCursorPage[Estimate], estimate, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Conductor) -> None:
@@ -402,7 +402,7 @@ class TestEstimates:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             estimate = response.parse()
-            assert_matches_type(SyncCursorPage[QbdEstimate], estimate, path=["response"])
+            assert_matches_type(SyncCursorPage[Estimate], estimate, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -417,7 +417,7 @@ class TestAsyncEstimates:
             transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdEstimate, estimate, path=["response"])
+        assert_matches_type(Estimate, estimate, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncConductor) -> None:
@@ -512,7 +512,7 @@ class TestAsyncEstimates:
             },
             terms_id="80000013-1234567890",
         )
-        assert_matches_type(QbdEstimate, estimate, path=["response"])
+        assert_matches_type(Estimate, estimate, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncConductor) -> None:
@@ -525,7 +525,7 @@ class TestAsyncEstimates:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         estimate = await response.parse()
-        assert_matches_type(QbdEstimate, estimate, path=["response"])
+        assert_matches_type(Estimate, estimate, path=["response"])
 
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncConductor) -> None:
@@ -538,7 +538,7 @@ class TestAsyncEstimates:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             estimate = await response.parse()
-            assert_matches_type(QbdEstimate, estimate, path=["response"])
+            assert_matches_type(Estimate, estimate, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -548,7 +548,7 @@ class TestAsyncEstimates:
             id="123ABC-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdEstimate, estimate, path=["response"])
+        assert_matches_type(Estimate, estimate, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncConductor) -> None:
@@ -560,7 +560,7 @@ class TestAsyncEstimates:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         estimate = await response.parse()
-        assert_matches_type(QbdEstimate, estimate, path=["response"])
+        assert_matches_type(Estimate, estimate, path=["response"])
 
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncConductor) -> None:
@@ -572,7 +572,7 @@ class TestAsyncEstimates:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             estimate = await response.parse()
-            assert_matches_type(QbdEstimate, estimate, path=["response"])
+            assert_matches_type(Estimate, estimate, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -592,7 +592,7 @@ class TestAsyncEstimates:
             revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdEstimate, estimate, path=["response"])
+        assert_matches_type(Estimate, estimate, path=["response"])
 
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncConductor) -> None:
@@ -699,7 +699,7 @@ class TestAsyncEstimates:
             terms_id="80000013-1234567890",
             transaction_date=parse_date("2019-12-27"),
         )
-        assert_matches_type(QbdEstimate, estimate, path=["response"])
+        assert_matches_type(Estimate, estimate, path=["response"])
 
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncConductor) -> None:
@@ -713,7 +713,7 @@ class TestAsyncEstimates:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         estimate = await response.parse()
-        assert_matches_type(QbdEstimate, estimate, path=["response"])
+        assert_matches_type(Estimate, estimate, path=["response"])
 
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncConductor) -> None:
@@ -727,7 +727,7 @@ class TestAsyncEstimates:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             estimate = await response.parse()
-            assert_matches_type(QbdEstimate, estimate, path=["response"])
+            assert_matches_type(Estimate, estimate, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -746,7 +746,7 @@ class TestAsyncEstimates:
         estimate = await async_client.qbd.estimates.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(AsyncCursorPage[QbdEstimate], estimate, path=["response"])
+        assert_matches_type(AsyncCursorPage[Estimate], estimate, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncConductor) -> None:
@@ -771,7 +771,7 @@ class TestAsyncEstimates:
             updated_after="updatedAfter",
             updated_before="updatedBefore",
         )
-        assert_matches_type(AsyncCursorPage[QbdEstimate], estimate, path=["response"])
+        assert_matches_type(AsyncCursorPage[Estimate], estimate, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncConductor) -> None:
@@ -782,7 +782,7 @@ class TestAsyncEstimates:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         estimate = await response.parse()
-        assert_matches_type(AsyncCursorPage[QbdEstimate], estimate, path=["response"])
+        assert_matches_type(AsyncCursorPage[Estimate], estimate, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncConductor) -> None:
@@ -793,6 +793,6 @@ class TestAsyncEstimates:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             estimate = await response.parse()
-            assert_matches_type(AsyncCursorPage[QbdEstimate], estimate, path=["response"])
+            assert_matches_type(AsyncCursorPage[Estimate], estimate, path=["response"])
 
         assert cast(Any, response.is_closed) is True

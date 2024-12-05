@@ -250,6 +250,10 @@ class QbdResource(SyncAPIResource):
         return DateDrivenTermsResource(self._client)
 
     @cached_property
+    def estimates(self) -> EstimatesResource:
+        return EstimatesResource(self._client)
+
+    @cached_property
     def inventory_assembly_items(self) -> InventoryAssemblyItemsResource:
         return InventoryAssemblyItemsResource(self._client)
 
@@ -304,10 +308,6 @@ class QbdResource(SyncAPIResource):
     @cached_property
     def vendors(self) -> VendorsResource:
         return VendorsResource(self._client)
-
-    @cached_property
-    def estimates(self) -> EstimatesResource:
-        return EstimatesResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> QbdResourceWithRawResponse:
@@ -371,6 +371,10 @@ class AsyncQbdResource(AsyncAPIResource):
         return AsyncDateDrivenTermsResource(self._client)
 
     @cached_property
+    def estimates(self) -> AsyncEstimatesResource:
+        return AsyncEstimatesResource(self._client)
+
+    @cached_property
     def inventory_assembly_items(self) -> AsyncInventoryAssemblyItemsResource:
         return AsyncInventoryAssemblyItemsResource(self._client)
 
@@ -425,10 +429,6 @@ class AsyncQbdResource(AsyncAPIResource):
     @cached_property
     def vendors(self) -> AsyncVendorsResource:
         return AsyncVendorsResource(self._client)
-
-    @cached_property
-    def estimates(self) -> AsyncEstimatesResource:
-        return AsyncEstimatesResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncQbdResourceWithRawResponse:
@@ -495,6 +495,10 @@ class QbdResourceWithRawResponse:
         return DateDrivenTermsResourceWithRawResponse(self._qbd.date_driven_terms)
 
     @cached_property
+    def estimates(self) -> EstimatesResourceWithRawResponse:
+        return EstimatesResourceWithRawResponse(self._qbd.estimates)
+
+    @cached_property
     def inventory_assembly_items(self) -> InventoryAssemblyItemsResourceWithRawResponse:
         return InventoryAssemblyItemsResourceWithRawResponse(self._qbd.inventory_assembly_items)
 
@@ -550,10 +554,6 @@ class QbdResourceWithRawResponse:
     def vendors(self) -> VendorsResourceWithRawResponse:
         return VendorsResourceWithRawResponse(self._qbd.vendors)
 
-    @cached_property
-    def estimates(self) -> EstimatesResourceWithRawResponse:
-        return EstimatesResourceWithRawResponse(self._qbd.estimates)
-
 
 class AsyncQbdResourceWithRawResponse:
     def __init__(self, qbd: AsyncQbdResource) -> None:
@@ -598,6 +598,10 @@ class AsyncQbdResourceWithRawResponse:
     @cached_property
     def date_driven_terms(self) -> AsyncDateDrivenTermsResourceWithRawResponse:
         return AsyncDateDrivenTermsResourceWithRawResponse(self._qbd.date_driven_terms)
+
+    @cached_property
+    def estimates(self) -> AsyncEstimatesResourceWithRawResponse:
+        return AsyncEstimatesResourceWithRawResponse(self._qbd.estimates)
 
     @cached_property
     def inventory_assembly_items(self) -> AsyncInventoryAssemblyItemsResourceWithRawResponse:
@@ -655,10 +659,6 @@ class AsyncQbdResourceWithRawResponse:
     def vendors(self) -> AsyncVendorsResourceWithRawResponse:
         return AsyncVendorsResourceWithRawResponse(self._qbd.vendors)
 
-    @cached_property
-    def estimates(self) -> AsyncEstimatesResourceWithRawResponse:
-        return AsyncEstimatesResourceWithRawResponse(self._qbd.estimates)
-
 
 class QbdResourceWithStreamingResponse:
     def __init__(self, qbd: QbdResource) -> None:
@@ -703,6 +703,10 @@ class QbdResourceWithStreamingResponse:
     @cached_property
     def date_driven_terms(self) -> DateDrivenTermsResourceWithStreamingResponse:
         return DateDrivenTermsResourceWithStreamingResponse(self._qbd.date_driven_terms)
+
+    @cached_property
+    def estimates(self) -> EstimatesResourceWithStreamingResponse:
+        return EstimatesResourceWithStreamingResponse(self._qbd.estimates)
 
     @cached_property
     def inventory_assembly_items(self) -> InventoryAssemblyItemsResourceWithStreamingResponse:
@@ -760,10 +764,6 @@ class QbdResourceWithStreamingResponse:
     def vendors(self) -> VendorsResourceWithStreamingResponse:
         return VendorsResourceWithStreamingResponse(self._qbd.vendors)
 
-    @cached_property
-    def estimates(self) -> EstimatesResourceWithStreamingResponse:
-        return EstimatesResourceWithStreamingResponse(self._qbd.estimates)
-
 
 class AsyncQbdResourceWithStreamingResponse:
     def __init__(self, qbd: AsyncQbdResource) -> None:
@@ -808,6 +808,10 @@ class AsyncQbdResourceWithStreamingResponse:
     @cached_property
     def date_driven_terms(self) -> AsyncDateDrivenTermsResourceWithStreamingResponse:
         return AsyncDateDrivenTermsResourceWithStreamingResponse(self._qbd.date_driven_terms)
+
+    @cached_property
+    def estimates(self) -> AsyncEstimatesResourceWithStreamingResponse:
+        return AsyncEstimatesResourceWithStreamingResponse(self._qbd.estimates)
 
     @cached_property
     def inventory_assembly_items(self) -> AsyncInventoryAssemblyItemsResourceWithStreamingResponse:
@@ -864,7 +868,3 @@ class AsyncQbdResourceWithStreamingResponse:
     @cached_property
     def vendors(self) -> AsyncVendorsResourceWithStreamingResponse:
         return AsyncVendorsResourceWithStreamingResponse(self._qbd.vendors)
-
-    @cached_property
-    def estimates(self) -> AsyncEstimatesResourceWithStreamingResponse:
-        return AsyncEstimatesResourceWithStreamingResponse(self._qbd.estimates)
