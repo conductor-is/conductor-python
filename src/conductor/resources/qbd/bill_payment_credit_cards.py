@@ -296,8 +296,8 @@ class BillPaymentCreditCardsResource(SyncAPIResource):
               ISO 8601 format (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD),
               the time is assumed to be 23:59:59 of that day.
 
-          vendor_ids: Filter for bill payment credit cards to these vendors. These are the vendors who
-              sent the bills paid by these credit card payments.
+          vendor_ids: Filter for bill payment credit cards sent to these vendors. These are the
+              vendors who sent the bills paid by these credit card payments.
 
           extra_headers: Send extra headers
 
@@ -611,8 +611,8 @@ class AsyncBillPaymentCreditCardsResource(AsyncAPIResource):
               ISO 8601 format (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD),
               the time is assumed to be 23:59:59 of that day.
 
-          vendor_ids: Filter for bill payment credit cards to these vendors. These are the vendors who
-              sent the bills paid by these credit card payments.
+          vendor_ids: Filter for bill payment credit cards sent to these vendors. These are the
+              vendors who sent the bills paid by these credit card payments.
 
           extra_headers: Send extra headers
 
