@@ -199,7 +199,7 @@ class ItemGroupLineItemLine(TypedDict, total=False):
     If both `quantity` and `cost` are specified but not `amount`, QuickBooks will
     use them to calculate `amount`. If `amount`, `cost`, and `quantity` are all
     unspecified, then QuickBooks will calculate `amount` based on a `quantity` of
-    `1` and the suggested `cost`.
+    `1` and the suggested `cost`. This field cannot be cleared.
     """
 
     billing_status: Annotated[
@@ -283,7 +283,10 @@ class ItemGroupLineItemLine(TypedDict, total=False):
     """
 
     quantity: float
-    """The quantity of the item associated with this item line."""
+    """The quantity of the item associated with this item line.
+
+    This field cannot be cleared.
+    """
 
     sales_representative_id: Annotated[str, PropertyInfo(alias="salesRepresentativeId")]
     """The item line's sales representative.
@@ -353,7 +356,10 @@ class ItemGroupLine(TypedDict, total=False):
     """
 
     quantity: float
-    """The quantity of the item group associated with this item group line."""
+    """The quantity of the item group associated with this item group line.
+
+    This field cannot be cleared.
+    """
 
     unit_of_measure: Annotated[str, PropertyInfo(alias="unitOfMeasure")]
     """The unit-of-measure used for the `quantity` in this item group line.
@@ -375,7 +381,7 @@ class ItemLine(TypedDict, total=False):
     If both `quantity` and `cost` are specified but not `amount`, QuickBooks will
     use them to calculate `amount`. If `amount`, `cost`, and `quantity` are all
     unspecified, then QuickBooks will calculate `amount` based on a `quantity` of
-    `1` and the suggested `cost`.
+    `1` and the suggested `cost`. This field cannot be cleared.
     """
 
     billing_status: Annotated[
@@ -459,7 +465,10 @@ class ItemLine(TypedDict, total=False):
     """
 
     quantity: float
-    """The quantity of the item associated with this item line."""
+    """The quantity of the item associated with this item line.
+
+    This field cannot be cleared.
+    """
 
     sales_representative_id: Annotated[str, PropertyInfo(alias="salesRepresentativeId")]
     """The item line's sales representative.

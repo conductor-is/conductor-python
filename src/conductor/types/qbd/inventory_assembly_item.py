@@ -146,7 +146,10 @@ class Line(BaseModel):
     """The inventory item associated with this inventory assembly item line."""
 
     quantity: Optional[float] = None
-    """The quantity of the item associated with this inventory assembly item line."""
+    """The quantity of the item associated with this inventory assembly item line.
+
+    This field cannot be cleared.
+    """
 
 
 class Parent(BaseModel):

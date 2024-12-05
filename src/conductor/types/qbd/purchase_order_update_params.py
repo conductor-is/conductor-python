@@ -115,7 +115,10 @@ class PurchaseOrderUpdateParams(TypedDict, total=False):
     """
 
     memo: str
-    """A memo or note for this purchase order."""
+    """
+    A memo or note for this purchase order that appears in reports, but not on the
+    purchase order.
+    """
 
     other_custom_field1: Annotated[str, PropertyInfo(alias="otherCustomField1")]
     """
@@ -212,7 +215,7 @@ class LineGroupLine(TypedDict, total=False):
     If both `quantity` and `rate` are specified but not `amount`, QuickBooks will
     use them to calculate `amount`. If `amount`, `rate`, and `quantity` are all
     unspecified, then QuickBooks will calculate `amount` based on a `quantity` of
-    `1` and the suggested `rate`.
+    `1` and the suggested `rate`. This field cannot be cleared.
     """
 
     class_id: Annotated[str, PropertyInfo(alias="classId")]
@@ -296,14 +299,18 @@ class LineGroupLine(TypedDict, total=False):
     """
 
     quantity: float
-    """The quantity of the item associated with this purchase order line."""
+    """The quantity of the item associated with this purchase order line.
+
+    This field cannot be cleared.
+    """
 
     rate: str
     """The price per unit for this purchase order line.
 
     If both `rate` and `amount` are specified, `rate` will be ignored. If both
     `quantity` and `amount` are specified but not `rate`, QuickBooks will use them
-    to calculate `rate`. Represented as a decimal string.
+    to calculate `rate`. Represented as a decimal string. This field cannot be
+    cleared.
     """
 
     sales_tax_code_id: Annotated[str, PropertyInfo(alias="salesTaxCodeId")]
@@ -377,7 +384,10 @@ class LineGroup(TypedDict, total=False):
     """
 
     quantity: float
-    """The quantity of the item group associated with this purchase order line group."""
+    """The quantity of the item group associated with this purchase order line group.
+
+    This field cannot be cleared.
+    """
 
     unit_of_measure: Annotated[str, PropertyInfo(alias="unitOfMeasure")]
     """The unit-of-measure used for the `quantity` in this purchase order line group.
@@ -401,7 +411,7 @@ class Line(TypedDict, total=False):
     If both `quantity` and `rate` are specified but not `amount`, QuickBooks will
     use them to calculate `amount`. If `amount`, `rate`, and `quantity` are all
     unspecified, then QuickBooks will calculate `amount` based on a `quantity` of
-    `1` and the suggested `rate`.
+    `1` and the suggested `rate`. This field cannot be cleared.
     """
 
     class_id: Annotated[str, PropertyInfo(alias="classId")]
@@ -485,14 +495,18 @@ class Line(TypedDict, total=False):
     """
 
     quantity: float
-    """The quantity of the item associated with this purchase order line."""
+    """The quantity of the item associated with this purchase order line.
+
+    This field cannot be cleared.
+    """
 
     rate: str
     """The price per unit for this purchase order line.
 
     If both `rate` and `amount` are specified, `rate` will be ignored. If both
     `quantity` and `amount` are specified but not `rate`, QuickBooks will use them
-    to calculate `rate`. Represented as a decimal string.
+    to calculate `rate`. Represented as a decimal string. This field cannot be
+    cleared.
     """
 
     sales_tax_code_id: Annotated[str, PropertyInfo(alias="salesTaxCodeId")]
