@@ -168,7 +168,7 @@ class ClassesResource(SyncAPIResource):
         Updates an existing class.
 
         Args:
-          id: TEMP QuickBooks-assigned unique identifier of the class to update.
+          id: The QuickBooks-assigned unique identifier of the class to update.
 
           revision_number: The current revision number of the class object you are updating, which you can
               get by fetching the object first. Provide the most recent `revisionNumber` to
@@ -474,7 +474,7 @@ class AsyncClassesResource(AsyncAPIResource):
         Updates an existing class.
 
         Args:
-          id: TEMP QuickBooks-assigned unique identifier of the class to update.
+          id: The QuickBooks-assigned unique identifier of the class to update.
 
           revision_number: The current revision number of the class object you are updating, which you can
               get by fetching the object first. Provide the most recent `revisionNumber` to

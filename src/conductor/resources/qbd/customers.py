@@ -439,7 +439,7 @@ class CustomersResource(SyncAPIResource):
         Updates an existing customer.
 
         Args:
-          id: TEMP QuickBooks-assigned unique identifier of the customer to update.
+          id: The QuickBooks-assigned unique identifier of the customer to update.
 
           revision_number: The current revision number of the customer object you are updating, which you
               can get by fetching the object first. Provide the most recent `revisionNumber`
@@ -1225,7 +1225,7 @@ class AsyncCustomersResource(AsyncAPIResource):
         Updates an existing customer.
 
         Args:
-          id: TEMP QuickBooks-assigned unique identifier of the customer to update.
+          id: The QuickBooks-assigned unique identifier of the customer to update.
 
           revision_number: The current revision number of the customer object you are updating, which you
               can get by fetching the object first. Provide the most recent `revisionNumber`

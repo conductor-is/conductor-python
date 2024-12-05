@@ -309,7 +309,7 @@ class InventoryAssemblyItemsResource(SyncAPIResource):
         Updates an existing inventory assembly item.
 
         Args:
-          id: TEMP QuickBooks-assigned unique identifier of the inventory assembly item to
+          id: The QuickBooks-assigned unique identifier of the inventory assembly item to
               update.
 
           revision_number: The current revision number of the inventory assembly item object you are
@@ -880,7 +880,7 @@ class AsyncInventoryAssemblyItemsResource(AsyncAPIResource):
         Updates an existing inventory assembly item.
 
         Args:
-          id: TEMP QuickBooks-assigned unique identifier of the inventory assembly item to
+          id: The QuickBooks-assigned unique identifier of the inventory assembly item to
               update.
 
           revision_number: The current revision number of the inventory assembly item object you are

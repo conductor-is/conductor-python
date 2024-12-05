@@ -247,7 +247,7 @@ class AdditionalContactCustomContactField(TypedDict, total=False):
 
 class AdditionalContact(TypedDict, total=False):
     id: Required[str]
-    """TEMP QuickBooks-assigned unique identifier of the contact to update."""
+    """The QuickBooks-assigned unique identifier of the contact to update."""
 
     first_name: Required[Annotated[str, PropertyInfo(alias="firstName")]]
     """The contact's first name."""
