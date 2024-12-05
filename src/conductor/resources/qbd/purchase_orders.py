@@ -352,7 +352,10 @@ class PurchaseOrdersResource(SyncAPIResource):
               order is stored.
 
           is_manually_closed: Indicates whether this purchase order has been manually marked as closed, even
-              if it has not been invoiced.
+              if all items have not been received or the sale has not been cancelled. Once the
+              purchase order is marked as closed, all of its line items become closed as well.
+              You cannot change `isManuallyClosed` to `false` after the purchase order has
+              been fully received.
 
           is_queued_for_email: Indicates whether this purchase order is included in the queue of documents for
               QuickBooks to email to the customer.
@@ -959,7 +962,10 @@ class AsyncPurchaseOrdersResource(AsyncAPIResource):
               order is stored.
 
           is_manually_closed: Indicates whether this purchase order has been manually marked as closed, even
-              if it has not been invoiced.
+              if all items have not been received or the sale has not been cancelled. Once the
+              purchase order is marked as closed, all of its line items become closed as well.
+              You cannot change `isManuallyClosed` to `false` after the purchase order has
+              been fully received.
 
           is_queued_for_email: Indicates whether this purchase order is included in the queue of documents for
               QuickBooks to email to the customer.

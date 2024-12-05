@@ -29,7 +29,7 @@ class SalesOrderListParams(TypedDict, total=False):
     """
 
     customer_ids: Annotated[List[str], PropertyInfo(alias="customerIds")]
-    """Filter for sales orders for these customers."""
+    """Filter for sales orders created for these customers."""
 
     ids: List[str]
     """
