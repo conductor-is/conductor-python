@@ -9,7 +9,7 @@ from pydantic import Field as FieldInfo
 from ..._models import BaseModel
 
 __all__ = [
-    "QbdPurchaseOrder",
+    "PurchaseOrder",
     "Class",
     "Currency",
     "CustomField",
@@ -1074,7 +1074,7 @@ class VendorAddress(BaseModel):
     """The state, county, province, or region name of the address."""
 
 
-class QbdPurchaseOrder(BaseModel):
+class PurchaseOrder(BaseModel):
     id: str
     """The unique identifier assigned by QuickBooks to this purchase order.
 

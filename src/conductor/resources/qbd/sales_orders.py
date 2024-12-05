@@ -24,7 +24,7 @@ from ..._response import (
 from ...types.qbd import sales_order_list_params, sales_order_create_params, sales_order_update_params
 from ...pagination import SyncCursorPage, AsyncCursorPage
 from ..._base_client import AsyncPaginator, make_request_options
-from ...types.qbd.qbd_sales_order import QbdSalesOrder
+from ...types.qbd.sales_order import SalesOrder
 
 __all__ = ["SalesOrdersResource", "AsyncSalesOrdersResource"]
 
@@ -88,7 +88,7 @@ class SalesOrdersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdSalesOrder:
+    ) -> SalesOrder:
         """
         Creates a new sales order.
 
@@ -252,7 +252,7 @@ class SalesOrdersResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdSalesOrder,
+            cast_to=SalesOrder,
         )
 
     def retrieve(
@@ -266,7 +266,7 @@ class SalesOrdersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdSalesOrder:
+    ) -> SalesOrder:
         """
         Retrieves a sales order by ID.
 
@@ -292,7 +292,7 @@ class SalesOrdersResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdSalesOrder,
+            cast_to=SalesOrder,
         )
 
     def update(
@@ -335,7 +335,7 @@ class SalesOrdersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdSalesOrder:
+    ) -> SalesOrder:
         """
         Updates an existing sales order.
 
@@ -510,7 +510,7 @@ class SalesOrdersResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdSalesOrder,
+            cast_to=SalesOrder,
         )
 
     def list(
@@ -540,7 +540,7 @@ class SalesOrdersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursorPage[QbdSalesOrder]:
+    ) -> SyncCursorPage[SalesOrder]:
         """
         Returns a list of sales orders.
 
@@ -627,7 +627,7 @@ class SalesOrdersResource(SyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/sales-orders",
-            page=SyncCursorPage[QbdSalesOrder],
+            page=SyncCursorPage[SalesOrder],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -656,7 +656,7 @@ class SalesOrdersResource(SyncAPIResource):
                     sales_order_list_params.SalesOrderListParams,
                 ),
             ),
-            model=QbdSalesOrder,
+            model=SalesOrder,
         )
 
 
@@ -719,7 +719,7 @@ class AsyncSalesOrdersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdSalesOrder:
+    ) -> SalesOrder:
         """
         Creates a new sales order.
 
@@ -883,7 +883,7 @@ class AsyncSalesOrdersResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdSalesOrder,
+            cast_to=SalesOrder,
         )
 
     async def retrieve(
@@ -897,7 +897,7 @@ class AsyncSalesOrdersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdSalesOrder:
+    ) -> SalesOrder:
         """
         Retrieves a sales order by ID.
 
@@ -923,7 +923,7 @@ class AsyncSalesOrdersResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdSalesOrder,
+            cast_to=SalesOrder,
         )
 
     async def update(
@@ -966,7 +966,7 @@ class AsyncSalesOrdersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdSalesOrder:
+    ) -> SalesOrder:
         """
         Updates an existing sales order.
 
@@ -1141,7 +1141,7 @@ class AsyncSalesOrdersResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdSalesOrder,
+            cast_to=SalesOrder,
         )
 
     def list(
@@ -1171,7 +1171,7 @@ class AsyncSalesOrdersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[QbdSalesOrder, AsyncCursorPage[QbdSalesOrder]]:
+    ) -> AsyncPaginator[SalesOrder, AsyncCursorPage[SalesOrder]]:
         """
         Returns a list of sales orders.
 
@@ -1258,7 +1258,7 @@ class AsyncSalesOrdersResource(AsyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/sales-orders",
-            page=AsyncCursorPage[QbdSalesOrder],
+            page=AsyncCursorPage[SalesOrder],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1287,7 +1287,7 @@ class AsyncSalesOrdersResource(AsyncAPIResource):
                     sales_order_list_params.SalesOrderListParams,
                 ),
             ),
-            model=QbdSalesOrder,
+            model=SalesOrder,
         )
 
 
