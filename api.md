@@ -259,6 +259,51 @@ Methods:
 - <code title="post /quickbooks-desktop/non-inventory-items/{id}">client.qbd.non_inventory_items.<a href="./src/conductor/resources/qbd/non_inventory_items.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/non_inventory_item_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/non_inventory_item.py">NonInventoryItem</a></code>
 - <code title="get /quickbooks-desktop/non-inventory-items">client.qbd.non_inventory_items.<a href="./src/conductor/resources/qbd/non_inventory_items.py">list</a>(\*\*<a href="src/conductor/types/qbd/non_inventory_item_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/non_inventory_item.py">SyncCursorPage[NonInventoryItem]</a></code>
 
+## PurchaseOrders
+
+Types:
+
+```python
+from conductor.types.qbd import PurchaseOrder
+```
+
+Methods:
+
+- <code title="post /quickbooks-desktop/purchase-orders">client.qbd.purchase_orders.<a href="./src/conductor/resources/qbd/purchase_orders.py">create</a>(\*\*<a href="src/conductor/types/qbd/purchase_order_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/purchase_order.py">PurchaseOrder</a></code>
+- <code title="get /quickbooks-desktop/purchase-orders/{id}">client.qbd.purchase_orders.<a href="./src/conductor/resources/qbd/purchase_orders.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/purchase_order.py">PurchaseOrder</a></code>
+- <code title="post /quickbooks-desktop/purchase-orders/{id}">client.qbd.purchase_orders.<a href="./src/conductor/resources/qbd/purchase_orders.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/purchase_order_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/purchase_order.py">PurchaseOrder</a></code>
+- <code title="get /quickbooks-desktop/purchase-orders">client.qbd.purchase_orders.<a href="./src/conductor/resources/qbd/purchase_orders.py">list</a>(\*\*<a href="src/conductor/types/qbd/purchase_order_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/purchase_order.py">SyncCursorPage[PurchaseOrder]</a></code>
+
+## SalesOrders
+
+Types:
+
+```python
+from conductor.types.qbd import SalesOrder
+```
+
+Methods:
+
+- <code title="post /quickbooks-desktop/sales-orders">client.qbd.sales_orders.<a href="./src/conductor/resources/qbd/sales_orders.py">create</a>(\*\*<a href="src/conductor/types/qbd/sales_order_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/sales_order.py">SalesOrder</a></code>
+- <code title="get /quickbooks-desktop/sales-orders/{id}">client.qbd.sales_orders.<a href="./src/conductor/resources/qbd/sales_orders.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/sales_order.py">SalesOrder</a></code>
+- <code title="post /quickbooks-desktop/sales-orders/{id}">client.qbd.sales_orders.<a href="./src/conductor/resources/qbd/sales_orders.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/sales_order_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/sales_order.py">SalesOrder</a></code>
+- <code title="get /quickbooks-desktop/sales-orders">client.qbd.sales_orders.<a href="./src/conductor/resources/qbd/sales_orders.py">list</a>(\*\*<a href="src/conductor/types/qbd/sales_order_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/sales_order.py">SyncCursorPage[SalesOrder]</a></code>
+
+## SalesReceipts
+
+Types:
+
+```python
+from conductor.types.qbd import SalesReceipt
+```
+
+Methods:
+
+- <code title="post /quickbooks-desktop/sales-receipts">client.qbd.sales_receipts.<a href="./src/conductor/resources/qbd/sales_receipts.py">create</a>(\*\*<a href="src/conductor/types/qbd/sales_receipt_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/sales_receipt.py">SalesReceipt</a></code>
+- <code title="get /quickbooks-desktop/sales-receipts/{id}">client.qbd.sales_receipts.<a href="./src/conductor/resources/qbd/sales_receipts.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/sales_receipt.py">SalesReceipt</a></code>
+- <code title="post /quickbooks-desktop/sales-receipts/{id}">client.qbd.sales_receipts.<a href="./src/conductor/resources/qbd/sales_receipts.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/sales_receipt_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/sales_receipt.py">SalesReceipt</a></code>
+- <code title="get /quickbooks-desktop/sales-receipts">client.qbd.sales_receipts.<a href="./src/conductor/resources/qbd/sales_receipts.py">list</a>(\*\*<a href="src/conductor/types/qbd/sales_receipt_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/sales_receipt.py">SyncCursorPage[SalesReceipt]</a></code>
+
 ## SalesTaxCodes
 
 Types:
@@ -347,48 +392,3 @@ Methods:
 - <code title="get /quickbooks-desktop/vendors/{id}">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/vendor.py">Vendor</a></code>
 - <code title="post /quickbooks-desktop/vendors/{id}">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/vendor_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/vendor.py">Vendor</a></code>
 - <code title="get /quickbooks-desktop/vendors">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">list</a>(\*\*<a href="src/conductor/types/qbd/vendor_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/vendor.py">SyncCursorPage[Vendor]</a></code>
-
-## SalesOrders
-
-Types:
-
-```python
-from conductor.types.qbd import QbdSalesOrder
-```
-
-Methods:
-
-- <code title="post /quickbooks-desktop/sales-orders">client.qbd.sales_orders.<a href="./src/conductor/resources/qbd/sales_orders.py">create</a>(\*\*<a href="src/conductor/types/qbd/sales_order_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_sales_order.py">QbdSalesOrder</a></code>
-- <code title="get /quickbooks-desktop/sales-orders/{id}">client.qbd.sales_orders.<a href="./src/conductor/resources/qbd/sales_orders.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_sales_order.py">QbdSalesOrder</a></code>
-- <code title="post /quickbooks-desktop/sales-orders/{id}">client.qbd.sales_orders.<a href="./src/conductor/resources/qbd/sales_orders.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/sales_order_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_sales_order.py">QbdSalesOrder</a></code>
-- <code title="get /quickbooks-desktop/sales-orders">client.qbd.sales_orders.<a href="./src/conductor/resources/qbd/sales_orders.py">list</a>(\*\*<a href="src/conductor/types/qbd/sales_order_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_sales_order.py">SyncCursorPage[QbdSalesOrder]</a></code>
-
-## SalesReceipts
-
-Types:
-
-```python
-from conductor.types.qbd import SalesReceipt
-```
-
-Methods:
-
-- <code title="post /quickbooks-desktop/sales-receipts">client.qbd.sales_receipts.<a href="./src/conductor/resources/qbd/sales_receipts.py">create</a>(\*\*<a href="src/conductor/types/qbd/sales_receipt_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/sales_receipt.py">SalesReceipt</a></code>
-- <code title="get /quickbooks-desktop/sales-receipts/{id}">client.qbd.sales_receipts.<a href="./src/conductor/resources/qbd/sales_receipts.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/sales_receipt.py">SalesReceipt</a></code>
-- <code title="post /quickbooks-desktop/sales-receipts/{id}">client.qbd.sales_receipts.<a href="./src/conductor/resources/qbd/sales_receipts.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/sales_receipt_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/sales_receipt.py">SalesReceipt</a></code>
-- <code title="get /quickbooks-desktop/sales-receipts">client.qbd.sales_receipts.<a href="./src/conductor/resources/qbd/sales_receipts.py">list</a>(\*\*<a href="src/conductor/types/qbd/sales_receipt_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/sales_receipt.py">SyncCursorPage[SalesReceipt]</a></code>
-
-## PurchaseOrders
-
-Types:
-
-```python
-from conductor.types.qbd import QbdPurchaseOrder
-```
-
-Methods:
-
-- <code title="post /quickbooks-desktop/purchase-orders">client.qbd.purchase_orders.<a href="./src/conductor/resources/qbd/purchase_orders.py">create</a>(\*\*<a href="src/conductor/types/qbd/purchase_order_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_purchase_order.py">QbdPurchaseOrder</a></code>
-- <code title="get /quickbooks-desktop/purchase-orders/{id}">client.qbd.purchase_orders.<a href="./src/conductor/resources/qbd/purchase_orders.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_purchase_order.py">QbdPurchaseOrder</a></code>
-- <code title="post /quickbooks-desktop/purchase-orders/{id}">client.qbd.purchase_orders.<a href="./src/conductor/resources/qbd/purchase_orders.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/purchase_order_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_purchase_order.py">QbdPurchaseOrder</a></code>
-- <code title="get /quickbooks-desktop/purchase-orders">client.qbd.purchase_orders.<a href="./src/conductor/resources/qbd/purchase_orders.py">list</a>(\*\*<a href="src/conductor/types/qbd/purchase_order_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_purchase_order.py">SyncCursorPage[QbdPurchaseOrder]</a></code>

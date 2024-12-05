@@ -23,7 +23,7 @@ from ..._response import (
 from ...types.qbd import purchase_order_list_params, purchase_order_create_params, purchase_order_update_params
 from ...pagination import SyncCursorPage, AsyncCursorPage
 from ..._base_client import AsyncPaginator, make_request_options
-from ...types.qbd.qbd_purchase_order import QbdPurchaseOrder
+from ...types.qbd.purchase_order import PurchaseOrder
 
 __all__ = ["PurchaseOrdersResource", "AsyncPurchaseOrdersResource"]
 
@@ -83,7 +83,7 @@ class PurchaseOrdersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdPurchaseOrder:
+    ) -> PurchaseOrder:
         """
         Creates a new purchase order.
 
@@ -234,7 +234,7 @@ class PurchaseOrdersResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdPurchaseOrder,
+            cast_to=PurchaseOrder,
         )
 
     def retrieve(
@@ -248,7 +248,7 @@ class PurchaseOrdersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdPurchaseOrder:
+    ) -> PurchaseOrder:
         """
         Retrieves a purchase order by ID.
 
@@ -274,7 +274,7 @@ class PurchaseOrdersResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdPurchaseOrder,
+            cast_to=PurchaseOrder,
         )
 
     def update(
@@ -314,7 +314,7 @@ class PurchaseOrdersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdPurchaseOrder:
+    ) -> PurchaseOrder:
         """
         Updates an existing purchase order.
 
@@ -480,7 +480,7 @@ class PurchaseOrdersResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdPurchaseOrder,
+            cast_to=PurchaseOrder,
         )
 
     def list(
@@ -511,7 +511,7 @@ class PurchaseOrdersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursorPage[QbdPurchaseOrder]:
+    ) -> SyncCursorPage[PurchaseOrder]:
         """
         Returns a list of purchase orders.
 
@@ -601,7 +601,7 @@ class PurchaseOrdersResource(SyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/purchase-orders",
-            page=SyncCursorPage[QbdPurchaseOrder],
+            page=SyncCursorPage[PurchaseOrder],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -631,7 +631,7 @@ class PurchaseOrdersResource(SyncAPIResource):
                     purchase_order_list_params.PurchaseOrderListParams,
                 ),
             ),
-            model=QbdPurchaseOrder,
+            model=PurchaseOrder,
         )
 
 
@@ -690,7 +690,7 @@ class AsyncPurchaseOrdersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdPurchaseOrder:
+    ) -> PurchaseOrder:
         """
         Creates a new purchase order.
 
@@ -841,7 +841,7 @@ class AsyncPurchaseOrdersResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdPurchaseOrder,
+            cast_to=PurchaseOrder,
         )
 
     async def retrieve(
@@ -855,7 +855,7 @@ class AsyncPurchaseOrdersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdPurchaseOrder:
+    ) -> PurchaseOrder:
         """
         Retrieves a purchase order by ID.
 
@@ -881,7 +881,7 @@ class AsyncPurchaseOrdersResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdPurchaseOrder,
+            cast_to=PurchaseOrder,
         )
 
     async def update(
@@ -921,7 +921,7 @@ class AsyncPurchaseOrdersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdPurchaseOrder:
+    ) -> PurchaseOrder:
         """
         Updates an existing purchase order.
 
@@ -1087,7 +1087,7 @@ class AsyncPurchaseOrdersResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdPurchaseOrder,
+            cast_to=PurchaseOrder,
         )
 
     def list(
@@ -1118,7 +1118,7 @@ class AsyncPurchaseOrdersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[QbdPurchaseOrder, AsyncCursorPage[QbdPurchaseOrder]]:
+    ) -> AsyncPaginator[PurchaseOrder, AsyncCursorPage[PurchaseOrder]]:
         """
         Returns a list of purchase orders.
 
@@ -1208,7 +1208,7 @@ class AsyncPurchaseOrdersResource(AsyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/purchase-orders",
-            page=AsyncCursorPage[QbdPurchaseOrder],
+            page=AsyncCursorPage[PurchaseOrder],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1238,7 +1238,7 @@ class AsyncPurchaseOrdersResource(AsyncAPIResource):
                     purchase_order_list_params.PurchaseOrderListParams,
                 ),
             ),
-            model=QbdPurchaseOrder,
+            model=PurchaseOrder,
         )
 
 
