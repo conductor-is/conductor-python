@@ -9,9 +9,9 @@ from .vendor import Vendor as Vendor
 from .account import Account as Account
 from .invoice import Invoice as Invoice
 from .customer import Customer as Customer
+from .estimate import Estimate as Estimate
 from .transfer import Transfer as Transfer
 from .sales_order import SalesOrder as SalesOrder
-from .qbd_estimate import QbdEstimate as QbdEstimate
 from .service_item import ServiceItem as ServiceItem
 from .sales_receipt import SalesReceipt as SalesReceipt
 from .standard_term import StandardTerm as StandardTerm
