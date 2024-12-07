@@ -23,7 +23,7 @@ from ..._response import (
 from ...types.qbd import receive_payment_list_params, receive_payment_create_params, receive_payment_update_params
 from ...pagination import SyncCursorPage, AsyncCursorPage
 from ..._base_client import AsyncPaginator, make_request_options
-from ...types.qbd.qbd_receive_payment import QbdReceivePayment
+from ...types.qbd.receive_payment import ReceivePayment
 
 __all__ = ["ReceivePaymentsResource", "AsyncReceivePaymentsResource"]
 
@@ -71,7 +71,7 @@ class ReceivePaymentsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdReceivePayment:
+    ) -> ReceivePayment:
         """
         Creates a new receive-payment.
 
@@ -181,7 +181,7 @@ class ReceivePaymentsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdReceivePayment,
+            cast_to=ReceivePayment,
         )
 
     def retrieve(
@@ -195,7 +195,7 @@ class ReceivePaymentsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdReceivePayment:
+    ) -> ReceivePayment:
         """
         Retrieves a receive-payment by ID.
 
@@ -221,7 +221,7 @@ class ReceivePaymentsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdReceivePayment,
+            cast_to=ReceivePayment,
         )
 
     def update(
@@ -247,7 +247,7 @@ class ReceivePaymentsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdReceivePayment:
+    ) -> ReceivePayment:
         """
         Updates an existing receive-payment.
 
@@ -346,7 +346,7 @@ class ReceivePaymentsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdReceivePayment,
+            cast_to=ReceivePayment,
         )
 
     def list(
@@ -376,7 +376,7 @@ class ReceivePaymentsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursorPage[QbdReceivePayment]:
+    ) -> SyncCursorPage[ReceivePayment]:
         """
         Returns a list of receive-payments.
 
@@ -463,7 +463,7 @@ class ReceivePaymentsResource(SyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/receive-payments",
-            page=SyncCursorPage[QbdReceivePayment],
+            page=SyncCursorPage[ReceivePayment],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -492,7 +492,7 @@ class ReceivePaymentsResource(SyncAPIResource):
                     receive_payment_list_params.ReceivePaymentListParams,
                 ),
             ),
-            model=QbdReceivePayment,
+            model=ReceivePayment,
         )
 
 
@@ -539,7 +539,7 @@ class AsyncReceivePaymentsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdReceivePayment:
+    ) -> ReceivePayment:
         """
         Creates a new receive-payment.
 
@@ -649,7 +649,7 @@ class AsyncReceivePaymentsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdReceivePayment,
+            cast_to=ReceivePayment,
         )
 
     async def retrieve(
@@ -663,7 +663,7 @@ class AsyncReceivePaymentsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdReceivePayment:
+    ) -> ReceivePayment:
         """
         Retrieves a receive-payment by ID.
 
@@ -689,7 +689,7 @@ class AsyncReceivePaymentsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdReceivePayment,
+            cast_to=ReceivePayment,
         )
 
     async def update(
@@ -715,7 +715,7 @@ class AsyncReceivePaymentsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdReceivePayment:
+    ) -> ReceivePayment:
         """
         Updates an existing receive-payment.
 
@@ -814,7 +814,7 @@ class AsyncReceivePaymentsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdReceivePayment,
+            cast_to=ReceivePayment,
         )
 
     def list(
@@ -844,7 +844,7 @@ class AsyncReceivePaymentsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[QbdReceivePayment, AsyncCursorPage[QbdReceivePayment]]:
+    ) -> AsyncPaginator[ReceivePayment, AsyncCursorPage[ReceivePayment]]:
         """
         Returns a list of receive-payments.
 
@@ -931,7 +931,7 @@ class AsyncReceivePaymentsResource(AsyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/receive-payments",
-            page=AsyncCursorPage[QbdReceivePayment],
+            page=AsyncCursorPage[ReceivePayment],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -960,7 +960,7 @@ class AsyncReceivePaymentsResource(AsyncAPIResource):
                     receive_payment_list_params.ReceivePaymentListParams,
                 ),
             ),
-            model=QbdReceivePayment,
+            model=ReceivePayment,
         )
 
 

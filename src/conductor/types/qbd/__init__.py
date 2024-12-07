@@ -20,6 +20,7 @@ from .inventory_site import InventorySite as InventorySite
 from .purchase_order import PurchaseOrder as PurchaseOrder
 from .sales_tax_code import SalesTaxCode as SalesTaxCode
 from .sales_tax_item import SalesTaxItem as SalesTaxItem
+from .receive_payment import ReceivePayment as ReceivePayment
 from .bill_list_params import BillListParams as BillListParams
 from .date_driven_term import DateDrivenTerm as DateDrivenTerm
 from .check_list_params import CheckListParams as CheckListParams
@@ -38,7 +39,6 @@ from .class_create_params import ClassCreateParams as ClassCreateParams
 from .class_list_response import ClassListResponse as ClassListResponse
 from .class_update_params import ClassUpdateParams as ClassUpdateParams
 from .invoice_list_params import InvoiceListParams as InvoiceListParams
-from .qbd_receive_payment import QbdReceivePayment as QbdReceivePayment
 from .customer_list_params import CustomerListParams as CustomerListParams
 from .estimate_list_params import EstimateListParams as EstimateListParams
 from .transfer_list_params import TransferListParams as TransferListParams
