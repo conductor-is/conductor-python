@@ -286,6 +286,10 @@ class QbdResource(SyncAPIResource):
         return PurchaseOrdersResource(self._client)
 
     @cached_property
+    def receive_payments(self) -> ReceivePaymentsResource:
+        return ReceivePaymentsResource(self._client)
+
+    @cached_property
     def sales_orders(self) -> SalesOrdersResource:
         return SalesOrdersResource(self._client)
 
@@ -316,10 +320,6 @@ class QbdResource(SyncAPIResource):
     @cached_property
     def vendors(self) -> VendorsResource:
         return VendorsResource(self._client)
-
-    @cached_property
-    def receive_payments(self) -> ReceivePaymentsResource:
-        return ReceivePaymentsResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> QbdResourceWithRawResponse:
@@ -411,6 +411,10 @@ class AsyncQbdResource(AsyncAPIResource):
         return AsyncPurchaseOrdersResource(self._client)
 
     @cached_property
+    def receive_payments(self) -> AsyncReceivePaymentsResource:
+        return AsyncReceivePaymentsResource(self._client)
+
+    @cached_property
     def sales_orders(self) -> AsyncSalesOrdersResource:
         return AsyncSalesOrdersResource(self._client)
 
@@ -441,10 +445,6 @@ class AsyncQbdResource(AsyncAPIResource):
     @cached_property
     def vendors(self) -> AsyncVendorsResource:
         return AsyncVendorsResource(self._client)
-
-    @cached_property
-    def receive_payments(self) -> AsyncReceivePaymentsResource:
-        return AsyncReceivePaymentsResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncQbdResourceWithRawResponse:
@@ -539,6 +539,10 @@ class QbdResourceWithRawResponse:
         return PurchaseOrdersResourceWithRawResponse(self._qbd.purchase_orders)
 
     @cached_property
+    def receive_payments(self) -> ReceivePaymentsResourceWithRawResponse:
+        return ReceivePaymentsResourceWithRawResponse(self._qbd.receive_payments)
+
+    @cached_property
     def sales_orders(self) -> SalesOrdersResourceWithRawResponse:
         return SalesOrdersResourceWithRawResponse(self._qbd.sales_orders)
 
@@ -569,10 +573,6 @@ class QbdResourceWithRawResponse:
     @cached_property
     def vendors(self) -> VendorsResourceWithRawResponse:
         return VendorsResourceWithRawResponse(self._qbd.vendors)
-
-    @cached_property
-    def receive_payments(self) -> ReceivePaymentsResourceWithRawResponse:
-        return ReceivePaymentsResourceWithRawResponse(self._qbd.receive_payments)
 
 
 class AsyncQbdResourceWithRawResponse:
@@ -648,6 +648,10 @@ class AsyncQbdResourceWithRawResponse:
         return AsyncPurchaseOrdersResourceWithRawResponse(self._qbd.purchase_orders)
 
     @cached_property
+    def receive_payments(self) -> AsyncReceivePaymentsResourceWithRawResponse:
+        return AsyncReceivePaymentsResourceWithRawResponse(self._qbd.receive_payments)
+
+    @cached_property
     def sales_orders(self) -> AsyncSalesOrdersResourceWithRawResponse:
         return AsyncSalesOrdersResourceWithRawResponse(self._qbd.sales_orders)
 
@@ -678,10 +682,6 @@ class AsyncQbdResourceWithRawResponse:
     @cached_property
     def vendors(self) -> AsyncVendorsResourceWithRawResponse:
         return AsyncVendorsResourceWithRawResponse(self._qbd.vendors)
-
-    @cached_property
-    def receive_payments(self) -> AsyncReceivePaymentsResourceWithRawResponse:
-        return AsyncReceivePaymentsResourceWithRawResponse(self._qbd.receive_payments)
 
 
 class QbdResourceWithStreamingResponse:
@@ -757,6 +757,10 @@ class QbdResourceWithStreamingResponse:
         return PurchaseOrdersResourceWithStreamingResponse(self._qbd.purchase_orders)
 
     @cached_property
+    def receive_payments(self) -> ReceivePaymentsResourceWithStreamingResponse:
+        return ReceivePaymentsResourceWithStreamingResponse(self._qbd.receive_payments)
+
+    @cached_property
     def sales_orders(self) -> SalesOrdersResourceWithStreamingResponse:
         return SalesOrdersResourceWithStreamingResponse(self._qbd.sales_orders)
 
@@ -787,10 +791,6 @@ class QbdResourceWithStreamingResponse:
     @cached_property
     def vendors(self) -> VendorsResourceWithStreamingResponse:
         return VendorsResourceWithStreamingResponse(self._qbd.vendors)
-
-    @cached_property
-    def receive_payments(self) -> ReceivePaymentsResourceWithStreamingResponse:
-        return ReceivePaymentsResourceWithStreamingResponse(self._qbd.receive_payments)
 
 
 class AsyncQbdResourceWithStreamingResponse:
@@ -866,6 +866,10 @@ class AsyncQbdResourceWithStreamingResponse:
         return AsyncPurchaseOrdersResourceWithStreamingResponse(self._qbd.purchase_orders)
 
     @cached_property
+    def receive_payments(self) -> AsyncReceivePaymentsResourceWithStreamingResponse:
+        return AsyncReceivePaymentsResourceWithStreamingResponse(self._qbd.receive_payments)
+
+    @cached_property
     def sales_orders(self) -> AsyncSalesOrdersResourceWithStreamingResponse:
         return AsyncSalesOrdersResourceWithStreamingResponse(self._qbd.sales_orders)
 
@@ -896,7 +900,3 @@ class AsyncQbdResourceWithStreamingResponse:
     @cached_property
     def vendors(self) -> AsyncVendorsResourceWithStreamingResponse:
         return AsyncVendorsResourceWithStreamingResponse(self._qbd.vendors)
-
-    @cached_property
-    def receive_payments(self) -> AsyncReceivePaymentsResourceWithStreamingResponse:
-        return AsyncReceivePaymentsResourceWithStreamingResponse(self._qbd.receive_payments)
