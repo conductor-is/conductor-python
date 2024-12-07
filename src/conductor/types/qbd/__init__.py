@@ -38,6 +38,7 @@ from .class_create_params import ClassCreateParams as ClassCreateParams
 from .class_list_response import ClassListResponse as ClassListResponse
 from .class_update_params import ClassUpdateParams as ClassUpdateParams
 from .invoice_list_params import InvoiceListParams as InvoiceListParams
+from .qbd_receive_payment import QbdReceivePayment as QbdReceivePayment
 from .customer_list_params import CustomerListParams as CustomerListParams
 from .estimate_list_params import EstimateListParams as EstimateListParams
 from .transfer_list_params import TransferListParams as TransferListParams
@@ -69,6 +70,7 @@ from .sales_tax_code_list_params import SalesTaxCodeListParams as SalesTaxCodeLi
 from .sales_tax_item_list_params import SalesTaxItemListParams as SalesTaxItemListParams
 from .service_item_create_params import ServiceItemCreateParams as ServiceItemCreateParams
 from .service_item_update_params import ServiceItemUpdateParams as ServiceItemUpdateParams
+from .receive_payment_list_params import ReceivePaymentListParams as ReceivePaymentListParams
 from .sales_receipt_create_params import SalesReceiptCreateParams as SalesReceiptCreateParams
 from .sales_receipt_update_params import SalesReceiptUpdateParams as SalesReceiptUpdateParams
 from .standard_term_create_params import StandardTermCreateParams as StandardTermCreateParams
@@ -86,6 +88,8 @@ from .sales_tax_code_list_response import SalesTaxCodeListResponse as SalesTaxCo
 from .sales_tax_code_update_params import SalesTaxCodeUpdateParams as SalesTaxCodeUpdateParams
 from .sales_tax_item_create_params import SalesTaxItemCreateParams as SalesTaxItemCreateParams
 from .sales_tax_item_update_params import SalesTaxItemUpdateParams as SalesTaxItemUpdateParams
+from .receive_payment_create_params import ReceivePaymentCreateParams as ReceivePaymentCreateParams
+from .receive_payment_update_params import ReceivePaymentUpdateParams as ReceivePaymentUpdateParams
 from .bill_payment_check_list_params import BillPaymentCheckListParams as BillPaymentCheckListParams
 from .credit_card_charge_list_params import CreditCardChargeListParams as CreditCardChargeListParams
 from .credit_card_credit_list_params import CreditCardCreditListParams as CreditCardCreditListParams

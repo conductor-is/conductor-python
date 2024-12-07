@@ -191,10 +191,12 @@ class InvoicesResource(SyncAPIResource):
 
           receivables_account_id: The Accounts-Receivable (A/R) account to which this invoice is assigned, used to
               track the amount owed. If not specified, QuickBooks Desktop will use its default
-              Accounts-Receivable account.
+              A/R account.
 
               **IMPORTANT**: If this invoice is linked to other transactions, this A/R account
-              must match the `receivablesAccount` used in those other transactions.
+              must match the `receivablesAccount` used in all linked transactions. For
+              example, when refunding a credit card payment, the A/R account must match the
+              one used in the original credit transactions being refunded.
 
           ref_number: The case-sensitive user-defined reference number for this invoice, which can be
               used to identify the transaction in QuickBooks. This value is not required to be
@@ -462,10 +464,12 @@ class InvoicesResource(SyncAPIResource):
 
           receivables_account_id: The Accounts-Receivable (A/R) account to which this invoice is assigned, used to
               track the amount owed. If not specified, QuickBooks Desktop will use its default
-              Accounts-Receivable account.
+              A/R account.
 
               **IMPORTANT**: If this invoice is linked to other transactions, this A/R account
-              must match the `receivablesAccount` used in those other transactions.
+              must match the `receivablesAccount` used in all linked transactions. For
+              example, when refunding a credit card payment, the A/R account must match the
+              one used in the original credit transactions being refunded.
 
           ref_number: The case-sensitive user-defined reference number for this invoice, which can be
               used to identify the transaction in QuickBooks. This value is not required to be
@@ -883,10 +887,12 @@ class AsyncInvoicesResource(AsyncAPIResource):
 
           receivables_account_id: The Accounts-Receivable (A/R) account to which this invoice is assigned, used to
               track the amount owed. If not specified, QuickBooks Desktop will use its default
-              Accounts-Receivable account.
+              A/R account.
 
               **IMPORTANT**: If this invoice is linked to other transactions, this A/R account
-              must match the `receivablesAccount` used in those other transactions.
+              must match the `receivablesAccount` used in all linked transactions. For
+              example, when refunding a credit card payment, the A/R account must match the
+              one used in the original credit transactions being refunded.
 
           ref_number: The case-sensitive user-defined reference number for this invoice, which can be
               used to identify the transaction in QuickBooks. This value is not required to be
@@ -1154,10 +1160,12 @@ class AsyncInvoicesResource(AsyncAPIResource):
 
           receivables_account_id: The Accounts-Receivable (A/R) account to which this invoice is assigned, used to
               track the amount owed. If not specified, QuickBooks Desktop will use its default
-              Accounts-Receivable account.
+              A/R account.
 
               **IMPORTANT**: If this invoice is linked to other transactions, this A/R account
-              must match the `receivablesAccount` used in those other transactions.
+              must match the `receivablesAccount` used in all linked transactions. For
+              example, when refunding a credit card payment, the A/R account must match the
+              one used in the original credit transactions being refunded.
 
           ref_number: The case-sensitive user-defined reference number for this invoice, which can be
               used to identify the transaction in QuickBooks. This value is not required to be

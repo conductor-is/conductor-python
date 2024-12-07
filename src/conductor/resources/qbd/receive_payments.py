@@ -20,91 +20,90 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...types.qbd import (
-    bill_payment_check_list_params,
-    bill_payment_check_create_params,
-    bill_payment_check_update_params,
-)
+from ...types.qbd import receive_payment_list_params, receive_payment_create_params, receive_payment_update_params
 from ...pagination import SyncCursorPage, AsyncCursorPage
 from ..._base_client import AsyncPaginator, make_request_options
-from ...types.qbd.bill_payment_check import BillPaymentCheck
+from ...types.qbd.qbd_receive_payment import QbdReceivePayment
 
-__all__ = ["BillPaymentChecksResource", "AsyncBillPaymentChecksResource"]
+__all__ = ["ReceivePaymentsResource", "AsyncReceivePaymentsResource"]
 
 
-class BillPaymentChecksResource(SyncAPIResource):
+class ReceivePaymentsResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> BillPaymentChecksResourceWithRawResponse:
+    def with_raw_response(self) -> ReceivePaymentsResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return the
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/conductor-is/conductor-python#accessing-raw-response-data-eg-headers
         """
-        return BillPaymentChecksResourceWithRawResponse(self)
+        return ReceivePaymentsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> BillPaymentChecksResourceWithStreamingResponse:
+    def with_streaming_response(self) -> ReceivePaymentsResourceWithStreamingResponse:
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
         For more information, see https://www.github.com/conductor-is/conductor-python#with_streaming_response
         """
-        return BillPaymentChecksResourceWithStreamingResponse(self)
+        return ReceivePaymentsResourceWithStreamingResponse(self)
 
     def create(
         self,
         *,
-        apply_to_transactions: Iterable[bill_payment_check_create_params.ApplyToTransaction],
-        bank_account_id: str,
+        apply_to_transactions: Iterable[receive_payment_create_params.ApplyToTransaction],
+        customer_id: str,
         transaction_date: Union[str, date],
-        vendor_id: str,
         conductor_end_user_id: str,
+        credit_card_transaction: receive_payment_create_params.CreditCardTransaction | NotGiven = NOT_GIVEN,
+        deposit_to_account_id: str | NotGiven = NOT_GIVEN,
         exchange_rate: float | NotGiven = NOT_GIVEN,
         external_id: str | NotGiven = NOT_GIVEN,
-        is_queued_for_print: bool | NotGiven = NOT_GIVEN,
+        is_auto_apply: bool | NotGiven = NOT_GIVEN,
         memo: str | NotGiven = NOT_GIVEN,
-        payables_account_id: str | NotGiven = NOT_GIVEN,
+        payment_method_id: str | NotGiven = NOT_GIVEN,
+        receivables_account_id: str | NotGiven = NOT_GIVEN,
         ref_number: str | NotGiven = NOT_GIVEN,
+        total_amount: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> BillPaymentCheck:
+    ) -> QbdReceivePayment:
         """
-        Creates a new bill payment check.
+        Creates a new receive-payment.
 
         Args:
-          apply_to_transactions: The bills to be paid by this bill payment check. This will create a link between
-              this bill payment check and the specified bills.
+          apply_to_transactions: The invoices to be paid by this receive-payment. This will create a link between
+              this receive-payment and the specified invoices.
 
               **IMPORTANT**: In each `applyToTransactions` object, you must specify either
               `paymentAmount`, `applyCredits`, `discountAmount`, or any combination of these;
               if none of these are specified, you will receive an error for an empty
               transaction.
 
-              **IMPORTANT**: The target bill must have `isPaid=false`, otherwise, QuickBooks
-              will report this object as "cannot be found".
+              **IMPORTANT**: The target invoice must have `isPaid=false`, otherwise,
+              QuickBooks will report this object as "cannot be found".
 
-          bank_account_id: The bank account from which the funds are being drawn for this bill payment
-              check; e.g., Checking or Savings. This bill payment check will decrease the
-              balance of this account.
+          customer_id: The customer or customer-job to which the payment for this receive-payment is
+              credited.
 
-          transaction_date: The date of this bill payment check, in ISO 8601 format (YYYY-MM-DD).
-
-          vendor_id: The vendor who sent the bill(s) that this check is paying and who will receive
-              this payment.
-
-              **IMPORTANT**: This vendor must match the `vendor` on the bill(s) specified in
-              `applyToTransactions`; otherwise, QuickBooks will say the `transactionId` in
-              `applyToTransactions` "does not exist".
+          transaction_date: The date of this receive-payment, in ISO 8601 format (YYYY-MM-DD).
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          exchange_rate: The market exchange rate between this bill payment check's currency and the home
+          credit_card_transaction: The credit card transaction data for this receive-payment's payment when using
+              QuickBooks Merchant Services (QBMS). If specifying this field, you must also
+              specify the `paymentMethod` field.
+
+          deposit_to_account_id: The account where the funds for this receive-payment will be or have been
+              deposited. If omitted, QuickBooks will use the default Undeposited Funds
+              account.
+
+          exchange_rate: The market exchange rate between this receive-payment's currency and the home
               currency in QuickBooks at the time of this transaction. Represented as a decimal
               value (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
 
@@ -115,23 +114,40 @@ class BillPaymentChecksResource(SyncAPIResource):
               return an error. This field is immutable and can only be set during object
               creation.
 
-          is_queued_for_print: Indicates whether this bill payment check is included in the queue of documents
-              for QuickBooks to print.
+          is_auto_apply: When `true`, QuickBooks applies `totalAmount` to any outstanding transaction
+              that exactly matches `totalAmount`. If no exact match is found, this
+              receive-payment is applied to the oldest outstanding transaction for the
+              customer-job. When `false`, QuickBooks records the payment but does not apply it
+              to any specific transaction, causing the amount to appear as a credit on the
+              customer-job’s next transaction.
 
-          memo: A memo or note for this bill payment check.
+          memo: A memo or note that appears in reports that show details of this
+              receive-payment.
 
-          payables_account_id: The Accounts-Payable (A/P) account to which this bill payment check is assigned,
+          payment_method_id: The receive-payment's payment method (e.g., cash, check, credit card).
+
+              **NOTE**: If this receive-payment contains credit card transaction data supplied
+              from QuickBooks Merchant Services (QBMS) transaction responses, you must specify
+              a credit card payment method (e.g., "Visa", "MasterCard", etc.).
+
+          receivables_account_id: The Accounts-Receivable (A/R) account to which this receive-payment is assigned,
               used to track the amount owed. If not specified, QuickBooks Desktop will use its
-              default A/P account.
+              default A/R account.
 
-              **IMPORTANT**: If this bill payment check is linked to other transactions, this
-              A/P account must match the `payablesAccount` used in those other transactions.
+              **IMPORTANT**: If this receive-payment is linked to other transactions, this A/R
+              account must match the `receivablesAccount` used in all linked transactions. For
+              example, when refunding a credit card payment, the A/R account must match the
+              one used in the original credit transactions being refunded.
 
-          ref_number: The case-sensitive user-defined reference number for this bill payment check,
-              which can be used to identify the transaction in QuickBooks. This value is not
+          ref_number: The case-sensitive user-defined reference number for this receive-payment, which
+              can be used to identify the transaction in QuickBooks. This value is not
               required to be unique and can be arbitrarily changed by the QuickBooks user.
 
-              **IMPORTANT**: For checks, this field is the check number.
+          total_amount: The total monetary amount of this receive-payment, represented as a decimal
+              string.
+
+              **NOTE:** The sum of the `paymentAmount` amounts in the `applyToTransactions`
+              array cannot exceed the `totalAmount`, or you will receive an error.
 
           extra_headers: Send extra headers
 
@@ -143,26 +159,29 @@ class BillPaymentChecksResource(SyncAPIResource):
         """
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._post(
-            "/quickbooks-desktop/bill-payment-checks",
+            "/quickbooks-desktop/receive-payments",
             body=maybe_transform(
                 {
                     "apply_to_transactions": apply_to_transactions,
-                    "bank_account_id": bank_account_id,
+                    "customer_id": customer_id,
                     "transaction_date": transaction_date,
-                    "vendor_id": vendor_id,
+                    "credit_card_transaction": credit_card_transaction,
+                    "deposit_to_account_id": deposit_to_account_id,
                     "exchange_rate": exchange_rate,
                     "external_id": external_id,
-                    "is_queued_for_print": is_queued_for_print,
+                    "is_auto_apply": is_auto_apply,
                     "memo": memo,
-                    "payables_account_id": payables_account_id,
+                    "payment_method_id": payment_method_id,
+                    "receivables_account_id": receivables_account_id,
                     "ref_number": ref_number,
+                    "total_amount": total_amount,
                 },
-                bill_payment_check_create_params.BillPaymentCheckCreateParams,
+                receive_payment_create_params.ReceivePaymentCreateParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BillPaymentCheck,
+            cast_to=QbdReceivePayment,
         )
 
     def retrieve(
@@ -176,12 +195,12 @@ class BillPaymentChecksResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> BillPaymentCheck:
+    ) -> QbdReceivePayment:
         """
-        Retrieves a bill payment check by ID.
+        Retrieves a receive-payment by ID.
 
         Args:
-          id: The QuickBooks-assigned unique identifier of the bill payment check to retrieve.
+          id: The QuickBooks-assigned unique identifier of the receive-payment to retrieve.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -198,11 +217,11 @@ class BillPaymentChecksResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get(
-            f"/quickbooks-desktop/bill-payment-checks/{id}",
+            f"/quickbooks-desktop/receive-payments/{id}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BillPaymentCheck,
+            cast_to=QbdReceivePayment,
         )
 
     def update(
@@ -211,13 +230,16 @@ class BillPaymentChecksResource(SyncAPIResource):
         *,
         revision_number: str,
         conductor_end_user_id: str,
-        amount: str | NotGiven = NOT_GIVEN,
-        apply_to_transactions: Iterable[bill_payment_check_update_params.ApplyToTransaction] | NotGiven = NOT_GIVEN,
-        bank_account_id: str | NotGiven = NOT_GIVEN,
+        apply_to_transactions: Iterable[receive_payment_update_params.ApplyToTransaction] | NotGiven = NOT_GIVEN,
+        credit_card_transaction: receive_payment_update_params.CreditCardTransaction | NotGiven = NOT_GIVEN,
+        customer_id: str | NotGiven = NOT_GIVEN,
+        deposit_to_account_id: str | NotGiven = NOT_GIVEN,
         exchange_rate: float | NotGiven = NOT_GIVEN,
-        is_queued_for_print: bool | NotGiven = NOT_GIVEN,
         memo: str | NotGiven = NOT_GIVEN,
+        payment_method_id: str | NotGiven = NOT_GIVEN,
+        receivables_account_id: str | NotGiven = NOT_GIVEN,
         ref_number: str | NotGiven = NOT_GIVEN,
+        total_amount: str | NotGiven = NOT_GIVEN,
         transaction_date: Union[str, date] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -225,14 +247,14 @@ class BillPaymentChecksResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> BillPaymentCheck:
+    ) -> QbdReceivePayment:
         """
-        Updates an existing bill payment check.
+        Updates an existing receive-payment.
 
         Args:
-          id: The QuickBooks-assigned unique identifier of the bill payment check to update.
+          id: The QuickBooks-assigned unique identifier of the receive-payment to update.
 
-          revision_number: The current revision number of the bill payment check object you are updating,
+          revision_number: The current revision number of the receive-payment object you are updating,
               which you can get by fetching the object first. Provide the most recent
               `revisionNumber` to ensure you're working with the latest data; otherwise, the
               update will return an error.
@@ -240,39 +262,56 @@ class BillPaymentChecksResource(SyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          amount: The monetary amount of this bill payment check, represented as a decimal string.
-
-          apply_to_transactions: The bills to be paid by this bill payment check. This will create a link between
-              this bill payment check and the specified bills.
+          apply_to_transactions: The invoices to be paid by this receive-payment. This will create a link between
+              this receive-payment and the specified invoices.
 
               **IMPORTANT**: In each `applyToTransactions` object, you must specify either
               `paymentAmount`, `applyCredits`, `discountAmount`, or any combination of these;
               if none of these are specified, you will receive an error for an empty
               transaction.
 
-              **IMPORTANT**: The target bill must have `isPaid=false`, otherwise, QuickBooks
-              will report this object as "cannot be found".
+              **IMPORTANT**: The target invoice must have `isPaid=false`, otherwise,
+              QuickBooks will report this object as "cannot be found".
 
-          bank_account_id: The bank account from which the funds are being drawn for this bill payment
-              check; e.g., Checking or Savings. This bill payment check will decrease the
-              balance of this account.
+          credit_card_transaction: The credit card transaction data for this receive-payment's payment when using
+              QuickBooks Merchant Services (QBMS). If specifying this field, you must also
+              specify the `paymentMethod` field.
 
-          exchange_rate: The market exchange rate between this bill payment check's currency and the home
+          customer_id: The customer or customer-job to which the payment for this receive-payment is
+              credited.
+
+          deposit_to_account_id: The account where the funds for this receive-payment will be or have been
+              deposited.
+
+          exchange_rate: The market exchange rate between this receive-payment's currency and the home
               currency in QuickBooks at the time of this transaction. Represented as a decimal
               value (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
 
-          is_queued_for_print: Indicates whether this bill payment check is included in the queue of documents
-              for QuickBooks to print.
+          memo: A memo or note that appears in reports that show details of this
+              receive-payment.
 
-          memo: A memo or note for this bill payment check.
+          payment_method_id: The receive-payment's payment method (e.g., cash, check, credit card).
 
-          ref_number: The case-sensitive user-defined reference number for this bill payment check,
-              which can be used to identify the transaction in QuickBooks. This value is not
+          receivables_account_id: The Accounts-Receivable (A/R) account to which this receive-payment is assigned,
+              used to track the amount owed. If not specified, QuickBooks Desktop will use its
+              default A/R account.
+
+              **IMPORTANT**: If this receive-payment is linked to other transactions, this A/R
+              account must match the `receivablesAccount` used in all linked transactions. For
+              example, when refunding a credit card payment, the A/R account must match the
+              one used in the original credit transactions being refunded.
+
+          ref_number: The case-sensitive user-defined reference number for this receive-payment, which
+              can be used to identify the transaction in QuickBooks. This value is not
               required to be unique and can be arbitrarily changed by the QuickBooks user.
 
-              **IMPORTANT**: For checks, this field is the check number.
+          total_amount: The total monetary amount of this receive-payment, represented as a decimal
+              string.
 
-          transaction_date: The date of this bill payment check, in ISO 8601 format (YYYY-MM-DD).
+              **NOTE:** The sum of the `paymentAmount` amounts in the `applyToTransactions`
+              array cannot exceed the `totalAmount`, or you will receive an error.
+
+          transaction_date: The date of this receive-payment, in ISO 8601 format (YYYY-MM-DD).
 
           extra_headers: Send extra headers
 
@@ -286,25 +325,28 @@ class BillPaymentChecksResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._post(
-            f"/quickbooks-desktop/bill-payment-checks/{id}",
+            f"/quickbooks-desktop/receive-payments/{id}",
             body=maybe_transform(
                 {
                     "revision_number": revision_number,
-                    "amount": amount,
                     "apply_to_transactions": apply_to_transactions,
-                    "bank_account_id": bank_account_id,
+                    "credit_card_transaction": credit_card_transaction,
+                    "customer_id": customer_id,
+                    "deposit_to_account_id": deposit_to_account_id,
                     "exchange_rate": exchange_rate,
-                    "is_queued_for_print": is_queued_for_print,
                     "memo": memo,
+                    "payment_method_id": payment_method_id,
+                    "receivables_account_id": receivables_account_id,
                     "ref_number": ref_number,
+                    "total_amount": total_amount,
                     "transaction_date": transaction_date,
                 },
-                bill_payment_check_update_params.BillPaymentCheckUpdateParams,
+                receive_payment_update_params.ReceivePaymentUpdateParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BillPaymentCheck,
+            cast_to=QbdReceivePayment,
         )
 
     def list(
@@ -314,6 +356,7 @@ class BillPaymentChecksResource(SyncAPIResource):
         account_ids: List[str] | NotGiven = NOT_GIVEN,
         currency_ids: List[str] | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
+        customer_ids: List[str] | NotGiven = NOT_GIVEN,
         ids: List[str] | NotGiven = NOT_GIVEN,
         include_line_items: bool | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
@@ -327,30 +370,31 @@ class BillPaymentChecksResource(SyncAPIResource):
         transaction_date_to: Union[str, date] | NotGiven = NOT_GIVEN,
         updated_after: str | NotGiven = NOT_GIVEN,
         updated_before: str | NotGiven = NOT_GIVEN,
-        vendor_ids: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursorPage[BillPaymentCheck]:
+    ) -> SyncCursorPage[QbdReceivePayment]:
         """
-        Returns a list of bill payment checks.
+        Returns a list of receive-payments.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_ids: Filter for bill payment checks associated with these accounts.
+          account_ids: Filter for receive-payments associated with these accounts.
 
-          currency_ids: Filter for bill payment checks in these currencies.
+          currency_ids: Filter for receive-payments in these currencies.
 
           cursor: The pagination token to fetch the next set of results when paginating with the
               `limit` parameter. Retrieve this value from the `nextCursor` field in the
               previous response. If omitted, the API returns the first page of results.
 
-          ids: Filter for specific bill payment checks by their QuickBooks-assigned unique
+          customer_ids: Filter for receive-payments received from these customers.
+
+          ids: Filter for specific receive-payments by their QuickBooks-assigned unique
               identifier(s).
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
@@ -364,51 +408,49 @@ class BillPaymentChecksResource(SyncAPIResource):
               used as the `cursor` parameter value in subsequent requests to fetch the next
               set of results.
 
-          ref_number_contains: Filter for bill payment checks whose `refNumber` contains this substring. For
-              checks, this is the check number. NOTE: If you use this parameter, you cannot
-              also use `refNumberStartsWith` or `refNumberEndsWith`.
+          ref_number_contains: Filter for receive-payments whose `refNumber` contains this substring. NOTE: If
+              you use this parameter, you cannot also use `refNumberStartsWith` or
+              `refNumberEndsWith`.
 
-          ref_number_ends_with: Filter for bill payment checks whose `refNumber` ends with this substring. For
-              checks, this is the check number. NOTE: If you use this parameter, you cannot
-              also use `refNumberContains` or `refNumberStartsWith`.
+          ref_number_ends_with: Filter for receive-payments whose `refNumber` ends with this substring. NOTE: If
+              you use this parameter, you cannot also use `refNumberContains` or
+              `refNumberStartsWith`.
 
-          ref_number_from: Filter for bill payment checks whose `refNumber` is greater than or equal to
-              this value. If omitted, the range will begin with the first number of the list.
-              Uses a numerical comparison for values that contain only digits; otherwise, uses
-              a lexicographical comparison.
+          ref_number_from: Filter for receive-payments whose `refNumber` is greater than or equal to this
+              value. If omitted, the range will begin with the first number of the list. Uses
+              a numerical comparison for values that contain only digits; otherwise, uses a
+              lexicographical comparison.
 
-          ref_numbers: Filter for specific bill payment checks by their ref-number(s), case-sensitive.
-              In QuickBooks, ref-numbers are not required to be unique and can be arbitrarily
+          ref_numbers: Filter for specific receive-payments by their ref-number(s), case-sensitive. In
+              QuickBooks, ref-numbers are not required to be unique and can be arbitrarily
               changed by the QuickBooks user.
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
-          ref_number_starts_with: Filter for bill payment checks whose `refNumber` starts with this substring. For
-              checks, this is the check number. NOTE: If you use this parameter, you cannot
-              also use `refNumberContains` or `refNumberEndsWith`.
+          ref_number_starts_with:
+              Filter for receive-payments whose `refNumber` starts with this substring. NOTE:
+              If you use this parameter, you cannot also use `refNumberContains` or
+              `refNumberEndsWith`.
 
-          ref_number_to: Filter for bill payment checks whose `refNumber` is less than or equal to this
+          ref_number_to: Filter for receive-payments whose `refNumber` is less than or equal to this
               value. If omitted, the range will end with the last number of the list. Uses a
               numerical comparison for values that contain only digits; otherwise, uses a
               lexicographical comparison.
 
-          transaction_date_from: Filter for bill payment checks created on or after this date, in ISO 8601 format
+          transaction_date_from: Filter for receive-payments created on or after this date, in ISO 8601 format
               (YYYY-MM-DD).
 
-          transaction_date_to: Filter for bill payment checks created on or before this date, in ISO 8601
-              format (YYYY-MM-DD).
+          transaction_date_to: Filter for receive-payments created on or before this date, in ISO 8601 format
+              (YYYY-MM-DD).
 
-          updated_after: Filter for bill payment checks updated on or after this date and time, in ISO
-              8601 format (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the
-              time is assumed to be 00:00:00 of that day.
+          updated_after: Filter for receive-payments updated on or after this date and time, in ISO 8601
+              format (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the time
+              is assumed to be 00:00:00 of that day.
 
-          updated_before: Filter for bill payment checks updated on or before this date and time, in ISO
-              8601 format (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the
-              time is assumed to be 23:59:59 of that day.
-
-          vendor_ids: Filter for bill payment checks sent to these vendors. These are the vendors who
-              sent the bills paid by these checks.
+          updated_before: Filter for receive-payments updated on or before this date and time, in ISO 8601
+              format (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the time
+              is assumed to be 23:59:59 of that day.
 
           extra_headers: Send extra headers
 
@@ -420,8 +462,8 @@ class BillPaymentChecksResource(SyncAPIResource):
         """
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
-            "/quickbooks-desktop/bill-payment-checks",
-            page=SyncCursorPage[BillPaymentCheck],
+            "/quickbooks-desktop/receive-payments",
+            page=SyncCursorPage[QbdReceivePayment],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -432,6 +474,7 @@ class BillPaymentChecksResource(SyncAPIResource):
                         "account_ids": account_ids,
                         "currency_ids": currency_ids,
                         "cursor": cursor,
+                        "customer_ids": customer_ids,
                         "ids": ids,
                         "include_line_items": include_line_items,
                         "limit": limit,
@@ -445,88 +488,90 @@ class BillPaymentChecksResource(SyncAPIResource):
                         "transaction_date_to": transaction_date_to,
                         "updated_after": updated_after,
                         "updated_before": updated_before,
-                        "vendor_ids": vendor_ids,
                     },
-                    bill_payment_check_list_params.BillPaymentCheckListParams,
+                    receive_payment_list_params.ReceivePaymentListParams,
                 ),
             ),
-            model=BillPaymentCheck,
+            model=QbdReceivePayment,
         )
 
 
-class AsyncBillPaymentChecksResource(AsyncAPIResource):
+class AsyncReceivePaymentsResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncBillPaymentChecksResourceWithRawResponse:
+    def with_raw_response(self) -> AsyncReceivePaymentsResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return the
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/conductor-is/conductor-python#accessing-raw-response-data-eg-headers
         """
-        return AsyncBillPaymentChecksResourceWithRawResponse(self)
+        return AsyncReceivePaymentsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncBillPaymentChecksResourceWithStreamingResponse:
+    def with_streaming_response(self) -> AsyncReceivePaymentsResourceWithStreamingResponse:
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
         For more information, see https://www.github.com/conductor-is/conductor-python#with_streaming_response
         """
-        return AsyncBillPaymentChecksResourceWithStreamingResponse(self)
+        return AsyncReceivePaymentsResourceWithStreamingResponse(self)
 
     async def create(
         self,
         *,
-        apply_to_transactions: Iterable[bill_payment_check_create_params.ApplyToTransaction],
-        bank_account_id: str,
+        apply_to_transactions: Iterable[receive_payment_create_params.ApplyToTransaction],
+        customer_id: str,
         transaction_date: Union[str, date],
-        vendor_id: str,
         conductor_end_user_id: str,
+        credit_card_transaction: receive_payment_create_params.CreditCardTransaction | NotGiven = NOT_GIVEN,
+        deposit_to_account_id: str | NotGiven = NOT_GIVEN,
         exchange_rate: float | NotGiven = NOT_GIVEN,
         external_id: str | NotGiven = NOT_GIVEN,
-        is_queued_for_print: bool | NotGiven = NOT_GIVEN,
+        is_auto_apply: bool | NotGiven = NOT_GIVEN,
         memo: str | NotGiven = NOT_GIVEN,
-        payables_account_id: str | NotGiven = NOT_GIVEN,
+        payment_method_id: str | NotGiven = NOT_GIVEN,
+        receivables_account_id: str | NotGiven = NOT_GIVEN,
         ref_number: str | NotGiven = NOT_GIVEN,
+        total_amount: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> BillPaymentCheck:
+    ) -> QbdReceivePayment:
         """
-        Creates a new bill payment check.
+        Creates a new receive-payment.
 
         Args:
-          apply_to_transactions: The bills to be paid by this bill payment check. This will create a link between
-              this bill payment check and the specified bills.
+          apply_to_transactions: The invoices to be paid by this receive-payment. This will create a link between
+              this receive-payment and the specified invoices.
 
               **IMPORTANT**: In each `applyToTransactions` object, you must specify either
               `paymentAmount`, `applyCredits`, `discountAmount`, or any combination of these;
               if none of these are specified, you will receive an error for an empty
               transaction.
 
-              **IMPORTANT**: The target bill must have `isPaid=false`, otherwise, QuickBooks
-              will report this object as "cannot be found".
+              **IMPORTANT**: The target invoice must have `isPaid=false`, otherwise,
+              QuickBooks will report this object as "cannot be found".
 
-          bank_account_id: The bank account from which the funds are being drawn for this bill payment
-              check; e.g., Checking or Savings. This bill payment check will decrease the
-              balance of this account.
+          customer_id: The customer or customer-job to which the payment for this receive-payment is
+              credited.
 
-          transaction_date: The date of this bill payment check, in ISO 8601 format (YYYY-MM-DD).
-
-          vendor_id: The vendor who sent the bill(s) that this check is paying and who will receive
-              this payment.
-
-              **IMPORTANT**: This vendor must match the `vendor` on the bill(s) specified in
-              `applyToTransactions`; otherwise, QuickBooks will say the `transactionId` in
-              `applyToTransactions` "does not exist".
+          transaction_date: The date of this receive-payment, in ISO 8601 format (YYYY-MM-DD).
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          exchange_rate: The market exchange rate between this bill payment check's currency and the home
+          credit_card_transaction: The credit card transaction data for this receive-payment's payment when using
+              QuickBooks Merchant Services (QBMS). If specifying this field, you must also
+              specify the `paymentMethod` field.
+
+          deposit_to_account_id: The account where the funds for this receive-payment will be or have been
+              deposited. If omitted, QuickBooks will use the default Undeposited Funds
+              account.
+
+          exchange_rate: The market exchange rate between this receive-payment's currency and the home
               currency in QuickBooks at the time of this transaction. Represented as a decimal
               value (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
 
@@ -537,23 +582,40 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
               return an error. This field is immutable and can only be set during object
               creation.
 
-          is_queued_for_print: Indicates whether this bill payment check is included in the queue of documents
-              for QuickBooks to print.
+          is_auto_apply: When `true`, QuickBooks applies `totalAmount` to any outstanding transaction
+              that exactly matches `totalAmount`. If no exact match is found, this
+              receive-payment is applied to the oldest outstanding transaction for the
+              customer-job. When `false`, QuickBooks records the payment but does not apply it
+              to any specific transaction, causing the amount to appear as a credit on the
+              customer-job’s next transaction.
 
-          memo: A memo or note for this bill payment check.
+          memo: A memo or note that appears in reports that show details of this
+              receive-payment.
 
-          payables_account_id: The Accounts-Payable (A/P) account to which this bill payment check is assigned,
+          payment_method_id: The receive-payment's payment method (e.g., cash, check, credit card).
+
+              **NOTE**: If this receive-payment contains credit card transaction data supplied
+              from QuickBooks Merchant Services (QBMS) transaction responses, you must specify
+              a credit card payment method (e.g., "Visa", "MasterCard", etc.).
+
+          receivables_account_id: The Accounts-Receivable (A/R) account to which this receive-payment is assigned,
               used to track the amount owed. If not specified, QuickBooks Desktop will use its
-              default A/P account.
+              default A/R account.
 
-              **IMPORTANT**: If this bill payment check is linked to other transactions, this
-              A/P account must match the `payablesAccount` used in those other transactions.
+              **IMPORTANT**: If this receive-payment is linked to other transactions, this A/R
+              account must match the `receivablesAccount` used in all linked transactions. For
+              example, when refunding a credit card payment, the A/R account must match the
+              one used in the original credit transactions being refunded.
 
-          ref_number: The case-sensitive user-defined reference number for this bill payment check,
-              which can be used to identify the transaction in QuickBooks. This value is not
+          ref_number: The case-sensitive user-defined reference number for this receive-payment, which
+              can be used to identify the transaction in QuickBooks. This value is not
               required to be unique and can be arbitrarily changed by the QuickBooks user.
 
-              **IMPORTANT**: For checks, this field is the check number.
+          total_amount: The total monetary amount of this receive-payment, represented as a decimal
+              string.
+
+              **NOTE:** The sum of the `paymentAmount` amounts in the `applyToTransactions`
+              array cannot exceed the `totalAmount`, or you will receive an error.
 
           extra_headers: Send extra headers
 
@@ -565,26 +627,29 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
         """
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return await self._post(
-            "/quickbooks-desktop/bill-payment-checks",
+            "/quickbooks-desktop/receive-payments",
             body=await async_maybe_transform(
                 {
                     "apply_to_transactions": apply_to_transactions,
-                    "bank_account_id": bank_account_id,
+                    "customer_id": customer_id,
                     "transaction_date": transaction_date,
-                    "vendor_id": vendor_id,
+                    "credit_card_transaction": credit_card_transaction,
+                    "deposit_to_account_id": deposit_to_account_id,
                     "exchange_rate": exchange_rate,
                     "external_id": external_id,
-                    "is_queued_for_print": is_queued_for_print,
+                    "is_auto_apply": is_auto_apply,
                     "memo": memo,
-                    "payables_account_id": payables_account_id,
+                    "payment_method_id": payment_method_id,
+                    "receivables_account_id": receivables_account_id,
                     "ref_number": ref_number,
+                    "total_amount": total_amount,
                 },
-                bill_payment_check_create_params.BillPaymentCheckCreateParams,
+                receive_payment_create_params.ReceivePaymentCreateParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BillPaymentCheck,
+            cast_to=QbdReceivePayment,
         )
 
     async def retrieve(
@@ -598,12 +663,12 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> BillPaymentCheck:
+    ) -> QbdReceivePayment:
         """
-        Retrieves a bill payment check by ID.
+        Retrieves a receive-payment by ID.
 
         Args:
-          id: The QuickBooks-assigned unique identifier of the bill payment check to retrieve.
+          id: The QuickBooks-assigned unique identifier of the receive-payment to retrieve.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -620,11 +685,11 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return await self._get(
-            f"/quickbooks-desktop/bill-payment-checks/{id}",
+            f"/quickbooks-desktop/receive-payments/{id}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BillPaymentCheck,
+            cast_to=QbdReceivePayment,
         )
 
     async def update(
@@ -633,13 +698,16 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
         *,
         revision_number: str,
         conductor_end_user_id: str,
-        amount: str | NotGiven = NOT_GIVEN,
-        apply_to_transactions: Iterable[bill_payment_check_update_params.ApplyToTransaction] | NotGiven = NOT_GIVEN,
-        bank_account_id: str | NotGiven = NOT_GIVEN,
+        apply_to_transactions: Iterable[receive_payment_update_params.ApplyToTransaction] | NotGiven = NOT_GIVEN,
+        credit_card_transaction: receive_payment_update_params.CreditCardTransaction | NotGiven = NOT_GIVEN,
+        customer_id: str | NotGiven = NOT_GIVEN,
+        deposit_to_account_id: str | NotGiven = NOT_GIVEN,
         exchange_rate: float | NotGiven = NOT_GIVEN,
-        is_queued_for_print: bool | NotGiven = NOT_GIVEN,
         memo: str | NotGiven = NOT_GIVEN,
+        payment_method_id: str | NotGiven = NOT_GIVEN,
+        receivables_account_id: str | NotGiven = NOT_GIVEN,
         ref_number: str | NotGiven = NOT_GIVEN,
+        total_amount: str | NotGiven = NOT_GIVEN,
         transaction_date: Union[str, date] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -647,14 +715,14 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> BillPaymentCheck:
+    ) -> QbdReceivePayment:
         """
-        Updates an existing bill payment check.
+        Updates an existing receive-payment.
 
         Args:
-          id: The QuickBooks-assigned unique identifier of the bill payment check to update.
+          id: The QuickBooks-assigned unique identifier of the receive-payment to update.
 
-          revision_number: The current revision number of the bill payment check object you are updating,
+          revision_number: The current revision number of the receive-payment object you are updating,
               which you can get by fetching the object first. Provide the most recent
               `revisionNumber` to ensure you're working with the latest data; otherwise, the
               update will return an error.
@@ -662,39 +730,56 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          amount: The monetary amount of this bill payment check, represented as a decimal string.
-
-          apply_to_transactions: The bills to be paid by this bill payment check. This will create a link between
-              this bill payment check and the specified bills.
+          apply_to_transactions: The invoices to be paid by this receive-payment. This will create a link between
+              this receive-payment and the specified invoices.
 
               **IMPORTANT**: In each `applyToTransactions` object, you must specify either
               `paymentAmount`, `applyCredits`, `discountAmount`, or any combination of these;
               if none of these are specified, you will receive an error for an empty
               transaction.
 
-              **IMPORTANT**: The target bill must have `isPaid=false`, otherwise, QuickBooks
-              will report this object as "cannot be found".
+              **IMPORTANT**: The target invoice must have `isPaid=false`, otherwise,
+              QuickBooks will report this object as "cannot be found".
 
-          bank_account_id: The bank account from which the funds are being drawn for this bill payment
-              check; e.g., Checking or Savings. This bill payment check will decrease the
-              balance of this account.
+          credit_card_transaction: The credit card transaction data for this receive-payment's payment when using
+              QuickBooks Merchant Services (QBMS). If specifying this field, you must also
+              specify the `paymentMethod` field.
 
-          exchange_rate: The market exchange rate between this bill payment check's currency and the home
+          customer_id: The customer or customer-job to which the payment for this receive-payment is
+              credited.
+
+          deposit_to_account_id: The account where the funds for this receive-payment will be or have been
+              deposited.
+
+          exchange_rate: The market exchange rate between this receive-payment's currency and the home
               currency in QuickBooks at the time of this transaction. Represented as a decimal
               value (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
 
-          is_queued_for_print: Indicates whether this bill payment check is included in the queue of documents
-              for QuickBooks to print.
+          memo: A memo or note that appears in reports that show details of this
+              receive-payment.
 
-          memo: A memo or note for this bill payment check.
+          payment_method_id: The receive-payment's payment method (e.g., cash, check, credit card).
 
-          ref_number: The case-sensitive user-defined reference number for this bill payment check,
-              which can be used to identify the transaction in QuickBooks. This value is not
+          receivables_account_id: The Accounts-Receivable (A/R) account to which this receive-payment is assigned,
+              used to track the amount owed. If not specified, QuickBooks Desktop will use its
+              default A/R account.
+
+              **IMPORTANT**: If this receive-payment is linked to other transactions, this A/R
+              account must match the `receivablesAccount` used in all linked transactions. For
+              example, when refunding a credit card payment, the A/R account must match the
+              one used in the original credit transactions being refunded.
+
+          ref_number: The case-sensitive user-defined reference number for this receive-payment, which
+              can be used to identify the transaction in QuickBooks. This value is not
               required to be unique and can be arbitrarily changed by the QuickBooks user.
 
-              **IMPORTANT**: For checks, this field is the check number.
+          total_amount: The total monetary amount of this receive-payment, represented as a decimal
+              string.
 
-          transaction_date: The date of this bill payment check, in ISO 8601 format (YYYY-MM-DD).
+              **NOTE:** The sum of the `paymentAmount` amounts in the `applyToTransactions`
+              array cannot exceed the `totalAmount`, or you will receive an error.
+
+          transaction_date: The date of this receive-payment, in ISO 8601 format (YYYY-MM-DD).
 
           extra_headers: Send extra headers
 
@@ -708,25 +793,28 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return await self._post(
-            f"/quickbooks-desktop/bill-payment-checks/{id}",
+            f"/quickbooks-desktop/receive-payments/{id}",
             body=await async_maybe_transform(
                 {
                     "revision_number": revision_number,
-                    "amount": amount,
                     "apply_to_transactions": apply_to_transactions,
-                    "bank_account_id": bank_account_id,
+                    "credit_card_transaction": credit_card_transaction,
+                    "customer_id": customer_id,
+                    "deposit_to_account_id": deposit_to_account_id,
                     "exchange_rate": exchange_rate,
-                    "is_queued_for_print": is_queued_for_print,
                     "memo": memo,
+                    "payment_method_id": payment_method_id,
+                    "receivables_account_id": receivables_account_id,
                     "ref_number": ref_number,
+                    "total_amount": total_amount,
                     "transaction_date": transaction_date,
                 },
-                bill_payment_check_update_params.BillPaymentCheckUpdateParams,
+                receive_payment_update_params.ReceivePaymentUpdateParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BillPaymentCheck,
+            cast_to=QbdReceivePayment,
         )
 
     def list(
@@ -736,6 +824,7 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
         account_ids: List[str] | NotGiven = NOT_GIVEN,
         currency_ids: List[str] | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
+        customer_ids: List[str] | NotGiven = NOT_GIVEN,
         ids: List[str] | NotGiven = NOT_GIVEN,
         include_line_items: bool | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
@@ -749,30 +838,31 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
         transaction_date_to: Union[str, date] | NotGiven = NOT_GIVEN,
         updated_after: str | NotGiven = NOT_GIVEN,
         updated_before: str | NotGiven = NOT_GIVEN,
-        vendor_ids: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[BillPaymentCheck, AsyncCursorPage[BillPaymentCheck]]:
+    ) -> AsyncPaginator[QbdReceivePayment, AsyncCursorPage[QbdReceivePayment]]:
         """
-        Returns a list of bill payment checks.
+        Returns a list of receive-payments.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_ids: Filter for bill payment checks associated with these accounts.
+          account_ids: Filter for receive-payments associated with these accounts.
 
-          currency_ids: Filter for bill payment checks in these currencies.
+          currency_ids: Filter for receive-payments in these currencies.
 
           cursor: The pagination token to fetch the next set of results when paginating with the
               `limit` parameter. Retrieve this value from the `nextCursor` field in the
               previous response. If omitted, the API returns the first page of results.
 
-          ids: Filter for specific bill payment checks by their QuickBooks-assigned unique
+          customer_ids: Filter for receive-payments received from these customers.
+
+          ids: Filter for specific receive-payments by their QuickBooks-assigned unique
               identifier(s).
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
@@ -786,51 +876,49 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
               used as the `cursor` parameter value in subsequent requests to fetch the next
               set of results.
 
-          ref_number_contains: Filter for bill payment checks whose `refNumber` contains this substring. For
-              checks, this is the check number. NOTE: If you use this parameter, you cannot
-              also use `refNumberStartsWith` or `refNumberEndsWith`.
+          ref_number_contains: Filter for receive-payments whose `refNumber` contains this substring. NOTE: If
+              you use this parameter, you cannot also use `refNumberStartsWith` or
+              `refNumberEndsWith`.
 
-          ref_number_ends_with: Filter for bill payment checks whose `refNumber` ends with this substring. For
-              checks, this is the check number. NOTE: If you use this parameter, you cannot
-              also use `refNumberContains` or `refNumberStartsWith`.
+          ref_number_ends_with: Filter for receive-payments whose `refNumber` ends with this substring. NOTE: If
+              you use this parameter, you cannot also use `refNumberContains` or
+              `refNumberStartsWith`.
 
-          ref_number_from: Filter for bill payment checks whose `refNumber` is greater than or equal to
-              this value. If omitted, the range will begin with the first number of the list.
-              Uses a numerical comparison for values that contain only digits; otherwise, uses
-              a lexicographical comparison.
+          ref_number_from: Filter for receive-payments whose `refNumber` is greater than or equal to this
+              value. If omitted, the range will begin with the first number of the list. Uses
+              a numerical comparison for values that contain only digits; otherwise, uses a
+              lexicographical comparison.
 
-          ref_numbers: Filter for specific bill payment checks by their ref-number(s), case-sensitive.
-              In QuickBooks, ref-numbers are not required to be unique and can be arbitrarily
+          ref_numbers: Filter for specific receive-payments by their ref-number(s), case-sensitive. In
+              QuickBooks, ref-numbers are not required to be unique and can be arbitrarily
               changed by the QuickBooks user.
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
-          ref_number_starts_with: Filter for bill payment checks whose `refNumber` starts with this substring. For
-              checks, this is the check number. NOTE: If you use this parameter, you cannot
-              also use `refNumberContains` or `refNumberEndsWith`.
+          ref_number_starts_with:
+              Filter for receive-payments whose `refNumber` starts with this substring. NOTE:
+              If you use this parameter, you cannot also use `refNumberContains` or
+              `refNumberEndsWith`.
 
-          ref_number_to: Filter for bill payment checks whose `refNumber` is less than or equal to this
+          ref_number_to: Filter for receive-payments whose `refNumber` is less than or equal to this
               value. If omitted, the range will end with the last number of the list. Uses a
               numerical comparison for values that contain only digits; otherwise, uses a
               lexicographical comparison.
 
-          transaction_date_from: Filter for bill payment checks created on or after this date, in ISO 8601 format
+          transaction_date_from: Filter for receive-payments created on or after this date, in ISO 8601 format
               (YYYY-MM-DD).
 
-          transaction_date_to: Filter for bill payment checks created on or before this date, in ISO 8601
-              format (YYYY-MM-DD).
+          transaction_date_to: Filter for receive-payments created on or before this date, in ISO 8601 format
+              (YYYY-MM-DD).
 
-          updated_after: Filter for bill payment checks updated on or after this date and time, in ISO
-              8601 format (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the
-              time is assumed to be 00:00:00 of that day.
+          updated_after: Filter for receive-payments updated on or after this date and time, in ISO 8601
+              format (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the time
+              is assumed to be 00:00:00 of that day.
 
-          updated_before: Filter for bill payment checks updated on or before this date and time, in ISO
-              8601 format (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the
-              time is assumed to be 23:59:59 of that day.
-
-          vendor_ids: Filter for bill payment checks sent to these vendors. These are the vendors who
-              sent the bills paid by these checks.
+          updated_before: Filter for receive-payments updated on or before this date and time, in ISO 8601
+              format (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the time
+              is assumed to be 23:59:59 of that day.
 
           extra_headers: Send extra headers
 
@@ -842,8 +930,8 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
         """
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
-            "/quickbooks-desktop/bill-payment-checks",
-            page=AsyncCursorPage[BillPaymentCheck],
+            "/quickbooks-desktop/receive-payments",
+            page=AsyncCursorPage[QbdReceivePayment],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -854,6 +942,7 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
                         "account_ids": account_ids,
                         "currency_ids": currency_ids,
                         "cursor": cursor,
+                        "customer_ids": customer_ids,
                         "ids": ids,
                         "include_line_items": include_line_items,
                         "limit": limit,
@@ -867,82 +956,81 @@ class AsyncBillPaymentChecksResource(AsyncAPIResource):
                         "transaction_date_to": transaction_date_to,
                         "updated_after": updated_after,
                         "updated_before": updated_before,
-                        "vendor_ids": vendor_ids,
                     },
-                    bill_payment_check_list_params.BillPaymentCheckListParams,
+                    receive_payment_list_params.ReceivePaymentListParams,
                 ),
             ),
-            model=BillPaymentCheck,
+            model=QbdReceivePayment,
         )
 
 
-class BillPaymentChecksResourceWithRawResponse:
-    def __init__(self, bill_payment_checks: BillPaymentChecksResource) -> None:
-        self._bill_payment_checks = bill_payment_checks
+class ReceivePaymentsResourceWithRawResponse:
+    def __init__(self, receive_payments: ReceivePaymentsResource) -> None:
+        self._receive_payments = receive_payments
 
         self.create = to_raw_response_wrapper(
-            bill_payment_checks.create,
+            receive_payments.create,
         )
         self.retrieve = to_raw_response_wrapper(
-            bill_payment_checks.retrieve,
+            receive_payments.retrieve,
         )
         self.update = to_raw_response_wrapper(
-            bill_payment_checks.update,
+            receive_payments.update,
         )
         self.list = to_raw_response_wrapper(
-            bill_payment_checks.list,
+            receive_payments.list,
         )
 
 
-class AsyncBillPaymentChecksResourceWithRawResponse:
-    def __init__(self, bill_payment_checks: AsyncBillPaymentChecksResource) -> None:
-        self._bill_payment_checks = bill_payment_checks
+class AsyncReceivePaymentsResourceWithRawResponse:
+    def __init__(self, receive_payments: AsyncReceivePaymentsResource) -> None:
+        self._receive_payments = receive_payments
 
         self.create = async_to_raw_response_wrapper(
-            bill_payment_checks.create,
+            receive_payments.create,
         )
         self.retrieve = async_to_raw_response_wrapper(
-            bill_payment_checks.retrieve,
+            receive_payments.retrieve,
         )
         self.update = async_to_raw_response_wrapper(
-            bill_payment_checks.update,
+            receive_payments.update,
         )
         self.list = async_to_raw_response_wrapper(
-            bill_payment_checks.list,
+            receive_payments.list,
         )
 
 
-class BillPaymentChecksResourceWithStreamingResponse:
-    def __init__(self, bill_payment_checks: BillPaymentChecksResource) -> None:
-        self._bill_payment_checks = bill_payment_checks
+class ReceivePaymentsResourceWithStreamingResponse:
+    def __init__(self, receive_payments: ReceivePaymentsResource) -> None:
+        self._receive_payments = receive_payments
 
         self.create = to_streamed_response_wrapper(
-            bill_payment_checks.create,
+            receive_payments.create,
         )
         self.retrieve = to_streamed_response_wrapper(
-            bill_payment_checks.retrieve,
+            receive_payments.retrieve,
         )
         self.update = to_streamed_response_wrapper(
-            bill_payment_checks.update,
+            receive_payments.update,
         )
         self.list = to_streamed_response_wrapper(
-            bill_payment_checks.list,
+            receive_payments.list,
         )
 
 
-class AsyncBillPaymentChecksResourceWithStreamingResponse:
-    def __init__(self, bill_payment_checks: AsyncBillPaymentChecksResource) -> None:
-        self._bill_payment_checks = bill_payment_checks
+class AsyncReceivePaymentsResourceWithStreamingResponse:
+    def __init__(self, receive_payments: AsyncReceivePaymentsResource) -> None:
+        self._receive_payments = receive_payments
 
         self.create = async_to_streamed_response_wrapper(
-            bill_payment_checks.create,
+            receive_payments.create,
         )
         self.retrieve = async_to_streamed_response_wrapper(
-            bill_payment_checks.retrieve,
+            receive_payments.retrieve,
         )
         self.update = async_to_streamed_response_wrapper(
-            bill_payment_checks.update,
+            receive_payments.update,
         )
         self.list = async_to_streamed_response_wrapper(
-            bill_payment_checks.list,
+            receive_payments.list,
         )
