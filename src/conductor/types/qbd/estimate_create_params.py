@@ -89,11 +89,16 @@ class EstimateCreateParams(TypedDict, total=False):
     """
     The estimate's line item groups, each representing a predefined set of related
     items.
+
+    **IMPORTANT**: You must specify `lines`, `lineGroups`, or both when creating an
+    estimate.
     """
 
     lines: Iterable[Line]
-    """
-    The estimate's line items, each representing a single product or service quoted.
+    """The estimate's line items, each representing a single product or service quoted.
+
+    **IMPORTANT**: You must specify `lines`, `lineGroups`, or both when creating an
+    estimate.
     """
 
     memo: str
