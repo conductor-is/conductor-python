@@ -524,7 +524,7 @@ class PurchaseOrdersResource(SyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_ids: Filter for purchase orders from these accounts.
+          account_ids: Filter for purchase orders associated with these accounts.
 
           currency_ids: Filter for purchase orders in these currencies.
 
@@ -1136,7 +1136,7 @@ class AsyncPurchaseOrdersResource(AsyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_ids: Filter for purchase orders from these accounts.
+          account_ids: Filter for purchase orders associated with these accounts.
 
           currency_ids: Filter for purchase orders in these currencies.
 

@@ -410,7 +410,7 @@ class ChecksResource(SyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_ids: Filter for checks from these accounts.
+          account_ids: Filter for checks associated with these accounts.
 
           currency_ids: Filter for checks in these currencies.
 
@@ -907,7 +907,7 @@ class AsyncChecksResource(AsyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_ids: Filter for checks from these accounts.
+          account_ids: Filter for checks associated with these accounts.
 
           currency_ids: Filter for checks in these currencies.
 

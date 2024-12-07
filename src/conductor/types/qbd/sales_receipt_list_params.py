@@ -19,7 +19,7 @@ class SalesReceiptListParams(TypedDict, total=False):
     """
 
     account_ids: Annotated[List[str], PropertyInfo(alias="accountIds")]
-    """Filter for sales receipts from these accounts."""
+    """Filter for sales receipts associated with these accounts."""
 
     currency_ids: Annotated[List[str], PropertyInfo(alias="currencyIds")]
     """Filter for sales receipts in these currencies."""

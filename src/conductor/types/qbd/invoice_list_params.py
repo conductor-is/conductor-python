@@ -19,7 +19,7 @@ class InvoiceListParams(TypedDict, total=False):
     """
 
     account_ids: Annotated[List[str], PropertyInfo(alias="accountIds")]
-    """Filter for invoices from these accounts."""
+    """Filter for invoices associated with these accounts."""
 
     currency_ids: Annotated[List[str], PropertyInfo(alias="currencyIds")]
     """Filter for invoices in these currencies."""

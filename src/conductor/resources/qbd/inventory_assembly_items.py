@@ -409,12 +409,11 @@ class InventoryAssemblyItemsResource(SyncAPIResource):
               consists of a base unit and related units.
 
           update_existing_transactions_income_account: When `true`, applies the new income account (specified by the `incomeAccountId`
-              field) to all existing transactions that use this inventory assembly item. If
-              `true`, the income account will be updated in all historical transactions where
-              this inventory assembly item appears. Be cautious with this setting as it
-              modifies historical data. The update will fail if any affected transactions fall
-              within a closed accounting period. If not specified, QuickBooks will prompt the
-              user to make this choice.
+              field) to all existing transactions that use this inventory assembly item. This
+              updates historical data and should be used with caution. The update will fail if
+              any affected transaction falls within a closed accounting period. If this
+              parameter is not specified, QuickBooks will prompt the user before making any
+              changes.
 
           extra_headers: Send extra headers
 
@@ -980,12 +979,11 @@ class AsyncInventoryAssemblyItemsResource(AsyncAPIResource):
               consists of a base unit and related units.
 
           update_existing_transactions_income_account: When `true`, applies the new income account (specified by the `incomeAccountId`
-              field) to all existing transactions that use this inventory assembly item. If
-              `true`, the income account will be updated in all historical transactions where
-              this inventory assembly item appears. Be cautious with this setting as it
-              modifies historical data. The update will fail if any affected transactions fall
-              within a closed accounting period. If not specified, QuickBooks will prompt the
-              user to make this choice.
+              field) to all existing transactions that use this inventory assembly item. This
+              updates historical data and should be used with caution. The update will fail if
+              any affected transaction falls within a closed accounting period. If this
+              parameter is not specified, QuickBooks will prompt the user before making any
+              changes.
 
           extra_headers: Send extra headers
 

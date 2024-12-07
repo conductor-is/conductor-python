@@ -372,7 +372,7 @@ class CreditCardCreditsResource(SyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_ids: Filter for credit card credits from these accounts.
+          account_ids: Filter for credit card credits associated with these accounts.
 
           currency_ids: Filter for credit card credits in these currencies.
 
@@ -394,8 +394,8 @@ class CreditCardCreditsResource(SyncAPIResource):
               used as the `cursor` parameter value in subsequent requests to fetch the next
               set of results.
 
-          payee_ids: Filter for credit card credits from these payees. These are the vendors or
-              companies from whom these credit card credits were received.
+          payee_ids: Filter for credit card credits received from these payees. These are the vendors
+              or companies from whom these credit card credits were received.
 
           ref_number_contains:
               Filter for credit card credits whose `refNumber` contains this substring. NOTE:
@@ -826,7 +826,7 @@ class AsyncCreditCardCreditsResource(AsyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_ids: Filter for credit card credits from these accounts.
+          account_ids: Filter for credit card credits associated with these accounts.
 
           currency_ids: Filter for credit card credits in these currencies.
 
@@ -848,8 +848,8 @@ class AsyncCreditCardCreditsResource(AsyncAPIResource):
               used as the `cursor` parameter value in subsequent requests to fetch the next
               set of results.
 
-          payee_ids: Filter for credit card credits from these payees. These are the vendors or
-              companies from whom these credit card credits were received.
+          payee_ids: Filter for credit card credits received from these payees. These are the vendors
+              or companies from whom these credit card credits were received.
 
           ref_number_contains:
               Filter for credit card credits whose `refNumber` contains this substring. NOTE:

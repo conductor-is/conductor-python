@@ -110,7 +110,8 @@ class SalesReceiptsResource(SyncAPIResource):
               line item level.
 
           credit_card_transaction: The credit card transaction data for this sales receipt's payment when using
-              QuickBooks Merchant Services (QBMS).
+              QuickBooks Merchant Services (QBMS). If specifying this field, you must also
+              specify the `paymentMethod` field.
 
           customer_message_id: The message to display to the customer on the sales receipt.
 
@@ -173,7 +174,7 @@ class SalesReceiptsResource(SyncAPIResource):
 
               **NOTE**: If this sales receipt contains credit card transaction data supplied
               from QuickBooks Merchant Services (QBMS) transaction responses, you must specify
-              the payment method, and the payment method must be a credit card type.
+              a credit card payment method (e.g., "Visa", "MasterCard", etc.).
 
           ref_number: The case-sensitive user-defined reference number for this sales receipt, which
               can be used to identify the transaction in QuickBooks. This value is not
@@ -566,7 +567,7 @@ class SalesReceiptsResource(SyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_ids: Filter for sales receipts from these accounts.
+          account_ids: Filter for sales receipts associated with these accounts.
 
           currency_ids: Filter for sales receipts in these currencies.
 
@@ -759,7 +760,8 @@ class AsyncSalesReceiptsResource(AsyncAPIResource):
               line item level.
 
           credit_card_transaction: The credit card transaction data for this sales receipt's payment when using
-              QuickBooks Merchant Services (QBMS).
+              QuickBooks Merchant Services (QBMS). If specifying this field, you must also
+              specify the `paymentMethod` field.
 
           customer_message_id: The message to display to the customer on the sales receipt.
 
@@ -822,7 +824,7 @@ class AsyncSalesReceiptsResource(AsyncAPIResource):
 
               **NOTE**: If this sales receipt contains credit card transaction data supplied
               from QuickBooks Merchant Services (QBMS) transaction responses, you must specify
-              the payment method, and the payment method must be a credit card type.
+              a credit card payment method (e.g., "Visa", "MasterCard", etc.).
 
           ref_number: The case-sensitive user-defined reference number for this sales receipt, which
               can be used to identify the transaction in QuickBooks. This value is not
@@ -1215,7 +1217,7 @@ class AsyncSalesReceiptsResource(AsyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_ids: Filter for sales receipts from these accounts.
+          account_ids: Filter for sales receipts associated with these accounts.
 
           currency_ids: Filter for sales receipts in these currencies.
 

@@ -1266,7 +1266,7 @@ class Bill(BaseModel):
     is_paid: Optional[bool] = FieldInfo(alias="isPaid", default=None)
     """Indicates whether this bill has been paid in full.
 
-    If `true`, `openAmount` will be 0.
+    When `true`, `openAmount` will be 0.
     """
 
     is_pending: Optional[bool] = FieldInfo(alias="isPending", default=None)

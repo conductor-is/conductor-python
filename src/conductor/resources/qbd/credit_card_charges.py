@@ -374,7 +374,7 @@ class CreditCardChargesResource(SyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_ids: Filter for credit card charges from these accounts.
+          account_ids: Filter for credit card charges associated with these accounts.
 
           currency_ids: Filter for credit card charges in these currencies.
 
@@ -831,7 +831,7 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_ids: Filter for credit card charges from these accounts.
+          account_ids: Filter for credit card charges associated with these accounts.
 
           currency_ids: Filter for credit card charges in these currencies.
 
