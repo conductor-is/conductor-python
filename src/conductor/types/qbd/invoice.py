@@ -1223,7 +1223,7 @@ class Invoice(BaseModel):
     is_paid: Optional[bool] = FieldInfo(alias="isPaid", default=None)
     """Indicates whether this invoice has been paid in full.
 
-    If `true`, `openAmount` will be 0.
+    When `true`, `openAmount` will be 0.
     """
 
     is_pending: Optional[bool] = FieldInfo(alias="isPending", default=None)

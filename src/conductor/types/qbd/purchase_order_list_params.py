@@ -19,7 +19,7 @@ class PurchaseOrderListParams(TypedDict, total=False):
     """
 
     account_ids: Annotated[List[str], PropertyInfo(alias="accountIds")]
-    """Filter for purchase orders from these accounts."""
+    """Filter for purchase orders associated with these accounts."""
 
     currency_ids: Annotated[List[str], PropertyInfo(alias="currencyIds")]
     """Filter for purchase orders in these currencies."""

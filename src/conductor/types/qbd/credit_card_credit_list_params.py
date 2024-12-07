@@ -19,7 +19,7 @@ class CreditCardCreditListParams(TypedDict, total=False):
     """
 
     account_ids: Annotated[List[str], PropertyInfo(alias="accountIds")]
-    """Filter for credit card credits from these accounts."""
+    """Filter for credit card credits associated with these accounts."""
 
     currency_ids: Annotated[List[str], PropertyInfo(alias="currencyIds")]
     """Filter for credit card credits in these currencies."""
@@ -53,7 +53,7 @@ class CreditCardCreditListParams(TypedDict, total=False):
     """
 
     payee_ids: Annotated[List[str], PropertyInfo(alias="payeeIds")]
-    """Filter for credit card credits from these payees.
+    """Filter for credit card credits received from these payees.
 
     These are the vendors or companies from whom these credit card credits were
     received.

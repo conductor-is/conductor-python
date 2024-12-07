@@ -19,7 +19,7 @@ class EstimateListParams(TypedDict, total=False):
     """
 
     account_ids: Annotated[List[str], PropertyInfo(alias="accountIds")]
-    """Filter for estimates from these accounts."""
+    """Filter for estimates associated with these accounts."""
 
     currency_ids: Annotated[List[str], PropertyInfo(alias="currencyIds")]
     """Filter for estimates in these currencies."""
