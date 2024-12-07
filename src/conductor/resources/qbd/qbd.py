@@ -148,6 +148,14 @@ from .sales_tax_items import (
     SalesTaxItemsResourceWithStreamingResponse,
     AsyncSalesTaxItemsResourceWithStreamingResponse,
 )
+from .receive_payments import (
+    ReceivePaymentsResource,
+    AsyncReceivePaymentsResource,
+    ReceivePaymentsResourceWithRawResponse,
+    AsyncReceivePaymentsResourceWithRawResponse,
+    ReceivePaymentsResourceWithStreamingResponse,
+    AsyncReceivePaymentsResourceWithStreamingResponse,
+)
 from .date_driven_terms import (
     DateDrivenTermsResource,
     AsyncDateDrivenTermsResource,
@@ -310,6 +318,10 @@ class QbdResource(SyncAPIResource):
         return VendorsResource(self._client)
 
     @cached_property
+    def receive_payments(self) -> ReceivePaymentsResource:
+        return ReceivePaymentsResource(self._client)
+
+    @cached_property
     def with_raw_response(self) -> QbdResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return the
@@ -429,6 +441,10 @@ class AsyncQbdResource(AsyncAPIResource):
     @cached_property
     def vendors(self) -> AsyncVendorsResource:
         return AsyncVendorsResource(self._client)
+
+    @cached_property
+    def receive_payments(self) -> AsyncReceivePaymentsResource:
+        return AsyncReceivePaymentsResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncQbdResourceWithRawResponse:
@@ -554,6 +570,10 @@ class QbdResourceWithRawResponse:
     def vendors(self) -> VendorsResourceWithRawResponse:
         return VendorsResourceWithRawResponse(self._qbd.vendors)
 
+    @cached_property
+    def receive_payments(self) -> ReceivePaymentsResourceWithRawResponse:
+        return ReceivePaymentsResourceWithRawResponse(self._qbd.receive_payments)
+
 
 class AsyncQbdResourceWithRawResponse:
     def __init__(self, qbd: AsyncQbdResource) -> None:
@@ -658,6 +678,10 @@ class AsyncQbdResourceWithRawResponse:
     @cached_property
     def vendors(self) -> AsyncVendorsResourceWithRawResponse:
         return AsyncVendorsResourceWithRawResponse(self._qbd.vendors)
+
+    @cached_property
+    def receive_payments(self) -> AsyncReceivePaymentsResourceWithRawResponse:
+        return AsyncReceivePaymentsResourceWithRawResponse(self._qbd.receive_payments)
 
 
 class QbdResourceWithStreamingResponse:
@@ -764,6 +788,10 @@ class QbdResourceWithStreamingResponse:
     def vendors(self) -> VendorsResourceWithStreamingResponse:
         return VendorsResourceWithStreamingResponse(self._qbd.vendors)
 
+    @cached_property
+    def receive_payments(self) -> ReceivePaymentsResourceWithStreamingResponse:
+        return ReceivePaymentsResourceWithStreamingResponse(self._qbd.receive_payments)
+
 
 class AsyncQbdResourceWithStreamingResponse:
     def __init__(self, qbd: AsyncQbdResource) -> None:
@@ -868,3 +896,7 @@ class AsyncQbdResourceWithStreamingResponse:
     @cached_property
     def vendors(self) -> AsyncVendorsResourceWithStreamingResponse:
         return AsyncVendorsResourceWithStreamingResponse(self._qbd.vendors)
+
+    @cached_property
+    def receive_payments(self) -> AsyncReceivePaymentsResourceWithStreamingResponse:
+        return AsyncReceivePaymentsResourceWithStreamingResponse(self._qbd.receive_payments)

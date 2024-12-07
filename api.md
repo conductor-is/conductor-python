@@ -407,3 +407,18 @@ Methods:
 - <code title="get /quickbooks-desktop/vendors/{id}">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/vendor.py">Vendor</a></code>
 - <code title="post /quickbooks-desktop/vendors/{id}">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/vendor_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/vendor.py">Vendor</a></code>
 - <code title="get /quickbooks-desktop/vendors">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">list</a>(\*\*<a href="src/conductor/types/qbd/vendor_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/vendor.py">SyncCursorPage[Vendor]</a></code>
+
+## ReceivePayments
+
+Types:
+
+```python
+from conductor.types.qbd import QbdReceivePayment
+```
+
+Methods:
+
+- <code title="post /quickbooks-desktop/receive-payments">client.qbd.receive_payments.<a href="./src/conductor/resources/qbd/receive_payments.py">create</a>(\*\*<a href="src/conductor/types/qbd/receive_payment_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_receive_payment.py">QbdReceivePayment</a></code>
+- <code title="get /quickbooks-desktop/receive-payments/{id}">client.qbd.receive_payments.<a href="./src/conductor/resources/qbd/receive_payments.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_receive_payment.py">QbdReceivePayment</a></code>
+- <code title="post /quickbooks-desktop/receive-payments/{id}">client.qbd.receive_payments.<a href="./src/conductor/resources/qbd/receive_payments.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/receive_payment_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_receive_payment.py">QbdReceivePayment</a></code>
+- <code title="get /quickbooks-desktop/receive-payments">client.qbd.receive_payments.<a href="./src/conductor/resources/qbd/receive_payments.py">list</a>(\*\*<a href="src/conductor/types/qbd/receive_payment_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_receive_payment.py">SyncCursorPage[QbdReceivePayment]</a></code>
