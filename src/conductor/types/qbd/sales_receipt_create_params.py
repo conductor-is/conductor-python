@@ -59,7 +59,8 @@ class SalesReceiptCreateParams(TypedDict, total=False):
     credit_card_transaction: Annotated[CreditCardTransaction, PropertyInfo(alias="creditCardTransaction")]
     """
     The credit card transaction data for this sales receipt's payment when using
-    QuickBooks Merchant Services (QBMS).
+    QuickBooks Merchant Services (QBMS). If specifying this field, you must also
+    specify the `paymentMethod` field.
     """
 
     customer_message_id: Annotated[str, PropertyInfo(alias="customerMessageId")]
@@ -159,7 +160,7 @@ class SalesReceiptCreateParams(TypedDict, total=False):
 
     **NOTE**: If this sales receipt contains credit card transaction data supplied
     from QuickBooks Merchant Services (QBMS) transaction responses, you must specify
-    the payment method, and the payment method must be a credit card type.
+    a credit card payment method (e.g., "Visa", "MasterCard", etc.).
     """
 
     ref_number: Annotated[str, PropertyInfo(alias="refNumber")]
@@ -662,7 +663,8 @@ class Line(TypedDict, total=False):
     credit_card_transaction: Annotated[LineCreditCardTransaction, PropertyInfo(alias="creditCardTransaction")]
     """
     The credit card transaction data for this sales receipt line's payment when
-    using QuickBooks Merchant Services (QBMS).
+    using QuickBooks Merchant Services (QBMS). If specifying this field, you must
+    also specify the `paymentMethod` field.
     """
 
     custom_fields: Annotated[Iterable[LineCustomField], PropertyInfo(alias="customFields")]
