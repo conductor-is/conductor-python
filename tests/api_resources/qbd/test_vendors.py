@@ -208,7 +208,6 @@ class TestVendors:
             additional_contacts=[
                 {
                     "id": "80000001-1234567890",
-                    "first_name": "John",
                     "revision_number": "1721172183",
                     "custom_contact_fields": [
                         {
@@ -216,6 +215,7 @@ class TestVendors:
                             "value": "555-123-4567",
                         }
                     ],
+                    "first_name": "John",
                     "job_title": "Purchasing Manager",
                     "last_name": "Doe",
                     "middle_name": "A.",
@@ -585,7 +585,6 @@ class TestAsyncVendors:
             additional_contacts=[
                 {
                     "id": "80000001-1234567890",
-                    "first_name": "John",
                     "revision_number": "1721172183",
                     "custom_contact_fields": [
                         {
@@ -593,6 +592,7 @@ class TestAsyncVendors:
                             "value": "555-123-4567",
                         }
                     ],
+                    "first_name": "John",
                     "job_title": "Purchasing Manager",
                     "last_name": "Doe",
                     "middle_name": "A.",

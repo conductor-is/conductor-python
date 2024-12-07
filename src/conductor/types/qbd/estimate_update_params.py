@@ -12,9 +12,6 @@ __all__ = ["EstimateUpdateParams", "BillingAddress", "LineGroup", "LineGroupLine
 
 
 class EstimateUpdateParams(TypedDict, total=False):
-    customer_id: Required[Annotated[str, PropertyInfo(alias="customerId")]]
-    """The customer or customer-job associated with this estimate."""
-
     revision_number: Required[Annotated[str, PropertyInfo(alias="revisionNumber")]]
     """
     The current revision number of the estimate object you are updating, which you
@@ -48,6 +45,9 @@ class EstimateUpdateParams(TypedDict, total=False):
     in this update request, the dollar amount of each change, and the net dollar
     change to this estimate.
     """
+
+    customer_id: Annotated[str, PropertyInfo(alias="customerId")]
+    """The customer or customer-job associated with this estimate."""
 
     customer_message_id: Annotated[str, PropertyInfo(alias="customerMessageId")]
     """The message to display to the customer on the estimate."""

@@ -127,7 +127,13 @@ class EstimatesResource(SyncAPIResource):
           line_groups: The estimate's line item groups, each representing a predefined set of related
               items.
 
+              **IMPORTANT**: You must specify `lines`, `lineGroups`, or both when creating an
+              estimate.
+
           lines: The estimate's line items, each representing a single product or service quoted.
+
+              **IMPORTANT**: You must specify `lines`, `lineGroups`, or both when creating an
+              estimate.
 
           memo: A memo or note for this estimate that appears in reports, but not on the
               estimate. Use `customerMessage` to add a note to this estimate.
@@ -263,12 +269,12 @@ class EstimatesResource(SyncAPIResource):
         self,
         id: str,
         *,
-        customer_id: str,
         revision_number: str,
         conductor_end_user_id: str,
         billing_address: estimate_update_params.BillingAddress | NotGiven = NOT_GIVEN,
         class_id: str | NotGiven = NOT_GIVEN,
         create_change_order: bool | NotGiven = NOT_GIVEN,
+        customer_id: str | NotGiven = NOT_GIVEN,
         customer_message_id: str | NotGiven = NOT_GIVEN,
         document_template_id: str | NotGiven = NOT_GIVEN,
         due_date: Union[str, date] | NotGiven = NOT_GIVEN,
@@ -301,8 +307,6 @@ class EstimatesResource(SyncAPIResource):
         Args:
           id: The QuickBooks-assigned unique identifier of the estimate to update.
 
-          customer_id: The customer or customer-job associated with this estimate.
-
           revision_number: The current revision number of the estimate object you are updating, which you
               can get by fetching the object first. Provide the most recent `revisionNumber`
               to ensure you're working with the latest data; otherwise, the update will return
@@ -322,6 +326,8 @@ class EstimatesResource(SyncAPIResource):
               description field in QuickBooks's estimate form, specifying exactly what changed
               in this update request, the dollar amount of each change, and the net dollar
               change to this estimate.
+
+          customer_id: The customer or customer-job associated with this estimate.
 
           customer_message_id: The message to display to the customer on the estimate.
 
@@ -421,11 +427,11 @@ class EstimatesResource(SyncAPIResource):
             f"/quickbooks-desktop/estimates/{id}",
             body=maybe_transform(
                 {
-                    "customer_id": customer_id,
                     "revision_number": revision_number,
                     "billing_address": billing_address,
                     "class_id": class_id,
                     "create_change_order": create_change_order,
+                    "customer_id": customer_id,
                     "customer_message_id": customer_message_id,
                     "document_template_id": document_template_id,
                     "due_date": due_date,
@@ -703,7 +709,13 @@ class AsyncEstimatesResource(AsyncAPIResource):
           line_groups: The estimate's line item groups, each representing a predefined set of related
               items.
 
+              **IMPORTANT**: You must specify `lines`, `lineGroups`, or both when creating an
+              estimate.
+
           lines: The estimate's line items, each representing a single product or service quoted.
+
+              **IMPORTANT**: You must specify `lines`, `lineGroups`, or both when creating an
+              estimate.
 
           memo: A memo or note for this estimate that appears in reports, but not on the
               estimate. Use `customerMessage` to add a note to this estimate.
@@ -839,12 +851,12 @@ class AsyncEstimatesResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        customer_id: str,
         revision_number: str,
         conductor_end_user_id: str,
         billing_address: estimate_update_params.BillingAddress | NotGiven = NOT_GIVEN,
         class_id: str | NotGiven = NOT_GIVEN,
         create_change_order: bool | NotGiven = NOT_GIVEN,
+        customer_id: str | NotGiven = NOT_GIVEN,
         customer_message_id: str | NotGiven = NOT_GIVEN,
         document_template_id: str | NotGiven = NOT_GIVEN,
         due_date: Union[str, date] | NotGiven = NOT_GIVEN,
@@ -877,8 +889,6 @@ class AsyncEstimatesResource(AsyncAPIResource):
         Args:
           id: The QuickBooks-assigned unique identifier of the estimate to update.
 
-          customer_id: The customer or customer-job associated with this estimate.
-
           revision_number: The current revision number of the estimate object you are updating, which you
               can get by fetching the object first. Provide the most recent `revisionNumber`
               to ensure you're working with the latest data; otherwise, the update will return
@@ -898,6 +908,8 @@ class AsyncEstimatesResource(AsyncAPIResource):
               description field in QuickBooks's estimate form, specifying exactly what changed
               in this update request, the dollar amount of each change, and the net dollar
               change to this estimate.
+
+          customer_id: The customer or customer-job associated with this estimate.
 
           customer_message_id: The message to display to the customer on the estimate.
 
@@ -997,11 +1009,11 @@ class AsyncEstimatesResource(AsyncAPIResource):
             f"/quickbooks-desktop/estimates/{id}",
             body=await async_maybe_transform(
                 {
-                    "customer_id": customer_id,
                     "revision_number": revision_number,
                     "billing_address": billing_address,
                     "class_id": class_id,
                     "create_change_order": create_change_order,
+                    "customer_id": customer_id,
                     "customer_message_id": customer_message_id,
                     "document_template_id": document_template_id,
                     "due_date": due_date,

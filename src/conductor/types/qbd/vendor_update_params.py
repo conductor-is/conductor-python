@@ -249,9 +249,6 @@ class AdditionalContact(TypedDict, total=False):
     id: Required[str]
     """The QuickBooks-assigned unique identifier of the contact to update."""
 
-    first_name: Required[Annotated[str, PropertyInfo(alias="firstName")]]
-    """The contact's first name."""
-
     revision_number: Required[Annotated[str, PropertyInfo(alias="revisionNumber")]]
     """
     The current revision number of the contact object you are updating, which you
@@ -267,6 +264,9 @@ class AdditionalContact(TypedDict, total=False):
     Additional custom contact fields for this contact, such as phone numbers or
     email addresses.
     """
+
+    first_name: Annotated[str, PropertyInfo(alias="firstName")]
+    """The contact's first name."""
 
     job_title: Annotated[str, PropertyInfo(alias="jobTitle")]
     """The contact's job title."""
@@ -288,7 +288,7 @@ class AdditionalNote(TypedDict, total=False):
     id: Required[float]
     """The ID of the note to update."""
 
-    note: Required[str]
+    note: str
     """The text of this note."""
 
 
