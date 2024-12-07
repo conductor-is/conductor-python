@@ -197,7 +197,6 @@ class TestEstimates:
     def test_method_update(self, client: Conductor) -> None:
         estimate = client.qbd.estimates.update(
             id="123ABC-1234567890",
-            customer_id="80000001-1234567890",
             revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
@@ -207,7 +206,6 @@ class TestEstimates:
     def test_method_update_with_all_params(self, client: Conductor) -> None:
         estimate = client.qbd.estimates.update(
             id="123ABC-1234567890",
-            customer_id="80000001-1234567890",
             revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
             billing_address={
@@ -224,6 +222,7 @@ class TestEstimates:
             },
             class_id="80000001-1234567890",
             create_change_order=False,
+            customer_id="80000001-1234567890",
             customer_message_id="80000001-1234567890",
             document_template_id="80000001-1234567890",
             due_date=parse_date("2019-12-27"),
@@ -314,7 +313,6 @@ class TestEstimates:
     def test_raw_response_update(self, client: Conductor) -> None:
         response = client.qbd.estimates.with_raw_response.update(
             id="123ABC-1234567890",
-            customer_id="80000001-1234567890",
             revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
@@ -328,7 +326,6 @@ class TestEstimates:
     def test_streaming_response_update(self, client: Conductor) -> None:
         with client.qbd.estimates.with_streaming_response.update(
             id="123ABC-1234567890",
-            customer_id="80000001-1234567890",
             revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
@@ -345,7 +342,6 @@ class TestEstimates:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.qbd.estimates.with_raw_response.update(
                 id="",
-                customer_id="80000001-1234567890",
                 revision_number="1721172183",
                 conductor_end_user_id="end_usr_1234567abcdefg",
             )
@@ -588,7 +584,6 @@ class TestAsyncEstimates:
     async def test_method_update(self, async_client: AsyncConductor) -> None:
         estimate = await async_client.qbd.estimates.update(
             id="123ABC-1234567890",
-            customer_id="80000001-1234567890",
             revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
@@ -598,7 +593,6 @@ class TestAsyncEstimates:
     async def test_method_update_with_all_params(self, async_client: AsyncConductor) -> None:
         estimate = await async_client.qbd.estimates.update(
             id="123ABC-1234567890",
-            customer_id="80000001-1234567890",
             revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
             billing_address={
@@ -615,6 +609,7 @@ class TestAsyncEstimates:
             },
             class_id="80000001-1234567890",
             create_change_order=False,
+            customer_id="80000001-1234567890",
             customer_message_id="80000001-1234567890",
             document_template_id="80000001-1234567890",
             due_date=parse_date("2019-12-27"),
@@ -705,7 +700,6 @@ class TestAsyncEstimates:
     async def test_raw_response_update(self, async_client: AsyncConductor) -> None:
         response = await async_client.qbd.estimates.with_raw_response.update(
             id="123ABC-1234567890",
-            customer_id="80000001-1234567890",
             revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
@@ -719,7 +713,6 @@ class TestAsyncEstimates:
     async def test_streaming_response_update(self, async_client: AsyncConductor) -> None:
         async with async_client.qbd.estimates.with_streaming_response.update(
             id="123ABC-1234567890",
-            customer_id="80000001-1234567890",
             revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
@@ -736,7 +729,6 @@ class TestAsyncEstimates:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.qbd.estimates.with_raw_response.update(
                 id="",
-                customer_id="80000001-1234567890",
                 revision_number="1721172183",
                 conductor_end_user_id="end_usr_1234567abcdefg",
             )
