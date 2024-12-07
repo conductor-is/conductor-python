@@ -19,7 +19,7 @@ class CreditCardChargeListParams(TypedDict, total=False):
     """
 
     account_ids: Annotated[List[str], PropertyInfo(alias="accountIds")]
-    """Filter for credit card charges from these accounts."""
+    """Filter for credit card charges associated with these accounts."""
 
     currency_ids: Annotated[List[str], PropertyInfo(alias="currencyIds")]
     """Filter for credit card charges in these currencies."""

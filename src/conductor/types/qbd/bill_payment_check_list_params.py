@@ -19,7 +19,7 @@ class BillPaymentCheckListParams(TypedDict, total=False):
     """
 
     account_ids: Annotated[List[str], PropertyInfo(alias="accountIds")]
-    """Filter for bill payment checks from these accounts."""
+    """Filter for bill payment checks associated with these accounts."""
 
     currency_ids: Annotated[List[str], PropertyInfo(alias="currencyIds")]
     """Filter for bill payment checks in these currencies."""

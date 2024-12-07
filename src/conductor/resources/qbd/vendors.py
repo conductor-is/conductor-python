@@ -180,8 +180,8 @@ class VendorsResource(SyncAPIResource):
               Canada or the UK.
 
           is_eligible_for1099: Indicates whether this vendor is eligible to receive a 1099 form for tax
-              reporting purposes. If `true`, then the fields `taxId` and `billingAddress` are
-              required.
+              reporting purposes. When `true`, then the fields `taxId` and `billingAddress`
+              are required.
 
           is_sales_tax_agency: Indicates whether this vendor is a sales tax agency.
 
@@ -476,8 +476,8 @@ class VendorsResource(SyncAPIResource):
               Canada or the UK.
 
           is_eligible_for1099: Indicates whether this vendor is eligible to receive a 1099 form for tax
-              reporting purposes. If `true`, then the fields `taxId` and `billingAddress` are
-              required.
+              reporting purposes. When `true`, then the fields `taxId` and `billingAddress`
+              are required.
 
           is_sales_tax_agency: Indicates whether this vendor is a sales tax agency.
 
@@ -915,8 +915,8 @@ class AsyncVendorsResource(AsyncAPIResource):
               Canada or the UK.
 
           is_eligible_for1099: Indicates whether this vendor is eligible to receive a 1099 form for tax
-              reporting purposes. If `true`, then the fields `taxId` and `billingAddress` are
-              required.
+              reporting purposes. When `true`, then the fields `taxId` and `billingAddress`
+              are required.
 
           is_sales_tax_agency: Indicates whether this vendor is a sales tax agency.
 
@@ -1211,8 +1211,8 @@ class AsyncVendorsResource(AsyncAPIResource):
               Canada or the UK.
 
           is_eligible_for1099: Indicates whether this vendor is eligible to receive a 1099 form for tax
-              reporting purposes. If `true`, then the fields `taxId` and `billingAddress` are
-              required.
+              reporting purposes. When `true`, then the fields `taxId` and `billingAddress`
+              are required.
 
           is_sales_tax_agency: Indicates whether this vendor is a sales tax agency.
 

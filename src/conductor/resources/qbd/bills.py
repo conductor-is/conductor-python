@@ -424,7 +424,7 @@ class BillsResource(SyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_ids: Filter for bills from these accounts.
+          account_ids: Filter for bills associated with these accounts.
 
           currency_ids: Filter for bills in these currencies.
 
@@ -491,7 +491,7 @@ class BillsResource(SyncAPIResource):
               (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the time is
               assumed to be 23:59:59 of that day.
 
-          vendor_ids: Filter for bills from these vendors.
+          vendor_ids: Filter for bills received from these vendors.
 
           extra_headers: Send extra headers
 
@@ -934,7 +934,7 @@ class AsyncBillsResource(AsyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_ids: Filter for bills from these accounts.
+          account_ids: Filter for bills associated with these accounts.
 
           currency_ids: Filter for bills in these currencies.
 
@@ -1001,7 +1001,7 @@ class AsyncBillsResource(AsyncAPIResource):
               (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the time is
               assumed to be 23:59:59 of that day.
 
-          vendor_ids: Filter for bills from these vendors.
+          vendor_ids: Filter for bills received from these vendors.
 
           extra_headers: Send extra headers
 

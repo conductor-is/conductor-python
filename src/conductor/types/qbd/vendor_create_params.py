@@ -140,8 +140,8 @@ class VendorCreateParams(TypedDict, total=False):
     is_eligible_for1099: Annotated[bool, PropertyInfo(alias="isEligibleFor1099")]
     """
     Indicates whether this vendor is eligible to receive a 1099 form for tax
-    reporting purposes. If `true`, then the fields `taxId` and `billingAddress` are
-    required.
+    reporting purposes. When `true`, then the fields `taxId` and `billingAddress`
+    are required.
     """
 
     is_sales_tax_agency: Annotated[bool, PropertyInfo(alias="isSalesTaxAgency")]
