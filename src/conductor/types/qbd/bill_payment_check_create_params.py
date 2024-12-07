@@ -82,7 +82,7 @@ class BillPaymentCheckCreateParams(TypedDict, total=False):
     """
     The Accounts-Payable (A/P) account to which this bill payment check is assigned,
     used to track the amount owed. If not specified, QuickBooks Desktop will use its
-    default Accounts-Payable account.
+    default A/P account.
 
     **IMPORTANT**: If this bill payment check is linked to other transactions, this
     A/P account must match the `payablesAccount` used in those other transactions.

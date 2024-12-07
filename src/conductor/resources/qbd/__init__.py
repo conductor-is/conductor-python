@@ -152,6 +152,14 @@ from .sales_tax_items import (
     SalesTaxItemsResourceWithStreamingResponse,
     AsyncSalesTaxItemsResourceWithStreamingResponse,
 )
+from .receive_payments import (
+    ReceivePaymentsResource,
+    AsyncReceivePaymentsResource,
+    ReceivePaymentsResourceWithRawResponse,
+    AsyncReceivePaymentsResourceWithRawResponse,
+    ReceivePaymentsResourceWithStreamingResponse,
+    AsyncReceivePaymentsResourceWithStreamingResponse,
+)
 from .date_driven_terms import (
     DateDrivenTermsResource,
     AsyncDateDrivenTermsResource,
@@ -360,6 +368,12 @@ __all__ = [
     "AsyncVendorsResourceWithRawResponse",
     "VendorsResourceWithStreamingResponse",
     "AsyncVendorsResourceWithStreamingResponse",
+    "ReceivePaymentsResource",
+    "AsyncReceivePaymentsResource",
+    "ReceivePaymentsResourceWithRawResponse",
+    "AsyncReceivePaymentsResourceWithRawResponse",
+    "ReceivePaymentsResourceWithStreamingResponse",
+    "AsyncReceivePaymentsResourceWithStreamingResponse",
     "QbdResource",
     "AsyncQbdResource",
     "QbdResourceWithRawResponse",
