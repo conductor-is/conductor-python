@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.1.0-alpha.44 (2024-12-08)
+
+Full Changelog: [v0.1.0-alpha.43...v0.1.0-alpha.44](https://github.com/conductor-is/conductor-python/compare/v0.1.0-alpha.43...v0.1.0-alpha.44)
+
+### Features
+
+* **api:** api update ([#354](https://github.com/conductor-is/conductor-python/issues/354)) ([bdb3213](https://github.com/conductor-is/conductor-python/commit/bdb3213aeaf78693c7c6a7a1f41c1ac0abb22e5c))
+* **api:** api update ([#356](https://github.com/conductor-is/conductor-python/issues/356)) ([319db26](https://github.com/conductor-is/conductor-python/commit/319db26b70719f1709377a57081ff7ac77cf2cc4))
+* **api:** api update ([#358](https://github.com/conductor-is/conductor-python/issues/358)) ([b80bfd7](https://github.com/conductor-is/conductor-python/commit/b80bfd7ceee58d0acdc2e8103f76ac2c4e5a3c6f))
+* **api:** api update ([#359](https://github.com/conductor-is/conductor-python/issues/359)) ([b4dd522](https://github.com/conductor-is/conductor-python/commit/b4dd522b656b0640c262621ea1e914912b21c469))
+* **api:** manual updates ([#357](https://github.com/conductor-is/conductor-python/issues/357)) ([ca098f1](https://github.com/conductor-is/conductor-python/commit/ca098f15ea02cee9f96aa01e52d28848caafb262))
+
+
+### Bug Fixes
+
+* **api:** rename bill payment endpoints ([#360](https://github.com/conductor-is/conductor-python/issues/360)) ([abe1a69](https://github.com/conductor-is/conductor-python/commit/abe1a69d0ad60a8ea03ad3c40076d07f255861b8))
+
 ## 0.1.0-alpha.43 (2024-12-05)
 
 Full Changelog: [v0.1.0-alpha.42...v0.1.0-alpha.43](https://github.com/conductor-is/conductor-python/compare/v0.1.0-alpha.42...v0.1.0-alpha.43)
