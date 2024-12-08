@@ -252,8 +252,10 @@ class LineGroupLine(TypedDict, total=False):
     id: Required[str]
     """
     The QuickBooks-assigned unique identifier of an existing sales receipt line you
-    wish to retain or update. Set this field to `-1` for new sales receipt lines you
-    wish to add.
+    wish to retain or update.
+
+    **IMPORTANT**: Set this field to `-1` for new sales receipt lines you wish to
+    add.
     """
 
     amount: str
@@ -414,8 +416,10 @@ class LineGroup(TypedDict, total=False):
     id: Required[str]
     """
     The QuickBooks-assigned unique identifier of an existing sales receipt line
-    group you wish to retain or update. Set this field to `-1` for new sales receipt
-    line groups you wish to add.
+    group you wish to retain or update.
+
+    **IMPORTANT**: Set this field to `-1` for new sales receipt line groups you wish
+    to add.
     """
 
     item_group_id: Annotated[str, PropertyInfo(alias="itemGroupId")]
@@ -466,8 +470,10 @@ class Line(TypedDict, total=False):
     id: Required[str]
     """
     The QuickBooks-assigned unique identifier of an existing sales receipt line you
-    wish to retain or update. Set this field to `-1` for new sales receipt lines you
-    wish to add.
+    wish to retain or update.
+
+    **IMPORTANT**: Set this field to `-1` for new sales receipt lines you wish to
+    add.
     """
 
     amount: str
