@@ -51,35 +51,6 @@ Methods:
 - <code title="post /quickbooks-desktop/accounts/{id}">client.qbd.accounts.<a href="./src/conductor/resources/qbd/accounts.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/account_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/account.py">Account</a></code>
 - <code title="get /quickbooks-desktop/accounts">client.qbd.accounts.<a href="./src/conductor/resources/qbd/accounts.py">list</a>(\*\*<a href="src/conductor/types/qbd/account_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/account_list_response.py">AccountListResponse</a></code>
 
-## BillPaymentChecks
-
-Types:
-
-```python
-from conductor.types.qbd import BillPaymentCheck
-```
-
-Methods:
-
-- <code title="post /quickbooks-desktop/bill-payment-checks">client.qbd.bill_payment_checks.<a href="./src/conductor/resources/qbd/bill_payment_checks.py">create</a>(\*\*<a href="src/conductor/types/qbd/bill_payment_check_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/bill_payment_check.py">BillPaymentCheck</a></code>
-- <code title="get /quickbooks-desktop/bill-payment-checks/{id}">client.qbd.bill_payment_checks.<a href="./src/conductor/resources/qbd/bill_payment_checks.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/bill_payment_check.py">BillPaymentCheck</a></code>
-- <code title="post /quickbooks-desktop/bill-payment-checks/{id}">client.qbd.bill_payment_checks.<a href="./src/conductor/resources/qbd/bill_payment_checks.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/bill_payment_check_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/bill_payment_check.py">BillPaymentCheck</a></code>
-- <code title="get /quickbooks-desktop/bill-payment-checks">client.qbd.bill_payment_checks.<a href="./src/conductor/resources/qbd/bill_payment_checks.py">list</a>(\*\*<a href="src/conductor/types/qbd/bill_payment_check_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/bill_payment_check.py">SyncCursorPage[BillPaymentCheck]</a></code>
-
-## BillPaymentCreditCards
-
-Types:
-
-```python
-from conductor.types.qbd import BillPaymentCreditCard
-```
-
-Methods:
-
-- <code title="post /quickbooks-desktop/bill-payment-credit-cards">client.qbd.bill_payment_credit_cards.<a href="./src/conductor/resources/qbd/bill_payment_credit_cards.py">create</a>(\*\*<a href="src/conductor/types/qbd/bill_payment_credit_card_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/bill_payment_credit_card.py">BillPaymentCreditCard</a></code>
-- <code title="get /quickbooks-desktop/bill-payment-credit-cards/{id}">client.qbd.bill_payment_credit_cards.<a href="./src/conductor/resources/qbd/bill_payment_credit_cards.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/bill_payment_credit_card.py">BillPaymentCreditCard</a></code>
-- <code title="get /quickbooks-desktop/bill-payment-credit-cards">client.qbd.bill_payment_credit_cards.<a href="./src/conductor/resources/qbd/bill_payment_credit_cards.py">list</a>(\*\*<a href="src/conductor/types/qbd/bill_payment_credit_card_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/bill_payment_credit_card.py">SyncCursorPage[BillPaymentCreditCard]</a></code>
-
 ## Bills
 
 Types:
@@ -422,3 +393,32 @@ Methods:
 - <code title="get /quickbooks-desktop/vendors/{id}">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/vendor.py">Vendor</a></code>
 - <code title="post /quickbooks-desktop/vendors/{id}">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/vendor_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/vendor.py">Vendor</a></code>
 - <code title="get /quickbooks-desktop/vendors">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">list</a>(\*\*<a href="src/conductor/types/qbd/vendor_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/vendor.py">SyncCursorPage[Vendor]</a></code>
+
+## BillCheckPayments
+
+Types:
+
+```python
+from conductor.types.qbd import QbdBillCheckPayment
+```
+
+Methods:
+
+- <code title="post /quickbooks-desktop/bill-check-payments">client.qbd.bill_check_payments.<a href="./src/conductor/resources/qbd/bill_check_payments.py">create</a>(\*\*<a href="src/conductor/types/qbd/bill_check_payment_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_bill_check_payment.py">QbdBillCheckPayment</a></code>
+- <code title="get /quickbooks-desktop/bill-check-payments/{id}">client.qbd.bill_check_payments.<a href="./src/conductor/resources/qbd/bill_check_payments.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_bill_check_payment.py">QbdBillCheckPayment</a></code>
+- <code title="post /quickbooks-desktop/bill-check-payments/{id}">client.qbd.bill_check_payments.<a href="./src/conductor/resources/qbd/bill_check_payments.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/bill_check_payment_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_bill_check_payment.py">QbdBillCheckPayment</a></code>
+- <code title="get /quickbooks-desktop/bill-check-payments">client.qbd.bill_check_payments.<a href="./src/conductor/resources/qbd/bill_check_payments.py">list</a>(\*\*<a href="src/conductor/types/qbd/bill_check_payment_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_bill_check_payment.py">SyncCursorPage[QbdBillCheckPayment]</a></code>
+
+## BillCreditCardPayments
+
+Types:
+
+```python
+from conductor.types.qbd import QbdBillCreditCardPayment
+```
+
+Methods:
+
+- <code title="post /quickbooks-desktop/bill-credit-card-payments">client.qbd.bill_credit_card_payments.<a href="./src/conductor/resources/qbd/bill_credit_card_payments.py">create</a>(\*\*<a href="src/conductor/types/qbd/bill_credit_card_payment_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_bill_credit_card_payment.py">QbdBillCreditCardPayment</a></code>
+- <code title="get /quickbooks-desktop/bill-credit-card-payments/{id}">client.qbd.bill_credit_card_payments.<a href="./src/conductor/resources/qbd/bill_credit_card_payments.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_bill_credit_card_payment.py">QbdBillCreditCardPayment</a></code>
+- <code title="get /quickbooks-desktop/bill-credit-card-payments">client.qbd.bill_credit_card_payments.<a href="./src/conductor/resources/qbd/bill_credit_card_payments.py">list</a>(\*\*<a href="src/conductor/types/qbd/bill_credit_card_payment_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_bill_credit_card_payment.py">SyncCursorPage[QbdBillCreditCardPayment]</a></code>

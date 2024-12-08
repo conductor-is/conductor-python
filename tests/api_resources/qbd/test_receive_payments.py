@@ -24,8 +24,8 @@ class TestReceivePayments:
     @parametrize
     def test_method_create(self, client: Conductor) -> None:
         receive_payment = client.qbd.receive_payments.create(
-            apply_to_transactions=[{"transaction_id": "123ABC-1234567890"}],
             customer_id="80000001-1234567890",
+            total_amount="1000.00",
             transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
@@ -34,6 +34,10 @@ class TestReceivePayments:
     @parametrize
     def test_method_create_with_all_params(self, client: Conductor) -> None:
         receive_payment = client.qbd.receive_payments.create(
+            customer_id="80000001-1234567890",
+            total_amount="1000.00",
+            transaction_date=parse_date("2019-12-27"),
+            conductor_end_user_id="end_usr_1234567abcdefg",
             apply_to_transactions=[
                 {
                     "transaction_id": "123ABC-1234567890",
@@ -50,9 +54,6 @@ class TestReceivePayments:
                     "payment_amount": "25.00",
                 }
             ],
-            customer_id="80000001-1234567890",
-            transaction_date=parse_date("2019-12-27"),
-            conductor_end_user_id="end_usr_1234567abcdefg",
             credit_card_transaction={
                 "request": {
                     "expiration_month": 12,
@@ -90,15 +91,14 @@ class TestReceivePayments:
             payment_method_id="80000014-1234567890",
             receivables_account_id="80000002-1234567890",
             ref_number="PAYMENT-1234",
-            total_amount="1000.00",
         )
         assert_matches_type(ReceivePayment, receive_payment, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: Conductor) -> None:
         response = client.qbd.receive_payments.with_raw_response.create(
-            apply_to_transactions=[{"transaction_id": "123ABC-1234567890"}],
             customer_id="80000001-1234567890",
+            total_amount="1000.00",
             transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
@@ -111,8 +111,8 @@ class TestReceivePayments:
     @parametrize
     def test_streaming_response_create(self, client: Conductor) -> None:
         with client.qbd.receive_payments.with_streaming_response.create(
-            apply_to_transactions=[{"transaction_id": "123ABC-1234567890"}],
             customer_id="80000001-1234567890",
+            total_amount="1000.00",
             transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
@@ -337,8 +337,8 @@ class TestAsyncReceivePayments:
     @parametrize
     async def test_method_create(self, async_client: AsyncConductor) -> None:
         receive_payment = await async_client.qbd.receive_payments.create(
-            apply_to_transactions=[{"transaction_id": "123ABC-1234567890"}],
             customer_id="80000001-1234567890",
+            total_amount="1000.00",
             transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
@@ -347,6 +347,10 @@ class TestAsyncReceivePayments:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncConductor) -> None:
         receive_payment = await async_client.qbd.receive_payments.create(
+            customer_id="80000001-1234567890",
+            total_amount="1000.00",
+            transaction_date=parse_date("2019-12-27"),
+            conductor_end_user_id="end_usr_1234567abcdefg",
             apply_to_transactions=[
                 {
                     "transaction_id": "123ABC-1234567890",
@@ -363,9 +367,6 @@ class TestAsyncReceivePayments:
                     "payment_amount": "25.00",
                 }
             ],
-            customer_id="80000001-1234567890",
-            transaction_date=parse_date("2019-12-27"),
-            conductor_end_user_id="end_usr_1234567abcdefg",
             credit_card_transaction={
                 "request": {
                     "expiration_month": 12,
@@ -403,15 +404,14 @@ class TestAsyncReceivePayments:
             payment_method_id="80000014-1234567890",
             receivables_account_id="80000002-1234567890",
             ref_number="PAYMENT-1234",
-            total_amount="1000.00",
         )
         assert_matches_type(ReceivePayment, receive_payment, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncConductor) -> None:
         response = await async_client.qbd.receive_payments.with_raw_response.create(
-            apply_to_transactions=[{"transaction_id": "123ABC-1234567890"}],
             customer_id="80000001-1234567890",
+            total_amount="1000.00",
             transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
@@ -424,8 +424,8 @@ class TestAsyncReceivePayments:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncConductor) -> None:
         async with async_client.qbd.receive_payments.with_streaming_response.create(
-            apply_to_transactions=[{"transaction_id": "123ABC-1234567890"}],
             customer_id="80000001-1234567890",
+            total_amount="1000.00",
             transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:

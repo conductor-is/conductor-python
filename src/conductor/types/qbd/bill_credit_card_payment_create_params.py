@@ -8,33 +8,15 @@ from typing_extensions import Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
-__all__ = ["BillPaymentCheckUpdateParams", "ApplyToTransaction", "ApplyToTransactionApplyCredit"]
+__all__ = ["BillCreditCardPaymentCreateParams", "ApplyToTransaction", "ApplyToTransactionApplyCredit"]
 
 
-class BillPaymentCheckUpdateParams(TypedDict, total=False):
-    revision_number: Required[Annotated[str, PropertyInfo(alias="revisionNumber")]]
-    """
-    The current revision number of the bill payment check object you are updating,
-    which you can get by fetching the object first. Provide the most recent
-    `revisionNumber` to ensure you're working with the latest data; otherwise, the
-    update will return an error.
-    """
+class BillCreditCardPaymentCreateParams(TypedDict, total=False):
+    apply_to_transactions: Required[Annotated[Iterable[ApplyToTransaction], PropertyInfo(alias="applyToTransactions")]]
+    """The bills to be paid by this bill credit card payment.
 
-    conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]
-    """
-    The ID of the EndUser to receive this request (e.g.,
-    `"Conductor-End-User-Id: {{END_USER_ID}}"`).
-    """
-
-    amount: str
-    """
-    The monetary amount of this bill payment check, represented as a decimal string.
-    """
-
-    apply_to_transactions: Annotated[Iterable[ApplyToTransaction], PropertyInfo(alias="applyToTransactions")]
-    """The bills to be paid by this bill payment check.
-
-    This will create a link between this bill payment check and the specified bills.
+    This will create a link between this bill credit card payment and the specified
+    bills.
 
     **IMPORTANT**: In each `applyToTransactions` object, you must specify either
     `paymentAmount`, `applyCredits`, `discountAmount`, or any combination of these;
@@ -45,40 +27,70 @@ class BillPaymentCheckUpdateParams(TypedDict, total=False):
     will report this object as "cannot be found".
     """
 
-    bank_account_id: Annotated[str, PropertyInfo(alias="bankAccountId")]
+    credit_card_account_id: Required[Annotated[str, PropertyInfo(alias="creditCardAccountId")]]
+    """The credit card account to which this bill credit card payment is being charged.
+
+    This bill credit card payment will decrease the balance of this account.
     """
-    The bank account from which the funds are being drawn for this bill payment
-    check; e.g., Checking or Savings. This bill payment check will decrease the
-    balance of this account.
+
+    transaction_date: Required[Annotated[Union[str, date], PropertyInfo(alias="transactionDate", format="iso8601")]]
+    """The date of this bill credit card payment, in ISO 8601 format (YYYY-MM-DD)."""
+
+    vendor_id: Required[Annotated[str, PropertyInfo(alias="vendorId")]]
+    """
+    The vendor who sent the bill(s) that this bill credit card payment is paying and
+    who will receive this payment.
+
+    **IMPORTANT**: This vendor must match the `vendor` on the bill(s) specified in
+    `applyToTransactions`; otherwise, QuickBooks will say the `transactionId` in
+    `applyToTransactions` "does not exist".
+    """
+
+    conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]
+    """
+    The ID of the EndUser to receive this request (e.g.,
+    `"Conductor-End-User-Id: {{END_USER_ID}}"`).
     """
 
     exchange_rate: Annotated[float, PropertyInfo(alias="exchangeRate")]
     """
-    The market exchange rate between this bill payment check's currency and the home
-    currency in QuickBooks at the time of this transaction. Represented as a decimal
-    value (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
+    The market exchange rate between this bill credit card payment's currency and
+    the home currency in QuickBooks at the time of this transaction. Represented as
+    a decimal value (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home
+    currency).
     """
 
-    is_queued_for_print: Annotated[bool, PropertyInfo(alias="isQueuedForPrint")]
+    external_id: Annotated[str, PropertyInfo(alias="externalId")]
     """
-    Indicates whether this bill payment check is included in the queue of documents
-    for QuickBooks to print.
+    A globally unique identifier (GUID) you can provide for tracking this object in
+    your external system.
+
+    **IMPORTANT**: Must be formatted as a valid GUID; otherwise, QuickBooks will
+    return an error. This field is immutable and can only be set during object
+    creation.
     """
 
     memo: str
-    """A memo or note for this bill payment check."""
+    """A memo or note for this bill credit card payment."""
+
+    payables_account_id: Annotated[str, PropertyInfo(alias="payablesAccountId")]
+    """
+    The Accounts-Payable (A/P) account to which this bill credit card payment is
+    assigned, used to track the amount owed. If not specified, QuickBooks Desktop
+    will use its default A/P account.
+
+    **IMPORTANT**: If this bill credit card payment is linked to other transactions,
+    this A/P account must match the `payablesAccount` used in those other
+    transactions.
+    """
 
     ref_number: Annotated[str, PropertyInfo(alias="refNumber")]
     """
-    The case-sensitive user-defined reference number for this bill payment check,
-    which can be used to identify the transaction in QuickBooks. This value is not
-    required to be unique and can be arbitrarily changed by the QuickBooks user.
-
-    **IMPORTANT**: For checks, this field is the check number.
+    The case-sensitive user-defined reference number for this bill credit card
+    payment, which can be used to identify the transaction in QuickBooks. This value
+    is not required to be unique and can be arbitrarily changed by the QuickBooks
+    user.
     """
-
-    transaction_date: Annotated[Union[str, date], PropertyInfo(alias="transactionDate", format="iso8601")]
-    """The date of this bill payment check, in ISO 8601 format (YYYY-MM-DD)."""
 
 
 class ApplyToTransactionApplyCredit(TypedDict, total=False):

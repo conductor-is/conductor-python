@@ -8,15 +8,33 @@ from typing_extensions import Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
-__all__ = ["BillPaymentCreditCardCreateParams", "ApplyToTransaction", "ApplyToTransactionApplyCredit"]
+__all__ = ["BillCheckPaymentUpdateParams", "ApplyToTransaction", "ApplyToTransactionApplyCredit"]
 
 
-class BillPaymentCreditCardCreateParams(TypedDict, total=False):
-    apply_to_transactions: Required[Annotated[Iterable[ApplyToTransaction], PropertyInfo(alias="applyToTransactions")]]
-    """The bills to be paid by this bill payment credit card.
+class BillCheckPaymentUpdateParams(TypedDict, total=False):
+    revision_number: Required[Annotated[str, PropertyInfo(alias="revisionNumber")]]
+    """
+    The current revision number of the bill check payment object you are updating,
+    which you can get by fetching the object first. Provide the most recent
+    `revisionNumber` to ensure you're working with the latest data; otherwise, the
+    update will return an error.
+    """
 
-    This will create a link between this bill payment credit card and the specified
-    bills.
+    conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]
+    """
+    The ID of the EndUser to receive this request (e.g.,
+    `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+    """
+
+    amount: str
+    """
+    The monetary amount of this bill check payment, represented as a decimal string.
+    """
+
+    apply_to_transactions: Annotated[Iterable[ApplyToTransaction], PropertyInfo(alias="applyToTransactions")]
+    """The bills to be paid by this bill check payment.
+
+    This will create a link between this bill check payment and the specified bills.
 
     **IMPORTANT**: In each `applyToTransactions` object, you must specify either
     `paymentAmount`, `applyCredits`, `discountAmount`, or any combination of these;
@@ -27,69 +45,40 @@ class BillPaymentCreditCardCreateParams(TypedDict, total=False):
     will report this object as "cannot be found".
     """
 
-    credit_card_account_id: Required[Annotated[str, PropertyInfo(alias="creditCardAccountId")]]
-    """The credit card account to which this bill payment credit card is being charged.
-
-    This bill payment credit card will decrease the balance of this account.
+    bank_account_id: Annotated[str, PropertyInfo(alias="bankAccountId")]
     """
-
-    transaction_date: Required[Annotated[Union[str, date], PropertyInfo(alias="transactionDate", format="iso8601")]]
-    """The date of this bill payment credit card, in ISO 8601 format (YYYY-MM-DD)."""
-
-    vendor_id: Required[Annotated[str, PropertyInfo(alias="vendorId")]]
-    """
-    The vendor who sent the bill(s) that this credit card payment is paying and who
-    will receive this payment.
-
-    **IMPORTANT**: This vendor must match the `vendor` on the bill(s) specified in
-    `applyToTransactions`; otherwise, QuickBooks will say the `transactionId` in
-    `applyToTransactions` "does not exist".
-    """
-
-    conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]
-    """
-    The ID of the EndUser to receive this request (e.g.,
-    `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+    The bank account from which the funds are being drawn for this bill check
+    payment; e.g., Checking or Savings. This bill check payment will decrease the
+    balance of this account.
     """
 
     exchange_rate: Annotated[float, PropertyInfo(alias="exchangeRate")]
     """
-    The market exchange rate between this bill payment credit card's currency and
-    the home currency in QuickBooks at the time of this transaction. Represented as
-    a decimal value (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home
-    currency).
+    The market exchange rate between this bill check payment's currency and the home
+    currency in QuickBooks at the time of this transaction. Represented as a decimal
+    value (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
     """
 
-    external_id: Annotated[str, PropertyInfo(alias="externalId")]
+    is_queued_for_print: Annotated[bool, PropertyInfo(alias="isQueuedForPrint")]
     """
-    A globally unique identifier (GUID) you can provide for tracking this object in
-    your external system.
-
-    **IMPORTANT**: Must be formatted as a valid GUID; otherwise, QuickBooks will
-    return an error. This field is immutable and can only be set during object
-    creation.
+    Indicates whether this bill check payment is included in the queue of documents
+    for QuickBooks to print.
     """
 
     memo: str
-    """A memo or note for this bill payment credit card."""
-
-    payables_account_id: Annotated[str, PropertyInfo(alias="payablesAccountId")]
-    """
-    The Accounts-Payable (A/P) account to which this bill payment credit card is
-    assigned, used to track the amount owed. If not specified, QuickBooks Desktop
-    will use its default A/P account.
-
-    **IMPORTANT**: If this bill payment credit card is linked to other transactions,
-    this A/P account must match the `payablesAccount` used in those other
-    transactions.
-    """
+    """A memo or note for this bill check payment."""
 
     ref_number: Annotated[str, PropertyInfo(alias="refNumber")]
     """
-    The case-sensitive user-defined reference number for this bill payment credit
-    card, which can be used to identify the transaction in QuickBooks. This value is
-    not required to be unique and can be arbitrarily changed by the QuickBooks user.
+    The case-sensitive user-defined reference number for this bill check payment,
+    which can be used to identify the transaction in QuickBooks. This value is not
+    required to be unique and can be arbitrarily changed by the QuickBooks user.
+
+    **IMPORTANT**: For checks, this field is the check number.
     """
+
+    transaction_date: Annotated[Union[str, date], PropertyInfo(alias="transactionDate", format="iso8601")]
+    """The date of this bill check payment, in ISO 8601 format (YYYY-MM-DD)."""
 
 
 class ApplyToTransactionApplyCredit(TypedDict, total=False):
