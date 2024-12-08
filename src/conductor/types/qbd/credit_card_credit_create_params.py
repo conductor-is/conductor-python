@@ -22,7 +22,7 @@ __all__ = [
 
 class CreditCardCreditCreateParams(TypedDict, total=False):
     account_id: Required[Annotated[str, PropertyInfo(alias="accountId")]]
-    """The bank or credit card account to which the credit is applied."""
+    """The bank or credit card account to which this credit card credit is applied."""
 
     transaction_date: Required[Annotated[Union[str, date], PropertyInfo(alias="transactionDate", format="iso8601")]]
     """The date of this credit card credit, in ISO 8601 format (YYYY-MM-DD)."""
@@ -124,7 +124,7 @@ class ExpenseLineCustomField(TypedDict, total=False):
 
 class ExpenseLine(TypedDict, total=False):
     account_id: Annotated[str, PropertyInfo(alias="accountId")]
-    """The expense account being debited (increased).
+    """The expense account being debited (increased) for this expense line.
 
     The corresponding account being credited is usually a liability account (e.g.,
     Accounts-Payable) or an asset account (e.g., Cash), depending on the transaction
