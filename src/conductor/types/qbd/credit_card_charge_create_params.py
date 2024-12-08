@@ -127,7 +127,7 @@ class ExpenseLineCustomField(TypedDict, total=False):
 
 class ExpenseLine(TypedDict, total=False):
     account_id: Annotated[str, PropertyInfo(alias="accountId")]
-    """The expense account being debited (increased).
+    """The expense account being debited (increased) for this expense line.
 
     The corresponding account being credited is usually a liability account (e.g.,
     Accounts-Payable) or an asset account (e.g., Cash), depending on the transaction

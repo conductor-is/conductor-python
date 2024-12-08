@@ -20,38 +20,38 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...types.qbd import bill_payment_credit_card_list_params, bill_payment_credit_card_create_params
+from ...types.qbd import bill_credit_card_payment_list_params, bill_credit_card_payment_create_params
 from ...pagination import SyncCursorPage, AsyncCursorPage
 from ..._base_client import AsyncPaginator, make_request_options
-from ...types.qbd.bill_payment_credit_card import BillPaymentCreditCard
+from ...types.qbd.qbd_bill_credit_card_payment import QbdBillCreditCardPayment
 
-__all__ = ["BillPaymentCreditCardsResource", "AsyncBillPaymentCreditCardsResource"]
+__all__ = ["BillCreditCardPaymentsResource", "AsyncBillCreditCardPaymentsResource"]
 
 
-class BillPaymentCreditCardsResource(SyncAPIResource):
+class BillCreditCardPaymentsResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> BillPaymentCreditCardsResourceWithRawResponse:
+    def with_raw_response(self) -> BillCreditCardPaymentsResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return the
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/conductor-is/conductor-python#accessing-raw-response-data-eg-headers
         """
-        return BillPaymentCreditCardsResourceWithRawResponse(self)
+        return BillCreditCardPaymentsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> BillPaymentCreditCardsResourceWithStreamingResponse:
+    def with_streaming_response(self) -> BillCreditCardPaymentsResourceWithStreamingResponse:
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
         For more information, see https://www.github.com/conductor-is/conductor-python#with_streaming_response
         """
-        return BillPaymentCreditCardsResourceWithStreamingResponse(self)
+        return BillCreditCardPaymentsResourceWithStreamingResponse(self)
 
     def create(
         self,
         *,
-        apply_to_transactions: Iterable[bill_payment_credit_card_create_params.ApplyToTransaction],
+        apply_to_transactions: Iterable[bill_credit_card_payment_create_params.ApplyToTransaction],
         credit_card_account_id: str,
         transaction_date: Union[str, date],
         vendor_id: str,
@@ -67,13 +67,13 @@ class BillPaymentCreditCardsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> BillPaymentCreditCard:
+    ) -> QbdBillCreditCardPayment:
         """
-        Creates a new bill payment credit card.
+        Creates a new bill credit card payment.
 
         Args:
-          apply_to_transactions: The bills to be paid by this bill payment credit card. This will create a link
-              between this bill payment credit card and the specified bills.
+          apply_to_transactions: The bills to be paid by this bill credit card payment. This will create a link
+              between this bill credit card payment and the specified bills.
 
               **IMPORTANT**: In each `applyToTransactions` object, you must specify either
               `paymentAmount`, `applyCredits`, `discountAmount`, or any combination of these;
@@ -83,13 +83,13 @@ class BillPaymentCreditCardsResource(SyncAPIResource):
               **IMPORTANT**: The target bill must have `isPaid=false`, otherwise, QuickBooks
               will report this object as "cannot be found".
 
-          credit_card_account_id: The credit card account to which this bill payment credit card is being charged.
-              This bill payment credit card will decrease the balance of this account.
+          credit_card_account_id: The credit card account to which this bill credit card payment is being charged.
+              This bill credit card payment will decrease the balance of this account.
 
-          transaction_date: The date of this bill payment credit card, in ISO 8601 format (YYYY-MM-DD).
+          transaction_date: The date of this bill credit card payment, in ISO 8601 format (YYYY-MM-DD).
 
-          vendor_id: The vendor who sent the bill(s) that this credit card payment is paying and who
-              will receive this payment.
+          vendor_id: The vendor who sent the bill(s) that this bill credit card payment is paying and
+              who will receive this payment.
 
               **IMPORTANT**: This vendor must match the `vendor` on the bill(s) specified in
               `applyToTransactions`; otherwise, QuickBooks will say the `transactionId` in
@@ -98,7 +98,7 @@ class BillPaymentCreditCardsResource(SyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          exchange_rate: The market exchange rate between this bill payment credit card's currency and
+          exchange_rate: The market exchange rate between this bill credit card payment's currency and
               the home currency in QuickBooks at the time of this transaction. Represented as
               a decimal value (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home
               currency).
@@ -110,19 +110,20 @@ class BillPaymentCreditCardsResource(SyncAPIResource):
               return an error. This field is immutable and can only be set during object
               creation.
 
-          memo: A memo or note for this bill payment credit card.
+          memo: A memo or note for this bill credit card payment.
 
-          payables_account_id: The Accounts-Payable (A/P) account to which this bill payment credit card is
+          payables_account_id: The Accounts-Payable (A/P) account to which this bill credit card payment is
               assigned, used to track the amount owed. If not specified, QuickBooks Desktop
               will use its default A/P account.
 
-              **IMPORTANT**: If this bill payment credit card is linked to other transactions,
+              **IMPORTANT**: If this bill credit card payment is linked to other transactions,
               this A/P account must match the `payablesAccount` used in those other
               transactions.
 
-          ref_number: The case-sensitive user-defined reference number for this bill payment credit
-              card, which can be used to identify the transaction in QuickBooks. This value is
-              not required to be unique and can be arbitrarily changed by the QuickBooks user.
+          ref_number: The case-sensitive user-defined reference number for this bill credit card
+              payment, which can be used to identify the transaction in QuickBooks. This value
+              is not required to be unique and can be arbitrarily changed by the QuickBooks
+              user.
 
           extra_headers: Send extra headers
 
@@ -134,7 +135,7 @@ class BillPaymentCreditCardsResource(SyncAPIResource):
         """
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._post(
-            "/quickbooks-desktop/bill-payment-credit-cards",
+            "/quickbooks-desktop/bill-credit-card-payments",
             body=maybe_transform(
                 {
                     "apply_to_transactions": apply_to_transactions,
@@ -147,12 +148,12 @@ class BillPaymentCreditCardsResource(SyncAPIResource):
                     "payables_account_id": payables_account_id,
                     "ref_number": ref_number,
                 },
-                bill_payment_credit_card_create_params.BillPaymentCreditCardCreateParams,
+                bill_credit_card_payment_create_params.BillCreditCardPaymentCreateParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BillPaymentCreditCard,
+            cast_to=QbdBillCreditCardPayment,
         )
 
     def retrieve(
@@ -166,12 +167,12 @@ class BillPaymentCreditCardsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> BillPaymentCreditCard:
+    ) -> QbdBillCreditCardPayment:
         """
-        Retrieves a bill payment credit card by ID.
+        Retrieves a bill credit card payment by ID.
 
         Args:
-          id: The QuickBooks-assigned unique identifier of the bill payment credit card to
+          id: The QuickBooks-assigned unique identifier of the bill credit card payment to
               retrieve.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
@@ -189,11 +190,11 @@ class BillPaymentCreditCardsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get(
-            f"/quickbooks-desktop/bill-payment-credit-cards/{id}",
+            f"/quickbooks-desktop/bill-credit-card-payments/{id}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BillPaymentCreditCard,
+            cast_to=QbdBillCreditCardPayment,
         )
 
     def list(
@@ -223,23 +224,23 @@ class BillPaymentCreditCardsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursorPage[BillPaymentCreditCard]:
+    ) -> SyncCursorPage[QbdBillCreditCardPayment]:
         """
-        Returns a list of bill payment credit cards.
+        Returns a list of bill credit card payments.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_ids: Filter for bill payment credit cards associated with these accounts.
+          account_ids: Filter for bill credit card payments associated with these accounts.
 
-          currency_ids: Filter for bill payment credit cards in these currencies.
+          currency_ids: Filter for bill credit card payments in these currencies.
 
           cursor: The pagination token to fetch the next set of results when paginating with the
               `limit` parameter. Retrieve this value from the `nextCursor` field in the
               previous response. If omitted, the API returns the first page of results.
 
-          ids: Filter for specific bill payment credit cards by their QuickBooks-assigned
+          ids: Filter for specific bill credit card payments by their QuickBooks-assigned
               unique identifier(s).
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
@@ -253,50 +254,50 @@ class BillPaymentCreditCardsResource(SyncAPIResource):
               used as the `cursor` parameter value in subsequent requests to fetch the next
               set of results.
 
-          ref_number_contains: Filter for bill payment credit cards whose `refNumber` contains this substring.
+          ref_number_contains: Filter for bill credit card payments whose `refNumber` contains this substring.
               NOTE: If you use this parameter, you cannot also use `refNumberStartsWith` or
               `refNumberEndsWith`.
 
-          ref_number_ends_with: Filter for bill payment credit cards whose `refNumber` ends with this substring.
+          ref_number_ends_with: Filter for bill credit card payments whose `refNumber` ends with this substring.
               NOTE: If you use this parameter, you cannot also use `refNumberContains` or
               `refNumberStartsWith`.
 
-          ref_number_from: Filter for bill payment credit cards whose `refNumber` is greater than or equal
+          ref_number_from: Filter for bill credit card payments whose `refNumber` is greater than or equal
               to this value. If omitted, the range will begin with the first number of the
               list. Uses a numerical comparison for values that contain only digits;
               otherwise, uses a lexicographical comparison.
 
-          ref_numbers: Filter for specific bill payment credit cards by their ref-number(s),
+          ref_numbers: Filter for specific bill credit card payments by their ref-number(s),
               case-sensitive. In QuickBooks, ref-numbers are not required to be unique and can
               be arbitrarily changed by the QuickBooks user.
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
-          ref_number_starts_with: Filter for bill payment credit cards whose `refNumber` starts with this
+          ref_number_starts_with: Filter for bill credit card payments whose `refNumber` starts with this
               substring. NOTE: If you use this parameter, you cannot also use
               `refNumberContains` or `refNumberEndsWith`.
 
-          ref_number_to: Filter for bill payment credit cards whose `refNumber` is less than or equal to
+          ref_number_to: Filter for bill credit card payments whose `refNumber` is less than or equal to
               this value. If omitted, the range will end with the last number of the list.
               Uses a numerical comparison for values that contain only digits; otherwise, uses
               a lexicographical comparison.
 
-          transaction_date_from: Filter for bill payment credit cards created on or after this date, in ISO 8601
+          transaction_date_from: Filter for bill credit card payments created on or after this date, in ISO 8601
               format (YYYY-MM-DD).
 
-          transaction_date_to: Filter for bill payment credit cards created on or before this date, in ISO 8601
+          transaction_date_to: Filter for bill credit card payments created on or before this date, in ISO 8601
               format (YYYY-MM-DD).
 
-          updated_after: Filter for bill payment credit cards updated on or after this date and time, in
+          updated_after: Filter for bill credit card payments updated on or after this date and time, in
               ISO 8601 format (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD),
               the time is assumed to be 00:00:00 of that day.
 
-          updated_before: Filter for bill payment credit cards updated on or before this date and time, in
+          updated_before: Filter for bill credit card payments updated on or before this date and time, in
               ISO 8601 format (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD),
               the time is assumed to be 23:59:59 of that day.
 
-          vendor_ids: Filter for bill payment credit cards sent to these vendors. These are the
+          vendor_ids: Filter for bill credit card payments sent to these vendors. These are the
               vendors who sent the bills paid by these credit card payments.
 
           extra_headers: Send extra headers
@@ -309,8 +310,8 @@ class BillPaymentCreditCardsResource(SyncAPIResource):
         """
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
-            "/quickbooks-desktop/bill-payment-credit-cards",
-            page=SyncCursorPage[BillPaymentCreditCard],
+            "/quickbooks-desktop/bill-credit-card-payments",
+            page=SyncCursorPage[QbdBillCreditCardPayment],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -336,37 +337,37 @@ class BillPaymentCreditCardsResource(SyncAPIResource):
                         "updated_before": updated_before,
                         "vendor_ids": vendor_ids,
                     },
-                    bill_payment_credit_card_list_params.BillPaymentCreditCardListParams,
+                    bill_credit_card_payment_list_params.BillCreditCardPaymentListParams,
                 ),
             ),
-            model=BillPaymentCreditCard,
+            model=QbdBillCreditCardPayment,
         )
 
 
-class AsyncBillPaymentCreditCardsResource(AsyncAPIResource):
+class AsyncBillCreditCardPaymentsResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncBillPaymentCreditCardsResourceWithRawResponse:
+    def with_raw_response(self) -> AsyncBillCreditCardPaymentsResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return the
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/conductor-is/conductor-python#accessing-raw-response-data-eg-headers
         """
-        return AsyncBillPaymentCreditCardsResourceWithRawResponse(self)
+        return AsyncBillCreditCardPaymentsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncBillPaymentCreditCardsResourceWithStreamingResponse:
+    def with_streaming_response(self) -> AsyncBillCreditCardPaymentsResourceWithStreamingResponse:
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
         For more information, see https://www.github.com/conductor-is/conductor-python#with_streaming_response
         """
-        return AsyncBillPaymentCreditCardsResourceWithStreamingResponse(self)
+        return AsyncBillCreditCardPaymentsResourceWithStreamingResponse(self)
 
     async def create(
         self,
         *,
-        apply_to_transactions: Iterable[bill_payment_credit_card_create_params.ApplyToTransaction],
+        apply_to_transactions: Iterable[bill_credit_card_payment_create_params.ApplyToTransaction],
         credit_card_account_id: str,
         transaction_date: Union[str, date],
         vendor_id: str,
@@ -382,13 +383,13 @@ class AsyncBillPaymentCreditCardsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> BillPaymentCreditCard:
+    ) -> QbdBillCreditCardPayment:
         """
-        Creates a new bill payment credit card.
+        Creates a new bill credit card payment.
 
         Args:
-          apply_to_transactions: The bills to be paid by this bill payment credit card. This will create a link
-              between this bill payment credit card and the specified bills.
+          apply_to_transactions: The bills to be paid by this bill credit card payment. This will create a link
+              between this bill credit card payment and the specified bills.
 
               **IMPORTANT**: In each `applyToTransactions` object, you must specify either
               `paymentAmount`, `applyCredits`, `discountAmount`, or any combination of these;
@@ -398,13 +399,13 @@ class AsyncBillPaymentCreditCardsResource(AsyncAPIResource):
               **IMPORTANT**: The target bill must have `isPaid=false`, otherwise, QuickBooks
               will report this object as "cannot be found".
 
-          credit_card_account_id: The credit card account to which this bill payment credit card is being charged.
-              This bill payment credit card will decrease the balance of this account.
+          credit_card_account_id: The credit card account to which this bill credit card payment is being charged.
+              This bill credit card payment will decrease the balance of this account.
 
-          transaction_date: The date of this bill payment credit card, in ISO 8601 format (YYYY-MM-DD).
+          transaction_date: The date of this bill credit card payment, in ISO 8601 format (YYYY-MM-DD).
 
-          vendor_id: The vendor who sent the bill(s) that this credit card payment is paying and who
-              will receive this payment.
+          vendor_id: The vendor who sent the bill(s) that this bill credit card payment is paying and
+              who will receive this payment.
 
               **IMPORTANT**: This vendor must match the `vendor` on the bill(s) specified in
               `applyToTransactions`; otherwise, QuickBooks will say the `transactionId` in
@@ -413,7 +414,7 @@ class AsyncBillPaymentCreditCardsResource(AsyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          exchange_rate: The market exchange rate between this bill payment credit card's currency and
+          exchange_rate: The market exchange rate between this bill credit card payment's currency and
               the home currency in QuickBooks at the time of this transaction. Represented as
               a decimal value (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home
               currency).
@@ -425,19 +426,20 @@ class AsyncBillPaymentCreditCardsResource(AsyncAPIResource):
               return an error. This field is immutable and can only be set during object
               creation.
 
-          memo: A memo or note for this bill payment credit card.
+          memo: A memo or note for this bill credit card payment.
 
-          payables_account_id: The Accounts-Payable (A/P) account to which this bill payment credit card is
+          payables_account_id: The Accounts-Payable (A/P) account to which this bill credit card payment is
               assigned, used to track the amount owed. If not specified, QuickBooks Desktop
               will use its default A/P account.
 
-              **IMPORTANT**: If this bill payment credit card is linked to other transactions,
+              **IMPORTANT**: If this bill credit card payment is linked to other transactions,
               this A/P account must match the `payablesAccount` used in those other
               transactions.
 
-          ref_number: The case-sensitive user-defined reference number for this bill payment credit
-              card, which can be used to identify the transaction in QuickBooks. This value is
-              not required to be unique and can be arbitrarily changed by the QuickBooks user.
+          ref_number: The case-sensitive user-defined reference number for this bill credit card
+              payment, which can be used to identify the transaction in QuickBooks. This value
+              is not required to be unique and can be arbitrarily changed by the QuickBooks
+              user.
 
           extra_headers: Send extra headers
 
@@ -449,7 +451,7 @@ class AsyncBillPaymentCreditCardsResource(AsyncAPIResource):
         """
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return await self._post(
-            "/quickbooks-desktop/bill-payment-credit-cards",
+            "/quickbooks-desktop/bill-credit-card-payments",
             body=await async_maybe_transform(
                 {
                     "apply_to_transactions": apply_to_transactions,
@@ -462,12 +464,12 @@ class AsyncBillPaymentCreditCardsResource(AsyncAPIResource):
                     "payables_account_id": payables_account_id,
                     "ref_number": ref_number,
                 },
-                bill_payment_credit_card_create_params.BillPaymentCreditCardCreateParams,
+                bill_credit_card_payment_create_params.BillCreditCardPaymentCreateParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BillPaymentCreditCard,
+            cast_to=QbdBillCreditCardPayment,
         )
 
     async def retrieve(
@@ -481,12 +483,12 @@ class AsyncBillPaymentCreditCardsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> BillPaymentCreditCard:
+    ) -> QbdBillCreditCardPayment:
         """
-        Retrieves a bill payment credit card by ID.
+        Retrieves a bill credit card payment by ID.
 
         Args:
-          id: The QuickBooks-assigned unique identifier of the bill payment credit card to
+          id: The QuickBooks-assigned unique identifier of the bill credit card payment to
               retrieve.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
@@ -504,11 +506,11 @@ class AsyncBillPaymentCreditCardsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return await self._get(
-            f"/quickbooks-desktop/bill-payment-credit-cards/{id}",
+            f"/quickbooks-desktop/bill-credit-card-payments/{id}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BillPaymentCreditCard,
+            cast_to=QbdBillCreditCardPayment,
         )
 
     def list(
@@ -538,23 +540,23 @@ class AsyncBillPaymentCreditCardsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[BillPaymentCreditCard, AsyncCursorPage[BillPaymentCreditCard]]:
+    ) -> AsyncPaginator[QbdBillCreditCardPayment, AsyncCursorPage[QbdBillCreditCardPayment]]:
         """
-        Returns a list of bill payment credit cards.
+        Returns a list of bill credit card payments.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_ids: Filter for bill payment credit cards associated with these accounts.
+          account_ids: Filter for bill credit card payments associated with these accounts.
 
-          currency_ids: Filter for bill payment credit cards in these currencies.
+          currency_ids: Filter for bill credit card payments in these currencies.
 
           cursor: The pagination token to fetch the next set of results when paginating with the
               `limit` parameter. Retrieve this value from the `nextCursor` field in the
               previous response. If omitted, the API returns the first page of results.
 
-          ids: Filter for specific bill payment credit cards by their QuickBooks-assigned
+          ids: Filter for specific bill credit card payments by their QuickBooks-assigned
               unique identifier(s).
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
@@ -568,50 +570,50 @@ class AsyncBillPaymentCreditCardsResource(AsyncAPIResource):
               used as the `cursor` parameter value in subsequent requests to fetch the next
               set of results.
 
-          ref_number_contains: Filter for bill payment credit cards whose `refNumber` contains this substring.
+          ref_number_contains: Filter for bill credit card payments whose `refNumber` contains this substring.
               NOTE: If you use this parameter, you cannot also use `refNumberStartsWith` or
               `refNumberEndsWith`.
 
-          ref_number_ends_with: Filter for bill payment credit cards whose `refNumber` ends with this substring.
+          ref_number_ends_with: Filter for bill credit card payments whose `refNumber` ends with this substring.
               NOTE: If you use this parameter, you cannot also use `refNumberContains` or
               `refNumberStartsWith`.
 
-          ref_number_from: Filter for bill payment credit cards whose `refNumber` is greater than or equal
+          ref_number_from: Filter for bill credit card payments whose `refNumber` is greater than or equal
               to this value. If omitted, the range will begin with the first number of the
               list. Uses a numerical comparison for values that contain only digits;
               otherwise, uses a lexicographical comparison.
 
-          ref_numbers: Filter for specific bill payment credit cards by their ref-number(s),
+          ref_numbers: Filter for specific bill credit card payments by their ref-number(s),
               case-sensitive. In QuickBooks, ref-numbers are not required to be unique and can
               be arbitrarily changed by the QuickBooks user.
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
-          ref_number_starts_with: Filter for bill payment credit cards whose `refNumber` starts with this
+          ref_number_starts_with: Filter for bill credit card payments whose `refNumber` starts with this
               substring. NOTE: If you use this parameter, you cannot also use
               `refNumberContains` or `refNumberEndsWith`.
 
-          ref_number_to: Filter for bill payment credit cards whose `refNumber` is less than or equal to
+          ref_number_to: Filter for bill credit card payments whose `refNumber` is less than or equal to
               this value. If omitted, the range will end with the last number of the list.
               Uses a numerical comparison for values that contain only digits; otherwise, uses
               a lexicographical comparison.
 
-          transaction_date_from: Filter for bill payment credit cards created on or after this date, in ISO 8601
+          transaction_date_from: Filter for bill credit card payments created on or after this date, in ISO 8601
               format (YYYY-MM-DD).
 
-          transaction_date_to: Filter for bill payment credit cards created on or before this date, in ISO 8601
+          transaction_date_to: Filter for bill credit card payments created on or before this date, in ISO 8601
               format (YYYY-MM-DD).
 
-          updated_after: Filter for bill payment credit cards updated on or after this date and time, in
+          updated_after: Filter for bill credit card payments updated on or after this date and time, in
               ISO 8601 format (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD),
               the time is assumed to be 00:00:00 of that day.
 
-          updated_before: Filter for bill payment credit cards updated on or before this date and time, in
+          updated_before: Filter for bill credit card payments updated on or before this date and time, in
               ISO 8601 format (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD),
               the time is assumed to be 23:59:59 of that day.
 
-          vendor_ids: Filter for bill payment credit cards sent to these vendors. These are the
+          vendor_ids: Filter for bill credit card payments sent to these vendors. These are the
               vendors who sent the bills paid by these credit card payments.
 
           extra_headers: Send extra headers
@@ -624,8 +626,8 @@ class AsyncBillPaymentCreditCardsResource(AsyncAPIResource):
         """
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
-            "/quickbooks-desktop/bill-payment-credit-cards",
-            page=AsyncCursorPage[BillPaymentCreditCard],
+            "/quickbooks-desktop/bill-credit-card-payments",
+            page=AsyncCursorPage[QbdBillCreditCardPayment],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -651,68 +653,68 @@ class AsyncBillPaymentCreditCardsResource(AsyncAPIResource):
                         "updated_before": updated_before,
                         "vendor_ids": vendor_ids,
                     },
-                    bill_payment_credit_card_list_params.BillPaymentCreditCardListParams,
+                    bill_credit_card_payment_list_params.BillCreditCardPaymentListParams,
                 ),
             ),
-            model=BillPaymentCreditCard,
+            model=QbdBillCreditCardPayment,
         )
 
 
-class BillPaymentCreditCardsResourceWithRawResponse:
-    def __init__(self, bill_payment_credit_cards: BillPaymentCreditCardsResource) -> None:
-        self._bill_payment_credit_cards = bill_payment_credit_cards
+class BillCreditCardPaymentsResourceWithRawResponse:
+    def __init__(self, bill_credit_card_payments: BillCreditCardPaymentsResource) -> None:
+        self._bill_credit_card_payments = bill_credit_card_payments
 
         self.create = to_raw_response_wrapper(
-            bill_payment_credit_cards.create,
+            bill_credit_card_payments.create,
         )
         self.retrieve = to_raw_response_wrapper(
-            bill_payment_credit_cards.retrieve,
+            bill_credit_card_payments.retrieve,
         )
         self.list = to_raw_response_wrapper(
-            bill_payment_credit_cards.list,
+            bill_credit_card_payments.list,
         )
 
 
-class AsyncBillPaymentCreditCardsResourceWithRawResponse:
-    def __init__(self, bill_payment_credit_cards: AsyncBillPaymentCreditCardsResource) -> None:
-        self._bill_payment_credit_cards = bill_payment_credit_cards
+class AsyncBillCreditCardPaymentsResourceWithRawResponse:
+    def __init__(self, bill_credit_card_payments: AsyncBillCreditCardPaymentsResource) -> None:
+        self._bill_credit_card_payments = bill_credit_card_payments
 
         self.create = async_to_raw_response_wrapper(
-            bill_payment_credit_cards.create,
+            bill_credit_card_payments.create,
         )
         self.retrieve = async_to_raw_response_wrapper(
-            bill_payment_credit_cards.retrieve,
+            bill_credit_card_payments.retrieve,
         )
         self.list = async_to_raw_response_wrapper(
-            bill_payment_credit_cards.list,
+            bill_credit_card_payments.list,
         )
 
 
-class BillPaymentCreditCardsResourceWithStreamingResponse:
-    def __init__(self, bill_payment_credit_cards: BillPaymentCreditCardsResource) -> None:
-        self._bill_payment_credit_cards = bill_payment_credit_cards
+class BillCreditCardPaymentsResourceWithStreamingResponse:
+    def __init__(self, bill_credit_card_payments: BillCreditCardPaymentsResource) -> None:
+        self._bill_credit_card_payments = bill_credit_card_payments
 
         self.create = to_streamed_response_wrapper(
-            bill_payment_credit_cards.create,
+            bill_credit_card_payments.create,
         )
         self.retrieve = to_streamed_response_wrapper(
-            bill_payment_credit_cards.retrieve,
+            bill_credit_card_payments.retrieve,
         )
         self.list = to_streamed_response_wrapper(
-            bill_payment_credit_cards.list,
+            bill_credit_card_payments.list,
         )
 
 
-class AsyncBillPaymentCreditCardsResourceWithStreamingResponse:
-    def __init__(self, bill_payment_credit_cards: AsyncBillPaymentCreditCardsResource) -> None:
-        self._bill_payment_credit_cards = bill_payment_credit_cards
+class AsyncBillCreditCardPaymentsResourceWithStreamingResponse:
+    def __init__(self, bill_credit_card_payments: AsyncBillCreditCardPaymentsResource) -> None:
+        self._bill_credit_card_payments = bill_credit_card_payments
 
         self.create = async_to_streamed_response_wrapper(
-            bill_payment_credit_cards.create,
+            bill_credit_card_payments.create,
         )
         self.retrieve = async_to_streamed_response_wrapper(
-            bill_payment_credit_cards.retrieve,
+            bill_credit_card_payments.retrieve,
         )
         self.list = async_to_streamed_response_wrapper(
-            bill_payment_credit_cards.list,
+            bill_credit_card_payments.list,
         )
