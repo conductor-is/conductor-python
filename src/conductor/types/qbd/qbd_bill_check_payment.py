@@ -9,17 +9,56 @@ from pydantic import Field as FieldInfo
 from ..._models import BaseModel
 
 __all__ = [
-    "BillPaymentCreditCard",
+    "QbdBillCheckPayment",
+    "Address",
     "AppliedToTransaction",
     "AppliedToTransactionDiscountAccount",
     "AppliedToTransactionDiscountClass",
     "AppliedToTransactionLinkedTransaction",
-    "CreditCardAccount",
+    "BankAccount",
     "Currency",
     "CustomField",
     "PayablesAccount",
     "Vendor",
 ]
+
+
+class Address(BaseModel):
+    city: Optional[str] = None
+    """The city, district, suburb, town, or village name of the address."""
+
+    country: Optional[str] = None
+    """The country name of the address."""
+
+    line1: Optional[str] = None
+    """The first line of the address (e.g., street, PO Box, or company name)."""
+
+    line2: Optional[str] = None
+    """
+    The second line of the address, if needed (e.g., apartment, suite, unit, or
+    building).
+    """
+
+    line3: Optional[str] = None
+    """The third line of the address, if needed."""
+
+    line4: Optional[str] = None
+    """The fourth line of the address, if needed."""
+
+    line5: Optional[str] = None
+    """The fifth line of the address, if needed."""
+
+    note: Optional[str] = None
+    """
+    A note written at the bottom of the address in the form in which it appears,
+    such as the invoice form.
+    """
+
+    postal_code: Optional[str] = FieldInfo(alias="postalCode", default=None)
+    """The postal code or ZIP code of the address."""
+
+    state: Optional[str] = None
+    """The state, county, province, or region name of the address."""
 
 
 class AppliedToTransactionDiscountAccount(BaseModel):
@@ -200,7 +239,7 @@ class AppliedToTransaction(BaseModel):
     """The type of transaction for this receivable transaction."""
 
 
-class CreditCardAccount(BaseModel):
+class BankAccount(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks to this object.
 
@@ -301,43 +340,46 @@ class Vendor(BaseModel):
     """
 
 
-class BillPaymentCreditCard(BaseModel):
+class QbdBillCheckPayment(BaseModel):
     id: str
-    """The unique identifier assigned by QuickBooks to this bill payment credit card.
+    """The unique identifier assigned by QuickBooks to this bill check payment.
 
     This ID is unique across all transaction types.
     """
 
+    address: Optional[Address] = None
+    """The address that is printed on the bill check payment."""
+
     amount: Optional[str] = None
     """
-    The monetary amount of this bill payment credit card, represented as a decimal
-    string.
+    The monetary amount of this bill check payment, represented as a decimal string.
     """
 
     amount_in_home_currency: Optional[str] = FieldInfo(alias="amountInHomeCurrency", default=None)
     """
-    The total monetary amount for this bill payment credit card converted to the
-    home currency of the QuickBooks company file. Represented as a decimal string.
+    The total monetary amount for this bill check payment converted to the home
+    currency of the QuickBooks company file. Represented as a decimal string.
     """
 
     applied_to_transactions: List[AppliedToTransaction] = FieldInfo(alias="appliedToTransactions")
-    """The bill(s) paid by this bill payment credit card."""
+    """The bill(s) paid by this bill check payment."""
+
+    bank_account: BankAccount = FieldInfo(alias="bankAccount")
+    """
+    The bank account from which the funds are being drawn for this bill check
+    payment; e.g., Checking or Savings. This bill check payment will decrease the
+    balance of this account.
+    """
 
     created_at: str = FieldInfo(alias="createdAt")
     """
-    The date and time when this bill payment credit card was created, in ISO 8601
-    format (YYYY-MM-DDThh:mm:ss±hh:mm). The time zone is the same as the user's time
-    zone in QuickBooks.
-    """
-
-    credit_card_account: CreditCardAccount = FieldInfo(alias="creditCardAccount")
-    """The credit card account to which this bill payment credit card is being charged.
-
-    This bill payment credit card will decrease the balance of this account.
+    The date and time when this bill check payment was created, in ISO 8601 format
+    (YYYY-MM-DDThh:mm:ss±hh:mm). The time zone is the same as the user's time zone
+    in QuickBooks.
     """
 
     currency: Optional[Currency] = None
-    """The bill payment credit card's currency.
+    """The bill check payment's currency.
 
     For built-in currencies, the name and code are standard international values.
     For user-defined currencies, all values are editable.
@@ -345,16 +387,15 @@ class BillPaymentCreditCard(BaseModel):
 
     custom_fields: List[CustomField] = FieldInfo(alias="customFields")
     """
-    The custom fields for the bill payment credit card object, added as user-defined
-    data extensions, not included in the standard QuickBooks object.
+    The custom fields for the bill check payment object, added as user-defined data
+    extensions, not included in the standard QuickBooks object.
     """
 
     exchange_rate: Optional[float] = FieldInfo(alias="exchangeRate", default=None)
     """
-    The market exchange rate between this bill payment credit card's currency and
-    the home currency in QuickBooks at the time of this transaction. Represented as
-    a decimal value (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home
-    currency).
+    The market exchange rate between this bill check payment's currency and the home
+    currency in QuickBooks at the time of this transaction. Represented as a decimal
+    value (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
     """
 
     external_id: Optional[str] = FieldInfo(alias="externalId", default=None)
@@ -367,53 +408,58 @@ class BillPaymentCreditCard(BaseModel):
     creation.
     """
 
-    memo: Optional[str] = None
-    """A memo or note for this bill payment credit card."""
+    is_queued_for_print: Optional[bool] = FieldInfo(alias="isQueuedForPrint", default=None)
+    """
+    Indicates whether this bill check payment is included in the queue of documents
+    for QuickBooks to print.
+    """
 
-    object_type: Literal["qbd_bill_payment_credit_card"] = FieldInfo(alias="objectType")
-    """The type of object. This value is always `"qbd_bill_payment_credit_card"`."""
+    memo: Optional[str] = None
+    """A memo or note for this bill check payment."""
+
+    object_type: Literal["qbd_bill_check_payment"] = FieldInfo(alias="objectType")
+    """The type of object. This value is always `"qbd_bill_check_payment"`."""
 
     payables_account: Optional[PayablesAccount] = FieldInfo(alias="payablesAccount", default=None)
     """
-    The Accounts-Payable (A/P) account to which this bill payment credit card is
-    assigned, used to track the amount owed. If not specified, QuickBooks Desktop
-    will use its default A/P account.
+    The Accounts-Payable (A/P) account to which this bill check payment is assigned,
+    used to track the amount owed. If not specified, QuickBooks Desktop will use its
+    default A/P account.
 
-    **IMPORTANT**: If this bill payment credit card is linked to other transactions,
-    this A/P account must match the `payablesAccount` used in those other
-    transactions.
+    **IMPORTANT**: If this bill check payment is linked to other transactions, this
+    A/P account must match the `payablesAccount` used in those other transactions.
     """
 
     ref_number: Optional[str] = FieldInfo(alias="refNumber", default=None)
     """
-    The case-sensitive user-defined reference number for this bill payment credit
-    card, which can be used to identify the transaction in QuickBooks. This value is
-    not required to be unique and can be arbitrarily changed by the QuickBooks user.
+    The case-sensitive user-defined reference number for this bill check payment,
+    which can be used to identify the transaction in QuickBooks. This value is not
+    required to be unique and can be arbitrarily changed by the QuickBooks user.
 
     **IMPORTANT**: For checks, this field is the check number.
     """
 
     revision_number: str = FieldInfo(alias="revisionNumber")
     """
-    The current revision number of this bill payment credit card object, which
-    changes each time the object is modified. When updating this object, you must
-    provide the most recent `revisionNumber` to ensure you're working with the
-    latest data; otherwise, the update will return an error.
+    The current revision number of this bill check payment object, which changes
+    each time the object is modified. When updating this object, you must provide
+    the most recent `revisionNumber` to ensure you're working with the latest data;
+    otherwise, the update will return an error.
     """
 
     transaction_date: date = FieldInfo(alias="transactionDate")
-    """The date of this bill payment credit card, in ISO 8601 format (YYYY-MM-DD)."""
+    """The date of this bill check payment, in ISO 8601 format (YYYY-MM-DD)."""
 
     updated_at: str = FieldInfo(alias="updatedAt")
     """
-    The date and time when this bill payment credit card was last updated, in ISO
-    8601 format (YYYY-MM-DDThh:mm:ss±hh:mm). The time zone is the same as the user's
-    time zone in QuickBooks.
+    The date and time when this bill check payment was last updated, in ISO 8601
+    format (YYYY-MM-DDThh:mm:ss±hh:mm). The time zone is the same as the user's time
+    zone in QuickBooks.
     """
 
     vendor: Optional[Vendor] = None
     """
-    The vendor who sent the bill(s) that this credit card payment is paying and who
+    The vendor who sent the bill(s) that this bill check payment is paying and who
     will receive this payment.
 
     **IMPORTANT**: This vendor must match the `vendor` on the bill(s) specified in

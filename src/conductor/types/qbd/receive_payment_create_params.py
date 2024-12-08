@@ -19,7 +19,31 @@ __all__ = [
 
 
 class ReceivePaymentCreateParams(TypedDict, total=False):
-    apply_to_transactions: Required[Annotated[Iterable[ApplyToTransaction], PropertyInfo(alias="applyToTransactions")]]
+    customer_id: Required[Annotated[str, PropertyInfo(alias="customerId")]]
+    """
+    The customer or customer-job to which the payment for this receive-payment is
+    credited.
+    """
+
+    total_amount: Required[Annotated[str, PropertyInfo(alias="totalAmount")]]
+    """
+    The total monetary amount of this receive-payment, represented as a decimal
+    string.
+
+    **NOTE:** The sum of the `paymentAmount` amounts in the `applyToTransactions`
+    array cannot exceed the `totalAmount`, or you will receive an error.
+    """
+
+    transaction_date: Required[Annotated[Union[str, date], PropertyInfo(alias="transactionDate", format="iso8601")]]
+    """The date of this receive-payment, in ISO 8601 format (YYYY-MM-DD)."""
+
+    conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]
+    """
+    The ID of the EndUser to receive this request (e.g.,
+    `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+    """
+
+    apply_to_transactions: Annotated[Iterable[ApplyToTransaction], PropertyInfo(alias="applyToTransactions")]
     """The invoices to be paid by this receive-payment.
 
     This will create a link between this receive-payment and the specified invoices.
@@ -31,21 +55,9 @@ class ReceivePaymentCreateParams(TypedDict, total=False):
 
     **IMPORTANT**: The target invoice must have `isPaid=false`, otherwise,
     QuickBooks will report this object as "cannot be found".
-    """
 
-    customer_id: Required[Annotated[str, PropertyInfo(alias="customerId")]]
-    """
-    The customer or customer-job to which the payment for this receive-payment is
-    credited.
-    """
-
-    transaction_date: Required[Annotated[Union[str, date], PropertyInfo(alias="transactionDate", format="iso8601")]]
-    """The date of this receive-payment, in ISO 8601 format (YYYY-MM-DD)."""
-
-    conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]
-    """
-    The ID of the EndUser to receive this request (e.g.,
-    `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+    **NOTE**: You must specify either `isAutoApply` or `applyToTransactions` when
+    creating a receive-payment, but never both.
     """
 
     credit_card_transaction: Annotated[CreditCardTransaction, PropertyInfo(alias="creditCardTransaction")]
@@ -87,6 +99,9 @@ class ReceivePaymentCreateParams(TypedDict, total=False):
     customer-job. When `false`, QuickBooks records the payment but does not apply it
     to any specific transaction, causing the amount to appear as a credit on the
     customer-job’s next transaction.
+
+    **IMPORTANT**: You must specify either `isAutoApply` or `applyToTransactions`
+    when creating a receive-payment, but never both.
     """
 
     memo: str
@@ -120,15 +135,6 @@ class ReceivePaymentCreateParams(TypedDict, total=False):
     The case-sensitive user-defined reference number for this receive-payment, which
     can be used to identify the transaction in QuickBooks. This value is not
     required to be unique and can be arbitrarily changed by the QuickBooks user.
-    """
-
-    total_amount: Annotated[str, PropertyInfo(alias="totalAmount")]
-    """
-    The total monetary amount of this receive-payment, represented as a decimal
-    string.
-
-    **NOTE:** The sum of the `paymentAmount` amounts in the `applyToTransactions`
-    array cannot exceed the `totalAmount`, or you will receive an error.
     """
 
 

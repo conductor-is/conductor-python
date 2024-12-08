@@ -51,10 +51,11 @@ class ReceivePaymentsResource(SyncAPIResource):
     def create(
         self,
         *,
-        apply_to_transactions: Iterable[receive_payment_create_params.ApplyToTransaction],
         customer_id: str,
+        total_amount: str,
         transaction_date: Union[str, date],
         conductor_end_user_id: str,
+        apply_to_transactions: Iterable[receive_payment_create_params.ApplyToTransaction] | NotGiven = NOT_GIVEN,
         credit_card_transaction: receive_payment_create_params.CreditCardTransaction | NotGiven = NOT_GIVEN,
         deposit_to_account_id: str | NotGiven = NOT_GIVEN,
         exchange_rate: float | NotGiven = NOT_GIVEN,
@@ -64,7 +65,6 @@ class ReceivePaymentsResource(SyncAPIResource):
         payment_method_id: str | NotGiven = NOT_GIVEN,
         receivables_account_id: str | NotGiven = NOT_GIVEN,
         ref_number: str | NotGiven = NOT_GIVEN,
-        total_amount: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -76,6 +76,20 @@ class ReceivePaymentsResource(SyncAPIResource):
         Creates a new receive-payment.
 
         Args:
+          customer_id: The customer or customer-job to which the payment for this receive-payment is
+              credited.
+
+          total_amount: The total monetary amount of this receive-payment, represented as a decimal
+              string.
+
+              **NOTE:** The sum of the `paymentAmount` amounts in the `applyToTransactions`
+              array cannot exceed the `totalAmount`, or you will receive an error.
+
+          transaction_date: The date of this receive-payment, in ISO 8601 format (YYYY-MM-DD).
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
           apply_to_transactions: The invoices to be paid by this receive-payment. This will create a link between
               this receive-payment and the specified invoices.
 
@@ -87,13 +101,8 @@ class ReceivePaymentsResource(SyncAPIResource):
               **IMPORTANT**: The target invoice must have `isPaid=false`, otherwise,
               QuickBooks will report this object as "cannot be found".
 
-          customer_id: The customer or customer-job to which the payment for this receive-payment is
-              credited.
-
-          transaction_date: The date of this receive-payment, in ISO 8601 format (YYYY-MM-DD).
-
-          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
-              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+              **NOTE**: You must specify either `isAutoApply` or `applyToTransactions` when
+              creating a receive-payment, but never both.
 
           credit_card_transaction: The credit card transaction data for this receive-payment's payment when using
               QuickBooks Merchant Services (QBMS). If specifying this field, you must also
@@ -121,6 +130,9 @@ class ReceivePaymentsResource(SyncAPIResource):
               to any specific transaction, causing the amount to appear as a credit on the
               customer-job’s next transaction.
 
+              **IMPORTANT**: You must specify either `isAutoApply` or `applyToTransactions`
+              when creating a receive-payment, but never both.
+
           memo: A memo or note that appears in reports that show details of this
               receive-payment.
 
@@ -143,12 +155,6 @@ class ReceivePaymentsResource(SyncAPIResource):
               can be used to identify the transaction in QuickBooks. This value is not
               required to be unique and can be arbitrarily changed by the QuickBooks user.
 
-          total_amount: The total monetary amount of this receive-payment, represented as a decimal
-              string.
-
-              **NOTE:** The sum of the `paymentAmount` amounts in the `applyToTransactions`
-              array cannot exceed the `totalAmount`, or you will receive an error.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -162,9 +168,10 @@ class ReceivePaymentsResource(SyncAPIResource):
             "/quickbooks-desktop/receive-payments",
             body=maybe_transform(
                 {
-                    "apply_to_transactions": apply_to_transactions,
                     "customer_id": customer_id,
+                    "total_amount": total_amount,
                     "transaction_date": transaction_date,
+                    "apply_to_transactions": apply_to_transactions,
                     "credit_card_transaction": credit_card_transaction,
                     "deposit_to_account_id": deposit_to_account_id,
                     "exchange_rate": exchange_rate,
@@ -174,7 +181,6 @@ class ReceivePaymentsResource(SyncAPIResource):
                     "payment_method_id": payment_method_id,
                     "receivables_account_id": receivables_account_id,
                     "ref_number": ref_number,
-                    "total_amount": total_amount,
                 },
                 receive_payment_create_params.ReceivePaymentCreateParams,
             ),
@@ -519,10 +525,11 @@ class AsyncReceivePaymentsResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        apply_to_transactions: Iterable[receive_payment_create_params.ApplyToTransaction],
         customer_id: str,
+        total_amount: str,
         transaction_date: Union[str, date],
         conductor_end_user_id: str,
+        apply_to_transactions: Iterable[receive_payment_create_params.ApplyToTransaction] | NotGiven = NOT_GIVEN,
         credit_card_transaction: receive_payment_create_params.CreditCardTransaction | NotGiven = NOT_GIVEN,
         deposit_to_account_id: str | NotGiven = NOT_GIVEN,
         exchange_rate: float | NotGiven = NOT_GIVEN,
@@ -532,7 +539,6 @@ class AsyncReceivePaymentsResource(AsyncAPIResource):
         payment_method_id: str | NotGiven = NOT_GIVEN,
         receivables_account_id: str | NotGiven = NOT_GIVEN,
         ref_number: str | NotGiven = NOT_GIVEN,
-        total_amount: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -544,6 +550,20 @@ class AsyncReceivePaymentsResource(AsyncAPIResource):
         Creates a new receive-payment.
 
         Args:
+          customer_id: The customer or customer-job to which the payment for this receive-payment is
+              credited.
+
+          total_amount: The total monetary amount of this receive-payment, represented as a decimal
+              string.
+
+              **NOTE:** The sum of the `paymentAmount` amounts in the `applyToTransactions`
+              array cannot exceed the `totalAmount`, or you will receive an error.
+
+          transaction_date: The date of this receive-payment, in ISO 8601 format (YYYY-MM-DD).
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
           apply_to_transactions: The invoices to be paid by this receive-payment. This will create a link between
               this receive-payment and the specified invoices.
 
@@ -555,13 +575,8 @@ class AsyncReceivePaymentsResource(AsyncAPIResource):
               **IMPORTANT**: The target invoice must have `isPaid=false`, otherwise,
               QuickBooks will report this object as "cannot be found".
 
-          customer_id: The customer or customer-job to which the payment for this receive-payment is
-              credited.
-
-          transaction_date: The date of this receive-payment, in ISO 8601 format (YYYY-MM-DD).
-
-          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
-              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+              **NOTE**: You must specify either `isAutoApply` or `applyToTransactions` when
+              creating a receive-payment, but never both.
 
           credit_card_transaction: The credit card transaction data for this receive-payment's payment when using
               QuickBooks Merchant Services (QBMS). If specifying this field, you must also
@@ -589,6 +604,9 @@ class AsyncReceivePaymentsResource(AsyncAPIResource):
               to any specific transaction, causing the amount to appear as a credit on the
               customer-job’s next transaction.
 
+              **IMPORTANT**: You must specify either `isAutoApply` or `applyToTransactions`
+              when creating a receive-payment, but never both.
+
           memo: A memo or note that appears in reports that show details of this
               receive-payment.
 
@@ -611,12 +629,6 @@ class AsyncReceivePaymentsResource(AsyncAPIResource):
               can be used to identify the transaction in QuickBooks. This value is not
               required to be unique and can be arbitrarily changed by the QuickBooks user.
 
-          total_amount: The total monetary amount of this receive-payment, represented as a decimal
-              string.
-
-              **NOTE:** The sum of the `paymentAmount` amounts in the `applyToTransactions`
-              array cannot exceed the `totalAmount`, or you will receive an error.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -630,9 +642,10 @@ class AsyncReceivePaymentsResource(AsyncAPIResource):
             "/quickbooks-desktop/receive-payments",
             body=await async_maybe_transform(
                 {
-                    "apply_to_transactions": apply_to_transactions,
                     "customer_id": customer_id,
+                    "total_amount": total_amount,
                     "transaction_date": transaction_date,
+                    "apply_to_transactions": apply_to_transactions,
                     "credit_card_transaction": credit_card_transaction,
                     "deposit_to_account_id": deposit_to_account_id,
                     "exchange_rate": exchange_rate,
@@ -642,7 +655,6 @@ class AsyncReceivePaymentsResource(AsyncAPIResource):
                     "payment_method_id": payment_method_id,
                     "receivables_account_id": receivables_account_id,
                     "ref_number": ref_number,
-                    "total_amount": total_amount,
                 },
                 receive_payment_create_params.ReceivePaymentCreateParams,
             ),

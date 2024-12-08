@@ -78,7 +78,7 @@ class CreditCardCreditsResource(SyncAPIResource):
         Creates a new credit card credit for the specified account.
 
         Args:
-          account_id: The bank or credit card account to which the credit is applied.
+          account_id: The bank or credit card account to which this credit card credit is applied.
 
           transaction_date: The date of this credit card credit, in ISO 8601 format (YYYY-MM-DD).
 
@@ -235,7 +235,7 @@ class CreditCardCreditsResource(SyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_id: The bank or credit card account to which the credit is applied.
+          account_id: The bank or credit card account to which this credit card credit is applied.
 
           clear_expense_lines: When `true`, removes all existing expense lines associated with this credit card
               credit. To modify or add individual expense lines, use the field `expenseLines`
@@ -532,7 +532,7 @@ class AsyncCreditCardCreditsResource(AsyncAPIResource):
         Creates a new credit card credit for the specified account.
 
         Args:
-          account_id: The bank or credit card account to which the credit is applied.
+          account_id: The bank or credit card account to which this credit card credit is applied.
 
           transaction_date: The date of this credit card credit, in ISO 8601 format (YYYY-MM-DD).
 
@@ -689,7 +689,7 @@ class AsyncCreditCardCreditsResource(AsyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_id: The bank or credit card account to which the credit is applied.
+          account_id: The bank or credit card account to which this credit card credit is applied.
 
           clear_expense_lines: When `true`, removes all existing expense lines associated with this credit card
               credit. To modify or add individual expense lines, use the field `expenseLines`
