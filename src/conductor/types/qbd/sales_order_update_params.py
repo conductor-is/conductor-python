@@ -245,8 +245,9 @@ class LineGroupLine(TypedDict, total=False):
     id: Required[str]
     """
     The QuickBooks-assigned unique identifier of an existing sales order line you
-    wish to retain or update. Set this field to `-1` for new sales order lines you
-    wish to add.
+    wish to retain or update.
+
+    **IMPORTANT**: Set this field to `-1` for new sales order lines you wish to add.
     """
 
     amount: str
@@ -399,8 +400,10 @@ class LineGroup(TypedDict, total=False):
     id: Required[str]
     """
     The QuickBooks-assigned unique identifier of an existing sales order line group
-    you wish to retain or update. Set this field to `-1` for new sales order line
-    groups you wish to add.
+    you wish to retain or update.
+
+    **IMPORTANT**: Set this field to `-1` for new sales order line groups you wish
+    to add.
     """
 
     item_group_id: Annotated[str, PropertyInfo(alias="itemGroupId")]
@@ -451,8 +454,9 @@ class Line(TypedDict, total=False):
     id: Required[str]
     """
     The QuickBooks-assigned unique identifier of an existing sales order line you
-    wish to retain or update. Set this field to `-1` for new sales order lines you
-    wish to add.
+    wish to retain or update.
+
+    **IMPORTANT**: Set this field to `-1` for new sales order lines you wish to add.
     """
 
     amount: str

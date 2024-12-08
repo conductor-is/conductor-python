@@ -202,8 +202,9 @@ class ExpenseLine(TypedDict, total=False):
     id: Required[str]
     """
     The QuickBooks-assigned unique identifier of an existing expense line you wish
-    to retain or update. Set this field to `-1` for new expense lines you wish to
-    add.
+    to retain or update.
+
+    **IMPORTANT**: Set this field to `-1` for new expense lines you wish to add.
     """
 
     account_id: Annotated[str, PropertyInfo(alias="accountId")]
@@ -263,7 +264,9 @@ class ItemGroupLineItemLine(TypedDict, total=False):
     id: Required[str]
     """
     The QuickBooks-assigned unique identifier of an existing item line you wish to
-    retain or update. Set this field to `-1` for new item lines you wish to add.
+    retain or update.
+
+    **IMPORTANT**: Set this field to `-1` for new item lines you wish to add.
     """
 
     amount: str
@@ -394,8 +397,9 @@ class ItemGroupLine(TypedDict, total=False):
     id: Required[str]
     """
     The QuickBooks-assigned unique identifier of an existing item group line you
-    wish to retain or update. Set this field to `-1` for new item group lines you
-    wish to add.
+    wish to retain or update.
+
+    **IMPORTANT**: Set this field to `-1` for new item group lines you wish to add.
     """
 
     item_group_id: Annotated[str, PropertyInfo(alias="itemGroupId")]
@@ -445,7 +449,9 @@ class ItemLine(TypedDict, total=False):
     id: Required[str]
     """
     The QuickBooks-assigned unique identifier of an existing item line you wish to
-    retain or update. Set this field to `-1` for new item lines you wish to add.
+    retain or update.
+
+    **IMPORTANT**: Set this field to `-1` for new item lines you wish to add.
     """
 
     amount: str
