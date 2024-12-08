@@ -25,6 +25,7 @@ from .bill_list_params import BillListParams as BillListParams
 from .date_driven_term import DateDrivenTerm as DateDrivenTerm
 from .check_list_params import CheckListParams as CheckListParams
 from .class_list_params import ClassListParams as ClassListParams
+from .bill_check_payment import BillCheckPayment as BillCheckPayment
 from .bill_create_params import BillCreateParams as BillCreateParams
 from .bill_update_params import BillUpdateParams as BillUpdateParams
 from .credit_card_charge import CreditCardCharge as CreditCardCharge
@@ -52,11 +53,11 @@ from .customer_create_params import CustomerCreateParams as CustomerCreateParams
 from .customer_update_params import CustomerUpdateParams as CustomerUpdateParams
 from .estimate_create_params import EstimateCreateParams as EstimateCreateParams
 from .estimate_update_params import EstimateUpdateParams as EstimateUpdateParams
-from .qbd_bill_check_payment import QbdBillCheckPayment as QbdBillCheckPayment
 from .transfer_create_params import TransferCreateParams as TransferCreateParams
 from .transfer_update_params import TransferUpdateParams as TransferUpdateParams
 from .inventory_assembly_item import InventoryAssemblyItem as InventoryAssemblyItem
 from .sales_order_list_params import SalesOrderListParams as SalesOrderListParams
+from .bill_credit_card_payment import BillCreditCardPayment as BillCreditCardPayment
 from .service_item_list_params import ServiceItemListParams as ServiceItemListParams
 from .sales_order_create_params import SalesOrderCreateParams as SalesOrderCreateParams
 from .sales_order_update_params import SalesOrderUpdateParams as SalesOrderUpdateParams
@@ -82,7 +83,6 @@ from .inventory_site_list_response import InventorySiteListResponse as Inventory
 from .inventory_site_update_params import InventorySiteUpdateParams as InventorySiteUpdateParams
 from .purchase_order_create_params import PurchaseOrderCreateParams as PurchaseOrderCreateParams
 from .purchase_order_update_params import PurchaseOrderUpdateParams as PurchaseOrderUpdateParams
-from .qbd_bill_credit_card_payment import QbdBillCreditCardPayment as QbdBillCreditCardPayment
 from .sales_tax_code_create_params import SalesTaxCodeCreateParams as SalesTaxCodeCreateParams
 from .sales_tax_code_list_response import SalesTaxCodeListResponse as SalesTaxCodeListResponse
 from .sales_tax_code_update_params import SalesTaxCodeUpdateParams as SalesTaxCodeUpdateParams
