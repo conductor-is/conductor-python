@@ -27,7 +27,7 @@ from ...types.qbd import (
 )
 from ...pagination import SyncCursorPage, AsyncCursorPage
 from ..._base_client import AsyncPaginator, make_request_options
-from ...types.qbd.qbd_bill_check_payment import QbdBillCheckPayment
+from ...types.qbd.bill_check_payment import BillCheckPayment
 
 __all__ = ["BillCheckPaymentsResource", "AsyncBillCheckPaymentsResource"]
 
@@ -72,7 +72,7 @@ class BillCheckPaymentsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdBillCheckPayment:
+    ) -> BillCheckPayment:
         """
         Creates a new bill check payment.
 
@@ -162,7 +162,7 @@ class BillCheckPaymentsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdBillCheckPayment,
+            cast_to=BillCheckPayment,
         )
 
     def retrieve(
@@ -176,7 +176,7 @@ class BillCheckPaymentsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdBillCheckPayment:
+    ) -> BillCheckPayment:
         """
         Retrieves a bill check payment by ID.
 
@@ -202,7 +202,7 @@ class BillCheckPaymentsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdBillCheckPayment,
+            cast_to=BillCheckPayment,
         )
 
     def update(
@@ -225,7 +225,7 @@ class BillCheckPaymentsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdBillCheckPayment:
+    ) -> BillCheckPayment:
         """
         Updates an existing bill check payment.
 
@@ -304,7 +304,7 @@ class BillCheckPaymentsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdBillCheckPayment,
+            cast_to=BillCheckPayment,
         )
 
     def list(
@@ -334,7 +334,7 @@ class BillCheckPaymentsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursorPage[QbdBillCheckPayment]:
+    ) -> SyncCursorPage[BillCheckPayment]:
         """
         Returns a list of bill check payments.
 
@@ -421,7 +421,7 @@ class BillCheckPaymentsResource(SyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/bill-check-payments",
-            page=SyncCursorPage[QbdBillCheckPayment],
+            page=SyncCursorPage[BillCheckPayment],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -450,7 +450,7 @@ class BillCheckPaymentsResource(SyncAPIResource):
                     bill_check_payment_list_params.BillCheckPaymentListParams,
                 ),
             ),
-            model=QbdBillCheckPayment,
+            model=BillCheckPayment,
         )
 
 
@@ -494,7 +494,7 @@ class AsyncBillCheckPaymentsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdBillCheckPayment:
+    ) -> BillCheckPayment:
         """
         Creates a new bill check payment.
 
@@ -584,7 +584,7 @@ class AsyncBillCheckPaymentsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdBillCheckPayment,
+            cast_to=BillCheckPayment,
         )
 
     async def retrieve(
@@ -598,7 +598,7 @@ class AsyncBillCheckPaymentsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdBillCheckPayment:
+    ) -> BillCheckPayment:
         """
         Retrieves a bill check payment by ID.
 
@@ -624,7 +624,7 @@ class AsyncBillCheckPaymentsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdBillCheckPayment,
+            cast_to=BillCheckPayment,
         )
 
     async def update(
@@ -647,7 +647,7 @@ class AsyncBillCheckPaymentsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdBillCheckPayment:
+    ) -> BillCheckPayment:
         """
         Updates an existing bill check payment.
 
@@ -726,7 +726,7 @@ class AsyncBillCheckPaymentsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdBillCheckPayment,
+            cast_to=BillCheckPayment,
         )
 
     def list(
@@ -756,7 +756,7 @@ class AsyncBillCheckPaymentsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[QbdBillCheckPayment, AsyncCursorPage[QbdBillCheckPayment]]:
+    ) -> AsyncPaginator[BillCheckPayment, AsyncCursorPage[BillCheckPayment]]:
         """
         Returns a list of bill check payments.
 
@@ -843,7 +843,7 @@ class AsyncBillCheckPaymentsResource(AsyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/bill-check-payments",
-            page=AsyncCursorPage[QbdBillCheckPayment],
+            page=AsyncCursorPage[BillCheckPayment],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -872,7 +872,7 @@ class AsyncBillCheckPaymentsResource(AsyncAPIResource):
                     bill_check_payment_list_params.BillCheckPaymentListParams,
                 ),
             ),
-            model=QbdBillCheckPayment,
+            model=BillCheckPayment,
         )
 
 
