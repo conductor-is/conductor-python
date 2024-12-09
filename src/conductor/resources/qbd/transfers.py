@@ -253,6 +253,8 @@ class TransfersResource(SyncAPIResource):
         """
         Returns a list of transfers.
 
+        Use the `cursor` parameter to paginate through the results.
+
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -544,6 +546,8 @@ class AsyncTransfersResource(AsyncAPIResource):
     ) -> AsyncPaginator[Transfer, AsyncCursorPage[Transfer]]:
         """
         Returns a list of transfers.
+
+        Use the `cursor` parameter to paginate through the results.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,

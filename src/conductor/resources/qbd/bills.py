@@ -420,6 +420,8 @@ class BillsResource(SyncAPIResource):
         """
         Returns a list of bills.
 
+        Use the `cursor` parameter to paginate through the results.
+
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -929,6 +931,8 @@ class AsyncBillsResource(AsyncAPIResource):
     ) -> AsyncPaginator[Bill, AsyncCursorPage[Bill]]:
         """
         Returns a list of bills.
+
+        Use the `cursor` parameter to paginate through the results.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,

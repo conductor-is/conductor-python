@@ -490,6 +490,8 @@ class InventoryAssemblyItemsResource(SyncAPIResource):
         """
         Returns a list of inventory assembly items.
 
+        Use the `cursor` parameter to paginate through the results.
+
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -1059,6 +1061,8 @@ class AsyncInventoryAssemblyItemsResource(AsyncAPIResource):
     ) -> AsyncPaginator[InventoryAssemblyItem, AsyncCursorPage[InventoryAssemblyItem]]:
         """
         Returns a list of inventory assembly items.
+
+        Use the `cursor` parameter to paginate through the results.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
