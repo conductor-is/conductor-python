@@ -378,6 +378,8 @@ class NonInventoryItemsResource(SyncAPIResource):
         """
         Returns a list of non-inventory items.
 
+        Use the `cursor` parameter to paginate through the results.
+
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -824,6 +826,8 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
     ) -> AsyncPaginator[NonInventoryItem, AsyncCursorPage[NonInventoryItem]]:
         """
         Returns a list of non-inventory items.
+
+        Use the `cursor` parameter to paginate through the results.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
