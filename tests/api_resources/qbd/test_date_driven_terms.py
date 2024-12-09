@@ -124,7 +124,6 @@ class TestDateDrivenTerms:
         date_driven_term = client.qbd.date_driven_terms.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
             ids=["80000001-1234567890"],
-            limit=10,
             name_contains="ABC",
             name_ends_with="ABC",
             name_from="A",
@@ -269,7 +268,6 @@ class TestAsyncDateDrivenTerms:
         date_driven_term = await async_client.qbd.date_driven_terms.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
             ids=["80000001-1234567890"],
-            limit=10,
             name_contains="ABC",
             name_ends_with="ABC",
             name_from="A",

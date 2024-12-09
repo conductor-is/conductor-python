@@ -225,7 +225,6 @@ class ClassesResource(SyncAPIResource):
         conductor_end_user_id: str,
         full_names: List[str] | NotGiven = NOT_GIVEN,
         ids: List[str] | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
         name_contains: str | NotGiven = NOT_GIVEN,
         name_ends_with: str | NotGiven = NOT_GIVEN,
         name_from: str | NotGiven = NOT_GIVEN,
@@ -264,12 +263,6 @@ class ClassesResource(SyncAPIResource):
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
-
-          limit: The maximum number of objects to return. NOTE: QuickBooks Desktop does not
-              support cursor-based pagination for classes. Hence, this parameter will limit
-              the response size, but you will not be able to fetch the next set of results. To
-              paginate through the results for this endpoint, try fetching batches via the
-              name-range (e.g., `nameFrom=A&nameTo=B`) query parameters.
 
           name_contains:
               Filter for classes whose `name` contains this substring, case-insensitive. NOTE:
@@ -320,7 +313,6 @@ class ClassesResource(SyncAPIResource):
                     {
                         "full_names": full_names,
                         "ids": ids,
-                        "limit": limit,
                         "name_contains": name_contains,
                         "name_ends_with": name_ends_with,
                         "name_from": name_from,
@@ -534,7 +526,6 @@ class AsyncClassesResource(AsyncAPIResource):
         conductor_end_user_id: str,
         full_names: List[str] | NotGiven = NOT_GIVEN,
         ids: List[str] | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
         name_contains: str | NotGiven = NOT_GIVEN,
         name_ends_with: str | NotGiven = NOT_GIVEN,
         name_from: str | NotGiven = NOT_GIVEN,
@@ -573,12 +564,6 @@ class AsyncClassesResource(AsyncAPIResource):
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
-
-          limit: The maximum number of objects to return. NOTE: QuickBooks Desktop does not
-              support cursor-based pagination for classes. Hence, this parameter will limit
-              the response size, but you will not be able to fetch the next set of results. To
-              paginate through the results for this endpoint, try fetching batches via the
-              name-range (e.g., `nameFrom=A&nameTo=B`) query parameters.
 
           name_contains:
               Filter for classes whose `name` contains this substring, case-insensitive. NOTE:
@@ -629,7 +614,6 @@ class AsyncClassesResource(AsyncAPIResource):
                     {
                         "full_names": full_names,
                         "ids": ids,
-                        "limit": limit,
                         "name_contains": name_contains,
                         "name_ends_with": name_ends_with,
                         "name_from": name_from,
