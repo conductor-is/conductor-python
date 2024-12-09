@@ -120,7 +120,6 @@ class TestStandardTerms:
         standard_term = client.qbd.standard_terms.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
             ids=["80000001-1234567890"],
-            limit=10,
             name_contains="ABC",
             name_ends_with="ABC",
             name_from="A",
@@ -261,7 +260,6 @@ class TestAsyncStandardTerms:
         standard_term = await async_client.qbd.standard_terms.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
             ids=["80000001-1234567890"],
-            limit=10,
             name_contains="ABC",
             name_ends_with="ABC",
             name_from="A",
