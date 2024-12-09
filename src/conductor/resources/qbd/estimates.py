@@ -492,6 +492,8 @@ class EstimatesResource(SyncAPIResource):
         """
         Returns a list of estimates.
 
+        Use the `cursor` parameter to paginate through the results.
+
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -1073,6 +1075,8 @@ class AsyncEstimatesResource(AsyncAPIResource):
     ) -> AsyncPaginator[Estimate, AsyncCursorPage[Estimate]]:
         """
         Returns a list of estimates.
+
+        Use the `cursor` parameter to paginate through the results.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
