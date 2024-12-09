@@ -386,6 +386,8 @@ class ReceivePaymentsResource(SyncAPIResource):
         """
         Returns a list of receive-payments.
 
+        Use the `cursor` parameter to paginate through the results.
+
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -859,6 +861,8 @@ class AsyncReceivePaymentsResource(AsyncAPIResource):
     ) -> AsyncPaginator[ReceivePayment, AsyncCursorPage[ReceivePayment]]:
         """
         Returns a list of receive-payments.
+
+        Use the `cursor` parameter to paginate through the results.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,

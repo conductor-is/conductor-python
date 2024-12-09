@@ -563,6 +563,8 @@ class SalesReceiptsResource(SyncAPIResource):
         """
         Returns a list of sales receipts.
 
+        Use the `cursor` parameter to paginate through the results.
+
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -1212,6 +1214,8 @@ class AsyncSalesReceiptsResource(AsyncAPIResource):
     ) -> AsyncPaginator[SalesReceipt, AsyncCursorPage[SalesReceipt]]:
         """
         Returns a list of sales receipts.
+
+        Use the `cursor` parameter to paginate through the results.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,

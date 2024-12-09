@@ -244,6 +244,9 @@ class ClassesResource(SyncAPIResource):
         """
         Returns a list of classes.
 
+        **NOTE**: QuickBooks Desktop does not support pagination for classes; hence,
+        there is no `limit` or `cursor` parameter. Users typically have few classes.
+
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -549,6 +552,9 @@ class AsyncClassesResource(AsyncAPIResource):
     ) -> ClassListResponse:
         """
         Returns a list of classes.
+
+        **NOTE**: QuickBooks Desktop does not support pagination for classes; hence,
+        there is no `limit` or `cursor` parameter. Users typically have few classes.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,

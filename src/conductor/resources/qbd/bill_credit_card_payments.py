@@ -228,6 +228,8 @@ class BillCreditCardPaymentsResource(SyncAPIResource):
         """
         Returns a list of bill credit card payments.
 
+        Use the `cursor` parameter to paginate through the results.
+
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -543,6 +545,8 @@ class AsyncBillCreditCardPaymentsResource(AsyncAPIResource):
     ) -> AsyncPaginator[BillCreditCardPayment, AsyncCursorPage[BillCreditCardPayment]]:
         """
         Returns a list of bill credit card payments.
+
+        Use the `cursor` parameter to paginate through the results.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
