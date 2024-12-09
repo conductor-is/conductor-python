@@ -26,16 +26,6 @@ class SalesTaxCodeListParams(TypedDict, total=False):
     query parameters for this request.
     """
 
-    limit: int
-    """The maximum number of objects to return.
-
-    NOTE: QuickBooks Desktop does not support cursor-based pagination for sales-tax
-    codes. Hence, this parameter will limit the response size, but you will not be
-    able to fetch the next set of results. To paginate through the results for this
-    endpoint, try fetching batches via the name-range (e.g., `nameFrom=A&nameTo=B`)
-    query parameters.
-    """
-
     name_contains: Annotated[str, PropertyInfo(alias="nameContains")]
     """
     Filter for sales-tax codes whose `name` contains this substring,
