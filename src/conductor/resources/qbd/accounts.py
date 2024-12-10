@@ -411,8 +411,8 @@ class AccountsResource(SyncAPIResource):
         """
         Returns a list of accounts.
 
-        **NOTE**: QuickBooks Desktop does not support pagination for accounts; hence,
-        there is no `cursor` parameter. Users typically have few accounts.
+        NOTE: QuickBooks Desktop does not support pagination for accounts; hence, there
+        is no `cursor` parameter. Users typically have few accounts.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
@@ -891,8 +891,8 @@ class AsyncAccountsResource(AsyncAPIResource):
         """
         Returns a list of accounts.
 
-        **NOTE**: QuickBooks Desktop does not support pagination for accounts; hence,
-        there is no `cursor` parameter. Users typically have few accounts.
+        NOTE: QuickBooks Desktop does not support pagination for accounts; hence, there
+        is no `cursor` parameter. Users typically have few accounts.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
