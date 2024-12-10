@@ -181,8 +181,8 @@ class StandardTermsResource(SyncAPIResource):
         """
         Returns a list of standard terms.
 
-        **NOTE**: QuickBooks Desktop does not support pagination for standard terms;
-        hence, there is no `cursor` parameter. Users typically have few standard terms.
+        NOTE: QuickBooks Desktop does not support pagination for standard terms; hence,
+        there is no `cursor` parameter. Users typically have few standard terms.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
@@ -424,8 +424,8 @@ class AsyncStandardTermsResource(AsyncAPIResource):
         """
         Returns a list of standard terms.
 
-        **NOTE**: QuickBooks Desktop does not support pagination for standard terms;
-        hence, there is no `cursor` parameter. Users typically have few standard terms.
+        NOTE: QuickBooks Desktop does not support pagination for standard terms; hence,
+        there is no `cursor` parameter. Users typically have few standard terms.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
