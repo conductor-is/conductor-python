@@ -183,6 +183,7 @@ class TestSalesTaxCodes:
         sales_tax_code = client.qbd.sales_tax_codes.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
             ids=["80000001-1234567890"],
+            limit=10,
             name_contains="ABC",
             name_ends_with="ABC",
             name_from="A",
@@ -386,6 +387,7 @@ class TestAsyncSalesTaxCodes:
         sales_tax_code = await async_client.qbd.sales_tax_codes.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
             ids=["80000001-1234567890"],
+            limit=10,
             name_contains="ABC",
             name_ends_with="ABC",
             name_from="A",
