@@ -277,8 +277,7 @@ class InventorySitesResource(SyncAPIResource):
         Returns a list of inventory sites.
 
         **NOTE**: QuickBooks Desktop does not support pagination for inventory sites;
-        hence, there is no `limit` or `cursor` parameter. Users typically have few
-        inventory sites.
+        hence, there is no `cursor` parameter. Users typically have few inventory sites.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
@@ -609,8 +608,7 @@ class AsyncInventorySitesResource(AsyncAPIResource):
         Returns a list of inventory sites.
 
         **NOTE**: QuickBooks Desktop does not support pagination for inventory sites;
-        hence, there is no `limit` or `cursor` parameter. Users typically have few
-        inventory sites.
+        hence, there is no `cursor` parameter. Users typically have few inventory sites.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,

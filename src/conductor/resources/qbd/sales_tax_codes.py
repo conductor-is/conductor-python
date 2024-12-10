@@ -247,6 +247,7 @@ class SalesTaxCodesResource(SyncAPIResource):
         *,
         conductor_end_user_id: str,
         ids: List[str] | NotGiven = NOT_GIVEN,
+        limit: int | NotGiven = NOT_GIVEN,
         name_contains: str | NotGiven = NOT_GIVEN,
         name_ends_with: str | NotGiven = NOT_GIVEN,
         name_from: str | NotGiven = NOT_GIVEN,
@@ -267,8 +268,7 @@ class SalesTaxCodesResource(SyncAPIResource):
         Returns a list of sales-tax codes.
 
         **NOTE**: QuickBooks Desktop does not support pagination for sales-tax codes;
-        hence, there is no `limit` or `cursor` parameter. Users typically have few
-        sales-tax codes.
+        hence, there is no `cursor` parameter. Users typically have few sales-tax codes.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
@@ -279,6 +279,12 @@ class SalesTaxCodesResource(SyncAPIResource):
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
+
+          limit: The maximum number of objects to return. NOTE: QuickBooks Desktop does not
+              support cursor-based pagination for sales-tax codes. Hence, this parameter will
+              limit the response size, but you will not be able to fetch the next set of
+              results. To paginate through the results for this endpoint, try fetching batches
+              via the name-range (e.g., `nameFrom=A&nameTo=B`) query parameters.
 
           name_contains: Filter for sales-tax codes whose `name` contains this substring,
               case-insensitive. NOTE: If you use this parameter, you cannot also use
@@ -333,6 +339,7 @@ class SalesTaxCodesResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "ids": ids,
+                        "limit": limit,
                         "name_contains": name_contains,
                         "name_ends_with": name_ends_with,
                         "name_from": name_from,
@@ -569,6 +576,7 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
         *,
         conductor_end_user_id: str,
         ids: List[str] | NotGiven = NOT_GIVEN,
+        limit: int | NotGiven = NOT_GIVEN,
         name_contains: str | NotGiven = NOT_GIVEN,
         name_ends_with: str | NotGiven = NOT_GIVEN,
         name_from: str | NotGiven = NOT_GIVEN,
@@ -589,8 +597,7 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
         Returns a list of sales-tax codes.
 
         **NOTE**: QuickBooks Desktop does not support pagination for sales-tax codes;
-        hence, there is no `limit` or `cursor` parameter. Users typically have few
-        sales-tax codes.
+        hence, there is no `cursor` parameter. Users typically have few sales-tax codes.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
@@ -601,6 +608,12 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
+
+          limit: The maximum number of objects to return. NOTE: QuickBooks Desktop does not
+              support cursor-based pagination for sales-tax codes. Hence, this parameter will
+              limit the response size, but you will not be able to fetch the next set of
+              results. To paginate through the results for this endpoint, try fetching batches
+              via the name-range (e.g., `nameFrom=A&nameTo=B`) query parameters.
 
           name_contains: Filter for sales-tax codes whose `name` contains this substring,
               case-insensitive. NOTE: If you use this parameter, you cannot also use
@@ -655,6 +668,7 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "ids": ids,
+                        "limit": limit,
                         "name_contains": name_contains,
                         "name_ends_with": name_ends_with,
                         "name_from": name_from,
