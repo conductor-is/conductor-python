@@ -161,6 +161,7 @@ class StandardTermsResource(SyncAPIResource):
         *,
         conductor_end_user_id: str,
         ids: List[str] | NotGiven = NOT_GIVEN,
+        limit: int | NotGiven = NOT_GIVEN,
         name_contains: str | NotGiven = NOT_GIVEN,
         name_ends_with: str | NotGiven = NOT_GIVEN,
         name_from: str | NotGiven = NOT_GIVEN,
@@ -181,8 +182,7 @@ class StandardTermsResource(SyncAPIResource):
         Returns a list of standard terms.
 
         **NOTE**: QuickBooks Desktop does not support pagination for standard terms;
-        hence, there is no `limit` or `cursor` parameter. Users typically have few
-        standard terms.
+        hence, there is no `cursor` parameter. Users typically have few standard terms.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
@@ -193,6 +193,12 @@ class StandardTermsResource(SyncAPIResource):
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
+
+          limit: The maximum number of objects to return. NOTE: QuickBooks Desktop does not
+              support cursor-based pagination for standard terms. Hence, this parameter will
+              limit the response size, but you will not be able to fetch the next set of
+              results. To paginate through the results for this endpoint, try fetching batches
+              via the name-range (e.g., `nameFrom=A&nameTo=B`) query parameters.
 
           name_contains: Filter for standard terms whose `name` contains this substring,
               case-insensitive. NOTE: If you use this parameter, you cannot also use
@@ -247,6 +253,7 @@ class StandardTermsResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "ids": ids,
+                        "limit": limit,
                         "name_contains": name_contains,
                         "name_ends_with": name_ends_with,
                         "name_from": name_from,
@@ -397,6 +404,7 @@ class AsyncStandardTermsResource(AsyncAPIResource):
         *,
         conductor_end_user_id: str,
         ids: List[str] | NotGiven = NOT_GIVEN,
+        limit: int | NotGiven = NOT_GIVEN,
         name_contains: str | NotGiven = NOT_GIVEN,
         name_ends_with: str | NotGiven = NOT_GIVEN,
         name_from: str | NotGiven = NOT_GIVEN,
@@ -417,8 +425,7 @@ class AsyncStandardTermsResource(AsyncAPIResource):
         Returns a list of standard terms.
 
         **NOTE**: QuickBooks Desktop does not support pagination for standard terms;
-        hence, there is no `limit` or `cursor` parameter. Users typically have few
-        standard terms.
+        hence, there is no `cursor` parameter. Users typically have few standard terms.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
@@ -429,6 +436,12 @@ class AsyncStandardTermsResource(AsyncAPIResource):
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
+
+          limit: The maximum number of objects to return. NOTE: QuickBooks Desktop does not
+              support cursor-based pagination for standard terms. Hence, this parameter will
+              limit the response size, but you will not be able to fetch the next set of
+              results. To paginate through the results for this endpoint, try fetching batches
+              via the name-range (e.g., `nameFrom=A&nameTo=B`) query parameters.
 
           name_contains: Filter for standard terms whose `name` contains this substring,
               case-insensitive. NOTE: If you use this parameter, you cannot also use
@@ -483,6 +496,7 @@ class AsyncStandardTermsResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "ids": ids,
+                        "limit": limit,
                         "name_contains": name_contains,
                         "name_ends_with": name_ends_with,
                         "name_from": name_from,
