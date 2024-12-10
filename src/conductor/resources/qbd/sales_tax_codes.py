@@ -267,8 +267,8 @@ class SalesTaxCodesResource(SyncAPIResource):
         """
         Returns a list of sales-tax codes.
 
-        **NOTE**: QuickBooks Desktop does not support pagination for sales-tax codes;
-        hence, there is no `cursor` parameter. Users typically have few sales-tax codes.
+        NOTE: QuickBooks Desktop does not support pagination for sales-tax codes; hence,
+        there is no `cursor` parameter. Users typically have few sales-tax codes.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
@@ -596,8 +596,8 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
         """
         Returns a list of sales-tax codes.
 
-        **NOTE**: QuickBooks Desktop does not support pagination for sales-tax codes;
-        hence, there is no `cursor` parameter. Users typically have few sales-tax codes.
+        NOTE: QuickBooks Desktop does not support pagination for sales-tax codes; hence,
+        there is no `cursor` parameter. Users typically have few sales-tax codes.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
