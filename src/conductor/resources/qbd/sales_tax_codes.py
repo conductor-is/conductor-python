@@ -280,11 +280,13 @@ class SalesTaxCodesResource(SyncAPIResource):
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
-          limit: The maximum number of objects to return. NOTE: QuickBooks Desktop does not
-              support cursor-based pagination for sales-tax codes. Hence, this parameter will
-              limit the response size, but you will not be able to fetch the next set of
-              results. To paginate through the results for this endpoint, try fetching batches
-              via the name-range (e.g., `nameFrom=A&nameTo=B`) query parameters.
+          limit: The maximum number of objects to return.
+
+              **IMPORTANT**: QuickBooks Desktop does not support cursor-based pagination for
+              sales-tax codes. Hence, this parameter will limit the response size, but you
+              will not be able to fetch the next set of results. If needed, you can paginate
+              by fetching batches via the name-range (e.g., `nameFrom=A&nameTo=B`) query
+              parameters.
 
           name_contains: Filter for sales-tax codes whose `name` contains this substring,
               case-insensitive. NOTE: If you use this parameter, you cannot also use
@@ -609,11 +611,13 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
-          limit: The maximum number of objects to return. NOTE: QuickBooks Desktop does not
-              support cursor-based pagination for sales-tax codes. Hence, this parameter will
-              limit the response size, but you will not be able to fetch the next set of
-              results. To paginate through the results for this endpoint, try fetching batches
-              via the name-range (e.g., `nameFrom=A&nameTo=B`) query parameters.
+          limit: The maximum number of objects to return.
+
+              **IMPORTANT**: QuickBooks Desktop does not support cursor-based pagination for
+              sales-tax codes. Hence, this parameter will limit the response size, but you
+              will not be able to fetch the next set of results. If needed, you can paginate
+              by fetching batches via the name-range (e.g., `nameFrom=A&nameTo=B`) query
+              parameters.
 
           name_contains: Filter for sales-tax codes whose `name` contains this substring,
               case-insensitive. NOTE: If you use this parameter, you cannot also use
