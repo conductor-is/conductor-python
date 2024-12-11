@@ -61,7 +61,7 @@ class AppliedToTransactionLinkedTransaction(BaseModel):
     This ID is unique across all transaction types.
     """
 
-    amount: str
+    amount: Optional[str] = None
     """
     The monetary amount of this linked transaction, represented as a decimal string.
     """
