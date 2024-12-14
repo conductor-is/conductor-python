@@ -545,11 +545,12 @@ class PurchaseOrdersResource(SyncAPIResource):
           include_linked_transactions: Whether to include linked transactions in the response. Defaults to `false`. For
               example, a payment linked to the corresponding purchase order.
 
-          limit: The maximum number of objects to return. Ranging from 1 to 150, defaults to 150.
-              Use this parameter in conjunction with the `cursor` parameter to paginate
-              through results. The response will include a `nextCursor` field, which can be
-              used as the `cursor` parameter value in subsequent requests to fetch the next
-              set of results.
+          limit: The maximum number of objects to return. Accepts values ranging from 1 to 150,
+              defaults to 150. When used with cursor-based pagination, this parameter controls
+              how many results are returned per page. To paginate through results, combine
+              this with the `cursor` parameter. Each response will include a `nextCursor`
+              value that can be passed to subsequent requests to retrieve the next page of
+              results.
 
           ref_number_contains: Filter for purchase orders whose `refNumber` contains this substring. NOTE: If
               you use this parameter, you cannot also use `refNumberStartsWith` or
@@ -1159,11 +1160,12 @@ class AsyncPurchaseOrdersResource(AsyncAPIResource):
           include_linked_transactions: Whether to include linked transactions in the response. Defaults to `false`. For
               example, a payment linked to the corresponding purchase order.
 
-          limit: The maximum number of objects to return. Ranging from 1 to 150, defaults to 150.
-              Use this parameter in conjunction with the `cursor` parameter to paginate
-              through results. The response will include a `nextCursor` field, which can be
-              used as the `cursor` parameter value in subsequent requests to fetch the next
-              set of results.
+          limit: The maximum number of objects to return. Accepts values ranging from 1 to 150,
+              defaults to 150. When used with cursor-based pagination, this parameter controls
+              how many results are returned per page. To paginate through results, combine
+              this with the `cursor` parameter. Each response will include a `nextCursor`
+              value that can be passed to subsequent requests to retrieve the next page of
+              results.
 
           ref_number_contains: Filter for purchase orders whose `refNumber` contains this substring. NOTE: If
               you use this parameter, you cannot also use `refNumberStartsWith` or
