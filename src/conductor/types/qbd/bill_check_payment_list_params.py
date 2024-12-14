@@ -46,10 +46,11 @@ class BillCheckPaymentListParams(TypedDict, total=False):
     limit: int
     """The maximum number of objects to return.
 
-    Ranging from 1 to 150, defaults to 150. Use this parameter in conjunction with
-    the `cursor` parameter to paginate through results. The response will include a
-    `nextCursor` field, which can be used as the `cursor` parameter value in
-    subsequent requests to fetch the next set of results.
+    Accepts values ranging from 1 to 150, defaults to 150. When used with
+    cursor-based pagination, this parameter controls how many results are returned
+    per page. To paginate through results, combine this with the `cursor` parameter.
+    Each response will include a `nextCursor` value that can be passed to subsequent
+    requests to retrieve the next page of results.
     """
 
     ref_number_contains: Annotated[str, PropertyInfo(alias="refNumberContains")]
