@@ -268,11 +268,12 @@ class TransfersResource(SyncAPIResource):
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
-          limit: The maximum number of objects to return. Ranging from 1 to 150, defaults to 150.
-              Use this parameter in conjunction with the `cursor` parameter to paginate
-              through results. The response will include a `nextCursor` field, which can be
-              used as the `cursor` parameter value in subsequent requests to fetch the next
-              set of results.
+          limit: The maximum number of objects to return. Accepts values ranging from 1 to 150,
+              defaults to 150. When used with cursor-based pagination, this parameter controls
+              how many results are returned per page. To paginate through results, combine
+              this with the `cursor` parameter. Each response will include a `nextCursor`
+              value that can be passed to subsequent requests to retrieve the next page of
+              results.
 
           transaction_date_from: Filter for transfers created on or after this date, in ISO 8601 format
               (YYYY-MM-DD).
@@ -562,11 +563,12 @@ class AsyncTransfersResource(AsyncAPIResource):
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
-          limit: The maximum number of objects to return. Ranging from 1 to 150, defaults to 150.
-              Use this parameter in conjunction with the `cursor` parameter to paginate
-              through results. The response will include a `nextCursor` field, which can be
-              used as the `cursor` parameter value in subsequent requests to fetch the next
-              set of results.
+          limit: The maximum number of objects to return. Accepts values ranging from 1 to 150,
+              defaults to 150. When used with cursor-based pagination, this parameter controls
+              how many results are returned per page. To paginate through results, combine
+              this with the `cursor` parameter. Each response will include a `nextCursor`
+              value that can be passed to subsequent requests to retrieve the next page of
+              results.
 
           transaction_date_from: Filter for transfers created on or after this date, in ISO 8601 format
               (YYYY-MM-DD).
