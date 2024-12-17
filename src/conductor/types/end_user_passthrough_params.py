@@ -7,10 +7,10 @@ from typing_extensions import Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
-__all__ = ["EndUserRequestParams"]
+__all__ = ["EndUserPassthroughParams"]
 
 
-class EndUserRequestParams(TypedDict, total=False):
+class EndUserPassthroughParams(TypedDict, total=False):
     id: Required[str]
     """The ID of the EndUser who owns the integration connection."""
 

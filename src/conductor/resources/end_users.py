@@ -7,7 +7,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import end_user_create_params, end_user_request_params
+from ..types import end_user_create_params, end_user_passthrough_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import (
     maybe_transform,
@@ -26,7 +26,7 @@ from ..types.end_user import EndUser
 from ..types.end_user_list_response import EndUserListResponse
 from ..types.end_user_ping_response import EndUserPingResponse
 from ..types.end_user_delete_response import EndUserDeleteResponse
-from ..types.end_user_request_response import EndUserRequestResponse
+from ..types.end_user_passthrough_response import EndUserPassthroughResponse
 
 __all__ = ["EndUsersResource", "AsyncEndUsersResource"]
 
@@ -190,6 +190,52 @@ class EndUsersResource(SyncAPIResource):
             cast_to=EndUserDeleteResponse,
         )
 
+    def passthrough(
+        self,
+        integration_slug: Literal["quickbooks_desktop"],
+        *,
+        id: str,
+        qbd_payload: Dict[str, object],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> EndUserPassthroughResponse:
+        """Sends a request to the specified integration connection (e.g.
+
+        QuickBooks
+        Desktop) on behalf of the end-user.
+
+        Args:
+          id: The ID of the EndUser who owns the integration connection.
+
+          integration_slug: The integration identifier for the EndUser's connection.
+
+          qbd_payload: The request body to send to the integration connection.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        if not integration_slug:
+            raise ValueError(f"Expected a non-empty value for `integration_slug` but received {integration_slug!r}")
+        return self._post(
+            f"/end-users/{id}/request/{integration_slug}",
+            body=maybe_transform(qbd_payload, end_user_passthrough_params.EndUserPassthroughParams),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=EndUserPassthroughResponse,
+        )
+
     def ping(
         self,
         integration_slug: Literal["quickbooks_desktop"],
@@ -230,52 +276,6 @@ class EndUsersResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=EndUserPingResponse,
-        )
-
-    def request(
-        self,
-        integration_slug: Literal["quickbooks_desktop"],
-        *,
-        id: str,
-        qbd_payload: Dict[str, object],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> EndUserRequestResponse:
-        """Sends a request to the specified integration connection (e.g.
-
-        QuickBooks
-        Desktop) on behalf of the end-user.
-
-        Args:
-          id: The ID of the EndUser who owns the integration connection.
-
-          integration_slug: The integration identifier for the EndUser's connection.
-
-          qbd_payload: The request body to send to the integration connection.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not id:
-            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
-        if not integration_slug:
-            raise ValueError(f"Expected a non-empty value for `integration_slug` but received {integration_slug!r}")
-        return self._post(
-            f"/end-users/{id}/request/{integration_slug}",
-            body=maybe_transform(qbd_payload, end_user_request_params.EndUserRequestParams),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=EndUserRequestResponse,
         )
 
 
@@ -438,6 +438,52 @@ class AsyncEndUsersResource(AsyncAPIResource):
             cast_to=EndUserDeleteResponse,
         )
 
+    async def passthrough(
+        self,
+        integration_slug: Literal["quickbooks_desktop"],
+        *,
+        id: str,
+        qbd_payload: Dict[str, object],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> EndUserPassthroughResponse:
+        """Sends a request to the specified integration connection (e.g.
+
+        QuickBooks
+        Desktop) on behalf of the end-user.
+
+        Args:
+          id: The ID of the EndUser who owns the integration connection.
+
+          integration_slug: The integration identifier for the EndUser's connection.
+
+          qbd_payload: The request body to send to the integration connection.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        if not integration_slug:
+            raise ValueError(f"Expected a non-empty value for `integration_slug` but received {integration_slug!r}")
+        return await self._post(
+            f"/end-users/{id}/request/{integration_slug}",
+            body=await async_maybe_transform(qbd_payload, end_user_passthrough_params.EndUserPassthroughParams),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=EndUserPassthroughResponse,
+        )
+
     async def ping(
         self,
         integration_slug: Literal["quickbooks_desktop"],
@@ -480,52 +526,6 @@ class AsyncEndUsersResource(AsyncAPIResource):
             cast_to=EndUserPingResponse,
         )
 
-    async def request(
-        self,
-        integration_slug: Literal["quickbooks_desktop"],
-        *,
-        id: str,
-        qbd_payload: Dict[str, object],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> EndUserRequestResponse:
-        """Sends a request to the specified integration connection (e.g.
-
-        QuickBooks
-        Desktop) on behalf of the end-user.
-
-        Args:
-          id: The ID of the EndUser who owns the integration connection.
-
-          integration_slug: The integration identifier for the EndUser's connection.
-
-          qbd_payload: The request body to send to the integration connection.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not id:
-            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
-        if not integration_slug:
-            raise ValueError(f"Expected a non-empty value for `integration_slug` but received {integration_slug!r}")
-        return await self._post(
-            f"/end-users/{id}/request/{integration_slug}",
-            body=await async_maybe_transform(qbd_payload, end_user_request_params.EndUserRequestParams),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=EndUserRequestResponse,
-        )
-
 
 class EndUsersResourceWithRawResponse:
     def __init__(self, end_users: EndUsersResource) -> None:
@@ -543,11 +543,11 @@ class EndUsersResourceWithRawResponse:
         self.delete = to_raw_response_wrapper(
             end_users.delete,
         )
+        self.passthrough = to_raw_response_wrapper(
+            end_users.passthrough,
+        )
         self.ping = to_raw_response_wrapper(
             end_users.ping,
-        )
-        self.request = to_raw_response_wrapper(
-            end_users.request,
         )
 
 
@@ -567,11 +567,11 @@ class AsyncEndUsersResourceWithRawResponse:
         self.delete = async_to_raw_response_wrapper(
             end_users.delete,
         )
+        self.passthrough = async_to_raw_response_wrapper(
+            end_users.passthrough,
+        )
         self.ping = async_to_raw_response_wrapper(
             end_users.ping,
-        )
-        self.request = async_to_raw_response_wrapper(
-            end_users.request,
         )
 
 
@@ -591,11 +591,11 @@ class EndUsersResourceWithStreamingResponse:
         self.delete = to_streamed_response_wrapper(
             end_users.delete,
         )
+        self.passthrough = to_streamed_response_wrapper(
+            end_users.passthrough,
+        )
         self.ping = to_streamed_response_wrapper(
             end_users.ping,
-        )
-        self.request = to_streamed_response_wrapper(
-            end_users.request,
         )
 
 
@@ -615,9 +615,9 @@ class AsyncEndUsersResourceWithStreamingResponse:
         self.delete = async_to_streamed_response_wrapper(
             end_users.delete,
         )
+        self.passthrough = async_to_streamed_response_wrapper(
+            end_users.passthrough,
+        )
         self.ping = async_to_streamed_response_wrapper(
             end_users.ping,
-        )
-        self.request = async_to_streamed_response_wrapper(
-            end_users.request,
         )
