@@ -1,8 +1,8 @@
-# Conductor QuickBooks Desktop Python API library API library
+# Conductor QuickBooks Desktop Python API library
 
 [![PyPI version](https://img.shields.io/pypi/v/conductor-py.svg)](https://pypi.org/project/conductor-py/)
 
-The Conductor QuickBooks Desktop Python API library library provides convenient access to the Conductor REST API from any Python 3.8+
+The Conductor QuickBooks Desktop Python library provides convenient access to the Conductor REST API from any Python 3.8+
 application. The library includes type definitions for all request params and response fields,
 and offers both synchronous and asynchronous clients powered by [httpx](https://github.com/encode/httpx).
 
