@@ -9,9 +9,3 @@ from .end_user_list_response import EndUserListResponse as EndUserListResponse
 from .end_user_ping_response import EndUserPingResponse as EndUserPingResponse
 from .end_user_delete_response import EndUserDeleteResponse as EndUserDeleteResponse
 from .auth_session_create_params import AuthSessionCreateParams as AuthSessionCreateParams
-from .end_user_passthrough_integration_params import (
-    EndUserPassthroughIntegrationParams as EndUserPassthroughIntegrationParams,
-)
-from .end_user_passthrough_integration_response import (
-    EndUserPassthroughIntegrationResponse as EndUserPassthroughIntegrationResponse,
-)

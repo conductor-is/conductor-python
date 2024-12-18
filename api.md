@@ -16,13 +16,7 @@ Methods:
 Types:
 
 ```python
-from conductor.types import (
-    EndUser,
-    EndUserListResponse,
-    EndUserDeleteResponse,
-    EndUserPassthroughIntegrationResponse,
-    EndUserPingResponse,
-)
+from conductor.types import EndUser, EndUserListResponse, EndUserDeleteResponse, EndUserPingResponse
 ```
 
 Methods:
@@ -31,7 +25,6 @@ Methods:
 - <code title="get /end-users/{id}">client.end_users.<a href="./src/conductor/resources/end_users.py">retrieve</a>(id) -> <a href="./src/conductor/types/end_user.py">EndUser</a></code>
 - <code title="get /end-users">client.end_users.<a href="./src/conductor/resources/end_users.py">list</a>() -> <a href="./src/conductor/types/end_user_list_response.py">EndUserListResponse</a></code>
 - <code title="delete /end-users/{id}">client.end_users.<a href="./src/conductor/resources/end_users.py">delete</a>(id) -> <a href="./src/conductor/types/end_user_delete_response.py">EndUserDeleteResponse</a></code>
-- <code title="post /end-users/{id}/passthrough/{integrationSlug}">client.end_users.<a href="./src/conductor/resources/end_users.py">passthrough_integration</a>(integration_slug, \*, id, \*\*<a href="src/conductor/types/end_user_passthrough_integration_params.py">params</a>) -> <a href="./src/conductor/types/end_user_passthrough_integration_response.py">EndUserPassthroughIntegrationResponse</a></code>
 - <code title="get /end-users/{id}/ping/{integrationSlug}">client.end_users.<a href="./src/conductor/resources/end_users.py">ping</a>(integration_slug, \*, id) -> <a href="./src/conductor/types/end_user_ping_response.py">EndUserPingResponse</a></code>
 
 # Qbd
