@@ -8,7 +8,7 @@ from typing_extensions import Self, override
 
 import httpx
 
-from . import _exceptions
+from . import resources, _exceptions
 from ._qs import Querystring
 from ._types import (
     NOT_GIVEN,
@@ -24,7 +24,6 @@ from ._utils import (
     get_async_library,
 )
 from ._version import __version__
-from .resources import end_users, auth_sessions
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import APIStatusError, ConductorError
 from ._base_client import (
@@ -32,13 +31,13 @@ from ._base_client import (
     SyncAPIClient,
     AsyncAPIClient,
 )
-from .resources.qbd import qbd
 
 __all__ = [
     "Timeout",
     "Transport",
     "ProxiesTypes",
     "RequestOptions",
+    "resources",
     "Conductor",
     "AsyncConductor",
     "Client",
@@ -47,9 +46,9 @@ __all__ = [
 
 
 class Conductor(SyncAPIClient):
-    auth_sessions: auth_sessions.AuthSessionsResource
-    end_users: end_users.EndUsersResource
-    qbd: qbd.QbdResource
+    auth_sessions: resources.AuthSessionsResource
+    end_users: resources.EndUsersResource
+    qbd: resources.QbdResource
     with_raw_response: ConductorWithRawResponse
     with_streaming_response: ConductorWithStreamedResponse
 
@@ -107,9 +106,9 @@ class Conductor(SyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.auth_sessions = auth_sessions.AuthSessionsResource(self)
-        self.end_users = end_users.EndUsersResource(self)
-        self.qbd = qbd.QbdResource(self)
+        self.auth_sessions = resources.AuthSessionsResource(self)
+        self.end_users = resources.EndUsersResource(self)
+        self.qbd = resources.QbdResource(self)
         self.with_raw_response = ConductorWithRawResponse(self)
         self.with_streaming_response = ConductorWithStreamedResponse(self)
 
@@ -219,9 +218,9 @@ class Conductor(SyncAPIClient):
 
 
 class AsyncConductor(AsyncAPIClient):
-    auth_sessions: auth_sessions.AsyncAuthSessionsResource
-    end_users: end_users.AsyncEndUsersResource
-    qbd: qbd.AsyncQbdResource
+    auth_sessions: resources.AsyncAuthSessionsResource
+    end_users: resources.AsyncEndUsersResource
+    qbd: resources.AsyncQbdResource
     with_raw_response: AsyncConductorWithRawResponse
     with_streaming_response: AsyncConductorWithStreamedResponse
 
@@ -279,9 +278,9 @@ class AsyncConductor(AsyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.auth_sessions = auth_sessions.AsyncAuthSessionsResource(self)
-        self.end_users = end_users.AsyncEndUsersResource(self)
-        self.qbd = qbd.AsyncQbdResource(self)
+        self.auth_sessions = resources.AsyncAuthSessionsResource(self)
+        self.end_users = resources.AsyncEndUsersResource(self)
+        self.qbd = resources.AsyncQbdResource(self)
         self.with_raw_response = AsyncConductorWithRawResponse(self)
         self.with_streaming_response = AsyncConductorWithStreamedResponse(self)
 
@@ -392,30 +391,30 @@ class AsyncConductor(AsyncAPIClient):
 
 class ConductorWithRawResponse:
     def __init__(self, client: Conductor) -> None:
-        self.auth_sessions = auth_sessions.AuthSessionsResourceWithRawResponse(client.auth_sessions)
-        self.end_users = end_users.EndUsersResourceWithRawResponse(client.end_users)
-        self.qbd = qbd.QbdResourceWithRawResponse(client.qbd)
+        self.auth_sessions = resources.AuthSessionsResourceWithRawResponse(client.auth_sessions)
+        self.end_users = resources.EndUsersResourceWithRawResponse(client.end_users)
+        self.qbd = resources.QbdResourceWithRawResponse(client.qbd)
 
 
 class AsyncConductorWithRawResponse:
     def __init__(self, client: AsyncConductor) -> None:
-        self.auth_sessions = auth_sessions.AsyncAuthSessionsResourceWithRawResponse(client.auth_sessions)
-        self.end_users = end_users.AsyncEndUsersResourceWithRawResponse(client.end_users)
-        self.qbd = qbd.AsyncQbdResourceWithRawResponse(client.qbd)
+        self.auth_sessions = resources.AsyncAuthSessionsResourceWithRawResponse(client.auth_sessions)
+        self.end_users = resources.AsyncEndUsersResourceWithRawResponse(client.end_users)
+        self.qbd = resources.AsyncQbdResourceWithRawResponse(client.qbd)
 
 
 class ConductorWithStreamedResponse:
     def __init__(self, client: Conductor) -> None:
-        self.auth_sessions = auth_sessions.AuthSessionsResourceWithStreamingResponse(client.auth_sessions)
-        self.end_users = end_users.EndUsersResourceWithStreamingResponse(client.end_users)
-        self.qbd = qbd.QbdResourceWithStreamingResponse(client.qbd)
+        self.auth_sessions = resources.AuthSessionsResourceWithStreamingResponse(client.auth_sessions)
+        self.end_users = resources.EndUsersResourceWithStreamingResponse(client.end_users)
+        self.qbd = resources.QbdResourceWithStreamingResponse(client.qbd)
 
 
 class AsyncConductorWithStreamedResponse:
     def __init__(self, client: AsyncConductor) -> None:
-        self.auth_sessions = auth_sessions.AsyncAuthSessionsResourceWithStreamingResponse(client.auth_sessions)
-        self.end_users = end_users.AsyncEndUsersResourceWithStreamingResponse(client.end_users)
-        self.qbd = qbd.AsyncQbdResourceWithStreamingResponse(client.qbd)
+        self.auth_sessions = resources.AsyncAuthSessionsResourceWithStreamingResponse(client.auth_sessions)
+        self.end_users = resources.AsyncEndUsersResourceWithStreamingResponse(client.end_users)
+        self.qbd = resources.AsyncQbdResourceWithStreamingResponse(client.qbd)
 
 
 Client = Conductor
