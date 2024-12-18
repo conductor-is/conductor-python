@@ -14,7 +14,6 @@ from conductor.types import (
     EndUserListResponse,
     EndUserPingResponse,
     EndUserDeleteResponse,
-    EndUserPassthroughIntegrationResponse,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -159,52 +158,6 @@ class TestEndUsers:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.end_users.with_raw_response.delete(
                 "",
-            )
-
-    @parametrize
-    def test_method_passthrough_integration(self, client: Conductor) -> None:
-        end_user = client.end_users.passthrough_integration(
-            integration_slug="quickbooks_desktop",
-            id="end_usr_1234567abcdefg",
-            body={"foo": "bar"},
-        )
-        assert_matches_type(EndUserPassthroughIntegrationResponse, end_user, path=["response"])
-
-    @parametrize
-    def test_raw_response_passthrough_integration(self, client: Conductor) -> None:
-        response = client.end_users.with_raw_response.passthrough_integration(
-            integration_slug="quickbooks_desktop",
-            id="end_usr_1234567abcdefg",
-            body={"foo": "bar"},
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        end_user = response.parse()
-        assert_matches_type(EndUserPassthroughIntegrationResponse, end_user, path=["response"])
-
-    @parametrize
-    def test_streaming_response_passthrough_integration(self, client: Conductor) -> None:
-        with client.end_users.with_streaming_response.passthrough_integration(
-            integration_slug="quickbooks_desktop",
-            id="end_usr_1234567abcdefg",
-            body={"foo": "bar"},
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            end_user = response.parse()
-            assert_matches_type(EndUserPassthroughIntegrationResponse, end_user, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
-    def test_path_params_passthrough_integration(self, client: Conductor) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
-            client.end_users.with_raw_response.passthrough_integration(
-                integration_slug="quickbooks_desktop",
-                id="",
-                body={"foo": "bar"},
             )
 
     @parametrize
@@ -389,52 +342,6 @@ class TestAsyncEndUsers:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.end_users.with_raw_response.delete(
                 "",
-            )
-
-    @parametrize
-    async def test_method_passthrough_integration(self, async_client: AsyncConductor) -> None:
-        end_user = await async_client.end_users.passthrough_integration(
-            integration_slug="quickbooks_desktop",
-            id="end_usr_1234567abcdefg",
-            body={"foo": "bar"},
-        )
-        assert_matches_type(EndUserPassthroughIntegrationResponse, end_user, path=["response"])
-
-    @parametrize
-    async def test_raw_response_passthrough_integration(self, async_client: AsyncConductor) -> None:
-        response = await async_client.end_users.with_raw_response.passthrough_integration(
-            integration_slug="quickbooks_desktop",
-            id="end_usr_1234567abcdefg",
-            body={"foo": "bar"},
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        end_user = await response.parse()
-        assert_matches_type(EndUserPassthroughIntegrationResponse, end_user, path=["response"])
-
-    @parametrize
-    async def test_streaming_response_passthrough_integration(self, async_client: AsyncConductor) -> None:
-        async with async_client.end_users.with_streaming_response.passthrough_integration(
-            integration_slug="quickbooks_desktop",
-            id="end_usr_1234567abcdefg",
-            body={"foo": "bar"},
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            end_user = await response.parse()
-            assert_matches_type(EndUserPassthroughIntegrationResponse, end_user, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
-    async def test_path_params_passthrough_integration(self, async_client: AsyncConductor) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
-            await async_client.end_users.with_raw_response.passthrough_integration(
-                integration_slug="quickbooks_desktop",
-                id="",
-                body={"foo": "bar"},
             )
 
     @parametrize
