@@ -3,6 +3,6 @@
 from typing import Dict
 from typing_extensions import TypeAlias
 
-__all__ = ["EndUserPassthroughResponse"]
+__all__ = ["EndUserPassthroughIntegrationResponse"]
 
-EndUserPassthroughResponse: TypeAlias = Dict[str, object]
+EndUserPassthroughIntegrationResponse: TypeAlias = Dict[str, object]
