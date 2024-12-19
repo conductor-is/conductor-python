@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Union, Iterable
 from datetime import date
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
-__all__ = ["JournalEntryUpdateParams", "Lines"]
+__all__ = ["JournalEntryUpdateParams", "Line"]
 
 
 class JournalEntryUpdateParams(TypedDict, total=False):
@@ -54,7 +54,7 @@ class JournalEntryUpdateParams(TypedDict, total=False):
     in the home currency regardless of the `currency` field.
     """
 
-    lines: Lines
+    lines: Iterable[Line]
     """The journal entry's credit and debit lines.
 
     **IMPORTANT:** When updating journal entries, you must include ALL existing
@@ -75,7 +75,7 @@ class JournalEntryUpdateParams(TypedDict, total=False):
     """The date of this journal entry, in ISO 8601 format (YYYY-MM-DD)."""
 
 
-class Lines(TypedDict, total=False):
+class Line(TypedDict, total=False):
     id: Required[str]
     """
     The QuickBooks-assigned unique identifier of an existing journal line you wish
