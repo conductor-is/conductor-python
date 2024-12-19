@@ -98,7 +98,7 @@ class ReceivePaymentCreateParams(TypedDict, total=False):
     receive-payment is applied to the oldest outstanding transaction for the
     customer-job. When `false`, QuickBooks records the payment but does not apply it
     to any specific transaction, causing the amount to appear as a credit on the
-    customer-job’s next transaction.
+    customer-job's next transaction.
 
     **IMPORTANT**: You must specify either `isAutoApply` or `applyToTransactions`
     when creating a receive-payment, but never both.
