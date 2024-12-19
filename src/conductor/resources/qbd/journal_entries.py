@@ -194,7 +194,7 @@ class JournalEntriesResource(SyncAPIResource):
         exchange_rate: float | NotGiven = NOT_GIVEN,
         is_adjustment: bool | NotGiven = NOT_GIVEN,
         is_amounts_entered_in_home_currency: bool | NotGiven = NOT_GIVEN,
-        lines: journal_entry_update_params.Lines | NotGiven = NOT_GIVEN,
+        lines: Iterable[journal_entry_update_params.Line] | NotGiven = NOT_GIVEN,
         ref_number: str | NotGiven = NOT_GIVEN,
         transaction_date: Union[str, date] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -597,7 +597,7 @@ class AsyncJournalEntriesResource(AsyncAPIResource):
         exchange_rate: float | NotGiven = NOT_GIVEN,
         is_adjustment: bool | NotGiven = NOT_GIVEN,
         is_amounts_entered_in_home_currency: bool | NotGiven = NOT_GIVEN,
-        lines: journal_entry_update_params.Lines | NotGiven = NOT_GIVEN,
+        lines: Iterable[journal_entry_update_params.Line] | NotGiven = NOT_GIVEN,
         ref_number: str | NotGiven = NOT_GIVEN,
         transaction_date: Union[str, date] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.

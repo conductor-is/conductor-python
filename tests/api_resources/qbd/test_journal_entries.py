@@ -153,17 +153,19 @@ class TestJournalEntries:
             exchange_rate=1.2345,
             is_adjustment=False,
             is_amounts_entered_in_home_currency=False,
-            lines={
-                "id": "456DEF-1234567890",
-                "account_id": "80000001-1234567890",
-                "amount": "1000.00",
-                "billing_status": "billable",
-                "class_id": "80000001-1234567890",
-                "entity_id": "80000001-1234567890",
-                "journal_line_type": "debit",
-                "memo": "Allocated funds for office lease payment",
-                "sales_tax_item_id": "80000010-1234567890",
-            },
+            lines=[
+                {
+                    "id": "456DEF-1234567890",
+                    "account_id": "80000001-1234567890",
+                    "amount": "1000.00",
+                    "billing_status": "billable",
+                    "class_id": "80000001-1234567890",
+                    "entity_id": "80000001-1234567890",
+                    "journal_line_type": "debit",
+                    "memo": "Allocated funds for office lease payment",
+                    "sales_tax_item_id": "80000010-1234567890",
+                }
+            ],
             ref_number="JE-1234",
             transaction_date=parse_date("2019-12-27"),
         )
@@ -397,17 +399,19 @@ class TestAsyncJournalEntries:
             exchange_rate=1.2345,
             is_adjustment=False,
             is_amounts_entered_in_home_currency=False,
-            lines={
-                "id": "456DEF-1234567890",
-                "account_id": "80000001-1234567890",
-                "amount": "1000.00",
-                "billing_status": "billable",
-                "class_id": "80000001-1234567890",
-                "entity_id": "80000001-1234567890",
-                "journal_line_type": "debit",
-                "memo": "Allocated funds for office lease payment",
-                "sales_tax_item_id": "80000010-1234567890",
-            },
+            lines=[
+                {
+                    "id": "456DEF-1234567890",
+                    "account_id": "80000001-1234567890",
+                    "amount": "1000.00",
+                    "billing_status": "billable",
+                    "class_id": "80000001-1234567890",
+                    "entity_id": "80000001-1234567890",
+                    "journal_line_type": "debit",
+                    "memo": "Allocated funds for office lease payment",
+                    "sales_tax_item_id": "80000010-1234567890",
+                }
+            ],
             ref_number="JE-1234",
             transaction_date=parse_date("2019-12-27"),
         )
