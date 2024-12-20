@@ -62,7 +62,7 @@ class TestCustomers:
                     "line3": "Suite 100",
                     "line4": "",
                     "line5": "",
-                    "note": "This is a fun note.",
+                    "note": "Conductor HQ",
                     "postal_code": "94110",
                     "state": "CA",
                 }
@@ -265,7 +265,7 @@ class TestCustomers:
                     "line3": "Suite 100",
                     "line4": "",
                     "line5": "",
-                    "note": "This is a fun note.",
+                    "note": "Conductor HQ",
                     "postal_code": "94110",
                     "state": "CA",
                 }
@@ -487,7 +487,7 @@ class TestAsyncCustomers:
                     "line3": "Suite 100",
                     "line4": "",
                     "line5": "",
-                    "note": "This is a fun note.",
+                    "note": "Conductor HQ",
                     "postal_code": "94110",
                     "state": "CA",
                 }
@@ -690,7 +690,7 @@ class TestAsyncCustomers:
                     "line3": "Suite 100",
                     "line4": "",
                     "line5": "",
-                    "note": "This is a fun note.",
+                    "note": "Conductor HQ",
                     "postal_code": "94110",
                     "state": "CA",
                 }
