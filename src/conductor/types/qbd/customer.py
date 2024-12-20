@@ -152,7 +152,10 @@ class AlternateShippingAddress(BaseModel):
     """
 
     note: Optional[str] = None
-    """The text of this shipping address."""
+    """
+    A note written at the bottom of the shipping address in the form in which it
+    appears, such as the invoice form.
+    """
 
     postal_code: Optional[str] = FieldInfo(alias="postalCode", default=None)
     """The postal code or ZIP code of the shipping address."""
