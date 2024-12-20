@@ -373,7 +373,10 @@ class AlternateShippingAddress(TypedDict, total=False):
     """The fifth line of the shipping address, if needed."""
 
     note: str
-    """The text of this shipping address."""
+    """
+    A note written at the bottom of the shipping address in the form in which it
+    appears, such as the invoice form.
+    """
 
     postal_code: Annotated[str, PropertyInfo(alias="postalCode")]
     """The postal code or ZIP code of the shipping address."""
