@@ -339,13 +339,13 @@ class CreditCardTransaction(BaseModel):
     request: Optional[CreditCardTransactionRequest] = None
     """
     The transaction request data originally supplied for this credit card
-    transaction when using QuickBooks Merchant Services (QBMS)
+    transaction when using QuickBooks Merchant Services (QBMS).
     """
 
     response: Optional[CreditCardTransactionResponse] = None
     """
     The transaction response data for this credit card transaction when using
-    QuickBooks Merchant Services (QBMS)
+    QuickBooks Merchant Services (QBMS).
     """
 
 

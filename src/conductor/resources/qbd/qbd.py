@@ -124,6 +124,14 @@ from .inventory_sites import (
     InventorySitesResourceWithStreamingResponse,
     AsyncInventorySitesResourceWithStreamingResponse,
 )
+from .journal_entries import (
+    JournalEntriesResource,
+    AsyncJournalEntriesResource,
+    JournalEntriesResourceWithRawResponse,
+    AsyncJournalEntriesResourceWithRawResponse,
+    JournalEntriesResourceWithStreamingResponse,
+    AsyncJournalEntriesResourceWithStreamingResponse,
+)
 from .purchase_orders import (
     PurchaseOrdersResource,
     AsyncPurchaseOrdersResource,
@@ -322,6 +330,10 @@ class QbdResource(SyncAPIResource):
         return VendorsResource(self._client)
 
     @cached_property
+    def journal_entries(self) -> JournalEntriesResource:
+        return JournalEntriesResource(self._client)
+
+    @cached_property
     def with_raw_response(self) -> QbdResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return the
@@ -445,6 +457,10 @@ class AsyncQbdResource(AsyncAPIResource):
     @cached_property
     def vendors(self) -> AsyncVendorsResource:
         return AsyncVendorsResource(self._client)
+
+    @cached_property
+    def journal_entries(self) -> AsyncJournalEntriesResource:
+        return AsyncJournalEntriesResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncQbdResourceWithRawResponse:
@@ -574,6 +590,10 @@ class QbdResourceWithRawResponse:
     def vendors(self) -> VendorsResourceWithRawResponse:
         return VendorsResourceWithRawResponse(self._qbd.vendors)
 
+    @cached_property
+    def journal_entries(self) -> JournalEntriesResourceWithRawResponse:
+        return JournalEntriesResourceWithRawResponse(self._qbd.journal_entries)
+
 
 class AsyncQbdResourceWithRawResponse:
     def __init__(self, qbd: AsyncQbdResource) -> None:
@@ -682,6 +702,10 @@ class AsyncQbdResourceWithRawResponse:
     @cached_property
     def vendors(self) -> AsyncVendorsResourceWithRawResponse:
         return AsyncVendorsResourceWithRawResponse(self._qbd.vendors)
+
+    @cached_property
+    def journal_entries(self) -> AsyncJournalEntriesResourceWithRawResponse:
+        return AsyncJournalEntriesResourceWithRawResponse(self._qbd.journal_entries)
 
 
 class QbdResourceWithStreamingResponse:
@@ -792,6 +816,10 @@ class QbdResourceWithStreamingResponse:
     def vendors(self) -> VendorsResourceWithStreamingResponse:
         return VendorsResourceWithStreamingResponse(self._qbd.vendors)
 
+    @cached_property
+    def journal_entries(self) -> JournalEntriesResourceWithStreamingResponse:
+        return JournalEntriesResourceWithStreamingResponse(self._qbd.journal_entries)
+
 
 class AsyncQbdResourceWithStreamingResponse:
     def __init__(self, qbd: AsyncQbdResource) -> None:
@@ -900,3 +928,7 @@ class AsyncQbdResourceWithStreamingResponse:
     @cached_property
     def vendors(self) -> AsyncVendorsResourceWithStreamingResponse:
         return AsyncVendorsResourceWithStreamingResponse(self._qbd.vendors)
+
+    @cached_property
+    def journal_entries(self) -> AsyncJournalEntriesResourceWithStreamingResponse:
+        return AsyncJournalEntriesResourceWithStreamingResponse(self._qbd.journal_entries)

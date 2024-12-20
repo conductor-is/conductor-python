@@ -399,13 +399,13 @@ class CreditCardTransaction(TypedDict, total=False):
     request: CreditCardTransactionRequest
     """
     The transaction request data originally supplied for this credit card
-    transaction when using QuickBooks Merchant Services (QBMS)
+    transaction when using QuickBooks Merchant Services (QBMS).
     """
 
     response: CreditCardTransactionResponse
     """
     The transaction response data for this credit card transaction when using
-    QuickBooks Merchant Services (QBMS)
+    QuickBooks Merchant Services (QBMS).
     """
 
 
@@ -605,13 +605,13 @@ class LineCreditCardTransaction(TypedDict, total=False):
     request: LineCreditCardTransactionRequest
     """
     The transaction request data originally supplied for this credit card
-    transaction when using QuickBooks Merchant Services (QBMS)
+    transaction when using QuickBooks Merchant Services (QBMS).
     """
 
     response: LineCreditCardTransactionResponse
     """
     The transaction response data for this credit card transaction when using
-    QuickBooks Merchant Services (QBMS)
+    QuickBooks Merchant Services (QBMS).
     """
 
 
