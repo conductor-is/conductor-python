@@ -265,7 +265,7 @@ class AccountsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> Account:
         """
-        Updates a financial account.
+        Updates an existing financial account.
 
         Args:
           id: The QuickBooks-assigned unique identifier of the account to update.
@@ -747,7 +747,7 @@ class AsyncAccountsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> Account:
         """
-        Updates a financial account.
+        Updates an existing financial account.
 
         Args:
           id: The QuickBooks-assigned unique identifier of the account to update.

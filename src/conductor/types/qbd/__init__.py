@@ -25,6 +25,7 @@ from .bill_list_params import BillListParams as BillListParams
 from .date_driven_term import DateDrivenTerm as DateDrivenTerm
 from .check_list_params import CheckListParams as CheckListParams
 from .class_list_params import ClassListParams as ClassListParams
+from .qbd_journal_entry import QbdJournalEntry as QbdJournalEntry
 from .bill_check_payment import BillCheckPayment as BillCheckPayment
 from .bill_create_params import BillCreateParams as BillCreateParams
 from .bill_update_params import BillUpdateParams as BillUpdateParams
@@ -59,6 +60,7 @@ from .inventory_assembly_item import InventoryAssemblyItem as InventoryAssemblyI
 from .sales_order_list_params import SalesOrderListParams as SalesOrderListParams
 from .bill_credit_card_payment import BillCreditCardPayment as BillCreditCardPayment
 from .service_item_list_params import ServiceItemListParams as ServiceItemListParams
+from .journal_entry_list_params import JournalEntryListParams as JournalEntryListParams
 from .sales_order_create_params import SalesOrderCreateParams as SalesOrderCreateParams
 from .sales_order_update_params import SalesOrderUpdateParams as SalesOrderUpdateParams
 from .sales_receipt_list_params import SalesReceiptListParams as SalesReceiptListParams
@@ -70,6 +72,8 @@ from .sales_tax_code_list_params import SalesTaxCodeListParams as SalesTaxCodeLi
 from .sales_tax_item_list_params import SalesTaxItemListParams as SalesTaxItemListParams
 from .service_item_create_params import ServiceItemCreateParams as ServiceItemCreateParams
 from .service_item_update_params import ServiceItemUpdateParams as ServiceItemUpdateParams
+from .journal_entry_create_params import JournalEntryCreateParams as JournalEntryCreateParams
+from .journal_entry_update_params import JournalEntryUpdateParams as JournalEntryUpdateParams
 from .receive_payment_list_params import ReceivePaymentListParams as ReceivePaymentListParams
 from .sales_receipt_create_params import SalesReceiptCreateParams as SalesReceiptCreateParams
 from .sales_receipt_update_params import SalesReceiptUpdateParams as SalesReceiptUpdateParams

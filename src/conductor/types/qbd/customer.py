@@ -115,51 +115,50 @@ class AdditionalNote(BaseModel):
 
 class AlternateShippingAddress(BaseModel):
     city: Optional[str] = None
-    """The city, district, suburb, town, or village name of the address."""
+    """The city, district, suburb, town, or village name of the shipping address."""
 
     country: Optional[str] = None
-    """The country name of the address."""
+    """The country name of the shipping address."""
 
     is_default_shipping_address: Optional[bool] = FieldInfo(alias="isDefaultShippingAddress", default=None)
-    """Indicates whether this address is the default shipping address."""
+    """Indicates whether this shipping address is the default shipping address."""
 
     line1: Optional[str] = None
-    """The first line of the address (e.g., street, PO Box, or company name)."""
+    """The first line of the shipping address (e.g., street, PO Box, or company name)."""
 
     line2: Optional[str] = None
     """
-    The second line of the address, if needed (e.g., apartment, suite, unit, or
-    building).
+    The second line of the shipping address, if needed (e.g., apartment, suite,
+    unit, or building).
     """
 
     line3: Optional[str] = None
-    """The third line of the address, if needed."""
+    """The third line of the shipping address, if needed."""
 
     line4: Optional[str] = None
-    """The fourth line of the address, if needed."""
+    """The fourth line of the shipping address, if needed."""
 
     line5: Optional[str] = None
-    """The fifth line of the address, if needed."""
+    """The fifth line of the shipping address, if needed."""
 
     name: str
-    """The case-insensitive unique name of this address, unique across all addresses.
+    """
+    The case-insensitive unique name of this shipping address, unique across all
+    shipping addresses.
 
-    **NOTE**: Addresses do not have a `fullName` field because they are not
+    **NOTE**: Shipping addresses do not have a `fullName` field because they are not
     hierarchical objects, which is why `name` is unique for them but not for objects
     that have parents. Maximum length: 41 characters.
     """
 
     note: Optional[str] = None
-    """
-    A note written at the bottom of the address in the form in which it appears,
-    such as the invoice form.
-    """
+    """The text of this shipping address."""
 
     postal_code: Optional[str] = FieldInfo(alias="postalCode", default=None)
-    """The postal code or ZIP code of the address."""
+    """The postal code or ZIP code of the shipping address."""
 
     state: Optional[str] = None
-    """The state, county, province, or region name of the address."""
+    """The state, county, province, or region name of the shipping address."""
 
 
 class BillingAddress(BaseModel):
