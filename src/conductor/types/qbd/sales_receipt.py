@@ -307,7 +307,7 @@ class CustomField(BaseModel):
     For public custom fields, this name is visible as a label in the QuickBooks UI.
     """
 
-    owner_id: Optional[str] = FieldInfo(alias="ownerId", default=None)
+    owner_id: str = FieldInfo(alias="ownerId")
     """
     The identifier of the owner of the custom field, which QuickBooks internally
     calls a "data extension". For public custom fields visible in the UI, such as
@@ -376,7 +376,7 @@ class LineGroupCustomField(BaseModel):
     For public custom fields, this name is visible as a label in the QuickBooks UI.
     """
 
-    owner_id: Optional[str] = FieldInfo(alias="ownerId", default=None)
+    owner_id: str = FieldInfo(alias="ownerId")
     """
     The identifier of the owner of the custom field, which QuickBooks internally
     calls a "data extension". For public custom fields visible in the UI, such as
@@ -445,7 +445,7 @@ class LineGroupLineCustomField(BaseModel):
     For public custom fields, this name is visible as a label in the QuickBooks UI.
     """
 
-    owner_id: Optional[str] = FieldInfo(alias="ownerId", default=None)
+    owner_id: str = FieldInfo(alias="ownerId")
     """
     The identifier of the owner of the custom field, which QuickBooks internally
     calls a "data extension". For public custom fields visible in the UI, such as
@@ -973,7 +973,7 @@ class LineCustomField(BaseModel):
     For public custom fields, this name is visible as a label in the QuickBooks UI.
     """
 
-    owner_id: Optional[str] = FieldInfo(alias="ownerId", default=None)
+    owner_id: str = FieldInfo(alias="ownerId")
     """
     The identifier of the owner of the custom field, which QuickBooks internally
     calls a "data extension". For public custom fields visible in the UI, such as
