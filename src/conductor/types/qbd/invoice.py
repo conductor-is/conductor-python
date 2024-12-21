@@ -1130,7 +1130,7 @@ class Invoice(BaseModel):
     This ID is unique across all transaction types.
     """
 
-    applied_amount: Optional[str] = FieldInfo(alias="appliedAmount", default=None)
+    applied_amount: str = FieldInfo(alias="appliedAmount")
     """The amount of credit applied to this invoice.
 
     This could include customer deposits, payments, or credits. Represented as a
