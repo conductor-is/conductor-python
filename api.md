@@ -36,6 +36,27 @@ Methods:
 
 # Qbd
 
+## SharedNestedObjects
+
+Types:
+
+```python
+from conductor.types.qbd import (
+    Address,
+    CreditCardTransaction,
+    CreditCardTransactionRequest,
+    CreditCardTransactionResponse,
+    CustomContactField,
+    CustomField,
+    ExpenseLine,
+    ItemGroupLine,
+    ItemLine,
+    LinkedTransaction,
+    ReceivableTransaction,
+    SalesOrderLine,
+)
+```
+
 ## Accounts
 
 Types:
