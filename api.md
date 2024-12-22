@@ -36,6 +36,25 @@ Methods:
 
 # Qbd
 
+Types:
+
+```python
+from conductor.types import (
+    Address,
+    CreditCardTransaction,
+    CreditCardTransactionRequest,
+    CreditCardTransactionResponse,
+    CustomContactField,
+    CustomField,
+    ExpenseLine,
+    ItemGroupLine,
+    ItemLine,
+    LinkedTransaction,
+    ReceivableTransaction,
+    SalesOrderLine,
+)
+```
+
 ## Accounts
 
 Types:
