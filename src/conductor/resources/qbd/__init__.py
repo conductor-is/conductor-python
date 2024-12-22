@@ -128,14 +128,6 @@ from .inventory_sites import (
     InventorySitesResourceWithStreamingResponse,
     AsyncInventorySitesResourceWithStreamingResponse,
 )
-from .journal_entries import (
-    JournalEntriesResource,
-    AsyncJournalEntriesResource,
-    JournalEntriesResourceWithRawResponse,
-    AsyncJournalEntriesResourceWithRawResponse,
-    JournalEntriesResourceWithStreamingResponse,
-    AsyncJournalEntriesResourceWithStreamingResponse,
-)
 from .purchase_orders import (
     PurchaseOrdersResource,
     AsyncPurchaseOrdersResource,
@@ -316,12 +308,6 @@ __all__ = [
     "AsyncInvoicesResourceWithRawResponse",
     "InvoicesResourceWithStreamingResponse",
     "AsyncInvoicesResourceWithStreamingResponse",
-    "JournalEntriesResource",
-    "AsyncJournalEntriesResource",
-    "JournalEntriesResourceWithRawResponse",
-    "AsyncJournalEntriesResourceWithRawResponse",
-    "JournalEntriesResourceWithStreamingResponse",
-    "AsyncJournalEntriesResourceWithStreamingResponse",
     "NonInventoryItemsResource",
     "AsyncNonInventoryItemsResource",
     "NonInventoryItemsResourceWithRawResponse",

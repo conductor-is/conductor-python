@@ -259,21 +259,6 @@ Methods:
 - <code title="post /quickbooks-desktop/invoices/{id}">client.qbd.invoices.<a href="./src/conductor/resources/qbd/invoices.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/invoice_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/invoice.py">Invoice</a></code>
 - <code title="get /quickbooks-desktop/invoices">client.qbd.invoices.<a href="./src/conductor/resources/qbd/invoices.py">list</a>(\*\*<a href="src/conductor/types/qbd/invoice_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/invoice.py">SyncCursorPage[Invoice]</a></code>
 
-## JournalEntries
-
-Types:
-
-```python
-from conductor.types.qbd import JournalEntry
-```
-
-Methods:
-
-- <code title="post /quickbooks-desktop/journal-entries">client.qbd.journal_entries.<a href="./src/conductor/resources/qbd/journal_entries.py">create</a>(\*\*<a href="src/conductor/types/qbd/journal_entry_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/journal_entry.py">JournalEntry</a></code>
-- <code title="get /quickbooks-desktop/journal-entries/{id}">client.qbd.journal_entries.<a href="./src/conductor/resources/qbd/journal_entries.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/journal_entry.py">JournalEntry</a></code>
-- <code title="post /quickbooks-desktop/journal-entries/{id}">client.qbd.journal_entries.<a href="./src/conductor/resources/qbd/journal_entries.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/journal_entry_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/journal_entry.py">JournalEntry</a></code>
-- <code title="get /quickbooks-desktop/journal-entries">client.qbd.journal_entries.<a href="./src/conductor/resources/qbd/journal_entries.py">list</a>(\*\*<a href="src/conductor/types/qbd/journal_entry_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/journal_entry.py">SyncCursorPage[JournalEntry]</a></code>
-
 ## NonInventoryItems
 
 Types:
