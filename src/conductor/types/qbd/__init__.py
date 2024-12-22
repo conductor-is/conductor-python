@@ -29,7 +29,6 @@ from .item_group_line import ItemGroupLine as ItemGroupLine
 from .receive_payment import ReceivePayment as ReceivePayment
 from .bill_list_params import BillListParams as BillListParams
 from .date_driven_term import DateDrivenTerm as DateDrivenTerm
-from .sales_order_line import SalesOrderLine as SalesOrderLine
 from .check_list_params import CheckListParams as CheckListParams
 from .class_list_params import ClassListParams as ClassListParams
 from .bill_check_payment import BillCheckPayment as BillCheckPayment
