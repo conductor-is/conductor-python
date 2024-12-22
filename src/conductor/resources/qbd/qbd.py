@@ -124,14 +124,6 @@ from .inventory_sites import (
     InventorySitesResourceWithStreamingResponse,
     AsyncInventorySitesResourceWithStreamingResponse,
 )
-from .journal_entries import (
-    JournalEntriesResource,
-    AsyncJournalEntriesResource,
-    JournalEntriesResourceWithRawResponse,
-    AsyncJournalEntriesResourceWithRawResponse,
-    JournalEntriesResourceWithStreamingResponse,
-    AsyncJournalEntriesResourceWithStreamingResponse,
-)
 from .purchase_orders import (
     PurchaseOrdersResource,
     AsyncPurchaseOrdersResource,
@@ -286,10 +278,6 @@ class QbdResource(SyncAPIResource):
         return InvoicesResource(self._client)
 
     @cached_property
-    def journal_entries(self) -> JournalEntriesResource:
-        return JournalEntriesResource(self._client)
-
-    @cached_property
     def non_inventory_items(self) -> NonInventoryItemsResource:
         return NonInventoryItemsResource(self._client)
 
@@ -413,10 +401,6 @@ class AsyncQbdResource(AsyncAPIResource):
     @cached_property
     def invoices(self) -> AsyncInvoicesResource:
         return AsyncInvoicesResource(self._client)
-
-    @cached_property
-    def journal_entries(self) -> AsyncJournalEntriesResource:
-        return AsyncJournalEntriesResource(self._client)
 
     @cached_property
     def non_inventory_items(self) -> AsyncNonInventoryItemsResource:
@@ -547,10 +531,6 @@ class QbdResourceWithRawResponse:
         return InvoicesResourceWithRawResponse(self._qbd.invoices)
 
     @cached_property
-    def journal_entries(self) -> JournalEntriesResourceWithRawResponse:
-        return JournalEntriesResourceWithRawResponse(self._qbd.journal_entries)
-
-    @cached_property
     def non_inventory_items(self) -> NonInventoryItemsResourceWithRawResponse:
         return NonInventoryItemsResourceWithRawResponse(self._qbd.non_inventory_items)
 
@@ -658,10 +638,6 @@ class AsyncQbdResourceWithRawResponse:
     @cached_property
     def invoices(self) -> AsyncInvoicesResourceWithRawResponse:
         return AsyncInvoicesResourceWithRawResponse(self._qbd.invoices)
-
-    @cached_property
-    def journal_entries(self) -> AsyncJournalEntriesResourceWithRawResponse:
-        return AsyncJournalEntriesResourceWithRawResponse(self._qbd.journal_entries)
 
     @cached_property
     def non_inventory_items(self) -> AsyncNonInventoryItemsResourceWithRawResponse:
@@ -773,10 +749,6 @@ class QbdResourceWithStreamingResponse:
         return InvoicesResourceWithStreamingResponse(self._qbd.invoices)
 
     @cached_property
-    def journal_entries(self) -> JournalEntriesResourceWithStreamingResponse:
-        return JournalEntriesResourceWithStreamingResponse(self._qbd.journal_entries)
-
-    @cached_property
     def non_inventory_items(self) -> NonInventoryItemsResourceWithStreamingResponse:
         return NonInventoryItemsResourceWithStreamingResponse(self._qbd.non_inventory_items)
 
@@ -884,10 +856,6 @@ class AsyncQbdResourceWithStreamingResponse:
     @cached_property
     def invoices(self) -> AsyncInvoicesResourceWithStreamingResponse:
         return AsyncInvoicesResourceWithStreamingResponse(self._qbd.invoices)
-
-    @cached_property
-    def journal_entries(self) -> AsyncJournalEntriesResourceWithStreamingResponse:
-        return AsyncJournalEntriesResourceWithStreamingResponse(self._qbd.journal_entries)
 
     @cached_property
     def non_inventory_items(self) -> AsyncNonInventoryItemsResourceWithStreamingResponse:
