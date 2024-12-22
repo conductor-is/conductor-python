@@ -9,6 +9,7 @@ from pydantic import Field as FieldInfo
 from .address import Address
 from ..._models import BaseModel
 from .custom_field import CustomField
+from .sales_order_line import SalesOrderLine
 from .credit_card_transaction import CreditCardTransaction
 
 __all__ = [
@@ -21,13 +22,6 @@ __all__ = [
     "DocumentTemplate",
     "LineGroup",
     "LineGroupItemGroup",
-    "LineGroupLine",
-    "LineGroupLineClass",
-    "LineGroupLineInventorySite",
-    "LineGroupLineInventorySiteLocation",
-    "LineGroupLineItem",
-    "LineGroupLineOverrideUnitOfMeasureSet",
-    "LineGroupLineSalesTaxCode",
     "LineGroupOverrideUnitOfMeasureSet",
     "Line",
     "LineClass",
@@ -156,268 +150,6 @@ class LineGroupItemGroup(BaseModel):
     """
 
 
-class LineGroupLineClass(BaseModel):
-    id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks to this object.
-
-    This ID is unique across all objects of the same type, but not across different
-    QuickBooks object types.
-    """
-
-    full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
-    """
-    The fully-qualified unique name for this object, formed by combining the names
-    of its parent objects with its own `name`, separated by colons. Not
-    case-sensitive.
-    """
-
-
-class LineGroupLineInventorySite(BaseModel):
-    id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks to this object.
-
-    This ID is unique across all objects of the same type, but not across different
-    QuickBooks object types.
-    """
-
-    full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
-    """
-    The fully-qualified unique name for this object, formed by combining the names
-    of its parent objects with its own `name`, separated by colons. Not
-    case-sensitive.
-    """
-
-
-class LineGroupLineInventorySiteLocation(BaseModel):
-    id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks to this object.
-
-    This ID is unique across all objects of the same type, but not across different
-    QuickBooks object types.
-    """
-
-    full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
-    """
-    The fully-qualified unique name for this object, formed by combining the names
-    of its parent objects with its own `name`, separated by colons. Not
-    case-sensitive.
-    """
-
-
-class LineGroupLineItem(BaseModel):
-    id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks to this object.
-
-    This ID is unique across all objects of the same type, but not across different
-    QuickBooks object types.
-    """
-
-    full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
-    """
-    The fully-qualified unique name for this object, formed by combining the names
-    of its parent objects with its own `name`, separated by colons. Not
-    case-sensitive.
-    """
-
-
-class LineGroupLineOverrideUnitOfMeasureSet(BaseModel):
-    id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks to this object.
-
-    This ID is unique across all objects of the same type, but not across different
-    QuickBooks object types.
-    """
-
-    full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
-    """
-    The fully-qualified unique name for this object, formed by combining the names
-    of its parent objects with its own `name`, separated by colons. Not
-    case-sensitive.
-    """
-
-
-class LineGroupLineSalesTaxCode(BaseModel):
-    id: Optional[str] = None
-    """The unique identifier assigned by QuickBooks to this object.
-
-    This ID is unique across all objects of the same type, but not across different
-    QuickBooks object types.
-    """
-
-    full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
-    """
-    The fully-qualified unique name for this object, formed by combining the names
-    of its parent objects with its own `name`, separated by colons. Not
-    case-sensitive.
-    """
-
-
-class LineGroupLine(BaseModel):
-    id: str
-    """The unique identifier assigned by QuickBooks to this sales receipt line.
-
-    This ID is unique across all transaction line types.
-    """
-
-    amount: Optional[str] = None
-    """The monetary amount of this sales receipt line, represented as a decimal string.
-
-    If both `quantity` and `rate` are specified but not `amount`, QuickBooks will
-    use them to calculate `amount`. If `amount`, `rate`, and `quantity` are all
-    unspecified, then QuickBooks will calculate `amount` based on a `quantity` of
-    `1` and the suggested `rate`. This field cannot be cleared.
-    """
-
-    class_: Optional[LineGroupLineClass] = FieldInfo(alias="class", default=None)
-    """The sales receipt line's class.
-
-    Classes can be used to categorize objects into meaningful segments, such as
-    department, location, or type of work. In QuickBooks, class tracking is off by
-    default. If a class is specified for the entire parent transaction, it is
-    automatically applied to all sales receipt lines unless overridden here, at the
-    transaction line level.
-    """
-
-    credit_card_transaction: Optional[CreditCardTransaction] = FieldInfo(alias="creditCardTransaction", default=None)
-    """
-    The credit card transaction data for this sales receipt line's payment when
-    using QuickBooks Merchant Services (QBMS).
-    """
-
-    custom_fields: List[CustomField] = FieldInfo(alias="customFields")
-    """
-    The custom fields for the sales receipt line object, added as user-defined data
-    extensions, not included in the standard QuickBooks object.
-    """
-
-    description: Optional[str] = None
-    """A description of this sales receipt line."""
-
-    expiration_date: Optional[date] = FieldInfo(alias="expirationDate", default=None)
-    """
-    The expiration date for the serial number or lot number of the item associated
-    with this sales receipt line, in ISO 8601 format (YYYY-MM-DD). This is
-    particularly relevant for perishable or time-sensitive inventory items. Note
-    that this field is only supported on QuickBooks Desktop 2023 or later.
-    """
-
-    inventory_site: Optional[LineGroupLineInventorySite] = FieldInfo(alias="inventorySite", default=None)
-    """
-    The site location where inventory for the item associated with this sales
-    receipt line is stored.
-    """
-
-    inventory_site_location: Optional[LineGroupLineInventorySiteLocation] = FieldInfo(
-        alias="inventorySiteLocation", default=None
-    )
-    """
-    The specific location (e.g., bin or shelf) within the inventory site where the
-    item associated with this sales receipt line is stored.
-    """
-
-    item: Optional[LineGroupLineItem] = None
-    """The item associated with this sales receipt line.
-
-    This can refer to any good or service that the business buys or sells, including
-    item types such as a service item, inventory item, or special calculation item
-    like a discount item or sales-tax item.
-    """
-
-    lot_number: Optional[str] = FieldInfo(alias="lotNumber", default=None)
-    """The lot number of the item associated with this sales receipt line.
-
-    Used for tracking groups of inventory items that are purchased or manufactured
-    together.
-    """
-
-    object_type: Literal["qbd_sales_receipt_line"] = FieldInfo(alias="objectType")
-    """The type of object. This value is always `"qbd_sales_receipt_line"`."""
-
-    other_custom_field1: Optional[str] = FieldInfo(alias="otherCustomField1", default=None)
-    """
-    A built-in custom field for additional information specific to this sales
-    receipt line. Unlike the user-defined fields in the `customFields` array, this
-    is a standard QuickBooks field that exists for all sales receipt lines for
-    convenience. Developers often use this field for tracking information that
-    doesn't fit into other standard QuickBooks fields. Hidden by default in the
-    QuickBooks UI.
-    """
-
-    other_custom_field2: Optional[str] = FieldInfo(alias="otherCustomField2", default=None)
-    """
-    A second built-in custom field for additional information specific to this sales
-    receipt line. Unlike the user-defined fields in the `customFields` array, this
-    is a standard QuickBooks field that exists for all sales receipt lines for
-    convenience. Like `otherCustomField1`, developers often use this field for
-    tracking information that doesn't fit into other standard QuickBooks fields.
-    Hidden by default in the QuickBooks UI.
-    """
-
-    override_unit_of_measure_set: Optional[LineGroupLineOverrideUnitOfMeasureSet] = FieldInfo(
-        alias="overrideUnitOfMeasureSet", default=None
-    )
-    """
-    Specifies an alternative unit-of-measure set when updating this sales receipt
-    line's `unitOfMeasure` field (e.g., "pound" or "kilogram"). This allows you to
-    select units from a different set than the item's default unit-of-measure set,
-    which remains unchanged on the item itself. The override applies only to this
-    specific line. For example, you can sell an item typically measured in volume
-    units using weight units in a specific transaction by specifying a different
-    unit-of-measure set with this field.
-    """
-
-    quantity: Optional[float] = None
-    """The quantity of the item associated with this sales receipt line.
-
-    This field cannot be cleared.
-    """
-
-    rate: Optional[str] = None
-    """The price per unit for this sales receipt line.
-
-    If both `rate` and `amount` are specified, `rate` will be ignored. If both
-    `quantity` and `amount` are specified but not `rate`, QuickBooks will use them
-    to calculate `rate`. Represented as a decimal string. This field cannot be
-    cleared.
-    """
-
-    rate_percent: Optional[str] = FieldInfo(alias="ratePercent", default=None)
-    """The price of this sales receipt line expressed as a percentage.
-
-    Typically used for discount or markup items.
-    """
-
-    sales_tax_code: Optional[LineGroupLineSalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)
-    """
-    The sales-tax code associated with this sales receipt line, determining whether
-    items sold to this customer are taxable or non-taxable. It's used to assign a
-    default tax status to all transactions for this sales receipt line. Default
-    codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes can also
-    be created in QuickBooks. If QuickBooks is not set up to charge sales tax (via
-    the "Do You Charge Sales Tax?" preference), it will assign the default
-    non-taxable code to all sales.
-    """
-
-    serial_number: Optional[str] = FieldInfo(alias="serialNumber", default=None)
-    """The serial number of the item associated with this sales receipt line.
-
-    This is used for tracking individual units of serialized inventory items.
-    """
-
-    service_date: Optional[date] = FieldInfo(alias="serviceDate", default=None)
-    """
-    The date on which the service for this sales receipt line was or will be
-    performed, in ISO 8601 format (YYYY-MM-DD). This is particularly relevant for
-    service items.
-    """
-
-    unit_of_measure: Optional[str] = FieldInfo(alias="unitOfMeasure", default=None)
-    """The unit-of-measure used for the `quantity` in this sales receipt line.
-
-    Must be a valid unit within the item's available units of measure.
-    """
-
-
 class LineGroupOverrideUnitOfMeasureSet(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks to this object.
@@ -457,10 +189,10 @@ class LineGroup(BaseModel):
     entry.
     """
 
-    lines: List[LineGroupLine]
+    lines: List[SalesOrderLine]
     """
     The sales receipt line group's line items, each representing a single product or
-    service sold.
+    service ordered.
     """
 
     object_type: Literal["qbd_sales_receipt_line_group"] = FieldInfo(alias="objectType")
