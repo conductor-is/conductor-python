@@ -6,20 +6,21 @@ from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
-from ..address import Address
 from ..._models import BaseModel
-from ..custom_field import CustomField
-from ..custom_contact_field import CustomContactField
 
 __all__ = [
     "Customer",
     "AdditionalContact",
+    "AdditionalContactCustomContactField",
     "AdditionalNote",
     "AlternateShippingAddress",
+    "BillingAddress",
     "Class",
     "CreditCard",
     "Currency",
+    "CustomContactField",
     "CustomerType",
+    "CustomField",
     "JobType",
     "Parent",
     "PreferredPaymentMethod",
@@ -27,8 +28,17 @@ __all__ = [
     "SalesRepresentative",
     "SalesTaxCode",
     "SalesTaxItem",
+    "ShippingAddress",
     "Terms",
 ]
+
+
+class AdditionalContactCustomContactField(BaseModel):
+    name: str
+    """The name of the custom contact field (e.g., "old address", "secondary phone")."""
+
+    value: str
+    """The value of the custom contact field."""
 
 
 class AdditionalContact(BaseModel):
@@ -46,7 +56,7 @@ class AdditionalContact(BaseModel):
     in QuickBooks.
     """
 
-    custom_contact_fields: List[CustomContactField] = FieldInfo(alias="customContactFields")
+    custom_contact_fields: List[AdditionalContactCustomContactField] = FieldInfo(alias="customContactFields")
     """
     Additional custom contact fields for this contact, such as phone numbers or
     email addresses.
@@ -154,6 +164,44 @@ class AlternateShippingAddress(BaseModel):
     """The state, county, province, or region name of the shipping address."""
 
 
+class BillingAddress(BaseModel):
+    city: Optional[str] = None
+    """The city, district, suburb, town, or village name of the address."""
+
+    country: Optional[str] = None
+    """The country name of the address."""
+
+    line1: Optional[str] = None
+    """The first line of the address (e.g., street, PO Box, or company name)."""
+
+    line2: Optional[str] = None
+    """
+    The second line of the address, if needed (e.g., apartment, suite, unit, or
+    building).
+    """
+
+    line3: Optional[str] = None
+    """The third line of the address, if needed."""
+
+    line4: Optional[str] = None
+    """The fourth line of the address, if needed."""
+
+    line5: Optional[str] = None
+    """The fifth line of the address, if needed."""
+
+    note: Optional[str] = None
+    """
+    A note written at the bottom of the address in the form in which it appears,
+    such as the invoice form.
+    """
+
+    postal_code: Optional[str] = FieldInfo(alias="postalCode", default=None)
+    """The postal code or ZIP code of the address."""
+
+    state: Optional[str] = None
+    """The state, county, province, or region name of the address."""
+
+
 class Class(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks to this object.
@@ -206,6 +254,14 @@ class Currency(BaseModel):
     """
 
 
+class CustomContactField(BaseModel):
+    name: str
+    """The name of the custom contact field (e.g., "old address", "secondary phone")."""
+
+    value: str
+    """The value of the custom contact field."""
+
+
 class CustomerType(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks to this object.
@@ -219,6 +275,43 @@ class CustomerType(BaseModel):
     The fully-qualified unique name for this object, formed by combining the names
     of its parent objects with its own `name`, separated by colons. Not
     case-sensitive.
+    """
+
+
+class CustomField(BaseModel):
+    name: str
+    """The name of the custom field, unique for the specified `ownerId`.
+
+    For public custom fields, this name is visible as a label in the QuickBooks UI.
+    """
+
+    owner_id: str = FieldInfo(alias="ownerId")
+    """
+    The identifier of the owner of the custom field, which QuickBooks internally
+    calls a "data extension". For public custom fields visible in the UI, such as
+    those added by the QuickBooks user, this is always "0". For private custom
+    fields that are only visible to the application that created them, this is a
+    valid GUID identifying the owning application. Internally, Conductor always
+    fetches all public custom fields (those with an `ownerId` of "0") for all
+    objects.
+    """
+
+    type: Literal[
+        "amount_type",
+        "date_time_type",
+        "integer_type",
+        "percent_type",
+        "price_type",
+        "quantity_type",
+        "string_1024_type",
+        "string_255_type",
+    ]
+    """The data type of this custom field."""
+
+    value: str
+    """The value of this custom field.
+
+    The maximum length depends on the field's data type.
     """
 
 
@@ -334,6 +427,44 @@ class SalesTaxItem(BaseModel):
     """
 
 
+class ShippingAddress(BaseModel):
+    city: Optional[str] = None
+    """The city, district, suburb, town, or village name of the address."""
+
+    country: Optional[str] = None
+    """The country name of the address."""
+
+    line1: Optional[str] = None
+    """The first line of the address (e.g., street, PO Box, or company name)."""
+
+    line2: Optional[str] = None
+    """
+    The second line of the address, if needed (e.g., apartment, suite, unit, or
+    building).
+    """
+
+    line3: Optional[str] = None
+    """The third line of the address, if needed."""
+
+    line4: Optional[str] = None
+    """The fourth line of the address, if needed."""
+
+    line5: Optional[str] = None
+    """The fifth line of the address, if needed."""
+
+    note: Optional[str] = None
+    """
+    A note written at the bottom of the address in the form in which it appears,
+    such as the invoice form.
+    """
+
+    postal_code: Optional[str] = FieldInfo(alias="postalCode", default=None)
+    """The postal code or ZIP code of the address."""
+
+    state: Optional[str] = None
+    """The state, county, province, or region name of the address."""
+
+
 class Terms(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks to this object.
@@ -391,7 +522,7 @@ class Customer(BaseModel):
     `totalBalance`. A positive number indicates money owed by the customer.
     """
 
-    billing_address: Optional[Address] = FieldInfo(alias="billingAddress", default=None)
+    billing_address: Optional[BillingAddress] = FieldInfo(alias="billingAddress", default=None)
     """The customer's billing address."""
 
     cc_email: Optional[str] = FieldInfo(alias="ccEmail", default=None)
@@ -645,7 +776,7 @@ class Customer(BaseModel):
     this customer, such as "Mr.", "Ms.", or "Dr.".
     """
 
-    shipping_address: Optional[Address] = FieldInfo(alias="shippingAddress", default=None)
+    shipping_address: Optional[ShippingAddress] = FieldInfo(alias="shippingAddress", default=None)
     """The customer's shipping address."""
 
     sublevel: float
