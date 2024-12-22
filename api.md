@@ -36,26 +36,6 @@ Methods:
 
 # Qbd
 
-## SharedNestedObjects
-
-Types:
-
-```python
-from conductor.types.qbd import (
-    Address,
-    CreditCardTransaction,
-    CreditCardTransactionRequest,
-    CreditCardTransactionResponse,
-    CustomContactField,
-    CustomField,
-    ExpenseLine,
-    ItemGroupLine,
-    ItemLine,
-    LinkedTransaction,
-    ReceivableTransaction,
-)
-```
-
 ## Accounts
 
 Types:
@@ -457,3 +437,23 @@ Methods:
 - <code title="get /quickbooks-desktop/vendors/{id}">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/vendor.py">Vendor</a></code>
 - <code title="post /quickbooks-desktop/vendors/{id}">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/vendor_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/vendor.py">Vendor</a></code>
 - <code title="get /quickbooks-desktop/vendors">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">list</a>(\*\*<a href="src/conductor/types/qbd/vendor_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/vendor.py">SyncCursorPage[Vendor]</a></code>
+
+## SharedObjects
+
+Types:
+
+```python
+from conductor.types.qbd import (
+    Address,
+    CreditCardTransaction,
+    CreditCardTransactionRequest,
+    CreditCardTransactionResponse,
+    CustomContactField,
+    CustomField,
+    ExpenseLine,
+    ItemGroupLine,
+    ItemLine,
+    LinkedTransaction,
+    ReceivableTransaction,
+)
+```
