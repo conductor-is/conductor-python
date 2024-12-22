@@ -13,6 +13,7 @@ from .estimate import Estimate as Estimate
 from .transfer import Transfer as Transfer
 from .sales_order import SalesOrder as SalesOrder
 from .service_item import ServiceItem as ServiceItem
+from .journal_entry import JournalEntry as JournalEntry
 from .sales_receipt import SalesReceipt as SalesReceipt
 from .standard_term import StandardTerm as StandardTerm
 from .inventory_item import InventoryItem as InventoryItem
@@ -59,6 +60,7 @@ from .inventory_assembly_item import InventoryAssemblyItem as InventoryAssemblyI
 from .sales_order_list_params import SalesOrderListParams as SalesOrderListParams
 from .bill_credit_card_payment import BillCreditCardPayment as BillCreditCardPayment
 from .service_item_list_params import ServiceItemListParams as ServiceItemListParams
+from .journal_entry_list_params import JournalEntryListParams as JournalEntryListParams
 from .sales_order_create_params import SalesOrderCreateParams as SalesOrderCreateParams
 from .sales_order_update_params import SalesOrderUpdateParams as SalesOrderUpdateParams
 from .sales_receipt_list_params import SalesReceiptListParams as SalesReceiptListParams
@@ -70,6 +72,8 @@ from .sales_tax_code_list_params import SalesTaxCodeListParams as SalesTaxCodeLi
 from .sales_tax_item_list_params import SalesTaxItemListParams as SalesTaxItemListParams
 from .service_item_create_params import ServiceItemCreateParams as ServiceItemCreateParams
 from .service_item_update_params import ServiceItemUpdateParams as ServiceItemUpdateParams
+from .journal_entry_create_params import JournalEntryCreateParams as JournalEntryCreateParams
+from .journal_entry_update_params import JournalEntryUpdateParams as JournalEntryUpdateParams
 from .receive_payment_list_params import ReceivePaymentListParams as ReceivePaymentListParams
 from .sales_receipt_create_params import SalesReceiptCreateParams as SalesReceiptCreateParams
 from .sales_receipt_update_params import SalesReceiptUpdateParams as SalesReceiptUpdateParams
