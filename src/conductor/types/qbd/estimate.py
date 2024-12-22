@@ -6,23 +6,22 @@ from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
+from .address import Address
 from ..._models import BaseModel
+from .custom_field import CustomField
+from .linked_transaction import LinkedTransaction
 
 __all__ = [
     "Estimate",
-    "BillingAddress",
     "Class",
     "Currency",
     "Customer",
     "CustomerMessage",
-    "CustomField",
     "DocumentTemplate",
     "LineGroup",
-    "LineGroupCustomField",
     "LineGroupItemGroup",
     "LineGroupLine",
     "LineGroupLineClass",
-    "LineGroupLineCustomField",
     "LineGroupLineInventorySite",
     "LineGroupLineInventorySiteLocation",
     "LineGroupLineItem",
@@ -31,57 +30,16 @@ __all__ = [
     "LineGroupOverrideUnitOfMeasureSet",
     "Line",
     "LineClass",
-    "LineCustomField",
     "LineInventorySite",
     "LineInventorySiteLocation",
     "LineItem",
     "LineOverrideUnitOfMeasureSet",
     "LineSalesTaxCode",
-    "LinkedTransaction",
     "SalesRepresentative",
     "SalesTaxCode",
     "SalesTaxItem",
-    "ShippingAddress",
     "Terms",
 ]
-
-
-class BillingAddress(BaseModel):
-    city: Optional[str] = None
-    """The city, district, suburb, town, or village name of the address."""
-
-    country: Optional[str] = None
-    """The country name of the address."""
-
-    line1: Optional[str] = None
-    """The first line of the address (e.g., street, PO Box, or company name)."""
-
-    line2: Optional[str] = None
-    """
-    The second line of the address, if needed (e.g., apartment, suite, unit, or
-    building).
-    """
-
-    line3: Optional[str] = None
-    """The third line of the address, if needed."""
-
-    line4: Optional[str] = None
-    """The fourth line of the address, if needed."""
-
-    line5: Optional[str] = None
-    """The fifth line of the address, if needed."""
-
-    note: Optional[str] = None
-    """
-    A note written at the bottom of the address in the form in which it appears,
-    such as the invoice form.
-    """
-
-    postal_code: Optional[str] = FieldInfo(alias="postalCode", default=None)
-    """The postal code or ZIP code of the address."""
-
-    state: Optional[str] = None
-    """The state, county, province, or region name of the address."""
 
 
 class Class(BaseModel):
@@ -148,43 +106,6 @@ class CustomerMessage(BaseModel):
     """
 
 
-class CustomField(BaseModel):
-    name: str
-    """The name of the custom field, unique for the specified `ownerId`.
-
-    For public custom fields, this name is visible as a label in the QuickBooks UI.
-    """
-
-    owner_id: str = FieldInfo(alias="ownerId")
-    """
-    The identifier of the owner of the custom field, which QuickBooks internally
-    calls a "data extension". For public custom fields visible in the UI, such as
-    those added by the QuickBooks user, this is always "0". For private custom
-    fields that are only visible to the application that created them, this is a
-    valid GUID identifying the owning application. Internally, Conductor always
-    fetches all public custom fields (those with an `ownerId` of "0") for all
-    objects.
-    """
-
-    type: Literal[
-        "amount_type",
-        "date_time_type",
-        "integer_type",
-        "percent_type",
-        "price_type",
-        "quantity_type",
-        "string_1024_type",
-        "string_255_type",
-    ]
-    """The data type of this custom field."""
-
-    value: str
-    """The value of this custom field.
-
-    The maximum length depends on the field's data type.
-    """
-
-
 class DocumentTemplate(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks to this object.
@@ -198,43 +119,6 @@ class DocumentTemplate(BaseModel):
     The fully-qualified unique name for this object, formed by combining the names
     of its parent objects with its own `name`, separated by colons. Not
     case-sensitive.
-    """
-
-
-class LineGroupCustomField(BaseModel):
-    name: str
-    """The name of the custom field, unique for the specified `ownerId`.
-
-    For public custom fields, this name is visible as a label in the QuickBooks UI.
-    """
-
-    owner_id: str = FieldInfo(alias="ownerId")
-    """
-    The identifier of the owner of the custom field, which QuickBooks internally
-    calls a "data extension". For public custom fields visible in the UI, such as
-    those added by the QuickBooks user, this is always "0". For private custom
-    fields that are only visible to the application that created them, this is a
-    valid GUID identifying the owning application. Internally, Conductor always
-    fetches all public custom fields (those with an `ownerId` of "0") for all
-    objects.
-    """
-
-    type: Literal[
-        "amount_type",
-        "date_time_type",
-        "integer_type",
-        "percent_type",
-        "price_type",
-        "quantity_type",
-        "string_1024_type",
-        "string_255_type",
-    ]
-    """The data type of this custom field."""
-
-    value: str
-    """The value of this custom field.
-
-    The maximum length depends on the field's data type.
     """
 
 
@@ -267,43 +151,6 @@ class LineGroupLineClass(BaseModel):
     The fully-qualified unique name for this object, formed by combining the names
     of its parent objects with its own `name`, separated by colons. Not
     case-sensitive.
-    """
-
-
-class LineGroupLineCustomField(BaseModel):
-    name: str
-    """The name of the custom field, unique for the specified `ownerId`.
-
-    For public custom fields, this name is visible as a label in the QuickBooks UI.
-    """
-
-    owner_id: str = FieldInfo(alias="ownerId")
-    """
-    The identifier of the owner of the custom field, which QuickBooks internally
-    calls a "data extension". For public custom fields visible in the UI, such as
-    those added by the QuickBooks user, this is always "0". For private custom
-    fields that are only visible to the application that created them, this is a
-    valid GUID identifying the owning application. Internally, Conductor always
-    fetches all public custom fields (those with an `ownerId` of "0") for all
-    objects.
-    """
-
-    type: Literal[
-        "amount_type",
-        "date_time_type",
-        "integer_type",
-        "percent_type",
-        "price_type",
-        "quantity_type",
-        "string_1024_type",
-        "string_255_type",
-    ]
-    """The data type of this custom field."""
-
-    value: str
-    """The value of this custom field.
-
-    The maximum length depends on the field's data type.
     """
 
 
@@ -413,7 +260,7 @@ class LineGroupLine(BaseModel):
     transaction line level.
     """
 
-    custom_fields: List[LineGroupLineCustomField] = FieldInfo(alias="customFields")
+    custom_fields: List[CustomField] = FieldInfo(alias="customFields")
     """
     The custom fields for the estimate line object, added as user-defined data
     extensions, not included in the standard QuickBooks object.
@@ -554,7 +401,7 @@ class LineGroup(BaseModel):
     This ID is unique across all transaction line types.
     """
 
-    custom_fields: List[LineGroupCustomField] = FieldInfo(alias="customFields")
+    custom_fields: List[CustomField] = FieldInfo(alias="customFields")
     """
     The custom fields for the estimate line group object, added as user-defined data
     extensions, not included in the standard QuickBooks object.
@@ -630,43 +477,6 @@ class LineClass(BaseModel):
     The fully-qualified unique name for this object, formed by combining the names
     of its parent objects with its own `name`, separated by colons. Not
     case-sensitive.
-    """
-
-
-class LineCustomField(BaseModel):
-    name: str
-    """The name of the custom field, unique for the specified `ownerId`.
-
-    For public custom fields, this name is visible as a label in the QuickBooks UI.
-    """
-
-    owner_id: str = FieldInfo(alias="ownerId")
-    """
-    The identifier of the owner of the custom field, which QuickBooks internally
-    calls a "data extension". For public custom fields visible in the UI, such as
-    those added by the QuickBooks user, this is always "0". For private custom
-    fields that are only visible to the application that created them, this is a
-    valid GUID identifying the owning application. Internally, Conductor always
-    fetches all public custom fields (those with an `ownerId` of "0") for all
-    objects.
-    """
-
-    type: Literal[
-        "amount_type",
-        "date_time_type",
-        "integer_type",
-        "percent_type",
-        "price_type",
-        "quantity_type",
-        "string_1024_type",
-        "string_255_type",
-    ]
-    """The data type of this custom field."""
-
-    value: str
-    """The value of this custom field.
-
-    The maximum length depends on the field's data type.
     """
 
 
@@ -776,7 +586,7 @@ class Line(BaseModel):
     transaction line level.
     """
 
-    custom_fields: List[LineCustomField] = FieldInfo(alias="customFields")
+    custom_fields: List[CustomField] = FieldInfo(alias="customFields")
     """
     The custom fields for the estimate line object, added as user-defined data
     extensions, not included in the standard QuickBooks object.
@@ -894,71 +704,6 @@ class Line(BaseModel):
     """
 
 
-class LinkedTransaction(BaseModel):
-    id: str
-    """The unique identifier assigned by QuickBooks to this linked transaction.
-
-    This ID is unique across all transaction types.
-    """
-
-    amount: Optional[str] = None
-    """
-    The monetary amount of this linked transaction, represented as a decimal string.
-    """
-
-    link_type: Optional[Literal["amount", "quantity"]] = FieldInfo(alias="linkType", default=None)
-    """
-    Indicates the nature of the link between the transactions: `amount` denotes an
-    amount-based link (e.g., an invoice linked to a payment), and `quantity` denotes
-    a quantity-based link (e.g., an invoice created from a sales order based on the
-    quantity of items received).
-    """
-
-    object_type: Literal["qbd_linked_transaction"] = FieldInfo(alias="objectType")
-    """The type of object. This value is always `"qbd_linked_transaction"`."""
-
-    ref_number: Optional[str] = FieldInfo(alias="refNumber", default=None)
-    """
-    The case-sensitive user-defined reference number for this linked transaction,
-    which can be used to identify the transaction in QuickBooks. This value is not
-    required to be unique and can be arbitrarily changed by the QuickBooks user.
-    """
-
-    transaction_date: date = FieldInfo(alias="transactionDate")
-    """The date of this linked transaction, in ISO 8601 format (YYYY-MM-DD)."""
-
-    transaction_type: Literal[
-        "ar_refund_credit_card",
-        "bill",
-        "bill_payment_check",
-        "bill_payment_credit_card",
-        "build_assembly",
-        "charge",
-        "check",
-        "credit_card_charge",
-        "credit_card_credit",
-        "credit_memo",
-        "deposit",
-        "estimate",
-        "inventory_adjustment",
-        "invoice",
-        "item_receipt",
-        "journal_entry",
-        "liability_adjustment",
-        "paycheck",
-        "payroll_liability_check",
-        "purchase_order",
-        "receive_payment",
-        "sales_order",
-        "sales_receipt",
-        "sales_tax_payment_check",
-        "transfer",
-        "vendor_credit",
-        "ytd_adjustment",
-    ] = FieldInfo(alias="transactionType")
-    """The type of transaction for this linked transaction."""
-
-
 class SalesRepresentative(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks to this object.
@@ -1007,44 +752,6 @@ class SalesTaxItem(BaseModel):
     """
 
 
-class ShippingAddress(BaseModel):
-    city: Optional[str] = None
-    """The city, district, suburb, town, or village name of the address."""
-
-    country: Optional[str] = None
-    """The country name of the address."""
-
-    line1: Optional[str] = None
-    """The first line of the address (e.g., street, PO Box, or company name)."""
-
-    line2: Optional[str] = None
-    """
-    The second line of the address, if needed (e.g., apartment, suite, unit, or
-    building).
-    """
-
-    line3: Optional[str] = None
-    """The third line of the address, if needed."""
-
-    line4: Optional[str] = None
-    """The fourth line of the address, if needed."""
-
-    line5: Optional[str] = None
-    """The fifth line of the address, if needed."""
-
-    note: Optional[str] = None
-    """
-    A note written at the bottom of the address in the form in which it appears,
-    such as the invoice form.
-    """
-
-    postal_code: Optional[str] = FieldInfo(alias="postalCode", default=None)
-    """The postal code or ZIP code of the address."""
-
-    state: Optional[str] = None
-    """The state, county, province, or region name of the address."""
-
-
 class Terms(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks to this object.
@@ -1068,7 +775,7 @@ class Estimate(BaseModel):
     This ID is unique across all transaction types.
     """
 
-    billing_address: Optional[BillingAddress] = FieldInfo(alias="billingAddress", default=None)
+    billing_address: Optional[Address] = FieldInfo(alias="billingAddress", default=None)
     """The estimate's billing address."""
 
     class_: Optional[Class] = FieldInfo(alias="class", default=None)
@@ -1252,7 +959,7 @@ class Estimate(BaseModel):
     accounting implications.
     """
 
-    shipping_address: Optional[ShippingAddress] = FieldInfo(alias="shippingAddress", default=None)
+    shipping_address: Optional[Address] = FieldInfo(alias="shippingAddress", default=None)
     """The estimate's shipping address."""
 
     subtotal: Optional[str] = None
