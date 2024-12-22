@@ -53,7 +53,6 @@ from conductor.types.qbd import (
     ItemLine,
     LinkedTransaction,
     ReceivableTransaction,
-    SalesOrderLine,
 )
 ```
 
