@@ -309,10 +309,10 @@ class SalesTaxItemsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SyncCursorPage[SalesTaxItem]:
-        """
-        Returns a list of sales-tax items.
+        """Returns a list of sales-tax items.
 
-        Use the `cursor` parameter to paginate through the results.
+        Use the `cursor` parameter to paginate
+        through the results.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
@@ -693,10 +693,10 @@ class AsyncSalesTaxItemsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AsyncPaginator[SalesTaxItem, AsyncCursorPage[SalesTaxItem]]:
-        """
-        Returns a list of sales-tax items.
+        """Returns a list of sales-tax items.
 
-        Use the `cursor` parameter to paginate through the results.
+        Use the `cursor` parameter to paginate
+        through the results.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,

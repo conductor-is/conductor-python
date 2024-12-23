@@ -383,10 +383,10 @@ class ReceivePaymentsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SyncCursorPage[ReceivePayment]:
-        """
-        Returns a list of receive-payments.
+        """Returns a list of receive-payments.
 
-        Use the `cursor` parameter to paginate through the results.
+        Use the `cursor` parameter to paginate
+        through the results.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
@@ -860,10 +860,10 @@ class AsyncReceivePaymentsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AsyncPaginator[ReceivePayment, AsyncCursorPage[ReceivePayment]]:
-        """
-        Returns a list of receive-payments.
+        """Returns a list of receive-payments.
 
-        Use the `cursor` parameter to paginate through the results.
+        Use the `cursor` parameter to paginate
+        through the results.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
