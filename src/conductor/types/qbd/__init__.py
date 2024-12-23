@@ -7,15 +7,11 @@ from .check import Check as Check
 from .class_ import Class as Class
 from .vendor import Vendor as Vendor
 from .account import Account as Account
-from .address import Address as Address
 from .invoice import Invoice as Invoice
 from .customer import Customer as Customer
 from .estimate import Estimate as Estimate
 from .transfer import Transfer as Transfer
-from .item_line import ItemLine as ItemLine
 from .sales_order import SalesOrder as SalesOrder
-from .custom_field import CustomField as CustomField
-from .expense_line import ExpenseLine as ExpenseLine
 from .service_item import ServiceItem as ServiceItem
 from .journal_entry import JournalEntry as JournalEntry
 from .sales_receipt import SalesReceipt as SalesReceipt
@@ -25,7 +21,6 @@ from .inventory_site import InventorySite as InventorySite
 from .purchase_order import PurchaseOrder as PurchaseOrder
 from .sales_tax_code import SalesTaxCode as SalesTaxCode
 from .sales_tax_item import SalesTaxItem as SalesTaxItem
-from .item_group_line import ItemGroupLine as ItemGroupLine
 from .receive_payment import ReceivePayment as ReceivePayment
 from .bill_list_params import BillListParams as BillListParams
 from .date_driven_term import DateDrivenTerm as DateDrivenTerm
@@ -36,7 +31,6 @@ from .bill_create_params import BillCreateParams as BillCreateParams
 from .bill_update_params import BillUpdateParams as BillUpdateParams
 from .credit_card_charge import CreditCardCharge as CreditCardCharge
 from .credit_card_credit import CreditCardCredit as CreditCardCredit
-from .linked_transaction import LinkedTransaction as LinkedTransaction
 from .non_inventory_item import NonInventoryItem as NonInventoryItem
 from .vendor_list_params import VendorListParams as VendorListParams
 from .account_list_params import AccountListParams as AccountListParams
@@ -46,7 +40,6 @@ from .class_create_params import ClassCreateParams as ClassCreateParams
 from .class_list_response import ClassListResponse as ClassListResponse
 from .class_update_params import ClassUpdateParams as ClassUpdateParams
 from .invoice_list_params import InvoiceListParams as InvoiceListParams
-from .custom_contact_field import CustomContactField as CustomContactField
 from .customer_list_params import CustomerListParams as CustomerListParams
 from .estimate_list_params import EstimateListParams as EstimateListParams
 from .transfer_list_params import TransferListParams as TransferListParams
@@ -61,10 +54,8 @@ from .customer_create_params import CustomerCreateParams as CustomerCreateParams
 from .customer_update_params import CustomerUpdateParams as CustomerUpdateParams
 from .estimate_create_params import EstimateCreateParams as EstimateCreateParams
 from .estimate_update_params import EstimateUpdateParams as EstimateUpdateParams
-from .receivable_transaction import ReceivableTransaction as ReceivableTransaction
 from .transfer_create_params import TransferCreateParams as TransferCreateParams
 from .transfer_update_params import TransferUpdateParams as TransferUpdateParams
-from .credit_card_transaction import CreditCardTransaction as CreditCardTransaction
 from .inventory_assembly_item import InventoryAssemblyItem as InventoryAssemblyItem
 from .sales_order_list_params import SalesOrderListParams as SalesOrderListParams
 from .bill_credit_card_payment import BillCreditCardPayment as BillCreditCardPayment
@@ -109,14 +100,12 @@ from .credit_card_credit_list_params import CreditCardCreditListParams as Credit
 from .date_driven_term_create_params import DateDrivenTermCreateParams as DateDrivenTermCreateParams
 from .date_driven_term_list_response import DateDrivenTermListResponse as DateDrivenTermListResponse
 from .non_inventory_item_list_params import NonInventoryItemListParams as NonInventoryItemListParams
-from .credit_card_transaction_request import CreditCardTransactionRequest as CreditCardTransactionRequest
 from .bill_check_payment_create_params import BillCheckPaymentCreateParams as BillCheckPaymentCreateParams
 from .bill_check_payment_update_params import BillCheckPaymentUpdateParams as BillCheckPaymentUpdateParams
 from .credit_card_charge_create_params import CreditCardChargeCreateParams as CreditCardChargeCreateParams
 from .credit_card_charge_update_params import CreditCardChargeUpdateParams as CreditCardChargeUpdateParams
 from .credit_card_credit_create_params import CreditCardCreditCreateParams as CreditCardCreditCreateParams
 from .credit_card_credit_update_params import CreditCardCreditUpdateParams as CreditCardCreditUpdateParams
-from .credit_card_transaction_response import CreditCardTransactionResponse as CreditCardTransactionResponse
 from .non_inventory_item_create_params import NonInventoryItemCreateParams as NonInventoryItemCreateParams
 from .non_inventory_item_update_params import NonInventoryItemUpdateParams as NonInventoryItemUpdateParams
 from .inventory_assembly_item_list_params import InventoryAssemblyItemListParams as InventoryAssemblyItemListParams
