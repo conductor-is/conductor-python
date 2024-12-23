@@ -517,10 +517,10 @@ class PurchaseOrdersResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SyncCursorPage[PurchaseOrder]:
-        """
-        Returns a list of purchase orders.
+        """Returns a list of purchase orders.
 
-        Use the `cursor` parameter to paginate through the results.
+        Use the `cursor` parameter to paginate
+        through the results.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
@@ -1132,10 +1132,10 @@ class AsyncPurchaseOrdersResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AsyncPaginator[PurchaseOrder, AsyncCursorPage[PurchaseOrder]]:
-        """
-        Returns a list of purchase orders.
+        """Returns a list of purchase orders.
 
-        Use the `cursor` parameter to paginate through the results.
+        Use the `cursor` parameter to paginate
+        through the results.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,

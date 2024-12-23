@@ -178,11 +178,11 @@ class StandardTermsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> StandardTermListResponse:
-        """
-        Returns a list of standard terms.
+        """Returns a list of standard terms.
 
-        NOTE: QuickBooks Desktop does not support pagination for standard terms; hence,
-        there is no `cursor` parameter. Users typically have few standard terms.
+        NOTE: QuickBooks Desktop does not support
+        pagination for standard terms; hence, there is no `cursor` parameter. Users
+        typically have few standard terms.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
@@ -423,11 +423,11 @@ class AsyncStandardTermsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> StandardTermListResponse:
-        """
-        Returns a list of standard terms.
+        """Returns a list of standard terms.
 
-        NOTE: QuickBooks Desktop does not support pagination for standard terms; hence,
-        there is no `cursor` parameter. Users typically have few standard terms.
+        NOTE: QuickBooks Desktop does not support
+        pagination for standard terms; hence, there is no `cursor` parameter. Users
+        typically have few standard terms.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,

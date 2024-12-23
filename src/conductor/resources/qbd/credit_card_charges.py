@@ -367,10 +367,10 @@ class CreditCardChargesResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SyncCursorPage[CreditCardCharge]:
-        """
-        Returns a list of credit card charges.
+        """Returns a list of credit card charges.
 
-        Use the `cursor` parameter to paginate through the results.
+        Use the `cursor` parameter to paginate
+        through the results.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
@@ -827,10 +827,10 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AsyncPaginator[CreditCardCharge, AsyncCursorPage[CreditCardCharge]]:
-        """
-        Returns a list of credit card charges.
+        """Returns a list of credit card charges.
 
-        Use the `cursor` parameter to paginate through the results.
+        Use the `cursor` parameter to paginate
+        through the results.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
