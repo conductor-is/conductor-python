@@ -335,10 +335,10 @@ class BillCheckPaymentsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SyncCursorPage[BillCheckPayment]:
-        """
-        Returns a list of bill check payments.
+        """Returns a list of bill check payments.
 
-        Use the `cursor` parameter to paginate through the results.
+        Use the `cursor` parameter to paginate
+        through the results.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
@@ -760,10 +760,10 @@ class AsyncBillCheckPaymentsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AsyncPaginator[BillCheckPayment, AsyncCursorPage[BillCheckPayment]]:
-        """
-        Returns a list of bill check payments.
+        """Returns a list of bill check payments.
 
-        Use the `cursor` parameter to paginate through the results.
+        Use the `cursor` parameter to paginate
+        through the results.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
