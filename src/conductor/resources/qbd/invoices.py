@@ -601,10 +601,10 @@ class InvoicesResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SyncCursorPage[Invoice]:
-        """
-        Returns a list of invoices.
+        """Returns a list of invoices.
 
-        Use the `cursor` parameter to paginate through the results.
+        Use the `cursor` parameter to paginate through the
+        results.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
@@ -1300,10 +1300,10 @@ class AsyncInvoicesResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AsyncPaginator[Invoice, AsyncCursorPage[Invoice]]:
-        """
-        Returns a list of invoices.
+        """Returns a list of invoices.
 
-        Use the `cursor` parameter to paginate through the results.
+        Use the `cursor` parameter to paginate through the
+        results.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,

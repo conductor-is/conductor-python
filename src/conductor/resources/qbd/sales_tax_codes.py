@@ -264,11 +264,11 @@ class SalesTaxCodesResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SalesTaxCodeListResponse:
-        """
-        Returns a list of sales-tax codes.
+        """Returns a list of sales-tax codes.
 
-        NOTE: QuickBooks Desktop does not support pagination for sales-tax codes; hence,
-        there is no `cursor` parameter. Users typically have few sales-tax codes.
+        NOTE: QuickBooks Desktop does not support
+        pagination for sales-tax codes; hence, there is no `cursor` parameter. Users
+        typically have few sales-tax codes.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
@@ -595,11 +595,11 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SalesTaxCodeListResponse:
-        """
-        Returns a list of sales-tax codes.
+        """Returns a list of sales-tax codes.
 
-        NOTE: QuickBooks Desktop does not support pagination for sales-tax codes; hence,
-        there is no `cursor` parameter. Users typically have few sales-tax codes.
+        NOTE: QuickBooks Desktop does not support
+        pagination for sales-tax codes; hence, there is no `cursor` parameter. Users
+        typically have few sales-tax codes.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,

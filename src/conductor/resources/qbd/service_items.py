@@ -357,10 +357,10 @@ class ServiceItemsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SyncCursorPage[ServiceItem]:
-        """
-        Returns a list of service items.
+        """Returns a list of service items.
 
-        Use the `cursor` parameter to paginate through the results.
+        Use the `cursor` parameter to paginate through
+        the results.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
@@ -792,10 +792,10 @@ class AsyncServiceItemsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AsyncPaginator[ServiceItem, AsyncCursorPage[ServiceItem]]:
-        """
-        Returns a list of service items.
+        """Returns a list of service items.
 
-        Use the `cursor` parameter to paginate through the results.
+        Use the `cursor` parameter to paginate through
+        the results.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,

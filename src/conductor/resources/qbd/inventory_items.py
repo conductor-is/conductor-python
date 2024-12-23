@@ -465,10 +465,10 @@ class InventoryItemsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SyncCursorPage[InventoryItem]:
-        """
-        Returns a list of inventory items.
+        """Returns a list of inventory items.
 
-        Use the `cursor` parameter to paginate through the results.
+        Use the `cursor` parameter to paginate
+        through the results.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
@@ -1019,10 +1019,10 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AsyncPaginator[InventoryItem, AsyncCursorPage[InventoryItem]]:
-        """
-        Returns a list of inventory items.
+        """Returns a list of inventory items.
 
-        Use the `cursor` parameter to paginate through the results.
+        Use the `cursor` parameter to paginate
+        through the results.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,

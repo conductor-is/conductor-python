@@ -686,10 +686,10 @@ class CustomersResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SyncCursorPage[Customer]:
-        """
-        Returns a list of customers.
+        """Returns a list of customers.
 
-        Use the `cursor` parameter to paginate through the results.
+        Use the `cursor` parameter to paginate through the
+        results.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
@@ -1475,10 +1475,10 @@ class AsyncCustomersResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AsyncPaginator[Customer, AsyncCursorPage[Customer]]:
-        """
-        Returns a list of customers.
+        """Returns a list of customers.
 
-        Use the `cursor` parameter to paginate through the results.
+        Use the `cursor` parameter to paginate through the
+        results.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,

@@ -489,10 +489,10 @@ class EstimatesResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SyncCursorPage[Estimate]:
-        """
-        Returns a list of estimates.
+        """Returns a list of estimates.
 
-        Use the `cursor` parameter to paginate through the results.
+        Use the `cursor` parameter to paginate through the
+        results.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
@@ -1074,10 +1074,10 @@ class AsyncEstimatesResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AsyncPaginator[Estimate, AsyncCursorPage[Estimate]]:
-        """
-        Returns a list of estimates.
+        """Returns a list of estimates.
 
-        Use the `cursor` parameter to paginate through the results.
+        Use the `cursor` parameter to paginate through the
+        results.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
