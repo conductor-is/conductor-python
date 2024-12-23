@@ -6,23 +6,30 @@ from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
-from .address import Address
 from ..._models import BaseModel
-from .custom_field import CustomField
-from .credit_card_transaction import CreditCardTransaction
 
 __all__ = [
     "SalesReceipt",
+    "BillingAddress",
     "Class",
+    "CreditCardTransaction",
+    "CreditCardTransactionRequest",
+    "CreditCardTransactionResponse",
     "Currency",
     "Customer",
     "CustomerMessage",
+    "CustomField",
     "DepositToAccount",
     "DocumentTemplate",
     "LineGroup",
+    "LineGroupCustomField",
     "LineGroupItemGroup",
     "LineGroupLine",
     "LineGroupLineClass",
+    "LineGroupLineCreditCardTransaction",
+    "LineGroupLineCreditCardTransactionRequest",
+    "LineGroupLineCreditCardTransactionResponse",
+    "LineGroupLineCustomField",
     "LineGroupLineInventorySite",
     "LineGroupLineInventorySiteLocation",
     "LineGroupLineItem",
@@ -31,6 +38,10 @@ __all__ = [
     "LineGroupOverrideUnitOfMeasureSet",
     "Line",
     "LineClass",
+    "LineCreditCardTransaction",
+    "LineCreditCardTransactionRequest",
+    "LineCreditCardTransactionResponse",
+    "LineCustomField",
     "LineInventorySite",
     "LineInventorySiteLocation",
     "LineItem",
@@ -40,8 +51,47 @@ __all__ = [
     "SalesRepresentative",
     "SalesTaxCode",
     "SalesTaxItem",
+    "ShippingAddress",
     "ShippingMethod",
 ]
+
+
+class BillingAddress(BaseModel):
+    city: Optional[str] = None
+    """The city, district, suburb, town, or village name of the address."""
+
+    country: Optional[str] = None
+    """The country name of the address."""
+
+    line1: Optional[str] = None
+    """The first line of the address (e.g., street, PO Box, or company name)."""
+
+    line2: Optional[str] = None
+    """
+    The second line of the address, if needed (e.g., apartment, suite, unit, or
+    building).
+    """
+
+    line3: Optional[str] = None
+    """The third line of the address, if needed."""
+
+    line4: Optional[str] = None
+    """The fourth line of the address, if needed."""
+
+    line5: Optional[str] = None
+    """The fifth line of the address, if needed."""
+
+    note: Optional[str] = None
+    """
+    A note written at the bottom of the address in the form in which it appears,
+    such as the invoice form.
+    """
+
+    postal_code: Optional[str] = FieldInfo(alias="postalCode", default=None)
+    """The postal code or ZIP code of the address."""
+
+    state: Optional[str] = None
+    """The state, county, province, or region name of the address."""
 
 
 class Class(BaseModel):
@@ -57,6 +107,151 @@ class Class(BaseModel):
     The fully-qualified unique name for this object, formed by combining the names
     of its parent objects with its own `name`, separated by colons. Not
     case-sensitive.
+    """
+
+
+class CreditCardTransactionRequest(BaseModel):
+    address: Optional[str] = None
+    """The card's billing address."""
+
+    commercial_card_code: Optional[str] = FieldInfo(alias="commercialCardCode", default=None)
+    """
+    The commercial card code identifies the type of business credit card being used
+    (purchase, corporate, or business) for Visa and Mastercard transactions only.
+    When provided, this code may qualify the transaction for lower processing fees
+    compared to the standard rates that apply when no code is specified.
+    """
+
+    expiration_month: float = FieldInfo(alias="expirationMonth")
+    """The month when the credit card expires."""
+
+    expiration_year: float = FieldInfo(alias="expirationYear")
+    """The year when the credit card expires."""
+
+    name: str
+    """The cardholder's name on the card."""
+
+    number: str
+    """The credit card number. Must be masked with lower case "x" and no dashes."""
+
+    postal_code: Optional[str] = FieldInfo(alias="postalCode", default=None)
+    """The card's billing address ZIP or postal code."""
+
+    transaction_mode: Optional[Literal["card_not_present", "card_present"]] = FieldInfo(
+        alias="transactionMode", default=None
+    )
+    """
+    Indicates whether this credit card transaction came from a card swipe
+    (`card_present`) or not (`card_not_present`).
+    """
+
+    transaction_type: Optional[Literal["authorization", "capture", "charge", "refund", "voice_authorization"]] = (
+        FieldInfo(alias="transactionType", default=None)
+    )
+    """The QBMS transaction type from which the current transaction data originated."""
+
+
+class CreditCardTransactionResponse(BaseModel):
+    authorization_code: Optional[str] = FieldInfo(alias="authorizationCode", default=None)
+    """
+    The authorization code returned from the credit card processor to indicate that
+    this charge will be paid by the card issuer.
+    """
+
+    avs_street_status: Optional[Literal["fail", "not_available", "pass"]] = FieldInfo(
+        alias="avsStreetStatus", default=None
+    )
+    """
+    Indicates whether the street address supplied in the transaction request matches
+    the customer's address on file at the card issuer.
+    """
+
+    avs_zip_status: Optional[Literal["fail", "not_available", "pass"]] = FieldInfo(alias="avsZipStatus", default=None)
+    """
+    Indicates whether the customer postal ZIP code supplied in the transaction
+    request matches the customer's postal code recognized at the card issuer.
+    """
+
+    card_security_code_match: Optional[Literal["fail", "not_available", "pass"]] = FieldInfo(
+        alias="cardSecurityCodeMatch", default=None
+    )
+    """
+    Indicates whether the card security code supplied in the transaction request
+    matches the card security code recognized for that credit card number at the
+    card issuer.
+    """
+
+    client_transaction_id: Optional[str] = FieldInfo(alias="clientTransactionId", default=None)
+    """
+    A value returned from QBMS transactions for future use by the QuickBooks
+    Reconciliation feature.
+    """
+
+    credit_card_transaction_id: str = FieldInfo(alias="creditCardTransactionId")
+    """
+    The ID returned from the credit card processor for this credit card transaction.
+    """
+
+    merchant_account_number: str = FieldInfo(alias="merchantAccountNumber")
+    """
+    The QBMS account number of the merchant who is running this transaction using
+    the customer's credit card.
+    """
+
+    payment_grouping_code: Optional[float] = FieldInfo(alias="paymentGroupingCode", default=None)
+    """
+    An internal code returned by QuickBooks Merchant Services (QBMS) from the
+    transaction request, needed for the QuickBooks reconciliation feature.
+    """
+
+    payment_status: Literal["completed", "unknown"] = FieldInfo(alias="paymentStatus")
+    """
+    Indicates whether this credit card transaction is known to have been
+    successfully processed by the card issuer.
+    """
+
+    recon_batch_id: Optional[str] = FieldInfo(alias="reconBatchId", default=None)
+    """
+    An internal ID returned by QuickBooks Merchant Services (QBMS) from the
+    transaction request, needed for the QuickBooks reconciliation feature.
+    """
+
+    status_code: float = FieldInfo(alias="statusCode")
+    """
+    The status code returned in the original QBMS transaction response for this
+    credit card transaction.
+    """
+
+    status_message: str = FieldInfo(alias="statusMessage")
+    """
+    The status message returned in the original QBMS transaction response for this
+    credit card transaction.
+    """
+
+    transaction_authorization_stamp: Optional[float] = FieldInfo(alias="transactionAuthorizationStamp", default=None)
+    """
+    An internal value for this credit card transaction, needed for the QuickBooks
+    reconciliation feature.
+    """
+
+    transaction_authorized_at: str = FieldInfo(alias="transactionAuthorizedAt")
+    """
+    The date and time when the credit card processor authorized this credit card
+    transaction.
+    """
+
+
+class CreditCardTransaction(BaseModel):
+    request: Optional[CreditCardTransactionRequest] = None
+    """
+    The transaction request data originally supplied for this credit card
+    transaction when using QuickBooks Merchant Services (QBMS).
+    """
+
+    response: Optional[CreditCardTransactionResponse] = None
+    """
+    The transaction response data for this credit card transaction when using
+    QuickBooks Merchant Services (QBMS).
     """
 
 
@@ -108,6 +303,43 @@ class CustomerMessage(BaseModel):
     """
 
 
+class CustomField(BaseModel):
+    name: str
+    """The name of the custom field, unique for the specified `ownerId`.
+
+    For public custom fields, this name is visible as a label in the QuickBooks UI.
+    """
+
+    owner_id: str = FieldInfo(alias="ownerId")
+    """
+    The identifier of the owner of the custom field, which QuickBooks internally
+    calls a "data extension". For public custom fields visible in the UI, such as
+    those added by the QuickBooks user, this is always "0". For private custom
+    fields that are only visible to the application that created them, this is a
+    valid GUID identifying the owning application. Internally, Conductor always
+    fetches all public custom fields (those with an `ownerId` of "0") for all
+    objects.
+    """
+
+    type: Literal[
+        "amount_type",
+        "date_time_type",
+        "integer_type",
+        "percent_type",
+        "price_type",
+        "quantity_type",
+        "string_1024_type",
+        "string_255_type",
+    ]
+    """The data type of this custom field."""
+
+    value: str
+    """The value of this custom field.
+
+    The maximum length depends on the field's data type.
+    """
+
+
 class DepositToAccount(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks to this object.
@@ -140,6 +372,43 @@ class DocumentTemplate(BaseModel):
     """
 
 
+class LineGroupCustomField(BaseModel):
+    name: str
+    """The name of the custom field, unique for the specified `ownerId`.
+
+    For public custom fields, this name is visible as a label in the QuickBooks UI.
+    """
+
+    owner_id: str = FieldInfo(alias="ownerId")
+    """
+    The identifier of the owner of the custom field, which QuickBooks internally
+    calls a "data extension". For public custom fields visible in the UI, such as
+    those added by the QuickBooks user, this is always "0". For private custom
+    fields that are only visible to the application that created them, this is a
+    valid GUID identifying the owning application. Internally, Conductor always
+    fetches all public custom fields (those with an `ownerId` of "0") for all
+    objects.
+    """
+
+    type: Literal[
+        "amount_type",
+        "date_time_type",
+        "integer_type",
+        "percent_type",
+        "price_type",
+        "quantity_type",
+        "string_1024_type",
+        "string_255_type",
+    ]
+    """The data type of this custom field."""
+
+    value: str
+    """The value of this custom field.
+
+    The maximum length depends on the field's data type.
+    """
+
+
 class LineGroupItemGroup(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks to this object.
@@ -169,6 +438,188 @@ class LineGroupLineClass(BaseModel):
     The fully-qualified unique name for this object, formed by combining the names
     of its parent objects with its own `name`, separated by colons. Not
     case-sensitive.
+    """
+
+
+class LineGroupLineCreditCardTransactionRequest(BaseModel):
+    address: Optional[str] = None
+    """The card's billing address."""
+
+    commercial_card_code: Optional[str] = FieldInfo(alias="commercialCardCode", default=None)
+    """
+    The commercial card code identifies the type of business credit card being used
+    (purchase, corporate, or business) for Visa and Mastercard transactions only.
+    When provided, this code may qualify the transaction for lower processing fees
+    compared to the standard rates that apply when no code is specified.
+    """
+
+    expiration_month: float = FieldInfo(alias="expirationMonth")
+    """The month when the credit card expires."""
+
+    expiration_year: float = FieldInfo(alias="expirationYear")
+    """The year when the credit card expires."""
+
+    name: str
+    """The cardholder's name on the card."""
+
+    number: str
+    """The credit card number. Must be masked with lower case "x" and no dashes."""
+
+    postal_code: Optional[str] = FieldInfo(alias="postalCode", default=None)
+    """The card's billing address ZIP or postal code."""
+
+    transaction_mode: Optional[Literal["card_not_present", "card_present"]] = FieldInfo(
+        alias="transactionMode", default=None
+    )
+    """
+    Indicates whether this credit card transaction came from a card swipe
+    (`card_present`) or not (`card_not_present`).
+    """
+
+    transaction_type: Optional[Literal["authorization", "capture", "charge", "refund", "voice_authorization"]] = (
+        FieldInfo(alias="transactionType", default=None)
+    )
+    """The QBMS transaction type from which the current transaction data originated."""
+
+
+class LineGroupLineCreditCardTransactionResponse(BaseModel):
+    authorization_code: Optional[str] = FieldInfo(alias="authorizationCode", default=None)
+    """
+    The authorization code returned from the credit card processor to indicate that
+    this charge will be paid by the card issuer.
+    """
+
+    avs_street_status: Optional[Literal["fail", "not_available", "pass"]] = FieldInfo(
+        alias="avsStreetStatus", default=None
+    )
+    """
+    Indicates whether the street address supplied in the transaction request matches
+    the customer's address on file at the card issuer.
+    """
+
+    avs_zip_status: Optional[Literal["fail", "not_available", "pass"]] = FieldInfo(alias="avsZipStatus", default=None)
+    """
+    Indicates whether the customer postal ZIP code supplied in the transaction
+    request matches the customer's postal code recognized at the card issuer.
+    """
+
+    card_security_code_match: Optional[Literal["fail", "not_available", "pass"]] = FieldInfo(
+        alias="cardSecurityCodeMatch", default=None
+    )
+    """
+    Indicates whether the card security code supplied in the transaction request
+    matches the card security code recognized for that credit card number at the
+    card issuer.
+    """
+
+    client_transaction_id: Optional[str] = FieldInfo(alias="clientTransactionId", default=None)
+    """
+    A value returned from QBMS transactions for future use by the QuickBooks
+    Reconciliation feature.
+    """
+
+    credit_card_transaction_id: str = FieldInfo(alias="creditCardTransactionId")
+    """
+    The ID returned from the credit card processor for this credit card transaction.
+    """
+
+    merchant_account_number: str = FieldInfo(alias="merchantAccountNumber")
+    """
+    The QBMS account number of the merchant who is running this transaction using
+    the customer's credit card.
+    """
+
+    payment_grouping_code: Optional[float] = FieldInfo(alias="paymentGroupingCode", default=None)
+    """
+    An internal code returned by QuickBooks Merchant Services (QBMS) from the
+    transaction request, needed for the QuickBooks reconciliation feature.
+    """
+
+    payment_status: Literal["completed", "unknown"] = FieldInfo(alias="paymentStatus")
+    """
+    Indicates whether this credit card transaction is known to have been
+    successfully processed by the card issuer.
+    """
+
+    recon_batch_id: Optional[str] = FieldInfo(alias="reconBatchId", default=None)
+    """
+    An internal ID returned by QuickBooks Merchant Services (QBMS) from the
+    transaction request, needed for the QuickBooks reconciliation feature.
+    """
+
+    status_code: float = FieldInfo(alias="statusCode")
+    """
+    The status code returned in the original QBMS transaction response for this
+    credit card transaction.
+    """
+
+    status_message: str = FieldInfo(alias="statusMessage")
+    """
+    The status message returned in the original QBMS transaction response for this
+    credit card transaction.
+    """
+
+    transaction_authorization_stamp: Optional[float] = FieldInfo(alias="transactionAuthorizationStamp", default=None)
+    """
+    An internal value for this credit card transaction, needed for the QuickBooks
+    reconciliation feature.
+    """
+
+    transaction_authorized_at: str = FieldInfo(alias="transactionAuthorizedAt")
+    """
+    The date and time when the credit card processor authorized this credit card
+    transaction.
+    """
+
+
+class LineGroupLineCreditCardTransaction(BaseModel):
+    request: Optional[LineGroupLineCreditCardTransactionRequest] = None
+    """
+    The transaction request data originally supplied for this credit card
+    transaction when using QuickBooks Merchant Services (QBMS).
+    """
+
+    response: Optional[LineGroupLineCreditCardTransactionResponse] = None
+    """
+    The transaction response data for this credit card transaction when using
+    QuickBooks Merchant Services (QBMS).
+    """
+
+
+class LineGroupLineCustomField(BaseModel):
+    name: str
+    """The name of the custom field, unique for the specified `ownerId`.
+
+    For public custom fields, this name is visible as a label in the QuickBooks UI.
+    """
+
+    owner_id: str = FieldInfo(alias="ownerId")
+    """
+    The identifier of the owner of the custom field, which QuickBooks internally
+    calls a "data extension". For public custom fields visible in the UI, such as
+    those added by the QuickBooks user, this is always "0". For private custom
+    fields that are only visible to the application that created them, this is a
+    valid GUID identifying the owning application. Internally, Conductor always
+    fetches all public custom fields (those with an `ownerId` of "0") for all
+    objects.
+    """
+
+    type: Literal[
+        "amount_type",
+        "date_time_type",
+        "integer_type",
+        "percent_type",
+        "price_type",
+        "quantity_type",
+        "string_1024_type",
+        "string_255_type",
+    ]
+    """The data type of this custom field."""
+
+    value: str
+    """The value of this custom field.
+
+    The maximum length depends on the field's data type.
     """
 
 
@@ -278,13 +729,15 @@ class LineGroupLine(BaseModel):
     transaction line level.
     """
 
-    credit_card_transaction: Optional[CreditCardTransaction] = FieldInfo(alias="creditCardTransaction", default=None)
+    credit_card_transaction: Optional[LineGroupLineCreditCardTransaction] = FieldInfo(
+        alias="creditCardTransaction", default=None
+    )
     """
     The credit card transaction data for this sales receipt line's payment when
     using QuickBooks Merchant Services (QBMS).
     """
 
-    custom_fields: List[CustomField] = FieldInfo(alias="customFields")
+    custom_fields: List[LineGroupLineCustomField] = FieldInfo(alias="customFields")
     """
     The custom fields for the sales receipt line object, added as user-defined data
     extensions, not included in the standard QuickBooks object.
@@ -441,7 +894,7 @@ class LineGroup(BaseModel):
     This ID is unique across all transaction line types.
     """
 
-    custom_fields: List[CustomField] = FieldInfo(alias="customFields")
+    custom_fields: List[LineGroupCustomField] = FieldInfo(alias="customFields")
     """
     The custom fields for the sales receipt line group object, added as user-defined
     data extensions, not included in the standard QuickBooks object.
@@ -517,6 +970,188 @@ class LineClass(BaseModel):
     The fully-qualified unique name for this object, formed by combining the names
     of its parent objects with its own `name`, separated by colons. Not
     case-sensitive.
+    """
+
+
+class LineCreditCardTransactionRequest(BaseModel):
+    address: Optional[str] = None
+    """The card's billing address."""
+
+    commercial_card_code: Optional[str] = FieldInfo(alias="commercialCardCode", default=None)
+    """
+    The commercial card code identifies the type of business credit card being used
+    (purchase, corporate, or business) for Visa and Mastercard transactions only.
+    When provided, this code may qualify the transaction for lower processing fees
+    compared to the standard rates that apply when no code is specified.
+    """
+
+    expiration_month: float = FieldInfo(alias="expirationMonth")
+    """The month when the credit card expires."""
+
+    expiration_year: float = FieldInfo(alias="expirationYear")
+    """The year when the credit card expires."""
+
+    name: str
+    """The cardholder's name on the card."""
+
+    number: str
+    """The credit card number. Must be masked with lower case "x" and no dashes."""
+
+    postal_code: Optional[str] = FieldInfo(alias="postalCode", default=None)
+    """The card's billing address ZIP or postal code."""
+
+    transaction_mode: Optional[Literal["card_not_present", "card_present"]] = FieldInfo(
+        alias="transactionMode", default=None
+    )
+    """
+    Indicates whether this credit card transaction came from a card swipe
+    (`card_present`) or not (`card_not_present`).
+    """
+
+    transaction_type: Optional[Literal["authorization", "capture", "charge", "refund", "voice_authorization"]] = (
+        FieldInfo(alias="transactionType", default=None)
+    )
+    """The QBMS transaction type from which the current transaction data originated."""
+
+
+class LineCreditCardTransactionResponse(BaseModel):
+    authorization_code: Optional[str] = FieldInfo(alias="authorizationCode", default=None)
+    """
+    The authorization code returned from the credit card processor to indicate that
+    this charge will be paid by the card issuer.
+    """
+
+    avs_street_status: Optional[Literal["fail", "not_available", "pass"]] = FieldInfo(
+        alias="avsStreetStatus", default=None
+    )
+    """
+    Indicates whether the street address supplied in the transaction request matches
+    the customer's address on file at the card issuer.
+    """
+
+    avs_zip_status: Optional[Literal["fail", "not_available", "pass"]] = FieldInfo(alias="avsZipStatus", default=None)
+    """
+    Indicates whether the customer postal ZIP code supplied in the transaction
+    request matches the customer's postal code recognized at the card issuer.
+    """
+
+    card_security_code_match: Optional[Literal["fail", "not_available", "pass"]] = FieldInfo(
+        alias="cardSecurityCodeMatch", default=None
+    )
+    """
+    Indicates whether the card security code supplied in the transaction request
+    matches the card security code recognized for that credit card number at the
+    card issuer.
+    """
+
+    client_transaction_id: Optional[str] = FieldInfo(alias="clientTransactionId", default=None)
+    """
+    A value returned from QBMS transactions for future use by the QuickBooks
+    Reconciliation feature.
+    """
+
+    credit_card_transaction_id: str = FieldInfo(alias="creditCardTransactionId")
+    """
+    The ID returned from the credit card processor for this credit card transaction.
+    """
+
+    merchant_account_number: str = FieldInfo(alias="merchantAccountNumber")
+    """
+    The QBMS account number of the merchant who is running this transaction using
+    the customer's credit card.
+    """
+
+    payment_grouping_code: Optional[float] = FieldInfo(alias="paymentGroupingCode", default=None)
+    """
+    An internal code returned by QuickBooks Merchant Services (QBMS) from the
+    transaction request, needed for the QuickBooks reconciliation feature.
+    """
+
+    payment_status: Literal["completed", "unknown"] = FieldInfo(alias="paymentStatus")
+    """
+    Indicates whether this credit card transaction is known to have been
+    successfully processed by the card issuer.
+    """
+
+    recon_batch_id: Optional[str] = FieldInfo(alias="reconBatchId", default=None)
+    """
+    An internal ID returned by QuickBooks Merchant Services (QBMS) from the
+    transaction request, needed for the QuickBooks reconciliation feature.
+    """
+
+    status_code: float = FieldInfo(alias="statusCode")
+    """
+    The status code returned in the original QBMS transaction response for this
+    credit card transaction.
+    """
+
+    status_message: str = FieldInfo(alias="statusMessage")
+    """
+    The status message returned in the original QBMS transaction response for this
+    credit card transaction.
+    """
+
+    transaction_authorization_stamp: Optional[float] = FieldInfo(alias="transactionAuthorizationStamp", default=None)
+    """
+    An internal value for this credit card transaction, needed for the QuickBooks
+    reconciliation feature.
+    """
+
+    transaction_authorized_at: str = FieldInfo(alias="transactionAuthorizedAt")
+    """
+    The date and time when the credit card processor authorized this credit card
+    transaction.
+    """
+
+
+class LineCreditCardTransaction(BaseModel):
+    request: Optional[LineCreditCardTransactionRequest] = None
+    """
+    The transaction request data originally supplied for this credit card
+    transaction when using QuickBooks Merchant Services (QBMS).
+    """
+
+    response: Optional[LineCreditCardTransactionResponse] = None
+    """
+    The transaction response data for this credit card transaction when using
+    QuickBooks Merchant Services (QBMS).
+    """
+
+
+class LineCustomField(BaseModel):
+    name: str
+    """The name of the custom field, unique for the specified `ownerId`.
+
+    For public custom fields, this name is visible as a label in the QuickBooks UI.
+    """
+
+    owner_id: str = FieldInfo(alias="ownerId")
+    """
+    The identifier of the owner of the custom field, which QuickBooks internally
+    calls a "data extension". For public custom fields visible in the UI, such as
+    those added by the QuickBooks user, this is always "0". For private custom
+    fields that are only visible to the application that created them, this is a
+    valid GUID identifying the owning application. Internally, Conductor always
+    fetches all public custom fields (those with an `ownerId` of "0") for all
+    objects.
+    """
+
+    type: Literal[
+        "amount_type",
+        "date_time_type",
+        "integer_type",
+        "percent_type",
+        "price_type",
+        "quantity_type",
+        "string_1024_type",
+        "string_255_type",
+    ]
+    """The data type of this custom field."""
+
+    value: str
+    """The value of this custom field.
+
+    The maximum length depends on the field's data type.
     """
 
 
@@ -626,13 +1261,15 @@ class Line(BaseModel):
     transaction line level.
     """
 
-    credit_card_transaction: Optional[CreditCardTransaction] = FieldInfo(alias="creditCardTransaction", default=None)
+    credit_card_transaction: Optional[LineCreditCardTransaction] = FieldInfo(
+        alias="creditCardTransaction", default=None
+    )
     """
     The credit card transaction data for this sales receipt line's payment when
     using QuickBooks Merchant Services (QBMS).
     """
 
-    custom_fields: List[CustomField] = FieldInfo(alias="customFields")
+    custom_fields: List[LineCustomField] = FieldInfo(alias="customFields")
     """
     The custom fields for the sales receipt line object, added as user-defined data
     extensions, not included in the standard QuickBooks object.
@@ -830,6 +1467,44 @@ class SalesTaxItem(BaseModel):
     """
 
 
+class ShippingAddress(BaseModel):
+    city: Optional[str] = None
+    """The city, district, suburb, town, or village name of the address."""
+
+    country: Optional[str] = None
+    """The country name of the address."""
+
+    line1: Optional[str] = None
+    """The first line of the address (e.g., street, PO Box, or company name)."""
+
+    line2: Optional[str] = None
+    """
+    The second line of the address, if needed (e.g., apartment, suite, unit, or
+    building).
+    """
+
+    line3: Optional[str] = None
+    """The third line of the address, if needed."""
+
+    line4: Optional[str] = None
+    """The fourth line of the address, if needed."""
+
+    line5: Optional[str] = None
+    """The fifth line of the address, if needed."""
+
+    note: Optional[str] = None
+    """
+    A note written at the bottom of the address in the form in which it appears,
+    such as the invoice form.
+    """
+
+    postal_code: Optional[str] = FieldInfo(alias="postalCode", default=None)
+    """The postal code or ZIP code of the address."""
+
+    state: Optional[str] = None
+    """The state, county, province, or region name of the address."""
+
+
 class ShippingMethod(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks to this object.
@@ -853,7 +1528,7 @@ class SalesReceipt(BaseModel):
     This ID is unique across all transaction types.
     """
 
-    billing_address: Optional[Address] = FieldInfo(alias="billingAddress", default=None)
+    billing_address: Optional[BillingAddress] = FieldInfo(alias="billingAddress", default=None)
     """The sales receipt's billing address."""
 
     check_number: Optional[str] = FieldInfo(alias="checkNumber", default=None)
@@ -1062,7 +1737,7 @@ class SalesReceipt(BaseModel):
     accounting implications.
     """
 
-    shipping_address: Optional[Address] = FieldInfo(alias="shippingAddress", default=None)
+    shipping_address: Optional[ShippingAddress] = FieldInfo(alias="shippingAddress", default=None)
     """The sales receipt's shipping address."""
 
     shipping_date: Optional[date] = FieldInfo(alias="shippingDate", default=None)
