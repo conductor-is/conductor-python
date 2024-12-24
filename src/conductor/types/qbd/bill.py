@@ -1216,8 +1216,8 @@ class Bill(BaseModel):
 
     amount_due_in_home_currency: Optional[str] = FieldInfo(alias="amountDueInHomeCurrency", default=None)
     """
-    The total monetary amount due for this bill converted to the home currency of
-    the QuickBooks company file. Represented as a decimal string.
+    The monetary amount due for this bill converted to the home currency of the
+    QuickBooks company file. Represented as a decimal string.
     """
 
     created_at: str = FieldInfo(alias="createdAt")

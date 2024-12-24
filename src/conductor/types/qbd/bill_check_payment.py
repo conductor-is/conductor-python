@@ -357,8 +357,8 @@ class BillCheckPayment(BaseModel):
 
     amount_in_home_currency: Optional[str] = FieldInfo(alias="amountInHomeCurrency", default=None)
     """
-    The total monetary amount for this bill check payment converted to the home
-    currency of the QuickBooks company file. Represented as a decimal string.
+    The monetary amount for this bill check payment converted to the home currency
+    of the QuickBooks company file. Represented as a decimal string.
     """
 
     applied_to_transactions: List[AppliedToTransaction] = FieldInfo(alias="appliedToTransactions")
