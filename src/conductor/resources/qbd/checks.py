@@ -130,13 +130,14 @@ class ChecksResource(SyncAPIResource):
 
               **IMPORTANT**: For checks, this field is the check number.
 
-          sales_tax_code_id: The sales-tax code associated with this check, determining whether transactions
-              in this account are taxable or non-taxable. It's used to assign a default tax
-              status to all transactions for this check. Default codes include "Non"
-              (non-taxable) and "Tax" (taxable), but custom codes can also be created in
-              QuickBooks. If QuickBooks is not set up to charge sales tax (via the "Do You
-              Charge Sales Tax?" preference), it will assign the default non-taxable code to
-              all sales.
+          sales_tax_code_id: The sales-tax code for this check, determining whether it is taxable or
+              non-taxable. If set, this overrides any sales-tax codes defined on the payee.
+              This can be overridden at the transaction-line level.
+
+              Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
+              can also be created in QuickBooks. If QuickBooks is not set up to charge sales
+              tax (via the "Do You Charge Sales Tax?" preference), it will assign the default
+              non-taxable code to all sales.
 
           extra_headers: Send extra headers
 
@@ -324,13 +325,14 @@ class ChecksResource(SyncAPIResource):
 
               **IMPORTANT**: For checks, this field is the check number.
 
-          sales_tax_code_id: The sales-tax code associated with this check, determining whether transactions
-              in this account are taxable or non-taxable. It's used to assign a default tax
-              status to all transactions for this check. Default codes include "Non"
-              (non-taxable) and "Tax" (taxable), but custom codes can also be created in
-              QuickBooks. If QuickBooks is not set up to charge sales tax (via the "Do You
-              Charge Sales Tax?" preference), it will assign the default non-taxable code to
-              all sales.
+          sales_tax_code_id: The sales-tax code for this check, determining whether it is taxable or
+              non-taxable. If set, this overrides any sales-tax codes defined on the payee.
+              This can be overridden at the transaction-line level.
+
+              Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
+              can also be created in QuickBooks. If QuickBooks is not set up to charge sales
+              tax (via the "Do You Charge Sales Tax?" preference), it will assign the default
+              non-taxable code to all sales.
 
           transaction_date: The date written on this check, in ISO 8601 format (YYYY-MM-DD).
 
@@ -630,13 +632,14 @@ class AsyncChecksResource(AsyncAPIResource):
 
               **IMPORTANT**: For checks, this field is the check number.
 
-          sales_tax_code_id: The sales-tax code associated with this check, determining whether transactions
-              in this account are taxable or non-taxable. It's used to assign a default tax
-              status to all transactions for this check. Default codes include "Non"
-              (non-taxable) and "Tax" (taxable), but custom codes can also be created in
-              QuickBooks. If QuickBooks is not set up to charge sales tax (via the "Do You
-              Charge Sales Tax?" preference), it will assign the default non-taxable code to
-              all sales.
+          sales_tax_code_id: The sales-tax code for this check, determining whether it is taxable or
+              non-taxable. If set, this overrides any sales-tax codes defined on the payee.
+              This can be overridden at the transaction-line level.
+
+              Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
+              can also be created in QuickBooks. If QuickBooks is not set up to charge sales
+              tax (via the "Do You Charge Sales Tax?" preference), it will assign the default
+              non-taxable code to all sales.
 
           extra_headers: Send extra headers
 
@@ -824,13 +827,14 @@ class AsyncChecksResource(AsyncAPIResource):
 
               **IMPORTANT**: For checks, this field is the check number.
 
-          sales_tax_code_id: The sales-tax code associated with this check, determining whether transactions
-              in this account are taxable or non-taxable. It's used to assign a default tax
-              status to all transactions for this check. Default codes include "Non"
-              (non-taxable) and "Tax" (taxable), but custom codes can also be created in
-              QuickBooks. If QuickBooks is not set up to charge sales tax (via the "Do You
-              Charge Sales Tax?" preference), it will assign the default non-taxable code to
-              all sales.
+          sales_tax_code_id: The sales-tax code for this check, determining whether it is taxable or
+              non-taxable. If set, this overrides any sales-tax codes defined on the payee.
+              This can be overridden at the transaction-line level.
+
+              Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
+              can also be created in QuickBooks. If QuickBooks is not set up to charge sales
+              tax (via the "Do You Charge Sales Tax?" preference), it will assign the default
+              non-taxable code to all sales.
 
           transaction_date: The date written on this check, in ISO 8601 format (YYYY-MM-DD).
 

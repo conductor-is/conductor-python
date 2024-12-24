@@ -515,13 +515,14 @@ class LineGroupLine(BaseModel):
 
     sales_tax_code: Optional[LineGroupLineSalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)
     """
-    The sales-tax code associated with this estimate line, determining whether items
-    sold to this customer are taxable or non-taxable. It's used to assign a default
-    tax status to all transactions for this estimate line. Default codes include
-    "Non" (non-taxable) and "Tax" (taxable), but custom codes can also be created in
-    QuickBooks. If QuickBooks is not set up to charge sales tax (via the "Do You
-    Charge Sales Tax?" preference), it will assign the default non-taxable code to
-    all sales.
+    The sales-tax code for this estimate line, determining whether it is taxable or
+    non-taxable. If set, this overrides any sales-tax codes defined on the parent
+    transaction or the associated item.
+
+    Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
+    can also be created in QuickBooks. If QuickBooks is not set up to charge sales
+    tax (via the "Do You Charge Sales Tax?" preference), it will assign the default
+    non-taxable code to all sales.
     """
 
     unit_of_measure: Optional[str] = FieldInfo(alias="unitOfMeasure", default=None)
@@ -878,13 +879,14 @@ class Line(BaseModel):
 
     sales_tax_code: Optional[LineSalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)
     """
-    The sales-tax code associated with this estimate line, determining whether items
-    sold to this customer are taxable or non-taxable. It's used to assign a default
-    tax status to all transactions for this estimate line. Default codes include
-    "Non" (non-taxable) and "Tax" (taxable), but custom codes can also be created in
-    QuickBooks. If QuickBooks is not set up to charge sales tax (via the "Do You
-    Charge Sales Tax?" preference), it will assign the default non-taxable code to
-    all sales.
+    The sales-tax code for this estimate line, determining whether it is taxable or
+    non-taxable. If set, this overrides any sales-tax codes defined on the parent
+    transaction or the associated item.
+
+    Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
+    can also be created in QuickBooks. If QuickBooks is not set up to charge sales
+    tax (via the "Do You Charge Sales Tax?" preference), it will assign the default
+    non-taxable code to all sales.
     """
 
     unit_of_measure: Optional[str] = FieldInfo(alias="unitOfMeasure", default=None)
@@ -1215,8 +1217,9 @@ class Estimate(BaseModel):
 
     sales_tax_code: Optional[SalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)
     """
-    The sales-tax code for items sold to the `customer` of this estimate,
-    determining whether items sold to this customer are taxable or non-taxable.
+    The sales-tax code for this estimate, determining whether it is taxable or
+    non-taxable. This can be overridden at the transaction-line level.
+
     Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
     can also be created in QuickBooks. If QuickBooks is not set up to charge sales
     tax (via the "Do You Charge Sales Tax?" preference), it will assign the default

@@ -191,13 +191,14 @@ class VendorUpdateParams(TypedDict, total=False):
 
     sales_tax_code_id: Annotated[str, PropertyInfo(alias="salesTaxCodeId")]
     """
-    The sales-tax code associated with this vendor, determining whether items bought
-    from this vendor are taxable or non-taxable. It's used to assign a default tax
-    status to all transactions for this vendor. Default codes include "Non"
-    (non-taxable) and "Tax" (taxable), but custom codes can also be created in
-    QuickBooks. If QuickBooks is not set up to charge sales tax (via the "Do You
-    Charge Sales Tax?" preference), it will assign the default non-taxable code to
-    all sales.
+    The default sales-tax code for transactions with this vendor, determining
+    whether the transactions are taxable or non-taxable. This can be overridden at
+    the transaction or transaction-line level.
+
+    Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
+    can also be created in QuickBooks. If QuickBooks is not set up to charge sales
+    tax (via the "Do You Charge Sales Tax?" preference), it will assign the default
+    non-taxable code to all sales.
     """
 
     sales_tax_country: Annotated[Literal["australia", "canada", "uk", "us"], PropertyInfo(alias="salesTaxCountry")]
