@@ -146,7 +146,7 @@ class BillsResource(SyncAPIResource):
 
           sales_tax_code_id: The sales-tax code for this bill, determining whether it is taxable or
               non-taxable. If set, this overrides any sales-tax codes defined on the vendor.
-              This can be overridden at the transaction-line level.
+              This can be overridden on the bill's individual lines.
 
               Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
               can also be created in QuickBooks. If QuickBooks is not set up to charge sales
@@ -335,7 +335,7 @@ class BillsResource(SyncAPIResource):
 
           sales_tax_code_id: The sales-tax code for this bill, determining whether it is taxable or
               non-taxable. If set, this overrides any sales-tax codes defined on the vendor.
-              This can be overridden at the transaction-line level.
+              This can be overridden on the bill's individual lines.
 
               Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
               can also be created in QuickBooks. If QuickBooks is not set up to charge sales
@@ -663,7 +663,7 @@ class AsyncBillsResource(AsyncAPIResource):
 
           sales_tax_code_id: The sales-tax code for this bill, determining whether it is taxable or
               non-taxable. If set, this overrides any sales-tax codes defined on the vendor.
-              This can be overridden at the transaction-line level.
+              This can be overridden on the bill's individual lines.
 
               Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
               can also be created in QuickBooks. If QuickBooks is not set up to charge sales
@@ -852,7 +852,7 @@ class AsyncBillsResource(AsyncAPIResource):
 
           sales_tax_code_id: The sales-tax code for this bill, determining whether it is taxable or
               non-taxable. If set, this overrides any sales-tax codes defined on the vendor.
-              This can be overridden at the transaction-line level.
+              This can be overridden on the bill's individual lines.
 
               Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
               can also be created in QuickBooks. If QuickBooks is not set up to charge sales
