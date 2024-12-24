@@ -162,13 +162,14 @@ class PurchaseOrdersResource(SyncAPIResource):
               can be used to identify the transaction in QuickBooks. This value is not
               required to be unique and can be arbitrarily changed by the QuickBooks user.
 
-          sales_tax_code_id: The sales-tax code associated with this purchase order, determining whether
-              items bought from this vendor are taxable or non-taxable. It's used to assign a
-              default tax status to all transactions for this purchase order. Default codes
-              include "Non" (non-taxable) and "Tax" (taxable), but custom codes can also be
-              created in QuickBooks. If QuickBooks is not set up to charge sales tax (via the
-              "Do You Charge Sales Tax?" preference), it will assign the default non-taxable
-              code to all sales.
+          sales_tax_code_id: The sales-tax code for this purchase order, determining whether it is taxable or
+              non-taxable. If set, this overrides any sales-tax codes defined on the vendor.
+              This can be overridden at the transaction-line level.
+
+              Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
+              can also be created in QuickBooks. If QuickBooks is not set up to charge sales
+              tax (via the "Do You Charge Sales Tax?" preference), it will assign the default
+              non-taxable code to all sales.
 
           shipment_origin: The origin location from where the product associated with this purchase order
               is shipped. This is the point at which ownership and liability for goods
@@ -405,13 +406,14 @@ class PurchaseOrdersResource(SyncAPIResource):
               can be used to identify the transaction in QuickBooks. This value is not
               required to be unique and can be arbitrarily changed by the QuickBooks user.
 
-          sales_tax_code_id: The sales-tax code associated with this purchase order, determining whether
-              items bought from this vendor are taxable or non-taxable. It's used to assign a
-              default tax status to all transactions for this purchase order. Default codes
-              include "Non" (non-taxable) and "Tax" (taxable), but custom codes can also be
-              created in QuickBooks. If QuickBooks is not set up to charge sales tax (via the
-              "Do You Charge Sales Tax?" preference), it will assign the default non-taxable
-              code to all sales.
+          sales_tax_code_id: The sales-tax code for this purchase order, determining whether it is taxable or
+              non-taxable. If set, this overrides any sales-tax codes defined on the vendor.
+              This can be overridden at the transaction-line level.
+
+              Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
+              can also be created in QuickBooks. If QuickBooks is not set up to charge sales
+              tax (via the "Do You Charge Sales Tax?" preference), it will assign the default
+              non-taxable code to all sales.
 
           shipment_origin: The origin location from where the product associated with this purchase order
               is shipped. This is the point at which ownership and liability for goods
@@ -777,13 +779,14 @@ class AsyncPurchaseOrdersResource(AsyncAPIResource):
               can be used to identify the transaction in QuickBooks. This value is not
               required to be unique and can be arbitrarily changed by the QuickBooks user.
 
-          sales_tax_code_id: The sales-tax code associated with this purchase order, determining whether
-              items bought from this vendor are taxable or non-taxable. It's used to assign a
-              default tax status to all transactions for this purchase order. Default codes
-              include "Non" (non-taxable) and "Tax" (taxable), but custom codes can also be
-              created in QuickBooks. If QuickBooks is not set up to charge sales tax (via the
-              "Do You Charge Sales Tax?" preference), it will assign the default non-taxable
-              code to all sales.
+          sales_tax_code_id: The sales-tax code for this purchase order, determining whether it is taxable or
+              non-taxable. If set, this overrides any sales-tax codes defined on the vendor.
+              This can be overridden at the transaction-line level.
+
+              Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
+              can also be created in QuickBooks. If QuickBooks is not set up to charge sales
+              tax (via the "Do You Charge Sales Tax?" preference), it will assign the default
+              non-taxable code to all sales.
 
           shipment_origin: The origin location from where the product associated with this purchase order
               is shipped. This is the point at which ownership and liability for goods
@@ -1020,13 +1023,14 @@ class AsyncPurchaseOrdersResource(AsyncAPIResource):
               can be used to identify the transaction in QuickBooks. This value is not
               required to be unique and can be arbitrarily changed by the QuickBooks user.
 
-          sales_tax_code_id: The sales-tax code associated with this purchase order, determining whether
-              items bought from this vendor are taxable or non-taxable. It's used to assign a
-              default tax status to all transactions for this purchase order. Default codes
-              include "Non" (non-taxable) and "Tax" (taxable), but custom codes can also be
-              created in QuickBooks. If QuickBooks is not set up to charge sales tax (via the
-              "Do You Charge Sales Tax?" preference), it will assign the default non-taxable
-              code to all sales.
+          sales_tax_code_id: The sales-tax code for this purchase order, determining whether it is taxable or
+              non-taxable. If set, this overrides any sales-tax codes defined on the vendor.
+              This can be overridden at the transaction-line level.
+
+              Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
+              can also be created in QuickBooks. If QuickBooks is not set up to charge sales
+              tax (via the "Do You Charge Sales Tax?" preference), it will assign the default
+              non-taxable code to all sales.
 
           shipment_origin: The origin location from where the product associated with this purchase order
               is shipped. This is the point at which ownership and liability for goods
