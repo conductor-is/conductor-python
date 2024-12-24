@@ -419,13 +419,14 @@ class InventoryAssemblyItem(BaseModel):
 
     sales_tax_code: Optional[SalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)
     """
-    The sales-tax code associated with this inventory assembly item, determining
-    whether it is taxable or non-taxable. It's used to assign a default tax status
-    to all transactions for this inventory assembly item. Default codes include
-    "Non" (non-taxable) and "Tax" (taxable), but custom codes can also be created in
-    QuickBooks. If QuickBooks is not set up to charge sales tax (via the "Do You
-    Charge Sales Tax?" preference), it will assign the default non-taxable code to
-    all sales.
+    The default sales-tax code for this inventory assembly item, determining whether
+    it is taxable or non-taxable. This can be overridden at the transaction-line
+    level.
+
+    Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
+    can also be created in QuickBooks. If QuickBooks is not set up to charge sales
+    tax (via the "Do You Charge Sales Tax?" preference), it will assign the default
+    non-taxable code to all sales.
     """
 
     sku: Optional[str] = None

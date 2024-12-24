@@ -216,13 +216,14 @@ class VendorsResource(SyncAPIResource):
           sales_tax_account_id: The account used for tracking taxes on sales for this vendor, for use in Canada
               or the UK.
 
-          sales_tax_code_id: The sales-tax code associated with this vendor, determining whether items bought
-              from this vendor are taxable or non-taxable. It's used to assign a default tax
-              status to all transactions for this vendor. Default codes include "Non"
-              (non-taxable) and "Tax" (taxable), but custom codes can also be created in
-              QuickBooks. If QuickBooks is not set up to charge sales tax (via the "Do You
-              Charge Sales Tax?" preference), it will assign the default non-taxable code to
-              all sales.
+          sales_tax_code_id: The default sales-tax code for transactions with this vendor, determining
+              whether the transactions are taxable or non-taxable. This can be overridden at
+              the transaction or transaction-line level.
+
+              Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
+              can also be created in QuickBooks. If QuickBooks is not set up to charge sales
+              tax (via the "Do You Charge Sales Tax?" preference), it will assign the default
+              non-taxable code to all sales.
 
           sales_tax_country: The country for which sales tax is collected for this vendor.
 
@@ -513,13 +514,14 @@ class VendorsResource(SyncAPIResource):
           sales_tax_account_id: The account used for tracking taxes on sales for this vendor, for use in Canada
               or the UK.
 
-          sales_tax_code_id: The sales-tax code associated with this vendor, determining whether items bought
-              from this vendor are taxable or non-taxable. It's used to assign a default tax
-              status to all transactions for this vendor. Default codes include "Non"
-              (non-taxable) and "Tax" (taxable), but custom codes can also be created in
-              QuickBooks. If QuickBooks is not set up to charge sales tax (via the "Do You
-              Charge Sales Tax?" preference), it will assign the default non-taxable code to
-              all sales.
+          sales_tax_code_id: The default sales-tax code for transactions with this vendor, determining
+              whether the transactions are taxable or non-taxable. This can be overridden at
+              the transaction or transaction-line level.
+
+              Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
+              can also be created in QuickBooks. If QuickBooks is not set up to charge sales
+              tax (via the "Do You Charge Sales Tax?" preference), it will assign the default
+              non-taxable code to all sales.
 
           sales_tax_country: The country for which sales tax is collected for this vendor.
 
@@ -954,13 +956,14 @@ class AsyncVendorsResource(AsyncAPIResource):
           sales_tax_account_id: The account used for tracking taxes on sales for this vendor, for use in Canada
               or the UK.
 
-          sales_tax_code_id: The sales-tax code associated with this vendor, determining whether items bought
-              from this vendor are taxable or non-taxable. It's used to assign a default tax
-              status to all transactions for this vendor. Default codes include "Non"
-              (non-taxable) and "Tax" (taxable), but custom codes can also be created in
-              QuickBooks. If QuickBooks is not set up to charge sales tax (via the "Do You
-              Charge Sales Tax?" preference), it will assign the default non-taxable code to
-              all sales.
+          sales_tax_code_id: The default sales-tax code for transactions with this vendor, determining
+              whether the transactions are taxable or non-taxable. This can be overridden at
+              the transaction or transaction-line level.
+
+              Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
+              can also be created in QuickBooks. If QuickBooks is not set up to charge sales
+              tax (via the "Do You Charge Sales Tax?" preference), it will assign the default
+              non-taxable code to all sales.
 
           sales_tax_country: The country for which sales tax is collected for this vendor.
 
@@ -1251,13 +1254,14 @@ class AsyncVendorsResource(AsyncAPIResource):
           sales_tax_account_id: The account used for tracking taxes on sales for this vendor, for use in Canada
               or the UK.
 
-          sales_tax_code_id: The sales-tax code associated with this vendor, determining whether items bought
-              from this vendor are taxable or non-taxable. It's used to assign a default tax
-              status to all transactions for this vendor. Default codes include "Non"
-              (non-taxable) and "Tax" (taxable), but custom codes can also be created in
-              QuickBooks. If QuickBooks is not set up to charge sales tax (via the "Do You
-              Charge Sales Tax?" preference), it will assign the default non-taxable code to
-              all sales.
+          sales_tax_code_id: The default sales-tax code for transactions with this vendor, determining
+              whether the transactions are taxable or non-taxable. This can be overridden at
+              the transaction or transaction-line level.
+
+              Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
+              can also be created in QuickBooks. If QuickBooks is not set up to charge sales
+              tax (via the "Do You Charge Sales Tax?" preference), it will assign the default
+              non-taxable code to all sales.
 
           sales_tax_country: The country for which sales tax is collected for this vendor.
 

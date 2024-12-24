@@ -144,12 +144,14 @@ class BillsResource(SyncAPIResource):
               used to identify the transaction in QuickBooks. This value is not required to be
               unique and can be arbitrarily changed by the QuickBooks user.
 
-          sales_tax_code_id: The sales-tax code associated with this bill, determining whether it is taxable
-              or non-taxable. It's used to assign a default tax status to all transactions for
-              this bill. Default codes include "Non" (non-taxable) and "Tax" (taxable), but
-              custom codes can also be created in QuickBooks. If QuickBooks is not set up to
-              charge sales tax (via the "Do You Charge Sales Tax?" preference), it will assign
-              the default non-taxable code to all sales.
+          sales_tax_code_id: The sales-tax code for this bill, determining whether it is taxable or
+              non-taxable. If set, this overrides any sales-tax codes defined on the vendor.
+              This can be overridden at the transaction-line level.
+
+              Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
+              can also be created in QuickBooks. If QuickBooks is not set up to charge sales
+              tax (via the "Do You Charge Sales Tax?" preference), it will assign the default
+              non-taxable code to all sales.
 
           terms_id: The bill's payment terms, defining when payment is due and any applicable
               discounts.
@@ -331,12 +333,14 @@ class BillsResource(SyncAPIResource):
               used to identify the transaction in QuickBooks. This value is not required to be
               unique and can be arbitrarily changed by the QuickBooks user.
 
-          sales_tax_code_id: The sales-tax code associated with this bill, determining whether it is taxable
-              or non-taxable. It's used to assign a default tax status to all transactions for
-              this bill. Default codes include "Non" (non-taxable) and "Tax" (taxable), but
-              custom codes can also be created in QuickBooks. If QuickBooks is not set up to
-              charge sales tax (via the "Do You Charge Sales Tax?" preference), it will assign
-              the default non-taxable code to all sales.
+          sales_tax_code_id: The sales-tax code for this bill, determining whether it is taxable or
+              non-taxable. If set, this overrides any sales-tax codes defined on the vendor.
+              This can be overridden at the transaction-line level.
+
+              Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
+              can also be created in QuickBooks. If QuickBooks is not set up to charge sales
+              tax (via the "Do You Charge Sales Tax?" preference), it will assign the default
+              non-taxable code to all sales.
 
           terms_id: The bill's payment terms, defining when payment is due and any applicable
               discounts.
@@ -657,12 +661,14 @@ class AsyncBillsResource(AsyncAPIResource):
               used to identify the transaction in QuickBooks. This value is not required to be
               unique and can be arbitrarily changed by the QuickBooks user.
 
-          sales_tax_code_id: The sales-tax code associated with this bill, determining whether it is taxable
-              or non-taxable. It's used to assign a default tax status to all transactions for
-              this bill. Default codes include "Non" (non-taxable) and "Tax" (taxable), but
-              custom codes can also be created in QuickBooks. If QuickBooks is not set up to
-              charge sales tax (via the "Do You Charge Sales Tax?" preference), it will assign
-              the default non-taxable code to all sales.
+          sales_tax_code_id: The sales-tax code for this bill, determining whether it is taxable or
+              non-taxable. If set, this overrides any sales-tax codes defined on the vendor.
+              This can be overridden at the transaction-line level.
+
+              Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
+              can also be created in QuickBooks. If QuickBooks is not set up to charge sales
+              tax (via the "Do You Charge Sales Tax?" preference), it will assign the default
+              non-taxable code to all sales.
 
           terms_id: The bill's payment terms, defining when payment is due and any applicable
               discounts.
@@ -844,12 +850,14 @@ class AsyncBillsResource(AsyncAPIResource):
               used to identify the transaction in QuickBooks. This value is not required to be
               unique and can be arbitrarily changed by the QuickBooks user.
 
-          sales_tax_code_id: The sales-tax code associated with this bill, determining whether it is taxable
-              or non-taxable. It's used to assign a default tax status to all transactions for
-              this bill. Default codes include "Non" (non-taxable) and "Tax" (taxable), but
-              custom codes can also be created in QuickBooks. If QuickBooks is not set up to
-              charge sales tax (via the "Do You Charge Sales Tax?" preference), it will assign
-              the default non-taxable code to all sales.
+          sales_tax_code_id: The sales-tax code for this bill, determining whether it is taxable or
+              non-taxable. If set, this overrides any sales-tax codes defined on the vendor.
+              This can be overridden at the transaction-line level.
+
+              Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
+              can also be created in QuickBooks. If QuickBooks is not set up to charge sales
+              tax (via the "Do You Charge Sales Tax?" preference), it will assign the default
+              non-taxable code to all sales.
 
           terms_id: The bill's payment terms, defining when payment is due and any applicable
               discounts.
