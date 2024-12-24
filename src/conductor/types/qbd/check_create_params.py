@@ -112,7 +112,7 @@ class CheckCreateParams(TypedDict, total=False):
     """
     The sales-tax code for this check, determining whether it is taxable or
     non-taxable. If set, this overrides any sales-tax codes defined on the payee.
-    This can be overridden at the transaction-line level.
+    This can be overridden on the check's individual lines.
 
     Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
     can also be created in QuickBooks. If QuickBooks is not set up to charge sales
