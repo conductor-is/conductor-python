@@ -1097,8 +1097,8 @@ class CreditCardCredit(BaseModel):
 
     amount_in_home_currency: Optional[str] = FieldInfo(alias="amountInHomeCurrency", default=None)
     """
-    The total monetary amount for this credit card credit converted to the home
-    currency of the QuickBooks company file. Represented as a decimal string.
+    The monetary amount for this credit card credit converted to the home currency
+    of the QuickBooks company file. Represented as a decimal string.
     """
 
     created_at: str = FieldInfo(alias="createdAt")
