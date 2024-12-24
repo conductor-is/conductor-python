@@ -157,8 +157,9 @@ class EstimatesResource(SyncAPIResource):
           sales_representative_id: The estimate's sales representative. Sales representatives can be employees,
               vendors, or other names in QuickBooks.
 
-          sales_tax_code_id: The sales-tax code for items sold to the `customer` of this estimate,
-              determining whether items sold to this customer are taxable or non-taxable.
+          sales_tax_code_id: The sales-tax code for this estimate, determining whether it is taxable or
+              non-taxable. This can be overridden at the transaction-line level.
+
               Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
               can also be created in QuickBooks. If QuickBooks is not set up to charge sales
               tax (via the "Do You Charge Sales Tax?" preference), it will assign the default
@@ -387,8 +388,9 @@ class EstimatesResource(SyncAPIResource):
           sales_representative_id: The estimate's sales representative. Sales representatives can be employees,
               vendors, or other names in QuickBooks.
 
-          sales_tax_code_id: The sales-tax code for items sold to the `customer` of this estimate,
-              determining whether items sold to this customer are taxable or non-taxable.
+          sales_tax_code_id: The sales-tax code for this estimate, determining whether it is taxable or
+              non-taxable. This can be overridden at the transaction-line level.
+
               Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
               can also be created in QuickBooks. If QuickBooks is not set up to charge sales
               tax (via the "Do You Charge Sales Tax?" preference), it will assign the default
@@ -742,8 +744,9 @@ class AsyncEstimatesResource(AsyncAPIResource):
           sales_representative_id: The estimate's sales representative. Sales representatives can be employees,
               vendors, or other names in QuickBooks.
 
-          sales_tax_code_id: The sales-tax code for items sold to the `customer` of this estimate,
-              determining whether items sold to this customer are taxable or non-taxable.
+          sales_tax_code_id: The sales-tax code for this estimate, determining whether it is taxable or
+              non-taxable. This can be overridden at the transaction-line level.
+
               Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
               can also be created in QuickBooks. If QuickBooks is not set up to charge sales
               tax (via the "Do You Charge Sales Tax?" preference), it will assign the default
@@ -972,8 +975,9 @@ class AsyncEstimatesResource(AsyncAPIResource):
           sales_representative_id: The estimate's sales representative. Sales representatives can be employees,
               vendors, or other names in QuickBooks.
 
-          sales_tax_code_id: The sales-tax code for items sold to the `customer` of this estimate,
-              determining whether items sold to this customer are taxable or non-taxable.
+          sales_tax_code_id: The sales-tax code for this estimate, determining whether it is taxable or
+              non-taxable. This can be overridden at the transaction-line level.
+
               Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
               can also be created in QuickBooks. If QuickBooks is not set up to charge sales
               tax (via the "Do You Charge Sales Tax?" preference), it will assign the default
