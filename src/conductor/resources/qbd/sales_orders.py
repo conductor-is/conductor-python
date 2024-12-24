@@ -175,8 +175,9 @@ class SalesOrdersResource(SyncAPIResource):
 
           sales_store_type: The type of the sales store for this sales order.
 
-          sales_tax_code_id: The sales-tax code for items sold to the `customer` of this sales order,
-              determining whether items sold to this customer are taxable or non-taxable.
+          sales_tax_code_id: The sales-tax code for this sales order, determining whether it is taxable or
+              non-taxable. This can be overridden at the transaction-line level.
+
               Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
               can also be created in QuickBooks. If QuickBooks is not set up to charge sales
               tax (via the "Do You Charge Sales Tax?" preference), it will assign the default
@@ -429,8 +430,9 @@ class SalesOrdersResource(SyncAPIResource):
 
           sales_store_type: The type of the sales store for this sales order.
 
-          sales_tax_code_id: The sales-tax code for items sold to the `customer` of this sales order,
-              determining whether items sold to this customer are taxable or non-taxable.
+          sales_tax_code_id: The sales-tax code for this sales order, determining whether it is taxable or
+              non-taxable. This can be overridden at the transaction-line level.
+
               Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
               can also be created in QuickBooks. If QuickBooks is not set up to charge sales
               tax (via the "Do You Charge Sales Tax?" preference), it will assign the default
@@ -809,8 +811,9 @@ class AsyncSalesOrdersResource(AsyncAPIResource):
 
           sales_store_type: The type of the sales store for this sales order.
 
-          sales_tax_code_id: The sales-tax code for items sold to the `customer` of this sales order,
-              determining whether items sold to this customer are taxable or non-taxable.
+          sales_tax_code_id: The sales-tax code for this sales order, determining whether it is taxable or
+              non-taxable. This can be overridden at the transaction-line level.
+
               Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
               can also be created in QuickBooks. If QuickBooks is not set up to charge sales
               tax (via the "Do You Charge Sales Tax?" preference), it will assign the default
@@ -1063,8 +1066,9 @@ class AsyncSalesOrdersResource(AsyncAPIResource):
 
           sales_store_type: The type of the sales store for this sales order.
 
-          sales_tax_code_id: The sales-tax code for items sold to the `customer` of this sales order,
-              determining whether items sold to this customer are taxable or non-taxable.
+          sales_tax_code_id: The sales-tax code for this sales order, determining whether it is taxable or
+              non-taxable. This can be overridden at the transaction-line level.
+
               Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
               can also be created in QuickBooks. If QuickBooks is not set up to charge sales
               tax (via the "Do You Charge Sales Tax?" preference), it will assign the default

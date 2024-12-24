@@ -520,12 +520,14 @@ class LineGroupLine(BaseModel):
 
     sales_tax_code: Optional[LineGroupLineSalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)
     """
-    The sales-tax code associated with this invoice line, determining whether it is
-    taxable or non-taxable. It's used to assign a default tax status to all
-    transactions for this invoice line. Default codes include "Non" (non-taxable)
-    and "Tax" (taxable), but custom codes can also be created in QuickBooks. If
-    QuickBooks is not set up to charge sales tax (via the "Do You Charge Sales Tax?"
-    preference), it will assign the default non-taxable code to all sales.
+    The sales-tax code for this invoice line, determining whether it is taxable or
+    non-taxable. If set, this overrides any sales-tax codes defined on the parent
+    transaction or the associated item.
+
+    Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
+    can also be created in QuickBooks. If QuickBooks is not set up to charge sales
+    tax (via the "Do You Charge Sales Tax?" preference), it will assign the default
+    non-taxable code to all sales.
     """
 
     serial_number: Optional[str] = FieldInfo(alias="serialNumber", default=None)
@@ -897,12 +899,14 @@ class Line(BaseModel):
 
     sales_tax_code: Optional[LineSalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)
     """
-    The sales-tax code associated with this invoice line, determining whether it is
-    taxable or non-taxable. It's used to assign a default tax status to all
-    transactions for this invoice line. Default codes include "Non" (non-taxable)
-    and "Tax" (taxable), but custom codes can also be created in QuickBooks. If
-    QuickBooks is not set up to charge sales tax (via the "Do You Charge Sales Tax?"
-    preference), it will assign the default non-taxable code to all sales.
+    The sales-tax code for this invoice line, determining whether it is taxable or
+    non-taxable. If set, this overrides any sales-tax codes defined on the parent
+    transaction or the associated item.
+
+    Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
+    can also be created in QuickBooks. If QuickBooks is not set up to charge sales
+    tax (via the "Do You Charge Sales Tax?" preference), it will assign the default
+    non-taxable code to all sales.
     """
 
     serial_number: Optional[str] = FieldInfo(alias="serialNumber", default=None)
@@ -1130,7 +1134,7 @@ class Invoice(BaseModel):
     This ID is unique across all transaction types.
     """
 
-    applied_amount: str = FieldInfo(alias="appliedAmount")
+    applied_amount: Optional[str] = FieldInfo(alias="appliedAmount", default=None)
     """The amount of credit applied to this invoice.
 
     This could include customer deposits, payments, or credits. Represented as a
@@ -1322,12 +1326,13 @@ class Invoice(BaseModel):
 
     sales_tax_code: Optional[SalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)
     """
-    The sales-tax code for items sold to the `customer` of this invoice, determining
-    whether items sold to this customer are taxable or non-taxable. Default codes
-    include "Non" (non-taxable) and "Tax" (taxable), but custom codes can also be
-    created in QuickBooks. If QuickBooks is not set up to charge sales tax (via the
-    "Do You Charge Sales Tax?" preference), it will assign the default non-taxable
-    code to all sales.
+    The sales-tax code for this invoice, determining whether it is taxable or
+    non-taxable. This can be overridden at the transaction-line level.
+
+    Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
+    can also be created in QuickBooks. If QuickBooks is not set up to charge sales
+    tax (via the "Do You Charge Sales Tax?" preference), it will assign the default
+    non-taxable code to all sales.
     """
 
     sales_tax_item: Optional[SalesTaxItem] = FieldInfo(alias="salesTaxItem", default=None)

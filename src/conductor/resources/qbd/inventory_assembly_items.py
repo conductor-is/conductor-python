@@ -166,13 +166,14 @@ class InventoryAssemblyItemsResource(SyncAPIResource):
           sales_price: The price at which this inventory assembly item is sold to customers,
               represented as a decimal string.
 
-          sales_tax_code_id: The sales-tax code associated with this inventory assembly item, determining
-              whether it is taxable or non-taxable. It's used to assign a default tax status
-              to all transactions for this inventory assembly item. Default codes include
-              "Non" (non-taxable) and "Tax" (taxable), but custom codes can also be created in
-              QuickBooks. If QuickBooks is not set up to charge sales tax (via the "Do You
-              Charge Sales Tax?" preference), it will assign the default non-taxable code to
-              all sales.
+          sales_tax_code_id: The default sales-tax code for this inventory assembly item, determining whether
+              it is taxable or non-taxable. This can be overridden at the transaction-line
+              level.
+
+              Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
+              can also be created in QuickBooks. If QuickBooks is not set up to charge sales
+              tax (via the "Do You Charge Sales Tax?" preference), it will assign the default
+              non-taxable code to all sales.
 
           total_value: The total value of this inventory assembly item. If `totalValue` is provided,
               `quantityOnHand` must also be provided and must be greater than zero. If both
@@ -394,13 +395,14 @@ class InventoryAssemblyItemsResource(SyncAPIResource):
           sales_price: The price at which this inventory assembly item is sold to customers,
               represented as a decimal string.
 
-          sales_tax_code_id: The sales-tax code associated with this inventory assembly item, determining
-              whether it is taxable or non-taxable. It's used to assign a default tax status
-              to all transactions for this inventory assembly item. Default codes include
-              "Non" (non-taxable) and "Tax" (taxable), but custom codes can also be created in
-              QuickBooks. If QuickBooks is not set up to charge sales tax (via the "Do You
-              Charge Sales Tax?" preference), it will assign the default non-taxable code to
-              all sales.
+          sales_tax_code_id: The default sales-tax code for this inventory assembly item, determining whether
+              it is taxable or non-taxable. This can be overridden at the transaction-line
+              level.
+
+              Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
+              can also be created in QuickBooks. If QuickBooks is not set up to charge sales
+              tax (via the "Do You Charge Sales Tax?" preference), it will assign the default
+              non-taxable code to all sales.
 
           sku: The inventory assembly item's stock keeping unit (SKU), which is sometimes the
               manufacturer's part number.
@@ -739,13 +741,14 @@ class AsyncInventoryAssemblyItemsResource(AsyncAPIResource):
           sales_price: The price at which this inventory assembly item is sold to customers,
               represented as a decimal string.
 
-          sales_tax_code_id: The sales-tax code associated with this inventory assembly item, determining
-              whether it is taxable or non-taxable. It's used to assign a default tax status
-              to all transactions for this inventory assembly item. Default codes include
-              "Non" (non-taxable) and "Tax" (taxable), but custom codes can also be created in
-              QuickBooks. If QuickBooks is not set up to charge sales tax (via the "Do You
-              Charge Sales Tax?" preference), it will assign the default non-taxable code to
-              all sales.
+          sales_tax_code_id: The default sales-tax code for this inventory assembly item, determining whether
+              it is taxable or non-taxable. This can be overridden at the transaction-line
+              level.
+
+              Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
+              can also be created in QuickBooks. If QuickBooks is not set up to charge sales
+              tax (via the "Do You Charge Sales Tax?" preference), it will assign the default
+              non-taxable code to all sales.
 
           total_value: The total value of this inventory assembly item. If `totalValue` is provided,
               `quantityOnHand` must also be provided and must be greater than zero. If both
@@ -967,13 +970,14 @@ class AsyncInventoryAssemblyItemsResource(AsyncAPIResource):
           sales_price: The price at which this inventory assembly item is sold to customers,
               represented as a decimal string.
 
-          sales_tax_code_id: The sales-tax code associated with this inventory assembly item, determining
-              whether it is taxable or non-taxable. It's used to assign a default tax status
-              to all transactions for this inventory assembly item. Default codes include
-              "Non" (non-taxable) and "Tax" (taxable), but custom codes can also be created in
-              QuickBooks. If QuickBooks is not set up to charge sales tax (via the "Do You
-              Charge Sales Tax?" preference), it will assign the default non-taxable code to
-              all sales.
+          sales_tax_code_id: The default sales-tax code for this inventory assembly item, determining whether
+              it is taxable or non-taxable. This can be overridden at the transaction-line
+              level.
+
+              Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
+              can also be created in QuickBooks. If QuickBooks is not set up to charge sales
+              tax (via the "Do You Charge Sales Tax?" preference), it will assign the default
+              non-taxable code to all sales.
 
           sku: The inventory assembly item's stock keeping unit (SKU), which is sometimes the
               manufacturer's part number.

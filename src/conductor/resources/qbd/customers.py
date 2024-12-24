@@ -241,13 +241,14 @@ class CustomersResource(SyncAPIResource):
           sales_representative_id: The customer's sales representative. Sales representatives can be employees,
               vendors, or other names in QuickBooks.
 
-          sales_tax_code_id: The sales-tax code associated with this customer, determining whether items sold
-              to this customer are taxable or non-taxable. It's used to assign a default tax
-              status to all transactions for this customer. Default codes include "Non"
-              (non-taxable) and "Tax" (taxable), but custom codes can also be created in
-              QuickBooks. If QuickBooks is not set up to charge sales tax (via the "Do You
-              Charge Sales Tax?" preference), it will assign the default non-taxable code to
-              all sales.
+          sales_tax_code_id: The default sales-tax code for transactions with this customer, determining
+              whether the transactions are taxable or non-taxable. This can be overridden at
+              the transaction or transaction-line level.
+
+              Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
+              can also be created in QuickBooks. If QuickBooks is not set up to charge sales
+              tax (via the "Do You Charge Sales Tax?" preference), it will assign the default
+              non-taxable code to all sales.
 
           sales_tax_country: The country for which sales tax is collected for this customer.
 
@@ -561,13 +562,14 @@ class CustomersResource(SyncAPIResource):
           sales_representative_id: The customer's sales representative. Sales representatives can be employees,
               vendors, or other names in QuickBooks.
 
-          sales_tax_code_id: The sales-tax code associated with this customer, determining whether items sold
-              to this customer are taxable or non-taxable. It's used to assign a default tax
-              status to all transactions for this customer. Default codes include "Non"
-              (non-taxable) and "Tax" (taxable), but custom codes can also be created in
-              QuickBooks. If QuickBooks is not set up to charge sales tax (via the "Do You
-              Charge Sales Tax?" preference), it will assign the default non-taxable code to
-              all sales.
+          sales_tax_code_id: The default sales-tax code for transactions with this customer, determining
+              whether the transactions are taxable or non-taxable. This can be overridden at
+              the transaction or transaction-line level.
+
+              Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
+              can also be created in QuickBooks. If QuickBooks is not set up to charge sales
+              tax (via the "Do You Charge Sales Tax?" preference), it will assign the default
+              non-taxable code to all sales.
 
           sales_tax_country: The country for which sales tax is collected for this customer.
 
@@ -1030,13 +1032,14 @@ class AsyncCustomersResource(AsyncAPIResource):
           sales_representative_id: The customer's sales representative. Sales representatives can be employees,
               vendors, or other names in QuickBooks.
 
-          sales_tax_code_id: The sales-tax code associated with this customer, determining whether items sold
-              to this customer are taxable or non-taxable. It's used to assign a default tax
-              status to all transactions for this customer. Default codes include "Non"
-              (non-taxable) and "Tax" (taxable), but custom codes can also be created in
-              QuickBooks. If QuickBooks is not set up to charge sales tax (via the "Do You
-              Charge Sales Tax?" preference), it will assign the default non-taxable code to
-              all sales.
+          sales_tax_code_id: The default sales-tax code for transactions with this customer, determining
+              whether the transactions are taxable or non-taxable. This can be overridden at
+              the transaction or transaction-line level.
+
+              Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
+              can also be created in QuickBooks. If QuickBooks is not set up to charge sales
+              tax (via the "Do You Charge Sales Tax?" preference), it will assign the default
+              non-taxable code to all sales.
 
           sales_tax_country: The country for which sales tax is collected for this customer.
 
@@ -1350,13 +1353,14 @@ class AsyncCustomersResource(AsyncAPIResource):
           sales_representative_id: The customer's sales representative. Sales representatives can be employees,
               vendors, or other names in QuickBooks.
 
-          sales_tax_code_id: The sales-tax code associated with this customer, determining whether items sold
-              to this customer are taxable or non-taxable. It's used to assign a default tax
-              status to all transactions for this customer. Default codes include "Non"
-              (non-taxable) and "Tax" (taxable), but custom codes can also be created in
-              QuickBooks. If QuickBooks is not set up to charge sales tax (via the "Do You
-              Charge Sales Tax?" preference), it will assign the default non-taxable code to
-              all sales.
+          sales_tax_code_id: The default sales-tax code for transactions with this customer, determining
+              whether the transactions are taxable or non-taxable. This can be overridden at
+              the transaction or transaction-line level.
+
+              Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
+              can also be created in QuickBooks. If QuickBooks is not set up to charge sales
+              tax (via the "Do You Charge Sales Tax?" preference), it will assign the default
+              non-taxable code to all sales.
 
           sales_tax_country: The country for which sales tax is collected for this customer.
 
