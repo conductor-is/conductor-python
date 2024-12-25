@@ -1316,7 +1316,7 @@ class SalesOrder(BaseModel):
     string.
     """
 
-    sales_tax_total: Optional[str] = FieldInfo(alias="salesTaxTotal", default=None)
+    sales_tax_total: str = FieldInfo(alias="salesTaxTotal")
     """
     The total amount of sales tax charged for this sales order, represented as a
     decimal string.
@@ -1346,7 +1346,7 @@ class SalesOrder(BaseModel):
     overnight delivery.
     """
 
-    subtotal: Optional[str] = None
+    subtotal: str
     """
     The subtotal of this sales order, which is the sum of all sales order lines
     before taxes and discounts are applied, represented as a decimal string.

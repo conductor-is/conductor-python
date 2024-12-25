@@ -1359,7 +1359,7 @@ class Invoice(BaseModel):
     string.
     """
 
-    sales_tax_total: Optional[str] = FieldInfo(alias="salesTaxTotal", default=None)
+    sales_tax_total: str = FieldInfo(alias="salesTaxTotal")
     """
     The total amount of sales tax charged for this invoice, represented as a decimal
     string.
@@ -1389,7 +1389,7 @@ class Invoice(BaseModel):
     delivery.
     """
 
-    subtotal: Optional[str] = None
+    subtotal: str
     """
     The subtotal of this invoice, which is the sum of all invoice lines before taxes
     and discounts are applied, represented as a decimal string.

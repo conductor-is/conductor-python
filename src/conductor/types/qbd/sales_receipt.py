@@ -1725,7 +1725,7 @@ class SalesReceipt(BaseModel):
     string.
     """
 
-    sales_tax_total: Optional[str] = FieldInfo(alias="salesTaxTotal", default=None)
+    sales_tax_total: str = FieldInfo(alias="salesTaxTotal")
     """
     The total amount of sales tax charged for this sales receipt, represented as a
     decimal string.
@@ -1755,7 +1755,7 @@ class SalesReceipt(BaseModel):
     overnight delivery.
     """
 
-    subtotal: Optional[str] = None
+    subtotal: str
     """
     The subtotal of this sales receipt, which is the sum of all sales receipt lines
     before taxes and discounts are applied, represented as a decimal string.
