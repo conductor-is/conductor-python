@@ -1310,7 +1310,7 @@ class Bill(BaseModel):
     object_type: Literal["qbd_bill"] = FieldInfo(alias="objectType")
     """The type of object. This value is always `"qbd_bill"`."""
 
-    open_amount: Optional[str] = FieldInfo(alias="openAmount", default=None)
+    open_amount: str = FieldInfo(alias="openAmount")
     """
     The remaining amount owed on this bill after subtracting any credits or
     discounts from the `openAmount`. Represented as a decimal string.
