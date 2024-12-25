@@ -1761,7 +1761,7 @@ class SalesReceipt(BaseModel):
     before taxes and discounts are applied, represented as a decimal string.
     """
 
-    total_amount: Optional[str] = FieldInfo(alias="totalAmount", default=None)
+    total_amount: str = FieldInfo(alias="totalAmount")
     """
     The total monetary amount of this sales receipt, represented as a decimal
     string.
