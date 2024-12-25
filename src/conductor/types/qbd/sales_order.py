@@ -445,7 +445,7 @@ class LineGroupLine(BaseModel):
     item associated with this sales order line is stored.
     """
 
-    is_manually_closed: Optional[bool] = FieldInfo(alias="isManuallyClosed", default=None)
+    is_manually_closed: bool = FieldInfo(alias="isManuallyClosed")
     """
     Indicates whether this sales order line has been manually marked as closed, even
     if it has not been invoiced.
@@ -829,7 +829,7 @@ class Line(BaseModel):
     item associated with this sales order line is stored.
     """
 
-    is_manually_closed: Optional[bool] = FieldInfo(alias="isManuallyClosed", default=None)
+    is_manually_closed: bool = FieldInfo(alias="isManuallyClosed")
     """
     Indicates whether this sales order line has been manually marked as closed, even
     if it has not been invoiced.
@@ -1197,7 +1197,7 @@ class SalesOrder(BaseModel):
     is_fully_invoiced: Optional[bool] = FieldInfo(alias="isFullyInvoiced", default=None)
     """Indicates whether all items in this sales order have been invoiced."""
 
-    is_manually_closed: Optional[bool] = FieldInfo(alias="isManuallyClosed", default=None)
+    is_manually_closed: bool = FieldInfo(alias="isManuallyClosed")
     """
     Indicates whether this sales order has been manually marked as closed, even if
     it has not been invoiced.

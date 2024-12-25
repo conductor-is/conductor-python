@@ -380,7 +380,7 @@ class LineGroupLine(BaseModel):
     is_billed: Optional[bool] = FieldInfo(alias="isBilled", default=None)
     """Indicates whether this purchase order line has been billed."""
 
-    is_manually_closed: Optional[bool] = FieldInfo(alias="isManuallyClosed", default=None)
+    is_manually_closed: bool = FieldInfo(alias="isManuallyClosed")
     """
     Indicates whether this purchase order line has been manually marked as closed,
     even if this item has not been received or its sale has not been cancelled. If
@@ -759,7 +759,7 @@ class Line(BaseModel):
     is_billed: Optional[bool] = FieldInfo(alias="isBilled", default=None)
     """Indicates whether this purchase order line has been billed."""
 
-    is_manually_closed: Optional[bool] = FieldInfo(alias="isManuallyClosed", default=None)
+    is_manually_closed: bool = FieldInfo(alias="isManuallyClosed")
     """
     Indicates whether this purchase order line has been manually marked as closed,
     even if this item has not been received or its sale has not been cancelled. If
@@ -1176,7 +1176,7 @@ class PurchaseOrder(BaseModel):
     of them were closed manually.
     """
 
-    is_manually_closed: Optional[bool] = FieldInfo(alias="isManuallyClosed", default=None)
+    is_manually_closed: bool = FieldInfo(alias="isManuallyClosed")
     """
     Indicates whether this purchase order has been manually marked as closed, even
     if all items have not been received or the sale has not been cancelled. Once the
