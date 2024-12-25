@@ -308,7 +308,7 @@ class BillCreditCardPayment(BaseModel):
     This ID is unique across all transaction types.
     """
 
-    amount: Optional[str] = None
+    amount: str
     """
     The monetary amount of this bill credit card payment, represented as a decimal
     string.
