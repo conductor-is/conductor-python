@@ -394,7 +394,7 @@ class LineGroupLine(BaseModel):
     This ID is unique across all transaction line types.
     """
 
-    amount: Optional[str] = None
+    amount: str
     """The monetary amount of this estimate line, represented as a decimal string.
 
     If both `quantity` and `rate` are specified but not `amount`, QuickBooks will
@@ -758,7 +758,7 @@ class Line(BaseModel):
     This ID is unique across all transaction line types.
     """
 
-    amount: Optional[str] = None
+    amount: str
     """The monetary amount of this estimate line, represented as a decimal string.
 
     If both `quantity` and `rate` are specified but not `amount`, QuickBooks will

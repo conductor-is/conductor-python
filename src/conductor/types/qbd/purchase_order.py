@@ -340,7 +340,7 @@ class LineGroupLine(BaseModel):
     This ID is unique across all transaction line types.
     """
 
-    amount: Optional[str] = None
+    amount: str
     """The monetary amount of this purchase order line, represented as a decimal
     string.
 
@@ -719,7 +719,7 @@ class Line(BaseModel):
     This ID is unique across all transaction line types.
     """
 
-    amount: Optional[str] = None
+    amount: str
     """The monetary amount of this purchase order line, represented as a decimal
     string.
 
