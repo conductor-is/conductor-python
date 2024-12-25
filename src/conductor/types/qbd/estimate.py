@@ -1270,7 +1270,7 @@ class Estimate(BaseModel):
     discounts.
     """
 
-    total_amount: Optional[str] = FieldInfo(alias="totalAmount", default=None)
+    total_amount: str = FieldInfo(alias="totalAmount")
     """The total monetary amount of this estimate, represented as a decimal string."""
 
     total_amount_in_home_currency: Optional[str] = FieldInfo(alias="totalAmountInHomeCurrency", default=None)
