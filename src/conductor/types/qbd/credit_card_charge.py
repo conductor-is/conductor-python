@@ -250,7 +250,7 @@ class ExpenseLine(BaseModel):
     type.
     """
 
-    amount: Optional[str] = None
+    amount: str
     """The monetary amount of this expense line, represented as a decimal string."""
 
     billing_status: Optional[Literal["billable", "has_been_billed", "not_billable"]] = FieldInfo(
@@ -533,7 +533,7 @@ class ItemGroupLineItemLine(BaseModel):
     This ID is unique across all transaction line types.
     """
 
-    amount: Optional[str] = None
+    amount: str
     """The monetary amount of this item line, represented as a decimal string.
 
     If both `quantity` and `cost` are specified but not `amount`, QuickBooks will
@@ -919,7 +919,7 @@ class ItemLine(BaseModel):
     This ID is unique across all transaction line types.
     """
 
-    amount: Optional[str] = None
+    amount: str
     """The monetary amount of this item line, represented as a decimal string.
 
     If both `quantity` and `cost` are specified but not `amount`, QuickBooks will
