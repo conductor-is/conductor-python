@@ -350,7 +350,7 @@ class BillCheckPayment(BaseModel):
     address: Optional[Address] = None
     """The address that is printed on the bill check payment."""
 
-    amount: Optional[str] = None
+    amount: str
     """
     The monetary amount of this bill check payment, represented as a decimal string.
     """
