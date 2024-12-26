@@ -334,7 +334,9 @@ class JournalEntry(BaseModel):
     This ID is unique across all transaction types.
     """
 
-    are_amounts_entered_in_home_currency: bool = FieldInfo(alias="areAmountsEnteredInHomeCurrency")
+    are_amounts_entered_in_home_currency: Optional[bool] = FieldInfo(
+        alias="areAmountsEnteredInHomeCurrency", default=None
+    )
     """
     Indicates whether the amounts in this journal entry were entered in the
     company's home currency rather than a foreign currency. When `true`, amounts are
@@ -384,14 +386,14 @@ class JournalEntry(BaseModel):
     creation.
     """
 
-    is_adjustment: bool = FieldInfo(alias="isAdjustment")
+    is_adjustment: Optional[bool] = FieldInfo(alias="isAdjustment", default=None)
     """Indicates whether this journal entry is an adjustment entry.
 
     When `true`, QuickBooks retains the original entry information to maintain an
     audit trail of the adjustments.
     """
 
-    is_home_currency_adjustment: bool = FieldInfo(alias="isHomeCurrencyAdjustment")
+    is_home_currency_adjustment: Optional[bool] = FieldInfo(alias="isHomeCurrencyAdjustment", default=None)
     """
     Indicates whether this journal entry is an adjustment made in the company's home
     currency for a transaction that was originally recorded in a foreign currency.
