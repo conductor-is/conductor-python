@@ -655,8 +655,8 @@ class Customer(BaseModel):
     format (YYYY-MM-DD).
     """
 
-    job_status: Optional[Literal["awarded", "closed", "in_progress", "none", "not_awarded", "pending"]] = FieldInfo(
-        alias="jobStatus", default=None
+    job_status: Literal["awarded", "closed", "in_progress", "none", "not_awarded", "pending"] = FieldInfo(
+        alias="jobStatus"
     )
     """
     The status of this customer's job, if this object is a job (i.e., sub-customer).
@@ -705,9 +705,7 @@ class Customer(BaseModel):
     phone: Optional[str] = None
     """The customer's primary telephone number."""
 
-    preferred_delivery_method: Optional[Literal["email", "mail", "none"]] = FieldInfo(
-        alias="preferredDeliveryMethod", default=None
-    )
+    preferred_delivery_method: Literal["email", "mail", "none"] = FieldInfo(alias="preferredDeliveryMethod")
     """
     The preferred method for delivering invoices and other documents to this
     customer.
@@ -758,9 +756,7 @@ class Customer(BaseModel):
     non-taxable code to all sales.
     """
 
-    sales_tax_country: Optional[Literal["australia", "canada", "uk", "us"]] = FieldInfo(
-        alias="salesTaxCountry", default=None
-    )
+    sales_tax_country: Literal["australia", "canada", "uk", "us"] = FieldInfo(alias="salesTaxCountry")
     """The country for which sales tax is collected for this customer."""
 
     sales_tax_item: Optional[SalesTaxItem] = FieldInfo(alias="salesTaxItem", default=None)
