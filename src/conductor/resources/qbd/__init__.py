@@ -80,6 +80,14 @@ from .transfers import (
     TransfersResourceWithStreamingResponse,
     AsyncTransfersResourceWithStreamingResponse,
 )
+from .credit_memos import (
+    CreditMemosResource,
+    AsyncCreditMemosResource,
+    CreditMemosResourceWithRawResponse,
+    AsyncCreditMemosResourceWithRawResponse,
+    CreditMemosResourceWithStreamingResponse,
+    AsyncCreditMemosResourceWithStreamingResponse,
+)
 from .sales_orders import (
     SalesOrdersResource,
     AsyncSalesOrdersResource,
@@ -388,6 +396,12 @@ __all__ = [
     "AsyncVendorsResourceWithRawResponse",
     "VendorsResourceWithStreamingResponse",
     "AsyncVendorsResourceWithStreamingResponse",
+    "CreditMemosResource",
+    "AsyncCreditMemosResource",
+    "CreditMemosResourceWithRawResponse",
+    "AsyncCreditMemosResourceWithRawResponse",
+    "CreditMemosResourceWithStreamingResponse",
+    "AsyncCreditMemosResourceWithStreamingResponse",
     "QbdResource",
     "AsyncQbdResource",
     "QbdResourceWithRawResponse",

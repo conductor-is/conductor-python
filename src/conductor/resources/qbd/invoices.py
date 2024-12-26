@@ -125,6 +125,9 @@ class InvoicesResource(SyncAPIResource):
 
           due_date: The date by which this invoice must be paid, in ISO 8601 format (YYYY-MM-DD).
 
+              **NOTE:** If `dueDate` is excluded when creating this invoice, QuickBooks might
+              determine the due date according to the terms set for this customer.
+
           exchange_rate: The market exchange rate between this invoice's currency and the home currency
               in QuickBooks at the time of this transaction. Represented as a decimal value
               (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
@@ -825,6 +828,9 @@ class AsyncInvoicesResource(AsyncAPIResource):
               for this invoice when printed or displayed.
 
           due_date: The date by which this invoice must be paid, in ISO 8601 format (YYYY-MM-DD).
+
+              **NOTE:** If `dueDate` is excluded when creating this invoice, QuickBooks might
+              determine the due date according to the terms set for this customer.
 
           exchange_rate: The market exchange rate between this invoice's currency and the home currency
               in QuickBooks at the time of this transaction. Represented as a decimal value
