@@ -59,7 +59,7 @@ class BillsResource(SyncAPIResource):
         exchange_rate: float | NotGiven = NOT_GIVEN,
         expense_lines: Iterable[bill_create_params.ExpenseLine] | NotGiven = NOT_GIVEN,
         external_id: str | NotGiven = NOT_GIVEN,
-        item_line_groups: Iterable[bill_create_params.ItemLineGroup] | NotGiven = NOT_GIVEN,
+        item_group_lines: Iterable[bill_create_params.ItemGroupLine] | NotGiven = NOT_GIVEN,
         item_lines: Iterable[bill_create_params.ItemLine] | NotGiven = NOT_GIVEN,
         link_to_transaction_ids: List[str] | NotGiven = NOT_GIVEN,
         memo: str | NotGiven = NOT_GIVEN,
@@ -101,7 +101,7 @@ class BillsResource(SyncAPIResource):
               return an error. This field is immutable and can only be set during object
               creation.
 
-          item_line_groups: The bill's item group lines, each representing a predefined set of items bundled
+          item_group_lines: The bill's item group lines, each representing a predefined set of items bundled
               together because they are commonly purchased together or grouped for faster
               entry.
 
@@ -177,7 +177,7 @@ class BillsResource(SyncAPIResource):
                     "exchange_rate": exchange_rate,
                     "expense_lines": expense_lines,
                     "external_id": external_id,
-                    "item_line_groups": item_line_groups,
+                    "item_group_lines": item_group_lines,
                     "item_lines": item_lines,
                     "link_to_transaction_ids": link_to_transaction_ids,
                     "memo": memo,
@@ -246,7 +246,7 @@ class BillsResource(SyncAPIResource):
         due_date: Union[str, date] | NotGiven = NOT_GIVEN,
         exchange_rate: float | NotGiven = NOT_GIVEN,
         expense_lines: Iterable[bill_update_params.ExpenseLine] | NotGiven = NOT_GIVEN,
-        item_line_groups: Iterable[bill_update_params.ItemLineGroup] | NotGiven = NOT_GIVEN,
+        item_group_lines: Iterable[bill_update_params.ItemGroupLine] | NotGiven = NOT_GIVEN,
         item_lines: Iterable[bill_update_params.ItemLine] | NotGiven = NOT_GIVEN,
         memo: str | NotGiven = NOT_GIVEN,
         payables_account_id: str | NotGiven = NOT_GIVEN,
@@ -298,7 +298,7 @@ class BillsResource(SyncAPIResource):
               its `id` set to `-1`. If you do not wish to modify the expense lines, you can
               omit this field entirely to keep them unchanged.
 
-          item_line_groups: The bill's item group lines, each representing a predefined set of items bundled
+          item_group_lines: The bill's item group lines, each representing a predefined set of items bundled
               together because they are commonly purchased together or grouped for faster
               entry.
 
@@ -372,7 +372,7 @@ class BillsResource(SyncAPIResource):
                     "due_date": due_date,
                     "exchange_rate": exchange_rate,
                     "expense_lines": expense_lines,
-                    "item_line_groups": item_line_groups,
+                    "item_group_lines": item_group_lines,
                     "item_lines": item_lines,
                     "memo": memo,
                     "payables_account_id": payables_account_id,
@@ -576,7 +576,7 @@ class AsyncBillsResource(AsyncAPIResource):
         exchange_rate: float | NotGiven = NOT_GIVEN,
         expense_lines: Iterable[bill_create_params.ExpenseLine] | NotGiven = NOT_GIVEN,
         external_id: str | NotGiven = NOT_GIVEN,
-        item_line_groups: Iterable[bill_create_params.ItemLineGroup] | NotGiven = NOT_GIVEN,
+        item_group_lines: Iterable[bill_create_params.ItemGroupLine] | NotGiven = NOT_GIVEN,
         item_lines: Iterable[bill_create_params.ItemLine] | NotGiven = NOT_GIVEN,
         link_to_transaction_ids: List[str] | NotGiven = NOT_GIVEN,
         memo: str | NotGiven = NOT_GIVEN,
@@ -618,7 +618,7 @@ class AsyncBillsResource(AsyncAPIResource):
               return an error. This field is immutable and can only be set during object
               creation.
 
-          item_line_groups: The bill's item group lines, each representing a predefined set of items bundled
+          item_group_lines: The bill's item group lines, each representing a predefined set of items bundled
               together because they are commonly purchased together or grouped for faster
               entry.
 
@@ -694,7 +694,7 @@ class AsyncBillsResource(AsyncAPIResource):
                     "exchange_rate": exchange_rate,
                     "expense_lines": expense_lines,
                     "external_id": external_id,
-                    "item_line_groups": item_line_groups,
+                    "item_group_lines": item_group_lines,
                     "item_lines": item_lines,
                     "link_to_transaction_ids": link_to_transaction_ids,
                     "memo": memo,
@@ -763,7 +763,7 @@ class AsyncBillsResource(AsyncAPIResource):
         due_date: Union[str, date] | NotGiven = NOT_GIVEN,
         exchange_rate: float | NotGiven = NOT_GIVEN,
         expense_lines: Iterable[bill_update_params.ExpenseLine] | NotGiven = NOT_GIVEN,
-        item_line_groups: Iterable[bill_update_params.ItemLineGroup] | NotGiven = NOT_GIVEN,
+        item_group_lines: Iterable[bill_update_params.ItemGroupLine] | NotGiven = NOT_GIVEN,
         item_lines: Iterable[bill_update_params.ItemLine] | NotGiven = NOT_GIVEN,
         memo: str | NotGiven = NOT_GIVEN,
         payables_account_id: str | NotGiven = NOT_GIVEN,
@@ -815,7 +815,7 @@ class AsyncBillsResource(AsyncAPIResource):
               its `id` set to `-1`. If you do not wish to modify the expense lines, you can
               omit this field entirely to keep them unchanged.
 
-          item_line_groups: The bill's item group lines, each representing a predefined set of items bundled
+          item_group_lines: The bill's item group lines, each representing a predefined set of items bundled
               together because they are commonly purchased together or grouped for faster
               entry.
 
@@ -889,7 +889,7 @@ class AsyncBillsResource(AsyncAPIResource):
                     "due_date": due_date,
                     "exchange_rate": exchange_rate,
                     "expense_lines": expense_lines,
-                    "item_line_groups": item_line_groups,
+                    "item_group_lines": item_group_lines,
                     "item_lines": item_lines,
                     "memo": memo,
                     "payables_account_id": payables_account_id,
