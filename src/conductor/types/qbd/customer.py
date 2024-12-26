@@ -655,8 +655,8 @@ class Customer(BaseModel):
     format (YYYY-MM-DD).
     """
 
-    job_status: Literal["awarded", "closed", "in_progress", "none", "not_awarded", "pending"] = FieldInfo(
-        alias="jobStatus"
+    job_status: Optional[Literal["awarded", "closed", "in_progress", "none", "not_awarded", "pending"]] = FieldInfo(
+        alias="jobStatus", default=None
     )
     """
     The status of this customer's job, if this object is a job (i.e., sub-customer).
@@ -705,7 +705,9 @@ class Customer(BaseModel):
     phone: Optional[str] = None
     """The customer's primary telephone number."""
 
-    preferred_delivery_method: Literal["email", "mail", "none"] = FieldInfo(alias="preferredDeliveryMethod")
+    preferred_delivery_method: Optional[Literal["email", "mail", "none"]] = FieldInfo(
+        alias="preferredDeliveryMethod", default=None
+    )
     """
     The preferred method for delivering invoices and other documents to this
     customer.
