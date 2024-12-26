@@ -710,7 +710,7 @@ class LineGroupLine(BaseModel):
     This ID is unique across all transaction line types.
     """
 
-    amount: str
+    amount: Optional[str] = None
     """The monetary amount of this sales receipt line, represented as a decimal string.
 
     If both `quantity` and `rate` are specified but not `amount`, QuickBooks will
@@ -1243,7 +1243,7 @@ class Line(BaseModel):
     This ID is unique across all transaction line types.
     """
 
-    amount: str
+    amount: Optional[str] = None
     """The monetary amount of this sales receipt line, represented as a decimal string.
 
     If both `quantity` and `rate` are specified but not `amount`, QuickBooks will
