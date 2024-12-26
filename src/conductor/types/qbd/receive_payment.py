@@ -574,9 +574,6 @@ class ReceivePayment(BaseModel):
     """
     The total monetary amount of this receive-payment, represented as a decimal
     string.
-
-    **NOTE:** The sum of the `paymentAmount` amounts in the `applyToTransactions`
-    array cannot exceed the `totalAmount`, or you will receive an error.
     """
 
     total_amount_in_home_currency: Optional[str] = FieldInfo(alias="totalAmountInHomeCurrency", default=None)
