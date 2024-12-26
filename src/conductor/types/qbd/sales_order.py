@@ -628,8 +628,8 @@ class LineGroup(BaseModel):
 
     total_amount: str = FieldInfo(alias="totalAmount")
     """
-    The total monetary amount of this sales order line group, represented as a
-    decimal string.
+    The total monetary amount of this sales order line group, equivalent to the sum
+    of the amounts in `lines`, represented as a decimal string.
     """
 
     unit_of_measure: Optional[str] = FieldInfo(alias="unitOfMeasure", default=None)
@@ -1359,7 +1359,10 @@ class SalesOrder(BaseModel):
     """
 
     total_amount: str = FieldInfo(alias="totalAmount")
-    """The total monetary amount of this sales order, represented as a decimal string."""
+    """
+    The total monetary amount of this sales order, equivalent to the sum of the
+    amounts in `lines` and `lineGroups`, represented as a decimal string.
+    """
 
     total_amount_in_home_currency: Optional[str] = FieldInfo(alias="totalAmountInHomeCurrency", default=None)
     """

@@ -60,7 +60,7 @@ class ChecksResource(SyncAPIResource):
         expense_lines: Iterable[check_create_params.ExpenseLine] | NotGiven = NOT_GIVEN,
         external_id: str | NotGiven = NOT_GIVEN,
         is_queued_for_print: bool | NotGiven = NOT_GIVEN,
-        item_group_lines: Iterable[check_create_params.ItemGroupLine] | NotGiven = NOT_GIVEN,
+        item_line_groups: Iterable[check_create_params.ItemLineGroup] | NotGiven = NOT_GIVEN,
         item_lines: Iterable[check_create_params.ItemLine] | NotGiven = NOT_GIVEN,
         memo: str | NotGiven = NOT_GIVEN,
         payee_id: str | NotGiven = NOT_GIVEN,
@@ -113,7 +113,7 @@ class ChecksResource(SyncAPIResource):
           is_queued_for_print: Indicates whether this check is included in the queue of documents for
               QuickBooks to print.
 
-          item_group_lines: The check's item group lines, each representing a predefined set of items
+          item_line_groups: The check's item group lines, each representing a predefined set of items
               bundled together because they are commonly purchased together or grouped for
               faster entry.
 
@@ -160,7 +160,7 @@ class ChecksResource(SyncAPIResource):
                     "expense_lines": expense_lines,
                     "external_id": external_id,
                     "is_queued_for_print": is_queued_for_print,
-                    "item_group_lines": item_group_lines,
+                    "item_line_groups": item_line_groups,
                     "item_lines": item_lines,
                     "memo": memo,
                     "payee_id": payee_id,
@@ -229,7 +229,7 @@ class ChecksResource(SyncAPIResource):
         exchange_rate: float | NotGiven = NOT_GIVEN,
         expense_lines: Iterable[check_update_params.ExpenseLine] | NotGiven = NOT_GIVEN,
         is_queued_for_print: bool | NotGiven = NOT_GIVEN,
-        item_group_lines: Iterable[check_update_params.ItemGroupLine] | NotGiven = NOT_GIVEN,
+        item_line_groups: Iterable[check_update_params.ItemLineGroup] | NotGiven = NOT_GIVEN,
         item_lines: Iterable[check_update_params.ItemLine] | NotGiven = NOT_GIVEN,
         memo: str | NotGiven = NOT_GIVEN,
         payee_id: str | NotGiven = NOT_GIVEN,
@@ -294,7 +294,7 @@ class ChecksResource(SyncAPIResource):
           is_queued_for_print: Indicates whether this check is included in the queue of documents for
               QuickBooks to print.
 
-          item_group_lines: The check's item group lines, each representing a predefined set of items
+          item_line_groups: The check's item group lines, each representing a predefined set of items
               bundled together because they are commonly purchased together or grouped for
               faster entry.
 
@@ -360,7 +360,7 @@ class ChecksResource(SyncAPIResource):
                     "exchange_rate": exchange_rate,
                     "expense_lines": expense_lines,
                     "is_queued_for_print": is_queued_for_print,
-                    "item_group_lines": item_group_lines,
+                    "item_line_groups": item_line_groups,
                     "item_lines": item_lines,
                     "memo": memo,
                     "payee_id": payee_id,
@@ -562,7 +562,7 @@ class AsyncChecksResource(AsyncAPIResource):
         expense_lines: Iterable[check_create_params.ExpenseLine] | NotGiven = NOT_GIVEN,
         external_id: str | NotGiven = NOT_GIVEN,
         is_queued_for_print: bool | NotGiven = NOT_GIVEN,
-        item_group_lines: Iterable[check_create_params.ItemGroupLine] | NotGiven = NOT_GIVEN,
+        item_line_groups: Iterable[check_create_params.ItemLineGroup] | NotGiven = NOT_GIVEN,
         item_lines: Iterable[check_create_params.ItemLine] | NotGiven = NOT_GIVEN,
         memo: str | NotGiven = NOT_GIVEN,
         payee_id: str | NotGiven = NOT_GIVEN,
@@ -615,7 +615,7 @@ class AsyncChecksResource(AsyncAPIResource):
           is_queued_for_print: Indicates whether this check is included in the queue of documents for
               QuickBooks to print.
 
-          item_group_lines: The check's item group lines, each representing a predefined set of items
+          item_line_groups: The check's item group lines, each representing a predefined set of items
               bundled together because they are commonly purchased together or grouped for
               faster entry.
 
@@ -662,7 +662,7 @@ class AsyncChecksResource(AsyncAPIResource):
                     "expense_lines": expense_lines,
                     "external_id": external_id,
                     "is_queued_for_print": is_queued_for_print,
-                    "item_group_lines": item_group_lines,
+                    "item_line_groups": item_line_groups,
                     "item_lines": item_lines,
                     "memo": memo,
                     "payee_id": payee_id,
@@ -731,7 +731,7 @@ class AsyncChecksResource(AsyncAPIResource):
         exchange_rate: float | NotGiven = NOT_GIVEN,
         expense_lines: Iterable[check_update_params.ExpenseLine] | NotGiven = NOT_GIVEN,
         is_queued_for_print: bool | NotGiven = NOT_GIVEN,
-        item_group_lines: Iterable[check_update_params.ItemGroupLine] | NotGiven = NOT_GIVEN,
+        item_line_groups: Iterable[check_update_params.ItemLineGroup] | NotGiven = NOT_GIVEN,
         item_lines: Iterable[check_update_params.ItemLine] | NotGiven = NOT_GIVEN,
         memo: str | NotGiven = NOT_GIVEN,
         payee_id: str | NotGiven = NOT_GIVEN,
@@ -796,7 +796,7 @@ class AsyncChecksResource(AsyncAPIResource):
           is_queued_for_print: Indicates whether this check is included in the queue of documents for
               QuickBooks to print.
 
-          item_group_lines: The check's item group lines, each representing a predefined set of items
+          item_line_groups: The check's item group lines, each representing a predefined set of items
               bundled together because they are commonly purchased together or grouped for
               faster entry.
 
@@ -862,7 +862,7 @@ class AsyncChecksResource(AsyncAPIResource):
                     "exchange_rate": exchange_rate,
                     "expense_lines": expense_lines,
                     "is_queued_for_print": is_queued_for_print,
-                    "item_group_lines": item_group_lines,
+                    "item_line_groups": item_line_groups,
                     "item_lines": item_lines,
                     "memo": memo,
                     "payee_id": payee_id,
