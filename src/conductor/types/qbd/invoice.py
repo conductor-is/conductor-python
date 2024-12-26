@@ -1392,7 +1392,7 @@ class Invoice(BaseModel):
     subtotal: str
     """
     The subtotal of this invoice, which is the sum of all invoice lines before taxes
-    and discounts are applied, represented as a decimal string.
+    and payments are applied, represented as a decimal string.
     """
 
     suggested_discount_amount: Optional[str] = FieldInfo(alias="suggestedDiscountAmount", default=None)
