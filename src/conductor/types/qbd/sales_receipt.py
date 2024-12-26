@@ -1758,7 +1758,7 @@ class SalesReceipt(BaseModel):
     subtotal: str
     """
     The subtotal of this sales receipt, which is the sum of all sales receipt lines
-    before taxes and discounts are applied, represented as a decimal string.
+    before taxes and payments are applied, represented as a decimal string.
     """
 
     total_amount: str = FieldInfo(alias="totalAmount")
