@@ -280,7 +280,7 @@ class DebitLine(BaseModel):
     This will decrease the balance of this account.
     """
 
-    amount: str
+    amount: Optional[str] = None
     """
     The monetary amount of this journal debit line, represented as a decimal string.
     """
