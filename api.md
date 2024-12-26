@@ -437,3 +437,18 @@ Methods:
 - <code title="get /quickbooks-desktop/vendors/{id}">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/vendor.py">Vendor</a></code>
 - <code title="post /quickbooks-desktop/vendors/{id}">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/vendor_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/vendor.py">Vendor</a></code>
 - <code title="get /quickbooks-desktop/vendors">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">list</a>(\*\*<a href="src/conductor/types/qbd/vendor_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/vendor.py">SyncCursorPage[Vendor]</a></code>
+
+## CreditMemos
+
+Types:
+
+```python
+from conductor.types.qbd import QbdCreditMemo
+```
+
+Methods:
+
+- <code title="post /quickbooks-desktop/credit-memos">client.qbd.credit_memos.<a href="./src/conductor/resources/qbd/credit_memos.py">create</a>(\*\*<a href="src/conductor/types/qbd/credit_memo_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_credit_memo.py">QbdCreditMemo</a></code>
+- <code title="get /quickbooks-desktop/credit-memos/{id}">client.qbd.credit_memos.<a href="./src/conductor/resources/qbd/credit_memos.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_credit_memo.py">QbdCreditMemo</a></code>
+- <code title="post /quickbooks-desktop/credit-memos/{id}">client.qbd.credit_memos.<a href="./src/conductor/resources/qbd/credit_memos.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/credit_memo_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_credit_memo.py">QbdCreditMemo</a></code>
+- <code title="get /quickbooks-desktop/credit-memos">client.qbd.credit_memos.<a href="./src/conductor/resources/qbd/credit_memos.py">list</a>(\*\*<a href="src/conductor/types/qbd/credit_memo_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_credit_memo.py">SyncCursorPage[QbdCreditMemo]</a></code>
