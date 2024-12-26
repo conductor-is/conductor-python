@@ -1261,7 +1261,7 @@ class Estimate(BaseModel):
     subtotal: str
     """
     The subtotal of this estimate, which is the sum of all estimate lines before
-    taxes and discounts are applied, represented as a decimal string.
+    taxes and payments are applied, represented as a decimal string.
     """
 
     terms: Optional[Terms] = None
