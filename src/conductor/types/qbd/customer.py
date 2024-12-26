@@ -756,7 +756,9 @@ class Customer(BaseModel):
     non-taxable code to all sales.
     """
 
-    sales_tax_country: Literal["australia", "canada", "uk", "us"] = FieldInfo(alias="salesTaxCountry")
+    sales_tax_country: Optional[Literal["australia", "canada", "uk", "us"]] = FieldInfo(
+        alias="salesTaxCountry", default=None
+    )
     """The country for which sales tax is collected for this customer."""
 
     sales_tax_item: Optional[SalesTaxItem] = FieldInfo(alias="salesTaxItem", default=None)
