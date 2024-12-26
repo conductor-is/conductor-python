@@ -1349,7 +1349,7 @@ class SalesOrder(BaseModel):
     subtotal: str
     """
     The subtotal of this sales order, which is the sum of all sales order lines
-    before taxes and discounts are applied, represented as a decimal string.
+    before taxes and payments are applied, represented as a decimal string.
     """
 
     terms: Optional[Terms] = None
