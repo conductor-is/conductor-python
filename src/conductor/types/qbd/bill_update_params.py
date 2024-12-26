@@ -8,7 +8,7 @@ from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
-__all__ = ["BillUpdateParams", "ExpenseLine", "ItemLineGroup", "ItemLineGroupItemLine", "ItemLine", "VendorAddress"]
+__all__ = ["BillUpdateParams", "ExpenseLine", "ItemGroupLine", "ItemGroupLineItemLine", "ItemLine", "VendorAddress"]
 
 
 class BillUpdateParams(TypedDict, total=False):
@@ -59,7 +59,7 @@ class BillUpdateParams(TypedDict, total=False):
     omit this field entirely to keep them unchanged.
     """
 
-    item_line_groups: Annotated[Iterable[ItemLineGroup], PropertyInfo(alias="itemLineGroups")]
+    item_group_lines: Annotated[Iterable[ItemGroupLine], PropertyInfo(alias="itemGroupLines")]
     """
     The bill's item group lines, each representing a predefined set of items bundled
     together because they are commonly purchased together or grouped for faster
@@ -201,7 +201,7 @@ class ExpenseLine(TypedDict, total=False):
     """
 
 
-class ItemLineGroupItemLine(TypedDict, total=False):
+class ItemGroupLineItemLine(TypedDict, total=False):
     id: Required[str]
     """
     The QuickBooks-assigned unique identifier of an existing item line you wish to
@@ -336,28 +336,28 @@ class ItemLineGroupItemLine(TypedDict, total=False):
     """
 
 
-class ItemLineGroup(TypedDict, total=False):
+class ItemGroupLine(TypedDict, total=False):
     id: Required[str]
     """
-    The QuickBooks-assigned unique identifier of an existing item line group you
+    The QuickBooks-assigned unique identifier of an existing item group line you
     wish to retain or update.
 
-    **IMPORTANT**: Set this field to `-1` for new item line groups you wish to add.
+    **IMPORTANT**: Set this field to `-1` for new item group lines you wish to add.
     """
 
     item_group_id: Annotated[str, PropertyInfo(alias="itemGroupId")]
     """
-    The item line group's item group, representing a predefined set of items bundled
+    The item group line's item group, representing a predefined set of items bundled
     because they are commonly purchased together or grouped for faster entry.
     """
 
-    item_lines: Annotated[Iterable[ItemLineGroupItemLine], PropertyInfo(alias="itemLines")]
+    item_lines: Annotated[Iterable[ItemGroupLineItemLine], PropertyInfo(alias="itemLines")]
     """
-    The item line group's item lines, each representing the purchase of a specific
+    The item group line's item lines, each representing the purchase of a specific
     item or service.
 
-    **IMPORTANT**: When updating an item line group's item lines, this array
-    completely REPLACES all existing item lines for that item line group. To retain
+    **IMPORTANT**: When updating an item group line's item lines, this array
+    completely REPLACES all existing item lines for that item group line. To retain
     any current item lines, include them in this array, even if they have not
     changed. Any item lines not included will be removed. To add a new item line,
     include it with its `id` set to `-1`. If you do not wish to modify the item
@@ -366,8 +366,8 @@ class ItemLineGroup(TypedDict, total=False):
 
     override_unit_of_measure_set_id: Annotated[str, PropertyInfo(alias="overrideUnitOfMeasureSetId")]
     """
-    Specifies an alternative unit-of-measure set when updating this item line
-    group's `unitOfMeasure` field (e.g., "pound" or "kilogram"). This allows you to
+    Specifies an alternative unit-of-measure set when updating this item group
+    line's `unitOfMeasure` field (e.g., "pound" or "kilogram"). This allows you to
     select units from a different set than the item's default unit-of-measure set,
     which remains unchanged on the item itself. The override applies only to this
     specific line. For example, you can sell an item typically measured in volume
@@ -376,13 +376,13 @@ class ItemLineGroup(TypedDict, total=False):
     """
 
     quantity: float
-    """The quantity of the item group associated with this item line group.
+    """The quantity of the item group associated with this item group line.
 
     This field cannot be cleared.
     """
 
     unit_of_measure: Annotated[str, PropertyInfo(alias="unitOfMeasure")]
-    """The unit-of-measure used for the `quantity` in this item line group.
+    """The unit-of-measure used for the `quantity` in this item group line.
 
     Must be a valid unit within the item's available units of measure.
     """
