@@ -624,8 +624,8 @@ class LineGroup(BaseModel):
 
     total_amount: str = FieldInfo(alias="totalAmount")
     """
-    The total monetary amount of this invoice line group, represented as a decimal
-    string.
+    The total monetary amount of this invoice line group, equivalent to the sum of
+    the amounts in `lines`, represented as a decimal string.
     """
 
     unit_of_measure: Optional[str] = FieldInfo(alias="unitOfMeasure", default=None)
