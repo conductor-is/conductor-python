@@ -61,7 +61,7 @@ class CreditCardChargesResource(SyncAPIResource):
         exchange_rate: float | NotGiven = NOT_GIVEN,
         expense_lines: Iterable[credit_card_charge_create_params.ExpenseLine] | NotGiven = NOT_GIVEN,
         external_id: str | NotGiven = NOT_GIVEN,
-        item_group_lines: Iterable[credit_card_charge_create_params.ItemGroupLine] | NotGiven = NOT_GIVEN,
+        item_line_groups: Iterable[credit_card_charge_create_params.ItemLineGroup] | NotGiven = NOT_GIVEN,
         item_lines: Iterable[credit_card_charge_create_params.ItemLine] | NotGiven = NOT_GIVEN,
         memo: str | NotGiven = NOT_GIVEN,
         payee_id: str | NotGiven = NOT_GIVEN,
@@ -100,7 +100,7 @@ class CreditCardChargesResource(SyncAPIResource):
               return an error. This field is immutable and can only be set during object
               creation.
 
-          item_group_lines: The credit card charge's item group lines, each representing a predefined set of
+          item_line_groups: The credit card charge's item group lines, each representing a predefined set of
               items bundled together because they are commonly purchased together or grouped
               for faster entry.
 
@@ -143,7 +143,7 @@ class CreditCardChargesResource(SyncAPIResource):
                     "exchange_rate": exchange_rate,
                     "expense_lines": expense_lines,
                     "external_id": external_id,
-                    "item_group_lines": item_group_lines,
+                    "item_line_groups": item_line_groups,
                     "item_lines": item_lines,
                     "memo": memo,
                     "payee_id": payee_id,
@@ -209,7 +209,7 @@ class CreditCardChargesResource(SyncAPIResource):
         clear_item_lines: bool | NotGiven = NOT_GIVEN,
         exchange_rate: float | NotGiven = NOT_GIVEN,
         expense_lines: Iterable[credit_card_charge_update_params.ExpenseLine] | NotGiven = NOT_GIVEN,
-        item_group_lines: Iterable[credit_card_charge_update_params.ItemGroupLine] | NotGiven = NOT_GIVEN,
+        item_line_groups: Iterable[credit_card_charge_update_params.ItemLineGroup] | NotGiven = NOT_GIVEN,
         item_lines: Iterable[credit_card_charge_update_params.ItemLine] | NotGiven = NOT_GIVEN,
         memo: str | NotGiven = NOT_GIVEN,
         payee_id: str | NotGiven = NOT_GIVEN,
@@ -262,7 +262,7 @@ class CreditCardChargesResource(SyncAPIResource):
               expense line, include it with its `id` set to `-1`. If you do not wish to modify
               the expense lines, you can omit this field entirely to keep them unchanged.
 
-          item_group_lines: The credit card charge's item group lines, each representing a predefined set of
+          item_line_groups: The credit card charge's item group lines, each representing a predefined set of
               items bundled together because they are commonly purchased together or grouped
               for faster entry.
 
@@ -325,7 +325,7 @@ class CreditCardChargesResource(SyncAPIResource):
                     "clear_item_lines": clear_item_lines,
                     "exchange_rate": exchange_rate,
                     "expense_lines": expense_lines,
-                    "item_group_lines": item_group_lines,
+                    "item_line_groups": item_line_groups,
                     "item_lines": item_lines,
                     "memo": memo,
                     "payee_id": payee_id,
@@ -523,7 +523,7 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
         exchange_rate: float | NotGiven = NOT_GIVEN,
         expense_lines: Iterable[credit_card_charge_create_params.ExpenseLine] | NotGiven = NOT_GIVEN,
         external_id: str | NotGiven = NOT_GIVEN,
-        item_group_lines: Iterable[credit_card_charge_create_params.ItemGroupLine] | NotGiven = NOT_GIVEN,
+        item_line_groups: Iterable[credit_card_charge_create_params.ItemLineGroup] | NotGiven = NOT_GIVEN,
         item_lines: Iterable[credit_card_charge_create_params.ItemLine] | NotGiven = NOT_GIVEN,
         memo: str | NotGiven = NOT_GIVEN,
         payee_id: str | NotGiven = NOT_GIVEN,
@@ -562,7 +562,7 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
               return an error. This field is immutable and can only be set during object
               creation.
 
-          item_group_lines: The credit card charge's item group lines, each representing a predefined set of
+          item_line_groups: The credit card charge's item group lines, each representing a predefined set of
               items bundled together because they are commonly purchased together or grouped
               for faster entry.
 
@@ -605,7 +605,7 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
                     "exchange_rate": exchange_rate,
                     "expense_lines": expense_lines,
                     "external_id": external_id,
-                    "item_group_lines": item_group_lines,
+                    "item_line_groups": item_line_groups,
                     "item_lines": item_lines,
                     "memo": memo,
                     "payee_id": payee_id,
@@ -671,7 +671,7 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
         clear_item_lines: bool | NotGiven = NOT_GIVEN,
         exchange_rate: float | NotGiven = NOT_GIVEN,
         expense_lines: Iterable[credit_card_charge_update_params.ExpenseLine] | NotGiven = NOT_GIVEN,
-        item_group_lines: Iterable[credit_card_charge_update_params.ItemGroupLine] | NotGiven = NOT_GIVEN,
+        item_line_groups: Iterable[credit_card_charge_update_params.ItemLineGroup] | NotGiven = NOT_GIVEN,
         item_lines: Iterable[credit_card_charge_update_params.ItemLine] | NotGiven = NOT_GIVEN,
         memo: str | NotGiven = NOT_GIVEN,
         payee_id: str | NotGiven = NOT_GIVEN,
@@ -724,7 +724,7 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
               expense line, include it with its `id` set to `-1`. If you do not wish to modify
               the expense lines, you can omit this field entirely to keep them unchanged.
 
-          item_group_lines: The credit card charge's item group lines, each representing a predefined set of
+          item_line_groups: The credit card charge's item group lines, each representing a predefined set of
               items bundled together because they are commonly purchased together or grouped
               for faster entry.
 
@@ -787,7 +787,7 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
                     "clear_item_lines": clear_item_lines,
                     "exchange_rate": exchange_rate,
                     "expense_lines": expense_lines,
-                    "item_group_lines": item_group_lines,
+                    "item_line_groups": item_line_groups,
                     "item_lines": item_lines,
                     "memo": memo,
                     "payee_id": payee_id,
