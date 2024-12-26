@@ -76,6 +76,14 @@ from .transfers import (
     AsyncTransfersResourceWithStreamingResponse,
 )
 from ..._resource import SyncAPIResource, AsyncAPIResource
+from .credit_memos import (
+    CreditMemosResource,
+    AsyncCreditMemosResource,
+    CreditMemosResourceWithRawResponse,
+    AsyncCreditMemosResourceWithRawResponse,
+    CreditMemosResourceWithStreamingResponse,
+    AsyncCreditMemosResourceWithStreamingResponse,
+)
 from .sales_orders import (
     SalesOrdersResource,
     AsyncSalesOrdersResource,
@@ -334,6 +342,10 @@ class QbdResource(SyncAPIResource):
         return VendorsResource(self._client)
 
     @cached_property
+    def credit_memos(self) -> CreditMemosResource:
+        return CreditMemosResource(self._client)
+
+    @cached_property
     def with_raw_response(self) -> QbdResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return the
@@ -461,6 +473,10 @@ class AsyncQbdResource(AsyncAPIResource):
     @cached_property
     def vendors(self) -> AsyncVendorsResource:
         return AsyncVendorsResource(self._client)
+
+    @cached_property
+    def credit_memos(self) -> AsyncCreditMemosResource:
+        return AsyncCreditMemosResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncQbdResourceWithRawResponse:
@@ -594,6 +610,10 @@ class QbdResourceWithRawResponse:
     def vendors(self) -> VendorsResourceWithRawResponse:
         return VendorsResourceWithRawResponse(self._qbd.vendors)
 
+    @cached_property
+    def credit_memos(self) -> CreditMemosResourceWithRawResponse:
+        return CreditMemosResourceWithRawResponse(self._qbd.credit_memos)
+
 
 class AsyncQbdResourceWithRawResponse:
     def __init__(self, qbd: AsyncQbdResource) -> None:
@@ -706,6 +726,10 @@ class AsyncQbdResourceWithRawResponse:
     @cached_property
     def vendors(self) -> AsyncVendorsResourceWithRawResponse:
         return AsyncVendorsResourceWithRawResponse(self._qbd.vendors)
+
+    @cached_property
+    def credit_memos(self) -> AsyncCreditMemosResourceWithRawResponse:
+        return AsyncCreditMemosResourceWithRawResponse(self._qbd.credit_memos)
 
 
 class QbdResourceWithStreamingResponse:
@@ -820,6 +844,10 @@ class QbdResourceWithStreamingResponse:
     def vendors(self) -> VendorsResourceWithStreamingResponse:
         return VendorsResourceWithStreamingResponse(self._qbd.vendors)
 
+    @cached_property
+    def credit_memos(self) -> CreditMemosResourceWithStreamingResponse:
+        return CreditMemosResourceWithStreamingResponse(self._qbd.credit_memos)
+
 
 class AsyncQbdResourceWithStreamingResponse:
     def __init__(self, qbd: AsyncQbdResource) -> None:
@@ -932,3 +960,7 @@ class AsyncQbdResourceWithStreamingResponse:
     @cached_property
     def vendors(self) -> AsyncVendorsResourceWithStreamingResponse:
         return AsyncVendorsResourceWithStreamingResponse(self._qbd.vendors)
+
+    @cached_property
+    def credit_memos(self) -> AsyncCreditMemosResourceWithStreamingResponse:
+        return AsyncCreditMemosResourceWithStreamingResponse(self._qbd.credit_memos)
