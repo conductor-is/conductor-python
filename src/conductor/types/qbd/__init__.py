@@ -21,6 +21,7 @@ from .inventory_site import InventorySite as InventorySite
 from .purchase_order import PurchaseOrder as PurchaseOrder
 from .sales_tax_code import SalesTaxCode as SalesTaxCode
 from .sales_tax_item import SalesTaxItem as SalesTaxItem
+from .qbd_credit_memo import QbdCreditMemo as QbdCreditMemo
 from .receive_payment import ReceivePayment as ReceivePayment
 from .bill_list_params import BillListParams as BillListParams
 from .date_driven_term import DateDrivenTerm as DateDrivenTerm
@@ -56,10 +57,13 @@ from .estimate_create_params import EstimateCreateParams as EstimateCreateParams
 from .estimate_update_params import EstimateUpdateParams as EstimateUpdateParams
 from .transfer_create_params import TransferCreateParams as TransferCreateParams
 from .transfer_update_params import TransferUpdateParams as TransferUpdateParams
+from .credit_memo_list_params import CreditMemoListParams as CreditMemoListParams
 from .inventory_assembly_item import InventoryAssemblyItem as InventoryAssemblyItem
 from .sales_order_list_params import SalesOrderListParams as SalesOrderListParams
 from .bill_credit_card_payment import BillCreditCardPayment as BillCreditCardPayment
 from .service_item_list_params import ServiceItemListParams as ServiceItemListParams
+from .credit_memo_create_params import CreditMemoCreateParams as CreditMemoCreateParams
+from .credit_memo_update_params import CreditMemoUpdateParams as CreditMemoUpdateParams
 from .journal_entry_list_params import JournalEntryListParams as JournalEntryListParams
 from .sales_order_create_params import SalesOrderCreateParams as SalesOrderCreateParams
 from .sales_order_update_params import SalesOrderUpdateParams as SalesOrderUpdateParams
