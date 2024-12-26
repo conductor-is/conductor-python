@@ -137,9 +137,7 @@ class CreditCardTransactionRequest(BaseModel):
     postal_code: Optional[str] = FieldInfo(alias="postalCode", default=None)
     """The card's billing address ZIP or postal code."""
 
-    transaction_mode: Optional[Literal["card_not_present", "card_present"]] = FieldInfo(
-        alias="transactionMode", default=None
-    )
+    transaction_mode: Literal["card_not_present", "card_present"] = FieldInfo(alias="transactionMode")
     """
     Indicates whether this credit card transaction came from a card swipe
     (`card_present`) or not (`card_not_present`).
@@ -468,9 +466,7 @@ class LineGroupLineCreditCardTransactionRequest(BaseModel):
     postal_code: Optional[str] = FieldInfo(alias="postalCode", default=None)
     """The card's billing address ZIP or postal code."""
 
-    transaction_mode: Optional[Literal["card_not_present", "card_present"]] = FieldInfo(
-        alias="transactionMode", default=None
-    )
+    transaction_mode: Literal["card_not_present", "card_present"] = FieldInfo(alias="transactionMode")
     """
     Indicates whether this credit card transaction came from a card swipe
     (`card_present`) or not (`card_not_present`).
@@ -1001,9 +997,7 @@ class LineCreditCardTransactionRequest(BaseModel):
     postal_code: Optional[str] = FieldInfo(alias="postalCode", default=None)
     """The card's billing address ZIP or postal code."""
 
-    transaction_mode: Optional[Literal["card_not_present", "card_present"]] = FieldInfo(
-        alias="transactionMode", default=None
-    )
+    transaction_mode: Literal["card_not_present", "card_present"] = FieldInfo(alias="transactionMode")
     """
     Indicates whether this credit card transaction came from a card swipe
     (`card_present`) or not (`card_not_present`).
