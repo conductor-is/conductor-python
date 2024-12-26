@@ -74,7 +74,7 @@ class TestChecks:
             ],
             external_id="12345678-abcd-1234-abcd-1234567890ab",
             is_queued_for_print=True,
-            item_group_lines=[
+            item_line_groups=[
                 {
                     "item_group_id": "80000011-1234567890",
                     "custom_fields": [
@@ -250,7 +250,7 @@ class TestChecks:
                 }
             ],
             is_queued_for_print=True,
-            item_group_lines=[
+            item_line_groups=[
                 {
                     "id": "456DEF-1234567890",
                     "item_group_id": "80000011-1234567890",
@@ -465,7 +465,7 @@ class TestAsyncChecks:
             ],
             external_id="12345678-abcd-1234-abcd-1234567890ab",
             is_queued_for_print=True,
-            item_group_lines=[
+            item_line_groups=[
                 {
                     "item_group_id": "80000011-1234567890",
                     "custom_fields": [
@@ -641,7 +641,7 @@ class TestAsyncChecks:
                 }
             ],
             is_queued_for_print=True,
-            item_group_lines=[
+            item_line_groups=[
                 {
                     "id": "456DEF-1234567890",
                     "item_group_id": "80000011-1234567890",
