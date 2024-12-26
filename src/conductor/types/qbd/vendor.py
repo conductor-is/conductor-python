@@ -578,7 +578,7 @@ class Vendor(BaseModel):
     Canada or the UK.
     """
 
-    reporting_period: Literal["monthly", "quarterly"] = FieldInfo(alias="reportingPeriod")
+    reporting_period: Optional[Literal["monthly", "quarterly"]] = FieldInfo(alias="reportingPeriod", default=None)
     """The vendor's tax reporting period, for use in Canada or the UK."""
 
     revision_number: str = FieldInfo(alias="revisionNumber")
@@ -607,7 +607,9 @@ class Vendor(BaseModel):
     non-taxable code to all sales.
     """
 
-    sales_tax_country: Literal["australia", "canada", "uk", "us"] = FieldInfo(alias="salesTaxCountry")
+    sales_tax_country: Optional[Literal["australia", "canada", "uk", "us"]] = FieldInfo(
+        alias="salesTaxCountry", default=None
+    )
     """The country for which sales tax is collected for this vendor."""
 
     sales_tax_return: Optional[SalesTaxReturn] = FieldInfo(alias="salesTaxReturn", default=None)
