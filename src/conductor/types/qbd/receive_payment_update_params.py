@@ -75,8 +75,8 @@ class ReceivePaymentUpdateParams(TypedDict, total=False):
 
     memo: str
     """
-    A memo or note that appears in reports that show details of this
-    receive-payment.
+    A memo or note for this receive-payment that will be displayed at the beginning
+    of reports containing details about this receive-payment.
     """
 
     payment_method_id: Annotated[str, PropertyInfo(alias="paymentMethodId")]

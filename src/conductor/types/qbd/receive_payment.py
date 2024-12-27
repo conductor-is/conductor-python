@@ -533,8 +533,8 @@ class ReceivePayment(BaseModel):
 
     memo: Optional[str] = None
     """
-    A memo or note that appears in reports that show details of this
-    receive-payment.
+    A memo or note for this receive-payment that will be displayed at the beginning
+    of reports containing details about this receive-payment.
     """
 
     object_type: Literal["qbd_receive_payment"] = FieldInfo(alias="objectType")
