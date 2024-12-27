@@ -133,8 +133,8 @@ class ReceivePaymentsResource(SyncAPIResource):
               **IMPORTANT**: You must specify either `isAutoApply` or `applyToTransactions`
               when creating a receive-payment, but never both.
 
-          memo: A memo or note that appears in reports that show details of this
-              receive-payment.
+          memo: A memo or note for this receive-payment that will be displayed at the beginning
+              of reports containing details about this receive-payment.
 
           payment_method_id: The receive-payment's payment method (e.g., cash, check, credit card).
 
@@ -293,8 +293,8 @@ class ReceivePaymentsResource(SyncAPIResource):
               currency in QuickBooks at the time of this transaction. Represented as a decimal
               value (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
 
-          memo: A memo or note that appears in reports that show details of this
-              receive-payment.
+          memo: A memo or note for this receive-payment that will be displayed at the beginning
+              of reports containing details about this receive-payment.
 
           payment_method_id: The receive-payment's payment method (e.g., cash, check, credit card).
 
@@ -610,8 +610,8 @@ class AsyncReceivePaymentsResource(AsyncAPIResource):
               **IMPORTANT**: You must specify either `isAutoApply` or `applyToTransactions`
               when creating a receive-payment, but never both.
 
-          memo: A memo or note that appears in reports that show details of this
-              receive-payment.
+          memo: A memo or note for this receive-payment that will be displayed at the beginning
+              of reports containing details about this receive-payment.
 
           payment_method_id: The receive-payment's payment method (e.g., cash, check, credit card).
 
@@ -770,8 +770,8 @@ class AsyncReceivePaymentsResource(AsyncAPIResource):
               currency in QuickBooks at the time of this transaction. Represented as a decimal
               value (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
 
-          memo: A memo or note that appears in reports that show details of this
-              receive-payment.
+          memo: A memo or note for this receive-payment that will be displayed at the beginning
+              of reports containing details about this receive-payment.
 
           payment_method_id: The receive-payment's payment method (e.g., cash, check, credit card).
 
