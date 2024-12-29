@@ -23,7 +23,7 @@ class TestSubtotalItems:
     @parametrize
     def test_method_create(self, client: Conductor) -> None:
         subtotal_item = client.qbd.subtotal_items.create(
-            name="Labor",
+            name="Labor subtotal",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(QbdSubtotalItem, subtotal_item, path=["response"])
@@ -31,7 +31,7 @@ class TestSubtotalItems:
     @parametrize
     def test_method_create_with_all_params(self, client: Conductor) -> None:
         subtotal_item = client.qbd.subtotal_items.create(
-            name="Labor",
+            name="Labor subtotal",
             conductor_end_user_id="end_usr_1234567abcdefg",
             barcode={
                 "allow_override": False,
@@ -47,7 +47,7 @@ class TestSubtotalItems:
     @parametrize
     def test_raw_response_create(self, client: Conductor) -> None:
         response = client.qbd.subtotal_items.with_raw_response.create(
-            name="Labor",
+            name="Labor subtotal",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -59,7 +59,7 @@ class TestSubtotalItems:
     @parametrize
     def test_streaming_response_create(self, client: Conductor) -> None:
         with client.qbd.subtotal_items.with_streaming_response.create(
-            name="Labor",
+            name="Labor subtotal",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
@@ -134,7 +134,7 @@ class TestSubtotalItems:
             },
             description="Subtotal for all labor costs on this project",
             is_active=True,
-            name="Labor",
+            name="Labor subtotal",
         )
         assert_matches_type(QbdSubtotalItem, subtotal_item, path=["response"])
 
@@ -192,7 +192,7 @@ class TestSubtotalItems:
             name_contains="ABC",
             name_ends_with="ABC",
             name_from="A",
-            names=["Labor"],
+            names=["Labor subtotal"],
             name_starts_with="ABC",
             name_to="Z",
             status="active",
@@ -232,7 +232,7 @@ class TestAsyncSubtotalItems:
     @parametrize
     async def test_method_create(self, async_client: AsyncConductor) -> None:
         subtotal_item = await async_client.qbd.subtotal_items.create(
-            name="Labor",
+            name="Labor subtotal",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(QbdSubtotalItem, subtotal_item, path=["response"])
@@ -240,7 +240,7 @@ class TestAsyncSubtotalItems:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncConductor) -> None:
         subtotal_item = await async_client.qbd.subtotal_items.create(
-            name="Labor",
+            name="Labor subtotal",
             conductor_end_user_id="end_usr_1234567abcdefg",
             barcode={
                 "allow_override": False,
@@ -256,7 +256,7 @@ class TestAsyncSubtotalItems:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncConductor) -> None:
         response = await async_client.qbd.subtotal_items.with_raw_response.create(
-            name="Labor",
+            name="Labor subtotal",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -268,7 +268,7 @@ class TestAsyncSubtotalItems:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncConductor) -> None:
         async with async_client.qbd.subtotal_items.with_streaming_response.create(
-            name="Labor",
+            name="Labor subtotal",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
@@ -343,7 +343,7 @@ class TestAsyncSubtotalItems:
             },
             description="Subtotal for all labor costs on this project",
             is_active=True,
-            name="Labor",
+            name="Labor subtotal",
         )
         assert_matches_type(QbdSubtotalItem, subtotal_item, path=["response"])
 
@@ -401,7 +401,7 @@ class TestAsyncSubtotalItems:
             name_contains="ABC",
             name_ends_with="ABC",
             name_from="A",
-            names=["Labor"],
+            names=["Labor subtotal"],
             name_starts_with="ABC",
             name_to="Z",
             status="active",
