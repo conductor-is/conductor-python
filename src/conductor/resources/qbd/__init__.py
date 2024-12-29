@@ -120,6 +120,14 @@ from .standard_terms import (
     StandardTermsResourceWithStreamingResponse,
     AsyncStandardTermsResourceWithStreamingResponse,
 )
+from .subtotal_items import (
+    SubtotalItemsResource,
+    AsyncSubtotalItemsResource,
+    SubtotalItemsResourceWithRawResponse,
+    AsyncSubtotalItemsResourceWithRawResponse,
+    SubtotalItemsResourceWithStreamingResponse,
+    AsyncSubtotalItemsResourceWithStreamingResponse,
+)
 from .inventory_items import (
     InventoryItemsResource,
     AsyncInventoryItemsResource,
@@ -402,6 +410,12 @@ __all__ = [
     "AsyncCreditMemosResourceWithRawResponse",
     "CreditMemosResourceWithStreamingResponse",
     "AsyncCreditMemosResourceWithStreamingResponse",
+    "SubtotalItemsResource",
+    "AsyncSubtotalItemsResource",
+    "SubtotalItemsResourceWithRawResponse",
+    "AsyncSubtotalItemsResourceWithRawResponse",
+    "SubtotalItemsResourceWithStreamingResponse",
+    "AsyncSubtotalItemsResourceWithStreamingResponse",
     "QbdResource",
     "AsyncQbdResource",
     "QbdResourceWithRawResponse",
