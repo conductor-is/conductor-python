@@ -116,6 +116,14 @@ from .standard_terms import (
     StandardTermsResourceWithStreamingResponse,
     AsyncStandardTermsResourceWithStreamingResponse,
 )
+from .subtotal_items import (
+    SubtotalItemsResource,
+    AsyncSubtotalItemsResource,
+    SubtotalItemsResourceWithRawResponse,
+    AsyncSubtotalItemsResourceWithRawResponse,
+    SubtotalItemsResourceWithStreamingResponse,
+    AsyncSubtotalItemsResourceWithStreamingResponse,
+)
 from .inventory_items import (
     InventoryItemsResource,
     AsyncInventoryItemsResource,
@@ -346,6 +354,10 @@ class QbdResource(SyncAPIResource):
         return CreditMemosResource(self._client)
 
     @cached_property
+    def subtotal_items(self) -> SubtotalItemsResource:
+        return SubtotalItemsResource(self._client)
+
+    @cached_property
     def with_raw_response(self) -> QbdResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return the
@@ -477,6 +489,10 @@ class AsyncQbdResource(AsyncAPIResource):
     @cached_property
     def credit_memos(self) -> AsyncCreditMemosResource:
         return AsyncCreditMemosResource(self._client)
+
+    @cached_property
+    def subtotal_items(self) -> AsyncSubtotalItemsResource:
+        return AsyncSubtotalItemsResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncQbdResourceWithRawResponse:
@@ -614,6 +630,10 @@ class QbdResourceWithRawResponse:
     def credit_memos(self) -> CreditMemosResourceWithRawResponse:
         return CreditMemosResourceWithRawResponse(self._qbd.credit_memos)
 
+    @cached_property
+    def subtotal_items(self) -> SubtotalItemsResourceWithRawResponse:
+        return SubtotalItemsResourceWithRawResponse(self._qbd.subtotal_items)
+
 
 class AsyncQbdResourceWithRawResponse:
     def __init__(self, qbd: AsyncQbdResource) -> None:
@@ -730,6 +750,10 @@ class AsyncQbdResourceWithRawResponse:
     @cached_property
     def credit_memos(self) -> AsyncCreditMemosResourceWithRawResponse:
         return AsyncCreditMemosResourceWithRawResponse(self._qbd.credit_memos)
+
+    @cached_property
+    def subtotal_items(self) -> AsyncSubtotalItemsResourceWithRawResponse:
+        return AsyncSubtotalItemsResourceWithRawResponse(self._qbd.subtotal_items)
 
 
 class QbdResourceWithStreamingResponse:
@@ -848,6 +872,10 @@ class QbdResourceWithStreamingResponse:
     def credit_memos(self) -> CreditMemosResourceWithStreamingResponse:
         return CreditMemosResourceWithStreamingResponse(self._qbd.credit_memos)
 
+    @cached_property
+    def subtotal_items(self) -> SubtotalItemsResourceWithStreamingResponse:
+        return SubtotalItemsResourceWithStreamingResponse(self._qbd.subtotal_items)
+
 
 class AsyncQbdResourceWithStreamingResponse:
     def __init__(self, qbd: AsyncQbdResource) -> None:
@@ -964,3 +992,7 @@ class AsyncQbdResourceWithStreamingResponse:
     @cached_property
     def credit_memos(self) -> AsyncCreditMemosResourceWithStreamingResponse:
         return AsyncCreditMemosResourceWithStreamingResponse(self._qbd.credit_memos)
+
+    @cached_property
+    def subtotal_items(self) -> AsyncSubtotalItemsResourceWithStreamingResponse:
+        return AsyncSubtotalItemsResourceWithStreamingResponse(self._qbd.subtotal_items)
