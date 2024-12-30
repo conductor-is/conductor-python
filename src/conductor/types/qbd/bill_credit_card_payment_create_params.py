@@ -101,10 +101,10 @@ class ApplyToTransactionApplyCredit(TypedDict, total=False):
     decimal string.
     """
 
-    credit_memo_id: Required[Annotated[str, PropertyInfo(alias="creditMemoId")]]
+    credit_transaction_id: Required[Annotated[str, PropertyInfo(alias="creditTransactionId")]]
     """
-    The unique identifier of the credit memo or vendor credit to apply to this
-    transaction.
+    The unique identifier of the credit transaction (credit memo or vendor credit)
+    to apply to this transaction.
     """
 
     override_credit_application: Annotated[bool, PropertyInfo(alias="overrideCreditApplication")]
