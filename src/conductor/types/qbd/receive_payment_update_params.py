@@ -123,7 +123,10 @@ class ApplyToTransactionApplyCredit(TypedDict, total=False):
     """
 
     credit_memo_id: Required[Annotated[str, PropertyInfo(alias="creditMemoId")]]
-    """The unique identifier of the credit memo to apply to this transaction."""
+    """
+    The unique identifier of the credit memo or vendor credit to apply to this
+    transaction.
+    """
 
     override_credit_application: Annotated[bool, PropertyInfo(alias="overrideCreditApplication")]
     """Indicates whether to override the credit."""
