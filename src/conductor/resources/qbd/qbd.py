@@ -274,6 +274,10 @@ class QbdResource(SyncAPIResource):
         return CreditCardCreditsResource(self._client)
 
     @cached_property
+    def credit_memos(self) -> CreditMemosResource:
+        return CreditMemosResource(self._client)
+
+    @cached_property
     def customers(self) -> CustomersResource:
         return CustomersResource(self._client)
 
@@ -342,20 +346,16 @@ class QbdResource(SyncAPIResource):
         return StandardTermsResource(self._client)
 
     @cached_property
+    def subtotal_items(self) -> SubtotalItemsResource:
+        return SubtotalItemsResource(self._client)
+
+    @cached_property
     def transfers(self) -> TransfersResource:
         return TransfersResource(self._client)
 
     @cached_property
     def vendors(self) -> VendorsResource:
         return VendorsResource(self._client)
-
-    @cached_property
-    def credit_memos(self) -> CreditMemosResource:
-        return CreditMemosResource(self._client)
-
-    @cached_property
-    def subtotal_items(self) -> SubtotalItemsResource:
-        return SubtotalItemsResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> QbdResourceWithRawResponse:
@@ -409,6 +409,10 @@ class AsyncQbdResource(AsyncAPIResource):
     @cached_property
     def credit_card_credits(self) -> AsyncCreditCardCreditsResource:
         return AsyncCreditCardCreditsResource(self._client)
+
+    @cached_property
+    def credit_memos(self) -> AsyncCreditMemosResource:
+        return AsyncCreditMemosResource(self._client)
 
     @cached_property
     def customers(self) -> AsyncCustomersResource:
@@ -479,20 +483,16 @@ class AsyncQbdResource(AsyncAPIResource):
         return AsyncStandardTermsResource(self._client)
 
     @cached_property
+    def subtotal_items(self) -> AsyncSubtotalItemsResource:
+        return AsyncSubtotalItemsResource(self._client)
+
+    @cached_property
     def transfers(self) -> AsyncTransfersResource:
         return AsyncTransfersResource(self._client)
 
     @cached_property
     def vendors(self) -> AsyncVendorsResource:
         return AsyncVendorsResource(self._client)
-
-    @cached_property
-    def credit_memos(self) -> AsyncCreditMemosResource:
-        return AsyncCreditMemosResource(self._client)
-
-    @cached_property
-    def subtotal_items(self) -> AsyncSubtotalItemsResource:
-        return AsyncSubtotalItemsResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncQbdResourceWithRawResponse:
@@ -549,6 +549,10 @@ class QbdResourceWithRawResponse:
     @cached_property
     def credit_card_credits(self) -> CreditCardCreditsResourceWithRawResponse:
         return CreditCardCreditsResourceWithRawResponse(self._qbd.credit_card_credits)
+
+    @cached_property
+    def credit_memos(self) -> CreditMemosResourceWithRawResponse:
+        return CreditMemosResourceWithRawResponse(self._qbd.credit_memos)
 
     @cached_property
     def customers(self) -> CustomersResourceWithRawResponse:
@@ -619,20 +623,16 @@ class QbdResourceWithRawResponse:
         return StandardTermsResourceWithRawResponse(self._qbd.standard_terms)
 
     @cached_property
+    def subtotal_items(self) -> SubtotalItemsResourceWithRawResponse:
+        return SubtotalItemsResourceWithRawResponse(self._qbd.subtotal_items)
+
+    @cached_property
     def transfers(self) -> TransfersResourceWithRawResponse:
         return TransfersResourceWithRawResponse(self._qbd.transfers)
 
     @cached_property
     def vendors(self) -> VendorsResourceWithRawResponse:
         return VendorsResourceWithRawResponse(self._qbd.vendors)
-
-    @cached_property
-    def credit_memos(self) -> CreditMemosResourceWithRawResponse:
-        return CreditMemosResourceWithRawResponse(self._qbd.credit_memos)
-
-    @cached_property
-    def subtotal_items(self) -> SubtotalItemsResourceWithRawResponse:
-        return SubtotalItemsResourceWithRawResponse(self._qbd.subtotal_items)
 
 
 class AsyncQbdResourceWithRawResponse:
@@ -670,6 +670,10 @@ class AsyncQbdResourceWithRawResponse:
     @cached_property
     def credit_card_credits(self) -> AsyncCreditCardCreditsResourceWithRawResponse:
         return AsyncCreditCardCreditsResourceWithRawResponse(self._qbd.credit_card_credits)
+
+    @cached_property
+    def credit_memos(self) -> AsyncCreditMemosResourceWithRawResponse:
+        return AsyncCreditMemosResourceWithRawResponse(self._qbd.credit_memos)
 
     @cached_property
     def customers(self) -> AsyncCustomersResourceWithRawResponse:
@@ -740,20 +744,16 @@ class AsyncQbdResourceWithRawResponse:
         return AsyncStandardTermsResourceWithRawResponse(self._qbd.standard_terms)
 
     @cached_property
+    def subtotal_items(self) -> AsyncSubtotalItemsResourceWithRawResponse:
+        return AsyncSubtotalItemsResourceWithRawResponse(self._qbd.subtotal_items)
+
+    @cached_property
     def transfers(self) -> AsyncTransfersResourceWithRawResponse:
         return AsyncTransfersResourceWithRawResponse(self._qbd.transfers)
 
     @cached_property
     def vendors(self) -> AsyncVendorsResourceWithRawResponse:
         return AsyncVendorsResourceWithRawResponse(self._qbd.vendors)
-
-    @cached_property
-    def credit_memos(self) -> AsyncCreditMemosResourceWithRawResponse:
-        return AsyncCreditMemosResourceWithRawResponse(self._qbd.credit_memos)
-
-    @cached_property
-    def subtotal_items(self) -> AsyncSubtotalItemsResourceWithRawResponse:
-        return AsyncSubtotalItemsResourceWithRawResponse(self._qbd.subtotal_items)
 
 
 class QbdResourceWithStreamingResponse:
@@ -791,6 +791,10 @@ class QbdResourceWithStreamingResponse:
     @cached_property
     def credit_card_credits(self) -> CreditCardCreditsResourceWithStreamingResponse:
         return CreditCardCreditsResourceWithStreamingResponse(self._qbd.credit_card_credits)
+
+    @cached_property
+    def credit_memos(self) -> CreditMemosResourceWithStreamingResponse:
+        return CreditMemosResourceWithStreamingResponse(self._qbd.credit_memos)
 
     @cached_property
     def customers(self) -> CustomersResourceWithStreamingResponse:
@@ -861,20 +865,16 @@ class QbdResourceWithStreamingResponse:
         return StandardTermsResourceWithStreamingResponse(self._qbd.standard_terms)
 
     @cached_property
+    def subtotal_items(self) -> SubtotalItemsResourceWithStreamingResponse:
+        return SubtotalItemsResourceWithStreamingResponse(self._qbd.subtotal_items)
+
+    @cached_property
     def transfers(self) -> TransfersResourceWithStreamingResponse:
         return TransfersResourceWithStreamingResponse(self._qbd.transfers)
 
     @cached_property
     def vendors(self) -> VendorsResourceWithStreamingResponse:
         return VendorsResourceWithStreamingResponse(self._qbd.vendors)
-
-    @cached_property
-    def credit_memos(self) -> CreditMemosResourceWithStreamingResponse:
-        return CreditMemosResourceWithStreamingResponse(self._qbd.credit_memos)
-
-    @cached_property
-    def subtotal_items(self) -> SubtotalItemsResourceWithStreamingResponse:
-        return SubtotalItemsResourceWithStreamingResponse(self._qbd.subtotal_items)
 
 
 class AsyncQbdResourceWithStreamingResponse:
@@ -912,6 +912,10 @@ class AsyncQbdResourceWithStreamingResponse:
     @cached_property
     def credit_card_credits(self) -> AsyncCreditCardCreditsResourceWithStreamingResponse:
         return AsyncCreditCardCreditsResourceWithStreamingResponse(self._qbd.credit_card_credits)
+
+    @cached_property
+    def credit_memos(self) -> AsyncCreditMemosResourceWithStreamingResponse:
+        return AsyncCreditMemosResourceWithStreamingResponse(self._qbd.credit_memos)
 
     @cached_property
     def customers(self) -> AsyncCustomersResourceWithStreamingResponse:
@@ -982,17 +986,13 @@ class AsyncQbdResourceWithStreamingResponse:
         return AsyncStandardTermsResourceWithStreamingResponse(self._qbd.standard_terms)
 
     @cached_property
+    def subtotal_items(self) -> AsyncSubtotalItemsResourceWithStreamingResponse:
+        return AsyncSubtotalItemsResourceWithStreamingResponse(self._qbd.subtotal_items)
+
+    @cached_property
     def transfers(self) -> AsyncTransfersResourceWithStreamingResponse:
         return AsyncTransfersResourceWithStreamingResponse(self._qbd.transfers)
 
     @cached_property
     def vendors(self) -> AsyncVendorsResourceWithStreamingResponse:
         return AsyncVendorsResourceWithStreamingResponse(self._qbd.vendors)
-
-    @cached_property
-    def credit_memos(self) -> AsyncCreditMemosResourceWithStreamingResponse:
-        return AsyncCreditMemosResourceWithStreamingResponse(self._qbd.credit_memos)
-
-    @cached_property
-    def subtotal_items(self) -> AsyncSubtotalItemsResourceWithStreamingResponse:
-        return AsyncSubtotalItemsResourceWithStreamingResponse(self._qbd.subtotal_items)
