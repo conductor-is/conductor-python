@@ -9,7 +9,7 @@ from pydantic import Field as FieldInfo
 from ..._models import BaseModel
 
 __all__ = [
-    "QbdCreditMemo",
+    "CreditMemo",
     "BillingAddress",
     "Class",
     "Currency",
@@ -1127,7 +1127,7 @@ class Terms(BaseModel):
     """
 
 
-class QbdCreditMemo(BaseModel):
+class CreditMemo(BaseModel):
     id: str
     """The unique identifier assigned by QuickBooks to this credit memo.
 
