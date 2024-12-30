@@ -44,7 +44,7 @@ class TestReceivePayments:
                     "apply_credits": [
                         {
                             "applied_amount": "100.00",
-                            "credit_memo_id": "ABCDEF-1234567890",
+                            "credit_transaction_id": "ABCDEF-1234567890",
                             "override_credit_application": False,
                         }
                     ],
@@ -187,7 +187,7 @@ class TestReceivePayments:
                     "apply_credits": [
                         {
                             "applied_amount": "100.00",
-                            "credit_memo_id": "ABCDEF-1234567890",
+                            "credit_transaction_id": "ABCDEF-1234567890",
                             "override_credit_application": False,
                         }
                     ],
@@ -357,7 +357,7 @@ class TestAsyncReceivePayments:
                     "apply_credits": [
                         {
                             "applied_amount": "100.00",
-                            "credit_memo_id": "ABCDEF-1234567890",
+                            "credit_transaction_id": "ABCDEF-1234567890",
                             "override_credit_application": False,
                         }
                     ],
@@ -500,7 +500,7 @@ class TestAsyncReceivePayments:
                     "apply_credits": [
                         {
                             "applied_amount": "100.00",
-                            "credit_memo_id": "ABCDEF-1234567890",
+                            "credit_transaction_id": "ABCDEF-1234567890",
                             "override_credit_application": False,
                         }
                     ],
