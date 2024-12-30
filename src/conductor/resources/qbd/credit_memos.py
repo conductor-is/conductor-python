@@ -23,7 +23,7 @@ from ..._response import (
 from ...types.qbd import credit_memo_list_params, credit_memo_create_params, credit_memo_update_params
 from ...pagination import SyncCursorPage, AsyncCursorPage
 from ..._base_client import AsyncPaginator, make_request_options
-from ...types.qbd.qbd_credit_memo import QbdCreditMemo
+from ...types.qbd.credit_memo import CreditMemo
 
 __all__ = ["CreditMemosResource", "AsyncCreditMemosResource"]
 
@@ -85,7 +85,7 @@ class CreditMemosResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdCreditMemo:
+    ) -> CreditMemo:
         """
         Creates a new credit memo.
 
@@ -251,7 +251,7 @@ class CreditMemosResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdCreditMemo,
+            cast_to=CreditMemo,
         )
 
     def retrieve(
@@ -265,7 +265,7 @@ class CreditMemosResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdCreditMemo:
+    ) -> CreditMemo:
         """
         Retrieves a credit memo by ID.
 
@@ -291,7 +291,7 @@ class CreditMemosResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdCreditMemo,
+            cast_to=CreditMemo,
         )
 
     def update(
@@ -332,7 +332,7 @@ class CreditMemosResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdCreditMemo:
+    ) -> CreditMemo:
         """
         Updates an existing credit memo.
 
@@ -509,7 +509,7 @@ class CreditMemosResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdCreditMemo,
+            cast_to=CreditMemo,
         )
 
     def list(
@@ -540,7 +540,7 @@ class CreditMemosResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursorPage[QbdCreditMemo]:
+    ) -> SyncCursorPage[CreditMemo]:
         """Returns a list of credit memos.
 
         Use the `cursor` parameter to paginate through
@@ -632,7 +632,7 @@ class CreditMemosResource(SyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/credit-memos",
-            page=SyncCursorPage[QbdCreditMemo],
+            page=SyncCursorPage[CreditMemo],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -662,7 +662,7 @@ class CreditMemosResource(SyncAPIResource):
                     credit_memo_list_params.CreditMemoListParams,
                 ),
             ),
-            model=QbdCreditMemo,
+            model=CreditMemo,
         )
 
 
@@ -723,7 +723,7 @@ class AsyncCreditMemosResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdCreditMemo:
+    ) -> CreditMemo:
         """
         Creates a new credit memo.
 
@@ -889,7 +889,7 @@ class AsyncCreditMemosResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdCreditMemo,
+            cast_to=CreditMemo,
         )
 
     async def retrieve(
@@ -903,7 +903,7 @@ class AsyncCreditMemosResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdCreditMemo:
+    ) -> CreditMemo:
         """
         Retrieves a credit memo by ID.
 
@@ -929,7 +929,7 @@ class AsyncCreditMemosResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdCreditMemo,
+            cast_to=CreditMemo,
         )
 
     async def update(
@@ -970,7 +970,7 @@ class AsyncCreditMemosResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdCreditMemo:
+    ) -> CreditMemo:
         """
         Updates an existing credit memo.
 
@@ -1147,7 +1147,7 @@ class AsyncCreditMemosResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdCreditMemo,
+            cast_to=CreditMemo,
         )
 
     def list(
@@ -1178,7 +1178,7 @@ class AsyncCreditMemosResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[QbdCreditMemo, AsyncCursorPage[QbdCreditMemo]]:
+    ) -> AsyncPaginator[CreditMemo, AsyncCursorPage[CreditMemo]]:
         """Returns a list of credit memos.
 
         Use the `cursor` parameter to paginate through
@@ -1270,7 +1270,7 @@ class AsyncCreditMemosResource(AsyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/credit-memos",
-            page=AsyncCursorPage[QbdCreditMemo],
+            page=AsyncCursorPage[CreditMemo],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1300,7 +1300,7 @@ class AsyncCreditMemosResource(AsyncAPIResource):
                     credit_memo_list_params.CreditMemoListParams,
                 ),
             ),
-            model=QbdCreditMemo,
+            model=CreditMemo,
         )
 
 

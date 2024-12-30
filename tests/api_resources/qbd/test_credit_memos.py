@@ -11,7 +11,7 @@ from conductor import Conductor, AsyncConductor
 from tests.utils import assert_matches_type
 from conductor._utils import parse_date
 from conductor.types.qbd import (
-    QbdCreditMemo,
+    CreditMemo,
 )
 from conductor.pagination import SyncCursorPage, AsyncCursorPage
 
@@ -28,7 +28,7 @@ class TestCreditMemos:
             transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdCreditMemo, credit_memo, path=["response"])
+        assert_matches_type(CreditMemo, credit_memo, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Conductor) -> None:
@@ -127,7 +127,7 @@ class TestCreditMemos:
             shipping_method_id="80000007-1234567890",
             terms_id="80000013-1234567890",
         )
-        assert_matches_type(QbdCreditMemo, credit_memo, path=["response"])
+        assert_matches_type(CreditMemo, credit_memo, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: Conductor) -> None:
@@ -140,7 +140,7 @@ class TestCreditMemos:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         credit_memo = response.parse()
-        assert_matches_type(QbdCreditMemo, credit_memo, path=["response"])
+        assert_matches_type(CreditMemo, credit_memo, path=["response"])
 
     @parametrize
     def test_streaming_response_create(self, client: Conductor) -> None:
@@ -153,7 +153,7 @@ class TestCreditMemos:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             credit_memo = response.parse()
-            assert_matches_type(QbdCreditMemo, credit_memo, path=["response"])
+            assert_matches_type(CreditMemo, credit_memo, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -163,7 +163,7 @@ class TestCreditMemos:
             id="123ABC-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdCreditMemo, credit_memo, path=["response"])
+        assert_matches_type(CreditMemo, credit_memo, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Conductor) -> None:
@@ -175,7 +175,7 @@ class TestCreditMemos:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         credit_memo = response.parse()
-        assert_matches_type(QbdCreditMemo, credit_memo, path=["response"])
+        assert_matches_type(CreditMemo, credit_memo, path=["response"])
 
     @parametrize
     def test_streaming_response_retrieve(self, client: Conductor) -> None:
@@ -187,7 +187,7 @@ class TestCreditMemos:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             credit_memo = response.parse()
-            assert_matches_type(QbdCreditMemo, credit_memo, path=["response"])
+            assert_matches_type(CreditMemo, credit_memo, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -206,7 +206,7 @@ class TestCreditMemos:
             revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdCreditMemo, credit_memo, path=["response"])
+        assert_matches_type(CreditMemo, credit_memo, path=["response"])
 
     @parametrize
     def test_method_update_with_all_params(self, client: Conductor) -> None:
@@ -318,7 +318,7 @@ class TestCreditMemos:
             terms_id="80000013-1234567890",
             transaction_date=parse_date("2019-12-27"),
         )
-        assert_matches_type(QbdCreditMemo, credit_memo, path=["response"])
+        assert_matches_type(CreditMemo, credit_memo, path=["response"])
 
     @parametrize
     def test_raw_response_update(self, client: Conductor) -> None:
@@ -331,7 +331,7 @@ class TestCreditMemos:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         credit_memo = response.parse()
-        assert_matches_type(QbdCreditMemo, credit_memo, path=["response"])
+        assert_matches_type(CreditMemo, credit_memo, path=["response"])
 
     @parametrize
     def test_streaming_response_update(self, client: Conductor) -> None:
@@ -344,7 +344,7 @@ class TestCreditMemos:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             credit_memo = response.parse()
-            assert_matches_type(QbdCreditMemo, credit_memo, path=["response"])
+            assert_matches_type(CreditMemo, credit_memo, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -362,7 +362,7 @@ class TestCreditMemos:
         credit_memo = client.qbd.credit_memos.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(SyncCursorPage[QbdCreditMemo], credit_memo, path=["response"])
+        assert_matches_type(SyncCursorPage[CreditMemo], credit_memo, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Conductor) -> None:
@@ -387,7 +387,7 @@ class TestCreditMemos:
             updated_after="updatedAfter",
             updated_before="updatedBefore",
         )
-        assert_matches_type(SyncCursorPage[QbdCreditMemo], credit_memo, path=["response"])
+        assert_matches_type(SyncCursorPage[CreditMemo], credit_memo, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Conductor) -> None:
@@ -398,7 +398,7 @@ class TestCreditMemos:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         credit_memo = response.parse()
-        assert_matches_type(SyncCursorPage[QbdCreditMemo], credit_memo, path=["response"])
+        assert_matches_type(SyncCursorPage[CreditMemo], credit_memo, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Conductor) -> None:
@@ -409,7 +409,7 @@ class TestCreditMemos:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             credit_memo = response.parse()
-            assert_matches_type(SyncCursorPage[QbdCreditMemo], credit_memo, path=["response"])
+            assert_matches_type(SyncCursorPage[CreditMemo], credit_memo, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -424,7 +424,7 @@ class TestAsyncCreditMemos:
             transaction_date=parse_date("2019-12-27"),
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdCreditMemo, credit_memo, path=["response"])
+        assert_matches_type(CreditMemo, credit_memo, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncConductor) -> None:
@@ -523,7 +523,7 @@ class TestAsyncCreditMemos:
             shipping_method_id="80000007-1234567890",
             terms_id="80000013-1234567890",
         )
-        assert_matches_type(QbdCreditMemo, credit_memo, path=["response"])
+        assert_matches_type(CreditMemo, credit_memo, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncConductor) -> None:
@@ -536,7 +536,7 @@ class TestAsyncCreditMemos:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         credit_memo = await response.parse()
-        assert_matches_type(QbdCreditMemo, credit_memo, path=["response"])
+        assert_matches_type(CreditMemo, credit_memo, path=["response"])
 
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncConductor) -> None:
@@ -549,7 +549,7 @@ class TestAsyncCreditMemos:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             credit_memo = await response.parse()
-            assert_matches_type(QbdCreditMemo, credit_memo, path=["response"])
+            assert_matches_type(CreditMemo, credit_memo, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -559,7 +559,7 @@ class TestAsyncCreditMemos:
             id="123ABC-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdCreditMemo, credit_memo, path=["response"])
+        assert_matches_type(CreditMemo, credit_memo, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncConductor) -> None:
@@ -571,7 +571,7 @@ class TestAsyncCreditMemos:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         credit_memo = await response.parse()
-        assert_matches_type(QbdCreditMemo, credit_memo, path=["response"])
+        assert_matches_type(CreditMemo, credit_memo, path=["response"])
 
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncConductor) -> None:
@@ -583,7 +583,7 @@ class TestAsyncCreditMemos:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             credit_memo = await response.parse()
-            assert_matches_type(QbdCreditMemo, credit_memo, path=["response"])
+            assert_matches_type(CreditMemo, credit_memo, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -602,7 +602,7 @@ class TestAsyncCreditMemos:
             revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(QbdCreditMemo, credit_memo, path=["response"])
+        assert_matches_type(CreditMemo, credit_memo, path=["response"])
 
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncConductor) -> None:
@@ -714,7 +714,7 @@ class TestAsyncCreditMemos:
             terms_id="80000013-1234567890",
             transaction_date=parse_date("2019-12-27"),
         )
-        assert_matches_type(QbdCreditMemo, credit_memo, path=["response"])
+        assert_matches_type(CreditMemo, credit_memo, path=["response"])
 
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncConductor) -> None:
@@ -727,7 +727,7 @@ class TestAsyncCreditMemos:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         credit_memo = await response.parse()
-        assert_matches_type(QbdCreditMemo, credit_memo, path=["response"])
+        assert_matches_type(CreditMemo, credit_memo, path=["response"])
 
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncConductor) -> None:
@@ -740,7 +740,7 @@ class TestAsyncCreditMemos:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             credit_memo = await response.parse()
-            assert_matches_type(QbdCreditMemo, credit_memo, path=["response"])
+            assert_matches_type(CreditMemo, credit_memo, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -758,7 +758,7 @@ class TestAsyncCreditMemos:
         credit_memo = await async_client.qbd.credit_memos.list(
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
-        assert_matches_type(AsyncCursorPage[QbdCreditMemo], credit_memo, path=["response"])
+        assert_matches_type(AsyncCursorPage[CreditMemo], credit_memo, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncConductor) -> None:
@@ -783,7 +783,7 @@ class TestAsyncCreditMemos:
             updated_after="updatedAfter",
             updated_before="updatedBefore",
         )
-        assert_matches_type(AsyncCursorPage[QbdCreditMemo], credit_memo, path=["response"])
+        assert_matches_type(AsyncCursorPage[CreditMemo], credit_memo, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncConductor) -> None:
@@ -794,7 +794,7 @@ class TestAsyncCreditMemos:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         credit_memo = await response.parse()
-        assert_matches_type(AsyncCursorPage[QbdCreditMemo], credit_memo, path=["response"])
+        assert_matches_type(AsyncCursorPage[CreditMemo], credit_memo, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncConductor) -> None:
@@ -805,6 +805,6 @@ class TestAsyncCreditMemos:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             credit_memo = await response.parse()
-            assert_matches_type(AsyncCursorPage[QbdCreditMemo], credit_memo, path=["response"])
+            assert_matches_type(AsyncCursorPage[CreditMemo], credit_memo, path=["response"])
 
         assert cast(Any, response.is_closed) is True

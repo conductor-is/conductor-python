@@ -23,7 +23,7 @@ from ..._response import (
 from ...types.qbd import subtotal_item_list_params, subtotal_item_create_params, subtotal_item_update_params
 from ...pagination import SyncCursorPage, AsyncCursorPage
 from ..._base_client import AsyncPaginator, make_request_options
-from ...types.qbd.qbd_subtotal_item import QbdSubtotalItem
+from ...types.qbd.subtotal_item import SubtotalItem
 
 __all__ = ["SubtotalItemsResource", "AsyncSubtotalItemsResource"]
 
@@ -63,7 +63,7 @@ class SubtotalItemsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdSubtotalItem:
+    ) -> SubtotalItem:
         """
         Creates a new subtotal item.
 
@@ -117,7 +117,7 @@ class SubtotalItemsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdSubtotalItem,
+            cast_to=SubtotalItem,
         )
 
     def retrieve(
@@ -131,7 +131,7 @@ class SubtotalItemsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdSubtotalItem:
+    ) -> SubtotalItem:
         """
         Retrieves a subtotal item by ID.
 
@@ -157,7 +157,7 @@ class SubtotalItemsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdSubtotalItem,
+            cast_to=SubtotalItem,
         )
 
     def update(
@@ -176,7 +176,7 @@ class SubtotalItemsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdSubtotalItem:
+    ) -> SubtotalItem:
         """
         Updates an existing subtotal item.
 
@@ -232,7 +232,7 @@ class SubtotalItemsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdSubtotalItem,
+            cast_to=SubtotalItem,
         )
 
     def list(
@@ -257,7 +257,7 @@ class SubtotalItemsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursorPage[QbdSubtotalItem]:
+    ) -> SyncCursorPage[SubtotalItem]:
         """Returns a list of subtotal items.
 
         Use the `cursor` parameter to paginate through
@@ -329,7 +329,7 @@ class SubtotalItemsResource(SyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/subtotal-items",
-            page=SyncCursorPage[QbdSubtotalItem],
+            page=SyncCursorPage[SubtotalItem],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -353,7 +353,7 @@ class SubtotalItemsResource(SyncAPIResource):
                     subtotal_item_list_params.SubtotalItemListParams,
                 ),
             ),
-            model=QbdSubtotalItem,
+            model=SubtotalItem,
         )
 
 
@@ -392,7 +392,7 @@ class AsyncSubtotalItemsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdSubtotalItem:
+    ) -> SubtotalItem:
         """
         Creates a new subtotal item.
 
@@ -446,7 +446,7 @@ class AsyncSubtotalItemsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdSubtotalItem,
+            cast_to=SubtotalItem,
         )
 
     async def retrieve(
@@ -460,7 +460,7 @@ class AsyncSubtotalItemsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdSubtotalItem:
+    ) -> SubtotalItem:
         """
         Retrieves a subtotal item by ID.
 
@@ -486,7 +486,7 @@ class AsyncSubtotalItemsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdSubtotalItem,
+            cast_to=SubtotalItem,
         )
 
     async def update(
@@ -505,7 +505,7 @@ class AsyncSubtotalItemsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdSubtotalItem:
+    ) -> SubtotalItem:
         """
         Updates an existing subtotal item.
 
@@ -561,7 +561,7 @@ class AsyncSubtotalItemsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdSubtotalItem,
+            cast_to=SubtotalItem,
         )
 
     def list(
@@ -586,7 +586,7 @@ class AsyncSubtotalItemsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[QbdSubtotalItem, AsyncCursorPage[QbdSubtotalItem]]:
+    ) -> AsyncPaginator[SubtotalItem, AsyncCursorPage[SubtotalItem]]:
         """Returns a list of subtotal items.
 
         Use the `cursor` parameter to paginate through
@@ -658,7 +658,7 @@ class AsyncSubtotalItemsResource(AsyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/subtotal-items",
-            page=AsyncCursorPage[QbdSubtotalItem],
+            page=AsyncCursorPage[SubtotalItem],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -682,7 +682,7 @@ class AsyncSubtotalItemsResource(AsyncAPIResource):
                     subtotal_item_list_params.SubtotalItemListParams,
                 ),
             ),
-            model=QbdSubtotalItem,
+            model=SubtotalItem,
         )
 
 
