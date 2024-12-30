@@ -7,7 +7,7 @@ from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
 
-__all__ = ["QbdSubtotalItem", "CustomField"]
+__all__ = ["SubtotalItem", "CustomField"]
 
 
 class CustomField(BaseModel):
@@ -47,7 +47,7 @@ class CustomField(BaseModel):
     """
 
 
-class QbdSubtotalItem(BaseModel):
+class SubtotalItem(BaseModel):
     id: str
     """The unique identifier assigned by QuickBooks to this subtotal item.
 

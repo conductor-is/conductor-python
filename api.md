@@ -155,6 +155,21 @@ Methods:
 - <code title="post /quickbooks-desktop/credit-card-credits/{id}">client.qbd.credit_card_credits.<a href="./src/conductor/resources/qbd/credit_card_credits.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/credit_card_credit_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/credit_card_credit.py">CreditCardCredit</a></code>
 - <code title="get /quickbooks-desktop/credit-card-credits">client.qbd.credit_card_credits.<a href="./src/conductor/resources/qbd/credit_card_credits.py">list</a>(\*\*<a href="src/conductor/types/qbd/credit_card_credit_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/credit_card_credit.py">SyncCursorPage[CreditCardCredit]</a></code>
 
+## CreditMemos
+
+Types:
+
+```python
+from conductor.types.qbd import CreditMemo
+```
+
+Methods:
+
+- <code title="post /quickbooks-desktop/credit-memos">client.qbd.credit_memos.<a href="./src/conductor/resources/qbd/credit_memos.py">create</a>(\*\*<a href="src/conductor/types/qbd/credit_memo_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/credit_memo.py">CreditMemo</a></code>
+- <code title="get /quickbooks-desktop/credit-memos/{id}">client.qbd.credit_memos.<a href="./src/conductor/resources/qbd/credit_memos.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/credit_memo.py">CreditMemo</a></code>
+- <code title="post /quickbooks-desktop/credit-memos/{id}">client.qbd.credit_memos.<a href="./src/conductor/resources/qbd/credit_memos.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/credit_memo_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/credit_memo.py">CreditMemo</a></code>
+- <code title="get /quickbooks-desktop/credit-memos">client.qbd.credit_memos.<a href="./src/conductor/resources/qbd/credit_memos.py">list</a>(\*\*<a href="src/conductor/types/qbd/credit_memo_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/credit_memo.py">SyncCursorPage[CreditMemo]</a></code>
+
 ## Customers
 
 Types:
@@ -408,6 +423,21 @@ Methods:
 - <code title="get /quickbooks-desktop/standard-terms/{id}">client.qbd.standard_terms.<a href="./src/conductor/resources/qbd/standard_terms.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/standard_term.py">StandardTerm</a></code>
 - <code title="get /quickbooks-desktop/standard-terms">client.qbd.standard_terms.<a href="./src/conductor/resources/qbd/standard_terms.py">list</a>(\*\*<a href="src/conductor/types/qbd/standard_term_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/standard_term_list_response.py">StandardTermListResponse</a></code>
 
+## SubtotalItems
+
+Types:
+
+```python
+from conductor.types.qbd import SubtotalItem
+```
+
+Methods:
+
+- <code title="post /quickbooks-desktop/subtotal-items">client.qbd.subtotal_items.<a href="./src/conductor/resources/qbd/subtotal_items.py">create</a>(\*\*<a href="src/conductor/types/qbd/subtotal_item_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/subtotal_item.py">SubtotalItem</a></code>
+- <code title="get /quickbooks-desktop/subtotal-items/{id}">client.qbd.subtotal_items.<a href="./src/conductor/resources/qbd/subtotal_items.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/subtotal_item.py">SubtotalItem</a></code>
+- <code title="post /quickbooks-desktop/subtotal-items/{id}">client.qbd.subtotal_items.<a href="./src/conductor/resources/qbd/subtotal_items.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/subtotal_item_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/subtotal_item.py">SubtotalItem</a></code>
+- <code title="get /quickbooks-desktop/subtotal-items">client.qbd.subtotal_items.<a href="./src/conductor/resources/qbd/subtotal_items.py">list</a>(\*\*<a href="src/conductor/types/qbd/subtotal_item_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/subtotal_item.py">SyncCursorPage[SubtotalItem]</a></code>
+
 ## Transfers
 
 Types:
@@ -437,33 +467,3 @@ Methods:
 - <code title="get /quickbooks-desktop/vendors/{id}">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/vendor.py">Vendor</a></code>
 - <code title="post /quickbooks-desktop/vendors/{id}">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/vendor_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/vendor.py">Vendor</a></code>
 - <code title="get /quickbooks-desktop/vendors">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">list</a>(\*\*<a href="src/conductor/types/qbd/vendor_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/vendor.py">SyncCursorPage[Vendor]</a></code>
-
-## CreditMemos
-
-Types:
-
-```python
-from conductor.types.qbd import QbdCreditMemo
-```
-
-Methods:
-
-- <code title="post /quickbooks-desktop/credit-memos">client.qbd.credit_memos.<a href="./src/conductor/resources/qbd/credit_memos.py">create</a>(\*\*<a href="src/conductor/types/qbd/credit_memo_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_credit_memo.py">QbdCreditMemo</a></code>
-- <code title="get /quickbooks-desktop/credit-memos/{id}">client.qbd.credit_memos.<a href="./src/conductor/resources/qbd/credit_memos.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_credit_memo.py">QbdCreditMemo</a></code>
-- <code title="post /quickbooks-desktop/credit-memos/{id}">client.qbd.credit_memos.<a href="./src/conductor/resources/qbd/credit_memos.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/credit_memo_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_credit_memo.py">QbdCreditMemo</a></code>
-- <code title="get /quickbooks-desktop/credit-memos">client.qbd.credit_memos.<a href="./src/conductor/resources/qbd/credit_memos.py">list</a>(\*\*<a href="src/conductor/types/qbd/credit_memo_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_credit_memo.py">SyncCursorPage[QbdCreditMemo]</a></code>
-
-## SubtotalItems
-
-Types:
-
-```python
-from conductor.types.qbd import QbdSubtotalItem
-```
-
-Methods:
-
-- <code title="post /quickbooks-desktop/subtotal-items">client.qbd.subtotal_items.<a href="./src/conductor/resources/qbd/subtotal_items.py">create</a>(\*\*<a href="src/conductor/types/qbd/subtotal_item_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_subtotal_item.py">QbdSubtotalItem</a></code>
-- <code title="get /quickbooks-desktop/subtotal-items/{id}">client.qbd.subtotal_items.<a href="./src/conductor/resources/qbd/subtotal_items.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_subtotal_item.py">QbdSubtotalItem</a></code>
-- <code title="post /quickbooks-desktop/subtotal-items/{id}">client.qbd.subtotal_items.<a href="./src/conductor/resources/qbd/subtotal_items.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/subtotal_item_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_subtotal_item.py">QbdSubtotalItem</a></code>
-- <code title="get /quickbooks-desktop/subtotal-items">client.qbd.subtotal_items.<a href="./src/conductor/resources/qbd/subtotal_items.py">list</a>(\*\*<a href="src/conductor/types/qbd/subtotal_item_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_subtotal_item.py">SyncCursorPage[QbdSubtotalItem]</a></code>
