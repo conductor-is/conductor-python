@@ -132,8 +132,8 @@ class InvoicesResource(SyncAPIResource):
               in QuickBooks at the time of this transaction. Represented as a decimal value
               (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
 
-          external_id: A globally unique identifier (GUID) you can provide for tracking this object in
-              your external system.
+          external_id: A globally unique identifier (GUID) you, the developer, can provide for tracking
+              this object in your external system.
 
               **IMPORTANT**: Must be formatted as a valid GUID; otherwise, QuickBooks will
               return an error. This field is immutable and can only be set during object
@@ -847,8 +847,8 @@ class AsyncInvoicesResource(AsyncAPIResource):
               in QuickBooks at the time of this transaction. Represented as a decimal value
               (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
 
-          external_id: A globally unique identifier (GUID) you can provide for tracking this object in
-              your external system.
+          external_id: A globally unique identifier (GUID) you, the developer, can provide for tracking
+              this object in your external system.
 
               **IMPORTANT**: Must be formatted as a valid GUID; otherwise, QuickBooks will
               return an error. This field is immutable and can only be set during object

@@ -117,8 +117,8 @@ class CreditMemosResource(SyncAPIResource):
               currency in QuickBooks at the time of this transaction. Represented as a decimal
               value (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
 
-          external_id: A globally unique identifier (GUID) you can provide for tracking this object in
-              your external system.
+          external_id: A globally unique identifier (GUID) you, the developer, can provide for tracking
+              this object in your external system.
 
               **IMPORTANT**: Must be formatted as a valid GUID; otherwise, QuickBooks will
               return an error. This field is immutable and can only be set during object
@@ -568,7 +568,8 @@ class CreditMemosResource(SyncAPIResource):
               `limit` parameter. Retrieve this value from the `nextCursor` field in the
               previous response. If omitted, the API returns the first page of results.
 
-          customer_ids: Filter for credit memos addressed to these customers.
+          customer_ids: Filter for credit memos created for these customers. These are the customers who
+              are owed money.
 
           ids: Filter for specific credit memos by their QuickBooks-assigned unique
               identifier(s).
@@ -765,8 +766,8 @@ class AsyncCreditMemosResource(AsyncAPIResource):
               currency in QuickBooks at the time of this transaction. Represented as a decimal
               value (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
 
-          external_id: A globally unique identifier (GUID) you can provide for tracking this object in
-              your external system.
+          external_id: A globally unique identifier (GUID) you, the developer, can provide for tracking
+              this object in your external system.
 
               **IMPORTANT**: Must be formatted as a valid GUID; otherwise, QuickBooks will
               return an error. This field is immutable and can only be set during object
@@ -1216,7 +1217,8 @@ class AsyncCreditMemosResource(AsyncAPIResource):
               `limit` parameter. Retrieve this value from the `nextCursor` field in the
               previous response. If omitted, the API returns the first page of results.
 
-          customer_ids: Filter for credit memos addressed to these customers.
+          customer_ids: Filter for credit memos created for these customers. These are the customers who
+              are owed money.
 
           ids: Filter for specific credit memos by their QuickBooks-assigned unique
               identifier(s).

@@ -495,12 +495,8 @@ class Vendor(BaseModel):
 
     external_id: Optional[str] = FieldInfo(alias="externalId", default=None)
     """
-    A globally unique identifier (GUID) you can provide for tracking this object in
-    your external system.
-
-    **IMPORTANT**: Must be formatted as a valid GUID; otherwise, QuickBooks will
-    return an error. This field is immutable and can only be set during object
-    creation.
+    A globally unique identifier (GUID) you, the developer, can provide for tracking
+    this object in your external system.
     """
 
     fax: Optional[str] = None
