@@ -1261,12 +1261,8 @@ class Bill(BaseModel):
 
     external_id: Optional[str] = FieldInfo(alias="externalId", default=None)
     """
-    A globally unique identifier (GUID) you can provide for tracking this object in
-    your external system.
-
-    **IMPORTANT**: Must be formatted as a valid GUID; otherwise, QuickBooks will
-    return an error. This field is immutable and can only be set during object
-    creation.
+    A globally unique identifier (GUID) you, the developer, can provide for tracking
+    this object in your external system.
     """
 
     is_paid: Optional[bool] = FieldInfo(alias="isPaid", default=None)
@@ -1311,9 +1307,9 @@ class Bill(BaseModel):
     """The type of object. This value is always `"qbd_bill"`."""
 
     open_amount: str = FieldInfo(alias="openAmount")
-    """
-    The remaining amount owed on this bill after subtracting any credits or
-    discounts from the `openAmount`. Represented as a decimal string.
+    """The remaining amount still owed on this bill, represented as a decimal string.
+
+    This equals the bill's amount minus any credits or discounts.
     """
 
     payables_account: Optional[PayablesAccount] = FieldInfo(alias="payablesAccount", default=None)

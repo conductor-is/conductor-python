@@ -110,8 +110,8 @@ class InventoryItemsResource(SyncAPIResource):
               meaningful segments, such as department, location, or type of work. In
               QuickBooks, class tracking is off by default.
 
-          external_id: A globally unique identifier (GUID) you can provide for tracking this object in
-              your external system.
+          external_id: A globally unique identifier (GUID) you, the developer, can provide for tracking
+              this object in your external system.
 
               **IMPORTANT**: Must be formatted as a valid GUID; otherwise, QuickBooks will
               return an error. This field is immutable and can only be set during object
@@ -666,8 +666,8 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
               meaningful segments, such as department, location, or type of work. In
               QuickBooks, class tracking is off by default.
 
-          external_id: A globally unique identifier (GUID) you can provide for tracking this object in
-              your external system.
+          external_id: A globally unique identifier (GUID) you, the developer, can provide for tracking
+              this object in your external system.
 
               **IMPORTANT**: Must be formatted as a valid GUID; otherwise, QuickBooks will
               return an error. This field is immutable and can only be set during object
