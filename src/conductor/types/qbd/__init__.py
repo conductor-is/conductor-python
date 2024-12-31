@@ -28,6 +28,7 @@ from .bill_list_params import BillListParams as BillListParams
 from .date_driven_term import DateDrivenTerm as DateDrivenTerm
 from .check_list_params import CheckListParams as CheckListParams
 from .class_list_params import ClassListParams as ClassListParams
+from .qbd_vendor_credit import QbdVendorCredit as QbdVendorCredit
 from .bill_check_payment import BillCheckPayment as BillCheckPayment
 from .bill_create_params import BillCreateParams as BillCreateParams
 from .bill_update_params import BillUpdateParams as BillUpdateParams
@@ -71,6 +72,7 @@ from .sales_order_update_params import SalesOrderUpdateParams as SalesOrderUpdat
 from .sales_receipt_list_params import SalesReceiptListParams as SalesReceiptListParams
 from .standard_term_list_params import StandardTermListParams as StandardTermListParams
 from .subtotal_item_list_params import SubtotalItemListParams as SubtotalItemListParams
+from .vendor_credit_list_params import VendorCreditListParams as VendorCreditListParams
 from .inventory_item_list_params import InventoryItemListParams as InventoryItemListParams
 from .inventory_site_list_params import InventorySiteListParams as InventorySiteListParams
 from .purchase_order_list_params import PurchaseOrderListParams as PurchaseOrderListParams
@@ -87,6 +89,8 @@ from .standard_term_create_params import StandardTermCreateParams as StandardTer
 from .standard_term_list_response import StandardTermListResponse as StandardTermListResponse
 from .subtotal_item_create_params import SubtotalItemCreateParams as SubtotalItemCreateParams
 from .subtotal_item_update_params import SubtotalItemUpdateParams as SubtotalItemUpdateParams
+from .vendor_credit_create_params import VendorCreditCreateParams as VendorCreditCreateParams
+from .vendor_credit_update_params import VendorCreditUpdateParams as VendorCreditUpdateParams
 from .date_driven_term_list_params import DateDrivenTermListParams as DateDrivenTermListParams
 from .inventory_item_create_params import InventoryItemCreateParams as InventoryItemCreateParams
 from .inventory_item_update_params import InventoryItemUpdateParams as InventoryItemUpdateParams

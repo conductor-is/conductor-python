@@ -467,3 +467,18 @@ Methods:
 - <code title="get /quickbooks-desktop/vendors/{id}">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/vendor.py">Vendor</a></code>
 - <code title="post /quickbooks-desktop/vendors/{id}">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/vendor_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/vendor.py">Vendor</a></code>
 - <code title="get /quickbooks-desktop/vendors">client.qbd.vendors.<a href="./src/conductor/resources/qbd/vendors.py">list</a>(\*\*<a href="src/conductor/types/qbd/vendor_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/vendor.py">SyncCursorPage[Vendor]</a></code>
+
+## VendorCredits
+
+Types:
+
+```python
+from conductor.types.qbd import QbdVendorCredit
+```
+
+Methods:
+
+- <code title="post /quickbooks-desktop/vendor-credits">client.qbd.vendor_credits.<a href="./src/conductor/resources/qbd/vendor_credits.py">create</a>(\*\*<a href="src/conductor/types/qbd/vendor_credit_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_vendor_credit.py">QbdVendorCredit</a></code>
+- <code title="get /quickbooks-desktop/vendor-credits/{id}">client.qbd.vendor_credits.<a href="./src/conductor/resources/qbd/vendor_credits.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/qbd_vendor_credit.py">QbdVendorCredit</a></code>
+- <code title="post /quickbooks-desktop/vendor-credits/{id}">client.qbd.vendor_credits.<a href="./src/conductor/resources/qbd/vendor_credits.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/vendor_credit_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_vendor_credit.py">QbdVendorCredit</a></code>
+- <code title="get /quickbooks-desktop/vendor-credits">client.qbd.vendor_credits.<a href="./src/conductor/resources/qbd/vendor_credits.py">list</a>(\*\*<a href="src/conductor/types/qbd/vendor_credit_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/qbd_vendor_credit.py">SyncCursorPage[QbdVendorCredit]</a></code>
