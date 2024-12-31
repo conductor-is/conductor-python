@@ -9,7 +9,7 @@ from pydantic import Field as FieldInfo
 from ..._models import BaseModel
 
 __all__ = [
-    "QbdVendorCredit",
+    "VendorCredit",
     "Currency",
     "CustomField",
     "ExpenseLine",
@@ -1150,7 +1150,7 @@ class Vendor(BaseModel):
     """
 
 
-class QbdVendorCredit(BaseModel):
+class VendorCredit(BaseModel):
     id: str
     """The unique identifier assigned by QuickBooks to this vendor credit.
 
