@@ -32,7 +32,10 @@ class CreditMemoListParams(TypedDict, total=False):
     """
 
     customer_ids: Annotated[List[str], PropertyInfo(alias="customerIds")]
-    """Filter for credit memos addressed to these customers."""
+    """Filter for credit memos created for these customers.
+
+    These are the customers who are owed money.
+    """
 
     ids: List[str]
     """
