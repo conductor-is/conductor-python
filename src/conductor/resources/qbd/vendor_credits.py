@@ -23,7 +23,7 @@ from ..._response import (
 from ...types.qbd import vendor_credit_list_params, vendor_credit_create_params, vendor_credit_update_params
 from ...pagination import SyncCursorPage, AsyncCursorPage
 from ..._base_client import AsyncPaginator, make_request_options
-from ...types.qbd.qbd_vendor_credit import QbdVendorCredit
+from ...types.qbd.vendor_credit import VendorCredit
 
 __all__ = ["VendorCreditsResource", "AsyncVendorCreditsResource"]
 
@@ -69,7 +69,7 @@ class VendorCreditsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdVendorCredit:
+    ) -> VendorCredit:
         """
         Creates a new vendor credit.
 
@@ -153,7 +153,7 @@ class VendorCreditsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdVendorCredit,
+            cast_to=VendorCredit,
         )
 
     def retrieve(
@@ -167,7 +167,7 @@ class VendorCreditsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdVendorCredit:
+    ) -> VendorCredit:
         """
         Retrieves a vendor credit by ID.
 
@@ -193,7 +193,7 @@ class VendorCreditsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdVendorCredit,
+            cast_to=VendorCredit,
         )
 
     def update(
@@ -220,7 +220,7 @@ class VendorCreditsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdVendorCredit:
+    ) -> VendorCredit:
         """
         Updates an existing vendor credit.
 
@@ -352,7 +352,7 @@ class VendorCreditsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdVendorCredit,
+            cast_to=VendorCredit,
         )
 
     def list(
@@ -383,7 +383,7 @@ class VendorCreditsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursorPage[QbdVendorCredit]:
+    ) -> SyncCursorPage[VendorCredit]:
         """Returns a list of vendor credits.
 
         Use the `cursor` parameter to paginate through
@@ -476,7 +476,7 @@ class VendorCreditsResource(SyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/vendor-credits",
-            page=SyncCursorPage[QbdVendorCredit],
+            page=SyncCursorPage[VendorCredit],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -506,7 +506,7 @@ class VendorCreditsResource(SyncAPIResource):
                     vendor_credit_list_params.VendorCreditListParams,
                 ),
             ),
-            model=QbdVendorCredit,
+            model=VendorCredit,
         )
 
 
@@ -551,7 +551,7 @@ class AsyncVendorCreditsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdVendorCredit:
+    ) -> VendorCredit:
         """
         Creates a new vendor credit.
 
@@ -635,7 +635,7 @@ class AsyncVendorCreditsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdVendorCredit,
+            cast_to=VendorCredit,
         )
 
     async def retrieve(
@@ -649,7 +649,7 @@ class AsyncVendorCreditsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdVendorCredit:
+    ) -> VendorCredit:
         """
         Retrieves a vendor credit by ID.
 
@@ -675,7 +675,7 @@ class AsyncVendorCreditsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdVendorCredit,
+            cast_to=VendorCredit,
         )
 
     async def update(
@@ -702,7 +702,7 @@ class AsyncVendorCreditsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> QbdVendorCredit:
+    ) -> VendorCredit:
         """
         Updates an existing vendor credit.
 
@@ -834,7 +834,7 @@ class AsyncVendorCreditsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=QbdVendorCredit,
+            cast_to=VendorCredit,
         )
 
     def list(
@@ -865,7 +865,7 @@ class AsyncVendorCreditsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[QbdVendorCredit, AsyncCursorPage[QbdVendorCredit]]:
+    ) -> AsyncPaginator[VendorCredit, AsyncCursorPage[VendorCredit]]:
         """Returns a list of vendor credits.
 
         Use the `cursor` parameter to paginate through
@@ -958,7 +958,7 @@ class AsyncVendorCreditsResource(AsyncAPIResource):
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get_api_list(
             "/quickbooks-desktop/vendor-credits",
-            page=AsyncCursorPage[QbdVendorCredit],
+            page=AsyncCursorPage[VendorCredit],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -988,7 +988,7 @@ class AsyncVendorCreditsResource(AsyncAPIResource):
                     vendor_credit_list_params.VendorCreditListParams,
                 ),
             ),
-            model=QbdVendorCredit,
+            model=VendorCredit,
         )
 
 
