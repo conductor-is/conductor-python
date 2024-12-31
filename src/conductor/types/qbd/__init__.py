@@ -18,6 +18,7 @@ from .journal_entry import JournalEntry as JournalEntry
 from .sales_receipt import SalesReceipt as SalesReceipt
 from .standard_term import StandardTerm as StandardTerm
 from .subtotal_item import SubtotalItem as SubtotalItem
+from .vendor_credit import VendorCredit as VendorCredit
 from .inventory_item import InventoryItem as InventoryItem
 from .inventory_site import InventorySite as InventorySite
 from .purchase_order import PurchaseOrder as PurchaseOrder
@@ -28,7 +29,6 @@ from .bill_list_params import BillListParams as BillListParams
 from .date_driven_term import DateDrivenTerm as DateDrivenTerm
 from .check_list_params import CheckListParams as CheckListParams
 from .class_list_params import ClassListParams as ClassListParams
-from .qbd_vendor_credit import QbdVendorCredit as QbdVendorCredit
 from .bill_check_payment import BillCheckPayment as BillCheckPayment
 from .bill_create_params import BillCreateParams as BillCreateParams
 from .bill_update_params import BillUpdateParams as BillUpdateParams
