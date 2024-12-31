@@ -458,18 +458,18 @@ class ChecksResource(SyncAPIResource):
           payee_ids: Filter for checks addressed to these payees. These are the people or companies
               who will receive these checks.
 
-          ref_number_contains: Filter for checks whose `refNumber` contains this substring. For checks, this is
-              the check number. NOTE: If you use this parameter, you cannot also use
+          ref_number_contains: Filter for checks whose `refNumber` contains this substring. (For checks, this
+              field is the check number.) NOTE: If you use this parameter, you cannot also use
               `refNumberStartsWith` or `refNumberEndsWith`.
 
-          ref_number_ends_with: Filter for checks whose `refNumber` ends with this substring. For checks, this
-              is the check number. NOTE: If you use this parameter, you cannot also use
+          ref_number_ends_with: Filter for checks whose `refNumber` ends with this substring. (For checks, this
+              field is the check number.) NOTE: If you use this parameter, you cannot also use
               `refNumberContains` or `refNumberStartsWith`.
 
-          ref_number_from: Filter for checks whose `refNumber` is greater than or equal to this value. If
-              omitted, the range will begin with the first number of the list. Uses a
-              numerical comparison for values that contain only digits; otherwise, uses a
-              lexicographical comparison.
+          ref_number_from: Filter for checks whose `refNumber` is greater than or equal to this value. (For
+              checks, this field is the check number.) If omitted, the range will begin with
+              the first number of the list. Uses a numerical comparison for values that
+              contain only digits; otherwise, uses a lexicographical comparison.
 
           ref_numbers: Filter for specific checks by their ref-number(s), case-sensitive. In
               QuickBooks, ref-numbers are not required to be unique and can be arbitrarily
@@ -478,14 +478,14 @@ class ChecksResource(SyncAPIResource):
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
-          ref_number_starts_with: Filter for checks whose `refNumber` starts with this substring. For checks, this
-              is the check number. NOTE: If you use this parameter, you cannot also use
-              `refNumberContains` or `refNumberEndsWith`.
+          ref_number_starts_with: Filter for checks whose `refNumber` starts with this substring. (For checks,
+              this field is the check number.) NOTE: If you use this parameter, you cannot
+              also use `refNumberContains` or `refNumberEndsWith`.
 
-          ref_number_to: Filter for checks whose `refNumber` is less than or equal to this value. If
-              omitted, the range will end with the last number of the list. Uses a numerical
-              comparison for values that contain only digits; otherwise, uses a
-              lexicographical comparison.
+          ref_number_to: Filter for checks whose `refNumber` is less than or equal to this value. (For
+              checks, this field is the check number.) If omitted, the range will end with the
+              last number of the list. Uses a numerical comparison for values that contain
+              only digits; otherwise, uses a lexicographical comparison.
 
           transaction_date_from: Filter for checks created on or after this date, in ISO 8601 format
               (YYYY-MM-DD).
@@ -976,18 +976,18 @@ class AsyncChecksResource(AsyncAPIResource):
           payee_ids: Filter for checks addressed to these payees. These are the people or companies
               who will receive these checks.
 
-          ref_number_contains: Filter for checks whose `refNumber` contains this substring. For checks, this is
-              the check number. NOTE: If you use this parameter, you cannot also use
+          ref_number_contains: Filter for checks whose `refNumber` contains this substring. (For checks, this
+              field is the check number.) NOTE: If you use this parameter, you cannot also use
               `refNumberStartsWith` or `refNumberEndsWith`.
 
-          ref_number_ends_with: Filter for checks whose `refNumber` ends with this substring. For checks, this
-              is the check number. NOTE: If you use this parameter, you cannot also use
+          ref_number_ends_with: Filter for checks whose `refNumber` ends with this substring. (For checks, this
+              field is the check number.) NOTE: If you use this parameter, you cannot also use
               `refNumberContains` or `refNumberStartsWith`.
 
-          ref_number_from: Filter for checks whose `refNumber` is greater than or equal to this value. If
-              omitted, the range will begin with the first number of the list. Uses a
-              numerical comparison for values that contain only digits; otherwise, uses a
-              lexicographical comparison.
+          ref_number_from: Filter for checks whose `refNumber` is greater than or equal to this value. (For
+              checks, this field is the check number.) If omitted, the range will begin with
+              the first number of the list. Uses a numerical comparison for values that
+              contain only digits; otherwise, uses a lexicographical comparison.
 
           ref_numbers: Filter for specific checks by their ref-number(s), case-sensitive. In
               QuickBooks, ref-numbers are not required to be unique and can be arbitrarily
@@ -996,14 +996,14 @@ class AsyncChecksResource(AsyncAPIResource):
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
-          ref_number_starts_with: Filter for checks whose `refNumber` starts with this substring. For checks, this
-              is the check number. NOTE: If you use this parameter, you cannot also use
-              `refNumberContains` or `refNumberEndsWith`.
+          ref_number_starts_with: Filter for checks whose `refNumber` starts with this substring. (For checks,
+              this field is the check number.) NOTE: If you use this parameter, you cannot
+              also use `refNumberContains` or `refNumberEndsWith`.
 
-          ref_number_to: Filter for checks whose `refNumber` is less than or equal to this value. If
-              omitted, the range will end with the last number of the list. Uses a numerical
-              comparison for values that contain only digits; otherwise, uses a
-              lexicographical comparison.
+          ref_number_to: Filter for checks whose `refNumber` is less than or equal to this value. (For
+              checks, this field is the check number.) If omitted, the range will end with the
+              last number of the list. Uses a numerical comparison for values that contain
+              only digits; otherwise, uses a lexicographical comparison.
 
           transaction_date_from: Filter for checks created on or after this date, in ISO 8601 format
               (YYYY-MM-DD).

@@ -386,8 +386,6 @@ class BillCreditCardPayment(BaseModel):
     payment, which can be used to identify the transaction in QuickBooks. This value
     is not required to be unique and can be arbitrarily changed by the QuickBooks
     user.
-
-    **IMPORTANT**: For checks, this field is the check number.
     """
 
     revision_number: str = FieldInfo(alias="revisionNumber")
