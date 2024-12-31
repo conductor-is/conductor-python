@@ -1186,12 +1186,8 @@ class SalesOrder(BaseModel):
 
     external_id: Optional[str] = FieldInfo(alias="externalId", default=None)
     """
-    A globally unique identifier (GUID) you can provide for tracking this object in
-    your external system.
-
-    **IMPORTANT**: Must be formatted as a valid GUID; otherwise, QuickBooks will
-    return an error. This field is immutable and can only be set during object
-    creation.
+    A globally unique identifier (GUID) you, the developer, can provide for tracking
+    this object in your external system.
     """
 
     is_fully_invoiced: Optional[bool] = FieldInfo(alias="isFullyInvoiced", default=None)
@@ -1366,7 +1362,7 @@ class SalesOrder(BaseModel):
 
     total_amount_in_home_currency: Optional[str] = FieldInfo(alias="totalAmountInHomeCurrency", default=None)
     """
-    The total monetary amount for this sales order converted to the home currency of
+    The total monetary amount of this sales order converted to the home currency of
     the QuickBooks company file. Represented as a decimal string.
     """
 

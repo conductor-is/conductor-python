@@ -1126,12 +1126,8 @@ class Estimate(BaseModel):
 
     external_id: Optional[str] = FieldInfo(alias="externalId", default=None)
     """
-    A globally unique identifier (GUID) you can provide for tracking this object in
-    your external system.
-
-    **IMPORTANT**: Must be formatted as a valid GUID; otherwise, QuickBooks will
-    return an error. This field is immutable and can only be set during object
-    creation.
+    A globally unique identifier (GUID) you, the developer, can provide for tracking
+    this object in your external system.
     """
 
     is_active: bool = FieldInfo(alias="isActive")
@@ -1278,8 +1274,8 @@ class Estimate(BaseModel):
 
     total_amount_in_home_currency: Optional[str] = FieldInfo(alias="totalAmountInHomeCurrency", default=None)
     """
-    The total monetary amount for this estimate converted to the home currency of
-    the QuickBooks company file. Represented as a decimal string.
+    The total monetary amount of this estimate converted to the home currency of the
+    QuickBooks company file. Represented as a decimal string.
     """
 
     transaction_date: date = FieldInfo(alias="transactionDate")
