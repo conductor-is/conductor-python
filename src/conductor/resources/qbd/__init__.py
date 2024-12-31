@@ -128,6 +128,14 @@ from .subtotal_items import (
     SubtotalItemsResourceWithStreamingResponse,
     AsyncSubtotalItemsResourceWithStreamingResponse,
 )
+from .vendor_credits import (
+    VendorCreditsResource,
+    AsyncVendorCreditsResource,
+    VendorCreditsResourceWithRawResponse,
+    AsyncVendorCreditsResourceWithRawResponse,
+    VendorCreditsResourceWithStreamingResponse,
+    AsyncVendorCreditsResourceWithStreamingResponse,
+)
 from .inventory_items import (
     InventoryItemsResource,
     AsyncInventoryItemsResource,
@@ -416,6 +424,12 @@ __all__ = [
     "AsyncVendorsResourceWithRawResponse",
     "VendorsResourceWithStreamingResponse",
     "AsyncVendorsResourceWithStreamingResponse",
+    "VendorCreditsResource",
+    "AsyncVendorCreditsResource",
+    "VendorCreditsResourceWithRawResponse",
+    "AsyncVendorCreditsResourceWithRawResponse",
+    "VendorCreditsResourceWithStreamingResponse",
+    "AsyncVendorCreditsResourceWithStreamingResponse",
     "QbdResource",
     "AsyncQbdResource",
     "QbdResourceWithRawResponse",
