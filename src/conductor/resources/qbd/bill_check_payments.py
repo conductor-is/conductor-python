@@ -367,18 +367,18 @@ class BillCheckPaymentsResource(SyncAPIResource):
               value that can be passed to subsequent requests to retrieve the next page of
               results.
 
-          ref_number_contains: Filter for bill check payments whose `refNumber` contains this substring. For
-              checks, this is the check number. NOTE: If you use this parameter, you cannot
-              also use `refNumberStartsWith` or `refNumberEndsWith`.
+          ref_number_contains: Filter for bill check payments whose `refNumber` contains this substring. (For
+              checks, this field is the check number.) NOTE: If you use this parameter, you
+              cannot also use `refNumberStartsWith` or `refNumberEndsWith`.
 
-          ref_number_ends_with: Filter for bill check payments whose `refNumber` ends with this substring. For
-              checks, this is the check number. NOTE: If you use this parameter, you cannot
-              also use `refNumberContains` or `refNumberStartsWith`.
+          ref_number_ends_with: Filter for bill check payments whose `refNumber` ends with this substring. (For
+              checks, this field is the check number.) NOTE: If you use this parameter, you
+              cannot also use `refNumberContains` or `refNumberStartsWith`.
 
           ref_number_from: Filter for bill check payments whose `refNumber` is greater than or equal to
-              this value. If omitted, the range will begin with the first number of the list.
-              Uses a numerical comparison for values that contain only digits; otherwise, uses
-              a lexicographical comparison.
+              this value. (For checks, this field is the check number.) If omitted, the range
+              will begin with the first number of the list. Uses a numerical comparison for
+              values that contain only digits; otherwise, uses a lexicographical comparison.
 
           ref_numbers: Filter for specific bill check payments by their ref-number(s), case-sensitive.
               In QuickBooks, ref-numbers are not required to be unique and can be arbitrarily
@@ -387,14 +387,14 @@ class BillCheckPaymentsResource(SyncAPIResource):
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
-          ref_number_starts_with: Filter for bill check payments whose `refNumber` starts with this substring. For
-              checks, this is the check number. NOTE: If you use this parameter, you cannot
-              also use `refNumberContains` or `refNumberEndsWith`.
+          ref_number_starts_with: Filter for bill check payments whose `refNumber` starts with this substring.
+              (For checks, this field is the check number.) NOTE: If you use this parameter,
+              you cannot also use `refNumberContains` or `refNumberEndsWith`.
 
           ref_number_to: Filter for bill check payments whose `refNumber` is less than or equal to this
-              value. If omitted, the range will end with the last number of the list. Uses a
-              numerical comparison for values that contain only digits; otherwise, uses a
-              lexicographical comparison.
+              value. (For checks, this field is the check number.) If omitted, the range will
+              end with the last number of the list. Uses a numerical comparison for values
+              that contain only digits; otherwise, uses a lexicographical comparison.
 
           transaction_date_from: Filter for bill check payments created on or after this date, in ISO 8601 format
               (YYYY-MM-DD).
@@ -792,18 +792,18 @@ class AsyncBillCheckPaymentsResource(AsyncAPIResource):
               value that can be passed to subsequent requests to retrieve the next page of
               results.
 
-          ref_number_contains: Filter for bill check payments whose `refNumber` contains this substring. For
-              checks, this is the check number. NOTE: If you use this parameter, you cannot
-              also use `refNumberStartsWith` or `refNumberEndsWith`.
+          ref_number_contains: Filter for bill check payments whose `refNumber` contains this substring. (For
+              checks, this field is the check number.) NOTE: If you use this parameter, you
+              cannot also use `refNumberStartsWith` or `refNumberEndsWith`.
 
-          ref_number_ends_with: Filter for bill check payments whose `refNumber` ends with this substring. For
-              checks, this is the check number. NOTE: If you use this parameter, you cannot
-              also use `refNumberContains` or `refNumberStartsWith`.
+          ref_number_ends_with: Filter for bill check payments whose `refNumber` ends with this substring. (For
+              checks, this field is the check number.) NOTE: If you use this parameter, you
+              cannot also use `refNumberContains` or `refNumberStartsWith`.
 
           ref_number_from: Filter for bill check payments whose `refNumber` is greater than or equal to
-              this value. If omitted, the range will begin with the first number of the list.
-              Uses a numerical comparison for values that contain only digits; otherwise, uses
-              a lexicographical comparison.
+              this value. (For checks, this field is the check number.) If omitted, the range
+              will begin with the first number of the list. Uses a numerical comparison for
+              values that contain only digits; otherwise, uses a lexicographical comparison.
 
           ref_numbers: Filter for specific bill check payments by their ref-number(s), case-sensitive.
               In QuickBooks, ref-numbers are not required to be unique and can be arbitrarily
@@ -812,14 +812,14 @@ class AsyncBillCheckPaymentsResource(AsyncAPIResource):
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
-          ref_number_starts_with: Filter for bill check payments whose `refNumber` starts with this substring. For
-              checks, this is the check number. NOTE: If you use this parameter, you cannot
-              also use `refNumberContains` or `refNumberEndsWith`.
+          ref_number_starts_with: Filter for bill check payments whose `refNumber` starts with this substring.
+              (For checks, this field is the check number.) NOTE: If you use this parameter,
+              you cannot also use `refNumberContains` or `refNumberEndsWith`.
 
           ref_number_to: Filter for bill check payments whose `refNumber` is less than or equal to this
-              value. If omitted, the range will end with the last number of the list. Uses a
-              numerical comparison for values that contain only digits; otherwise, uses a
-              lexicographical comparison.
+              value. (For checks, this field is the check number.) If omitted, the range will
+              end with the last number of the list. Uses a numerical comparison for values
+              that contain only digits; otherwise, uses a lexicographical comparison.
 
           transaction_date_from: Filter for bill check payments created on or after this date, in ISO 8601 format
               (YYYY-MM-DD).
