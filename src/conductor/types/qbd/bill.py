@@ -1213,7 +1213,7 @@ class Bill(BaseModel):
     This ID is unique across all transaction types.
     """
 
-    amount_due: str = FieldInfo(alias="amountDue")
+    amount_due: Optional[str] = FieldInfo(alias="amountDue", default=None)
     """The total monetary amount due for this bill, represented as a decimal string.
 
     This equals the sum of the amounts in the bill's expense lines, item lines, and
