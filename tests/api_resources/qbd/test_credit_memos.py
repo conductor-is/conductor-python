@@ -98,7 +98,7 @@ class TestCreditMemos:
                     "rate_percent": "10.5",
                     "sales_tax_code_id": "80000004-1234567890",
                     "serial_number": "SN1234567890",
-                    "service_date": parse_date("2019-12-27"),
+                    "service_date": "2019-12-27",
                     "unit_of_measure": "Each",
                 }
             ],
@@ -259,7 +259,7 @@ class TestCreditMemos:
                             "rate_percent": "10.5",
                             "sales_tax_code_id": "80000004-1234567890",
                             "serial_number": "SN1234567890",
-                            "service_date": parse_date("2019-12-27"),
+                            "service_date": "2019-12-27",
                             "unit_of_measure": "Each",
                         }
                     ],
@@ -288,7 +288,7 @@ class TestCreditMemos:
                     "rate_percent": "10.5",
                     "sales_tax_code_id": "80000004-1234567890",
                     "serial_number": "SN1234567890",
-                    "service_date": parse_date("2019-12-27"),
+                    "service_date": "2019-12-27",
                     "unit_of_measure": "Each",
                 }
             ],
@@ -494,7 +494,7 @@ class TestAsyncCreditMemos:
                     "rate_percent": "10.5",
                     "sales_tax_code_id": "80000004-1234567890",
                     "serial_number": "SN1234567890",
-                    "service_date": parse_date("2019-12-27"),
+                    "service_date": "2019-12-27",
                     "unit_of_measure": "Each",
                 }
             ],
@@ -655,7 +655,7 @@ class TestAsyncCreditMemos:
                             "rate_percent": "10.5",
                             "sales_tax_code_id": "80000004-1234567890",
                             "serial_number": "SN1234567890",
-                            "service_date": parse_date("2019-12-27"),
+                            "service_date": "2019-12-27",
                             "unit_of_measure": "Each",
                         }
                     ],
@@ -684,7 +684,7 @@ class TestAsyncCreditMemos:
                     "rate_percent": "10.5",
                     "sales_tax_code_id": "80000004-1234567890",
                     "serial_number": "SN1234567890",
-                    "service_date": parse_date("2019-12-27"),
+                    "service_date": "2019-12-27",
                     "unit_of_measure": "Each",
                 }
             ],
