@@ -32,7 +32,7 @@ class ReceivePaymentsResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> ReceivePaymentsResourceWithRawResponse:
         """
-        This property can be used as a prefix for any HTTP method call to return the
+        This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/conductor-is/conductor-python#accessing-raw-response-data-eg-headers
@@ -509,7 +509,7 @@ class AsyncReceivePaymentsResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncReceivePaymentsResourceWithRawResponse:
         """
-        This property can be used as a prefix for any HTTP method call to return the
+        This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/conductor-is/conductor-python#accessing-raw-response-data-eg-headers
