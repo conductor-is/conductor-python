@@ -12,6 +12,7 @@ from tests.utils import assert_matches_type
 from conductor._utils import parse_date
 from conductor.types.qbd import (
     SalesOrder,
+    SalesOrderDeleteResponse,
 )
 from conductor.pagination import SyncCursorPage, AsyncCursorPage
 
@@ -59,7 +60,7 @@ class TestSalesOrders:
             is_queued_for_print=True,
             line_groups=[
                 {
-                    "item_group_id": "80000011-1234567890",
+                    "item_group_id": "80000001-1234567890",
                     "custom_fields": [
                         {
                             "name": "Customer Rating",
@@ -68,7 +69,7 @@ class TestSalesOrders:
                         }
                     ],
                     "inventory_site_id": "80000001-1234567890",
-                    "inventory_site_location_id": "80000002-1234567890",
+                    "inventory_site_location_id": "80000001-1234567890",
                     "quantity": 5,
                     "unit_of_measure": "Each",
                 }
@@ -86,18 +87,18 @@ class TestSalesOrders:
                     ],
                     "description": "Widget Model X100 - Blue",
                     "inventory_site_id": "80000001-1234567890",
-                    "inventory_site_location_id": "80000002-1234567890",
+                    "inventory_site_location_id": "80000001-1234567890",
                     "is_manually_closed": True,
-                    "item_id": "80000010-1234567890",
+                    "item_id": "80000001-1234567890",
                     "lot_number": "LOT2023-001",
                     "other_custom_field1": "Special handling required",
                     "other_custom_field2": "Always ship with a spare",
-                    "price_level_id": "80000040-1234567890",
+                    "price_level_id": "80000001-1234567890",
                     "price_rule_conflict_strategy": "base_price",
                     "quantity": 5,
                     "rate": "10.00",
                     "rate_percent": "10.5",
-                    "sales_tax_code_id": "80000004-1234567890",
+                    "sales_tax_code_id": "80000001-1234567890",
                     "serial_number": "SN1234567890",
                     "unit_of_measure": "Each",
                 }
@@ -107,11 +108,11 @@ class TestSalesOrders:
             purchase_order_number="PO-1234",
             ref_number="SO-1234",
             sales_channel_name="blank",
-            sales_representative_id="80000030-1234567890",
+            sales_representative_id="80000001-1234567890",
             sales_store_name="Store 1",
             sales_store_type="Retail",
-            sales_tax_code_id="80000004-1234567890",
-            sales_tax_item_id="80000010-1234567890",
+            sales_tax_code_id="80000001-1234567890",
+            sales_tax_item_id="80000001-1234567890",
             shipment_origin="San Francisco, CA",
             shipping_address={
                 "city": "San Francisco",
@@ -126,8 +127,8 @@ class TestSalesOrders:
                 "state": "CA",
             },
             shipping_date=parse_date("2019-12-27"),
-            shipping_method_id="80000007-1234567890",
-            terms_id="80000013-1234567890",
+            shipping_method_id="80000001-1234567890",
+            terms_id="80000001-1234567890",
         )
         assert_matches_type(SalesOrder, sales_order, path=["response"])
 
@@ -240,7 +241,7 @@ class TestSalesOrders:
             line_groups=[
                 {
                     "id": "456DEF-1234567890",
-                    "item_group_id": "80000011-1234567890",
+                    "item_group_id": "80000001-1234567890",
                     "lines": [
                         {
                             "id": "456DEF-1234567890",
@@ -248,24 +249,24 @@ class TestSalesOrders:
                             "class_id": "80000001-1234567890",
                             "description": "Widget Model X100 - Blue",
                             "inventory_site_id": "80000001-1234567890",
-                            "inventory_site_location_id": "80000002-1234567890",
+                            "inventory_site_location_id": "80000001-1234567890",
                             "is_manually_closed": True,
-                            "item_id": "80000010-1234567890",
+                            "item_id": "80000001-1234567890",
                             "lot_number": "LOT2023-001",
                             "other_custom_field1": "Special handling required",
                             "other_custom_field2": "Always ship with a spare",
-                            "override_unit_of_measure_set_id": "80000003-1234567890",
-                            "price_level_id": "80000040-1234567890",
+                            "override_unit_of_measure_set_id": "80000001-1234567890",
+                            "price_level_id": "80000001-1234567890",
                             "price_rule_conflict_strategy": "base_price",
                             "quantity": 5,
                             "rate": "10.00",
                             "rate_percent": "10.5",
-                            "sales_tax_code_id": "80000004-1234567890",
+                            "sales_tax_code_id": "80000001-1234567890",
                             "serial_number": "SN1234567890",
                             "unit_of_measure": "Each",
                         }
                     ],
-                    "override_unit_of_measure_set_id": "80000003-1234567890",
+                    "override_unit_of_measure_set_id": "80000001-1234567890",
                     "quantity": 5,
                     "unit_of_measure": "Each",
                 }
@@ -277,19 +278,19 @@ class TestSalesOrders:
                     "class_id": "80000001-1234567890",
                     "description": "Widget Model X100 - Blue",
                     "inventory_site_id": "80000001-1234567890",
-                    "inventory_site_location_id": "80000002-1234567890",
+                    "inventory_site_location_id": "80000001-1234567890",
                     "is_manually_closed": True,
-                    "item_id": "80000010-1234567890",
+                    "item_id": "80000001-1234567890",
                     "lot_number": "LOT2023-001",
                     "other_custom_field1": "Special handling required",
                     "other_custom_field2": "Always ship with a spare",
-                    "override_unit_of_measure_set_id": "80000003-1234567890",
-                    "price_level_id": "80000040-1234567890",
+                    "override_unit_of_measure_set_id": "80000001-1234567890",
+                    "price_level_id": "80000001-1234567890",
                     "price_rule_conflict_strategy": "base_price",
                     "quantity": 5,
                     "rate": "10.00",
                     "rate_percent": "10.5",
-                    "sales_tax_code_id": "80000004-1234567890",
+                    "sales_tax_code_id": "80000001-1234567890",
                     "serial_number": "SN1234567890",
                     "unit_of_measure": "Each",
                 }
@@ -299,11 +300,11 @@ class TestSalesOrders:
             purchase_order_number="PO-1234",
             ref_number="SO-1234",
             sales_channel_name="blank",
-            sales_representative_id="80000030-1234567890",
+            sales_representative_id="80000001-1234567890",
             sales_store_name="Store 1",
             sales_store_type="Retail",
-            sales_tax_code_id="80000004-1234567890",
-            sales_tax_item_id="80000010-1234567890",
+            sales_tax_code_id="80000001-1234567890",
+            sales_tax_item_id="80000001-1234567890",
             shipment_origin="San Francisco, CA",
             shipping_address={
                 "city": "San Francisco",
@@ -318,8 +319,8 @@ class TestSalesOrders:
                 "state": "CA",
             },
             shipping_date=parse_date("2019-12-27"),
-            shipping_method_id="80000007-1234567890",
-            terms_id="80000013-1234567890",
+            shipping_method_id="80000001-1234567890",
+            terms_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
         )
         assert_matches_type(SalesOrder, sales_order, path=["response"])
@@ -416,6 +417,48 @@ class TestSalesOrders:
 
         assert cast(Any, response.is_closed) is True
 
+    @parametrize
+    def test_method_delete(self, client: Conductor) -> None:
+        sales_order = client.qbd.sales_orders.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+        assert_matches_type(SalesOrderDeleteResponse, sales_order, path=["response"])
+
+    @parametrize
+    def test_raw_response_delete(self, client: Conductor) -> None:
+        response = client.qbd.sales_orders.with_raw_response.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        sales_order = response.parse()
+        assert_matches_type(SalesOrderDeleteResponse, sales_order, path=["response"])
+
+    @parametrize
+    def test_streaming_response_delete(self, client: Conductor) -> None:
+        with client.qbd.sales_orders.with_streaming_response.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            sales_order = response.parse()
+            assert_matches_type(SalesOrderDeleteResponse, sales_order, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_delete(self, client: Conductor) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            client.qbd.sales_orders.with_raw_response.delete(
+                id="",
+                conductor_end_user_id="end_usr_1234567abcdefg",
+            )
+
 
 class TestAsyncSalesOrders:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
@@ -458,7 +501,7 @@ class TestAsyncSalesOrders:
             is_queued_for_print=True,
             line_groups=[
                 {
-                    "item_group_id": "80000011-1234567890",
+                    "item_group_id": "80000001-1234567890",
                     "custom_fields": [
                         {
                             "name": "Customer Rating",
@@ -467,7 +510,7 @@ class TestAsyncSalesOrders:
                         }
                     ],
                     "inventory_site_id": "80000001-1234567890",
-                    "inventory_site_location_id": "80000002-1234567890",
+                    "inventory_site_location_id": "80000001-1234567890",
                     "quantity": 5,
                     "unit_of_measure": "Each",
                 }
@@ -485,18 +528,18 @@ class TestAsyncSalesOrders:
                     ],
                     "description": "Widget Model X100 - Blue",
                     "inventory_site_id": "80000001-1234567890",
-                    "inventory_site_location_id": "80000002-1234567890",
+                    "inventory_site_location_id": "80000001-1234567890",
                     "is_manually_closed": True,
-                    "item_id": "80000010-1234567890",
+                    "item_id": "80000001-1234567890",
                     "lot_number": "LOT2023-001",
                     "other_custom_field1": "Special handling required",
                     "other_custom_field2": "Always ship with a spare",
-                    "price_level_id": "80000040-1234567890",
+                    "price_level_id": "80000001-1234567890",
                     "price_rule_conflict_strategy": "base_price",
                     "quantity": 5,
                     "rate": "10.00",
                     "rate_percent": "10.5",
-                    "sales_tax_code_id": "80000004-1234567890",
+                    "sales_tax_code_id": "80000001-1234567890",
                     "serial_number": "SN1234567890",
                     "unit_of_measure": "Each",
                 }
@@ -506,11 +549,11 @@ class TestAsyncSalesOrders:
             purchase_order_number="PO-1234",
             ref_number="SO-1234",
             sales_channel_name="blank",
-            sales_representative_id="80000030-1234567890",
+            sales_representative_id="80000001-1234567890",
             sales_store_name="Store 1",
             sales_store_type="Retail",
-            sales_tax_code_id="80000004-1234567890",
-            sales_tax_item_id="80000010-1234567890",
+            sales_tax_code_id="80000001-1234567890",
+            sales_tax_item_id="80000001-1234567890",
             shipment_origin="San Francisco, CA",
             shipping_address={
                 "city": "San Francisco",
@@ -525,8 +568,8 @@ class TestAsyncSalesOrders:
                 "state": "CA",
             },
             shipping_date=parse_date("2019-12-27"),
-            shipping_method_id="80000007-1234567890",
-            terms_id="80000013-1234567890",
+            shipping_method_id="80000001-1234567890",
+            terms_id="80000001-1234567890",
         )
         assert_matches_type(SalesOrder, sales_order, path=["response"])
 
@@ -639,7 +682,7 @@ class TestAsyncSalesOrders:
             line_groups=[
                 {
                     "id": "456DEF-1234567890",
-                    "item_group_id": "80000011-1234567890",
+                    "item_group_id": "80000001-1234567890",
                     "lines": [
                         {
                             "id": "456DEF-1234567890",
@@ -647,24 +690,24 @@ class TestAsyncSalesOrders:
                             "class_id": "80000001-1234567890",
                             "description": "Widget Model X100 - Blue",
                             "inventory_site_id": "80000001-1234567890",
-                            "inventory_site_location_id": "80000002-1234567890",
+                            "inventory_site_location_id": "80000001-1234567890",
                             "is_manually_closed": True,
-                            "item_id": "80000010-1234567890",
+                            "item_id": "80000001-1234567890",
                             "lot_number": "LOT2023-001",
                             "other_custom_field1": "Special handling required",
                             "other_custom_field2": "Always ship with a spare",
-                            "override_unit_of_measure_set_id": "80000003-1234567890",
-                            "price_level_id": "80000040-1234567890",
+                            "override_unit_of_measure_set_id": "80000001-1234567890",
+                            "price_level_id": "80000001-1234567890",
                             "price_rule_conflict_strategy": "base_price",
                             "quantity": 5,
                             "rate": "10.00",
                             "rate_percent": "10.5",
-                            "sales_tax_code_id": "80000004-1234567890",
+                            "sales_tax_code_id": "80000001-1234567890",
                             "serial_number": "SN1234567890",
                             "unit_of_measure": "Each",
                         }
                     ],
-                    "override_unit_of_measure_set_id": "80000003-1234567890",
+                    "override_unit_of_measure_set_id": "80000001-1234567890",
                     "quantity": 5,
                     "unit_of_measure": "Each",
                 }
@@ -676,19 +719,19 @@ class TestAsyncSalesOrders:
                     "class_id": "80000001-1234567890",
                     "description": "Widget Model X100 - Blue",
                     "inventory_site_id": "80000001-1234567890",
-                    "inventory_site_location_id": "80000002-1234567890",
+                    "inventory_site_location_id": "80000001-1234567890",
                     "is_manually_closed": True,
-                    "item_id": "80000010-1234567890",
+                    "item_id": "80000001-1234567890",
                     "lot_number": "LOT2023-001",
                     "other_custom_field1": "Special handling required",
                     "other_custom_field2": "Always ship with a spare",
-                    "override_unit_of_measure_set_id": "80000003-1234567890",
-                    "price_level_id": "80000040-1234567890",
+                    "override_unit_of_measure_set_id": "80000001-1234567890",
+                    "price_level_id": "80000001-1234567890",
                     "price_rule_conflict_strategy": "base_price",
                     "quantity": 5,
                     "rate": "10.00",
                     "rate_percent": "10.5",
-                    "sales_tax_code_id": "80000004-1234567890",
+                    "sales_tax_code_id": "80000001-1234567890",
                     "serial_number": "SN1234567890",
                     "unit_of_measure": "Each",
                 }
@@ -698,11 +741,11 @@ class TestAsyncSalesOrders:
             purchase_order_number="PO-1234",
             ref_number="SO-1234",
             sales_channel_name="blank",
-            sales_representative_id="80000030-1234567890",
+            sales_representative_id="80000001-1234567890",
             sales_store_name="Store 1",
             sales_store_type="Retail",
-            sales_tax_code_id="80000004-1234567890",
-            sales_tax_item_id="80000010-1234567890",
+            sales_tax_code_id="80000001-1234567890",
+            sales_tax_item_id="80000001-1234567890",
             shipment_origin="San Francisco, CA",
             shipping_address={
                 "city": "San Francisco",
@@ -717,8 +760,8 @@ class TestAsyncSalesOrders:
                 "state": "CA",
             },
             shipping_date=parse_date("2019-12-27"),
-            shipping_method_id="80000007-1234567890",
-            terms_id="80000013-1234567890",
+            shipping_method_id="80000001-1234567890",
+            terms_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
         )
         assert_matches_type(SalesOrder, sales_order, path=["response"])
@@ -814,3 +857,45 @@ class TestAsyncSalesOrders:
             assert_matches_type(AsyncCursorPage[SalesOrder], sales_order, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_delete(self, async_client: AsyncConductor) -> None:
+        sales_order = await async_client.qbd.sales_orders.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+        assert_matches_type(SalesOrderDeleteResponse, sales_order, path=["response"])
+
+    @parametrize
+    async def test_raw_response_delete(self, async_client: AsyncConductor) -> None:
+        response = await async_client.qbd.sales_orders.with_raw_response.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        sales_order = await response.parse()
+        assert_matches_type(SalesOrderDeleteResponse, sales_order, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_delete(self, async_client: AsyncConductor) -> None:
+        async with async_client.qbd.sales_orders.with_streaming_response.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            sales_order = await response.parse()
+            assert_matches_type(SalesOrderDeleteResponse, sales_order, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_delete(self, async_client: AsyncConductor) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            await async_client.qbd.sales_orders.with_raw_response.delete(
+                id="",
+                conductor_end_user_id="end_usr_1234567abcdefg",
+            )

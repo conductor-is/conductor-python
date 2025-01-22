@@ -12,6 +12,7 @@ from tests.utils import assert_matches_type
 from conductor._utils import parse_date
 from conductor.types.qbd import (
     SalesReceipt,
+    SalesReceiptDeleteResponse,
 )
 from conductor.pagination import SyncCursorPage, AsyncCursorPage
 
@@ -80,7 +81,7 @@ class TestSalesReceipts:
                 },
             },
             customer_message_id="80000001-1234567890",
-            deposit_to_account_id="80000008-1234567890",
+            deposit_to_account_id="80000001-1234567890",
             document_template_id="80000001-1234567890",
             due_date=parse_date("2019-12-27"),
             exchange_rate=1.2345,
@@ -90,7 +91,7 @@ class TestSalesReceipts:
             is_queued_for_print=True,
             line_groups=[
                 {
-                    "item_group_id": "80000011-1234567890",
+                    "item_group_id": "80000001-1234567890",
                     "custom_fields": [
                         {
                             "name": "Customer Rating",
@@ -99,7 +100,7 @@ class TestSalesReceipts:
                         }
                     ],
                     "inventory_site_id": "80000001-1234567890",
-                    "inventory_site_location_id": "80000002-1234567890",
+                    "inventory_site_location_id": "80000001-1234567890",
                     "quantity": 5,
                     "unit_of_measure": "Each",
                 }
@@ -146,18 +147,18 @@ class TestSalesReceipts:
                     ],
                     "description": "New office chair",
                     "inventory_site_id": "80000001-1234567890",
-                    "inventory_site_location_id": "80000002-1234567890",
-                    "item_id": "80000010-1234567890",
+                    "inventory_site_location_id": "80000001-1234567890",
+                    "item_id": "80000001-1234567890",
                     "lot_number": "LOT2023-001",
                     "other_custom_field1": "Special handling required",
                     "other_custom_field2": "Always ship with a spare",
                     "override_item_account_id": "80000001-1234567890",
-                    "price_level_id": "80000040-1234567890",
+                    "price_level_id": "80000001-1234567890",
                     "price_rule_conflict_strategy": "base_price",
                     "quantity": 5,
                     "rate": "10.00",
                     "rate_percent": "10.5",
-                    "sales_tax_code_id": "80000004-1234567890",
+                    "sales_tax_code_id": "80000001-1234567890",
                     "serial_number": "SN1234567890",
                     "service_date": "2019-12-27",
                     "unit_of_measure": "Each",
@@ -165,11 +166,11 @@ class TestSalesReceipts:
             ],
             memo="Payment received at store location - cash",
             other_custom_field="Special handling required",
-            payment_method_id="80000014-1234567890",
+            payment_method_id="80000001-1234567890",
             ref_number="RECEIPT-1234",
-            sales_representative_id="80000030-1234567890",
-            sales_tax_code_id="80000004-1234567890",
-            sales_tax_item_id="80000010-1234567890",
+            sales_representative_id="80000001-1234567890",
+            sales_tax_code_id="80000001-1234567890",
+            sales_tax_item_id="80000001-1234567890",
             shipment_origin="San Francisco, CA",
             shipping_address={
                 "city": "San Francisco",
@@ -184,7 +185,7 @@ class TestSalesReceipts:
                 "state": "CA",
             },
             shipping_date=parse_date("2019-12-27"),
-            shipping_method_id="80000007-1234567890",
+            shipping_method_id="80000001-1234567890",
         )
         assert_matches_type(SalesReceipt, sales_receipt, path=["response"])
 
@@ -289,7 +290,7 @@ class TestSalesReceipts:
             class_id="80000001-1234567890",
             customer_id="80000001-1234567890",
             customer_message_id="80000001-1234567890",
-            deposit_to_account_id="80000008-1234567890",
+            deposit_to_account_id="80000001-1234567890",
             document_template_id="80000001-1234567890",
             due_date=parse_date("2019-12-27"),
             exchange_rate=1.2345,
@@ -299,7 +300,7 @@ class TestSalesReceipts:
             line_groups=[
                 {
                     "id": "456DEF-1234567890",
-                    "item_group_id": "80000011-1234567890",
+                    "item_group_id": "80000001-1234567890",
                     "lines": [
                         {
                             "id": "456DEF-1234567890",
@@ -307,25 +308,25 @@ class TestSalesReceipts:
                             "class_id": "80000001-1234567890",
                             "description": "New office chair",
                             "inventory_site_id": "80000001-1234567890",
-                            "inventory_site_location_id": "80000002-1234567890",
-                            "item_id": "80000010-1234567890",
+                            "inventory_site_location_id": "80000001-1234567890",
+                            "item_id": "80000001-1234567890",
                             "lot_number": "LOT2023-001",
                             "other_custom_field1": "Special handling required",
                             "other_custom_field2": "Always ship with a spare",
                             "override_item_account_id": "80000001-1234567890",
-                            "override_unit_of_measure_set_id": "80000003-1234567890",
-                            "price_level_id": "80000040-1234567890",
+                            "override_unit_of_measure_set_id": "80000001-1234567890",
+                            "price_level_id": "80000001-1234567890",
                             "price_rule_conflict_strategy": "base_price",
                             "quantity": 5,
                             "rate": "10.00",
                             "rate_percent": "10.5",
-                            "sales_tax_code_id": "80000004-1234567890",
+                            "sales_tax_code_id": "80000001-1234567890",
                             "serial_number": "SN1234567890",
                             "service_date": "2019-12-27",
                             "unit_of_measure": "Each",
                         }
                     ],
-                    "override_unit_of_measure_set_id": "80000003-1234567890",
+                    "override_unit_of_measure_set_id": "80000001-1234567890",
                     "quantity": 5,
                     "unit_of_measure": "Each",
                 }
@@ -337,19 +338,19 @@ class TestSalesReceipts:
                     "class_id": "80000001-1234567890",
                     "description": "New office chair",
                     "inventory_site_id": "80000001-1234567890",
-                    "inventory_site_location_id": "80000002-1234567890",
-                    "item_id": "80000010-1234567890",
+                    "inventory_site_location_id": "80000001-1234567890",
+                    "item_id": "80000001-1234567890",
                     "lot_number": "LOT2023-001",
                     "other_custom_field1": "Special handling required",
                     "other_custom_field2": "Always ship with a spare",
                     "override_item_account_id": "80000001-1234567890",
-                    "override_unit_of_measure_set_id": "80000003-1234567890",
-                    "price_level_id": "80000040-1234567890",
+                    "override_unit_of_measure_set_id": "80000001-1234567890",
+                    "price_level_id": "80000001-1234567890",
                     "price_rule_conflict_strategy": "base_price",
                     "quantity": 5,
                     "rate": "10.00",
                     "rate_percent": "10.5",
-                    "sales_tax_code_id": "80000004-1234567890",
+                    "sales_tax_code_id": "80000001-1234567890",
                     "serial_number": "SN1234567890",
                     "service_date": "2019-12-27",
                     "unit_of_measure": "Each",
@@ -357,11 +358,11 @@ class TestSalesReceipts:
             ],
             memo="Payment received at store location - cash",
             other_custom_field="Special handling required",
-            payment_method_id="80000014-1234567890",
+            payment_method_id="80000001-1234567890",
             ref_number="RECEIPT-1234",
-            sales_representative_id="80000030-1234567890",
-            sales_tax_code_id="80000004-1234567890",
-            sales_tax_item_id="80000010-1234567890",
+            sales_representative_id="80000001-1234567890",
+            sales_tax_code_id="80000001-1234567890",
+            sales_tax_item_id="80000001-1234567890",
             shipment_origin="San Francisco, CA",
             shipping_address={
                 "city": "San Francisco",
@@ -376,7 +377,7 @@ class TestSalesReceipts:
                 "state": "CA",
             },
             shipping_date=parse_date("2019-12-27"),
-            shipping_method_id="80000007-1234567890",
+            shipping_method_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
         )
         assert_matches_type(SalesReceipt, sales_receipt, path=["response"])
@@ -473,6 +474,48 @@ class TestSalesReceipts:
 
         assert cast(Any, response.is_closed) is True
 
+    @parametrize
+    def test_method_delete(self, client: Conductor) -> None:
+        sales_receipt = client.qbd.sales_receipts.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+        assert_matches_type(SalesReceiptDeleteResponse, sales_receipt, path=["response"])
+
+    @parametrize
+    def test_raw_response_delete(self, client: Conductor) -> None:
+        response = client.qbd.sales_receipts.with_raw_response.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        sales_receipt = response.parse()
+        assert_matches_type(SalesReceiptDeleteResponse, sales_receipt, path=["response"])
+
+    @parametrize
+    def test_streaming_response_delete(self, client: Conductor) -> None:
+        with client.qbd.sales_receipts.with_streaming_response.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            sales_receipt = response.parse()
+            assert_matches_type(SalesReceiptDeleteResponse, sales_receipt, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_delete(self, client: Conductor) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            client.qbd.sales_receipts.with_raw_response.delete(
+                id="",
+                conductor_end_user_id="end_usr_1234567abcdefg",
+            )
+
 
 class TestAsyncSalesReceipts:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
@@ -536,7 +579,7 @@ class TestAsyncSalesReceipts:
                 },
             },
             customer_message_id="80000001-1234567890",
-            deposit_to_account_id="80000008-1234567890",
+            deposit_to_account_id="80000001-1234567890",
             document_template_id="80000001-1234567890",
             due_date=parse_date("2019-12-27"),
             exchange_rate=1.2345,
@@ -546,7 +589,7 @@ class TestAsyncSalesReceipts:
             is_queued_for_print=True,
             line_groups=[
                 {
-                    "item_group_id": "80000011-1234567890",
+                    "item_group_id": "80000001-1234567890",
                     "custom_fields": [
                         {
                             "name": "Customer Rating",
@@ -555,7 +598,7 @@ class TestAsyncSalesReceipts:
                         }
                     ],
                     "inventory_site_id": "80000001-1234567890",
-                    "inventory_site_location_id": "80000002-1234567890",
+                    "inventory_site_location_id": "80000001-1234567890",
                     "quantity": 5,
                     "unit_of_measure": "Each",
                 }
@@ -602,18 +645,18 @@ class TestAsyncSalesReceipts:
                     ],
                     "description": "New office chair",
                     "inventory_site_id": "80000001-1234567890",
-                    "inventory_site_location_id": "80000002-1234567890",
-                    "item_id": "80000010-1234567890",
+                    "inventory_site_location_id": "80000001-1234567890",
+                    "item_id": "80000001-1234567890",
                     "lot_number": "LOT2023-001",
                     "other_custom_field1": "Special handling required",
                     "other_custom_field2": "Always ship with a spare",
                     "override_item_account_id": "80000001-1234567890",
-                    "price_level_id": "80000040-1234567890",
+                    "price_level_id": "80000001-1234567890",
                     "price_rule_conflict_strategy": "base_price",
                     "quantity": 5,
                     "rate": "10.00",
                     "rate_percent": "10.5",
-                    "sales_tax_code_id": "80000004-1234567890",
+                    "sales_tax_code_id": "80000001-1234567890",
                     "serial_number": "SN1234567890",
                     "service_date": "2019-12-27",
                     "unit_of_measure": "Each",
@@ -621,11 +664,11 @@ class TestAsyncSalesReceipts:
             ],
             memo="Payment received at store location - cash",
             other_custom_field="Special handling required",
-            payment_method_id="80000014-1234567890",
+            payment_method_id="80000001-1234567890",
             ref_number="RECEIPT-1234",
-            sales_representative_id="80000030-1234567890",
-            sales_tax_code_id="80000004-1234567890",
-            sales_tax_item_id="80000010-1234567890",
+            sales_representative_id="80000001-1234567890",
+            sales_tax_code_id="80000001-1234567890",
+            sales_tax_item_id="80000001-1234567890",
             shipment_origin="San Francisco, CA",
             shipping_address={
                 "city": "San Francisco",
@@ -640,7 +683,7 @@ class TestAsyncSalesReceipts:
                 "state": "CA",
             },
             shipping_date=parse_date("2019-12-27"),
-            shipping_method_id="80000007-1234567890",
+            shipping_method_id="80000001-1234567890",
         )
         assert_matches_type(SalesReceipt, sales_receipt, path=["response"])
 
@@ -745,7 +788,7 @@ class TestAsyncSalesReceipts:
             class_id="80000001-1234567890",
             customer_id="80000001-1234567890",
             customer_message_id="80000001-1234567890",
-            deposit_to_account_id="80000008-1234567890",
+            deposit_to_account_id="80000001-1234567890",
             document_template_id="80000001-1234567890",
             due_date=parse_date("2019-12-27"),
             exchange_rate=1.2345,
@@ -755,7 +798,7 @@ class TestAsyncSalesReceipts:
             line_groups=[
                 {
                     "id": "456DEF-1234567890",
-                    "item_group_id": "80000011-1234567890",
+                    "item_group_id": "80000001-1234567890",
                     "lines": [
                         {
                             "id": "456DEF-1234567890",
@@ -763,25 +806,25 @@ class TestAsyncSalesReceipts:
                             "class_id": "80000001-1234567890",
                             "description": "New office chair",
                             "inventory_site_id": "80000001-1234567890",
-                            "inventory_site_location_id": "80000002-1234567890",
-                            "item_id": "80000010-1234567890",
+                            "inventory_site_location_id": "80000001-1234567890",
+                            "item_id": "80000001-1234567890",
                             "lot_number": "LOT2023-001",
                             "other_custom_field1": "Special handling required",
                             "other_custom_field2": "Always ship with a spare",
                             "override_item_account_id": "80000001-1234567890",
-                            "override_unit_of_measure_set_id": "80000003-1234567890",
-                            "price_level_id": "80000040-1234567890",
+                            "override_unit_of_measure_set_id": "80000001-1234567890",
+                            "price_level_id": "80000001-1234567890",
                             "price_rule_conflict_strategy": "base_price",
                             "quantity": 5,
                             "rate": "10.00",
                             "rate_percent": "10.5",
-                            "sales_tax_code_id": "80000004-1234567890",
+                            "sales_tax_code_id": "80000001-1234567890",
                             "serial_number": "SN1234567890",
                             "service_date": "2019-12-27",
                             "unit_of_measure": "Each",
                         }
                     ],
-                    "override_unit_of_measure_set_id": "80000003-1234567890",
+                    "override_unit_of_measure_set_id": "80000001-1234567890",
                     "quantity": 5,
                     "unit_of_measure": "Each",
                 }
@@ -793,19 +836,19 @@ class TestAsyncSalesReceipts:
                     "class_id": "80000001-1234567890",
                     "description": "New office chair",
                     "inventory_site_id": "80000001-1234567890",
-                    "inventory_site_location_id": "80000002-1234567890",
-                    "item_id": "80000010-1234567890",
+                    "inventory_site_location_id": "80000001-1234567890",
+                    "item_id": "80000001-1234567890",
                     "lot_number": "LOT2023-001",
                     "other_custom_field1": "Special handling required",
                     "other_custom_field2": "Always ship with a spare",
                     "override_item_account_id": "80000001-1234567890",
-                    "override_unit_of_measure_set_id": "80000003-1234567890",
-                    "price_level_id": "80000040-1234567890",
+                    "override_unit_of_measure_set_id": "80000001-1234567890",
+                    "price_level_id": "80000001-1234567890",
                     "price_rule_conflict_strategy": "base_price",
                     "quantity": 5,
                     "rate": "10.00",
                     "rate_percent": "10.5",
-                    "sales_tax_code_id": "80000004-1234567890",
+                    "sales_tax_code_id": "80000001-1234567890",
                     "serial_number": "SN1234567890",
                     "service_date": "2019-12-27",
                     "unit_of_measure": "Each",
@@ -813,11 +856,11 @@ class TestAsyncSalesReceipts:
             ],
             memo="Payment received at store location - cash",
             other_custom_field="Special handling required",
-            payment_method_id="80000014-1234567890",
+            payment_method_id="80000001-1234567890",
             ref_number="RECEIPT-1234",
-            sales_representative_id="80000030-1234567890",
-            sales_tax_code_id="80000004-1234567890",
-            sales_tax_item_id="80000010-1234567890",
+            sales_representative_id="80000001-1234567890",
+            sales_tax_code_id="80000001-1234567890",
+            sales_tax_item_id="80000001-1234567890",
             shipment_origin="San Francisco, CA",
             shipping_address={
                 "city": "San Francisco",
@@ -832,7 +875,7 @@ class TestAsyncSalesReceipts:
                 "state": "CA",
             },
             shipping_date=parse_date("2019-12-27"),
-            shipping_method_id="80000007-1234567890",
+            shipping_method_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
         )
         assert_matches_type(SalesReceipt, sales_receipt, path=["response"])
@@ -928,3 +971,45 @@ class TestAsyncSalesReceipts:
             assert_matches_type(AsyncCursorPage[SalesReceipt], sales_receipt, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_delete(self, async_client: AsyncConductor) -> None:
+        sales_receipt = await async_client.qbd.sales_receipts.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+        assert_matches_type(SalesReceiptDeleteResponse, sales_receipt, path=["response"])
+
+    @parametrize
+    async def test_raw_response_delete(self, async_client: AsyncConductor) -> None:
+        response = await async_client.qbd.sales_receipts.with_raw_response.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        sales_receipt = await response.parse()
+        assert_matches_type(SalesReceiptDeleteResponse, sales_receipt, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_delete(self, async_client: AsyncConductor) -> None:
+        async with async_client.qbd.sales_receipts.with_streaming_response.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            sales_receipt = await response.parse()
+            assert_matches_type(SalesReceiptDeleteResponse, sales_receipt, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_delete(self, async_client: AsyncConductor) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            await async_client.qbd.sales_receipts.with_raw_response.delete(
+                id="",
+                conductor_end_user_id="end_usr_1234567abcdefg",
+            )

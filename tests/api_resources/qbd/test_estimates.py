@@ -10,7 +10,10 @@ import pytest
 from conductor import Conductor, AsyncConductor
 from tests.utils import assert_matches_type
 from conductor._utils import parse_date
-from conductor.types.qbd import Estimate
+from conductor.types.qbd import (
+    Estimate,
+    EstimateDeleteResponse,
+)
 from conductor.pagination import SyncCursorPage, AsyncCursorPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -56,7 +59,7 @@ class TestEstimates:
             is_queued_for_email=True,
             line_groups=[
                 {
-                    "item_group_id": "80000011-1234567890",
+                    "item_group_id": "80000001-1234567890",
                     "custom_fields": [
                         {
                             "name": "Customer Rating",
@@ -65,7 +68,7 @@ class TestEstimates:
                         }
                     ],
                     "inventory_site_id": "80000001-1234567890",
-                    "inventory_site_location_id": "80000002-1234567890",
+                    "inventory_site_location_id": "80000001-1234567890",
                     "quantity": 5,
                     "unit_of_measure": "Each",
                 }
@@ -83,19 +86,19 @@ class TestEstimates:
                     ],
                     "description": "Graphic illustrations for website redesign",
                     "inventory_site_id": "80000001-1234567890",
-                    "inventory_site_location_id": "80000002-1234567890",
-                    "item_id": "80000010-1234567890",
+                    "inventory_site_location_id": "80000001-1234567890",
+                    "item_id": "80000001-1234567890",
                     "markup_rate": "0.2",
                     "markup_rate_percent": "20",
                     "other_custom_field1": "Special handling required",
                     "other_custom_field2": "Always ship with a spare",
                     "override_item_account_id": "80000001-1234567890",
-                    "price_level_id": "80000040-1234567890",
+                    "price_level_id": "80000001-1234567890",
                     "price_rule_conflict_strategy": "base_price",
                     "quantity": 5,
                     "rate": "10.00",
                     "rate_percent": "10.5",
-                    "sales_tax_code_id": "80000004-1234567890",
+                    "sales_tax_code_id": "80000001-1234567890",
                     "unit_of_measure": "Each",
                 }
             ],
@@ -103,9 +106,9 @@ class TestEstimates:
             other_custom_field="Special handling required",
             purchase_order_number="PO-1234",
             ref_number="EST-1234",
-            sales_representative_id="80000030-1234567890",
-            sales_tax_code_id="80000004-1234567890",
-            sales_tax_item_id="80000010-1234567890",
+            sales_representative_id="80000001-1234567890",
+            sales_tax_code_id="80000001-1234567890",
+            sales_tax_item_id="80000001-1234567890",
             shipment_origin="San Francisco, CA",
             shipping_address={
                 "city": "San Francisco",
@@ -119,7 +122,7 @@ class TestEstimates:
                 "postal_code": "94110",
                 "state": "CA",
             },
-            terms_id="80000013-1234567890",
+            terms_id="80000001-1234567890",
         )
         assert_matches_type(Estimate, estimate, path=["response"])
 
@@ -232,7 +235,7 @@ class TestEstimates:
             line_groups=[
                 {
                     "id": "456DEF-1234567890",
-                    "item_group_id": "80000011-1234567890",
+                    "item_group_id": "80000001-1234567890",
                     "lines": [
                         {
                             "id": "456DEF-1234567890",
@@ -240,23 +243,23 @@ class TestEstimates:
                             "class_id": "80000001-1234567890",
                             "description": "Graphic illustrations for website redesign",
                             "inventory_site_id": "80000001-1234567890",
-                            "inventory_site_location_id": "80000002-1234567890",
-                            "item_id": "80000010-1234567890",
+                            "inventory_site_location_id": "80000001-1234567890",
+                            "item_id": "80000001-1234567890",
                             "markup_rate": "0.2",
                             "markup_rate_percent": "20",
                             "other_custom_field1": "Special handling required",
                             "other_custom_field2": "Always ship with a spare",
-                            "override_unit_of_measure_set_id": "80000003-1234567890",
-                            "price_level_id": "80000040-1234567890",
+                            "override_unit_of_measure_set_id": "80000001-1234567890",
+                            "price_level_id": "80000001-1234567890",
                             "price_rule_conflict_strategy": "base_price",
                             "quantity": 5,
                             "rate": "10.00",
                             "rate_percent": "10.5",
-                            "sales_tax_code_id": "80000004-1234567890",
+                            "sales_tax_code_id": "80000001-1234567890",
                             "unit_of_measure": "Each",
                         }
                     ],
-                    "override_unit_of_measure_set_id": "80000003-1234567890",
+                    "override_unit_of_measure_set_id": "80000001-1234567890",
                     "quantity": 5,
                     "unit_of_measure": "Each",
                 }
@@ -268,19 +271,19 @@ class TestEstimates:
                     "class_id": "80000001-1234567890",
                     "description": "Graphic illustrations for website redesign",
                     "inventory_site_id": "80000001-1234567890",
-                    "inventory_site_location_id": "80000002-1234567890",
-                    "item_id": "80000010-1234567890",
+                    "inventory_site_location_id": "80000001-1234567890",
+                    "item_id": "80000001-1234567890",
                     "markup_rate": "0.2",
                     "markup_rate_percent": "20",
                     "other_custom_field1": "Special handling required",
                     "other_custom_field2": "Always ship with a spare",
-                    "override_unit_of_measure_set_id": "80000003-1234567890",
-                    "price_level_id": "80000040-1234567890",
+                    "override_unit_of_measure_set_id": "80000001-1234567890",
+                    "price_level_id": "80000001-1234567890",
                     "price_rule_conflict_strategy": "base_price",
                     "quantity": 5,
                     "rate": "10.00",
                     "rate_percent": "10.5",
-                    "sales_tax_code_id": "80000004-1234567890",
+                    "sales_tax_code_id": "80000001-1234567890",
                     "unit_of_measure": "Each",
                 }
             ],
@@ -288,9 +291,9 @@ class TestEstimates:
             other_custom_field="Special handling required",
             purchase_order_number="PO-1234",
             ref_number="EST-1234",
-            sales_representative_id="80000030-1234567890",
-            sales_tax_code_id="80000004-1234567890",
-            sales_tax_item_id="80000010-1234567890",
+            sales_representative_id="80000001-1234567890",
+            sales_tax_code_id="80000001-1234567890",
+            sales_tax_item_id="80000001-1234567890",
             shipment_origin="San Francisco, CA",
             shipping_address={
                 "city": "San Francisco",
@@ -304,7 +307,7 @@ class TestEstimates:
                 "postal_code": "94110",
                 "state": "CA",
             },
-            terms_id="80000013-1234567890",
+            terms_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
         )
         assert_matches_type(Estimate, estimate, path=["response"])
@@ -402,6 +405,48 @@ class TestEstimates:
 
         assert cast(Any, response.is_closed) is True
 
+    @parametrize
+    def test_method_delete(self, client: Conductor) -> None:
+        estimate = client.qbd.estimates.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+        assert_matches_type(EstimateDeleteResponse, estimate, path=["response"])
+
+    @parametrize
+    def test_raw_response_delete(self, client: Conductor) -> None:
+        response = client.qbd.estimates.with_raw_response.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        estimate = response.parse()
+        assert_matches_type(EstimateDeleteResponse, estimate, path=["response"])
+
+    @parametrize
+    def test_streaming_response_delete(self, client: Conductor) -> None:
+        with client.qbd.estimates.with_streaming_response.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            estimate = response.parse()
+            assert_matches_type(EstimateDeleteResponse, estimate, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_delete(self, client: Conductor) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            client.qbd.estimates.with_raw_response.delete(
+                id="",
+                conductor_end_user_id="end_usr_1234567abcdefg",
+            )
+
 
 class TestAsyncEstimates:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
@@ -443,7 +488,7 @@ class TestAsyncEstimates:
             is_queued_for_email=True,
             line_groups=[
                 {
-                    "item_group_id": "80000011-1234567890",
+                    "item_group_id": "80000001-1234567890",
                     "custom_fields": [
                         {
                             "name": "Customer Rating",
@@ -452,7 +497,7 @@ class TestAsyncEstimates:
                         }
                     ],
                     "inventory_site_id": "80000001-1234567890",
-                    "inventory_site_location_id": "80000002-1234567890",
+                    "inventory_site_location_id": "80000001-1234567890",
                     "quantity": 5,
                     "unit_of_measure": "Each",
                 }
@@ -470,19 +515,19 @@ class TestAsyncEstimates:
                     ],
                     "description": "Graphic illustrations for website redesign",
                     "inventory_site_id": "80000001-1234567890",
-                    "inventory_site_location_id": "80000002-1234567890",
-                    "item_id": "80000010-1234567890",
+                    "inventory_site_location_id": "80000001-1234567890",
+                    "item_id": "80000001-1234567890",
                     "markup_rate": "0.2",
                     "markup_rate_percent": "20",
                     "other_custom_field1": "Special handling required",
                     "other_custom_field2": "Always ship with a spare",
                     "override_item_account_id": "80000001-1234567890",
-                    "price_level_id": "80000040-1234567890",
+                    "price_level_id": "80000001-1234567890",
                     "price_rule_conflict_strategy": "base_price",
                     "quantity": 5,
                     "rate": "10.00",
                     "rate_percent": "10.5",
-                    "sales_tax_code_id": "80000004-1234567890",
+                    "sales_tax_code_id": "80000001-1234567890",
                     "unit_of_measure": "Each",
                 }
             ],
@@ -490,9 +535,9 @@ class TestAsyncEstimates:
             other_custom_field="Special handling required",
             purchase_order_number="PO-1234",
             ref_number="EST-1234",
-            sales_representative_id="80000030-1234567890",
-            sales_tax_code_id="80000004-1234567890",
-            sales_tax_item_id="80000010-1234567890",
+            sales_representative_id="80000001-1234567890",
+            sales_tax_code_id="80000001-1234567890",
+            sales_tax_item_id="80000001-1234567890",
             shipment_origin="San Francisco, CA",
             shipping_address={
                 "city": "San Francisco",
@@ -506,7 +551,7 @@ class TestAsyncEstimates:
                 "postal_code": "94110",
                 "state": "CA",
             },
-            terms_id="80000013-1234567890",
+            terms_id="80000001-1234567890",
         )
         assert_matches_type(Estimate, estimate, path=["response"])
 
@@ -619,7 +664,7 @@ class TestAsyncEstimates:
             line_groups=[
                 {
                     "id": "456DEF-1234567890",
-                    "item_group_id": "80000011-1234567890",
+                    "item_group_id": "80000001-1234567890",
                     "lines": [
                         {
                             "id": "456DEF-1234567890",
@@ -627,23 +672,23 @@ class TestAsyncEstimates:
                             "class_id": "80000001-1234567890",
                             "description": "Graphic illustrations for website redesign",
                             "inventory_site_id": "80000001-1234567890",
-                            "inventory_site_location_id": "80000002-1234567890",
-                            "item_id": "80000010-1234567890",
+                            "inventory_site_location_id": "80000001-1234567890",
+                            "item_id": "80000001-1234567890",
                             "markup_rate": "0.2",
                             "markup_rate_percent": "20",
                             "other_custom_field1": "Special handling required",
                             "other_custom_field2": "Always ship with a spare",
-                            "override_unit_of_measure_set_id": "80000003-1234567890",
-                            "price_level_id": "80000040-1234567890",
+                            "override_unit_of_measure_set_id": "80000001-1234567890",
+                            "price_level_id": "80000001-1234567890",
                             "price_rule_conflict_strategy": "base_price",
                             "quantity": 5,
                             "rate": "10.00",
                             "rate_percent": "10.5",
-                            "sales_tax_code_id": "80000004-1234567890",
+                            "sales_tax_code_id": "80000001-1234567890",
                             "unit_of_measure": "Each",
                         }
                     ],
-                    "override_unit_of_measure_set_id": "80000003-1234567890",
+                    "override_unit_of_measure_set_id": "80000001-1234567890",
                     "quantity": 5,
                     "unit_of_measure": "Each",
                 }
@@ -655,19 +700,19 @@ class TestAsyncEstimates:
                     "class_id": "80000001-1234567890",
                     "description": "Graphic illustrations for website redesign",
                     "inventory_site_id": "80000001-1234567890",
-                    "inventory_site_location_id": "80000002-1234567890",
-                    "item_id": "80000010-1234567890",
+                    "inventory_site_location_id": "80000001-1234567890",
+                    "item_id": "80000001-1234567890",
                     "markup_rate": "0.2",
                     "markup_rate_percent": "20",
                     "other_custom_field1": "Special handling required",
                     "other_custom_field2": "Always ship with a spare",
-                    "override_unit_of_measure_set_id": "80000003-1234567890",
-                    "price_level_id": "80000040-1234567890",
+                    "override_unit_of_measure_set_id": "80000001-1234567890",
+                    "price_level_id": "80000001-1234567890",
                     "price_rule_conflict_strategy": "base_price",
                     "quantity": 5,
                     "rate": "10.00",
                     "rate_percent": "10.5",
-                    "sales_tax_code_id": "80000004-1234567890",
+                    "sales_tax_code_id": "80000001-1234567890",
                     "unit_of_measure": "Each",
                 }
             ],
@@ -675,9 +720,9 @@ class TestAsyncEstimates:
             other_custom_field="Special handling required",
             purchase_order_number="PO-1234",
             ref_number="EST-1234",
-            sales_representative_id="80000030-1234567890",
-            sales_tax_code_id="80000004-1234567890",
-            sales_tax_item_id="80000010-1234567890",
+            sales_representative_id="80000001-1234567890",
+            sales_tax_code_id="80000001-1234567890",
+            sales_tax_item_id="80000001-1234567890",
             shipment_origin="San Francisco, CA",
             shipping_address={
                 "city": "San Francisco",
@@ -691,7 +736,7 @@ class TestAsyncEstimates:
                 "postal_code": "94110",
                 "state": "CA",
             },
-            terms_id="80000013-1234567890",
+            terms_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
         )
         assert_matches_type(Estimate, estimate, path=["response"])
@@ -788,3 +833,45 @@ class TestAsyncEstimates:
             assert_matches_type(AsyncCursorPage[Estimate], estimate, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_delete(self, async_client: AsyncConductor) -> None:
+        estimate = await async_client.qbd.estimates.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+        assert_matches_type(EstimateDeleteResponse, estimate, path=["response"])
+
+    @parametrize
+    async def test_raw_response_delete(self, async_client: AsyncConductor) -> None:
+        response = await async_client.qbd.estimates.with_raw_response.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        estimate = await response.parse()
+        assert_matches_type(EstimateDeleteResponse, estimate, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_delete(self, async_client: AsyncConductor) -> None:
+        async with async_client.qbd.estimates.with_streaming_response.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            estimate = await response.parse()
+            assert_matches_type(EstimateDeleteResponse, estimate, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_delete(self, async_client: AsyncConductor) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            await async_client.qbd.estimates.with_raw_response.delete(
+                id="",
+                conductor_end_user_id="end_usr_1234567abcdefg",
+            )
