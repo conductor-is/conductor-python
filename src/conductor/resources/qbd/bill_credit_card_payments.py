@@ -24,6 +24,7 @@ from ...types.qbd import bill_credit_card_payment_list_params, bill_credit_card_
 from ...pagination import SyncCursorPage, AsyncCursorPage
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.qbd.bill_credit_card_payment import BillCreditCardPayment
+from ...types.qbd.bill_credit_card_payment_delete_response import BillCreditCardPaymentDeleteResponse
 
 __all__ = ["BillCreditCardPaymentsResource", "AsyncBillCreditCardPaymentsResource"]
 
@@ -346,6 +347,50 @@ class BillCreditCardPaymentsResource(SyncAPIResource):
             model=BillCreditCardPayment,
         )
 
+    def delete(
+        self,
+        id: str,
+        *,
+        conductor_end_user_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> BillCreditCardPaymentDeleteResponse:
+        """Permanently deletes a a bill credit card payment.
+
+        The deletion will fail if the
+        bill credit card payment is currently in use or has any linked transactions that
+        are in use.
+
+        Args:
+          id: The QuickBooks-assigned unique identifier of the bill credit card payment to
+              delete.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return self._delete(
+            f"/quickbooks-desktop/bill-credit-card-payments/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=BillCreditCardPaymentDeleteResponse,
+        )
+
 
 class AsyncBillCreditCardPaymentsResource(AsyncAPIResource):
     @cached_property
@@ -665,6 +710,50 @@ class AsyncBillCreditCardPaymentsResource(AsyncAPIResource):
             model=BillCreditCardPayment,
         )
 
+    async def delete(
+        self,
+        id: str,
+        *,
+        conductor_end_user_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> BillCreditCardPaymentDeleteResponse:
+        """Permanently deletes a a bill credit card payment.
+
+        The deletion will fail if the
+        bill credit card payment is currently in use or has any linked transactions that
+        are in use.
+
+        Args:
+          id: The QuickBooks-assigned unique identifier of the bill credit card payment to
+              delete.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return await self._delete(
+            f"/quickbooks-desktop/bill-credit-card-payments/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=BillCreditCardPaymentDeleteResponse,
+        )
+
 
 class BillCreditCardPaymentsResourceWithRawResponse:
     def __init__(self, bill_credit_card_payments: BillCreditCardPaymentsResource) -> None:
@@ -678,6 +767,9 @@ class BillCreditCardPaymentsResourceWithRawResponse:
         )
         self.list = to_raw_response_wrapper(
             bill_credit_card_payments.list,
+        )
+        self.delete = to_raw_response_wrapper(
+            bill_credit_card_payments.delete,
         )
 
 
@@ -694,6 +786,9 @@ class AsyncBillCreditCardPaymentsResourceWithRawResponse:
         self.list = async_to_raw_response_wrapper(
             bill_credit_card_payments.list,
         )
+        self.delete = async_to_raw_response_wrapper(
+            bill_credit_card_payments.delete,
+        )
 
 
 class BillCreditCardPaymentsResourceWithStreamingResponse:
@@ -709,6 +804,9 @@ class BillCreditCardPaymentsResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             bill_credit_card_payments.list,
         )
+        self.delete = to_streamed_response_wrapper(
+            bill_credit_card_payments.delete,
+        )
 
 
 class AsyncBillCreditCardPaymentsResourceWithStreamingResponse:
@@ -723,4 +821,7 @@ class AsyncBillCreditCardPaymentsResourceWithStreamingResponse:
         )
         self.list = async_to_streamed_response_wrapper(
             bill_credit_card_payments.list,
+        )
+        self.delete = async_to_streamed_response_wrapper(
+            bill_credit_card_payments.delete,
         )
