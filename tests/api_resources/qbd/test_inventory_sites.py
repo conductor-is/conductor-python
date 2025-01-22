@@ -47,7 +47,7 @@ class TestInventorySites:
             description="Main Stockroom for Electronics",
             email="inventory-site@example.com",
             is_active=True,
-            parent_id="80000002-1234567890",
+            parent_id="80000001-1234567890",
         )
         assert_matches_type(InventorySite, inventory_site, path=["response"])
 
@@ -151,7 +151,7 @@ class TestInventorySites:
             fax="+1-555-555-1212",
             is_active=True,
             name="Stockroom",
-            parent_id="80000002-1234567890",
+            parent_id="80000001-1234567890",
             phone="+1-555-123-4567",
         )
         assert_matches_type(InventorySite, inventory_site, path=["response"])
@@ -272,7 +272,7 @@ class TestAsyncInventorySites:
             description="Main Stockroom for Electronics",
             email="inventory-site@example.com",
             is_active=True,
-            parent_id="80000002-1234567890",
+            parent_id="80000001-1234567890",
         )
         assert_matches_type(InventorySite, inventory_site, path=["response"])
 
@@ -376,7 +376,7 @@ class TestAsyncInventorySites:
             fax="+1-555-555-1212",
             is_active=True,
             name="Stockroom",
-            parent_id="80000002-1234567890",
+            parent_id="80000001-1234567890",
             phone="+1-555-123-4567",
         )
         assert_matches_type(InventorySite, inventory_site, path=["response"])

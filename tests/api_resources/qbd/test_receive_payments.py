@@ -12,6 +12,7 @@ from tests.utils import assert_matches_type
 from conductor._utils import parse_date
 from conductor.types.qbd import (
     ReceivePayment,
+    ReceivePaymentDeleteResponse,
 )
 from conductor.pagination import SyncCursorPage, AsyncCursorPage
 
@@ -48,9 +49,9 @@ class TestReceivePayments:
                             "override_credit_application": False,
                         }
                     ],
-                    "discount_account_id": "80000008-1234567890",
+                    "discount_account_id": "80000001-1234567890",
                     "discount_amount": "50.00",
-                    "discount_class_id": "80000008-1234567890",
+                    "discount_class_id": "80000001-1234567890",
                     "payment_amount": "25.00",
                 }
             ],
@@ -83,13 +84,13 @@ class TestReceivePayments:
                     "transaction_authorization_stamp": 2,
                 },
             },
-            deposit_to_account_id="80000008-1234567890",
+            deposit_to_account_id="80000001-1234567890",
             exchange_rate=1.2345,
             external_id="12345678-abcd-1234-abcd-1234567890ab",
             is_auto_apply=False,
             memo="Payment received at store location - cash",
-            payment_method_id="80000014-1234567890",
-            receivables_account_id="80000002-1234567890",
+            payment_method_id="80000001-1234567890",
+            receivables_account_id="80000001-1234567890",
             ref_number="PAYMENT-1234",
         )
         assert_matches_type(ReceivePayment, receive_payment, path=["response"])
@@ -191,9 +192,9 @@ class TestReceivePayments:
                             "override_credit_application": False,
                         }
                     ],
-                    "discount_account_id": "80000008-1234567890",
+                    "discount_account_id": "80000001-1234567890",
                     "discount_amount": "50.00",
-                    "discount_class_id": "80000008-1234567890",
+                    "discount_class_id": "80000001-1234567890",
                     "payment_amount": "25.00",
                 }
             ],
@@ -227,11 +228,11 @@ class TestReceivePayments:
                 },
             },
             customer_id="80000001-1234567890",
-            deposit_to_account_id="80000008-1234567890",
+            deposit_to_account_id="80000001-1234567890",
             exchange_rate=1.2345,
             memo="Payment received at store location - cash",
-            payment_method_id="80000014-1234567890",
-            receivables_account_id="80000002-1234567890",
+            payment_method_id="80000001-1234567890",
+            receivables_account_id="80000001-1234567890",
             ref_number="PAYMENT-1234",
             total_amount="1000.00",
             transaction_date=parse_date("2019-12-27"),
@@ -330,6 +331,48 @@ class TestReceivePayments:
 
         assert cast(Any, response.is_closed) is True
 
+    @parametrize
+    def test_method_delete(self, client: Conductor) -> None:
+        receive_payment = client.qbd.receive_payments.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+        assert_matches_type(ReceivePaymentDeleteResponse, receive_payment, path=["response"])
+
+    @parametrize
+    def test_raw_response_delete(self, client: Conductor) -> None:
+        response = client.qbd.receive_payments.with_raw_response.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        receive_payment = response.parse()
+        assert_matches_type(ReceivePaymentDeleteResponse, receive_payment, path=["response"])
+
+    @parametrize
+    def test_streaming_response_delete(self, client: Conductor) -> None:
+        with client.qbd.receive_payments.with_streaming_response.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            receive_payment = response.parse()
+            assert_matches_type(ReceivePaymentDeleteResponse, receive_payment, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_delete(self, client: Conductor) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            client.qbd.receive_payments.with_raw_response.delete(
+                id="",
+                conductor_end_user_id="end_usr_1234567abcdefg",
+            )
+
 
 class TestAsyncReceivePayments:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
@@ -361,9 +404,9 @@ class TestAsyncReceivePayments:
                             "override_credit_application": False,
                         }
                     ],
-                    "discount_account_id": "80000008-1234567890",
+                    "discount_account_id": "80000001-1234567890",
                     "discount_amount": "50.00",
-                    "discount_class_id": "80000008-1234567890",
+                    "discount_class_id": "80000001-1234567890",
                     "payment_amount": "25.00",
                 }
             ],
@@ -396,13 +439,13 @@ class TestAsyncReceivePayments:
                     "transaction_authorization_stamp": 2,
                 },
             },
-            deposit_to_account_id="80000008-1234567890",
+            deposit_to_account_id="80000001-1234567890",
             exchange_rate=1.2345,
             external_id="12345678-abcd-1234-abcd-1234567890ab",
             is_auto_apply=False,
             memo="Payment received at store location - cash",
-            payment_method_id="80000014-1234567890",
-            receivables_account_id="80000002-1234567890",
+            payment_method_id="80000001-1234567890",
+            receivables_account_id="80000001-1234567890",
             ref_number="PAYMENT-1234",
         )
         assert_matches_type(ReceivePayment, receive_payment, path=["response"])
@@ -504,9 +547,9 @@ class TestAsyncReceivePayments:
                             "override_credit_application": False,
                         }
                     ],
-                    "discount_account_id": "80000008-1234567890",
+                    "discount_account_id": "80000001-1234567890",
                     "discount_amount": "50.00",
-                    "discount_class_id": "80000008-1234567890",
+                    "discount_class_id": "80000001-1234567890",
                     "payment_amount": "25.00",
                 }
             ],
@@ -540,11 +583,11 @@ class TestAsyncReceivePayments:
                 },
             },
             customer_id="80000001-1234567890",
-            deposit_to_account_id="80000008-1234567890",
+            deposit_to_account_id="80000001-1234567890",
             exchange_rate=1.2345,
             memo="Payment received at store location - cash",
-            payment_method_id="80000014-1234567890",
-            receivables_account_id="80000002-1234567890",
+            payment_method_id="80000001-1234567890",
+            receivables_account_id="80000001-1234567890",
             ref_number="PAYMENT-1234",
             total_amount="1000.00",
             transaction_date=parse_date("2019-12-27"),
@@ -642,3 +685,45 @@ class TestAsyncReceivePayments:
             assert_matches_type(AsyncCursorPage[ReceivePayment], receive_payment, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_delete(self, async_client: AsyncConductor) -> None:
+        receive_payment = await async_client.qbd.receive_payments.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+        assert_matches_type(ReceivePaymentDeleteResponse, receive_payment, path=["response"])
+
+    @parametrize
+    async def test_raw_response_delete(self, async_client: AsyncConductor) -> None:
+        response = await async_client.qbd.receive_payments.with_raw_response.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        receive_payment = await response.parse()
+        assert_matches_type(ReceivePaymentDeleteResponse, receive_payment, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_delete(self, async_client: AsyncConductor) -> None:
+        async with async_client.qbd.receive_payments.with_streaming_response.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            receive_payment = await response.parse()
+            assert_matches_type(ReceivePaymentDeleteResponse, receive_payment, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_delete(self, async_client: AsyncConductor) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            await async_client.qbd.receive_payments.with_raw_response.delete(
+                id="",
+                conductor_end_user_id="end_usr_1234567abcdefg",
+            )

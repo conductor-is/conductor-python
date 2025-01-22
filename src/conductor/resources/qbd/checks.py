@@ -24,6 +24,7 @@ from ...types.qbd import check_list_params, check_create_params, check_update_pa
 from ...pagination import SyncCursorPage, AsyncCursorPage
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.qbd.check import Check
+from ...types.qbd.check_delete_response import CheckDeleteResponse
 
 __all__ = ["ChecksResource", "AsyncChecksResource"]
 
@@ -545,6 +546,48 @@ class ChecksResource(SyncAPIResource):
             model=Check,
         )
 
+    def delete(
+        self,
+        id: str,
+        *,
+        conductor_end_user_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> CheckDeleteResponse:
+        """Permanently deletes a a check.
+
+        The deletion will fail if the check is currently
+        in use or has any linked transactions that are in use.
+
+        Args:
+          id: The QuickBooks-assigned unique identifier of the check to delete.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return self._delete(
+            f"/quickbooks-desktop/checks/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=CheckDeleteResponse,
+        )
+
 
 class AsyncChecksResource(AsyncAPIResource):
     @cached_property
@@ -1063,6 +1106,48 @@ class AsyncChecksResource(AsyncAPIResource):
             model=Check,
         )
 
+    async def delete(
+        self,
+        id: str,
+        *,
+        conductor_end_user_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> CheckDeleteResponse:
+        """Permanently deletes a a check.
+
+        The deletion will fail if the check is currently
+        in use or has any linked transactions that are in use.
+
+        Args:
+          id: The QuickBooks-assigned unique identifier of the check to delete.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return await self._delete(
+            f"/quickbooks-desktop/checks/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=CheckDeleteResponse,
+        )
+
 
 class ChecksResourceWithRawResponse:
     def __init__(self, checks: ChecksResource) -> None:
@@ -1079,6 +1164,9 @@ class ChecksResourceWithRawResponse:
         )
         self.list = to_raw_response_wrapper(
             checks.list,
+        )
+        self.delete = to_raw_response_wrapper(
+            checks.delete,
         )
 
 
@@ -1098,6 +1186,9 @@ class AsyncChecksResourceWithRawResponse:
         self.list = async_to_raw_response_wrapper(
             checks.list,
         )
+        self.delete = async_to_raw_response_wrapper(
+            checks.delete,
+        )
 
 
 class ChecksResourceWithStreamingResponse:
@@ -1116,6 +1207,9 @@ class ChecksResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             checks.list,
         )
+        self.delete = to_streamed_response_wrapper(
+            checks.delete,
+        )
 
 
 class AsyncChecksResourceWithStreamingResponse:
@@ -1133,4 +1227,7 @@ class AsyncChecksResourceWithStreamingResponse:
         )
         self.list = async_to_streamed_response_wrapper(
             checks.list,
+        )
+        self.delete = async_to_streamed_response_wrapper(
+            checks.delete,
         )

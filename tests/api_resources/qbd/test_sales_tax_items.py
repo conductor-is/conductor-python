@@ -42,9 +42,9 @@ class TestSalesTaxItems:
             description="Standard rate sales tax for California",
             external_id="12345678-abcd-1234-abcd-1234567890ab",
             is_active=True,
-            sales_tax_return_line_id="80000021-1234567890",
+            sales_tax_return_line_id="80000001-1234567890",
             tax_rate="7.5",
-            tax_vendor_id="80000020-1234567890",
+            tax_vendor_id="80000001-1234567890",
         )
         assert_matches_type(SalesTaxItem, sales_tax_item, path=["response"])
 
@@ -140,9 +140,9 @@ class TestSalesTaxItems:
             description="Standard rate sales tax for California",
             is_active=True,
             name="Standard Tax",
-            sales_tax_return_line_id="80000021-1234567890",
+            sales_tax_return_line_id="80000001-1234567890",
             tax_rate="7.5",
-            tax_vendor_id="80000020-1234567890",
+            tax_vendor_id="80000001-1234567890",
         )
         assert_matches_type(SalesTaxItem, sales_tax_item, path=["response"])
 
@@ -260,9 +260,9 @@ class TestAsyncSalesTaxItems:
             description="Standard rate sales tax for California",
             external_id="12345678-abcd-1234-abcd-1234567890ab",
             is_active=True,
-            sales_tax_return_line_id="80000021-1234567890",
+            sales_tax_return_line_id="80000001-1234567890",
             tax_rate="7.5",
-            tax_vendor_id="80000020-1234567890",
+            tax_vendor_id="80000001-1234567890",
         )
         assert_matches_type(SalesTaxItem, sales_tax_item, path=["response"])
 
@@ -358,9 +358,9 @@ class TestAsyncSalesTaxItems:
             description="Standard rate sales tax for California",
             is_active=True,
             name="Standard Tax",
-            sales_tax_return_line_id="80000021-1234567890",
+            sales_tax_return_line_id="80000001-1234567890",
             tax_rate="7.5",
-            tax_vendor_id="80000020-1234567890",
+            tax_vendor_id="80000001-1234567890",
         )
         assert_matches_type(SalesTaxItem, sales_tax_item, path=["response"])
 

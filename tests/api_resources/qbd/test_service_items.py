@@ -41,14 +41,14 @@ class TestServiceItems:
             class_id="80000001-1234567890",
             external_id="12345678-abcd-1234-abcd-1234567890ab",
             is_active=True,
-            parent_id="80000002-1234567890",
+            parent_id="80000001-1234567890",
             sales_and_purchase_details={
-                "expense_account_id": "80000006-1234567890",
-                "income_account_id": "80000005-1234567890",
-                "preferred_vendor_id": "80000008-1234567890",
+                "expense_account_id": "80000001-1234567890",
+                "income_account_id": "80000001-1234567890",
+                "preferred_vendor_id": "80000001-1234567890",
                 "purchase_cost": "15.75",
                 "purchase_description": "Bulk purchase of steel bolts for inventory",
-                "purchase_tax_code_id": "80000006-1234567890",
+                "purchase_tax_code_id": "80000001-1234567890",
                 "sales_description": "High-quality steel bolts suitable for construction",
                 "sales_price": "19.99",
             },
@@ -58,8 +58,8 @@ class TestServiceItems:
                 "price": "19.99",
                 "price_percentage": "10.5",
             },
-            sales_tax_code_id="80000004-1234567890",
-            unit_of_measure_set_id="80000003-1234567890",
+            sales_tax_code_id="80000001-1234567890",
+            unit_of_measure_set_id="80000001-1234567890",
         )
         assert_matches_type(ServiceItem, service_item, path=["response"])
 
@@ -155,14 +155,14 @@ class TestServiceItems:
             force_unit_of_measure_change=False,
             is_active=True,
             name="Web-Design",
-            parent_id="80000002-1234567890",
+            parent_id="80000001-1234567890",
             sales_and_purchase_details={
-                "expense_account_id": "80000006-1234567890",
-                "income_account_id": "80000005-1234567890",
-                "preferred_vendor_id": "80000008-1234567890",
+                "expense_account_id": "80000001-1234567890",
+                "income_account_id": "80000001-1234567890",
+                "preferred_vendor_id": "80000001-1234567890",
                 "purchase_cost": "15.75",
                 "purchase_description": "Bulk purchase of steel bolts for inventory",
-                "purchase_tax_code_id": "80000006-1234567890",
+                "purchase_tax_code_id": "80000001-1234567890",
                 "sales_description": "High-quality steel bolts suitable for construction",
                 "sales_price": "19.99",
                 "update_existing_transactions_expense_account": False,
@@ -175,8 +175,8 @@ class TestServiceItems:
                 "price_percentage": "10.5",
                 "update_existing_transactions_account": False,
             },
-            sales_tax_code_id="80000004-1234567890",
-            unit_of_measure_set_id="80000003-1234567890",
+            sales_tax_code_id="80000001-1234567890",
+            unit_of_measure_set_id="80000001-1234567890",
         )
         assert_matches_type(ServiceItem, service_item, path=["response"])
 
@@ -293,14 +293,14 @@ class TestAsyncServiceItems:
             class_id="80000001-1234567890",
             external_id="12345678-abcd-1234-abcd-1234567890ab",
             is_active=True,
-            parent_id="80000002-1234567890",
+            parent_id="80000001-1234567890",
             sales_and_purchase_details={
-                "expense_account_id": "80000006-1234567890",
-                "income_account_id": "80000005-1234567890",
-                "preferred_vendor_id": "80000008-1234567890",
+                "expense_account_id": "80000001-1234567890",
+                "income_account_id": "80000001-1234567890",
+                "preferred_vendor_id": "80000001-1234567890",
                 "purchase_cost": "15.75",
                 "purchase_description": "Bulk purchase of steel bolts for inventory",
-                "purchase_tax_code_id": "80000006-1234567890",
+                "purchase_tax_code_id": "80000001-1234567890",
                 "sales_description": "High-quality steel bolts suitable for construction",
                 "sales_price": "19.99",
             },
@@ -310,8 +310,8 @@ class TestAsyncServiceItems:
                 "price": "19.99",
                 "price_percentage": "10.5",
             },
-            sales_tax_code_id="80000004-1234567890",
-            unit_of_measure_set_id="80000003-1234567890",
+            sales_tax_code_id="80000001-1234567890",
+            unit_of_measure_set_id="80000001-1234567890",
         )
         assert_matches_type(ServiceItem, service_item, path=["response"])
 
@@ -407,14 +407,14 @@ class TestAsyncServiceItems:
             force_unit_of_measure_change=False,
             is_active=True,
             name="Web-Design",
-            parent_id="80000002-1234567890",
+            parent_id="80000001-1234567890",
             sales_and_purchase_details={
-                "expense_account_id": "80000006-1234567890",
-                "income_account_id": "80000005-1234567890",
-                "preferred_vendor_id": "80000008-1234567890",
+                "expense_account_id": "80000001-1234567890",
+                "income_account_id": "80000001-1234567890",
+                "preferred_vendor_id": "80000001-1234567890",
                 "purchase_cost": "15.75",
                 "purchase_description": "Bulk purchase of steel bolts for inventory",
-                "purchase_tax_code_id": "80000006-1234567890",
+                "purchase_tax_code_id": "80000001-1234567890",
                 "sales_description": "High-quality steel bolts suitable for construction",
                 "sales_price": "19.99",
                 "update_existing_transactions_expense_account": False,
@@ -427,8 +427,8 @@ class TestAsyncServiceItems:
                 "price_percentage": "10.5",
                 "update_existing_transactions_account": False,
             },
-            sales_tax_code_id="80000004-1234567890",
-            unit_of_measure_set_id="80000003-1234567890",
+            sales_tax_code_id="80000001-1234567890",
+            unit_of_measure_set_id="80000001-1234567890",
         )
         assert_matches_type(ServiceItem, service_item, path=["response"])
 

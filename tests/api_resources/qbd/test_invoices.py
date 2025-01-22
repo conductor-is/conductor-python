@@ -10,7 +10,10 @@ import pytest
 from conductor import Conductor, AsyncConductor
 from tests.utils import assert_matches_type
 from conductor._utils import parse_date
-from conductor.types.qbd import Invoice
+from conductor.types.qbd import (
+    Invoice,
+    InvoiceDeleteResponse,
+)
 from conductor.pagination import SyncCursorPage, AsyncCursorPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -65,7 +68,7 @@ class TestInvoices:
             is_queued_for_print=True,
             line_groups=[
                 {
-                    "item_group_id": "80000011-1234567890",
+                    "item_group_id": "80000001-1234567890",
                     "custom_fields": [
                         {
                             "name": "Customer Rating",
@@ -74,7 +77,7 @@ class TestInvoices:
                         }
                     ],
                     "inventory_site_id": "80000001-1234567890",
-                    "inventory_site_location_id": "80000002-1234567890",
+                    "inventory_site_location_id": "80000001-1234567890",
                     "quantity": 5,
                     "unit_of_measure": "Each",
                 }
@@ -92,8 +95,8 @@ class TestInvoices:
                     ],
                     "description": "High-quality widget with custom engraving",
                     "inventory_site_id": "80000001-1234567890",
-                    "inventory_site_location_id": "80000002-1234567890",
-                    "item_id": "80000010-1234567890",
+                    "inventory_site_location_id": "80000001-1234567890",
+                    "item_id": "80000001-1234567890",
                     "link_to_transaction_line": {
                         "transaction_id": "123ABC-1234567890",
                         "transaction_line_id": "456DEF-1234567890",
@@ -102,12 +105,12 @@ class TestInvoices:
                     "other_custom_field1": "Special handling required",
                     "other_custom_field2": "Always ship with a spare",
                     "override_item_account_id": "80000001-1234567890",
-                    "price_level_id": "80000040-1234567890",
+                    "price_level_id": "80000001-1234567890",
                     "price_rule_conflict_strategy": "base_price",
                     "quantity": 5,
                     "rate": "10.00",
                     "rate_percent": "10.5",
-                    "sales_tax_code_id": "80000004-1234567890",
+                    "sales_tax_code_id": "80000001-1234567890",
                     "serial_number": "SN1234567890",
                     "service_date": "2019-12-27",
                     "unit_of_measure": "Each",
@@ -117,11 +120,11 @@ class TestInvoices:
             memo="Customer requested rush delivery",
             other_custom_field="Special handling required",
             purchase_order_number="PO-1234",
-            receivables_account_id="80000002-1234567890",
+            receivables_account_id="80000001-1234567890",
             ref_number="INV-1234",
-            sales_representative_id="80000030-1234567890",
-            sales_tax_code_id="80000004-1234567890",
-            sales_tax_item_id="80000010-1234567890",
+            sales_representative_id="80000001-1234567890",
+            sales_tax_code_id="80000001-1234567890",
+            sales_tax_item_id="80000001-1234567890",
             shipment_origin="San Francisco, CA",
             shipping_address={
                 "city": "San Francisco",
@@ -136,8 +139,8 @@ class TestInvoices:
                 "state": "CA",
             },
             shipping_date=parse_date("2019-12-27"),
-            shipping_method_id="80000007-1234567890",
-            terms_id="80000013-1234567890",
+            shipping_method_id="80000001-1234567890",
+            terms_id="80000001-1234567890",
         )
         assert_matches_type(Invoice, invoice, path=["response"])
 
@@ -257,7 +260,7 @@ class TestInvoices:
             line_groups=[
                 {
                     "id": "456DEF-1234567890",
-                    "item_group_id": "80000011-1234567890",
+                    "item_group_id": "80000001-1234567890",
                     "lines": [
                         {
                             "id": "456DEF-1234567890",
@@ -265,25 +268,25 @@ class TestInvoices:
                             "class_id": "80000001-1234567890",
                             "description": "High-quality widget with custom engraving",
                             "inventory_site_id": "80000001-1234567890",
-                            "inventory_site_location_id": "80000002-1234567890",
-                            "item_id": "80000010-1234567890",
+                            "inventory_site_location_id": "80000001-1234567890",
+                            "item_id": "80000001-1234567890",
                             "lot_number": "LOT2023-001",
                             "other_custom_field1": "Special handling required",
                             "other_custom_field2": "Always ship with a spare",
                             "override_item_account_id": "80000001-1234567890",
-                            "override_unit_of_measure_set_id": "80000003-1234567890",
-                            "price_level_id": "80000040-1234567890",
+                            "override_unit_of_measure_set_id": "80000001-1234567890",
+                            "price_level_id": "80000001-1234567890",
                             "price_rule_conflict_strategy": "base_price",
                             "quantity": 5,
                             "rate": "10.00",
                             "rate_percent": "10.5",
-                            "sales_tax_code_id": "80000004-1234567890",
+                            "sales_tax_code_id": "80000001-1234567890",
                             "serial_number": "SN1234567890",
                             "service_date": "2019-12-27",
                             "unit_of_measure": "Each",
                         }
                     ],
-                    "override_unit_of_measure_set_id": "80000003-1234567890",
+                    "override_unit_of_measure_set_id": "80000001-1234567890",
                     "quantity": 5,
                     "unit_of_measure": "Each",
                 }
@@ -295,19 +298,19 @@ class TestInvoices:
                     "class_id": "80000001-1234567890",
                     "description": "High-quality widget with custom engraving",
                     "inventory_site_id": "80000001-1234567890",
-                    "inventory_site_location_id": "80000002-1234567890",
-                    "item_id": "80000010-1234567890",
+                    "inventory_site_location_id": "80000001-1234567890",
+                    "item_id": "80000001-1234567890",
                     "lot_number": "LOT2023-001",
                     "other_custom_field1": "Special handling required",
                     "other_custom_field2": "Always ship with a spare",
                     "override_item_account_id": "80000001-1234567890",
-                    "override_unit_of_measure_set_id": "80000003-1234567890",
-                    "price_level_id": "80000040-1234567890",
+                    "override_unit_of_measure_set_id": "80000001-1234567890",
+                    "price_level_id": "80000001-1234567890",
                     "price_rule_conflict_strategy": "base_price",
                     "quantity": 5,
                     "rate": "10.00",
                     "rate_percent": "10.5",
-                    "sales_tax_code_id": "80000004-1234567890",
+                    "sales_tax_code_id": "80000001-1234567890",
                     "serial_number": "SN1234567890",
                     "service_date": "2019-12-27",
                     "unit_of_measure": "Each",
@@ -316,11 +319,11 @@ class TestInvoices:
             memo="Customer requested rush delivery",
             other_custom_field="Special handling required",
             purchase_order_number="PO-1234",
-            receivables_account_id="80000002-1234567890",
+            receivables_account_id="80000001-1234567890",
             ref_number="INV-1234",
-            sales_representative_id="80000030-1234567890",
-            sales_tax_code_id="80000004-1234567890",
-            sales_tax_item_id="80000010-1234567890",
+            sales_representative_id="80000001-1234567890",
+            sales_tax_code_id="80000001-1234567890",
+            sales_tax_item_id="80000001-1234567890",
             shipment_origin="San Francisco, CA",
             shipping_address={
                 "city": "San Francisco",
@@ -335,8 +338,8 @@ class TestInvoices:
                 "state": "CA",
             },
             shipping_date=parse_date("2019-12-27"),
-            shipping_method_id="80000007-1234567890",
-            terms_id="80000013-1234567890",
+            shipping_method_id="80000001-1234567890",
+            terms_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
         )
         assert_matches_type(Invoice, invoice, path=["response"])
@@ -435,6 +438,48 @@ class TestInvoices:
 
         assert cast(Any, response.is_closed) is True
 
+    @parametrize
+    def test_method_delete(self, client: Conductor) -> None:
+        invoice = client.qbd.invoices.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+        assert_matches_type(InvoiceDeleteResponse, invoice, path=["response"])
+
+    @parametrize
+    def test_raw_response_delete(self, client: Conductor) -> None:
+        response = client.qbd.invoices.with_raw_response.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        invoice = response.parse()
+        assert_matches_type(InvoiceDeleteResponse, invoice, path=["response"])
+
+    @parametrize
+    def test_streaming_response_delete(self, client: Conductor) -> None:
+        with client.qbd.invoices.with_streaming_response.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            invoice = response.parse()
+            assert_matches_type(InvoiceDeleteResponse, invoice, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_delete(self, client: Conductor) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            client.qbd.invoices.with_raw_response.delete(
+                id="",
+                conductor_end_user_id="end_usr_1234567abcdefg",
+            )
+
 
 class TestAsyncInvoices:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
@@ -485,7 +530,7 @@ class TestAsyncInvoices:
             is_queued_for_print=True,
             line_groups=[
                 {
-                    "item_group_id": "80000011-1234567890",
+                    "item_group_id": "80000001-1234567890",
                     "custom_fields": [
                         {
                             "name": "Customer Rating",
@@ -494,7 +539,7 @@ class TestAsyncInvoices:
                         }
                     ],
                     "inventory_site_id": "80000001-1234567890",
-                    "inventory_site_location_id": "80000002-1234567890",
+                    "inventory_site_location_id": "80000001-1234567890",
                     "quantity": 5,
                     "unit_of_measure": "Each",
                 }
@@ -512,8 +557,8 @@ class TestAsyncInvoices:
                     ],
                     "description": "High-quality widget with custom engraving",
                     "inventory_site_id": "80000001-1234567890",
-                    "inventory_site_location_id": "80000002-1234567890",
-                    "item_id": "80000010-1234567890",
+                    "inventory_site_location_id": "80000001-1234567890",
+                    "item_id": "80000001-1234567890",
                     "link_to_transaction_line": {
                         "transaction_id": "123ABC-1234567890",
                         "transaction_line_id": "456DEF-1234567890",
@@ -522,12 +567,12 @@ class TestAsyncInvoices:
                     "other_custom_field1": "Special handling required",
                     "other_custom_field2": "Always ship with a spare",
                     "override_item_account_id": "80000001-1234567890",
-                    "price_level_id": "80000040-1234567890",
+                    "price_level_id": "80000001-1234567890",
                     "price_rule_conflict_strategy": "base_price",
                     "quantity": 5,
                     "rate": "10.00",
                     "rate_percent": "10.5",
-                    "sales_tax_code_id": "80000004-1234567890",
+                    "sales_tax_code_id": "80000001-1234567890",
                     "serial_number": "SN1234567890",
                     "service_date": "2019-12-27",
                     "unit_of_measure": "Each",
@@ -537,11 +582,11 @@ class TestAsyncInvoices:
             memo="Customer requested rush delivery",
             other_custom_field="Special handling required",
             purchase_order_number="PO-1234",
-            receivables_account_id="80000002-1234567890",
+            receivables_account_id="80000001-1234567890",
             ref_number="INV-1234",
-            sales_representative_id="80000030-1234567890",
-            sales_tax_code_id="80000004-1234567890",
-            sales_tax_item_id="80000010-1234567890",
+            sales_representative_id="80000001-1234567890",
+            sales_tax_code_id="80000001-1234567890",
+            sales_tax_item_id="80000001-1234567890",
             shipment_origin="San Francisco, CA",
             shipping_address={
                 "city": "San Francisco",
@@ -556,8 +601,8 @@ class TestAsyncInvoices:
                 "state": "CA",
             },
             shipping_date=parse_date("2019-12-27"),
-            shipping_method_id="80000007-1234567890",
-            terms_id="80000013-1234567890",
+            shipping_method_id="80000001-1234567890",
+            terms_id="80000001-1234567890",
         )
         assert_matches_type(Invoice, invoice, path=["response"])
 
@@ -677,7 +722,7 @@ class TestAsyncInvoices:
             line_groups=[
                 {
                     "id": "456DEF-1234567890",
-                    "item_group_id": "80000011-1234567890",
+                    "item_group_id": "80000001-1234567890",
                     "lines": [
                         {
                             "id": "456DEF-1234567890",
@@ -685,25 +730,25 @@ class TestAsyncInvoices:
                             "class_id": "80000001-1234567890",
                             "description": "High-quality widget with custom engraving",
                             "inventory_site_id": "80000001-1234567890",
-                            "inventory_site_location_id": "80000002-1234567890",
-                            "item_id": "80000010-1234567890",
+                            "inventory_site_location_id": "80000001-1234567890",
+                            "item_id": "80000001-1234567890",
                             "lot_number": "LOT2023-001",
                             "other_custom_field1": "Special handling required",
                             "other_custom_field2": "Always ship with a spare",
                             "override_item_account_id": "80000001-1234567890",
-                            "override_unit_of_measure_set_id": "80000003-1234567890",
-                            "price_level_id": "80000040-1234567890",
+                            "override_unit_of_measure_set_id": "80000001-1234567890",
+                            "price_level_id": "80000001-1234567890",
                             "price_rule_conflict_strategy": "base_price",
                             "quantity": 5,
                             "rate": "10.00",
                             "rate_percent": "10.5",
-                            "sales_tax_code_id": "80000004-1234567890",
+                            "sales_tax_code_id": "80000001-1234567890",
                             "serial_number": "SN1234567890",
                             "service_date": "2019-12-27",
                             "unit_of_measure": "Each",
                         }
                     ],
-                    "override_unit_of_measure_set_id": "80000003-1234567890",
+                    "override_unit_of_measure_set_id": "80000001-1234567890",
                     "quantity": 5,
                     "unit_of_measure": "Each",
                 }
@@ -715,19 +760,19 @@ class TestAsyncInvoices:
                     "class_id": "80000001-1234567890",
                     "description": "High-quality widget with custom engraving",
                     "inventory_site_id": "80000001-1234567890",
-                    "inventory_site_location_id": "80000002-1234567890",
-                    "item_id": "80000010-1234567890",
+                    "inventory_site_location_id": "80000001-1234567890",
+                    "item_id": "80000001-1234567890",
                     "lot_number": "LOT2023-001",
                     "other_custom_field1": "Special handling required",
                     "other_custom_field2": "Always ship with a spare",
                     "override_item_account_id": "80000001-1234567890",
-                    "override_unit_of_measure_set_id": "80000003-1234567890",
-                    "price_level_id": "80000040-1234567890",
+                    "override_unit_of_measure_set_id": "80000001-1234567890",
+                    "price_level_id": "80000001-1234567890",
                     "price_rule_conflict_strategy": "base_price",
                     "quantity": 5,
                     "rate": "10.00",
                     "rate_percent": "10.5",
-                    "sales_tax_code_id": "80000004-1234567890",
+                    "sales_tax_code_id": "80000001-1234567890",
                     "serial_number": "SN1234567890",
                     "service_date": "2019-12-27",
                     "unit_of_measure": "Each",
@@ -736,11 +781,11 @@ class TestAsyncInvoices:
             memo="Customer requested rush delivery",
             other_custom_field="Special handling required",
             purchase_order_number="PO-1234",
-            receivables_account_id="80000002-1234567890",
+            receivables_account_id="80000001-1234567890",
             ref_number="INV-1234",
-            sales_representative_id="80000030-1234567890",
-            sales_tax_code_id="80000004-1234567890",
-            sales_tax_item_id="80000010-1234567890",
+            sales_representative_id="80000001-1234567890",
+            sales_tax_code_id="80000001-1234567890",
+            sales_tax_item_id="80000001-1234567890",
             shipment_origin="San Francisco, CA",
             shipping_address={
                 "city": "San Francisco",
@@ -755,8 +800,8 @@ class TestAsyncInvoices:
                 "state": "CA",
             },
             shipping_date=parse_date("2019-12-27"),
-            shipping_method_id="80000007-1234567890",
-            terms_id="80000013-1234567890",
+            shipping_method_id="80000001-1234567890",
+            terms_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
         )
         assert_matches_type(Invoice, invoice, path=["response"])
@@ -854,3 +899,45 @@ class TestAsyncInvoices:
             assert_matches_type(AsyncCursorPage[Invoice], invoice, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_delete(self, async_client: AsyncConductor) -> None:
+        invoice = await async_client.qbd.invoices.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+        assert_matches_type(InvoiceDeleteResponse, invoice, path=["response"])
+
+    @parametrize
+    async def test_raw_response_delete(self, async_client: AsyncConductor) -> None:
+        response = await async_client.qbd.invoices.with_raw_response.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        invoice = await response.parse()
+        assert_matches_type(InvoiceDeleteResponse, invoice, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_delete(self, async_client: AsyncConductor) -> None:
+        async with async_client.qbd.invoices.with_streaming_response.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            invoice = await response.parse()
+            assert_matches_type(InvoiceDeleteResponse, invoice, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_delete(self, async_client: AsyncConductor) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            await async_client.qbd.invoices.with_raw_response.delete(
+                id="",
+                conductor_end_user_id="end_usr_1234567abcdefg",
+            )

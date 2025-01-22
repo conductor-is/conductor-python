@@ -24,6 +24,7 @@ from ...types.qbd import sales_receipt_list_params, sales_receipt_create_params,
 from ...pagination import SyncCursorPage, AsyncCursorPage
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.qbd.sales_receipt import SalesReceipt
+from ...types.qbd.sales_receipt_delete_response import SalesReceiptDeleteResponse
 
 __all__ = ["SalesReceiptsResource", "AsyncSalesReceiptsResource"]
 
@@ -692,6 +693,48 @@ class SalesReceiptsResource(SyncAPIResource):
             model=SalesReceipt,
         )
 
+    def delete(
+        self,
+        id: str,
+        *,
+        conductor_end_user_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> SalesReceiptDeleteResponse:
+        """Permanently deletes a a sales receipt.
+
+        The deletion will fail if the sales
+        receipt is currently in use or has any linked transactions that are in use.
+
+        Args:
+          id: The QuickBooks-assigned unique identifier of the sales receipt to delete.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return self._delete(
+            f"/quickbooks-desktop/sales-receipts/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=SalesReceiptDeleteResponse,
+        )
+
 
 class AsyncSalesReceiptsResource(AsyncAPIResource):
     @cached_property
@@ -1357,6 +1400,48 @@ class AsyncSalesReceiptsResource(AsyncAPIResource):
             model=SalesReceipt,
         )
 
+    async def delete(
+        self,
+        id: str,
+        *,
+        conductor_end_user_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> SalesReceiptDeleteResponse:
+        """Permanently deletes a a sales receipt.
+
+        The deletion will fail if the sales
+        receipt is currently in use or has any linked transactions that are in use.
+
+        Args:
+          id: The QuickBooks-assigned unique identifier of the sales receipt to delete.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return await self._delete(
+            f"/quickbooks-desktop/sales-receipts/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=SalesReceiptDeleteResponse,
+        )
+
 
 class SalesReceiptsResourceWithRawResponse:
     def __init__(self, sales_receipts: SalesReceiptsResource) -> None:
@@ -1373,6 +1458,9 @@ class SalesReceiptsResourceWithRawResponse:
         )
         self.list = to_raw_response_wrapper(
             sales_receipts.list,
+        )
+        self.delete = to_raw_response_wrapper(
+            sales_receipts.delete,
         )
 
 
@@ -1392,6 +1480,9 @@ class AsyncSalesReceiptsResourceWithRawResponse:
         self.list = async_to_raw_response_wrapper(
             sales_receipts.list,
         )
+        self.delete = async_to_raw_response_wrapper(
+            sales_receipts.delete,
+        )
 
 
 class SalesReceiptsResourceWithStreamingResponse:
@@ -1410,6 +1501,9 @@ class SalesReceiptsResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             sales_receipts.list,
         )
+        self.delete = to_streamed_response_wrapper(
+            sales_receipts.delete,
+        )
 
 
 class AsyncSalesReceiptsResourceWithStreamingResponse:
@@ -1427,4 +1521,7 @@ class AsyncSalesReceiptsResourceWithStreamingResponse:
         )
         self.list = async_to_streamed_response_wrapper(
             sales_receipts.list,
+        )
+        self.delete = async_to_streamed_response_wrapper(
+            sales_receipts.delete,
         )
