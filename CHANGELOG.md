@@ -1,5 +1,31 @@
 # Changelog
 
+## 0.1.0-alpha.61 (2025-01-22)
+
+Full Changelog: [v0.1.0-alpha.60...v0.1.0-alpha.61](https://github.com/conductor-is/conductor-python/compare/v0.1.0-alpha.60...v0.1.0-alpha.61)
+
+### Features
+
+* **api:** api update ([#486](https://github.com/conductor-is/conductor-python/issues/486)) ([60b6609](https://github.com/conductor-is/conductor-python/commit/60b6609d492f3eb6a444035ed074370a55073e13))
+* **api:** api update ([#493](https://github.com/conductor-is/conductor-python/issues/493)) ([c4e9909](https://github.com/conductor-is/conductor-python/commit/c4e9909c74edc866f9702cf7c7bb92f92b807ff3))
+
+
+### Bug Fixes
+
+* **client:** only call .close() when needed ([#485](https://github.com/conductor-is/conductor-python/issues/485)) ([42798c9](https://github.com/conductor-is/conductor-python/commit/42798c91c6d5850412f41a2879b0ff81d3830223))
+* correctly handle deserialising `cls` fields ([#488](https://github.com/conductor-is/conductor-python/issues/488)) ([ee0691d](https://github.com/conductor-is/conductor-python/commit/ee0691db61992c0a8afbadb11901705d136da9ab))
+
+
+### Chores
+
+* add missing isclass check ([#482](https://github.com/conductor-is/conductor-python/issues/482)) ([bb3eb6d](https://github.com/conductor-is/conductor-python/commit/bb3eb6df78222f6a963ffc5320992e115d15e4e5))
+* **internal:** codegen related update ([#484](https://github.com/conductor-is/conductor-python/issues/484)) ([7ec3175](https://github.com/conductor-is/conductor-python/commit/7ec317567421ae46b1079377f21c9eec4fe07ea6))
+* **internal:** codegen related update ([#487](https://github.com/conductor-is/conductor-python/issues/487)) ([d0cfe06](https://github.com/conductor-is/conductor-python/commit/d0cfe061b6f2420eef73caeacf5c7a8e84f0adba))
+* **internal:** codegen related update ([#489](https://github.com/conductor-is/conductor-python/issues/489)) ([c183a5f](https://github.com/conductor-is/conductor-python/commit/c183a5f83e5dc9901a3c5e7a01541f9765006840))
+* **internal:** codegen related update ([#490](https://github.com/conductor-is/conductor-python/issues/490)) ([23e92e3](https://github.com/conductor-is/conductor-python/commit/23e92e390237249b4320b8ee470e6e648ed3838c))
+* **internal:** codegen related update ([#491](https://github.com/conductor-is/conductor-python/issues/491)) ([80b7535](https://github.com/conductor-is/conductor-python/commit/80b7535d978f026e9a35de981c5f44ea1c466539))
+* **internal:** minor style changes ([#492](https://github.com/conductor-is/conductor-python/issues/492)) ([cbe4453](https://github.com/conductor-is/conductor-python/commit/cbe4453aeea2a4f9eeebaefc2eef611bfa14866f))
+
 ## 0.1.0-alpha.60 (2025-01-01)
 
 Full Changelog: [v0.1.0-alpha.59...v0.1.0-alpha.60](https://github.com/conductor-is/conductor-python/compare/v0.1.0-alpha.59...v0.1.0-alpha.60)
