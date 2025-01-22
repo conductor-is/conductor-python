@@ -12,6 +12,7 @@ from tests.utils import assert_matches_type
 from conductor._utils import parse_date
 from conductor.types.qbd import (
     PurchaseOrder,
+    PurchaseOrderDeleteResponse,
 )
 from conductor.pagination import SyncCursorPage, AsyncCursorPage
 
@@ -47,7 +48,7 @@ class TestPurchaseOrders:
             is_queued_for_print=True,
             line_groups=[
                 {
-                    "item_group_id": "80000011-1234567890",
+                    "item_group_id": "80000001-1234567890",
                     "custom_fields": [
                         {
                             "name": "Customer Rating",
@@ -55,7 +56,7 @@ class TestPurchaseOrders:
                             "value": "Premium",
                         }
                     ],
-                    "inventory_site_location_id": "80000002-1234567890",
+                    "inventory_site_location_id": "80000001-1234567890",
                     "quantity": 5,
                     "unit_of_measure": "Each",
                 }
@@ -72,15 +73,15 @@ class TestPurchaseOrders:
                         }
                     ],
                     "description": "Office chairs - Herman Miller Aeron (Black)",
-                    "inventory_site_location_id": "80000002-1234567890",
-                    "item_id": "80000010-1234567890",
+                    "inventory_site_location_id": "80000001-1234567890",
+                    "item_id": "80000001-1234567890",
                     "other_custom_field1": "Special handling required",
                     "other_custom_field2": "Always ship with a spare",
                     "override_item_account_id": "80000001-1234567890",
                     "payee_id": "80000001-1234567890",
                     "quantity": 5,
                     "rate": "10.00",
-                    "sales_tax_code_id": "80000004-1234567890",
+                    "sales_tax_code_id": "80000001-1234567890",
                     "service_date": "2019-12-27",
                     "sku": "MPN-123456",
                     "unit_of_measure": "Each",
@@ -90,7 +91,7 @@ class TestPurchaseOrders:
             other_custom_field1="Special handling required",
             other_custom_field2="Always ship with a spare",
             ref_number="PO-1234",
-            sales_tax_code_id="80000004-1234567890",
+            sales_tax_code_id="80000001-1234567890",
             shipment_origin="San Francisco, CA",
             shipping_address={
                 "city": "San Francisco",
@@ -104,9 +105,9 @@ class TestPurchaseOrders:
                 "postal_code": "94110",
                 "state": "CA",
             },
-            shipping_method_id="80000007-1234567890",
-            ship_to_entity_id="80000008-1234567890",
-            terms_id="80000013-1234567890",
+            shipping_method_id="80000001-1234567890",
+            ship_to_entity_id="80000001-1234567890",
+            terms_id="80000001-1234567890",
             vendor_address={
                 "city": "San Francisco",
                 "country": "United States",
@@ -220,30 +221,30 @@ class TestPurchaseOrders:
             line_groups=[
                 {
                     "id": "456DEF-1234567890",
-                    "item_group_id": "80000011-1234567890",
+                    "item_group_id": "80000001-1234567890",
                     "lines": [
                         {
                             "id": "456DEF-1234567890",
                             "amount": "1000.00",
                             "class_id": "80000001-1234567890",
                             "description": "Office chairs - Herman Miller Aeron (Black)",
-                            "inventory_site_location_id": "80000002-1234567890",
+                            "inventory_site_location_id": "80000001-1234567890",
                             "is_manually_closed": True,
-                            "item_id": "80000010-1234567890",
+                            "item_id": "80000001-1234567890",
                             "other_custom_field1": "Special handling required",
                             "other_custom_field2": "Always ship with a spare",
                             "override_item_account_id": "80000001-1234567890",
-                            "override_unit_of_measure_set_id": "80000003-1234567890",
+                            "override_unit_of_measure_set_id": "80000001-1234567890",
                             "payee_id": "80000001-1234567890",
                             "quantity": 5,
                             "rate": "10.00",
-                            "sales_tax_code_id": "80000004-1234567890",
+                            "sales_tax_code_id": "80000001-1234567890",
                             "service_date": "2019-12-27",
                             "sku": "MPN-123456",
                             "unit_of_measure": "Each",
                         }
                     ],
-                    "override_unit_of_measure_set_id": "80000003-1234567890",
+                    "override_unit_of_measure_set_id": "80000001-1234567890",
                     "quantity": 5,
                     "unit_of_measure": "Each",
                 }
@@ -254,17 +255,17 @@ class TestPurchaseOrders:
                     "amount": "1000.00",
                     "class_id": "80000001-1234567890",
                     "description": "Office chairs - Herman Miller Aeron (Black)",
-                    "inventory_site_location_id": "80000002-1234567890",
+                    "inventory_site_location_id": "80000001-1234567890",
                     "is_manually_closed": True,
-                    "item_id": "80000010-1234567890",
+                    "item_id": "80000001-1234567890",
                     "other_custom_field1": "Special handling required",
                     "other_custom_field2": "Always ship with a spare",
                     "override_item_account_id": "80000001-1234567890",
-                    "override_unit_of_measure_set_id": "80000003-1234567890",
+                    "override_unit_of_measure_set_id": "80000001-1234567890",
                     "payee_id": "80000001-1234567890",
                     "quantity": 5,
                     "rate": "10.00",
-                    "sales_tax_code_id": "80000004-1234567890",
+                    "sales_tax_code_id": "80000001-1234567890",
                     "service_date": "2019-12-27",
                     "sku": "MPN-123456",
                     "unit_of_measure": "Each",
@@ -274,7 +275,7 @@ class TestPurchaseOrders:
             other_custom_field1="Special handling required",
             other_custom_field2="Always ship with a spare",
             ref_number="PO-1234",
-            sales_tax_code_id="80000004-1234567890",
+            sales_tax_code_id="80000001-1234567890",
             shipment_origin="San Francisco, CA",
             shipping_address={
                 "city": "San Francisco",
@@ -288,9 +289,9 @@ class TestPurchaseOrders:
                 "postal_code": "94110",
                 "state": "CA",
             },
-            shipping_method_id="80000007-1234567890",
-            ship_to_entity_id="80000008-1234567890",
-            terms_id="80000013-1234567890",
+            shipping_method_id="80000001-1234567890",
+            ship_to_entity_id="80000001-1234567890",
+            terms_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
             vendor_address={
                 "city": "San Francisco",
@@ -402,6 +403,48 @@ class TestPurchaseOrders:
 
         assert cast(Any, response.is_closed) is True
 
+    @parametrize
+    def test_method_delete(self, client: Conductor) -> None:
+        purchase_order = client.qbd.purchase_orders.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+        assert_matches_type(PurchaseOrderDeleteResponse, purchase_order, path=["response"])
+
+    @parametrize
+    def test_raw_response_delete(self, client: Conductor) -> None:
+        response = client.qbd.purchase_orders.with_raw_response.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        purchase_order = response.parse()
+        assert_matches_type(PurchaseOrderDeleteResponse, purchase_order, path=["response"])
+
+    @parametrize
+    def test_streaming_response_delete(self, client: Conductor) -> None:
+        with client.qbd.purchase_orders.with_streaming_response.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            purchase_order = response.parse()
+            assert_matches_type(PurchaseOrderDeleteResponse, purchase_order, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_delete(self, client: Conductor) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            client.qbd.purchase_orders.with_raw_response.delete(
+                id="",
+                conductor_end_user_id="end_usr_1234567abcdefg",
+            )
+
 
 class TestAsyncPurchaseOrders:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
@@ -432,7 +475,7 @@ class TestAsyncPurchaseOrders:
             is_queued_for_print=True,
             line_groups=[
                 {
-                    "item_group_id": "80000011-1234567890",
+                    "item_group_id": "80000001-1234567890",
                     "custom_fields": [
                         {
                             "name": "Customer Rating",
@@ -440,7 +483,7 @@ class TestAsyncPurchaseOrders:
                             "value": "Premium",
                         }
                     ],
-                    "inventory_site_location_id": "80000002-1234567890",
+                    "inventory_site_location_id": "80000001-1234567890",
                     "quantity": 5,
                     "unit_of_measure": "Each",
                 }
@@ -457,15 +500,15 @@ class TestAsyncPurchaseOrders:
                         }
                     ],
                     "description": "Office chairs - Herman Miller Aeron (Black)",
-                    "inventory_site_location_id": "80000002-1234567890",
-                    "item_id": "80000010-1234567890",
+                    "inventory_site_location_id": "80000001-1234567890",
+                    "item_id": "80000001-1234567890",
                     "other_custom_field1": "Special handling required",
                     "other_custom_field2": "Always ship with a spare",
                     "override_item_account_id": "80000001-1234567890",
                     "payee_id": "80000001-1234567890",
                     "quantity": 5,
                     "rate": "10.00",
-                    "sales_tax_code_id": "80000004-1234567890",
+                    "sales_tax_code_id": "80000001-1234567890",
                     "service_date": "2019-12-27",
                     "sku": "MPN-123456",
                     "unit_of_measure": "Each",
@@ -475,7 +518,7 @@ class TestAsyncPurchaseOrders:
             other_custom_field1="Special handling required",
             other_custom_field2="Always ship with a spare",
             ref_number="PO-1234",
-            sales_tax_code_id="80000004-1234567890",
+            sales_tax_code_id="80000001-1234567890",
             shipment_origin="San Francisco, CA",
             shipping_address={
                 "city": "San Francisco",
@@ -489,9 +532,9 @@ class TestAsyncPurchaseOrders:
                 "postal_code": "94110",
                 "state": "CA",
             },
-            shipping_method_id="80000007-1234567890",
-            ship_to_entity_id="80000008-1234567890",
-            terms_id="80000013-1234567890",
+            shipping_method_id="80000001-1234567890",
+            ship_to_entity_id="80000001-1234567890",
+            terms_id="80000001-1234567890",
             vendor_address={
                 "city": "San Francisco",
                 "country": "United States",
@@ -605,30 +648,30 @@ class TestAsyncPurchaseOrders:
             line_groups=[
                 {
                     "id": "456DEF-1234567890",
-                    "item_group_id": "80000011-1234567890",
+                    "item_group_id": "80000001-1234567890",
                     "lines": [
                         {
                             "id": "456DEF-1234567890",
                             "amount": "1000.00",
                             "class_id": "80000001-1234567890",
                             "description": "Office chairs - Herman Miller Aeron (Black)",
-                            "inventory_site_location_id": "80000002-1234567890",
+                            "inventory_site_location_id": "80000001-1234567890",
                             "is_manually_closed": True,
-                            "item_id": "80000010-1234567890",
+                            "item_id": "80000001-1234567890",
                             "other_custom_field1": "Special handling required",
                             "other_custom_field2": "Always ship with a spare",
                             "override_item_account_id": "80000001-1234567890",
-                            "override_unit_of_measure_set_id": "80000003-1234567890",
+                            "override_unit_of_measure_set_id": "80000001-1234567890",
                             "payee_id": "80000001-1234567890",
                             "quantity": 5,
                             "rate": "10.00",
-                            "sales_tax_code_id": "80000004-1234567890",
+                            "sales_tax_code_id": "80000001-1234567890",
                             "service_date": "2019-12-27",
                             "sku": "MPN-123456",
                             "unit_of_measure": "Each",
                         }
                     ],
-                    "override_unit_of_measure_set_id": "80000003-1234567890",
+                    "override_unit_of_measure_set_id": "80000001-1234567890",
                     "quantity": 5,
                     "unit_of_measure": "Each",
                 }
@@ -639,17 +682,17 @@ class TestAsyncPurchaseOrders:
                     "amount": "1000.00",
                     "class_id": "80000001-1234567890",
                     "description": "Office chairs - Herman Miller Aeron (Black)",
-                    "inventory_site_location_id": "80000002-1234567890",
+                    "inventory_site_location_id": "80000001-1234567890",
                     "is_manually_closed": True,
-                    "item_id": "80000010-1234567890",
+                    "item_id": "80000001-1234567890",
                     "other_custom_field1": "Special handling required",
                     "other_custom_field2": "Always ship with a spare",
                     "override_item_account_id": "80000001-1234567890",
-                    "override_unit_of_measure_set_id": "80000003-1234567890",
+                    "override_unit_of_measure_set_id": "80000001-1234567890",
                     "payee_id": "80000001-1234567890",
                     "quantity": 5,
                     "rate": "10.00",
-                    "sales_tax_code_id": "80000004-1234567890",
+                    "sales_tax_code_id": "80000001-1234567890",
                     "service_date": "2019-12-27",
                     "sku": "MPN-123456",
                     "unit_of_measure": "Each",
@@ -659,7 +702,7 @@ class TestAsyncPurchaseOrders:
             other_custom_field1="Special handling required",
             other_custom_field2="Always ship with a spare",
             ref_number="PO-1234",
-            sales_tax_code_id="80000004-1234567890",
+            sales_tax_code_id="80000001-1234567890",
             shipment_origin="San Francisco, CA",
             shipping_address={
                 "city": "San Francisco",
@@ -673,9 +716,9 @@ class TestAsyncPurchaseOrders:
                 "postal_code": "94110",
                 "state": "CA",
             },
-            shipping_method_id="80000007-1234567890",
-            ship_to_entity_id="80000008-1234567890",
-            terms_id="80000013-1234567890",
+            shipping_method_id="80000001-1234567890",
+            ship_to_entity_id="80000001-1234567890",
+            terms_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
             vendor_address={
                 "city": "San Francisco",
@@ -786,3 +829,45 @@ class TestAsyncPurchaseOrders:
             assert_matches_type(AsyncCursorPage[PurchaseOrder], purchase_order, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_delete(self, async_client: AsyncConductor) -> None:
+        purchase_order = await async_client.qbd.purchase_orders.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+        assert_matches_type(PurchaseOrderDeleteResponse, purchase_order, path=["response"])
+
+    @parametrize
+    async def test_raw_response_delete(self, async_client: AsyncConductor) -> None:
+        response = await async_client.qbd.purchase_orders.with_raw_response.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        purchase_order = await response.parse()
+        assert_matches_type(PurchaseOrderDeleteResponse, purchase_order, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_delete(self, async_client: AsyncConductor) -> None:
+        async with async_client.qbd.purchase_orders.with_streaming_response.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            purchase_order = await response.parse()
+            assert_matches_type(PurchaseOrderDeleteResponse, purchase_order, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_delete(self, async_client: AsyncConductor) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            await async_client.qbd.purchase_orders.with_raw_response.delete(
+                id="",
+                conductor_end_user_id="end_usr_1234567abcdefg",
+            )

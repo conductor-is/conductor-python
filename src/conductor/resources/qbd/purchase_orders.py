@@ -24,6 +24,7 @@ from ...types.qbd import purchase_order_list_params, purchase_order_create_param
 from ...pagination import SyncCursorPage, AsyncCursorPage
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.qbd.purchase_order import PurchaseOrder
+from ...types.qbd.purchase_order_delete_response import PurchaseOrderDeleteResponse
 
 __all__ = ["PurchaseOrdersResource", "AsyncPurchaseOrdersResource"]
 
@@ -654,6 +655,48 @@ class PurchaseOrdersResource(SyncAPIResource):
             model=PurchaseOrder,
         )
 
+    def delete(
+        self,
+        id: str,
+        *,
+        conductor_end_user_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> PurchaseOrderDeleteResponse:
+        """Permanently deletes a a purchase order.
+
+        The deletion will fail if the purchase
+        order is currently in use or has any linked transactions that are in use.
+
+        Args:
+          id: The QuickBooks-assigned unique identifier of the purchase order to delete.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return self._delete(
+            f"/quickbooks-desktop/purchase-orders/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=PurchaseOrderDeleteResponse,
+        )
+
 
 class AsyncPurchaseOrdersResource(AsyncAPIResource):
     @cached_property
@@ -1281,6 +1324,48 @@ class AsyncPurchaseOrdersResource(AsyncAPIResource):
             model=PurchaseOrder,
         )
 
+    async def delete(
+        self,
+        id: str,
+        *,
+        conductor_end_user_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> PurchaseOrderDeleteResponse:
+        """Permanently deletes a a purchase order.
+
+        The deletion will fail if the purchase
+        order is currently in use or has any linked transactions that are in use.
+
+        Args:
+          id: The QuickBooks-assigned unique identifier of the purchase order to delete.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return await self._delete(
+            f"/quickbooks-desktop/purchase-orders/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=PurchaseOrderDeleteResponse,
+        )
+
 
 class PurchaseOrdersResourceWithRawResponse:
     def __init__(self, purchase_orders: PurchaseOrdersResource) -> None:
@@ -1297,6 +1382,9 @@ class PurchaseOrdersResourceWithRawResponse:
         )
         self.list = to_raw_response_wrapper(
             purchase_orders.list,
+        )
+        self.delete = to_raw_response_wrapper(
+            purchase_orders.delete,
         )
 
 
@@ -1316,6 +1404,9 @@ class AsyncPurchaseOrdersResourceWithRawResponse:
         self.list = async_to_raw_response_wrapper(
             purchase_orders.list,
         )
+        self.delete = async_to_raw_response_wrapper(
+            purchase_orders.delete,
+        )
 
 
 class PurchaseOrdersResourceWithStreamingResponse:
@@ -1334,6 +1425,9 @@ class PurchaseOrdersResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             purchase_orders.list,
         )
+        self.delete = to_streamed_response_wrapper(
+            purchase_orders.delete,
+        )
 
 
 class AsyncPurchaseOrdersResourceWithStreamingResponse:
@@ -1351,4 +1445,7 @@ class AsyncPurchaseOrdersResourceWithStreamingResponse:
         )
         self.list = async_to_streamed_response_wrapper(
             purchase_orders.list,
+        )
+        self.delete = async_to_streamed_response_wrapper(
+            purchase_orders.delete,
         )

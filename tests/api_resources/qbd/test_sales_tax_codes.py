@@ -37,7 +37,7 @@ class TestSalesTaxCodes:
             conductor_end_user_id="end_usr_1234567abcdefg",
             description="Standard tax rate for California",
             is_active=True,
-            sales_tax_item_id="80000010-1234567890",
+            sales_tax_item_id="80000001-1234567890",
         )
         assert_matches_type(SalesTaxCode, sales_tax_code, path=["response"])
 
@@ -130,7 +130,7 @@ class TestSalesTaxCodes:
             is_active=True,
             is_taxable=True,
             name="Tax",
-            sales_tax_item_id="80000010-1234567890",
+            sales_tax_item_id="80000001-1234567890",
         )
         assert_matches_type(SalesTaxCode, sales_tax_code, path=["response"])
 
@@ -241,7 +241,7 @@ class TestAsyncSalesTaxCodes:
             conductor_end_user_id="end_usr_1234567abcdefg",
             description="Standard tax rate for California",
             is_active=True,
-            sales_tax_item_id="80000010-1234567890",
+            sales_tax_item_id="80000001-1234567890",
         )
         assert_matches_type(SalesTaxCode, sales_tax_code, path=["response"])
 
@@ -334,7 +334,7 @@ class TestAsyncSalesTaxCodes:
             is_active=True,
             is_taxable=True,
             name="Tax",
-            sales_tax_item_id="80000010-1234567890",
+            sales_tax_item_id="80000001-1234567890",
         )
         assert_matches_type(SalesTaxCode, sales_tax_code, path=["response"])
 

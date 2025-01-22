@@ -24,6 +24,7 @@ from ...types.qbd import estimate_list_params, estimate_create_params, estimate_
 from ...pagination import SyncCursorPage, AsyncCursorPage
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.qbd.estimate import Estimate
+from ...types.qbd.estimate_delete_response import EstimateDeleteResponse
 
 __all__ = ["EstimatesResource", "AsyncEstimatesResource"]
 
@@ -625,6 +626,48 @@ class EstimatesResource(SyncAPIResource):
             model=Estimate,
         )
 
+    def delete(
+        self,
+        id: str,
+        *,
+        conductor_end_user_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> EstimateDeleteResponse:
+        """Permanently deletes a an estimate.
+
+        The deletion will fail if the estimate is
+        currently in use or has any linked transactions that are in use.
+
+        Args:
+          id: The QuickBooks-assigned unique identifier of the estimate to delete.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return self._delete(
+            f"/quickbooks-desktop/estimates/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=EstimateDeleteResponse,
+        )
+
 
 class AsyncEstimatesResource(AsyncAPIResource):
     @cached_property
@@ -1223,6 +1266,48 @@ class AsyncEstimatesResource(AsyncAPIResource):
             model=Estimate,
         )
 
+    async def delete(
+        self,
+        id: str,
+        *,
+        conductor_end_user_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> EstimateDeleteResponse:
+        """Permanently deletes a an estimate.
+
+        The deletion will fail if the estimate is
+        currently in use or has any linked transactions that are in use.
+
+        Args:
+          id: The QuickBooks-assigned unique identifier of the estimate to delete.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return await self._delete(
+            f"/quickbooks-desktop/estimates/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=EstimateDeleteResponse,
+        )
+
 
 class EstimatesResourceWithRawResponse:
     def __init__(self, estimates: EstimatesResource) -> None:
@@ -1239,6 +1324,9 @@ class EstimatesResourceWithRawResponse:
         )
         self.list = to_raw_response_wrapper(
             estimates.list,
+        )
+        self.delete = to_raw_response_wrapper(
+            estimates.delete,
         )
 
 
@@ -1258,6 +1346,9 @@ class AsyncEstimatesResourceWithRawResponse:
         self.list = async_to_raw_response_wrapper(
             estimates.list,
         )
+        self.delete = async_to_raw_response_wrapper(
+            estimates.delete,
+        )
 
 
 class EstimatesResourceWithStreamingResponse:
@@ -1276,6 +1367,9 @@ class EstimatesResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             estimates.list,
         )
+        self.delete = to_streamed_response_wrapper(
+            estimates.delete,
+        )
 
 
 class AsyncEstimatesResourceWithStreamingResponse:
@@ -1293,4 +1387,7 @@ class AsyncEstimatesResourceWithStreamingResponse:
         )
         self.list = async_to_streamed_response_wrapper(
             estimates.list,
+        )
+        self.delete = async_to_streamed_response_wrapper(
+            estimates.delete,
         )

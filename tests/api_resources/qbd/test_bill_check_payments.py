@@ -12,6 +12,7 @@ from tests.utils import assert_matches_type
 from conductor._utils import parse_date
 from conductor.types.qbd import (
     BillCheckPayment,
+    BillCheckPaymentDeleteResponse,
 )
 from conductor.pagination import SyncCursorPage, AsyncCursorPage
 
@@ -25,7 +26,7 @@ class TestBillCheckPayments:
     def test_method_create(self, client: Conductor) -> None:
         bill_check_payment = client.qbd.bill_check_payments.create(
             apply_to_transactions=[{"transaction_id": "123ABC-1234567890"}],
-            bank_account_id="80000008-1234567890",
+            bank_account_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
             vendor_id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
@@ -45,13 +46,13 @@ class TestBillCheckPayments:
                             "override_credit_application": False,
                         }
                     ],
-                    "discount_account_id": "80000008-1234567890",
+                    "discount_account_id": "80000001-1234567890",
                     "discount_amount": "50.00",
-                    "discount_class_id": "80000008-1234567890",
+                    "discount_class_id": "80000001-1234567890",
                     "payment_amount": "25.00",
                 }
             ],
-            bank_account_id="80000008-1234567890",
+            bank_account_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
             vendor_id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
@@ -59,7 +60,7 @@ class TestBillCheckPayments:
             external_id="12345678-abcd-1234-abcd-1234567890ab",
             is_queued_for_print=True,
             memo="Payment for office supplies - Invoice INV-1234",
-            payables_account_id="80000002-1234567890",
+            payables_account_id="80000001-1234567890",
             ref_number="CHECK-1234",
         )
         assert_matches_type(BillCheckPayment, bill_check_payment, path=["response"])
@@ -68,7 +69,7 @@ class TestBillCheckPayments:
     def test_raw_response_create(self, client: Conductor) -> None:
         response = client.qbd.bill_check_payments.with_raw_response.create(
             apply_to_transactions=[{"transaction_id": "123ABC-1234567890"}],
-            bank_account_id="80000008-1234567890",
+            bank_account_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
             vendor_id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
@@ -83,7 +84,7 @@ class TestBillCheckPayments:
     def test_streaming_response_create(self, client: Conductor) -> None:
         with client.qbd.bill_check_payments.with_streaming_response.create(
             apply_to_transactions=[{"transaction_id": "123ABC-1234567890"}],
-            bank_account_id="80000008-1234567890",
+            bank_account_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
             vendor_id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
@@ -164,13 +165,13 @@ class TestBillCheckPayments:
                             "override_credit_application": False,
                         }
                     ],
-                    "discount_account_id": "80000008-1234567890",
+                    "discount_account_id": "80000001-1234567890",
                     "discount_amount": "50.00",
-                    "discount_class_id": "80000008-1234567890",
+                    "discount_class_id": "80000001-1234567890",
                     "payment_amount": "25.00",
                 }
             ],
-            bank_account_id="80000008-1234567890",
+            bank_account_id="80000001-1234567890",
             exchange_rate=1.2345,
             is_queued_for_print=True,
             memo="Payment for office supplies - Invoice INV-1234",
@@ -271,6 +272,48 @@ class TestBillCheckPayments:
 
         assert cast(Any, response.is_closed) is True
 
+    @parametrize
+    def test_method_delete(self, client: Conductor) -> None:
+        bill_check_payment = client.qbd.bill_check_payments.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+        assert_matches_type(BillCheckPaymentDeleteResponse, bill_check_payment, path=["response"])
+
+    @parametrize
+    def test_raw_response_delete(self, client: Conductor) -> None:
+        response = client.qbd.bill_check_payments.with_raw_response.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        bill_check_payment = response.parse()
+        assert_matches_type(BillCheckPaymentDeleteResponse, bill_check_payment, path=["response"])
+
+    @parametrize
+    def test_streaming_response_delete(self, client: Conductor) -> None:
+        with client.qbd.bill_check_payments.with_streaming_response.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            bill_check_payment = response.parse()
+            assert_matches_type(BillCheckPaymentDeleteResponse, bill_check_payment, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_delete(self, client: Conductor) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            client.qbd.bill_check_payments.with_raw_response.delete(
+                id="",
+                conductor_end_user_id="end_usr_1234567abcdefg",
+            )
+
 
 class TestAsyncBillCheckPayments:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
@@ -279,7 +322,7 @@ class TestAsyncBillCheckPayments:
     async def test_method_create(self, async_client: AsyncConductor) -> None:
         bill_check_payment = await async_client.qbd.bill_check_payments.create(
             apply_to_transactions=[{"transaction_id": "123ABC-1234567890"}],
-            bank_account_id="80000008-1234567890",
+            bank_account_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
             vendor_id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
@@ -299,13 +342,13 @@ class TestAsyncBillCheckPayments:
                             "override_credit_application": False,
                         }
                     ],
-                    "discount_account_id": "80000008-1234567890",
+                    "discount_account_id": "80000001-1234567890",
                     "discount_amount": "50.00",
-                    "discount_class_id": "80000008-1234567890",
+                    "discount_class_id": "80000001-1234567890",
                     "payment_amount": "25.00",
                 }
             ],
-            bank_account_id="80000008-1234567890",
+            bank_account_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
             vendor_id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
@@ -313,7 +356,7 @@ class TestAsyncBillCheckPayments:
             external_id="12345678-abcd-1234-abcd-1234567890ab",
             is_queued_for_print=True,
             memo="Payment for office supplies - Invoice INV-1234",
-            payables_account_id="80000002-1234567890",
+            payables_account_id="80000001-1234567890",
             ref_number="CHECK-1234",
         )
         assert_matches_type(BillCheckPayment, bill_check_payment, path=["response"])
@@ -322,7 +365,7 @@ class TestAsyncBillCheckPayments:
     async def test_raw_response_create(self, async_client: AsyncConductor) -> None:
         response = await async_client.qbd.bill_check_payments.with_raw_response.create(
             apply_to_transactions=[{"transaction_id": "123ABC-1234567890"}],
-            bank_account_id="80000008-1234567890",
+            bank_account_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
             vendor_id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
@@ -337,7 +380,7 @@ class TestAsyncBillCheckPayments:
     async def test_streaming_response_create(self, async_client: AsyncConductor) -> None:
         async with async_client.qbd.bill_check_payments.with_streaming_response.create(
             apply_to_transactions=[{"transaction_id": "123ABC-1234567890"}],
-            bank_account_id="80000008-1234567890",
+            bank_account_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
             vendor_id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
@@ -418,13 +461,13 @@ class TestAsyncBillCheckPayments:
                             "override_credit_application": False,
                         }
                     ],
-                    "discount_account_id": "80000008-1234567890",
+                    "discount_account_id": "80000001-1234567890",
                     "discount_amount": "50.00",
-                    "discount_class_id": "80000008-1234567890",
+                    "discount_class_id": "80000001-1234567890",
                     "payment_amount": "25.00",
                 }
             ],
-            bank_account_id="80000008-1234567890",
+            bank_account_id="80000001-1234567890",
             exchange_rate=1.2345,
             is_queued_for_print=True,
             memo="Payment for office supplies - Invoice INV-1234",
@@ -524,3 +567,45 @@ class TestAsyncBillCheckPayments:
             assert_matches_type(AsyncCursorPage[BillCheckPayment], bill_check_payment, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_delete(self, async_client: AsyncConductor) -> None:
+        bill_check_payment = await async_client.qbd.bill_check_payments.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+        assert_matches_type(BillCheckPaymentDeleteResponse, bill_check_payment, path=["response"])
+
+    @parametrize
+    async def test_raw_response_delete(self, async_client: AsyncConductor) -> None:
+        response = await async_client.qbd.bill_check_payments.with_raw_response.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        bill_check_payment = await response.parse()
+        assert_matches_type(BillCheckPaymentDeleteResponse, bill_check_payment, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_delete(self, async_client: AsyncConductor) -> None:
+        async with async_client.qbd.bill_check_payments.with_streaming_response.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            bill_check_payment = await response.parse()
+            assert_matches_type(BillCheckPaymentDeleteResponse, bill_check_payment, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_delete(self, async_client: AsyncConductor) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            await async_client.qbd.bill_check_payments.with_raw_response.delete(
+                id="",
+                conductor_end_user_id="end_usr_1234567abcdefg",
+            )

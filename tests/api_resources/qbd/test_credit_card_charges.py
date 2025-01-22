@@ -12,6 +12,7 @@ from tests.utils import assert_matches_type
 from conductor._utils import parse_date
 from conductor.types.qbd import (
     CreditCardCharge,
+    CreditCardChargeDeleteResponse,
 )
 from conductor.pagination import SyncCursorPage, AsyncCursorPage
 
@@ -52,14 +53,14 @@ class TestCreditCardCharges:
                     ],
                     "memo": "New office chair",
                     "payee_id": "80000001-1234567890",
-                    "sales_representative_id": "80000030-1234567890",
-                    "sales_tax_code_id": "80000004-1234567890",
+                    "sales_representative_id": "80000001-1234567890",
+                    "sales_tax_code_id": "80000001-1234567890",
                 }
             ],
             external_id="12345678-abcd-1234-abcd-1234567890ab",
             item_line_groups=[
                 {
-                    "item_group_id": "80000011-1234567890",
+                    "item_group_id": "80000001-1234567890",
                     "custom_fields": [
                         {
                             "name": "Customer Rating",
@@ -68,7 +69,7 @@ class TestCreditCardCharges:
                         }
                     ],
                     "inventory_site_id": "80000001-1234567890",
-                    "inventory_site_location_id": "80000002-1234567890",
+                    "inventory_site_location_id": "80000001-1234567890",
                     "quantity": 5,
                     "unit_of_measure": "Each",
                 }
@@ -90,8 +91,8 @@ class TestCreditCardCharges:
                     "description": "High-quality widget with custom engraving",
                     "expiration_date": "2019-12-27",
                     "inventory_site_id": "80000001-1234567890",
-                    "inventory_site_location_id": "80000002-1234567890",
-                    "item_id": "80000010-1234567890",
+                    "inventory_site_location_id": "80000001-1234567890",
+                    "item_id": "80000001-1234567890",
                     "link_to_transaction_line": {
                         "transaction_id": "123ABC-1234567890",
                         "transaction_line_id": "456DEF-1234567890",
@@ -99,8 +100,8 @@ class TestCreditCardCharges:
                     "lot_number": "LOT2023-001",
                     "override_item_account_id": "80000001-1234567890",
                     "quantity": 5,
-                    "sales_representative_id": "80000030-1234567890",
-                    "sales_tax_code_id": "80000004-1234567890",
+                    "sales_representative_id": "80000001-1234567890",
+                    "sales_tax_code_id": "80000001-1234567890",
                     "serial_number": "SN1234567890",
                     "unit_of_measure": "Each",
                 }
@@ -108,7 +109,7 @@ class TestCreditCardCharges:
             memo="Office supplies for Q3 marketing campaign",
             payee_id="80000001-1234567890",
             ref_number="CARD-1234",
-            sales_tax_code_id="80000004-1234567890",
+            sales_tax_code_id="80000001-1234567890",
         )
         assert_matches_type(CreditCardCharge, credit_card_charge, path=["response"])
 
@@ -210,14 +211,14 @@ class TestCreditCardCharges:
                     "class_id": "80000001-1234567890",
                     "memo": "New office chair",
                     "payee_id": "80000001-1234567890",
-                    "sales_representative_id": "80000030-1234567890",
-                    "sales_tax_code_id": "80000004-1234567890",
+                    "sales_representative_id": "80000001-1234567890",
+                    "sales_tax_code_id": "80000001-1234567890",
                 }
             ],
             item_line_groups=[
                 {
                     "id": "456DEF-1234567890",
-                    "item_group_id": "80000011-1234567890",
+                    "item_group_id": "80000001-1234567890",
                     "item_lines": [
                         {
                             "id": "456DEF-1234567890",
@@ -229,19 +230,19 @@ class TestCreditCardCharges:
                             "description": "High-quality widget with custom engraving",
                             "expiration_date": "2019-12-27",
                             "inventory_site_id": "80000001-1234567890",
-                            "inventory_site_location_id": "80000002-1234567890",
-                            "item_id": "80000010-1234567890",
+                            "inventory_site_location_id": "80000001-1234567890",
+                            "item_id": "80000001-1234567890",
                             "lot_number": "LOT2023-001",
                             "override_item_account_id": "80000001-1234567890",
-                            "override_unit_of_measure_set_id": "80000003-1234567890",
+                            "override_unit_of_measure_set_id": "80000001-1234567890",
                             "quantity": 5,
-                            "sales_representative_id": "80000030-1234567890",
-                            "sales_tax_code_id": "80000004-1234567890",
+                            "sales_representative_id": "80000001-1234567890",
+                            "sales_tax_code_id": "80000001-1234567890",
                             "serial_number": "SN1234567890",
                             "unit_of_measure": "Each",
                         }
                     ],
-                    "override_unit_of_measure_set_id": "80000003-1234567890",
+                    "override_unit_of_measure_set_id": "80000001-1234567890",
                     "quantity": 5,
                     "unit_of_measure": "Each",
                 }
@@ -257,14 +258,14 @@ class TestCreditCardCharges:
                     "description": "High-quality widget with custom engraving",
                     "expiration_date": "2019-12-27",
                     "inventory_site_id": "80000001-1234567890",
-                    "inventory_site_location_id": "80000002-1234567890",
-                    "item_id": "80000010-1234567890",
+                    "inventory_site_location_id": "80000001-1234567890",
+                    "item_id": "80000001-1234567890",
                     "lot_number": "LOT2023-001",
                     "override_item_account_id": "80000001-1234567890",
-                    "override_unit_of_measure_set_id": "80000003-1234567890",
+                    "override_unit_of_measure_set_id": "80000001-1234567890",
                     "quantity": 5,
-                    "sales_representative_id": "80000030-1234567890",
-                    "sales_tax_code_id": "80000004-1234567890",
+                    "sales_representative_id": "80000001-1234567890",
+                    "sales_tax_code_id": "80000001-1234567890",
                     "serial_number": "SN1234567890",
                     "unit_of_measure": "Each",
                 }
@@ -272,7 +273,7 @@ class TestCreditCardCharges:
             memo="Office supplies for Q3 marketing campaign",
             payee_id="80000001-1234567890",
             ref_number="CARD-1234",
-            sales_tax_code_id="80000004-1234567890",
+            sales_tax_code_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
         )
         assert_matches_type(CreditCardCharge, credit_card_charge, path=["response"])
@@ -369,6 +370,48 @@ class TestCreditCardCharges:
 
         assert cast(Any, response.is_closed) is True
 
+    @parametrize
+    def test_method_delete(self, client: Conductor) -> None:
+        credit_card_charge = client.qbd.credit_card_charges.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+        assert_matches_type(CreditCardChargeDeleteResponse, credit_card_charge, path=["response"])
+
+    @parametrize
+    def test_raw_response_delete(self, client: Conductor) -> None:
+        response = client.qbd.credit_card_charges.with_raw_response.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        credit_card_charge = response.parse()
+        assert_matches_type(CreditCardChargeDeleteResponse, credit_card_charge, path=["response"])
+
+    @parametrize
+    def test_streaming_response_delete(self, client: Conductor) -> None:
+        with client.qbd.credit_card_charges.with_streaming_response.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            credit_card_charge = response.parse()
+            assert_matches_type(CreditCardChargeDeleteResponse, credit_card_charge, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_delete(self, client: Conductor) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            client.qbd.credit_card_charges.with_raw_response.delete(
+                id="",
+                conductor_end_user_id="end_usr_1234567abcdefg",
+            )
+
 
 class TestAsyncCreditCardCharges:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
@@ -404,14 +447,14 @@ class TestAsyncCreditCardCharges:
                     ],
                     "memo": "New office chair",
                     "payee_id": "80000001-1234567890",
-                    "sales_representative_id": "80000030-1234567890",
-                    "sales_tax_code_id": "80000004-1234567890",
+                    "sales_representative_id": "80000001-1234567890",
+                    "sales_tax_code_id": "80000001-1234567890",
                 }
             ],
             external_id="12345678-abcd-1234-abcd-1234567890ab",
             item_line_groups=[
                 {
-                    "item_group_id": "80000011-1234567890",
+                    "item_group_id": "80000001-1234567890",
                     "custom_fields": [
                         {
                             "name": "Customer Rating",
@@ -420,7 +463,7 @@ class TestAsyncCreditCardCharges:
                         }
                     ],
                     "inventory_site_id": "80000001-1234567890",
-                    "inventory_site_location_id": "80000002-1234567890",
+                    "inventory_site_location_id": "80000001-1234567890",
                     "quantity": 5,
                     "unit_of_measure": "Each",
                 }
@@ -442,8 +485,8 @@ class TestAsyncCreditCardCharges:
                     "description": "High-quality widget with custom engraving",
                     "expiration_date": "2019-12-27",
                     "inventory_site_id": "80000001-1234567890",
-                    "inventory_site_location_id": "80000002-1234567890",
-                    "item_id": "80000010-1234567890",
+                    "inventory_site_location_id": "80000001-1234567890",
+                    "item_id": "80000001-1234567890",
                     "link_to_transaction_line": {
                         "transaction_id": "123ABC-1234567890",
                         "transaction_line_id": "456DEF-1234567890",
@@ -451,8 +494,8 @@ class TestAsyncCreditCardCharges:
                     "lot_number": "LOT2023-001",
                     "override_item_account_id": "80000001-1234567890",
                     "quantity": 5,
-                    "sales_representative_id": "80000030-1234567890",
-                    "sales_tax_code_id": "80000004-1234567890",
+                    "sales_representative_id": "80000001-1234567890",
+                    "sales_tax_code_id": "80000001-1234567890",
                     "serial_number": "SN1234567890",
                     "unit_of_measure": "Each",
                 }
@@ -460,7 +503,7 @@ class TestAsyncCreditCardCharges:
             memo="Office supplies for Q3 marketing campaign",
             payee_id="80000001-1234567890",
             ref_number="CARD-1234",
-            sales_tax_code_id="80000004-1234567890",
+            sales_tax_code_id="80000001-1234567890",
         )
         assert_matches_type(CreditCardCharge, credit_card_charge, path=["response"])
 
@@ -562,14 +605,14 @@ class TestAsyncCreditCardCharges:
                     "class_id": "80000001-1234567890",
                     "memo": "New office chair",
                     "payee_id": "80000001-1234567890",
-                    "sales_representative_id": "80000030-1234567890",
-                    "sales_tax_code_id": "80000004-1234567890",
+                    "sales_representative_id": "80000001-1234567890",
+                    "sales_tax_code_id": "80000001-1234567890",
                 }
             ],
             item_line_groups=[
                 {
                     "id": "456DEF-1234567890",
-                    "item_group_id": "80000011-1234567890",
+                    "item_group_id": "80000001-1234567890",
                     "item_lines": [
                         {
                             "id": "456DEF-1234567890",
@@ -581,19 +624,19 @@ class TestAsyncCreditCardCharges:
                             "description": "High-quality widget with custom engraving",
                             "expiration_date": "2019-12-27",
                             "inventory_site_id": "80000001-1234567890",
-                            "inventory_site_location_id": "80000002-1234567890",
-                            "item_id": "80000010-1234567890",
+                            "inventory_site_location_id": "80000001-1234567890",
+                            "item_id": "80000001-1234567890",
                             "lot_number": "LOT2023-001",
                             "override_item_account_id": "80000001-1234567890",
-                            "override_unit_of_measure_set_id": "80000003-1234567890",
+                            "override_unit_of_measure_set_id": "80000001-1234567890",
                             "quantity": 5,
-                            "sales_representative_id": "80000030-1234567890",
-                            "sales_tax_code_id": "80000004-1234567890",
+                            "sales_representative_id": "80000001-1234567890",
+                            "sales_tax_code_id": "80000001-1234567890",
                             "serial_number": "SN1234567890",
                             "unit_of_measure": "Each",
                         }
                     ],
-                    "override_unit_of_measure_set_id": "80000003-1234567890",
+                    "override_unit_of_measure_set_id": "80000001-1234567890",
                     "quantity": 5,
                     "unit_of_measure": "Each",
                 }
@@ -609,14 +652,14 @@ class TestAsyncCreditCardCharges:
                     "description": "High-quality widget with custom engraving",
                     "expiration_date": "2019-12-27",
                     "inventory_site_id": "80000001-1234567890",
-                    "inventory_site_location_id": "80000002-1234567890",
-                    "item_id": "80000010-1234567890",
+                    "inventory_site_location_id": "80000001-1234567890",
+                    "item_id": "80000001-1234567890",
                     "lot_number": "LOT2023-001",
                     "override_item_account_id": "80000001-1234567890",
-                    "override_unit_of_measure_set_id": "80000003-1234567890",
+                    "override_unit_of_measure_set_id": "80000001-1234567890",
                     "quantity": 5,
-                    "sales_representative_id": "80000030-1234567890",
-                    "sales_tax_code_id": "80000004-1234567890",
+                    "sales_representative_id": "80000001-1234567890",
+                    "sales_tax_code_id": "80000001-1234567890",
                     "serial_number": "SN1234567890",
                     "unit_of_measure": "Each",
                 }
@@ -624,7 +667,7 @@ class TestAsyncCreditCardCharges:
             memo="Office supplies for Q3 marketing campaign",
             payee_id="80000001-1234567890",
             ref_number="CARD-1234",
-            sales_tax_code_id="80000004-1234567890",
+            sales_tax_code_id="80000001-1234567890",
             transaction_date=parse_date("2019-12-27"),
         )
         assert_matches_type(CreditCardCharge, credit_card_charge, path=["response"])
@@ -720,3 +763,45 @@ class TestAsyncCreditCardCharges:
             assert_matches_type(AsyncCursorPage[CreditCardCharge], credit_card_charge, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_delete(self, async_client: AsyncConductor) -> None:
+        credit_card_charge = await async_client.qbd.credit_card_charges.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+        assert_matches_type(CreditCardChargeDeleteResponse, credit_card_charge, path=["response"])
+
+    @parametrize
+    async def test_raw_response_delete(self, async_client: AsyncConductor) -> None:
+        response = await async_client.qbd.credit_card_charges.with_raw_response.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        credit_card_charge = await response.parse()
+        assert_matches_type(CreditCardChargeDeleteResponse, credit_card_charge, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_delete(self, async_client: AsyncConductor) -> None:
+        async with async_client.qbd.credit_card_charges.with_streaming_response.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            credit_card_charge = await response.parse()
+            assert_matches_type(CreditCardChargeDeleteResponse, credit_card_charge, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_delete(self, async_client: AsyncConductor) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            await async_client.qbd.credit_card_charges.with_raw_response.delete(
+                id="",
+                conductor_end_user_id="end_usr_1234567abcdefg",
+            )

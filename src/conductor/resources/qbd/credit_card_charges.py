@@ -28,6 +28,7 @@ from ...types.qbd import (
 from ...pagination import SyncCursorPage, AsyncCursorPage
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.qbd.credit_card_charge import CreditCardCharge
+from ...types.qbd.credit_card_charge_delete_response import CreditCardChargeDeleteResponse
 
 __all__ = ["CreditCardChargesResource", "AsyncCreditCardChargesResource"]
 
@@ -508,6 +509,48 @@ class CreditCardChargesResource(SyncAPIResource):
             model=CreditCardCharge,
         )
 
+    def delete(
+        self,
+        id: str,
+        *,
+        conductor_end_user_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> CreditCardChargeDeleteResponse:
+        """Permanently deletes a a credit card charge.
+
+        The deletion will fail if the credit
+        card charge is currently in use or has any linked transactions that are in use.
+
+        Args:
+          id: The QuickBooks-assigned unique identifier of the credit card charge to delete.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return self._delete(
+            f"/quickbooks-desktop/credit-card-charges/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=CreditCardChargeDeleteResponse,
+        )
+
 
 class AsyncCreditCardChargesResource(AsyncAPIResource):
     @cached_property
@@ -985,6 +1028,48 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
             model=CreditCardCharge,
         )
 
+    async def delete(
+        self,
+        id: str,
+        *,
+        conductor_end_user_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> CreditCardChargeDeleteResponse:
+        """Permanently deletes a a credit card charge.
+
+        The deletion will fail if the credit
+        card charge is currently in use or has any linked transactions that are in use.
+
+        Args:
+          id: The QuickBooks-assigned unique identifier of the credit card charge to delete.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return await self._delete(
+            f"/quickbooks-desktop/credit-card-charges/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=CreditCardChargeDeleteResponse,
+        )
+
 
 class CreditCardChargesResourceWithRawResponse:
     def __init__(self, credit_card_charges: CreditCardChargesResource) -> None:
@@ -1001,6 +1086,9 @@ class CreditCardChargesResourceWithRawResponse:
         )
         self.list = to_raw_response_wrapper(
             credit_card_charges.list,
+        )
+        self.delete = to_raw_response_wrapper(
+            credit_card_charges.delete,
         )
 
 
@@ -1020,6 +1108,9 @@ class AsyncCreditCardChargesResourceWithRawResponse:
         self.list = async_to_raw_response_wrapper(
             credit_card_charges.list,
         )
+        self.delete = async_to_raw_response_wrapper(
+            credit_card_charges.delete,
+        )
 
 
 class CreditCardChargesResourceWithStreamingResponse:
@@ -1038,6 +1129,9 @@ class CreditCardChargesResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             credit_card_charges.list,
         )
+        self.delete = to_streamed_response_wrapper(
+            credit_card_charges.delete,
+        )
 
 
 class AsyncCreditCardChargesResourceWithStreamingResponse:
@@ -1055,4 +1149,7 @@ class AsyncCreditCardChargesResourceWithStreamingResponse:
         )
         self.list = async_to_streamed_response_wrapper(
             credit_card_charges.list,
+        )
+        self.delete = async_to_streamed_response_wrapper(
+            credit_card_charges.delete,
         )

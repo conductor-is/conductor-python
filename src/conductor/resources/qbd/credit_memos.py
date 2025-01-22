@@ -24,6 +24,7 @@ from ...types.qbd import credit_memo_list_params, credit_memo_create_params, cre
 from ...pagination import SyncCursorPage, AsyncCursorPage
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.qbd.credit_memo import CreditMemo
+from ...types.qbd.credit_memo_delete_response import CreditMemoDeleteResponse
 
 __all__ = ["CreditMemosResource", "AsyncCreditMemosResource"]
 
@@ -676,6 +677,48 @@ class CreditMemosResource(SyncAPIResource):
             model=CreditMemo,
         )
 
+    def delete(
+        self,
+        id: str,
+        *,
+        conductor_end_user_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> CreditMemoDeleteResponse:
+        """Permanently deletes a a credit memo.
+
+        The deletion will fail if the credit memo
+        is currently in use or has any linked transactions that are in use.
+
+        Args:
+          id: The QuickBooks-assigned unique identifier of the credit memo to delete.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return self._delete(
+            f"/quickbooks-desktop/credit-memos/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=CreditMemoDeleteResponse,
+        )
+
 
 class AsyncCreditMemosResource(AsyncAPIResource):
     @cached_property
@@ -1325,6 +1368,48 @@ class AsyncCreditMemosResource(AsyncAPIResource):
             model=CreditMemo,
         )
 
+    async def delete(
+        self,
+        id: str,
+        *,
+        conductor_end_user_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> CreditMemoDeleteResponse:
+        """Permanently deletes a a credit memo.
+
+        The deletion will fail if the credit memo
+        is currently in use or has any linked transactions that are in use.
+
+        Args:
+          id: The QuickBooks-assigned unique identifier of the credit memo to delete.
+
+          conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
+              `"Conductor-End-User-Id: {{END_USER_ID}}"`).
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
+        return await self._delete(
+            f"/quickbooks-desktop/credit-memos/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=CreditMemoDeleteResponse,
+        )
+
 
 class CreditMemosResourceWithRawResponse:
     def __init__(self, credit_memos: CreditMemosResource) -> None:
@@ -1341,6 +1426,9 @@ class CreditMemosResourceWithRawResponse:
         )
         self.list = to_raw_response_wrapper(
             credit_memos.list,
+        )
+        self.delete = to_raw_response_wrapper(
+            credit_memos.delete,
         )
 
 
@@ -1360,6 +1448,9 @@ class AsyncCreditMemosResourceWithRawResponse:
         self.list = async_to_raw_response_wrapper(
             credit_memos.list,
         )
+        self.delete = async_to_raw_response_wrapper(
+            credit_memos.delete,
+        )
 
 
 class CreditMemosResourceWithStreamingResponse:
@@ -1378,6 +1469,9 @@ class CreditMemosResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             credit_memos.list,
         )
+        self.delete = to_streamed_response_wrapper(
+            credit_memos.delete,
+        )
 
 
 class AsyncCreditMemosResourceWithStreamingResponse:
@@ -1395,4 +1489,7 @@ class AsyncCreditMemosResourceWithStreamingResponse:
         )
         self.list = async_to_streamed_response_wrapper(
             credit_memos.list,
+        )
+        self.delete = async_to_streamed_response_wrapper(
+            credit_memos.delete,
         )

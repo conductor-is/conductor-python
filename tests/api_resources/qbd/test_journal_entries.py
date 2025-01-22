@@ -12,6 +12,7 @@ from tests.utils import assert_matches_type
 from conductor._utils import parse_date
 from conductor.types.qbd import (
     JournalEntry,
+    JournalEntryDeleteResponse,
 )
 from conductor.pagination import SyncCursorPage, AsyncCursorPage
 
@@ -43,10 +44,10 @@ class TestJournalEntries:
                     "class_id": "80000001-1234567890",
                     "entity_id": "80000001-1234567890",
                     "memo": "Allocated funds for office lease payment",
-                    "sales_tax_item_id": "80000010-1234567890",
+                    "sales_tax_item_id": "80000001-1234567890",
                 }
             ],
-            currency_id="80000012-1234567890",
+            currency_id="80000001-1234567890",
             debit_lines=[
                 {
                     "account_id": "80000001-1234567890",
@@ -55,7 +56,7 @@ class TestJournalEntries:
                     "class_id": "80000001-1234567890",
                     "entity_id": "80000001-1234567890",
                     "memo": "Monthly utility bill settlement",
-                    "sales_tax_item_id": "80000010-1234567890",
+                    "sales_tax_item_id": "80000001-1234567890",
                 }
             ],
             exchange_rate=1.2345,
@@ -150,7 +151,7 @@ class TestJournalEntries:
             revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
             are_amounts_entered_in_home_currency=False,
-            currency_id="80000012-1234567890",
+            currency_id="80000001-1234567890",
             exchange_rate=1.2345,
             is_adjustment=False,
             lines=[
@@ -163,7 +164,7 @@ class TestJournalEntries:
                     "entity_id": "80000001-1234567890",
                     "journal_line_type": "debit",
                     "memo": "Allocated funds for office lease payment",
-                    "sales_tax_item_id": "80000010-1234567890",
+                    "sales_tax_item_id": "80000001-1234567890",
                 }
             ],
             ref_number="JE-1234",
@@ -263,6 +264,48 @@ class TestJournalEntries:
 
         assert cast(Any, response.is_closed) is True
 
+    @parametrize
+    def test_method_delete(self, client: Conductor) -> None:
+        journal_entry = client.qbd.journal_entries.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+        assert_matches_type(JournalEntryDeleteResponse, journal_entry, path=["response"])
+
+    @parametrize
+    def test_raw_response_delete(self, client: Conductor) -> None:
+        response = client.qbd.journal_entries.with_raw_response.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        journal_entry = response.parse()
+        assert_matches_type(JournalEntryDeleteResponse, journal_entry, path=["response"])
+
+    @parametrize
+    def test_streaming_response_delete(self, client: Conductor) -> None:
+        with client.qbd.journal_entries.with_streaming_response.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            journal_entry = response.parse()
+            assert_matches_type(JournalEntryDeleteResponse, journal_entry, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_delete(self, client: Conductor) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            client.qbd.journal_entries.with_raw_response.delete(
+                id="",
+                conductor_end_user_id="end_usr_1234567abcdefg",
+            )
+
 
 class TestAsyncJournalEntries:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
@@ -289,10 +332,10 @@ class TestAsyncJournalEntries:
                     "class_id": "80000001-1234567890",
                     "entity_id": "80000001-1234567890",
                     "memo": "Allocated funds for office lease payment",
-                    "sales_tax_item_id": "80000010-1234567890",
+                    "sales_tax_item_id": "80000001-1234567890",
                 }
             ],
-            currency_id="80000012-1234567890",
+            currency_id="80000001-1234567890",
             debit_lines=[
                 {
                     "account_id": "80000001-1234567890",
@@ -301,7 +344,7 @@ class TestAsyncJournalEntries:
                     "class_id": "80000001-1234567890",
                     "entity_id": "80000001-1234567890",
                     "memo": "Monthly utility bill settlement",
-                    "sales_tax_item_id": "80000010-1234567890",
+                    "sales_tax_item_id": "80000001-1234567890",
                 }
             ],
             exchange_rate=1.2345,
@@ -396,7 +439,7 @@ class TestAsyncJournalEntries:
             revision_number="1721172183",
             conductor_end_user_id="end_usr_1234567abcdefg",
             are_amounts_entered_in_home_currency=False,
-            currency_id="80000012-1234567890",
+            currency_id="80000001-1234567890",
             exchange_rate=1.2345,
             is_adjustment=False,
             lines=[
@@ -409,7 +452,7 @@ class TestAsyncJournalEntries:
                     "entity_id": "80000001-1234567890",
                     "journal_line_type": "debit",
                     "memo": "Allocated funds for office lease payment",
-                    "sales_tax_item_id": "80000010-1234567890",
+                    "sales_tax_item_id": "80000001-1234567890",
                 }
             ],
             ref_number="JE-1234",
@@ -508,3 +551,45 @@ class TestAsyncJournalEntries:
             assert_matches_type(AsyncCursorPage[JournalEntry], journal_entry, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_delete(self, async_client: AsyncConductor) -> None:
+        journal_entry = await async_client.qbd.journal_entries.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+        assert_matches_type(JournalEntryDeleteResponse, journal_entry, path=["response"])
+
+    @parametrize
+    async def test_raw_response_delete(self, async_client: AsyncConductor) -> None:
+        response = await async_client.qbd.journal_entries.with_raw_response.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        journal_entry = await response.parse()
+        assert_matches_type(JournalEntryDeleteResponse, journal_entry, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_delete(self, async_client: AsyncConductor) -> None:
+        async with async_client.qbd.journal_entries.with_streaming_response.delete(
+            id="123ABC-1234567890",
+            conductor_end_user_id="end_usr_1234567abcdefg",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            journal_entry = await response.parse()
+            assert_matches_type(JournalEntryDeleteResponse, journal_entry, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_delete(self, async_client: AsyncConductor) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            await async_client.qbd.journal_entries.with_raw_response.delete(
+                id="",
+                conductor_end_user_id="end_usr_1234567abcdefg",
+            )
