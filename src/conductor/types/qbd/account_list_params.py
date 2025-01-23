@@ -66,10 +66,13 @@ class AccountListParams(TypedDict, total=False):
     """The maximum number of objects to return.
 
     **IMPORTANT**: QuickBooks Desktop does not support cursor-based pagination for
-    accounts. Hence, this parameter will limit the response size, but you will not
-    be able to fetch the next set of results. If needed, you can paginate by
-    fetching batches via the name-range (e.g., `nameFrom=A&nameTo=B`) query
-    parameters.
+    accounts. This parameter will limit the response size, but you cannot fetch
+    subsequent results using a cursor. For pagination, use the name-range parameters
+    instead (e.g., `nameFrom=A&nameTo=B`).
+
+    When this parameter is omitted, the endpoint returns all accounts without limit,
+    unlike paginated endpoints which default to 150 records. This is acceptable
+    because accounts typically have low record counts.
     """
 
     name_contains: Annotated[str, PropertyInfo(alias="nameContains")]
