@@ -268,9 +268,13 @@ class ClassesResource(SyncAPIResource):
           limit: The maximum number of objects to return.
 
               **IMPORTANT**: QuickBooks Desktop does not support cursor-based pagination for
-              classes. Hence, this parameter will limit the response size, but you will not be
-              able to fetch the next set of results. If needed, you can paginate by fetching
-              batches via the name-range (e.g., `nameFrom=A&nameTo=B`) query parameters.
+              classes. This parameter will limit the response size, but you cannot fetch
+              subsequent results using a cursor. For pagination, use the name-range parameters
+              instead (e.g., `nameFrom=A&nameTo=B`).
+
+              When this parameter is omitted, the endpoint returns all classes without limit,
+              unlike paginated endpoints which default to 150 records. This is acceptable
+              because classes typically have low record counts.
 
           name_contains:
               Filter for classes whose `name` contains this substring, case-insensitive. NOTE:
@@ -578,9 +582,13 @@ class AsyncClassesResource(AsyncAPIResource):
           limit: The maximum number of objects to return.
 
               **IMPORTANT**: QuickBooks Desktop does not support cursor-based pagination for
-              classes. Hence, this parameter will limit the response size, but you will not be
-              able to fetch the next set of results. If needed, you can paginate by fetching
-              batches via the name-range (e.g., `nameFrom=A&nameTo=B`) query parameters.
+              classes. This parameter will limit the response size, but you cannot fetch
+              subsequent results using a cursor. For pagination, use the name-range parameters
+              instead (e.g., `nameFrom=A&nameTo=B`).
+
+              When this parameter is omitted, the endpoint returns all classes without limit,
+              unlike paginated endpoints which default to 150 records. This is acceptable
+              because classes typically have low record counts.
 
           name_contains:
               Filter for classes whose `name` contains this substring, case-insensitive. NOTE:

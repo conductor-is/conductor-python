@@ -283,10 +283,13 @@ class SalesTaxCodesResource(SyncAPIResource):
           limit: The maximum number of objects to return.
 
               **IMPORTANT**: QuickBooks Desktop does not support cursor-based pagination for
-              sales-tax codes. Hence, this parameter will limit the response size, but you
-              will not be able to fetch the next set of results. If needed, you can paginate
-              by fetching batches via the name-range (e.g., `nameFrom=A&nameTo=B`) query
-              parameters.
+              sales-tax codes. This parameter will limit the response size, but you cannot
+              fetch subsequent results using a cursor. For pagination, use the name-range
+              parameters instead (e.g., `nameFrom=A&nameTo=B`).
+
+              When this parameter is omitted, the endpoint returns all sales-tax codes without
+              limit, unlike paginated endpoints which default to 150 records. This is
+              acceptable because sales-tax codes typically have low record counts.
 
           name_contains: Filter for sales-tax codes whose `name` contains this substring,
               case-insensitive. NOTE: If you use this parameter, you cannot also use
@@ -614,10 +617,13 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
           limit: The maximum number of objects to return.
 
               **IMPORTANT**: QuickBooks Desktop does not support cursor-based pagination for
-              sales-tax codes. Hence, this parameter will limit the response size, but you
-              will not be able to fetch the next set of results. If needed, you can paginate
-              by fetching batches via the name-range (e.g., `nameFrom=A&nameTo=B`) query
-              parameters.
+              sales-tax codes. This parameter will limit the response size, but you cannot
+              fetch subsequent results using a cursor. For pagination, use the name-range
+              parameters instead (e.g., `nameFrom=A&nameTo=B`).
+
+              When this parameter is omitted, the endpoint returns all sales-tax codes without
+              limit, unlike paginated endpoints which default to 150 records. This is
+              acceptable because sales-tax codes typically have low record counts.
 
           name_contains: Filter for sales-tax codes whose `name` contains this substring,
               case-insensitive. NOTE: If you use this parameter, you cannot also use
