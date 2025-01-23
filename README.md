@@ -14,7 +14,7 @@ The REST API documentation can be found on [docs.conductor.is](https://docs.cond
 
 ```sh
 # install from PyPI
-pip install --pre conductor-py
+pip install conductor-py
 ```
 
 ## Usage
