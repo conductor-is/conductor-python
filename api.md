@@ -512,6 +512,7 @@ from conductor.types.qbd import (
     CustomField,
     ExpenseLine,
     ItemLine,
+    ItemLineGroup,
     LinkedTransaction,
     ReceivableTransaction,
 )
