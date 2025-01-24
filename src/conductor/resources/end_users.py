@@ -204,7 +204,7 @@ class EndUsersResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> EndUserPassthroughResponse:
         """
-        Sends a request directly to the specified integration connection (e.g.
+        Sends a request directly to the specified integration connection (e.g.,
         QuickBooks Desktop) on behalf of the end-user.
 
         Args:
@@ -451,7 +451,7 @@ class AsyncEndUsersResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> EndUserPassthroughResponse:
         """
-        Sends a request directly to the specified integration connection (e.g.
+        Sends a request directly to the specified integration connection (e.g.,
         QuickBooks Desktop) on behalf of the end-user.
 
         Args:
