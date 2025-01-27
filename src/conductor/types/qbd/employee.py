@@ -506,7 +506,7 @@ class Employee(BaseModel):
     """The employee's fax number."""
 
     first_name: Optional[str] = FieldInfo(alias="firstName", default=None)
-    """The first name of the contact person for this employee."""
+    """The employee's first name."""
 
     gender: Optional[Literal["male", "female"]] = None
     """This employee's gender."""
@@ -524,7 +524,7 @@ class Employee(BaseModel):
     """
 
     job_title: Optional[str] = FieldInfo(alias="jobTitle", default=None)
-    """The job title of the contact person for this employee."""
+    """The employee's job title."""
 
     key_employee_status: Optional[Literal["key_employee", "non_key_employee"]] = FieldInfo(
         alias="keyEmployeeStatus", default=None
@@ -532,10 +532,10 @@ class Employee(BaseModel):
     """Indicates whether this employee is a key employee."""
 
     last_name: Optional[str] = FieldInfo(alias="lastName", default=None)
-    """The last name of the contact person for this employee."""
+    """The employee's last name."""
 
     middle_name: Optional[str] = FieldInfo(alias="middleName", default=None)
-    """The middle name of the contact person for this employee."""
+    """The employee's middle name."""
 
     military_status: Optional[Literal["active", "reserve"]] = FieldInfo(alias="militaryStatus", default=None)
     """This employee's military status if they are a U.S. veteran."""
@@ -546,10 +546,12 @@ class Employee(BaseModel):
     name: str
     """The case-insensitive unique name of this employee, unique across all employees.
 
+    Maximum length: 41 characters. A concatenation of the employee's `firstName`,
+    `middleName`, and `lastName`.
+
     **NOTE**: Employees do not have a `fullName` field because they are not
     hierarchical objects, which is why `name` is unique for them but not for objects
-    that have parents. Maximum length: 41 characters. A concatenation of
-    `firstName`, `middleName`, and `lastName`.
+    that have parents.
     """
 
     note: Optional[str] = None
@@ -594,8 +596,8 @@ class Employee(BaseModel):
 
     salutation: Optional[str] = None
     """
-    The formal salutation title that precedes the name of the contact person for
-    this employee, such as "Mr.", "Ms.", or "Dr.".
+    The employee's formal salutation title that precedes their name, such as "Mr.",
+    "Ms.", or "Dr.".
     """
 
     ssn: Optional[str] = None

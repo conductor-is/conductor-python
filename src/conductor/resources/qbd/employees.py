@@ -170,7 +170,7 @@ class EmployeesResource(SyncAPIResource):
 
           fax: The employee's fax number.
 
-          first_name: The first name of the contact person for this employee.
+          first_name: The employee's first name.
 
           gender: This employee's gender.
 
@@ -181,13 +181,13 @@ class EmployeesResource(SyncAPIResource):
           is_active: Indicates whether this employee is active. Inactive objects are typically hidden
               from views and reports in QuickBooks.
 
-          job_title: The job title of the contact person for this employee.
+          job_title: The employee's job title.
 
           key_employee_status: Indicates whether this employee is a key employee.
 
-          last_name: The last name of the contact person for this employee.
+          last_name: The employee's last name.
 
-          middle_name: The middle name of the contact person for this employee.
+          middle_name: The employee's middle name.
 
           military_status: This employee's military status if they are a U.S. veteran.
 
@@ -209,8 +209,8 @@ class EmployeesResource(SyncAPIResource):
           print_as: The name to use when printing this employee in QuickBooks. By default, this is
               the same as the `name` field.
 
-          salutation: The formal salutation title that precedes the name of the contact person for
-              this employee, such as "Mr.", "Ms.", or "Dr.".
+          salutation: The employee's formal salutation title that precedes their name, such as "Mr.",
+              "Ms.", or "Dr.".
 
           ssn: The employee's Social Security Number.
 
@@ -457,7 +457,7 @@ class EmployeesResource(SyncAPIResource):
 
           fax: The employee's fax number.
 
-          first_name: The first name of the contact person for this employee.
+          first_name: The employee's first name.
 
           hired_date: The date this employee was hired.
 
@@ -466,13 +466,13 @@ class EmployeesResource(SyncAPIResource):
           is_active: Indicates whether this employee is active. Inactive objects are typically hidden
               from views and reports in QuickBooks.
 
-          job_title: The job title of the contact person for this employee.
+          job_title: The employee's job title.
 
           key_employee_status: Indicates whether this employee is a key employee.
 
-          last_name: The last name of the contact person for this employee.
+          last_name: The employee's last name.
 
-          middle_name: The middle name of the contact person for this employee.
+          middle_name: The employee's middle name.
 
           military_status: This employee's military status if they are a U.S. veteran.
 
@@ -494,8 +494,8 @@ class EmployeesResource(SyncAPIResource):
           print_as: The name to use when printing this employee in QuickBooks. By default, this is
               the same as the `name` field.
 
-          salutation: The formal salutation title that precedes the name of the contact person for
-              this employee, such as "Mr.", "Ms.", or "Dr.".
+          salutation: The employee's formal salutation title that precedes their name, such as "Mr.",
+              "Ms.", or "Dr.".
 
           supervisor_id: The employee who supervises this employee. Found in the "employment job details"
               section of the employee's record in QuickBooks.
@@ -842,7 +842,7 @@ class AsyncEmployeesResource(AsyncAPIResource):
 
           fax: The employee's fax number.
 
-          first_name: The first name of the contact person for this employee.
+          first_name: The employee's first name.
 
           gender: This employee's gender.
 
@@ -853,13 +853,13 @@ class AsyncEmployeesResource(AsyncAPIResource):
           is_active: Indicates whether this employee is active. Inactive objects are typically hidden
               from views and reports in QuickBooks.
 
-          job_title: The job title of the contact person for this employee.
+          job_title: The employee's job title.
 
           key_employee_status: Indicates whether this employee is a key employee.
 
-          last_name: The last name of the contact person for this employee.
+          last_name: The employee's last name.
 
-          middle_name: The middle name of the contact person for this employee.
+          middle_name: The employee's middle name.
 
           military_status: This employee's military status if they are a U.S. veteran.
 
@@ -881,8 +881,8 @@ class AsyncEmployeesResource(AsyncAPIResource):
           print_as: The name to use when printing this employee in QuickBooks. By default, this is
               the same as the `name` field.
 
-          salutation: The formal salutation title that precedes the name of the contact person for
-              this employee, such as "Mr.", "Ms.", or "Dr.".
+          salutation: The employee's formal salutation title that precedes their name, such as "Mr.",
+              "Ms.", or "Dr.".
 
           ssn: The employee's Social Security Number.
 
@@ -1129,7 +1129,7 @@ class AsyncEmployeesResource(AsyncAPIResource):
 
           fax: The employee's fax number.
 
-          first_name: The first name of the contact person for this employee.
+          first_name: The employee's first name.
 
           hired_date: The date this employee was hired.
 
@@ -1138,13 +1138,13 @@ class AsyncEmployeesResource(AsyncAPIResource):
           is_active: Indicates whether this employee is active. Inactive objects are typically hidden
               from views and reports in QuickBooks.
 
-          job_title: The job title of the contact person for this employee.
+          job_title: The employee's job title.
 
           key_employee_status: Indicates whether this employee is a key employee.
 
-          last_name: The last name of the contact person for this employee.
+          last_name: The employee's last name.
 
-          middle_name: The middle name of the contact person for this employee.
+          middle_name: The employee's middle name.
 
           military_status: This employee's military status if they are a U.S. veteran.
 
@@ -1166,8 +1166,8 @@ class AsyncEmployeesResource(AsyncAPIResource):
           print_as: The name to use when printing this employee in QuickBooks. By default, this is
               the same as the `name` field.
 
-          salutation: The formal salutation title that precedes the name of the contact person for
-              this employee, such as "Mr.", "Ms.", or "Dr.".
+          salutation: The employee's formal salutation title that precedes their name, such as "Mr.",
+              "Ms.", or "Dr.".
 
           supervisor_id: The employee who supervises this employee. Found in the "employment job details"
               section of the employee's record in QuickBooks.
