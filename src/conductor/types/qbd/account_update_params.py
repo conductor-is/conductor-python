@@ -29,9 +29,11 @@ class AccountUpdateParams(TypedDict, total=False):
     account_number: Annotated[str, PropertyInfo(alias="accountNumber")]
     """
     The account's account number, which appears in the QuickBooks chart of accounts,
-    reports, and graphs. Note that if the "Use Account Numbers" preference is turned
-    off in QuickBooks, the account number may not be visible in the user interface,
-    but it can still be set and retrieved through the API.
+    reports, and graphs.
+
+    Note that if the "Use Account Numbers" preference is turned off in QuickBooks,
+    the account number may not be visible in the user interface, but it can still be
+    set and retrieved through the API.
     """
 
     account_type: Annotated[

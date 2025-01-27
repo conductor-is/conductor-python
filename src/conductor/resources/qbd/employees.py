@@ -115,9 +115,11 @@ class EmployeesResource(SyncAPIResource):
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
           account_number: The employee's account number, which appears in the QuickBooks chart of
-              accounts, reports, and graphs. Note that if the "Use Account Numbers" preference
-              is turned off in QuickBooks, the account number may not be visible in the user
-              interface, but it can still be set and retrieved through the API.
+              accounts, reports, and graphs.
+
+              Note that if the "Use Account Numbers" preference is turned off in QuickBooks,
+              the account number may not be visible in the user interface, but it can still be
+              set and retrieved through the API.
 
           additional_notes: Additional notes about this employee.
 
@@ -136,8 +138,8 @@ class EmployeesResource(SyncAPIResource):
           custom_contact_fields: Additional custom contact fields for this employee, such as phone numbers or
               email addresses.
 
-          department: The department this employee belongs to. Found in the "employment job details"
-              section of the employee's record in QuickBooks.
+          department: The employee's department. Found in the "employment job details" section of the
+              employee's record in QuickBooks.
 
           description: A description of this employee. Found in the "employment job details" section of
               the employee's record in QuickBooks.
@@ -152,10 +154,10 @@ class EmployeesResource(SyncAPIResource):
 
           employee_payroll_info: The employee's payroll information.
 
-          employee_type: The type of employee for this employee. This affects payroll taxes - a statutory
-              employee is defined as an employee by statute. Note that owners/partners are
-              typically on the "Other Names" list in QuickBooks, but if listed as an employee
-              their type will be "owner".
+          employee_type: The employee type. This affects payroll taxes - a statutory employee is defined
+              as an employee by statute. Note that owners/partners are typically on the "Other
+              Names" list in QuickBooks, but if listed as an employee their type will be
+              `owner`.
 
           employment_status: Indicates whether this employee is a part-time or full-time employee.
 
@@ -193,7 +195,7 @@ class EmployeesResource(SyncAPIResource):
 
           mobile: The employee's mobile phone number.
 
-          note: Additional notes or comments about this employee.
+          note: Notes or comments about this employee.
 
           original_hire_date: The original hire date for this employee.
 
@@ -206,7 +208,7 @@ class EmployeesResource(SyncAPIResource):
 
           phone: The employee's primary telephone number.
 
-          print_as: The name to use when printing this employee in QuickBooks. By default, this is
+          print_as: The name to use when printing this employee from QuickBooks. By default, this is
               the same as the `name` field.
 
           salutation: The employee's formal salutation title that precedes their name, such as "Mr.",
@@ -214,8 +216,10 @@ class EmployeesResource(SyncAPIResource):
 
           ssn: The employee's Social Security Number.
 
-          supervisor_id: The employee who supervises this employee. Found in the "employment job details"
-              section of the employee's record in QuickBooks.
+              **NOTE**: This field cannot be changed after creation.
+
+          supervisor_id: The employee's supervisor. Found in the "employment job details" section of the
+              employee's record in QuickBooks.
 
           target_bonus: The target bonus for this employee, represented as a decimal string. Found in
               the "employment job details" section of the employee's record in QuickBooks.
@@ -409,9 +413,11 @@ class EmployeesResource(SyncAPIResource):
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
           account_number: The employee's account number, which appears in the QuickBooks chart of
-              accounts, reports, and graphs. Note that if the "Use Account Numbers" preference
-              is turned off in QuickBooks, the account number may not be visible in the user
-              interface, but it can still be set and retrieved through the API.
+              accounts, reports, and graphs.
+
+              Note that if the "Use Account Numbers" preference is turned off in QuickBooks,
+              the account number may not be visible in the user interface, but it can still be
+              set and retrieved through the API.
 
           additional_notes: Additional notes about this employee.
 
@@ -430,8 +436,8 @@ class EmployeesResource(SyncAPIResource):
           custom_contact_fields: Additional custom contact fields for this employee, such as phone numbers or
               email addresses.
 
-          department: The department this employee belongs to. Found in the "employment job details"
-              section of the employee's record in QuickBooks.
+          department: The employee's department. Found in the "employment job details" section of the
+              employee's record in QuickBooks.
 
           description: A description of this employee. Found in the "employment job details" section of
               the employee's record in QuickBooks.
@@ -446,10 +452,10 @@ class EmployeesResource(SyncAPIResource):
 
           employee_payroll_info: The employee's payroll information.
 
-          employee_type: The type of employee for this employee. This affects payroll taxes - a statutory
-              employee is defined as an employee by statute. Note that owners/partners are
-              typically on the "Other Names" list in QuickBooks, but if listed as an employee
-              their type will be "owner".
+          employee_type: The employee type. This affects payroll taxes - a statutory employee is defined
+              as an employee by statute. Note that owners/partners are typically on the "Other
+              Names" list in QuickBooks, but if listed as an employee their type will be
+              `owner`.
 
           employment_status: Indicates whether this employee is a part-time or full-time employee.
 
@@ -478,7 +484,7 @@ class EmployeesResource(SyncAPIResource):
 
           mobile: The employee's mobile phone number.
 
-          note: Additional notes or comments about this employee.
+          note: Notes or comments about this employee.
 
           original_hire_date: The original hire date for this employee.
 
@@ -491,14 +497,14 @@ class EmployeesResource(SyncAPIResource):
 
           phone: The employee's primary telephone number.
 
-          print_as: The name to use when printing this employee in QuickBooks. By default, this is
+          print_as: The name to use when printing this employee from QuickBooks. By default, this is
               the same as the `name` field.
 
           salutation: The employee's formal salutation title that precedes their name, such as "Mr.",
               "Ms.", or "Dr.".
 
-          supervisor_id: The employee who supervises this employee. Found in the "employment job details"
-              section of the employee's record in QuickBooks.
+          supervisor_id: The employee's supervisor. Found in the "employment job details" section of the
+              employee's record in QuickBooks.
 
           target_bonus: The target bonus for this employee, represented as a decimal string. Found in
               the "employment job details" section of the employee's record in QuickBooks.
@@ -787,9 +793,11 @@ class AsyncEmployeesResource(AsyncAPIResource):
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
           account_number: The employee's account number, which appears in the QuickBooks chart of
-              accounts, reports, and graphs. Note that if the "Use Account Numbers" preference
-              is turned off in QuickBooks, the account number may not be visible in the user
-              interface, but it can still be set and retrieved through the API.
+              accounts, reports, and graphs.
+
+              Note that if the "Use Account Numbers" preference is turned off in QuickBooks,
+              the account number may not be visible in the user interface, but it can still be
+              set and retrieved through the API.
 
           additional_notes: Additional notes about this employee.
 
@@ -808,8 +816,8 @@ class AsyncEmployeesResource(AsyncAPIResource):
           custom_contact_fields: Additional custom contact fields for this employee, such as phone numbers or
               email addresses.
 
-          department: The department this employee belongs to. Found in the "employment job details"
-              section of the employee's record in QuickBooks.
+          department: The employee's department. Found in the "employment job details" section of the
+              employee's record in QuickBooks.
 
           description: A description of this employee. Found in the "employment job details" section of
               the employee's record in QuickBooks.
@@ -824,10 +832,10 @@ class AsyncEmployeesResource(AsyncAPIResource):
 
           employee_payroll_info: The employee's payroll information.
 
-          employee_type: The type of employee for this employee. This affects payroll taxes - a statutory
-              employee is defined as an employee by statute. Note that owners/partners are
-              typically on the "Other Names" list in QuickBooks, but if listed as an employee
-              their type will be "owner".
+          employee_type: The employee type. This affects payroll taxes - a statutory employee is defined
+              as an employee by statute. Note that owners/partners are typically on the "Other
+              Names" list in QuickBooks, but if listed as an employee their type will be
+              `owner`.
 
           employment_status: Indicates whether this employee is a part-time or full-time employee.
 
@@ -865,7 +873,7 @@ class AsyncEmployeesResource(AsyncAPIResource):
 
           mobile: The employee's mobile phone number.
 
-          note: Additional notes or comments about this employee.
+          note: Notes or comments about this employee.
 
           original_hire_date: The original hire date for this employee.
 
@@ -878,7 +886,7 @@ class AsyncEmployeesResource(AsyncAPIResource):
 
           phone: The employee's primary telephone number.
 
-          print_as: The name to use when printing this employee in QuickBooks. By default, this is
+          print_as: The name to use when printing this employee from QuickBooks. By default, this is
               the same as the `name` field.
 
           salutation: The employee's formal salutation title that precedes their name, such as "Mr.",
@@ -886,8 +894,10 @@ class AsyncEmployeesResource(AsyncAPIResource):
 
           ssn: The employee's Social Security Number.
 
-          supervisor_id: The employee who supervises this employee. Found in the "employment job details"
-              section of the employee's record in QuickBooks.
+              **NOTE**: This field cannot be changed after creation.
+
+          supervisor_id: The employee's supervisor. Found in the "employment job details" section of the
+              employee's record in QuickBooks.
 
           target_bonus: The target bonus for this employee, represented as a decimal string. Found in
               the "employment job details" section of the employee's record in QuickBooks.
@@ -1081,9 +1091,11 @@ class AsyncEmployeesResource(AsyncAPIResource):
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
           account_number: The employee's account number, which appears in the QuickBooks chart of
-              accounts, reports, and graphs. Note that if the "Use Account Numbers" preference
-              is turned off in QuickBooks, the account number may not be visible in the user
-              interface, but it can still be set and retrieved through the API.
+              accounts, reports, and graphs.
+
+              Note that if the "Use Account Numbers" preference is turned off in QuickBooks,
+              the account number may not be visible in the user interface, but it can still be
+              set and retrieved through the API.
 
           additional_notes: Additional notes about this employee.
 
@@ -1102,8 +1114,8 @@ class AsyncEmployeesResource(AsyncAPIResource):
           custom_contact_fields: Additional custom contact fields for this employee, such as phone numbers or
               email addresses.
 
-          department: The department this employee belongs to. Found in the "employment job details"
-              section of the employee's record in QuickBooks.
+          department: The employee's department. Found in the "employment job details" section of the
+              employee's record in QuickBooks.
 
           description: A description of this employee. Found in the "employment job details" section of
               the employee's record in QuickBooks.
@@ -1118,10 +1130,10 @@ class AsyncEmployeesResource(AsyncAPIResource):
 
           employee_payroll_info: The employee's payroll information.
 
-          employee_type: The type of employee for this employee. This affects payroll taxes - a statutory
-              employee is defined as an employee by statute. Note that owners/partners are
-              typically on the "Other Names" list in QuickBooks, but if listed as an employee
-              their type will be "owner".
+          employee_type: The employee type. This affects payroll taxes - a statutory employee is defined
+              as an employee by statute. Note that owners/partners are typically on the "Other
+              Names" list in QuickBooks, but if listed as an employee their type will be
+              `owner`.
 
           employment_status: Indicates whether this employee is a part-time or full-time employee.
 
@@ -1150,7 +1162,7 @@ class AsyncEmployeesResource(AsyncAPIResource):
 
           mobile: The employee's mobile phone number.
 
-          note: Additional notes or comments about this employee.
+          note: Notes or comments about this employee.
 
           original_hire_date: The original hire date for this employee.
 
@@ -1163,14 +1175,14 @@ class AsyncEmployeesResource(AsyncAPIResource):
 
           phone: The employee's primary telephone number.
 
-          print_as: The name to use when printing this employee in QuickBooks. By default, this is
+          print_as: The name to use when printing this employee from QuickBooks. By default, this is
               the same as the `name` field.
 
           salutation: The employee's formal salutation title that precedes their name, such as "Mr.",
               "Ms.", or "Dr.".
 
-          supervisor_id: The employee who supervises this employee. Found in the "employment job details"
-              section of the employee's record in QuickBooks.
+          supervisor_id: The employee's supervisor. Found in the "employment job details" section of the
+              employee's record in QuickBooks.
 
           target_bonus: The target bonus for this employee, represented as a decimal string. Found in
               the "employment job details" section of the employee's record in QuickBooks.

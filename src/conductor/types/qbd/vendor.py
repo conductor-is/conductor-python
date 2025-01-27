@@ -32,10 +32,10 @@ __all__ = [
 
 class AdditionalContactCustomContactField(BaseModel):
     name: str
-    """The name of the custom contact field (e.g., "old address", "secondary phone")."""
+    """The name of the contact field (e.g., "old address", "secondary phone")."""
 
     value: str
-    """The value of the custom contact field."""
+    """The value of the contact field."""
 
 
 class AdditionalContact(BaseModel):
@@ -198,10 +198,10 @@ class Currency(BaseModel):
 
 class CustomContactField(BaseModel):
     name: str
-    """The name of the custom contact field (e.g., "old address", "secondary phone")."""
+    """The name of the contact field (e.g., "old address", "secondary phone")."""
 
     value: str
-    """The value of the custom contact field."""
+    """The value of the contact field."""
 
 
 class CustomField(BaseModel):
@@ -402,9 +402,11 @@ class Vendor(BaseModel):
     account_number: Optional[str] = FieldInfo(alias="accountNumber", default=None)
     """
     The vendor's account number, which appears in the QuickBooks chart of accounts,
-    reports, and graphs. Note that if the "Use Account Numbers" preference is turned
-    off in QuickBooks, the account number may not be visible in the user interface,
-    but it can still be set and retrieved through the API.
+    reports, and graphs.
+
+    Note that if the "Use Account Numbers" preference is turned off in QuickBooks,
+    the account number may not be visible in the user interface, but it can still be
+    set and retrieved through the API.
     """
 
     additional_contacts: List[AdditionalContact] = FieldInfo(alias="additionalContacts")
@@ -562,7 +564,7 @@ class Vendor(BaseModel):
     """The vendor's name as it should appear on checks issued to this vendor."""
 
     note: Optional[str] = None
-    """Additional notes or comments about this vendor."""
+    """Notes or comments about this vendor."""
 
     object_type: Literal["qbd_vendor"] = FieldInfo(alias="objectType")
     """The type of object. This value is always `"qbd_vendor"`."""

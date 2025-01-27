@@ -115,7 +115,11 @@ class Address(BaseModel):
             "WY",
         ]
     ] = None
-    """The U.S. state of the employee address."""
+    """The U.S.
+
+    state of the employee address. QuickBooks requires this field to be a U.S. state
+    abbreviation (e.g., "CA" for California). See enum for all possible values.
+    """
 
 
 class BillingRate(BaseModel):
@@ -136,10 +140,10 @@ class BillingRate(BaseModel):
 
 class CustomContactField(BaseModel):
     name: str
-    """The name of the custom contact field (e.g., "old address", "secondary phone")."""
+    """The name of the contact field (e.g., "old address", "secondary phone")."""
 
     value: str
-    """The value of the custom contact field."""
+    """The value of the contact field."""
 
 
 class CustomField(BaseModel):
@@ -181,7 +185,7 @@ class CustomField(BaseModel):
 
 class EmergencyContactPrimaryContact(BaseModel):
     name: str
-    """The name of the custom contact field (e.g., "old address", "secondary phone")."""
+    """The name of the contact field (e.g., "old address", "secondary phone")."""
 
     relation: Optional[
         Literal["brother", "daughter", "father", "friend", "mother", "other", "partner", "sister", "son", "spouse"]
@@ -189,12 +193,12 @@ class EmergencyContactPrimaryContact(BaseModel):
     """The relationship of the employee to the employee."""
 
     value: str
-    """The value of the custom contact field."""
+    """The value of the contact field."""
 
 
 class EmergencyContactSecondaryContact(BaseModel):
     name: str
-    """The name of the custom contact field (e.g., "old address", "secondary phone")."""
+    """The name of the contact field (e.g., "old address", "secondary phone")."""
 
     relation: Optional[
         Literal["brother", "daughter", "father", "friend", "mother", "other", "partner", "sister", "son", "spouse"]
@@ -202,7 +206,7 @@ class EmergencyContactSecondaryContact(BaseModel):
     """The relationship of the employee to the employee."""
 
     value: str
-    """The value of the custom contact field."""
+    """The value of the contact field."""
 
 
 class EmergencyContact(BaseModel):
@@ -400,9 +404,11 @@ class Employee(BaseModel):
     account_number: Optional[str] = FieldInfo(alias="accountNumber", default=None)
     """
     The employee's account number, which appears in the QuickBooks chart of
-    accounts, reports, and graphs. Note that if the "Use Account Numbers" preference
-    is turned off in QuickBooks, the account number may not be visible in the user
-    interface, but it can still be set and retrieved through the API.
+    accounts, reports, and graphs.
+
+    Note that if the "Use Account Numbers" preference is turned off in QuickBooks,
+    the account number may not be visible in the user interface, but it can still be
+    set and retrieved through the API.
     """
 
     additional_notes: List[AdditionalNote] = FieldInfo(alias="additionalNotes")
@@ -450,7 +456,7 @@ class Employee(BaseModel):
     """
 
     department: Optional[str] = None
-    """The department this employee belongs to.
+    """The employee's department.
 
     Found in the "employment job details" section of the employee's record in
     QuickBooks.
@@ -481,11 +487,11 @@ class Employee(BaseModel):
     employee_type: Optional[Literal["officer", "owner", "regular", "statutory"]] = FieldInfo(
         alias="employeeType", default=None
     )
-    """The type of employee for this employee.
+    """The employee type.
 
     This affects payroll taxes - a statutory employee is defined as an employee by
     statute. Note that owners/partners are typically on the "Other Names" list in
-    QuickBooks, but if listed as an employee their type will be "owner".
+    QuickBooks, but if listed as an employee their type will be `owner`.
     """
 
     employment_status: Optional[Literal["full_time", "part_time"]] = FieldInfo(alias="employmentStatus", default=None)
@@ -547,7 +553,7 @@ class Employee(BaseModel):
     """The case-insensitive unique name of this employee, unique across all employees.
 
     Maximum length: 41 characters. A concatenation of the employee's `firstName`,
-    `middleName`, and `lastName`.
+    `middleName`, and `lastName` fields.
 
     **NOTE**: Employees do not have a `fullName` field because they are not
     hierarchical objects, which is why `name` is unique for them but not for objects
@@ -555,7 +561,7 @@ class Employee(BaseModel):
     """
 
     note: Optional[str] = None
-    """Additional notes or comments about this employee."""
+    """Notes or comments about this employee."""
 
     object_type: Literal["qbd_employee"] = FieldInfo(alias="objectType")
     """The type of object. This value is always `"qbd_employee"`."""
@@ -581,7 +587,7 @@ class Employee(BaseModel):
     """The employee's primary telephone number."""
 
     print_as: Optional[str] = FieldInfo(alias="printAs", default=None)
-    """The name to use when printing this employee in QuickBooks.
+    """The name to use when printing this employee from QuickBooks.
 
     By default, this is the same as the `name` field.
     """
@@ -601,10 +607,13 @@ class Employee(BaseModel):
     """
 
     ssn: Optional[str] = None
-    """The employee's Social Security Number."""
+    """The employee's Social Security Number.
+
+    **NOTE**: This field cannot be changed after creation.
+    """
 
     supervisor: Optional[Supervisor] = None
-    """The employee who supervises this employee.
+    """The employee's supervisor.
 
     Found in the "employment job details" section of the employee's record in
     QuickBooks.
