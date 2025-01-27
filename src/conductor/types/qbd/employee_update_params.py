@@ -41,9 +41,11 @@ class EmployeeUpdateParams(TypedDict, total=False):
     account_number: Annotated[str, PropertyInfo(alias="accountNumber")]
     """
     The employee's account number, which appears in the QuickBooks chart of
-    accounts, reports, and graphs. Note that if the "Use Account Numbers" preference
-    is turned off in QuickBooks, the account number may not be visible in the user
-    interface, but it can still be set and retrieved through the API.
+    accounts, reports, and graphs.
+
+    Note that if the "Use Account Numbers" preference is turned off in QuickBooks,
+    the account number may not be visible in the user interface, but it can still be
+    set and retrieved through the API.
     """
 
     additional_notes: Annotated[Iterable[AdditionalNote], PropertyInfo(alias="additionalNotes")]
@@ -78,7 +80,7 @@ class EmployeeUpdateParams(TypedDict, total=False):
     """
 
     department: str
-    """The department this employee belongs to.
+    """The employee's department.
 
     Found in the "employment job details" section of the employee's record in
     QuickBooks.
@@ -107,11 +109,11 @@ class EmployeeUpdateParams(TypedDict, total=False):
     """The employee's payroll information."""
 
     employee_type: Annotated[Literal["officer", "owner", "regular", "statutory"], PropertyInfo(alias="employeeType")]
-    """The type of employee for this employee.
+    """The employee type.
 
     This affects payroll taxes - a statutory employee is defined as an employee by
     statute. Note that owners/partners are typically on the "Other Names" list in
-    QuickBooks, but if listed as an employee their type will be "owner".
+    QuickBooks, but if listed as an employee their type will be `owner`.
     """
 
     employment_status: Annotated[Literal["full_time", "part_time"], PropertyInfo(alias="employmentStatus")]
@@ -157,7 +159,7 @@ class EmployeeUpdateParams(TypedDict, total=False):
     """The employee's mobile phone number."""
 
     note: str
-    """Additional notes or comments about this employee."""
+    """Notes or comments about this employee."""
 
     original_hire_date: Annotated[Union[str, date], PropertyInfo(alias="originalHireDate", format="iso8601")]
     """The original hire date for this employee."""
@@ -178,7 +180,7 @@ class EmployeeUpdateParams(TypedDict, total=False):
     """The employee's primary telephone number."""
 
     print_as: Annotated[str, PropertyInfo(alias="printAs")]
-    """The name to use when printing this employee in QuickBooks.
+    """The name to use when printing this employee from QuickBooks.
 
     By default, this is the same as the `name` field.
     """
@@ -190,7 +192,7 @@ class EmployeeUpdateParams(TypedDict, total=False):
     """
 
     supervisor_id: Annotated[str, PropertyInfo(alias="supervisorId")]
-    """The employee who supervises this employee.
+    """The employee's supervisor.
 
     Found in the "employment job details" section of the employee's record in
     QuickBooks.
@@ -303,23 +305,27 @@ class Address(TypedDict, total=False):
         "WV",
         "WY",
     ]
-    """The U.S. state of the employee address."""
+    """The U.S.
+
+    state of the employee address. QuickBooks requires this field to be a U.S. state
+    abbreviation (e.g., "CA" for California). See enum for all possible values.
+    """
 
 
 class CustomContactField(TypedDict, total=False):
     name: Required[str]
-    """The name of the custom contact field (e.g., "old address", "secondary phone")."""
+    """The name of the contact field (e.g., "old address", "secondary phone")."""
 
     value: Required[str]
-    """The value of the custom contact field."""
+    """The value of the contact field."""
 
 
 class EmergencyContactPrimaryContact(TypedDict, total=False):
     name: Required[str]
-    """The name of the custom contact field (e.g., "old address", "secondary phone")."""
+    """The name of the contact field (e.g., "old address", "secondary phone")."""
 
     value: Required[str]
-    """The value of the custom contact field."""
+    """The value of the contact field."""
 
     relation: Literal[
         "brother", "daughter", "father", "friend", "mother", "other", "partner", "sister", "son", "spouse"
@@ -329,10 +335,10 @@ class EmergencyContactPrimaryContact(TypedDict, total=False):
 
 class EmergencyContactSecondaryContact(TypedDict, total=False):
     name: Required[str]
-    """The name of the custom contact field (e.g., "old address", "secondary phone")."""
+    """The name of the contact field (e.g., "old address", "secondary phone")."""
 
     value: Required[str]
-    """The value of the custom contact field."""
+    """The value of the contact field."""
 
     relation: Literal[
         "brother", "daughter", "father", "friend", "mother", "other", "partner", "sister", "son", "spouse"

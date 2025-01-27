@@ -110,9 +110,11 @@ class AccountsResource(SyncAPIResource):
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
           account_number: The account's account number, which appears in the QuickBooks chart of accounts,
-              reports, and graphs. Note that if the "Use Account Numbers" preference is turned
-              off in QuickBooks, the account number may not be visible in the user interface,
-              but it can still be set and retrieved through the API.
+              reports, and graphs.
+
+              Note that if the "Use Account Numbers" preference is turned off in QuickBooks,
+              the account number may not be visible in the user interface, but it can still be
+              set and retrieved through the API.
 
           bank_account_number: The bank account number or identifying note for this account. Access to this
               field may be restricted based on permissions.
@@ -280,9 +282,11 @@ class AccountsResource(SyncAPIResource):
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
           account_number: The account's account number, which appears in the QuickBooks chart of accounts,
-              reports, and graphs. Note that if the "Use Account Numbers" preference is turned
-              off in QuickBooks, the account number may not be visible in the user interface,
-              but it can still be set and retrieved through the API.
+              reports, and graphs.
+
+              Note that if the "Use Account Numbers" preference is turned off in QuickBooks,
+              the account number may not be visible in the user interface, but it can still be
+              set and retrieved through the API.
 
           account_type: The classification of this account, indicating its purpose within the chart of
               accounts.
@@ -597,9 +601,11 @@ class AsyncAccountsResource(AsyncAPIResource):
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
           account_number: The account's account number, which appears in the QuickBooks chart of accounts,
-              reports, and graphs. Note that if the "Use Account Numbers" preference is turned
-              off in QuickBooks, the account number may not be visible in the user interface,
-              but it can still be set and retrieved through the API.
+              reports, and graphs.
+
+              Note that if the "Use Account Numbers" preference is turned off in QuickBooks,
+              the account number may not be visible in the user interface, but it can still be
+              set and retrieved through the API.
 
           bank_account_number: The bank account number or identifying note for this account. Access to this
               field may be restricted based on permissions.
@@ -767,9 +773,11 @@ class AsyncAccountsResource(AsyncAPIResource):
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
           account_number: The account's account number, which appears in the QuickBooks chart of accounts,
-              reports, and graphs. Note that if the "Use Account Numbers" preference is turned
-              off in QuickBooks, the account number may not be visible in the user interface,
-              but it can still be set and retrieved through the API.
+              reports, and graphs.
+
+              Note that if the "Use Account Numbers" preference is turned off in QuickBooks,
+              the account number may not be visible in the user interface, but it can still be
+              set and retrieved through the API.
 
           account_type: The classification of this account, indicating its purpose within the chart of
               accounts.

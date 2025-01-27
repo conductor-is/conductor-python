@@ -124,9 +124,11 @@ class CustomersResource(SyncAPIResource):
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
           account_number: The customer's account number, which appears in the QuickBooks chart of
-              accounts, reports, and graphs. Note that if the "Use Account Numbers" preference
-              is turned off in QuickBooks, the account number may not be visible in the user
-              interface, but it can still be set and retrieved through the API.
+              accounts, reports, and graphs.
+
+              Note that if the "Use Account Numbers" preference is turned off in QuickBooks,
+              the account number may not be visible in the user interface, but it can still be
+              set and retrieved through the API.
 
           additional_contacts: Additional alternate contacts for this customer.
 
@@ -208,7 +210,7 @@ class CustomersResource(SyncAPIResource):
 
           middle_name: The middle name of the contact person for this customer.
 
-          note: Additional notes or comments about this customer.
+          note: Notes or comments about this customer.
 
           opening_balance: The opening balance of this customer's account, indicating the amount owed by
               this customer, represented as a decimal string.
@@ -451,9 +453,11 @@ class CustomersResource(SyncAPIResource):
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
           account_number: The customer's account number, which appears in the QuickBooks chart of
-              accounts, reports, and graphs. Note that if the "Use Account Numbers" preference
-              is turned off in QuickBooks, the account number may not be visible in the user
-              interface, but it can still be set and retrieved through the API.
+              accounts, reports, and graphs.
+
+              Note that if the "Use Account Numbers" preference is turned off in QuickBooks,
+              the account number may not be visible in the user interface, but it can still be
+              set and retrieved through the API.
 
           additional_contacts: Additional alternate contacts for this customer.
 
@@ -535,7 +539,7 @@ class CustomersResource(SyncAPIResource):
               Corporation:Website Redesign Project" and "Baker:Website Redesign Project".
               Maximum length: 41 characters.
 
-          note: Additional notes or comments about this customer.
+          note: Notes or comments about this customer.
 
           parent_id: The parent customer one level above this one in the hierarchy. For example, if
               this customer has a `fullName` of "ABC Corporation:Website Redesign Project",
@@ -915,9 +919,11 @@ class AsyncCustomersResource(AsyncAPIResource):
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
           account_number: The customer's account number, which appears in the QuickBooks chart of
-              accounts, reports, and graphs. Note that if the "Use Account Numbers" preference
-              is turned off in QuickBooks, the account number may not be visible in the user
-              interface, but it can still be set and retrieved through the API.
+              accounts, reports, and graphs.
+
+              Note that if the "Use Account Numbers" preference is turned off in QuickBooks,
+              the account number may not be visible in the user interface, but it can still be
+              set and retrieved through the API.
 
           additional_contacts: Additional alternate contacts for this customer.
 
@@ -999,7 +1005,7 @@ class AsyncCustomersResource(AsyncAPIResource):
 
           middle_name: The middle name of the contact person for this customer.
 
-          note: Additional notes or comments about this customer.
+          note: Notes or comments about this customer.
 
           opening_balance: The opening balance of this customer's account, indicating the amount owed by
               this customer, represented as a decimal string.
@@ -1242,9 +1248,11 @@ class AsyncCustomersResource(AsyncAPIResource):
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
           account_number: The customer's account number, which appears in the QuickBooks chart of
-              accounts, reports, and graphs. Note that if the "Use Account Numbers" preference
-              is turned off in QuickBooks, the account number may not be visible in the user
-              interface, but it can still be set and retrieved through the API.
+              accounts, reports, and graphs.
+
+              Note that if the "Use Account Numbers" preference is turned off in QuickBooks,
+              the account number may not be visible in the user interface, but it can still be
+              set and retrieved through the API.
 
           additional_contacts: Additional alternate contacts for this customer.
 
@@ -1326,7 +1334,7 @@ class AsyncCustomersResource(AsyncAPIResource):
               Corporation:Website Redesign Project" and "Baker:Website Redesign Project".
               Maximum length: 41 characters.
 
-          note: Additional notes or comments about this customer.
+          note: Notes or comments about this customer.
 
           parent_id: The parent customer one level above this one in the hierarchy. For example, if
               this customer has a `fullName` of "ABC Corporation:Website Redesign Project",

@@ -35,10 +35,10 @@ __all__ = [
 
 class AdditionalContactCustomContactField(BaseModel):
     name: str
-    """The name of the custom contact field (e.g., "old address", "secondary phone")."""
+    """The name of the contact field (e.g., "old address", "secondary phone")."""
 
     value: str
-    """The value of the custom contact field."""
+    """The value of the contact field."""
 
 
 class AdditionalContact(BaseModel):
@@ -256,10 +256,10 @@ class Currency(BaseModel):
 
 class CustomContactField(BaseModel):
     name: str
-    """The name of the custom contact field (e.g., "old address", "secondary phone")."""
+    """The name of the contact field (e.g., "old address", "secondary phone")."""
 
     value: str
-    """The value of the custom contact field."""
+    """The value of the contact field."""
 
 
 class CustomerType(BaseModel):
@@ -492,9 +492,11 @@ class Customer(BaseModel):
     account_number: Optional[str] = FieldInfo(alias="accountNumber", default=None)
     """
     The customer's account number, which appears in the QuickBooks chart of
-    accounts, reports, and graphs. Note that if the "Use Account Numbers" preference
-    is turned off in QuickBooks, the account number may not be visible in the user
-    interface, but it can still be set and retrieved through the API.
+    accounts, reports, and graphs.
+
+    Note that if the "Use Account Numbers" preference is turned off in QuickBooks,
+    the account number may not be visible in the user interface, but it can still be
+    set and retrieved through the API.
     """
 
     additional_contacts: List[AdditionalContact] = FieldInfo(alias="additionalContacts")
@@ -685,7 +687,7 @@ class Customer(BaseModel):
     """
 
     note: Optional[str] = None
-    """Additional notes or comments about this customer."""
+    """Notes or comments about this customer."""
 
     object_type: Literal["qbd_customer"] = FieldInfo(alias="objectType")
     """The type of object. This value is always `"qbd_customer"`."""
