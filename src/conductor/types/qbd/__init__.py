@@ -9,6 +9,7 @@ from .vendor import Vendor as Vendor
 from .account import Account as Account
 from .invoice import Invoice as Invoice
 from .customer import Customer as Customer
+from .employee import Employee as Employee
 from .estimate import Estimate as Estimate
 from .transfer import Transfer as Transfer
 from .credit_memo import CreditMemo as CreditMemo
@@ -45,6 +46,7 @@ from .class_update_params import ClassUpdateParams as ClassUpdateParams
 from .invoice_list_params import InvoiceListParams as InvoiceListParams
 from .bill_delete_response import BillDeleteResponse as BillDeleteResponse
 from .customer_list_params import CustomerListParams as CustomerListParams
+from .employee_list_params import EmployeeListParams as EmployeeListParams
 from .estimate_list_params import EstimateListParams as EstimateListParams
 from .transfer_list_params import TransferListParams as TransferListParams
 from .vendor_create_params import VendorCreateParams as VendorCreateParams
@@ -57,6 +59,8 @@ from .invoice_create_params import InvoiceCreateParams as InvoiceCreateParams
 from .invoice_update_params import InvoiceUpdateParams as InvoiceUpdateParams
 from .customer_create_params import CustomerCreateParams as CustomerCreateParams
 from .customer_update_params import CustomerUpdateParams as CustomerUpdateParams
+from .employee_create_params import EmployeeCreateParams as EmployeeCreateParams
+from .employee_update_params import EmployeeUpdateParams as EmployeeUpdateParams
 from .estimate_create_params import EstimateCreateParams as EstimateCreateParams
 from .estimate_update_params import EstimateUpdateParams as EstimateUpdateParams
 from .transfer_create_params import TransferCreateParams as TransferCreateParams

@@ -40,7 +40,7 @@ class EstimateUpdateParams(TypedDict, total=False):
 
     create_change_order: Annotated[bool, PropertyInfo(alias="createChangeOrder")]
     """
-    When `true`, creates a “change order” that appears in this estimate's
+    When `true`, creates a "change order" that appears in this estimate's
     description field in QuickBooks's estimate form, specifying exactly what changed
     in this update request, the dollar amount of each change, and the net dollar
     change to this estimate.

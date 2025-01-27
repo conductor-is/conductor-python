@@ -206,6 +206,21 @@ Methods:
 - <code title="get /quickbooks-desktop/date-driven-terms/{id}">client.qbd.date_driven_terms.<a href="./src/conductor/resources/qbd/date_driven_terms.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/date_driven_term.py">DateDrivenTerm</a></code>
 - <code title="get /quickbooks-desktop/date-driven-terms">client.qbd.date_driven_terms.<a href="./src/conductor/resources/qbd/date_driven_terms.py">list</a>(\*\*<a href="src/conductor/types/qbd/date_driven_term_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/date_driven_term_list_response.py">DateDrivenTermListResponse</a></code>
 
+## Employees
+
+Types:
+
+```python
+from conductor.types.qbd import Employee
+```
+
+Methods:
+
+- <code title="post /quickbooks-desktop/employees">client.qbd.employees.<a href="./src/conductor/resources/qbd/employees.py">create</a>(\*\*<a href="src/conductor/types/qbd/employee_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/employee.py">Employee</a></code>
+- <code title="get /quickbooks-desktop/employees/{id}">client.qbd.employees.<a href="./src/conductor/resources/qbd/employees.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/employee.py">Employee</a></code>
+- <code title="post /quickbooks-desktop/employees/{id}">client.qbd.employees.<a href="./src/conductor/resources/qbd/employees.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/employee_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/employee.py">Employee</a></code>
+- <code title="get /quickbooks-desktop/employees">client.qbd.employees.<a href="./src/conductor/resources/qbd/employees.py">list</a>(\*\*<a href="src/conductor/types/qbd/employee_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/employee.py">SyncCursorPage[Employee]</a></code>
+
 ## Estimates
 
 Types:
