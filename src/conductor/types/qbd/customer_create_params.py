@@ -41,9 +41,11 @@ class CustomerCreateParams(TypedDict, total=False):
     account_number: Annotated[str, PropertyInfo(alias="accountNumber")]
     """
     The customer's account number, which appears in the QuickBooks chart of
-    accounts, reports, and graphs. Note that if the "Use Account Numbers" preference
-    is turned off in QuickBooks, the account number may not be visible in the user
-    interface, but it can still be set and retrieved through the API.
+    accounts, reports, and graphs.
+
+    Note that if the "Use Account Numbers" preference is turned off in QuickBooks,
+    the account number may not be visible in the user interface, but it can still be
+    set and retrieved through the API.
     """
 
     additional_contacts: Annotated[Iterable[AdditionalContact], PropertyInfo(alias="additionalContacts")]
@@ -194,7 +196,7 @@ class CustomerCreateParams(TypedDict, total=False):
     """The middle name of the contact person for this customer."""
 
     note: str
-    """Additional notes or comments about this customer."""
+    """Notes or comments about this customer."""
 
     opening_balance: Annotated[str, PropertyInfo(alias="openingBalance")]
     """
@@ -296,10 +298,10 @@ class CustomerCreateParams(TypedDict, total=False):
 
 class AdditionalContactCustomContactField(TypedDict, total=False):
     name: Required[str]
-    """The name of the custom contact field (e.g., "old address", "secondary phone")."""
+    """The name of the contact field (e.g., "old address", "secondary phone")."""
 
     value: Required[str]
-    """The value of the custom contact field."""
+    """The value of the contact field."""
 
 
 class AdditionalContact(TypedDict, total=False):
@@ -446,10 +448,10 @@ class CreditCard(TypedDict, total=False):
 
 class CustomContactField(TypedDict, total=False):
     name: Required[str]
-    """The name of the custom contact field (e.g., "old address", "secondary phone")."""
+    """The name of the contact field (e.g., "old address", "secondary phone")."""
 
     value: Required[str]
-    """The value of the custom contact field."""
+    """The value of the contact field."""
 
 
 class ShippingAddress(TypedDict, total=False):
