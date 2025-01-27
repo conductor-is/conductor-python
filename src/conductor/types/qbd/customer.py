@@ -144,11 +144,11 @@ class AlternateShippingAddress(BaseModel):
     name: str
     """
     The case-insensitive unique name of this shipping address, unique across all
-    shipping addresses.
+    shipping addresses. Maximum length: 41 characters.
 
     **NOTE**: Shipping addresses do not have a `fullName` field because they are not
     hierarchical objects, which is why `name` is unique for them but not for objects
-    that have parents. Maximum length: 41 characters.
+    that have parents.
     """
 
     note: Optional[str] = None

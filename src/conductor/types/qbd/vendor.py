@@ -551,9 +551,11 @@ class Vendor(BaseModel):
     name: str
     """The case-insensitive unique name of this vendor, unique across all vendors.
 
+    Maximum length: 41 characters.
+
     **NOTE**: Vendors do not have a `fullName` field because they are not
     hierarchical objects, which is why `name` is unique for them but not for objects
-    that have parents. Maximum length: 41 characters.
+    that have parents.
     """
 
     name_on_check: Optional[str] = FieldInfo(alias="nameOnCheck", default=None)

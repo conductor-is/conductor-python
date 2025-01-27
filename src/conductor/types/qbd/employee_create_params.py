@@ -126,7 +126,7 @@ class EmployeeCreateParams(TypedDict, total=False):
     """The employee's fax number."""
 
     first_name: Annotated[str, PropertyInfo(alias="firstName")]
-    """The first name of the contact person for this employee."""
+    """The employee's first name."""
 
     gender: Literal["male", "female"]
     """This employee's gender."""
@@ -144,16 +144,16 @@ class EmployeeCreateParams(TypedDict, total=False):
     """
 
     job_title: Annotated[str, PropertyInfo(alias="jobTitle")]
-    """The job title of the contact person for this employee."""
+    """The employee's job title."""
 
     key_employee_status: Annotated[Literal["key_employee", "non_key_employee"], PropertyInfo(alias="keyEmployeeStatus")]
     """Indicates whether this employee is a key employee."""
 
     last_name: Annotated[str, PropertyInfo(alias="lastName")]
-    """The last name of the contact person for this employee."""
+    """The employee's last name."""
 
     middle_name: Annotated[str, PropertyInfo(alias="middleName")]
-    """The middle name of the contact person for this employee."""
+    """The employee's middle name."""
 
     military_status: Annotated[Literal["active", "reserve"], PropertyInfo(alias="militaryStatus")]
     """This employee's military status if they are a U.S. veteran."""
@@ -190,8 +190,8 @@ class EmployeeCreateParams(TypedDict, total=False):
 
     salutation: str
     """
-    The formal salutation title that precedes the name of the contact person for
-    this employee, such as "Mr.", "Ms.", or "Dr.".
+    The employee's formal salutation title that precedes their name, such as "Mr.",
+    "Ms.", or "Dr.".
     """
 
     ssn: str
