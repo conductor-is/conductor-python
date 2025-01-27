@@ -73,11 +73,11 @@ class SalesTaxItemsResource(SyncAPIResource):
 
         Args:
           name: The case-insensitive unique name of this sales-tax item, unique across all
-              sales-tax items.
+              sales-tax items. Maximum length: 31 characters.
 
               **NOTE**: Sales-tax items do not have a `fullName` field because they are not
               hierarchical objects, which is why `name` is unique for them but not for objects
-              that have parents. Maximum length: 31 characters.
+              that have parents.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -233,11 +233,11 @@ class SalesTaxItemsResource(SyncAPIResource):
               hidden from views and reports in QuickBooks.
 
           name: The case-insensitive unique name of this sales-tax item, unique across all
-              sales-tax items.
+              sales-tax items. Maximum length: 31 characters.
 
               **NOTE**: Sales-tax items do not have a `fullName` field because they are not
               hierarchical objects, which is why `name` is unique for them but not for objects
-              that have parents. Maximum length: 31 characters.
+              that have parents.
 
           sales_tax_return_line_id: The specific line on the sales tax return form where the tax collected using
               this sales-tax item should be reported.
@@ -457,11 +457,11 @@ class AsyncSalesTaxItemsResource(AsyncAPIResource):
 
         Args:
           name: The case-insensitive unique name of this sales-tax item, unique across all
-              sales-tax items.
+              sales-tax items. Maximum length: 31 characters.
 
               **NOTE**: Sales-tax items do not have a `fullName` field because they are not
               hierarchical objects, which is why `name` is unique for them but not for objects
-              that have parents. Maximum length: 31 characters.
+              that have parents.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -617,11 +617,11 @@ class AsyncSalesTaxItemsResource(AsyncAPIResource):
               hidden from views and reports in QuickBooks.
 
           name: The case-insensitive unique name of this sales-tax item, unique across all
-              sales-tax items.
+              sales-tax items. Maximum length: 31 characters.
 
               **NOTE**: Sales-tax items do not have a `fullName` field because they are not
               hierarchical objects, which is why `name` is unique for them but not for objects
-              that have parents. Maximum length: 31 characters.
+              that have parents.
 
           sales_tax_return_line_id: The specific line on the sales tax return form where the tax collected using
               this sales-tax item should be reported.
