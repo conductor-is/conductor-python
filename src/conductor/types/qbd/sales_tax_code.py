@@ -60,12 +60,12 @@ class SalesTaxCode(BaseModel):
     name: str
     """
     The case-insensitive unique name of this sales-tax code, unique across all
-    sales-tax codes.
+    sales-tax codes. Maximum length: 3 characters. This short name will appear on
+    sales forms to identify the tax status of an item.
 
     **NOTE**: Sales-tax codes do not have a `fullName` field because they are not
     hierarchical objects, which is why `name` is unique for them but not for objects
-    that have parents. Maximum length: 3 characters. This short name will appear on
-    sales forms to identify the tax status of an item.
+    that have parents.
     """
 
     object_type: Literal["qbd_sales_tax_code"] = FieldInfo(alias="objectType")
