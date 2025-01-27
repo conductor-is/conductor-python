@@ -121,9 +121,11 @@ class VendorsResource(SyncAPIResource):
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
           account_number: The vendor's account number, which appears in the QuickBooks chart of accounts,
-              reports, and graphs. Note that if the "Use Account Numbers" preference is turned
-              off in QuickBooks, the account number may not be visible in the user interface,
-              but it can still be set and retrieved through the API.
+              reports, and graphs.
+
+              Note that if the "Use Account Numbers" preference is turned off in QuickBooks,
+              the account number may not be visible in the user interface, but it can still be
+              set and retrieved through the API.
 
           additional_contacts: Additional alternate contacts for this vendor.
 
@@ -200,7 +202,7 @@ class VendorsResource(SyncAPIResource):
 
           name_on_check: The vendor's name as it should appear on checks issued to this vendor.
 
-          note: Additional notes or comments about this vendor.
+          note: Notes or comments about this vendor.
 
           opening_balance: The opening balance of this vendor's account, indicating the amount owed to this
               vendor, represented as a decimal string.
@@ -425,9 +427,11 @@ class VendorsResource(SyncAPIResource):
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
           account_number: The vendor's account number, which appears in the QuickBooks chart of accounts,
-              reports, and graphs. Note that if the "Use Account Numbers" preference is turned
-              off in QuickBooks, the account number may not be visible in the user interface,
-              but it can still be set and retrieved through the API.
+              reports, and graphs.
+
+              Note that if the "Use Account Numbers" preference is turned off in QuickBooks,
+              the account number may not be visible in the user interface, but it can still be
+              set and retrieved through the API.
 
           additional_contacts: Additional alternate contacts for this vendor.
 
@@ -504,7 +508,7 @@ class VendorsResource(SyncAPIResource):
 
           name_on_check: The vendor's name as it should appear on checks issued to this vendor.
 
-          note: Additional notes or comments about this vendor.
+          note: Notes or comments about this vendor.
 
           phone: The vendor's primary telephone number.
 
@@ -863,9 +867,11 @@ class AsyncVendorsResource(AsyncAPIResource):
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
           account_number: The vendor's account number, which appears in the QuickBooks chart of accounts,
-              reports, and graphs. Note that if the "Use Account Numbers" preference is turned
-              off in QuickBooks, the account number may not be visible in the user interface,
-              but it can still be set and retrieved through the API.
+              reports, and graphs.
+
+              Note that if the "Use Account Numbers" preference is turned off in QuickBooks,
+              the account number may not be visible in the user interface, but it can still be
+              set and retrieved through the API.
 
           additional_contacts: Additional alternate contacts for this vendor.
 
@@ -942,7 +948,7 @@ class AsyncVendorsResource(AsyncAPIResource):
 
           name_on_check: The vendor's name as it should appear on checks issued to this vendor.
 
-          note: Additional notes or comments about this vendor.
+          note: Notes or comments about this vendor.
 
           opening_balance: The opening balance of this vendor's account, indicating the amount owed to this
               vendor, represented as a decimal string.
@@ -1167,9 +1173,11 @@ class AsyncVendorsResource(AsyncAPIResource):
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
           account_number: The vendor's account number, which appears in the QuickBooks chart of accounts,
-              reports, and graphs. Note that if the "Use Account Numbers" preference is turned
-              off in QuickBooks, the account number may not be visible in the user interface,
-              but it can still be set and retrieved through the API.
+              reports, and graphs.
+
+              Note that if the "Use Account Numbers" preference is turned off in QuickBooks,
+              the account number may not be visible in the user interface, but it can still be
+              set and retrieved through the API.
 
           additional_contacts: Additional alternate contacts for this vendor.
 
@@ -1246,7 +1254,7 @@ class AsyncVendorsResource(AsyncAPIResource):
 
           name_on_check: The vendor's name as it should appear on checks issued to this vendor.
 
-          note: Additional notes or comments about this vendor.
+          note: Notes or comments about this vendor.
 
           phone: The vendor's primary telephone number.
 

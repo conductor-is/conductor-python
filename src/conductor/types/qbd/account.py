@@ -117,9 +117,11 @@ class Account(BaseModel):
     account_number: Optional[str] = FieldInfo(alias="accountNumber", default=None)
     """
     The account's account number, which appears in the QuickBooks chart of accounts,
-    reports, and graphs. Note that if the "Use Account Numbers" preference is turned
-    off in QuickBooks, the account number may not be visible in the user interface,
-    but it can still be set and retrieved through the API.
+    reports, and graphs.
+
+    Note that if the "Use Account Numbers" preference is turned off in QuickBooks,
+    the account number may not be visible in the user interface, but it can still be
+    set and retrieved through the API.
     """
 
     account_type: Literal[
