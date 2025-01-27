@@ -173,7 +173,7 @@ class VendorUpdateParams(TypedDict, total=False):
     """The vendor's name as it should appear on checks issued to this vendor."""
 
     note: str
-    """Notes or comments about this vendor."""
+    """A note or comment about this vendor."""
 
     phone: str
     """The vendor's primary telephone number."""

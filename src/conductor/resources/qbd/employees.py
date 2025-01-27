@@ -195,7 +195,7 @@ class EmployeesResource(SyncAPIResource):
 
           mobile: The employee's mobile phone number.
 
-          note: Notes or comments about this employee.
+          note: A note or comment about this employee.
 
           original_hire_date: The original hire date for this employee.
 
@@ -484,7 +484,7 @@ class EmployeesResource(SyncAPIResource):
 
           mobile: The employee's mobile phone number.
 
-          note: Notes or comments about this employee.
+          note: A note or comment about this employee.
 
           original_hire_date: The original hire date for this employee.
 
@@ -873,7 +873,7 @@ class AsyncEmployeesResource(AsyncAPIResource):
 
           mobile: The employee's mobile phone number.
 
-          note: Notes or comments about this employee.
+          note: A note or comment about this employee.
 
           original_hire_date: The original hire date for this employee.
 
@@ -1162,7 +1162,7 @@ class AsyncEmployeesResource(AsyncAPIResource):
 
           mobile: The employee's mobile phone number.
 
-          note: Notes or comments about this employee.
+          note: A note or comment about this employee.
 
           original_hire_date: The original hire date for this employee.
 

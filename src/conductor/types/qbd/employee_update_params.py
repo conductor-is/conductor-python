@@ -159,7 +159,7 @@ class EmployeeUpdateParams(TypedDict, total=False):
     """The employee's mobile phone number."""
 
     note: str
-    """Notes or comments about this employee."""
+    """A note or comment about this employee."""
 
     original_hire_date: Annotated[Union[str, date], PropertyInfo(alias="originalHireDate", format="iso8601")]
     """The original hire date for this employee."""

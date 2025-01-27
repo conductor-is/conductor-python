@@ -176,7 +176,7 @@ class VendorCreateParams(TypedDict, total=False):
     """The vendor's name as it should appear on checks issued to this vendor."""
 
     note: str
-    """Notes or comments about this vendor."""
+    """A note or comment about this vendor."""
 
     opening_balance: Annotated[str, PropertyInfo(alias="openingBalance")]
     """

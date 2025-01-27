@@ -210,7 +210,7 @@ class CustomersResource(SyncAPIResource):
 
           middle_name: The middle name of the contact person for this customer.
 
-          note: Notes or comments about this customer.
+          note: A note or comment about this customer.
 
           opening_balance: The opening balance of this customer's account, indicating the amount owed by
               this customer, represented as a decimal string.
@@ -539,7 +539,7 @@ class CustomersResource(SyncAPIResource):
               Corporation:Website Redesign Project" and "Baker:Website Redesign Project".
               Maximum length: 41 characters.
 
-          note: Notes or comments about this customer.
+          note: A note or comment about this customer.
 
           parent_id: The parent customer one level above this one in the hierarchy. For example, if
               this customer has a `fullName` of "ABC Corporation:Website Redesign Project",
@@ -1005,7 +1005,7 @@ class AsyncCustomersResource(AsyncAPIResource):
 
           middle_name: The middle name of the contact person for this customer.
 
-          note: Notes or comments about this customer.
+          note: A note or comment about this customer.
 
           opening_balance: The opening balance of this customer's account, indicating the amount owed by
               this customer, represented as a decimal string.
@@ -1334,7 +1334,7 @@ class AsyncCustomersResource(AsyncAPIResource):
               Corporation:Website Redesign Project" and "Baker:Website Redesign Project".
               Maximum length: 41 characters.
 
-          note: Notes or comments about this customer.
+          note: A note or comment about this customer.
 
           parent_id: The parent customer one level above this one in the hierarchy. For example, if
               this customer has a `fullName` of "ABC Corporation:Website Redesign Project",

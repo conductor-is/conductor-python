@@ -202,7 +202,7 @@ class VendorsResource(SyncAPIResource):
 
           name_on_check: The vendor's name as it should appear on checks issued to this vendor.
 
-          note: Notes or comments about this vendor.
+          note: A note or comment about this vendor.
 
           opening_balance: The opening balance of this vendor's account, indicating the amount owed to this
               vendor, represented as a decimal string.
@@ -508,7 +508,7 @@ class VendorsResource(SyncAPIResource):
 
           name_on_check: The vendor's name as it should appear on checks issued to this vendor.
 
-          note: Notes or comments about this vendor.
+          note: A note or comment about this vendor.
 
           phone: The vendor's primary telephone number.
 
@@ -948,7 +948,7 @@ class AsyncVendorsResource(AsyncAPIResource):
 
           name_on_check: The vendor's name as it should appear on checks issued to this vendor.
 
-          note: Notes or comments about this vendor.
+          note: A note or comment about this vendor.
 
           opening_balance: The opening balance of this vendor's account, indicating the amount owed to this
               vendor, represented as a decimal string.
@@ -1254,7 +1254,7 @@ class AsyncVendorsResource(AsyncAPIResource):
 
           name_on_check: The vendor's name as it should appear on checks issued to this vendor.
 
-          note: Notes or comments about this vendor.
+          note: A note or comment about this vendor.
 
           phone: The vendor's primary telephone number.
 
