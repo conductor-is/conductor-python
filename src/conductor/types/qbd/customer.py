@@ -687,7 +687,7 @@ class Customer(BaseModel):
     """
 
     note: Optional[str] = None
-    """Notes or comments about this customer."""
+    """A note or comment about this customer."""
 
     object_type: Literal["qbd_customer"] = FieldInfo(alias="objectType")
     """The type of object. This value is always `"qbd_customer"`."""
