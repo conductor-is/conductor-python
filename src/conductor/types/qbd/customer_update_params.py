@@ -194,7 +194,7 @@ class CustomerUpdateParams(TypedDict, total=False):
     """
 
     note: str
-    """Notes or comments about this customer."""
+    """A note or comment about this customer."""
 
     parent_id: Annotated[str, PropertyInfo(alias="parentId")]
     """The parent customer one level above this one in the hierarchy.

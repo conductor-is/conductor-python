@@ -196,7 +196,7 @@ class CustomerCreateParams(TypedDict, total=False):
     """The middle name of the contact person for this customer."""
 
     note: str
-    """Notes or comments about this customer."""
+    """A note or comment about this customer."""
 
     opening_balance: Annotated[str, PropertyInfo(alias="openingBalance")]
     """
