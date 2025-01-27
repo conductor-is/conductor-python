@@ -59,6 +59,14 @@ from .customers import (
     CustomersResourceWithStreamingResponse,
     AsyncCustomersResourceWithStreamingResponse,
 )
+from .employees import (
+    EmployeesResource,
+    AsyncEmployeesResource,
+    EmployeesResourceWithRawResponse,
+    AsyncEmployeesResourceWithRawResponse,
+    EmployeesResourceWithStreamingResponse,
+    AsyncEmployeesResourceWithStreamingResponse,
+)
 from .estimates import (
     EstimatesResource,
     AsyncEstimatesResource,
@@ -294,6 +302,10 @@ class QbdResource(SyncAPIResource):
         return DateDrivenTermsResource(self._client)
 
     @cached_property
+    def employees(self) -> EmployeesResource:
+        return EmployeesResource(self._client)
+
+    @cached_property
     def estimates(self) -> EstimatesResource:
         return EstimatesResource(self._client)
 
@@ -433,6 +445,10 @@ class AsyncQbdResource(AsyncAPIResource):
     @cached_property
     def date_driven_terms(self) -> AsyncDateDrivenTermsResource:
         return AsyncDateDrivenTermsResource(self._client)
+
+    @cached_property
+    def employees(self) -> AsyncEmployeesResource:
+        return AsyncEmployeesResource(self._client)
 
     @cached_property
     def estimates(self) -> AsyncEstimatesResource:
@@ -579,6 +595,10 @@ class QbdResourceWithRawResponse:
         return DateDrivenTermsResourceWithRawResponse(self._qbd.date_driven_terms)
 
     @cached_property
+    def employees(self) -> EmployeesResourceWithRawResponse:
+        return EmployeesResourceWithRawResponse(self._qbd.employees)
+
+    @cached_property
     def estimates(self) -> EstimatesResourceWithRawResponse:
         return EstimatesResourceWithRawResponse(self._qbd.estimates)
 
@@ -702,6 +722,10 @@ class AsyncQbdResourceWithRawResponse:
     @cached_property
     def date_driven_terms(self) -> AsyncDateDrivenTermsResourceWithRawResponse:
         return AsyncDateDrivenTermsResourceWithRawResponse(self._qbd.date_driven_terms)
+
+    @cached_property
+    def employees(self) -> AsyncEmployeesResourceWithRawResponse:
+        return AsyncEmployeesResourceWithRawResponse(self._qbd.employees)
 
     @cached_property
     def estimates(self) -> AsyncEstimatesResourceWithRawResponse:
@@ -829,6 +853,10 @@ class QbdResourceWithStreamingResponse:
         return DateDrivenTermsResourceWithStreamingResponse(self._qbd.date_driven_terms)
 
     @cached_property
+    def employees(self) -> EmployeesResourceWithStreamingResponse:
+        return EmployeesResourceWithStreamingResponse(self._qbd.employees)
+
+    @cached_property
     def estimates(self) -> EstimatesResourceWithStreamingResponse:
         return EstimatesResourceWithStreamingResponse(self._qbd.estimates)
 
@@ -952,6 +980,10 @@ class AsyncQbdResourceWithStreamingResponse:
     @cached_property
     def date_driven_terms(self) -> AsyncDateDrivenTermsResourceWithStreamingResponse:
         return AsyncDateDrivenTermsResourceWithStreamingResponse(self._qbd.date_driven_terms)
+
+    @cached_property
+    def employees(self) -> AsyncEmployeesResourceWithStreamingResponse:
+        return AsyncEmployeesResourceWithStreamingResponse(self._qbd.employees)
 
     @cached_property
     def estimates(self) -> AsyncEstimatesResourceWithStreamingResponse:

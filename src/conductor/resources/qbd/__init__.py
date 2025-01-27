@@ -64,6 +64,14 @@ from .customers import (
     CustomersResourceWithStreamingResponse,
     AsyncCustomersResourceWithStreamingResponse,
 )
+from .employees import (
+    EmployeesResource,
+    AsyncEmployeesResource,
+    EmployeesResourceWithRawResponse,
+    AsyncEmployeesResourceWithRawResponse,
+    EmployeesResourceWithStreamingResponse,
+    AsyncEmployeesResourceWithStreamingResponse,
+)
 from .estimates import (
     EstimatesResource,
     AsyncEstimatesResource,
@@ -316,6 +324,12 @@ __all__ = [
     "AsyncDateDrivenTermsResourceWithRawResponse",
     "DateDrivenTermsResourceWithStreamingResponse",
     "AsyncDateDrivenTermsResourceWithStreamingResponse",
+    "EmployeesResource",
+    "AsyncEmployeesResource",
+    "EmployeesResourceWithRawResponse",
+    "AsyncEmployeesResourceWithRawResponse",
+    "EmployeesResourceWithStreamingResponse",
+    "AsyncEmployeesResourceWithStreamingResponse",
     "EstimatesResource",
     "AsyncEstimatesResource",
     "EstimatesResourceWithRawResponse",
