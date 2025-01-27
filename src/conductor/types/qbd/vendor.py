@@ -564,7 +564,7 @@ class Vendor(BaseModel):
     """The vendor's name as it should appear on checks issued to this vendor."""
 
     note: Optional[str] = None
-    """Notes or comments about this vendor."""
+    """A note or comment about this vendor."""
 
     object_type: Literal["qbd_vendor"] = FieldInfo(alias="objectType")
     """The type of object. This value is always `"qbd_vendor"`."""
