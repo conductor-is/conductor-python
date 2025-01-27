@@ -324,7 +324,7 @@ class EstimatesResource(SyncAPIResource):
               tracking is off by default. A class defined here is automatically used in this
               estimate's line items unless overridden at the line item level.
 
-          create_change_order: When `true`, creates a “change order” that appears in this estimate's
+          create_change_order: When `true`, creates a "change order" that appears in this estimate's
               description field in QuickBooks's estimate form, specifying exactly what changed
               in this update request, the dollar amount of each change, and the net dollar
               change to this estimate.
@@ -964,7 +964,7 @@ class AsyncEstimatesResource(AsyncAPIResource):
               tracking is off by default. A class defined here is automatically used in this
               estimate's line items unless overridden at the line item level.
 
-          create_change_order: When `true`, creates a “change order” that appears in this estimate's
+          create_change_order: When `true`, creates a "change order" that appears in this estimate's
               description field in QuickBooks's estimate form, specifying exactly what changed
               in this update request, the dollar amount of each change, and the net dollar
               change to this estimate.
