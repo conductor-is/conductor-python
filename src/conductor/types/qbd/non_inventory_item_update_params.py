@@ -54,6 +54,7 @@ class NonInventoryItemUpdateParams(TypedDict, total=False):
     """Indicates whether this non-inventory item is active.
 
     Inactive objects are typically hidden from views and reports in QuickBooks.
+    Defaults to `true`.
     """
 
     name: str

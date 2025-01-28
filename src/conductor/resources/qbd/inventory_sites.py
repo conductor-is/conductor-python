@@ -86,7 +86,7 @@ class InventorySitesResource(SyncAPIResource):
           email: The inventory site's email address.
 
           is_active: Indicates whether this inventory site is active. Inactive objects are typically
-              hidden from views and reports in QuickBooks.
+              hidden from views and reports in QuickBooks. Defaults to `true`.
 
           parent_id: The parent inventory site one level above this one in the hierarchy.
 
@@ -205,7 +205,7 @@ class InventorySitesResource(SyncAPIResource):
           fax: The inventory site's fax number.
 
           is_active: Indicates whether this inventory site is active. Inactive objects are typically
-              hidden from views and reports in QuickBooks.
+              hidden from views and reports in QuickBooks. Defaults to `true`.
 
           name: The case-insensitive unique name of this inventory site, unique across all
               inventory sites. Maximum length: 31 characters.
@@ -417,7 +417,7 @@ class AsyncInventorySitesResource(AsyncAPIResource):
           email: The inventory site's email address.
 
           is_active: Indicates whether this inventory site is active. Inactive objects are typically
-              hidden from views and reports in QuickBooks.
+              hidden from views and reports in QuickBooks. Defaults to `true`.
 
           parent_id: The parent inventory site one level above this one in the hierarchy.
 
@@ -536,7 +536,7 @@ class AsyncInventorySitesResource(AsyncAPIResource):
           fax: The inventory site's fax number.
 
           is_active: Indicates whether this inventory site is active. Inactive objects are typically
-              hidden from views and reports in QuickBooks.
+              hidden from views and reports in QuickBooks. Defaults to `true`.
 
           name: The case-insensitive unique name of this inventory site, unique across all
               inventory sites. Maximum length: 31 characters.

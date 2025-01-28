@@ -279,6 +279,7 @@ class InventoryItem(BaseModel):
     """Indicates whether this inventory item is active.
 
     Inactive objects are typically hidden from views and reports in QuickBooks.
+    Defaults to `true`.
     """
 
     maximum_quantity_on_hand: Optional[float] = FieldInfo(alias="maximumQuantityOnHand", default=None)

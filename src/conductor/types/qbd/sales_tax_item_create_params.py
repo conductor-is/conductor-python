@@ -57,6 +57,7 @@ class SalesTaxItemCreateParams(TypedDict, total=False):
     """Indicates whether this sales-tax item is active.
 
     Inactive objects are typically hidden from views and reports in QuickBooks.
+    Defaults to `true`.
     """
 
     sales_tax_return_line_id: Annotated[str, PropertyInfo(alias="salesTaxReturnLineId")]

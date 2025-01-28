@@ -85,6 +85,7 @@ class AccountUpdateParams(TypedDict, total=False):
     """Indicates whether this account is active.
 
     Inactive objects are typically hidden from views and reports in QuickBooks.
+    Defaults to `true`.
     """
 
     name: str

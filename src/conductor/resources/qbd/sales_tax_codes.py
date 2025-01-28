@@ -85,7 +85,7 @@ class SalesTaxCodesResource(SyncAPIResource):
           description: A description of this sales-tax code.
 
           is_active: Indicates whether this sales-tax code is active. Inactive objects are typically
-              hidden from views and reports in QuickBooks.
+              hidden from views and reports in QuickBooks. Defaults to `true`.
 
           sales_tax_item_id: The sales-tax item used to calculate the actual tax amount for this sales-tax
               code's transactions by applying a specific tax rate collected for a single tax
@@ -194,7 +194,7 @@ class SalesTaxCodesResource(SyncAPIResource):
           description: A description of this sales-tax code.
 
           is_active: Indicates whether this sales-tax code is active. Inactive objects are typically
-              hidden from views and reports in QuickBooks.
+              hidden from views and reports in QuickBooks. Defaults to `true`.
 
           is_taxable: Indicates whether this sales-tax code is tracking taxable sales. This field
               cannot be modified once the sales-tax code has been used in a transaction.
@@ -419,7 +419,7 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
           description: A description of this sales-tax code.
 
           is_active: Indicates whether this sales-tax code is active. Inactive objects are typically
-              hidden from views and reports in QuickBooks.
+              hidden from views and reports in QuickBooks. Defaults to `true`.
 
           sales_tax_item_id: The sales-tax item used to calculate the actual tax amount for this sales-tax
               code's transactions by applying a specific tax rate collected for a single tax
@@ -528,7 +528,7 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
           description: A description of this sales-tax code.
 
           is_active: Indicates whether this sales-tax code is active. Inactive objects are typically
-              hidden from views and reports in QuickBooks.
+              hidden from views and reports in QuickBooks. Defaults to `true`.
 
           is_taxable: Indicates whether this sales-tax code is tracking taxable sales. This field
               cannot be modified once the sales-tax code has been used in a transaction.

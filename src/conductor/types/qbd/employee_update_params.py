@@ -52,7 +52,12 @@ class EmployeeUpdateParams(TypedDict, total=False):
     """Additional notes about this employee."""
 
     address: Address
-    """The employee's address."""
+    """The employee's address.
+
+    If the company uses QuickBooks Payroll for this employee, this address must
+    specify a complete address, including city, state, ZIP (or postal) code, and at
+    least one line of the street address.
+    """
 
     adjusted_service_date: Annotated[Union[str, date], PropertyInfo(alias="adjustedServiceDate", format="iso8601")]
     """The adjusted service date for this employee.
@@ -138,6 +143,7 @@ class EmployeeUpdateParams(TypedDict, total=False):
     """Indicates whether this employee is active.
 
     Inactive objects are typically hidden from views and reports in QuickBooks.
+    Defaults to `true`.
     """
 
     job_title: Annotated[str, PropertyInfo(alias="jobTitle")]
@@ -389,14 +395,14 @@ class EmployeePayrollSickHours(TypedDict, total=False):
     hours_used: Annotated[str, PropertyInfo(alias="hoursUsed")]
     """The number of sick hours the employee has used."""
 
-    is_resetting_hours_annually: Annotated[bool, PropertyInfo(alias="isResettingHoursAnnually")]
+    maximum_hours: Annotated[str, PropertyInfo(alias="maximumHours")]
+    """The maximum number of sick hours the employee can accrue."""
+
+    resets_hours_each_year: Annotated[bool, PropertyInfo(alias="resetsHoursEachYear")]
     """
     Indicates whether the employee's sick hours reset to zero at the beginning of
     the new year.
     """
-
-    maximum_hours: Annotated[str, PropertyInfo(alias="maximumHours")]
-    """The maximum number of sick hours the employee can accrue."""
 
 
 class EmployeePayrollVacationHours(TypedDict, total=False):
@@ -420,14 +426,14 @@ class EmployeePayrollVacationHours(TypedDict, total=False):
     hours_used: Annotated[str, PropertyInfo(alias="hoursUsed")]
     """The number of vacation hours the employee has used."""
 
-    is_resetting_hours_annually: Annotated[bool, PropertyInfo(alias="isResettingHoursAnnually")]
+    maximum_hours: Annotated[str, PropertyInfo(alias="maximumHours")]
+    """The maximum number of vacation hours the employee can accrue."""
+
+    resets_hours_each_year: Annotated[bool, PropertyInfo(alias="resetsHoursEachYear")]
     """
     Indicates whether the employee's vacation hours reset to zero at the beginning
     of the new year.
     """
-
-    maximum_hours: Annotated[str, PropertyInfo(alias="maximumHours")]
-    """The maximum number of vacation hours the employee can accrue."""
 
 
 class EmployeePayroll(TypedDict, total=False):
@@ -441,11 +447,6 @@ class EmployeePayroll(TypedDict, total=False):
 
     earnings: Iterable[EmployeePayrollEarning]
     """The employee's earnings."""
-
-    is_using_time_data_to_create_paychecks: Annotated[bool, PropertyInfo(alias="isUsingTimeDataToCreatePaychecks")]
-    """
-    Indicates whether this employee is using time-tracking data to create paychecks.
-    """
 
     pay_period: Annotated[
         Literal["biweekly", "daily", "monthly", "quarterly", "semimonthly", "weekly", "yearly"],

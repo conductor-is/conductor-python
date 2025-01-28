@@ -97,7 +97,7 @@ class ServiceItemsResource(SyncAPIResource):
               creation.
 
           is_active: Indicates whether this service item is active. Inactive objects are typically
-              hidden from views and reports in QuickBooks.
+              hidden from views and reports in QuickBooks. Defaults to `true`.
 
           parent_id: The parent service item one level above this one in the hierarchy. For example,
               if this service item has a `fullName` of "Consulting:Web-Design", its parent has
@@ -259,7 +259,7 @@ class ServiceItemsResource(SyncAPIResource):
               unit-of-measure set and deactivating the old item.
 
           is_active: Indicates whether this service item is active. Inactive objects are typically
-              hidden from views and reports in QuickBooks.
+              hidden from views and reports in QuickBooks. Defaults to `true`.
 
           name: The case-insensitive name of this service item. Not guaranteed to be unique
               because it does not include the names of its hierarchical parent objects like
@@ -534,7 +534,7 @@ class AsyncServiceItemsResource(AsyncAPIResource):
               creation.
 
           is_active: Indicates whether this service item is active. Inactive objects are typically
-              hidden from views and reports in QuickBooks.
+              hidden from views and reports in QuickBooks. Defaults to `true`.
 
           parent_id: The parent service item one level above this one in the hierarchy. For example,
               if this service item has a `fullName` of "Consulting:Web-Design", its parent has
@@ -696,7 +696,7 @@ class AsyncServiceItemsResource(AsyncAPIResource):
               unit-of-measure set and deactivating the old item.
 
           is_active: Indicates whether this service item is active. Inactive objects are typically
-              hidden from views and reports in QuickBooks.
+              hidden from views and reports in QuickBooks. Defaults to `true`.
 
           name: The case-insensitive name of this service item. Not guaranteed to be unique
               because it does not include the names of its hierarchical parent objects like

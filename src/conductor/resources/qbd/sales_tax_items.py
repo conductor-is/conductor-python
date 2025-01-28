@@ -99,7 +99,7 @@ class SalesTaxItemsResource(SyncAPIResource):
               creation.
 
           is_active: Indicates whether this sales-tax item is active. Inactive objects are typically
-              hidden from views and reports in QuickBooks.
+              hidden from views and reports in QuickBooks. Defaults to `true`.
 
           sales_tax_return_line_id: The specific line on the sales tax return form where the tax collected using
               this sales-tax item should be reported.
@@ -230,7 +230,7 @@ class SalesTaxItemsResource(SyncAPIResource):
               this item.
 
           is_active: Indicates whether this sales-tax item is active. Inactive objects are typically
-              hidden from views and reports in QuickBooks.
+              hidden from views and reports in QuickBooks. Defaults to `true`.
 
           name: The case-insensitive unique name of this sales-tax item, unique across all
               sales-tax items. Maximum length: 31 characters.
@@ -483,7 +483,7 @@ class AsyncSalesTaxItemsResource(AsyncAPIResource):
               creation.
 
           is_active: Indicates whether this sales-tax item is active. Inactive objects are typically
-              hidden from views and reports in QuickBooks.
+              hidden from views and reports in QuickBooks. Defaults to `true`.
 
           sales_tax_return_line_id: The specific line on the sales tax return form where the tax collected using
               this sales-tax item should be reported.
@@ -614,7 +614,7 @@ class AsyncSalesTaxItemsResource(AsyncAPIResource):
               this item.
 
           is_active: Indicates whether this sales-tax item is active. Inactive objects are typically
-              hidden from views and reports in QuickBooks.
+              hidden from views and reports in QuickBooks. Defaults to `true`.
 
           name: The case-insensitive unique name of this sales-tax item, unique across all
               sales-tax items. Maximum length: 31 characters.

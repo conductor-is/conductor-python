@@ -125,7 +125,7 @@ class AccountsResource(SyncAPIResource):
           description: A description of this account.
 
           is_active: Indicates whether this account is active. Inactive objects are typically hidden
-              from views and reports in QuickBooks.
+              from views and reports in QuickBooks. Defaults to `true`.
 
           opening_balance: The amount of money in, or the value of, this account as of
               `openingBalanceDate`. On a bank statement, this would be the amount of money in
@@ -303,7 +303,7 @@ class AccountsResource(SyncAPIResource):
           description: A description of this account.
 
           is_active: Indicates whether this account is active. Inactive objects are typically hidden
-              from views and reports in QuickBooks.
+              from views and reports in QuickBooks. Defaults to `true`.
 
           name: The case-insensitive name of this account. Not guaranteed to be unique because
               it does not include the names of its hierarchical parent objects like `fullName`
@@ -616,7 +616,7 @@ class AsyncAccountsResource(AsyncAPIResource):
           description: A description of this account.
 
           is_active: Indicates whether this account is active. Inactive objects are typically hidden
-              from views and reports in QuickBooks.
+              from views and reports in QuickBooks. Defaults to `true`.
 
           opening_balance: The amount of money in, or the value of, this account as of
               `openingBalanceDate`. On a bank statement, this would be the amount of money in
@@ -794,7 +794,7 @@ class AsyncAccountsResource(AsyncAPIResource):
           description: A description of this account.
 
           is_active: Indicates whether this account is active. Inactive objects are typically hidden
-              from views and reports in QuickBooks.
+              from views and reports in QuickBooks. Defaults to `true`.
 
           name: The case-insensitive name of this account. Not guaranteed to be unique because
               it does not include the names of its hierarchical parent objects like `fullName`

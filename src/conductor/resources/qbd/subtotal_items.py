@@ -91,7 +91,7 @@ class SubtotalItemsResource(SyncAPIResource):
               creation.
 
           is_active: Indicates whether this subtotal item is active. Inactive objects are typically
-              hidden from views and reports in QuickBooks.
+              hidden from views and reports in QuickBooks. Defaults to `true`.
 
           extra_headers: Send extra headers
 
@@ -197,7 +197,7 @@ class SubtotalItemsResource(SyncAPIResource):
               this item.
 
           is_active: Indicates whether this subtotal item is active. Inactive objects are typically
-              hidden from views and reports in QuickBooks.
+              hidden from views and reports in QuickBooks. Defaults to `true`.
 
           name: The case-insensitive unique name of this subtotal item, unique across all
               subtotal items. Maximum length: 31 characters.
@@ -420,7 +420,7 @@ class AsyncSubtotalItemsResource(AsyncAPIResource):
               creation.
 
           is_active: Indicates whether this subtotal item is active. Inactive objects are typically
-              hidden from views and reports in QuickBooks.
+              hidden from views and reports in QuickBooks. Defaults to `true`.
 
           extra_headers: Send extra headers
 
@@ -526,7 +526,7 @@ class AsyncSubtotalItemsResource(AsyncAPIResource):
               this item.
 
           is_active: Indicates whether this subtotal item is active. Inactive objects are typically
-              hidden from views and reports in QuickBooks.
+              hidden from views and reports in QuickBooks. Defaults to `true`.
 
           name: The case-insensitive unique name of this subtotal item, unique across all
               subtotal items. Maximum length: 31 characters.

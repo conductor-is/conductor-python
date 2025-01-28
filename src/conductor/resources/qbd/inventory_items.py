@@ -121,7 +121,7 @@ class InventoryItemsResource(SyncAPIResource):
               other type of item, in ISO 8601 format (YYYY-MM-DD).
 
           is_active: Indicates whether this inventory item is active. Inactive objects are typically
-              hidden from views and reports in QuickBooks.
+              hidden from views and reports in QuickBooks. Defaults to `true`.
 
           maximum_quantity_on_hand: The maximum quantity of this inventory item desired in inventory.
 
@@ -335,7 +335,7 @@ class InventoryItemsResource(SyncAPIResource):
           income_account_id: The income account used to track revenue from sales of this inventory item.
 
           is_active: Indicates whether this inventory item is active. Inactive objects are typically
-              hidden from views and reports in QuickBooks.
+              hidden from views and reports in QuickBooks. Defaults to `true`.
 
           maximum_quantity_on_hand: The maximum quantity of this inventory item desired in inventory.
 
@@ -677,7 +677,7 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
               other type of item, in ISO 8601 format (YYYY-MM-DD).
 
           is_active: Indicates whether this inventory item is active. Inactive objects are typically
-              hidden from views and reports in QuickBooks.
+              hidden from views and reports in QuickBooks. Defaults to `true`.
 
           maximum_quantity_on_hand: The maximum quantity of this inventory item desired in inventory.
 
@@ -891,7 +891,7 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
           income_account_id: The income account used to track revenue from sales of this inventory item.
 
           is_active: Indicates whether this inventory item is active. Inactive objects are typically
-              hidden from views and reports in QuickBooks.
+              hidden from views and reports in QuickBooks. Defaults to `true`.
 
           maximum_quantity_on_hand: The maximum quantity of this inventory item desired in inventory.
 
