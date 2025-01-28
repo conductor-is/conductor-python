@@ -78,7 +78,7 @@ class TestEmployees:
                 "pay_period": "biweekly",
                 "sick_hours": {
                     "accrual_period": "accrues_annually",
-                    "accrual_start_date": "2019-12-27",
+                    "accrual_start_date": parse_date("2019-12-27"),
                     "hours_accrued_per_period": "8",
                     "hours_available": "40",
                     "hours_used": "24",
@@ -88,7 +88,7 @@ class TestEmployees:
                 "use_time_data_to_create_paychecks": "does_not_use_time_data",
                 "vacation_hours": {
                     "accrual_period": "accrues_annually",
-                    "accrual_start_date": "2019-12-27",
+                    "accrual_start_date": parse_date("2019-12-27"),
                     "hours_accrued_per_period": "8",
                     "hours_available": "40",
                     "hours_used": "24",
@@ -264,7 +264,7 @@ class TestEmployees:
                 "pay_period": "biweekly",
                 "sick_hours": {
                     "accrual_period": "accrues_annually",
-                    "accrual_start_date": "2019-12-27",
+                    "accrual_start_date": parse_date("2019-12-27"),
                     "hours_accrued_per_period": "8",
                     "hours_available": "40",
                     "hours_used": "24",
@@ -274,7 +274,7 @@ class TestEmployees:
                 "use_time_data_to_create_paychecks": "does_not_use_time_data",
                 "vacation_hours": {
                     "accrual_period": "accrues_annually",
-                    "accrual_start_date": "2019-12-27",
+                    "accrual_start_date": parse_date("2019-12-27"),
                     "hours_accrued_per_period": "8",
                     "hours_available": "40",
                     "hours_used": "24",
@@ -463,7 +463,7 @@ class TestAsyncEmployees:
                 "pay_period": "biweekly",
                 "sick_hours": {
                     "accrual_period": "accrues_annually",
-                    "accrual_start_date": "2019-12-27",
+                    "accrual_start_date": parse_date("2019-12-27"),
                     "hours_accrued_per_period": "8",
                     "hours_available": "40",
                     "hours_used": "24",
@@ -473,7 +473,7 @@ class TestAsyncEmployees:
                 "use_time_data_to_create_paychecks": "does_not_use_time_data",
                 "vacation_hours": {
                     "accrual_period": "accrues_annually",
-                    "accrual_start_date": "2019-12-27",
+                    "accrual_start_date": parse_date("2019-12-27"),
                     "hours_accrued_per_period": "8",
                     "hours_available": "40",
                     "hours_used": "24",
@@ -649,7 +649,7 @@ class TestAsyncEmployees:
                 "pay_period": "biweekly",
                 "sick_hours": {
                     "accrual_period": "accrues_annually",
-                    "accrual_start_date": "2019-12-27",
+                    "accrual_start_date": parse_date("2019-12-27"),
                     "hours_accrued_per_period": "8",
                     "hours_available": "40",
                     "hours_used": "24",
@@ -659,7 +659,7 @@ class TestAsyncEmployees:
                 "use_time_data_to_create_paychecks": "does_not_use_time_data",
                 "vacation_hours": {
                     "accrual_period": "accrues_annually",
-                    "accrual_start_date": "2019-12-27",
+                    "accrual_start_date": parse_date("2019-12-27"),
                     "hours_accrued_per_period": "8",
                     "hours_available": "40",
                     "hours_used": "24",
