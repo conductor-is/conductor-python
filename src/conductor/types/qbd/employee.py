@@ -18,12 +18,12 @@ __all__ = [
     "EmergencyContact",
     "EmergencyContactPrimaryContact",
     "EmergencyContactSecondaryContact",
-    "EmployeePayrollInfo",
-    "EmployeePayrollInfoClass",
-    "EmployeePayrollInfoEarning",
-    "EmployeePayrollInfoEarningPayrollWageItem",
-    "EmployeePayrollInfoSickHours",
-    "EmployeePayrollInfoVacationHours",
+    "EmployeePayroll",
+    "EmployeePayrollClass",
+    "EmployeePayrollEarning",
+    "EmployeePayrollEarningPayrollWageItem",
+    "EmployeePayrollSickHours",
+    "EmployeePayrollVacationHours",
     "Supervisor",
 ]
 
@@ -217,7 +217,7 @@ class EmergencyContact(BaseModel):
     """The employee's secondary emergency contact."""
 
 
-class EmployeePayrollInfoClass(BaseModel):
+class EmployeePayrollClass(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks to this object.
 
@@ -233,7 +233,7 @@ class EmployeePayrollInfoClass(BaseModel):
     """
 
 
-class EmployeePayrollInfoEarningPayrollWageItem(BaseModel):
+class EmployeePayrollEarningPayrollWageItem(BaseModel):
     id: Optional[str] = None
     """The unique identifier assigned by QuickBooks to this object.
 
@@ -249,8 +249,8 @@ class EmployeePayrollInfoEarningPayrollWageItem(BaseModel):
     """
 
 
-class EmployeePayrollInfoEarning(BaseModel):
-    payroll_wage_item: EmployeePayrollInfoEarningPayrollWageItem = FieldInfo(alias="payrollWageItem")
+class EmployeePayrollEarning(BaseModel):
+    payroll_wage_item: EmployeePayrollEarningPayrollWageItem = FieldInfo(alias="payrollWageItem")
     """
     The payroll wage item that defines how this employee is paid (e.g., Regular Pay,
     Overtime Pay). This determines the payment scheme used for payroll calculations.
@@ -263,7 +263,7 @@ class EmployeePayrollInfoEarning(BaseModel):
     """The hourly rate for this employee expressed as a percentage."""
 
 
-class EmployeePayrollInfoSickHours(BaseModel):
+class EmployeePayrollSickHours(BaseModel):
     accrual_period: Optional[Literal["accrues_annually", "accrues_hourly", "accrues_per_paycheck"]] = FieldInfo(
         alias="accrualPeriod", default=None
     )
@@ -294,7 +294,7 @@ class EmployeePayrollInfoSickHours(BaseModel):
     """The maximum number of sick hours the employee can accrue."""
 
 
-class EmployeePayrollInfoVacationHours(BaseModel):
+class EmployeePayrollVacationHours(BaseModel):
     accrual_period: Optional[Literal["accrues_annually", "accrues_hourly", "accrues_per_paycheck"]] = FieldInfo(
         alias="accrualPeriod", default=None
     )
@@ -325,9 +325,9 @@ class EmployeePayrollInfoVacationHours(BaseModel):
     """The maximum number of vacation hours the employee can accrue."""
 
 
-class EmployeePayrollInfo(BaseModel):
-    class_: Optional[EmployeePayrollInfoClass] = FieldInfo(alias="class", default=None)
-    """The employee payroll's class.
+class EmployeePayroll(BaseModel):
+    class_: Optional[EmployeePayrollClass] = FieldInfo(alias="class", default=None)
+    """The employee's class.
 
     Classes can be used to categorize objects into meaningful segments, such as
     department, location, or type of work. In QuickBooks, class tracking is off by
@@ -335,45 +335,43 @@ class EmployeePayrollInfo(BaseModel):
     """
 
     delete_all_earnings: bool = FieldInfo(alias="deleteAllEarnings")
-    """When `true`, deletes all earnings records for this employee payroll."""
+    """When `true`, deletes all earnings records for this employee."""
 
-    earnings: List[EmployeePayrollInfoEarning]
-    """The employee payroll's earnings."""
+    earnings: List[EmployeePayrollEarning]
+    """The employee's earnings."""
 
     is_using_time_data_to_create_paychecks: Optional[bool] = FieldInfo(
         alias="isUsingTimeDataToCreatePaychecks", default=None
     )
     """
-    Indicates whether this employee payroll is using time-tracking data to create
-    paychecks.
+    Indicates whether this employee is using time-tracking data to create paychecks.
     """
 
     pay_period: Optional[Literal["biweekly", "daily", "monthly", "quarterly", "semimonthly", "weekly", "yearly"]] = (
         FieldInfo(alias="payPeriod", default=None)
     )
-    """How frequently this employee payroll is paid (e.g., weekly, biweekly, monthly).
+    """How frequently this employee is paid (e.g., weekly, biweekly, monthly).
 
     This determines the schedule for generating paychecks.
     """
 
-    sick_hours: Optional[EmployeePayrollInfoSickHours] = FieldInfo(alias="sickHours", default=None)
+    sick_hours: Optional[EmployeePayrollSickHours] = FieldInfo(alias="sickHours", default=None)
     """
-    The employee payroll's sick hours, including how sick time is accrued and the
-    total hours accrued.
+    The employee's sick hours, including how sick time is accrued and the total
+    hours accrued.
     """
 
     use_time_data_to_create_paychecks: Optional[Literal["does_not_use_time_data", "not_set", "uses_time_data"]] = (
         FieldInfo(alias="useTimeDataToCreatePaychecks", default=None)
     )
     """
-    Indicates whether this employee payroll is using time-tracking data to create
-    paychecks.
+    Indicates whether this employee is using time-tracking data to create paychecks.
     """
 
-    vacation_hours: Optional[EmployeePayrollInfoVacationHours] = FieldInfo(alias="vacationHours", default=None)
+    vacation_hours: Optional[EmployeePayrollVacationHours] = FieldInfo(alias="vacationHours", default=None)
     """
-    The employee payroll's vacation hours, including how vacation time is accrued
-    and the total hours accrued.
+    The employee's vacation hours, including how vacation time is accrued and the
+    total hours accrued.
     """
 
 
@@ -481,7 +479,7 @@ class Employee(BaseModel):
     emergency_contact: Optional[EmergencyContact] = FieldInfo(alias="emergencyContact", default=None)
     """The employee's emergency contacts."""
 
-    employee_payroll_info: Optional[EmployeePayrollInfo] = FieldInfo(alias="employeePayrollInfo", default=None)
+    employee_payroll: Optional[EmployeePayroll] = FieldInfo(alias="employeePayroll", default=None)
     """The employee's payroll information."""
 
     employee_type: Optional[Literal["officer", "owner", "regular", "statutory"]] = FieldInfo(
@@ -609,7 +607,7 @@ class Employee(BaseModel):
     ssn: Optional[str] = None
     """The employee's Social Security Number.
 
-    **NOTE**: This field cannot be changed after creation.
+    **NOTE**: This field cannot be changed after the employee is created.
     """
 
     supervisor: Optional[Supervisor] = None

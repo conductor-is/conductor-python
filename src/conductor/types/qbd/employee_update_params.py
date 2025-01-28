@@ -16,10 +16,10 @@ __all__ = [
     "EmergencyContact",
     "EmergencyContactPrimaryContact",
     "EmergencyContactSecondaryContact",
-    "EmployeePayrollInfo",
-    "EmployeePayrollInfoEarning",
-    "EmployeePayrollInfoSickHours",
-    "EmployeePayrollInfoVacationHours",
+    "EmployeePayroll",
+    "EmployeePayrollEarning",
+    "EmployeePayrollSickHours",
+    "EmployeePayrollVacationHours",
 ]
 
 
@@ -105,7 +105,7 @@ class EmployeeUpdateParams(TypedDict, total=False):
     emergency_contact: Annotated[EmergencyContact, PropertyInfo(alias="emergencyContact")]
     """The employee's emergency contacts."""
 
-    employee_payroll_info: Annotated[EmployeePayrollInfo, PropertyInfo(alias="employeePayrollInfo")]
+    employee_payroll: Annotated[EmployeePayroll, PropertyInfo(alias="employeePayroll")]
     """The employee's payroll information."""
 
     employee_type: Annotated[Literal["officer", "owner", "regular", "statutory"], PropertyInfo(alias="employeeType")]
@@ -354,7 +354,7 @@ class EmergencyContact(TypedDict, total=False):
     """The employee's secondary emergency contact."""
 
 
-class EmployeePayrollInfoEarning(TypedDict, total=False):
+class EmployeePayrollEarning(TypedDict, total=False):
     payroll_wage_item_id: Required[Annotated[str, PropertyInfo(alias="payrollWageItemId")]]
     """
     The payroll wage item that defines how this employee is paid (e.g., Regular Pay,
@@ -368,7 +368,7 @@ class EmployeePayrollInfoEarning(TypedDict, total=False):
     """The hourly rate for this employee expressed as a percentage."""
 
 
-class EmployeePayrollInfoSickHours(TypedDict, total=False):
+class EmployeePayrollSickHours(TypedDict, total=False):
     accrual_period: Annotated[
         Literal["accrues_annually", "accrues_hourly", "accrues_per_paycheck"], PropertyInfo(alias="accrualPeriod")
     ]
@@ -399,7 +399,7 @@ class EmployeePayrollInfoSickHours(TypedDict, total=False):
     """The maximum number of sick hours the employee can accrue."""
 
 
-class EmployeePayrollInfoVacationHours(TypedDict, total=False):
+class EmployeePayrollVacationHours(TypedDict, total=False):
     accrual_period: Annotated[
         Literal["accrues_annually", "accrues_hourly", "accrues_per_paycheck"], PropertyInfo(alias="accrualPeriod")
     ]
@@ -430,9 +430,9 @@ class EmployeePayrollInfoVacationHours(TypedDict, total=False):
     """The maximum number of vacation hours the employee can accrue."""
 
 
-class EmployeePayrollInfo(TypedDict, total=False):
+class EmployeePayroll(TypedDict, total=False):
     class_id: Annotated[str, PropertyInfo(alias="classId")]
-    """The employee payroll's class.
+    """The employee's class.
 
     Classes can be used to categorize objects into meaningful segments, such as
     department, location, or type of work. In QuickBooks, class tracking is off by
@@ -440,30 +440,29 @@ class EmployeePayrollInfo(TypedDict, total=False):
     """
 
     delete_all_earnings: Annotated[bool, PropertyInfo(alias="deleteAllEarnings")]
-    """When `true`, deletes all earnings records for this employee payroll."""
+    """When `true`, deletes all earnings records for this employee."""
 
-    earnings: Iterable[EmployeePayrollInfoEarning]
-    """The employee payroll's earnings."""
+    earnings: Iterable[EmployeePayrollEarning]
+    """The employee's earnings."""
 
     is_using_time_data_to_create_paychecks: Annotated[bool, PropertyInfo(alias="isUsingTimeDataToCreatePaychecks")]
     """
-    Indicates whether this employee payroll is using time-tracking data to create
-    paychecks.
+    Indicates whether this employee is using time-tracking data to create paychecks.
     """
 
     pay_period: Annotated[
         Literal["biweekly", "daily", "monthly", "quarterly", "semimonthly", "weekly", "yearly"],
         PropertyInfo(alias="payPeriod"),
     ]
-    """How frequently this employee payroll is paid (e.g., weekly, biweekly, monthly).
+    """How frequently this employee is paid (e.g., weekly, biweekly, monthly).
 
     This determines the schedule for generating paychecks.
     """
 
-    sick_hours: Annotated[EmployeePayrollInfoSickHours, PropertyInfo(alias="sickHours")]
+    sick_hours: Annotated[EmployeePayrollSickHours, PropertyInfo(alias="sickHours")]
     """
-    The employee payroll's sick hours, including how sick time is accrued and the
-    total hours accrued.
+    The employee's sick hours, including how sick time is accrued and the total
+    hours accrued.
     """
 
     use_time_data_to_create_paychecks: Annotated[
@@ -471,12 +470,11 @@ class EmployeePayrollInfo(TypedDict, total=False):
         PropertyInfo(alias="useTimeDataToCreatePaychecks"),
     ]
     """
-    Indicates whether this employee payroll is using time-tracking data to create
-    paychecks.
+    Indicates whether this employee is using time-tracking data to create paychecks.
     """
 
-    vacation_hours: Annotated[EmployeePayrollInfoVacationHours, PropertyInfo(alias="vacationHours")]
+    vacation_hours: Annotated[EmployeePayrollVacationHours, PropertyInfo(alias="vacationHours")]
     """
-    The employee payroll's vacation hours, including how vacation time is accrued
-    and the total hours accrued.
+    The employee's vacation hours, including how vacation time is accrued and the
+    total hours accrued.
     """
