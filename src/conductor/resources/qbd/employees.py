@@ -67,7 +67,7 @@ class EmployeesResource(SyncAPIResource):
         disability_status: Literal["disabled", "non_disabled"] | NotGiven = NOT_GIVEN,
         email: str | NotGiven = NOT_GIVEN,
         emergency_contact: employee_create_params.EmergencyContact | NotGiven = NOT_GIVEN,
-        employee_payroll_info: employee_create_params.EmployeePayrollInfo | NotGiven = NOT_GIVEN,
+        employee_payroll: employee_create_params.EmployeePayroll | NotGiven = NOT_GIVEN,
         employee_type: Literal["officer", "owner", "regular", "statutory"] | NotGiven = NOT_GIVEN,
         employment_status: Literal["full_time", "part_time"] | NotGiven = NOT_GIVEN,
         ethnicity: Literal["american_indian", "asian", "black", "hawaiian", "hispanic", "white", "two_or_more_races"]
@@ -152,7 +152,7 @@ class EmployeesResource(SyncAPIResource):
 
           emergency_contact: The employee's emergency contacts.
 
-          employee_payroll_info: The employee's payroll information.
+          employee_payroll: The employee's payroll information.
 
           employee_type: The employee type. This affects payroll taxes - a statutory employee is defined
               as an employee by statute. Note that owners/partners are typically on the "Other
@@ -216,7 +216,7 @@ class EmployeesResource(SyncAPIResource):
 
           ssn: The employee's Social Security Number.
 
-              **NOTE**: This field cannot be changed after creation.
+              **NOTE**: This field cannot be changed after the employee is created.
 
           supervisor_id: The employee's supervisor. Found in the "employment job details" section of the
               employee's record in QuickBooks.
@@ -260,7 +260,7 @@ class EmployeesResource(SyncAPIResource):
                     "disability_status": disability_status,
                     "email": email,
                     "emergency_contact": emergency_contact,
-                    "employee_payroll_info": employee_payroll_info,
+                    "employee_payroll": employee_payroll,
                     "employee_type": employee_type,
                     "employment_status": employment_status,
                     "ethnicity": ethnicity,
@@ -361,7 +361,7 @@ class EmployeesResource(SyncAPIResource):
         disability_status: Literal["disabled", "non_disabled"] | NotGiven = NOT_GIVEN,
         email: str | NotGiven = NOT_GIVEN,
         emergency_contact: employee_update_params.EmergencyContact | NotGiven = NOT_GIVEN,
-        employee_payroll_info: employee_update_params.EmployeePayrollInfo | NotGiven = NOT_GIVEN,
+        employee_payroll: employee_update_params.EmployeePayroll | NotGiven = NOT_GIVEN,
         employee_type: Literal["officer", "owner", "regular", "statutory"] | NotGiven = NOT_GIVEN,
         employment_status: Literal["full_time", "part_time"] | NotGiven = NOT_GIVEN,
         ethnicity: Literal["american_indian", "asian", "black", "hawaiian", "hispanic", "white", "two_or_more_races"]
@@ -450,7 +450,7 @@ class EmployeesResource(SyncAPIResource):
 
           emergency_contact: The employee's emergency contacts.
 
-          employee_payroll_info: The employee's payroll information.
+          employee_payroll: The employee's payroll information.
 
           employee_type: The employee type. This affects payroll taxes - a statutory employee is defined
               as an employee by statute. Note that owners/partners are typically on the "Other
@@ -548,7 +548,7 @@ class EmployeesResource(SyncAPIResource):
                     "disability_status": disability_status,
                     "email": email,
                     "emergency_contact": emergency_contact,
-                    "employee_payroll_info": employee_payroll_info,
+                    "employee_payroll": employee_payroll,
                     "employee_type": employee_type,
                     "employment_status": employment_status,
                     "ethnicity": ethnicity,
@@ -745,7 +745,7 @@ class AsyncEmployeesResource(AsyncAPIResource):
         disability_status: Literal["disabled", "non_disabled"] | NotGiven = NOT_GIVEN,
         email: str | NotGiven = NOT_GIVEN,
         emergency_contact: employee_create_params.EmergencyContact | NotGiven = NOT_GIVEN,
-        employee_payroll_info: employee_create_params.EmployeePayrollInfo | NotGiven = NOT_GIVEN,
+        employee_payroll: employee_create_params.EmployeePayroll | NotGiven = NOT_GIVEN,
         employee_type: Literal["officer", "owner", "regular", "statutory"] | NotGiven = NOT_GIVEN,
         employment_status: Literal["full_time", "part_time"] | NotGiven = NOT_GIVEN,
         ethnicity: Literal["american_indian", "asian", "black", "hawaiian", "hispanic", "white", "two_or_more_races"]
@@ -830,7 +830,7 @@ class AsyncEmployeesResource(AsyncAPIResource):
 
           emergency_contact: The employee's emergency contacts.
 
-          employee_payroll_info: The employee's payroll information.
+          employee_payroll: The employee's payroll information.
 
           employee_type: The employee type. This affects payroll taxes - a statutory employee is defined
               as an employee by statute. Note that owners/partners are typically on the "Other
@@ -894,7 +894,7 @@ class AsyncEmployeesResource(AsyncAPIResource):
 
           ssn: The employee's Social Security Number.
 
-              **NOTE**: This field cannot be changed after creation.
+              **NOTE**: This field cannot be changed after the employee is created.
 
           supervisor_id: The employee's supervisor. Found in the "employment job details" section of the
               employee's record in QuickBooks.
@@ -938,7 +938,7 @@ class AsyncEmployeesResource(AsyncAPIResource):
                     "disability_status": disability_status,
                     "email": email,
                     "emergency_contact": emergency_contact,
-                    "employee_payroll_info": employee_payroll_info,
+                    "employee_payroll": employee_payroll,
                     "employee_type": employee_type,
                     "employment_status": employment_status,
                     "ethnicity": ethnicity,
@@ -1039,7 +1039,7 @@ class AsyncEmployeesResource(AsyncAPIResource):
         disability_status: Literal["disabled", "non_disabled"] | NotGiven = NOT_GIVEN,
         email: str | NotGiven = NOT_GIVEN,
         emergency_contact: employee_update_params.EmergencyContact | NotGiven = NOT_GIVEN,
-        employee_payroll_info: employee_update_params.EmployeePayrollInfo | NotGiven = NOT_GIVEN,
+        employee_payroll: employee_update_params.EmployeePayroll | NotGiven = NOT_GIVEN,
         employee_type: Literal["officer", "owner", "regular", "statutory"] | NotGiven = NOT_GIVEN,
         employment_status: Literal["full_time", "part_time"] | NotGiven = NOT_GIVEN,
         ethnicity: Literal["american_indian", "asian", "black", "hawaiian", "hispanic", "white", "two_or_more_races"]
@@ -1128,7 +1128,7 @@ class AsyncEmployeesResource(AsyncAPIResource):
 
           emergency_contact: The employee's emergency contacts.
 
-          employee_payroll_info: The employee's payroll information.
+          employee_payroll: The employee's payroll information.
 
           employee_type: The employee type. This affects payroll taxes - a statutory employee is defined
               as an employee by statute. Note that owners/partners are typically on the "Other
@@ -1226,7 +1226,7 @@ class AsyncEmployeesResource(AsyncAPIResource):
                     "disability_status": disability_status,
                     "email": email,
                     "emergency_contact": emergency_contact,
-                    "employee_payroll_info": employee_payroll_info,
+                    "employee_payroll": employee_payroll,
                     "employee_type": employee_type,
                     "employment_status": employment_status,
                     "ethnicity": ethnicity,
