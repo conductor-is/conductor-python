@@ -82,7 +82,7 @@ class TestPurchaseOrders:
                     "quantity": 5,
                     "rate": "10.00",
                     "sales_tax_code_id": "80000001-1234567890",
-                    "service_date": "2019-12-27",
+                    "service_date": parse_date("2019-12-27"),
                     "sku": "MPN-123456",
                     "unit_of_measure": "Each",
                 }
@@ -239,7 +239,7 @@ class TestPurchaseOrders:
                             "quantity": 5,
                             "rate": "10.00",
                             "sales_tax_code_id": "80000001-1234567890",
-                            "service_date": "2019-12-27",
+                            "service_date": parse_date("2019-12-27"),
                             "sku": "MPN-123456",
                             "unit_of_measure": "Each",
                         }
@@ -266,7 +266,7 @@ class TestPurchaseOrders:
                     "quantity": 5,
                     "rate": "10.00",
                     "sales_tax_code_id": "80000001-1234567890",
-                    "service_date": "2019-12-27",
+                    "service_date": parse_date("2019-12-27"),
                     "sku": "MPN-123456",
                     "unit_of_measure": "Each",
                 }
@@ -509,7 +509,7 @@ class TestAsyncPurchaseOrders:
                     "quantity": 5,
                     "rate": "10.00",
                     "sales_tax_code_id": "80000001-1234567890",
-                    "service_date": "2019-12-27",
+                    "service_date": parse_date("2019-12-27"),
                     "sku": "MPN-123456",
                     "unit_of_measure": "Each",
                 }
@@ -666,7 +666,7 @@ class TestAsyncPurchaseOrders:
                             "quantity": 5,
                             "rate": "10.00",
                             "sales_tax_code_id": "80000001-1234567890",
-                            "service_date": "2019-12-27",
+                            "service_date": parse_date("2019-12-27"),
                             "sku": "MPN-123456",
                             "unit_of_measure": "Each",
                         }
@@ -693,7 +693,7 @@ class TestAsyncPurchaseOrders:
                     "quantity": 5,
                     "rate": "10.00",
                     "sales_tax_code_id": "80000001-1234567890",
-                    "service_date": "2019-12-27",
+                    "service_date": parse_date("2019-12-27"),
                     "sku": "MPN-123456",
                     "unit_of_measure": "Each",
                 }
