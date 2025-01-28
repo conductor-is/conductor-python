@@ -66,7 +66,7 @@ class TestEmployees:
                     "relation": "brother",
                 },
             },
-            employee_payroll_info={
+            employee_payroll={
                 "class_id": "80000001-1234567890",
                 "delete_all_earnings": False,
                 "earnings": [
@@ -254,7 +254,7 @@ class TestEmployees:
                     "relation": "brother",
                 },
             },
-            employee_payroll_info={
+            employee_payroll={
                 "class_id": "80000001-1234567890",
                 "delete_all_earnings": False,
                 "earnings": [
@@ -455,7 +455,7 @@ class TestAsyncEmployees:
                     "relation": "brother",
                 },
             },
-            employee_payroll_info={
+            employee_payroll={
                 "class_id": "80000001-1234567890",
                 "delete_all_earnings": False,
                 "earnings": [
@@ -643,7 +643,7 @@ class TestAsyncEmployees:
                     "relation": "brother",
                 },
             },
-            employee_payroll_info={
+            employee_payroll={
                 "class_id": "80000001-1234567890",
                 "delete_all_earnings": False,
                 "earnings": [
