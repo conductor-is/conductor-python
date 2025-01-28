@@ -69,6 +69,7 @@ class InventoryItemUpdateParams(TypedDict, total=False):
     """Indicates whether this inventory item is active.
 
     Inactive objects are typically hidden from views and reports in QuickBooks.
+    Defaults to `true`.
     """
 
     maximum_quantity_on_hand: Annotated[float, PropertyInfo(alias="maximumQuantityOnHand")]

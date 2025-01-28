@@ -51,6 +51,7 @@ class ServiceItemCreateParams(TypedDict, total=False):
     """Indicates whether this service item is active.
 
     Inactive objects are typically hidden from views and reports in QuickBooks.
+    Defaults to `true`.
     """
 
     parent_id: Annotated[str, PropertyInfo(alias="parentId")]

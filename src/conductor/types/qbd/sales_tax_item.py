@@ -143,6 +143,7 @@ class SalesTaxItem(BaseModel):
     """Indicates whether this sales-tax item is active.
 
     Inactive objects are typically hidden from views and reports in QuickBooks.
+    Defaults to `true`.
     """
 
     name: str

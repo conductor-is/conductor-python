@@ -89,6 +89,7 @@ class AccountCreateParams(TypedDict, total=False):
     """Indicates whether this account is active.
 
     Inactive objects are typically hidden from views and reports in QuickBooks.
+    Defaults to `true`.
     """
 
     opening_balance: Annotated[str, PropertyInfo(alias="openingBalance")]

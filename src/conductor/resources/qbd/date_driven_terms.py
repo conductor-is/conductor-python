@@ -94,7 +94,7 @@ class DateDrivenTermsResource(SyncAPIResource):
               the 12th would be due on the 15th of the current month.
 
           is_active: Indicates whether this date-driven term is active. Inactive objects are
-              typically hidden from views and reports in QuickBooks.
+              typically hidden from views and reports in QuickBooks. Defaults to `true`.
 
           extra_headers: Send extra headers
 
@@ -350,7 +350,7 @@ class AsyncDateDrivenTermsResource(AsyncAPIResource):
               the 12th would be due on the 15th of the current month.
 
           is_active: Indicates whether this date-driven term is active. Inactive objects are
-              typically hidden from views and reports in QuickBooks.
+              typically hidden from views and reports in QuickBooks. Defaults to `true`.
 
           extra_headers: Send extra headers
 
