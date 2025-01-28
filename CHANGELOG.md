@@ -1,5 +1,25 @@
 # Changelog
 
+## 1.1.0 (2025-01-28)
+
+Full Changelog: [v1.0.0...v1.1.0](https://github.com/conductor-is/conductor-python/compare/v1.0.0...v1.1.0)
+
+### Features
+
+* **api:** api update ([#504](https://github.com/conductor-is/conductor-python/issues/504)) ([7166baf](https://github.com/conductor-is/conductor-python/commit/7166baf69cdcc8f3889151b6ace2da0c7c9aa827))
+* **api:** api update ([#505](https://github.com/conductor-is/conductor-python/issues/505)) ([440c033](https://github.com/conductor-is/conductor-python/commit/440c033f3be54d794f04fd641662eb55ab79a2f4))
+* **api:** api update ([#506](https://github.com/conductor-is/conductor-python/issues/506)) ([b82740f](https://github.com/conductor-is/conductor-python/commit/b82740fde426378daa78b30cd49dcd4231c0c74c))
+* **api:** api update ([#507](https://github.com/conductor-is/conductor-python/issues/507)) ([f02a06c](https://github.com/conductor-is/conductor-python/commit/f02a06cfde446a1e6438a66a602714c928dc0fc3))
+* **api:** api update ([#508](https://github.com/conductor-is/conductor-python/issues/508)) ([1a14bba](https://github.com/conductor-is/conductor-python/commit/1a14bbabcf21d74942a670b550c31f3c69b4b0f3))
+* **api:** api update ([#509](https://github.com/conductor-is/conductor-python/issues/509)) ([c2dfb27](https://github.com/conductor-is/conductor-python/commit/c2dfb277e3815edc648a9ca98c3e860295646a41))
+* **api:** api update ([#510](https://github.com/conductor-is/conductor-python/issues/510)) ([5c6dae0](https://github.com/conductor-is/conductor-python/commit/5c6dae0a78856a97d748b5c64d81f77d783444f9))
+
+
+### Chores
+
+* **internal:** codegen related update ([#503](https://github.com/conductor-is/conductor-python/issues/503)) ([b7ce573](https://github.com/conductor-is/conductor-python/commit/b7ce573be57cda39d7010cde30e078f36cd848d7))
+* remove custom code ([9e9acdb](https://github.com/conductor-is/conductor-python/commit/9e9acdb17d8dfac550b387e6577cfa01f3b99b53))
+
 ## 1.0.0 (2025-01-23)
 
 Full Changelog: [v0.1.0-alpha.61...v1.0.0](https://github.com/conductor-is/conductor-python/compare/v0.1.0-alpha.61...v1.0.0)
