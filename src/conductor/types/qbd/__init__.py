@@ -30,6 +30,7 @@ from .bill_list_params import BillListParams as BillListParams
 from .date_driven_term import DateDrivenTerm as DateDrivenTerm
 from .check_list_params import CheckListParams as CheckListParams
 from .class_list_params import ClassListParams as ClassListParams
+from .payroll_wage_item import PayrollWageItem as PayrollWageItem
 from .bill_check_payment import BillCheckPayment as BillCheckPayment
 from .bill_create_params import BillCreateParams as BillCreateParams
 from .bill_update_params import BillUpdateParams as BillUpdateParams
@@ -115,6 +116,7 @@ from .sales_tax_code_update_params import SalesTaxCodeUpdateParams as SalesTaxCo
 from .sales_tax_item_create_params import SalesTaxItemCreateParams as SalesTaxItemCreateParams
 from .sales_tax_item_update_params import SalesTaxItemUpdateParams as SalesTaxItemUpdateParams
 from .journal_entry_delete_response import JournalEntryDeleteResponse as JournalEntryDeleteResponse
+from .payroll_wage_item_list_params import PayrollWageItemListParams as PayrollWageItemListParams
 from .receive_payment_create_params import ReceivePaymentCreateParams as ReceivePaymentCreateParams
 from .receive_payment_update_params import ReceivePaymentUpdateParams as ReceivePaymentUpdateParams
 from .sales_receipt_delete_response import SalesReceiptDeleteResponse as SalesReceiptDeleteResponse
@@ -126,6 +128,7 @@ from .date_driven_term_create_params import DateDrivenTermCreateParams as DateDr
 from .date_driven_term_list_response import DateDrivenTermListResponse as DateDrivenTermListResponse
 from .non_inventory_item_list_params import NonInventoryItemListParams as NonInventoryItemListParams
 from .purchase_order_delete_response import PurchaseOrderDeleteResponse as PurchaseOrderDeleteResponse
+from .payroll_wage_item_create_params import PayrollWageItemCreateParams as PayrollWageItemCreateParams
 from .receive_payment_delete_response import ReceivePaymentDeleteResponse as ReceivePaymentDeleteResponse
 from .bill_check_payment_create_params import BillCheckPaymentCreateParams as BillCheckPaymentCreateParams
 from .bill_check_payment_update_params import BillCheckPaymentUpdateParams as BillCheckPaymentUpdateParams

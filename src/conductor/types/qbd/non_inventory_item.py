@@ -159,7 +159,7 @@ class SalesAndPurchaseDetailsPurchaseTaxCode(BaseModel):
 
 class SalesAndPurchaseDetails(BaseModel):
     expense_account: SalesAndPurchaseDetailsExpenseAccount = FieldInfo(alias="expenseAccount")
-    """The expense account used to track expenses from purchases of this item."""
+    """The expense account used to track costs from purchases of this item."""
 
     income_account: SalesAndPurchaseDetailsIncomeAccount = FieldInfo(alias="incomeAccount")
     """The income account used to track revenue from sales of this item."""
