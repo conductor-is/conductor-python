@@ -208,6 +208,14 @@ from .date_driven_terms import (
     DateDrivenTermsResourceWithStreamingResponse,
     AsyncDateDrivenTermsResourceWithStreamingResponse,
 )
+from .payroll_wage_items import (
+    PayrollWageItemsResource,
+    AsyncPayrollWageItemsResource,
+    PayrollWageItemsResourceWithRawResponse,
+    AsyncPayrollWageItemsResourceWithRawResponse,
+    PayrollWageItemsResourceWithStreamingResponse,
+    AsyncPayrollWageItemsResourceWithStreamingResponse,
+)
 from .bill_check_payments import (
     BillCheckPaymentsResource,
     AsyncBillCheckPaymentsResource,
@@ -372,6 +380,12 @@ __all__ = [
     "AsyncNonInventoryItemsResourceWithRawResponse",
     "NonInventoryItemsResourceWithStreamingResponse",
     "AsyncNonInventoryItemsResourceWithStreamingResponse",
+    "PayrollWageItemsResource",
+    "AsyncPayrollWageItemsResource",
+    "PayrollWageItemsResourceWithRawResponse",
+    "AsyncPayrollWageItemsResourceWithRawResponse",
+    "PayrollWageItemsResourceWithStreamingResponse",
+    "AsyncPayrollWageItemsResourceWithStreamingResponse",
     "PurchaseOrdersResource",
     "AsyncPurchaseOrdersResource",
     "PurchaseOrdersResourceWithRawResponse",
