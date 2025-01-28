@@ -68,7 +68,6 @@ class TestEmployees:
             },
             employee_payroll={
                 "class_id": "80000001-1234567890",
-                "delete_all_earnings": False,
                 "earnings": [
                     {
                         "payroll_wage_item_id": "80000001-1234567890",
@@ -256,7 +255,6 @@ class TestEmployees:
             },
             employee_payroll={
                 "class_id": "80000001-1234567890",
-                "delete_all_earnings": False,
                 "earnings": [
                     {
                         "payroll_wage_item_id": "80000001-1234567890",
@@ -457,7 +455,6 @@ class TestAsyncEmployees:
             },
             employee_payroll={
                 "class_id": "80000001-1234567890",
-                "delete_all_earnings": False,
                 "earnings": [
                     {
                         "payroll_wage_item_id": "80000001-1234567890",
@@ -645,7 +642,6 @@ class TestAsyncEmployees:
             },
             employee_payroll={
                 "class_id": "80000001-1234567890",
-                "delete_all_earnings": False,
                 "earnings": [
                     {
                         "payroll_wage_item_id": "80000001-1234567890",

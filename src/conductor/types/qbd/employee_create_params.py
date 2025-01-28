@@ -447,9 +447,6 @@ class EmployeePayroll(TypedDict, total=False):
     default.
     """
 
-    delete_all_earnings: Annotated[bool, PropertyInfo(alias="deleteAllEarnings")]
-    """When `true`, deletes all earnings records for this employee."""
-
     earnings: Iterable[EmployeePayrollEarning]
     """The employee's earnings."""
 
