@@ -511,6 +511,7 @@ class Vendor(BaseModel):
     """Indicates whether this vendor is active.
 
     Inactive objects are typically hidden from views and reports in QuickBooks.
+    Defaults to `true`.
     """
 
     is_compounding_tax: Optional[bool] = FieldInfo(alias="isCompoundingTax", default=None)

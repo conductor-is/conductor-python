@@ -75,7 +75,6 @@ class TestEmployees:
                         "rate_percent": "10.5",
                     }
                 ],
-                "is_using_time_data_to_create_paychecks": False,
                 "pay_period": "biweekly",
                 "sick_hours": {
                     "accrual_period": "accrues_annually",
@@ -83,8 +82,8 @@ class TestEmployees:
                     "hours_accrued_per_period": "100",
                     "hours_available": "100",
                     "hours_used": "100",
-                    "is_resetting_hours_annually": False,
                     "maximum_hours": "100",
+                    "resets_hours_each_year": False,
                 },
                 "use_time_data_to_create_paychecks": "does_not_use_time_data",
                 "vacation_hours": {
@@ -93,8 +92,8 @@ class TestEmployees:
                     "hours_accrued_per_period": "100",
                     "hours_available": "100",
                     "hours_used": "100",
-                    "is_resetting_hours_annually": False,
                     "maximum_hours": "100",
+                    "resets_hours_each_year": False,
                 },
             },
             employee_type="officer",
@@ -262,7 +261,6 @@ class TestEmployees:
                         "rate_percent": "10.5",
                     }
                 ],
-                "is_using_time_data_to_create_paychecks": False,
                 "pay_period": "biweekly",
                 "sick_hours": {
                     "accrual_period": "accrues_annually",
@@ -270,8 +268,8 @@ class TestEmployees:
                     "hours_accrued_per_period": "100",
                     "hours_available": "100",
                     "hours_used": "100",
-                    "is_resetting_hours_annually": False,
                     "maximum_hours": "100",
+                    "resets_hours_each_year": False,
                 },
                 "use_time_data_to_create_paychecks": "does_not_use_time_data",
                 "vacation_hours": {
@@ -280,8 +278,8 @@ class TestEmployees:
                     "hours_accrued_per_period": "100",
                     "hours_available": "100",
                     "hours_used": "100",
-                    "is_resetting_hours_annually": False,
                     "maximum_hours": "100",
+                    "resets_hours_each_year": False,
                 },
             },
             employee_type="officer",
@@ -462,7 +460,6 @@ class TestAsyncEmployees:
                         "rate_percent": "10.5",
                     }
                 ],
-                "is_using_time_data_to_create_paychecks": False,
                 "pay_period": "biweekly",
                 "sick_hours": {
                     "accrual_period": "accrues_annually",
@@ -470,8 +467,8 @@ class TestAsyncEmployees:
                     "hours_accrued_per_period": "100",
                     "hours_available": "100",
                     "hours_used": "100",
-                    "is_resetting_hours_annually": False,
                     "maximum_hours": "100",
+                    "resets_hours_each_year": False,
                 },
                 "use_time_data_to_create_paychecks": "does_not_use_time_data",
                 "vacation_hours": {
@@ -480,8 +477,8 @@ class TestAsyncEmployees:
                     "hours_accrued_per_period": "100",
                     "hours_available": "100",
                     "hours_used": "100",
-                    "is_resetting_hours_annually": False,
                     "maximum_hours": "100",
+                    "resets_hours_each_year": False,
                 },
             },
             employee_type="officer",
@@ -649,7 +646,6 @@ class TestAsyncEmployees:
                         "rate_percent": "10.5",
                     }
                 ],
-                "is_using_time_data_to_create_paychecks": False,
                 "pay_period": "biweekly",
                 "sick_hours": {
                     "accrual_period": "accrues_annually",
@@ -657,8 +653,8 @@ class TestAsyncEmployees:
                     "hours_accrued_per_period": "100",
                     "hours_available": "100",
                     "hours_used": "100",
-                    "is_resetting_hours_annually": False,
                     "maximum_hours": "100",
+                    "resets_hours_each_year": False,
                 },
                 "use_time_data_to_create_paychecks": "does_not_use_time_data",
                 "vacation_hours": {
@@ -667,8 +663,8 @@ class TestAsyncEmployees:
                     "hours_accrued_per_period": "100",
                     "hours_available": "100",
                     "hours_used": "100",
-                    "is_resetting_hours_annually": False,
                     "maximum_hours": "100",
+                    "resets_hours_each_year": False,
                 },
             },
             employee_type="officer",

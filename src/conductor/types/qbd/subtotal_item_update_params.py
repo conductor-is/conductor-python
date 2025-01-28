@@ -37,6 +37,7 @@ class SubtotalItemUpdateParams(TypedDict, total=False):
     """Indicates whether this subtotal item is active.
 
     Inactive objects are typically hidden from views and reports in QuickBooks.
+    Defaults to `true`.
     """
 
     name: str

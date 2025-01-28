@@ -133,6 +133,7 @@ class VendorCreateParams(TypedDict, total=False):
     """Indicates whether this vendor is active.
 
     Inactive objects are typically hidden from views and reports in QuickBooks.
+    Defaults to `true`.
     """
 
     is_compounding_tax: Annotated[bool, PropertyInfo(alias="isCompoundingTax")]

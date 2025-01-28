@@ -77,7 +77,7 @@ class ClassesResource(SyncAPIResource):
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
           is_active: Indicates whether this class is active. Inactive objects are typically hidden
-              from views and reports in QuickBooks.
+              from views and reports in QuickBooks. Defaults to `true`.
 
           parent_id: The parent class one level above this one in the hierarchy. For example, if this
               class has a `fullName` of "Department:Marketing", its parent has a `fullName` of
@@ -179,7 +179,7 @@ class ClassesResource(SyncAPIResource):
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
           is_active: Indicates whether this class is active. Inactive objects are typically hidden
-              from views and reports in QuickBooks.
+              from views and reports in QuickBooks. Defaults to `true`.
 
           name: The case-insensitive name of this class. Not guaranteed to be unique because it
               does not include the names of its hierarchical parent objects like `fullName`
@@ -391,7 +391,7 @@ class AsyncClassesResource(AsyncAPIResource):
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
           is_active: Indicates whether this class is active. Inactive objects are typically hidden
-              from views and reports in QuickBooks.
+              from views and reports in QuickBooks. Defaults to `true`.
 
           parent_id: The parent class one level above this one in the hierarchy. For example, if this
               class has a `fullName` of "Department:Marketing", its parent has a `fullName` of
@@ -493,7 +493,7 @@ class AsyncClassesResource(AsyncAPIResource):
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
           is_active: Indicates whether this class is active. Inactive objects are typically hidden
-              from views and reports in QuickBooks.
+              from views and reports in QuickBooks. Defaults to `true`.
 
           name: The case-insensitive name of this class. Not guaranteed to be unique because it
               does not include the names of its hierarchical parent objects like `fullName`

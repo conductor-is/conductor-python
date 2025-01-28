@@ -87,7 +87,7 @@ class StandardTermsResource(SyncAPIResource):
           due_days: The number of days until payment is due.
 
           is_active: Indicates whether this standard term is active. Inactive objects are typically
-              hidden from views and reports in QuickBooks.
+              hidden from views and reports in QuickBooks. Defaults to `true`.
 
           extra_headers: Send extra headers
 
@@ -335,7 +335,7 @@ class AsyncStandardTermsResource(AsyncAPIResource):
           due_days: The number of days until payment is due.
 
           is_active: Indicates whether this standard term is active. Inactive objects are typically
-              hidden from views and reports in QuickBooks.
+              hidden from views and reports in QuickBooks. Defaults to `true`.
 
           extra_headers: Send extra headers
 

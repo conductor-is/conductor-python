@@ -31,6 +31,7 @@ class SalesTaxCodeUpdateParams(TypedDict, total=False):
     """Indicates whether this sales-tax code is active.
 
     Inactive objects are typically hidden from views and reports in QuickBooks.
+    Defaults to `true`.
     """
 
     is_taxable: Annotated[bool, PropertyInfo(alias="isTaxable")]

@@ -284,14 +284,14 @@ class EmployeePayrollSickHours(BaseModel):
     hours_used: Optional[str] = FieldInfo(alias="hoursUsed", default=None)
     """The number of sick hours the employee has used."""
 
-    is_resetting_hours_annually: Optional[bool] = FieldInfo(alias="isResettingHoursAnnually", default=None)
+    maximum_hours: Optional[str] = FieldInfo(alias="maximumHours", default=None)
+    """The maximum number of sick hours the employee can accrue."""
+
+    resets_hours_each_year: Optional[bool] = FieldInfo(alias="resetsHoursEachYear", default=None)
     """
     Indicates whether the employee's sick hours reset to zero at the beginning of
     the new year.
     """
-
-    maximum_hours: Optional[str] = FieldInfo(alias="maximumHours", default=None)
-    """The maximum number of sick hours the employee can accrue."""
 
 
 class EmployeePayrollVacationHours(BaseModel):
@@ -315,14 +315,14 @@ class EmployeePayrollVacationHours(BaseModel):
     hours_used: Optional[str] = FieldInfo(alias="hoursUsed", default=None)
     """The number of vacation hours the employee has used."""
 
-    is_resetting_hours_annually: Optional[bool] = FieldInfo(alias="isResettingHoursAnnually", default=None)
+    maximum_hours: Optional[str] = FieldInfo(alias="maximumHours", default=None)
+    """The maximum number of vacation hours the employee can accrue."""
+
+    resets_hours_each_year: Optional[bool] = FieldInfo(alias="resetsHoursEachYear", default=None)
     """
     Indicates whether the employee's vacation hours reset to zero at the beginning
     of the new year.
     """
-
-    maximum_hours: Optional[str] = FieldInfo(alias="maximumHours", default=None)
-    """The maximum number of vacation hours the employee can accrue."""
 
 
 class EmployeePayroll(BaseModel):
@@ -336,13 +336,6 @@ class EmployeePayroll(BaseModel):
 
     earnings: List[EmployeePayrollEarning]
     """The employee's earnings."""
-
-    is_using_time_data_to_create_paychecks: Optional[bool] = FieldInfo(
-        alias="isUsingTimeDataToCreatePaychecks", default=None
-    )
-    """
-    Indicates whether this employee is using time-tracking data to create paychecks.
-    """
 
     pay_period: Optional[Literal["biweekly", "daily", "monthly", "quarterly", "semimonthly", "weekly", "yearly"]] = (
         FieldInfo(alias="payPeriod", default=None)
@@ -410,7 +403,12 @@ class Employee(BaseModel):
     """Additional notes about this employee."""
 
     address: Optional[Address] = None
-    """The employee's address."""
+    """The employee's address.
+
+    If the company uses QuickBooks Payroll for this employee, this address must
+    specify a complete address, including city, state, ZIP (or postal) code, and at
+    least one line of the street address.
+    """
 
     adjusted_service_date: Optional[datetime.date] = FieldInfo(alias="adjustedServiceDate", default=None)
     """The adjusted service date for this employee.
@@ -522,6 +520,7 @@ class Employee(BaseModel):
     """Indicates whether this employee is active.
 
     Inactive objects are typically hidden from views and reports in QuickBooks.
+    Defaults to `true`.
     """
 
     job_title: Optional[str] = FieldInfo(alias="jobTitle", default=None)
@@ -602,7 +601,7 @@ class Employee(BaseModel):
     """
 
     ssn: Optional[str] = None
-    """The employee's Social Security Number.
+    """The employee's Social Security Number. The value can be with or without dashes.
 
     **NOTE**: This field cannot be changed after the employee is created.
     """

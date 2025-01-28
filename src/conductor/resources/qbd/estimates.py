@@ -120,7 +120,7 @@ class EstimatesResource(SyncAPIResource):
               creation.
 
           is_active: Indicates whether this estimate is active. Inactive objects are typically hidden
-              from views and reports in QuickBooks.
+              from views and reports in QuickBooks. Defaults to `true`.
 
           is_queued_for_email: Indicates whether this estimate is included in the queue of documents for
               QuickBooks to email to the customer.
@@ -343,7 +343,7 @@ class EstimatesResource(SyncAPIResource):
               (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
 
           is_active: Indicates whether this estimate is active. Inactive objects are typically hidden
-              from views and reports in QuickBooks.
+              from views and reports in QuickBooks. Defaults to `true`.
 
           is_queued_for_email: Indicates whether this estimate is included in the queue of documents for
               QuickBooks to email to the customer.
@@ -760,7 +760,7 @@ class AsyncEstimatesResource(AsyncAPIResource):
               creation.
 
           is_active: Indicates whether this estimate is active. Inactive objects are typically hidden
-              from views and reports in QuickBooks.
+              from views and reports in QuickBooks. Defaults to `true`.
 
           is_queued_for_email: Indicates whether this estimate is included in the queue of documents for
               QuickBooks to email to the customer.
@@ -983,7 +983,7 @@ class AsyncEstimatesResource(AsyncAPIResource):
               (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
 
           is_active: Indicates whether this estimate is active. Inactive objects are typically hidden
-              from views and reports in QuickBooks.
+              from views and reports in QuickBooks. Defaults to `true`.
 
           is_queued_for_email: Indicates whether this estimate is included in the queue of documents for
               QuickBooks to email to the customer.

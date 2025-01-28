@@ -102,7 +102,7 @@ class NonInventoryItemsResource(SyncAPIResource):
               creation.
 
           is_active: Indicates whether this non-inventory item is active. Inactive objects are
-              typically hidden from views and reports in QuickBooks.
+              typically hidden from views and reports in QuickBooks. Defaults to `true`.
 
           parent_id: The parent non-inventory item one level above this one in the hierarchy. For
               example, if this non-inventory item has a `fullName` of "Office Supplies:Printer
@@ -270,7 +270,7 @@ class NonInventoryItemsResource(SyncAPIResource):
               unit-of-measure set and deactivating the old item.
 
           is_active: Indicates whether this non-inventory item is active. Inactive objects are
-              typically hidden from views and reports in QuickBooks.
+              typically hidden from views and reports in QuickBooks. Defaults to `true`.
 
           name: The case-insensitive name of this non-inventory item. Not guaranteed to be
               unique because it does not include the names of its hierarchical parent objects
@@ -552,7 +552,7 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
               creation.
 
           is_active: Indicates whether this non-inventory item is active. Inactive objects are
-              typically hidden from views and reports in QuickBooks.
+              typically hidden from views and reports in QuickBooks. Defaults to `true`.
 
           parent_id: The parent non-inventory item one level above this one in the hierarchy. For
               example, if this non-inventory item has a `fullName` of "Office Supplies:Printer
@@ -720,7 +720,7 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
               unit-of-measure set and deactivating the old item.
 
           is_active: Indicates whether this non-inventory item is active. Inactive objects are
-              typically hidden from views and reports in QuickBooks.
+              typically hidden from views and reports in QuickBooks. Defaults to `true`.
 
           name: The case-insensitive name of this non-inventory item. Not guaranteed to be
               unique because it does not include the names of its hierarchical parent objects
