@@ -184,7 +184,7 @@ class CustomersResource(SyncAPIResource):
           first_name: The first name of the contact person for this customer.
 
           is_active: Indicates whether this customer is active. Inactive objects are typically hidden
-              from views and reports in QuickBooks.
+              from views and reports in QuickBooks. Defaults to `true`.
 
           job_description: A brief description of this customer's job, if this object is a job (i.e.,
               sub-customer).
@@ -506,7 +506,7 @@ class CustomersResource(SyncAPIResource):
           first_name: The first name of the contact person for this customer.
 
           is_active: Indicates whether this customer is active. Inactive objects are typically hidden
-              from views and reports in QuickBooks.
+              from views and reports in QuickBooks. Defaults to `true`.
 
           job_description: A brief description of this customer's job, if this object is a job (i.e.,
               sub-customer).
@@ -979,7 +979,7 @@ class AsyncCustomersResource(AsyncAPIResource):
           first_name: The first name of the contact person for this customer.
 
           is_active: Indicates whether this customer is active. Inactive objects are typically hidden
-              from views and reports in QuickBooks.
+              from views and reports in QuickBooks. Defaults to `true`.
 
           job_description: A brief description of this customer's job, if this object is a job (i.e.,
               sub-customer).
@@ -1301,7 +1301,7 @@ class AsyncCustomersResource(AsyncAPIResource):
           first_name: The first name of the contact person for this customer.
 
           is_active: Indicates whether this customer is active. Inactive objects are typically hidden
-              from views and reports in QuickBooks.
+              from views and reports in QuickBooks. Defaults to `true`.
 
           job_description: A brief description of this customer's job, if this object is a job (i.e.,
               sub-customer).

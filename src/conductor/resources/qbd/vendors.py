@@ -177,7 +177,7 @@ class VendorsResource(SyncAPIResource):
           first_name: The first name of the contact person for this vendor.
 
           is_active: Indicates whether this vendor is active. Inactive objects are typically hidden
-              from views and reports in QuickBooks.
+              from views and reports in QuickBooks. Defaults to `true`.
 
           is_compounding_tax: Indicates whether tax is charged on top of tax for this vendor, for use in
               Canada or the UK.
@@ -476,7 +476,7 @@ class VendorsResource(SyncAPIResource):
           first_name: The first name of the contact person for this vendor.
 
           is_active: Indicates whether this vendor is active. Inactive objects are typically hidden
-              from views and reports in QuickBooks.
+              from views and reports in QuickBooks. Defaults to `true`.
 
           is_compounding_tax: Indicates whether tax is charged on top of tax for this vendor, for use in
               Canada or the UK.
@@ -923,7 +923,7 @@ class AsyncVendorsResource(AsyncAPIResource):
           first_name: The first name of the contact person for this vendor.
 
           is_active: Indicates whether this vendor is active. Inactive objects are typically hidden
-              from views and reports in QuickBooks.
+              from views and reports in QuickBooks. Defaults to `true`.
 
           is_compounding_tax: Indicates whether tax is charged on top of tax for this vendor, for use in
               Canada or the UK.
@@ -1222,7 +1222,7 @@ class AsyncVendorsResource(AsyncAPIResource):
           first_name: The first name of the contact person for this vendor.
 
           is_active: Indicates whether this vendor is active. Inactive objects are typically hidden
-              from views and reports in QuickBooks.
+              from views and reports in QuickBooks. Defaults to `true`.
 
           is_compounding_tax: Indicates whether tax is charged on top of tax for this vendor, for use in
               Canada or the UK.

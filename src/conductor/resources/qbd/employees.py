@@ -125,6 +125,10 @@ class EmployeesResource(SyncAPIResource):
 
           address: The employee's address.
 
+              If the company uses QuickBooks Payroll for this employee, this address must
+              specify a complete address, including city, state, ZIP (or postal) code, and at
+              least one line of the street address.
+
           adjusted_service_date: The adjusted service date for this employee. This date accounts for previous
               employment periods or leaves that affect seniority.
 
@@ -181,7 +185,7 @@ class EmployeesResource(SyncAPIResource):
           i9_on_file_status: Indicates whether this employee's I-9 is on file.
 
           is_active: Indicates whether this employee is active. Inactive objects are typically hidden
-              from views and reports in QuickBooks.
+              from views and reports in QuickBooks. Defaults to `true`.
 
           job_title: The employee's job title.
 
@@ -214,7 +218,7 @@ class EmployeesResource(SyncAPIResource):
           salutation: The employee's formal salutation title that precedes their name, such as "Mr.",
               "Ms.", or "Dr.".
 
-          ssn: The employee's Social Security Number.
+          ssn: The employee's Social Security Number. The value can be with or without dashes.
 
               **NOTE**: This field cannot be changed after the employee is created.
 
@@ -423,6 +427,10 @@ class EmployeesResource(SyncAPIResource):
 
           address: The employee's address.
 
+              If the company uses QuickBooks Payroll for this employee, this address must
+              specify a complete address, including city, state, ZIP (or postal) code, and at
+              least one line of the street address.
+
           adjusted_service_date: The adjusted service date for this employee. This date accounts for previous
               employment periods or leaves that affect seniority.
 
@@ -470,7 +478,7 @@ class EmployeesResource(SyncAPIResource):
           i9_on_file_status: Indicates whether this employee's I-9 is on file.
 
           is_active: Indicates whether this employee is active. Inactive objects are typically hidden
-              from views and reports in QuickBooks.
+              from views and reports in QuickBooks. Defaults to `true`.
 
           job_title: The employee's job title.
 
@@ -803,6 +811,10 @@ class AsyncEmployeesResource(AsyncAPIResource):
 
           address: The employee's address.
 
+              If the company uses QuickBooks Payroll for this employee, this address must
+              specify a complete address, including city, state, ZIP (or postal) code, and at
+              least one line of the street address.
+
           adjusted_service_date: The adjusted service date for this employee. This date accounts for previous
               employment periods or leaves that affect seniority.
 
@@ -859,7 +871,7 @@ class AsyncEmployeesResource(AsyncAPIResource):
           i9_on_file_status: Indicates whether this employee's I-9 is on file.
 
           is_active: Indicates whether this employee is active. Inactive objects are typically hidden
-              from views and reports in QuickBooks.
+              from views and reports in QuickBooks. Defaults to `true`.
 
           job_title: The employee's job title.
 
@@ -892,7 +904,7 @@ class AsyncEmployeesResource(AsyncAPIResource):
           salutation: The employee's formal salutation title that precedes their name, such as "Mr.",
               "Ms.", or "Dr.".
 
-          ssn: The employee's Social Security Number.
+          ssn: The employee's Social Security Number. The value can be with or without dashes.
 
               **NOTE**: This field cannot be changed after the employee is created.
 
@@ -1101,6 +1113,10 @@ class AsyncEmployeesResource(AsyncAPIResource):
 
           address: The employee's address.
 
+              If the company uses QuickBooks Payroll for this employee, this address must
+              specify a complete address, including city, state, ZIP (or postal) code, and at
+              least one line of the street address.
+
           adjusted_service_date: The adjusted service date for this employee. This date accounts for previous
               employment periods or leaves that affect seniority.
 
@@ -1148,7 +1164,7 @@ class AsyncEmployeesResource(AsyncAPIResource):
           i9_on_file_status: Indicates whether this employee's I-9 is on file.
 
           is_active: Indicates whether this employee is active. Inactive objects are typically hidden
-              from views and reports in QuickBooks.
+              from views and reports in QuickBooks. Defaults to `true`.
 
           job_title: The employee's job title.
 

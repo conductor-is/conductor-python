@@ -92,6 +92,7 @@ class InventorySite(BaseModel):
     """Indicates whether this inventory site is active.
 
     Inactive objects are typically hidden from views and reports in QuickBooks.
+    Defaults to `true`.
     """
 
     is_default: Optional[bool] = FieldInfo(alias="isDefault", default=None)

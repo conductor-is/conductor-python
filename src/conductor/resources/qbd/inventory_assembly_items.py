@@ -133,7 +133,7 @@ class InventoryAssemblyItemsResource(SyncAPIResource):
               from some other type of item, in ISO 8601 format (YYYY-MM-DD).
 
           is_active: Indicates whether this inventory assembly item is active. Inactive objects are
-              typically hidden from views and reports in QuickBooks.
+              typically hidden from views and reports in QuickBooks. Defaults to `true`.
 
           lines: The inventory assembly item's lines.
 
@@ -359,7 +359,7 @@ class InventoryAssemblyItemsResource(SyncAPIResource):
               item.
 
           is_active: Indicates whether this inventory assembly item is active. Inactive objects are
-              typically hidden from views and reports in QuickBooks.
+              typically hidden from views and reports in QuickBooks. Defaults to `true`.
 
           lines: The inventory assembly item's lines.
 
@@ -708,7 +708,7 @@ class AsyncInventoryAssemblyItemsResource(AsyncAPIResource):
               from some other type of item, in ISO 8601 format (YYYY-MM-DD).
 
           is_active: Indicates whether this inventory assembly item is active. Inactive objects are
-              typically hidden from views and reports in QuickBooks.
+              typically hidden from views and reports in QuickBooks. Defaults to `true`.
 
           lines: The inventory assembly item's lines.
 
@@ -934,7 +934,7 @@ class AsyncInventoryAssemblyItemsResource(AsyncAPIResource):
               item.
 
           is_active: Indicates whether this inventory assembly item is active. Inactive objects are
-              typically hidden from views and reports in QuickBooks.
+              typically hidden from views and reports in QuickBooks. Defaults to `true`.
 
           lines: The inventory assembly item's lines.
 

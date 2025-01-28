@@ -1134,6 +1134,7 @@ class Estimate(BaseModel):
     """Indicates whether this estimate is active.
 
     Inactive objects are typically hidden from views and reports in QuickBooks.
+    Defaults to `true`.
     """
 
     is_queued_for_email: Optional[bool] = FieldInfo(alias="isQueuedForEmail", default=None)

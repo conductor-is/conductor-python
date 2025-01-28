@@ -627,6 +627,7 @@ class Customer(BaseModel):
     """Indicates whether this customer is active.
 
     Inactive objects are typically hidden from views and reports in QuickBooks.
+    Defaults to `true`.
     """
 
     job_description: Optional[str] = FieldInfo(alias="jobDescription", default=None)
