@@ -123,7 +123,7 @@ class Barcode(TypedDict, total=False):
 
 class SalesAndPurchaseDetails(TypedDict, total=False):
     expense_account_id: Required[Annotated[str, PropertyInfo(alias="expenseAccountId")]]
-    """The expense account used to track expenses from purchases of this item."""
+    """The expense account used to track costs from purchases of this item."""
 
     income_account_id: Required[Annotated[str, PropertyInfo(alias="incomeAccountId")]]
     """The income account used to track revenue from sales of this item."""
