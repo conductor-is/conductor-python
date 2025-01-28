@@ -334,9 +334,6 @@ class EmployeePayroll(BaseModel):
     default.
     """
 
-    delete_all_earnings: bool = FieldInfo(alias="deleteAllEarnings")
-    """When `true`, deletes all earnings records for this employee."""
-
     earnings: List[EmployeePayrollEarning]
     """The employee's earnings."""
 
