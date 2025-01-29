@@ -285,6 +285,7 @@ class Address(TypedDict, total=False):
         "MO",
         "MS",
         "MT",
+        "NB",
         "NC",
         "ND",
         "NE",
