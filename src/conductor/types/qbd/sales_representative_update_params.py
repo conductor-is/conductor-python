@@ -24,6 +24,12 @@ class SalesRepresentativeUpdateParams(TypedDict, total=False):
     `"Conductor-End-User-Id: {{END_USER_ID}}"`).
     """
 
+    entity_id: Annotated[str, PropertyInfo(alias="entityId")]
+    """
+    The sales representative's corresponding person entity in QuickBooks, stored as
+    either an employee, vendor, or other-name entry.
+    """
+
     initial: str
     """The initials of this sales representative's name."""
 
@@ -32,10 +38,4 @@ class SalesRepresentativeUpdateParams(TypedDict, total=False):
 
     Inactive objects are typically hidden from views and reports in QuickBooks.
     Defaults to `true`.
-    """
-
-    sales_representative_id: Annotated[str, PropertyInfo(alias="salesRepresentativeId")]
-    """
-    The sales representative's corresponding complete record in QuickBooks, stored
-    as either an employee, vendor, or other-name entry.
     """
