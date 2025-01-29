@@ -44,7 +44,7 @@ class SalesRepresentative(BaseModel):
     entity: Entity
     """
     The sales representative's corresponding person entity in QuickBooks, stored as
-    either an employee, vendor, or other-name.
+    either an employee, vendor, or other-name entry.
     """
 
     initial: Optional[str] = None

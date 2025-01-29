@@ -71,7 +71,7 @@ class SalesRepresentativesResource(SyncAPIResource):
 
         Args:
           entity_id: The sales representative's corresponding person entity in QuickBooks, stored as
-              either an employee, vendor, or other-name.
+              either an employee, vendor, or other-name entry.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -178,7 +178,7 @@ class SalesRepresentativesResource(SyncAPIResource):
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
           entity_id: The sales representative's corresponding person entity in QuickBooks, stored as
-              either an employee, vendor, or other-name.
+              either an employee, vendor, or other-name entry.
 
           initial: The initials of this sales representative's name.
 
@@ -372,7 +372,7 @@ class AsyncSalesRepresentativesResource(AsyncAPIResource):
 
         Args:
           entity_id: The sales representative's corresponding person entity in QuickBooks, stored as
-              either an employee, vendor, or other-name.
+              either an employee, vendor, or other-name entry.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -479,7 +479,7 @@ class AsyncSalesRepresentativesResource(AsyncAPIResource):
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
           entity_id: The sales representative's corresponding person entity in QuickBooks, stored as
-              either an employee, vendor, or other-name.
+              either an employee, vendor, or other-name entry.
 
           initial: The initials of this sales representative's name.
 
