@@ -43,6 +43,9 @@ class Address(BaseModel):
     city: Optional[str] = None
     """The city, district, suburb, town, or village name of the employee address."""
 
+    country: Optional[str] = None
+    """The country name of the employee address."""
+
     line1: Optional[str] = None
     """The first line of the employee address (e.g., street, PO Box, or company name)."""
 
@@ -51,6 +54,15 @@ class Address(BaseModel):
     The second line of the employee address, if needed (e.g., apartment, suite,
     unit, or building).
     """
+
+    line3: Optional[str] = None
+    """The third line of the employee address, if needed."""
+
+    line4: Optional[str] = None
+    """The fourth line of the employee address, if needed."""
+
+    line5: Optional[str] = None
+    """The fifth line of the employee address, if needed."""
 
     postal_code: Optional[str] = FieldInfo(alias="postalCode", default=None)
     """The postal code or ZIP code of the employee address."""
