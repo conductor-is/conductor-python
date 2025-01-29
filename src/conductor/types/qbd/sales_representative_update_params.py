@@ -27,7 +27,7 @@ class SalesRepresentativeUpdateParams(TypedDict, total=False):
     entity_id: Annotated[str, PropertyInfo(alias="entityId")]
     """
     The sales representative's corresponding person entity in QuickBooks, stored as
-    either an employee, vendor, or other-name.
+    either an employee, vendor, or other-name entry.
     """
 
     initial: str
