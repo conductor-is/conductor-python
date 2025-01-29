@@ -248,6 +248,14 @@ from .non_inventory_items import (
     NonInventoryItemsResourceWithStreamingResponse,
     AsyncNonInventoryItemsResourceWithStreamingResponse,
 )
+from .sales_representatives import (
+    SalesRepresentativesResource,
+    AsyncSalesRepresentativesResource,
+    SalesRepresentativesResourceWithRawResponse,
+    AsyncSalesRepresentativesResourceWithRawResponse,
+    SalesRepresentativesResourceWithStreamingResponse,
+    AsyncSalesRepresentativesResourceWithStreamingResponse,
+)
 from .inventory_assembly_items import (
     InventoryAssemblyItemsResource,
     AsyncInventoryAssemblyItemsResource,
@@ -410,6 +418,12 @@ __all__ = [
     "AsyncSalesReceiptsResourceWithRawResponse",
     "SalesReceiptsResourceWithStreamingResponse",
     "AsyncSalesReceiptsResourceWithStreamingResponse",
+    "SalesRepresentativesResource",
+    "AsyncSalesRepresentativesResource",
+    "SalesRepresentativesResourceWithRawResponse",
+    "AsyncSalesRepresentativesResourceWithRawResponse",
+    "SalesRepresentativesResourceWithStreamingResponse",
+    "AsyncSalesRepresentativesResourceWithStreamingResponse",
     "SalesTaxCodesResource",
     "AsyncSalesTaxCodesResource",
     "SalesTaxCodesResourceWithRawResponse",

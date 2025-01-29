@@ -244,6 +244,14 @@ from .non_inventory_items import (
     NonInventoryItemsResourceWithStreamingResponse,
     AsyncNonInventoryItemsResourceWithStreamingResponse,
 )
+from .sales_representatives import (
+    SalesRepresentativesResource,
+    AsyncSalesRepresentativesResource,
+    SalesRepresentativesResourceWithRawResponse,
+    AsyncSalesRepresentativesResourceWithRawResponse,
+    SalesRepresentativesResourceWithStreamingResponse,
+    AsyncSalesRepresentativesResourceWithStreamingResponse,
+)
 from .inventory_assembly_items import (
     InventoryAssemblyItemsResource,
     AsyncInventoryAssemblyItemsResource,
@@ -360,6 +368,10 @@ class QbdResource(SyncAPIResource):
     @cached_property
     def sales_receipts(self) -> SalesReceiptsResource:
         return SalesReceiptsResource(self._client)
+
+    @cached_property
+    def sales_representatives(self) -> SalesRepresentativesResource:
+        return SalesRepresentativesResource(self._client)
 
     @cached_property
     def sales_tax_codes(self) -> SalesTaxCodesResource:
@@ -509,6 +521,10 @@ class AsyncQbdResource(AsyncAPIResource):
     @cached_property
     def sales_receipts(self) -> AsyncSalesReceiptsResource:
         return AsyncSalesReceiptsResource(self._client)
+
+    @cached_property
+    def sales_representatives(self) -> AsyncSalesRepresentativesResource:
+        return AsyncSalesRepresentativesResource(self._client)
 
     @cached_property
     def sales_tax_codes(self) -> AsyncSalesTaxCodesResource:
@@ -663,6 +679,10 @@ class QbdResourceWithRawResponse:
         return SalesReceiptsResourceWithRawResponse(self._qbd.sales_receipts)
 
     @cached_property
+    def sales_representatives(self) -> SalesRepresentativesResourceWithRawResponse:
+        return SalesRepresentativesResourceWithRawResponse(self._qbd.sales_representatives)
+
+    @cached_property
     def sales_tax_codes(self) -> SalesTaxCodesResourceWithRawResponse:
         return SalesTaxCodesResourceWithRawResponse(self._qbd.sales_tax_codes)
 
@@ -794,6 +814,10 @@ class AsyncQbdResourceWithRawResponse:
     @cached_property
     def sales_receipts(self) -> AsyncSalesReceiptsResourceWithRawResponse:
         return AsyncSalesReceiptsResourceWithRawResponse(self._qbd.sales_receipts)
+
+    @cached_property
+    def sales_representatives(self) -> AsyncSalesRepresentativesResourceWithRawResponse:
+        return AsyncSalesRepresentativesResourceWithRawResponse(self._qbd.sales_representatives)
 
     @cached_property
     def sales_tax_codes(self) -> AsyncSalesTaxCodesResourceWithRawResponse:
@@ -929,6 +953,10 @@ class QbdResourceWithStreamingResponse:
         return SalesReceiptsResourceWithStreamingResponse(self._qbd.sales_receipts)
 
     @cached_property
+    def sales_representatives(self) -> SalesRepresentativesResourceWithStreamingResponse:
+        return SalesRepresentativesResourceWithStreamingResponse(self._qbd.sales_representatives)
+
+    @cached_property
     def sales_tax_codes(self) -> SalesTaxCodesResourceWithStreamingResponse:
         return SalesTaxCodesResourceWithStreamingResponse(self._qbd.sales_tax_codes)
 
@@ -1060,6 +1088,10 @@ class AsyncQbdResourceWithStreamingResponse:
     @cached_property
     def sales_receipts(self) -> AsyncSalesReceiptsResourceWithStreamingResponse:
         return AsyncSalesReceiptsResourceWithStreamingResponse(self._qbd.sales_receipts)
+
+    @cached_property
+    def sales_representatives(self) -> AsyncSalesRepresentativesResourceWithStreamingResponse:
+        return AsyncSalesRepresentativesResourceWithStreamingResponse(self._qbd.sales_representatives)
 
     @cached_property
     def sales_tax_codes(self) -> AsyncSalesTaxCodesResourceWithStreamingResponse:

@@ -407,6 +407,21 @@ Methods:
 - <code title="get /quickbooks-desktop/sales-receipts">client.qbd.sales_receipts.<a href="./src/conductor/resources/qbd/sales_receipts.py">list</a>(\*\*<a href="src/conductor/types/qbd/sales_receipt_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/sales_receipt.py">SyncCursorPage[SalesReceipt]</a></code>
 - <code title="delete /quickbooks-desktop/sales-receipts/{id}">client.qbd.sales_receipts.<a href="./src/conductor/resources/qbd/sales_receipts.py">delete</a>(id) -> <a href="./src/conductor/types/qbd/sales_receipt_delete_response.py">SalesReceiptDeleteResponse</a></code>
 
+## SalesRepresentatives
+
+Types:
+
+```python
+from conductor.types.qbd import SalesRepresentative, SalesRepresentativeListResponse
+```
+
+Methods:
+
+- <code title="post /quickbooks-desktop/sales-representatives">client.qbd.sales_representatives.<a href="./src/conductor/resources/qbd/sales_representatives.py">create</a>(\*\*<a href="src/conductor/types/qbd/sales_representative_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/sales_representative.py">SalesRepresentative</a></code>
+- <code title="get /quickbooks-desktop/sales-representatives/{id}">client.qbd.sales_representatives.<a href="./src/conductor/resources/qbd/sales_representatives.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/sales_representative.py">SalesRepresentative</a></code>
+- <code title="post /quickbooks-desktop/sales-representatives/{id}">client.qbd.sales_representatives.<a href="./src/conductor/resources/qbd/sales_representatives.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/sales_representative_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/sales_representative.py">SalesRepresentative</a></code>
+- <code title="get /quickbooks-desktop/sales-representatives">client.qbd.sales_representatives.<a href="./src/conductor/resources/qbd/sales_representatives.py">list</a>(\*\*<a href="src/conductor/types/qbd/sales_representative_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/sales_representative_list_response.py">SalesRepresentativeListResponse</a></code>
+
 ## SalesTaxCodes
 
 Types:
