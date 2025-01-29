@@ -88,6 +88,7 @@ class Address(BaseModel):
             "MO",
             "MS",
             "MT",
+            "NB",
             "NC",
             "ND",
             "NE",
