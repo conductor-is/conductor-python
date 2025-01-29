@@ -274,7 +274,7 @@ class DebitLine(BaseModel):
     This ID is unique across all transaction line types.
     """
 
-    account: DebitLineAccount
+    account: Optional[DebitLineAccount] = None
     """The account to which this journal debit line is being debited.
 
     This will decrease the balance of this account.
