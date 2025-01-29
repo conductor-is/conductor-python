@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.4.0 (2025-01-29)
+
+Full Changelog: [v1.3.0...v1.4.0](https://github.com/conductor-is/conductor-python/compare/v1.3.0...v1.4.0)
+
+### Features
+
+* **api:** api update ([#520](https://github.com/conductor-is/conductor-python/issues/520)) ([44cb588](https://github.com/conductor-is/conductor-python/commit/44cb588af56b52495227a0a9637c070c9f7c81e9))
+* **api:** api update ([#522](https://github.com/conductor-is/conductor-python/issues/522)) ([f15ea45](https://github.com/conductor-is/conductor-python/commit/f15ea45dd9bbb4b39266b380af308ee4baa339d1))
+* **api:** api update ([#523](https://github.com/conductor-is/conductor-python/issues/523)) ([e97b265](https://github.com/conductor-is/conductor-python/commit/e97b2657a8d0bb7883f80befdd350ac71cfdac64))
+* **api:** api update ([#524](https://github.com/conductor-is/conductor-python/issues/524)) ([c307185](https://github.com/conductor-is/conductor-python/commit/c307185ee2bdce25efc7767482a60829b7a3a1c7))
+* **api:** api update ([#525](https://github.com/conductor-is/conductor-python/issues/525)) ([bc1c277](https://github.com/conductor-is/conductor-python/commit/bc1c277b990663987e0076e8b31390fb1cc0d643))
+* **api:** api update ([#526](https://github.com/conductor-is/conductor-python/issues/526)) ([bfa7493](https://github.com/conductor-is/conductor-python/commit/bfa7493d49f0b6155c60f634928820acea0f9a5d))
+
 ## 1.3.0 (2025-01-29)
 
 Full Changelog: [v1.2.0...v1.3.0](https://github.com/conductor-is/conductor-python/compare/v1.2.0...v1.3.0)
