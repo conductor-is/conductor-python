@@ -249,6 +249,9 @@ class Address(TypedDict, total=False):
     city: str
     """The city, district, suburb, town, or village name of the employee address."""
 
+    country: str
+    """The country name of the employee address."""
+
     line1: str
     """The first line of the employee address (e.g., street, PO Box, or company name)."""
 
@@ -257,6 +260,15 @@ class Address(TypedDict, total=False):
     The second line of the employee address, if needed (e.g., apartment, suite,
     unit, or building).
     """
+
+    line3: str
+    """The third line of the employee address, if needed."""
+
+    line4: str
+    """The fourth line of the employee address, if needed."""
+
+    line5: str
+    """The fifth line of the employee address, if needed."""
 
     postal_code: Annotated[str, PropertyInfo(alias="postalCode")]
     """The postal code or ZIP code of the employee address."""
