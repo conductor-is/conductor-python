@@ -7,7 +7,23 @@ from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
 
-__all__ = ["SalesRepresentative"]
+__all__ = ["SalesRepresentative", "Entity"]
+
+
+class Entity(BaseModel):
+    id: Optional[str] = None
+    """The unique identifier assigned by QuickBooks to this object.
+
+    This ID is unique across all objects of the same type, but not across different
+    QuickBooks object types.
+    """
+
+    full_name: Optional[str] = FieldInfo(alias="fullName", default=None)
+    """
+    The fully-qualified unique name for this object, formed by combining the names
+    of its parent objects with its own `name`, separated by colons. Not
+    case-sensitive.
+    """
 
 
 class SalesRepresentative(BaseModel):
@@ -23,6 +39,12 @@ class SalesRepresentative(BaseModel):
     The date and time when this sales representative was created, in ISO 8601 format
     (YYYY-MM-DDThh:mm:ss±hh:mm). The time zone is the same as the user's time zone
     in QuickBooks.
+    """
+
+    entity: Entity
+    """
+    The sales representative's corresponding person entity in QuickBooks, stored as
+    either an employee, vendor, or other-name entry.
     """
 
     initial: Optional[str] = None
@@ -44,12 +66,6 @@ class SalesRepresentative(BaseModel):
     each time the object is modified. When updating this object, you must provide
     the most recent `revisionNumber` to ensure you're working with the latest data;
     otherwise, the update will return an error.
-    """
-
-    sales_representative: SalesRepresentative = FieldInfo(alias="salesRepresentative")
-    """
-    The sales representative's corresponding complete record in QuickBooks, stored
-    as either an employee, vendor, or other-name entry.
     """
 
     updated_at: str = FieldInfo(alias="updatedAt")

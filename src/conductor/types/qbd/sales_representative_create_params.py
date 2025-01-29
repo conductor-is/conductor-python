@@ -10,10 +10,10 @@ __all__ = ["SalesRepresentativeCreateParams"]
 
 
 class SalesRepresentativeCreateParams(TypedDict, total=False):
-    sales_representative_id: Required[Annotated[str, PropertyInfo(alias="salesRepresentativeId")]]
+    entity_id: Required[Annotated[str, PropertyInfo(alias="entityId")]]
     """
-    The sales representative's corresponding complete record in QuickBooks, stored
-    as either an employee, vendor, or other-name entry.
+    The sales representative's corresponding person entity in QuickBooks, stored as
+    either an employee, vendor, or other-name entry.
     """
 
     conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]

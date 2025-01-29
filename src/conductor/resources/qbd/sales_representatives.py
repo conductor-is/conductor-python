@@ -55,7 +55,7 @@ class SalesRepresentativesResource(SyncAPIResource):
     def create(
         self,
         *,
-        sales_representative_id: str,
+        entity_id: str,
         conductor_end_user_id: str,
         initial: str | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
@@ -70,8 +70,8 @@ class SalesRepresentativesResource(SyncAPIResource):
         Creates a new sales representative.
 
         Args:
-          sales_representative_id: The sales representative's corresponding complete record in QuickBooks, stored
-              as either an employee, vendor, or other-name entry.
+          entity_id: The sales representative's corresponding person entity in QuickBooks, stored as
+              either an employee, vendor, or other-name entry.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -94,7 +94,7 @@ class SalesRepresentativesResource(SyncAPIResource):
             "/quickbooks-desktop/sales-representatives",
             body=maybe_transform(
                 {
-                    "sales_representative_id": sales_representative_id,
+                    "entity_id": entity_id,
                     "initial": initial,
                     "is_active": is_active,
                 },
@@ -153,9 +153,9 @@ class SalesRepresentativesResource(SyncAPIResource):
         *,
         revision_number: str,
         conductor_end_user_id: str,
+        entity_id: str | NotGiven = NOT_GIVEN,
         initial: str | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
-        sales_representative_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -177,13 +177,13 @@ class SalesRepresentativesResource(SyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
+          entity_id: The sales representative's corresponding person entity in QuickBooks, stored as
+              either an employee, vendor, or other-name entry.
+
           initial: The initials of this sales representative's name.
 
           is_active: Indicates whether this sales representative is active. Inactive objects are
               typically hidden from views and reports in QuickBooks. Defaults to `true`.
-
-          sales_representative_id: The sales representative's corresponding complete record in QuickBooks, stored
-              as either an employee, vendor, or other-name entry.
 
           extra_headers: Send extra headers
 
@@ -201,9 +201,9 @@ class SalesRepresentativesResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "revision_number": revision_number,
+                    "entity_id": entity_id,
                     "initial": initial,
                     "is_active": is_active,
-                    "sales_representative_id": sales_representative_id,
                 },
                 sales_representative_update_params.SalesRepresentativeUpdateParams,
             ),
@@ -356,7 +356,7 @@ class AsyncSalesRepresentativesResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        sales_representative_id: str,
+        entity_id: str,
         conductor_end_user_id: str,
         initial: str | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
@@ -371,8 +371,8 @@ class AsyncSalesRepresentativesResource(AsyncAPIResource):
         Creates a new sales representative.
 
         Args:
-          sales_representative_id: The sales representative's corresponding complete record in QuickBooks, stored
-              as either an employee, vendor, or other-name entry.
+          entity_id: The sales representative's corresponding person entity in QuickBooks, stored as
+              either an employee, vendor, or other-name entry.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -395,7 +395,7 @@ class AsyncSalesRepresentativesResource(AsyncAPIResource):
             "/quickbooks-desktop/sales-representatives",
             body=await async_maybe_transform(
                 {
-                    "sales_representative_id": sales_representative_id,
+                    "entity_id": entity_id,
                     "initial": initial,
                     "is_active": is_active,
                 },
@@ -454,9 +454,9 @@ class AsyncSalesRepresentativesResource(AsyncAPIResource):
         *,
         revision_number: str,
         conductor_end_user_id: str,
+        entity_id: str | NotGiven = NOT_GIVEN,
         initial: str | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
-        sales_representative_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -478,13 +478,13 @@ class AsyncSalesRepresentativesResource(AsyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
+          entity_id: The sales representative's corresponding person entity in QuickBooks, stored as
+              either an employee, vendor, or other-name entry.
+
           initial: The initials of this sales representative's name.
 
           is_active: Indicates whether this sales representative is active. Inactive objects are
               typically hidden from views and reports in QuickBooks. Defaults to `true`.
-
-          sales_representative_id: The sales representative's corresponding complete record in QuickBooks, stored
-              as either an employee, vendor, or other-name entry.
 
           extra_headers: Send extra headers
 
@@ -502,9 +502,9 @@ class AsyncSalesRepresentativesResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "revision_number": revision_number,
+                    "entity_id": entity_id,
                     "initial": initial,
                     "is_active": is_active,
-                    "sales_representative_id": sales_representative_id,
                 },
                 sales_representative_update_params.SalesRepresentativeUpdateParams,
             ),
