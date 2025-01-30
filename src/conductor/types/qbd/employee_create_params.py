@@ -52,7 +52,7 @@ class EmployeeCreateParams(TypedDict, total=False):
     """
 
     adjusted_service_date: Annotated[Union[str, date], PropertyInfo(alias="adjustedServiceDate", format="iso8601")]
-    """The adjusted service date for this employee.
+    """The adjusted service date for this employee, in ISO 8601 format (YYYY-MM-DD).
 
     This date accounts for previous employment periods or leaves that affect
     seniority.
@@ -68,7 +68,7 @@ class EmployeeCreateParams(TypedDict, total=False):
     """
 
     birth_date: Annotated[Union[str, date], PropertyInfo(alias="birthDate", format="iso8601")]
-    """This employee's date of birth."""
+    """This employee's date of birth, in ISO 8601 format (YYYY-MM-DD)."""
 
     custom_contact_fields: Annotated[Iterable[CustomContactField], PropertyInfo(alias="customContactFields")]
     """
@@ -139,7 +139,7 @@ class EmployeeCreateParams(TypedDict, total=False):
     """This employee's gender."""
 
     hired_date: Annotated[Union[str, date], PropertyInfo(alias="hiredDate", format="iso8601")]
-    """The date this employee was hired."""
+    """The date this employee was hired, in ISO 8601 format (YYYY-MM-DD)."""
 
     i9_on_file_status: Annotated[Literal["on_file", "not_on_file"], PropertyInfo(alias="i9OnFileStatus")]
     """Indicates whether this employee's I-9 is on file."""
@@ -173,7 +173,7 @@ class EmployeeCreateParams(TypedDict, total=False):
     """A note or comment about this employee."""
 
     original_hire_date: Annotated[Union[str, date], PropertyInfo(alias="originalHireDate", format="iso8601")]
-    """The original hire date for this employee."""
+    """The original hire date for this employee, in ISO 8601 format (YYYY-MM-DD)."""
 
     overtime_exempt_status: Annotated[Literal["exempt", "non_exempt"], PropertyInfo(alias="overtimeExemptStatus")]
     """Indicates whether this employee is exempt from overtime pay.
@@ -223,9 +223,9 @@ class EmployeeCreateParams(TypedDict, total=False):
     """
 
     termination_date: Annotated[Union[str, date], PropertyInfo(alias="terminationDate", format="iso8601")]
-    """The date this employee's employment ended with the company.
-
-    This is also known as the released date or separation date.
+    """
+    The date this employee's employment ended with the company, in ISO 8601 format
+    (YYYY-MM-DD). This is also known as the released date or separation date.
     """
 
     us_citizenship_status: Annotated[Literal["citizen", "non_citizen"], PropertyInfo(alias="usCitizenshipStatus")]
@@ -237,7 +237,10 @@ class EmployeeCreateParams(TypedDict, total=False):
     work_authorization_expiration_date: Annotated[
         Union[str, date], PropertyInfo(alias="workAuthorizationExpirationDate", format="iso8601")
     ]
-    """The date this employee's work authorization expires."""
+    """
+    The date this employee's work authorization expires, in ISO 8601 format
+    (YYYY-MM-DD).
+    """
 
 
 class AdditionalNote(TypedDict, total=False):
@@ -402,7 +405,10 @@ class EmployeePayrollSickHours(TypedDict, total=False):
     """How frequently the employee's sick hours are accrued."""
 
     accrual_start_date: Annotated[Union[str, date], PropertyInfo(alias="accrualStartDate", format="iso8601")]
-    """The date the employee's sick hours began to accrue."""
+    """
+    The date the employee's sick hours began to accrue, in ISO 8601 format
+    (YYYY-MM-DD).
+    """
 
     hours_accrued_per_period: Annotated[str, PropertyInfo(alias="hoursAccruedPerPeriod")]
     """The number of sick hours the employee will accrue per accrual period."""
@@ -433,7 +439,10 @@ class EmployeePayrollVacationHours(TypedDict, total=False):
     """How frequently the employee's vacation hours are accrued."""
 
     accrual_start_date: Annotated[Union[str, date], PropertyInfo(alias="accrualStartDate", format="iso8601")]
-    """The date the employee's vacation hours began to accrue."""
+    """
+    The date the employee's vacation hours began to accrue, in ISO 8601 format
+    (YYYY-MM-DD).
+    """
 
     hours_accrued_per_period: Annotated[str, PropertyInfo(alias="hoursAccruedPerPeriod")]
     """The number of vacation hours the employee will accrue per accrual period."""

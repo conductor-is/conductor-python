@@ -154,7 +154,10 @@ class LineAdjustQuantity(TypedDict, total=False):
 
 class LineAdjustSerialNumber(TypedDict, total=False):
     add_serial_number: Annotated[str, PropertyInfo(alias="addSerialNumber")]
-    """The serial number to add to inventory."""
+    """
+    The serial number, which represents a unique unit of the inventory item
+    associated with this inventory adjustment line, to add to inventory.
+    """
 
     expiration_date: Annotated[Union[str, date], PropertyInfo(alias="expirationDate", format="iso8601")]
     """
@@ -171,7 +174,10 @@ class LineAdjustSerialNumber(TypedDict, total=False):
     """
 
     remove_serial_number: Annotated[str, PropertyInfo(alias="removeSerialNumber")]
-    """The serial number to remove from inventory."""
+    """
+    The serial number, which represents a unique unit of the inventory item
+    associated with this inventory adjustment line, to remove from inventory.
+    """
 
 
 class LineAdjustValue(TypedDict, total=False):
@@ -217,7 +223,10 @@ class Line(TypedDict, total=False):
     """
 
     adjust_serial_number: Annotated[LineAdjustSerialNumber, PropertyInfo(alias="adjustSerialNumber")]
-    """Adjusts the serial number of this inventory adjustment line."""
+    """Adjusts the serial number of this inventory adjustment line.
+
+    This is used for tracking individual units of serialized inventory items.
+    """
 
     adjust_value: Annotated[LineAdjustValue, PropertyInfo(alias="adjustValue")]
     """
