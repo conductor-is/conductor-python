@@ -184,6 +184,8 @@ class CustomersResource(SyncAPIResource):
 
           first_name: The first name of the contact person for this customer.
 
+              Maximum length: 25 characters.
+
           is_active: Indicates whether this customer is active. Inactive objects are typically hidden
               from views and reports in QuickBooks. Defaults to `true`.
 
@@ -209,7 +211,11 @@ class CustomersResource(SyncAPIResource):
 
           last_name: The last name of the contact person for this customer.
 
+              Maximum length: 25 characters.
+
           middle_name: The middle name of the contact person for this customer.
+
+              Maximum length: 5 characters.
 
           note: A note or comment about this customer.
 
@@ -506,6 +512,8 @@ class CustomersResource(SyncAPIResource):
 
           first_name: The first name of the contact person for this customer.
 
+              Maximum length: 25 characters.
+
           is_active: Indicates whether this customer is active. Inactive objects are typically hidden
               from views and reports in QuickBooks. Defaults to `true`.
 
@@ -531,7 +539,11 @@ class CustomersResource(SyncAPIResource):
 
           last_name: The last name of the contact person for this customer.
 
+              Maximum length: 25 characters.
+
           middle_name: The middle name of the contact person for this customer.
+
+              Maximum length: 5 characters.
 
           name: The case-insensitive name of this customer. Not guaranteed to be unique because
               it does not include the names of its hierarchical parent objects like `fullName`
@@ -981,6 +993,8 @@ class AsyncCustomersResource(AsyncAPIResource):
 
           first_name: The first name of the contact person for this customer.
 
+              Maximum length: 25 characters.
+
           is_active: Indicates whether this customer is active. Inactive objects are typically hidden
               from views and reports in QuickBooks. Defaults to `true`.
 
@@ -1006,7 +1020,11 @@ class AsyncCustomersResource(AsyncAPIResource):
 
           last_name: The last name of the contact person for this customer.
 
+              Maximum length: 25 characters.
+
           middle_name: The middle name of the contact person for this customer.
+
+              Maximum length: 5 characters.
 
           note: A note or comment about this customer.
 
@@ -1303,6 +1321,8 @@ class AsyncCustomersResource(AsyncAPIResource):
 
           first_name: The first name of the contact person for this customer.
 
+              Maximum length: 25 characters.
+
           is_active: Indicates whether this customer is active. Inactive objects are typically hidden
               from views and reports in QuickBooks. Defaults to `true`.
 
@@ -1328,7 +1348,11 @@ class AsyncCustomersResource(AsyncAPIResource):
 
           last_name: The last name of the contact person for this customer.
 
+              Maximum length: 25 characters.
+
           middle_name: The middle name of the contact person for this customer.
+
+              Maximum length: 5 characters.
 
           name: The case-insensitive name of this customer. Not guaranteed to be unique because
               it does not include the names of its hierarchical parent objects like `fullName`

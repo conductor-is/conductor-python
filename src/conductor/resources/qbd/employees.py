@@ -179,6 +179,8 @@ class EmployeesResource(SyncAPIResource):
 
           first_name: The employee's first name.
 
+              Maximum length: 25 characters.
+
           gender: This employee's gender.
 
           hired_date: The date this employee was hired, in ISO 8601 format (YYYY-MM-DD).
@@ -194,7 +196,11 @@ class EmployeesResource(SyncAPIResource):
 
           last_name: The employee's last name.
 
+              Maximum length: 25 characters.
+
           middle_name: The employee's middle name.
+
+              Maximum length: 5 characters.
 
           military_status: This employee's military status if they are a U.S. veteran.
 
@@ -476,6 +482,8 @@ class EmployeesResource(SyncAPIResource):
 
           first_name: The employee's first name.
 
+              Maximum length: 25 characters.
+
           hired_date: The date this employee was hired, in ISO 8601 format (YYYY-MM-DD).
 
           i9_on_file_status: Indicates whether this employee's I-9 is on file.
@@ -489,7 +497,11 @@ class EmployeesResource(SyncAPIResource):
 
           last_name: The employee's last name.
 
+              Maximum length: 25 characters.
+
           middle_name: The employee's middle name.
+
+              Maximum length: 5 characters.
 
           military_status: This employee's military status if they are a U.S. veteran.
 
@@ -869,6 +881,8 @@ class AsyncEmployeesResource(AsyncAPIResource):
 
           first_name: The employee's first name.
 
+              Maximum length: 25 characters.
+
           gender: This employee's gender.
 
           hired_date: The date this employee was hired, in ISO 8601 format (YYYY-MM-DD).
@@ -884,7 +898,11 @@ class AsyncEmployeesResource(AsyncAPIResource):
 
           last_name: The employee's last name.
 
+              Maximum length: 25 characters.
+
           middle_name: The employee's middle name.
+
+              Maximum length: 5 characters.
 
           military_status: This employee's military status if they are a U.S. veteran.
 
@@ -1166,6 +1184,8 @@ class AsyncEmployeesResource(AsyncAPIResource):
 
           first_name: The employee's first name.
 
+              Maximum length: 25 characters.
+
           hired_date: The date this employee was hired, in ISO 8601 format (YYYY-MM-DD).
 
           i9_on_file_status: Indicates whether this employee's I-9 is on file.
@@ -1179,7 +1199,11 @@ class AsyncEmployeesResource(AsyncAPIResource):
 
           last_name: The employee's last name.
 
+              Maximum length: 25 characters.
+
           middle_name: The employee's middle name.
+
+              Maximum length: 5 characters.
 
           military_status: This employee's military status if they are a U.S. veteran.
 

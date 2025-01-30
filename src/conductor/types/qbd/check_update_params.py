@@ -168,28 +168,45 @@ class CheckUpdateParams(TypedDict, total=False):
 
 class Address(TypedDict, total=False):
     city: str
-    """The city, district, suburb, town, or village name of the address."""
+    """The city, district, suburb, town, or village name of the address.
+
+    Maximum length: 31 characters.
+    """
 
     country: str
     """The country name of the address."""
 
     line1: str
-    """The first line of the address (e.g., street, PO Box, or company name)."""
+    """The first line of the address (e.g., street, PO Box, or company name).
+
+    Maximum length: 41 characters.
+    """
 
     line2: str
     """
     The second line of the address, if needed (e.g., apartment, suite, unit, or
     building).
+
+    Maximum length: 41 characters.
     """
 
     line3: str
-    """The third line of the address, if needed."""
+    """The third line of the address, if needed.
+
+    Maximum length: 41 characters.
+    """
 
     line4: str
-    """The fourth line of the address, if needed."""
+    """The fourth line of the address, if needed.
+
+    Maximum length: 41 characters.
+    """
 
     line5: str
-    """The fifth line of the address, if needed."""
+    """The fifth line of the address, if needed.
+
+    Maximum length: 41 characters.
+    """
 
     note: str
     """
@@ -198,10 +215,16 @@ class Address(TypedDict, total=False):
     """
 
     postal_code: Annotated[str, PropertyInfo(alias="postalCode")]
-    """The postal code or ZIP code of the address."""
+    """The postal code or ZIP code of the address.
+
+    Maximum length: 13 characters.
+    """
 
     state: str
-    """The state, county, province, or region name of the address."""
+    """The state, county, province, or region name of the address.
+
+    Maximum length: 21 characters.
+    """
 
 
 class ApplyToTransaction(TypedDict, total=False):
