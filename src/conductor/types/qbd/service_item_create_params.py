@@ -40,11 +40,11 @@ class ServiceItemCreateParams(TypedDict, total=False):
     external_id: Annotated[str, PropertyInfo(alias="externalId")]
     """
     A globally unique identifier (GUID) you, the developer, can provide for tracking
-    this object in your external system.
+    this object in your external system. This field is immutable and can only be set
+    during object creation.
 
-    **IMPORTANT**: Must be formatted as a valid GUID; otherwise, QuickBooks will
-    return an error. This field is immutable and can only be set during object
-    creation.
+    **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
+    QuickBooks will return an error.
     """
 
     is_active: Annotated[bool, PropertyInfo(alias="isActive")]
@@ -156,10 +156,10 @@ class SalesAndPurchaseDetails(TypedDict, total=False):
 
 class SalesOrPurchaseDetails(TypedDict, total=False):
     posting_account_id: Required[Annotated[str, PropertyInfo(alias="postingAccountId")]]
-    """
-    The posting account associated with this item, used when recording transactions
-    involving this item. This could be an income account when selling or an expense
-    account when purchasing.
+    """The posting account to which transactions involving this item are posted.
+
+    This could be an income account when selling or an expense account when
+    purchasing.
     """
 
     description: str

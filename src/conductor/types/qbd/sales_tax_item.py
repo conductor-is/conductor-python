@@ -136,7 +136,8 @@ class SalesTaxItem(BaseModel):
     external_id: Optional[str] = FieldInfo(alias="externalId", default=None)
     """
     A globally unique identifier (GUID) you, the developer, can provide for tracking
-    this object in your external system.
+    this object in your external system. This field is immutable and can only be set
+    during object creation.
     """
 
     is_active: bool = FieldInfo(alias="isActive")
@@ -161,10 +162,10 @@ class SalesTaxItem(BaseModel):
 
     revision_number: str = FieldInfo(alias="revisionNumber")
     """
-    The current revision number of this sales-tax item object, which changes each
-    time the object is modified. When updating this object, you must provide the
-    most recent `revisionNumber` to ensure you're working with the latest data;
-    otherwise, the update will return an error.
+    The current QuickBooks-assigned revision number of this sales-tax item object,
+    which changes each time the object is modified. When updating this object, you
+    must provide the most recent `revisionNumber` to ensure you're working with the
+    latest data; otherwise, the update will return an error.
     """
 
     sales_tax_return_line: Optional[SalesTaxReturnLine] = FieldInfo(alias="salesTaxReturnLine", default=None)

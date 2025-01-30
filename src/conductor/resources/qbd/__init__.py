@@ -248,6 +248,14 @@ from .non_inventory_items import (
     NonInventoryItemsResourceWithStreamingResponse,
     AsyncNonInventoryItemsResourceWithStreamingResponse,
 )
+from .inventory_adjustments import (
+    InventoryAdjustmentsResource,
+    AsyncInventoryAdjustmentsResource,
+    InventoryAdjustmentsResourceWithRawResponse,
+    AsyncInventoryAdjustmentsResourceWithRawResponse,
+    InventoryAdjustmentsResourceWithStreamingResponse,
+    AsyncInventoryAdjustmentsResourceWithStreamingResponse,
+)
 from .sales_representatives import (
     SalesRepresentativesResource,
     AsyncSalesRepresentativesResource,
@@ -352,6 +360,12 @@ __all__ = [
     "AsyncEstimatesResourceWithRawResponse",
     "EstimatesResourceWithStreamingResponse",
     "AsyncEstimatesResourceWithStreamingResponse",
+    "InventoryAdjustmentsResource",
+    "AsyncInventoryAdjustmentsResource",
+    "InventoryAdjustmentsResourceWithRawResponse",
+    "AsyncInventoryAdjustmentsResourceWithRawResponse",
+    "InventoryAdjustmentsResourceWithStreamingResponse",
+    "AsyncInventoryAdjustmentsResourceWithStreamingResponse",
     "InventoryAssemblyItemsResource",
     "AsyncInventoryAssemblyItemsResource",
     "InventoryAssemblyItemsResourceWithRawResponse",

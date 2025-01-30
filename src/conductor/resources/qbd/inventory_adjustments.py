@@ -21,37 +21,37 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ...types.qbd import (
-    credit_card_charge_list_params,
-    credit_card_charge_create_params,
-    credit_card_charge_update_params,
+    inventory_adjustment_list_params,
+    inventory_adjustment_create_params,
+    inventory_adjustment_update_params,
 )
-from ...pagination import SyncCursorPage, AsyncCursorPage
-from ..._base_client import AsyncPaginator, make_request_options
-from ...types.qbd.credit_card_charge import CreditCardCharge
-from ...types.qbd.credit_card_charge_delete_response import CreditCardChargeDeleteResponse
+from ..._base_client import make_request_options
+from ...types.qbd.inventory_adjustment import InventoryAdjustment
+from ...types.qbd.inventory_adjustment_list_response import InventoryAdjustmentListResponse
+from ...types.qbd.inventory_adjustment_delete_response import InventoryAdjustmentDeleteResponse
 
-__all__ = ["CreditCardChargesResource", "AsyncCreditCardChargesResource"]
+__all__ = ["InventoryAdjustmentsResource", "AsyncInventoryAdjustmentsResource"]
 
 
-class CreditCardChargesResource(SyncAPIResource):
+class InventoryAdjustmentsResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> CreditCardChargesResourceWithRawResponse:
+    def with_raw_response(self) -> InventoryAdjustmentsResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/conductor-is/conductor-python#accessing-raw-response-data-eg-headers
         """
-        return CreditCardChargesResourceWithRawResponse(self)
+        return InventoryAdjustmentsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> CreditCardChargesResourceWithStreamingResponse:
+    def with_streaming_response(self) -> InventoryAdjustmentsResourceWithStreamingResponse:
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
         For more information, see https://www.github.com/conductor-is/conductor-python#with_streaming_response
         """
-        return CreditCardChargesResourceWithStreamingResponse(self)
+        return InventoryAdjustmentsResourceWithStreamingResponse(self)
 
     def create(
         self,
@@ -59,40 +59,39 @@ class CreditCardChargesResource(SyncAPIResource):
         account_id: str,
         transaction_date: Union[str, date],
         conductor_end_user_id: str,
-        exchange_rate: float | NotGiven = NOT_GIVEN,
-        expense_lines: Iterable[credit_card_charge_create_params.ExpenseLine] | NotGiven = NOT_GIVEN,
+        class_id: str | NotGiven = NOT_GIVEN,
+        customer_id: str | NotGiven = NOT_GIVEN,
         external_id: str | NotGiven = NOT_GIVEN,
-        item_line_groups: Iterable[credit_card_charge_create_params.ItemLineGroup] | NotGiven = NOT_GIVEN,
-        item_lines: Iterable[credit_card_charge_create_params.ItemLine] | NotGiven = NOT_GIVEN,
+        inventory_site_id: str | NotGiven = NOT_GIVEN,
+        lines: Iterable[inventory_adjustment_create_params.Line] | NotGiven = NOT_GIVEN,
         memo: str | NotGiven = NOT_GIVEN,
-        payee_id: str | NotGiven = NOT_GIVEN,
         ref_number: str | NotGiven = NOT_GIVEN,
-        sales_tax_code_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CreditCardCharge:
+    ) -> InventoryAdjustment:
         """
-        Creates a new credit card charge for the specified account.
+        Creates a new inventory adjustment.
 
         Args:
-          account_id: The bank or credit card account to which money is owed for this credit card
-              charge.
+          account_id: The account to which this inventory adjustment is posted for tracking inventory
+              value changes.
 
-          transaction_date: The date of this credit card charge, in ISO 8601 format (YYYY-MM-DD).
+          transaction_date: The date of this inventory adjustment, in ISO 8601 format (YYYY-MM-DD).
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          exchange_rate: The market exchange rate between this credit card charge's currency and the home
-              currency in QuickBooks at the time of this transaction. Represented as a decimal
-              value (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
+          class_id: The inventory adjustment's class. Classes can be used to categorize objects into
+              meaningful segments, such as department, location, or type of work. In
+              QuickBooks, class tracking is off by default. A class defined here is
+              automatically used in this inventory adjustment's line items unless overridden
+              at the line item level.
 
-          expense_lines: The credit card charge's expense lines, each representing one line in this
-              expense.
+          customer_id: The customer or customer-job associated with this inventory adjustment.
 
           external_id: A globally unique identifier (GUID) you, the developer, can provide for tracking
               this object in your external system. This field is immutable and can only be set
@@ -101,32 +100,19 @@ class CreditCardChargesResource(SyncAPIResource):
               **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
               QuickBooks will return an error.
 
-          item_line_groups: The credit card charge's item group lines, each representing a predefined set of
-              items bundled together because they are commonly purchased together or grouped
-              for faster entry.
+          inventory_site_id: The site location where inventory for the item associated with this inventory
+              adjustment is stored.
 
-          item_lines: The credit card charge's item lines, each representing the purchase of a
-              specific item or service.
+          lines: The inventory adjustment's item lines, each representing the adjustment of an
+              inventory item's quantity, value, serial number, or lot number.
 
-          memo: A memo or note for this credit card charge.
+          memo: A memo or note for this inventory adjustment.
 
-          payee_id: The vendor or company from whom merchandise or services were purchased for this
-              credit card charge.
-
-          ref_number: The case-sensitive user-defined reference number for this credit card charge,
+          ref_number: The case-sensitive user-defined reference number for this inventory adjustment,
               which can be used to identify the transaction in QuickBooks. This value is not
               required to be unique and can be arbitrarily changed by the QuickBooks user.
               When left blank in this create request, this field will be left blank in
               QuickBooks (i.e., it does _not_ auto-increment).
-
-          sales_tax_code_id: The sales-tax code for this credit card charge, determining whether it is
-              taxable or non-taxable. If set, this overrides any sales-tax codes defined on
-              the payee. This can be overridden on the credit card charge's individual lines.
-
-              Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
-              can also be created in QuickBooks. If QuickBooks is not set up to charge sales
-              tax (via the "Do You Charge Sales Tax?" preference), it will assign the default
-              non-taxable code to all sales.
 
           extra_headers: Send extra headers
 
@@ -138,27 +124,25 @@ class CreditCardChargesResource(SyncAPIResource):
         """
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._post(
-            "/quickbooks-desktop/credit-card-charges",
+            "/quickbooks-desktop/inventory-adjustments",
             body=maybe_transform(
                 {
                     "account_id": account_id,
                     "transaction_date": transaction_date,
-                    "exchange_rate": exchange_rate,
-                    "expense_lines": expense_lines,
+                    "class_id": class_id,
+                    "customer_id": customer_id,
                     "external_id": external_id,
-                    "item_line_groups": item_line_groups,
-                    "item_lines": item_lines,
+                    "inventory_site_id": inventory_site_id,
+                    "lines": lines,
                     "memo": memo,
-                    "payee_id": payee_id,
                     "ref_number": ref_number,
-                    "sales_tax_code_id": sales_tax_code_id,
                 },
-                credit_card_charge_create_params.CreditCardChargeCreateParams,
+                inventory_adjustment_create_params.InventoryAdjustmentCreateParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CreditCardCharge,
+            cast_to=InventoryAdjustment,
         )
 
     def retrieve(
@@ -172,12 +156,13 @@ class CreditCardChargesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CreditCardCharge:
+    ) -> InventoryAdjustment:
         """
-        Retrieves a credit card charge by ID.
+        Retrieves an inventory adjustment by ID.
 
         Args:
-          id: The QuickBooks-assigned unique identifier of the credit card charge to retrieve.
+          id: The QuickBooks-assigned unique identifier of the inventory adjustment to
+              retrieve.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -194,11 +179,11 @@ class CreditCardChargesResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._get(
-            f"/quickbooks-desktop/credit-card-charges/{id}",
+            f"/quickbooks-desktop/inventory-adjustments/{id}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CreditCardCharge,
+            cast_to=InventoryAdjustment,
         )
 
     def update(
@@ -208,16 +193,12 @@ class CreditCardChargesResource(SyncAPIResource):
         revision_number: str,
         conductor_end_user_id: str,
         account_id: str | NotGiven = NOT_GIVEN,
-        clear_expense_lines: bool | NotGiven = NOT_GIVEN,
-        clear_item_lines: bool | NotGiven = NOT_GIVEN,
-        exchange_rate: float | NotGiven = NOT_GIVEN,
-        expense_lines: Iterable[credit_card_charge_update_params.ExpenseLine] | NotGiven = NOT_GIVEN,
-        item_line_groups: Iterable[credit_card_charge_update_params.ItemLineGroup] | NotGiven = NOT_GIVEN,
-        item_lines: Iterable[credit_card_charge_update_params.ItemLine] | NotGiven = NOT_GIVEN,
+        class_id: str | NotGiven = NOT_GIVEN,
+        customer_id: str | NotGiven = NOT_GIVEN,
+        inventory_site_id: str | NotGiven = NOT_GIVEN,
+        lines: Iterable[inventory_adjustment_update_params.Line] | NotGiven = NOT_GIVEN,
         memo: str | NotGiven = NOT_GIVEN,
-        payee_id: str | NotGiven = NOT_GIVEN,
         ref_number: str | NotGiven = NOT_GIVEN,
-        sales_tax_code_id: str | NotGiven = NOT_GIVEN,
         transaction_date: Union[str, date] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -225,75 +206,42 @@ class CreditCardChargesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CreditCardCharge:
+    ) -> InventoryAdjustment:
         """
-        Updates an existing credit card charge.
+        Updates an existing inventory adjustment.
 
         Args:
-          id: The QuickBooks-assigned unique identifier of the credit card charge to update.
+          id: The QuickBooks-assigned unique identifier of the inventory adjustment to update.
 
-          revision_number: The current QuickBooks-assigned revision number of the credit card charge object
-              you are updating, which you can get by fetching the object first. Provide the
-              most recent `revisionNumber` to ensure you're working with the latest data;
+          revision_number: The current QuickBooks-assigned revision number of the inventory adjustment
+              object you are updating, which you can get by fetching the object first. Provide
+              the most recent `revisionNumber` to ensure you're working with the latest data;
               otherwise, the update will return an error.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_id: The bank or credit card account to which money is owed for this credit card
-              charge.
+          account_id: The account to which this inventory adjustment is posted for tracking inventory
+              value changes.
 
-          clear_expense_lines: When `true`, removes all existing expense lines associated with this credit card
-              charge. To modify or add individual expense lines, use the field `expenseLines`
-              instead.
+          class_id: The inventory adjustment's class. Classes can be used to categorize objects into
+              meaningful segments, such as department, location, or type of work. In
+              QuickBooks, class tracking is off by default. A class defined here is
+              automatically used in this inventory adjustment's line items unless overridden
+              at the line item level.
 
-          clear_item_lines: When `true`, removes all existing item lines associated with this credit card
-              charge. To modify or add individual item lines, use the field `itemLines`
-              instead.
+          customer_id: The customer or customer-job associated with this inventory adjustment.
 
-          exchange_rate: The market exchange rate between this credit card charge's currency and the home
-              currency in QuickBooks at the time of this transaction. Represented as a decimal
-              value (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
+          inventory_site_id: The site location where inventory for the item associated with this inventory
+              adjustment is stored.
 
-          expense_lines: The credit card charge's expense lines, each representing one line in this
-              expense.
-
-              **IMPORTANT**:
-
-              1. Including this array in your update request will **REPLACE** all existing
-                 expense lines for the credit card charge with this array. To keep any
-                 existing expense lines, you must include them in this array even if they have
-                 not changed. **Any expense lines not included will be removed.**
-
-              2. To add a new expense line, include it here with the `id` field set to `-1`.
-
-              3. If you do not wish to modify any expense lines, omit this field entirely to
-                 keep them unchanged.
-
-          item_line_groups: The credit card charge's item group lines, each representing a predefined set of
-              items bundled together because they are commonly purchased together or grouped
-              for faster entry.
+          lines: The inventory adjustment's item lines, each representing the adjustment of an
+              inventory item's quantity, value, serial number, or lot number.
 
               **IMPORTANT**:
 
               1. Including this array in your update request will **REPLACE** all existing
-                 item group lines for the credit card charge with this array. To keep any
-                 existing item group lines, you must include them in this array even if they
-                 have not changed. **Any item group lines not included will be removed.**
-
-              2. To add a new item group line, include it here with the `id` field set to
-                 `-1`.
-
-              3. If you do not wish to modify any item group lines, omit this field entirely
-                 to keep them unchanged.
-
-          item_lines: The credit card charge's item lines, each representing the purchase of a
-              specific item or service.
-
-              **IMPORTANT**:
-
-              1. Including this array in your update request will **REPLACE** all existing
-                 item lines for the credit card charge with this array. To keep any existing
+                 item lines for the inventory adjustment with this array. To keep any existing
                  item lines, you must include them in this array even if they have not
                  changed. **Any item lines not included will be removed.**
 
@@ -302,25 +250,13 @@ class CreditCardChargesResource(SyncAPIResource):
               3. If you do not wish to modify any item lines, omit this field entirely to keep
                  them unchanged.
 
-          memo: A memo or note for this credit card charge.
+          memo: A memo or note for this inventory adjustment.
 
-          payee_id: The vendor or company from whom merchandise or services were purchased for this
-              credit card charge.
-
-          ref_number: The case-sensitive user-defined reference number for this credit card charge,
+          ref_number: The case-sensitive user-defined reference number for this inventory adjustment,
               which can be used to identify the transaction in QuickBooks. This value is not
               required to be unique and can be arbitrarily changed by the QuickBooks user.
 
-          sales_tax_code_id: The sales-tax code for this credit card charge, determining whether it is
-              taxable or non-taxable. If set, this overrides any sales-tax codes defined on
-              the payee. This can be overridden on the credit card charge's individual lines.
-
-              Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
-              can also be created in QuickBooks. If QuickBooks is not set up to charge sales
-              tax (via the "Do You Charge Sales Tax?" preference), it will assign the default
-              non-taxable code to all sales.
-
-          transaction_date: The date of this credit card charge, in ISO 8601 format (YYYY-MM-DD).
+          transaction_date: The date of this inventory adjustment, in ISO 8601 format (YYYY-MM-DD).
 
           extra_headers: Send extra headers
 
@@ -334,29 +270,25 @@ class CreditCardChargesResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._post(
-            f"/quickbooks-desktop/credit-card-charges/{id}",
+            f"/quickbooks-desktop/inventory-adjustments/{id}",
             body=maybe_transform(
                 {
                     "revision_number": revision_number,
                     "account_id": account_id,
-                    "clear_expense_lines": clear_expense_lines,
-                    "clear_item_lines": clear_item_lines,
-                    "exchange_rate": exchange_rate,
-                    "expense_lines": expense_lines,
-                    "item_line_groups": item_line_groups,
-                    "item_lines": item_lines,
+                    "class_id": class_id,
+                    "customer_id": customer_id,
+                    "inventory_site_id": inventory_site_id,
+                    "lines": lines,
                     "memo": memo,
-                    "payee_id": payee_id,
                     "ref_number": ref_number,
-                    "sales_tax_code_id": sales_tax_code_id,
                     "transaction_date": transaction_date,
                 },
-                credit_card_charge_update_params.CreditCardChargeUpdateParams,
+                inventory_adjustment_update_params.InventoryAdjustmentUpdateParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CreditCardCharge,
+            cast_to=InventoryAdjustment,
         )
 
     def list(
@@ -364,12 +296,11 @@ class CreditCardChargesResource(SyncAPIResource):
         *,
         conductor_end_user_id: str,
         account_ids: List[str] | NotGiven = NOT_GIVEN,
-        currency_ids: List[str] | NotGiven = NOT_GIVEN,
-        cursor: str | NotGiven = NOT_GIVEN,
+        customer_ids: List[str] | NotGiven = NOT_GIVEN,
         ids: List[str] | NotGiven = NOT_GIVEN,
         include_line_items: bool | NotGiven = NOT_GIVEN,
+        item_ids: List[str] | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
-        payee_ids: List[str] | NotGiven = NOT_GIVEN,
         ref_number_contains: str | NotGiven = NOT_GIVEN,
         ref_number_ends_with: str | NotGiven = NOT_GIVEN,
         ref_number_from: str | NotGiven = NOT_GIVEN,
@@ -386,25 +317,22 @@ class CreditCardChargesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursorPage[CreditCardCharge]:
-        """Returns a list of credit card charges.
+    ) -> InventoryAdjustmentListResponse:
+        """Returns a list of inventory adjustments.
 
-        Use the `cursor` parameter to paginate
-        through the results.
+        NOTE: QuickBooks Desktop does not
+        support pagination for inventory adjustments; hence, there is no `cursor`
+        parameter. Users typically have few inventory adjustments.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_ids: Filter for credit card charges associated with these accounts.
+          account_ids: Filter for inventory adjustments associated with these accounts.
 
-          currency_ids: Filter for credit card charges in these currencies.
+          customer_ids: Filter for inventory adjustments associated with these customers.
 
-          cursor: The pagination token to fetch the next set of results when paginating with the
-              `limit` parameter. Retrieve this value from the `nextCursor` field in the
-              previous response. If omitted, the API returns the first page of results.
-
-          ids: Filter for specific credit card charges by their QuickBooks-assigned unique
+          ids: Filter for specific inventory adjustments by their QuickBooks-assigned unique
               identifier(s).
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
@@ -412,59 +340,59 @@ class CreditCardChargesResource(SyncAPIResource):
 
           include_line_items: Whether to include line items in the response. Defaults to `true`.
 
-          limit: The maximum number of objects to return. Accepts values ranging from 1 to 150,
-              defaults to 150. When used with cursor-based pagination, this parameter controls
-              how many results are returned per page. To paginate through results, combine
-              this with the `cursor` parameter. Each response will include a `nextCursor`
-              value that can be passed to subsequent requests to retrieve the next page of
-              results.
+          item_ids: Filter for inventory adjustments containing these inventory items.
 
-          payee_ids: Filter for credit card charges paid to these payees. These are the vendors or
-              companies from whom merchandise or services were purchased for these credit card
-              charges.
+          limit: The maximum number of objects to return.
 
-          ref_number_contains:
-              Filter for credit card charges whose `refNumber` contains this substring. NOTE:
-              If you use this parameter, you cannot also use `refNumberStartsWith` or
+              **IMPORTANT**: QuickBooks Desktop does not support cursor-based pagination for
+              inventory adjustments. This parameter will limit the response size, but you
+              cannot fetch subsequent results using a cursor. For pagination, use the
+              name-range parameters instead (e.g., `nameFrom=A&nameTo=B`).
+
+              When this parameter is omitted, the endpoint returns all inventory adjustments
+              without limit, unlike paginated endpoints which default to 150 records. This is
+              acceptable because inventory adjustments typically have low record counts.
+
+          ref_number_contains: Filter for inventory adjustments whose `refNumber` contains this substring.
+              NOTE: If you use this parameter, you cannot also use `refNumberStartsWith` or
               `refNumberEndsWith`.
 
-          ref_number_ends_with:
-              Filter for credit card charges whose `refNumber` ends with this substring. NOTE:
-              If you use this parameter, you cannot also use `refNumberContains` or
+          ref_number_ends_with: Filter for inventory adjustments whose `refNumber` ends with this substring.
+              NOTE: If you use this parameter, you cannot also use `refNumberContains` or
               `refNumberStartsWith`.
 
-          ref_number_from: Filter for credit card charges whose `refNumber` is greater than or equal to
+          ref_number_from: Filter for inventory adjustments whose `refNumber` is greater than or equal to
               this value. If omitted, the range will begin with the first number of the list.
               Uses a numerical comparison for values that contain only digits; otherwise, uses
               a lexicographical comparison.
 
-          ref_numbers: Filter for specific credit card charges by their ref-number(s), case-sensitive.
-              In QuickBooks, ref-numbers are not required to be unique and can be arbitrarily
-              changed by the QuickBooks user.
+          ref_numbers: Filter for specific inventory adjustments by their ref-number(s),
+              case-sensitive. In QuickBooks, ref-numbers are not required to be unique and can
+              be arbitrarily changed by the QuickBooks user.
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
-          ref_number_starts_with: Filter for credit card charges whose `refNumber` starts with this substring.
+          ref_number_starts_with: Filter for inventory adjustments whose `refNumber` starts with this substring.
               NOTE: If you use this parameter, you cannot also use `refNumberContains` or
               `refNumberEndsWith`.
 
-          ref_number_to: Filter for credit card charges whose `refNumber` is less than or equal to this
+          ref_number_to: Filter for inventory adjustments whose `refNumber` is less than or equal to this
               value. If omitted, the range will end with the last number of the list. Uses a
               numerical comparison for values that contain only digits; otherwise, uses a
               lexicographical comparison.
 
-          transaction_date_from: Filter for credit card charges created on or after this date, in ISO 8601 format
-              (YYYY-MM-DD).
-
-          transaction_date_to: Filter for credit card charges created on or before this date, in ISO 8601
+          transaction_date_from: Filter for inventory adjustments created on or after this date, in ISO 8601
               format (YYYY-MM-DD).
 
-          updated_after: Filter for credit card charges updated on or after this date and time, in ISO
+          transaction_date_to: Filter for inventory adjustments created on or before this date, in ISO 8601
+              format (YYYY-MM-DD).
+
+          updated_after: Filter for inventory adjustments updated on or after this date and time, in ISO
               8601 format (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the
               time is assumed to be 00:00:00 of that day.
 
-          updated_before: Filter for credit card charges updated on or before this date and time, in ISO
+          updated_before: Filter for inventory adjustments updated on or before this date and time, in ISO
               8601 format (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the
               time is assumed to be 23:59:59 of that day.
 
@@ -477,9 +405,8 @@ class CreditCardChargesResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
-        return self._get_api_list(
-            "/quickbooks-desktop/credit-card-charges",
-            page=SyncCursorPage[CreditCardCharge],
+        return self._get(
+            "/quickbooks-desktop/inventory-adjustments",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -488,12 +415,11 @@ class CreditCardChargesResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "account_ids": account_ids,
-                        "currency_ids": currency_ids,
-                        "cursor": cursor,
+                        "customer_ids": customer_ids,
                         "ids": ids,
                         "include_line_items": include_line_items,
+                        "item_ids": item_ids,
                         "limit": limit,
-                        "payee_ids": payee_ids,
                         "ref_number_contains": ref_number_contains,
                         "ref_number_ends_with": ref_number_ends_with,
                         "ref_number_from": ref_number_from,
@@ -505,10 +431,10 @@ class CreditCardChargesResource(SyncAPIResource):
                         "updated_after": updated_after,
                         "updated_before": updated_before,
                     },
-                    credit_card_charge_list_params.CreditCardChargeListParams,
+                    inventory_adjustment_list_params.InventoryAdjustmentListParams,
                 ),
             ),
-            model=CreditCardCharge,
+            cast_to=InventoryAdjustmentListResponse,
         )
 
     def delete(
@@ -522,14 +448,15 @@ class CreditCardChargesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CreditCardChargeDeleteResponse:
-        """Permanently deletes a a credit card charge.
+    ) -> InventoryAdjustmentDeleteResponse:
+        """Permanently deletes a an inventory adjustment.
 
-        The deletion will fail if the credit
-        card charge is currently in use or has any linked transactions that are in use.
+        The deletion will fail if the
+        inventory adjustment is currently in use or has any linked transactions that are
+        in use.
 
         Args:
-          id: The QuickBooks-assigned unique identifier of the credit card charge to delete.
+          id: The QuickBooks-assigned unique identifier of the inventory adjustment to delete.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -546,33 +473,33 @@ class CreditCardChargesResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return self._delete(
-            f"/quickbooks-desktop/credit-card-charges/{id}",
+            f"/quickbooks-desktop/inventory-adjustments/{id}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CreditCardChargeDeleteResponse,
+            cast_to=InventoryAdjustmentDeleteResponse,
         )
 
 
-class AsyncCreditCardChargesResource(AsyncAPIResource):
+class AsyncInventoryAdjustmentsResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncCreditCardChargesResourceWithRawResponse:
+    def with_raw_response(self) -> AsyncInventoryAdjustmentsResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/conductor-is/conductor-python#accessing-raw-response-data-eg-headers
         """
-        return AsyncCreditCardChargesResourceWithRawResponse(self)
+        return AsyncInventoryAdjustmentsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncCreditCardChargesResourceWithStreamingResponse:
+    def with_streaming_response(self) -> AsyncInventoryAdjustmentsResourceWithStreamingResponse:
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
         For more information, see https://www.github.com/conductor-is/conductor-python#with_streaming_response
         """
-        return AsyncCreditCardChargesResourceWithStreamingResponse(self)
+        return AsyncInventoryAdjustmentsResourceWithStreamingResponse(self)
 
     async def create(
         self,
@@ -580,40 +507,39 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
         account_id: str,
         transaction_date: Union[str, date],
         conductor_end_user_id: str,
-        exchange_rate: float | NotGiven = NOT_GIVEN,
-        expense_lines: Iterable[credit_card_charge_create_params.ExpenseLine] | NotGiven = NOT_GIVEN,
+        class_id: str | NotGiven = NOT_GIVEN,
+        customer_id: str | NotGiven = NOT_GIVEN,
         external_id: str | NotGiven = NOT_GIVEN,
-        item_line_groups: Iterable[credit_card_charge_create_params.ItemLineGroup] | NotGiven = NOT_GIVEN,
-        item_lines: Iterable[credit_card_charge_create_params.ItemLine] | NotGiven = NOT_GIVEN,
+        inventory_site_id: str | NotGiven = NOT_GIVEN,
+        lines: Iterable[inventory_adjustment_create_params.Line] | NotGiven = NOT_GIVEN,
         memo: str | NotGiven = NOT_GIVEN,
-        payee_id: str | NotGiven = NOT_GIVEN,
         ref_number: str | NotGiven = NOT_GIVEN,
-        sales_tax_code_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CreditCardCharge:
+    ) -> InventoryAdjustment:
         """
-        Creates a new credit card charge for the specified account.
+        Creates a new inventory adjustment.
 
         Args:
-          account_id: The bank or credit card account to which money is owed for this credit card
-              charge.
+          account_id: The account to which this inventory adjustment is posted for tracking inventory
+              value changes.
 
-          transaction_date: The date of this credit card charge, in ISO 8601 format (YYYY-MM-DD).
+          transaction_date: The date of this inventory adjustment, in ISO 8601 format (YYYY-MM-DD).
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          exchange_rate: The market exchange rate between this credit card charge's currency and the home
-              currency in QuickBooks at the time of this transaction. Represented as a decimal
-              value (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
+          class_id: The inventory adjustment's class. Classes can be used to categorize objects into
+              meaningful segments, such as department, location, or type of work. In
+              QuickBooks, class tracking is off by default. A class defined here is
+              automatically used in this inventory adjustment's line items unless overridden
+              at the line item level.
 
-          expense_lines: The credit card charge's expense lines, each representing one line in this
-              expense.
+          customer_id: The customer or customer-job associated with this inventory adjustment.
 
           external_id: A globally unique identifier (GUID) you, the developer, can provide for tracking
               this object in your external system. This field is immutable and can only be set
@@ -622,32 +548,19 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
               **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
               QuickBooks will return an error.
 
-          item_line_groups: The credit card charge's item group lines, each representing a predefined set of
-              items bundled together because they are commonly purchased together or grouped
-              for faster entry.
+          inventory_site_id: The site location where inventory for the item associated with this inventory
+              adjustment is stored.
 
-          item_lines: The credit card charge's item lines, each representing the purchase of a
-              specific item or service.
+          lines: The inventory adjustment's item lines, each representing the adjustment of an
+              inventory item's quantity, value, serial number, or lot number.
 
-          memo: A memo or note for this credit card charge.
+          memo: A memo or note for this inventory adjustment.
 
-          payee_id: The vendor or company from whom merchandise or services were purchased for this
-              credit card charge.
-
-          ref_number: The case-sensitive user-defined reference number for this credit card charge,
+          ref_number: The case-sensitive user-defined reference number for this inventory adjustment,
               which can be used to identify the transaction in QuickBooks. This value is not
               required to be unique and can be arbitrarily changed by the QuickBooks user.
               When left blank in this create request, this field will be left blank in
               QuickBooks (i.e., it does _not_ auto-increment).
-
-          sales_tax_code_id: The sales-tax code for this credit card charge, determining whether it is
-              taxable or non-taxable. If set, this overrides any sales-tax codes defined on
-              the payee. This can be overridden on the credit card charge's individual lines.
-
-              Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
-              can also be created in QuickBooks. If QuickBooks is not set up to charge sales
-              tax (via the "Do You Charge Sales Tax?" preference), it will assign the default
-              non-taxable code to all sales.
 
           extra_headers: Send extra headers
 
@@ -659,27 +572,25 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
         """
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return await self._post(
-            "/quickbooks-desktop/credit-card-charges",
+            "/quickbooks-desktop/inventory-adjustments",
             body=await async_maybe_transform(
                 {
                     "account_id": account_id,
                     "transaction_date": transaction_date,
-                    "exchange_rate": exchange_rate,
-                    "expense_lines": expense_lines,
+                    "class_id": class_id,
+                    "customer_id": customer_id,
                     "external_id": external_id,
-                    "item_line_groups": item_line_groups,
-                    "item_lines": item_lines,
+                    "inventory_site_id": inventory_site_id,
+                    "lines": lines,
                     "memo": memo,
-                    "payee_id": payee_id,
                     "ref_number": ref_number,
-                    "sales_tax_code_id": sales_tax_code_id,
                 },
-                credit_card_charge_create_params.CreditCardChargeCreateParams,
+                inventory_adjustment_create_params.InventoryAdjustmentCreateParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CreditCardCharge,
+            cast_to=InventoryAdjustment,
         )
 
     async def retrieve(
@@ -693,12 +604,13 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CreditCardCharge:
+    ) -> InventoryAdjustment:
         """
-        Retrieves a credit card charge by ID.
+        Retrieves an inventory adjustment by ID.
 
         Args:
-          id: The QuickBooks-assigned unique identifier of the credit card charge to retrieve.
+          id: The QuickBooks-assigned unique identifier of the inventory adjustment to
+              retrieve.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -715,11 +627,11 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return await self._get(
-            f"/quickbooks-desktop/credit-card-charges/{id}",
+            f"/quickbooks-desktop/inventory-adjustments/{id}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CreditCardCharge,
+            cast_to=InventoryAdjustment,
         )
 
     async def update(
@@ -729,16 +641,12 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
         revision_number: str,
         conductor_end_user_id: str,
         account_id: str | NotGiven = NOT_GIVEN,
-        clear_expense_lines: bool | NotGiven = NOT_GIVEN,
-        clear_item_lines: bool | NotGiven = NOT_GIVEN,
-        exchange_rate: float | NotGiven = NOT_GIVEN,
-        expense_lines: Iterable[credit_card_charge_update_params.ExpenseLine] | NotGiven = NOT_GIVEN,
-        item_line_groups: Iterable[credit_card_charge_update_params.ItemLineGroup] | NotGiven = NOT_GIVEN,
-        item_lines: Iterable[credit_card_charge_update_params.ItemLine] | NotGiven = NOT_GIVEN,
+        class_id: str | NotGiven = NOT_GIVEN,
+        customer_id: str | NotGiven = NOT_GIVEN,
+        inventory_site_id: str | NotGiven = NOT_GIVEN,
+        lines: Iterable[inventory_adjustment_update_params.Line] | NotGiven = NOT_GIVEN,
         memo: str | NotGiven = NOT_GIVEN,
-        payee_id: str | NotGiven = NOT_GIVEN,
         ref_number: str | NotGiven = NOT_GIVEN,
-        sales_tax_code_id: str | NotGiven = NOT_GIVEN,
         transaction_date: Union[str, date] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -746,75 +654,42 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CreditCardCharge:
+    ) -> InventoryAdjustment:
         """
-        Updates an existing credit card charge.
+        Updates an existing inventory adjustment.
 
         Args:
-          id: The QuickBooks-assigned unique identifier of the credit card charge to update.
+          id: The QuickBooks-assigned unique identifier of the inventory adjustment to update.
 
-          revision_number: The current QuickBooks-assigned revision number of the credit card charge object
-              you are updating, which you can get by fetching the object first. Provide the
-              most recent `revisionNumber` to ensure you're working with the latest data;
+          revision_number: The current QuickBooks-assigned revision number of the inventory adjustment
+              object you are updating, which you can get by fetching the object first. Provide
+              the most recent `revisionNumber` to ensure you're working with the latest data;
               otherwise, the update will return an error.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_id: The bank or credit card account to which money is owed for this credit card
-              charge.
+          account_id: The account to which this inventory adjustment is posted for tracking inventory
+              value changes.
 
-          clear_expense_lines: When `true`, removes all existing expense lines associated with this credit card
-              charge. To modify or add individual expense lines, use the field `expenseLines`
-              instead.
+          class_id: The inventory adjustment's class. Classes can be used to categorize objects into
+              meaningful segments, such as department, location, or type of work. In
+              QuickBooks, class tracking is off by default. A class defined here is
+              automatically used in this inventory adjustment's line items unless overridden
+              at the line item level.
 
-          clear_item_lines: When `true`, removes all existing item lines associated with this credit card
-              charge. To modify or add individual item lines, use the field `itemLines`
-              instead.
+          customer_id: The customer or customer-job associated with this inventory adjustment.
 
-          exchange_rate: The market exchange rate between this credit card charge's currency and the home
-              currency in QuickBooks at the time of this transaction. Represented as a decimal
-              value (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
+          inventory_site_id: The site location where inventory for the item associated with this inventory
+              adjustment is stored.
 
-          expense_lines: The credit card charge's expense lines, each representing one line in this
-              expense.
-
-              **IMPORTANT**:
-
-              1. Including this array in your update request will **REPLACE** all existing
-                 expense lines for the credit card charge with this array. To keep any
-                 existing expense lines, you must include them in this array even if they have
-                 not changed. **Any expense lines not included will be removed.**
-
-              2. To add a new expense line, include it here with the `id` field set to `-1`.
-
-              3. If you do not wish to modify any expense lines, omit this field entirely to
-                 keep them unchanged.
-
-          item_line_groups: The credit card charge's item group lines, each representing a predefined set of
-              items bundled together because they are commonly purchased together or grouped
-              for faster entry.
+          lines: The inventory adjustment's item lines, each representing the adjustment of an
+              inventory item's quantity, value, serial number, or lot number.
 
               **IMPORTANT**:
 
               1. Including this array in your update request will **REPLACE** all existing
-                 item group lines for the credit card charge with this array. To keep any
-                 existing item group lines, you must include them in this array even if they
-                 have not changed. **Any item group lines not included will be removed.**
-
-              2. To add a new item group line, include it here with the `id` field set to
-                 `-1`.
-
-              3. If you do not wish to modify any item group lines, omit this field entirely
-                 to keep them unchanged.
-
-          item_lines: The credit card charge's item lines, each representing the purchase of a
-              specific item or service.
-
-              **IMPORTANT**:
-
-              1. Including this array in your update request will **REPLACE** all existing
-                 item lines for the credit card charge with this array. To keep any existing
+                 item lines for the inventory adjustment with this array. To keep any existing
                  item lines, you must include them in this array even if they have not
                  changed. **Any item lines not included will be removed.**
 
@@ -823,25 +698,13 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
               3. If you do not wish to modify any item lines, omit this field entirely to keep
                  them unchanged.
 
-          memo: A memo or note for this credit card charge.
+          memo: A memo or note for this inventory adjustment.
 
-          payee_id: The vendor or company from whom merchandise or services were purchased for this
-              credit card charge.
-
-          ref_number: The case-sensitive user-defined reference number for this credit card charge,
+          ref_number: The case-sensitive user-defined reference number for this inventory adjustment,
               which can be used to identify the transaction in QuickBooks. This value is not
               required to be unique and can be arbitrarily changed by the QuickBooks user.
 
-          sales_tax_code_id: The sales-tax code for this credit card charge, determining whether it is
-              taxable or non-taxable. If set, this overrides any sales-tax codes defined on
-              the payee. This can be overridden on the credit card charge's individual lines.
-
-              Default codes include "Non" (non-taxable) and "Tax" (taxable), but custom codes
-              can also be created in QuickBooks. If QuickBooks is not set up to charge sales
-              tax (via the "Do You Charge Sales Tax?" preference), it will assign the default
-              non-taxable code to all sales.
-
-          transaction_date: The date of this credit card charge, in ISO 8601 format (YYYY-MM-DD).
+          transaction_date: The date of this inventory adjustment, in ISO 8601 format (YYYY-MM-DD).
 
           extra_headers: Send extra headers
 
@@ -855,42 +718,37 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return await self._post(
-            f"/quickbooks-desktop/credit-card-charges/{id}",
+            f"/quickbooks-desktop/inventory-adjustments/{id}",
             body=await async_maybe_transform(
                 {
                     "revision_number": revision_number,
                     "account_id": account_id,
-                    "clear_expense_lines": clear_expense_lines,
-                    "clear_item_lines": clear_item_lines,
-                    "exchange_rate": exchange_rate,
-                    "expense_lines": expense_lines,
-                    "item_line_groups": item_line_groups,
-                    "item_lines": item_lines,
+                    "class_id": class_id,
+                    "customer_id": customer_id,
+                    "inventory_site_id": inventory_site_id,
+                    "lines": lines,
                     "memo": memo,
-                    "payee_id": payee_id,
                     "ref_number": ref_number,
-                    "sales_tax_code_id": sales_tax_code_id,
                     "transaction_date": transaction_date,
                 },
-                credit_card_charge_update_params.CreditCardChargeUpdateParams,
+                inventory_adjustment_update_params.InventoryAdjustmentUpdateParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CreditCardCharge,
+            cast_to=InventoryAdjustment,
         )
 
-    def list(
+    async def list(
         self,
         *,
         conductor_end_user_id: str,
         account_ids: List[str] | NotGiven = NOT_GIVEN,
-        currency_ids: List[str] | NotGiven = NOT_GIVEN,
-        cursor: str | NotGiven = NOT_GIVEN,
+        customer_ids: List[str] | NotGiven = NOT_GIVEN,
         ids: List[str] | NotGiven = NOT_GIVEN,
         include_line_items: bool | NotGiven = NOT_GIVEN,
+        item_ids: List[str] | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
-        payee_ids: List[str] | NotGiven = NOT_GIVEN,
         ref_number_contains: str | NotGiven = NOT_GIVEN,
         ref_number_ends_with: str | NotGiven = NOT_GIVEN,
         ref_number_from: str | NotGiven = NOT_GIVEN,
@@ -907,25 +765,22 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[CreditCardCharge, AsyncCursorPage[CreditCardCharge]]:
-        """Returns a list of credit card charges.
+    ) -> InventoryAdjustmentListResponse:
+        """Returns a list of inventory adjustments.
 
-        Use the `cursor` parameter to paginate
-        through the results.
+        NOTE: QuickBooks Desktop does not
+        support pagination for inventory adjustments; hence, there is no `cursor`
+        parameter. Users typically have few inventory adjustments.
 
         Args:
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_ids: Filter for credit card charges associated with these accounts.
+          account_ids: Filter for inventory adjustments associated with these accounts.
 
-          currency_ids: Filter for credit card charges in these currencies.
+          customer_ids: Filter for inventory adjustments associated with these customers.
 
-          cursor: The pagination token to fetch the next set of results when paginating with the
-              `limit` parameter. Retrieve this value from the `nextCursor` field in the
-              previous response. If omitted, the API returns the first page of results.
-
-          ids: Filter for specific credit card charges by their QuickBooks-assigned unique
+          ids: Filter for specific inventory adjustments by their QuickBooks-assigned unique
               identifier(s).
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
@@ -933,59 +788,59 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
 
           include_line_items: Whether to include line items in the response. Defaults to `true`.
 
-          limit: The maximum number of objects to return. Accepts values ranging from 1 to 150,
-              defaults to 150. When used with cursor-based pagination, this parameter controls
-              how many results are returned per page. To paginate through results, combine
-              this with the `cursor` parameter. Each response will include a `nextCursor`
-              value that can be passed to subsequent requests to retrieve the next page of
-              results.
+          item_ids: Filter for inventory adjustments containing these inventory items.
 
-          payee_ids: Filter for credit card charges paid to these payees. These are the vendors or
-              companies from whom merchandise or services were purchased for these credit card
-              charges.
+          limit: The maximum number of objects to return.
 
-          ref_number_contains:
-              Filter for credit card charges whose `refNumber` contains this substring. NOTE:
-              If you use this parameter, you cannot also use `refNumberStartsWith` or
+              **IMPORTANT**: QuickBooks Desktop does not support cursor-based pagination for
+              inventory adjustments. This parameter will limit the response size, but you
+              cannot fetch subsequent results using a cursor. For pagination, use the
+              name-range parameters instead (e.g., `nameFrom=A&nameTo=B`).
+
+              When this parameter is omitted, the endpoint returns all inventory adjustments
+              without limit, unlike paginated endpoints which default to 150 records. This is
+              acceptable because inventory adjustments typically have low record counts.
+
+          ref_number_contains: Filter for inventory adjustments whose `refNumber` contains this substring.
+              NOTE: If you use this parameter, you cannot also use `refNumberStartsWith` or
               `refNumberEndsWith`.
 
-          ref_number_ends_with:
-              Filter for credit card charges whose `refNumber` ends with this substring. NOTE:
-              If you use this parameter, you cannot also use `refNumberContains` or
+          ref_number_ends_with: Filter for inventory adjustments whose `refNumber` ends with this substring.
+              NOTE: If you use this parameter, you cannot also use `refNumberContains` or
               `refNumberStartsWith`.
 
-          ref_number_from: Filter for credit card charges whose `refNumber` is greater than or equal to
+          ref_number_from: Filter for inventory adjustments whose `refNumber` is greater than or equal to
               this value. If omitted, the range will begin with the first number of the list.
               Uses a numerical comparison for values that contain only digits; otherwise, uses
               a lexicographical comparison.
 
-          ref_numbers: Filter for specific credit card charges by their ref-number(s), case-sensitive.
-              In QuickBooks, ref-numbers are not required to be unique and can be arbitrarily
-              changed by the QuickBooks user.
+          ref_numbers: Filter for specific inventory adjustments by their ref-number(s),
+              case-sensitive. In QuickBooks, ref-numbers are not required to be unique and can
+              be arbitrarily changed by the QuickBooks user.
 
               **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
-          ref_number_starts_with: Filter for credit card charges whose `refNumber` starts with this substring.
+          ref_number_starts_with: Filter for inventory adjustments whose `refNumber` starts with this substring.
               NOTE: If you use this parameter, you cannot also use `refNumberContains` or
               `refNumberEndsWith`.
 
-          ref_number_to: Filter for credit card charges whose `refNumber` is less than or equal to this
+          ref_number_to: Filter for inventory adjustments whose `refNumber` is less than or equal to this
               value. If omitted, the range will end with the last number of the list. Uses a
               numerical comparison for values that contain only digits; otherwise, uses a
               lexicographical comparison.
 
-          transaction_date_from: Filter for credit card charges created on or after this date, in ISO 8601 format
-              (YYYY-MM-DD).
-
-          transaction_date_to: Filter for credit card charges created on or before this date, in ISO 8601
+          transaction_date_from: Filter for inventory adjustments created on or after this date, in ISO 8601
               format (YYYY-MM-DD).
 
-          updated_after: Filter for credit card charges updated on or after this date and time, in ISO
+          transaction_date_to: Filter for inventory adjustments created on or before this date, in ISO 8601
+              format (YYYY-MM-DD).
+
+          updated_after: Filter for inventory adjustments updated on or after this date and time, in ISO
               8601 format (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the
               time is assumed to be 00:00:00 of that day.
 
-          updated_before: Filter for credit card charges updated on or before this date and time, in ISO
+          updated_before: Filter for inventory adjustments updated on or before this date and time, in ISO
               8601 format (YYYY-MM-DDTHH:mm:ss). If you only provide a date (YYYY-MM-DD), the
               time is assumed to be 23:59:59 of that day.
 
@@ -998,23 +853,21 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
-        return self._get_api_list(
-            "/quickbooks-desktop/credit-card-charges",
-            page=AsyncCursorPage[CreditCardCharge],
+        return await self._get(
+            "/quickbooks-desktop/inventory-adjustments",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
+                query=await async_maybe_transform(
                     {
                         "account_ids": account_ids,
-                        "currency_ids": currency_ids,
-                        "cursor": cursor,
+                        "customer_ids": customer_ids,
                         "ids": ids,
                         "include_line_items": include_line_items,
+                        "item_ids": item_ids,
                         "limit": limit,
-                        "payee_ids": payee_ids,
                         "ref_number_contains": ref_number_contains,
                         "ref_number_ends_with": ref_number_ends_with,
                         "ref_number_from": ref_number_from,
@@ -1026,10 +879,10 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
                         "updated_after": updated_after,
                         "updated_before": updated_before,
                     },
-                    credit_card_charge_list_params.CreditCardChargeListParams,
+                    inventory_adjustment_list_params.InventoryAdjustmentListParams,
                 ),
             ),
-            model=CreditCardCharge,
+            cast_to=InventoryAdjustmentListResponse,
         )
 
     async def delete(
@@ -1043,14 +896,15 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CreditCardChargeDeleteResponse:
-        """Permanently deletes a a credit card charge.
+    ) -> InventoryAdjustmentDeleteResponse:
+        """Permanently deletes a an inventory adjustment.
 
-        The deletion will fail if the credit
-        card charge is currently in use or has any linked transactions that are in use.
+        The deletion will fail if the
+        inventory adjustment is currently in use or has any linked transactions that are
+        in use.
 
         Args:
-          id: The QuickBooks-assigned unique identifier of the credit card charge to delete.
+          id: The QuickBooks-assigned unique identifier of the inventory adjustment to delete.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -1067,93 +921,93 @@ class AsyncCreditCardChargesResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         extra_headers = {"Conductor-End-User-Id": conductor_end_user_id, **(extra_headers or {})}
         return await self._delete(
-            f"/quickbooks-desktop/credit-card-charges/{id}",
+            f"/quickbooks-desktop/inventory-adjustments/{id}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CreditCardChargeDeleteResponse,
+            cast_to=InventoryAdjustmentDeleteResponse,
         )
 
 
-class CreditCardChargesResourceWithRawResponse:
-    def __init__(self, credit_card_charges: CreditCardChargesResource) -> None:
-        self._credit_card_charges = credit_card_charges
+class InventoryAdjustmentsResourceWithRawResponse:
+    def __init__(self, inventory_adjustments: InventoryAdjustmentsResource) -> None:
+        self._inventory_adjustments = inventory_adjustments
 
         self.create = to_raw_response_wrapper(
-            credit_card_charges.create,
+            inventory_adjustments.create,
         )
         self.retrieve = to_raw_response_wrapper(
-            credit_card_charges.retrieve,
+            inventory_adjustments.retrieve,
         )
         self.update = to_raw_response_wrapper(
-            credit_card_charges.update,
+            inventory_adjustments.update,
         )
         self.list = to_raw_response_wrapper(
-            credit_card_charges.list,
+            inventory_adjustments.list,
         )
         self.delete = to_raw_response_wrapper(
-            credit_card_charges.delete,
+            inventory_adjustments.delete,
         )
 
 
-class AsyncCreditCardChargesResourceWithRawResponse:
-    def __init__(self, credit_card_charges: AsyncCreditCardChargesResource) -> None:
-        self._credit_card_charges = credit_card_charges
+class AsyncInventoryAdjustmentsResourceWithRawResponse:
+    def __init__(self, inventory_adjustments: AsyncInventoryAdjustmentsResource) -> None:
+        self._inventory_adjustments = inventory_adjustments
 
         self.create = async_to_raw_response_wrapper(
-            credit_card_charges.create,
+            inventory_adjustments.create,
         )
         self.retrieve = async_to_raw_response_wrapper(
-            credit_card_charges.retrieve,
+            inventory_adjustments.retrieve,
         )
         self.update = async_to_raw_response_wrapper(
-            credit_card_charges.update,
+            inventory_adjustments.update,
         )
         self.list = async_to_raw_response_wrapper(
-            credit_card_charges.list,
+            inventory_adjustments.list,
         )
         self.delete = async_to_raw_response_wrapper(
-            credit_card_charges.delete,
+            inventory_adjustments.delete,
         )
 
 
-class CreditCardChargesResourceWithStreamingResponse:
-    def __init__(self, credit_card_charges: CreditCardChargesResource) -> None:
-        self._credit_card_charges = credit_card_charges
+class InventoryAdjustmentsResourceWithStreamingResponse:
+    def __init__(self, inventory_adjustments: InventoryAdjustmentsResource) -> None:
+        self._inventory_adjustments = inventory_adjustments
 
         self.create = to_streamed_response_wrapper(
-            credit_card_charges.create,
+            inventory_adjustments.create,
         )
         self.retrieve = to_streamed_response_wrapper(
-            credit_card_charges.retrieve,
+            inventory_adjustments.retrieve,
         )
         self.update = to_streamed_response_wrapper(
-            credit_card_charges.update,
+            inventory_adjustments.update,
         )
         self.list = to_streamed_response_wrapper(
-            credit_card_charges.list,
+            inventory_adjustments.list,
         )
         self.delete = to_streamed_response_wrapper(
-            credit_card_charges.delete,
+            inventory_adjustments.delete,
         )
 
 
-class AsyncCreditCardChargesResourceWithStreamingResponse:
-    def __init__(self, credit_card_charges: AsyncCreditCardChargesResource) -> None:
-        self._credit_card_charges = credit_card_charges
+class AsyncInventoryAdjustmentsResourceWithStreamingResponse:
+    def __init__(self, inventory_adjustments: AsyncInventoryAdjustmentsResource) -> None:
+        self._inventory_adjustments = inventory_adjustments
 
         self.create = async_to_streamed_response_wrapper(
-            credit_card_charges.create,
+            inventory_adjustments.create,
         )
         self.retrieve = async_to_streamed_response_wrapper(
-            credit_card_charges.retrieve,
+            inventory_adjustments.retrieve,
         )
         self.update = async_to_streamed_response_wrapper(
-            credit_card_charges.update,
+            inventory_adjustments.update,
         )
         self.list = async_to_streamed_response_wrapper(
-            credit_card_charges.list,
+            inventory_adjustments.list,
         )
         self.delete = async_to_streamed_response_wrapper(
-            credit_card_charges.delete,
+            inventory_adjustments.delete,
         )

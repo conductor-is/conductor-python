@@ -96,11 +96,11 @@ class JournalEntriesResource(SyncAPIResource):
               value (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
 
           external_id: A globally unique identifier (GUID) you, the developer, can provide for tracking
-              this object in your external system.
+              this object in your external system. This field is immutable and can only be set
+              during object creation.
 
-              **IMPORTANT**: Must be formatted as a valid GUID; otherwise, QuickBooks will
-              return an error. This field is immutable and can only be set during object
-              creation.
+              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
+              QuickBooks will return an error.
 
           is_adjustment: Indicates whether this journal entry is an adjustment entry. When `true`,
               QuickBooks retains the original entry information to maintain an audit trail of
@@ -112,6 +112,8 @@ class JournalEntriesResource(SyncAPIResource):
           ref_number: The case-sensitive user-defined reference number for this journal entry, which
               can be used to identify the transaction in QuickBooks. This value is not
               required to be unique and can be arbitrarily changed by the QuickBooks user.
+              When left blank in this create request, this field will be left blank in
+              QuickBooks (i.e., it does _not_ auto-increment).
 
           extra_headers: Send extra headers
 
@@ -211,10 +213,10 @@ class JournalEntriesResource(SyncAPIResource):
         Args:
           id: The QuickBooks-assigned unique identifier of the journal entry to update.
 
-          revision_number: The current revision number of the journal entry object you are updating, which
-              you can get by fetching the object first. Provide the most recent
-              `revisionNumber` to ensure you're working with the latest data; otherwise, the
-              update will return an error.
+          revision_number: The current QuickBooks-assigned revision number of the journal entry object you
+              are updating, which you can get by fetching the object first. Provide the most
+              recent `revisionNumber` to ensure you're working with the latest data;
+              otherwise, the update will return an error.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -541,11 +543,11 @@ class AsyncJournalEntriesResource(AsyncAPIResource):
               value (e.g., 1.2345 for 1 EUR = 1.2345 USD if USD is the home currency).
 
           external_id: A globally unique identifier (GUID) you, the developer, can provide for tracking
-              this object in your external system.
+              this object in your external system. This field is immutable and can only be set
+              during object creation.
 
-              **IMPORTANT**: Must be formatted as a valid GUID; otherwise, QuickBooks will
-              return an error. This field is immutable and can only be set during object
-              creation.
+              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
+              QuickBooks will return an error.
 
           is_adjustment: Indicates whether this journal entry is an adjustment entry. When `true`,
               QuickBooks retains the original entry information to maintain an audit trail of
@@ -557,6 +559,8 @@ class AsyncJournalEntriesResource(AsyncAPIResource):
           ref_number: The case-sensitive user-defined reference number for this journal entry, which
               can be used to identify the transaction in QuickBooks. This value is not
               required to be unique and can be arbitrarily changed by the QuickBooks user.
+              When left blank in this create request, this field will be left blank in
+              QuickBooks (i.e., it does _not_ auto-increment).
 
           extra_headers: Send extra headers
 
@@ -656,10 +660,10 @@ class AsyncJournalEntriesResource(AsyncAPIResource):
         Args:
           id: The QuickBooks-assigned unique identifier of the journal entry to update.
 
-          revision_number: The current revision number of the journal entry object you are updating, which
-              you can get by fetching the object first. Provide the most recent
-              `revisionNumber` to ensure you're working with the latest data; otherwise, the
-              update will return an error.
+          revision_number: The current QuickBooks-assigned revision number of the journal entry object you
+              are updating, which you can get by fetching the object first. Provide the most
+              recent `revisionNumber` to ensure you're working with the latest data;
+              otherwise, the update will return an error.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).

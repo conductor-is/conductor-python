@@ -223,10 +223,10 @@ class SalesOrPurchaseDetails(BaseModel):
     """A description of this item."""
 
     posting_account: Optional[SalesOrPurchaseDetailsPostingAccount] = FieldInfo(alias="postingAccount", default=None)
-    """
-    The posting account associated with this item, used when recording transactions
-    involving this item. This could be an income account when selling or an expense
-    account when purchasing.
+    """The posting account to which transactions involving this item are posted.
+
+    This could be an income account when selling or an expense account when
+    purchasing.
     """
 
     price: Optional[str] = None
@@ -310,7 +310,8 @@ class ServiceItem(BaseModel):
     external_id: Optional[str] = FieldInfo(alias="externalId", default=None)
     """
     A globally unique identifier (GUID) you, the developer, can provide for tracking
-    this object in your external system.
+    this object in your external system. This field is immutable and can only be set
+    during object creation.
     """
 
     full_name: str = FieldInfo(alias="fullName")
@@ -355,10 +356,10 @@ class ServiceItem(BaseModel):
 
     revision_number: str = FieldInfo(alias="revisionNumber")
     """
-    The current revision number of this service item object, which changes each time
-    the object is modified. When updating this object, you must provide the most
-    recent `revisionNumber` to ensure you're working with the latest data;
-    otherwise, the update will return an error.
+    The current QuickBooks-assigned revision number of this service item object,
+    which changes each time the object is modified. When updating this object, you
+    must provide the most recent `revisionNumber` to ensure you're working with the
+    latest data; otherwise, the update will return an error.
     """
 
     sales_and_purchase_details: Optional[SalesAndPurchaseDetails] = FieldInfo(
