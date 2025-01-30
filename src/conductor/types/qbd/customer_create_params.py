@@ -134,7 +134,7 @@ class CustomerCreateParams(TypedDict, total=False):
     this object in your external system. This field is immutable and can only be set
     during object creation.
 
-    **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
+    **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
     QuickBooks will return an error.
     """
 
@@ -364,9 +364,9 @@ class AlternateShippingAddress(TypedDict, total=False):
     The case-insensitive unique name of this shipping address, unique across all
     shipping addresses.
 
-    **NOTE:**: Shipping addresses do not have a `fullName` field because they are
-    not hierarchical objects, which is why `name` is unique for them but not for
-    objects that have parents.
+    **NOTE**: Shipping addresses do not have a `fullName` field because they are not
+    hierarchical objects, which is why `name` is unique for them but not for objects
+    that have parents.
 
     Maximum length: 41 characters.
     """

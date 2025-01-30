@@ -71,7 +71,7 @@ class SubtotalItemsResource(SyncAPIResource):
           name: The case-insensitive unique name of this subtotal item, unique across all
               subtotal items.
 
-              **NOTE:**: Subtotal items do not have a `fullName` field because they are not
+              **NOTE**: Subtotal items do not have a `fullName` field because they are not
               hierarchical objects, which is why `name` is unique for them but not for objects
               that have parents.
 
@@ -89,7 +89,7 @@ class SubtotalItemsResource(SyncAPIResource):
               this object in your external system. This field is immutable and can only be set
               during object creation.
 
-              **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
+              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
               QuickBooks will return an error.
 
           is_active: Indicates whether this subtotal item is active. Inactive objects are typically
@@ -204,7 +204,7 @@ class SubtotalItemsResource(SyncAPIResource):
           name: The case-insensitive unique name of this subtotal item, unique across all
               subtotal items.
 
-              **NOTE:**: Subtotal items do not have a `fullName` field because they are not
+              **NOTE**: Subtotal items do not have a `fullName` field because they are not
               hierarchical objects, which is why `name` is unique for them but not for objects
               that have parents.
 
@@ -278,7 +278,7 @@ class SubtotalItemsResource(SyncAPIResource):
           ids: Filter for specific subtotal items by their QuickBooks-assigned unique
               identifier(s).
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           limit: The maximum number of objects to return. Accepts values ranging from 1 to 150,
@@ -302,7 +302,7 @@ class SubtotalItemsResource(SyncAPIResource):
           names: Filter for specific subtotal items by their name(s), case-insensitive. Like
               `id`, `name` is a unique identifier for a subtotal item.
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           name_starts_with: Filter for subtotal items whose `name` starts with this substring,
@@ -404,7 +404,7 @@ class AsyncSubtotalItemsResource(AsyncAPIResource):
           name: The case-insensitive unique name of this subtotal item, unique across all
               subtotal items.
 
-              **NOTE:**: Subtotal items do not have a `fullName` field because they are not
+              **NOTE**: Subtotal items do not have a `fullName` field because they are not
               hierarchical objects, which is why `name` is unique for them but not for objects
               that have parents.
 
@@ -422,7 +422,7 @@ class AsyncSubtotalItemsResource(AsyncAPIResource):
               this object in your external system. This field is immutable and can only be set
               during object creation.
 
-              **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
+              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
               QuickBooks will return an error.
 
           is_active: Indicates whether this subtotal item is active. Inactive objects are typically
@@ -537,7 +537,7 @@ class AsyncSubtotalItemsResource(AsyncAPIResource):
           name: The case-insensitive unique name of this subtotal item, unique across all
               subtotal items.
 
-              **NOTE:**: Subtotal items do not have a `fullName` field because they are not
+              **NOTE**: Subtotal items do not have a `fullName` field because they are not
               hierarchical objects, which is why `name` is unique for them but not for objects
               that have parents.
 
@@ -611,7 +611,7 @@ class AsyncSubtotalItemsResource(AsyncAPIResource):
           ids: Filter for specific subtotal items by their QuickBooks-assigned unique
               identifier(s).
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           limit: The maximum number of objects to return. Accepts values ranging from 1 to 150,
@@ -635,7 +635,7 @@ class AsyncSubtotalItemsResource(AsyncAPIResource):
           names: Filter for specific subtotal items by their name(s), case-insensitive. Like
               `id`, `name` is a unique identifier for a subtotal item.
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           name_starts_with: Filter for subtotal items whose `name` starts with this substring,

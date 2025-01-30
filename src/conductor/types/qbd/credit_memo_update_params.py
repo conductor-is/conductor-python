@@ -83,7 +83,7 @@ class CreditMemoUpdateParams(TypedDict, total=False):
     The credit memo's line item groups, each representing a predefined set of
     related items.
 
-    **IMPORTANT:**:
+    **IMPORTANT**:
 
     1. Including this array in your update request will **REPLACE** all existing
        line item groups for the credit memo with this array. To keep any existing
@@ -102,7 +102,7 @@ class CreditMemoUpdateParams(TypedDict, total=False):
     The credit memo's line items, each representing a single product or service
     sold.
 
-    **IMPORTANT:**:
+    **IMPORTANT**:
 
     1. Including this array in your update request will **REPLACE** all existing
        line items for the credit memo with this array. To keep any existing line
@@ -145,7 +145,7 @@ class CreditMemoUpdateParams(TypedDict, total=False):
     used to track the amount owed. If not specified, QuickBooks Desktop will use its
     default A/R account.
 
-    **IMPORTANT:**: If this credit memo is linked to other transactions, this A/R
+    **IMPORTANT**: If this credit memo is linked to other transactions, this A/R
     account must match the `receivablesAccount` used in all linked transactions. For
     example, when refunding a credit card payment, the A/R account must match the
     one used in the original credit transactions being refunded.
@@ -284,8 +284,7 @@ class LineGroupLine(TypedDict, total=False):
     The QuickBooks-assigned unique identifier of an existing credit memo line you
     wish to retain or update.
 
-    **IMPORTANT:**: Set this field to `-1` for new credit memo lines you wish to
-    add.
+    **IMPORTANT**: Set this field to `-1` for new credit memo lines you wish to add.
     """
 
     amount: str
@@ -440,7 +439,7 @@ class LineGroup(TypedDict, total=False):
     The QuickBooks-assigned unique identifier of an existing credit memo line group
     you wish to retain or update.
 
-    **IMPORTANT:**: Set this field to `-1` for new credit memo line groups you wish
+    **IMPORTANT**: Set this field to `-1` for new credit memo line groups you wish
     to add.
     """
 
@@ -456,7 +455,7 @@ class LineGroup(TypedDict, total=False):
     The credit memo line group's line items, each representing a single product or
     service sold.
 
-    **IMPORTANT:**:
+    **IMPORTANT**:
 
     1. Including this array in your update request will **REPLACE** all existing
        line items for the credit memo line group with this array. To keep any
@@ -499,8 +498,7 @@ class Line(TypedDict, total=False):
     The QuickBooks-assigned unique identifier of an existing credit memo line you
     wish to retain or update.
 
-    **IMPORTANT:**: Set this field to `-1` for new credit memo lines you wish to
-    add.
+    **IMPORTANT**: Set this field to `-1` for new credit memo lines you wish to add.
     """
 
     amount: str

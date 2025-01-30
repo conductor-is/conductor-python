@@ -83,7 +83,7 @@ class SalesReceiptCreateParams(TypedDict, total=False):
     The date by which this sales receipt must be paid, in ISO 8601 format
     (YYYY-MM-DD).
 
-    **NOTE:** For sales receipts, this field is often `null` because sales receipts
+    **NOTE**: For sales receipts, this field is often `null` because sales receipts
     are generally used for point-of-sale payments, where full payment is received at
     the time of purchase.
     """
@@ -101,7 +101,7 @@ class SalesReceiptCreateParams(TypedDict, total=False):
     this object in your external system. This field is immutable and can only be set
     during object creation.
 
-    **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
+    **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
     QuickBooks will return an error.
     """
 
@@ -125,7 +125,7 @@ class SalesReceiptCreateParams(TypedDict, total=False):
     The sales receipt's line item groups, each representing a predefined set of
     related items.
 
-    **IMPORTANT:**: You must specify `lines`, `lineGroups`, or both when creating a
+    **IMPORTANT**: You must specify `lines`, `lineGroups`, or both when creating a
     sales receipt.
     """
 
@@ -134,7 +134,7 @@ class SalesReceiptCreateParams(TypedDict, total=False):
     The sales receipt's line items, each representing a single product or service
     sold.
 
-    **IMPORTANT:**: You must specify `lines`, `lineGroups`, or both when creating a
+    **IMPORTANT**: You must specify `lines`, `lineGroups`, or both when creating a
     sales receipt.
     """
 
@@ -158,7 +158,7 @@ class SalesReceiptCreateParams(TypedDict, total=False):
     payment_method_id: Annotated[str, PropertyInfo(alias="paymentMethodId")]
     """The sales receipt's payment method (e.g., cash, check, credit card).
 
-    **NOTE:**: If this sales receipt contains credit card transaction data supplied
+    **NOTE**: If this sales receipt contains credit card transaction data supplied
     from QuickBooks Merchant Services (QBMS) transaction responses, you must specify
     a credit card payment method (e.g., "Visa", "MasterCard", etc.).
     """

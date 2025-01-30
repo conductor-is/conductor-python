@@ -38,7 +38,7 @@ class InventoryItemListParams(TypedDict, total=False):
     colons. For example, if an inventory item is under "Kitchen" and has the `name`
     "Cabinet", its `fullName` would be "Kitchen:Cabinet".
 
-    **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+    **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
     query parameters for this request.
     """
 
@@ -47,7 +47,7 @@ class InventoryItemListParams(TypedDict, total=False):
     Filter for specific inventory items by their QuickBooks-assigned unique
     identifier(s).
 
-    **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+    **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
     query parameters for this request.
     """
 

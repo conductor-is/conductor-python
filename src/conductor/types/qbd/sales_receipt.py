@@ -1597,7 +1597,7 @@ class SalesReceipt(BaseModel):
     The date by which this sales receipt must be paid, in ISO 8601 format
     (YYYY-MM-DD).
 
-    **NOTE:** For sales receipts, this field is often `null` because sales receipts
+    **NOTE**: For sales receipts, this field is often `null` because sales receipts
     are generally used for point-of-sale payments, where full payment is received at
     the time of purchase.
     """

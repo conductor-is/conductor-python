@@ -18,12 +18,12 @@ class BillCreditCardPaymentCreateParams(TypedDict, total=False):
     This will create a link between this bill credit card payment and the specified
     bills.
 
-    **IMPORTANT:**: In each `applyToTransactions` object, you must specify either
+    **IMPORTANT**: In each `applyToTransactions` object, you must specify either
     `paymentAmount`, `applyCredits`, `discountAmount`, or any combination of these;
     if none of these are specified, you will receive an error for an empty
     transaction.
 
-    **IMPORTANT:**: The target bill must have `isPaid=false`, otherwise, QuickBooks
+    **IMPORTANT**: The target bill must have `isPaid=false`, otherwise, QuickBooks
     will report this object as "cannot be found".
     """
 
@@ -41,7 +41,7 @@ class BillCreditCardPaymentCreateParams(TypedDict, total=False):
     The vendor who sent the bill(s) that this bill credit card payment is paying and
     who will receive this payment.
 
-    **IMPORTANT:**: This vendor must match the `vendor` on the bill(s) specified in
+    **IMPORTANT**: This vendor must match the `vendor` on the bill(s) specified in
     `applyToTransactions`; otherwise, QuickBooks will say the `transactionId` in
     `applyToTransactions` "does not exist".
     """
@@ -66,7 +66,7 @@ class BillCreditCardPaymentCreateParams(TypedDict, total=False):
     this object in your external system. This field is immutable and can only be set
     during object creation.
 
-    **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
+    **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
     QuickBooks will return an error.
     """
 
@@ -79,9 +79,9 @@ class BillCreditCardPaymentCreateParams(TypedDict, total=False):
     assigned, used to track the amount owed. If not specified, QuickBooks Desktop
     will use its default A/P account.
 
-    **IMPORTANT:**: If this bill credit card payment is linked to other
-    transactions, this A/P account must match the `payablesAccount` used in those
-    other transactions.
+    **IMPORTANT**: If this bill credit card payment is linked to other transactions,
+    this A/P account must match the `payablesAccount` used in those other
+    transactions.
     """
 
     ref_number: Annotated[str, PropertyInfo(alias="refNumber")]
@@ -122,7 +122,7 @@ class ApplyToTransaction(TypedDict, total=False):
     This creates a link between this receivable transaction and the specified credit
     memos.
 
-    **IMPORTANT:**: By default, QuickBooks will not return any information about the
+    **IMPORTANT**: By default, QuickBooks will not return any information about the
     linked transactions in this endpoint's response even when this request is
     successful. To see the transactions linked via this field, refetch the
     receivable transaction and check the `linkedTransactions` response field. If

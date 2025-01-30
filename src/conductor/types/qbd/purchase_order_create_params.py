@@ -72,7 +72,7 @@ class PurchaseOrderCreateParams(TypedDict, total=False):
     this object in your external system. This field is immutable and can only be set
     during object creation.
 
-    **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
+    **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
     QuickBooks will return an error.
     """
 
@@ -99,7 +99,7 @@ class PurchaseOrderCreateParams(TypedDict, total=False):
     The purchase order's line item groups, each representing a predefined set of
     related items.
 
-    **IMPORTANT:**: You must specify `lines`, `lineGroups`, or both when creating a
+    **IMPORTANT**: You must specify `lines`, `lineGroups`, or both when creating a
     purchase order.
     """
 
@@ -108,7 +108,7 @@ class PurchaseOrderCreateParams(TypedDict, total=False):
     The purchase order's line items, each representing a single product or service
     ordered.
 
-    **IMPORTANT:**: You must specify `lines`, `lineGroups`, or both when creating a
+    **IMPORTANT**: You must specify `lines`, `lineGroups`, or both when creating a
     purchase order.
     """
 

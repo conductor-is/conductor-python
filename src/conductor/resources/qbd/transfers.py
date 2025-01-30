@@ -265,7 +265,7 @@ class TransfersResource(SyncAPIResource):
 
           ids: Filter for specific transfers by their QuickBooks-assigned unique identifier(s).
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           limit: The maximum number of objects to return. Accepts values ranging from 1 to 150,
@@ -560,7 +560,7 @@ class AsyncTransfersResource(AsyncAPIResource):
 
           ids: Filter for specific transfers by their QuickBooks-assigned unique identifier(s).
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           limit: The maximum number of objects to return. Accepts values ranging from 1 to 150,

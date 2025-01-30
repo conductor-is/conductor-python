@@ -125,7 +125,7 @@ class EmployeeCreateParams(TypedDict, total=False):
     this object in your external system. This field is immutable and can only be set
     during object creation.
 
-    **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
+    **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
     QuickBooks will return an error.
     """
 
@@ -214,7 +214,7 @@ class EmployeeCreateParams(TypedDict, total=False):
     ssn: str
     """The employee's Social Security Number. The value can be with or without dashes.
 
-    **NOTE:**: This field cannot be changed after the employee is created.
+    **NOTE**: This field cannot be changed after the employee is created.
     """
 
     supervisor_id: Annotated[str, PropertyInfo(alias="supervisorId")]

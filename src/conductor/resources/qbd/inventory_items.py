@@ -116,7 +116,7 @@ class InventoryItemsResource(SyncAPIResource):
               this object in your external system. This field is immutable and can only be set
               during object creation.
 
-              **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
+              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
               QuickBooks will return an error.
 
           inventory_date: The date when this inventory item was converted into an inventory item from some
@@ -493,13 +493,13 @@ class InventoryItemsResource(SyncAPIResource):
               colons. For example, if an inventory item is under "Kitchen" and has the `name`
               "Cabinet", its `fullName` would be "Kitchen:Cabinet".
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           ids: Filter for specific inventory items by their QuickBooks-assigned unique
               identifier(s).
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           limit: The maximum number of objects to return. Accepts values ranging from 1 to 150,
@@ -676,7 +676,7 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
               this object in your external system. This field is immutable and can only be set
               during object creation.
 
-              **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
+              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
               QuickBooks will return an error.
 
           inventory_date: The date when this inventory item was converted into an inventory item from some
@@ -1053,13 +1053,13 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
               colons. For example, if an inventory item is under "Kitchen" and has the `name`
               "Cabinet", its `fullName` would be "Kitchen:Cabinet".
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           ids: Filter for specific inventory items by their QuickBooks-assigned unique
               identifier(s).
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           limit: The maximum number of objects to return. Accepts values ranging from 1 to 150,
