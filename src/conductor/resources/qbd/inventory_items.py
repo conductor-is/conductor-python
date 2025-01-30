@@ -99,7 +99,9 @@ class InventoryItemsResource(SyncAPIResource):
               because it does not include the names of its hierarchical parent objects like
               `fullName` does. For example, two inventory items could both have the `name`
               "Cabinet", but they could have unique `fullName` values, such as
-              "Kitchen:Cabinet" and "Inventory:Cabinet". Maximum length: 31 characters.
+              "Kitchen:Cabinet" and "Inventory:Cabinet".
+
+              Maximum length: 31 characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -343,7 +345,9 @@ class InventoryItemsResource(SyncAPIResource):
               because it does not include the names of its hierarchical parent objects like
               `fullName` does. For example, two inventory items could both have the `name`
               "Cabinet", but they could have unique `fullName` values, such as
-              "Kitchen:Cabinet" and "Inventory:Cabinet". Maximum length: 31 characters.
+              "Kitchen:Cabinet" and "Inventory:Cabinet".
+
+              Maximum length: 31 characters.
 
           parent_id: The parent inventory item one level above this one in the hierarchy. For
               example, if this inventory item has a `fullName` of "Kitchen:Cabinet", its
@@ -655,7 +659,9 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
               because it does not include the names of its hierarchical parent objects like
               `fullName` does. For example, two inventory items could both have the `name`
               "Cabinet", but they could have unique `fullName` values, such as
-              "Kitchen:Cabinet" and "Inventory:Cabinet". Maximum length: 31 characters.
+              "Kitchen:Cabinet" and "Inventory:Cabinet".
+
+              Maximum length: 31 characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -899,7 +905,9 @@ class AsyncInventoryItemsResource(AsyncAPIResource):
               because it does not include the names of its hierarchical parent objects like
               `fullName` does. For example, two inventory items could both have the `name`
               "Cabinet", but they could have unique `fullName` values, such as
-              "Kitchen:Cabinet" and "Inventory:Cabinet". Maximum length: 31 characters.
+              "Kitchen:Cabinet" and "Inventory:Cabinet".
+
+              Maximum length: 31 characters.
 
           parent_id: The parent inventory item one level above this one in the hierarchy. For
               example, if this inventory item has a `fullName` of "Kitchen:Cabinet", its

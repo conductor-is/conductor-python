@@ -57,7 +57,7 @@ class PayrollWageItem(BaseModel):
     name: str
     """
     The case-insensitive unique name of this payroll wage item, unique across all
-    payroll wage items. Maximum length: 31 characters.
+    payroll wage items.
 
     **NOTE:**: Payroll wage items do not have a `fullName` field because they are
     not hierarchical objects, which is why `name` is unique for them but not for

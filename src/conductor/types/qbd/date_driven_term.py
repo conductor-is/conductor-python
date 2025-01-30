@@ -59,7 +59,7 @@ class DateDrivenTerm(BaseModel):
     name: str
     """
     The case-insensitive unique name of this date-driven term, unique across all
-    date-driven terms. Maximum length: 31 characters.
+    date-driven terms.
 
     **NOTE:**: Date-driven terms do not have a `fullName` field because they are not
     hierarchical objects, which is why `name` is unique for them but not for objects
