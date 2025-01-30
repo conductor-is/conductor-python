@@ -29,7 +29,7 @@ class SubtotalItemListParams(TypedDict, total=False):
     Filter for specific subtotal items by their QuickBooks-assigned unique
     identifier(s).
 
-    **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+    **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
     query parameters for this request.
     """
 
@@ -69,7 +69,7 @@ class SubtotalItemListParams(TypedDict, total=False):
 
     Like `id`, `name` is a unique identifier for a subtotal item.
 
-    **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+    **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
     query parameters for this request.
     """
 

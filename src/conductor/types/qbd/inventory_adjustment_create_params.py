@@ -52,7 +52,7 @@ class InventoryAdjustmentCreateParams(TypedDict, total=False):
     this object in your external system. This field is immutable and can only be set
     during object creation.
 
-    **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
+    **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
     QuickBooks will return an error.
     """
 
@@ -192,7 +192,7 @@ class LineAdjustValue(TypedDict, total=False):
     The new total value of the entire stock of the inventory item associated with
     this inventory adjustment line.
 
-    **NOTE:** The new value does _not_ have to equal `quantityOnHand` times
+    **NOTE**: The new value does _not_ have to equal `quantityOnHand` times
     `purchaseCost`.
     """
 

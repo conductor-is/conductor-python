@@ -322,7 +322,7 @@ class NonInventoryItem(BaseModel):
     "Office Supplies" and has the `name` "Printer Ink Cartridge", its `fullName`
     would be "Office Supplies:Printer Ink Cartridge".
 
-    **NOTE:**: Unlike `name`, `fullName` is guaranteed to be unique across all
+    **NOTE**: Unlike `name`, `fullName` is guaranteed to be unique across all
     non-inventory item objects. However, `fullName` can still be arbitrarily changed
     by the QuickBooks user when they modify the underlying `name` field.
     """
@@ -372,7 +372,7 @@ class NonInventoryItem(BaseModel):
     reimbursable expenses or inventory items that are bought from vendors and sold
     to customers.
 
-    **IMPORTANT:**: A non-inventory item will have either `salesAndPurchaseDetails`
+    **IMPORTANT**: A non-inventory item will have either `salesAndPurchaseDetails`
     or `salesOrPurchaseDetails`, but never both because an item cannot have both
     configurations.
     """
@@ -386,7 +386,7 @@ class NonInventoryItem(BaseModel):
     purchased office supply that isn't resold) or service items (like consulting
     services that are sold but not purchased).
 
-    **IMPORTANT:**: A non-inventory item will have either `salesAndPurchaseDetails`
+    **IMPORTANT**: A non-inventory item will have either `salesAndPurchaseDetails`
     or `salesOrPurchaseDetails`, but never both because an item cannot have both
     configurations.
     """

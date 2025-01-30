@@ -1282,7 +1282,7 @@ class Check(BaseModel):
     The check's linked transactions, such as payments applied, credits used, or
     associated purchase orders.
 
-    **IMPORTANT:**: You must specify the parameter `includeLinkedTransactions` when
+    **IMPORTANT**: You must specify the parameter `includeLinkedTransactions` when
     fetching a list of checks to receive this field because it is not returned by
     default.
     """
@@ -1302,7 +1302,7 @@ class Check(BaseModel):
     used to identify the transaction in QuickBooks. This value is not required to be
     unique and can be arbitrarily changed by the QuickBooks user.
 
-    **IMPORTANT:**: For checks, this field is the check number.
+    **IMPORTANT**: For checks, this field is the check number.
     """
 
     revision_number: str = FieldInfo(alias="revisionNumber")

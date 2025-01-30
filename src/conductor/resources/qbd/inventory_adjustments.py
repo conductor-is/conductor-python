@@ -97,7 +97,7 @@ class InventoryAdjustmentsResource(SyncAPIResource):
               this object in your external system. This field is immutable and can only be set
               during object creation.
 
-              **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
+              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
               QuickBooks will return an error.
 
           inventory_site_id: The site location where inventory for the item associated with this inventory
@@ -238,7 +238,7 @@ class InventoryAdjustmentsResource(SyncAPIResource):
           lines: The inventory adjustment's item lines, each representing the adjustment of an
               inventory item's quantity, value, serial number, or lot number.
 
-              **IMPORTANT:**:
+              **IMPORTANT**:
 
               1. Including this array in your update request will **REPLACE** all existing
                  item lines for the inventory adjustment with this array. To keep any existing
@@ -335,7 +335,7 @@ class InventoryAdjustmentsResource(SyncAPIResource):
           ids: Filter for specific inventory adjustments by their QuickBooks-assigned unique
               identifier(s).
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           include_line_items: Whether to include line items in the response. Defaults to `true`.
@@ -344,7 +344,7 @@ class InventoryAdjustmentsResource(SyncAPIResource):
 
           limit: The maximum number of objects to return.
 
-              **IMPORTANT:**: QuickBooks Desktop does not support cursor-based pagination for
+              **IMPORTANT**: QuickBooks Desktop does not support cursor-based pagination for
               inventory adjustments. This parameter will limit the response size, but you
               cannot fetch subsequent results using a cursor. For pagination, use the
               name-range parameters instead (e.g., `nameFrom=A&nameTo=B`).
@@ -370,7 +370,7 @@ class InventoryAdjustmentsResource(SyncAPIResource):
               case-sensitive. In QuickBooks, ref-numbers are not required to be unique and can
               be arbitrarily changed by the QuickBooks user.
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           ref_number_starts_with: Filter for inventory adjustments whose `refNumber` starts with this substring.
@@ -545,7 +545,7 @@ class AsyncInventoryAdjustmentsResource(AsyncAPIResource):
               this object in your external system. This field is immutable and can only be set
               during object creation.
 
-              **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
+              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
               QuickBooks will return an error.
 
           inventory_site_id: The site location where inventory for the item associated with this inventory
@@ -686,7 +686,7 @@ class AsyncInventoryAdjustmentsResource(AsyncAPIResource):
           lines: The inventory adjustment's item lines, each representing the adjustment of an
               inventory item's quantity, value, serial number, or lot number.
 
-              **IMPORTANT:**:
+              **IMPORTANT**:
 
               1. Including this array in your update request will **REPLACE** all existing
                  item lines for the inventory adjustment with this array. To keep any existing
@@ -783,7 +783,7 @@ class AsyncInventoryAdjustmentsResource(AsyncAPIResource):
           ids: Filter for specific inventory adjustments by their QuickBooks-assigned unique
               identifier(s).
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           include_line_items: Whether to include line items in the response. Defaults to `true`.
@@ -792,7 +792,7 @@ class AsyncInventoryAdjustmentsResource(AsyncAPIResource):
 
           limit: The maximum number of objects to return.
 
-              **IMPORTANT:**: QuickBooks Desktop does not support cursor-based pagination for
+              **IMPORTANT**: QuickBooks Desktop does not support cursor-based pagination for
               inventory adjustments. This parameter will limit the response size, but you
               cannot fetch subsequent results using a cursor. For pagination, use the
               name-range parameters instead (e.g., `nameFrom=A&nameTo=B`).
@@ -818,7 +818,7 @@ class AsyncInventoryAdjustmentsResource(AsyncAPIResource):
               case-sensitive. In QuickBooks, ref-numbers are not required to be unique and can
               be arbitrarily changed by the QuickBooks user.
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           ref_number_starts_with: Filter for inventory adjustments whose `refNumber` starts with this substring.

@@ -36,12 +36,12 @@ class BillCheckPaymentUpdateParams(TypedDict, total=False):
 
     This will create a link between this bill check payment and the specified bills.
 
-    **IMPORTANT:**: In each `applyToTransactions` object, you must specify either
+    **IMPORTANT**: In each `applyToTransactions` object, you must specify either
     `paymentAmount`, `applyCredits`, `discountAmount`, or any combination of these;
     if none of these are specified, you will receive an error for an empty
     transaction.
 
-    **IMPORTANT:**: The target bill must have `isPaid=false`, otherwise, QuickBooks
+    **IMPORTANT**: The target bill must have `isPaid=false`, otherwise, QuickBooks
     will report this object as "cannot be found".
     """
 
@@ -74,7 +74,7 @@ class BillCheckPaymentUpdateParams(TypedDict, total=False):
     which can be used to identify the transaction in QuickBooks. This value is not
     required to be unique and can be arbitrarily changed by the QuickBooks user.
 
-    **IMPORTANT:**: For checks, this field is the check number.
+    **IMPORTANT**: For checks, this field is the check number.
     """
 
     transaction_date: Annotated[Union[str, date], PropertyInfo(alias="transactionDate", format="iso8601")]
@@ -109,7 +109,7 @@ class ApplyToTransaction(TypedDict, total=False):
     This creates a link between this receivable transaction and the specified credit
     memos.
 
-    **IMPORTANT:**: By default, QuickBooks will not return any information about the
+    **IMPORTANT**: By default, QuickBooks will not return any information about the
     linked transactions in this endpoint's response even when this request is
     successful. To see the transactions linked via this field, refetch the
     receivable transaction and check the `linkedTransactions` response field. If

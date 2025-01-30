@@ -112,7 +112,7 @@ class VendorsResource(SyncAPIResource):
         Args:
           name: The case-insensitive unique name of this vendor, unique across all vendors.
 
-              **NOTE:**: Vendors do not have a `fullName` field because they are not
+              **NOTE**: Vendors do not have a `fullName` field because they are not
               hierarchical objects, which is why `name` is unique for them but not for objects
               that have parents.
 
@@ -170,7 +170,7 @@ class VendorsResource(SyncAPIResource):
               this object in your external system. This field is immutable and can only be set
               during object creation.
 
-              **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
+              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
               QuickBooks will return an error.
 
           fax: The vendor's fax number.
@@ -514,7 +514,7 @@ class VendorsResource(SyncAPIResource):
 
           name: The case-insensitive unique name of this vendor, unique across all vendors.
 
-              **NOTE:**: Vendors do not have a `fullName` field because they are not
+              **NOTE**: Vendors do not have a `fullName` field because they are not
               hierarchical objects, which is why `name` is unique for them but not for objects
               that have parents.
 
@@ -681,7 +681,7 @@ class VendorsResource(SyncAPIResource):
 
           ids: Filter for specific vendors by their QuickBooks-assigned unique identifier(s).
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           limit: The maximum number of objects to return. Accepts values ranging from 1 to 150,
@@ -706,7 +706,7 @@ class VendorsResource(SyncAPIResource):
           names: Filter for specific vendors by their name(s), case-insensitive. Like `id`,
               `name` is a unique identifier for a vendor.
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           name_starts_with: Filter for vendors whose `name` starts with this substring, case-insensitive.
@@ -872,7 +872,7 @@ class AsyncVendorsResource(AsyncAPIResource):
         Args:
           name: The case-insensitive unique name of this vendor, unique across all vendors.
 
-              **NOTE:**: Vendors do not have a `fullName` field because they are not
+              **NOTE**: Vendors do not have a `fullName` field because they are not
               hierarchical objects, which is why `name` is unique for them but not for objects
               that have parents.
 
@@ -930,7 +930,7 @@ class AsyncVendorsResource(AsyncAPIResource):
               this object in your external system. This field is immutable and can only be set
               during object creation.
 
-              **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
+              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
               QuickBooks will return an error.
 
           fax: The vendor's fax number.
@@ -1274,7 +1274,7 @@ class AsyncVendorsResource(AsyncAPIResource):
 
           name: The case-insensitive unique name of this vendor, unique across all vendors.
 
-              **NOTE:**: Vendors do not have a `fullName` field because they are not
+              **NOTE**: Vendors do not have a `fullName` field because they are not
               hierarchical objects, which is why `name` is unique for them but not for objects
               that have parents.
 
@@ -1441,7 +1441,7 @@ class AsyncVendorsResource(AsyncAPIResource):
 
           ids: Filter for specific vendors by their QuickBooks-assigned unique identifier(s).
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           limit: The maximum number of objects to return. Accepts values ranging from 1 to 150,
@@ -1466,7 +1466,7 @@ class AsyncVendorsResource(AsyncAPIResource):
           names: Filter for specific vendors by their name(s), case-insensitive. Like `id`,
               `name` is a unique identifier for a vendor.
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           name_starts_with: Filter for vendors whose `name` starts with this substring, case-insensitive.

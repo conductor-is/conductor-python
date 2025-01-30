@@ -76,12 +76,12 @@ class BillCreditCardPaymentsResource(SyncAPIResource):
           apply_to_transactions: The bills to be paid by this bill credit card payment. This will create a link
               between this bill credit card payment and the specified bills.
 
-              **IMPORTANT:**: In each `applyToTransactions` object, you must specify either
+              **IMPORTANT**: In each `applyToTransactions` object, you must specify either
               `paymentAmount`, `applyCredits`, `discountAmount`, or any combination of these;
               if none of these are specified, you will receive an error for an empty
               transaction.
 
-              **IMPORTANT:**: The target bill must have `isPaid=false`, otherwise, QuickBooks
+              **IMPORTANT**: The target bill must have `isPaid=false`, otherwise, QuickBooks
               will report this object as "cannot be found".
 
           credit_card_account_id: The credit card account to which this bill credit card payment is being charged.
@@ -92,7 +92,7 @@ class BillCreditCardPaymentsResource(SyncAPIResource):
           vendor_id: The vendor who sent the bill(s) that this bill credit card payment is paying and
               who will receive this payment.
 
-              **IMPORTANT:**: This vendor must match the `vendor` on the bill(s) specified in
+              **IMPORTANT**: This vendor must match the `vendor` on the bill(s) specified in
               `applyToTransactions`; otherwise, QuickBooks will say the `transactionId` in
               `applyToTransactions` "does not exist".
 
@@ -108,7 +108,7 @@ class BillCreditCardPaymentsResource(SyncAPIResource):
               this object in your external system. This field is immutable and can only be set
               during object creation.
 
-              **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
+              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
               QuickBooks will return an error.
 
           memo: A memo or note for this bill credit card payment.
@@ -117,9 +117,9 @@ class BillCreditCardPaymentsResource(SyncAPIResource):
               assigned, used to track the amount owed. If not specified, QuickBooks Desktop
               will use its default A/P account.
 
-              **IMPORTANT:**: If this bill credit card payment is linked to other
-              transactions, this A/P account must match the `payablesAccount` used in those
-              other transactions.
+              **IMPORTANT**: If this bill credit card payment is linked to other transactions,
+              this A/P account must match the `payablesAccount` used in those other
+              transactions.
 
           ref_number: The case-sensitive user-defined reference number for this bill credit card
               payment, which can be used to identify the transaction in QuickBooks. This value
@@ -247,7 +247,7 @@ class BillCreditCardPaymentsResource(SyncAPIResource):
           ids: Filter for specific bill credit card payments by their QuickBooks-assigned
               unique identifier(s).
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           include_line_items: Whether to include line items in the response. Defaults to `true`.
@@ -276,7 +276,7 @@ class BillCreditCardPaymentsResource(SyncAPIResource):
               case-sensitive. In QuickBooks, ref-numbers are not required to be unique and can
               be arbitrarily changed by the QuickBooks user.
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           ref_number_starts_with: Filter for bill credit card payments whose `refNumber` starts with this
@@ -440,12 +440,12 @@ class AsyncBillCreditCardPaymentsResource(AsyncAPIResource):
           apply_to_transactions: The bills to be paid by this bill credit card payment. This will create a link
               between this bill credit card payment and the specified bills.
 
-              **IMPORTANT:**: In each `applyToTransactions` object, you must specify either
+              **IMPORTANT**: In each `applyToTransactions` object, you must specify either
               `paymentAmount`, `applyCredits`, `discountAmount`, or any combination of these;
               if none of these are specified, you will receive an error for an empty
               transaction.
 
-              **IMPORTANT:**: The target bill must have `isPaid=false`, otherwise, QuickBooks
+              **IMPORTANT**: The target bill must have `isPaid=false`, otherwise, QuickBooks
               will report this object as "cannot be found".
 
           credit_card_account_id: The credit card account to which this bill credit card payment is being charged.
@@ -456,7 +456,7 @@ class AsyncBillCreditCardPaymentsResource(AsyncAPIResource):
           vendor_id: The vendor who sent the bill(s) that this bill credit card payment is paying and
               who will receive this payment.
 
-              **IMPORTANT:**: This vendor must match the `vendor` on the bill(s) specified in
+              **IMPORTANT**: This vendor must match the `vendor` on the bill(s) specified in
               `applyToTransactions`; otherwise, QuickBooks will say the `transactionId` in
               `applyToTransactions` "does not exist".
 
@@ -472,7 +472,7 @@ class AsyncBillCreditCardPaymentsResource(AsyncAPIResource):
               this object in your external system. This field is immutable and can only be set
               during object creation.
 
-              **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
+              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
               QuickBooks will return an error.
 
           memo: A memo or note for this bill credit card payment.
@@ -481,9 +481,9 @@ class AsyncBillCreditCardPaymentsResource(AsyncAPIResource):
               assigned, used to track the amount owed. If not specified, QuickBooks Desktop
               will use its default A/P account.
 
-              **IMPORTANT:**: If this bill credit card payment is linked to other
-              transactions, this A/P account must match the `payablesAccount` used in those
-              other transactions.
+              **IMPORTANT**: If this bill credit card payment is linked to other transactions,
+              this A/P account must match the `payablesAccount` used in those other
+              transactions.
 
           ref_number: The case-sensitive user-defined reference number for this bill credit card
               payment, which can be used to identify the transaction in QuickBooks. This value
@@ -611,7 +611,7 @@ class AsyncBillCreditCardPaymentsResource(AsyncAPIResource):
           ids: Filter for specific bill credit card payments by their QuickBooks-assigned
               unique identifier(s).
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           include_line_items: Whether to include line items in the response. Defaults to `true`.
@@ -640,7 +640,7 @@ class AsyncBillCreditCardPaymentsResource(AsyncAPIResource):
               case-sensitive. In QuickBooks, ref-numbers are not required to be unique and can
               be arbitrarily changed by the QuickBooks user.
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           ref_number_starts_with: Filter for bill credit card payments whose `refNumber` starts with this

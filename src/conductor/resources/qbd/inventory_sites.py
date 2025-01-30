@@ -72,7 +72,7 @@ class InventorySitesResource(SyncAPIResource):
           name: The case-insensitive unique name of this inventory site, unique across all
               inventory sites.
 
-              **NOTE:**: Inventory sites do not have a `fullName` field because they are not
+              **NOTE**: Inventory sites do not have a `fullName` field because they are not
               hierarchical objects, which is why `name` is unique for them but not for objects
               that have parents.
 
@@ -212,7 +212,7 @@ class InventorySitesResource(SyncAPIResource):
           name: The case-insensitive unique name of this inventory site, unique across all
               inventory sites.
 
-              **NOTE:**: Inventory sites do not have a `fullName` field because they are not
+              **NOTE**: Inventory sites do not have a `fullName` field because they are not
               hierarchical objects, which is why `name` is unique for them but not for objects
               that have parents.
 
@@ -290,7 +290,7 @@ class InventorySitesResource(SyncAPIResource):
           ids: Filter for specific inventory sites by their QuickBooks-assigned unique
               identifier(s).
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           name_contains: Filter for inventory sites whose `name` contains this substring,
@@ -307,7 +307,7 @@ class InventorySitesResource(SyncAPIResource):
           names: Filter for specific inventory sites by their name(s), case-insensitive. Like
               `id`, `name` is a unique identifier for an inventory site.
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           name_starts_with: Filter for inventory sites whose `name` starts with this substring,
@@ -407,7 +407,7 @@ class AsyncInventorySitesResource(AsyncAPIResource):
           name: The case-insensitive unique name of this inventory site, unique across all
               inventory sites.
 
-              **NOTE:**: Inventory sites do not have a `fullName` field because they are not
+              **NOTE**: Inventory sites do not have a `fullName` field because they are not
               hierarchical objects, which is why `name` is unique for them but not for objects
               that have parents.
 
@@ -547,7 +547,7 @@ class AsyncInventorySitesResource(AsyncAPIResource):
           name: The case-insensitive unique name of this inventory site, unique across all
               inventory sites.
 
-              **NOTE:**: Inventory sites do not have a `fullName` field because they are not
+              **NOTE**: Inventory sites do not have a `fullName` field because they are not
               hierarchical objects, which is why `name` is unique for them but not for objects
               that have parents.
 
@@ -625,7 +625,7 @@ class AsyncInventorySitesResource(AsyncAPIResource):
           ids: Filter for specific inventory sites by their QuickBooks-assigned unique
               identifier(s).
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           name_contains: Filter for inventory sites whose `name` contains this substring,
@@ -642,7 +642,7 @@ class AsyncInventorySitesResource(AsyncAPIResource):
           names: Filter for specific inventory sites by their name(s), case-insensitive. Like
               `id`, `name` is a unique identifier for an inventory site.
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           name_starts_with: Filter for inventory sites whose `name` starts with this substring,

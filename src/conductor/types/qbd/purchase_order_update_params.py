@@ -92,7 +92,7 @@ class PurchaseOrderUpdateParams(TypedDict, total=False):
     The purchase order's line item groups, each representing a predefined set of
     related items.
 
-    **IMPORTANT:**:
+    **IMPORTANT**:
 
     1. Including this array in your update request will **REPLACE** all existing
        line item groups for the purchase order with this array. To keep any existing
@@ -111,7 +111,7 @@ class PurchaseOrderUpdateParams(TypedDict, total=False):
     The purchase order's line items, each representing a single product or service
     ordered.
 
-    **IMPORTANT:**:
+    **IMPORTANT**:
 
     1. Including this array in your update request will **REPLACE** all existing
        line items for the purchase order with this array. To keep any existing line
@@ -217,7 +217,7 @@ class LineGroupLine(TypedDict, total=False):
     The QuickBooks-assigned unique identifier of an existing purchase order line you
     wish to retain or update.
 
-    **IMPORTANT:**: Set this field to `-1` for new purchase order lines you wish to
+    **IMPORTANT**: Set this field to `-1` for new purchase order lines you wish to
     add.
     """
 
@@ -364,7 +364,7 @@ class LineGroup(TypedDict, total=False):
     The QuickBooks-assigned unique identifier of an existing purchase order line
     group you wish to retain or update.
 
-    **IMPORTANT:**: Set this field to `-1` for new purchase order line groups you
+    **IMPORTANT**: Set this field to `-1` for new purchase order line groups you
     wish to add.
     """
 
@@ -380,7 +380,7 @@ class LineGroup(TypedDict, total=False):
     The purchase order line group's line items, each representing a single product
     or service ordered.
 
-    **IMPORTANT:**:
+    **IMPORTANT**:
 
     1. Including this array in your update request will **REPLACE** all existing
        line items for the purchase order line group with this array. To keep any
@@ -423,7 +423,7 @@ class Line(TypedDict, total=False):
     The QuickBooks-assigned unique identifier of an existing purchase order line you
     wish to retain or update.
 
-    **IMPORTANT:**: Set this field to `-1` for new purchase order lines you wish to
+    **IMPORTANT**: Set this field to `-1` for new purchase order lines you wish to
     add.
     """
 

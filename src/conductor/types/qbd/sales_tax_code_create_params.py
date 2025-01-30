@@ -23,7 +23,7 @@ class SalesTaxCodeCreateParams(TypedDict, total=False):
     sales-tax codes. This short name will appear on sales forms to identify the tax
     status of an item.
 
-    **NOTE:**: Sales-tax codes do not have a `fullName` field because they are not
+    **NOTE**: Sales-tax codes do not have a `fullName` field because they are not
     hierarchical objects, which is why `name` is unique for them but not for objects
     that have parents.
 

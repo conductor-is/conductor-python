@@ -84,7 +84,7 @@ class NonInventoryItemUpdateParams(TypedDict, total=False):
     reimbursable expenses or inventory items that are bought from vendors and sold
     to customers.
 
-    **IMPORTANT:**: You cannot specify both `salesAndPurchaseDetails` and
+    **IMPORTANT**: You cannot specify both `salesAndPurchaseDetails` and
     `salesOrPurchaseDetails` when modifying a non-inventory item because an item
     cannot have both configurations.
     """
@@ -96,7 +96,7 @@ class NonInventoryItemUpdateParams(TypedDict, total=False):
     purchased office supply that isn't resold) or service items (like consulting
     services that are sold but not purchased).
 
-    **IMPORTANT:**: You cannot specify both `salesOrPurchaseDetails` and
+    **IMPORTANT**: You cannot specify both `salesOrPurchaseDetails` and
     `salesAndPurchaseDetails` when modifying a non-inventory item because an item
     cannot have both configurations.
     """

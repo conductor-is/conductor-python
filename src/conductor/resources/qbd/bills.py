@@ -99,7 +99,7 @@ class BillsResource(SyncAPIResource):
               this object in your external system. This field is immutable and can only be set
               during object creation.
 
-              **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
+              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
               QuickBooks will return an error.
 
           item_line_groups: The bill's item group lines, each representing a predefined set of items bundled
@@ -124,7 +124,7 @@ class BillsResource(SyncAPIResource):
               will also return an error if you attempt to link a transaction that is empty or
               already closed.
 
-              **IMPORTANT:**: By default, QuickBooks will not return any information about the
+              **IMPORTANT**: By default, QuickBooks will not return any information about the
               linked transactions in this endpoint's response even when this request is
               successful. To see the transactions linked via this field, refetch the bill and
               check the `linkedTransactions` response field. If fetching a list of bills, you
@@ -138,7 +138,7 @@ class BillsResource(SyncAPIResource):
               the amount owed. If not specified, QuickBooks Desktop will use its default A/P
               account.
 
-              **IMPORTANT:**: If this bill is linked to other transactions, this A/P account
+              **IMPORTANT**: If this bill is linked to other transactions, this A/P account
               must match the `payablesAccount` used in those other transactions.
 
           ref_number: The case-sensitive user-defined reference number for this bill, which can be
@@ -294,7 +294,7 @@ class BillsResource(SyncAPIResource):
 
           expense_lines: The bill's expense lines, each representing one line in this expense.
 
-              **IMPORTANT:**:
+              **IMPORTANT**:
 
               1. Including this array in your update request will **REPLACE** all existing
                  expense lines for the bill with this array. To keep any existing expense
@@ -310,7 +310,7 @@ class BillsResource(SyncAPIResource):
               together because they are commonly purchased together or grouped for faster
               entry.
 
-              **IMPORTANT:**:
+              **IMPORTANT**:
 
               1. Including this array in your update request will **REPLACE** all existing
                  item group lines for the bill with this array. To keep any existing item
@@ -326,7 +326,7 @@ class BillsResource(SyncAPIResource):
           item_lines: The bill's item lines, each representing the purchase of a specific item or
               service.
 
-              **IMPORTANT:**:
+              **IMPORTANT**:
 
               1. Including this array in your update request will **REPLACE** all existing
                  item lines for the bill with this array. To keep any existing item lines, you
@@ -345,7 +345,7 @@ class BillsResource(SyncAPIResource):
               the amount owed. If not specified, QuickBooks Desktop will use its default A/P
               account.
 
-              **IMPORTANT:**: If this bill is linked to other transactions, this A/P account
+              **IMPORTANT**: If this bill is linked to other transactions, this A/P account
               must match the `payablesAccount` used in those other transactions.
 
           ref_number: The case-sensitive user-defined reference number for this bill, which can be
@@ -459,7 +459,7 @@ class BillsResource(SyncAPIResource):
 
           ids: Filter for specific bills by their QuickBooks-assigned unique identifier(s).
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           include_line_items: Whether to include line items in the response. Defaults to `true`.
@@ -493,7 +493,7 @@ class BillsResource(SyncAPIResource):
               ref-numbers are not required to be unique and can be arbitrarily changed by the
               QuickBooks user.
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           ref_number_starts_with: Filter for bills whose `refNumber` starts with this substring. NOTE: If you use
@@ -676,7 +676,7 @@ class AsyncBillsResource(AsyncAPIResource):
               this object in your external system. This field is immutable and can only be set
               during object creation.
 
-              **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
+              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
               QuickBooks will return an error.
 
           item_line_groups: The bill's item group lines, each representing a predefined set of items bundled
@@ -701,7 +701,7 @@ class AsyncBillsResource(AsyncAPIResource):
               will also return an error if you attempt to link a transaction that is empty or
               already closed.
 
-              **IMPORTANT:**: By default, QuickBooks will not return any information about the
+              **IMPORTANT**: By default, QuickBooks will not return any information about the
               linked transactions in this endpoint's response even when this request is
               successful. To see the transactions linked via this field, refetch the bill and
               check the `linkedTransactions` response field. If fetching a list of bills, you
@@ -715,7 +715,7 @@ class AsyncBillsResource(AsyncAPIResource):
               the amount owed. If not specified, QuickBooks Desktop will use its default A/P
               account.
 
-              **IMPORTANT:**: If this bill is linked to other transactions, this A/P account
+              **IMPORTANT**: If this bill is linked to other transactions, this A/P account
               must match the `payablesAccount` used in those other transactions.
 
           ref_number: The case-sensitive user-defined reference number for this bill, which can be
@@ -871,7 +871,7 @@ class AsyncBillsResource(AsyncAPIResource):
 
           expense_lines: The bill's expense lines, each representing one line in this expense.
 
-              **IMPORTANT:**:
+              **IMPORTANT**:
 
               1. Including this array in your update request will **REPLACE** all existing
                  expense lines for the bill with this array. To keep any existing expense
@@ -887,7 +887,7 @@ class AsyncBillsResource(AsyncAPIResource):
               together because they are commonly purchased together or grouped for faster
               entry.
 
-              **IMPORTANT:**:
+              **IMPORTANT**:
 
               1. Including this array in your update request will **REPLACE** all existing
                  item group lines for the bill with this array. To keep any existing item
@@ -903,7 +903,7 @@ class AsyncBillsResource(AsyncAPIResource):
           item_lines: The bill's item lines, each representing the purchase of a specific item or
               service.
 
-              **IMPORTANT:**:
+              **IMPORTANT**:
 
               1. Including this array in your update request will **REPLACE** all existing
                  item lines for the bill with this array. To keep any existing item lines, you
@@ -922,7 +922,7 @@ class AsyncBillsResource(AsyncAPIResource):
               the amount owed. If not specified, QuickBooks Desktop will use its default A/P
               account.
 
-              **IMPORTANT:**: If this bill is linked to other transactions, this A/P account
+              **IMPORTANT**: If this bill is linked to other transactions, this A/P account
               must match the `payablesAccount` used in those other transactions.
 
           ref_number: The case-sensitive user-defined reference number for this bill, which can be
@@ -1036,7 +1036,7 @@ class AsyncBillsResource(AsyncAPIResource):
 
           ids: Filter for specific bills by their QuickBooks-assigned unique identifier(s).
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           include_line_items: Whether to include line items in the response. Defaults to `true`.
@@ -1070,7 +1070,7 @@ class AsyncBillsResource(AsyncAPIResource):
               ref-numbers are not required to be unique and can be arbitrarily changed by the
               QuickBooks user.
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           ref_number_starts_with: Filter for bills whose `refNumber` starts with this substring. NOTE: If you use

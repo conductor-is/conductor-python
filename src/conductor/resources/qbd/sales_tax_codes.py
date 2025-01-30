@@ -75,7 +75,7 @@ class SalesTaxCodesResource(SyncAPIResource):
               sales-tax codes. This short name will appear on sales forms to identify the tax
               status of an item.
 
-              **NOTE:**: Sales-tax codes do not have a `fullName` field because they are not
+              **NOTE**: Sales-tax codes do not have a `fullName` field because they are not
               hierarchical objects, which is why `name` is unique for them but not for objects
               that have parents.
 
@@ -205,7 +205,7 @@ class SalesTaxCodesResource(SyncAPIResource):
               sales-tax codes. This short name will appear on sales forms to identify the tax
               status of an item.
 
-              **NOTE:**: Sales-tax codes do not have a `fullName` field because they are not
+              **NOTE**: Sales-tax codes do not have a `fullName` field because they are not
               hierarchical objects, which is why `name` is unique for them but not for objects
               that have parents.
 
@@ -281,12 +281,12 @@ class SalesTaxCodesResource(SyncAPIResource):
           ids: Filter for specific sales-tax codes by their QuickBooks-assigned unique
               identifier(s).
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           limit: The maximum number of objects to return.
 
-              **IMPORTANT:**: QuickBooks Desktop does not support cursor-based pagination for
+              **IMPORTANT**: QuickBooks Desktop does not support cursor-based pagination for
               sales-tax codes. This parameter will limit the response size, but you cannot
               fetch subsequent results using a cursor. For pagination, use the name-range
               parameters instead (e.g., `nameFrom=A&nameTo=B`).
@@ -309,7 +309,7 @@ class SalesTaxCodesResource(SyncAPIResource):
           names: Filter for specific sales-tax codes by their name(s), case-insensitive. Like
               `id`, `name` is a unique identifier for a sales-tax code.
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           name_starts_with: Filter for sales-tax codes whose `name` starts with this substring,
@@ -413,7 +413,7 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
               sales-tax codes. This short name will appear on sales forms to identify the tax
               status of an item.
 
-              **NOTE:**: Sales-tax codes do not have a `fullName` field because they are not
+              **NOTE**: Sales-tax codes do not have a `fullName` field because they are not
               hierarchical objects, which is why `name` is unique for them but not for objects
               that have parents.
 
@@ -543,7 +543,7 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
               sales-tax codes. This short name will appear on sales forms to identify the tax
               status of an item.
 
-              **NOTE:**: Sales-tax codes do not have a `fullName` field because they are not
+              **NOTE**: Sales-tax codes do not have a `fullName` field because they are not
               hierarchical objects, which is why `name` is unique for them but not for objects
               that have parents.
 
@@ -619,12 +619,12 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
           ids: Filter for specific sales-tax codes by their QuickBooks-assigned unique
               identifier(s).
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           limit: The maximum number of objects to return.
 
-              **IMPORTANT:**: QuickBooks Desktop does not support cursor-based pagination for
+              **IMPORTANT**: QuickBooks Desktop does not support cursor-based pagination for
               sales-tax codes. This parameter will limit the response size, but you cannot
               fetch subsequent results using a cursor. For pagination, use the name-range
               parameters instead (e.g., `nameFrom=A&nameTo=B`).
@@ -647,7 +647,7 @@ class AsyncSalesTaxCodesResource(AsyncAPIResource):
           names: Filter for specific sales-tax codes by their name(s), case-insensitive. Like
               `id`, `name` is a unique identifier for a sales-tax code.
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           name_starts_with: Filter for sales-tax codes whose `name` starts with this substring,
