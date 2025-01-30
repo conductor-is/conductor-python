@@ -166,11 +166,11 @@ class VendorsResource(SyncAPIResource):
           email: The vendor's email address.
 
           external_id: A globally unique identifier (GUID) you, the developer, can provide for tracking
-              this object in your external system.
+              this object in your external system. This field is immutable and can only be set
+              during object creation.
 
-              **IMPORTANT**: Must be formatted as a valid GUID; otherwise, QuickBooks will
-              return an error. This field is immutable and can only be set during object
-              creation.
+              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
+              QuickBooks will return an error.
 
           fax: The vendor's fax number.
 
@@ -418,10 +418,10 @@ class VendorsResource(SyncAPIResource):
         Args:
           id: The QuickBooks-assigned unique identifier of the vendor to update.
 
-          revision_number: The current revision number of the vendor object you are updating, which you can
-              get by fetching the object first. Provide the most recent `revisionNumber` to
-              ensure you're working with the latest data; otherwise, the update will return an
-              error.
+          revision_number: The current QuickBooks-assigned revision number of the vendor object you are
+              updating, which you can get by fetching the object first. Provide the most
+              recent `revisionNumber` to ensure you're working with the latest data;
+              otherwise, the update will return an error.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -912,11 +912,11 @@ class AsyncVendorsResource(AsyncAPIResource):
           email: The vendor's email address.
 
           external_id: A globally unique identifier (GUID) you, the developer, can provide for tracking
-              this object in your external system.
+              this object in your external system. This field is immutable and can only be set
+              during object creation.
 
-              **IMPORTANT**: Must be formatted as a valid GUID; otherwise, QuickBooks will
-              return an error. This field is immutable and can only be set during object
-              creation.
+              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
+              QuickBooks will return an error.
 
           fax: The vendor's fax number.
 
@@ -1164,10 +1164,10 @@ class AsyncVendorsResource(AsyncAPIResource):
         Args:
           id: The QuickBooks-assigned unique identifier of the vendor to update.
 
-          revision_number: The current revision number of the vendor object you are updating, which you can
-              get by fetching the object first. Provide the most recent `revisionNumber` to
-              ensure you're working with the latest data; otherwise, the update will return an
-              error.
+          revision_number: The current QuickBooks-assigned revision number of the vendor object you are
+              updating, which you can get by fetching the object first. Provide the most
+              recent `revisionNumber` to ensure you're working with the latest data;
+              otherwise, the update will return an error.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).

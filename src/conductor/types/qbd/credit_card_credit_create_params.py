@@ -22,7 +22,7 @@ __all__ = [
 
 class CreditCardCreditCreateParams(TypedDict, total=False):
     account_id: Required[Annotated[str, PropertyInfo(alias="accountId")]]
-    """The bank or credit card account to which this credit card credit is applied."""
+    """The bank or credit card account to which this credit card credit is posted."""
 
     transaction_date: Required[Annotated[Union[str, date], PropertyInfo(alias="transactionDate", format="iso8601")]]
     """The date of this credit card credit, in ISO 8601 format (YYYY-MM-DD)."""
@@ -49,11 +49,11 @@ class CreditCardCreditCreateParams(TypedDict, total=False):
     external_id: Annotated[str, PropertyInfo(alias="externalId")]
     """
     A globally unique identifier (GUID) you, the developer, can provide for tracking
-    this object in your external system.
+    this object in your external system. This field is immutable and can only be set
+    during object creation.
 
-    **IMPORTANT**: Must be formatted as a valid GUID; otherwise, QuickBooks will
-    return an error. This field is immutable and can only be set during object
-    creation.
+    **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
+    QuickBooks will return an error.
     """
 
     item_line_groups: Annotated[Iterable[ItemLineGroup], PropertyInfo(alias="itemLineGroups")]
@@ -83,6 +83,8 @@ class CreditCardCreditCreateParams(TypedDict, total=False):
     The case-sensitive user-defined reference number for this credit card credit,
     which can be used to identify the transaction in QuickBooks. This value is not
     required to be unique and can be arbitrarily changed by the QuickBooks user.
+    When left blank in this create request, this field will be left blank in
+    QuickBooks (i.e., it does _not_ auto-increment).
     """
 
     sales_tax_code_id: Annotated[str, PropertyInfo(alias="salesTaxCodeId")]

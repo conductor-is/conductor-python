@@ -12,10 +12,10 @@ __all__ = ["ServiceItemUpdateParams", "Barcode", "SalesAndPurchaseDetails", "Sal
 class ServiceItemUpdateParams(TypedDict, total=False):
     revision_number: Required[Annotated[str, PropertyInfo(alias="revisionNumber")]]
     """
-    The current revision number of the service item object you are updating, which
-    you can get by fetching the object first. Provide the most recent
-    `revisionNumber` to ensure you're working with the latest data; otherwise, the
-    update will return an error.
+    The current QuickBooks-assigned revision number of the service item object you
+    are updating, which you can get by fetching the object first. Provide the most
+    recent `revisionNumber` to ensure you're working with the latest data;
+    otherwise, the update will return an error.
     """
 
     conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]
@@ -195,10 +195,10 @@ class SalesOrPurchaseDetails(TypedDict, total=False):
     """A description of this item."""
 
     posting_account_id: Annotated[str, PropertyInfo(alias="postingAccountId")]
-    """
-    The posting account associated with this item, used when recording transactions
-    involving this item. This could be an income account when selling or an expense
-    account when purchasing.
+    """The posting account to which transactions involving this item are posted.
+
+    This could be an income account when selling or an expense account when
+    purchasing.
     """
 
     price: str
