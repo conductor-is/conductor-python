@@ -129,15 +129,16 @@ class EmployeesResource(SyncAPIResource):
               specify a complete address, including city, state, ZIP (or postal) code, and at
               least one line of the street address.
 
-          adjusted_service_date: The adjusted service date for this employee. This date accounts for previous
-              employment periods or leaves that affect seniority.
+          adjusted_service_date: The adjusted service date for this employee, in ISO 8601 format (YYYY-MM-DD).
+              This date accounts for previous employment periods or leaves that affect
+              seniority.
 
           alternate_phone: The employee's alternate telephone number.
 
           billing_rate_id: The employee's billing rate, used to override service item rates in time
               tracking transactions.
 
-          birth_date: This employee's date of birth.
+          birth_date: This employee's date of birth, in ISO 8601 format (YYYY-MM-DD).
 
           custom_contact_fields: Additional custom contact fields for this employee, such as phone numbers or
               email addresses.
@@ -180,7 +181,7 @@ class EmployeesResource(SyncAPIResource):
 
           gender: This employee's gender.
 
-          hired_date: The date this employee was hired.
+          hired_date: The date this employee was hired, in ISO 8601 format (YYYY-MM-DD).
 
           i9_on_file_status: Indicates whether this employee's I-9 is on file.
 
@@ -201,7 +202,7 @@ class EmployeesResource(SyncAPIResource):
 
           note: A note or comment about this employee.
 
-          original_hire_date: The original hire date for this employee.
+          original_hire_date: The original hire date for this employee, in ISO 8601 format (YYYY-MM-DD).
 
           overtime_exempt_status: Indicates whether this employee is exempt from overtime pay. This classification
               is based on U.S. labor laws (FLSA).
@@ -228,14 +229,15 @@ class EmployeesResource(SyncAPIResource):
           target_bonus: The target bonus for this employee, represented as a decimal string. Found in
               the "employment job details" section of the employee's record in QuickBooks.
 
-          termination_date: The date this employee's employment ended with the company. This is also known
-              as the released date or separation date.
+          termination_date: The date this employee's employment ended with the company, in ISO 8601 format
+              (YYYY-MM-DD). This is also known as the released date or separation date.
 
           us_citizenship_status: Indicates whether this employee is a U.S. citizen.
 
           us_veteran_status: Indicates whether this employee is a U.S. veteran.
 
-          work_authorization_expiration_date: The date this employee's work authorization expires.
+          work_authorization_expiration_date: The date this employee's work authorization expires, in ISO 8601 format
+              (YYYY-MM-DD).
 
           extra_headers: Send extra headers
 
@@ -431,15 +433,16 @@ class EmployeesResource(SyncAPIResource):
               specify a complete address, including city, state, ZIP (or postal) code, and at
               least one line of the street address.
 
-          adjusted_service_date: The adjusted service date for this employee. This date accounts for previous
-              employment periods or leaves that affect seniority.
+          adjusted_service_date: The adjusted service date for this employee, in ISO 8601 format (YYYY-MM-DD).
+              This date accounts for previous employment periods or leaves that affect
+              seniority.
 
           alternate_phone: The employee's alternate telephone number.
 
           billing_rate_id: The employee's billing rate, used to override service item rates in time
               tracking transactions.
 
-          birth_date: This employee's date of birth.
+          birth_date: This employee's date of birth, in ISO 8601 format (YYYY-MM-DD).
 
           custom_contact_fields: Additional custom contact fields for this employee, such as phone numbers or
               email addresses.
@@ -473,7 +476,7 @@ class EmployeesResource(SyncAPIResource):
 
           first_name: The employee's first name.
 
-          hired_date: The date this employee was hired.
+          hired_date: The date this employee was hired, in ISO 8601 format (YYYY-MM-DD).
 
           i9_on_file_status: Indicates whether this employee's I-9 is on file.
 
@@ -494,7 +497,7 @@ class EmployeesResource(SyncAPIResource):
 
           note: A note or comment about this employee.
 
-          original_hire_date: The original hire date for this employee.
+          original_hire_date: The original hire date for this employee, in ISO 8601 format (YYYY-MM-DD).
 
           overtime_exempt_status: Indicates whether this employee is exempt from overtime pay. This classification
               is based on U.S. labor laws (FLSA).
@@ -517,14 +520,15 @@ class EmployeesResource(SyncAPIResource):
           target_bonus: The target bonus for this employee, represented as a decimal string. Found in
               the "employment job details" section of the employee's record in QuickBooks.
 
-          termination_date: The date this employee's employment ended with the company. This is also known
-              as the released date or separation date.
+          termination_date: The date this employee's employment ended with the company, in ISO 8601 format
+              (YYYY-MM-DD). This is also known as the released date or separation date.
 
           us_citizenship_status: Indicates whether this employee is a U.S. citizen.
 
           us_veteran_status: Indicates whether this employee is a U.S. veteran.
 
-          work_authorization_expiration_date: The date this employee's work authorization expires.
+          work_authorization_expiration_date: The date this employee's work authorization expires, in ISO 8601 format
+              (YYYY-MM-DD).
 
           extra_headers: Send extra headers
 
@@ -815,15 +819,16 @@ class AsyncEmployeesResource(AsyncAPIResource):
               specify a complete address, including city, state, ZIP (or postal) code, and at
               least one line of the street address.
 
-          adjusted_service_date: The adjusted service date for this employee. This date accounts for previous
-              employment periods or leaves that affect seniority.
+          adjusted_service_date: The adjusted service date for this employee, in ISO 8601 format (YYYY-MM-DD).
+              This date accounts for previous employment periods or leaves that affect
+              seniority.
 
           alternate_phone: The employee's alternate telephone number.
 
           billing_rate_id: The employee's billing rate, used to override service item rates in time
               tracking transactions.
 
-          birth_date: This employee's date of birth.
+          birth_date: This employee's date of birth, in ISO 8601 format (YYYY-MM-DD).
 
           custom_contact_fields: Additional custom contact fields for this employee, such as phone numbers or
               email addresses.
@@ -866,7 +871,7 @@ class AsyncEmployeesResource(AsyncAPIResource):
 
           gender: This employee's gender.
 
-          hired_date: The date this employee was hired.
+          hired_date: The date this employee was hired, in ISO 8601 format (YYYY-MM-DD).
 
           i9_on_file_status: Indicates whether this employee's I-9 is on file.
 
@@ -887,7 +892,7 @@ class AsyncEmployeesResource(AsyncAPIResource):
 
           note: A note or comment about this employee.
 
-          original_hire_date: The original hire date for this employee.
+          original_hire_date: The original hire date for this employee, in ISO 8601 format (YYYY-MM-DD).
 
           overtime_exempt_status: Indicates whether this employee is exempt from overtime pay. This classification
               is based on U.S. labor laws (FLSA).
@@ -914,14 +919,15 @@ class AsyncEmployeesResource(AsyncAPIResource):
           target_bonus: The target bonus for this employee, represented as a decimal string. Found in
               the "employment job details" section of the employee's record in QuickBooks.
 
-          termination_date: The date this employee's employment ended with the company. This is also known
-              as the released date or separation date.
+          termination_date: The date this employee's employment ended with the company, in ISO 8601 format
+              (YYYY-MM-DD). This is also known as the released date or separation date.
 
           us_citizenship_status: Indicates whether this employee is a U.S. citizen.
 
           us_veteran_status: Indicates whether this employee is a U.S. veteran.
 
-          work_authorization_expiration_date: The date this employee's work authorization expires.
+          work_authorization_expiration_date: The date this employee's work authorization expires, in ISO 8601 format
+              (YYYY-MM-DD).
 
           extra_headers: Send extra headers
 
@@ -1117,15 +1123,16 @@ class AsyncEmployeesResource(AsyncAPIResource):
               specify a complete address, including city, state, ZIP (or postal) code, and at
               least one line of the street address.
 
-          adjusted_service_date: The adjusted service date for this employee. This date accounts for previous
-              employment periods or leaves that affect seniority.
+          adjusted_service_date: The adjusted service date for this employee, in ISO 8601 format (YYYY-MM-DD).
+              This date accounts for previous employment periods or leaves that affect
+              seniority.
 
           alternate_phone: The employee's alternate telephone number.
 
           billing_rate_id: The employee's billing rate, used to override service item rates in time
               tracking transactions.
 
-          birth_date: This employee's date of birth.
+          birth_date: This employee's date of birth, in ISO 8601 format (YYYY-MM-DD).
 
           custom_contact_fields: Additional custom contact fields for this employee, such as phone numbers or
               email addresses.
@@ -1159,7 +1166,7 @@ class AsyncEmployeesResource(AsyncAPIResource):
 
           first_name: The employee's first name.
 
-          hired_date: The date this employee was hired.
+          hired_date: The date this employee was hired, in ISO 8601 format (YYYY-MM-DD).
 
           i9_on_file_status: Indicates whether this employee's I-9 is on file.
 
@@ -1180,7 +1187,7 @@ class AsyncEmployeesResource(AsyncAPIResource):
 
           note: A note or comment about this employee.
 
-          original_hire_date: The original hire date for this employee.
+          original_hire_date: The original hire date for this employee, in ISO 8601 format (YYYY-MM-DD).
 
           overtime_exempt_status: Indicates whether this employee is exempt from overtime pay. This classification
               is based on U.S. labor laws (FLSA).
@@ -1203,14 +1210,15 @@ class AsyncEmployeesResource(AsyncAPIResource):
           target_bonus: The target bonus for this employee, represented as a decimal string. Found in
               the "employment job details" section of the employee's record in QuickBooks.
 
-          termination_date: The date this employee's employment ended with the company. This is also known
-              as the released date or separation date.
+          termination_date: The date this employee's employment ended with the company, in ISO 8601 format
+              (YYYY-MM-DD). This is also known as the released date or separation date.
 
           us_citizenship_status: Indicates whether this employee is a U.S. citizen.
 
           us_veteran_status: Indicates whether this employee is a U.S. veteran.
 
-          work_authorization_expiration_date: The date this employee's work authorization expires.
+          work_authorization_expiration_date: The date this employee's work authorization expires, in ISO 8601 format
+              (YYYY-MM-DD).
 
           extra_headers: Send extra headers
 
