@@ -86,7 +86,7 @@ class SalesOrderUpdateParams(TypedDict, total=False):
     The sales order's line item groups, each representing a predefined set of
     related items.
 
-    **IMPORTANT**:
+    **IMPORTANT:**:
 
     1. Including this array in your update request will **REPLACE** all existing
        line item groups for the sales order with this array. To keep any existing
@@ -105,7 +105,7 @@ class SalesOrderUpdateParams(TypedDict, total=False):
     The sales order's line items, each representing a single product or service
     ordered.
 
-    **IMPORTANT**:
+    **IMPORTANT:**:
 
     1. Including this array in your update request will **REPLACE** all existing
        line items for the sales order with this array. To keep any existing line
@@ -258,7 +258,8 @@ class LineGroupLine(TypedDict, total=False):
     The QuickBooks-assigned unique identifier of an existing sales order line you
     wish to retain or update.
 
-    **IMPORTANT**: Set this field to `-1` for new sales order lines you wish to add.
+    **IMPORTANT:**: Set this field to `-1` for new sales order lines you wish to
+    add.
     """
 
     amount: str
@@ -414,7 +415,7 @@ class LineGroup(TypedDict, total=False):
     The QuickBooks-assigned unique identifier of an existing sales order line group
     you wish to retain or update.
 
-    **IMPORTANT**: Set this field to `-1` for new sales order line groups you wish
+    **IMPORTANT:**: Set this field to `-1` for new sales order line groups you wish
     to add.
     """
 
@@ -430,7 +431,7 @@ class LineGroup(TypedDict, total=False):
     The sales order line group's line items, each representing a single product or
     service ordered.
 
-    **IMPORTANT**:
+    **IMPORTANT:**:
 
     1. Including this array in your update request will **REPLACE** all existing
        line items for the sales order line group with this array. To keep any
@@ -473,7 +474,8 @@ class Line(TypedDict, total=False):
     The QuickBooks-assigned unique identifier of an existing sales order line you
     wish to retain or update.
 
-    **IMPORTANT**: Set this field to `-1` for new sales order lines you wish to add.
+    **IMPORTANT:**: Set this field to `-1` for new sales order lines you wish to
+    add.
     """
 
     amount: str

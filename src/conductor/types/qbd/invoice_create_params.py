@@ -39,7 +39,7 @@ class InvoiceCreateParams(TypedDict, total=False):
 
     This creates a link between this invoice and the specified credit memos.
 
-    **IMPORTANT**: By default, QuickBooks will not return any information about the
+    **IMPORTANT:**: By default, QuickBooks will not return any information about the
     linked transactions in this endpoint's response even when this request is
     successful. To see the transactions linked via this field, refetch the invoice
     and check the `linkedTransactions` response field. If fetching a list of
@@ -88,7 +88,7 @@ class InvoiceCreateParams(TypedDict, total=False):
     this object in your external system. This field is immutable and can only be set
     during object creation.
 
-    **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
+    **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
     QuickBooks will return an error.
     """
 
@@ -139,7 +139,7 @@ class InvoiceCreateParams(TypedDict, total=False):
     will also return an error if you attempt to link a transaction that is empty or
     already closed.
 
-    **IMPORTANT**: By default, QuickBooks will not return any information about the
+    **IMPORTANT:**: By default, QuickBooks will not return any information about the
     linked transactions in this endpoint's response even when this request is
     successful. To see the transactions linked via this field, refetch the invoice
     and check the `linkedTransactions` response field. If fetching a list of
@@ -177,8 +177,8 @@ class InvoiceCreateParams(TypedDict, total=False):
     track the amount owed. If not specified, QuickBooks Desktop will use its default
     A/R account.
 
-    **IMPORTANT**: If this invoice is linked to other transactions, this A/R account
-    must match the `receivablesAccount` used in all linked transactions. For
+    **IMPORTANT:**: If this invoice is linked to other transactions, this A/R
+    account must match the `receivablesAccount` used in all linked transactions. For
     example, when refunding a credit card payment, the A/R account must match the
     one used in the original credit transactions being refunded.
     """
@@ -472,7 +472,7 @@ class Line(TypedDict, total=False):
     Transaction lines can only be linked when creating this invoice line and cannot
     be unlinked later.
 
-    **IMPORTANT**: If you use `linkToTransactionLine` on this invoice line, you
+    **IMPORTANT:**: If you use `linkToTransactionLine` on this invoice line, you
     cannot use the field `item` on this line (QuickBooks will return an error)
     because this field brings in all of the item information you need. You can,
     however, specify whatever `quantity` or `rate` that you want, or any other
@@ -485,7 +485,7 @@ class Line(TypedDict, total=False):
     will also return an error if you attempt to link a transaction that is empty or
     already closed.
 
-    **IMPORTANT**: By default, QuickBooks will not return any information about the
+    **IMPORTANT:**: By default, QuickBooks will not return any information about the
     linked transaction line in this endpoint's response even when this request is
     successful. To see the transaction line linked via this field, refetch the
     parent invoice and check the `linkedTransactions` response field. If fetching a

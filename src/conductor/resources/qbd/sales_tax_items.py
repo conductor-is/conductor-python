@@ -75,7 +75,7 @@ class SalesTaxItemsResource(SyncAPIResource):
           name: The case-insensitive unique name of this sales-tax item, unique across all
               sales-tax items. Maximum length: 31 characters.
 
-              **NOTE**: Sales-tax items do not have a `fullName` field because they are not
+              **NOTE:**: Sales-tax items do not have a `fullName` field because they are not
               hierarchical objects, which is why `name` is unique for them but not for objects
               that have parents.
 
@@ -95,7 +95,7 @@ class SalesTaxItemsResource(SyncAPIResource):
               this object in your external system. This field is immutable and can only be set
               during object creation.
 
-              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
+              **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
               QuickBooks will return an error.
 
           is_active: Indicates whether this sales-tax item is active. Inactive objects are typically
@@ -235,7 +235,7 @@ class SalesTaxItemsResource(SyncAPIResource):
           name: The case-insensitive unique name of this sales-tax item, unique across all
               sales-tax items. Maximum length: 31 characters.
 
-              **NOTE**: Sales-tax items do not have a `fullName` field because they are not
+              **NOTE:**: Sales-tax items do not have a `fullName` field because they are not
               hierarchical objects, which is why `name` is unique for them but not for objects
               that have parents.
 
@@ -328,7 +328,7 @@ class SalesTaxItemsResource(SyncAPIResource):
           ids: Filter for specific sales-tax items by their QuickBooks-assigned unique
               identifier(s).
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           limit: The maximum number of objects to return. Accepts values ranging from 1 to 150,
@@ -352,7 +352,7 @@ class SalesTaxItemsResource(SyncAPIResource):
           names: Filter for specific sales-tax items by their name(s), case-insensitive. Like
               `id`, `name` is a unique identifier for a sales-tax item.
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           name_starts_with: Filter for sales-tax items whose `name` starts with this substring,
@@ -459,7 +459,7 @@ class AsyncSalesTaxItemsResource(AsyncAPIResource):
           name: The case-insensitive unique name of this sales-tax item, unique across all
               sales-tax items. Maximum length: 31 characters.
 
-              **NOTE**: Sales-tax items do not have a `fullName` field because they are not
+              **NOTE:**: Sales-tax items do not have a `fullName` field because they are not
               hierarchical objects, which is why `name` is unique for them but not for objects
               that have parents.
 
@@ -479,7 +479,7 @@ class AsyncSalesTaxItemsResource(AsyncAPIResource):
               this object in your external system. This field is immutable and can only be set
               during object creation.
 
-              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
+              **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
               QuickBooks will return an error.
 
           is_active: Indicates whether this sales-tax item is active. Inactive objects are typically
@@ -619,7 +619,7 @@ class AsyncSalesTaxItemsResource(AsyncAPIResource):
           name: The case-insensitive unique name of this sales-tax item, unique across all
               sales-tax items. Maximum length: 31 characters.
 
-              **NOTE**: Sales-tax items do not have a `fullName` field because they are not
+              **NOTE:**: Sales-tax items do not have a `fullName` field because they are not
               hierarchical objects, which is why `name` is unique for them but not for objects
               that have parents.
 
@@ -712,7 +712,7 @@ class AsyncSalesTaxItemsResource(AsyncAPIResource):
           ids: Filter for specific sales-tax items by their QuickBooks-assigned unique
               identifier(s).
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           limit: The maximum number of objects to return. Accepts values ranging from 1 to 150,
@@ -736,7 +736,7 @@ class AsyncSalesTaxItemsResource(AsyncAPIResource):
           names: Filter for specific sales-tax items by their name(s), case-insensitive. Like
               `id`, `name` is a unique identifier for a sales-tax item.
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           name_starts_with: Filter for sales-tax items whose `name` starts with this substring,

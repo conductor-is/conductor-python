@@ -94,15 +94,15 @@ class ReceivePaymentsResource(SyncAPIResource):
           apply_to_transactions: The invoices to be paid by this receive-payment. This will create a link between
               this receive-payment and the specified invoices.
 
-              **IMPORTANT**: In each `applyToTransactions` object, you must specify either
+              **IMPORTANT:**: In each `applyToTransactions` object, you must specify either
               `paymentAmount`, `applyCredits`, `discountAmount`, or any combination of these;
               if none of these are specified, you will receive an error for an empty
               transaction.
 
-              **IMPORTANT**: The target invoice must have `isPaid=false`, otherwise,
+              **IMPORTANT:**: The target invoice must have `isPaid=false`, otherwise,
               QuickBooks will report this object as "cannot be found".
 
-              **NOTE**: You must specify either `isAutoApply` or `applyToTransactions` when
+              **NOTE:**: You must specify either `isAutoApply` or `applyToTransactions` when
               creating a receive-payment, but never both.
 
           credit_card_transaction: The credit card transaction data for this receive-payment's payment when using
@@ -121,7 +121,7 @@ class ReceivePaymentsResource(SyncAPIResource):
               this object in your external system. This field is immutable and can only be set
               during object creation.
 
-              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
+              **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
               QuickBooks will return an error.
 
           is_auto_apply: When `true`, QuickBooks applies `totalAmount` to any outstanding transaction
@@ -131,7 +131,7 @@ class ReceivePaymentsResource(SyncAPIResource):
               to any specific transaction, causing the amount to appear as a credit on the
               customer-job's next transaction.
 
-              **IMPORTANT**: You must specify either `isAutoApply` or `applyToTransactions`
+              **IMPORTANT:**: You must specify either `isAutoApply` or `applyToTransactions`
               when creating a receive-payment, but never both.
 
           memo: A memo or note for this receive-payment that will be displayed at the beginning
@@ -139,18 +139,18 @@ class ReceivePaymentsResource(SyncAPIResource):
 
           payment_method_id: The receive-payment's payment method (e.g., cash, check, credit card).
 
-              **NOTE**: If this receive-payment contains credit card transaction data supplied
-              from QuickBooks Merchant Services (QBMS) transaction responses, you must specify
-              a credit card payment method (e.g., "Visa", "MasterCard", etc.).
+              **NOTE:**: If this receive-payment contains credit card transaction data
+              supplied from QuickBooks Merchant Services (QBMS) transaction responses, you
+              must specify a credit card payment method (e.g., "Visa", "MasterCard", etc.).
 
           receivables_account_id: The Accounts-Receivable (A/R) account to which this receive-payment is assigned,
               used to track the amount owed. If not specified, QuickBooks Desktop will use its
               default A/R account.
 
-              **IMPORTANT**: If this receive-payment is linked to other transactions, this A/R
-              account must match the `receivablesAccount` used in all linked transactions. For
-              example, when refunding a credit card payment, the A/R account must match the
-              one used in the original credit transactions being refunded.
+              **IMPORTANT:**: If this receive-payment is linked to other transactions, this
+              A/R account must match the `receivablesAccount` used in all linked transactions.
+              For example, when refunding a credit card payment, the A/R account must match
+              the one used in the original credit transactions being refunded.
 
           ref_number: The case-sensitive user-defined reference number for this receive-payment, which
               can be used to identify the transaction in QuickBooks. This value is not
@@ -274,12 +274,12 @@ class ReceivePaymentsResource(SyncAPIResource):
           apply_to_transactions: The invoices to be paid by this receive-payment. This will create a link between
               this receive-payment and the specified invoices.
 
-              **IMPORTANT**: In each `applyToTransactions` object, you must specify either
+              **IMPORTANT:**: In each `applyToTransactions` object, you must specify either
               `paymentAmount`, `applyCredits`, `discountAmount`, or any combination of these;
               if none of these are specified, you will receive an error for an empty
               transaction.
 
-              **IMPORTANT**: The target invoice must have `isPaid=false`, otherwise,
+              **IMPORTANT:**: The target invoice must have `isPaid=false`, otherwise,
               QuickBooks will report this object as "cannot be found".
 
           credit_card_transaction: The credit card transaction data for this receive-payment's payment when using
@@ -305,10 +305,10 @@ class ReceivePaymentsResource(SyncAPIResource):
               used to track the amount owed. If not specified, QuickBooks Desktop will use its
               default A/R account.
 
-              **IMPORTANT**: If this receive-payment is linked to other transactions, this A/R
-              account must match the `receivablesAccount` used in all linked transactions. For
-              example, when refunding a credit card payment, the A/R account must match the
-              one used in the original credit transactions being refunded.
+              **IMPORTANT:**: If this receive-payment is linked to other transactions, this
+              A/R account must match the `receivablesAccount` used in all linked transactions.
+              For example, when refunding a credit card payment, the A/R account must match
+              the one used in the original credit transactions being refunded.
 
           ref_number: The case-sensitive user-defined reference number for this receive-payment, which
               can be used to identify the transaction in QuickBooks. This value is not
@@ -408,7 +408,7 @@ class ReceivePaymentsResource(SyncAPIResource):
           ids: Filter for specific receive-payments by their QuickBooks-assigned unique
               identifier(s).
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           include_line_items: Whether to include line items in the response. Defaults to `true`.
@@ -437,7 +437,7 @@ class ReceivePaymentsResource(SyncAPIResource):
               QuickBooks, ref-numbers are not required to be unique and can be arbitrarily
               changed by the QuickBooks user.
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           ref_number_starts_with:
@@ -616,15 +616,15 @@ class AsyncReceivePaymentsResource(AsyncAPIResource):
           apply_to_transactions: The invoices to be paid by this receive-payment. This will create a link between
               this receive-payment and the specified invoices.
 
-              **IMPORTANT**: In each `applyToTransactions` object, you must specify either
+              **IMPORTANT:**: In each `applyToTransactions` object, you must specify either
               `paymentAmount`, `applyCredits`, `discountAmount`, or any combination of these;
               if none of these are specified, you will receive an error for an empty
               transaction.
 
-              **IMPORTANT**: The target invoice must have `isPaid=false`, otherwise,
+              **IMPORTANT:**: The target invoice must have `isPaid=false`, otherwise,
               QuickBooks will report this object as "cannot be found".
 
-              **NOTE**: You must specify either `isAutoApply` or `applyToTransactions` when
+              **NOTE:**: You must specify either `isAutoApply` or `applyToTransactions` when
               creating a receive-payment, but never both.
 
           credit_card_transaction: The credit card transaction data for this receive-payment's payment when using
@@ -643,7 +643,7 @@ class AsyncReceivePaymentsResource(AsyncAPIResource):
               this object in your external system. This field is immutable and can only be set
               during object creation.
 
-              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
+              **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
               QuickBooks will return an error.
 
           is_auto_apply: When `true`, QuickBooks applies `totalAmount` to any outstanding transaction
@@ -653,7 +653,7 @@ class AsyncReceivePaymentsResource(AsyncAPIResource):
               to any specific transaction, causing the amount to appear as a credit on the
               customer-job's next transaction.
 
-              **IMPORTANT**: You must specify either `isAutoApply` or `applyToTransactions`
+              **IMPORTANT:**: You must specify either `isAutoApply` or `applyToTransactions`
               when creating a receive-payment, but never both.
 
           memo: A memo or note for this receive-payment that will be displayed at the beginning
@@ -661,18 +661,18 @@ class AsyncReceivePaymentsResource(AsyncAPIResource):
 
           payment_method_id: The receive-payment's payment method (e.g., cash, check, credit card).
 
-              **NOTE**: If this receive-payment contains credit card transaction data supplied
-              from QuickBooks Merchant Services (QBMS) transaction responses, you must specify
-              a credit card payment method (e.g., "Visa", "MasterCard", etc.).
+              **NOTE:**: If this receive-payment contains credit card transaction data
+              supplied from QuickBooks Merchant Services (QBMS) transaction responses, you
+              must specify a credit card payment method (e.g., "Visa", "MasterCard", etc.).
 
           receivables_account_id: The Accounts-Receivable (A/R) account to which this receive-payment is assigned,
               used to track the amount owed. If not specified, QuickBooks Desktop will use its
               default A/R account.
 
-              **IMPORTANT**: If this receive-payment is linked to other transactions, this A/R
-              account must match the `receivablesAccount` used in all linked transactions. For
-              example, when refunding a credit card payment, the A/R account must match the
-              one used in the original credit transactions being refunded.
+              **IMPORTANT:**: If this receive-payment is linked to other transactions, this
+              A/R account must match the `receivablesAccount` used in all linked transactions.
+              For example, when refunding a credit card payment, the A/R account must match
+              the one used in the original credit transactions being refunded.
 
           ref_number: The case-sensitive user-defined reference number for this receive-payment, which
               can be used to identify the transaction in QuickBooks. This value is not
@@ -796,12 +796,12 @@ class AsyncReceivePaymentsResource(AsyncAPIResource):
           apply_to_transactions: The invoices to be paid by this receive-payment. This will create a link between
               this receive-payment and the specified invoices.
 
-              **IMPORTANT**: In each `applyToTransactions` object, you must specify either
+              **IMPORTANT:**: In each `applyToTransactions` object, you must specify either
               `paymentAmount`, `applyCredits`, `discountAmount`, or any combination of these;
               if none of these are specified, you will receive an error for an empty
               transaction.
 
-              **IMPORTANT**: The target invoice must have `isPaid=false`, otherwise,
+              **IMPORTANT:**: The target invoice must have `isPaid=false`, otherwise,
               QuickBooks will report this object as "cannot be found".
 
           credit_card_transaction: The credit card transaction data for this receive-payment's payment when using
@@ -827,10 +827,10 @@ class AsyncReceivePaymentsResource(AsyncAPIResource):
               used to track the amount owed. If not specified, QuickBooks Desktop will use its
               default A/R account.
 
-              **IMPORTANT**: If this receive-payment is linked to other transactions, this A/R
-              account must match the `receivablesAccount` used in all linked transactions. For
-              example, when refunding a credit card payment, the A/R account must match the
-              one used in the original credit transactions being refunded.
+              **IMPORTANT:**: If this receive-payment is linked to other transactions, this
+              A/R account must match the `receivablesAccount` used in all linked transactions.
+              For example, when refunding a credit card payment, the A/R account must match
+              the one used in the original credit transactions being refunded.
 
           ref_number: The case-sensitive user-defined reference number for this receive-payment, which
               can be used to identify the transaction in QuickBooks. This value is not
@@ -930,7 +930,7 @@ class AsyncReceivePaymentsResource(AsyncAPIResource):
           ids: Filter for specific receive-payments by their QuickBooks-assigned unique
               identifier(s).
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           include_line_items: Whether to include line items in the response. Defaults to `true`.
@@ -959,7 +959,7 @@ class AsyncReceivePaymentsResource(AsyncAPIResource):
               QuickBooks, ref-numbers are not required to be unique and can be arbitrarily
               changed by the QuickBooks user.
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           ref_number_starts_with:

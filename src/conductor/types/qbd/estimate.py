@@ -1160,7 +1160,7 @@ class Estimate(BaseModel):
     The estimate's linked transactions, such as payments applied, credits used, or
     associated purchase orders.
 
-    **IMPORTANT**: You must specify the parameter `includeLinkedTransactions` when
+    **IMPORTANT:**: You must specify the parameter `includeLinkedTransactions` when
     fetching a list of estimates to receive this field because it is not returned by
     default.
     """

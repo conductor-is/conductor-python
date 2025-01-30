@@ -42,7 +42,7 @@ class CheckUpdateParams(TypedDict, total=False):
 
     This will create a link between this check and the specified transactions.
 
-    **IMPORTANT**: By default, QuickBooks will not return any information about the
+    **IMPORTANT:**: By default, QuickBooks will not return any information about the
     linked transactions in this endpoint's response even when this request is
     successful. To see the transactions linked via this field, refetch the check and
     check the `linkedTransactions` response field. If fetching a list of checks, you
@@ -78,7 +78,7 @@ class CheckUpdateParams(TypedDict, total=False):
     expense_lines: Annotated[Iterable[ExpenseLine], PropertyInfo(alias="expenseLines")]
     """The check's expense lines, each representing one line in this expense.
 
-    **IMPORTANT**:
+    **IMPORTANT:**:
 
     1. Including this array in your update request will **REPLACE** all existing
        expense lines for the check with this array. To keep any existing expense
@@ -103,7 +103,7 @@ class CheckUpdateParams(TypedDict, total=False):
     bundled together because they are commonly purchased together or grouped for
     faster entry.
 
-    **IMPORTANT**:
+    **IMPORTANT:**:
 
     1. Including this array in your update request will **REPLACE** all existing
        item group lines for the check with this array. To keep any existing item
@@ -122,7 +122,7 @@ class CheckUpdateParams(TypedDict, total=False):
     The check's item lines, each representing the purchase of a specific item or
     service.
 
-    **IMPORTANT**:
+    **IMPORTANT:**:
 
     1. Including this array in your update request will **REPLACE** all existing
        item lines for the check with this array. To keep any existing item lines,
@@ -147,7 +147,7 @@ class CheckUpdateParams(TypedDict, total=False):
     used to identify the transaction in QuickBooks. This value is not required to be
     unique and can be arbitrarily changed by the QuickBooks user.
 
-    **IMPORTANT**: For checks, this field is the check number.
+    **IMPORTANT:**: For checks, this field is the check number.
     """
 
     sales_tax_code_id: Annotated[str, PropertyInfo(alias="salesTaxCodeId")]
@@ -221,7 +221,7 @@ class ExpenseLine(TypedDict, total=False):
     The QuickBooks-assigned unique identifier of an existing expense line you wish
     to retain or update.
 
-    **IMPORTANT**: Set this field to `-1` for new expense lines you wish to add.
+    **IMPORTANT:**: Set this field to `-1` for new expense lines you wish to add.
     """
 
     account_id: Annotated[str, PropertyInfo(alias="accountId")]
@@ -285,7 +285,7 @@ class ItemLineGroupItemLine(TypedDict, total=False):
     The QuickBooks-assigned unique identifier of an existing item line you wish to
     retain or update.
 
-    **IMPORTANT**: Set this field to `-1` for new item lines you wish to add.
+    **IMPORTANT:**: Set this field to `-1` for new item lines you wish to add.
     """
 
     amount: str
@@ -420,7 +420,7 @@ class ItemLineGroup(TypedDict, total=False):
     The QuickBooks-assigned unique identifier of an existing item line group you
     wish to retain or update.
 
-    **IMPORTANT**: Set this field to `-1` for new item line groups you wish to add.
+    **IMPORTANT:**: Set this field to `-1` for new item line groups you wish to add.
     """
 
     item_group_id: Annotated[str, PropertyInfo(alias="itemGroupId")]
@@ -434,7 +434,7 @@ class ItemLineGroup(TypedDict, total=False):
     The item line group's item lines, each representing the purchase of a specific
     item or service.
 
-    **IMPORTANT**:
+    **IMPORTANT:**:
 
     1. Including this array in your update request will **REPLACE** all existing
        item lines for the item line group with this array. To keep any existing item
@@ -477,7 +477,7 @@ class ItemLine(TypedDict, total=False):
     The QuickBooks-assigned unique identifier of an existing item line you wish to
     retain or update.
 
-    **IMPORTANT**: Set this field to `-1` for new item lines you wish to add.
+    **IMPORTANT:**: Set this field to `-1` for new item lines you wish to add.
     """
 
     amount: str

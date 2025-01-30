@@ -72,7 +72,7 @@ class CreditMemoCreateParams(TypedDict, total=False):
     this object in your external system. This field is immutable and can only be set
     during object creation.
 
-    **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
+    **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
     QuickBooks will return an error.
     """
 
@@ -96,7 +96,7 @@ class CreditMemoCreateParams(TypedDict, total=False):
     The credit memo's line item groups, each representing a predefined set of
     related items.
 
-    **IMPORTANT**: You must specify `lines`, `lineGroups`, or both when creating a
+    **IMPORTANT:**: You must specify `lines`, `lineGroups`, or both when creating a
     credit memo.
     """
 
@@ -105,7 +105,7 @@ class CreditMemoCreateParams(TypedDict, total=False):
     The credit memo's line items, each representing a single product or service
     sold.
 
-    **IMPORTANT**: You must specify `lines`, `lineGroups`, or both when creating a
+    **IMPORTANT:**: You must specify `lines`, `lineGroups`, or both when creating a
     credit memo.
     """
 
@@ -139,7 +139,7 @@ class CreditMemoCreateParams(TypedDict, total=False):
     used to track the amount owed. If not specified, QuickBooks Desktop will use its
     default A/R account.
 
-    **IMPORTANT**: If this credit memo is linked to other transactions, this A/R
+    **IMPORTANT:**: If this credit memo is linked to other transactions, this A/R
     account must match the `receivablesAccount` used in all linked transactions. For
     example, when refunding a credit card payment, the A/R account must match the
     one used in the original credit transactions being refunded.

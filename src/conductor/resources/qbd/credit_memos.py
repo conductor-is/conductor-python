@@ -122,7 +122,7 @@ class CreditMemosResource(SyncAPIResource):
               this object in your external system. This field is immutable and can only be set
               during object creation.
 
-              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
+              **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
               QuickBooks will return an error.
 
           is_pending: Indicates whether this credit memo has not been completed.
@@ -136,13 +136,13 @@ class CreditMemosResource(SyncAPIResource):
           line_groups: The credit memo's line item groups, each representing a predefined set of
               related items.
 
-              **IMPORTANT**: You must specify `lines`, `lineGroups`, or both when creating a
+              **IMPORTANT:**: You must specify `lines`, `lineGroups`, or both when creating a
               credit memo.
 
           lines: The credit memo's line items, each representing a single product or service
               sold.
 
-              **IMPORTANT**: You must specify `lines`, `lineGroups`, or both when creating a
+              **IMPORTANT:**: You must specify `lines`, `lineGroups`, or both when creating a
               credit memo.
 
           memo: A memo or note for this credit memo that appears in the account register and
@@ -164,7 +164,7 @@ class CreditMemosResource(SyncAPIResource):
               used to track the amount owed. If not specified, QuickBooks Desktop will use its
               default A/R account.
 
-              **IMPORTANT**: If this credit memo is linked to other transactions, this A/R
+              **IMPORTANT:**: If this credit memo is linked to other transactions, this A/R
               account must match the `receivablesAccount` used in all linked transactions. For
               example, when refunding a credit card payment, the A/R account must match the
               one used in the original credit transactions being refunded.
@@ -383,7 +383,7 @@ class CreditMemosResource(SyncAPIResource):
           line_groups: The credit memo's line item groups, each representing a predefined set of
               related items.
 
-              **IMPORTANT**:
+              **IMPORTANT:**:
 
               1. Including this array in your update request will **REPLACE** all existing
                  line item groups for the credit memo with this array. To keep any existing
@@ -399,7 +399,7 @@ class CreditMemosResource(SyncAPIResource):
           lines: The credit memo's line items, each representing a single product or service
               sold.
 
-              **IMPORTANT**:
+              **IMPORTANT:**:
 
               1. Including this array in your update request will **REPLACE** all existing
                  line items for the credit memo with this array. To keep any existing line
@@ -430,7 +430,7 @@ class CreditMemosResource(SyncAPIResource):
               used to track the amount owed. If not specified, QuickBooks Desktop will use its
               default A/R account.
 
-              **IMPORTANT**: If this credit memo is linked to other transactions, this A/R
+              **IMPORTANT:**: If this credit memo is linked to other transactions, this A/R
               account must match the `receivablesAccount` used in all linked transactions. For
               example, when refunding a credit card payment, the A/R account must match the
               one used in the original credit transactions being refunded.
@@ -577,7 +577,7 @@ class CreditMemosResource(SyncAPIResource):
           ids: Filter for specific credit memos by their QuickBooks-assigned unique
               identifier(s).
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           include_line_items: Whether to include line items in the response. Defaults to `true`.
@@ -609,7 +609,7 @@ class CreditMemosResource(SyncAPIResource):
               QuickBooks, ref-numbers are not required to be unique and can be arbitrarily
               changed by the QuickBooks user.
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           ref_number_starts_with: Filter for credit memos whose `refNumber` starts with this substring. NOTE: If
@@ -815,7 +815,7 @@ class AsyncCreditMemosResource(AsyncAPIResource):
               this object in your external system. This field is immutable and can only be set
               during object creation.
 
-              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
+              **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
               QuickBooks will return an error.
 
           is_pending: Indicates whether this credit memo has not been completed.
@@ -829,13 +829,13 @@ class AsyncCreditMemosResource(AsyncAPIResource):
           line_groups: The credit memo's line item groups, each representing a predefined set of
               related items.
 
-              **IMPORTANT**: You must specify `lines`, `lineGroups`, or both when creating a
+              **IMPORTANT:**: You must specify `lines`, `lineGroups`, or both when creating a
               credit memo.
 
           lines: The credit memo's line items, each representing a single product or service
               sold.
 
-              **IMPORTANT**: You must specify `lines`, `lineGroups`, or both when creating a
+              **IMPORTANT:**: You must specify `lines`, `lineGroups`, or both when creating a
               credit memo.
 
           memo: A memo or note for this credit memo that appears in the account register and
@@ -857,7 +857,7 @@ class AsyncCreditMemosResource(AsyncAPIResource):
               used to track the amount owed. If not specified, QuickBooks Desktop will use its
               default A/R account.
 
-              **IMPORTANT**: If this credit memo is linked to other transactions, this A/R
+              **IMPORTANT:**: If this credit memo is linked to other transactions, this A/R
               account must match the `receivablesAccount` used in all linked transactions. For
               example, when refunding a credit card payment, the A/R account must match the
               one used in the original credit transactions being refunded.
@@ -1076,7 +1076,7 @@ class AsyncCreditMemosResource(AsyncAPIResource):
           line_groups: The credit memo's line item groups, each representing a predefined set of
               related items.
 
-              **IMPORTANT**:
+              **IMPORTANT:**:
 
               1. Including this array in your update request will **REPLACE** all existing
                  line item groups for the credit memo with this array. To keep any existing
@@ -1092,7 +1092,7 @@ class AsyncCreditMemosResource(AsyncAPIResource):
           lines: The credit memo's line items, each representing a single product or service
               sold.
 
-              **IMPORTANT**:
+              **IMPORTANT:**:
 
               1. Including this array in your update request will **REPLACE** all existing
                  line items for the credit memo with this array. To keep any existing line
@@ -1123,7 +1123,7 @@ class AsyncCreditMemosResource(AsyncAPIResource):
               used to track the amount owed. If not specified, QuickBooks Desktop will use its
               default A/R account.
 
-              **IMPORTANT**: If this credit memo is linked to other transactions, this A/R
+              **IMPORTANT:**: If this credit memo is linked to other transactions, this A/R
               account must match the `receivablesAccount` used in all linked transactions. For
               example, when refunding a credit card payment, the A/R account must match the
               one used in the original credit transactions being refunded.
@@ -1270,7 +1270,7 @@ class AsyncCreditMemosResource(AsyncAPIResource):
           ids: Filter for specific credit memos by their QuickBooks-assigned unique
               identifier(s).
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           include_line_items: Whether to include line items in the response. Defaults to `true`.
@@ -1302,7 +1302,7 @@ class AsyncCreditMemosResource(AsyncAPIResource):
               QuickBooks, ref-numbers are not required to be unique and can be arbitrarily
               changed by the QuickBooks user.
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           ref_number_starts_with: Filter for credit memos whose `refNumber` starts with this substring. NOTE: If

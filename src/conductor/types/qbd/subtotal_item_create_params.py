@@ -15,7 +15,7 @@ class SubtotalItemCreateParams(TypedDict, total=False):
     The case-insensitive unique name of this subtotal item, unique across all
     subtotal items. Maximum length: 31 characters.
 
-    **NOTE**: Subtotal items do not have a `fullName` field because they are not
+    **NOTE:**: Subtotal items do not have a `fullName` field because they are not
     hierarchical objects, which is why `name` is unique for them but not for objects
     that have parents.
     """
@@ -41,7 +41,7 @@ class SubtotalItemCreateParams(TypedDict, total=False):
     this object in your external system. This field is immutable and can only be set
     during object creation.
 
-    **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
+    **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
     QuickBooks will return an error.
     """
 

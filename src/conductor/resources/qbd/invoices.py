@@ -105,7 +105,7 @@ class InvoicesResource(SyncAPIResource):
           apply_credits: Credit memos to apply to this invoice, reducing its balance. This creates a link
               between this invoice and the specified credit memos.
 
-              **IMPORTANT**: By default, QuickBooks will not return any information about the
+              **IMPORTANT:**: By default, QuickBooks will not return any information about the
               linked transactions in this endpoint's response even when this request is
               successful. To see the transactions linked via this field, refetch the invoice
               and check the `linkedTransactions` response field. If fetching a list of
@@ -137,7 +137,7 @@ class InvoicesResource(SyncAPIResource):
               this object in your external system. This field is immutable and can only be set
               during object creation.
 
-              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
+              **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
               QuickBooks will return an error.
 
           is_finance_charge: Whether this invoice includes a finance charge. This field is immutable and can
@@ -171,7 +171,7 @@ class InvoicesResource(SyncAPIResource):
               will also return an error if you attempt to link a transaction that is empty or
               already closed.
 
-              **IMPORTANT**: By default, QuickBooks will not return any information about the
+              **IMPORTANT:**: By default, QuickBooks will not return any information about the
               linked transactions in this endpoint's response even when this request is
               successful. To see the transactions linked via this field, refetch the invoice
               and check the `linkedTransactions` response field. If fetching a list of
@@ -197,8 +197,8 @@ class InvoicesResource(SyncAPIResource):
               track the amount owed. If not specified, QuickBooks Desktop will use its default
               A/R account.
 
-              **IMPORTANT**: If this invoice is linked to other transactions, this A/R account
-              must match the `receivablesAccount` used in all linked transactions. For
+              **IMPORTANT:**: If this invoice is linked to other transactions, this A/R
+              account must match the `receivablesAccount` used in all linked transactions. For
               example, when refunding a credit card payment, the A/R account must match the
               one used in the original credit transactions being refunded.
 
@@ -400,7 +400,7 @@ class InvoicesResource(SyncAPIResource):
           apply_credits: Credit memos to apply to this invoice, reducing its balance. This creates a link
               between this invoice and the specified credit memos.
 
-              **IMPORTANT**: By default, QuickBooks will not return any information about the
+              **IMPORTANT:**: By default, QuickBooks will not return any information about the
               linked transactions in this endpoint's response even when this request is
               successful. To see the transactions linked via this field, refetch the invoice
               and check the `linkedTransactions` response field. If fetching a list of
@@ -438,7 +438,7 @@ class InvoicesResource(SyncAPIResource):
           line_groups: The invoice's line item groups, each representing a predefined set of related
               items.
 
-              **IMPORTANT**:
+              **IMPORTANT:**:
 
               1. Including this array in your update request will **REPLACE** all existing
                  line item groups for the invoice with this array. To keep any existing line
@@ -453,7 +453,7 @@ class InvoicesResource(SyncAPIResource):
 
           lines: The invoice's line items, each representing a single product or service sold.
 
-              **IMPORTANT**:
+              **IMPORTANT:**:
 
               1. Including this array in your update request will **REPLACE** all existing
                  line items for the invoice with this array. To keep any existing line items,
@@ -484,8 +484,8 @@ class InvoicesResource(SyncAPIResource):
               track the amount owed. If not specified, QuickBooks Desktop will use its default
               A/R account.
 
-              **IMPORTANT**: If this invoice is linked to other transactions, this A/R account
-              must match the `receivablesAccount` used in all linked transactions. For
+              **IMPORTANT:**: If this invoice is linked to other transactions, this A/R
+              account must match the `receivablesAccount` used in all linked transactions. For
               example, when refunding a credit card payment, the A/R account must match the
               one used in the original credit transactions being refunded.
 
@@ -641,7 +641,7 @@ class InvoicesResource(SyncAPIResource):
 
           ids: Filter for specific invoices by their QuickBooks-assigned unique identifier(s).
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           include_line_items: Whether to include line items in the response. Defaults to `true`.
@@ -675,7 +675,7 @@ class InvoicesResource(SyncAPIResource):
               QuickBooks, ref-numbers are not required to be unique and can be arbitrarily
               changed by the QuickBooks user.
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           ref_number_starts_with: Filter for invoices whose `refNumber` starts with this substring. NOTE: If you
@@ -864,7 +864,7 @@ class AsyncInvoicesResource(AsyncAPIResource):
           apply_credits: Credit memos to apply to this invoice, reducing its balance. This creates a link
               between this invoice and the specified credit memos.
 
-              **IMPORTANT**: By default, QuickBooks will not return any information about the
+              **IMPORTANT:**: By default, QuickBooks will not return any information about the
               linked transactions in this endpoint's response even when this request is
               successful. To see the transactions linked via this field, refetch the invoice
               and check the `linkedTransactions` response field. If fetching a list of
@@ -896,7 +896,7 @@ class AsyncInvoicesResource(AsyncAPIResource):
               this object in your external system. This field is immutable and can only be set
               during object creation.
 
-              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
+              **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
               QuickBooks will return an error.
 
           is_finance_charge: Whether this invoice includes a finance charge. This field is immutable and can
@@ -930,7 +930,7 @@ class AsyncInvoicesResource(AsyncAPIResource):
               will also return an error if you attempt to link a transaction that is empty or
               already closed.
 
-              **IMPORTANT**: By default, QuickBooks will not return any information about the
+              **IMPORTANT:**: By default, QuickBooks will not return any information about the
               linked transactions in this endpoint's response even when this request is
               successful. To see the transactions linked via this field, refetch the invoice
               and check the `linkedTransactions` response field. If fetching a list of
@@ -956,8 +956,8 @@ class AsyncInvoicesResource(AsyncAPIResource):
               track the amount owed. If not specified, QuickBooks Desktop will use its default
               A/R account.
 
-              **IMPORTANT**: If this invoice is linked to other transactions, this A/R account
-              must match the `receivablesAccount` used in all linked transactions. For
+              **IMPORTANT:**: If this invoice is linked to other transactions, this A/R
+              account must match the `receivablesAccount` used in all linked transactions. For
               example, when refunding a credit card payment, the A/R account must match the
               one used in the original credit transactions being refunded.
 
@@ -1159,7 +1159,7 @@ class AsyncInvoicesResource(AsyncAPIResource):
           apply_credits: Credit memos to apply to this invoice, reducing its balance. This creates a link
               between this invoice and the specified credit memos.
 
-              **IMPORTANT**: By default, QuickBooks will not return any information about the
+              **IMPORTANT:**: By default, QuickBooks will not return any information about the
               linked transactions in this endpoint's response even when this request is
               successful. To see the transactions linked via this field, refetch the invoice
               and check the `linkedTransactions` response field. If fetching a list of
@@ -1197,7 +1197,7 @@ class AsyncInvoicesResource(AsyncAPIResource):
           line_groups: The invoice's line item groups, each representing a predefined set of related
               items.
 
-              **IMPORTANT**:
+              **IMPORTANT:**:
 
               1. Including this array in your update request will **REPLACE** all existing
                  line item groups for the invoice with this array. To keep any existing line
@@ -1212,7 +1212,7 @@ class AsyncInvoicesResource(AsyncAPIResource):
 
           lines: The invoice's line items, each representing a single product or service sold.
 
-              **IMPORTANT**:
+              **IMPORTANT:**:
 
               1. Including this array in your update request will **REPLACE** all existing
                  line items for the invoice with this array. To keep any existing line items,
@@ -1243,8 +1243,8 @@ class AsyncInvoicesResource(AsyncAPIResource):
               track the amount owed. If not specified, QuickBooks Desktop will use its default
               A/R account.
 
-              **IMPORTANT**: If this invoice is linked to other transactions, this A/R account
-              must match the `receivablesAccount` used in all linked transactions. For
+              **IMPORTANT:**: If this invoice is linked to other transactions, this A/R
+              account must match the `receivablesAccount` used in all linked transactions. For
               example, when refunding a credit card payment, the A/R account must match the
               one used in the original credit transactions being refunded.
 
@@ -1400,7 +1400,7 @@ class AsyncInvoicesResource(AsyncAPIResource):
 
           ids: Filter for specific invoices by their QuickBooks-assigned unique identifier(s).
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           include_line_items: Whether to include line items in the response. Defaults to `true`.
@@ -1434,7 +1434,7 @@ class AsyncInvoicesResource(AsyncAPIResource):
               QuickBooks, ref-numbers are not required to be unique and can be arbitrarily
               changed by the QuickBooks user.
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           ref_number_starts_with: Filter for invoices whose `refNumber` starts with this substring. NOTE: If you

@@ -165,7 +165,7 @@ class VendorUpdateParams(TypedDict, total=False):
 
     Maximum length: 41 characters.
 
-    **NOTE**: Vendors do not have a `fullName` field because they are not
+    **NOTE:**: Vendors do not have a `fullName` field because they are not
     hierarchical objects, which is why `name` is unique for them but not for objects
     that have parents.
     """

@@ -81,7 +81,7 @@ class Line(TypedDict, total=False):
     The QuickBooks-assigned unique identifier of an existing journal line you wish
     to retain or update.
 
-    **IMPORTANT**: Set this field to `-1` for new journal lines you wish to add.
+    **IMPORTANT:**: Set this field to `-1` for new journal lines you wish to add.
     """
 
     account_id: Annotated[str, PropertyInfo(alias="accountId")]
@@ -110,7 +110,7 @@ class Line(TypedDict, total=False):
     The customer, vendor, employee, or other entity associated with this journal
     line.
 
-    **IMPORTANT**: If the journal line's `account` is an Accounts Receivable (A/R)
+    **IMPORTANT:**: If the journal line's `account` is an Accounts Receivable (A/R)
     account, this field must refer to a customer. If the journal line's `account` is
     an Accounts Payable (A/P) account, this field must refer to a vendor. If these
     requirements are not met, QuickBooks Desktop will not record the transaction.
