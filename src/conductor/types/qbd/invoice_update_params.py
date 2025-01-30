@@ -39,7 +39,7 @@ class InvoiceUpdateParams(TypedDict, total=False):
 
     This creates a link between this invoice and the specified credit memos.
 
-    **IMPORTANT**: By default, QuickBooks will not return any information about the
+    **IMPORTANT:**: By default, QuickBooks will not return any information about the
     linked transactions in this endpoint's response even when this request is
     successful. To see the transactions linked via this field, refetch the invoice
     and check the `linkedTransactions` response field. If fetching a list of
@@ -101,7 +101,7 @@ class InvoiceUpdateParams(TypedDict, total=False):
     The invoice's line item groups, each representing a predefined set of related
     items.
 
-    **IMPORTANT**:
+    **IMPORTANT:**:
 
     1. Including this array in your update request will **REPLACE** all existing
        line item groups for the invoice with this array. To keep any existing line
@@ -118,7 +118,7 @@ class InvoiceUpdateParams(TypedDict, total=False):
     lines: Iterable[Line]
     """The invoice's line items, each representing a single product or service sold.
 
-    **IMPORTANT**:
+    **IMPORTANT:**:
 
     1. Including this array in your update request will **REPLACE** all existing
        line items for the invoice with this array. To keep any existing line items,
@@ -161,8 +161,8 @@ class InvoiceUpdateParams(TypedDict, total=False):
     track the amount owed. If not specified, QuickBooks Desktop will use its default
     A/R account.
 
-    **IMPORTANT**: If this invoice is linked to other transactions, this A/R account
-    must match the `receivablesAccount` used in all linked transactions. For
+    **IMPORTANT:**: If this invoice is linked to other transactions, this A/R
+    account must match the `receivablesAccount` used in all linked transactions. For
     example, when refunding a credit card payment, the A/R account must match the
     one used in the original credit transactions being refunded.
     """
@@ -305,7 +305,7 @@ class LineGroupLine(TypedDict, total=False):
     The QuickBooks-assigned unique identifier of an existing invoice line you wish
     to retain or update.
 
-    **IMPORTANT**: Set this field to `-1` for new invoice lines you wish to add.
+    **IMPORTANT:**: Set this field to `-1` for new invoice lines you wish to add.
     """
 
     amount: str
@@ -468,7 +468,7 @@ class LineGroup(TypedDict, total=False):
     The QuickBooks-assigned unique identifier of an existing invoice line group you
     wish to retain or update.
 
-    **IMPORTANT**: Set this field to `-1` for new invoice line groups you wish to
+    **IMPORTANT:**: Set this field to `-1` for new invoice line groups you wish to
     add.
     """
 
@@ -484,7 +484,7 @@ class LineGroup(TypedDict, total=False):
     The invoice line group's line items, each representing a single product or
     service sold.
 
-    **IMPORTANT**:
+    **IMPORTANT:**:
 
     1. Including this array in your update request will **REPLACE** all existing
        line items for the invoice line group with this array. To keep any existing
@@ -527,7 +527,7 @@ class Line(TypedDict, total=False):
     The QuickBooks-assigned unique identifier of an existing invoice line you wish
     to retain or update.
 
-    **IMPORTANT**: Set this field to `-1` for new invoice lines you wish to add.
+    **IMPORTANT:**: Set this field to `-1` for new invoice lines you wish to add.
     """
 
     amount: str

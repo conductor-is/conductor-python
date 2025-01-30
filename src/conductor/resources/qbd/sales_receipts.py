@@ -137,7 +137,7 @@ class SalesReceiptsResource(SyncAPIResource):
               this object in your external system. This field is immutable and can only be set
               during object creation.
 
-              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
+              **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
               QuickBooks will return an error.
 
           is_pending: Indicates whether this sales receipt has not been completed.
@@ -151,13 +151,13 @@ class SalesReceiptsResource(SyncAPIResource):
           line_groups: The sales receipt's line item groups, each representing a predefined set of
               related items.
 
-              **IMPORTANT**: You must specify `lines`, `lineGroups`, or both when creating a
+              **IMPORTANT:**: You must specify `lines`, `lineGroups`, or both when creating a
               sales receipt.
 
           lines: The sales receipt's line items, each representing a single product or service
               sold.
 
-              **IMPORTANT**: You must specify `lines`, `lineGroups`, or both when creating a
+              **IMPORTANT:**: You must specify `lines`, `lineGroups`, or both when creating a
               sales receipt.
 
           memo: A memo or note for this sales receipt that appears in reports, but not on the
@@ -173,7 +173,7 @@ class SalesReceiptsResource(SyncAPIResource):
 
           payment_method_id: The sales receipt's payment method (e.g., cash, check, credit card).
 
-              **NOTE**: If this sales receipt contains credit card transaction data supplied
+              **NOTE:**: If this sales receipt contains credit card transaction data supplied
               from QuickBooks Merchant Services (QBMS) transaction responses, you must specify
               a credit card payment method (e.g., "Visa", "MasterCard", etc.).
 
@@ -409,7 +409,7 @@ class SalesReceiptsResource(SyncAPIResource):
           line_groups: The sales receipt's line item groups, each representing a predefined set of
               related items.
 
-              **IMPORTANT**:
+              **IMPORTANT:**:
 
               1. Including this array in your update request will **REPLACE** all existing
                  line item groups for the sales receipt with this array. To keep any existing
@@ -425,7 +425,7 @@ class SalesReceiptsResource(SyncAPIResource):
           lines: The sales receipt's line items, each representing a single product or service
               sold.
 
-              **IMPORTANT**:
+              **IMPORTANT:**:
 
               1. Including this array in your update request will **REPLACE** all existing
                  line items for the sales receipt with this array. To keep any existing line
@@ -597,7 +597,7 @@ class SalesReceiptsResource(SyncAPIResource):
           ids: Filter for specific sales receipts by their QuickBooks-assigned unique
               identifier(s).
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           include_line_items: Whether to include line items in the response. Defaults to `true`.
@@ -626,7 +626,7 @@ class SalesReceiptsResource(SyncAPIResource):
               QuickBooks, ref-numbers are not required to be unique and can be arbitrarily
               changed by the QuickBooks user.
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           ref_number_starts_with: Filter for sales receipts whose `refNumber` starts with this substring. NOTE: If
@@ -846,7 +846,7 @@ class AsyncSalesReceiptsResource(AsyncAPIResource):
               this object in your external system. This field is immutable and can only be set
               during object creation.
 
-              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
+              **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
               QuickBooks will return an error.
 
           is_pending: Indicates whether this sales receipt has not been completed.
@@ -860,13 +860,13 @@ class AsyncSalesReceiptsResource(AsyncAPIResource):
           line_groups: The sales receipt's line item groups, each representing a predefined set of
               related items.
 
-              **IMPORTANT**: You must specify `lines`, `lineGroups`, or both when creating a
+              **IMPORTANT:**: You must specify `lines`, `lineGroups`, or both when creating a
               sales receipt.
 
           lines: The sales receipt's line items, each representing a single product or service
               sold.
 
-              **IMPORTANT**: You must specify `lines`, `lineGroups`, or both when creating a
+              **IMPORTANT:**: You must specify `lines`, `lineGroups`, or both when creating a
               sales receipt.
 
           memo: A memo or note for this sales receipt that appears in reports, but not on the
@@ -882,7 +882,7 @@ class AsyncSalesReceiptsResource(AsyncAPIResource):
 
           payment_method_id: The sales receipt's payment method (e.g., cash, check, credit card).
 
-              **NOTE**: If this sales receipt contains credit card transaction data supplied
+              **NOTE:**: If this sales receipt contains credit card transaction data supplied
               from QuickBooks Merchant Services (QBMS) transaction responses, you must specify
               a credit card payment method (e.g., "Visa", "MasterCard", etc.).
 
@@ -1118,7 +1118,7 @@ class AsyncSalesReceiptsResource(AsyncAPIResource):
           line_groups: The sales receipt's line item groups, each representing a predefined set of
               related items.
 
-              **IMPORTANT**:
+              **IMPORTANT:**:
 
               1. Including this array in your update request will **REPLACE** all existing
                  line item groups for the sales receipt with this array. To keep any existing
@@ -1134,7 +1134,7 @@ class AsyncSalesReceiptsResource(AsyncAPIResource):
           lines: The sales receipt's line items, each representing a single product or service
               sold.
 
-              **IMPORTANT**:
+              **IMPORTANT:**:
 
               1. Including this array in your update request will **REPLACE** all existing
                  line items for the sales receipt with this array. To keep any existing line
@@ -1306,7 +1306,7 @@ class AsyncSalesReceiptsResource(AsyncAPIResource):
           ids: Filter for specific sales receipts by their QuickBooks-assigned unique
               identifier(s).
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           include_line_items: Whether to include line items in the response. Defaults to `true`.
@@ -1335,7 +1335,7 @@ class AsyncSalesReceiptsResource(AsyncAPIResource):
               QuickBooks, ref-numbers are not required to be unique and can be arbitrarily
               changed by the QuickBooks user.
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           ref_number_starts_with: Filter for sales receipts whose `refNumber` starts with this substring. NOTE: If

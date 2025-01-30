@@ -93,7 +93,7 @@ class ServiceItemsResource(SyncAPIResource):
               this object in your external system. This field is immutable and can only be set
               during object creation.
 
-              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
+              **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
               QuickBooks will return an error.
 
           is_active: Indicates whether this service item is active. Inactive objects are typically
@@ -107,7 +107,7 @@ class ServiceItemsResource(SyncAPIResource):
           sales_and_purchase_details: Details for service items that are both purchased and sold, such as reimbursable
               expenses or inventory items that are bought from vendors and sold to customers.
 
-              **IMPORTANT**: You must specify either `salesAndPurchaseDetails` or
+              **IMPORTANT:**: You must specify either `salesAndPurchaseDetails` or
               `salesOrPurchaseDetails` when creating a service item, but never both because an
               item cannot have both configurations.
 
@@ -116,7 +116,7 @@ class ServiceItemsResource(SyncAPIResource):
               office supply that isn't resold) or service items (like consulting services that
               are sold but not purchased).
 
-              **IMPORTANT**: You must specify either `salesOrPurchaseDetails` or
+              **IMPORTANT:**: You must specify either `salesOrPurchaseDetails` or
               `salesAndPurchaseDetails` when creating a service item, but never both because
               an item cannot have both configurations.
 
@@ -276,7 +276,7 @@ class ServiceItemsResource(SyncAPIResource):
           sales_and_purchase_details: Details for service items that are both purchased and sold, such as reimbursable
               expenses or inventory items that are bought from vendors and sold to customers.
 
-              **IMPORTANT**: You cannot specify both `salesAndPurchaseDetails` and
+              **IMPORTANT:**: You cannot specify both `salesAndPurchaseDetails` and
               `salesOrPurchaseDetails` when modifying a service item because an item cannot
               have both configurations.
 
@@ -285,7 +285,7 @@ class ServiceItemsResource(SyncAPIResource):
               office supply that isn't resold) or service items (like consulting services that
               are sold but not purchased).
 
-              **IMPORTANT**: You cannot specify both `salesOrPurchaseDetails` and
+              **IMPORTANT:**: You cannot specify both `salesOrPurchaseDetails` and
               `salesAndPurchaseDetails` when modifying a service item because an item cannot
               have both configurations.
 
@@ -381,13 +381,13 @@ class ServiceItemsResource(SyncAPIResource):
               colons. For example, if a service item is under "Consulting" and has the `name`
               "Web-Design", its `fullName` would be "Consulting:Web-Design".
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           ids: Filter for specific service items by their QuickBooks-assigned unique
               identifier(s).
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           limit: The maximum number of objects to return. Accepts values ranging from 1 to 150,
@@ -530,7 +530,7 @@ class AsyncServiceItemsResource(AsyncAPIResource):
               this object in your external system. This field is immutable and can only be set
               during object creation.
 
-              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
+              **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
               QuickBooks will return an error.
 
           is_active: Indicates whether this service item is active. Inactive objects are typically
@@ -544,7 +544,7 @@ class AsyncServiceItemsResource(AsyncAPIResource):
           sales_and_purchase_details: Details for service items that are both purchased and sold, such as reimbursable
               expenses or inventory items that are bought from vendors and sold to customers.
 
-              **IMPORTANT**: You must specify either `salesAndPurchaseDetails` or
+              **IMPORTANT:**: You must specify either `salesAndPurchaseDetails` or
               `salesOrPurchaseDetails` when creating a service item, but never both because an
               item cannot have both configurations.
 
@@ -553,7 +553,7 @@ class AsyncServiceItemsResource(AsyncAPIResource):
               office supply that isn't resold) or service items (like consulting services that
               are sold but not purchased).
 
-              **IMPORTANT**: You must specify either `salesOrPurchaseDetails` or
+              **IMPORTANT:**: You must specify either `salesOrPurchaseDetails` or
               `salesAndPurchaseDetails` when creating a service item, but never both because
               an item cannot have both configurations.
 
@@ -713,7 +713,7 @@ class AsyncServiceItemsResource(AsyncAPIResource):
           sales_and_purchase_details: Details for service items that are both purchased and sold, such as reimbursable
               expenses or inventory items that are bought from vendors and sold to customers.
 
-              **IMPORTANT**: You cannot specify both `salesAndPurchaseDetails` and
+              **IMPORTANT:**: You cannot specify both `salesAndPurchaseDetails` and
               `salesOrPurchaseDetails` when modifying a service item because an item cannot
               have both configurations.
 
@@ -722,7 +722,7 @@ class AsyncServiceItemsResource(AsyncAPIResource):
               office supply that isn't resold) or service items (like consulting services that
               are sold but not purchased).
 
-              **IMPORTANT**: You cannot specify both `salesOrPurchaseDetails` and
+              **IMPORTANT:**: You cannot specify both `salesOrPurchaseDetails` and
               `salesAndPurchaseDetails` when modifying a service item because an item cannot
               have both configurations.
 
@@ -818,13 +818,13 @@ class AsyncServiceItemsResource(AsyncAPIResource):
               colons. For example, if a service item is under "Consulting" and has the `name`
               "Web-Design", its `fullName` would be "Consulting:Web-Design".
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           ids: Filter for specific service items by their QuickBooks-assigned unique
               identifier(s).
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           limit: The maximum number of objects to return. Accepts values ranging from 1 to 150,

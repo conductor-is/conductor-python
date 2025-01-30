@@ -36,7 +36,7 @@ class VendorListParams(TypedDict, total=False):
     ids: List[str]
     """Filter for specific vendors by their QuickBooks-assigned unique identifier(s).
 
-    **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+    **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
     query parameters for this request.
     """
 
@@ -75,7 +75,7 @@ class VendorListParams(TypedDict, total=False):
 
     Like `id`, `name` is a unique identifier for a vendor.
 
-    **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+    **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
     query parameters for this request.
     """
 

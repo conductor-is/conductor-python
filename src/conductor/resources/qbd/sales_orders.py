@@ -125,7 +125,7 @@ class SalesOrdersResource(SyncAPIResource):
               this object in your external system. This field is immutable and can only be set
               during object creation.
 
-              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
+              **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
               QuickBooks will return an error.
 
           is_manually_closed: Indicates whether this sales order has been manually marked as closed, even if
@@ -140,13 +140,13 @@ class SalesOrdersResource(SyncAPIResource):
           line_groups: The sales order's line item groups, each representing a predefined set of
               related items.
 
-              **IMPORTANT**: You must specify `lines`, `lineGroups`, or both when creating a
+              **IMPORTANT:**: You must specify `lines`, `lineGroups`, or both when creating a
               sales order.
 
           lines: The sales order's line items, each representing a single product or service
               ordered.
 
-              **IMPORTANT**: You must specify `lines`, `lineGroups`, or both when creating a
+              **IMPORTANT:**: You must specify `lines`, `lineGroups`, or both when creating a
               sales order.
 
           memo: A memo or note for this sales order.
@@ -388,7 +388,7 @@ class SalesOrdersResource(SyncAPIResource):
           line_groups: The sales order's line item groups, each representing a predefined set of
               related items.
 
-              **IMPORTANT**:
+              **IMPORTANT:**:
 
               1. Including this array in your update request will **REPLACE** all existing
                  line item groups for the sales order with this array. To keep any existing
@@ -404,7 +404,7 @@ class SalesOrdersResource(SyncAPIResource):
           lines: The sales order's line items, each representing a single product or service
               ordered.
 
-              **IMPORTANT**:
+              **IMPORTANT:**:
 
               1. Including this array in your update request will **REPLACE** all existing
                  line items for the sales order with this array. To keep any existing line
@@ -576,7 +576,7 @@ class SalesOrdersResource(SyncAPIResource):
           ids: Filter for specific sales orders by their QuickBooks-assigned unique
               identifier(s).
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           include_line_items: Whether to include line items in the response. Defaults to `true`.
@@ -608,7 +608,7 @@ class SalesOrdersResource(SyncAPIResource):
               QuickBooks, ref-numbers are not required to be unique and can be arbitrarily
               changed by the QuickBooks user.
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           ref_number_starts_with: Filter for sales orders whose `refNumber` starts with this substring. NOTE: If
@@ -815,7 +815,7 @@ class AsyncSalesOrdersResource(AsyncAPIResource):
               this object in your external system. This field is immutable and can only be set
               during object creation.
 
-              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
+              **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
               QuickBooks will return an error.
 
           is_manually_closed: Indicates whether this sales order has been manually marked as closed, even if
@@ -830,13 +830,13 @@ class AsyncSalesOrdersResource(AsyncAPIResource):
           line_groups: The sales order's line item groups, each representing a predefined set of
               related items.
 
-              **IMPORTANT**: You must specify `lines`, `lineGroups`, or both when creating a
+              **IMPORTANT:**: You must specify `lines`, `lineGroups`, or both when creating a
               sales order.
 
           lines: The sales order's line items, each representing a single product or service
               ordered.
 
-              **IMPORTANT**: You must specify `lines`, `lineGroups`, or both when creating a
+              **IMPORTANT:**: You must specify `lines`, `lineGroups`, or both when creating a
               sales order.
 
           memo: A memo or note for this sales order.
@@ -1078,7 +1078,7 @@ class AsyncSalesOrdersResource(AsyncAPIResource):
           line_groups: The sales order's line item groups, each representing a predefined set of
               related items.
 
-              **IMPORTANT**:
+              **IMPORTANT:**:
 
               1. Including this array in your update request will **REPLACE** all existing
                  line item groups for the sales order with this array. To keep any existing
@@ -1094,7 +1094,7 @@ class AsyncSalesOrdersResource(AsyncAPIResource):
           lines: The sales order's line items, each representing a single product or service
               ordered.
 
-              **IMPORTANT**:
+              **IMPORTANT:**:
 
               1. Including this array in your update request will **REPLACE** all existing
                  line items for the sales order with this array. To keep any existing line
@@ -1266,7 +1266,7 @@ class AsyncSalesOrdersResource(AsyncAPIResource):
           ids: Filter for specific sales orders by their QuickBooks-assigned unique
               identifier(s).
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           include_line_items: Whether to include line items in the response. Defaults to `true`.
@@ -1298,7 +1298,7 @@ class AsyncSalesOrdersResource(AsyncAPIResource):
               QuickBooks, ref-numbers are not required to be unique and can be arbitrarily
               changed by the QuickBooks user.
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           ref_number_starts_with: Filter for sales orders whose `refNumber` starts with this substring. NOTE: If

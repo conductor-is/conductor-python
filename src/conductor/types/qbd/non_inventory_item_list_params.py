@@ -39,7 +39,7 @@ class NonInventoryItemListParams(TypedDict, total=False):
     the `name` "Printer Ink Cartridge", its `fullName` would be "Office
     Supplies:Printer Ink Cartridge".
 
-    **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+    **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
     query parameters for this request.
     """
 
@@ -48,7 +48,7 @@ class NonInventoryItemListParams(TypedDict, total=False):
     Filter for specific non-inventory items by their QuickBooks-assigned unique
     identifier(s).
 
-    **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+    **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
     query parameters for this request.
     """
 

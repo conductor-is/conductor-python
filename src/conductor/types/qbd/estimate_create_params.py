@@ -69,7 +69,7 @@ class EstimateCreateParams(TypedDict, total=False):
     this object in your external system. This field is immutable and can only be set
     during object creation.
 
-    **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
+    **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
     QuickBooks will return an error.
     """
 
@@ -91,14 +91,14 @@ class EstimateCreateParams(TypedDict, total=False):
     The estimate's line item groups, each representing a predefined set of related
     items.
 
-    **IMPORTANT**: You must specify `lines`, `lineGroups`, or both when creating an
+    **IMPORTANT:**: You must specify `lines`, `lineGroups`, or both when creating an
     estimate.
     """
 
     lines: Iterable[Line]
     """The estimate's line items, each representing a single product or service quoted.
 
-    **IMPORTANT**: You must specify `lines`, `lineGroups`, or both when creating an
+    **IMPORTANT:**: You must specify `lines`, `lineGroups`, or both when creating an
     estimate.
     """
 

@@ -52,7 +52,7 @@ class StandardTerm(BaseModel):
     The case-insensitive unique name of this standard term, unique across all
     standard terms. Maximum length: 31 characters.
 
-    **NOTE**: Standard terms do not have a `fullName` field because they are not
+    **NOTE:**: Standard terms do not have a `fullName` field because they are not
     hierarchical objects, which is why `name` is unique for them but not for objects
     that have parents.
     """

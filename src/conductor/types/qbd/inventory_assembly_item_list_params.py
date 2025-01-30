@@ -40,7 +40,7 @@ class InventoryAssemblyItemListParams(TypedDict, total=False):
     under "Assemblies" and has the `name` "Deluxe Kit", its `fullName` would be
     "Assemblies:Deluxe Kit".
 
-    **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+    **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
     query parameters for this request.
     """
 
@@ -49,7 +49,7 @@ class InventoryAssemblyItemListParams(TypedDict, total=False):
     Filter for specific inventory assembly items by their QuickBooks-assigned unique
     identifier(s).
 
-    **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+    **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
     query parameters for this request.
     """
 

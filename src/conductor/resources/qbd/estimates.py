@@ -116,7 +116,7 @@ class EstimatesResource(SyncAPIResource):
               this object in your external system. This field is immutable and can only be set
               during object creation.
 
-              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
+              **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
               QuickBooks will return an error.
 
           is_active: Indicates whether this estimate is active. Inactive objects are typically hidden
@@ -128,12 +128,12 @@ class EstimatesResource(SyncAPIResource):
           line_groups: The estimate's line item groups, each representing a predefined set of related
               items.
 
-              **IMPORTANT**: You must specify `lines`, `lineGroups`, or both when creating an
+              **IMPORTANT:**: You must specify `lines`, `lineGroups`, or both when creating an
               estimate.
 
           lines: The estimate's line items, each representing a single product or service quoted.
 
-              **IMPORTANT**: You must specify `lines`, `lineGroups`, or both when creating an
+              **IMPORTANT:**: You must specify `lines`, `lineGroups`, or both when creating an
               estimate.
 
           memo: A memo or note for this estimate that appears in reports, but not on the
@@ -353,7 +353,7 @@ class EstimatesResource(SyncAPIResource):
           line_groups: The estimate's line item groups, each representing a predefined set of related
               items.
 
-              **IMPORTANT**:
+              **IMPORTANT:**:
 
               1. Including this array in your update request will **REPLACE** all existing
                  line item groups for the estimate with this array. To keep any existing line
@@ -368,7 +368,7 @@ class EstimatesResource(SyncAPIResource):
 
           lines: The estimate's line items, each representing a single product or service quoted.
 
-              **IMPORTANT**:
+              **IMPORTANT:**:
 
               1. Including this array in your update request will **REPLACE** all existing
                  line items for the estimate with this array. To keep any existing line items,
@@ -526,7 +526,7 @@ class EstimatesResource(SyncAPIResource):
 
           ids: Filter for specific estimates by their QuickBooks-assigned unique identifier(s).
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           include_line_items: Whether to include line items in the response. Defaults to `true`.
@@ -558,7 +558,7 @@ class EstimatesResource(SyncAPIResource):
               QuickBooks, ref-numbers are not required to be unique and can be arbitrarily
               changed by the QuickBooks user.
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           ref_number_starts_with: Filter for estimates whose `refNumber` starts with this substring. NOTE: If you
@@ -758,7 +758,7 @@ class AsyncEstimatesResource(AsyncAPIResource):
               this object in your external system. This field is immutable and can only be set
               during object creation.
 
-              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
+              **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
               QuickBooks will return an error.
 
           is_active: Indicates whether this estimate is active. Inactive objects are typically hidden
@@ -770,12 +770,12 @@ class AsyncEstimatesResource(AsyncAPIResource):
           line_groups: The estimate's line item groups, each representing a predefined set of related
               items.
 
-              **IMPORTANT**: You must specify `lines`, `lineGroups`, or both when creating an
+              **IMPORTANT:**: You must specify `lines`, `lineGroups`, or both when creating an
               estimate.
 
           lines: The estimate's line items, each representing a single product or service quoted.
 
-              **IMPORTANT**: You must specify `lines`, `lineGroups`, or both when creating an
+              **IMPORTANT:**: You must specify `lines`, `lineGroups`, or both when creating an
               estimate.
 
           memo: A memo or note for this estimate that appears in reports, but not on the
@@ -995,7 +995,7 @@ class AsyncEstimatesResource(AsyncAPIResource):
           line_groups: The estimate's line item groups, each representing a predefined set of related
               items.
 
-              **IMPORTANT**:
+              **IMPORTANT:**:
 
               1. Including this array in your update request will **REPLACE** all existing
                  line item groups for the estimate with this array. To keep any existing line
@@ -1010,7 +1010,7 @@ class AsyncEstimatesResource(AsyncAPIResource):
 
           lines: The estimate's line items, each representing a single product or service quoted.
 
-              **IMPORTANT**:
+              **IMPORTANT:**:
 
               1. Including this array in your update request will **REPLACE** all existing
                  line items for the estimate with this array. To keep any existing line items,
@@ -1168,7 +1168,7 @@ class AsyncEstimatesResource(AsyncAPIResource):
 
           ids: Filter for specific estimates by their QuickBooks-assigned unique identifier(s).
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           include_line_items: Whether to include line items in the response. Defaults to `true`.
@@ -1200,7 +1200,7 @@ class AsyncEstimatesResource(AsyncAPIResource):
               QuickBooks, ref-numbers are not required to be unique and can be arbitrarily
               changed by the QuickBooks user.
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           ref_number_starts_with: Filter for estimates whose `refNumber` starts with this substring. NOTE: If you

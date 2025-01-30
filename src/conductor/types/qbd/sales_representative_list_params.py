@@ -22,14 +22,14 @@ class SalesRepresentativeListParams(TypedDict, total=False):
     Filter for specific sales representatives by their QuickBooks-assigned unique
     identifier(s).
 
-    **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+    **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
     query parameters for this request.
     """
 
     limit: int
     """The maximum number of objects to return.
 
-    **IMPORTANT**: QuickBooks Desktop does not support cursor-based pagination for
+    **IMPORTANT:**: QuickBooks Desktop does not support cursor-based pagination for
     sales representatives. This parameter will limit the response size, but you
     cannot fetch subsequent results using a cursor. For pagination, use the
     name-range parameters instead (e.g., `nameFrom=A&nameTo=B`).
@@ -64,7 +64,7 @@ class SalesRepresentativeListParams(TypedDict, total=False):
 
     Like `id`, `name` is a unique identifier for a sales representative.
 
-    **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+    **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
     query parameters for this request.
     """
 
