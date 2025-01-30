@@ -401,7 +401,8 @@ class BillCheckPayment(BaseModel):
     external_id: Optional[str] = FieldInfo(alias="externalId", default=None)
     """
     A globally unique identifier (GUID) you, the developer, can provide for tracking
-    this object in your external system.
+    this object in your external system. This field is immutable and can only be set
+    during object creation.
     """
 
     is_queued_for_print: Optional[bool] = FieldInfo(alias="isQueuedForPrint", default=None)
@@ -437,10 +438,10 @@ class BillCheckPayment(BaseModel):
 
     revision_number: str = FieldInfo(alias="revisionNumber")
     """
-    The current revision number of this bill check payment object, which changes
-    each time the object is modified. When updating this object, you must provide
-    the most recent `revisionNumber` to ensure you're working with the latest data;
-    otherwise, the update will return an error.
+    The current QuickBooks-assigned revision number of this bill check payment
+    object, which changes each time the object is modified. When updating this
+    object, you must provide the most recent `revisionNumber` to ensure you're
+    working with the latest data; otherwise, the update will return an error.
     """
 
     transaction_date: date = FieldInfo(alias="transactionDate")

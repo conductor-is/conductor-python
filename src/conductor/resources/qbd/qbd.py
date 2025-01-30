@@ -244,6 +244,14 @@ from .non_inventory_items import (
     NonInventoryItemsResourceWithStreamingResponse,
     AsyncNonInventoryItemsResourceWithStreamingResponse,
 )
+from .inventory_adjustments import (
+    InventoryAdjustmentsResource,
+    AsyncInventoryAdjustmentsResource,
+    InventoryAdjustmentsResourceWithRawResponse,
+    AsyncInventoryAdjustmentsResourceWithRawResponse,
+    InventoryAdjustmentsResourceWithStreamingResponse,
+    AsyncInventoryAdjustmentsResourceWithStreamingResponse,
+)
 from .sales_representatives import (
     SalesRepresentativesResource,
     AsyncSalesRepresentativesResource,
@@ -324,6 +332,10 @@ class QbdResource(SyncAPIResource):
     @cached_property
     def estimates(self) -> EstimatesResource:
         return EstimatesResource(self._client)
+
+    @cached_property
+    def inventory_adjustments(self) -> InventoryAdjustmentsResource:
+        return InventoryAdjustmentsResource(self._client)
 
     @cached_property
     def inventory_assembly_items(self) -> InventoryAssemblyItemsResource:
@@ -477,6 +489,10 @@ class AsyncQbdResource(AsyncAPIResource):
     @cached_property
     def estimates(self) -> AsyncEstimatesResource:
         return AsyncEstimatesResource(self._client)
+
+    @cached_property
+    def inventory_adjustments(self) -> AsyncInventoryAdjustmentsResource:
+        return AsyncInventoryAdjustmentsResource(self._client)
 
     @cached_property
     def inventory_assembly_items(self) -> AsyncInventoryAssemblyItemsResource:
@@ -635,6 +651,10 @@ class QbdResourceWithRawResponse:
         return EstimatesResourceWithRawResponse(self._qbd.estimates)
 
     @cached_property
+    def inventory_adjustments(self) -> InventoryAdjustmentsResourceWithRawResponse:
+        return InventoryAdjustmentsResourceWithRawResponse(self._qbd.inventory_adjustments)
+
+    @cached_property
     def inventory_assembly_items(self) -> InventoryAssemblyItemsResourceWithRawResponse:
         return InventoryAssemblyItemsResourceWithRawResponse(self._qbd.inventory_assembly_items)
 
@@ -770,6 +790,10 @@ class AsyncQbdResourceWithRawResponse:
     @cached_property
     def estimates(self) -> AsyncEstimatesResourceWithRawResponse:
         return AsyncEstimatesResourceWithRawResponse(self._qbd.estimates)
+
+    @cached_property
+    def inventory_adjustments(self) -> AsyncInventoryAdjustmentsResourceWithRawResponse:
+        return AsyncInventoryAdjustmentsResourceWithRawResponse(self._qbd.inventory_adjustments)
 
     @cached_property
     def inventory_assembly_items(self) -> AsyncInventoryAssemblyItemsResourceWithRawResponse:
@@ -909,6 +933,10 @@ class QbdResourceWithStreamingResponse:
         return EstimatesResourceWithStreamingResponse(self._qbd.estimates)
 
     @cached_property
+    def inventory_adjustments(self) -> InventoryAdjustmentsResourceWithStreamingResponse:
+        return InventoryAdjustmentsResourceWithStreamingResponse(self._qbd.inventory_adjustments)
+
+    @cached_property
     def inventory_assembly_items(self) -> InventoryAssemblyItemsResourceWithStreamingResponse:
         return InventoryAssemblyItemsResourceWithStreamingResponse(self._qbd.inventory_assembly_items)
 
@@ -1044,6 +1072,10 @@ class AsyncQbdResourceWithStreamingResponse:
     @cached_property
     def estimates(self) -> AsyncEstimatesResourceWithStreamingResponse:
         return AsyncEstimatesResourceWithStreamingResponse(self._qbd.estimates)
+
+    @cached_property
+    def inventory_adjustments(self) -> AsyncInventoryAdjustmentsResourceWithStreamingResponse:
+        return AsyncInventoryAdjustmentsResourceWithStreamingResponse(self._qbd.inventory_adjustments)
 
     @cached_property
     def inventory_assembly_items(self) -> AsyncInventoryAssemblyItemsResourceWithStreamingResponse:

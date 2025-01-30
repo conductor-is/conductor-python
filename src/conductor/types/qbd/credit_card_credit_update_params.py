@@ -14,10 +14,10 @@ __all__ = ["CreditCardCreditUpdateParams", "ExpenseLine", "ItemLineGroup", "Item
 class CreditCardCreditUpdateParams(TypedDict, total=False):
     revision_number: Required[Annotated[str, PropertyInfo(alias="revisionNumber")]]
     """
-    The current revision number of the credit card credit object you are updating,
-    which you can get by fetching the object first. Provide the most recent
-    `revisionNumber` to ensure you're working with the latest data; otherwise, the
-    update will return an error.
+    The current QuickBooks-assigned revision number of the credit card credit object
+    you are updating, which you can get by fetching the object first. Provide the
+    most recent `revisionNumber` to ensure you're working with the latest data;
+    otherwise, the update will return an error.
     """
 
     conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]
@@ -27,7 +27,7 @@ class CreditCardCreditUpdateParams(TypedDict, total=False):
     """
 
     account_id: Annotated[str, PropertyInfo(alias="accountId")]
-    """The bank or credit card account to which this credit card credit is applied."""
+    """The bank or credit card account to which this credit card credit is posted."""
 
     clear_expense_lines: Annotated[bool, PropertyInfo(alias="clearExpenseLines")]
     """
