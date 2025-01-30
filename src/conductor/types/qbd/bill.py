@@ -1293,7 +1293,7 @@ class Bill(BaseModel):
     The bill's linked transactions, such as payments applied, credits used, or
     associated purchase orders.
 
-    **IMPORTANT**: You must specify the parameter `includeLinkedTransactions` when
+    **IMPORTANT:**: You must specify the parameter `includeLinkedTransactions` when
     fetching a list of bills to receive this field because it is not returned by
     default.
     """
@@ -1319,7 +1319,7 @@ class Bill(BaseModel):
     the amount owed. If not specified, QuickBooks Desktop will use its default A/P
     account.
 
-    **IMPORTANT**: If this bill is linked to other transactions, this A/P account
+    **IMPORTANT:**: If this bill is linked to other transactions, this A/P account
     must match the `payablesAccount` used in those other transactions.
     """
 

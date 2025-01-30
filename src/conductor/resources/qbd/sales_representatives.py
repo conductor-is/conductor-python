@@ -248,12 +248,12 @@ class SalesRepresentativesResource(SyncAPIResource):
           ids: Filter for specific sales representatives by their QuickBooks-assigned unique
               identifier(s).
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           limit: The maximum number of objects to return.
 
-              **IMPORTANT**: QuickBooks Desktop does not support cursor-based pagination for
+              **IMPORTANT:**: QuickBooks Desktop does not support cursor-based pagination for
               sales representatives. This parameter will limit the response size, but you
               cannot fetch subsequent results using a cursor. For pagination, use the
               name-range parameters instead (e.g., `nameFrom=A&nameTo=B`).
@@ -276,7 +276,7 @@ class SalesRepresentativesResource(SyncAPIResource):
           names: Filter for specific sales representatives by their name(s), case-insensitive.
               Like `id`, `name` is a unique identifier for a sales representative.
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           name_starts_with: Filter for sales representatives whose `name` starts with this substring,
@@ -549,12 +549,12 @@ class AsyncSalesRepresentativesResource(AsyncAPIResource):
           ids: Filter for specific sales representatives by their QuickBooks-assigned unique
               identifier(s).
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           limit: The maximum number of objects to return.
 
-              **IMPORTANT**: QuickBooks Desktop does not support cursor-based pagination for
+              **IMPORTANT:**: QuickBooks Desktop does not support cursor-based pagination for
               sales representatives. This parameter will limit the response size, but you
               cannot fetch subsequent results using a cursor. For pagination, use the
               name-range parameters instead (e.g., `nameFrom=A&nameTo=B`).
@@ -577,7 +577,7 @@ class AsyncSalesRepresentativesResource(AsyncAPIResource):
           names: Filter for specific sales representatives by their name(s), case-insensitive.
               Like `id`, `name` is a unique identifier for a sales representative.
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           name_starts_with: Filter for sales representatives whose `name` starts with this substring,

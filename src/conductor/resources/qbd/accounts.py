@@ -96,7 +96,7 @@ class AccountsResource(SyncAPIResource):
           account_type: The classification of this account, indicating its purpose within the chart of
               accounts.
 
-              **NOTE**: You cannot create an account of type `non_posting` through the API
+              **NOTE:**: You cannot create an account of type `non_posting` through the API
               because QuickBooks creates these accounts behind the scenes.
 
           name: The case-insensitive name of this account. Not guaranteed to be unique because
@@ -291,7 +291,7 @@ class AccountsResource(SyncAPIResource):
           account_type: The classification of this account, indicating its purpose within the chart of
               accounts.
 
-              **NOTE**: You cannot create an account of type `non_posting` through the API
+              **NOTE:**: You cannot create an account of type `non_posting` through the API
               because QuickBooks creates these accounts behind the scenes.
 
           bank_account_number: The bank account number or identifying note for this account. Access to this
@@ -434,17 +434,17 @@ class AccountsResource(SyncAPIResource):
               example, if an account is under "Corporate" and has the `name`
               "Accounts-Payable", its `fullName` would be "Corporate:Accounts-Payable".
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           ids: Filter for specific accounts by their QuickBooks-assigned unique identifier(s).
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           limit: The maximum number of objects to return.
 
-              **IMPORTANT**: QuickBooks Desktop does not support cursor-based pagination for
+              **IMPORTANT:**: QuickBooks Desktop does not support cursor-based pagination for
               accounts. This parameter will limit the response size, but you cannot fetch
               subsequent results using a cursor. For pagination, use the name-range parameters
               instead (e.g., `nameFrom=A&nameTo=B`).
@@ -587,7 +587,7 @@ class AsyncAccountsResource(AsyncAPIResource):
           account_type: The classification of this account, indicating its purpose within the chart of
               accounts.
 
-              **NOTE**: You cannot create an account of type `non_posting` through the API
+              **NOTE:**: You cannot create an account of type `non_posting` through the API
               because QuickBooks creates these accounts behind the scenes.
 
           name: The case-insensitive name of this account. Not guaranteed to be unique because
@@ -782,7 +782,7 @@ class AsyncAccountsResource(AsyncAPIResource):
           account_type: The classification of this account, indicating its purpose within the chart of
               accounts.
 
-              **NOTE**: You cannot create an account of type `non_posting` through the API
+              **NOTE:**: You cannot create an account of type `non_posting` through the API
               because QuickBooks creates these accounts behind the scenes.
 
           bank_account_number: The bank account number or identifying note for this account. Access to this
@@ -925,17 +925,17 @@ class AsyncAccountsResource(AsyncAPIResource):
               example, if an account is under "Corporate" and has the `name`
               "Accounts-Payable", its `fullName` would be "Corporate:Accounts-Payable".
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           ids: Filter for specific accounts by their QuickBooks-assigned unique identifier(s).
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           limit: The maximum number of objects to return.
 
-              **IMPORTANT**: QuickBooks Desktop does not support cursor-based pagination for
+              **IMPORTANT:**: QuickBooks Desktop does not support cursor-based pagination for
               accounts. This parameter will limit the response size, but you cannot fetch
               subsequent results using a cursor. For pagination, use the name-range parameters
               instead (e.g., `nameFrom=A&nameTo=B`).

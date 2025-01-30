@@ -86,7 +86,7 @@ class EstimateUpdateParams(TypedDict, total=False):
     The estimate's line item groups, each representing a predefined set of related
     items.
 
-    **IMPORTANT**:
+    **IMPORTANT:**:
 
     1. Including this array in your update request will **REPLACE** all existing
        line item groups for the estimate with this array. To keep any existing line
@@ -103,7 +103,7 @@ class EstimateUpdateParams(TypedDict, total=False):
     lines: Iterable[Line]
     """The estimate's line items, each representing a single product or service quoted.
 
-    **IMPORTANT**:
+    **IMPORTANT:**:
 
     1. Including this array in your update request will **REPLACE** all existing
        line items for the estimate with this array. To keep any existing line items,
@@ -238,7 +238,7 @@ class LineGroupLine(TypedDict, total=False):
     The QuickBooks-assigned unique identifier of an existing estimate line you wish
     to retain or update.
 
-    **IMPORTANT**: Set this field to `-1` for new estimate lines you wish to add.
+    **IMPORTANT:**: Set this field to `-1` for new estimate lines you wish to add.
     """
 
     amount: str
@@ -388,7 +388,7 @@ class LineGroup(TypedDict, total=False):
     The QuickBooks-assigned unique identifier of an existing estimate line group you
     wish to retain or update.
 
-    **IMPORTANT**: Set this field to `-1` for new estimate line groups you wish to
+    **IMPORTANT:**: Set this field to `-1` for new estimate line groups you wish to
     add.
     """
 
@@ -404,7 +404,7 @@ class LineGroup(TypedDict, total=False):
     The estimate line group's line items, each representing a single product or
     service quoted.
 
-    **IMPORTANT**:
+    **IMPORTANT:**:
 
     1. Including this array in your update request will **REPLACE** all existing
        line items for the estimate line group with this array. To keep any existing
@@ -447,7 +447,7 @@ class Line(TypedDict, total=False):
     The QuickBooks-assigned unique identifier of an existing estimate line you wish
     to retain or update.
 
-    **IMPORTANT**: Set this field to `-1` for new estimate lines you wish to add.
+    **IMPORTANT:**: Set this field to `-1` for new estimate lines you wish to add.
     """
 
     amount: str

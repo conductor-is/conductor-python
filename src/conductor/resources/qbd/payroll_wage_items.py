@@ -83,9 +83,9 @@ class PayrollWageItemsResource(SyncAPIResource):
           name: The case-insensitive unique name of this payroll wage item, unique across all
               payroll wage items. Maximum length: 31 characters.
 
-              **NOTE**: Payroll wage items do not have a `fullName` field because they are not
-              hierarchical objects, which is why `name` is unique for them but not for objects
-              that have parents.
+              **NOTE:**: Payroll wage items do not have a `fullName` field because they are
+              not hierarchical objects, which is why `name` is unique for them but not for
+              objects that have parents.
 
           wage_type: Categorizes how this payroll wage item calculates pay - can be hourly (regular,
               overtime, sick, or vacation), salary (regular, sick, or vacation), bonus, or
@@ -202,7 +202,7 @@ class PayrollWageItemsResource(SyncAPIResource):
           ids: Filter for specific payroll wage items by their QuickBooks-assigned unique
               identifier(s).
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           limit: The maximum number of objects to return. Accepts values ranging from 1 to 150,
@@ -226,7 +226,7 @@ class PayrollWageItemsResource(SyncAPIResource):
           names: Filter for specific payroll wage items by their name(s), case-insensitive. Like
               `id`, `name` is a unique identifier for a payroll wage item.
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           name_starts_with: Filter for payroll wage items whose `name` starts with this substring,
@@ -340,9 +340,9 @@ class AsyncPayrollWageItemsResource(AsyncAPIResource):
           name: The case-insensitive unique name of this payroll wage item, unique across all
               payroll wage items. Maximum length: 31 characters.
 
-              **NOTE**: Payroll wage items do not have a `fullName` field because they are not
-              hierarchical objects, which is why `name` is unique for them but not for objects
-              that have parents.
+              **NOTE:**: Payroll wage items do not have a `fullName` field because they are
+              not hierarchical objects, which is why `name` is unique for them but not for
+              objects that have parents.
 
           wage_type: Categorizes how this payroll wage item calculates pay - can be hourly (regular,
               overtime, sick, or vacation), salary (regular, sick, or vacation), bonus, or
@@ -459,7 +459,7 @@ class AsyncPayrollWageItemsResource(AsyncAPIResource):
           ids: Filter for specific payroll wage items by their QuickBooks-assigned unique
               identifier(s).
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           limit: The maximum number of objects to return. Accepts values ranging from 1 to 150,
@@ -483,7 +483,7 @@ class AsyncPayrollWageItemsResource(AsyncAPIResource):
           names: Filter for specific payroll wage items by their name(s), case-insensitive. Like
               `id`, `name` is a unique identifier for a payroll wage item.
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           name_starts_with: Filter for payroll wage items whose `name` starts with this substring,

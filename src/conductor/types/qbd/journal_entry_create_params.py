@@ -54,7 +54,7 @@ class JournalEntryCreateParams(TypedDict, total=False):
     this object in your external system. This field is immutable and can only be set
     during object creation.
 
-    **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
+    **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
     QuickBooks will return an error.
     """
 
@@ -114,7 +114,7 @@ class CreditLine(TypedDict, total=False):
     The customer, vendor, employee, or other entity associated with this journal
     credit line.
 
-    **IMPORTANT**: If the journal credit line's `account` is an Accounts Receivable
+    **IMPORTANT:**: If the journal credit line's `account` is an Accounts Receivable
     (A/R) account, this field must refer to a customer. If the journal credit line's
     `account` is an Accounts Payable (A/P) account, this field must refer to a
     vendor. If these requirements are not met, QuickBooks Desktop will not record
@@ -165,7 +165,7 @@ class DebitLine(TypedDict, total=False):
     The customer, vendor, employee, or other entity associated with this journal
     debit line.
 
-    **IMPORTANT**: If the journal debit line's `account` is an Accounts Receivable
+    **IMPORTANT:**: If the journal debit line's `account` is an Accounts Receivable
     (A/R) account, this field must refer to a customer. If the journal debit line's
     `account` is an Accounts Payable (A/P) account, this field must refer to a
     vendor. If these requirements are not met, QuickBooks Desktop will not record

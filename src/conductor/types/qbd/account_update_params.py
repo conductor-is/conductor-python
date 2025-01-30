@@ -61,7 +61,7 @@ class AccountUpdateParams(TypedDict, total=False):
     The classification of this account, indicating its purpose within the chart of
     accounts.
 
-    **NOTE**: You cannot create an account of type `non_posting` through the API
+    **NOTE:**: You cannot create an account of type `non_posting` through the API
     because QuickBooks creates these accounts behind the scenes.
     """
 

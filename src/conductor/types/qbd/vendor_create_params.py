@@ -25,7 +25,7 @@ class VendorCreateParams(TypedDict, total=False):
 
     Maximum length: 41 characters.
 
-    **NOTE**: Vendors do not have a `fullName` field because they are not
+    **NOTE:**: Vendors do not have a `fullName` field because they are not
     hierarchical objects, which is why `name` is unique for them but not for objects
     that have parents.
     """
@@ -119,7 +119,7 @@ class VendorCreateParams(TypedDict, total=False):
     this object in your external system. This field is immutable and can only be set
     during object creation.
 
-    **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
+    **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
     QuickBooks will return an error.
     """
 

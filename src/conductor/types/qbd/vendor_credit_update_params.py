@@ -49,7 +49,7 @@ class VendorCreditUpdateParams(TypedDict, total=False):
     expense_lines: Annotated[Iterable[ExpenseLine], PropertyInfo(alias="expenseLines")]
     """The vendor credit's expense lines, each representing one line in this expense.
 
-    **IMPORTANT**:
+    **IMPORTANT:**:
 
     1. Including this array in your update request will **REPLACE** all existing
        expense lines for the vendor credit with this array. To keep any existing
@@ -68,7 +68,7 @@ class VendorCreditUpdateParams(TypedDict, total=False):
     items bundled together because they are commonly purchased together or grouped
     for faster entry.
 
-    **IMPORTANT**:
+    **IMPORTANT:**:
 
     1. Including this array in your update request will **REPLACE** all existing
        item group lines for the vendor credit with this array. To keep any existing
@@ -87,7 +87,7 @@ class VendorCreditUpdateParams(TypedDict, total=False):
     The vendor credit's item lines, each representing the purchase of a specific
     item or service.
 
-    **IMPORTANT**:
+    **IMPORTANT:**:
 
     1. Including this array in your update request will **REPLACE** all existing
        item lines for the vendor credit with this array. To keep any existing item
@@ -109,7 +109,7 @@ class VendorCreditUpdateParams(TypedDict, total=False):
     to track the amount owed. If not specified, QuickBooks Desktop will use its
     default A/P account.
 
-    **IMPORTANT**: If this vendor credit is linked to other transactions, this A/P
+    **IMPORTANT:**: If this vendor credit is linked to other transactions, this A/P
     account must match the `payablesAccount` used in those other transactions.
     """
 
@@ -145,7 +145,7 @@ class ExpenseLine(TypedDict, total=False):
     The QuickBooks-assigned unique identifier of an existing expense line you wish
     to retain or update.
 
-    **IMPORTANT**: Set this field to `-1` for new expense lines you wish to add.
+    **IMPORTANT:**: Set this field to `-1` for new expense lines you wish to add.
     """
 
     account_id: Annotated[str, PropertyInfo(alias="accountId")]
@@ -209,7 +209,7 @@ class ItemLineGroupItemLine(TypedDict, total=False):
     The QuickBooks-assigned unique identifier of an existing item line you wish to
     retain or update.
 
-    **IMPORTANT**: Set this field to `-1` for new item lines you wish to add.
+    **IMPORTANT:**: Set this field to `-1` for new item lines you wish to add.
     """
 
     amount: str
@@ -344,7 +344,7 @@ class ItemLineGroup(TypedDict, total=False):
     The QuickBooks-assigned unique identifier of an existing item line group you
     wish to retain or update.
 
-    **IMPORTANT**: Set this field to `-1` for new item line groups you wish to add.
+    **IMPORTANT:**: Set this field to `-1` for new item line groups you wish to add.
     """
 
     item_group_id: Annotated[str, PropertyInfo(alias="itemGroupId")]
@@ -358,7 +358,7 @@ class ItemLineGroup(TypedDict, total=False):
     The item line group's item lines, each representing the purchase of a specific
     item or service.
 
-    **IMPORTANT**:
+    **IMPORTANT:**:
 
     1. Including this array in your update request will **REPLACE** all existing
        item lines for the item line group with this array. To keep any existing item
@@ -401,7 +401,7 @@ class ItemLine(TypedDict, total=False):
     The QuickBooks-assigned unique identifier of an existing item line you wish to
     retain or update.
 
-    **IMPORTANT**: Set this field to `-1` for new item lines you wish to add.
+    **IMPORTANT:**: Set this field to `-1` for new item lines you wish to add.
     """
 
     amount: str

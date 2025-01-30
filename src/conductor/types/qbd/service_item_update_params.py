@@ -80,7 +80,7 @@ class ServiceItemUpdateParams(TypedDict, total=False):
     Details for service items that are both purchased and sold, such as reimbursable
     expenses or inventory items that are bought from vendors and sold to customers.
 
-    **IMPORTANT**: You cannot specify both `salesAndPurchaseDetails` and
+    **IMPORTANT:**: You cannot specify both `salesAndPurchaseDetails` and
     `salesOrPurchaseDetails` when modifying a service item because an item cannot
     have both configurations.
     """
@@ -92,7 +92,7 @@ class ServiceItemUpdateParams(TypedDict, total=False):
     office supply that isn't resold) or service items (like consulting services that
     are sold but not purchased).
 
-    **IMPORTANT**: You cannot specify both `salesOrPurchaseDetails` and
+    **IMPORTANT:**: You cannot specify both `salesOrPurchaseDetails` and
     `salesAndPurchaseDetails` when modifying a service item because an item cannot
     have both configurations.
     """

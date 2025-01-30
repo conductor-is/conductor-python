@@ -98,7 +98,7 @@ class NonInventoryItemsResource(SyncAPIResource):
               this object in your external system. This field is immutable and can only be set
               during object creation.
 
-              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
+              **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
               QuickBooks will return an error.
 
           is_active: Indicates whether this non-inventory item is active. Inactive objects are
@@ -113,7 +113,7 @@ class NonInventoryItemsResource(SyncAPIResource):
               reimbursable expenses or inventory items that are bought from vendors and sold
               to customers.
 
-              **IMPORTANT**: You must specify either `salesAndPurchaseDetails` or
+              **IMPORTANT:**: You must specify either `salesAndPurchaseDetails` or
               `salesOrPurchaseDetails` when creating a non-inventory item, but never both
               because an item cannot have both configurations.
 
@@ -122,7 +122,7 @@ class NonInventoryItemsResource(SyncAPIResource):
               purchased office supply that isn't resold) or service items (like consulting
               services that are sold but not purchased).
 
-              **IMPORTANT**: You must specify either `salesOrPurchaseDetails` or
+              **IMPORTANT:**: You must specify either `salesOrPurchaseDetails` or
               `salesAndPurchaseDetails` when creating a non-inventory item, but never both
               because an item cannot have both configurations.
 
@@ -288,7 +288,7 @@ class NonInventoryItemsResource(SyncAPIResource):
               reimbursable expenses or inventory items that are bought from vendors and sold
               to customers.
 
-              **IMPORTANT**: You cannot specify both `salesAndPurchaseDetails` and
+              **IMPORTANT:**: You cannot specify both `salesAndPurchaseDetails` and
               `salesOrPurchaseDetails` when modifying a non-inventory item because an item
               cannot have both configurations.
 
@@ -297,7 +297,7 @@ class NonInventoryItemsResource(SyncAPIResource):
               purchased office supply that isn't resold) or service items (like consulting
               services that are sold but not purchased).
 
-              **IMPORTANT**: You cannot specify both `salesOrPurchaseDetails` and
+              **IMPORTANT:**: You cannot specify both `salesOrPurchaseDetails` and
               `salesAndPurchaseDetails` when modifying a non-inventory item because an item
               cannot have both configurations.
 
@@ -398,13 +398,13 @@ class NonInventoryItemsResource(SyncAPIResource):
               the `name` "Printer Ink Cartridge", its `fullName` would be "Office
               Supplies:Printer Ink Cartridge".
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           ids: Filter for specific non-inventory items by their QuickBooks-assigned unique
               identifier(s).
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           limit: The maximum number of objects to return. Accepts values ranging from 1 to 150,
@@ -548,7 +548,7 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
               this object in your external system. This field is immutable and can only be set
               during object creation.
 
-              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
+              **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
               QuickBooks will return an error.
 
           is_active: Indicates whether this non-inventory item is active. Inactive objects are
@@ -563,7 +563,7 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
               reimbursable expenses or inventory items that are bought from vendors and sold
               to customers.
 
-              **IMPORTANT**: You must specify either `salesAndPurchaseDetails` or
+              **IMPORTANT:**: You must specify either `salesAndPurchaseDetails` or
               `salesOrPurchaseDetails` when creating a non-inventory item, but never both
               because an item cannot have both configurations.
 
@@ -572,7 +572,7 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
               purchased office supply that isn't resold) or service items (like consulting
               services that are sold but not purchased).
 
-              **IMPORTANT**: You must specify either `salesOrPurchaseDetails` or
+              **IMPORTANT:**: You must specify either `salesOrPurchaseDetails` or
               `salesAndPurchaseDetails` when creating a non-inventory item, but never both
               because an item cannot have both configurations.
 
@@ -738,7 +738,7 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
               reimbursable expenses or inventory items that are bought from vendors and sold
               to customers.
 
-              **IMPORTANT**: You cannot specify both `salesAndPurchaseDetails` and
+              **IMPORTANT:**: You cannot specify both `salesAndPurchaseDetails` and
               `salesOrPurchaseDetails` when modifying a non-inventory item because an item
               cannot have both configurations.
 
@@ -747,7 +747,7 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
               purchased office supply that isn't resold) or service items (like consulting
               services that are sold but not purchased).
 
-              **IMPORTANT**: You cannot specify both `salesOrPurchaseDetails` and
+              **IMPORTANT:**: You cannot specify both `salesOrPurchaseDetails` and
               `salesAndPurchaseDetails` when modifying a non-inventory item because an item
               cannot have both configurations.
 
@@ -848,13 +848,13 @@ class AsyncNonInventoryItemsResource(AsyncAPIResource):
               the `name` "Printer Ink Cartridge", its `fullName` would be "Office
               Supplies:Printer Ink Cartridge".
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           ids: Filter for specific non-inventory items by their QuickBooks-assigned unique
               identifier(s).
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           limit: The maximum number of objects to return. Accepts values ranging from 1 to 150,

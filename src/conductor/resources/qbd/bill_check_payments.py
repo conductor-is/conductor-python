@@ -81,12 +81,12 @@ class BillCheckPaymentsResource(SyncAPIResource):
           apply_to_transactions: The bills to be paid by this bill check payment. This will create a link between
               this bill check payment and the specified bills.
 
-              **IMPORTANT**: In each `applyToTransactions` object, you must specify either
+              **IMPORTANT:**: In each `applyToTransactions` object, you must specify either
               `paymentAmount`, `applyCredits`, `discountAmount`, or any combination of these;
               if none of these are specified, you will receive an error for an empty
               transaction.
 
-              **IMPORTANT**: The target bill must have `isPaid=false`, otherwise, QuickBooks
+              **IMPORTANT:**: The target bill must have `isPaid=false`, otherwise, QuickBooks
               will report this object as "cannot be found".
 
           bank_account_id: The bank account from which the funds are being drawn for this bill check
@@ -98,7 +98,7 @@ class BillCheckPaymentsResource(SyncAPIResource):
           vendor_id: The vendor who sent the bill(s) that this bill check payment is paying and who
               will receive this payment.
 
-              **IMPORTANT**: This vendor must match the `vendor` on the bill(s) specified in
+              **IMPORTANT:**: This vendor must match the `vendor` on the bill(s) specified in
               `applyToTransactions`; otherwise, QuickBooks will say the `transactionId` in
               `applyToTransactions` "does not exist".
 
@@ -113,7 +113,7 @@ class BillCheckPaymentsResource(SyncAPIResource):
               this object in your external system. This field is immutable and can only be set
               during object creation.
 
-              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
+              **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
               QuickBooks will return an error.
 
           is_queued_for_print: Indicates whether this bill check payment is included in the queue of documents
@@ -125,7 +125,7 @@ class BillCheckPaymentsResource(SyncAPIResource):
               used to track the amount owed. If not specified, QuickBooks Desktop will use its
               default A/P account.
 
-              **IMPORTANT**: If this bill check payment is linked to other transactions, this
+              **IMPORTANT:**: If this bill check payment is linked to other transactions, this
               A/P account must match the `payablesAccount` used in those other transactions.
 
           ref_number: The case-sensitive user-defined reference number for this bill check payment,
@@ -134,7 +134,7 @@ class BillCheckPaymentsResource(SyncAPIResource):
               When left blank in this create request, this field will be left blank in
               QuickBooks (i.e., it does _not_ auto-increment).
 
-              **IMPORTANT**: For checks, this field is the check number.
+              **IMPORTANT:**: For checks, this field is the check number.
 
           extra_headers: Send extra headers
 
@@ -248,12 +248,12 @@ class BillCheckPaymentsResource(SyncAPIResource):
           apply_to_transactions: The bills to be paid by this bill check payment. This will create a link between
               this bill check payment and the specified bills.
 
-              **IMPORTANT**: In each `applyToTransactions` object, you must specify either
+              **IMPORTANT:**: In each `applyToTransactions` object, you must specify either
               `paymentAmount`, `applyCredits`, `discountAmount`, or any combination of these;
               if none of these are specified, you will receive an error for an empty
               transaction.
 
-              **IMPORTANT**: The target bill must have `isPaid=false`, otherwise, QuickBooks
+              **IMPORTANT:**: The target bill must have `isPaid=false`, otherwise, QuickBooks
               will report this object as "cannot be found".
 
           bank_account_id: The bank account from which the funds are being drawn for this bill check
@@ -273,7 +273,7 @@ class BillCheckPaymentsResource(SyncAPIResource):
               which can be used to identify the transaction in QuickBooks. This value is not
               required to be unique and can be arbitrarily changed by the QuickBooks user.
 
-              **IMPORTANT**: For checks, this field is the check number.
+              **IMPORTANT:**: For checks, this field is the check number.
 
           transaction_date: The date of this bill check payment, in ISO 8601 format (YYYY-MM-DD).
 
@@ -358,7 +358,7 @@ class BillCheckPaymentsResource(SyncAPIResource):
           ids: Filter for specific bill check payments by their QuickBooks-assigned unique
               identifier(s).
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           include_line_items: Whether to include line items in the response. Defaults to `true`.
@@ -387,7 +387,7 @@ class BillCheckPaymentsResource(SyncAPIResource):
               In QuickBooks, ref-numbers are not required to be unique and can be arbitrarily
               changed by the QuickBooks user.
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           ref_number_starts_with: Filter for bill check payments whose `refNumber` starts with this substring.
@@ -551,12 +551,12 @@ class AsyncBillCheckPaymentsResource(AsyncAPIResource):
           apply_to_transactions: The bills to be paid by this bill check payment. This will create a link between
               this bill check payment and the specified bills.
 
-              **IMPORTANT**: In each `applyToTransactions` object, you must specify either
+              **IMPORTANT:**: In each `applyToTransactions` object, you must specify either
               `paymentAmount`, `applyCredits`, `discountAmount`, or any combination of these;
               if none of these are specified, you will receive an error for an empty
               transaction.
 
-              **IMPORTANT**: The target bill must have `isPaid=false`, otherwise, QuickBooks
+              **IMPORTANT:**: The target bill must have `isPaid=false`, otherwise, QuickBooks
               will report this object as "cannot be found".
 
           bank_account_id: The bank account from which the funds are being drawn for this bill check
@@ -568,7 +568,7 @@ class AsyncBillCheckPaymentsResource(AsyncAPIResource):
           vendor_id: The vendor who sent the bill(s) that this bill check payment is paying and who
               will receive this payment.
 
-              **IMPORTANT**: This vendor must match the `vendor` on the bill(s) specified in
+              **IMPORTANT:**: This vendor must match the `vendor` on the bill(s) specified in
               `applyToTransactions`; otherwise, QuickBooks will say the `transactionId` in
               `applyToTransactions` "does not exist".
 
@@ -583,7 +583,7 @@ class AsyncBillCheckPaymentsResource(AsyncAPIResource):
               this object in your external system. This field is immutable and can only be set
               during object creation.
 
-              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
+              **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
               QuickBooks will return an error.
 
           is_queued_for_print: Indicates whether this bill check payment is included in the queue of documents
@@ -595,7 +595,7 @@ class AsyncBillCheckPaymentsResource(AsyncAPIResource):
               used to track the amount owed. If not specified, QuickBooks Desktop will use its
               default A/P account.
 
-              **IMPORTANT**: If this bill check payment is linked to other transactions, this
+              **IMPORTANT:**: If this bill check payment is linked to other transactions, this
               A/P account must match the `payablesAccount` used in those other transactions.
 
           ref_number: The case-sensitive user-defined reference number for this bill check payment,
@@ -604,7 +604,7 @@ class AsyncBillCheckPaymentsResource(AsyncAPIResource):
               When left blank in this create request, this field will be left blank in
               QuickBooks (i.e., it does _not_ auto-increment).
 
-              **IMPORTANT**: For checks, this field is the check number.
+              **IMPORTANT:**: For checks, this field is the check number.
 
           extra_headers: Send extra headers
 
@@ -718,12 +718,12 @@ class AsyncBillCheckPaymentsResource(AsyncAPIResource):
           apply_to_transactions: The bills to be paid by this bill check payment. This will create a link between
               this bill check payment and the specified bills.
 
-              **IMPORTANT**: In each `applyToTransactions` object, you must specify either
+              **IMPORTANT:**: In each `applyToTransactions` object, you must specify either
               `paymentAmount`, `applyCredits`, `discountAmount`, or any combination of these;
               if none of these are specified, you will receive an error for an empty
               transaction.
 
-              **IMPORTANT**: The target bill must have `isPaid=false`, otherwise, QuickBooks
+              **IMPORTANT:**: The target bill must have `isPaid=false`, otherwise, QuickBooks
               will report this object as "cannot be found".
 
           bank_account_id: The bank account from which the funds are being drawn for this bill check
@@ -743,7 +743,7 @@ class AsyncBillCheckPaymentsResource(AsyncAPIResource):
               which can be used to identify the transaction in QuickBooks. This value is not
               required to be unique and can be arbitrarily changed by the QuickBooks user.
 
-              **IMPORTANT**: For checks, this field is the check number.
+              **IMPORTANT:**: For checks, this field is the check number.
 
           transaction_date: The date of this bill check payment, in ISO 8601 format (YYYY-MM-DD).
 
@@ -828,7 +828,7 @@ class AsyncBillCheckPaymentsResource(AsyncAPIResource):
           ids: Filter for specific bill check payments by their QuickBooks-assigned unique
               identifier(s).
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           include_line_items: Whether to include line items in the response. Defaults to `true`.
@@ -857,7 +857,7 @@ class AsyncBillCheckPaymentsResource(AsyncAPIResource):
               In QuickBooks, ref-numbers are not required to be unique and can be arbitrarily
               changed by the QuickBooks user.
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           ref_number_starts_with: Filter for bill check payments whose `refNumber` starts with this substring.

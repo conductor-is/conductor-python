@@ -29,7 +29,7 @@ class InventoryAdjustmentListParams(TypedDict, total=False):
     Filter for specific inventory adjustments by their QuickBooks-assigned unique
     identifier(s).
 
-    **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+    **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
     query parameters for this request.
     """
 
@@ -42,7 +42,7 @@ class InventoryAdjustmentListParams(TypedDict, total=False):
     limit: int
     """The maximum number of objects to return.
 
-    **IMPORTANT**: QuickBooks Desktop does not support cursor-based pagination for
+    **IMPORTANT:**: QuickBooks Desktop does not support cursor-based pagination for
     inventory adjustments. This parameter will limit the response size, but you
     cannot fetch subsequent results using a cursor. For pagination, use the
     name-range parameters instead (e.g., `nameFrom=A&nameTo=B`).
@@ -81,7 +81,7 @@ class InventoryAdjustmentListParams(TypedDict, total=False):
     In QuickBooks, ref-numbers are not required to be unique and can be arbitrarily
     changed by the QuickBooks user.
 
-    **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+    **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
     query parameters for this request.
     """
 
