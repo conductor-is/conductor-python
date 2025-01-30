@@ -177,6 +177,8 @@ class VendorsResource(SyncAPIResource):
 
           first_name: The first name of the contact person for this vendor.
 
+              Maximum length: 25 characters.
+
           is_active: Indicates whether this vendor is active. Inactive objects are typically hidden
               from views and reports in QuickBooks. Defaults to `true`.
 
@@ -199,7 +201,11 @@ class VendorsResource(SyncAPIResource):
 
           last_name: The last name of the contact person for this vendor.
 
+              Maximum length: 25 characters.
+
           middle_name: The middle name of the contact person for this vendor.
+
+              Maximum length: 5 characters.
 
           name_on_check: The vendor's name as it should appear on checks issued to this vendor.
 
@@ -476,6 +482,8 @@ class VendorsResource(SyncAPIResource):
 
           first_name: The first name of the contact person for this vendor.
 
+              Maximum length: 25 characters.
+
           is_active: Indicates whether this vendor is active. Inactive objects are typically hidden
               from views and reports in QuickBooks. Defaults to `true`.
 
@@ -498,7 +506,11 @@ class VendorsResource(SyncAPIResource):
 
           last_name: The last name of the contact person for this vendor.
 
+              Maximum length: 25 characters.
+
           middle_name: The middle name of the contact person for this vendor.
+
+              Maximum length: 5 characters.
 
           name: The case-insensitive unique name of this vendor, unique across all vendors.
 
@@ -925,6 +937,8 @@ class AsyncVendorsResource(AsyncAPIResource):
 
           first_name: The first name of the contact person for this vendor.
 
+              Maximum length: 25 characters.
+
           is_active: Indicates whether this vendor is active. Inactive objects are typically hidden
               from views and reports in QuickBooks. Defaults to `true`.
 
@@ -947,7 +961,11 @@ class AsyncVendorsResource(AsyncAPIResource):
 
           last_name: The last name of the contact person for this vendor.
 
+              Maximum length: 25 characters.
+
           middle_name: The middle name of the contact person for this vendor.
+
+              Maximum length: 5 characters.
 
           name_on_check: The vendor's name as it should appear on checks issued to this vendor.
 
@@ -1224,6 +1242,8 @@ class AsyncVendorsResource(AsyncAPIResource):
 
           first_name: The first name of the contact person for this vendor.
 
+              Maximum length: 25 characters.
+
           is_active: Indicates whether this vendor is active. Inactive objects are typically hidden
               from views and reports in QuickBooks. Defaults to `true`.
 
@@ -1246,7 +1266,11 @@ class AsyncVendorsResource(AsyncAPIResource):
 
           last_name: The last name of the contact person for this vendor.
 
+              Maximum length: 25 characters.
+
           middle_name: The middle name of the contact person for this vendor.
+
+              Maximum length: 5 characters.
 
           name: The case-insensitive unique name of this vendor, unique across all vendors.
 

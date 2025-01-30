@@ -142,7 +142,10 @@ class CustomerCreateParams(TypedDict, total=False):
     """The customer's fax number."""
 
     first_name: Annotated[str, PropertyInfo(alias="firstName")]
-    """The first name of the contact person for this customer."""
+    """The first name of the contact person for this customer.
+
+    Maximum length: 25 characters.
+    """
 
     is_active: Annotated[bool, PropertyInfo(alias="isActive")]
     """Indicates whether this customer is active.
@@ -193,10 +196,16 @@ class CustomerCreateParams(TypedDict, total=False):
     """
 
     last_name: Annotated[str, PropertyInfo(alias="lastName")]
-    """The last name of the contact person for this customer."""
+    """The last name of the contact person for this customer.
+
+    Maximum length: 25 characters.
+    """
 
     middle_name: Annotated[str, PropertyInfo(alias="middleName")]
-    """The middle name of the contact person for this customer."""
+    """The middle name of the contact person for this customer.
+
+    Maximum length: 5 characters.
+    """
 
     note: str
     """A note or comment about this customer."""
@@ -309,7 +318,10 @@ class AdditionalContactCustomContactField(TypedDict, total=False):
 
 class AdditionalContact(TypedDict, total=False):
     first_name: Required[Annotated[str, PropertyInfo(alias="firstName")]]
-    """The contact's first name."""
+    """The contact's first name.
+
+    Maximum length: 25 characters.
+    """
 
     custom_contact_fields: Annotated[
         Iterable[AdditionalContactCustomContactField], PropertyInfo(alias="customContactFields")
@@ -323,10 +335,16 @@ class AdditionalContact(TypedDict, total=False):
     """The contact's job title."""
 
     last_name: Annotated[str, PropertyInfo(alias="lastName")]
-    """The contact's last name."""
+    """The contact's last name.
+
+    Maximum length: 25 characters.
+    """
 
     middle_name: Annotated[str, PropertyInfo(alias="middleName")]
-    """The contact's middle name."""
+    """The contact's middle name.
+
+    Maximum length: 5 characters.
+    """
 
     salutation: str
     """
@@ -354,7 +372,10 @@ class AlternateShippingAddress(TypedDict, total=False):
     """
 
     city: str
-    """The city, district, suburb, town, or village name of the shipping address."""
+    """The city, district, suburb, town, or village name of the shipping address.
+
+    Maximum length: 31 characters.
+    """
 
     country: str
     """The country name of the shipping address."""
@@ -363,22 +384,36 @@ class AlternateShippingAddress(TypedDict, total=False):
     """Indicates whether this shipping address is the default shipping address."""
 
     line1: str
-    """The first line of the shipping address (e.g., street, PO Box, or company name)."""
+    """The first line of the shipping address (e.g., street, PO Box, or company name).
+
+    Maximum length: 41 characters.
+    """
 
     line2: str
     """
     The second line of the shipping address, if needed (e.g., apartment, suite,
     unit, or building).
+
+    Maximum length: 41 characters.
     """
 
     line3: str
-    """The third line of the shipping address, if needed."""
+    """The third line of the shipping address, if needed.
+
+    Maximum length: 41 characters.
+    """
 
     line4: str
-    """The fourth line of the shipping address, if needed."""
+    """The fourth line of the shipping address, if needed.
+
+    Maximum length: 41 characters.
+    """
 
     line5: str
-    """The fifth line of the shipping address, if needed."""
+    """The fifth line of the shipping address, if needed.
+
+    Maximum length: 41 characters.
+    """
 
     note: str
     """
@@ -387,36 +422,59 @@ class AlternateShippingAddress(TypedDict, total=False):
     """
 
     postal_code: Annotated[str, PropertyInfo(alias="postalCode")]
-    """The postal code or ZIP code of the shipping address."""
+    """The postal code or ZIP code of the shipping address.
+
+    Maximum length: 13 characters.
+    """
 
     state: str
-    """The state, county, province, or region name of the shipping address."""
+    """The state, county, province, or region name of the shipping address.
+
+    Maximum length: 21 characters.
+    """
 
 
 class BillingAddress(TypedDict, total=False):
     city: str
-    """The city, district, suburb, town, or village name of the address."""
+    """The city, district, suburb, town, or village name of the address.
+
+    Maximum length: 31 characters.
+    """
 
     country: str
     """The country name of the address."""
 
     line1: str
-    """The first line of the address (e.g., street, PO Box, or company name)."""
+    """The first line of the address (e.g., street, PO Box, or company name).
+
+    Maximum length: 41 characters.
+    """
 
     line2: str
     """
     The second line of the address, if needed (e.g., apartment, suite, unit, or
     building).
+
+    Maximum length: 41 characters.
     """
 
     line3: str
-    """The third line of the address, if needed."""
+    """The third line of the address, if needed.
+
+    Maximum length: 41 characters.
+    """
 
     line4: str
-    """The fourth line of the address, if needed."""
+    """The fourth line of the address, if needed.
+
+    Maximum length: 41 characters.
+    """
 
     line5: str
-    """The fifth line of the address, if needed."""
+    """The fifth line of the address, if needed.
+
+    Maximum length: 41 characters.
+    """
 
     note: str
     """
@@ -425,10 +483,16 @@ class BillingAddress(TypedDict, total=False):
     """
 
     postal_code: Annotated[str, PropertyInfo(alias="postalCode")]
-    """The postal code or ZIP code of the address."""
+    """The postal code or ZIP code of the address.
+
+    Maximum length: 13 characters.
+    """
 
     state: str
-    """The state, county, province, or region name of the address."""
+    """The state, county, province, or region name of the address.
+
+    Maximum length: 21 characters.
+    """
 
 
 class CreditCard(TypedDict, total=False):
@@ -461,28 +525,45 @@ class CustomContactField(TypedDict, total=False):
 
 class ShippingAddress(TypedDict, total=False):
     city: str
-    """The city, district, suburb, town, or village name of the address."""
+    """The city, district, suburb, town, or village name of the address.
+
+    Maximum length: 31 characters.
+    """
 
     country: str
     """The country name of the address."""
 
     line1: str
-    """The first line of the address (e.g., street, PO Box, or company name)."""
+    """The first line of the address (e.g., street, PO Box, or company name).
+
+    Maximum length: 41 characters.
+    """
 
     line2: str
     """
     The second line of the address, if needed (e.g., apartment, suite, unit, or
     building).
+
+    Maximum length: 41 characters.
     """
 
     line3: str
-    """The third line of the address, if needed."""
+    """The third line of the address, if needed.
+
+    Maximum length: 41 characters.
+    """
 
     line4: str
-    """The fourth line of the address, if needed."""
+    """The fourth line of the address, if needed.
+
+    Maximum length: 41 characters.
+    """
 
     line5: str
-    """The fifth line of the address, if needed."""
+    """The fifth line of the address, if needed.
+
+    Maximum length: 41 characters.
+    """
 
     note: str
     """
@@ -491,7 +572,13 @@ class ShippingAddress(TypedDict, total=False):
     """
 
     postal_code: Annotated[str, PropertyInfo(alias="postalCode")]
-    """The postal code or ZIP code of the address."""
+    """The postal code or ZIP code of the address.
+
+    Maximum length: 13 characters.
+    """
 
     state: str
-    """The state, county, province, or region name of the address."""
+    """The state, county, province, or region name of the address.
+
+    Maximum length: 21 characters.
+    """
