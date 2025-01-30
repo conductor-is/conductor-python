@@ -37,8 +37,9 @@ class ClassUpdateParams(TypedDict, total=False):
     Not guaranteed to be unique because it does not include the names of its
     hierarchical parent objects like `fullName` does. For example, two classes could
     both have the `name` "Marketing", but they could have unique `fullName` values,
-    such as "Department:Marketing" and "Internal:Marketing". Maximum length: 31
-    characters.
+    such as "Department:Marketing" and "Internal:Marketing".
+
+    Maximum length: 31 characters.
     """
 
     parent_id: Annotated[str, PropertyInfo(alias="parentId")]

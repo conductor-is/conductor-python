@@ -337,7 +337,7 @@ class InventoryAssemblyItem(BaseModel):
     hierarchical parent objects like `fullName` does. For example, two inventory
     assembly items could both have the `name` "Deluxe Kit", but they could have
     unique `fullName` values, such as "Assemblies:Deluxe Kit" and "Inventory:Deluxe
-    Kit". Maximum length: 31 characters.
+    Kit".
     """
 
     object_type: Literal["qbd_inventory_assembly_item"] = FieldInfo(alias="objectType")

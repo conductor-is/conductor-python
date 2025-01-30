@@ -105,7 +105,9 @@ class InventoryAssemblyItemUpdateParams(TypedDict, total=False):
     hierarchical parent objects like `fullName` does. For example, two inventory
     assembly items could both have the `name` "Deluxe Kit", but they could have
     unique `fullName` values, such as "Assemblies:Deluxe Kit" and "Inventory:Deluxe
-    Kit". Maximum length: 31 characters.
+    Kit".
+
+    Maximum length: 31 characters.
     """
 
     parent_id: Annotated[str, PropertyInfo(alias="parentId")]

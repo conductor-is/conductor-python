@@ -104,7 +104,7 @@ class InventorySite(BaseModel):
     name: str
     """
     The case-insensitive unique name of this inventory site, unique across all
-    inventory sites. Maximum length: 31 characters.
+    inventory sites.
 
     **NOTE:**: Inventory sites do not have a `fullName` field because they are not
     hierarchical objects, which is why `name` is unique for them but not for objects

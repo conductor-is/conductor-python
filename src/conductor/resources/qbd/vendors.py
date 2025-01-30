@@ -111,11 +111,12 @@ class VendorsResource(SyncAPIResource):
 
         Args:
           name: The case-insensitive unique name of this vendor, unique across all vendors.
-              Maximum length: 41 characters.
 
               **NOTE:**: Vendors do not have a `fullName` field because they are not
               hierarchical objects, which is why `name` is unique for them but not for objects
               that have parents.
+
+              Maximum length: 41 characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -500,11 +501,12 @@ class VendorsResource(SyncAPIResource):
           middle_name: The middle name of the contact person for this vendor.
 
           name: The case-insensitive unique name of this vendor, unique across all vendors.
-              Maximum length: 41 characters.
 
               **NOTE:**: Vendors do not have a `fullName` field because they are not
               hierarchical objects, which is why `name` is unique for them but not for objects
               that have parents.
+
+              Maximum length: 41 characters.
 
           name_on_check: The vendor's name as it should appear on checks issued to this vendor.
 
@@ -857,11 +859,12 @@ class AsyncVendorsResource(AsyncAPIResource):
 
         Args:
           name: The case-insensitive unique name of this vendor, unique across all vendors.
-              Maximum length: 41 characters.
 
               **NOTE:**: Vendors do not have a `fullName` field because they are not
               hierarchical objects, which is why `name` is unique for them but not for objects
               that have parents.
+
+              Maximum length: 41 characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -1246,11 +1249,12 @@ class AsyncVendorsResource(AsyncAPIResource):
           middle_name: The middle name of the contact person for this vendor.
 
           name: The case-insensitive unique name of this vendor, unique across all vendors.
-              Maximum length: 41 characters.
 
               **NOTE:**: Vendors do not have a `fullName` field because they are not
               hierarchical objects, which is why `name` is unique for them but not for objects
               that have parents.
+
+              Maximum length: 41 characters.
 
           name_on_check: The vendor's name as it should appear on checks issued to this vendor.
 

@@ -33,8 +33,9 @@ class InventoryItemCreateParams(TypedDict, total=False):
     Not guaranteed to be unique because it does not include the names of its
     hierarchical parent objects like `fullName` does. For example, two inventory
     items could both have the `name` "Cabinet", but they could have unique
-    `fullName` values, such as "Kitchen:Cabinet" and "Inventory:Cabinet". Maximum
-    length: 31 characters.
+    `fullName` values, such as "Kitchen:Cabinet" and "Inventory:Cabinet".
+
+    Maximum length: 31 characters.
     """
 
     conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]
