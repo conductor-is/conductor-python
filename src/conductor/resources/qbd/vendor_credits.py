@@ -92,7 +92,7 @@ class VendorCreditsResource(SyncAPIResource):
               this object in your external system. This field is immutable and can only be set
               during object creation.
 
-              **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
+              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
               QuickBooks will return an error.
 
           item_line_groups: The vendor credit's item group lines, each representing a predefined set of
@@ -108,7 +108,7 @@ class VendorCreditsResource(SyncAPIResource):
               to track the amount owed. If not specified, QuickBooks Desktop will use its
               default A/P account.
 
-              **IMPORTANT:**: If this vendor credit is linked to other transactions, this A/P
+              **IMPORTANT**: If this vendor credit is linked to other transactions, this A/P
               account must match the `payablesAccount` used in those other transactions.
 
           ref_number: The case-sensitive user-defined reference number for this vendor credit, which
@@ -251,7 +251,7 @@ class VendorCreditsResource(SyncAPIResource):
 
           expense_lines: The vendor credit's expense lines, each representing one line in this expense.
 
-              **IMPORTANT:**:
+              **IMPORTANT**:
 
               1. Including this array in your update request will **REPLACE** all existing
                  expense lines for the vendor credit with this array. To keep any existing
@@ -267,7 +267,7 @@ class VendorCreditsResource(SyncAPIResource):
               items bundled together because they are commonly purchased together or grouped
               for faster entry.
 
-              **IMPORTANT:**:
+              **IMPORTANT**:
 
               1. Including this array in your update request will **REPLACE** all existing
                  item group lines for the vendor credit with this array. To keep any existing
@@ -283,7 +283,7 @@ class VendorCreditsResource(SyncAPIResource):
           item_lines: The vendor credit's item lines, each representing the purchase of a specific
               item or service.
 
-              **IMPORTANT:**:
+              **IMPORTANT**:
 
               1. Including this array in your update request will **REPLACE** all existing
                  item lines for the vendor credit with this array. To keep any existing item
@@ -301,7 +301,7 @@ class VendorCreditsResource(SyncAPIResource):
               to track the amount owed. If not specified, QuickBooks Desktop will use its
               default A/P account.
 
-              **IMPORTANT:**: If this vendor credit is linked to other transactions, this A/P
+              **IMPORTANT**: If this vendor credit is linked to other transactions, this A/P
               account must match the `payablesAccount` used in those other transactions.
 
           ref_number: The case-sensitive user-defined reference number for this vendor credit, which
@@ -407,7 +407,7 @@ class VendorCreditsResource(SyncAPIResource):
           ids: Filter for specific vendor credits by their QuickBooks-assigned unique
               identifier(s).
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           include_line_items: Whether to include line items in the response. Defaults to `true`.
@@ -439,7 +439,7 @@ class VendorCreditsResource(SyncAPIResource):
               QuickBooks, ref-numbers are not required to be unique and can be arbitrarily
               changed by the QuickBooks user.
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           ref_number_starts_with: Filter for vendor credits whose `refNumber` starts with this substring. NOTE: If
@@ -618,7 +618,7 @@ class AsyncVendorCreditsResource(AsyncAPIResource):
               this object in your external system. This field is immutable and can only be set
               during object creation.
 
-              **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
+              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
               QuickBooks will return an error.
 
           item_line_groups: The vendor credit's item group lines, each representing a predefined set of
@@ -634,7 +634,7 @@ class AsyncVendorCreditsResource(AsyncAPIResource):
               to track the amount owed. If not specified, QuickBooks Desktop will use its
               default A/P account.
 
-              **IMPORTANT:**: If this vendor credit is linked to other transactions, this A/P
+              **IMPORTANT**: If this vendor credit is linked to other transactions, this A/P
               account must match the `payablesAccount` used in those other transactions.
 
           ref_number: The case-sensitive user-defined reference number for this vendor credit, which
@@ -777,7 +777,7 @@ class AsyncVendorCreditsResource(AsyncAPIResource):
 
           expense_lines: The vendor credit's expense lines, each representing one line in this expense.
 
-              **IMPORTANT:**:
+              **IMPORTANT**:
 
               1. Including this array in your update request will **REPLACE** all existing
                  expense lines for the vendor credit with this array. To keep any existing
@@ -793,7 +793,7 @@ class AsyncVendorCreditsResource(AsyncAPIResource):
               items bundled together because they are commonly purchased together or grouped
               for faster entry.
 
-              **IMPORTANT:**:
+              **IMPORTANT**:
 
               1. Including this array in your update request will **REPLACE** all existing
                  item group lines for the vendor credit with this array. To keep any existing
@@ -809,7 +809,7 @@ class AsyncVendorCreditsResource(AsyncAPIResource):
           item_lines: The vendor credit's item lines, each representing the purchase of a specific
               item or service.
 
-              **IMPORTANT:**:
+              **IMPORTANT**:
 
               1. Including this array in your update request will **REPLACE** all existing
                  item lines for the vendor credit with this array. To keep any existing item
@@ -827,7 +827,7 @@ class AsyncVendorCreditsResource(AsyncAPIResource):
               to track the amount owed. If not specified, QuickBooks Desktop will use its
               default A/P account.
 
-              **IMPORTANT:**: If this vendor credit is linked to other transactions, this A/P
+              **IMPORTANT**: If this vendor credit is linked to other transactions, this A/P
               account must match the `payablesAccount` used in those other transactions.
 
           ref_number: The case-sensitive user-defined reference number for this vendor credit, which
@@ -933,7 +933,7 @@ class AsyncVendorCreditsResource(AsyncAPIResource):
           ids: Filter for specific vendor credits by their QuickBooks-assigned unique
               identifier(s).
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           include_line_items: Whether to include line items in the response. Defaults to `true`.
@@ -965,7 +965,7 @@ class AsyncVendorCreditsResource(AsyncAPIResource):
               QuickBooks, ref-numbers are not required to be unique and can be arbitrarily
               changed by the QuickBooks user.
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           ref_number_starts_with: Filter for vendor credits whose `refNumber` starts with this substring. NOTE: If

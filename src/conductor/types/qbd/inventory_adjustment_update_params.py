@@ -55,7 +55,7 @@ class InventoryAdjustmentUpdateParams(TypedDict, total=False):
     The inventory adjustment's item lines, each representing the adjustment of an
     inventory item's quantity, value, serial number, or lot number.
 
-    **IMPORTANT:**:
+    **IMPORTANT**:
 
     1. Including this array in your update request will **REPLACE** all existing
        item lines for the inventory adjustment with this array. To keep any existing
@@ -88,7 +88,7 @@ class Line(TypedDict, total=False):
     The QuickBooks-assigned unique identifier of an existing inventory adjustment
     line you wish to retain or update.
 
-    **IMPORTANT:**: Set this field to `-1` for new inventory adjustment lines you
+    **IMPORTANT**: Set this field to `-1` for new inventory adjustment lines you
     wish to add.
     """
 

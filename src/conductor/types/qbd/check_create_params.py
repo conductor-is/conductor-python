@@ -46,7 +46,7 @@ class CheckCreateParams(TypedDict, total=False):
 
     This will create a link between this check and the specified transactions.
 
-    **IMPORTANT:**: By default, QuickBooks will not return any information about the
+    **IMPORTANT**: By default, QuickBooks will not return any information about the
     linked transactions in this endpoint's response even when this request is
     successful. To see the transactions linked via this field, refetch the check and
     check the `linkedTransactions` response field. If fetching a list of checks, you
@@ -70,7 +70,7 @@ class CheckCreateParams(TypedDict, total=False):
     this object in your external system. This field is immutable and can only be set
     during object creation.
 
-    **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
+    **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
     QuickBooks will return an error.
     """
 
@@ -107,7 +107,7 @@ class CheckCreateParams(TypedDict, total=False):
     this create request, this field will be left blank in QuickBooks (i.e., it does
     _not_ auto-increment).
 
-    **IMPORTANT:**: For checks, this field is the check number.
+    **IMPORTANT**: For checks, this field is the check number.
     """
 
     sales_tax_code_id: Annotated[str, PropertyInfo(alias="salesTaxCodeId")]
@@ -463,7 +463,7 @@ class ItemLine(TypedDict, total=False):
     Transaction lines can only be linked when creating this item line and cannot be
     unlinked later.
 
-    **IMPORTANT:**: If you use `linkToTransactionLine` on this item line, you cannot
+    **IMPORTANT**: If you use `linkToTransactionLine` on this item line, you cannot
     use the field `item` on this line (QuickBooks will return an error) because this
     field brings in all of the item information you need. You can, however, specify
     whatever `quantity` or `rate` that you want, or any other transaction line
@@ -476,7 +476,7 @@ class ItemLine(TypedDict, total=False):
     also return an error if you attempt to link a transaction that is empty or
     already closed.
 
-    **IMPORTANT:**: By default, QuickBooks will not return any information about the
+    **IMPORTANT**: By default, QuickBooks will not return any information about the
     linked transaction line in this endpoint's response even when this request is
     successful. To see the transaction line linked via this field, refetch the
     parent transaction and check the `linkedTransactions` response field. If

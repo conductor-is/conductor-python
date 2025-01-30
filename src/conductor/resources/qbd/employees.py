@@ -172,7 +172,7 @@ class EmployeesResource(SyncAPIResource):
               this object in your external system. This field is immutable and can only be set
               during object creation.
 
-              **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
+              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
               QuickBooks will return an error.
 
           fax: The employee's fax number.
@@ -227,7 +227,7 @@ class EmployeesResource(SyncAPIResource):
 
           ssn: The employee's Social Security Number. The value can be with or without dashes.
 
-              **NOTE:**: This field cannot be changed after the employee is created.
+              **NOTE**: This field cannot be changed after the employee is created.
 
           supervisor_id: The employee's supervisor. Found in the "employment job details" section of the
               employee's record in QuickBooks.
@@ -648,7 +648,7 @@ class EmployeesResource(SyncAPIResource):
 
           ids: Filter for specific employees by their QuickBooks-assigned unique identifier(s).
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           limit: The maximum number of objects to return. Accepts values ranging from 1 to 150,
@@ -672,7 +672,7 @@ class EmployeesResource(SyncAPIResource):
           names: Filter for specific employees by their name(s), case-insensitive. Like `id`,
               `name` is a unique identifier for an employee.
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           name_starts_with: Filter for employees whose `name` starts with this substring, case-insensitive.
@@ -874,7 +874,7 @@ class AsyncEmployeesResource(AsyncAPIResource):
               this object in your external system. This field is immutable and can only be set
               during object creation.
 
-              **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
+              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
               QuickBooks will return an error.
 
           fax: The employee's fax number.
@@ -929,7 +929,7 @@ class AsyncEmployeesResource(AsyncAPIResource):
 
           ssn: The employee's Social Security Number. The value can be with or without dashes.
 
-              **NOTE:**: This field cannot be changed after the employee is created.
+              **NOTE**: This field cannot be changed after the employee is created.
 
           supervisor_id: The employee's supervisor. Found in the "employment job details" section of the
               employee's record in QuickBooks.
@@ -1350,7 +1350,7 @@ class AsyncEmployeesResource(AsyncAPIResource):
 
           ids: Filter for specific employees by their QuickBooks-assigned unique identifier(s).
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           limit: The maximum number of objects to return. Accepts values ranging from 1 to 150,
@@ -1374,7 +1374,7 @@ class AsyncEmployeesResource(AsyncAPIResource):
           names: Filter for specific employees by their name(s), case-insensitive. Like `id`,
               `name` is a unique identifier for an employee.
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           name_starts_with: Filter for employees whose `name` starts with this substring, case-insensitive.

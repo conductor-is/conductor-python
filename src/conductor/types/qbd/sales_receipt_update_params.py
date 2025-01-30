@@ -67,7 +67,7 @@ class SalesReceiptUpdateParams(TypedDict, total=False):
     The date by which this sales receipt must be paid, in ISO 8601 format
     (YYYY-MM-DD).
 
-    **NOTE:** For sales receipts, this field is often `null` because sales receipts
+    **NOTE**: For sales receipts, this field is often `null` because sales receipts
     are generally used for point-of-sale payments, where full payment is received at
     the time of purchase.
     """
@@ -99,7 +99,7 @@ class SalesReceiptUpdateParams(TypedDict, total=False):
     The sales receipt's line item groups, each representing a predefined set of
     related items.
 
-    **IMPORTANT:**:
+    **IMPORTANT**:
 
     1. Including this array in your update request will **REPLACE** all existing
        line item groups for the sales receipt with this array. To keep any existing
@@ -118,7 +118,7 @@ class SalesReceiptUpdateParams(TypedDict, total=False):
     The sales receipt's line items, each representing a single product or service
     sold.
 
-    **IMPORTANT:**:
+    **IMPORTANT**:
 
     1. Including this array in your update request will **REPLACE** all existing
        line items for the sales receipt with this array. To keep any existing line
@@ -288,7 +288,7 @@ class LineGroupLine(TypedDict, total=False):
     The QuickBooks-assigned unique identifier of an existing sales receipt line you
     wish to retain or update.
 
-    **IMPORTANT:**: Set this field to `-1` for new sales receipt lines you wish to
+    **IMPORTANT**: Set this field to `-1` for new sales receipt lines you wish to
     add.
     """
 
@@ -453,8 +453,8 @@ class LineGroup(TypedDict, total=False):
     The QuickBooks-assigned unique identifier of an existing sales receipt line
     group you wish to retain or update.
 
-    **IMPORTANT:**: Set this field to `-1` for new sales receipt line groups you
-    wish to add.
+    **IMPORTANT**: Set this field to `-1` for new sales receipt line groups you wish
+    to add.
     """
 
     item_group_id: Annotated[str, PropertyInfo(alias="itemGroupId")]
@@ -469,7 +469,7 @@ class LineGroup(TypedDict, total=False):
     The sales receipt line group's line items, each representing a single product or
     service sold.
 
-    **IMPORTANT:**:
+    **IMPORTANT**:
 
     1. Including this array in your update request will **REPLACE** all existing
        line items for the sales receipt line group with this array. To keep any
@@ -512,7 +512,7 @@ class Line(TypedDict, total=False):
     The QuickBooks-assigned unique identifier of an existing sales receipt line you
     wish to retain or update.
 
-    **IMPORTANT:**: Set this field to `-1` for new sales receipt lines you wish to
+    **IMPORTANT**: Set this field to `-1` for new sales receipt lines you wish to
     add.
     """
 

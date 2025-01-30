@@ -51,21 +51,21 @@ class AccountListParams(TypedDict, total=False):
     colons. For example, if an account is under "Corporate" and has the `name`
     "Accounts-Payable", its `fullName` would be "Corporate:Accounts-Payable".
 
-    **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+    **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
     query parameters for this request.
     """
 
     ids: List[str]
     """Filter for specific accounts by their QuickBooks-assigned unique identifier(s).
 
-    **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+    **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
     query parameters for this request.
     """
 
     limit: int
     """The maximum number of objects to return.
 
-    **IMPORTANT:**: QuickBooks Desktop does not support cursor-based pagination for
+    **IMPORTANT**: QuickBooks Desktop does not support cursor-based pagination for
     accounts. This parameter will limit the response size, but you cannot fetch
     subsequent results using a cursor. For pagination, use the name-range parameters
     instead (e.g., `nameFrom=A&nameTo=B`).

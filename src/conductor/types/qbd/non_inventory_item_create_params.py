@@ -45,7 +45,7 @@ class NonInventoryItemCreateParams(TypedDict, total=False):
     this object in your external system. This field is immutable and can only be set
     during object creation.
 
-    **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
+    **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
     QuickBooks will return an error.
     """
 
@@ -71,7 +71,7 @@ class NonInventoryItemCreateParams(TypedDict, total=False):
     reimbursable expenses or inventory items that are bought from vendors and sold
     to customers.
 
-    **IMPORTANT:**: You must specify either `salesAndPurchaseDetails` or
+    **IMPORTANT**: You must specify either `salesAndPurchaseDetails` or
     `salesOrPurchaseDetails` when creating a non-inventory item, but never both
     because an item cannot have both configurations.
     """
@@ -83,7 +83,7 @@ class NonInventoryItemCreateParams(TypedDict, total=False):
     purchased office supply that isn't resold) or service items (like consulting
     services that are sold but not purchased).
 
-    **IMPORTANT:**: You must specify either `salesOrPurchaseDetails` or
+    **IMPORTANT**: You must specify either `salesOrPurchaseDetails` or
     `salesAndPurchaseDetails` when creating a non-inventory item, but never both
     because an item cannot have both configurations.
     """
