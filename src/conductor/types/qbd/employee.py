@@ -283,7 +283,10 @@ class EmployeePayrollSickHours(BaseModel):
     """How frequently the employee's sick hours are accrued."""
 
     accrual_start_date: Optional[datetime.date] = FieldInfo(alias="accrualStartDate", default=None)
-    """The date the employee's sick hours began to accrue."""
+    """
+    The date the employee's sick hours began to accrue, in ISO 8601 format
+    (YYYY-MM-DD).
+    """
 
     hours_accrued_per_period: Optional[str] = FieldInfo(alias="hoursAccruedPerPeriod", default=None)
     """The number of sick hours the employee will accrue per accrual period."""
@@ -314,7 +317,10 @@ class EmployeePayrollVacationHours(BaseModel):
     """How frequently the employee's vacation hours are accrued."""
 
     accrual_start_date: Optional[datetime.date] = FieldInfo(alias="accrualStartDate", default=None)
-    """The date the employee's vacation hours began to accrue."""
+    """
+    The date the employee's vacation hours began to accrue, in ISO 8601 format
+    (YYYY-MM-DD).
+    """
 
     hours_accrued_per_period: Optional[str] = FieldInfo(alias="hoursAccruedPerPeriod", default=None)
     """The number of vacation hours the employee will accrue per accrual period."""
@@ -424,7 +430,7 @@ class Employee(BaseModel):
     """
 
     adjusted_service_date: Optional[datetime.date] = FieldInfo(alias="adjustedServiceDate", default=None)
-    """The adjusted service date for this employee.
+    """The adjusted service date for this employee, in ISO 8601 format (YYYY-MM-DD).
 
     This date accounts for previous employment periods or leaves that affect
     seniority.
@@ -440,7 +446,7 @@ class Employee(BaseModel):
     """
 
     birth_date: Optional[datetime.date] = FieldInfo(alias="birthDate", default=None)
-    """This employee's date of birth."""
+    """This employee's date of birth, in ISO 8601 format (YYYY-MM-DD)."""
 
     created_at: str = FieldInfo(alias="createdAt")
     """
@@ -525,7 +531,7 @@ class Employee(BaseModel):
     """This employee's gender."""
 
     hired_date: Optional[datetime.date] = FieldInfo(alias="hiredDate", default=None)
-    """The date this employee was hired."""
+    """The date this employee was hired, in ISO 8601 format (YYYY-MM-DD)."""
 
     i9_on_file_status: Optional[Literal["on_file", "not_on_file"]] = FieldInfo(alias="i9OnFileStatus", default=None)
     """Indicates whether this employee's I-9 is on file."""
@@ -575,7 +581,7 @@ class Employee(BaseModel):
     """The type of object. This value is always `"qbd_employee"`."""
 
     original_hire_date: Optional[datetime.date] = FieldInfo(alias="originalHireDate", default=None)
-    """The original hire date for this employee."""
+    """The original hire date for this employee, in ISO 8601 format (YYYY-MM-DD)."""
 
     overtime_exempt_status: Optional[Literal["exempt", "non_exempt"]] = FieldInfo(
         alias="overtimeExemptStatus", default=None
@@ -635,9 +641,9 @@ class Employee(BaseModel):
     """
 
     termination_date: Optional[datetime.date] = FieldInfo(alias="terminationDate", default=None)
-    """The date this employee's employment ended with the company.
-
-    This is also known as the released date or separation date.
+    """
+    The date this employee's employment ended with the company, in ISO 8601 format
+    (YYYY-MM-DD). This is also known as the released date or separation date.
     """
 
     updated_at: str = FieldInfo(alias="updatedAt")
@@ -658,4 +664,7 @@ class Employee(BaseModel):
     work_authorization_expiration_date: Optional[datetime.date] = FieldInfo(
         alias="workAuthorizationExpirationDate", default=None
     )
-    """The date this employee's work authorization expires."""
+    """
+    The date this employee's work authorization expires, in ISO 8601 format
+    (YYYY-MM-DD).
+    """
