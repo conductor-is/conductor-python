@@ -131,7 +131,10 @@ class EmployeeUpdateParams(TypedDict, total=False):
     """The employee's fax number."""
 
     first_name: Annotated[str, PropertyInfo(alias="firstName")]
-    """The employee's first name."""
+    """The employee's first name.
+
+    Maximum length: 25 characters.
+    """
 
     hired_date: Annotated[Union[str, date], PropertyInfo(alias="hiredDate", format="iso8601")]
     """The date this employee was hired, in ISO 8601 format (YYYY-MM-DD)."""
@@ -153,10 +156,16 @@ class EmployeeUpdateParams(TypedDict, total=False):
     """Indicates whether this employee is a key employee."""
 
     last_name: Annotated[str, PropertyInfo(alias="lastName")]
-    """The employee's last name."""
+    """The employee's last name.
+
+    Maximum length: 25 characters.
+    """
 
     middle_name: Annotated[str, PropertyInfo(alias="middleName")]
-    """The employee's middle name."""
+    """The employee's middle name.
+
+    Maximum length: 5 characters.
+    """
 
     military_status: Annotated[Literal["active", "reserve"], PropertyInfo(alias="militaryStatus")]
     """This employee's military status if they are a U.S. veteran."""
@@ -242,31 +251,51 @@ class AdditionalNote(TypedDict, total=False):
 
 class Address(TypedDict, total=False):
     city: str
-    """The city, district, suburb, town, or village name of the employee address."""
+    """The city, district, suburb, town, or village name of the employee address.
+
+    Maximum length: 31 characters.
+    """
 
     country: str
     """The country name of the employee address."""
 
     line1: str
-    """The first line of the employee address (e.g., street, PO Box, or company name)."""
+    """The first line of the employee address (e.g., street, PO Box, or company name).
+
+    Maximum length: 41 characters.
+    """
 
     line2: str
     """
     The second line of the employee address, if needed (e.g., apartment, suite,
     unit, or building).
+
+    Maximum length: 41 characters.
     """
 
     line3: str
-    """The third line of the employee address, if needed."""
+    """The third line of the employee address, if needed.
+
+    Maximum length: 41 characters.
+    """
 
     line4: str
-    """The fourth line of the employee address, if needed."""
+    """The fourth line of the employee address, if needed.
+
+    Maximum length: 41 characters.
+    """
 
     line5: str
-    """The fifth line of the employee address, if needed."""
+    """The fifth line of the employee address, if needed.
+
+    Maximum length: 41 characters.
+    """
 
     postal_code: Annotated[str, PropertyInfo(alias="postalCode")]
-    """The postal code or ZIP code of the employee address."""
+    """The postal code or ZIP code of the employee address.
+
+    Maximum length: 13 characters.
+    """
 
     state: Literal[
         "none",
