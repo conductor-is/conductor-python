@@ -1092,7 +1092,7 @@ class CreditCardCredit(BaseModel):
     """
 
     account: Account
-    """The bank or credit card account to which this credit card credit is applied."""
+    """The bank or credit card account to which this credit card credit is posted."""
 
     amount: str
     """
@@ -1143,7 +1143,8 @@ class CreditCardCredit(BaseModel):
     external_id: Optional[str] = FieldInfo(alias="externalId", default=None)
     """
     A globally unique identifier (GUID) you, the developer, can provide for tracking
-    this object in your external system.
+    this object in your external system. This field is immutable and can only be set
+    during object creation.
     """
 
     item_line_groups: List[ItemLineGroup] = FieldInfo(alias="itemLineGroups")
@@ -1180,10 +1181,10 @@ class CreditCardCredit(BaseModel):
 
     revision_number: str = FieldInfo(alias="revisionNumber")
     """
-    The current revision number of this credit card credit object, which changes
-    each time the object is modified. When updating this object, you must provide
-    the most recent `revisionNumber` to ensure you're working with the latest data;
-    otherwise, the update will return an error.
+    The current QuickBooks-assigned revision number of this credit card credit
+    object, which changes each time the object is modified. When updating this
+    object, you must provide the most recent `revisionNumber` to ensure you're
+    working with the latest data; otherwise, the update will return an error.
     """
 
     sales_tax_code: Optional[SalesTaxCode] = FieldInfo(alias="salesTaxCode", default=None)

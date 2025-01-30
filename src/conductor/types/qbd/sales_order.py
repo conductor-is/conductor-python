@@ -1187,7 +1187,8 @@ class SalesOrder(BaseModel):
     external_id: Optional[str] = FieldInfo(alias="externalId", default=None)
     """
     A globally unique identifier (GUID) you, the developer, can provide for tracking
-    this object in your external system.
+    this object in your external system. This field is immutable and can only be set
+    during object creation.
     """
 
     is_fully_invoiced: Optional[bool] = FieldInfo(alias="isFullyInvoiced", default=None)
@@ -1266,10 +1267,10 @@ class SalesOrder(BaseModel):
 
     revision_number: str = FieldInfo(alias="revisionNumber")
     """
-    The current revision number of this sales order object, which changes each time
-    the object is modified. When updating this object, you must provide the most
-    recent `revisionNumber` to ensure you're working with the latest data;
-    otherwise, the update will return an error.
+    The current QuickBooks-assigned revision number of this sales order object,
+    which changes each time the object is modified. When updating this object, you
+    must provide the most recent `revisionNumber` to ensure you're working with the
+    latest data; otherwise, the update will return an error.
     """
 
     sales_channel_name: Optional[Literal["blank", "ecommerce"]] = FieldInfo(alias="salesChannelName", default=None)

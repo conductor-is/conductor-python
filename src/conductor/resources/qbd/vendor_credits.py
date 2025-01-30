@@ -89,11 +89,11 @@ class VendorCreditsResource(SyncAPIResource):
           expense_lines: The vendor credit's expense lines, each representing one line in this expense.
 
           external_id: A globally unique identifier (GUID) you, the developer, can provide for tracking
-              this object in your external system.
+              this object in your external system. This field is immutable and can only be set
+              during object creation.
 
-              **IMPORTANT**: Must be formatted as a valid GUID; otherwise, QuickBooks will
-              return an error. This field is immutable and can only be set during object
-              creation.
+              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
+              QuickBooks will return an error.
 
           item_line_groups: The vendor credit's item group lines, each representing a predefined set of
               items bundled together because they are commonly purchased together or grouped
@@ -114,6 +114,8 @@ class VendorCreditsResource(SyncAPIResource):
           ref_number: The case-sensitive user-defined reference number for this vendor credit, which
               can be used to identify the transaction in QuickBooks. This value is not
               required to be unique and can be arbitrarily changed by the QuickBooks user.
+              When left blank in this create request, this field will be left blank in
+              QuickBooks (i.e., it does _not_ auto-increment).
 
           sales_tax_code_id: The sales-tax code for this vendor credit, determining whether it is taxable or
               non-taxable. If set, this overrides any sales-tax codes defined on the vendor.
@@ -228,10 +230,10 @@ class VendorCreditsResource(SyncAPIResource):
         Args:
           id: The QuickBooks-assigned unique identifier of the vendor credit to update.
 
-          revision_number: The current revision number of the vendor credit object you are updating, which
-              you can get by fetching the object first. Provide the most recent
-              `revisionNumber` to ensure you're working with the latest data; otherwise, the
-              update will return an error.
+          revision_number: The current QuickBooks-assigned revision number of the vendor credit object you
+              are updating, which you can get by fetching the object first. Provide the most
+              recent `revisionNumber` to ensure you're working with the latest data;
+              otherwise, the update will return an error.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -613,11 +615,11 @@ class AsyncVendorCreditsResource(AsyncAPIResource):
           expense_lines: The vendor credit's expense lines, each representing one line in this expense.
 
           external_id: A globally unique identifier (GUID) you, the developer, can provide for tracking
-              this object in your external system.
+              this object in your external system. This field is immutable and can only be set
+              during object creation.
 
-              **IMPORTANT**: Must be formatted as a valid GUID; otherwise, QuickBooks will
-              return an error. This field is immutable and can only be set during object
-              creation.
+              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
+              QuickBooks will return an error.
 
           item_line_groups: The vendor credit's item group lines, each representing a predefined set of
               items bundled together because they are commonly purchased together or grouped
@@ -638,6 +640,8 @@ class AsyncVendorCreditsResource(AsyncAPIResource):
           ref_number: The case-sensitive user-defined reference number for this vendor credit, which
               can be used to identify the transaction in QuickBooks. This value is not
               required to be unique and can be arbitrarily changed by the QuickBooks user.
+              When left blank in this create request, this field will be left blank in
+              QuickBooks (i.e., it does _not_ auto-increment).
 
           sales_tax_code_id: The sales-tax code for this vendor credit, determining whether it is taxable or
               non-taxable. If set, this overrides any sales-tax codes defined on the vendor.
@@ -752,10 +756,10 @@ class AsyncVendorCreditsResource(AsyncAPIResource):
         Args:
           id: The QuickBooks-assigned unique identifier of the vendor credit to update.
 
-          revision_number: The current revision number of the vendor credit object you are updating, which
-              you can get by fetching the object first. Provide the most recent
-              `revisionNumber` to ensure you're working with the latest data; otherwise, the
-              update will return an error.
+          revision_number: The current QuickBooks-assigned revision number of the vendor credit object you
+              are updating, which you can get by fetching the object first. Provide the most
+              recent `revisionNumber` to ensure you're working with the latest data;
+              otherwise, the update will return an error.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).

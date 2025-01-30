@@ -237,6 +237,26 @@ Methods:
 - <code title="get /quickbooks-desktop/estimates">client.qbd.estimates.<a href="./src/conductor/resources/qbd/estimates.py">list</a>(\*\*<a href="src/conductor/types/qbd/estimate_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/estimate.py">SyncCursorPage[Estimate]</a></code>
 - <code title="delete /quickbooks-desktop/estimates/{id}">client.qbd.estimates.<a href="./src/conductor/resources/qbd/estimates.py">delete</a>(id) -> <a href="./src/conductor/types/qbd/estimate_delete_response.py">EstimateDeleteResponse</a></code>
 
+## InventoryAdjustments
+
+Types:
+
+```python
+from conductor.types.qbd import (
+    InventoryAdjustment,
+    InventoryAdjustmentListResponse,
+    InventoryAdjustmentDeleteResponse,
+)
+```
+
+Methods:
+
+- <code title="post /quickbooks-desktop/inventory-adjustments">client.qbd.inventory_adjustments.<a href="./src/conductor/resources/qbd/inventory_adjustments.py">create</a>(\*\*<a href="src/conductor/types/qbd/inventory_adjustment_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/inventory_adjustment.py">InventoryAdjustment</a></code>
+- <code title="get /quickbooks-desktop/inventory-adjustments/{id}">client.qbd.inventory_adjustments.<a href="./src/conductor/resources/qbd/inventory_adjustments.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/inventory_adjustment.py">InventoryAdjustment</a></code>
+- <code title="post /quickbooks-desktop/inventory-adjustments/{id}">client.qbd.inventory_adjustments.<a href="./src/conductor/resources/qbd/inventory_adjustments.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/inventory_adjustment_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/inventory_adjustment.py">InventoryAdjustment</a></code>
+- <code title="get /quickbooks-desktop/inventory-adjustments">client.qbd.inventory_adjustments.<a href="./src/conductor/resources/qbd/inventory_adjustments.py">list</a>(\*\*<a href="src/conductor/types/qbd/inventory_adjustment_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/inventory_adjustment_list_response.py">InventoryAdjustmentListResponse</a></code>
+- <code title="delete /quickbooks-desktop/inventory-adjustments/{id}">client.qbd.inventory_adjustments.<a href="./src/conductor/resources/qbd/inventory_adjustments.py">delete</a>(id) -> <a href="./src/conductor/types/qbd/inventory_adjustment_delete_response.py">InventoryAdjustmentDeleteResponse</a></code>
+
 ## InventoryAssemblyItems
 
 Types:

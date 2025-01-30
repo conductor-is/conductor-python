@@ -122,11 +122,11 @@ class EmployeeCreateParams(TypedDict, total=False):
     external_id: Annotated[str, PropertyInfo(alias="externalId")]
     """
     A globally unique identifier (GUID) you, the developer, can provide for tracking
-    this object in your external system.
+    this object in your external system. This field is immutable and can only be set
+    during object creation.
 
-    **IMPORTANT**: Must be formatted as a valid GUID; otherwise, QuickBooks will
-    return an error. This field is immutable and can only be set during object
-    creation.
+    **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
+    QuickBooks will return an error.
     """
 
     fax: str
