@@ -118,6 +118,7 @@ class CustomersResource(SyncAPIResource):
               does. For example, two customers could both have the `name` "Website Redesign
               Project", but they could have unique `fullName` values, such as "ABC
               Corporation:Website Redesign Project" and "Baker:Website Redesign Project".
+
               Maximum length: 41 characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
@@ -537,6 +538,7 @@ class CustomersResource(SyncAPIResource):
               does. For example, two customers could both have the `name` "Website Redesign
               Project", but they could have unique `fullName` values, such as "ABC
               Corporation:Website Redesign Project" and "Baker:Website Redesign Project".
+
               Maximum length: 41 characters.
 
           note: A note or comment about this customer.
@@ -913,6 +915,7 @@ class AsyncCustomersResource(AsyncAPIResource):
               does. For example, two customers could both have the `name` "Website Redesign
               Project", but they could have unique `fullName` values, such as "ABC
               Corporation:Website Redesign Project" and "Baker:Website Redesign Project".
+
               Maximum length: 41 characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
@@ -1332,6 +1335,7 @@ class AsyncCustomersResource(AsyncAPIResource):
               does. For example, two customers could both have the `name` "Website Redesign
               Project", but they could have unique `fullName` values, such as "ABC
               Corporation:Website Redesign Project" and "Baker:Website Redesign Project".
+
               Maximum length: 41 characters.
 
           note: A note or comment about this customer.

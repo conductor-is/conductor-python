@@ -50,7 +50,9 @@ class AccountCreateParams(TypedDict, total=False):
     hierarchical parent objects like `fullName` does. For example, two accounts
     could both have the `name` "Accounts-Payable", but they could have unique
     `fullName` values, such as "Corporate:Accounts-Payable" and
-    "Finance:Accounts-Payable". Maximum length: 31 characters.
+    "Finance:Accounts-Payable".
+
+    Maximum length: 31 characters.
     """
 
     conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]
