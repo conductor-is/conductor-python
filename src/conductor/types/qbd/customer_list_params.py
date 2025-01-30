@@ -42,14 +42,14 @@ class CustomerListParams(TypedDict, total=False):
     "Website Redesign Project", its `fullName` would be "ABC Corporation:Website
     Redesign Project".
 
-    **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+    **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
     query parameters for this request.
     """
 
     ids: List[str]
     """Filter for specific customers by their QuickBooks-assigned unique identifier(s).
 
-    **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+    **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
     query parameters for this request.
     """
 

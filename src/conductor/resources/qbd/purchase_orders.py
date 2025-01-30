@@ -119,7 +119,7 @@ class PurchaseOrdersResource(SyncAPIResource):
               this object in your external system. This field is immutable and can only be set
               during object creation.
 
-              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
+              **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
               QuickBooks will return an error.
 
           inventory_site_id: The site location where inventory for the item associated with this purchase
@@ -134,13 +134,13 @@ class PurchaseOrdersResource(SyncAPIResource):
           line_groups: The purchase order's line item groups, each representing a predefined set of
               related items.
 
-              **IMPORTANT**: You must specify `lines`, `lineGroups`, or both when creating a
+              **IMPORTANT:**: You must specify `lines`, `lineGroups`, or both when creating a
               purchase order.
 
           lines: The purchase order's line items, each representing a single product or service
               ordered.
 
-              **IMPORTANT**: You must specify `lines`, `lineGroups`, or both when creating a
+              **IMPORTANT:**: You must specify `lines`, `lineGroups`, or both when creating a
               purchase order.
 
           memo: A memo or note for this purchase order that appears in reports, but not on the
@@ -371,7 +371,7 @@ class PurchaseOrdersResource(SyncAPIResource):
           line_groups: The purchase order's line item groups, each representing a predefined set of
               related items.
 
-              **IMPORTANT**:
+              **IMPORTANT:**:
 
               1. Including this array in your update request will **REPLACE** all existing
                  line item groups for the purchase order with this array. To keep any existing
@@ -387,7 +387,7 @@ class PurchaseOrdersResource(SyncAPIResource):
           lines: The purchase order's line items, each representing a single product or service
               ordered.
 
-              **IMPORTANT**:
+              **IMPORTANT:**:
 
               1. Including this array in your update request will **REPLACE** all existing
                  line items for the purchase order with this array. To keep any existing line
@@ -552,7 +552,7 @@ class PurchaseOrdersResource(SyncAPIResource):
           ids: Filter for specific purchase orders by their QuickBooks-assigned unique
               identifier(s).
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           include_line_items: Whether to include line items in the response. Defaults to `true`.
@@ -584,7 +584,7 @@ class PurchaseOrdersResource(SyncAPIResource):
               QuickBooks, ref-numbers are not required to be unique and can be arbitrarily
               changed by the QuickBooks user.
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           ref_number_starts_with:
@@ -790,7 +790,7 @@ class AsyncPurchaseOrdersResource(AsyncAPIResource):
               this object in your external system. This field is immutable and can only be set
               during object creation.
 
-              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
+              **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
               QuickBooks will return an error.
 
           inventory_site_id: The site location where inventory for the item associated with this purchase
@@ -805,13 +805,13 @@ class AsyncPurchaseOrdersResource(AsyncAPIResource):
           line_groups: The purchase order's line item groups, each representing a predefined set of
               related items.
 
-              **IMPORTANT**: You must specify `lines`, `lineGroups`, or both when creating a
+              **IMPORTANT:**: You must specify `lines`, `lineGroups`, or both when creating a
               purchase order.
 
           lines: The purchase order's line items, each representing a single product or service
               ordered.
 
-              **IMPORTANT**: You must specify `lines`, `lineGroups`, or both when creating a
+              **IMPORTANT:**: You must specify `lines`, `lineGroups`, or both when creating a
               purchase order.
 
           memo: A memo or note for this purchase order that appears in reports, but not on the
@@ -1042,7 +1042,7 @@ class AsyncPurchaseOrdersResource(AsyncAPIResource):
           line_groups: The purchase order's line item groups, each representing a predefined set of
               related items.
 
-              **IMPORTANT**:
+              **IMPORTANT:**:
 
               1. Including this array in your update request will **REPLACE** all existing
                  line item groups for the purchase order with this array. To keep any existing
@@ -1058,7 +1058,7 @@ class AsyncPurchaseOrdersResource(AsyncAPIResource):
           lines: The purchase order's line items, each representing a single product or service
               ordered.
 
-              **IMPORTANT**:
+              **IMPORTANT:**:
 
               1. Including this array in your update request will **REPLACE** all existing
                  line items for the purchase order with this array. To keep any existing line
@@ -1223,7 +1223,7 @@ class AsyncPurchaseOrdersResource(AsyncAPIResource):
           ids: Filter for specific purchase orders by their QuickBooks-assigned unique
               identifier(s).
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           include_line_items: Whether to include line items in the response. Defaults to `true`.
@@ -1255,7 +1255,7 @@ class AsyncPurchaseOrdersResource(AsyncAPIResource):
               QuickBooks, ref-numbers are not required to be unique and can be arbitrarily
               changed by the QuickBooks user.
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           ref_number_starts_with:

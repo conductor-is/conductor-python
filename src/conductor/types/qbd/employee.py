@@ -569,7 +569,7 @@ class Employee(BaseModel):
     Maximum length: 41 characters. A concatenation of the employee's `firstName`,
     `middleName`, and `lastName` fields.
 
-    **NOTE**: Employees do not have a `fullName` field because they are not
+    **NOTE:**: Employees do not have a `fullName` field because they are not
     hierarchical objects, which is why `name` is unique for them but not for objects
     that have parents.
     """
@@ -623,7 +623,7 @@ class Employee(BaseModel):
     ssn: Optional[str] = None
     """The employee's Social Security Number. The value can be with or without dashes.
 
-    **NOTE**: This field cannot be changed after the employee is created.
+    **NOTE:**: This field cannot be changed after the employee is created.
     """
 
     supervisor: Optional[Supervisor] = None

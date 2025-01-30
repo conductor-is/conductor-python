@@ -146,7 +146,7 @@ class Account(BaseModel):
     The classification of this account, indicating its purpose within the chart of
     accounts.
 
-    **NOTE**: You cannot create an account of type `non_posting` through the API
+    **NOTE:**: You cannot create an account of type `non_posting` through the API
     because QuickBooks creates these accounts behind the scenes.
     """
 
@@ -204,7 +204,7 @@ class Account(BaseModel):
     separated by colons. For example, if an account is under "Corporate" and has the
     `name` "Accounts-Payable", its `fullName` would be "Corporate:Accounts-Payable".
 
-    **NOTE**: Unlike `name`, `fullName` is guaranteed to be unique across all
+    **NOTE:**: Unlike `name`, `fullName` is guaranteed to be unique across all
     account objects. However, `fullName` can still be arbitrarily changed by the
     QuickBooks user when they modify the underlying `name` field.
     """

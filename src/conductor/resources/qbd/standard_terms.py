@@ -71,7 +71,7 @@ class StandardTermsResource(SyncAPIResource):
           name: The case-insensitive unique name of this standard term, unique across all
               standard terms. Maximum length: 31 characters.
 
-              **NOTE**: Standard terms do not have a `fullName` field because they are not
+              **NOTE:**: Standard terms do not have a `fullName` field because they are not
               hierarchical objects, which is why `name` is unique for them but not for objects
               that have parents.
 
@@ -191,12 +191,12 @@ class StandardTermsResource(SyncAPIResource):
           ids: Filter for specific standard terms by their QuickBooks-assigned unique
               identifier(s).
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           limit: The maximum number of objects to return.
 
-              **IMPORTANT**: QuickBooks Desktop does not support cursor-based pagination for
+              **IMPORTANT:**: QuickBooks Desktop does not support cursor-based pagination for
               standard terms. This parameter will limit the response size, but you cannot
               fetch subsequent results using a cursor. For pagination, use the name-range
               parameters instead (e.g., `nameFrom=A&nameTo=B`).
@@ -219,7 +219,7 @@ class StandardTermsResource(SyncAPIResource):
           names: Filter for specific standard terms by their name(s), case-insensitive. Like
               `id`, `name` is a unique identifier for a standard term.
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           name_starts_with: Filter for standard terms whose `name` starts with this substring,
@@ -319,7 +319,7 @@ class AsyncStandardTermsResource(AsyncAPIResource):
           name: The case-insensitive unique name of this standard term, unique across all
               standard terms. Maximum length: 31 characters.
 
-              **NOTE**: Standard terms do not have a `fullName` field because they are not
+              **NOTE:**: Standard terms do not have a `fullName` field because they are not
               hierarchical objects, which is why `name` is unique for them but not for objects
               that have parents.
 
@@ -439,12 +439,12 @@ class AsyncStandardTermsResource(AsyncAPIResource):
           ids: Filter for specific standard terms by their QuickBooks-assigned unique
               identifier(s).
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           limit: The maximum number of objects to return.
 
-              **IMPORTANT**: QuickBooks Desktop does not support cursor-based pagination for
+              **IMPORTANT:**: QuickBooks Desktop does not support cursor-based pagination for
               standard terms. This parameter will limit the response size, but you cannot
               fetch subsequent results using a cursor. For pagination, use the name-range
               parameters instead (e.g., `nameFrom=A&nameTo=B`).
@@ -467,7 +467,7 @@ class AsyncStandardTermsResource(AsyncAPIResource):
           names: Filter for specific standard terms by their name(s), case-insensitive. Like
               `id`, `name` is a unique identifier for a standard term.
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           name_starts_with: Filter for standard terms whose `name` starts with this substring,

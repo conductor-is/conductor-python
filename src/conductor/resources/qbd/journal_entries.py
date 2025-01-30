@@ -99,7 +99,7 @@ class JournalEntriesResource(SyncAPIResource):
               this object in your external system. This field is immutable and can only be set
               during object creation.
 
-              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
+              **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
               QuickBooks will return an error.
 
           is_adjustment: Indicates whether this journal entry is an adjustment entry. When `true`,
@@ -334,7 +334,7 @@ class JournalEntriesResource(SyncAPIResource):
           ids: Filter for specific journal entries by their QuickBooks-assigned unique
               identifier(s).
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           include_line_items: Whether to include line items in the response. Defaults to `true`.
@@ -363,7 +363,7 @@ class JournalEntriesResource(SyncAPIResource):
               QuickBooks, ref-numbers are not required to be unique and can be arbitrarily
               changed by the QuickBooks user.
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           ref_number_starts_with:
@@ -546,7 +546,7 @@ class AsyncJournalEntriesResource(AsyncAPIResource):
               this object in your external system. This field is immutable and can only be set
               during object creation.
 
-              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
+              **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
               QuickBooks will return an error.
 
           is_adjustment: Indicates whether this journal entry is an adjustment entry. When `true`,
@@ -781,7 +781,7 @@ class AsyncJournalEntriesResource(AsyncAPIResource):
           ids: Filter for specific journal entries by their QuickBooks-assigned unique
               identifier(s).
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           include_line_items: Whether to include line items in the response. Defaults to `true`.
@@ -810,7 +810,7 @@ class AsyncJournalEntriesResource(AsyncAPIResource):
               QuickBooks, ref-numbers are not required to be unique and can be arbitrarily
               changed by the QuickBooks user.
 
-              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           ref_number_starts_with:

@@ -306,7 +306,7 @@ class InventoryAssemblyItem(BaseModel):
     under "Assemblies" and has the `name` "Deluxe Kit", its `fullName` would be
     "Assemblies:Deluxe Kit".
 
-    **NOTE**: Unlike `name`, `fullName` is guaranteed to be unique across all
+    **NOTE:**: Unlike `name`, `fullName` is guaranteed to be unique across all
     inventory assembly item objects. However, `fullName` can still be arbitrarily
     changed by the QuickBooks user when they modify the underlying `name` field.
     """
