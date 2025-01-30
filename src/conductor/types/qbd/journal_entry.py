@@ -128,7 +128,7 @@ class CreditLine(BaseModel):
     The customer, vendor, employee, or other entity associated with this journal
     credit line.
 
-    **IMPORTANT:**: If the journal credit line's `account` is an Accounts Receivable
+    **IMPORTANT**: If the journal credit line's `account` is an Accounts Receivable
     (A/R) account, this field must refer to a customer. If the journal credit line's
     `account` is an Accounts Payable (A/P) account, this field must refer to a
     vendor. If these requirements are not met, QuickBooks Desktop will not record
@@ -305,7 +305,7 @@ class DebitLine(BaseModel):
     The customer, vendor, employee, or other entity associated with this journal
     debit line.
 
-    **IMPORTANT:**: If the journal debit line's `account` is an Accounts Receivable
+    **IMPORTANT**: If the journal debit line's `account` is an Accounts Receivable
     (A/R) account, this field must refer to a customer. If the journal debit line's
     `account` is an Accounts Payable (A/P) account, this field must refer to a
     vendor. If these requirements are not met, QuickBooks Desktop will not record

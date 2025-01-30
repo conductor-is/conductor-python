@@ -188,7 +188,7 @@ class AppliedToTransaction(BaseModel):
     The receivable transaction's linked transactions, such as payments applied,
     credits used, or associated purchase orders.
 
-    **IMPORTANT:**: You must specify the parameter `includeLinkedTransactions` when
+    **IMPORTANT**: You must specify the parameter `includeLinkedTransactions` when
     fetching a list of receivable transactions to receive this field because it is
     not returned by default.
     """
@@ -423,7 +423,7 @@ class BillCheckPayment(BaseModel):
     used to track the amount owed. If not specified, QuickBooks Desktop will use its
     default A/P account.
 
-    **IMPORTANT:**: If this bill check payment is linked to other transactions, this
+    **IMPORTANT**: If this bill check payment is linked to other transactions, this
     A/P account must match the `payablesAccount` used in those other transactions.
     """
 
@@ -433,7 +433,7 @@ class BillCheckPayment(BaseModel):
     which can be used to identify the transaction in QuickBooks. This value is not
     required to be unique and can be arbitrarily changed by the QuickBooks user.
 
-    **IMPORTANT:**: For checks, this field is the check number.
+    **IMPORTANT**: For checks, this field is the check number.
     """
 
     revision_number: str = FieldInfo(alias="revisionNumber")
@@ -459,6 +459,6 @@ class BillCheckPayment(BaseModel):
     The vendor who sent the bill(s) that this bill check payment is paying and who
     will receive this payment.
 
-    **IMPORTANT:**: This vendor must match the `vendor` on the bill(s) specified in
+    **IMPORTANT**: This vendor must match the `vendor` on the bill(s) specified in
     `applyToTransactions`.
     """

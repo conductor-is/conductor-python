@@ -38,12 +38,12 @@ class ReceivePaymentUpdateParams(TypedDict, total=False):
 
     This will create a link between this receive-payment and the specified invoices.
 
-    **IMPORTANT:**: In each `applyToTransactions` object, you must specify either
+    **IMPORTANT**: In each `applyToTransactions` object, you must specify either
     `paymentAmount`, `applyCredits`, `discountAmount`, or any combination of these;
     if none of these are specified, you will receive an error for an empty
     transaction.
 
-    **IMPORTANT:**: The target invoice must have `isPaid=false`, otherwise,
+    **IMPORTANT**: The target invoice must have `isPaid=false`, otherwise,
     QuickBooks will report this object as "cannot be found".
     """
 
@@ -88,10 +88,10 @@ class ReceivePaymentUpdateParams(TypedDict, total=False):
     used to track the amount owed. If not specified, QuickBooks Desktop will use its
     default A/R account.
 
-    **IMPORTANT:**: If this receive-payment is linked to other transactions, this
-    A/R account must match the `receivablesAccount` used in all linked transactions.
-    For example, when refunding a credit card payment, the A/R account must match
-    the one used in the original credit transactions being refunded.
+    **IMPORTANT**: If this receive-payment is linked to other transactions, this A/R
+    account must match the `receivablesAccount` used in all linked transactions. For
+    example, when refunding a credit card payment, the A/R account must match the
+    one used in the original credit transactions being refunded.
     """
 
     ref_number: Annotated[str, PropertyInfo(alias="refNumber")]
@@ -106,7 +106,7 @@ class ReceivePaymentUpdateParams(TypedDict, total=False):
     The total monetary amount of this receive-payment, represented as a decimal
     string.
 
-    **NOTE:** The sum of the `paymentAmount` amounts in the `applyToTransactions`
+    **NOTE**: The sum of the `paymentAmount` amounts in the `applyToTransactions`
     array cannot exceed the `totalAmount`, or you will receive an error.
     """
 
@@ -142,7 +142,7 @@ class ApplyToTransaction(TypedDict, total=False):
     This creates a link between this receivable transaction and the specified credit
     memos.
 
-    **IMPORTANT:**: By default, QuickBooks will not return any information about the
+    **IMPORTANT**: By default, QuickBooks will not return any information about the
     linked transactions in this endpoint's response even when this request is
     successful. To see the transactions linked via this field, refetch the
     receivable transaction and check the `linkedTransactions` response field. If

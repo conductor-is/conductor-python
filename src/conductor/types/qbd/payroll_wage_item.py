@@ -59,9 +59,9 @@ class PayrollWageItem(BaseModel):
     The case-insensitive unique name of this payroll wage item, unique across all
     payroll wage items.
 
-    **NOTE:**: Payroll wage items do not have a `fullName` field because they are
-    not hierarchical objects, which is why `name` is unique for them but not for
-    objects that have parents.
+    **NOTE**: Payroll wage items do not have a `fullName` field because they are not
+    hierarchical objects, which is why `name` is unique for them but not for objects
+    that have parents.
     """
 
     object_type: Literal["qbd_payroll_wage_item"] = FieldInfo(alias="objectType")

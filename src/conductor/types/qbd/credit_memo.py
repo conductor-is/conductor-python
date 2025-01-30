@@ -1242,7 +1242,7 @@ class CreditMemo(BaseModel):
     The credit memo's linked transactions, such as payments applied, credits used,
     or associated purchase orders.
 
-    **IMPORTANT:**: You must specify the parameter `includeLinkedTransactions` when
+    **IMPORTANT**: You must specify the parameter `includeLinkedTransactions` when
     fetching a list of credit memos to receive this field because it is not returned
     by default.
     """
@@ -1280,7 +1280,7 @@ class CreditMemo(BaseModel):
     used to track the amount owed. If not specified, QuickBooks Desktop will use its
     default A/R account.
 
-    **IMPORTANT:**: If this credit memo is linked to other transactions, this A/R
+    **IMPORTANT**: If this credit memo is linked to other transactions, this A/R
     account must match the `receivablesAccount` used in all linked transactions. For
     example, when refunding a credit card payment, the A/R account must match the
     one used in the original credit transactions being refunded.

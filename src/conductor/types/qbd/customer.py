@@ -146,9 +146,9 @@ class AlternateShippingAddress(BaseModel):
     The case-insensitive unique name of this shipping address, unique across all
     shipping addresses.
 
-    **NOTE:**: Shipping addresses do not have a `fullName` field because they are
-    not hierarchical objects, which is why `name` is unique for them but not for
-    objects that have parents.
+    **NOTE**: Shipping addresses do not have a `fullName` field because they are not
+    hierarchical objects, which is why `name` is unique for them but not for objects
+    that have parents.
     """
 
     note: Optional[str] = None
@@ -616,11 +616,11 @@ class Customer(BaseModel):
     has the `name` "Website Redesign Project", its `fullName` would be "ABC
     Corporation:Website Redesign Project".
 
-    **NOTE:**: Unlike `name`, `fullName` is guaranteed to be unique across all
+    **NOTE**: Unlike `name`, `fullName` is guaranteed to be unique across all
     customer objects. However, `fullName` can still be arbitrarily changed by the
     QuickBooks user when they modify the underlying `name` field.
 
-    **IMPORTANT:**: If this object is a job (i.e., a sub-customer), this value would
+    **IMPORTANT**: If this object is a job (i.e., a sub-customer), this value would
     likely be the job's `name` prefixed by the customer's `name`.
     """
 

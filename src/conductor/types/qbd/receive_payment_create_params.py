@@ -30,7 +30,7 @@ class ReceivePaymentCreateParams(TypedDict, total=False):
     The total monetary amount of this receive-payment, represented as a decimal
     string.
 
-    **NOTE:** The sum of the `paymentAmount` amounts in the `applyToTransactions`
+    **NOTE**: The sum of the `paymentAmount` amounts in the `applyToTransactions`
     array cannot exceed the `totalAmount`, or you will receive an error.
     """
 
@@ -48,15 +48,15 @@ class ReceivePaymentCreateParams(TypedDict, total=False):
 
     This will create a link between this receive-payment and the specified invoices.
 
-    **IMPORTANT:**: In each `applyToTransactions` object, you must specify either
+    **IMPORTANT**: In each `applyToTransactions` object, you must specify either
     `paymentAmount`, `applyCredits`, `discountAmount`, or any combination of these;
     if none of these are specified, you will receive an error for an empty
     transaction.
 
-    **IMPORTANT:**: The target invoice must have `isPaid=false`, otherwise,
+    **IMPORTANT**: The target invoice must have `isPaid=false`, otherwise,
     QuickBooks will report this object as "cannot be found".
 
-    **NOTE:**: You must specify either `isAutoApply` or `applyToTransactions` when
+    **NOTE**: You must specify either `isAutoApply` or `applyToTransactions` when
     creating a receive-payment, but never both.
     """
 
@@ -87,7 +87,7 @@ class ReceivePaymentCreateParams(TypedDict, total=False):
     this object in your external system. This field is immutable and can only be set
     during object creation.
 
-    **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
+    **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
     QuickBooks will return an error.
     """
 
@@ -100,7 +100,7 @@ class ReceivePaymentCreateParams(TypedDict, total=False):
     to any specific transaction, causing the amount to appear as a credit on the
     customer-job's next transaction.
 
-    **IMPORTANT:**: You must specify either `isAutoApply` or `applyToTransactions`
+    **IMPORTANT**: You must specify either `isAutoApply` or `applyToTransactions`
     when creating a receive-payment, but never both.
     """
 
@@ -113,9 +113,9 @@ class ReceivePaymentCreateParams(TypedDict, total=False):
     payment_method_id: Annotated[str, PropertyInfo(alias="paymentMethodId")]
     """The receive-payment's payment method (e.g., cash, check, credit card).
 
-    **NOTE:**: If this receive-payment contains credit card transaction data
-    supplied from QuickBooks Merchant Services (QBMS) transaction responses, you
-    must specify a credit card payment method (e.g., "Visa", "MasterCard", etc.).
+    **NOTE**: If this receive-payment contains credit card transaction data supplied
+    from QuickBooks Merchant Services (QBMS) transaction responses, you must specify
+    a credit card payment method (e.g., "Visa", "MasterCard", etc.).
     """
 
     receivables_account_id: Annotated[str, PropertyInfo(alias="receivablesAccountId")]
@@ -124,10 +124,10 @@ class ReceivePaymentCreateParams(TypedDict, total=False):
     used to track the amount owed. If not specified, QuickBooks Desktop will use its
     default A/R account.
 
-    **IMPORTANT:**: If this receive-payment is linked to other transactions, this
-    A/R account must match the `receivablesAccount` used in all linked transactions.
-    For example, when refunding a credit card payment, the A/R account must match
-    the one used in the original credit transactions being refunded.
+    **IMPORTANT**: If this receive-payment is linked to other transactions, this A/R
+    account must match the `receivablesAccount` used in all linked transactions. For
+    example, when refunding a credit card payment, the A/R account must match the
+    one used in the original credit transactions being refunded.
     """
 
     ref_number: Annotated[str, PropertyInfo(alias="refNumber")]
@@ -168,7 +168,7 @@ class ApplyToTransaction(TypedDict, total=False):
     This creates a link between this receivable transaction and the specified credit
     memos.
 
-    **IMPORTANT:**: By default, QuickBooks will not return any information about the
+    **IMPORTANT**: By default, QuickBooks will not return any information about the
     linked transactions in this endpoint's response even when this request is
     successful. To see the transactions linked via this field, refetch the
     receivable transaction and check the `linkedTransactions` response field. If

@@ -91,7 +91,7 @@ class ChecksResource(SyncAPIResource):
           apply_to_transactions: Transactions to be paid by this check. This will create a link between this
               check and the specified transactions.
 
-              **IMPORTANT:**: By default, QuickBooks will not return any information about the
+              **IMPORTANT**: By default, QuickBooks will not return any information about the
               linked transactions in this endpoint's response even when this request is
               successful. To see the transactions linked via this field, refetch the check and
               check the `linkedTransactions` response field. If fetching a list of checks, you
@@ -108,7 +108,7 @@ class ChecksResource(SyncAPIResource):
               this object in your external system. This field is immutable and can only be set
               during object creation.
 
-              **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
+              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
               QuickBooks will return an error.
 
           is_queued_for_print: Indicates whether this check is included in the queue of documents for
@@ -131,7 +131,7 @@ class ChecksResource(SyncAPIResource):
               this create request, this field will be left blank in QuickBooks (i.e., it does
               _not_ auto-increment).
 
-              **IMPORTANT:**: For checks, this field is the check number.
+              **IMPORTANT**: For checks, this field is the check number.
 
           sales_tax_code_id: The sales-tax code for this check, determining whether it is taxable or
               non-taxable. If set, this overrides any sales-tax codes defined on the payee.
@@ -265,7 +265,7 @@ class ChecksResource(SyncAPIResource):
           apply_to_transactions: Transactions to be paid by this check. This will create a link between this
               check and the specified transactions.
 
-              **IMPORTANT:**: By default, QuickBooks will not return any information about the
+              **IMPORTANT**: By default, QuickBooks will not return any information about the
               linked transactions in this endpoint's response even when this request is
               successful. To see the transactions linked via this field, refetch the check and
               check the `linkedTransactions` response field. If fetching a list of checks, you
@@ -287,7 +287,7 @@ class ChecksResource(SyncAPIResource):
 
           expense_lines: The check's expense lines, each representing one line in this expense.
 
-              **IMPORTANT:**:
+              **IMPORTANT**:
 
               1. Including this array in your update request will **REPLACE** all existing
                  expense lines for the check with this array. To keep any existing expense
@@ -306,7 +306,7 @@ class ChecksResource(SyncAPIResource):
               bundled together because they are commonly purchased together or grouped for
               faster entry.
 
-              **IMPORTANT:**:
+              **IMPORTANT**:
 
               1. Including this array in your update request will **REPLACE** all existing
                  item group lines for the check with this array. To keep any existing item
@@ -322,7 +322,7 @@ class ChecksResource(SyncAPIResource):
           item_lines: The check's item lines, each representing the purchase of a specific item or
               service.
 
-              **IMPORTANT:**:
+              **IMPORTANT**:
 
               1. Including this array in your update request will **REPLACE** all existing
                  item lines for the check with this array. To keep any existing item lines,
@@ -342,7 +342,7 @@ class ChecksResource(SyncAPIResource):
               used to identify the transaction in QuickBooks. This value is not required to be
               unique and can be arbitrarily changed by the QuickBooks user.
 
-              **IMPORTANT:**: For checks, this field is the check number.
+              **IMPORTANT**: For checks, this field is the check number.
 
           sales_tax_code_id: The sales-tax code for this check, determining whether it is taxable or
               non-taxable. If set, this overrides any sales-tax codes defined on the payee.
@@ -443,7 +443,7 @@ class ChecksResource(SyncAPIResource):
 
           ids: Filter for specific checks by their QuickBooks-assigned unique identifier(s).
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           include_line_items: Whether to include line items in the response. Defaults to `true`.
@@ -478,7 +478,7 @@ class ChecksResource(SyncAPIResource):
               QuickBooks, ref-numbers are not required to be unique and can be arbitrarily
               changed by the QuickBooks user.
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           ref_number_starts_with: Filter for checks whose `refNumber` starts with this substring. (For checks,
@@ -653,7 +653,7 @@ class AsyncChecksResource(AsyncAPIResource):
           apply_to_transactions: Transactions to be paid by this check. This will create a link between this
               check and the specified transactions.
 
-              **IMPORTANT:**: By default, QuickBooks will not return any information about the
+              **IMPORTANT**: By default, QuickBooks will not return any information about the
               linked transactions in this endpoint's response even when this request is
               successful. To see the transactions linked via this field, refetch the check and
               check the `linkedTransactions` response field. If fetching a list of checks, you
@@ -670,7 +670,7 @@ class AsyncChecksResource(AsyncAPIResource):
               this object in your external system. This field is immutable and can only be set
               during object creation.
 
-              **IMPORTANT:**: This field must be formatted as a valid GUID; otherwise,
+              **IMPORTANT**: This field must be formatted as a valid GUID; otherwise,
               QuickBooks will return an error.
 
           is_queued_for_print: Indicates whether this check is included in the queue of documents for
@@ -693,7 +693,7 @@ class AsyncChecksResource(AsyncAPIResource):
               this create request, this field will be left blank in QuickBooks (i.e., it does
               _not_ auto-increment).
 
-              **IMPORTANT:**: For checks, this field is the check number.
+              **IMPORTANT**: For checks, this field is the check number.
 
           sales_tax_code_id: The sales-tax code for this check, determining whether it is taxable or
               non-taxable. If set, this overrides any sales-tax codes defined on the payee.
@@ -827,7 +827,7 @@ class AsyncChecksResource(AsyncAPIResource):
           apply_to_transactions: Transactions to be paid by this check. This will create a link between this
               check and the specified transactions.
 
-              **IMPORTANT:**: By default, QuickBooks will not return any information about the
+              **IMPORTANT**: By default, QuickBooks will not return any information about the
               linked transactions in this endpoint's response even when this request is
               successful. To see the transactions linked via this field, refetch the check and
               check the `linkedTransactions` response field. If fetching a list of checks, you
@@ -849,7 +849,7 @@ class AsyncChecksResource(AsyncAPIResource):
 
           expense_lines: The check's expense lines, each representing one line in this expense.
 
-              **IMPORTANT:**:
+              **IMPORTANT**:
 
               1. Including this array in your update request will **REPLACE** all existing
                  expense lines for the check with this array. To keep any existing expense
@@ -868,7 +868,7 @@ class AsyncChecksResource(AsyncAPIResource):
               bundled together because they are commonly purchased together or grouped for
               faster entry.
 
-              **IMPORTANT:**:
+              **IMPORTANT**:
 
               1. Including this array in your update request will **REPLACE** all existing
                  item group lines for the check with this array. To keep any existing item
@@ -884,7 +884,7 @@ class AsyncChecksResource(AsyncAPIResource):
           item_lines: The check's item lines, each representing the purchase of a specific item or
               service.
 
-              **IMPORTANT:**:
+              **IMPORTANT**:
 
               1. Including this array in your update request will **REPLACE** all existing
                  item lines for the check with this array. To keep any existing item lines,
@@ -904,7 +904,7 @@ class AsyncChecksResource(AsyncAPIResource):
               used to identify the transaction in QuickBooks. This value is not required to be
               unique and can be arbitrarily changed by the QuickBooks user.
 
-              **IMPORTANT:**: For checks, this field is the check number.
+              **IMPORTANT**: For checks, this field is the check number.
 
           sales_tax_code_id: The sales-tax code for this check, determining whether it is taxable or
               non-taxable. If set, this overrides any sales-tax codes defined on the payee.
@@ -1005,7 +1005,7 @@ class AsyncChecksResource(AsyncAPIResource):
 
           ids: Filter for specific checks by their QuickBooks-assigned unique identifier(s).
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           include_line_items: Whether to include line items in the response. Defaults to `true`.
@@ -1040,7 +1040,7 @@ class AsyncChecksResource(AsyncAPIResource):
               QuickBooks, ref-numbers are not required to be unique and can be arbitrarily
               changed by the QuickBooks user.
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           ref_number_starts_with: Filter for checks whose `refNumber` starts with this substring. (For checks,

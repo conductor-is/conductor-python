@@ -74,7 +74,7 @@ class DateDrivenTermsResource(SyncAPIResource):
           name: The case-insensitive unique name of this date-driven term, unique across all
               date-driven terms.
 
-              **NOTE:**: Date-driven terms do not have a `fullName` field because they are not
+              **NOTE**: Date-driven terms do not have a `fullName` field because they are not
               hierarchical objects, which is why `name` is unique for them but not for objects
               that have parents.
 
@@ -201,12 +201,12 @@ class DateDrivenTermsResource(SyncAPIResource):
           ids: Filter for specific date-driven terms by their QuickBooks-assigned unique
               identifier(s).
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           limit: The maximum number of objects to return.
 
-              **IMPORTANT:**: QuickBooks Desktop does not support cursor-based pagination for
+              **IMPORTANT**: QuickBooks Desktop does not support cursor-based pagination for
               date-driven terms. This parameter will limit the response size, but you cannot
               fetch subsequent results using a cursor. For pagination, use the name-range
               parameters instead (e.g., `nameFrom=A&nameTo=B`).
@@ -229,7 +229,7 @@ class DateDrivenTermsResource(SyncAPIResource):
           names: Filter for specific date-driven terms by their name(s), case-insensitive. Like
               `id`, `name` is a unique identifier for a date-driven term.
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           name_starts_with: Filter for date-driven terms whose `name` starts with this substring,
@@ -332,7 +332,7 @@ class AsyncDateDrivenTermsResource(AsyncAPIResource):
           name: The case-insensitive unique name of this date-driven term, unique across all
               date-driven terms.
 
-              **NOTE:**: Date-driven terms do not have a `fullName` field because they are not
+              **NOTE**: Date-driven terms do not have a `fullName` field because they are not
               hierarchical objects, which is why `name` is unique for them but not for objects
               that have parents.
 
@@ -459,12 +459,12 @@ class AsyncDateDrivenTermsResource(AsyncAPIResource):
           ids: Filter for specific date-driven terms by their QuickBooks-assigned unique
               identifier(s).
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           limit: The maximum number of objects to return.
 
-              **IMPORTANT:**: QuickBooks Desktop does not support cursor-based pagination for
+              **IMPORTANT**: QuickBooks Desktop does not support cursor-based pagination for
               date-driven terms. This parameter will limit the response size, but you cannot
               fetch subsequent results using a cursor. For pagination, use the name-range
               parameters instead (e.g., `nameFrom=A&nameTo=B`).
@@ -487,7 +487,7 @@ class AsyncDateDrivenTermsResource(AsyncAPIResource):
           names: Filter for specific date-driven terms by their name(s), case-insensitive. Like
               `id`, `name` is a unique identifier for a date-driven term.
 
-              **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+              **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
               query parameters for this request.
 
           name_starts_with: Filter for date-driven terms whose `name` starts with this substring,

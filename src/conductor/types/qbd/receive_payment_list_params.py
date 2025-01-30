@@ -39,7 +39,7 @@ class ReceivePaymentListParams(TypedDict, total=False):
     Filter for specific receive-payments by their QuickBooks-assigned unique
     identifier(s).
 
-    **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+    **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
     query parameters for this request.
     """
 
@@ -84,7 +84,7 @@ class ReceivePaymentListParams(TypedDict, total=False):
     In QuickBooks, ref-numbers are not required to be unique and can be arbitrarily
     changed by the QuickBooks user.
 
-    **IMPORTANT:**: If you include this parameter, QuickBooks will ignore all other
+    **IMPORTANT**: If you include this parameter, QuickBooks will ignore all other
     query parameters for this request.
     """
 

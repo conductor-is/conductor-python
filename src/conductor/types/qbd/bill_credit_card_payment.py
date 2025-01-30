@@ -149,7 +149,7 @@ class AppliedToTransaction(BaseModel):
     The receivable transaction's linked transactions, such as payments applied,
     credits used, or associated purchase orders.
 
-    **IMPORTANT:**: You must specify the parameter `includeLinkedTransactions` when
+    **IMPORTANT**: You must specify the parameter `includeLinkedTransactions` when
     fetching a list of receivable transactions to receive this field because it is
     not returned by default.
     """
@@ -376,9 +376,9 @@ class BillCreditCardPayment(BaseModel):
     assigned, used to track the amount owed. If not specified, QuickBooks Desktop
     will use its default A/P account.
 
-    **IMPORTANT:**: If this bill credit card payment is linked to other
-    transactions, this A/P account must match the `payablesAccount` used in those
-    other transactions.
+    **IMPORTANT**: If this bill credit card payment is linked to other transactions,
+    this A/P account must match the `payablesAccount` used in those other
+    transactions.
     """
 
     ref_number: Optional[str] = FieldInfo(alias="refNumber", default=None)
@@ -412,6 +412,6 @@ class BillCreditCardPayment(BaseModel):
     The vendor who sent the bill(s) that this bill credit card payment is paying and
     who will receive this payment.
 
-    **IMPORTANT:**: This vendor must match the `vendor` on the bill(s) specified in
+    **IMPORTANT**: This vendor must match the `vendor` on the bill(s) specified in
     `applyToTransactions`.
     """
