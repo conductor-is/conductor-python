@@ -70,11 +70,13 @@ class InventorySitesResource(SyncAPIResource):
 
         Args:
           name: The case-insensitive unique name of this inventory site, unique across all
-              inventory sites. Maximum length: 31 characters.
+              inventory sites.
 
               **NOTE:**: Inventory sites do not have a `fullName` field because they are not
               hierarchical objects, which is why `name` is unique for them but not for objects
               that have parents.
+
+              Maximum length: 31 characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -208,11 +210,13 @@ class InventorySitesResource(SyncAPIResource):
               hidden from views and reports in QuickBooks. Defaults to `true`.
 
           name: The case-insensitive unique name of this inventory site, unique across all
-              inventory sites. Maximum length: 31 characters.
+              inventory sites.
 
               **NOTE:**: Inventory sites do not have a `fullName` field because they are not
               hierarchical objects, which is why `name` is unique for them but not for objects
               that have parents.
+
+              Maximum length: 31 characters.
 
           parent_id: The parent inventory site one level above this one in the hierarchy.
 
@@ -401,11 +405,13 @@ class AsyncInventorySitesResource(AsyncAPIResource):
 
         Args:
           name: The case-insensitive unique name of this inventory site, unique across all
-              inventory sites. Maximum length: 31 characters.
+              inventory sites.
 
               **NOTE:**: Inventory sites do not have a `fullName` field because they are not
               hierarchical objects, which is why `name` is unique for them but not for objects
               that have parents.
+
+              Maximum length: 31 characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -539,11 +545,13 @@ class AsyncInventorySitesResource(AsyncAPIResource):
               hidden from views and reports in QuickBooks. Defaults to `true`.
 
           name: The case-insensitive unique name of this inventory site, unique across all
-              inventory sites. Maximum length: 31 characters.
+              inventory sites.
 
               **NOTE:**: Inventory sites do not have a `fullName` field because they are not
               hierarchical objects, which is why `name` is unique for them but not for objects
               that have parents.
+
+              Maximum length: 31 characters.
 
           parent_id: The parent inventory site one level above this one in the hierarchy.
 

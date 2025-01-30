@@ -69,11 +69,13 @@ class SubtotalItemsResource(SyncAPIResource):
 
         Args:
           name: The case-insensitive unique name of this subtotal item, unique across all
-              subtotal items. Maximum length: 31 characters.
+              subtotal items.
 
               **NOTE:**: Subtotal items do not have a `fullName` field because they are not
               hierarchical objects, which is why `name` is unique for them but not for objects
               that have parents.
+
+              Maximum length: 31 characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -200,11 +202,13 @@ class SubtotalItemsResource(SyncAPIResource):
               hidden from views and reports in QuickBooks. Defaults to `true`.
 
           name: The case-insensitive unique name of this subtotal item, unique across all
-              subtotal items. Maximum length: 31 characters.
+              subtotal items.
 
               **NOTE:**: Subtotal items do not have a `fullName` field because they are not
               hierarchical objects, which is why `name` is unique for them but not for objects
               that have parents.
+
+              Maximum length: 31 characters.
 
           extra_headers: Send extra headers
 
@@ -398,11 +402,13 @@ class AsyncSubtotalItemsResource(AsyncAPIResource):
 
         Args:
           name: The case-insensitive unique name of this subtotal item, unique across all
-              subtotal items. Maximum length: 31 characters.
+              subtotal items.
 
               **NOTE:**: Subtotal items do not have a `fullName` field because they are not
               hierarchical objects, which is why `name` is unique for them but not for objects
               that have parents.
+
+              Maximum length: 31 characters.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -529,11 +535,13 @@ class AsyncSubtotalItemsResource(AsyncAPIResource):
               hidden from views and reports in QuickBooks. Defaults to `true`.
 
           name: The case-insensitive unique name of this subtotal item, unique across all
-              subtotal items. Maximum length: 31 characters.
+              subtotal items.
 
               **NOTE:**: Subtotal items do not have a `fullName` field because they are not
               hierarchical objects, which is why `name` is unique for them but not for objects
               that have parents.
+
+              Maximum length: 31 characters.
 
           extra_headers: Send extra headers
 

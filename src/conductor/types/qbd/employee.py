@@ -566,8 +566,8 @@ class Employee(BaseModel):
     name: str
     """The case-insensitive unique name of this employee, unique across all employees.
 
-    Maximum length: 41 characters. A concatenation of the employee's `firstName`,
-    `middleName`, and `lastName` fields.
+    A concatenation of the employee's `firstName`, `middleName`, and `lastName`
+    fields.
 
     **NOTE:**: Employees do not have a `fullName` field because they are not
     hierarchical objects, which is why `name` is unique for them but not for objects

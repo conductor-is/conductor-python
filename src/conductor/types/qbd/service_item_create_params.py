@@ -16,8 +16,9 @@ class ServiceItemCreateParams(TypedDict, total=False):
     Not guaranteed to be unique because it does not include the names of its
     hierarchical parent objects like `fullName` does. For example, two service items
     could both have the `name` "Web-Design", but they could have unique `fullName`
-    values, such as "Consulting:Web-Design" and "Contracting:Web-Design". Maximum
-    length: 31 characters.
+    values, such as "Consulting:Web-Design" and "Contracting:Web-Design".
+
+    Maximum length: 31 characters.
     """
 
     conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]
