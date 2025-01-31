@@ -56,8 +56,8 @@ class SalesRepresentativesResource(SyncAPIResource):
         self,
         *,
         entity_id: str,
+        initial: str,
         conductor_end_user_id: str,
-        initial: str | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -73,10 +73,10 @@ class SalesRepresentativesResource(SyncAPIResource):
           entity_id: The sales representative's corresponding person entity in QuickBooks, stored as
               either an employee, vendor, or other-name entry.
 
+          initial: The initials of this sales representative's name.
+
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
-
-          initial: The initials of this sales representative's name.
 
           is_active: Indicates whether this sales representative is active. Inactive objects are
               typically hidden from views and reports in QuickBooks. Defaults to `true`.
@@ -357,8 +357,8 @@ class AsyncSalesRepresentativesResource(AsyncAPIResource):
         self,
         *,
         entity_id: str,
+        initial: str,
         conductor_end_user_id: str,
-        initial: str | NotGiven = NOT_GIVEN,
         is_active: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -374,10 +374,10 @@ class AsyncSalesRepresentativesResource(AsyncAPIResource):
           entity_id: The sales representative's corresponding person entity in QuickBooks, stored as
               either an employee, vendor, or other-name entry.
 
+          initial: The initials of this sales representative's name.
+
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
-
-          initial: The initials of this sales representative's name.
 
           is_active: Indicates whether this sales representative is active. Inactive objects are
               typically hidden from views and reports in QuickBooks. Defaults to `true`.

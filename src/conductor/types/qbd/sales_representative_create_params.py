@@ -16,14 +16,14 @@ class SalesRepresentativeCreateParams(TypedDict, total=False):
     either an employee, vendor, or other-name entry.
     """
 
+    initial: Required[str]
+    """The initials of this sales representative's name."""
+
     conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]
     """
     The ID of the EndUser to receive this request (e.g.,
     `"Conductor-End-User-Id: {{END_USER_ID}}"`).
     """
-
-    initial: str
-    """The initials of this sales representative's name."""
 
     is_active: Annotated[bool, PropertyInfo(alias="isActive")]
     """Indicates whether this sales representative is active.

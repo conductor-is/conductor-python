@@ -61,9 +61,6 @@ class Address(BaseModel):
     line4: Optional[str] = None
     """The fourth line of the employee address, if needed."""
 
-    line5: Optional[str] = None
-    """The fifth line of the employee address, if needed."""
-
     postal_code: Optional[str] = FieldInfo(alias="postalCode", default=None)
     """The postal code or ZIP code of the employee address."""
 

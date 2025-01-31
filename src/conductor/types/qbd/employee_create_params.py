@@ -293,12 +293,6 @@ class Address(TypedDict, total=False):
     Maximum length: 41 characters.
     """
 
-    line5: str
-    """The fifth line of the employee address, if needed.
-
-    Maximum length: 41 characters.
-    """
-
     postal_code: Annotated[str, PropertyInfo(alias="postalCode")]
     """The postal code or ZIP code of the employee address.
 
