@@ -47,7 +47,7 @@ class SalesRepresentative(BaseModel):
     either an employee, vendor, or other-name entry.
     """
 
-    initial: Optional[str] = None
+    initial: str
     """The initials of this sales representative's name."""
 
     is_active: bool = FieldInfo(alias="isActive")
