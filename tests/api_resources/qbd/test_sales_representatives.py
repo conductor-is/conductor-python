@@ -24,6 +24,7 @@ class TestSalesRepresentatives:
     def test_method_create(self, client: Conductor) -> None:
         sales_representative = client.qbd.sales_representatives.create(
             entity_id="80000001-1234567890",
+            initial="JD",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(SalesRepresentative, sales_representative, path=["response"])
@@ -32,8 +33,8 @@ class TestSalesRepresentatives:
     def test_method_create_with_all_params(self, client: Conductor) -> None:
         sales_representative = client.qbd.sales_representatives.create(
             entity_id="80000001-1234567890",
-            conductor_end_user_id="end_usr_1234567abcdefg",
             initial="JD",
+            conductor_end_user_id="end_usr_1234567abcdefg",
             is_active=True,
         )
         assert_matches_type(SalesRepresentative, sales_representative, path=["response"])
@@ -42,6 +43,7 @@ class TestSalesRepresentatives:
     def test_raw_response_create(self, client: Conductor) -> None:
         response = client.qbd.sales_representatives.with_raw_response.create(
             entity_id="80000001-1234567890",
+            initial="JD",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -54,6 +56,7 @@ class TestSalesRepresentatives:
     def test_streaming_response_create(self, client: Conductor) -> None:
         with client.qbd.sales_representatives.with_streaming_response.create(
             entity_id="80000001-1234567890",
+            initial="JD",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
@@ -221,6 +224,7 @@ class TestAsyncSalesRepresentatives:
     async def test_method_create(self, async_client: AsyncConductor) -> None:
         sales_representative = await async_client.qbd.sales_representatives.create(
             entity_id="80000001-1234567890",
+            initial="JD",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(SalesRepresentative, sales_representative, path=["response"])
@@ -229,8 +233,8 @@ class TestAsyncSalesRepresentatives:
     async def test_method_create_with_all_params(self, async_client: AsyncConductor) -> None:
         sales_representative = await async_client.qbd.sales_representatives.create(
             entity_id="80000001-1234567890",
-            conductor_end_user_id="end_usr_1234567abcdefg",
             initial="JD",
+            conductor_end_user_id="end_usr_1234567abcdefg",
             is_active=True,
         )
         assert_matches_type(SalesRepresentative, sales_representative, path=["response"])
@@ -239,6 +243,7 @@ class TestAsyncSalesRepresentatives:
     async def test_raw_response_create(self, async_client: AsyncConductor) -> None:
         response = await async_client.qbd.sales_representatives.with_raw_response.create(
             entity_id="80000001-1234567890",
+            initial="JD",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -251,6 +256,7 @@ class TestAsyncSalesRepresentatives:
     async def test_streaming_response_create(self, async_client: AsyncConductor) -> None:
         async with async_client.qbd.sales_representatives.with_streaming_response.create(
             entity_id="80000001-1234567890",
+            initial="JD",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
