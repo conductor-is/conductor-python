@@ -325,8 +325,9 @@ class JournalEntriesResource(SyncAPIResource):
           currency_ids: Filter for journal entries in these currencies.
 
           cursor: The pagination token to fetch the next set of results when paginating with the
-              `limit` parameter. Retrieve this value from the `nextCursor` field in the
-              previous response. If omitted, the API returns the first page of results.
+              `limit` parameter. Do not include this parameter on the first call. Use the
+              `nextCursor` value returned in the previous response to request subsequent
+              results.
 
           entity_ids: Filter for journal entries associated with these entities (customers, vendors,
               employees, etc.).
@@ -772,8 +773,9 @@ class AsyncJournalEntriesResource(AsyncAPIResource):
           currency_ids: Filter for journal entries in these currencies.
 
           cursor: The pagination token to fetch the next set of results when paginating with the
-              `limit` parameter. Retrieve this value from the `nextCursor` field in the
-              previous response. If omitted, the API returns the first page of results.
+              `limit` parameter. Do not include this parameter on the first call. Use the
+              `nextCursor` value returned in the previous response to request subsequent
+              results.
 
           entity_ids: Filter for journal entries associated with these entities (customers, vendors,
               employees, etc.).
