@@ -568,8 +568,9 @@ class CreditMemosResource(SyncAPIResource):
           currency_ids: Filter for credit memos in these currencies.
 
           cursor: The pagination token to fetch the next set of results when paginating with the
-              `limit` parameter. Retrieve this value from the `nextCursor` field in the
-              previous response. If omitted, the API returns the first page of results.
+              `limit` parameter. Do not include this parameter on the first call. Use the
+              `nextCursor` value returned in the previous response to request subsequent
+              results.
 
           customer_ids: Filter for credit memos created for these customers. These are the customers who
               are owed money.
@@ -1261,8 +1262,9 @@ class AsyncCreditMemosResource(AsyncAPIResource):
           currency_ids: Filter for credit memos in these currencies.
 
           cursor: The pagination token to fetch the next set of results when paginating with the
-              `limit` parameter. Retrieve this value from the `nextCursor` field in the
-              previous response. If omitted, the API returns the first page of results.
+              `limit` parameter. Do not include this parameter on the first call. Use the
+              `nextCursor` value returned in the previous response to request subsequent
+              results.
 
           customer_ids: Filter for credit memos created for these customers. These are the customers who
               are owed money.

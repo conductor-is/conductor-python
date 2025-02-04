@@ -374,8 +374,9 @@ class ServiceItemsResource(SyncAPIResource):
               categorize service items in QuickBooks.
 
           cursor: The pagination token to fetch the next set of results when paginating with the
-              `limit` parameter. Retrieve this value from the `nextCursor` field in the
-              previous response. If omitted, the API returns the first page of results.
+              `limit` parameter. Do not include this parameter on the first call. Use the
+              `nextCursor` value returned in the previous response to request subsequent
+              results.
 
           full_names: Filter for specific service items by their full-name(s), case-insensitive. Like
               `id`, `fullName` is a unique identifier for a service item, formed by by
@@ -813,8 +814,9 @@ class AsyncServiceItemsResource(AsyncAPIResource):
               categorize service items in QuickBooks.
 
           cursor: The pagination token to fetch the next set of results when paginating with the
-              `limit` parameter. Retrieve this value from the `nextCursor` field in the
-              previous response. If omitted, the API returns the first page of results.
+              `limit` parameter. Do not include this parameter on the first call. Use the
+              `nextCursor` value returned in the previous response to request subsequent
+              results.
 
           full_names: Filter for specific service items by their full-name(s), case-insensitive. Like
               `id`, `fullName` is a unique identifier for a service item, formed by by

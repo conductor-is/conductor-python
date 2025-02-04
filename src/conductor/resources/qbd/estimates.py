@@ -519,8 +519,9 @@ class EstimatesResource(SyncAPIResource):
           currency_ids: Filter for estimates in these currencies.
 
           cursor: The pagination token to fetch the next set of results when paginating with the
-              `limit` parameter. Retrieve this value from the `nextCursor` field in the
-              previous response. If omitted, the API returns the first page of results.
+              `limit` parameter. Do not include this parameter on the first call. Use the
+              `nextCursor` value returned in the previous response to request subsequent
+              results.
 
           customer_ids: Filter for estimates created for these customers.
 
@@ -1161,8 +1162,9 @@ class AsyncEstimatesResource(AsyncAPIResource):
           currency_ids: Filter for estimates in these currencies.
 
           cursor: The pagination token to fetch the next set of results when paginating with the
-              `limit` parameter. Retrieve this value from the `nextCursor` field in the
-              previous response. If omitted, the API returns the first page of results.
+              `limit` parameter. Do not include this parameter on the first call. Use the
+              `nextCursor` value returned in the previous response to request subsequent
+              results.
 
           customer_ids: Filter for estimates created for these customers.
 
