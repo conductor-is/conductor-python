@@ -643,8 +643,9 @@ class EmployeesResource(SyncAPIResource):
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
           cursor: The pagination token to fetch the next set of results when paginating with the
-              `limit` parameter. Retrieve this value from the `nextCursor` field in the
-              previous response. If omitted, the API returns the first page of results.
+              `limit` parameter. Do not include this parameter on the first call. Use the
+              `nextCursor` value returned in the previous response to request subsequent
+              results.
 
           ids: Filter for specific employees by their QuickBooks-assigned unique identifier(s).
 
@@ -1345,8 +1346,9 @@ class AsyncEmployeesResource(AsyncAPIResource):
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
           cursor: The pagination token to fetch the next set of results when paginating with the
-              `limit` parameter. Retrieve this value from the `nextCursor` field in the
-              previous response. If omitted, the API returns the first page of results.
+              `limit` parameter. Do not include this parameter on the first call. Use the
+              `nextCursor` value returned in the previous response to request subsequent
+              results.
 
           ids: Filter for specific employees by their QuickBooks-assigned unique identifier(s).
 
