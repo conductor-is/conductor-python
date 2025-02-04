@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.6.0 (2025-02-04)
+
+Full Changelog: [v1.5.0...v1.6.0](https://github.com/conductor-is/conductor-python/compare/v1.5.0...v1.6.0)
+
+### Features
+
+* **api:** api update ([#540](https://github.com/conductor-is/conductor-python/issues/540)) ([77e158a](https://github.com/conductor-is/conductor-python/commit/77e158a6817363cafc876f6e6809de888866c576))
+
+
+### Chores
+
+* **internal:** bummp ruff dependency ([#539](https://github.com/conductor-is/conductor-python/issues/539)) ([cbae162](https://github.com/conductor-is/conductor-python/commit/cbae162d0ccc7c8ab8445cfe45be52d6563a0048))
+* **internal:** change default timeout to an int ([#537](https://github.com/conductor-is/conductor-python/issues/537)) ([7e9cde3](https://github.com/conductor-is/conductor-python/commit/7e9cde36d0dbe201ec805d075906042453ca1b0c))
+
 ## 1.5.0 (2025-01-31)
 
 Full Changelog: [v1.4.0...v1.5.0](https://github.com/conductor-is/conductor-python/compare/v1.4.0...v1.5.0)
