@@ -24,7 +24,7 @@ class AuthSession(BaseModel):
     """The secret used in `authFlowUrl` to securely access the authentication flow."""
 
     created_at: str = FieldInfo(alias="createdAt")
-    """The date and time when this AuthSession was created."""
+    """The date and time when this AuthSession record was created."""
 
     end_user_id: str = FieldInfo(alias="endUserId")
     """The ID of the EndUser for whom to create an IntegrationConnection."""
