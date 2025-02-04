@@ -15,13 +15,20 @@ class IntegrationConnection(BaseModel):
     """The unique identifier for this IntegrationConnection."""
 
     created_at: str = FieldInfo(alias="createdAt")
-    """The date and time when this IntegrationConnection was created."""
+    """The date and time when this IntegrationConnection record was created."""
 
     integration_slug: Literal["quickbooks_desktop"] = FieldInfo(alias="integrationSlug")
     """The identifier of the third-party platform to integrate."""
 
     last_request_at: Optional[str] = FieldInfo(alias="lastRequestAt", default=None)
     """The date and time of your last API request to this IntegrationConnection."""
+
+    last_successful_request_at: Optional[str] = FieldInfo(alias="lastSuccessfulRequestAt", default=None)
+    """
+    The date and time of your last _successful_ API request to this
+    IntegrationConnection. A successful request means the integration fully
+    processed and returned a response without any errors end-to-end.
+    """
 
     object_type: Literal["integration_connection"] = FieldInfo(alias="objectType")
     """The type of object. This value is always `"integration_connection"`."""
@@ -39,7 +46,7 @@ class EndUser(BaseModel):
     """The EndUser's company name that will be shown elsewhere in Conductor."""
 
     created_at: str = FieldInfo(alias="createdAt")
-    """The date and time when this EndUser was created."""
+    """The date and time when this EndUser record was created."""
 
     email: str
     """The EndUser's email address for identification purposes."""
