@@ -30,7 +30,7 @@ client = Conductor(
 )
 
 page = client.qbd.invoices.list(
-    conductor_end_user_id="YOUR_END_USER_ID",
+    conductor_end_user_id="end_usr_1234567abcdefg",
 )
 print(page.page)
 ```
@@ -56,7 +56,7 @@ client = AsyncConductor(
 
 async def main() -> None:
     page = await client.qbd.invoices.list(
-        conductor_end_user_id="YOUR_END_USER_ID",
+        conductor_end_user_id="end_usr_1234567abcdefg",
     )
     print(page.page)
 
@@ -89,7 +89,7 @@ client = Conductor()
 all_invoices = []
 # Automatically fetches more pages as needed.
 for invoice in client.qbd.invoices.list(
-    conductor_end_user_id="YOUR_END_USER_ID",
+    conductor_end_user_id="end_usr_1234567abcdefg",
 ):
     # Do something with invoice here
     all_invoices.append(invoice)
@@ -109,7 +109,7 @@ async def main() -> None:
     all_invoices = []
     # Iterate through items across all pages, issuing requests as needed.
     async for invoice in client.qbd.invoices.list(
-        conductor_end_user_id="YOUR_END_USER_ID",
+        conductor_end_user_id="end_usr_1234567abcdefg",
     ):
         all_invoices.append(invoice)
     print(all_invoices)
@@ -122,7 +122,7 @@ Alternatively, you can use the `.has_next_page()`, `.next_page_info()`, or `.get
 
 ```python
 first_page = await client.qbd.invoices.list(
-    conductor_end_user_id="YOUR_END_USER_ID",
+    conductor_end_user_id="end_usr_1234567abcdefg",
 )
 if first_page.has_next_page():
     print(f"will fetch next page using these details: {first_page.next_page_info()}")
@@ -136,7 +136,7 @@ Or just work directly with the returned data:
 
 ```python
 first_page = await client.qbd.invoices.list(
-    conductor_end_user_id="YOUR_END_USER_ID",
+    conductor_end_user_id="end_usr_1234567abcdefg",
 )
 
 print(f"next page cursor: {first_page.next_cursor}")  # => "next page cursor: ..."
@@ -163,7 +163,7 @@ client = Conductor()
 
 try:
     client.qbd.invoices.list(
-        conductor_end_user_id="YOUR_END_USER_ID",
+        conductor_end_user_id="end_usr_1234567abcdefg",
     )
 except conductor.APIConnectionError as e:
     print("The server could not be reached")
@@ -208,7 +208,7 @@ client = Conductor(
 
 # Or, configure per-request:
 client.with_options(max_retries=5).qbd.invoices.list(
-    conductor_end_user_id="YOUR_END_USER_ID",
+    conductor_end_user_id="end_usr_1234567abcdefg",
 )
 ```
 
@@ -233,7 +233,7 @@ client = Conductor(
 
 # Override per-request:
 client.with_options(timeout=5.0).qbd.invoices.list(
-    conductor_end_user_id="YOUR_END_USER_ID",
+    conductor_end_user_id="end_usr_1234567abcdefg",
 )
 ```
 
@@ -276,7 +276,7 @@ from conductor import Conductor
 
 client = Conductor()
 response = client.qbd.invoices.with_raw_response.list(
-    conductor_end_user_id="YOUR_END_USER_ID",
+    conductor_end_user_id="end_usr_1234567abcdefg",
 )
 print(response.headers.get('X-My-Header'))
 
@@ -296,7 +296,7 @@ To stream the response body, use `.with_streaming_response` instead, which requi
 
 ```python
 with client.qbd.invoices.with_streaming_response.list(
-    conductor_end_user_id="YOUR_END_USER_ID",
+    conductor_end_user_id="end_usr_1234567abcdefg",
 ) as response:
     print(response.headers.get("X-My-Header"))
 
