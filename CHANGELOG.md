@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.8.0 (2025-02-06)
+
+Full Changelog: [v1.7.0...v1.8.0](https://github.com/conductor-is/conductor-python/compare/v1.7.0...v1.8.0)
+
+### Features
+
+* **api:** api update ([#545](https://github.com/conductor-is/conductor-python/issues/545)) ([db14456](https://github.com/conductor-is/conductor-python/commit/db144565bc487ad4e9d64b1de4c9f7b98c7a8954))
+* **api:** api update ([#547](https://github.com/conductor-is/conductor-python/issues/547)) ([8d6949d](https://github.com/conductor-is/conductor-python/commit/8d6949d1a845f913a081975d73704e156406e5ef))
+
+
+### Chores
+
+* **internal:** codegen related update ([#548](https://github.com/conductor-is/conductor-python/issues/548)) ([d8e18c9](https://github.com/conductor-is/conductor-python/commit/d8e18c9aaa7c527afcf395cbcd839cc591d93dc8))
+
 ## 1.7.0 (2025-02-04)
 
 Full Changelog: [v1.6.0...v1.7.0](https://github.com/conductor-is/conductor-python/compare/v1.6.0...v1.7.0)
