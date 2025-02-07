@@ -445,7 +445,7 @@ class LineGroupLine(BaseModel):
 
     This field cannot be cleared.
 
-    **NOTE**: Do not use this field if the item is a discount item.
+    **NOTE**: Do not use this field if the associated item is a discount item.
     """
 
     rate: Optional[str] = None
@@ -561,7 +561,7 @@ class LineGroup(BaseModel):
 
     This field cannot be cleared.
 
-    **NOTE**: Do not use this field if the item group is a discount item.
+    **NOTE**: Do not use this field if the associated item group is a discount item.
     """
 
     should_print_items_in_group: bool = FieldInfo(alias="shouldPrintItemsInGroup")
@@ -828,7 +828,7 @@ class Line(BaseModel):
 
     This field cannot be cleared.
 
-    **NOTE**: Do not use this field if the item is a discount item.
+    **NOTE**: Do not use this field if the associated item is a discount item.
     """
 
     rate: Optional[str] = None
