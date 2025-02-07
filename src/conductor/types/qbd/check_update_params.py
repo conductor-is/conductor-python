@@ -404,6 +404,9 @@ class ItemLineGroupItemLine(TypedDict, total=False):
     """The quantity of the item associated with this item line.
 
     This field cannot be cleared.
+
+    **NOTE**: Do not use this field if the item is a discount item; otherwise, you
+    will get an error.
     """
 
     sales_representative_id: Annotated[str, PropertyInfo(alias="salesRepresentativeId")]
@@ -485,6 +488,9 @@ class ItemLineGroup(TypedDict, total=False):
     """The quantity of the item group associated with this item line group.
 
     This field cannot be cleared.
+
+    **NOTE**: Do not use this field if the item group is a discount item; otherwise,
+    you will get an error.
     """
 
     unit_of_measure: Annotated[str, PropertyInfo(alias="unitOfMeasure")]
@@ -596,6 +602,9 @@ class ItemLine(TypedDict, total=False):
     """The quantity of the item associated with this item line.
 
     This field cannot be cleared.
+
+    **NOTE**: Do not use this field if the item is a discount item; otherwise, you
+    will get an error.
     """
 
     sales_representative_id: Annotated[str, PropertyInfo(alias="salesRepresentativeId")]

@@ -166,7 +166,7 @@ class SalesAndPurchaseDetails(TypedDict, total=False):
 
 class SalesOrPurchaseDetails(TypedDict, total=False):
     posting_account_id: Required[Annotated[str, PropertyInfo(alias="postingAccountId")]]
-    """The posting account to which transactions involving this item are posted.
+    """The account to which transactions involving this item are posted.
 
     This could be an income account when selling or an expense account when
     purchasing.
