@@ -206,6 +206,21 @@ Methods:
 - <code title="get /quickbooks-desktop/date-driven-terms/{id}">client.qbd.date_driven_terms.<a href="./src/conductor/resources/qbd/date_driven_terms.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/date_driven_term.py">DateDrivenTerm</a></code>
 - <code title="get /quickbooks-desktop/date-driven-terms">client.qbd.date_driven_terms.<a href="./src/conductor/resources/qbd/date_driven_terms.py">list</a>(\*\*<a href="src/conductor/types/qbd/date_driven_term_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/date_driven_term_list_response.py">DateDrivenTermListResponse</a></code>
 
+## DiscountItems
+
+Types:
+
+```python
+from conductor.types.qbd import DiscountItem
+```
+
+Methods:
+
+- <code title="post /quickbooks-desktop/discount-items">client.qbd.discount_items.<a href="./src/conductor/resources/qbd/discount_items.py">create</a>(\*\*<a href="src/conductor/types/qbd/discount_item_create_params.py">params</a>) -> <a href="./src/conductor/types/qbd/discount_item.py">DiscountItem</a></code>
+- <code title="get /quickbooks-desktop/discount-items/{id}">client.qbd.discount_items.<a href="./src/conductor/resources/qbd/discount_items.py">retrieve</a>(id) -> <a href="./src/conductor/types/qbd/discount_item.py">DiscountItem</a></code>
+- <code title="post /quickbooks-desktop/discount-items/{id}">client.qbd.discount_items.<a href="./src/conductor/resources/qbd/discount_items.py">update</a>(id, \*\*<a href="src/conductor/types/qbd/discount_item_update_params.py">params</a>) -> <a href="./src/conductor/types/qbd/discount_item.py">DiscountItem</a></code>
+- <code title="get /quickbooks-desktop/discount-items">client.qbd.discount_items.<a href="./src/conductor/resources/qbd/discount_items.py">list</a>(\*\*<a href="src/conductor/types/qbd/discount_item_list_params.py">params</a>) -> <a href="./src/conductor/types/qbd/discount_item.py">SyncCursorPage[DiscountItem]</a></code>
+
 ## Employees
 
 Types:

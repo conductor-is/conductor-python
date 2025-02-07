@@ -108,6 +108,14 @@ from .service_items import (
     ServiceItemsResourceWithStreamingResponse,
     AsyncServiceItemsResourceWithStreamingResponse,
 )
+from .discount_items import (
+    DiscountItemsResource,
+    AsyncDiscountItemsResource,
+    DiscountItemsResourceWithRawResponse,
+    AsyncDiscountItemsResourceWithRawResponse,
+    DiscountItemsResourceWithStreamingResponse,
+    AsyncDiscountItemsResourceWithStreamingResponse,
+)
 from .sales_receipts import (
     SalesReceiptsResource,
     AsyncSalesReceiptsResource,
@@ -326,6 +334,10 @@ class QbdResource(SyncAPIResource):
         return DateDrivenTermsResource(self._client)
 
     @cached_property
+    def discount_items(self) -> DiscountItemsResource:
+        return DiscountItemsResource(self._client)
+
+    @cached_property
     def employees(self) -> EmployeesResource:
         return EmployeesResource(self._client)
 
@@ -481,6 +493,10 @@ class AsyncQbdResource(AsyncAPIResource):
     @cached_property
     def date_driven_terms(self) -> AsyncDateDrivenTermsResource:
         return AsyncDateDrivenTermsResource(self._client)
+
+    @cached_property
+    def discount_items(self) -> AsyncDiscountItemsResource:
+        return AsyncDiscountItemsResource(self._client)
 
     @cached_property
     def employees(self) -> AsyncEmployeesResource:
@@ -643,6 +659,10 @@ class QbdResourceWithRawResponse:
         return DateDrivenTermsResourceWithRawResponse(self._qbd.date_driven_terms)
 
     @cached_property
+    def discount_items(self) -> DiscountItemsResourceWithRawResponse:
+        return DiscountItemsResourceWithRawResponse(self._qbd.discount_items)
+
+    @cached_property
     def employees(self) -> EmployeesResourceWithRawResponse:
         return EmployeesResourceWithRawResponse(self._qbd.employees)
 
@@ -782,6 +802,10 @@ class AsyncQbdResourceWithRawResponse:
     @cached_property
     def date_driven_terms(self) -> AsyncDateDrivenTermsResourceWithRawResponse:
         return AsyncDateDrivenTermsResourceWithRawResponse(self._qbd.date_driven_terms)
+
+    @cached_property
+    def discount_items(self) -> AsyncDiscountItemsResourceWithRawResponse:
+        return AsyncDiscountItemsResourceWithRawResponse(self._qbd.discount_items)
 
     @cached_property
     def employees(self) -> AsyncEmployeesResourceWithRawResponse:
@@ -925,6 +949,10 @@ class QbdResourceWithStreamingResponse:
         return DateDrivenTermsResourceWithStreamingResponse(self._qbd.date_driven_terms)
 
     @cached_property
+    def discount_items(self) -> DiscountItemsResourceWithStreamingResponse:
+        return DiscountItemsResourceWithStreamingResponse(self._qbd.discount_items)
+
+    @cached_property
     def employees(self) -> EmployeesResourceWithStreamingResponse:
         return EmployeesResourceWithStreamingResponse(self._qbd.employees)
 
@@ -1064,6 +1092,10 @@ class AsyncQbdResourceWithStreamingResponse:
     @cached_property
     def date_driven_terms(self) -> AsyncDateDrivenTermsResourceWithStreamingResponse:
         return AsyncDateDrivenTermsResourceWithStreamingResponse(self._qbd.date_driven_terms)
+
+    @cached_property
+    def discount_items(self) -> AsyncDiscountItemsResourceWithStreamingResponse:
+        return AsyncDiscountItemsResourceWithStreamingResponse(self._qbd.discount_items)
 
     @cached_property
     def employees(self) -> AsyncEmployeesResourceWithStreamingResponse:
