@@ -223,7 +223,7 @@ class SalesOrPurchaseDetails(BaseModel):
     """A description of this item."""
 
     posting_account: Optional[SalesOrPurchaseDetailsPostingAccount] = FieldInfo(alias="postingAccount", default=None)
-    """The account to which transactions involving this item are posted.
+    """The posting account to which transactions involving this item are posted.
 
     This could be an income account when selling or an expense account when
     purchasing.

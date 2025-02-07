@@ -119,8 +119,11 @@ class DiscountItem(BaseModel):
     object types.
     """
 
-    account: Optional[Account] = None
-    """The account to which this discount item is posted for tracking discounts."""
+    account: Account
+    """
+    The posting account to which transactions involving this discount item are
+    posted for tracking discounts.
+    """
 
     barcode: Optional[str] = None
     """The discount item's barcode."""
