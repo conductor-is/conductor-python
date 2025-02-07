@@ -10,6 +10,12 @@ __all__ = ["DiscountItemCreateParams", "Barcode"]
 
 
 class DiscountItemCreateParams(TypedDict, total=False):
+    account_id: Required[Annotated[str, PropertyInfo(alias="accountId")]]
+    """
+    The posting account to which transactions involving this discount item are
+    posted for tracking discounts.
+    """
+
     name: Required[str]
     """The case-insensitive name of this discount item.
 
@@ -27,9 +33,6 @@ class DiscountItemCreateParams(TypedDict, total=False):
     The ID of the EndUser to receive this request (e.g.,
     `"Conductor-End-User-Id: {{END_USER_ID}}"`).
     """
-
-    account_id: Annotated[str, PropertyInfo(alias="accountId")]
-    """The account to which this discount item is posted for tracking discounts."""
 
     barcode: Barcode
     """The discount item's barcode."""

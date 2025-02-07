@@ -23,6 +23,7 @@ class TestDiscountItems:
     @parametrize
     def test_method_create(self, client: Conductor) -> None:
         discount_item = client.qbd.discount_items.create(
+            account_id="80000001-1234567890",
             name="10% labor discount",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
@@ -31,9 +32,9 @@ class TestDiscountItems:
     @parametrize
     def test_method_create_with_all_params(self, client: Conductor) -> None:
         discount_item = client.qbd.discount_items.create(
+            account_id="80000001-1234567890",
             name="10% labor discount",
             conductor_end_user_id="end_usr_1234567abcdefg",
-            account_id="80000001-1234567890",
             barcode={
                 "allow_override": False,
                 "assign_even_if_used": False,
@@ -53,6 +54,7 @@ class TestDiscountItems:
     @parametrize
     def test_raw_response_create(self, client: Conductor) -> None:
         response = client.qbd.discount_items.with_raw_response.create(
+            account_id="80000001-1234567890",
             name="10% labor discount",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
@@ -65,6 +67,7 @@ class TestDiscountItems:
     @parametrize
     def test_streaming_response_create(self, client: Conductor) -> None:
         with client.qbd.discount_items.with_streaming_response.create(
+            account_id="80000001-1234567890",
             name="10% labor discount",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
@@ -246,6 +249,7 @@ class TestAsyncDiscountItems:
     @parametrize
     async def test_method_create(self, async_client: AsyncConductor) -> None:
         discount_item = await async_client.qbd.discount_items.create(
+            account_id="80000001-1234567890",
             name="10% labor discount",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
@@ -254,9 +258,9 @@ class TestAsyncDiscountItems:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncConductor) -> None:
         discount_item = await async_client.qbd.discount_items.create(
+            account_id="80000001-1234567890",
             name="10% labor discount",
             conductor_end_user_id="end_usr_1234567abcdefg",
-            account_id="80000001-1234567890",
             barcode={
                 "allow_override": False,
                 "assign_even_if_used": False,
@@ -276,6 +280,7 @@ class TestAsyncDiscountItems:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncConductor) -> None:
         response = await async_client.qbd.discount_items.with_raw_response.create(
+            account_id="80000001-1234567890",
             name="10% labor discount",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
@@ -288,6 +293,7 @@ class TestAsyncDiscountItems:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncConductor) -> None:
         async with async_client.qbd.discount_items.with_streaming_response.create(
+            account_id="80000001-1234567890",
             name="10% labor discount",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
