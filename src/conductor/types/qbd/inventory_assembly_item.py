@@ -150,8 +150,7 @@ class Line(BaseModel):
 
     This field cannot be cleared.
 
-    **NOTE**: Do not use this field if the item is a discount item; otherwise, you
-    will get an error.
+    **NOTE**: Do not use this field if the item is a discount item.
     """
 
 
