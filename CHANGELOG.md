@@ -1,5 +1,23 @@
 # Changelog
 
+## 1.9.0 (2025-02-07)
+
+Full Changelog: [v1.8.0...v1.9.0](https://github.com/conductor-is/conductor-python/compare/v1.8.0...v1.9.0)
+
+### Features
+
+* **api:** api update ([#553](https://github.com/conductor-is/conductor-python/issues/553)) ([996879d](https://github.com/conductor-is/conductor-python/commit/996879d359a9707d0601d553a74538be4443cbd7))
+* **api:** api update ([#554](https://github.com/conductor-is/conductor-python/issues/554)) ([43d38f2](https://github.com/conductor-is/conductor-python/commit/43d38f2d3d6e15d86de465730979fe8828b61821))
+* **api:** api update ([#555](https://github.com/conductor-is/conductor-python/issues/555)) ([ed3f278](https://github.com/conductor-is/conductor-python/commit/ed3f2786d3d9e9688c574eecea2087158e4180eb))
+* **api:** api update ([#556](https://github.com/conductor-is/conductor-python/issues/556)) ([61b195e](https://github.com/conductor-is/conductor-python/commit/61b195e84cf4c6546defe58769bfaf628ae37624))
+* **api:** api update ([#557](https://github.com/conductor-is/conductor-python/issues/557)) ([6c9b241](https://github.com/conductor-is/conductor-python/commit/6c9b24138412d63235a8afc96295bae06972ecb6))
+
+
+### Chores
+
+* **internal:** fix type traversing dictionary params ([#550](https://github.com/conductor-is/conductor-python/issues/550)) ([1395adf](https://github.com/conductor-is/conductor-python/commit/1395adf3cefbaede27016dff3a80e6dfb8b1f8a1))
+* **internal:** minor type handling changes ([#552](https://github.com/conductor-is/conductor-python/issues/552)) ([0f780e3](https://github.com/conductor-is/conductor-python/commit/0f780e3d74b3c7294be518302db4219cdb11eb6f))
+
 ## 1.8.0 (2025-02-06)
 
 Full Changelog: [v1.7.0...v1.8.0](https://github.com/conductor-is/conductor-python/compare/v1.7.0...v1.8.0)
