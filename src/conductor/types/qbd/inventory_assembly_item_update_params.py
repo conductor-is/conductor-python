@@ -211,5 +211,5 @@ class Line(TypedDict, total=False):
 
     This field cannot be cleared.
 
-    **NOTE**: Do not use this field if the item is a discount item.
+    **NOTE**: Do not use this field if the associated item is a discount item.
     """
