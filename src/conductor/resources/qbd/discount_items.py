@@ -51,9 +51,9 @@ class DiscountItemsResource(SyncAPIResource):
     def create(
         self,
         *,
+        account_id: str,
         name: str,
         conductor_end_user_id: str,
-        account_id: str | NotGiven = NOT_GIVEN,
         barcode: discount_item_create_params.Barcode | NotGiven = NOT_GIVEN,
         class_id: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
@@ -74,6 +74,9 @@ class DiscountItemsResource(SyncAPIResource):
         Creates a new discount item.
 
         Args:
+          account_id: The posting account to which transactions involving this discount item are
+              posted for tracking discounts.
+
           name: The case-insensitive name of this discount item. Not guaranteed to be unique
               because it does not include the names of its hierarchical parent objects like
               `fullName` does. For example, two discount items could both have the `name` "10%
@@ -84,8 +87,6 @@ class DiscountItemsResource(SyncAPIResource):
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
-
-          account_id: The account to which this discount item is posted for tracking discounts.
 
           barcode: The discount item's barcode.
 
@@ -147,8 +148,8 @@ class DiscountItemsResource(SyncAPIResource):
             "/quickbooks-desktop/discount-items",
             body=maybe_transform(
                 {
-                    "name": name,
                     "account_id": account_id,
+                    "name": name,
                     "barcode": barcode,
                     "class_id": class_id,
                     "description": description,
@@ -245,7 +246,8 @@ class DiscountItemsResource(SyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_id: The account to which this discount item is posted for tracking discounts.
+          account_id: The posting account to which transactions involving this discount item are
+              posted for tracking discounts.
 
           barcode: The discount item's barcode.
 
@@ -491,9 +493,9 @@ class AsyncDiscountItemsResource(AsyncAPIResource):
     async def create(
         self,
         *,
+        account_id: str,
         name: str,
         conductor_end_user_id: str,
-        account_id: str | NotGiven = NOT_GIVEN,
         barcode: discount_item_create_params.Barcode | NotGiven = NOT_GIVEN,
         class_id: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
@@ -514,6 +516,9 @@ class AsyncDiscountItemsResource(AsyncAPIResource):
         Creates a new discount item.
 
         Args:
+          account_id: The posting account to which transactions involving this discount item are
+              posted for tracking discounts.
+
           name: The case-insensitive name of this discount item. Not guaranteed to be unique
               because it does not include the names of its hierarchical parent objects like
               `fullName` does. For example, two discount items could both have the `name` "10%
@@ -524,8 +529,6 @@ class AsyncDiscountItemsResource(AsyncAPIResource):
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
-
-          account_id: The account to which this discount item is posted for tracking discounts.
 
           barcode: The discount item's barcode.
 
@@ -587,8 +590,8 @@ class AsyncDiscountItemsResource(AsyncAPIResource):
             "/quickbooks-desktop/discount-items",
             body=await async_maybe_transform(
                 {
-                    "name": name,
                     "account_id": account_id,
+                    "name": name,
                     "barcode": barcode,
                     "class_id": class_id,
                     "description": description,
@@ -685,7 +688,8 @@ class AsyncDiscountItemsResource(AsyncAPIResource):
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
 
-          account_id: The account to which this discount item is posted for tracking discounts.
+          account_id: The posting account to which transactions involving this discount item are
+              posted for tracking discounts.
 
           barcode: The discount item's barcode.
 

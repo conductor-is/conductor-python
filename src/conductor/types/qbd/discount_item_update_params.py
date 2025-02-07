@@ -25,7 +25,10 @@ class DiscountItemUpdateParams(TypedDict, total=False):
     """
 
     account_id: Annotated[str, PropertyInfo(alias="accountId")]
-    """The account to which this discount item is posted for tracking discounts."""
+    """
+    The posting account to which transactions involving this discount item are
+    posted for tracking discounts.
+    """
 
     barcode: Barcode
     """The discount item's barcode."""
