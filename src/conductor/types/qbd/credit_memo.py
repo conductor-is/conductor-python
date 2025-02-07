@@ -500,6 +500,9 @@ class LineGroupLine(BaseModel):
     """The quantity of the item associated with this credit memo line.
 
     This field cannot be cleared.
+
+    **NOTE**: Do not use this field if the item is a discount item; otherwise, you
+    will get an error.
     """
 
     rate: Optional[str] = None
@@ -614,6 +617,9 @@ class LineGroup(BaseModel):
     """The quantity of the item group associated with this credit memo line group.
 
     This field cannot be cleared.
+
+    **NOTE**: Do not use this field if the item group is a discount item; otherwise,
+    you will get an error.
     """
 
     should_print_items_in_group: bool = FieldInfo(alias="shouldPrintItemsInGroup")
@@ -879,6 +885,9 @@ class Line(BaseModel):
     """The quantity of the item associated with this credit memo line.
 
     This field cannot be cleared.
+
+    **NOTE**: Do not use this field if the item is a discount item; otherwise, you
+    will get an error.
     """
 
     rate: Optional[str] = None
