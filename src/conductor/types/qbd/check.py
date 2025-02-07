@@ -674,8 +674,7 @@ class ItemLineGroupItemLine(BaseModel):
 
     This field cannot be cleared.
 
-    **NOTE**: Do not use this field if the item is a discount item; otherwise, you
-    will get an error.
+    **NOTE**: Do not use this field if the item is a discount item.
     """
 
     sales_representative: Optional[ItemLineGroupItemLineSalesRepresentative] = FieldInfo(
@@ -776,8 +775,7 @@ class ItemLineGroup(BaseModel):
 
     This field cannot be cleared.
 
-    **NOTE**: Do not use this field if the item group is a discount item; otherwise,
-    you will get an error.
+    **NOTE**: Do not use this field if the item group is a discount item.
     """
 
     total_amount: str = FieldInfo(alias="totalAmount")
@@ -1066,8 +1064,7 @@ class ItemLine(BaseModel):
 
     This field cannot be cleared.
 
-    **NOTE**: Do not use this field if the item is a discount item; otherwise, you
-    will get an error.
+    **NOTE**: Do not use this field if the item is a discount item.
     """
 
     sales_representative: Optional[ItemLineSalesRepresentative] = FieldInfo(alias="salesRepresentative", default=None)

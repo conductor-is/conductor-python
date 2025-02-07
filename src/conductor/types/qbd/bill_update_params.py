@@ -320,8 +320,7 @@ class ItemLineGroupItemLine(TypedDict, total=False):
 
     This field cannot be cleared.
 
-    **NOTE**: Do not use this field if the item is a discount item; otherwise, you
-    will get an error.
+    **NOTE**: Do not use this field if the item is a discount item.
     """
 
     sales_representative_id: Annotated[str, PropertyInfo(alias="salesRepresentativeId")]
@@ -404,8 +403,7 @@ class ItemLineGroup(TypedDict, total=False):
 
     This field cannot be cleared.
 
-    **NOTE**: Do not use this field if the item group is a discount item; otherwise,
-    you will get an error.
+    **NOTE**: Do not use this field if the item group is a discount item.
     """
 
     unit_of_measure: Annotated[str, PropertyInfo(alias="unitOfMeasure")]
@@ -518,8 +516,7 @@ class ItemLine(TypedDict, total=False):
 
     This field cannot be cleared.
 
-    **NOTE**: Do not use this field if the item is a discount item; otherwise, you
-    will get an error.
+    **NOTE**: Do not use this field if the item is a discount item.
     """
 
     sales_representative_id: Annotated[str, PropertyInfo(alias="salesRepresentativeId")]
