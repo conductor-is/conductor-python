@@ -388,7 +388,8 @@ class ItemLineGroup(TypedDict, total=False):
 
     This field cannot be cleared.
 
-    **NOTE**: Do not use this field if the associated item group is a discount item.
+    **NOTE**: Do not use this field if the associated item group is a discount item
+    group.
     """
 
     unit_of_measure: Annotated[str, PropertyInfo(alias="unitOfMeasure")]
