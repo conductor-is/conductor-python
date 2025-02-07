@@ -205,7 +205,7 @@ class SalesOrPurchaseDetails(TypedDict, total=False):
     """A description of this item."""
 
     posting_account_id: Annotated[str, PropertyInfo(alias="postingAccountId")]
-    """The posting account to which transactions involving this item are posted.
+    """The account to which transactions involving this item are posted.
 
     This could be an income account when selling or an expense account when
     purchasing.

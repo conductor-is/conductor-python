@@ -295,6 +295,9 @@ class LineGroup(TypedDict, total=False):
     """The quantity of the item group associated with this estimate line group.
 
     This field cannot be cleared.
+
+    **NOTE**: Do not use this field if the item group is a discount item; otherwise,
+    you will get an error.
     """
 
     unit_of_measure: Annotated[str, PropertyInfo(alias="unitOfMeasure")]
@@ -436,6 +439,9 @@ class Line(TypedDict, total=False):
     """The quantity of the item associated with this estimate line.
 
     This field cannot be cleared.
+
+    **NOTE**: Do not use this field if the item is a discount item; otherwise, you
+    will get an error.
     """
 
     rate: str

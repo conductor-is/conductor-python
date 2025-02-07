@@ -15,6 +15,7 @@ from .transfer import Transfer as Transfer
 from .credit_memo import CreditMemo as CreditMemo
 from .sales_order import SalesOrder as SalesOrder
 from .service_item import ServiceItem as ServiceItem
+from .discount_item import DiscountItem as DiscountItem
 from .journal_entry import JournalEntry as JournalEntry
 from .sales_receipt import SalesReceipt as SalesReceipt
 from .standard_term import StandardTerm as StandardTerm
@@ -77,6 +78,7 @@ from .estimate_delete_response import EstimateDeleteResponse as EstimateDeleteRe
 from .service_item_list_params import ServiceItemListParams as ServiceItemListParams
 from .credit_memo_create_params import CreditMemoCreateParams as CreditMemoCreateParams
 from .credit_memo_update_params import CreditMemoUpdateParams as CreditMemoUpdateParams
+from .discount_item_list_params import DiscountItemListParams as DiscountItemListParams
 from .journal_entry_list_params import JournalEntryListParams as JournalEntryListParams
 from .sales_order_create_params import SalesOrderCreateParams as SalesOrderCreateParams
 from .sales_order_update_params import SalesOrderUpdateParams as SalesOrderUpdateParams
@@ -92,6 +94,8 @@ from .sales_tax_item_list_params import SalesTaxItemListParams as SalesTaxItemLi
 from .service_item_create_params import ServiceItemCreateParams as ServiceItemCreateParams
 from .service_item_update_params import ServiceItemUpdateParams as ServiceItemUpdateParams
 from .credit_memo_delete_response import CreditMemoDeleteResponse as CreditMemoDeleteResponse
+from .discount_item_create_params import DiscountItemCreateParams as DiscountItemCreateParams
+from .discount_item_update_params import DiscountItemUpdateParams as DiscountItemUpdateParams
 from .journal_entry_create_params import JournalEntryCreateParams as JournalEntryCreateParams
 from .journal_entry_update_params import JournalEntryUpdateParams as JournalEntryUpdateParams
 from .receive_payment_list_params import ReceivePaymentListParams as ReceivePaymentListParams

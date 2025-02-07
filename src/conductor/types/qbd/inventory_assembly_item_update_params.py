@@ -210,4 +210,7 @@ class Line(TypedDict, total=False):
     """The quantity of the item associated with this inventory assembly item line.
 
     This field cannot be cleared.
+
+    **NOTE**: Do not use this field if the item is a discount item; otherwise, you
+    will get an error.
     """
