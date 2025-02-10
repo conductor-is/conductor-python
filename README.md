@@ -32,7 +32,7 @@ client = Conductor(
 page = client.qbd.invoices.list(
     conductor_end_user_id="YOUR_END_USER_ID",
 )
-print(page.page)
+print(page.data)
 ```
 
 While you can provide an `api_key` keyword argument,
@@ -58,7 +58,7 @@ async def main() -> None:
     page = await client.qbd.invoices.list(
         conductor_end_user_id="YOUR_END_USER_ID",
     )
-    print(page.page)
+    print(page.data)
 
 
 asyncio.run(main())
