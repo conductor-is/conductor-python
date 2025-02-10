@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.9.1 (2025-02-10)
+
+Full Changelog: [v1.9.0...v1.9.1](https://github.com/conductor-is/conductor-python/compare/v1.9.0...v1.9.1)
+
+### Documentation
+
+* **readme:** update example snippets ([#559](https://github.com/conductor-is/conductor-python/issues/559)) ([c740841](https://github.com/conductor-is/conductor-python/commit/c740841bd745e1e12c832eafa96df1efa9245b49))
+
 ## 1.9.0 (2025-02-07)
 
 Full Changelog: [v1.8.0...v1.9.0](https://github.com/conductor-is/conductor-python/compare/v1.8.0...v1.9.0)
