@@ -23,9 +23,6 @@ class PurchaseOrderCreateParams(TypedDict, total=False):
     transaction_date: Required[Annotated[Union[str, date], PropertyInfo(alias="transactionDate", format="iso8601")]]
     """The date of this purchase order, in ISO 8601 format (YYYY-MM-DD)."""
 
-    vendor_id: Required[Annotated[str, PropertyInfo(alias="vendorId")]]
-    """The vendor who sent this purchase order for goods or services purchased."""
-
     conductor_end_user_id: Required[Annotated[str, PropertyInfo(alias="Conductor-End-User-Id")]]
     """
     The ID of the EndUser to receive this request (e.g.,
@@ -190,6 +187,9 @@ class PurchaseOrderCreateParams(TypedDict, total=False):
 
     vendor_address: Annotated[VendorAddress, PropertyInfo(alias="vendorAddress")]
     """The address of the vendor who sent this purchase order."""
+
+    vendor_id: Annotated[str, PropertyInfo(alias="vendorId")]
+    """The vendor who sent this purchase order for goods or services purchased."""
 
     vendor_message: Annotated[str, PropertyInfo(alias="vendorMessage")]
     """A message to be printed on this purchase order for the vendor to read."""
