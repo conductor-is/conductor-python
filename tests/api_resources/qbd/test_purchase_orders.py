@@ -26,7 +26,6 @@ class TestPurchaseOrders:
     def test_method_create(self, client: Conductor) -> None:
         purchase_order = client.qbd.purchase_orders.create(
             transaction_date=parse_date("2019-12-27"),
-            vendor_id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(PurchaseOrder, purchase_order, path=["response"])
@@ -35,7 +34,6 @@ class TestPurchaseOrders:
     def test_method_create_with_all_params(self, client: Conductor) -> None:
         purchase_order = client.qbd.purchase_orders.create(
             transaction_date=parse_date("2019-12-27"),
-            vendor_id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
             class_id="80000001-1234567890",
             document_template_id="80000001-1234567890",
@@ -120,6 +118,7 @@ class TestPurchaseOrders:
                 "postal_code": "94110",
                 "state": "CA",
             },
+            vendor_id="80000001-1234567890",
             vendor_message="Please include packing slip with shipment",
         )
         assert_matches_type(PurchaseOrder, purchase_order, path=["response"])
@@ -128,7 +127,6 @@ class TestPurchaseOrders:
     def test_raw_response_create(self, client: Conductor) -> None:
         response = client.qbd.purchase_orders.with_raw_response.create(
             transaction_date=parse_date("2019-12-27"),
-            vendor_id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -141,7 +139,6 @@ class TestPurchaseOrders:
     def test_streaming_response_create(self, client: Conductor) -> None:
         with client.qbd.purchase_orders.with_streaming_response.create(
             transaction_date=parse_date("2019-12-27"),
-            vendor_id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
@@ -453,7 +450,6 @@ class TestAsyncPurchaseOrders:
     async def test_method_create(self, async_client: AsyncConductor) -> None:
         purchase_order = await async_client.qbd.purchase_orders.create(
             transaction_date=parse_date("2019-12-27"),
-            vendor_id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
         assert_matches_type(PurchaseOrder, purchase_order, path=["response"])
@@ -462,7 +458,6 @@ class TestAsyncPurchaseOrders:
     async def test_method_create_with_all_params(self, async_client: AsyncConductor) -> None:
         purchase_order = await async_client.qbd.purchase_orders.create(
             transaction_date=parse_date("2019-12-27"),
-            vendor_id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
             class_id="80000001-1234567890",
             document_template_id="80000001-1234567890",
@@ -547,6 +542,7 @@ class TestAsyncPurchaseOrders:
                 "postal_code": "94110",
                 "state": "CA",
             },
+            vendor_id="80000001-1234567890",
             vendor_message="Please include packing slip with shipment",
         )
         assert_matches_type(PurchaseOrder, purchase_order, path=["response"])
@@ -555,7 +551,6 @@ class TestAsyncPurchaseOrders:
     async def test_raw_response_create(self, async_client: AsyncConductor) -> None:
         response = await async_client.qbd.purchase_orders.with_raw_response.create(
             transaction_date=parse_date("2019-12-27"),
-            vendor_id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
         )
 
@@ -568,7 +563,6 @@ class TestAsyncPurchaseOrders:
     async def test_streaming_response_create(self, async_client: AsyncConductor) -> None:
         async with async_client.qbd.purchase_orders.with_streaming_response.create(
             transaction_date=parse_date("2019-12-27"),
-            vendor_id="80000001-1234567890",
             conductor_end_user_id="end_usr_1234567abcdefg",
         ) as response:
             assert not response.is_closed
