@@ -53,7 +53,6 @@ class PurchaseOrdersResource(SyncAPIResource):
         self,
         *,
         transaction_date: Union[str, date],
-        vendor_id: str,
         conductor_end_user_id: str,
         class_id: str | NotGiven = NOT_GIVEN,
         document_template_id: str | NotGiven = NOT_GIVEN,
@@ -77,6 +76,7 @@ class PurchaseOrdersResource(SyncAPIResource):
         ship_to_entity_id: str | NotGiven = NOT_GIVEN,
         terms_id: str | NotGiven = NOT_GIVEN,
         vendor_address: purchase_order_create_params.VendorAddress | NotGiven = NOT_GIVEN,
+        vendor_id: str | NotGiven = NOT_GIVEN,
         vendor_message: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -90,8 +90,6 @@ class PurchaseOrdersResource(SyncAPIResource):
 
         Args:
           transaction_date: The date of this purchase order, in ISO 8601 format (YYYY-MM-DD).
-
-          vendor_id: The vendor who sent this purchase order for goods or services purchased.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -193,6 +191,8 @@ class PurchaseOrdersResource(SyncAPIResource):
 
           vendor_address: The address of the vendor who sent this purchase order.
 
+          vendor_id: The vendor who sent this purchase order for goods or services purchased.
+
           vendor_message: A message to be printed on this purchase order for the vendor to read.
 
           extra_headers: Send extra headers
@@ -209,7 +209,6 @@ class PurchaseOrdersResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "transaction_date": transaction_date,
-                    "vendor_id": vendor_id,
                     "class_id": class_id,
                     "document_template_id": document_template_id,
                     "due_date": due_date,
@@ -232,6 +231,7 @@ class PurchaseOrdersResource(SyncAPIResource):
                     "ship_to_entity_id": ship_to_entity_id,
                     "terms_id": terms_id,
                     "vendor_address": vendor_address,
+                    "vendor_id": vendor_id,
                     "vendor_message": vendor_message,
                 },
                 purchase_order_create_params.PurchaseOrderCreateParams,
@@ -725,7 +725,6 @@ class AsyncPurchaseOrdersResource(AsyncAPIResource):
         self,
         *,
         transaction_date: Union[str, date],
-        vendor_id: str,
         conductor_end_user_id: str,
         class_id: str | NotGiven = NOT_GIVEN,
         document_template_id: str | NotGiven = NOT_GIVEN,
@@ -749,6 +748,7 @@ class AsyncPurchaseOrdersResource(AsyncAPIResource):
         ship_to_entity_id: str | NotGiven = NOT_GIVEN,
         terms_id: str | NotGiven = NOT_GIVEN,
         vendor_address: purchase_order_create_params.VendorAddress | NotGiven = NOT_GIVEN,
+        vendor_id: str | NotGiven = NOT_GIVEN,
         vendor_message: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -762,8 +762,6 @@ class AsyncPurchaseOrdersResource(AsyncAPIResource):
 
         Args:
           transaction_date: The date of this purchase order, in ISO 8601 format (YYYY-MM-DD).
-
-          vendor_id: The vendor who sent this purchase order for goods or services purchased.
 
           conductor_end_user_id: The ID of the EndUser to receive this request (e.g.,
               `"Conductor-End-User-Id: {{END_USER_ID}}"`).
@@ -865,6 +863,8 @@ class AsyncPurchaseOrdersResource(AsyncAPIResource):
 
           vendor_address: The address of the vendor who sent this purchase order.
 
+          vendor_id: The vendor who sent this purchase order for goods or services purchased.
+
           vendor_message: A message to be printed on this purchase order for the vendor to read.
 
           extra_headers: Send extra headers
@@ -881,7 +881,6 @@ class AsyncPurchaseOrdersResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "transaction_date": transaction_date,
-                    "vendor_id": vendor_id,
                     "class_id": class_id,
                     "document_template_id": document_template_id,
                     "due_date": due_date,
@@ -904,6 +903,7 @@ class AsyncPurchaseOrdersResource(AsyncAPIResource):
                     "ship_to_entity_id": ship_to_entity_id,
                     "terms_id": terms_id,
                     "vendor_address": vendor_address,
+                    "vendor_id": vendor_id,
                     "vendor_message": vendor_message,
                 },
                 purchase_order_create_params.PurchaseOrderCreateParams,
