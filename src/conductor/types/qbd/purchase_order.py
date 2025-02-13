@@ -1330,7 +1330,7 @@ class PurchaseOrder(BaseModel):
     in QuickBooks.
     """
 
-    vendor: Vendor
+    vendor: Optional[Vendor] = None
     """The vendor who sent this purchase order for goods or services purchased."""
 
     vendor_address: Optional[VendorAddress] = FieldInfo(alias="vendorAddress", default=None)
