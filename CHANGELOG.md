@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.11.0 (2025-02-14)
+
+Full Changelog: [v1.10.0...v1.11.0](https://github.com/conductor-is/conductor-python/compare/v1.10.0...v1.11.0)
+
+### Features
+
+* **api:** api update ([#565](https://github.com/conductor-is/conductor-python/issues/565)) ([cd9d0f6](https://github.com/conductor-is/conductor-python/commit/cd9d0f6a442a50a5bcbeb533385d97aa01de3848))
+
+
+### Bug Fixes
+
+* asyncify on non-asyncio runtimes ([#567](https://github.com/conductor-is/conductor-python/issues/567)) ([aa8f795](https://github.com/conductor-is/conductor-python/commit/aa8f795c224a52873c40c9cc0f93e7e01a21d840))
+
 ## 1.10.0 (2025-02-13)
 
 Full Changelog: [v1.9.1...v1.10.0](https://github.com/conductor-is/conductor-python/compare/v1.9.1...v1.10.0)
